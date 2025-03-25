@@ -15,7 +15,7 @@
 
 
 import tag from '@ohos.nfc.tag';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -90,9 +90,9 @@ export default function nfcIsoDepErrorTest() {
          * @tc.desc Check whether extended APDUs are supported Promise. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcIsoDep_js_0100', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcIsoDep_js_0100', , Level.LEVEL1, async function (done) {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 (async () => {
                     try {
@@ -120,9 +120,9 @@ export default function nfcIsoDepErrorTest() {
          * @tc.desc Check whether extended APDUs are supported callback. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcIsoDep_js_0200', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcIsoDep_js_0200', Level.LEVEL1, async function (done) {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 try {
                     IsoDepTag.isExtendedApduSupported("test")((err, data)=> {
@@ -151,9 +151,9 @@ export default function nfcIsoDepErrorTest() {
          * @tc.desc Obtains an object based on the tag information The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcIsoDep_js_0300', 0, function ()  {
+        it('SUB_Communication_NFC_nfcIsoDep_js_0300', Level.LEVEL1, function ()  {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 try {
                     let getIsoDepTaginfo = tag.getIsoDep("test");

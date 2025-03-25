@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import uio from 'libuiondk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUioReadv001', 0, async (done: Function) => {
+    it('testMuslUioReadv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = uio.readv(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -50,7 +50,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUioReadv002', 0, async (done: Function) => {
+    it('testMuslUioReadv002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = uio.readv(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -66,7 +66,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUioWritev001', 0, async (done: Function) => {
+    it('testMuslUioWritev001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = uio.writev(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -81,7 +81,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslUioPReadV001', 0, async (done: Function) => {
+    it('testMuslUioPReadV001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = uio.pReadV();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -95,7 +95,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslUioPReadV64001', 0, async (done: Function) => {
+    it('testMuslUioPReadV64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = uio.pReadV64();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -109,7 +109,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslUioPWriteV001', 0, async (done: Function) => {
+    it('testMuslUioPWriteV001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = uio.pWriteV();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -123,7 +123,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslUioPWriteV64001', 0, async (done: Function) => {
+    it('testMuslUioPWriteV64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = uio.pWriteV64();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -137,7 +137,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslUioProcessVmReadV001', 0, async (done: Function) => {
+    it('testMuslUioProcessVmReadV001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = uio.processVmReadV();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -151,7 +151,7 @@ export default function uioNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslUioProcessVmWriteV001', 0, async (done: Function) => {
+    it('testMuslUioProcessVmWriteV001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = uio.processVmWriteV();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);

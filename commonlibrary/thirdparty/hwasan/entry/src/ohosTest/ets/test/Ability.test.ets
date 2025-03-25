@@ -14,7 +14,7 @@
  */
 
 import hwasan from 'libentry.so'
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect , TestType, Size, Level } from "@ohos/hypium";
 
 export default function abilityTest() {
 
@@ -27,7 +27,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanStackBufferOverflow001', 0, async (done: Function) => {
+    it('testHWAsanStackBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.stackBufferOverflow();
       expect(result).assertEqual(1);
       done()
@@ -41,7 +41,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanStackBufferUnderflow001', 0, async (done: Function) => {
+    it('testHWAsanStackBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.stackBufferUnderflow();
       expect(result).assertEqual(1);
       done()
@@ -55,7 +55,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanHeapBufferOverflow001', 0, async (done: Function) => {
+    it('testHWAsanHeapBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.heapBufferOverflow();
       expect(result).assertEqual(1);
       done()
@@ -69,7 +69,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanHeapBufferUnderflow001', 0, async (done: Function) => {
+    it('testHWAsanHeapBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.heapBufferUnderflow();
       expect(result).assertEqual(1);
       done()
@@ -83,7 +83,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanHeapUseAfterFree001', 0, async (done: Function) => {
+    it('testHWAsanHeapUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.heapUseAfterFree();
       expect(result).assertEqual(1);
       done()
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanStackUseAfterScope001', 0, async (done: Function) => {
+    it('testHWAsanStackUseAfterScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.stackUseAfterScope();
       expect(result).assertEqual(1);
       done()
@@ -111,7 +111,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanStackUseAfterReturn001', 0, async (done: Function) => {
+    it('testHWAsanStackUseAfterReturn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.stackUseAfterReturn();
       expect(result).assertEqual(1);
       done()
@@ -125,7 +125,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanDoubleFree001', 0, async (done: Function) => {
+    it('testHWAsanDoubleFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.doubleFree();
       expect(result).assertEqual(1);
       done()
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHWAsanWildFree001', 0, async (done: Function) => {
+    it('testHWAsanWildFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = hwasan.wildFree();
       expect(result).assertEqual(1);
       done()

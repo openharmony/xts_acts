@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium'
+import { afterEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium'
 import memory from 'libmemory.so'
 import Utils from './Utils'
 
@@ -31,7 +31,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryCreate001', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.createOne();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -46,7 +46,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryCreate002', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryCreate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.createTwo();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -61,7 +61,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryDestroy001', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.destroyOne();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -76,7 +76,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryDestroy002', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryDestroy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.destroyTwo();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -91,7 +91,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryDestroy003', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryDestroy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.destroyThree();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -106,12 +106,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryBeginRead001', 0, async (done: Function) => {
-      let result: number = memory.beginReadOne();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(1)
-      done()
-    });
+    it('testPurgeAbleMemoryBeginRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.beginReadOne();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(1)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_0700
@@ -121,12 +122,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryBeginRead002', 0, async (done: Function) => {
-      let result: number = memory.beginReadTwo();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(0)
-      done()
-    });
+    it('testPurgeAbleMemoryBeginRead002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.beginReadTwo();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(0)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_0800
@@ -136,7 +138,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryEndRead001', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryEndRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.endRead();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -151,12 +153,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryBeginWrite001', 0, async (done: Function) => {
-      let result: number = memory.beginWriteOne();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(1)
-      done()
-    });
+    it('testPurgeAbleMemoryBeginWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.beginWriteOne();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(1)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1000
@@ -166,12 +169,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryBeginWrite002', 0, async (done: Function) => {
-      let result: number = memory.beginWriteTwo();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(0)
-      done()
-    });
+    it('testPurgeAbleMemoryBeginWrite002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.beginWriteTwo();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(0)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1100
@@ -181,7 +185,7 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryEndWrite001', 0, async (done: Function) => {
+    it('testPurgeAbleMemoryEndWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = memory.endWrite();
       console.info("stdlib.abs result = " + result);
       expect(result).assertEqual(1)
@@ -196,12 +200,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryGetContent001', 0, async (done: Function) => {
-      let result: number = memory.getContentOne();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(1)
-      done()
-    });
+    it('testPurgeAbleMemoryGetContent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.getContentOne();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(1)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1300
@@ -211,12 +216,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryGetContent002', 0, async (done: Function) => {
-      let result: number = memory.getContentTwo();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(1)
-      done()
-    });
+    it('testPurgeAbleMemoryGetContent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.getContentTwo();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(1)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1400
@@ -226,12 +232,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryContentSize001', 0, async (done: Function) => {
-      let result: number = memory.contentSizeOne();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(1)
-      done()
-    });
+    it('testPurgeAbleMemoryContentSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.contentSizeOne();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(1)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1500
@@ -241,12 +248,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryContentSize002', 0, async (done: Function) => {
-      let result: number = memory.contentSizeTwo();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(0)
-      done()
-    });
+    it('testPurgeAbleMemoryContentSize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.contentSizeTwo();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(0)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1600
@@ -256,12 +264,13 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryAppendModify001', 0, async (done: Function) => {
-      let result: number = memory.appendModifyOne();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(1)
-      done()
-    });
+    it('testPurgeAbleMemoryAppendModify001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.appendModifyOne();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(1)
+        done()
+      });
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_1700
@@ -271,11 +280,12 @@ export default function memoryTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testPurgeAbleMemoryAppendModify002', 0, async (done: Function) => {
-      let result: number = memory.appendModifyTwo();
-      console.info("stdlib.abs result = " + result);
-      expect(result).assertEqual(0)
-      done()
-    });
+    it('testPurgeAbleMemoryAppendModify002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let result: number = memory.appendModifyTwo();
+        console.info("stdlib.abs result = " + result);
+        expect(result).assertEqual(0)
+        done()
+      });
   })
 }

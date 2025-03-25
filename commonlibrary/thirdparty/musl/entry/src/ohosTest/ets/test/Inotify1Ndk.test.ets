@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import inotify from 'libinotify1ndk.so'
 
@@ -32,7 +32,7 @@ export default function inotify1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInotifyInotifyAddWatch002', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyAddWatch002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyAddWatch();
       expect(data).assertEqual(-1);
       done()
@@ -46,7 +46,7 @@ export default function inotify1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslInotifyInotifyRmWatch002', 0, async (done: Function) => {
+    it('testMuslInotifyInotifyRmWatch002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = inotify.inotifyRmWatch();
       expect(data).assertEqual(-1);
       done()

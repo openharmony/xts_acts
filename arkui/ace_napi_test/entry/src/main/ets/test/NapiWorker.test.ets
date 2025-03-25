@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { worker } from '@kit.ArkTS';
 
 export const sleep = (ms: number | undefined) => {
@@ -31,7 +31,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0001', 0, async () => {
+    it('testNapiWorker0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0001';
       console.info(`${caseName} test start`);
       try {
@@ -72,7 +72,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0002', 0, async () => {
+    it('testNapiWorker0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0002';
       console.info(`${caseName} test start`);
       try {
@@ -113,7 +113,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0003', 0, async () => {
+    it('testNapiWorker0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0003';
       console.info(`${caseName} test start`);
       try {
@@ -154,7 +154,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0004', 0, async () => {
+    it('testNapiWorker0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0004';
       console.info(`${caseName} test start`);
       try {
@@ -195,7 +195,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0005', 0, async () => {
+    it('testNapiWorker0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0005';
       console.info(`${caseName} test start`);
       try {
@@ -236,7 +236,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0006', 0, async () => {
+    it('testNapiWorker0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0006';
       console.info(`${caseName} test start`);
       try {
@@ -277,7 +277,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0007', 0, async () => {
+    it('testNapiWorker0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0007';
       console.info(`${caseName} test start`);
       try {
@@ -318,7 +318,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0008', 0, async () => {
+    it('testNapiWorker0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0008';
       console.info(`${caseName} test start`);
       try {
@@ -359,7 +359,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0009', 0, async () => {
+    it('testNapiWorker0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0009';
       console.info(`${caseName} test start`);
       try {
@@ -400,7 +400,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0010', 0, async () => {
+    it('testNapiWorker0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0010';
       console.info(`${caseName} test start`);
       try {
@@ -441,7 +441,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0011', 0, async () => {
+    it('testNapiWorker0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0011';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -474,7 +474,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0012', 0, async () => {
+    it('testNapiWorker0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0012';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -507,7 +507,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0013', 0, async () => {
+    it('testNapiWorker0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0013';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -540,7 +540,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0014', 0, async () => {
+    it('testNapiWorker0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0014';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -573,7 +573,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0015', 0, async () => {
+    it('testNapiWorker0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0015';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -606,7 +606,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0016', 0, async () => {
+    it('testNapiWorker0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0016';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -639,7 +639,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0017', 0, async () => {
+    it('testNapiWorker0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0017';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -672,7 +672,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0018', 0, async () => {
+    it('testNapiWorker0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0018';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -705,7 +705,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0019', 0, async () => {
+    it('testNapiWorker0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0019';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -738,7 +738,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0020', 0, async () => {
+    it('testNapiWorker0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0020';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -771,7 +771,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0021', 0, async () => {
+    it('testNapiWorker0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0021';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -804,7 +804,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0022', 0, async () => {
+    it('testNapiWorker0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0022';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -837,7 +837,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0023', 0, async () => {
+    it('testNapiWorker0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0023';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -870,7 +870,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0024', 0, async () => {
+    it('testNapiWorker0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0024';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -903,7 +903,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0025', 0, async () => {
+    it('testNapiWorker0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0025';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -936,7 +936,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0026', 0, async () => {
+    it('testNapiWorker0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0026';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -969,7 +969,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0027', 0, async () => {
+    it('testNapiWorker0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0027';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1002,7 +1002,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0028', 0, async () => {
+    it('testNapiWorker0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0028';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1035,7 +1035,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0029', 0, async () => {
+    it('testNapiWorker0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0029';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1068,7 +1068,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0030', 0, async () => {
+    it('testNapiWorker0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0030';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1101,7 +1101,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0031', 0, async () => {
+    it('testNapiWorker0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0031';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1134,7 +1134,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0032', 0, async () => {
+    it('testNapiWorker0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0032';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1167,7 +1167,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0033', 0, async () => {
+    it('testNapiWorker0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0033';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1200,7 +1200,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0034', 0, async () => {
+    it('testNapiWorker0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0034';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1233,7 +1233,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0035', 0, async () => {
+    it('testNapiWorker0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0035';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1266,7 +1266,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0036', 0, async () => {
+    it('testNapiWorker0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0036';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1299,7 +1299,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0037', 0, async () => {
+    it('testNapiWorker0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0037';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1332,7 +1332,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0038', 0, async () => {
+    it('testNapiWorker0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0038';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1365,7 +1365,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0039', 0, async () => {
+    it('testNapiWorker0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = 'testNapiWorker0039';
       console.info(`${caseName} test start`);
       let state: boolean = false;
@@ -1398,7 +1398,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0040', 0, async () => {
+    it('testNapiWorker0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0040';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1431,7 +1431,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0041', 0, async () => {
+    it('testNapiWorker0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0041';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1464,7 +1464,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0042', 0, async () => {
+    it('testNapiWorker0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0042';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1497,7 +1497,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0043', 0, async () => {
+    it('testNapiWorker0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0043';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1530,7 +1530,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0044', 0, async () => {
+    it('testNapiWorker0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0044';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1563,7 +1563,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0045', 0, async () => {
+    it('testNapiWorker0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0045';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1596,7 +1596,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0046', 0, async () => {
+    it('testNapiWorker0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0046';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1629,7 +1629,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0047', 0, async () => {
+    it('testNapiWorker0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0047';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1662,7 +1662,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0048', 0, async () => {
+    it('testNapiWorker0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0048';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1695,7 +1695,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0049', 0, async () => {
+    it('testNapiWorker0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0049';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1728,7 +1728,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0050', 0, async () => {
+    it('testNapiWorker0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0050';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1761,7 +1761,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0051', 0, async () => {
+    it('testNapiWorker0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0051';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1794,7 +1794,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0052', 0, async () => {
+    it('testNapiWorker0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0052';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1827,7 +1827,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0053', 0, async () => {
+    it('testNapiWorker0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0053';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1860,7 +1860,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0054', 0, async () => {
+    it('testNapiWorker0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0054';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1893,7 +1893,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0055', 0, async () => {
+    it('testNapiWorker0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0055';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1926,7 +1926,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0056', 0, async () => {
+    it('testNapiWorker0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0056';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1959,7 +1959,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0057', 0, async () => {
+    it('testNapiWorker0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0057';
       console.info(`${caseName} test start`);
       let state = false;
@@ -1992,7 +1992,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0058', 0, async () => {
+    it('testNapiWorker0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0058';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2025,7 +2025,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0059', 0, async () => {
+    it('testNapiWorker0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0059';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2058,7 +2058,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0060', 0, async () => {
+    it('testNapiWorker0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0060';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2092,7 +2092,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0061', 0, async () => {
+    it('testNapiWorker0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0061';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2126,7 +2126,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0062', 0, async () => {
+    it('testNapiWorker0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0062';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2160,7 +2160,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0063', 0, async () => {
+    it('testNapiWorker0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0063';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2194,7 +2194,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0064', 0, async () => {
+    it('testNapiWorker0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0064';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2228,7 +2228,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0065', 0, async () => {
+    it('testNapiWorker0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0065';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2262,7 +2262,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0066', 0, async () => {
+    it('testNapiWorker0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0066';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2296,7 +2296,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0067', 0, async () => {
+    it('testNapiWorker0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0067';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2330,7 +2330,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0068', 0, async () => {
+    it('testNapiWorker0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0068';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2364,7 +2364,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0069', 0, async () => {
+    it('testNapiWorker0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0069';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2397,7 +2397,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0070', 0, async () => {
+    it('testNapiWorker0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0070';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2431,7 +2431,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0071', 0, async () => {
+    it('testNapiWorker0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0071';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2465,7 +2465,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0072', 0, async () => {
+    it('testNapiWorker0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0072';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2499,7 +2499,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0073', 0, async () => {
+    it('testNapiWorker0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0073';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2533,7 +2533,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0074', 0, async () => {
+    it('testNapiWorker0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0074';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2567,7 +2567,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiWorker0075', 0, async () => {
+    it('testNapiWorker0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiWorker0075';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2600,7 +2600,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0001', 0, async () => {
+    it('testNapiSendableWorker0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0001';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2634,7 +2634,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0002', 0, async () => {
+    it('testNapiSendableWorker0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0002';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2668,7 +2668,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0003', 0, async () => {
+    it('testNapiSendableWorker0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0003';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2702,7 +2702,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0004', 0, async () => {
+    it('testNapiSendableWorker0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0004';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2736,7 +2736,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0005', 0, async () => {
+    it('testNapiSendableWorker0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0005';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2770,7 +2770,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0006', 0, async () => {
+    it('testNapiSendableWorker0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0006';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2804,7 +2804,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0007', 0, async () => {
+    it('testNapiSendableWorker0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0007';
       console.info(`${caseName} test start`);
       let state = false;
@@ -2838,7 +2838,7 @@ export default function NapiWorkerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiSendableWorker0008', 0, async () => {
+    it('testNapiSendableWorker0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName = 'testNapiSendableWorker0008';
       console.info(`${caseName} test start`);
       let state = false;

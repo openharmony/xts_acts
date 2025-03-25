@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import pty from 'libptyndk.so'
 
@@ -32,7 +32,7 @@ export default function ptyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTimeForkpty001', 0, async (done: Function) => {
+    it('testMuslTimeForkpty001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result:number = pty.forkpty();
       expect(result).assertEqual(resultTrue);
@@ -46,7 +46,7 @@ export default function ptyNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPtyOpenpty001', 0, async (done: Function) => {
+    it('testMuslPtyOpenpty001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pty.openpty();
       expect(result).assertEqual(0);
       done()

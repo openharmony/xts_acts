@@ -71,7 +71,7 @@ class DrawingRecordCmdUtilsBeginRecordingTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingAbnormal, Function | SmallTest | Level3) {
     // 1. The first and fourth parameters of the OH-Drawing-RecordCmdUtelsBeginRecording interface are not empty
     //with width and height being 0 and -1
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -95,7 +95,7 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingCalls, TestSize.Level2) {
+HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingCalls, Function | SmallTest | Level2) {
     // 1. Call OH-Drawing-RecordCmdUtelsBeginRecording 10 times
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     // add assert

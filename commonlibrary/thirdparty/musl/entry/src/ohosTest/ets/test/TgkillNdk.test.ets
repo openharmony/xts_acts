@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import tgkill from 'libtgkillndk.so'
 
@@ -32,7 +32,7 @@ export default function muslTgKillNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTgKillTgKill001', 0, async (done: Function) => {
+    it('testMuslTgKillTgKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = tgkill.tgKill();
       expect(a).assertEqual(0);
       done()

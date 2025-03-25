@@ -14,7 +14,7 @@
 */
 import dataPreferences from '@ohos.data.preferences';
 import featureAbility from '@ohos.ability.featureAbility';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 const NAME = "test_preferences";
 const KEY_TEST_INT_ELEMENT = 'key_test_int';
 const KEY_TEST_LONG_ELEMENT = 'key_test_long';
@@ -57,7 +57,7 @@ export default function preferencesFlushTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferences_put_flush_remove_get_0100', 0, async function (done) {
+        it('testPreferences_put_flush_remove_get_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "start_test_0100");
             await mPreferences.clear();
 
@@ -105,7 +105,7 @@ export default function preferencesFlushTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferences_put_flush_remove_get_0200', 0, async function (done){
+        it('testPreferences_put_flush_remove_get_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.log(TAG + "start_test_0200");
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 111).then(() => {
@@ -152,7 +152,7 @@ export default function preferencesFlushTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferences_put_flush_remove_get_0300', 0, async function (done){
+        it('testPreferences_put_flush_remove_get_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.log(TAG + "start_test_0300");
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 111.2).then(() => {
@@ -199,7 +199,7 @@ export default function preferencesFlushTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferences_put_flush_remove_get_0400', 0, async function (done){
+        it('testPreferences_put_flush_remove_get_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.log(TAG + "start_test_0400");
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true).then(() => {
@@ -246,7 +246,7 @@ export default function preferencesFlushTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferences_put_flush_remove_get_0500', 0, async function (done){
+        it('testPreferences_put_flush_remove_get_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.log(TAG + "start_test_0500");
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, 'abc').then(() => {
@@ -295,7 +295,7 @@ export default function preferencesFlushTest(){
          * @tc.level Level 2
          */
 
-        it('testPreferences_put_flush_remove_get_0600', 0, async function (done){
+        it('testPreferences_put_flush_remove_get_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
             console.log(TAG + "start_test_0600");
             await mPreferences.clear();
             let numberArr = [11, 22, 33];

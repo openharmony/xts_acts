@@ -70,7 +70,7 @@ class DrawingNativeColorSpaceTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbNormal, Function | SmallTest | Level0) {
     OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
     EXPECT_NE(colorSpace, nullptr);
     OH_Drawing_ColorSpaceDestroy(colorSpace);
@@ -84,7 +84,7 @@ HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceDestroyNull, Function | SmallTest | Level3) {
     OH_Drawing_ColorSpaceDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);
@@ -98,7 +98,7 @@ HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceDestroyNull, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
         EXPECT_NE(colorSpace, nullptr);
@@ -114,7 +114,7 @@ HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbMultipleCalls, Tes
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearNormal, Function | SmallTest | Level0) {
     OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgbLinear();
     EXPECT_NE(colorSpace, nullptr);
     OH_Drawing_ColorSpaceDestroy(colorSpace);
@@ -128,7 +128,7 @@ HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearNormal, Test
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgbLinear();
         EXPECT_NE(colorSpace, nullptr);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function SetTest() {
   describe('setTest', () => {
@@ -43,7 +43,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0001', 0, () => {
+    it('testSetPrototypeAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0001";
       try {
         const odds = new Set(["a", "b"]);
@@ -63,7 +63,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0002', 0, () => {
+    it('testSetPrototypeAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0002";
       try {
         const odds = new Set(["a", "b"]);
@@ -83,7 +83,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0003', 0, () => {
+    it('testSetPrototypeAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0003";
       try {
         const odds = new Set([1, 2, 3, 4]);
@@ -103,7 +103,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0004', 0, () => {
+    it('testSetPrototypeAdd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0004";
       try {
         const odds = new Set([1, 2, 3, 4]);
@@ -123,7 +123,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0005', 0, () => {
+    it('testSetPrototypeAdd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0005";
       try {
         const odds = new Set([].toString());
@@ -143,7 +143,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeClear0001', 0, () => {
+    it('testSetPrototypeClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeClear0001";
       try {
         const odds = new Set([1, 2, 3, 4]);
@@ -164,7 +164,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeClear0002', 0, () => {
+    it('testSetPrototypeClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeClear0002";
       try {
         const odds = new Set(["a", "b", "c"]);
@@ -185,7 +185,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeClear0003', 0, () => {
+    it('testSetPrototypeClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeClear0003";
       try {
         const odds = new Set([""]);
@@ -206,7 +206,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeDelete0001', 0, () => {
+    it('testSetPrototypeDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeDelete0001";
       try {
         const odds = new Set([1, 2, 3]);
@@ -226,7 +226,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeDelete0002', 0, () => {
+    it('testSetPrototypeDelete0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeDelete0002";
       try {
         const odds = new Set([1, 2, 3]);
@@ -246,7 +246,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeDelete0003', 0, () => {
+    it('testSetPrototypeDelete0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeDelete0003";
       try {
         const odds = new Set(["a", "b", "c"]);
@@ -266,7 +266,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeDelete0004', 0, () => {
+    it('testSetPrototypeDelete0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeDelete0004";
       try {
         const odds = new Set(["a", "b", "c"]);
@@ -286,7 +286,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeEntries0001', 0, () => {
+    it('testSetPrototypeEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeEntries0001";
       try {
         const odds = new Set([1, 3, 5, 7, 9]);
@@ -310,7 +310,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeEntries0002', 0, () => {
+    it('testSetPrototypeEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeEntries0002";
       try {
         const odds = new Set([undefined]);
@@ -330,7 +330,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeEntries0003', 0, () => {
+    it('testSetPrototypeEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeEntries0003";
       try {
         const odds = new Set([null]);
@@ -350,7 +350,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeHas0001', 0, () => {
+    it('testSetPrototypeHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeHas0001";
       try {
         const set1 = new Set([1, 2, 3]);
@@ -370,7 +370,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeHas0002', 0, () => {
+    it('testSetPrototypeHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeHas0002";
       try {
         const set1 = new Set([1, 2, 3]);
@@ -390,7 +390,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeHas0003', 0, () => {
+    it('testSetPrototypeHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeHas0003";
       try {
         let set1 = new Set(['a', 'b', 'c']);
@@ -410,7 +410,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeHas0004', 0, () => {
+    it('testSetPrototypeHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeHas0004";
       try {
         let set1 = new Set(['a', 'b', 'c']);
@@ -430,7 +430,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeKeys0001', 0, () => {
+    it('testSetPrototypeKeys0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeKeys0001";
       try {
         let mySet = new Set(["apple", "banana", "cat"]);
@@ -455,7 +455,7 @@ export default function SetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetPrototypeKeys0002', 0, () => {
+    it('testSetPrototypeKeys0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeKeys0002";
       try {
         let mySet = new Set([]);

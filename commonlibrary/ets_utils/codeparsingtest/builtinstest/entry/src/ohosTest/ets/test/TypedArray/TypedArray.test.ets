@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function TypedArrayTest() {
   describe('typedArrayTest', () => {
@@ -43,7 +43,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0001', 0, () => {
+    it('testTypedArrayFrom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0001";
       try {
         let s = new Set([1, 2, 3]);
@@ -63,7 +63,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0002', 0, () => {
+    it('testTypedArrayFrom0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0002";
       try {
         let s = new Set([1, 2, 3]);
@@ -83,7 +83,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0003', 0, () => {
+    it('testTypedArrayFrom0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0003";
       try {
         let s = new Set([1, 2, 3]);
@@ -103,7 +103,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0004', 0, () => {
+    it('testTypedArrayFrom0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0004";
       try {
         let s = new Set([1, 2, 3]);
@@ -123,7 +123,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0005', 0, () => {
+    it('testTypedArrayFrom0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0005";
       try {
         let s = new Set([1, 2, 3]);
@@ -143,7 +143,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0006', 0, () => {
+    it('testTypedArrayFrom0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0006";
       try {
         let s = new Set([1, 2, 3]);
@@ -163,7 +163,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0007', 0, () => {
+    it('testTypedArrayFrom0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0007";
       try {
         let s = new Set([1, 2, 3]);
@@ -183,7 +183,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0008', 0, () => {
+    it('testTypedArrayFrom0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0008";
       try {
         let s = new Set([1, 2, 3]);
@@ -203,7 +203,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0009', 0, () => {
+    it('testTypedArrayFrom0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0009";
       try {
         let s = new Set([1, 2, 3]);
@@ -223,7 +223,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0010', 0, () => {
+    it('testTypedArrayFrom0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0010";
       try {
         let s = new Set([1n, 2n, 3n]);
@@ -244,7 +244,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayFrom0011', 0, () => {
+    it('testTypedArrayFrom0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayFrom0011";
       try {
         let s = new Set([1n, 2n, 3n]);
@@ -265,7 +265,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0001', 0, () => {
+    it('testTypedArrayOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0001";
       try {
         let value = Uint8Array.of(1, 2, 3);
@@ -284,7 +284,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0002', 0, () => {
+    it('testTypedArrayOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0002";
       try {
         let value = Int8Array.of(1, 2, 3);
@@ -303,7 +303,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0003', 0, () => {
+    it('testTypedArrayOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0003";
       try {
         let value = Uint8ClampedArray.of(1, 2, 3);
@@ -322,7 +322,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0004', 0, () => {
+    it('testTypedArrayOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0004";
       try {
         let value = Int16Array.of(1, 2, 3);
@@ -341,7 +341,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0005', 0, () => {
+    it('testTypedArrayOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0005";
       try {
         let value = Uint16Array.of(1, 2, 3);
@@ -360,7 +360,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0006', 0, () => {
+    it('testTypedArrayOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0006";
       try {
         let value = Int32Array.of(1, 2, 3);
@@ -379,7 +379,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0007', 0, () => {
+    it('testTypedArrayOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0007";
       try {
         let value = Uint32Array.of(1, 2, 3);
@@ -398,7 +398,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0008', 0, () => {
+    it('testTypedArrayOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0008";
       try {
         let value = Float32Array.of(1, 2, 3);
@@ -417,7 +417,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0009', 0, () => {
+    it('testTypedArrayOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0009";
       try {
         let value = Float64Array.of(1, 2, 3);
@@ -436,7 +436,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0010', 0, () => {
+    it('testTypedArrayOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0010";
       try {
         let value = BigInt64Array.of(1n, 2n, 3n);
@@ -455,7 +455,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayOf0011', 0, () => {
+    it('testTypedArrayOf0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayOf0011";
       try {
         let value = BigUint64Array.of(1n, 2n, 3n);
@@ -474,7 +474,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0001', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0001";
       try {
         let buffer = new ArrayBuffer(8);
@@ -496,7 +496,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0002', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0002";
       try {
         let buffer = new ArrayBuffer(8);
@@ -518,7 +518,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0003', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0003";
       try {
         let buffer = new ArrayBuffer(8);
@@ -540,7 +540,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0004', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0004";
       try {
         let buffer = new ArrayBuffer(8);
@@ -562,7 +562,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0005', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0005";
       try {
         let buffer = new ArrayBuffer(8);
@@ -584,7 +584,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0006', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0006";
       try {
         let buffer = new ArrayBuffer(8);
@@ -606,7 +606,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0007', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0007";
       try {
         let buffer = new ArrayBuffer(8);
@@ -628,7 +628,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0008', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0008";
       try {
         let buffer = new ArrayBuffer(8);
@@ -650,7 +650,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0009', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0009";
       try {
         let buffer = new ArrayBuffer(8);
@@ -672,7 +672,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0010', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0010";
       try {
         let buffer = new ArrayBuffer(8);
@@ -694,7 +694,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0011', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0011";
       try {
         let buffer = new ArrayBuffer(8);
@@ -716,7 +716,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0012', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0012";
       try {
         let buffer = new ArrayBuffer(8);
@@ -738,7 +738,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0013', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0013";
       try {
         let buffer = new ArrayBuffer(8);
@@ -760,7 +760,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0014', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0014";
       try {
         let buffer = new ArrayBuffer(8);
@@ -782,7 +782,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0015', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0015";
       try {
         let buffer = new ArrayBuffer(8);
@@ -804,7 +804,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0016', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0016";
       try {
         let buffer = new ArrayBuffer(8);
@@ -826,7 +826,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0017', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0017";
       try {
         let buffer = new ArrayBuffer(8);
@@ -848,7 +848,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0018', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0018";
       try {
         let buffer = new ArrayBuffer(8);
@@ -870,7 +870,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0019', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0019";
       try {
         let buffer = new ArrayBuffer(8);
@@ -892,7 +892,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0020', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0020";
       try {
         let buffer = new ArrayBuffer(8);
@@ -914,7 +914,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0021', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0021";
       try {
         let buffer = new ArrayBuffer(32);
@@ -936,7 +936,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0022', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0022";
       try {
         let buffer = new ArrayBuffer(32);
@@ -958,7 +958,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0023', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0023";
       try {
         let buffer = new ArrayBuffer(32);
@@ -980,7 +980,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0024', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0024";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1002,7 +1002,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0025', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0025";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1024,7 +1024,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0026', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0026";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1046,7 +1046,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0027', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0027";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1068,7 +1068,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0028', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0028";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1090,7 +1090,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0029', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0029";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1112,7 +1112,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0030', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0030";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1134,7 +1134,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0031', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0031";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1156,7 +1156,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0032', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0032";
       try {
         let buffer = new ArrayBuffer(32);
@@ -1178,7 +1178,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0033', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0033";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1200,7 +1200,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0034', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0034";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1222,7 +1222,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0035', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0035";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1244,7 +1244,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0036', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0036";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1266,7 +1266,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0037', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0037";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1288,7 +1288,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0038', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0038";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1310,7 +1310,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0039', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0039";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1332,7 +1332,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0040', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0040";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1354,7 +1354,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0041', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0041";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1376,7 +1376,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0042', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0042";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1398,7 +1398,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0043', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0043";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1420,7 +1420,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeCopyWithin0044', 0, () => {
+    it('testTypedArrayPrototypeCopyWithin0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeCopyWithin0044";
       try {
         let buffer = new ArrayBuffer(64);
@@ -1442,7 +1442,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0001', 0, () => {
+    it('testTypedArrayPrototypeEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0001";
       try {
         let arr = new Uint8Array([10, 20, 30]);
@@ -1464,7 +1464,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0002', 0, () => {
+    it('testTypedArrayPrototypeEntries0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0002";
       try {
         let arr = new Int8Array([10, 20, 30]);
@@ -1486,7 +1486,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0003', 0, () => {
+    it('testTypedArrayPrototypeEntries0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0003";
       try {
         let arr = new Uint8ClampedArray([10, 20, 30]);
@@ -1508,7 +1508,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0004', 0, () => {
+    it('testTypedArrayPrototypeEntries0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0004";
       try {
         let arr = new Int16Array([10, 20, 30]);
@@ -1530,7 +1530,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0005', 0, () => {
+    it('testTypedArrayPrototypeEntries0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0005";
       try {
         let arr = new Uint16Array([10, 20, 30]);
@@ -1552,7 +1552,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0006', 0, () => {
+    it('testTypedArrayPrototypeEntries0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0006";
       try {
         let arr = new Int32Array([10, 20, 30]);
@@ -1574,7 +1574,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0007', 0, () => {
+    it('testTypedArrayPrototypeEntries0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0007";
       try {
         let arr = new Uint32Array([10, 20, 30]);
@@ -1596,7 +1596,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0008', 0, () => {
+    it('testTypedArrayPrototypeEntries0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0008";
       try {
         let arr = new Float32Array([10, 20, 30]);
@@ -1618,7 +1618,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0009', 0, () => {
+    it('testTypedArrayPrototypeEntries0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0009";
       try {
         let arr = new Float64Array([10, 20, 30]);
@@ -1640,7 +1640,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0010', 0, () => {
+    it('testTypedArrayPrototypeEntries0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0010";
       try {
         let arr = new BigInt64Array([10n, 20n, 30n]);
@@ -1665,7 +1665,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeEntries0011', 0, () => {
+    it('testTypedArrayPrototypeEntries0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeEntries0011";
       try {
         let arr = new BigUint64Array([10n, 20n, 30n]);
@@ -1690,7 +1690,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0001', 0, () => {
+    it('testTypedArrayPrototypeFill0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0001";
       try {
         let array = [1, 2, 3];
@@ -1710,7 +1710,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0002', 0, () => {
+    it('testTypedArrayPrototypeFill0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0002";
       try {
         let array = [1, 2, 3];
@@ -1730,7 +1730,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0003', 0, () => {
+    it('testTypedArrayPrototypeFill0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0003";
       try {
         let array = [1, 2, 3];
@@ -1750,7 +1750,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0004', 0, () => {
+    it('testTypedArrayPrototypeFill0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0004";
       try {
         let array = [1, 2, 3];
@@ -1769,7 +1769,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0005', 0, () => {
+    it('testTypedArrayPrototypeFill0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0005";
       try {
         let array = [1, 2, 3];
@@ -1789,7 +1789,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0006', 0, () => {
+    it('testTypedArrayPrototypeFill0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0006";
       try {
         let array = [1, 2, 3, 4];
@@ -1809,7 +1809,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0007', 0, () => {
+    it('testTypedArrayPrototypeFill0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0007";
       try {
         let array = [1, 2, 3, 4];
@@ -1829,7 +1829,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0008', 0, () => {
+    it('testTypedArrayPrototypeFill0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0008";
       try {
         let array = [1, 2, 3, 4];
@@ -1849,7 +1849,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0009', 0, () => {
+    it('testTypedArrayPrototypeFill0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0009";
       try {
         let array = [1, 2, 3, 4];
@@ -1869,7 +1869,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0010', 0, () => {
+    it('testTypedArrayPrototypeFill0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0010";
       try {
         let array = [1, 2, 3, 4];
@@ -1889,7 +1889,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0011', 0, () => {
+    it('testTypedArrayPrototypeFill0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0011";
       try {
         let array = [1, 2, 3, 4];
@@ -1909,7 +1909,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0012', 0, () => {
+    it('testTypedArrayPrototypeFill0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0012";
       try {
         let array = [1, 2, 3, 4];
@@ -1929,7 +1929,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0013', 0, () => {
+    it('testTypedArrayPrototypeFill0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0013";
       try {
         let array = [1, 2, 3, 4];
@@ -1949,7 +1949,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0014', 0, () => {
+    it('testTypedArrayPrototypeFill0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0014";
       try {
         let array = [1, 2, 3, 4];
@@ -1969,7 +1969,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0015', 0, () => {
+    it('testTypedArrayPrototypeFill0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0015";
       try {
         let array = [1n, 2n, 3n, 4n];
@@ -1989,7 +1989,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFill0016', 0, () => {
+    it('testTypedArrayPrototypeFill0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFill0016";
       try {
         let array = [1n, 2n, 3n, 4n];
@@ -2009,7 +2009,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0001', 0, () => {
+    it('testTypedArrayPrototypeFilter0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0001";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2029,7 +2029,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0002', 0, () => {
+    it('testTypedArrayPrototypeFilter0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0002";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2049,7 +2049,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0003', 0, () => {
+    it('testTypedArrayPrototypeFilter0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0003";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2069,7 +2069,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0004', 0, () => {
+    it('testTypedArrayPrototypeFilter0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0004";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2089,7 +2089,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0005', 0, () => {
+    it('testTypedArrayPrototypeFilter0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0005";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2109,7 +2109,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0006', 0, () => {
+    it('testTypedArrayPrototypeFilter0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0006";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2129,7 +2129,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0007', 0, () => {
+    it('testTypedArrayPrototypeFilter0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0007";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2149,7 +2149,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0008', 0, () => {
+    it('testTypedArrayPrototypeFilter0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0008";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2169,7 +2169,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0009', 0, () => {
+    it('testTypedArrayPrototypeFilter0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0009";
       try {
         let array = [12, 5, 8, 130, 44]
@@ -2189,7 +2189,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0010', 0, () => {
+    it('testTypedArrayPrototypeFilter0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0010";
       try {
         let array = [12n, 5n, 8n, 130n, 44n]
@@ -2209,7 +2209,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeFilter0011', 0, () => {
+    it('testTypedArrayPrototypeFilter0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeFilter0011";
       try {
         let array = [12n, 5n, 8n, 130n, 44n]
@@ -2228,7 +2228,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFind0001", 0, () => {
+    it("testPrototypeFind0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0001"
       try {
         const isNegative = (element: number): boolean => {
@@ -2249,7 +2249,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFind0002", 0, () => {
+    it("testPrototypeFind0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0002"
       try {
         const isPrime = (element: number, index: number, array: Uint8Array): boolean => {
@@ -2276,7 +2276,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFind0003", 0, () => {
+    it("testPrototypeFind0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0003"
       try {
         const isNegative = (element: number): boolean => {
@@ -2297,7 +2297,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFind0004", 0, () => {
+    it("testPrototypeFind0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0004"
       try {
         const isNegative = (element: number): boolean => {
@@ -2318,7 +2318,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFind0005", 0, () => {
+    it("testPrototypeFind0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFind0005"
       try {
         const isNegative = (element: number): boolean => {
@@ -2340,7 +2340,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindIndex0001", 0, () => {
+    it("testPrototypeFindIndex0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindIndex0001"
       try {
         const isNegative = (element: number): boolean => {
@@ -2361,7 +2361,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindIndex0002", 0, () => {
+    it("testPrototypeFindIndex0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindIndex0002"
       try {
         const isPrime = (element: number, index: number, array: Uint8Array): boolean => {
@@ -2389,7 +2389,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindIndex0003", 0, () => {
+    it("testPrototypeFindIndex0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindIndex0003"
       try {
         const isNegative = (element: number): boolean => {
@@ -2410,7 +2410,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindIndex0004", 0, () => {
+    it("testPrototypeFindIndex0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindIndex0004"
       try {
         const isNegative = (element: number): boolean => {
@@ -2431,7 +2431,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindIndex0005", 0, () => {
+    it("testPrototypeFindIndex0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindIndex0005"
       try {
         const isNegative = (element: number): boolean => {
@@ -2453,7 +2453,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindForEach0001", 0, () => {
+    it("testPrototypeFindForEach0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindForEach0001"
       try {
         let uint8: Uint8Array = new Uint8Array([1, 2, 3, 4]);
@@ -2476,7 +2476,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeFindForEach0002", 0, () => {
+    it("testPrototypeFindForEach0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeFindForEach0002"
       try {
         let uint8: Uint8Array = new Uint8Array([]);
@@ -2499,7 +2499,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0001", 0, () => {
+    it("testPrototypeIncludes0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0001"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2517,7 +2517,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0002", 0, () => {
+    it("testPrototypeIncludes0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0002"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2535,7 +2535,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0003", 0, () => {
+    it("testPrototypeIncludes0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0003"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2553,7 +2553,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0004", 0, () => {
+    it("testPrototypeIncludes0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0004"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2571,7 +2571,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0005", 0, () => {
+    it("testPrototypeIncludes0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0005"
       try {
         const uint8 = new Uint8Array([NaN]);
@@ -2589,7 +2589,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0006", 0, () => {
+    it("testPrototypeIncludes0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0006"
       try {
         const uint8 = new Uint8Array([NaN]);
@@ -2607,7 +2607,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0007", 0, () => {
+    it("testPrototypeIncludes0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0007"
       try {
         const uint8 = new Float32Array([NaN]);
@@ -2625,7 +2625,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIncludes0008", 0, () => {
+    it("testPrototypeIncludes0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIncludes0008"
       try {
         const uint8 = new Float32Array([NaN]);
@@ -2644,7 +2644,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0001", 0, () => {
+    it("testPrototypeIndexOf0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0001"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2662,7 +2662,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0002", 0, () => {
+    it("testPrototypeIndexOf0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0002"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2680,7 +2680,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0003", 0, () => {
+    it("testPrototypeIndexOf0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0003"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2698,7 +2698,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0004", 0, () => {
+    it("testPrototypeIndexOf0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0004"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2716,7 +2716,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0005", 0, () => {
+    it("testPrototypeIndexOf0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0005"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2734,7 +2734,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0006", 0, () => {
+    it("testPrototypeIndexOf0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0006"
       try {
         const uint8 = new Uint8Array([]);
@@ -2752,7 +2752,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0007", 0, () => {
+    it("testPrototypeIndexOf0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0007"
       try {
         const uint8 = new Uint8Array([]);
@@ -2770,7 +2770,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeIndexOf0008", 0, () => {
+    it("testPrototypeIndexOf0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeIndexOf0008"
       try {
         const uint8 = new Uint8Array([]);
@@ -2790,7 +2790,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeJoin0001", 0, () => {
+    it("testPrototypeJoin0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0001"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2808,7 +2808,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeJoin0002", 0, () => {
+    it("testPrototypeJoin0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0002"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2826,7 +2826,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeJoin0003", 0, () => {
+    it("testPrototypeJoin0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0003"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2844,7 +2844,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeJoin0004", 0, () => {
+    it("testPrototypeJoin0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeJoin0004"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2863,7 +2863,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeKeys0001", 0, () => {
+    it("testPrototypeKeys0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0001"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2881,7 +2881,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeKeys0002", 0, () => {
+    it("testPrototypeKeys0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0002"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2901,7 +2901,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeKeys0003", 0, () => {
+    it("testPrototypeKeys0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeKeys0003"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -2923,7 +2923,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0001", 0, () => {
+    it("testPrototypeLastIndexOf0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0001"
       try {
         const uint8 = new Uint8Array([10, 20, 50, 50, 50, 60]);
@@ -2941,7 +2941,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0002", 0, () => {
+    it("testPrototypeLastIndexOf0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0002"
       try {
         const uint8 = new Uint8Array([10, 20, 50, 50, 50, 60]);
@@ -2959,7 +2959,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0003", 0, () => {
+    it("testPrototypeLastIndexOf0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0003"
       try {
         const uint8 = new Uint8Array([10, 20, 50, 50, 50, 60]);
@@ -2977,7 +2977,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0004", 0, () => {
+    it("testPrototypeLastIndexOf0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0004"
       try {
         const uint8 = new Uint8Array([10, 20, 50, 50, 50, 60]);
@@ -2995,7 +2995,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0005", 0, () => {
+    it("testPrototypeLastIndexOf0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0005"
       try {
         const uint8 = new Uint8Array([2, 5, 9, 2]);
@@ -3013,7 +3013,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0006", 0, () => {
+    it("testPrototypeLastIndexOf0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0006"
       try {
         const uint8 = new Uint8Array([2, 5, 9, 2]);
@@ -3031,7 +3031,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0007", 0, () => {
+    it("testPrototypeLastIndexOf0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0007"
       try {
         const uint8 = new Uint8Array([2, 5, 9, 2]);
@@ -3049,7 +3049,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0008", 0, () => {
+    it("testPrototypeLastIndexOf0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0008"
       try {
         const uint8 = new Uint8Array([2, 5, 9, 2]);
@@ -3067,7 +3067,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0009", 0, () => {
+    it("testPrototypeLastIndexOf0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0009"
       try {
         const uint8 = new Uint8Array([2, 5, 9, 2]);
@@ -3085,7 +3085,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeLastIndexOf0010", 0, () => {
+    it("testPrototypeLastIndexOf0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeLastIndexOf0010"
       try {
         const uint8 = new Uint8Array([2, 5, 9, 2]);
@@ -3103,7 +3103,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeMap0001", 0, () => {
+    it("testPrototypeMap0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeMap0001"
       try {
         const uint8 = new Uint8Array([25, 36, 49]);
@@ -3121,7 +3121,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeMap0002", 0, () => {
+    it("testPrototypeMap0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeMap0002"
       try {
         const numbers = new Uint8Array([1, 4, 9]);
@@ -3142,7 +3142,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeReduce0001", 0, () => {
+    it("testPrototypeReduce0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduce0001"
       try {
         const uint8 = new Uint8Array([0, 1, 2, 3]);
@@ -3163,7 +3163,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeReduce0002", 0, () => {
+    it("testPrototypeReduce0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduce0002"
       try {
         const total = new Uint8Array([0, 1, 2, 3]).reduce((a, b) => a + b);
@@ -3182,7 +3182,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeReduceRight0001", 0, () => {
+    it("testPrototypeReduceRight0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduceRight0001";
       try {
         const uint8 = new Uint8Array([10, 20, 30]);
@@ -3205,7 +3205,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeReduceRight0002", 0, () => {
+    it("testPrototypeReduceRight0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReduceRight0002"
       try {
         const total = new Uint8Array([0, 1, 2, 3]).reduceRight((a, b) => a + b);
@@ -3224,7 +3224,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeReverse0001", 0, () => {
+    it("testPrototypeReverse0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeReverse0001"
       try {
         const uint8 = new Uint8Array([1, 2, 3]);
@@ -3243,7 +3243,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSet0001", 0, () => {
+    it("testPrototypeSet0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSet0001"
       try {
         const buffer = new ArrayBuffer(8);
@@ -3265,7 +3265,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSlice0001", 0, () => {
+    it("testPrototypeSlice0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0001"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3284,7 +3284,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSlice0002", 0, () => {
+    it("testPrototypeSlice0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0002"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3302,7 +3302,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSlice0003", 0, () => {
+    it("testPrototypeSlice0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0003"
       try {
         const uint8 = new Uint8Array([1, 2, 3]);
@@ -3321,7 +3321,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSlice0004", 0, () => {
+    it("testPrototypeSlice0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0004"
       try {
         const uint8 = new Uint8Array([1, 2, 3]);
@@ -3340,7 +3340,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSlice0005", 0, () => {
+    it("testPrototypeSlice0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0005"
       try {
         const uint8 = new Uint8Array([1, 2, 3]);
@@ -3359,7 +3359,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSlice0006", 0, () => {
+    it("testPrototypeSlice0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSlice0006"
       try {
         const uint8 = new Uint8Array([1, 2, 3]);
@@ -3379,7 +3379,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSome0001", 0, () => {
+    it("testPrototypeSome0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0001"
       try {
         const isNegative = (element: number, index: number, array: Int8Array): boolean => {
@@ -3400,7 +3400,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSome0002", 0, () => {
+    it("testPrototypeSome0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0002"
       try {
         const isNegative = (element: number, index: number, array: Int8Array): boolean => {
@@ -3421,7 +3421,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSome0003", 0, () => {
+    it("testPrototypeSome0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0003"
       try {
         const isBiggerThan10 = (element: number): boolean => {
@@ -3442,7 +3442,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSome0004", 0, () => {
+    it("testPrototypeSome0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSome0004"
       try {
         const isBiggerThan10 = (element: number): boolean => {
@@ -3462,7 +3462,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSort0001", 0, () => {
+    it("testPrototypeSort0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0001"
       try {
         const uint8 = new Uint8Array([40, 10, 50, 20, 30]);
@@ -3482,7 +3482,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSort0002", 0, () => {
+    it("testPrototypeSort0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0002"
       try {
         let numbers = new Uint8Array([40, 1, 5, 200]);
@@ -3502,7 +3502,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSort0003", 0, () => {
+    it("testPrototypeSort0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0003"
       try {
         let numbers = [40, 1, 5, 200];
@@ -3522,7 +3522,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSort0004", 0, () => {
+    it("testPrototypeSort0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSort0004"
       try {
         let numbers = [40, 1, 5, 200];
@@ -3542,7 +3542,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSubarray0001", 0, () => {
+    it("testPrototypeSubarray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSubarray0001"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3561,7 +3561,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSubarray0002", 0, () => {
+    it("testPrototypeSubarray0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSubarray0002"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3580,7 +3580,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSubarray0003", 0, () => {
+    it("testPrototypeSubarray0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSubarray0003"
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3600,7 +3600,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSubarray0004", 0, () => {
+    it("testPrototypeSubarray0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSubarray0004"
       try {
         const buffer = new ArrayBuffer(8);
@@ -3621,7 +3621,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testPrototypeSubarray0005", 0, () => {
+    it("testPrototypeSubarray0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPrototypeSubarray0005"
       try {
         const buffer = new ArrayBuffer(8);
@@ -3642,7 +3642,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeSymbolIterator0001', 0, () => {
+    it('testTypedArrayPrototypeSymbolIterator0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeSymbolIterator0001";
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3671,7 +3671,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeSymbolIterator0002', 0, () => {
+    it('testTypedArrayPrototypeSymbolIterator0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeSymbolIterator0002";
       try {
         const arr = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3690,7 +3690,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeSymbolIterator0003', 0, () => {
+    it('testTypedArrayPrototypeSymbolIterator0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeSymbolIterator0003";
       try {
         const arr = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3714,7 +3714,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeSymbolIterator0004', 0, () => {
+    it('testTypedArrayPrototypeSymbolIterator0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeSymbolIterator0004";
       try {
         const arr = new Uint8Array([]);
@@ -3734,7 +3734,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeToLocaleString0001', 0, () => {
+    it('testTypedArrayPrototypeToLocaleString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeToLocaleString0001";
       try {
         const uint8 = new Uint32Array([500, 8123, 12]);
@@ -3754,7 +3754,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeToLocaleString0002', 0, () => {
+    it('testTypedArrayPrototypeToLocaleString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeToLocaleString0002";
       try {
         const uint = new Uint32Array([]);
@@ -3774,7 +3774,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeToString0001', 0, () => {
+    it('testTypedArrayPrototypeToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeToString0001";
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3794,7 +3794,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeToString0002', 0, () => {
+    it('testTypedArrayPrototypeToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeToString0002";
       try {
         const uint8 = new Uint8Array([]);
@@ -3814,7 +3814,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeValues0001', 0, () => {
+    it('testTypedArrayPrototypeValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeValues0001";
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3838,7 +3838,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeValues0002', 0, () => {
+    it('testTypedArrayPrototypeValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeValues0002";
       try {
         const uint8 = new Uint8Array([10, 20, 30, 40, 50]);
@@ -3867,7 +3867,7 @@ export default function TypedArrayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypedArrayPrototypeValues0003', 0, () => {
+    it('testTypedArrayPrototypeValues0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypedArrayPrototypeValues0003";
       try {
         const uint8 = new Uint8Array([]);

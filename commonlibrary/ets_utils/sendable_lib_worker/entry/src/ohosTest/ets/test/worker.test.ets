@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level} from '@ohos/hypium';
 import worker, { ErrorEvent, MessageEvents } from '@ohos.worker';
 import { collections, lang } from '@kit.ArkTS';
 import json from '@ohos.util.json';
@@ -124,7 +124,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage001', 0, async (done: Function) => {
+    it('testWorkerPostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage001';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass2 = new MySendAbleClass2(false,1,'');
@@ -166,7 +166,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage002', 0, async (done: Function) => {
+    it('testWorkerPostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage002';
       console.info(`${caseName} test start`);
       let sendableObject: B = new B('');
@@ -208,7 +208,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage003', 0, async (done: Function) => {
+    it('testWorkerPostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage003';
       console.info(`${caseName} test start`);
       let sendableObject: Car = new Car();
@@ -250,7 +250,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage004', 0, async (done: Function) => {
+    it('testWorkerPostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage004';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(true,1,'');
@@ -292,7 +292,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage005', 0, async (done: Function) => {
+    it('testWorkerPostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage005';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(false,1,'bbbb');
@@ -334,7 +334,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage006', 0, async (done: Function) => {
+    it('testWorkerPostMessage006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage006';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(false,1,'bbbb');
@@ -376,7 +376,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage007', 0, async (done: Function) => {
+    it('testWorkerPostMessage007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage007';
       console.info(`${caseName} test start`);
       const anotherBigInt = BigInt("12345678912345678");
@@ -419,7 +419,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage008', 0, async (done: Function) => {
+    it('testWorkerPostMessage008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage008';
       console.info(`${caseName} test start`);
       let arr1: collections.Array<number> = new collections.Array<number>();
@@ -464,7 +464,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage009', 0, async (done: Function) => {
+    it('testWorkerPostMessage009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage009';
       console.info(`${caseName} test start`);
       let arr1: collections.Array<string> = new collections.Array<string>();
@@ -509,7 +509,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage010', 0, async (done: Function) => {
+    it('testWorkerPostMessage010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage010';
       console.info(`${caseName} test start`);
       let a1: D = new SendableA() as D;
@@ -551,7 +551,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessage011', 0, async (done: Function) => {
+    it('testWorkerPostMessage011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage011';
       console.info(`${caseName} test start`);
       const myMap: collections.Map<number, string> = new collections.Map<number, string>([
@@ -598,7 +598,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable001', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable001';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass2 = new MySendAbleClass2(false,1,'');
@@ -640,7 +640,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable002', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable002';
       console.info(`${caseName} test start`);
       let sendableObject: B = new B('');
@@ -682,7 +682,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable003', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable003';
       console.info(`${caseName} test start`);
       let sendableObject: Car = new Car();
@@ -724,7 +724,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable004', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable004';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(true,1,'bbbb');
@@ -766,7 +766,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable005', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable005';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(false,1,'bbbb');
@@ -808,7 +808,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable006', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable006';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass = new MySendAbleClass(false,1,'bbbb');
@@ -850,7 +850,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable007', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable007';
       console.info(`${caseName} test start`);
       const anotherBigInt = BigInt("12345678912345678");
@@ -893,7 +893,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable008', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable008';
       console.info(`${caseName} test start`);
       let arr1: collections.Array<number> = new collections.Array<number>();
@@ -938,7 +938,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable009', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable009';
       console.info(`${caseName} test start`);
       let arr1: collections.Array<string> = new collections.Array<string>();
@@ -983,7 +983,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable010', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable010';
       console.info(`${caseName} test start`);
       let a1: D = new SendableA() as D;
@@ -1025,7 +1025,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable011', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable011';
       console.info(`${caseName} test start`);
       const myMap: collections.Map<number, string> = new collections.Map<number, string>([
@@ -1071,7 +1071,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable012', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable012';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass2 = new MySendAbleClass2(false,1,'string message');
@@ -1113,7 +1113,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable013', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable013';
       console.info(`${caseName} test start`);
       let sendableObject: MySendAbleClass2 = new MySendAbleClass2(false,1,'string message');
@@ -1155,7 +1155,7 @@ export default function workerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWorkerPostMessageWithSharedSendable014', 0, async (done: Function) => {
+    it('testWorkerPostMessageWithSharedSendable014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessageWithSharedSendable014';
       console.info(`${caseName} test start`);
       let sendableObject: E = new E(new MySendAbleClass2(false,3,'4'));

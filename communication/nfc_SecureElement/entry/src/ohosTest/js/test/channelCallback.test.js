@@ -15,7 +15,7 @@
 
 
 import secureElement from '@ohos.secureElement';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -106,9 +106,9 @@ export default function channelCallbacktest() {
          * @tc.name Test isBasicChannel
          * @tc.desc open BasicChannel Check whether the channel is a basic channel.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_0900', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_0900', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]09 This function is not supported because the phone NFC chip is ST chip.");
@@ -143,7 +143,7 @@ export default function channelCallbacktest() {
                 }
             } catch (error) {
                 console.info("[NFC_test]09 openBasicChannel_p2_callback occurs exception:" + error.code + "---" + error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
             sleep(900);
             done();
@@ -154,9 +154,9 @@ export default function channelCallbacktest() {
          * @tc.name Test isClosed
          * @tc.desc open LogicalChannel Check whether the channel is closed.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1000', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1000', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]10 This function is not supported because the phone NFC chip is ST chip.");
@@ -191,7 +191,7 @@ export default function channelCallbacktest() {
                 }
             } catch (error) {
                 console.info("[NFC_test]10 openLogicalChannel_P2_callback occurs exception:" + error.code + "---" + error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
             sleep(900);
             done();
@@ -203,9 +203,9 @@ export default function channelCallbacktest() {
          * @tc.name Test getSelectResponse
          * @tc.desc open BasicChannel Returns the data received from the application selection command.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1100', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1100', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]11 This function is not supported because the phone NFC chip is ST chip.");
@@ -240,7 +240,7 @@ export default function channelCallbacktest() {
             }
             } catch (error) {
                 console.info("[NFC_test]11 openBasicChannel_callback occurs exception:" + error.code + "---" + error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
             sleep(900);
             done();
@@ -251,9 +251,9 @@ export default function channelCallbacktest() {
          * @tc.name Test transmit
          * @tc.desc open LogicalChannel Send an APDU command to the SE 
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1200', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1200', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]12 This function is not supported because the phone NFC chip is ST chip.");
@@ -295,7 +295,7 @@ export default function channelCallbacktest() {
                 }
             } catch (error) {
                 console.info("[NFC_test]12 openLogicalChannel_callback occurs exception:" + error.code + "---" + error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
             sleep(900);
             done();
@@ -306,9 +306,9 @@ export default function channelCallbacktest() {
          * @tc.name Test transmit
          * @tc.desc open LogicalChannel Send an APDU command to the SE 
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1300', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1300', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]13 This function is not supported because the phone NFC chip is ST chip.");
@@ -333,7 +333,7 @@ export default function channelCallbacktest() {
                 }
             } catch (error) {
                 console.info("[NFC_test]13 openBasicChannel_Promise occurs exception:" + error.code + "---" + error);
-                expect().assertFail();
+                expect(801).assertEqual(error.code);
             }
             done();
         })
@@ -343,9 +343,9 @@ export default function channelCallbacktest() {
          * @tc.name Test isClosed
          * @tc.desc open LogicalChannel Check whether the channel is a basic channel.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1400', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1400', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]14 This function is not supported because the phone NFC chip is ST chip.");
@@ -371,8 +371,8 @@ export default function channelCallbacktest() {
                     sleep(5000);
                 }
             } catch (error) {
-                console.info("[NFC_test]14 openLogicalChannel_Promise occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]14 openLogicalChannel_Promise occurs exception:" + error.code + "---" + error);
+                expect(801).assertEqual(error.code);
             }
             done();
         })
@@ -382,9 +382,9 @@ export default function channelCallbacktest() {
          * @tc.name Test isClosed
          * @tc.desc open BasicChannel Check whether the channel is a basic channel.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1500', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1500', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]15 This function is not supported because the phone NFC chip is ST chip.");
@@ -410,8 +410,8 @@ export default function channelCallbacktest() {
                     sleep(5000);
                 }
             } catch (error) {
-                console.info("[NFC_test]15 openBasicChannel occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]15 openBasicChannel occurs exception:" + error.code + "---" + error);
+                expect(801).assertEqual(error.code);
             }
             done();
         })
@@ -421,9 +421,9 @@ export default function channelCallbacktest() {
          * @tc.name Test isClosed
          * @tc.desc Check whether the channel is closed.
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_1600', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1600', Level.LEVEL0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]16 This function is not supported because the phone NFC chip is ST chip.");
@@ -449,8 +449,8 @@ export default function channelCallbacktest() {
                     sleep(5000);
                 }
             } catch (error) {
-                console.info("[NFC_test]16 openLogicalChannel_Promise occurs exception:" + error);
-                expect().assertFail();
+                console.info("[NFC_test]16 openLogicalChannel_Promise occurs exception:" + error.code + "---" + error);
+                expect(801).assertEqual(error.code);
             }
             done();
         })

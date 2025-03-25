@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import osAccount from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function ActsOsAccountTest() {
     describe('ActsOsAccountTest', function () {
@@ -38,7 +38,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountCheckMultiOsAccountEnabled_0100', 0, async function (done) {
+        it('ActsOsAccountCheckMultiOsAccountEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckMultiOsAccountEnabled_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -61,7 +61,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountIsOsAccountConstraintEnabled_0100', 0, async function (done) {
+        it('ActsOsAccountIsOsAccountConstraintEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountIsOsAccountConstraintEnabled_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -85,7 +85,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountIsOsAccountConstraintEnabled_0200', 0, async function (done) {
+        it('ActsOsAccountIsOsAccountConstraintEnabled_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountIsOsAccountConstraintEnabled_0200 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -109,7 +109,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountCheckOsAccountTestable_0100', 0, async function (done) {
+        it('ActsOsAccountCheckOsAccountTestable_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountCheckOsAccountTestable_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -132,7 +132,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalId_0100', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalId_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -155,7 +155,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForUid_0100', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForUid_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForUid_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -178,7 +178,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForUid_0200', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForUid_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForUid_0200 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -204,7 +204,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForUid_0300', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForUid_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForUid_0300 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -230,7 +230,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForUid_0400', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForUid_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForUid_0400 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -253,7 +253,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForUid_0500', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForUid_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForUid_0500 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -276,7 +276,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForUid_0600', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForUid_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForUid_0600 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -299,7 +299,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetActivatedOsAccountLocalIds_0100', 0, async function (done) {
+        it('ActsOsAccountGetActivatedOsAccountLocalIds_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetActivatedOsAccountLocalIds_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -322,7 +322,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0100', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForSerialNumber_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -345,7 +345,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0200', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForSerialNumber_0200 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -371,7 +371,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0300', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForSerialNumber_0200 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -397,7 +397,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0400', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForSerialNumber_0400 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -420,7 +420,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0500', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForSerialNumber_0500 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -443,7 +443,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0600', 0, async function (done) {
+        it('ActsOsAccountGetOsAccountLocalIdForSerialNumber_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetOsAccountLocalIdForSerialNumber_0600 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -466,7 +466,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0100', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0100 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -489,7 +489,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0200', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0200 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -515,7 +515,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0300', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0300 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -543,7 +543,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0400', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0400 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -571,7 +571,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0500', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0500 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -594,7 +594,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0600', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0600 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -617,7 +617,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0700', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0700 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -640,7 +640,7 @@ export default function ActsOsAccountTest() {
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0800', 0, async function (done) {
+        it('ActsOsAccountGetSerialNumberForOsAccountLocalId_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsOsAccountGetSerialNumberForOsAccountLocalId_0800 start====");
             let accountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");

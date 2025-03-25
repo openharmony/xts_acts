@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import  convertxml from '@ohos.convertxml'
 export default function XmlTest() {
 describe('XmlTest', function () {
@@ -24,7 +24,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert001', 0, function () {
+    it('testConvert001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -68,7 +68,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert002', 0, function () {
+    it('testConvert002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -112,7 +112,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert003', 0, function () {
+    it('testConvert003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -154,7 +154,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert004', 0, function () {
+    it('testConvert004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -200,7 +200,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert005', 0, function () {
+    it('testConvert005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -242,7 +242,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert006', 0, function () {
+    it('testConvert006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -287,7 +287,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert007', 0, function () {
+    it('testConvert007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!--note-->'+
@@ -332,7 +332,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert008', 0, function () {
+    it('testConvert008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -377,7 +377,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert09', 0, function () {
+    it('testConvert09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!DOCTYPE foo>'+
@@ -422,7 +422,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert010', 0, function () {
+    it('testConvert010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -460,7 +460,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert011', 0, function () {
+    it('testConvert011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -504,7 +504,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert012', 0, function () {
+    it('testConvert012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -552,7 +552,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert013', 0, function () {
+    it('testConvert013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -600,7 +600,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert014', 0, function () {
+    it('testConvert014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -644,7 +644,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert015', 0, function () {
+    it('testConvert015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -691,7 +691,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert016', 0, function () {
+    it('testConvert016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!--note-->'+
@@ -738,7 +738,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert017', 0, function () {
+    it('testConvert017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -787,7 +787,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert018', 0, function () {
+    it('testConvert018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -831,7 +831,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert019', 0, function () {
+    it('testConvert019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -875,7 +875,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert020', 0, function () {
+    it('testConvert020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -919,7 +919,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert021', 0, function () {
+    it('testConvert021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml = '<?xml?>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -940,7 +940,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert022', 0, function () {
+    it('testConvert022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<?xml version="1.0" encoding="utf-8"?>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -962,7 +962,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert023', 0, function () {
+    it('testConvert023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<?xml?>\n<a/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -983,7 +983,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert024', 0, function () {
+    it('testConvert024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<?go there?>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1006,7 +1006,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert025', 0, function () {
+    it('testConvert025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<?go there?><?come here?>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1032,7 +1032,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert026', 0, function () {
+    it('testConvert026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<!-- \t Hello World! \t -->';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1058,7 +1058,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert027', 0, function () {
+    it('testConvert027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1087,7 +1087,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert028', 0, function () {
+    it('testConvert028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[ \t <foo>\r\n</bar> \t ]]>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1109,7 +1109,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert029', 0, function () {
+    it('testConvert029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[ \t data\n]]><![CDATA[< > " and & \t ]]>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1134,7 +1134,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert030', 0, function () {
+    it('testConvert030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1156,7 +1156,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert031', 0, function () {
+    it('testConvert031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a/>\n<a/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1180,7 +1180,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert032', 0, function () {
+    it('testConvert032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a/>\n<b/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1204,7 +1204,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert033', 0, function () {
+    it('testConvert033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a x="hello"/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1227,7 +1227,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert034', 0, function () {
+    it('testConvert034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a x="1.234" y="It\'s"/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1251,7 +1251,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert035', 0, function () {
+    it('testConvert035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a> \t Hi \t </a>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1276,7 +1276,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert036', 0, function () {
+    it('testConvert036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a>  Hi  There \t </a>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1301,7 +1301,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert037', 0, function () {
+    it('testConvert037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a>\n\v<b/>\n</a>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1325,7 +1325,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert038', 0, function () {
+    it('testConvert038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let  xml = '<a>\n\v<b>\n\v\v<c/>\n\v</b>\n</a>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1351,7 +1351,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert039', 0, function () {
+    it('testConvert039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!DOCTYPE foo>'+
@@ -1397,7 +1397,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert040', 0, function () {
+    it('testConvert040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml = '<?xml version="1.0" encoding="utf-8"?>' +
         '<note>' +
         '<title>\nHello\\n World\\\n</title>' +
@@ -1420,7 +1420,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert041', 0, function () {
+    it('testConvert041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let xml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[\nHello\\n World\\\n \tHello\\t World\\\t]]>';
         let conv = new convertxml.ConvertXML();
         let result = conv.convertToJSObject(xml);
@@ -1437,7 +1437,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testBusinessError001', 0, function () {
+    it('testBusinessError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let xml = 123;
             let conv = new convertxml.ConvertXML();
@@ -1460,7 +1460,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testBusinessError002', 0, function () {
+    it('testBusinessError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let xml =
                 '<?xml version="1.0" encoding="utf-8"?>' +
@@ -1485,7 +1485,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testBusinessError003', 0, function () {
+    it('testBusinessError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let xml = 111;
             let conv = new convertxml.ConvertXML();
@@ -1504,7 +1504,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert045', 0, function () {
+    it('testConvert045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -1530,7 +1530,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert046', 0, function () {
+    it('testConvert046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -1557,7 +1557,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert047', 0, function () {
+    it('testConvert047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -1584,7 +1584,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert048', 0, function () {
+    it('testConvert048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -1612,7 +1612,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert049', 0, function () {
+    it('testConvert049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!DOCTYPE foo>'+
@@ -1640,7 +1640,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert050', 0, function () {
+    it('testConvert050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
@@ -1668,7 +1668,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert051', 0, function () {
+    it('testConvert051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!--note-->'+
@@ -1697,7 +1697,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert052', 0, function () {
+    it('testConvert052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<?xml?>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1718,7 +1718,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert053', 0, function () {
+    it('testConvert053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<?xml version="1.0" encoding="utf-8"?>';
         let conv = new convertxml.ConvertXML();
         let result = conv.fastConvertToJSObject(strXml);
@@ -1734,7 +1734,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert054', 0, function () {
+    it('testConvert054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<!-- \t Hello World! \t -->';
         let conv = new convertxml.ConvertXML();
         let result = conv.fastConvertToJSObject(strXml);
@@ -1750,7 +1750,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert055', 0, function () {
+    it('testConvert055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1772,7 +1772,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert056', 0, function () {
+    it('testConvert056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[ \t <foo>\r\n</bar> \t ]]>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1794,7 +1794,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert057', 0, function () {
+    it('testConvert057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<a/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1815,7 +1815,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert058', 0, function () {
+    it('testConvert058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<a/>\n<a/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1837,7 +1837,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert059', 0, function () {
+    it('testConvert059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<a x="hello"/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1858,7 +1858,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert060', 0, function () {
+    it('testConvert060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<a x="1.234" y="It\'s"/>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1880,7 +1880,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert061', 0, function () {
+    it('testConvert061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<a> \t Hi \t </a>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1902,7 +1902,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert062', 0, function () {
+    it('testConvert062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<a>\n<b>\n\<c/>\n\</b>\n</a>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
@@ -1924,7 +1924,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert063', 0, function () {
+    it('testConvert063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note>' +
@@ -1949,7 +1949,7 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testConvert064', 0, function () {
+    it('testConvert064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let strXml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[\nHello\\n World\\\n \tHello\\t World\\\t]]>';
         let conv = new convertxml.ConvertXML();
         let result = conv.fastConvertToJSObject(strXml);

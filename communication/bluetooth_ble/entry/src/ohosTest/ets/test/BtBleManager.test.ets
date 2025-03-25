@@ -16,7 +16,7 @@
 import { BusinessError } from '@ohos.base';
 import bluetoothBle from '@ohos.bluetooth.ble';
 import btAccess from '@ohos.bluetooth.access';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 let gattS: bluetoothBle.GattServer;
 let gattC: bluetoothBle.GattClientDevice;
@@ -153,6 +153,7 @@ function ReadCharacteristicReq(CharacteristicReadRequest : bluetoothBle.Characte
   let transId : number = CharacteristicReadRequest.transId;
   let offset : number = CharacteristicReadRequest.offset;
   let characteristicUuid :string = CharacteristicReadRequest.characteristicUuid;
+  let serviceUuid: string = CharacteristicReadRequest.serviceUuid;
 
   let serverResponse : bluetoothBle.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferCCC};
 
@@ -166,7 +167,10 @@ function readDesc(code : BusinessError, BLEDescriptor : bluetoothBle.BLEDescript
   if (code.code != 0) {
     return;
   }
-  console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+  console.log('bluetooth BLEDescriptor serviceUuid: ' + BLEDescriptor.serviceUuid);
+  console.log('bluetooth BLEDescriptor characteristicUuid: ' + BLEDescriptor.characteristicUuid);
+  console.log('bluetooth BLEDescriptor descriptorUuid: ' + BLEDescriptor.descriptorUuid);
+  console.log('bluetooth BLEDescriptor descriptorValue: ' + BLEDescriptor.descriptorValue);
   let value = new Uint8Array(BLEDescriptor.descriptorValue);
   console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
@@ -291,7 +295,8 @@ function wrDescriptorVal() {
   function CharacteristicChange(CharacteristicChangeReq : bluetoothBle.BLECharacteristic) { 
     let serviceUuid : string = CharacteristicChangeReq.serviceUuid;
     let characteristicUuid : string = CharacteristicChangeReq.characteristicUuid;
-    let value : Uint8Array= new Uint8Array(CharacteristicChangeReq.characteristicValue);
+    let value : Uint8Array = new Uint8Array(CharacteristicChangeReq.characteristicValue);
+    let characteristicValueHandle = CharacteristicChangeReq.characteristicValueHandle;
     expect(true).assertEqual(CharacteristicChangeReq != null);
   }
   function setCCN() {
@@ -304,8 +309,15 @@ function wrDescriptorVal() {
         descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
         descriptors[0] = descriptor;
         let arrayBufferC = new ArrayBuffer(8);
+        let gattProperties: bluetoothBle.GattProperties = {
+          write: false,
+          writeNoResponse: false,
+          read: false,
+          notify: false,
+          indicate: false
+        };
         let characteristic: bluetoothBle.BLECharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors, properties: gattProperties};
     return new Promise<void>((resolve, reject) => {
       gattC.setCharacteristicChangeNotification(characteristic, false, (err: BusinessError, data: void) => {
         if (err) {
@@ -389,7 +401,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 0
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTADVERT_0100', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTADVERT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let manufactureValueBuffer = new Uint8Array(4);
             manufactureValueBuffer[0] = 1;
             manufactureValueBuffer[1] = 2;
@@ -442,26 +454,75 @@ function wrDescriptorVal() {
               bluetoothBle.stopAdvertising();
             }catch(error) {
               console.error(`[bluetooth_js]startAdvertising1 failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]createA2dpSrcProfile is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
+            }
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTADVERT_0200
+           * @tc.name testStartAdvertising
+           * @tc.desc Test StartAdvertising api10.
+           * @tc.type Function
+           * @tc.level Level 0
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTADVERT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            try {
+              bluetoothBle.startAdvertising(null, null ,null);
+              console.info('[bluetooth_js]startAdvertising1 success');
+              expect().assertFail();
+            }catch(error) {
+              console.error(`[bluetooth_js]startAdvertising1 failed, code is ${error.code},message is ${error.message}`);
+              expect(Number(error.code)).assertEqual(401);
             }
             done();
           })
 
           /**
            * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0100
-           * @tc.name test gatt connect and disconnect
+           * @tc.name testGattConnect
            * @tc.desc Test api10.
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0100', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               gattC.connect();
-              await sleep(2000);
+            } catch(error) {
+              console.error(`[bluetooth_js]connect failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]connect is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
+            }
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTDISCONNECT_0100
+           * @tc.name testGattDisconnect
+           * @tc.desc Test api10.
+           * @tc.type Function
+           * @tc.level Level 2
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTDISCONNECT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            try {
               gattC.disconnect();
             } catch(error) {
               console.error(`[bluetooth_js]disconnect failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]disconnect is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -473,7 +534,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0200', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               let result = bluetoothBle.getConnectedBLEDevices();
               console.info("[bluetooth_js] getConnDev:" + JSON.stringify(result)
@@ -481,7 +542,12 @@ function wrDescriptorVal() {
               expect(result != null).assertTrue();
             } catch (error) {
               console.error(`[bluetooth_js]getConnDev failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getConnectedBLEDevices is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -493,14 +559,41 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0300', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               gattC.on('BLEConnectionStateChange', ConnectStateChanged);
-              gattC.off("BLEConnectionStateChange");
-              done();
             } catch (error) {
               console.error(`[bluetooth_js]GattConnect failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]BLEConnectionStateChange is not support');
+                expect(true).assertTrue();
+              } else {
+                expect().assertFail();
+              }
+            }
+            gattC.off("BLEConnectionStateChange", ConnectStateChanged);
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0400
+           * test Client BLEconnectStateChange
+           * @tc.desc Test on and off api10
+           * @tc.type Function
+           * @tc.level Level 2
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            gattC.on('BLEConnectionStateChange', ConnectStateChanged);
+            try {
+              gattC.off("BLEConnectionStateChange", ConnectStateChanged);
+            } catch (error) {
+              console.error(`[bluetooth_js]GattConnect failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]BLEConnectionStateChange is not support');
+                expect(true).assertTrue();
+              } else {
+                expect().assertFail();
+              }
             }
             done();
           })
@@ -512,7 +605,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0100', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               await gattC.getRssiValue().then((data) => {
                 console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(data));
@@ -530,7 +623,12 @@ function wrDescriptorVal() {
               });
             } catch (error) {
               console.error(`[bluetooth_js]GetRssiValue error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getRssiValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -542,7 +640,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0200', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETRSSIVALUE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               await getRssi().then((data) => {
                 console.info("[bluetooth_js]02 getRssiValue done");
@@ -555,7 +653,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]GetRssiValue error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getRssiValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -567,7 +670,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETDEVICENAME_0100', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETDEVICENAME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               await gattC.getDeviceName().then((data) => {
                 console.info('[bluetooth_js] device name:' + JSON.stringify(data))
@@ -580,7 +683,12 @@ function wrDescriptorVal() {
               });
             } catch (error) {
               console.error(`[bluetooth_js]GetDeviceName failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getDeviceName is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -592,7 +700,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETDEVICENAME_0200', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETDEVICENAME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               await getName().then((data) => {
                 console.info("[bluetooth_js]02 getDeviceName done");
@@ -605,7 +713,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]getDeviceName error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getDeviceName is not support');
+                expect(true).assertTrue();
+                } else {
+                    expect(Number(error.code)).assertEqual(2900099);
+                }
             }
             done();
           })
@@ -617,7 +730,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETSERVICE_0100', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETSERVICE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               await gattC.getServices().then((GattService) => {
                 console.info('[bluetooth_js] getServices successfully:'+JSON.stringify(GattService));
@@ -629,7 +742,12 @@ function wrDescriptorVal() {
               });
             } catch (error) {
               console.error(`[bluetooth_js]GetService_0100 failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getServices is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -641,7 +759,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETSERVICE_0200', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_GETSERVICE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               await getService().then((data) => {
                 console.info("[bluetooth_js]02 getServices done");
@@ -654,7 +772,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]getServices error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]getServices is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -666,13 +789,37 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 1
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUSIZE_0100', 0, (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUSIZE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done : Function) =>  {
             try {
               gattC.setBLEMtuSize(500);
               console.info("[bluetooth_js]setBLEMtuSize success");
             } catch (error) {
               console.error(`[bluetooth_js]MtuSize failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]createA2dpSrcProfile is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(2900099);
+              }
+            }
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUSIZE_0200
+           * @tc.name testSetBLEMtuSize
+           * @tc.desc Test SetBLEMtuSize api10.
+           * @tc.type Function
+           * @tc.level Level 1
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUSIZE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done : Function) =>  {
+            try {
+              gattC.setBLEMtuSize(null);
+              console.info("[bluetooth_js]setBLEMtuSize success");
+              expect().assertFail();
+            } catch (error) {
+              console.error(`[bluetooth_js]MtuSize failed, code is ${error.code},message is ${error.message}`);
+              expect(Number(error.code)).assertEqual(401);
             }
             done();
           })
@@ -684,14 +831,14 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_1900', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
             descV[0] = 11;
             let descriptor : bluetoothBle.BLEDescriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
               characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-              descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc};
+              descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc, descriptorHandle: 0};
             descriptors[0] = descriptor;
 
             let bufferCCC = new ArrayBuffer(8);
@@ -704,8 +851,13 @@ function wrDescriptorVal() {
               gattC.readCharacteristicValue(characteristic);
               done();
             } catch (error) {
-              console.error(`[bluetooth_js]readDescrValue failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              console.error(`[bluetooth_js]readCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]readCharacteristicValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(401);
+              }
             }
             done();
           })
@@ -717,7 +869,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2000', 0, async (done : Function) => {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
             let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
@@ -738,7 +890,12 @@ function wrDescriptorVal() {
               done();
             } catch (error) {
               console.error(`[bluetooth_js]readCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]readCharacteristicValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(401);
+              }
             }
             done();
           })
@@ -750,16 +907,45 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2100', 0, async (done : Function) =>  {
-
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
-              await gattS.on("characteristicRead", ReadCharacteristicReq);
+              gattS.on("characteristicRead", ReadCharacteristicReq);
               done();
             } catch (err) {
               console.info("characteristicReadOn errCode:" + err.code + ",errMessage:" + err.message);
-              expect(Number(err.code)).assertEqual(2900099);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]characteristicRead is not support');
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(2900099);
             }
-            gattS.off("characteristicRead");
+            }
+            gattS.off("characteristicRead", ReadCharacteristicReq);
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2200
+           * @tc.name test characteristicReadOff
+           * @tc.desc Test On and off api10.
+           * @tc.type Function
+           * @tc.level Level 3
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READCHARACTERISTIC_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            gattS.on("characteristicRead", ReadCharacteristicReq);
+            try {
+              gattS.off("characteristicRead", ReadCharacteristicReq);
+              done();
+            } catch (err) {
+              console.info("characteristicReadOff errCode:" + err.code + ",errMessage:" + err.message);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]characteristicRead is not support');
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(2900099);
+            }
+            }
+            
             done();
           })
 
@@ -770,7 +956,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1300', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
             descV[0] = 11;
@@ -786,7 +972,12 @@ function wrDescriptorVal() {
               done();
             } catch (err) {
               console.error("errCode:" + err.code + ",errMessage:" + err.message);
-              expect(Number(err.code)).assertEqual(401);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]readDescriptorValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(err.code)).assertEqual(401);
+              }
               done();
             }
           })
@@ -798,7 +989,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1400', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
             descV[0] = 11;
@@ -814,7 +1005,12 @@ function wrDescriptorVal() {
               done();
             } catch (err) {
               console.error("errCode:" + err.code + ",errMessage:" + err.message);
-              expect(Number(err.code)).assertEqual(401);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]readDescriptorValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(err.code)).assertEqual(401);
+              }
               done();
             }
           })
@@ -826,14 +1022,41 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1500', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
-              await gattS.on("descriptorRead", ReadDescriptorReq);
-              await gattS.off("descriptorRead");
-              done();
+              gattS.on("descriptorRead", ReadDescriptorReq);
             } catch (error) {
-              console.error(`[bluetooth_js]readDescrValue failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              console.error(`[bluetooth_js]descriptorRead failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]descriptorRead is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
+            }
+            gattS.off("descriptorRead", ReadDescriptorReq);
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1600
+           * @tc.name test ReadDescriptorOff
+           * @tc.desc Test On and Off api10.
+           * @tc.type Function
+           * @tc.level Level 3
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_READDESCRIPTOR_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            gattS.on("descriptorRead", ReadDescriptorReq);
+            try {
+              gattS.off("descriptorRead", ReadDescriptorReq);
+            } catch (error) {
+              console.error(`[bluetooth_js]descriptorRead failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]descriptorRead is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -845,7 +1068,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1800', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -873,7 +1096,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]writeCharacteristicValue error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]writeCharacteristicValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(401);
+              }
             }
             done();
           })
@@ -885,7 +1113,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1900', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
               let arrayBuffer = new ArrayBuffer(8);
@@ -911,7 +1139,12 @@ function wrDescriptorVal() {
               });
             } catch (error) {
               console.error(`[bluetooth_js]writeCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]writeCharacteristicValue is not support');
+                expect(true).assertTrue();
+              } else {
+                expect(Number(error.code)).assertEqual(401);
+              }
             }
             done();
           })
@@ -923,16 +1156,43 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_2000', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
-              let arrayBufferCCC = new ArrayBuffer(8);
-              let cccValue = new Uint8Array(arrayBufferCCC);
               gattS.on("characteristicWrite", WriteCharacteristicReq);
-              gattS.off("characteristicWrite");
               done();
             } catch (error) {
-              console.error(`[bluetooth_js]writeCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              console.error(`[bluetooth_js]characteristicWrite failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]characteristicWrite is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
+            }
+            gattS.off("characteristicWrite", WriteCharacteristicReq);
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_2100
+           * @tc.name test characteristicWriteOff
+           * @tc.desc Test on and off api10.
+           * @tc.type Function
+           * @tc.level Level 3
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            gattS.on("characteristicWrite", WriteCharacteristicReq);
+            try {
+              gattS.off("characteristicWrite", WriteCharacteristicReq);
+              done();
+            } catch (error) {
+              console.error(`[bluetooth_js]characteristicWrite failed, code is ${error.code},message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]characteristicWrite is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
@@ -944,7 +1204,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1000', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
             descV[0] = 22;
@@ -965,7 +1225,12 @@ function wrDescriptorVal() {
             } catch (error) {
               console.error(`[bluetooth_js]writeDescriptorValue failed, code is ${error.code},
             message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                  console.info('[bluetooth_js]createA2dpSrcProfile is not support');
+                  expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(401);
+                }
             }
             done();
           })
@@ -977,7 +1242,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 2
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1100', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let bufferDesc = new ArrayBuffer(8);
             let descV = new Uint8Array(bufferDesc);
             descV[0] = 22;
@@ -1000,7 +1265,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]writeDescriptorValue error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                  console.info('[bluetooth_js]createA2dpSrcProfile is not support');
+                  expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(401);
+                }
             }
             done();
           })
@@ -1012,49 +1282,91 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1200', 0, async (done : Function) => {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
             try {
-              let arrayBufferDesc = new ArrayBuffer(8);
-              let descValue = new Uint8Array(arrayBufferDesc);
               gattS.on("descriptorWrite", WriteDescriptorReq);
-              gattS.off("descriptorWrite");
-              done();
             } catch (error) {
-              console.error(`[bluetooth_js]writeDescriptorValue failed, code is ${error.code},
+              console.error(`[bluetooth_js]descriptorWrite failed, code is ${error.code},
             message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]descriptorWrite is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
+            }
+            gattS.off("descriptorWrite", WriteDescriptorReq);
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1300
+           * @tc.name test WriteDescriptorOn
+           * @tc.desc Test on and off api10.
+           * @tc.type Function
+           * @tc.level Level 3
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
+            gattS.on("descriptorWrite", WriteDescriptorReq);
+            try {
+              gattS.off("descriptorWrite", WriteDescriptorReq);
+            } catch (error) {
+              console.error(`[bluetooth_js]descriptorWrite failed, code is ${error.code},
+            message is ${error.message}`);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]descriptorWrite is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(2900099);
+              }
             }
             done();
           })
 
           /**
            * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1400
-           * @tc.name test BLECharacteristicChangeON
+           * @tc.name testBLECharacteristicChangeON
            * @tc.desc Test On and off api10.
            * @tc.type Function
            * @tc.level Level 3
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1400', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             try {
               gattC.on('BLECharacteristicChange', CharacteristicChange);
-              let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
-              let arrayBuffer = new ArrayBuffer(8);
-              let desValue =  new Uint8Array(arrayBuffer);
-              desValue[0] = 11;
-              let descriptor : bluetoothBle.BLEDescriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
-                descriptorValue: arrayBuffer};
-              descriptors[0] = descriptor;;
-              let arrayBufferCCC = new ArrayBuffer(8);
-              let cccValue = new Uint8Array(arrayBufferCCC);
-              cccValue[0] = 1;
-              gattC.off('BLECharacteristicChange');
-              done();
             } catch (error) {
               console.error(`[bluetooth_js]BLECharacteristicChangeON failed, code is ${error.code},
             message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(2900099);
+              if (error.code == 801) {
+                  console.info('[bluetooth_js]BLECharacteristicChangeON is not support');
+                  expect(true).assertTrue();
+              } else {
+                  expect().assertFail();
+              }
+            }
+            gattC.off('BLECharacteristicChange', CharacteristicChange);
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1500
+           * @tc.name testBLECharacteristicChangeOFF
+           * @tc.desc Test On and off api10.
+           * @tc.type Function
+           * @tc.level Level 3
+           */
+          it('SUB_COMMUNICATION_BLUETOOTHBLE_SETNOTIFYCHARACTERISTIC_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            gattC.on('BLECharacteristicChange', CharacteristicChange);
+            try {
+              gattC.off('BLECharacteristicChange', CharacteristicChange);
+            } catch (error) {
+              console.error(`[bluetooth_js]BLECharacteristicChangeOFF failed, code is ${error.code},
+            message is ${error.message}`);
+              if (error.code == 801) {
+                  console.info('[bluetooth_js]BLECharacteristicChangeOFF is not support');
+                  expect(true).assertTrue();
+              } else {
+                  expect().assertFail();
+              }
             }
             done();
           })
@@ -1066,7 +1378,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 0
            */
-          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0100', 0, async (done : Function) => {
+          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
             let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
             let arrayBuffer = new ArrayBuffer(8);
             let descV = new Uint8Array(arrayBuffer);
@@ -1091,7 +1403,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]setCharacteristicChangeNotification error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]setCharacteristicChangeNotification is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(401);
+              }
             }
             done();
           })
@@ -1103,7 +1420,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 0
            */
-          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0200', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
             let arrayBuffer = new ArrayBuffer(8);
             let descV = new Uint8Array(arrayBuffer);
@@ -1122,7 +1439,12 @@ function wrDescriptorVal() {
               done();
             } catch (err) {
               console.error('setCharacteristicChangeNotification failed errCode: ' + err.code + ', errMessage: ' + err.message);
-              expect(Number(err.code)).assertEqual(401);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]setCharacteristicChangeNotification is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(err.code)).assertEqual(401);
+              }
               done();
             }
             done();
@@ -1135,7 +1457,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 0
            */
-          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0300', 0, async (done : Function) =>  {
+          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
             let descriptors :  Array<bluetoothBle.BLEDescriptor> = [];
             let arrayBuffer = new ArrayBuffer(8);
             let descV = new Uint8Array(arrayBuffer);
@@ -1159,7 +1481,12 @@ function wrDescriptorVal() {
                 })
             } catch (error) {
               console.error(`[bluetooth_js]setCharacteristicChangeIndication error, code is ${error.code},message is ${error.message}`);
-              expect(Number(error.code)).assertEqual(401);
+              if (error.code == 801) {
+                console.info('[bluetooth_js]setCharacteristicChangeIndication is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(error.code)).assertEqual(401);
+              }
             }
             done();
           })
@@ -1171,7 +1498,7 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 0
            */
-          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0400', 0, async (done : Function) => {
+          it('SUB_COMMUNICATION_BLUETOOTHACCESS_BLECHARACTERISTIC_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
             let descriptors : Array<bluetoothBle.BLEDescriptor> = [];
             let arrayBuffer = new ArrayBuffer(8);
             let descV = new Uint8Array(arrayBuffer);
@@ -1191,7 +1518,12 @@ function wrDescriptorVal() {
               done();
             } catch (err) {
               console.error('setCharacteristicChangeIndication failed errCode: ' + err.code + ', errMessage: ' + err.message);
-              expect(Number(err.code)).assertEqual(401);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]setCharacteristicChangeIndication is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(err.code)).assertEqual(401);
+              }
               done();
             }
             done();
@@ -1204,16 +1536,23 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 1
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0100', 0, async (done : Function) => {
+          it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
             try {
               gattC.on('BLEMtuChange', (mtu: number) => {
                 console.info('BLEMtuChange, mtu: ' + mtu);
               });
             } catch (err) {
               console.info("bluetooth mtu changed errCode:" + err.code + ",bluetooth mtu changed errMessage:" + err.message);
-              expect(Number(err.code)).assertEqual(2900099);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]BLEMtuChange is not support');
+                expect(true).assertTrue();
+              } else {
+                expect().assertFail();
+              }
             }
-            gattC.off('BLEMtuChange');
+            gattC.off('BLEMtuChange', (mtu: number) => {
+                console.info('BLEMtuChange, mtu: ' + mtu);
+              });
             done();
 
           })
@@ -1225,15 +1564,67 @@ function wrDescriptorVal() {
            * @tc.type Function
            * @tc.level Level 1
            */
-          it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0200', 0, async (done : Function) => {
+          it('SUB_COMMUNICATION_BLUETOOTHBLEC_MTUCHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
             gattC.on('BLEMtuChange', (mtu: number) => {
               console.info('BLEMtuChange, mtu: ' + mtu);
             });
             try {
-              gattC.off('BLEMtuChange');
+              gattC.off('BLEMtuChange', (mtu: number) => {
+                console.info('BLEMtuChange, mtu: ' + mtu);
+              });
             } catch (err) {
               console.info("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
-              expect(Number(err.code)).assertEqual(2900099);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]BLEMtuChange is not support');
+                expect(true).assertTrue();
+              } else {
+                expect().assertFail();
+              }
+            }
+            done();
+          })
+
+          /**
+           * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_CREATECLIENT_0100
+           * @tc.name testCreateGattClientDevice
+           * @tc.desc testCreateGattClientDevice
+           * @tc.type Function
+           * @tc.level Level 0
+           */
+          it('SUB_COMMUNICATION_BLUETOOTH_BLE_CREATECLIENT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
+            try {
+              bluetoothBle.createGattClientDevice(null);
+            } catch (err) {
+              console.info("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
+              if (err.code == 801) {
+                console.info('[bluetooth_js]createGattClientDevice is not support');
+                expect(true).assertTrue();
+              } else {
+                  expect(Number(err.code)).assertEqual(401);
+              }
+            }
+            done();
+          })
+
+          /**
+          * @tc.number SUB_COMMUNICATION_BLUETOOTH_GATTCLIENT_CLOSE_0100
+          * @tc.name testClose
+          * @tc.desc test gattClient close
+          * @tc.type Function
+          * @tc.level Level 2
+          */
+          it('SUB_COMMUNICATION_BLUETOOTH_GATTCLIENT_CLOSE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+            try {
+              let gattClients = bluetoothBle.createGattClientDevice("99:99:99:99:99:99");
+              gattClients.close();
+            } catch (err) {
+              console.error("bluetooth gattClient close errCode:" + err.code + ",bluetooth gattClient close errMessage:" + err.message);
+              if (err.code == 801) {
+                    console.info('[bluetooth_js]close is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(Number(err.code)).assertEqual(2900099);
+                }
             }
             done();
           })

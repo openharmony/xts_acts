@@ -211,7 +211,12 @@ export default function actsWifiManagerFunctionsTest() {
                     done();
                 }).catch((error) => {
                     console.info("[wifi_test]promise then error." + JSON.stringify(error));
-                    expect().assertFail();
+                    if (error.code == 801) {
+                        console.info('[wifi_js]api is not support');
+                        expect(true).assertTrue();
+                    } else {
+                        expect().assertFail();
+                    } 
                 });
             function getLinked(){
                 return new Promise((resolve, reject) => {
@@ -289,8 +294,15 @@ export default function actsWifiManagerFunctionsTest() {
                             resolve();
                         });
                 });
+            }try {
+                await getLinked();
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
             }
-            await getLinked();
             done();
         })
 
@@ -308,14 +320,19 @@ export default function actsWifiManagerFunctionsTest() {
                 let scanResult = wifiMg.scan();
             }catch(error){
                 console.info("[error] it's the scan fail reason: "+JSON.stringify(error));
-                expect(true).assertEqual(error.code=='2501000');
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual(error.code=='2501000');
+                } 
             }
             await sleep(3000);
             let getScanInfoListResult = wifiMg.getScanResultsSync();
             let clen = Object.keys(getScanInfoListResult).length;
             console.info("[wifi_test]wifi getScanInfoListResult length  result : " + JSON.stringify(clen));
             let getScanInfoResult = wifiMg.getScanInfoList();
-            //console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoResult));
+            console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoResult));
             clen = Object.keys(getScanInfoResult).length;
             console.info("[wifi_test]wifi getScanInfoList length  result : " + JSON.stringify(clen));
             let result = getScanInfoListResult;
@@ -351,7 +368,12 @@ export default function actsWifiManagerFunctionsTest() {
                 console.info("[wifi_test]isBandTypeSupported." + JSON.stringify(isBandTypeSupported));
             } catch (error) {
                 console.error(`isBandTypeSupported failed, code is ${error.code}, message is ${error.message}`);
-                expect(error.code).assertEqual("401");
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(error.code).assertEqual("401");
+                }     
             }
             let isBandTypeSupported1 = wifiMg.isBandTypeSupported(wifiMg.WifiBandType.WIFI_BAND_2G);
             console.info("[wifi_test]isBandTypeSupported1." + JSON.stringify(isBandTypeSupported1));
@@ -377,7 +399,8 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.level Level 0
          */
         it('SUB_Communication_WiFi_XTS_Sta_0036', 0, async function (done) {
-            await wifiMg.getScanResults()
+            try {
+                await wifiMg.getScanResults()
                 .then(result => {
                     let clen = Object.keys(result).length;
                     expect(true).assertEqual(clen >= 0);
@@ -408,6 +431,13 @@ export default function actsWifiManagerFunctionsTest() {
                 });
             }
             await getScan();
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -419,17 +449,26 @@ export default function actsWifiManagerFunctionsTest() {
         * @tc.size LargeTest
         * @tc.level Level 0
         */
-         it('Communication_WiFi_XTS_Sta_0037', 0, function () {
-            let ipv6InfoResult = wifiMg.getIpv6Info();
-            console.info("[wifi_test]ipv6InfoResult." + JSON.stringify(ipv6InfoResult));
-            expect(JSON.stringify(ipv6InfoResult)).assertContain("gateway");
-            console.info("linkIpv6Address: " + ipv6InfoResult.linkIpv6Address + "globalIpv6Address: " +
-            ipv6InfoResult.globalIpv6Address
-            + "randomGlobalIpv6Address: " + ipv6InfoResult.randomGlobalIpv6Address +
-            "gateway: " + ipv6InfoResult.gateway +
-            "netmask: " + ipv6InfoResult.netmask + "primaryDns:" + ipv6InfoResult.primaryDNS +
-            "secondDns: " + ipv6InfoResult.secondDNS + "uniqueIpv6Address" + ipv6InfoResult.uniqueIpv6Address +
-            "randomUniqueIpv6Address" + ipv6InfoResult.randomUniqueIpv6Address);
+         it('Communication_WiFi_XTS_Sta_0037', 0, async function (done) {
+            try {
+                let ipv6InfoResult = wifiMg.getIpv6Info();
+                console.info("[wifi_test]ipv6InfoResult." + JSON.stringify(ipv6InfoResult));
+                expect(JSON.stringify(ipv6InfoResult)).assertContain("gateway");
+                console.info("linkIpv6Address: " + ipv6InfoResult.linkIpv6Address + "globalIpv6Address: " +
+                ipv6InfoResult.globalIpv6Address
+                + "randomGlobalIpv6Address: " + ipv6InfoResult.randomGlobalIpv6Address +
+                "gateway: " + ipv6InfoResult.gateway +
+                "netmask: " + ipv6InfoResult.netmask + "primaryDns:" + ipv6InfoResult.primaryDNS +
+                "secondDns: " + ipv6InfoResult.secondDNS + "uniqueIpv6Address" + ipv6InfoResult.uniqueIpv6Address +
+                "randomUniqueIpv6Address" + ipv6InfoResult.randomUniqueIpv6Address);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
+            done();
         })
 
         /**

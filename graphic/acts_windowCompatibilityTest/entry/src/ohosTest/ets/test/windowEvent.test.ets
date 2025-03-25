@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import { UiDriver, BY, ON, PointerMatrix, UiComponent } from '@ohos.UiTest'
 import { BusinessError, Callback } from '@ohos.base';
@@ -85,7 +85,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testTouchOutside_OnDialogWindow_ClickMainWindow', 0, async (done: Function) => {
+    it('testTouchOutside_OnDialogWindow_ClickMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testTouchOutside_OnDialogWindow_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -140,7 +140,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testTouchOutside_OnMainWindow_ClickDialog', 0, async (done: Function) => {
+    it('testTouchOutside_OnMainWindow_ClickDialog', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testTouchOutside_OnMainWindow_ClickDialog';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -190,7 +190,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testTouchOutside_OnSubWindow_ClickMainWindow', 0, async (done: Function) => {
+    it('testTouchOutside_OnSubWindow_ClickMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testTouchOutside_OnSubWindow_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -234,7 +234,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testTouchOutside_OnMainWindow_ClickSubWindow', 0, async (done: Function) => {
+    it('testTouchOutside_OnMainWindow_ClickSubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testTouchOutside_OnMainWindow_ClickSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -280,7 +280,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testDialogTargetTouch_OnMainWindow_ClickMainWindow', 0, async (done: Function) => {
+    it('testDialogTargetTouch_OnMainWindow_ClickMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testDialogTargetTouch_OnMainWindow_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -334,7 +334,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testDialogTargetTouch_OnDialogWindow_ClickMainWindow', 0, async (done: Function) => {
+    it('testDialogTargetTouch_OnDialogWindow_ClickMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testDialogTargetTouch_OnDialogWindow_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -382,7 +382,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testDialogTargetTouch_OnSubWindow_ClickSubWindow', 0, async (done: Function) => {
+    it('testDialogTargetTouch_OnSubWindow_ClickSubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testDialogTargetTouch_OnSubWindow_ClickSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -448,7 +448,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testDialogTargetTouch_OnDialogWindow_ClickSubWindow', 0, async (done: Function) => {
+    it('testDialogTargetTouch_OnDialogWindow_ClickSubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testDialogTargetTouch_OnDialogWindow_ClickSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -509,7 +509,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testNoInteractionDetected_OnMainWindow', 0, async (done: Function) => {
+    it('testNoInteractionDetected_OnMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testNoInteractionDetected_OnMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -545,7 +545,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testNoInteractionDetected_OnSubWindow', 0, async (done: Function) => {
+    it('testNoInteractionDetected_OnSubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testNoInteractionDetected_OnSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -593,7 +593,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testSetWindowTouchable_MainWindow_Promise', 0, async (done: Function) => {
+    it('testSetWindowTouchable_MainWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_MainWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -626,7 +626,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testSetWindowTouchable_MainWindow_Callback', 0, async (done: Function) => {
+    it('testSetWindowTouchable_MainWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_MainWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -662,7 +662,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testSetWindowTouchable_SubWindow_Promise', 0, async (done: Function) => {
+    it('testSetWindowTouchable_SubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -703,7 +703,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testSetWindowTouchable_SubWindow_Callback', 0, async (done: Function) => {
+    it('testSetWindowTouchable_SubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -751,7 +751,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testTouchOutside_OnSubWindowWithOps_ClickMainWindow', 0, async (done: Function) => {
+    it('testTouchOutside_OnSubWindowWithOps_ClickMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testTouchOutside_OnSubWindowWithOps_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -811,7 +811,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testTouchOutside_OnMainWindow_ClickSubWindowWithOps', 0, async (done: Function) => {
+    it('testTouchOutside_OnMainWindow_ClickSubWindowWithOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testTouchOutside_OnMainWindow_ClickSubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -872,7 +872,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps', 0, async (done: Function) => {
+    it('testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testDialogTargetTouch_OnSubWindowWithOps_ClickSubWinOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -954,7 +954,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testDialogTargetTouch_OnDialogWindow_ClickSubWinOps', 0, async (done: Function) => {
+    it('testDialogTargetTouch_OnDialogWindow_ClickSubWinOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testDialogTargetTouch_OnDialogWindow_ClickSubWinOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1030,7 +1030,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testNoInteractionDetected_OnSubWindowWithOps', 0, async (done: Function) => {
+    it('testNoInteractionDetected_OnSubWindowWithOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testNoInteractionDetected_OnSubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1091,7 +1091,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testSetWindowTouchable_SubWindowWithOps_Promise', 0, async (done: Function) => {
+    it('testSetWindowTouchable_SubWindowWithOps_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_SubWindowWithOps_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1147,7 +1147,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testSetWindowTouchable_SubWindowWithOps_Callback', 0, async (done: Function) => {
+    it('testSetWindowTouchable_SubWindowWithOps_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_SubWindowWithOps_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

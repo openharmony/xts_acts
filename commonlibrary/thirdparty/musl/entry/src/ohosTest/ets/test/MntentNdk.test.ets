@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import mntent from 'libmntentndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function mntentNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMntentSetmntent001', 0, async (done: Function) => {
+    it('testMuslMntentSetmntent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = mntent.setmntent();
       expect(a).assertEqual(0);
       done()
@@ -48,7 +48,7 @@ export default function mntentNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslMntentHasmntopt001', 0, async (done: Function) => {
+    it('testMuslMntentHasmntopt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = mntent.hasmntopt();
       expect(result).assertEqual(0)
       done()

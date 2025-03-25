@@ -1188,6 +1188,395 @@ export default function abilityTest() {
     })
 
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0100
+     * @tc.name      : bind callbacks on setTargetLoopMode events
+     * @tc.desc      : Testing on setTargetLoopMode callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0100', 2, async (done: Function) => {
+        session.on('setTargetLoopMode', (callback: number) => {
+            if (callback === 1) {
+                console.info('TestLog: Set TargetLoopMode command callback registration successful');
+                expect(true).assertTrue();
+            } else {
+                console.error(`TestLog: Set TargetLoopMode command callback registration error`);
+                expect(false).assertTrue();
+            };
+        });
+
+        try {
+            await controller.sendControlCommand({
+                command: 'setTargetLoopMode',
+                parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+            });
+            console.info('TestLog: Controller sent setTargetLoopMode command successfully');
+        } catch (err) {
+            console.error(`TestLog: Controller command error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        };
+        await sleep(500);
+        done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0200
+     * @tc.name      : on(setTargetLoopMode) with avsession does not exit(errcode 6600102)
+     * @tc.desc      : test on(setTargetLoopMode) errcode 6600102
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0200', 2, async (done: Function) => {
+      await session.destroy()
+      await sleep(500)
+      try {
+        await session.on('setTargetLoopMode', () => {
+          console.info('on setTargetLoopMode entry');
+        });
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`on setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(6600102);
+      }
+      session = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0300
+     * @tc.name      : on(setTargetLoopMode) with parameter check failed(errcode 401)
+     * @tc.desc      : test on(setTargetLoopMode) errcode 401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_ON_SETTARGETLOOPMODE_0300', 2, async (done: Function) => {
+      try {
+        await session.on('setTargetLoopMode'+'1', () => {
+          console.info('on setTargetLoopMode entry');
+        });
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`on setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(401);
+      }
+      done();
+    })
+
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0100
+     * @tc.name      : unbind all callbacks on setTargetLoopMode events
+     * @tc.desc      : Testing off setTargetLoopMode all callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0100', 0, async (done: Function) => {
+        const callback1 = (data: number) => {
+            if (data === 1) {
+                console.info('TestLog: setTargetLoopMode command registration1 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        const callback2 = (data: number) => {
+            if (data === 2) {
+                console.info('TestLog: setTargetLoopMode command registration2 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        session.on('setTargetLoopMode', callback1);
+
+        session.on('setTargetLoopMode', callback2);
+
+        session.off('setTargetLoopMode');
+
+    try{
+        await controller.sendControlCommand({
+            command: 'setTargetLoopMode',
+            parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+        });
+            console.info('TestLog: Controller send command successfully');
+        } catch(err) {
+            console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+            expect(true).assertTrue();
+        };
+        await sleep(500);
+        done();
+    })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0200
+      * @tc.name      : Unbind the specified callback on setTargetLoopMode events
+      * @tc.desc      : Testing off setTargetLoopMode specified callback
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0200', 0, async (done: Function) => {
+        const callback1 = (data: number) => {
+            if (data === 1) {
+                console.info('TestLog: setTargetLoopMode command registration1 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        const callback2 = (data: number) => {
+            if (data === 2) {
+                console.info('TestLog: setTargetLoopMode command registration2 success');
+                expect(false).assertTrue();
+            }
+        };
+
+        session.on('setTargetLoopMode', callback1);
+
+        session.on('setTargetLoopMode', callback2);
+
+        session.off('setTargetLoopMode', callback1);
+      try{
+        await controller.sendControlCommand({
+            command: 'setTargetLoopMode',
+            parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+        });
+            console.info('TestLog: Controller send command successfully');
+        } catch(err) {
+            console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        };
+        await sleep(500);
+        done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0300
+     * @tc.name      : off(setTargetLoopMode) with avsession does not exit(errcode 6600102)
+     * @tc.desc      : test off(setTargetLoopMode) errcode 6600102
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0300', 2, async (done: Function) => {
+      await session.destroy()
+      await sleep(500)
+      try {
+        await session.off('setTargetLoopMode');
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`off setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(6600102);
+      }
+      session = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0400
+     * @tc.name      : off(setTargetLoopMode) with parameter check failed(errcode 401)
+     * @tc.desc      : test off(setTargetLoopMode) errcode 401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_SETTARGETLOOPMODE_0400', 2, async (done: Function) => {
+      try {
+        await session.off('setTargetLoopMode'+'1');
+      } catch (err) {
+        let error =err as BusinessError;
+        console.info(`off setTargetLoopMode entry error,error code: ${error.code}, message: ${error.message}`);
+        expect(err.code).assertEqual(401);
+      }
+      done();
+    })  
+    
+
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_5500
+     * @tc.name      : setAVPlaybackState - promise 
+     * @tc.desc      : Testing call setAVPlaybackState(promise) 
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_5500', 0, async (done: Function) => {
+      let PlaybackState: avSession.AVPlaybackState = {
+        state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+        speed: 1.0,
+        position:{elapsedTime:10, updateTime:(new Date()).getTime()},
+        bufferedTime:1000,
+        loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
+        isFavorite:true,
+        volume: 3,
+        extras: {extras: 'any'}
+      };
+      session.setAVPlaybackState(PlaybackState).then(() => {
+        console.info('SetAVPlaybackState successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+      });
+      done();
+    })
+
+
+     /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_5600
+      * @tc.name      : getAllCastDisplays
+      * @tc.desc      : Testing call getAllCastDisplays(6600102)
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_5600', 2, async (done: Function) => {
+        const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
+        if (isExtendedDisplayCast) {
+          await session.destroy()
+          await sleep(500)
+            session.getAllCastDisplays().then((data: Array< avSession.CastDisplayInfo >) => {
+                console.info(`getAllCastDisplays success: ${JSON.stringify(data)}`);
+                expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+                console.info(`getAllCastDisplays successfully: ${err.code}, message: ${err.message}`)
+                expect(err.code).assertEqual(6600102);
+            });
+            session = null;
+            done();            
+        } else {
+            console.info(`SystemCapability.Multimedia.AVSession.ExtendedDisplayCast false`);
+            done();
+        }
+    })
+
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_5600
+      * @tc.name      : stopCasting - callback
+      * @tc.desc      : Testing call stopCasting(callback)
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_5600', 0, async (done: Function) => {
+        try {
+            session.stopCasting((err:BusinessError) => {
+              if (err) {
+                  console.info(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+              } else {
+                  console.info(`stopCasting successfully`);
+                  expect(true).assertTrue();
+              };
+          });
+        } catch (error) {
+            console.info(`stopCasting BusinessError2: code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(6600109);
+            if (error.message == "Cannot read property catch of undefined") {
+                console.info(`stopCasting callback successfully`);
+                expect(true).assertTrue()
+            }
+        }
+        done();
+    })
+    
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_5700
+      * @tc.name      : stopCasting - promise
+      * @tc.desc      : Testing call stopCasting(promise)
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_5700', 0, async (done: Function) => {
+        try {
+            session.stopCasting().then(() => {
+              console.info('stopCasting successfully');
+            }).catch((err: BusinessError) => {
+              console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+        } catch (error) {
+            console.info(`stopCasting BusinessError2: code: ${error.code}, message: ${error.message}`);
+            if (error.message == "Cannot read property catch of undefined" || error.code == 6600109) {
+                console.info(`stopCasting callback successfully`);
+                expect(true).assertTrue()
+            }
+        }
+        done();
+    })
+    
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_5800
+      * @tc.name      : getavcastcontroller - promise
+      * @tc.desc      : Testing call getavcastcontroller(promise)
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_5800', 0, async (done: Function) => {
+        try {
+            if (controller != null) {
+              await controller.destroy()
+            }
+            let aVCastController: avSession.AVCastController;
+            session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+                aVCastController = avcontroller;
+                console.info(`getAVCastController : SUCCESS : sessionid `);
+            }).catch((err: BusinessError) => {
+                console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+        } catch (error) {
+            console.info(`getAVCastController failed: code: ${error.code}, message: ${error.message}`);
+            if (error.message == "Cannot read property then of undefined" || error.code == 6600109 ) {
+                console.info(`getAVCastController callback successfully`);
+                expect(true).assertTrue()
+            }
+        }
+        done();
+    })
+
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_CALLBACK_5900
+      * @tc.name      : getavcastcontroller - callback
+      * @tc.desc      : Testing call getavcastcontroller(callback)
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      * @tc.level     : Level2
+      */
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_CALLBACK_5900', 0, async (done: Function) => {
+        try {
+            if (controller != null) {
+              await controller.destroy()
+            }
+            let aVCastController: avSession.AVCastController;
+            session.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
+              if (err) {
+                console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+              } else {
+                aVCastController = avcontroller;
+                console.info('getAVCastController : SUCCESS');
+              }
+            });
+        } catch (error) {
+            console.error(`getAVCastController BusinessError: code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(6600109);
+            if (error.message == "Cannot read property catch of undefined") {
+                console.info(`getAVCastController promise successfully`);
+                expect(true).assertTrue()
+            }
+        }
+        done();
+    })
+
+
+
+
+
   })
 }
 

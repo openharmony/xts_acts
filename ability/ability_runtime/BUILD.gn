@@ -19,6 +19,7 @@ group("ability_runtime") {
     deps = [
       "aacommand:aacommand",
       "abilitybase:abilitybase",
+      "abilitybaseerrorcode:abilitybaseerrorcode",
       "abilitycapitest:abilitycapitest",
       "abilitygetstartparameterstest:abilitygetstartparameterstest",
       "abilitymanager:actsabilitymanagertest",
@@ -31,6 +32,7 @@ group("ability_runtime") {
       "actsaastartabilitytest:actsaastartabilitytest",
       "actsabilityamstest:ActsAbilityAmsTest",
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
+      "actsabilityerrcodequerytest:ActsAbilityErrCodeQueryTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilityrecoverytest:actsabilityrecoverytest",
       "actsabilitytooltest:actsabilitytooltest",
@@ -42,6 +44,7 @@ group("ability_runtime") {
       "actscalltest:actscalltest",
       "actschildprocessmanager:actschildprocessmanagertest",
       "actscleantemptest:cleantempfiles",
+      "actscollaborateresulttest:actscollaborateresulttest",
       "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",

@@ -34,7 +34,7 @@ export default function getOverlayModuleInfo() {
      * @tc.name: GetOverlayModuleInfoModuleNameIsNull
      * @tc.desc: The query fails when the incoming moduleName is empty
      */
-    it('GetOverlayModuleInfoModuleNameIsNull', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNameIsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async  () =>{
       try {
         await overlay.getOverlayModuleInfo("").then(data => {
           console.info("GetOverlayModuleInfoModuleNameIsNull result" + JSON.stringify(data));
@@ -122,7 +122,7 @@ export default function getOverlayModuleInfo() {
      * @tc.name: GetOverlayModuleInfoModuleNameIsOverlay
      * @tc.desc: Query succeeded when the moduleName passed in is overlay
      */
-    it('GetOverlayModuleInfoModuleNameIsOverlay', 0, async  () =>{
+    it('GetOverlayModuleInfoModuleNameIsOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  () =>{
       let overlayModuleInfo:overlay.OverlayModuleInfo = {
         bundleName: "ohos.acts.bundle.overlay.test",
         moduleName: "stage1",

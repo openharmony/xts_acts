@@ -12,13 +12,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import calendarPickerDialogStartEndTest from './calendarPickerDialogTest/calendarPickerDialogStartEndTest.test';
+import calendarPickerStartEndTest from './calendarPickerTest/calendarPickerStartEndTest.test';
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
-import disableDateRangeAndMarkTodayTest from './CalendarPickerTest/disableDateRangeAndMarkToday.test'
-import dialogDisableDateRangeAndMarkTodayTest from './CalendarPickerTest/dialogDisableDateRangeAndMarkToday.test'
+import disableDateRangeAndMarkTodayTest from './calendarPickerTest/disableDateRangeAndMarkToday.test'
+import dialogDisableDateRangeAndMarkTodayTest from './calendarPickerDialogTest/dialogDisableDateRangeAndMarkToday.test'
+import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
+import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
+import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
+import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
+import SliderEnableHapticFeedbackTest from './slider/SliderEnableHapticFeedbackTest.test'
+import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
+import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';
+import calendarPickerDialogBackgroundBlurStyleTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundBlurStyle.test';
+import calendarPickerDialogBackgroundColorTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundColor.test';
+import calendarPickerDialogBackgroundShadowTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundShadow.test';
 export default function testsuite() {
+    calendarPickerDialogStartEndTest()
+    calendarPickerStartEndTest()
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
-    disableDateRangeAndMarkTodayTest()
+    disableDateRangeAndMarkTodayTest();
     dialogDisableDateRangeAndMarkTodayTest();
+    EnableHapticFeedback();
+    textPickerDialogSelectedAreaTest();
+    timePickerDialogSelectedAreaTest();
+    textPickerDialogEnableHapticFeedback();
+    SliderEnableHapticFeedbackTest();
+    textPickerDialogDefaultTextStyleTest();
+    textPickerDialogDisableTextStyleAnimationTest();
+    calendarPickerDialogBackgroundBlurStyleTest();
+    calendarPickerDialogBackgroundColorTest();
+    calendarPickerDialogBackgroundShadowTest();
 }

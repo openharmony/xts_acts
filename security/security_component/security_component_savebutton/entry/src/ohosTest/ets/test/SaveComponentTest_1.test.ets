@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, ON } from '@ohos.UiTest'
@@ -54,7 +54,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2300', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2300] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave2');
@@ -119,7 +119,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2400', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2400] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave3');
@@ -182,7 +182,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2500', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2500] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave4');
@@ -245,7 +245,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2600', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2600] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave5');
@@ -308,7 +308,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2700', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2700] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave6');
@@ -371,7 +371,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2800', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2800] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave7');
@@ -434,7 +434,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_2900', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2900] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave8');
@@ -497,7 +497,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_3000', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_3000] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave9');
@@ -564,7 +564,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_3100', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_3100] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave15');
@@ -631,7 +631,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_3200', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_3200] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave16');
@@ -698,7 +698,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_3300', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_3300] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave17');
@@ -765,7 +765,7 @@ export default function saveComponentTest_1() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_3400', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_3400] START====');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keySave18');

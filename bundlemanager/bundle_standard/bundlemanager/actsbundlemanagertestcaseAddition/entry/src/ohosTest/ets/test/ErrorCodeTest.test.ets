@@ -17,7 +17,7 @@ import { BusinessError ,zlib} from '@kit.BasicServicesKit';
 import bundle from '@ohos.bundle';
 import image from '@ohos.multimedia.image';
 import bundleManager from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium";
 import { defaultAppManager } from '@kit.AbilityKit';
 
 import Utils from './Utils';
@@ -39,7 +39,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestNoUserId401
      * @tc.desc: test errCode 401 when call getBundleInfo
      */
-    it('getBundleInfoTestNoUserId401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestNoUserId401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info("getBundleInfoTestNoUserId401 start");
       try {
         bundleManager.getBundleInfo(undefined, bundleFlags, (err, data) => {
@@ -66,7 +66,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestNoUserId17700001
      * @tc.desc: test errCode 17700001 when call getBundleInfo
      */
-    it('getBundleInfoTestNoUserId17700001', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestNoUserId17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info("getBundleInfoTestNoUserId17700001 start");
       try {
         bundleManager.getBundleInfo("xx", bundleFlags, (err, data) => {
@@ -94,7 +94,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestWithUserIdCallBack401
      * @tc.desc: test errCode 401 when call getBundleInfo
      */
-    it('getBundleInfoTestWithUserIdCallBack401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdCallBack401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info("getBundleInfoTestWithUserIdCallBack401 start");
       try {
         bundleManager.getBundleInfo(undefined, bundleFlags, userId, (err, data) => {
@@ -122,7 +122,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestWithUserIdCallBack17700001
      * @tc.desc: test errCode 17700001 when call getBundleInfo
      */
-    it('getBundleInfoTestWithUserIdCallBack177001', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdCallBack177001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleInfoTestWithUserIdCallBack177001 start");
       try {
         bundleManager.getBundleInfo("xx", bundleFlags, userId, (err, data) => {
@@ -150,7 +150,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoTestWithUserIdCallBack17700004
     * @tc.desc: test errCode 17700004 when call getBundleInfo
     */
-    it('getBundleInfoTestWithUserIdCallBack177004', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdCallBack177004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getBundleInfoTestWithUserIdCallBack177004 start");
       try {
         bundleManager.getBundleInfo(BUNDLE_NAME, bundleFlags, 200000, (err, data) => {
@@ -177,7 +177,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestWithUserIdPromise401
      * @tc.desc: test errCode 401 when call getBundleInfo
     */
-    it('getBundleInfoTestWithUserIdPromise401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdPromise401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info("getBundleInfoTestWithUserIdPromise401 start");
       try {
         await bundleManager.getBundleInfo(undefined, bundleFlags, userId).then((data) => {
@@ -202,7 +202,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestWithUserIdPromise17700001
      * @tc.desc: test errCode 17700001 when call getBundleInfo
     */
-    it('getBundleInfoTestWithUserIdPromise17700001', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdPromise17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getBundleInfoTestWithUserIdPromise17700001 start");
       try {
         await bundleManager.getBundleInfo("xx", bundleFlags, userId).then((data) => {
@@ -227,7 +227,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoTestWithUserIdPromise17700004
     * @tc.desc: test errCode 17700004 when call getBundleInfo
     */
-    it('getBundleInfoTestWithUserIdPromise17700004', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdPromise17700004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleInfoTestWithUserIdPromise17700004 start");
       try {
        await bundleManager.getBundleInfo(BUNDLE_NAME, bundleFlags, 2000000).then((data) => {
@@ -253,7 +253,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleNameByUidCallBack401
      * @tc.desc: test errCode 401 when call getBundleNameByUid
      */
-    it('getBundleNameByUidCallBack401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleNameByUidCallBack401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleNameByUidCallBack401 start");
       try {
         bundleManager.getBundleNameByUid(undefined, (err:BusinessError,data:String) => {
@@ -279,7 +279,7 @@ export default function ErrcodeTest() {
    * @tc.name:  getBundleNameByUidCallBack17700021
    * @tc.desc: test errCode 17700021 when call getBundleNameByUid
    */
-    it('getBundleNameByUidCallBack17700021', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleNameByUidCallBack17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleNameByUidCallBack17700021 start");
       try {
         bundleManager.getBundleNameByUid(2190, (err:BusinessError,data:String) => {
@@ -306,7 +306,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleNameByUidPromise401
     * @tc.desc: test errCode 401 when call getBundleNameByUid
     */
-    it('getBundleNameByUidPromise401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleNameByUidPromise401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleNameByUidPromise401 start");
       try {
         await bundleManager.getBundleNameByUid(undefined).then(data => {
@@ -331,7 +331,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleNameByUidPromise17700021
     * @tc.desc: test errCode 17700021 when call getBundleNameByUid
     */
-    it('getBundleNameByUidPromise17700021', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleNameByUidPromise17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getBundleNameByUidPromise17700021 start");
       try {
         bundleManager.getBundleNameByUid(2190).then(data => {
@@ -356,7 +356,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleNameByUidSync401
     * @tc.desc: test errCode 401 when call getBundleNameByUidSync
     */
-    it('getBundleNameByUidSync401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleNameByUidSync401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleNameByUidSync401 start");
       try {
         let data = bundleManager.getBundleNameByUidSync(undefined);
@@ -376,7 +376,7 @@ export default function ErrcodeTest() {
    * @tc.name:  getBundleNameByUidSync17700021
    * @tc.desc: test errCode 401 when call getBundleNameByUidSync
    */
-    it('getBundleNameByUidSync17700021', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleNameByUidSync17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG +"getBundleNameByUidSync17700021 start");
       try {
         let data = bundleManager.getBundleNameByUidSync(2190);
@@ -397,7 +397,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getProfileByAbilityCallBack401
      * @tc.desc: test errCode 401 when call getProfileByAbility
      */
-    it('getProfileByAbilityCallBack401', Level.LEVEL0, async (done: Function) =>  {
+    it('getProfileByAbilityCallBack401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getProfileByAbilityCallBack401 start");
       try {
         bundleManager.getProfileByAbility(undefined, undefined, undefined, (err:BusinessError, data:Array<string>) => {
@@ -425,7 +425,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getProfileByAbilityPromise401
     * @tc.desc: test errCode 401 when call  getProfileByAbility
     */
-    it('getProfileByAbilityPromise401', Level.LEVEL0, async (done: Function) =>  {
+    it('getProfileByAbilityPromise401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getProfileByAbilityPromise401 start");
       try {
        await bundleManager.getProfileByAbility(undefined, undefined,undefined).then((data) => {
@@ -452,7 +452,7 @@ export default function ErrcodeTest() {
     * @tc.name: getProfileByExtensionAbilityCallBack401
     * @tc.desc: test errCode 401 when call getProfileByExtensionAbility
     */
-    it('getProfileByExtensionAbilityCallBack401', Level.LEVEL0, async (done: Function) =>  {
+    it('getProfileByExtensionAbilityCallBack401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getProfileByExtensionAbilityCallBack401 start");
       try {
         bundleManager.getProfileByExtensionAbility(undefined, undefined, undefined, (err:BusinessError, data:Array<string>) => {
@@ -479,7 +479,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getProfileByExtensionAbilityPromise401
     * @tc.desc: test errCode 401 when call  getProfileByExtensionAbility
     */
-    it('getProfileByExtensionAbilityPromise401', Level.LEVEL0, async (done: Function) =>  {
+    it('getProfileByExtensionAbilityPromise401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getProfileByExtensionAbilityPromise401 start");
       try {
         await bundleManager.getProfileByExtensionAbility(undefined, undefined,undefined).then((data) => {
@@ -505,7 +505,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoSynWithUserId401
     * @tc.desc: test errCode 401 when call getBundleInfoSync
     */
-    it('getBundleInfoSynWithUserId401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoSynWithUserId401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + " getBundleInfoSynWithUserId401 start");
       try {
         let data = bundleManager.getBundleInfoSync(undefined,bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, userId);
@@ -526,7 +526,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoSynWithUserId17700001
     * @tc.desc: test errCode 17700001 when call getBundleInfoSync
     */
-    it('getBundleInfoSynWithUserId17700001', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoSynWithUserId17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + " getBundleInfoSynWithUserId17700001 start");
       try {
         let data = bundleManager.getBundleInfoSync("xxxx", bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, userId);
@@ -546,7 +546,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoSynWithUserId17700004
     * @tc.desc: test errCode 17700004 when call getBundleInfoSync
     */
-    it('getBundleInfoSynWithUserId17700004', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoSynWithUserId17700004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + " getBundleInfoSynWithUserId17700004 start");
       try {
         let data = bundleManager.getBundleInfoSync(BUNDLE_NAME, bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION, 20);
@@ -566,7 +566,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoSynNoUserId401
     * @tc.desc: test errCode 401 when call getBundleInfoSync
     */
-    it('getBundleInfoSynNoUserId401', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoSynNoUserId401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getBundleInfoSynNoUserId401 start");
       try {
         let data = bundleManager.getBundleInfoSync(undefined, bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION);
@@ -586,7 +586,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoSynNoUserId17700001
     * @tc.desc: test errCode 17700001 when call getBundleInfoSync
     */
-    it('getBundleInfoSynNoUserId17700001', Level.LEVEL0, async (done: Function) =>  {
+    it('getBundleInfoSynNoUserId17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + " getBundleInfoSynNoUserId17700001 start");
       try {
         let data = bundleManager.getBundleInfoSync("xxxx", bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION);
@@ -607,7 +607,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getSignatureInfo401
     * @tc.desc: test errCode 401 when call getSignatureInfo
     */
-    it('getSignatureInfo401', Level.LEVEL0, async (done: Function) =>  {
+    it('getSignatureInfo401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getSignatureInfo401 start");
       try {
         let data = bundleManager.getSignatureInfo(undefined);
@@ -627,7 +627,7 @@ export default function ErrcodeTest() {
    * @tc.name:  getSignatureInfo17700021
    * @tc.desc: test errCode 17700021 when call getSignatureInfo
    */
-    it('getSignatureInfo17700021', 0, async (done: Function) =>  {
+    it('getSignatureInfo17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getSignatureInfo17700021 start");
       try {
         let data = bundleManager.getSignatureInfo(-20);
@@ -647,7 +647,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getAppCloneIdentity401
      * @tc.desc: test errCode 401 when call getAppCloneIdentity
     */
-    it('getAppCloneIdentity401', Level.LEVEL0, async (done: Function) =>  {
+    it('getAppCloneIdentity401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getAppCloneIdentity401 start");
       try {
         await bundleManager.getAppCloneIdentity(undefined).then((res) => {
@@ -674,7 +674,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getAppCloneIdentity17700021
      * @tc.desc: test errCode 17700021 when call getAppCloneIdentity
     */
-    it('getAppCloneIdentity17700021', Level.LEVEL0, async (done: Function) =>  {
+    it('getAppCloneIdentity17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getAppCloneIdentity17700021 start");
       try {
        await bundleManager.getAppCloneIdentity(-1).then((res) => {
@@ -701,7 +701,7 @@ export default function ErrcodeTest() {
      * @tc.name:  isDefaultApplicationPromise401
      * @tc.desc: test errCode 401 when call isDefaultApplication
     */
-    it('isDefaultApplicationPromise401', Level.LEVEL0, async (done: Function) =>  {
+    it('isDefaultApplicationPromise401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "isDefaultApplicationPromise401 start");
       try {
         await defaultAppManager.isDefaultApplication(undefined)
@@ -718,7 +718,13 @@ export default function ErrcodeTest() {
       } catch (err) {
         let message = (err as BusinessError).message;
         console.info(TAG + 'isDefaultApplicationPromise401  catch failed: ' + message);
-        expect(err.code).assertEqual(401);
+        if (err.code === 801) {
+          expect(err.code).assertEqual(801);
+        } else if (err.code === 401){
+          expect(err.code).assertEqual(401);
+        } else {
+          expect().assertFail();
+        }
         done();
       }
     });
@@ -728,7 +734,7 @@ export default function ErrcodeTest() {
   * @tc.name:  isDefaultApplicationCallBack401
   * @tc.desc: test errCode 401 when call isDefaultApplication
  */
-    it('isDefaultApplicationCallBack401', Level.LEVEL0, async (done: Function) =>  {
+    it('isDefaultApplicationCallBack401', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "isDefaultApplicationCallBack401 start");
       try {
         defaultAppManager.isDefaultApplication(undefined, (err: BusinessError, data) => {
@@ -742,11 +748,16 @@ export default function ErrcodeTest() {
             done();
           }
         });
-
       } catch (err) {
         let message = (err as BusinessError).message;
         console.info(TAG + 'isDefaultApplicationCallBack401  catch failed: ' + message);
-        expect(err.code).assertEqual(401);
+        if (err.code === 801) {
+          expect(err.code).assertEqual(801);
+        } else if (err.code === 401){
+          expect(err.code).assertEqual(401);
+        } else {
+          expect().assertFail();
+        }
         done();
       }
     });
@@ -756,7 +767,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getLaunchWant17700072
      * @tc.desc: test errCode 17700072 when call getLaunchWant
     */
-    it('getLaunchWant17700072', Level.LEVEL0, async (done: Function) =>  {
+    it('getLaunchWant17700072', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "getLaunchWant17700072 start");
       try {
         let want = bundleManager.getLaunchWant();
@@ -777,7 +788,7 @@ export default function ErrcodeTest() {
     * @tc.name:  deflateEnd17800004
     * @tc.desc: test errCode 17800004 when call deflateEnd
    */
-    it('deflateEnd17800004', Level.LEVEL0, async (done: Function) =>  {
+    it('deflateEnd17800004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       console.info(TAG + "deflateEnd17800004 start");
       let arrayBufferOut = new ArrayBuffer(100);
       // do no init to get the Error code

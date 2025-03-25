@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import bundleManager from '@ohos.bundle';
 
@@ -37,7 +37,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0100', 0, async function (done) {
+        it('bundle_GetabilityInfo_test_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let mData;
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME1).then((data) => {
@@ -61,7 +61,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2600', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let mData;
             let timeOldStamp = await Utils.getNowTime();
             bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME1, (err, data) => {
@@ -85,7 +85,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2660', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2660', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundleManager.getAbilityInfo(BUNDLE_NAME4, ABILITY_NAME3).then(res => {
                 checkAbilityInfo_other(res);
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
@@ -113,7 +113,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2460', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2460', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME_OTHER, ABILITY_NAME_OTHER).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
@@ -132,7 +132,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2620', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2620', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let error1;
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME2, ABILITY_NAME1).then((data) => {
@@ -155,7 +155,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2480', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2480', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let error
             await bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME2).then((data) => {
                 console.info('[Sub_Bms_Framework_Query_AbilityInfo_2480] START' + JSON.stringify(data));
@@ -174,7 +174,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2640', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2640', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             let error1;
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME3, ABILITY_NAME1).then((data) => {
@@ -197,7 +197,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('testgetAbilityInfoUndefined', 0, async function (done) {
+        it('testgetAbilityInfoUndefined', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await bundleManager.getAbilityInfo(undefined, undefined).then(res => {
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
                 expect().assertFail();

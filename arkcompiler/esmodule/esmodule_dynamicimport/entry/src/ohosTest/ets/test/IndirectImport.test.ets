@@ -13,7 +13,7 @@
  * limitations under the License.
  */
  
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { inderectHarImportHar, inderectHarImportHsp, inderectHspImportHar,
   inderectHspImportHsp } from '../../../main/ets/Calc';
 
@@ -28,7 +28,7 @@ export default function indirectImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('harImportHar', 0, async () => {
+    it('harImportHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await inderectHarImportHar()
       expect(res).assertTrue()
     })
@@ -41,7 +41,7 @@ export default function indirectImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('harImportHsp', 0, async () => {
+    it('harImportHsp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await inderectHarImportHsp()
       expect(res).assertTrue()
     })
@@ -54,7 +54,7 @@ export default function indirectImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('hspImportHar', 0, async () => {
+    it('hspImportHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await inderectHspImportHar()
       expect(res).assertTrue()
     })
@@ -67,7 +67,7 @@ export default function indirectImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('hspImportHsp', 0, async () => {
+    it('hspImportHsp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await inderectHspImportHsp()
       expect(res).assertTrue()
     })

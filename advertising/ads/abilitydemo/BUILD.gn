@@ -18,5 +18,5 @@ ohos_app_assist_suite("ActsAdsKitTest") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAdsKitTest"
   subsystem_name = "advertising"
-  part_name = "advertising"
+  part_name = "ads_service"
 }

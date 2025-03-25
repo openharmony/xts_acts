@@ -3660,6 +3660,51 @@ static OH_AudioData_Callback_Result WriteDataCallbackWithInvalidResult(OH_AudioR
     return AUDIO_DATA_CALLBACK_RESULT_INVALID;
 }
 
+static void RendererInterruptCallbackWithResult(OH_AudioRenderer* renderer,
+    void* userData,
+    OH_AudioInterrupt_ForceType type,
+    OH_AudioInterrupt_Hint hint)
+{
+    LOG("call CapturerDeviceChangeCallbackWithResult function.");
+}
+
+static void RendererErrorCallbackCallbackWithResult(OH_AudioRenderer* renderer,
+    void* userData,
+    OH_AudioStream_Result error)
+{
+    LOG("call CapturerDeviceChangeCallbackWithResult function.");
+}
+
+static void CapturerReadDataCallbackWithResult(OH_AudioCapturer* capturer,
+    void* userData,
+    void* audioData,
+    int32_t audioDataSize)
+{
+    LOG("call CapturerDeviceChangeCallbackWithResult function.");
+}
+
+static void CapturerDeviceChangeCallback(OH_AudioCapturer* capturer,
+    void* userData,
+    OH_AudioDeviceDescriptorArray* deviceArray)
+{
+    LOG("call CapturerDeviceChangeCallbackWithResult function.");
+}
+
+static void CapturerInterruptCallbackWithResult(OH_AudioCapturer* capturer,
+    void* userData,
+    OH_AudioInterrupt_ForceType forceType,
+    OH_AudioInterrupt_Hint hintType)
+{
+    LOG("call CapturerDeviceChangeCallbackWithResult function.");
+}
+
+static void CapturerErrorCallbackWithResult(OH_AudioCapturer* capturer,
+    void* userData,
+    OH_AudioStream_Result error)
+{
+    LOG("call CapturerDeviceChangeCallbackWithResult function.");
+}
+
 static napi_value AudioStreamBuilderSetRendererWriteDataCallback_001(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder* builder;
@@ -3682,6 +3727,97 @@ static napi_value AudioStreamBuilderSetRendererWriteDataCallback_002(napi_env en
     OH_AudioRenderer_OnWriteDataCallback onWriteDataCallback = WriteDataCallbackWithInvalidResult;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder,
         onWriteDataCallback, nullptr);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetRendererInterruptCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_OnInterruptCallback onInterruptCallback = RendererInterruptCallbackWithResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInterruptCallback(builder,
+        onInterruptCallback, nullptr);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetRendererErrorCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_OnErrorCallback onErrorCallback = RendererErrorCallbackCallbackWithResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererErrorCallback(builder,
+        onErrorCallback, nullptr);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetCapturerReadDataCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+
+    OH_AudioCapturer_OnReadDataCallback onReadDataCallback = CapturerReadDataCallbackWithResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder,
+        onReadDataCallback, NULL);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetCapturerDeviceChangeCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+
+    OH_AudioCapturer_OnDeviceChangeCallback onDeviceChangeCallback = CapturerDeviceChangeCallback;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(builder,
+        onDeviceChangeCallback, NULL);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetCapturerInterruptCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+
+    OH_AudioCapturer_OnInterruptCallback onInterruptCallback = CapturerInterruptCallbackWithResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder,
+        onInterruptCallback, NULL);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetCapturerErrorCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+
+    OH_AudioCapturer_OnErrorCallback onErrorCallback = CapturerErrorCallbackWithResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, onErrorCallback, NULL);
+
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
@@ -5242,6 +5378,14 @@ napi_property_descriptor desc1[] = {
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioStreamBuilderSetCapturerInfo", nullptr, AudioStreamBuilderSetCapturerInfo,
         nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetCapturerReadDataCallback", nullptr, AudioStreamBuilderSetCapturerReadDataCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetCapturerDeviceChangeCallback", nullptr, AudioStreamBuilderSetCapturerDeviceChangeCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetCapturerInterruptCallback", nullptr, AudioStreamBuilderSetCapturerInterruptCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetCapturerErrorCallback", nullptr, AudioStreamBuilderSetCapturerErrorCallback,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioStreamBuilderSetRendererCallback", nullptr, AudioStreamBuilderSetRendererCallback,
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioStreamBuilderSetCapturerCallback", nullptr, AudioStreamBuilderSetCapturerCallback,
@@ -5446,6 +5590,10 @@ napi_property_descriptor desc2[] = {
         AudioStreamBuilderSetRendererWriteDataCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioStreamBuilderSetRendererWriteDataCallback_002", nullptr,
         AudioStreamBuilderSetRendererWriteDataCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetRendererInterruptCallback", nullptr,
+        AudioStreamBuilderSetRendererInterruptCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetRendererErrorCallback", nullptr,
+        AudioStreamBuilderSetRendererErrorCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCapturerGetOverflowCount_001", nullptr,
         audioCapturerGetOverflowCount_001, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"AudioSessionManagerStrategy_001", nullptr,

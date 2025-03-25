@@ -14,7 +14,7 @@
 */
 
 import { webview } from '@kit.ArkWeb';
-import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import { JSON } from '@kit.ArkTS';
@@ -83,7 +83,7 @@ struct Index {
   @State name: string = ''
   @State str: string = ''
   @State emitKey: string = '';
-  @State incognitoMode: boolean = ["phone", "tablet", "2in1", "default"].includes(deviceInfo.deviceType.toLowerCase()) ? true: false;
+  @State incognitoMode: boolean = true
   origin: string = 'file:///'
   @State src: string | Resource = $rawfile('index1.html')
   @State header: string = 'https'
@@ -114,9 +114,6 @@ struct Index {
           .key('001')
           .onClick((event: ClickEvent) => {
             try {
-              console.log("current debug deviceType: ", deviceInfo.deviceType);
-              console.log("current debug deviceType: ", deviceInfo.deviceType.toLowerCase());
-              console.log("current debug incognitoMode: ", this.incognitoMode);
               this.controller1.registerJavaScriptProxy(this.testObject, 'objName', ['test', 'toString', 'testNumber'],
                 ['asyncTestBool']);
               this.controller.refresh();

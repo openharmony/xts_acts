@@ -16,7 +16,7 @@
 import certManager from '@ohos.security.certManager';
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import * as signVerifyPromise from './utils/signAndVerify/signVerifyPromise';
 import { GlobalContext } from '../../../../src/main/ets/pages/HomePage';
 import certManagerDialog from '@ohos.security.certManagerDialog';
@@ -570,19 +570,40 @@ export default function api16CertFuncTestTwoUnit() {
         }
 
         try {
-          await certManagerDialog.openCertificateDetailDialog(context, caCert1, property)
-          expect(null).assertFail();
-        } catch (err) {
-          console.log("SUB_Security_CertManager_OpenCertificateDialog_0012: e.code " + err.code);
-          expect(err.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_OPERATION_FAILED);
-        }
-
-        try {
           await certManagerDialog.openCertificateDetailDialog(context, caCert1, null)
           expect(null).assertFail();
         } catch (err) {
           console.log("SUB_Security_CertManager_OpenCertificateDialog_0012: e.code " + err.code);
           expect(err.code).assertEqual(401);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenCertificateDialog_0030
+     * @tc.name test openCertificateDetailDialog
+     * @tc.desc abnormal test
+     * @tc.size MediumTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenCertificateDialog_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenCertificateDialog_0030: started ");
+      const context :common.Context = GlobalContext.getContext();
+      let caCert1: Uint8Array = new Uint8Array([
+        0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+      ]);
+      let property: certManagerDialog.CertificateDialogProperty = {
+        showInstallButton: false /* 不显示安装按钮 */
+      };
+      if (deviceInfo.deviceType == '2in1') {
+        try {
+          await certManagerDialog.openCertificateDetailDialog(context, caCert1, property)
+          expect(null).assertFail();
+        } catch (err) {
+          console.error("SUB_Security_CertManager_OpenCertificateDialog_0030: e.code " + err.code);
+          expect(err.code).assertEqual(29700003);
         }
       }
       done();
@@ -609,6 +630,59 @@ export default function api16CertFuncTestTwoUnit() {
         } catch (err) {
           console.log("SUB_Security_CertManager_OpenCertificateDialog_0010: e.code " + err.code);
           expect(err.code).assertEqual(certManagerDialog.CertificateDialogErrorCode.ERROR_DEVICE_NOT_SUPPORTED);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0100
+     * @tc.name test openInstallCertificateDialog
+     * @tc.desc abnormal test
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040: started ");
+      if (deviceInfo.deviceType == '2in1') {
+        let caCert1: Uint8Array = new Uint8Array([
+          0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+        ]);
+        const context :common.Context = GlobalContext.getContext();
+        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+        let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
+        try {
+          await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert1)
+          expect(null).assertFail()
+        } catch (err) {
+          console.error("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0100: e.code " + err.code);
+          expect(err.code).assertEqual(29700003);
+        }
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManger_OpenUninstallCertDialogCertJsApi_Func_0100
+     * @tc.name test openUninstallCertificateDialog
+     * @tc.desc abnormal test
+     * @tc.size MediumTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManger_OpenUninstallCertDialogCertJsApi_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.log("SUB_Security_CertManger_OpenUninstallCertDialogCertJsApi_Func_0100: started ");
+      let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
+      const context :common.Context = GlobalContext.getContext();
+      if (deviceInfo.deviceType != '2in1') {
+        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+        try {
+          await certManagerDialog.openUninstallCertificateDialog(null, certificateType, uir)
+          expect(null).assertFail();
+        } catch (err) {
+          console.error("SUB_Security_CertManger_OpenUninstallCertDialogCertJsApi_Func_0100: e.code " + err.code);
+          expect(err.code).assertEqual(29700004);
         }
       }
       done();

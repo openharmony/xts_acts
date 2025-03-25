@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import TreeSet from "@ohos.util.TreeSet";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export default function TreeSetTest() {
 describe("TreeSetTest", function () {
                               
@@ -21,7 +21,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an TreeSet instance. For example: let treeSet = new TreeSet().
    */   
-  it("testConstructor001", 0, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let treeSet = new TreeSet();
       expect(treeSet != undefined).assertEqual(true);
@@ -40,7 +40,7 @@ describe("TreeSetTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testConstructor002", 0, function () {
+  it("testConstructor002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let treeSet = new TreeSet((a, b) => {return a > b});
       expect(treeSet != undefined).assertEqual(true);
@@ -65,7 +65,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").
    */   
-  it("testAdd002", 0, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("四");
     let res = treeSet.has("四");
@@ -76,7 +76,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").
    */   
-  it("testAdd003", 0, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(8);
     let res = treeSet.has(8);
@@ -87,7 +87,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add element to TreeSet instance. For example: let a = [1, 2, 3, 4]; treeSet.add(a).
    */   
-  it("testAdd004", 0, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let a = [1, 2, 3, 4];
     treeSet.add(a);
@@ -99,7 +99,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd005
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("*").
    */   
-  it("testAdd005", 0, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("*");
     let res = treeSet.has("*");
@@ -110,7 +110,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd006
    * @tc.desc: Add element to TreeSet instance.
    */   
-  it("testAdd006", 0, function () {
+  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let a = {name: "lala", age: "13岁"};
     treeSet.add(a);
@@ -122,7 +122,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd007
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add(1.234).
    */   
-  it("testAdd007", 0, function () {
+  it("testAdd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(1.234);
     let res = treeSet.has(1.234);
@@ -133,7 +133,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd008
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add(true).
    */   
-  it("testAdd008", 0, function () {
+  it("testAdd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(true);
     let res = treeSet.has(true);
@@ -144,7 +144,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd009
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("").
    */   
-  it("testAdd009", 0, function () {
+  it("testAdd009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("");
     let res = treeSet.has("");
@@ -155,7 +155,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd010
    * @tc.desc: Add element to TreeSet instance.
    */   
-  it("testAdd010", 0, function () {
+  it("testAdd010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     for (let i = 0; i < 10000; i++) {
       treeSet.add(i);
@@ -169,7 +169,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testLength011
    * @tc.desc: Get the number of element in the TreeSet instance. For example: treeSet.length.
    */   
-  it("testLength011", 0, function () {
+  it("testLength011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -182,7 +182,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testLength012
    * @tc.desc: Get the number of element in the TreeSet instance. For example: treeSet.length.
    */   
-  it("testLength012", 0, function () {
+  it("testLength012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.length;
     expect(res).assertEqual(0);
@@ -192,7 +192,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testHas013
    * @tc.desc: Determine whether the TreeSet instance contains the specified element. For example: treeSet.has(2).
    */   
-  it("testHas013", 0, function () {
+  it("testHas013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -205,7 +205,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testHas014
    * @tc.desc: Determine whether the TreeSet instance contains the specified element. For example: treeSet.has(2).
    */   
-  it("testHas014", 0, function () {
+  it("testHas014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -218,7 +218,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testGetFirstValue015
    * @tc.desc: Get the value that ranks first in the TreeSet instance. For example: treeSet.getFirstValue().
    */   
-  it("testGetFirstValue015", 0, function () {
+  it("testGetFirstValue015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -234,7 +234,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get the value that ranks first in the TreeSet instance. 
    * For example: treeSet.getFirstValue().
    */   
-  it("testGetFirstValue016", 0, function () {
+  it("testGetFirstValue016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getFirstValue();
     expect(res).assertEqual(undefined);
@@ -244,7 +244,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testGetLastValue017
    * @tc.desc: Get the last sorted key in the TreeSet instance. For example: treeSet.getLastValue().
    */   
-  it("testGetLastValue017", 0, function () {
+  it("testGetLastValue017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -257,7 +257,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testGetLastValue018
    * @tc.desc: Get the last sorted key in the TreeSet instance. For example: treeSet.getLastValue().
    */   
-  it("testGetLastValue018", 0, function () {
+  it("testGetLastValue018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getLastValue();
     expect(res).assertEqual(undefined);
@@ -268,7 +268,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little lower than the specified value sort. 
    * For example: treeSet.getLowerValue(2).
    */   
-  it("testGetLowerValue019", 0, function () {
+  it("testGetLowerValue019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -284,7 +284,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little lower than the specified value sort. 
    * For example: treeSet.getLowerValue(2).
    */   
-  it("testGetLowerValue020", 0, function () {
+  it("testGetLowerValue020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getLowerValue(2);
     expect(res).assertEqual(undefined);
@@ -295,7 +295,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little higher than the specified value sort. 
    * For example: treeSet.getHigherValue(3).
    */   
-  it("testGetHigherValue021", 0, function () {
+  it("testGetHigherValue021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -311,7 +311,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little higher than the specified value sort. 
    * For example: treeSet.getHigherValue(3).
    */   
-  it("testGetHigherValue022", 0, function () {
+  it("testGetHigherValue022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getHigherValue(3);
     expect(res).assertEqual(undefined);
@@ -321,7 +321,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testPopFirst023
    * @tc.desc: Delete first value of sort. For example: treeSet.popFirst().
    */   
-  it("testPopFirst023", 0, function () {
+  it("testPopFirst023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -336,7 +336,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testPopFirst024
    * @tc.desc: Delete first value of sort. For example: treeSet.popFirst().
    */   
-  it("testPopFirst024", 0, function () {
+  it("testPopFirst024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.popFirst();
     expect(res).assertEqual(undefined);
@@ -346,7 +346,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testPopLast025
    * @tc.desc: Delete last value of sort. For example: treeSet.popLast().
    */   
-  it("testPopLast025", 0, function () {
+  it("testPopLast025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -361,7 +361,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testPopLast026
    * @tc.desc: Delete last value of sort. For example: treeSet.popLast().
    */   
-  it("testPopLast026", 0, function () {
+  it("testPopLast026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.popLast();
     expect(res).assertEqual(undefined);
@@ -371,7 +371,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testClear027
    * @tc.desc: Clear all elements of the TreeSet instance. For example: treeSet.clear().
    */   
-  it("testClear027", 0, function () {
+  it("testClear027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -385,7 +385,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testClear028
    * @tc.desc: Clear all elements of the TreeSet instance. For example: treeSet.clear().
    */   
-  it("testClear028", 0, function () {
+  it("testClear028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -401,7 +401,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testIsEmpty029
    * @tc.desc: Determine whether the TreeSet instance is empty. For example: treeSet.isEmpty().
    */   
-  it("testIsEmpty029", 0, function () {
+  it("testIsEmpty029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     let res1 = treeSet.isEmpty();
@@ -412,7 +412,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testIsEmpty030
    * @tc.desc: Determine whether the TreeSet instance is empty. For example: treeSet.isEmpty().
    */   
-  it("testIsEmpty030", 0, function () {
+  it("testIsEmpty030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res2 = treeSet.isEmpty();
     expect(res2).assertEqual(true);
@@ -422,7 +422,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testRemove031
    * @tc.desc: Delete the specified value. For example: hashSet.remove("c").
    */   
-  it("testRemove031", 0, function () {
+  it("testRemove031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -440,7 +440,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testRemove032
    * @tc.desc: Delete the specified value. For example: hashSet.remove("c").
    */   
-  it("testRemove032", 0, function () {
+  it("testRemove032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     let res = treeSet.remove("c");
     expect(res).assertEqual(false);
@@ -450,7 +450,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testValues033
    * @tc.desc: Get a collection of all the values in the TreeSet. For example: treeSet.values().
    */   
-  it("testValues033", 0, function () {
+  it("testValues033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -469,7 +469,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testForEach034
    * @tc.desc: Traverse the collection of all elements of the TreeSet instance.
    */   
-  it("testForEach034", 0, function () {
+  it("testForEach034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -490,7 +490,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testEntries035
    * @tc.desc: Get all key value pairs collection in TreeMap.
    */   
-  it("testEntries035", 0, function () {
+  it("testEntries035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -510,7 +510,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Iterate over all elements of the TreeSet instance.
    * For example: for (let item of treeSet) {arr.push(item);}
    */   
-  it("testIterator036", 0, function () {
+  it("testIterator036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -531,7 +531,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testIterator037
    * @tc.desc: Iterate over all elements of the TreeSet instance. For example: treeSet[Symbol.iterator]().
    */   
-  it("testIterator037", 0, function () {
+  it("testIterator037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -555,7 +555,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testAdd038
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add.bind({}, "a")().
    */   
-   it("testAdd038", 0, function () {
+   it("testAdd038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeSet = new TreeSet();
     try {
       treeSet.add.bind({}, "a")();
@@ -571,7 +571,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testClear039
    * @tc.desc: Clear all elements of the TreeSet instance. For example: treeSet.clear.bind({}, "a")().
    */ 
-  it('testClear039', 0, function () {
+  it('testClear039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     try {
       treeSet.clear.bind({}, "a")();
@@ -588,7 +588,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little lower than the specified value sort. 
    * For example: treeSet.getLowerValue.bind({}, "a")().
    */  
-  it('testGetLowerValue040', 0, function () {
+  it('testGetLowerValue040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     try {
       treeSet.getLowerValue.bind({}, "a")();
@@ -605,7 +605,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little lower than the specified value sort. 
    * For example: treeSet.getLowerValue(null).
    */  
-  it('testGetLowerValue041', 0, function () {
+  it('testGetLowerValue041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     let res = treeSet.getLowerValue(null);
     expect(res).assertEqual(undefined);
@@ -616,7 +616,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little higher than the specified value sort. 
    * For example: treeSet.getHigherValue(null).
    */  
-  it('testGetHigherValue042', 0, function () {
+  it('testGetHigherValue042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     let res = treeSet.getHigherValue(null);
     expect(res).assertEqual(undefined);
@@ -627,7 +627,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Get a value that is a little higher than the specified value sort. 
    * For example: treeSet.getHigherValue.bind({}, "a")().
    */  
-  it('testGetHigherValue043', 0, function () {
+  it('testGetHigherValue043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     try {
       treeSet.getHigherValue.bind({}, "a")();
@@ -644,7 +644,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Traverse the collection of all elements of the TreeSet instance.
    * For example: treeSet.forEach.bind({}, "a")().
    */ 
-  it('testForEach044', 0, function () {
+  it('testForEach044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     try {
       treeSet.forEach.bind({}, "a")();
@@ -661,7 +661,7 @@ describe("TreeSetTest", function () {
    * @tc.desc: Traverse the collection of all elements of the TreeSet instance.
    * For example: treeSet.forEach(11).
    */ 
-  it('testForEach045', 0, function () {
+  it('testForEach045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     try {
       treeSet.forEach(11);
@@ -677,7 +677,7 @@ describe("TreeSetTest", function () {
    * @tc.name: testValues046
    * @tc.desc: Get a collection of all the values in the TreeSet. For example: treeSet.values.bind({}, "a")().
    */ 
-  it('testValues046', 0, function () {
+  it('testValues046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     try {
       treeSet.values.bind({}, "a")();
@@ -697,7 +697,7 @@ describe("TreeSetTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it('testValues047', 0, function () {
+  it('testValues047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  treeSet = new TreeSet();
     treeSet.add("sparrow");
     treeSet.forEach((value, key) => {

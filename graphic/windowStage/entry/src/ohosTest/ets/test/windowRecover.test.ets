@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -47,7 +47,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testRecover', 0, async (done: Function) => {
+    it('testRecover', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr = 'testRecover';
       console.log(msgStr + ' begin');
       try {
@@ -84,7 +84,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testMaximize', 0, async (done: Function) => {
+    it('testMaximize', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr = 'testMaximize';
       console.log(msgStr + ' begin');
       try {
@@ -135,7 +135,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testMaximizeToRecover', 0, async (done: Function) => {
+    it('testMaximizeToRecover', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr = 'testMaximizeToRecover';
       console.log(msgStr + ' begin');
       try {
@@ -189,7 +189,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testMaximizeToMinimize', 0, async (done: Function) => {
+    it('testMaximizeToMinimize', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr = 'testMaximizeToMinimize';
       console.log(msgStr + ' begin');
       try {
@@ -242,7 +242,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testMinimizeToMaximize', 0, async (done: Function) => {
+    it('testMinimizeToMaximize', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let msgStr = 'testMinimizeToMaximize';
       console.log(msgStr + ' begin');
       try {

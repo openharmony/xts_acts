@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import aeabi from 'libaeabindk.so'
 
@@ -32,7 +32,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemclr001', 0, async (done: Function) => {
+    it('testMuslAeabiMemclr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemclr();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -47,7 +47,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemclr4001', 0, async (done: Function) => {
+    it('testMuslAeabiMemclr4001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemclr4();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -62,7 +62,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemclr8001', 0, async (done: Function) => {
+    it('testMuslAeabiMemclr8001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemclr4();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -77,7 +77,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemcpy001', 0, async (done: Function) => {
+    it('testMuslAeabiMemcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemcpy();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -92,7 +92,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemcpy4001', 0, async (done: Function) => {
+    it('testMuslAeabiMemcpy4001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemcpy4();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -107,7 +107,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemcpy8001', 0, async (done: Function) => {
+    it('testMuslAeabiMemcpy8001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemcpy4();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -122,7 +122,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemmove001', 0, async (done: Function) => {
+    it('testMuslAeabiMemmove001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemmove();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -137,7 +137,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemmove4001', 0, async (done: Function) => {
+    it('testMuslAeabiMemmove4001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemmove4();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -152,7 +152,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemmove8001', 0, async (done: Function) => {
+    it('testMuslAeabiMemmove8001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemmove8();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -167,7 +167,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemset001', 0, async (done: Function) => {
+    it('testMuslAeabiMemset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemset();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -182,7 +182,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemset4001', 0, async (done: Function) => {
+    it('testMuslAeabiMemset4001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemset4();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -197,7 +197,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiMemset8001', 0, async (done: Function) => {
+    it('testMuslAeabiMemset8001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiMemset8();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -212,7 +212,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslAeabiReadTp001', 0, async (done: Function) => {
+    it('testMuslAeabiReadTp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.aeabiReadTp();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -227,7 +227,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslProgname001', 0, async (done: Function) => {
+    it('testMuslProgname001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.progname();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -242,7 +242,7 @@ export default function aeabiNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStackChkGuard001', 0, async (done: Function) => {
+    it('testMuslStackChkGuard001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = aeabi.stackChkGuard();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);

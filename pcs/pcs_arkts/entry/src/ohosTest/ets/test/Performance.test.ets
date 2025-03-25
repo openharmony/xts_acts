@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, TestType, Level, Size } from '@ohos/hypium';
 import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -46,7 +46,7 @@ export default function performanceTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testShorttermTask0100', 0, async (done: Function) => {
+    it('testShorttermTask0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let id: number
       let reason = 'pcs test'
       let defaultDelayTime = 180000
@@ -74,7 +74,7 @@ export default function performanceTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testLongtermTask0100', 0, async (done: Function) => {
+    it('testLongtermTask0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
       try {
         let driver = Driver.create()

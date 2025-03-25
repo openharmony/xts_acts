@@ -6,6 +6,7 @@
     "testability/pages/webResourceResponseGet",
     "testability/pages/ScrollPage",
     "testability/pages/webViewController",
-    "testability/pages/webViewOnScroll"
+    "testability/pages/webViewOnScroll",
+	"testability/pages/scrollByTo"
   ]
 }

@@ -12,7 +12,6 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
 export function at(arr: Array<any>, num: any): any {
   return (arr as any).at(num);
 }
@@ -43,11 +42,20 @@ export function testMap(arr: Array<any>): any {
   return arr.map(element => element * 2);
 }
 
+export function testMapReadonly(arr: readonly any[]): any {
+  return arr.map(element => element * 2);
+}
+
 export function exportObj(): any {
   return {};
 }
 
-export const exportObj2 = {
+
+export interface ExportObj2 {
+  a: number;
+}
+
+export const exportObj2: ExportObj2 = {
   a: 1
 };
 

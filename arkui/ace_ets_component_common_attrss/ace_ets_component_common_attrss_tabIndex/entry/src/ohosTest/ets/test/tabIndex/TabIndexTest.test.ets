@@ -24,7 +24,14 @@ async function executeTab(
     referenceTwoValue: string
 ) {
     expect(Utils.performKeyEventDownUp(2049, "Tab")).assertEqual(true)
-    await Utils.sleep(1000)
+    if (
+        data.pageConfig.targetView == "TextInput" ||
+        data.pageConfig.targetView == "TextArea"
+    ) {
+        await Utils.sleep(4000)
+    } else {
+        await Utils.sleep(1000)
+    }
     console.info("[" + data.caseTag + "] Press Tab.")
     let referenceOneComponent: ESObject = Utils.getComponentByKey(
         data.pageConfig.referenceOneComponentKey

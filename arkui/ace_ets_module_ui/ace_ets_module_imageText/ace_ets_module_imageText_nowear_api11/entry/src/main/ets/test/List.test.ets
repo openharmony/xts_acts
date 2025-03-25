@@ -30,6 +30,8 @@ import TextInputPageJsunit from './TextInputTest/TextInputPageJsunit.test';
 import SearchJsunit from './SearchTest/SearchJsunit.test';
 import richEditorApi1 from './RichEditorTest/richEditorApi/richEditorApi1.test'
 import RichEditorApi222 from './RichEditorTest/RichEditorApi222.test';
+import RichTextJsunit from './RichEditorTest/RichTextJsunit.test.ets';
+import richTextJsunitFOUR from './RichEditorTest/RichTextJsunitFOUR.test';
 
 export default function testsuite() {
   textAreaInputTest()
@@ -50,4 +52,6 @@ export default function testsuite() {
   SearchJsunit();
   richEditorApi1()
   RichEditorApi222();
+  RichTextJsunit();
+  richTextJsunitFOUR()
 }

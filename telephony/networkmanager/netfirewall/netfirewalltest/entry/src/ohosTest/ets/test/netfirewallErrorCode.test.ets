@@ -3,314 +3,313 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import netFirewall from '@ohos.net.netFirewall';
 import { JSON } from '@kit.ArkTS';
 
-const UID:number = 100;
-let CURRENT_ID :number = 1;
-let ipRule: netFirewall.NetFirewallRule = {
-  name: "rule01",
-  description: "rule01 description",
-  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action: netFirewall.FirewallRuleAction.RULE_ALLOW,
-  type: netFirewall.NetFirewallRuleType.RULE_IP,
-  isEnabled: true,
-  appUid: 20001,
-  protocol: 6,
-  userId: 100,
-  localIps: [
-    {
-      family: 1,
-      type: 1,
-      address: "10.10.1.1",
-      mask: 24
-    },{
-    family: 1,
-    type: 2,
-    startIp: "10.20.1.1",
-    endIp: "10.20.1.10"
-  }],
-  remoteIps:[
-    {
-      family: 1,
-      type: 1,
-      address: "20.10.1.1",
-      mask: 24
-    },{
-    family: 1,
-    type: 2,
-    startIp: "20.20.1.1",
-    endIp: "20.20.1.10"
-  }],
-  remotePorts: [
-    {
-      startPort: 443,
-      endPort: 443
-    }],
-  localPorts: [
-    {
-      startPort: 1000,
-      endPort: 1000
-    },{
-    startPort: 2000,
-    endPort: 2001
-  }],
-};
-let ipRulers : netFirewall.NetFirewallIpParams [] = []
-const ruleParam: netFirewall.RequestParam = {
-  page: 1,
-  pageSize: 10,
-  orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
-  orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
-};
-let portRulers : netFirewall.NetFirewallPortParams [] = []
-let domainRulers : netFirewall.NetFirewallDomainParams [] = []
-
-const ExpectTrue: (n: boolean) => void = (n: boolean) => {
-  try {
-    expect(n).assertTrue();
-  } catch (err) {
-    console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
-  }
-};
-const getName:() => string=()=>{
-  return "ruler"+ (Math.random()*1000000).toFixed(0)+(Math.random()*10000).toFixed(0)
-}
-const getDomainName:() => string=()=>{
-  return "www.baidu"+ (Math.random()*1000).toFixed(0)+(Math.random()*10000).toFixed(0)+".com"
-}
-const removedAll:  () => void = async ()=>{
-  let i = 0
-  while (i<100){
-    i++;
-    await updateCurrentId("remove 调用的")
-    await netFirewall.removeNetFirewallRule(UID,CURRENT_ID).catch((error : BusinessError) => {
-        i = 2000
-        console.error("delete firewall rule failed: " + JSON.stringify(error));
-      });
-  }
-}
-const updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
-  await netFirewall.getNetFirewallRules(UID, ruleParam).then((result: netFirewall.FirewallRulePage) => {
-    CURRENT_ID = result.data[0].id == undefined ? 1: result.data[0].id;
-  }, (error: BusinessError) => {
-    console.error(caseName, "get firewall rules failed: " + JSON.stringify(error));
-  });
-}
-let getIpRule: () => netFirewall.NetFirewallRule = ()=>{
-  return  {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_IP,
-    isEnabled: true,
-    appUid: 20001,
-    localIps: [
-      {
-        family: 1,
-        type: 1,
-        address: "10.10.1.1",
-        mask: 24
-      },{
-      family: 1,
-      type: 2,
-      startIp: "10.20.1.1",
-      endIp: "10.20.1.10"
-    }],
-    remoteIps:[
-      {
-        family: 1,
-        type: 1,
-        address: "20.10.1.1",
-        mask: 24
-      },{
-      family: 1,
-      type: 2,
-      startIp: "20.20.1.1",
-      endIp: "20.20.1.10"
-    }],
-    protocol: 6,
-    localPorts: [
-      {
-        startPort: 1000,
-        endPort: 1000
-      },{
-      startPort: 2000,
-      endPort: 2001
-    }],
-    remotePorts: [
-      {
-        startPort: 443,
-        endPort: 443
-      }],
-    userId: 100
-  };
-}
-let getMoreIPRule: (ipNumber: number) => netFirewall.NetFirewallRule  = (ipNumber: number)=>{
-  let resultIpRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_IP,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100
-  }
-  for(let i:number = 0 ; i<ipNumber; i++){
-    ipRulers.push({
-      family: 1,
-      type: 1,
-      address: "10.10.1.1"
-    })
-  }
-  resultIpRulers.localIps = ipRulers
-    return resultIpRulers
-}
-let getMorePortRule: () => netFirewall.NetFirewallRule  = ()=>{
-  let resultIpRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_IP,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100
-  }
-  for(let i:number = 0 ; i<20; i++){
-    portRulers.push(
-      {
-        startPort: 1000,
-        endPort: 1000
-      })
-  }
-  resultIpRulers.localPorts = portRulers
-  return resultIpRulers
-}
-let getMoreDnsRule: () => netFirewall.NetFirewallRule  = ()=>{
-  let resultRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_DNS,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100
-  }
-  resultRulers.dns = {
-    primaryDns:'1.1.1.1'
-  }
-  return resultRulers
-}
-let getMoreDomainRuler: () => netFirewall.NetFirewallRule  = ()=>{
-  let resultIpRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_DOMAIN,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100
-  }
-  for(let i:number = 0 ; i<100; i++){
-    domainRulers.push(
-      {
-        isWildcard: false,
-        domain: getDomainName()
-      })
-  }
-  resultIpRulers.domains = domainRulers;
-  return resultIpRulers
-}
-
-let getUpdateIPRule:(ipNumber: number) => netFirewall.NetFirewallRule  = (ipNumber: number)=>{
-    let resultIpRulers :netFirewall.NetFirewallRule = {
-      name: getName(),
-      description: "ip Rule description",
-      direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-      action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-      type:netFirewall.NetFirewallRuleType.RULE_IP,
-      isEnabled: true,
-      appUid: 20001,
-      userId: 100,
-      id: CURRENT_ID
-    }
-    for(let i:number = 0 ; i<ipNumber; i++){
-      ipRulers.push({
-        family: 1,
-        type: 1,
-        address: "10.10.1.1"
-      })
-    }
-    resultIpRulers.localIps = ipRulers
-    return resultIpRulers
-}
-let getUpdatePortRule : (portNumber: number) => netFirewall.NetFirewallRule  = (portNumber: number)=>{
-  let resultIpRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_IP,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100,
-    id:CURRENT_ID
-  }
-  for(let i:number = 0 ; i<portNumber; i++){
-    portRulers.push(
-      {
-        startPort: 1000,
-        endPort: 1000
-      })
-  }
-  resultIpRulers.localPorts = portRulers
-  return resultIpRulers
-}
-let getUpdateDomainRuler: (domainNumber: number) => netFirewall.NetFirewallRule  = (domainNumber: number)=>{
-  let resultIpRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_DOMAIN,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100,
-    id: CURRENT_ID
-  }
-  for(let i:number = 0 ; i<domainNumber; i++){
-    domainRulers.push(
-      {
-        isWildcard: false,
-        domain: getDomainName()
-      })
-  }
-  resultIpRulers.domains = domainRulers;
-  return resultIpRulers
-}
-let getUpdateDnsRule: () => netFirewall.NetFirewallRule  = ()=>{
-  let resultIpRulers :netFirewall.NetFirewallRule = {
-    name: getName(),
-    description: "ip Rule description",
-    direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-    action:netFirewall.FirewallRuleAction.RULE_ALLOW,
-    type:netFirewall.NetFirewallRuleType.RULE_DNS,
-    isEnabled: true,
-    appUid: 20001,
-    userId: 100,
-    id: CURRENT_ID
-  }
-
-  resultIpRulers.dns = {
-    primaryDns:'1.1.1.1'
-  }
-  return resultIpRulers
-}
-
 export default function NetfirewallErrorCode01() {
   describe('NetfirewallErrorCodeTest01',  () => {
+    const UID:number = 100;
+    let CURRENT_ID :number = 1;
+    let ipRule: netFirewall.NetFirewallRule = {
+      name: "rule01",
+      description: "rule01 description",
+      direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+      action: netFirewall.FirewallRuleAction.RULE_ALLOW,
+      type: netFirewall.NetFirewallRuleType.RULE_IP,
+      isEnabled: true,
+      appUid: 20001,
+      protocol: 6,
+      userId: 100,
+      localIps: [
+        {
+          family: 1,
+          type: 1,
+          address: "10.10.1.1",
+          mask: 24
+        },{
+        family: 1,
+        type: 2,
+        startIp: "10.20.1.1",
+        endIp: "10.20.1.10"
+      }],
+      remoteIps:[
+        {
+          family: 1,
+          type: 1,
+          address: "20.10.1.1",
+          mask: 24
+        },{
+        family: 1,
+        type: 2,
+        startIp: "20.20.1.1",
+        endIp: "20.20.1.10"
+      }],
+      remotePorts: [
+        {
+          startPort: 443,
+          endPort: 443
+        }],
+      localPorts: [
+        {
+          startPort: 1000,
+          endPort: 1000
+        },{
+        startPort: 2000,
+        endPort: 2001
+      }],
+    };
+    let ipRulers : netFirewall.NetFirewallIpParams [] = []
+    const ruleParam: netFirewall.RequestParam = {
+      page: 1,
+      pageSize: 10,
+      orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
+      orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
+    };
+    let portRulers : netFirewall.NetFirewallPortParams [] = []
+    let domainRulers : netFirewall.NetFirewallDomainParams [] = []
+
+    const ExpectTrue: (n: boolean) => void = (n: boolean) => {
+      try {
+        expect(n).assertTrue();
+      } catch (err) {
+        console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
+      }
+    };
+    const getName:() => string=()=>{
+      return "ruler"+ (Math.random()*1000000).toFixed(0)+(Math.random()*10000).toFixed(0)
+    }
+    const getDomainName:() => string=()=>{
+      return "www.baidu"+ (Math.random()*1000).toFixed(0)+(Math.random()*10000).toFixed(0)+".com"
+    }
+    const removedAll:  () => void = async ()=>{
+      let i = 0
+      while (i<100){
+        i++;
+        await updateCurrentId("remove 调用的")
+        await netFirewall.removeNetFirewallRule(UID,CURRENT_ID).catch((error : BusinessError) => {
+          i = 2000
+          console.error("delete firewall rule failed: " + JSON.stringify(error));
+        });
+      }
+    }
+    const updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
+      await netFirewall.getNetFirewallRules(UID, ruleParam).then((result: netFirewall.FirewallRulePage) => {
+        CURRENT_ID = result.data[0].id == undefined ? 1: result.data[0].id;
+      }, (error: BusinessError) => {
+        console.error(caseName, "get firewall rules failed: " + JSON.stringify(error));
+      });
+    }
+    let getIpRule: () => netFirewall.NetFirewallRule = ()=>{
+      return  {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_IP,
+        isEnabled: true,
+        appUid: 20001,
+        localIps: [
+          {
+            family: 1,
+            type: 1,
+            address: "10.10.1.1",
+            mask: 24
+          },{
+          family: 1,
+          type: 2,
+          startIp: "10.20.1.1",
+          endIp: "10.20.1.10"
+        }],
+        remoteIps:[
+          {
+            family: 1,
+            type: 1,
+            address: "20.10.1.1",
+            mask: 24
+          },{
+          family: 1,
+          type: 2,
+          startIp: "20.20.1.1",
+          endIp: "20.20.1.10"
+        }],
+        protocol: 6,
+        localPorts: [
+          {
+            startPort: 1000,
+            endPort: 1000
+          },{
+          startPort: 2000,
+          endPort: 2001
+        }],
+        remotePorts: [
+          {
+            startPort: 443,
+            endPort: 443
+          }],
+        userId: 100
+      };
+    }
+    let getMoreIPRule: (ipNumber: number) => netFirewall.NetFirewallRule  = (ipNumber: number)=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_IP,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100
+      }
+      for(let i:number = 0 ; i<ipNumber; i++){
+        ipRulers.push({
+          family: 1,
+          type: 1,
+          address: "10.10.1.1"
+        })
+      }
+      resultIpRulers.localIps = ipRulers
+      return resultIpRulers
+    }
+    let getMorePortRule: () => netFirewall.NetFirewallRule  = ()=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_IP,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100
+      }
+      for(let i:number = 0 ; i<20; i++){
+        portRulers.push(
+          {
+            startPort: 1000,
+            endPort: 1000
+          })
+      }
+      resultIpRulers.localPorts = portRulers
+      return resultIpRulers
+    }
+    let getMoreDnsRule: () => netFirewall.NetFirewallRule  = ()=>{
+      let resultRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_DNS,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100
+      }
+      resultRulers.dns = {
+        primaryDns:'1.1.1.1'
+      }
+      return resultRulers
+    }
+    let getMoreDomainRuler: () => netFirewall.NetFirewallRule  = ()=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_DOMAIN,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100
+      }
+      for(let i:number = 0 ; i<100; i++){
+        domainRulers.push(
+          {
+            isWildcard: false,
+            domain: getDomainName()
+          })
+      }
+      resultIpRulers.domains = domainRulers;
+      return resultIpRulers
+    }
+
+    let getUpdateIPRule:(ipNumber: number) => netFirewall.NetFirewallRule  = (ipNumber: number)=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_IP,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100,
+        id: CURRENT_ID
+      }
+      for(let i:number = 0 ; i<ipNumber; i++){
+        ipRulers.push({
+          family: 1,
+          type: 1,
+          address: "10.10.1.1"
+        })
+      }
+      resultIpRulers.localIps = ipRulers
+      return resultIpRulers
+    }
+    let getUpdatePortRule : (portNumber: number) => netFirewall.NetFirewallRule  = (portNumber: number)=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_IP,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100,
+        id:CURRENT_ID
+      }
+      for(let i:number = 0 ; i<portNumber; i++){
+        portRulers.push(
+          {
+            startPort: 1000,
+            endPort: 1000
+          })
+      }
+      resultIpRulers.localPorts = portRulers
+      return resultIpRulers
+    }
+    let getUpdateDomainRuler: (domainNumber: number) => netFirewall.NetFirewallRule  = (domainNumber: number)=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_DOMAIN,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100,
+        id: CURRENT_ID
+      }
+      for(let i:number = 0 ; i<domainNumber; i++){
+        domainRulers.push(
+          {
+            isWildcard: false,
+            domain: getDomainName()
+          })
+      }
+      resultIpRulers.domains = domainRulers;
+      return resultIpRulers
+    }
+    let getUpdateDnsRule: () => netFirewall.NetFirewallRule  = ()=>{
+      let resultIpRulers :netFirewall.NetFirewallRule = {
+        name: getName(),
+        description: "ip Rule description",
+        direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+        action:netFirewall.FirewallRuleAction.RULE_ALLOW,
+        type:netFirewall.NetFirewallRuleType.RULE_DNS,
+        isEnabled: true,
+        appUid: 20001,
+        userId: 100,
+        id: CURRENT_ID
+      }
+
+      resultIpRulers.dns = {
+        primaryDns:'1.1.1.1'
+      }
+      return resultIpRulers
+    }
     beforeAll(async ()=>{
       await removedAll();
       await netFirewall.getNetFirewallRules(UID, ruleParam).then((result: netFirewall.FirewallRulePage) => {
@@ -320,14 +319,14 @@ export default function NetfirewallErrorCode01() {
       });
     })
 
-      /**
-      * @tc.number : SUB_Telephony_Netfirewall_ErrCo_0100
-      * @tc.name   : testTelephonyNetfirewallErrCo0100
-      * @tc.desc   : removeNetFirewallRule The specified rule does not exist.
-      * @tc.level  : Level 3
-      * @tc.type   : Function
-      * @tc.size   : MediumTest
-      */
+    /**
+     * @tc.number : SUB_Telephony_Netfirewall_ErrCo_0100
+     * @tc.name   : testTelephonyNetfirewallErrCo0100
+     * @tc.desc   : removeNetFirewallRule The specified rule does not exist.
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
     it("testTelephonyNetfirewallErrCo0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       const caseName: string = 'testTelephonyNetfirewallErrCo0100';
       console.info(`${caseName}---Start`);
@@ -1378,12 +1377,12 @@ export default function NetfirewallErrorCode01() {
           i++;
           await netFirewall.addNetFirewallRule(getIpRule())
             .catch(async (err:BusinessError)=>{
-            console.log(`${caseName} err in `,JSON.stringify(err))
-            ExpectTrue(err.code == 29400001)
-            done();
-            i = 2000;
-            await removedAll();
-          });
+              console.log(`${caseName} err in `,JSON.stringify(err))
+              ExpectTrue(err.code == 29400001)
+              done();
+              i = 2000;
+              await removedAll();
+            });
         }
       }catch (err){
         console.log(`${caseName} --test end`);

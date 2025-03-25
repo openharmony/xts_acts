@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import fs from '@ohos.file.fs';
@@ -154,7 +154,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltTest001', 0, async function (done) {
+        it('rebuiltTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltTest001 start *************");
             await Generate();
             await rdbStore.close();
@@ -193,7 +193,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltInsertTest0001', 0, async function (done) {
+        it('rebuiltInsertTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltInsertTest0001 start *************");
             await Generate();
             var u8 = new Uint8Array([1, 2, 3]);
@@ -222,7 +222,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltBatchInsertTest0001', 0, async function (done) {
+        it('rebuiltBatchInsertTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltBatchInsertTest0001 start *************");
             await Generate();
             var u8 = new Uint8Array([1, 2, 3]);
@@ -250,7 +250,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltUpdateTest0001', 0, async function (done) {
+        it('rebuiltUpdateTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltUpdateTest0001 start *************");
             await Generate();
             let u8 = new Uint8Array([1, 2, 3]);
@@ -282,7 +282,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltDeleteTest0001', 0, async function (done) {
+        it('rebuiltDeleteTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltDeleteTest0001 start *************");
             await Generate();
             try {
@@ -307,7 +307,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltExecuteTest0001', 0, async function (done) {
+        it('rebuiltExecuteTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltExecuteTest0001 start *************");
             await Generate();
             try {
@@ -329,7 +329,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('rebuiltExecuteSqlTest0001', 0, async function (done) {
+        it('rebuiltExecuteSqlTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* rebuiltExecuteSqlTest0001 start *************");
             await Generate();
             const SQL_DELETE_TABLE = "DEletE FROM TEST WHERE data1 = '2'";
@@ -352,7 +352,7 @@ export default function rdbStoreCorruptJSunitTest() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('RepairedTest001', 0, async function (done) {
+        it('RepairedTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.log(TAG + "************* RepairedTest001 start *************");
             try{
                 console.log(TAG + "data_relationalStore.RebuildType.REPAIRED" + data_relationalStore.RebuildType.REPAIRED);

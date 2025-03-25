@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import uiEffect from '@ohos.graphics.uiEffect';
@@ -55,7 +55,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateColorShaderNormal', DEFAULT, () => {
+    it('testShaderEffectCreateColorShaderNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateColorShaderNormal';
 
       try {
@@ -83,7 +83,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateColorShaderMultipleCalls', DEFAULT, () => {
+    it('testShaderEffectCreateColorShaderMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateColorShaderMultipleCalls';
 
       try {
@@ -107,7 +107,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateColorShaderToNull', DEFAULT, () => {
+    it('testShaderEffectCreateColorShaderToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateColorShaderToNull';
 
       try {
@@ -135,7 +135,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateLinearGradientNormal', DEFAULT, () => {
+    it('testShaderEffectCreateLinearGradientNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateLinearGradientNormal';
       let matrix = new drawing.Matrix();
 
@@ -233,7 +233,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateLinearGradientMultipleCalls', DEFAULT, () => {
+    it('testShaderEffectCreateLinearGradientMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateLinearGradientMultipleCalls';
 
       try {
@@ -261,7 +261,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateLinearGradientToNull', DEFAULT, () => {
+    it('testShaderEffectCreateLinearGradientToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateLinearGradientToNull';
 
       try {
@@ -370,7 +370,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateLinearGradientAbnormal', DEFAULT, () => {
+    it('testShaderEffectCreateLinearGradientAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateLinearGradientAbnormal';
 
       try {
@@ -406,7 +406,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateRadialGradientNormal', DEFAULT, () => {
+    it('testShaderEffectCreateRadialGradientNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateRadialGradientNormal';
       let matrix = new drawing.Matrix();
 
@@ -537,7 +537,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateRadialGradientMultipleCalls', DEFAULT, () => {
+    it('testShaderEffectCreateRadialGradientMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateRadialGradientMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -562,7 +562,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateRadialGradientToNull', DEFAULT, () => {
+    it('testShaderEffectCreateRadialGradientToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateRadialGradientToNull';
       let matrix = new drawing.Matrix();
 
@@ -655,7 +655,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateRadialGradientAbnormal', DEFAULT, () => {
+    it('testShaderEffectCreateRadialGradientAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateRadialGradientAbnormal';
 
       try {
@@ -675,7 +675,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateSweepGradientNormal', DEFAULT, () => {
+    it('testShaderEffectCreateSweepGradientNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateSweepGradientNormal';
       let matrix_ = new drawing.Matrix();
       let matrix = new drawing.Matrix();
@@ -807,7 +807,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateSweepGradientMultipleCalls', DEFAULT, () => {
+    it('testShaderEffectCreateSweepGradientMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateSweepGradientMultipleCalls';
       let matrix_ = new drawing.Matrix();
 
@@ -834,7 +834,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateSweepGradientToNull', DEFAULT, () => {
+    it('testShaderEffectCreateSweepGradientToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateSweepGradientToNull';
       let matrix_ = new drawing.Matrix();
 
@@ -943,7 +943,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateSweepGradientAbnormal', DEFAULT, () => {
+    it('testShaderEffectCreateSweepGradientAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateSweepGradientAbnormal';
 
       try {
@@ -963,7 +963,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateConicalGradientNormal', DEFAULT, () => {
+    it('testShaderEffectCreateConicalGradientNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateConicalGradientNormal';
       let matrix_ = new drawing.Matrix();
       let matrix = new drawing.Matrix();
@@ -1088,7 +1088,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateConicalGradientMultipleCalls', DEFAULT, () => {
+    it('testShaderEffectCreateConicalGradientMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateConicalGradientMultipleCalls';
 
       try {
@@ -1114,7 +1114,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateConicalGradientToNull', DEFAULT, () => {
+    it('testShaderEffectCreateConicalGradientToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateConicalGradientToNull';
       let matrix_ = new drawing.Matrix();
       let matrix = new drawing.Matrix();
@@ -1241,7 +1241,7 @@ export default function shadowEffectTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testShaderEffectCreateConicalGradientAbnormal', DEFAULT, () => {
+    it('testShaderEffectCreateConicalGradientAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testShaderEffectCreateConicalGradientAbnormal';
 
       try {

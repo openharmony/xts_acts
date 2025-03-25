@@ -56,15 +56,17 @@ export default function onScrollIndexFlow1() {
     it('onScrollIndexFlow1_0100', 0, async (done: Function) => {
       console.info('[onScrollIndexFlow1_0100] START');
       let driver = Driver.create();
-      let size = await driver.getDisplaySize();
-      let sizeX = size.x;
-      let sizeY = size.y;
-      console.info("[onScrollIndexFlow1_0100] size is: " + JSON.stringify(size));
-      console.info("[onScrollIndexFlow1_0100] size x is: " + JSON.stringify(sizeX));
-      console.info("[onScrollIndexFlow1_0100] size Y is: " + JSON.stringify(sizeY));
+      let swiperScroll = CommonFunc.getComponentRectOnScreen('onScrollIndexFlow1');
+      let top = swiperScroll.top;
+      let right = swiperScroll.right;
+      let left = swiperScroll.left;
+      let bottom = swiperScroll.bottom;
+      console.info("onScrollIndexFlow1_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
       await CommonFunc.sleep(1000);
-
-      await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, true ,20)
+      await driver.mouseScroll({x:Math.round(left + width/2), y: Math.round(top + height*0.3)}, true ,20)
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('onScrollIndex_flow');
       let obj: ESObject = JSON.parse(strJson);

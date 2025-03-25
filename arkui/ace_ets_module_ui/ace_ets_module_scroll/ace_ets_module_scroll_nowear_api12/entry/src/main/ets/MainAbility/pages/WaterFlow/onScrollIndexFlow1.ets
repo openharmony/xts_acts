@@ -64,6 +64,7 @@ struct onScrollIndexFlow1 {
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
+      .id('onScrollIndexFlow1')
       .rowsTemplate('1fr 1fr 1fr')
       .direction(Direction.Rtl)
       .columnsGap(10)

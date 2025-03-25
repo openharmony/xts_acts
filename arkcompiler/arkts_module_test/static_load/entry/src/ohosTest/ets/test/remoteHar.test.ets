@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect ,TestType, Size, Level } from "@ohos/hypium"
 import { TAG as ConstantTAG } from '@ohos/hypium/src/main/Constant';
 import validator from 'validator';
 import validator2 from 'validator/validator';
@@ -28,7 +28,7 @@ export default function staticLoadRemoteHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testRemoteHar01", 0, () => {
+    it("testRemoteHar01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testRemoteHar01";
       try {
         expect(validator.isEmail('foo@bar.com')).assertTrue();
@@ -46,7 +46,7 @@ export default function staticLoadRemoteHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testRemoteHar02", 0, () => {
+    it("testRemoteHar02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testRemoteHar02";
       try {
         expect(true).assertTrue();
@@ -64,7 +64,7 @@ export default function staticLoadRemoteHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testRemoteHar03", 0, () => {
+    it("testRemoteHar03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testRemoteHar03";
       try {
         expect(validator2.isEmail('foo@bar.com')).assertTrue();
@@ -82,7 +82,7 @@ export default function staticLoadRemoteHar() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testRemoteHar04", 0, () => {
+    it("testRemoteHar04", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testRemoteHar04";
       try {
         expect(ConstantTAG).assertEqual('[Hypium]');

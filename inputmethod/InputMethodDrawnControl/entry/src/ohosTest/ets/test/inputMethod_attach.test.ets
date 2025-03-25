@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import inputMethod from '@ohos.inputMethod';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import * as env from './lib/Const';
 import { BusinessError } from '@ohos.base'
 
@@ -63,7 +63,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Async mode. Optional input parameter showkeyboard=true
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Async_0100';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -97,7 +97,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Async mode. Optional input parameter showkeyboard=false
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Async_0200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Async_0200';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -131,7 +131,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Async mode. Optional input parameter showkeyboard=0
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Async_0300', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Async_0300';
       let show_keyboard: ESObject = 0;
       const ATTRIBUTE: inputMethod.TextConfig = {
@@ -167,7 +167,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Async mode. Optional input parameter showkeyboard=1
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Async_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Async_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Async_0400';
       let show_keyboard: ESObject = 1;
       const ATTRIBUTE: inputMethod.TextConfig = {
@@ -203,7 +203,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard=true
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_0100';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -228,7 +228,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard=false
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_0200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_0200';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -254,7 +254,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard=0
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_0300', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_0300';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -281,7 +281,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard=1
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_0400';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -308,7 +308,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard='aa'
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_0500', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_0500', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_0500';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
@@ -335,7 +335,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode. Optional input parameters showkeyboard=true, attribute='aa'
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_0700', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_0700', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_0700';
       const ATTRIBUTE: ESObject = 'aa';
       try {
@@ -357,7 +357,7 @@ export default function inputMethodTest() {
      * @tc.name Call the attach interface in Promise mode and pass in an invalid input parameter
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_attach_Promise_1000', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_attach_Promise_1000', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_1000';
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {

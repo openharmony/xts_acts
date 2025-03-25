@@ -52,7 +52,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           } else {
             console.info(`${caseName} Device id list: ${JSON.stringify(ids)}`);
-            ExpectTrue(true);
+            ExpectTrue(Array.isArray(ids));
             done();
           }
         });
@@ -76,7 +76,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.getDeviceList().then((ids: Array<Number>) => {
           console.info(`${caseName} Device id list: ${JSON.stringify(ids)}`);
-          ExpectTrue(true);
+          ExpectTrue(Array.isArray(ids));
           done();
         });
       } catch (error) {
@@ -104,7 +104,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           } else {
             console.info(`${caseName} Device info: ${JSON.stringify(deviceData)}`);
-            ExpectTrue(true);
+            ExpectTrue(typeof(deviceData) == 'object');
             done();
           }
         });
@@ -128,7 +128,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
           console.info(`${caseName} Device info: ${JSON.stringify(deviceData)}`);
-          ExpectTrue(true);
+          ExpectTrue(typeof(deviceData) == 'object');
           done();
         });
       } catch (error) {
@@ -151,7 +151,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
         console.info(`${caseName} Device info: ${JSON.stringify(deviceData)}`);
-        ExpectTrue(true);
+        ExpectTrue(typeof(deviceData) == 'object');
         done();
       } catch (error) {
         console.info(`${caseName} Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -174,6 +174,7 @@ export default function MultimodalInputDeviceTest() {
         console.info(`${caseName} Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
       };
       let isPhysicalKeyboardExist = true;
+      let ifInputDeviceOffSuccess = 0;
       try {
         inputDevice.on("change", (data: inputDevice.DeviceListener) => {
           console.info(`${caseName} Device event info: ${JSON.stringify(data)}`);
@@ -191,7 +192,9 @@ export default function MultimodalInputDeviceTest() {
       }
       try {
         inputDevice.off("change", callback);
-        ExpectTrue(true);
+        console.info(`${caseName} Cancel listening device event success, ifInputDeviceOffSuccess: ${JSON.stringify(ifInputDeviceOffSuccess)}`);
+        ifInputDeviceOffSuccess++;  
+        ExpectTrue(ifInputDeviceOffSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} Cancel listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -210,12 +213,14 @@ export default function MultimodalInputDeviceTest() {
      */
     it("SUB_MMI_Input_Api_IptDev_off_0200", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_off_0200";
+      let ifInputDeviceOffSuccess = 0;
       const callback = (data: inputDevice.DeviceListener) => {
         console.info(`${caseName} Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
       };
       try {
         inputDevice.off("change");
-        ExpectTrue(true);
+        ifInputDeviceOffSuccess++;
+        ExpectTrue(ifInputDeviceOffSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} Cancel all listening device event failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -242,7 +247,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           } else {
             console.info(`${caseName} Device id list: ${JSON.stringify(ids)}`);
-            ExpectTrue(true);
+            ExpectTrue(Array.isArray(ids));
             done();
           }
         });
@@ -266,7 +271,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.getDeviceIds().then((ids: Array<Number>) => {
           console.info(`${caseName} Device id list: ${JSON.stringify(ids)}`);
-          ExpectTrue(true);
+          ExpectTrue(Array.isArray(ids));
           done();
         });
       } catch (error) {
@@ -294,7 +299,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           } else {
             console.info(`${caseName} Device info: ${JSON.stringify(deviceData)}`);
-            ExpectTrue(true);
+            ExpectTrue(typeof(deviceData) == 'object');
             done();
           }
         });
@@ -318,7 +323,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
           console.info(`${caseName} Device info: ${JSON.stringify(deviceData)}`);
-          ExpectTrue(true);
+          ExpectTrue(typeof(deviceData) == 'object');
           done();
         });
       } catch (error) {
@@ -341,7 +346,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.supportKeys(1, [17, 22, 2055], (error: Error, supportResult: Array<Boolean>) => {
           console.info(`${caseName} Query result: ${JSON.stringify(supportResult)}`);
-          ExpectTrue(true);
+          ExpectTrue(Array.isArray(supportResult));
           done();
         });
       } catch (error) {
@@ -364,7 +369,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
           console.info(`${caseName} Query result: ${JSON.stringify(supportResult)}`);
-          ExpectTrue(true);
+          ExpectTrue(Array.isArray(supportResult));
           done();
         });
       } catch (error) {
@@ -387,7 +392,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055]);
         console.info(`${caseName} Query result: ${JSON.stringify(supportResult)}`);
-        ExpectTrue(true);
+        ExpectTrue(Array.isArray(supportResult));
         done();
       } catch (error) {
         console.info(`${caseName} Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -414,7 +419,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           } else {
             console.info(`${caseName} Keyboard type: ${JSON.stringify(type)}`);
-            ExpectTrue(true);
+            ExpectTrue(type>=0 && type<=5);
             done();
           }
         });
@@ -438,7 +443,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         inputDevice.getKeyboardType(1).then((type: Number) => {
           console.info(`${caseName} Keyboard type: ${JSON.stringify(type)}`);
-          ExpectTrue(true);
+          ExpectTrue(type>=0 && type<=5);
           done();
         });
       } catch (error) {
@@ -461,7 +466,7 @@ export default function MultimodalInputDeviceTest() {
       try {
         let type: number = inputDevice.getKeyboardTypeSync(1);
         console.info(`${caseName} Keyboard type: ${JSON.stringify(type)}`);
-        ExpectTrue(true);
+        ExpectTrue(type>=0 && type<=5);
         done();
       } catch (error) {
         console.info(`${caseName} Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -505,15 +510,9 @@ export default function MultimodalInputDeviceTest() {
       let caseName = "SUB_MMI_Input_Api_IptDev_getIntervalSinceLastInput_0100";
       try {
         inputDevice.getIntervalSinceLastInput().then((timeInterval: number) => {
-          if(timeInterval > 0) {
-            console.info(`${caseName} interval since last input: ${JSON.stringify(timeInterval)}`);
-            ExpectTrue(true);
-            done();
-          } else {
-            console.info(`${caseName} failed to get interval since last input: ${JSON.stringify(timeInterval)}`);
-            ExpectFalse(true);
-            done();
-          }
+          console.info(`${caseName} interval since last input: ${JSON.stringify(timeInterval)}`);
+          ExpectTrue(timeInterval > 0);
+          done();
         });
       } catch (error) {
         console.info(`${caseName} failed to get interval since last input, error: ${JSON.stringify(error, [`code`, `message`])}`);

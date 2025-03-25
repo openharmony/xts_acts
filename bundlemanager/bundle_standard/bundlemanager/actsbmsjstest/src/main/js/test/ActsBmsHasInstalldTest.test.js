@@ -14,7 +14,7 @@
  */
 
 import pkg from '@system.package'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const NUM_TWO = 2;
 const ERR_CODE = 202;
@@ -28,7 +28,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalled
      * @tc.desc Test hasInstalled interface.
      */
-    it('testHasInstalled', 0, async function (done) {
+    it('testHasInstalled', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
             bundleName: 'com.example.third2',
@@ -54,7 +54,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledNoSuccess
      * @tc.desc Test hasInstalled interface without success function.
      */
-    it('testHasInstalledNoSuccess', 0, async function (done) {
+    it('testHasInstalledNoSuccess', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         pkg.hasInstalled({
             bundleName: 'com.example.third2',
             fail: function fail(data, code) {
@@ -73,7 +73,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledNoFailComplete
      * @tc.desc Test hasInstalled without fail function and complete function.
      */
-    it('testHasInstalledNoFailComplete', 0, async function (done) {
+    it('testHasInstalledNoFailComplete', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         pkg.hasInstalled({
             bundleName: 'com.example.third2',
             success: function success(data) {
@@ -89,7 +89,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name hasInstalledHapNotExist
      * @tc.desc Test hasInstalled when hap not exist.
      */
-    it('hasInstalledHapNotExist', 0, async function (done) {
+    it('hasInstalledHapNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
             bundleName: 'wrongName',
@@ -115,7 +115,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledNumberParam
      * @tc.desc Test hasInstalled when bundleName is number.
      */
-    it('testHasInstalledNumberParam', 0, async function (done) {
+    it('testHasInstalledNumberParam', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
             bundleName: NUM_TWO,
@@ -142,7 +142,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledFailNotExist
      * @tc.desc Test hasInstalled without function fail.
      */
-    it('testHasInstalledFailNotExist', 0, async function (done) {
+    it('testHasInstalledFailNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         pkg.hasInstalled({
             bundleName: NUM_TWO,
             success: function success(data) {
@@ -161,7 +161,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledCompleteNotExit
      * @tc.desc Test hasInstalled without function complete.
      */
-    it('testHasInstalledCompleteNotExit', 0, async function (done) {
+    it('testHasInstalledCompleteNotExit', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         pkg.hasInstalled({
             bundleName: undefined,
             success: function success(data) {
@@ -183,7 +183,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledReturnNotExist
      * @tc.desc Test hasInstalled without function fail and function complete.
      */
-    it('testHasInstalledReturnNotExist', 0, async function (done) {
+    it('testHasInstalledReturnNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         let status = "normal";
         pkg.hasInstalled({
             bundleName: NUM_TWO,
@@ -203,7 +203,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.name testHasInstalledNoFailCompleteBundleNotExist
      * @tc.desc Test hasInstalled interface without function fail and function complete bundleName not exiet 
      */
-    it('testHasInstalledNoFailCompleteBundleNotExist', 0, async function (done) {
+    it('testHasInstalledNoFailCompleteBundleNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         pkg.hasInstalled({
             bundleName: 'wrongName',
             success: function success(data) {
@@ -220,7 +220,7 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.desc: test hasInstalled bundleName is number without function complete
      * @tc.level 3
      */
-    it('testHasInstalledInvalidParamCompleteNotExit', 0, async function (done) {
+    it('testHasInstalledInvalidParamCompleteNotExit', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
         pkg.hasInstalled({
             bundleName: NUM_TWO,
             success: function success(data) {

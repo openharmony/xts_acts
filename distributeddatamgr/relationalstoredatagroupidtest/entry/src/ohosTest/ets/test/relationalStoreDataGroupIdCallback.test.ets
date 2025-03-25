@@ -14,7 +14,7 @@
 */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import common from "@ohos.app.ability.common"
 
@@ -58,7 +58,7 @@ export default function relationalStoreDataGroupIdCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0100', 0, async (done: Function) => {
+    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const STORE_CONFIG: relationalStore.StoreConfig = {
         name: "RdbTest.db",
         securityLevel: relationalStore.SecurityLevel.S1,
@@ -90,7 +90,7 @@ export default function relationalStoreDataGroupIdCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0200', 0, async (done: Function) => {
+    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const STORE_CONFIG: relationalStore.StoreConfig = {
         name: "RdbTest.db",
         securityLevel: relationalStore.SecurityLevel.S1,
@@ -123,7 +123,7 @@ export default function relationalStoreDataGroupIdCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0300', 0, async (done: Function) => {
+    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const STORE_CONFIG: relationalStore.StoreConfig = {
         name: "RdbTest.db",
         securityLevel: relationalStore.SecurityLevel.S1,
@@ -150,7 +150,7 @@ export default function relationalStoreDataGroupIdCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0400', 0, async (done: Function) => {
+    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const STORE_CONFIG: relationalStore.StoreConfig = {
         name: "RdbTest.db",
         securityLevel: relationalStore.SecurityLevel.S1,

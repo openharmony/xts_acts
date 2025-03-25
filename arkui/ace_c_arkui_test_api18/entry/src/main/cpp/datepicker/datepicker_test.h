@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef ACE_C_ARKUI_TEST_API16_DATEPICKER_TEST_H
-#define ACE_C_ARKUI_TEST_API16_DATEPICKER_TEST_H
+#ifndef ACE_C_ARKUI_TEST_API18_DATEPICKER_TEST_H
+#define ACE_C_ARKUI_TEST_API18_DATEPICKER_TEST_H
 
 #include "../common/common.h"
 
@@ -27,4 +27,4 @@ public:
 private:
 };
 } // namespace ArkUICapiTest
-#endif // ACE_C_ARKUI_TEST_API16_DATEPICKER_TEST_H
+#endif // ACE_C_ARKUI_TEST_API18_DATEPICKER_TEST_H

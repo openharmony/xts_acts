@@ -22,7 +22,7 @@
                 "wait 5",
                 "uinput -T -m 300 2700 280 200",
                 "uinput -K -d 2054 -u 2054",
-                "power-shell setmode 602",
+                "power-shell timeout -o 2147483647",
                 "uitest dumpLayout"
             ],
             "teardown-command": [

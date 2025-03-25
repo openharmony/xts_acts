@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import signal from 'libsignalndk32.so'
 
@@ -32,7 +32,7 @@ export default function signalNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigTimedWaitTime64001', 0, async (done: Function) => {
+    it('testMuslSignalSigTimedWaitTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.__sigtimedwait_time641();
       expect(a).assertEqual(0);
       done()
@@ -45,7 +45,7 @@ export default function signalNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSignalSigTimedWaitTime64002', 0, async (done: Function) => {
+    it('testMuslSignalSigTimedWaitTime64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = signal.__sigtimedwait_time642();
       expect(a).assertEqual(-1);
       done()

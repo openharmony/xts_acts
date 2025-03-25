@@ -253,6 +253,20 @@ export default function getMovingPhotoTest() {
       }
     }
 
+    const checkMovingPhotoLoadByResourceError = async (done: Function, testNum: string, imageFileUri: string,
+      videoFileUri: string) => {
+      try {
+        await photoAccessHelper.MediaAssetManager.loadMovingPhoto(testContext, imageFileUri, videoFileUri);
+        console.error(`${testNum} :: failed , loadMovingPhoto success !`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} :: loadMovingPhoto failed , message = ${error} ${error.code}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    }
+
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CREATE_MOVING_PHOTO_0001
      * @tc.name      : create_moving_photo_001
@@ -379,6 +393,43 @@ export default function getMovingPhotoTest() {
       await sleep(3000);
       await checkFileExist(done, testNum, sandboxPath, fileList, true);
       checkMovingPhotoLoadByResource(done, testNum, imageFileUri, videoFileUri);
+    });
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_003
+     * @tc.name      : load_moving_photo_from_sandbox_003
+     * @tc.desc      : load moving error photo uri,error code is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('load_moving_photo_from_sandbox_003', 2, async (done: Function) => {
+      const testNum = 'load_moving_photo_from_sandbox_003';
+      let imageFileUri: ESObject = ['123123'];
+      let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/testVideo.mp4";
+      checkMovingPhotoLoadByResourceError(done, testNum, imageFileUri, videoFileUri);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CANEL_REQUEST_0200
+     * @tc.name      : cancel_request_002
+     * @tc.desc      : cancelRequest by error requestId,error code is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('cancel_request_002', 2, async (done: Function) => {
+      let testNum = 'cancel_request_002';
+      try {
+          let requestId: ESObject = ['123123'];
+          await photoAccessHelper.MediaAssetManager.cancelRequest(testContext, requestId);
+          console.info(`${testNum} request cancelled successfully`);
+          expect(false).assertTrue();
+          done();
+      } catch (err) {
+          console.error(`${testNum} failed with error: ${err.code}, ${err.message}`);
+          expect(err.code).assertEqual('401');
+          done();
+      }
     });
 
     /**

@@ -104,6 +104,22 @@
         "exported": true,
         "srcEntry": "./ets/testability/EmbeddedRectTestAbility.ets",
         "type": "embeddedUI"
+      },
+      {
+        "name": "EmbeddedOccupyTestAbility",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedOccupyTestAbility.ets",
+        "type": "embeddedUI"
+      },
+      {
+        "name": "EmbeddedOccupyErrorCodeTestAbility",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedOccupyErrorCodeTestAbility.ets",
+        "type": "embeddedUI"
       }
     ],
     "requestPermissions": [

@@ -24,6 +24,7 @@ import formInfo from '@ohos.app.form.formInfo';
 const COMMON_TAG = 'FormProviderApi';
 const DOMAIN = 0xF811;
 const PUBLISH_BUNDLE_NAME = 'com.example.menuprovider';
+const ERROR_CODE = 16501000;
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 let sleep = async (delay: number = 1000): Promise<void> => {
@@ -66,9 +67,13 @@ export default function formProviderTest() {
         expect(data.length).assertEqual(1);
         done();
       }).catch((error: BusinessError) => {
-        hilog.info(DOMAIN, COMMON_TAG, '%{public}s', 
-        `${TAG} formProvider getPublishedFormInfos error: ${JSON.stringify(error)}`);
-        expect().assertFail();
+        if (error.code === ERROR_CODE) {
+          expect(error.code).assertEqual(ERROR_CODE);
+        } else {
+          hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
+          `${TAG} formProvider getPublishedFormInfos error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+        }
         done();
       });
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} end`);
@@ -91,8 +96,13 @@ export default function formProviderTest() {
           formId = JSON.parse(JSON.stringify(data[0])).formId;
         }
       }).catch ((error: BusinessError) => {
-        hilog.info(DOMAIN, COMMON_TAG, '%{public}s', 
-        `${TAG} formProvider getPublishedFormInfos error: ${JSON.stringify(error)}`);
+        if (error.code === ERROR_CODE) {
+          expect(error.code).assertEqual(ERROR_CODE);
+        } else {
+          hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
+          `${TAG} formProvider getPublishedFormInfos error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+        }
       });
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} formId: ${formId}`);
       formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
@@ -100,9 +110,13 @@ export default function formProviderTest() {
         `${TAG} formProvider getPublishedFormInfoById success, data: ${JSON.stringify(data)}`);
         done();
       }).catch ((error: BusinessError) => {
-        hilog.info(DOMAIN, COMMON_TAG, '%{public}s', 
-        `${TAG} formProvider getPublishedFormInfoById error: ${JSON.stringify(error)}`);
-        expect().assertFail();
+        if (error.code === ERROR_CODE) {
+          expect(error.code).assertEqual(ERROR_CODE);
+        } else {
+          hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
+          `${TAG} formProvider getPublishedFormInfoById error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+        }
         done();
       });
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} end`);

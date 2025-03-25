@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils';
 import langinfo from 'liblanginfondk.so';
 
@@ -31,7 +31,7 @@ export default function langInfoNdkTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMuslLanginfoNlLanginfo001', 0, async (done: Function) => {
+    it('testMuslLanginfoNlLanginfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: string = langinfo.nlLanginfo();
       expect(a).assertEqual('Monday');
       done()
@@ -45,7 +45,7 @@ export default function langInfoNdkTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMuslLanginfoNlLanginfoL001', 0, async (done: Function) => {
+    it('testMuslLanginfoNlLanginfoL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: string = langinfo.nlLanginfoL();
       expect(a).assertEqual('ASCII');
       done()

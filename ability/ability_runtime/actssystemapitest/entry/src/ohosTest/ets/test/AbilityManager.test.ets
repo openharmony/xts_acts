@@ -98,6 +98,7 @@ export default function abilityManagerTest() {
           expect(data[0].uid).assertLargerOrEqual(0);
           expect(data[0].processName).assertEqual("com.acts.systemapitest");
           expect(data[0].abilityState).assertLargerOrEqual(abilityManager.AbilityState.INITIAL);
+          expect(data[0].startTime).assertLarger(0);
           done();
         })
         .catch((err: BusinessError) => {

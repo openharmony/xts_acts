@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
@@ -57,7 +57,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawShadowNormal', DEFAULT, () => {
+    it('testCanvasDrawShadowNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawShadowNormal';
       const canvas = new drawing.Canvas(pixel);
       const path = new drawing.Path();
@@ -130,7 +130,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawShadowMultipleCalls', 3, () => {
+    it('testCanvasDrawShadowMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawShadowMultipleCalls';
       const canvas = new drawing.Canvas(pixel);
       const path = new drawing.Path();
@@ -164,7 +164,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawShadowToNull', 3, () => {
+    it('testCanvasDrawShadowToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawShadowToNull';
       const canvas = new drawing.Canvas(pixel);
       const path = new drawing.Path();
@@ -463,7 +463,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawShadowAbnormal', 3, () => {
+    it('testCanvasDrawShadowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawShadowAbnormal';
       const canvas = new drawing.Canvas(pixel);
       const path = new drawing.Path();
@@ -770,7 +770,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasDrawBackgroundNormal', DEFAULT, () => {
+    it('testCanvasDrawBackgroundNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasDrawBackgroundNormal';
       const canvas = new drawing.Canvas(pixel);
 
@@ -798,7 +798,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testAAAA', 3, () => {
+    it('testAAAA', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testAAAA';
       const canvas = new drawing.Canvas(pixel);
 
@@ -829,7 +829,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawBackgroundToNull', 3, () => {
+    it('testCanvasDrawBackgroundToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasDrawBackgroundToNull';
       const canvas = new drawing.Canvas(pixel);
 
@@ -861,7 +861,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvadrawNestedRoundRectNormal', DEFAULT, () => {
+    it('testCanvadrawNestedRoundRectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvadrawNestedRoundRectNormal';
       const canvas = new drawing.Canvas(pixel);
 
@@ -898,7 +898,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvadrawNestedRoundRectMultipleCalls', 3, () => {
+    it('testCanvadrawNestedRoundRectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvadrawNestedRoundRectMultipleCalls';
       const canvas = new drawing.Canvas(pixel);
 
@@ -930,7 +930,7 @@ export default function drawingTsCanvasPart6Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvadrawNestedRoundRectToNull', 3, () => {
+    it('testCanvadrawNestedRoundRectToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvadrawNestedRoundRectToNull';
       const canvas = new drawing.Canvas(pixel);
 

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import process from '@ohos.process'
 export default function ProcessTest() {
 describe('ProcessTest', function () {
@@ -25,7 +25,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid001
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid001', 0, function () {
+    it('testGetUid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let result = process.uid
         if (result > 0) {
             var flag = true
@@ -37,7 +37,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid002
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid002', 0, function () {
+    it('testGetUid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 3; i++) {
             let result = process.uid
             if (result != null) {
@@ -53,7 +53,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid003
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid003', 0, function () {
+    it('testGetUid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 6; i++) {
             let result = process.uid
             if (result != null) {
@@ -69,7 +69,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid004
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid004', 0, function () {
+    it('testGetUid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 8; i++) {
             let result = process.uid
             if (result != null) {
@@ -85,7 +85,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid005
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid005', 0, function () {
+    it('testGetUid005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 5; i++){
             let result = process.uid
             if (result != null) {
@@ -101,7 +101,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill001
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill001', 0, function () {
+    it('testKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let result = process.kill(3, 123)
         expect(result).assertEqual(false)
     })
@@ -110,7 +110,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill002
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill002', 0, function () {
+    it('testKill002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.pid
         let result = process.kill(23, pres)
         expect(result).assertEqual(true)
@@ -120,7 +120,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill003
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill003', 0, function () {
+    it('testKill003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.pid
         let result = process.kill(28, pres)
         expect(result).assertEqual(true)
@@ -130,7 +130,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill004
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill004', 0, function () {
+    it('testKill004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.pid
         let result = process.kill(17, pres)
         expect(result).assertEqual(true)
@@ -140,7 +140,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill005
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill005', 0, function () {
+    it('testKill005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let result = process.kill(3, 113)
         expect(result).assertEqual(false)
     })
@@ -149,7 +149,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill006
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill006', 0, function () {
+    it('testKill006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.pid
         let result = process.kill('17', pres)
         expect(result).assertEqual(true)
@@ -159,7 +159,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime001
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime001', 0, function () {
+    it('testUptime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
@@ -177,7 +177,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime002
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime002', 0, async function () {
+    it('testUptime002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
         let result1 = process.uptime()
         await delay(4000);
         let result2 = process.uptime()
@@ -192,7 +192,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime003
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime003', 0, async function () {
+    it('testUptime003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
         let result1 = process.uptime()
         await delay(2000);
         let result2 = process.uptime()
@@ -207,7 +207,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime004
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime004', 0, async function () {
+    it('testUptime004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
         let result1 = process.uptime()
         await delay(3000);
         let result2 = process.uptime()
@@ -222,7 +222,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime005
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime005', 0, async function () {
+    it('testUptime005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
         let result1 = process.uptime()
         await delay(2000);
         let result2 = process.uptime()
@@ -237,7 +237,7 @@ describe('ProcessTest', function () {
      * @tc.name: testPid001
      * @tc.desc: Return pid is the pid of the current process.
      */
-    it('testPid001', 0, function () {
+    it('testPid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let result = process.pid
         if (result > 0) {
             var flag = true
@@ -249,7 +249,7 @@ describe('ProcessTest', function () {
      * @tc.name: testPid002
      * @tc.desc: Return pid is the pid of the current process.
      */
-    it('testPid002', 0, function () {
+    it('testPid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 3; i++) {
             let result = process.pid
             if (result > 0) {
@@ -263,7 +263,7 @@ describe('ProcessTest', function () {
      * @tc.name: testPid003
      * @tc.desc: Return pid is the pid of the current process.
      */
-    it('testPid003', 0, function () {
+    it('testPid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 5; i++) {
             let result = process.pid
             if (result > 0) {
@@ -277,7 +277,7 @@ describe('ProcessTest', function () {
      * @tc.name: testPid004
      * @tc.desc: Return pid is the pid of the current process.
      */
-    it('testPid004', 0, function () {
+    it('testPid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 6; i++) {
             let result = process.pid
             if (result > 0) {
@@ -291,7 +291,7 @@ describe('ProcessTest', function () {
      * @tc.name: testPid005
      * @tc.desc: Return pid is the pid of the current process.
      */
-    it('testPid005', 0, function () {
+    it('testPid005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i = 0; i < 8; i++) {
             let result = process.pid
             if (result > 0) {
@@ -305,7 +305,7 @@ describe('ProcessTest', function () {
      * @tc.name: testTid001
      * @tc.desc: Returns the tid of the current thread.
      */
-    it('testTid001', 0, function () {
+    it('testTid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.tid
         if (pres > 0) {
             var flag = new Boolean(true)
@@ -317,7 +317,7 @@ describe('ProcessTest', function () {
      * @tc.name: testTid002
      * @tc.desc: Returns the tid of the current thread.
      */
-    it('testTid002', 0, function () {
+    it('testTid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i < 5; i++) {
             let pres = process.tid
             if (pres > 0) {
@@ -331,7 +331,7 @@ describe('ProcessTest', function () {
      * @tc.name: testTid003
      * @tc.desc: Returns the tid of the current thread.
      */
-    it('testTid003', 0, function () {
+    it('testTid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i < 3; i++) {
             let pres = process.tid
             if (pres > 0) {
@@ -346,7 +346,7 @@ describe('ProcessTest', function () {
      * @tc.name: testisIsolatedProcess001
      * @tc.desc: Returns a boolean whether the process is isolated.
      */
-    it('testisIsolatedProcess001', 0, function () {
+    it('testisIsolatedProcess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.isIsolatedProcess()
         expect(pres).assertEqual(true)
     })
@@ -355,7 +355,7 @@ describe('ProcessTest', function () {
      * @tc.name: testisIsolatedProcess002
      * @tc.desc: Returns a boolean whether the process is isolated.
      */
-    it('testisIsolatedProcess002', 0, function () {
+    it('testisIsolatedProcess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i < 3; i++) {
             let pres = process.isIsolatedProcess()
             expect(pres).assertEqual(true)
@@ -366,7 +366,7 @@ describe('ProcessTest', function () {
      * @tc.name: testisIsolatedProcess003
      * @tc.desc: Returns a boolean whether the process is isolated.
      */
-    it('testisIsolatedProcess003', 0, function () {
+    it('testisIsolatedProcess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i < 5; i++) {
             let pres = process.isIsolatedProcess()
             expect(pres).assertEqual(true)
@@ -378,7 +378,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIsappuid001
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testIsappuid001', 0, function () {
+    it('testIsappuid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let isorno = process.isAppUid(167)
         expect(isorno).assertEqual(false)
     })
@@ -387,7 +387,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIsappuid002
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testIsappuid002', 0, function () {
+    it('testIsappuid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let isorno = process.isAppUid(123)
         expect(isorno).assertEqual(false)
     })
@@ -396,7 +396,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIsappuid003
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testIsappuid003', 0, function () {
+    it('testIsappuid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let isorno = process.isAppUid(80000)
         expect(isorno).assertEqual(false)
     })
@@ -405,7 +405,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIsappuid004
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testIsappuid004', 0, function () {
+    it('testIsappuid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let isorno = process.isAppUid(789)
         expect(isorno).assertEqual(false)
     })
@@ -414,7 +414,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIsappuid005
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testIsappuid005', 0, function () {
+    it('testIsappuid005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let isorno = process.isAppUid(8569)
         expect(isorno).assertEqual(false)
     })
@@ -423,7 +423,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIs64Bit001
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
      */
-    it('testIs64Bit001', 0, function () {
+    it('testIs64Bit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let isorno = process.is64Bit()
         if (isorno) {
             expect(isorno).assertEqual(true)
@@ -436,7 +436,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIs64Bit002
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
      */
-    it('testIs64Bit002', 0, function () {
+    it('testIs64Bit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<3; i++) {
             let isorno = process.is64Bit()
             if (isorno) {
@@ -451,7 +451,7 @@ describe('ProcessTest', function () {
      * @tc.name: testIs64Bit003
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
      */
-    it('testIs64Bit004', 0, function () {
+    it('testIs64Bit004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<5; i++) {
             let isorno = process.is64Bit()
             if (isorno) {
@@ -467,7 +467,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUidForName001
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testGetUidForName001',0, function () {
+    it('testGetUidForName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.getUidForName("root")
         if (pres != -1) {
             let flag = new Boolean(true)
@@ -479,7 +479,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUidForName002
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testGetUidForName002', 0, function () {
+    it('testGetUidForName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<3; i++) {
             let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
@@ -490,7 +490,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUidForName003
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testGetUidForName003', 0, function () {
+    it('testGetUidForName003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<5; i++) {
             let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
@@ -502,7 +502,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetThreadPriority001
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testGetThreadPriority001', 0, function () {
+    it('testGetThreadPriority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.tid
         let pri = process.getThreadPriority(pres)
         if (pri) {
@@ -515,7 +515,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetThreadPriority002
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testGetThreadPriority002', 0, function () {
+    it('testGetThreadPriority002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.tid
         for (let i=0; i<3; i++) {
             let pri = process.getThreadPriority(pres)
@@ -530,7 +530,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetThreadPriority003
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testGetThreadPriority003', 0, function () {
+    it('testGetThreadPriority003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pres = process.tid
         for (let i=0; i<5; i++) {
             let pri = process.getThreadPriority(pres)
@@ -546,7 +546,7 @@ describe('ProcessTest', function () {
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
      */
-    it('testGetStartRealtime001', 0, function () {
+    it('testGetStartRealtime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<3; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -561,7 +561,7 @@ describe('ProcessTest', function () {
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
      */
-    it('testGetStartRealtime002', 0, function () {
+    it('testGetStartRealtime002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pri = process.getStartRealtime()
         if (pri !== null) {
             var flag = new Boolean(true)
@@ -574,7 +574,7 @@ describe('ProcessTest', function () {
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
      */
-    it('testGetStartRealtime003', 0, function () {
+    it('testGetStartRealtime003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<5; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -589,7 +589,7 @@ describe('ProcessTest', function () {
      * @tc.desc: Returns the elapsed real time (in milliseconds)
      * @taken from the start of the system to the start of the process.
      */
-    it('testGetStartRealtime004', 0, function () {
+    it('testGetStartRealtime004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<8; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -604,7 +604,7 @@ describe('ProcessTest', function () {
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
      */
-    it('testGetStartRealtime005', 0, function () {
+    it('testGetStartRealtime005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<6; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -618,7 +618,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetpastCpuTime001
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
      */
-    it('testGetpastCpuTime001', 0, function () {
+    it('testGetpastCpuTime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<3; i++) {
             let pri = process.getPastCpuTime()
             if (pri > 0) {
@@ -632,7 +632,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetpastCpuTime002
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
      */
-    it('testGetpastCpuTime002', 0, function () {
+    it('testGetpastCpuTime002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pri = process.getPastCpuTime()
         if (pri > 0) {
             var flag = new Boolean(true)
@@ -644,7 +644,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetpastCpuTime003
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
      */
-    it('testGetpastCpuTime003', 0, function () {
+    it('testGetpastCpuTime003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<5; i++) {
             let pri = process.getPastCpuTime()
             if (pri > 0) {
@@ -658,7 +658,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetpastCpuTime004
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
      */
-    it('testGetpastCpuTime004', 0, function () {
+    it('testGetpastCpuTime004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<8; i++) {
             let pri = process.getPastCpuTime()
             if (pri > 0) {
@@ -672,7 +672,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetSystemConfig001
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testGetSystemConfig001', 0, function () {
+    it('testGetSystemConfig001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let _SC_ARG_MAX = 0
         let pri = process.getSystemConfig(_SC_ARG_MAX)
         if (pri > 0) {
@@ -685,7 +685,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetSystemConfig002
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testGetSystemConfig002', 0, function () {
+    it('testGetSystemConfig002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let _SC_ARG_MAX = 0
         for (let i=0; i<3; i++) {
             let pri = process.getSystemConfig(_SC_ARG_MAX)
@@ -700,7 +700,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetSystemConfig003
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testGetSystemConfig003', 0, function () {
+    it('testGetSystemConfig003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let _SC_ARG_MAX = 0
         for (let i=0; i<5; i++) {
             let pri = process.getSystemConfig(_SC_ARG_MAX)
@@ -715,7 +715,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetSystemConfig004
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testGetSystemConfig004', 0, function () {
+    it('testGetSystemConfig004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let _SC_OPEN_MAX = 4
         let pri = process.getSystemConfig(_SC_OPEN_MAX)
         if (pri > 0) {
@@ -728,7 +728,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetSystemConfig005
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testGetSystemConfig005', 0, function () {
+    it('testGetSystemConfig005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let _SC_PAGESIZE = 8
         let pri = process.getSystemConfig(_SC_PAGESIZE)
         if (pri > 0) {
@@ -741,7 +741,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetEnvironmentVar001
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testGetEnvironmentVar001', 0, function () {
+    it('testGetEnvironmentVar001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pri = process.getEnvironmentVar("USER")
         if (pri != null) {
             var flag = new Boolean(true)
@@ -753,7 +753,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetEnvironmentVar002
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testGetEnvironmentVar002', 0, function () {
+    it('testGetEnvironmentVar002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<3; i++) {
             let pri = process.getEnvironmentVar("PATH")
             if (pri != null) {
@@ -767,7 +767,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetEnvironmentVar003
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testGetEnvironmentVar003', 0, function () {
+    it('testGetEnvironmentVar003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<5; i++) {
             let pri = process.getEnvironmentVar("PATH")
             if (pri != null) {
@@ -781,7 +781,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetEnvironmentVar004
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testGetEnvironmentVar004', 0, function () {
+    it('testGetEnvironmentVar004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<6; i++) {
             let pri = process.getEnvironmentVar("USER")
             if (pri != null) {
@@ -795,7 +795,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetEnvironmentVar005
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testGetEnvironmentVar005', 0, function () {
+    it('testGetEnvironmentVar005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<8; i++) {
             let pri = process.getEnvironmentVar("USER")
             if (pri != null) {
@@ -809,7 +809,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetEnvironmentVar006
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testGetEnvironmentVar006', 0, function () {
+    it('testGetEnvironmentVar006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         for (let i=0; i<100; i++) {
             let pri = process.getEnvironmentVar("i123")
             if (pri == null) {
@@ -824,7 +824,7 @@ describe('ProcessManager', function () {
      * @tc.name: testIsappuid001
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-        it('testProcessManagerIsappuid001', 0, function () {
+        it('testProcessManagerIsappuid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let isorno = pro.isAppUid(167)
         expect(isorno).assertEqual(false)
@@ -834,7 +834,7 @@ describe('ProcessManager', function () {
      * @tc.name: testIsappuid002
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testProcessManagerIsappuid002', 0, function () {
+    it('testProcessManagerIsappuid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let isorno = pro.isAppUid(123)
         expect(isorno).assertEqual(false)
@@ -844,7 +844,7 @@ describe('ProcessManager', function () {
      * @tc.name: testIsappuid003
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testProcessManagerIsappuid003', 0, function () {
+    it('testProcessManagerIsappuid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let isorno = pro.isAppUid(80000)
         expect(isorno).assertEqual(false)
@@ -854,7 +854,7 @@ describe('ProcessManager', function () {
      * @tc.name: testIsappuid004
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testProcessManagerIsappuid004', 0, function () {
+    it('testProcessManagerIsappuid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let isorno = pro.isAppUid(789)
         expect(isorno).assertEqual(false)
@@ -864,7 +864,7 @@ describe('ProcessManager', function () {
      * @tc.name: testIsappuid005
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testProcessManagerIsappuid005', 0, function () {
+    it('testProcessManagerIsappuid005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let isorno = pro.isAppUid(8569)
         expect(isorno).assertEqual(false)
@@ -874,7 +874,7 @@ describe('ProcessManager', function () {
      * @tc.name: testIsappuid006
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
      */
-    it('testProcessManagerIsappuid006', 0, function () {
+    it('testProcessManagerIsappuid006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let pro = new process.ProcessManager()
             let mag = pro.isAppUid("asdad")
@@ -886,7 +886,7 @@ describe('ProcessManager', function () {
      * @tc.name: testKill001
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testProcessManagerKill001', 0, function () {
+    it('testProcessManagerKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let result = pro.kill(3, 123)
         expect(result).assertEqual(false)
@@ -896,7 +896,7 @@ describe('ProcessManager', function () {
      * @tc.name: testKill002
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testProcessManagerKill002', 0, function () {
+    it('testProcessManagerKill002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = process.pid
         let result = pro.kill(23, pres)
@@ -907,7 +907,7 @@ describe('ProcessManager', function () {
      * @tc.name: testKill003
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testProcessManagerKill003', 0, function () {
+    it('testProcessManagerKill003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = process.pid
         let result = pro.kill(28, pres)
@@ -918,7 +918,7 @@ describe('ProcessManager', function () {
      * @tc.name: testKill004
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testProcessManagerKill004', 0, function () {
+    it('testProcessManagerKill004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = process.pid
         let result = pro.kill(17, pres)
@@ -929,7 +929,7 @@ describe('ProcessManager', function () {
      * @tc.name: testKill005
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testProcessManagerKill005', 0, function () {
+    it('testProcessManagerKill005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let result = pro.kill(3, 113)
         expect(result).assertEqual(false)
@@ -939,7 +939,7 @@ describe('ProcessManager', function () {
      * @tc.name: testKill006
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testProcessManagerKill006', 0, function () {
+    it('testProcessManagerKill006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let pro = new process.ProcessManager()
             let result = pro.kill("asd", 123)
@@ -953,7 +953,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetUidForName001
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testProcessManagerGetUidForName001',0, function () {
+    it('testProcessManagerGetUidForName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = pro.getUidForName("root")
         if (pres != -1) {
@@ -966,7 +966,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetUidForName002
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testProcessManagerGetUidForName002', 0, function () {
+    it('testProcessManagerGetUidForName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         for (let i=0; i<3; i++) {
             let pres = pro.getUidForName("12356")
@@ -978,7 +978,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetUidForName003
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testProcessManagerGetUidForName003', 0, function () {
+    it('testProcessManagerGetUidForName003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         for (let i=0; i<5; i++) {
             let pres = pro.getUidForName("as123")
@@ -989,7 +989,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetUidForName004
      * @tc.desc: Returns the uid based on the specified user name.
      */
-    it('testProcessManagerGetUidForName004',0, function () {
+    it('testProcessManagerGetUidForName004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let pro = new process.ProcessManager()
             let pres = pro.getUidForName(12)
@@ -1002,7 +1002,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetThreadPriority001
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testProcessManagerGetThreadPriority001', 0, function () {
+    it('testProcessManagerGetThreadPriority001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = process.tid
         let pri = pro.getThreadPriority(pres)
@@ -1016,7 +1016,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetThreadPriority002
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testProcessManagerGetThreadPriority002', 0, function () {
+    it('testProcessManagerGetThreadPriority002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = process.tid
         for (let i=0; i<3; i++) {
@@ -1032,7 +1032,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetThreadPriority003
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testProcessManagerGetThreadPriority003', 0, function () {
+    it('testProcessManagerGetThreadPriority003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pres = process.tid
         for (let i=0; i<5; i++) {
@@ -1048,7 +1048,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetThreadPriority001
      * @tc.desc: Returns the thread priority based on the specified tid.
      */
-    it('testProcessManagerGetThreadPriority004', 0, function () {
+    it('testProcessManagerGetThreadPriority004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let pro = new process.ProcessManager()
             let pri = pro.getThreadPriority("asdad")
@@ -1061,7 +1061,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetSystemConfig001
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testProcessManagerGetSystemConfig001', 0, function () {
+    it('testProcessManagerGetSystemConfig001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let _SC_ARG_MAX = 0
         let pri = pro.getSystemConfig(_SC_ARG_MAX)
@@ -1075,7 +1075,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetSystemConfig002
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testProcessManagerGetSystemConfig002', 0, function () {
+    it('testProcessManagerGetSystemConfig002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let _SC_ARG_MAX = 0
         for (let i=0; i<3; i++) {
@@ -1091,7 +1091,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetSystemConfig003
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testProcessManagerGetSystemConfig003', 0, function () {
+    it('testProcessManagerGetSystemConfig003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let _SC_ARG_MAX = 0
         for (let i=0; i<5; i++) {
@@ -1107,7 +1107,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetSystemConfig004
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testProcessManagerGetSystemConfig004', 0, function () {
+    it('testProcessManagerGetSystemConfig004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let _SC_OPEN_MAX = 4
         let pri = pro.getSystemConfig(_SC_OPEN_MAX)
@@ -1121,7 +1121,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetSystemConfig005
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testProcessManagerGetSystemConfig005', 0, function () {
+    it('testProcessManagerGetSystemConfig005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let _SC_PAGESIZE = 8
         let pri = pro.getSystemConfig(_SC_PAGESIZE)
@@ -1135,7 +1135,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetSystemConfig001
      * @tc.desc: Returns the system configuration at runtime.
      */
-    it('testProcessManagerGetSystemConfig006', 0, function () {
+    it('testProcessManagerGetSystemConfig006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let pro = new process.ProcessManager()
             let pri = pro.getSystemConfig("asdad")
@@ -1148,7 +1148,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetEnvironmentVar001
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testProcessManagerGetEnvironmentVar001', 0, function () {
+    it('testProcessManagerGetEnvironmentVar001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         let pri = pro.getEnvironmentVar("USER")
         if (pri != null) {
@@ -1161,7 +1161,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetEnvironmentVar002
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testProcessManagerGetEnvironmentVar002', 0, function () {
+    it('testProcessManagerGetEnvironmentVar002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         for (let i=0; i<3; i++) {
             let pri = pro.getEnvironmentVar("PATH")
@@ -1176,7 +1176,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetEnvironmentVar006
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testProcessManagerGetEnvironmentVar003', 0, function () {
+    it('testProcessManagerGetEnvironmentVar003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let pro = new process.ProcessManager()
         for (let i=0; i<100; i++) {
             let pri = pro.getEnvironmentVar("i123")
@@ -1191,7 +1191,7 @@ describe('ProcessManager', function () {
      * @tc.name: testGetEnvironmentVar001
      * @tc.desc: Returns the system value for environment variables.
      */
-    it('testProcessManagerGetEnvironmentVar004', 0, function () {
+    it('testProcessManagerGetEnvironmentVar004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             let pro = new process.ProcessManager()
             let pri = pro.getEnvironmentVar(123)

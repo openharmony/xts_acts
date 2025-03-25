@@ -55,7 +55,7 @@ class DrawingNativeRoundRectTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -78,7 +78,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_RoundRectCreate with nullptr as the first parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
@@ -109,7 +109,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateAbnormal, Function | SmallTest | Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
     EXPECT_NE(rect, nullptr);
@@ -139,7 +139,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateAbnormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMaximum, Function | SmallTest | Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
     EXPECT_NE(rect, nullptr);
@@ -169,7 +169,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMaximum, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RoundRectCreate 10 times
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     for (int i = 0; i < 10; i++) {
@@ -189,7 +189,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCreateMultipleCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -235,7 +235,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -267,7 +267,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -300,7 +300,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMaximum, Function | SmallTest | Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -333,7 +333,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMaximum, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -369,7 +369,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectSetGetCornerMultipleCalls, Tes
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectGetCornerWhenNoSet, TestSize.Level2) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectGetCornerWhenNoSet, Function | SmallTest | Level2) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -396,7 +396,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectGetCornerWhenNoSet, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RoundRectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -421,7 +421,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_RoundRectDestroy with nullptr as the parameter
     OH_Drawing_RoundRectDestroy(nullptr);
     // add assert
@@ -436,7 +436,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectDestroyNull, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_RoundRectCreate with the second parameter as integar values
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -481,7 +481,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RoundRectOffset with nullptr as the first parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
@@ -510,7 +510,7 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetMultipleCalls, Function | SmallTest | Level3) {
     //1. Call OH_Drawing_RoundRectCreate with random values
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert

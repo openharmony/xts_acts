@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
 import { getRandomNumber } from './utils';
@@ -48,7 +48,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetColorNormal', DEFAULT, () => {
+    it('testPenSetColorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetColorNormal';
       const pen = new drawing.Pen();
       try {
@@ -79,7 +79,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColorNull', DEFAULT, () => {
+    it('testPenSetColorNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColorNull';
       const pen = new drawing.Pen();
 
@@ -108,7 +108,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColorMultipleCalls', DEFAULT, () => {
+    it('testPenSetColorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColorMultipleCalls';
       try {
         const pen = new drawing.Pen();
@@ -135,7 +135,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColorBoundaryValue', DEFAULT, () => {
+    it('testPenSetColorBoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColorBoundaryValue';
       const pen = new drawing.Pen();
 
@@ -229,7 +229,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetStrokeWidthNormal', DEFAULT, () => {
+    it('testPenSetStrokeWidthNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetStrokeWidthNormal';
       const pen = new drawing.Pen();
 
@@ -274,7 +274,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetStrokeWidthNull', DEFAULT, () => {
+    it('testPenSetStrokeWidthNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetStrokeWidthNull';
       const pen = new drawing.Pen();
 
@@ -303,7 +303,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetStrokeWidthMultipleCalls', DEFAULT, () => {
+    it('testPenSetStrokeWidthMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetStrokeWidthMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -328,7 +328,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetAntiAliasNormal', DEFAULT, () => {
+    it('testPenSetAntiAliasNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetAntiAliasNormal';
       const pen = new drawing.Pen();
 
@@ -357,7 +357,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetAntiAliasNull', DEFAULT, () => {
+    it('testPenSetAntiAliasNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetAntiAliasNull';
       const pen = new drawing.Pen();
 
@@ -386,7 +386,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetAntiAliasMultipleCalls', DEFAULT, () => {
+    it('testPenSetAntiAliasMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetAntiAliasMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -410,7 +410,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetAlphaNormal', DEFAULT, () => {
+    it('testPenSetAlphaNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetAlphaNormal';
       const pen = new drawing.Pen();
 
@@ -447,7 +447,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetAlphaNull', DEFAULT, () => {
+    it('testPenSetAlphaNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetAlphaNull';
       const pen = new drawing.Pen();
 
@@ -476,7 +476,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetAlphaMultipleCalls', DEFAULT, () => {
+    it('testPenSetAlphaMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetAlphaMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -500,7 +500,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetColorFilterNormal', DEFAULT, () => {
+    it('testPenSetColorFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetColorFilterNormal';
       try {
         const pen = new drawing.Pen();
@@ -520,7 +520,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColorFilterNull', DEFAULT, () => {
+    it('testPenSetColorFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColorFilterNull';
       const pen = new drawing.Pen();
 
@@ -549,7 +549,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColorFilterMultipleCalls', DEFAULT, () => {
+    it('testPenSetColorFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColorFilterMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -572,7 +572,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetMaskFilterNormal', DEFAULT, () => {
+    it('testPenSetMaskFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetMaskFilterNormal';
       try {
         const pen = new drawing.Pen();
@@ -592,7 +592,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetMaskFilterNull', DEFAULT, () => {
+    it('testPenSetMaskFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetMaskFilterNull';
       const pen = new drawing.Pen();
 
@@ -621,7 +621,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetMaskFilterMultipleCalls', DEFAULT, () => {
+    it('testPenSetMaskFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetMaskFilterMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -646,7 +646,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetShadowLayerNormal', DEFAULT, () => {
+    it('testPenSetShadowLayerNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetShadowLayerNormal';
       try {
         const pen = new drawing.Pen();
@@ -668,7 +668,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetShadowLayerNull', DEFAULT, () => {
+    it('testPenSetShadowLayerNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetShadowLayerNull';
       const pen = new drawing.Pen();
 
@@ -697,7 +697,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetShadowLayerMultipleCalls', DEFAULT, () => {
+    it('testPenSetShadowLayerMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetShadowLayerMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -726,7 +726,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetBlendModeNormal', DEFAULT, () => {
+    it('testPenSetBlendModeNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetBlendModeNormal';
       try {
         const pen = new drawing.Pen();
@@ -746,7 +746,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetBlendModeNull', DEFAULT, () => {
+    it('testPenSetBlendModeNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetBlendModeNull';
       const pen = new drawing.Pen();
 
@@ -775,7 +775,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetBlendModeMultipleCalls', DEFAULT, () => {
+    it('testPenSetBlendModeMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetBlendModeMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -799,7 +799,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetGetJoinStyleNormal', DEFAULT, () => {
+    it('testPenSetGetJoinStyleNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetGetJoinStyleNormal';
       const pen = new drawing.Pen();
       try {
@@ -824,7 +824,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetGetJoinStyleNull', DEFAULT, () => {
+    it('testPenSetGetJoinStyleNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetGetJoinStyleNull';
       const pen = new drawing.Pen();
 
@@ -855,7 +855,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetGetJoinStyleMultipleCalls', DEFAULT, () => {
+    it('testPenSetGetJoinStyleMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetGetJoinStyleMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -900,7 +900,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testPenGetJoinStyleWhenNoSetJoinStyle', DEFAULT, () => {
+    it('testPenGetJoinStyleWhenNoSetJoinStyle', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
       const msg = 'testPenGetJoinStyleWhenNoSetJoinStyle';
       const pen = new drawing.Pen();
       try {
@@ -920,7 +920,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetGetCapStyleNormal', DEFAULT, () => {
+    it('testPenSetGetCapStyleNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetGetCapStyleNormal';
       const pen = new drawing.Pen();
       try {
@@ -945,7 +945,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetGetCapStyleNull', DEFAULT, () => {
+    it('testPenSetGetCapStyleNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetGetCapStyleNull';
       const pen = new drawing.Pen();
 
@@ -976,7 +976,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetGetCapStyleMultipleCalls', DEFAULT, () => {
+    it('testPenSetGetCapStyleMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetGetCapStyleMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -1026,7 +1026,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testPenGetCapStyleWhenNoSetCapStyle', DEFAULT, () => {
+    it('testPenGetCapStyleWhenNoSetCapStyle', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
       const msg = 'testPenGetCapStyleWhenNoSetCapStyle';
       const pen = new drawing.Pen();
       try {
@@ -1046,7 +1046,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetDitherNormal', DEFAULT, () => {
+    it('testPenSetDitherNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetDitherNormal';
       const pen = new drawing.Pen();
       try {
@@ -1073,7 +1073,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetDitherNull', DEFAULT, () => {
+    it('testPenSetDitherNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetDitherNull';
       const pen = new drawing.Pen();
 
@@ -1104,7 +1104,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetDitherMultipleCalls', DEFAULT, () => {
+    it('testPenSetDitherMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetDitherMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -1128,7 +1128,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetPathEffectNormal', DEFAULT, () => {
+    it('testPenSetPathEffectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetPathEffectNormal';
       const pen = new drawing.Pen();
       try {
@@ -1148,7 +1148,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetPathEffectNull', DEFAULT, () => {
+    it('testPenSetPathEffectNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetPathEffectNull';
       const pen = new drawing.Pen();
 
@@ -1179,7 +1179,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetPathEffectMultipleCalls', DEFAULT, () => {
+    it('testPenSetPathEffectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetPathEffectMultipleCalls';
       const pen = new drawing.Pen();
 
@@ -1204,7 +1204,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetColor12Normal', DEFAULT, () => {
+    it('testPenSetColor12Normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPenSetColor12Normal';
       try {
         const pen = new drawing.Pen();
@@ -1225,7 +1225,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColor12Null', DEFAULT, () => {
+    it('testPenSetColor12Null', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColor12Null';
       try {
         const pen = new drawing.Pen();
@@ -1301,7 +1301,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColor12MultipleCalls', DEFAULT, () => {
+    it('testPenSetColor12MultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColor12MultipleCalls';
       try {
         const pen = new drawing.Pen();
@@ -1324,7 +1324,7 @@ export default function penTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetColor12BoundaryValue', DEFAULT, () => {
+    it('testPenSetColor12BoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPenSetColor12BoundaryValue';
       try {
         const pen = new drawing.Pen();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import pasteboard from '@ohos.pasteboard';
 import { BusinessError } from '@ohos.base';
@@ -39,7 +39,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let textData = new unifiedDataChannel.UnifiedData();
       let text = new unifiedDataChannel.Text();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -82,7 +82,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -128,7 +128,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let hyperLinkData = new unifiedDataChannel.UnifiedData();
       let hyperLink = new unifiedDataChannel.Hyperlink();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -174,7 +174,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0400', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let htmlData = new unifiedDataChannel.UnifiedData();
       let html = new unifiedDataChannel.HTML();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -220,7 +220,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let fileData = new unifiedDataChannel.UnifiedData();
       let file = new unifiedDataChannel.File();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -264,7 +264,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let folderData = new unifiedDataChannel.UnifiedData();
       let folder = new unifiedDataChannel.Folder();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -310,7 +310,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let imageData = new unifiedDataChannel.UnifiedData();
       let image = new unifiedDataChannel.Image();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -356,7 +356,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let videData = new unifiedDataChannel.UnifiedData();
       let video = new unifiedDataChannel.Video();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -400,7 +400,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0900', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let audioData = new unifiedDataChannel.UnifiedData();
       let audio = new unifiedDataChannel.Audio();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -444,7 +444,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1000', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let sdrData = new unifiedDataChannel.UnifiedData();
       let sdr  = new unifiedDataChannel.SystemDefinedRecord();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -489,7 +489,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let sdfData = new unifiedDataChannel.UnifiedData();
       let form = new unifiedDataChannel.SystemDefinedForm();
       form.formId = 123456;
@@ -544,7 +544,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let appItemData = new unifiedDataChannel.UnifiedData();
       let appItem = new unifiedDataChannel.SystemDefinedAppItem();
       appItem.appId = 'MyAppId';
@@ -601,7 +601,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let recordData = new unifiedDataChannel.UnifiedData();
       let record = new unifiedDataChannel.ApplicationDefinedRecord();
       let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -640,7 +640,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1400', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       const color = new ArrayBuffer(96); // 创建pixelmap对象
       let realSize: image.Size = { height: 3, width: 5}
       let opts: image.InitializationOptions = {
@@ -690,7 +690,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let wantData = new unifiedDataChannel.UnifiedData();
       let object:Want = {
         bundleName: 'bundleName',
@@ -730,7 +730,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1600', 0, async  (done:Function) => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async  (done:Function) => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -779,7 +779,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();
@@ -827,7 +827,7 @@ export default function PasteboartdCopyJsAPITest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1800', 0, async  () => {
+    it('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async  () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       let properties:unifiedDataChannel.UnifiedDataProperties = new unifiedDataChannel.UnifiedDataProperties();

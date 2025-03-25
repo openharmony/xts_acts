@@ -16,7 +16,7 @@
 import zlib from '@ohos.zlib'
 import base from '@ohos.base'
 import fileio from '@ohos.fileio'
-import { describe, it, expect, beforeAll, afterEach, beforeEach } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterEach, beforeEach, TestType, Size, Level } from '@ohos/hypium'
 
 let filePath: string = "/my/test.gz";
 let allfilePath: string = "";
@@ -44,7 +44,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -68,7 +68,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -92,7 +92,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -116,7 +116,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -140,7 +140,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -164,7 +164,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -188,7 +188,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -212,7 +212,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -236,7 +236,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_0900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -260,7 +260,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -284,7 +284,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -308,7 +308,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -337,7 +337,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -362,7 +362,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -387,7 +387,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -424,7 +424,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -461,7 +461,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -490,7 +490,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -520,7 +520,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_1900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -549,7 +549,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -574,7 +574,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -611,7 +611,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -656,7 +656,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -701,7 +701,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -711,7 +711,7 @@ export default function ActsGzipDecompressionTest() {
                 uint8View[i] = i;
             }
             try {
-                await gzip.gzfwrite(bufferWithData, 0, 2).then(() => {
+                await gzip.gzfwrite(bufferWithData, 0 , 2).then(() => {
                     expect().assertFail();
                 });
             } catch (errData) {
@@ -738,7 +738,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -768,7 +768,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -801,7 +801,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -826,7 +826,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -850,7 +850,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_2900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -874,7 +874,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -900,7 +900,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -933,7 +933,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -958,7 +958,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -991,7 +991,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1032,7 +1032,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1073,13 +1073,13 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
             let bufferWithData = new ArrayBuffer(16);
             try {
-                await gzip.gzfread(bufferWithData, 0, 8).then(() => {
+                await gzip.gzfread(bufferWithData, 0 , 8).then(() => {
                     expect().assertFail();
                 });
             } catch (errData) {
@@ -1106,7 +1106,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1131,7 +1131,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1155,7 +1155,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_3900 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1177,7 +1177,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1218,7 +1218,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1250,7 +1250,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1282,7 +1282,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1307,7 +1307,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1331,7 +1331,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1387,7 +1387,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1435,7 +1435,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1467,7 +1467,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1491,7 +1491,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_4900 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1512,7 +1512,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5000 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1542,7 +1542,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5100 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1572,7 +1572,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5200 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1602,7 +1602,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5300 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1624,7 +1624,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5400 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -1646,7 +1646,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1669,7 +1669,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1692,7 +1692,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1716,7 +1716,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1744,7 +1744,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_5900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1768,7 +1768,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1792,7 +1792,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1817,7 +1817,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1842,7 +1842,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1869,7 +1869,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1895,7 +1895,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1919,7 +1919,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -1943,7 +1943,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1967,7 +1967,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -1991,7 +1991,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_6900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2018,7 +2018,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2050,7 +2050,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2082,7 +2082,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7200 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2104,7 +2104,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2128,7 +2128,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7400 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2150,7 +2150,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2175,7 +2175,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2199,7 +2199,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2223,7 +2223,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2247,7 +2247,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_7900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2271,7 +2271,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2295,7 +2295,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2319,7 +2319,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2350,7 +2350,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2381,7 +2381,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2413,7 +2413,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2449,7 +2449,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2473,7 +2473,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wT");
@@ -2497,7 +2497,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2532,7 +2532,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_8900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2568,7 +2568,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2592,7 +2592,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2616,7 +2616,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2640,7 +2640,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9300 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2664,7 +2664,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9400 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2688,7 +2688,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9500 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2712,7 +2712,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9600 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2736,7 +2736,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9700 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2760,7 +2760,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9800 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2782,7 +2782,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_9900 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2803,7 +2803,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10000 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2825,7 +2825,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10100', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10100 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -2848,7 +2848,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10200', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10200 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "rb");
@@ -2872,7 +2872,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10300', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10300', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10300 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2894,7 +2894,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10400', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10400', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10400 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -2924,7 +2924,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10500', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10500 Start=====");
             try {
                 await zlib.createGZip().then((gzip) => {
@@ -2957,7 +2957,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10600', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10600 Start=====");
             try {
                 await zlib.createGZip().then((gzip) => {
@@ -2980,7 +2980,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10700', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10700 Start=====");
             let gzip = zlib.createGZipSync();
             try {
@@ -3011,7 +3011,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10800', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10800 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -3041,7 +3041,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10900', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_10900 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");
@@ -3071,7 +3071,7 @@ export default function ActsGzipDecompressionTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_11000', 0, async (done: Function) => {
+        it('SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_11000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
             console.log("=====SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_11000 Start=====");
             let gzip = zlib.createGZipSync();
             await gzip.gzopen(allfilePath, "wb");

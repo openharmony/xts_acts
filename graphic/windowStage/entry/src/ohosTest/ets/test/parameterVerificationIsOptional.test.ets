@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import screen from '@ohos.screen';
 import display from '@ohos.display';
@@ -114,7 +114,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testTouchOutsideBaseTest', 0, async (done: Function) => {
+    it('testTouchOutsideBaseTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testTouchOutsideBaseTest';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       let mainWin: ohosWindow.Window | undefined = undefined;
@@ -155,7 +155,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindowOffTouchOutsideCancelAll', 0, async (done: Function) => {
+    it('testWindowOffTouchOutsideCancelAll', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindowOffTouchOutsideCancelAll';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -275,7 +275,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindowOffTouchOutsideCancelSingle', 0, async (done: Function) => {
+    it('testWindowOffTouchOutsideCancelSingle', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindowOffTouchOutsideCancelSingle';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -377,7 +377,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindowStage_loadContent_Test_001', 0, async (done: Function) => {
+    it('testWindowStage_loadContent_Test_001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'windowStage_loadContent_Test_001';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -398,7 +398,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_WindowSizeChange_No_Callback', 0, async (done: Function) => {
+    it('testWindow_off_WindowSizeChange_No_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_WindowSizeChange_No_Callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -462,7 +462,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_WindowSizeChange_SecondCall_Callback', 0, async (done: Function) => {
+    it('testWindow_off_WindowSizeChange_SecondCall_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName = 'testWindow_off_WindowSizeChange_SecondCall_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -525,7 +525,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_AvoidAreaChange_AllListening_LogOut', 0, async (done: Function) => {
+    it('testWindow_off_AvoidAreaChange_AllListening_LogOut', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_AvoidAreaChange_AllListening_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -611,7 +611,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_AvoidAreaChange_FirstCall_LogOut', 0, async (done: Function) => {
+    it('testWindow_off_AvoidAreaChange_FirstCall_LogOut', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_AvoidAreaChange_FirstCall_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -688,7 +688,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_dialogTargetTouch_AllListening_LogOut', 0, async (done: Function) => {
+    it('testWindow_off_dialogTargetTouch_AllListening_LogOut', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_dialogTargetTouch_AllListening_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -788,7 +788,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_dialogTargetTouch_FirstCall_LogOut', 0, async (done: Function) => {
+    it('testWindow_off_dialogTargetTouch_FirstCall_LogOut', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_dialogTargetTouch_FirstCall_LogOut';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -886,7 +886,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_keyboardHeightChange_All', 0, async (done: Function) => {
+    it('testWindow_off_keyboardHeightChange_All', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_keyboardHeightChange_All';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -952,7 +952,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_keyboardHeightChange_FirstCall', 0, async (done: Function) => {
+    it('testWindow_off_keyboardHeightChange_FirstCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testWindow_off_keyboardHeightChange_FirstCall';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1021,7 +1021,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testGetUIContext_Instances', 0, async (done: Function) => {
+    it('testGetUIContext_Instances', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testGetUIContext_Instances';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1044,7 +1044,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_CreateSubWindow', 0, async () => {
+    it('testGetLastWindow_CreateSubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetLastWindow_CreateSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1090,7 +1090,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastWindow_CreateDialogWindow', 0, async () => {
+    it('testGetLastWindow_CreateDialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetLastWindow_CreateDialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1141,7 +1141,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLoadContent_NotExistPage_Callback', 0, async (done: Function) => {
+    it('testLoadContent_NotExistPage_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testLoadContent_NotExistPage_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1178,7 +1178,7 @@ export default function parameterVerificationIsOptionalTest(context: common.UIAb
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLoadContent_NotExistPage_Promise', 0, async () => {
+    it('testLoadContent_NotExistPage_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testLoadContent_NotExistPage_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

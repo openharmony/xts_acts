@@ -8,6 +8,7 @@
     "testability/pages/webViewContGetUrlAndOthersError",
     "testability/pages/webViewContCookieToGeoLocationError",
     "testability/pages/webViewContJsMessageExtReturnError",
-    "testability/pages/webViewContWebMessageExtReturnError"
+    "testability/pages/webViewContWebMessageExtReturnError",
+	"testability/pages/webViewContCreatePdfAndOthersError"
   ]
 }

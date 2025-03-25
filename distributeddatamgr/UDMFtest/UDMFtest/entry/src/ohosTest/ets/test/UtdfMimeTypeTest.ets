@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import UTD from '@ohos.data.uniformTypeDescriptor'
 import { BusinessError } from '@ohos.base';
 
@@ -28,7 +28,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0010', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0010 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/msword");
       console.log("typeId:" + result);
@@ -43,7 +43,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0020', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0020 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel");
       console.log("typeId:" + result);
@@ -58,7 +58,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint");
       console.log("typeId:" + result);
@@ -72,7 +72,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0040', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0040 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/wav");
       console.log("typeId:" + result);
@@ -86,7 +86,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0050', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0050 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/wave");
       console.log("typeId:" + result);
@@ -100,7 +100,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0060', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0060 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wm");
       console.log("typeId:" + result);
@@ -115,7 +115,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0070', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0070 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wmv");
       console.log("typeId:" + result);
@@ -130,7 +130,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0080', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0080 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wmp");
       console.log("typeId:" + result);
@@ -145,7 +145,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0090', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0090 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-ms-wma");
       console.log("typeId:" + result);
@@ -160,7 +160,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0100', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0100 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wmx");
       console.log("typeId:" + result);
@@ -175,7 +175,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0110', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0110 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wvx");
       console.log("typeId:" + result);
@@ -190,7 +190,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0120', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0120 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-ms-wax");
       console.log("typeId:" + result);
@@ -205,7 +205,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0130', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0130 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/pdf");
       console.log("typeId:" + result);
@@ -220,7 +220,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0140', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0140 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/postscript");
       console.log("typeId:" + result);
@@ -234,7 +234,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0150', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0150 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-photoshop");
       console.log("typeId:" + result);
@@ -249,7 +249,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0160', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0160 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/photoshop");
       console.log("typeId:" + result);
@@ -264,7 +264,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0170', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0170 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/psd");
       console.log("typeId:" + result);
@@ -279,7 +279,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0180', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0180 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/photoshop");
       console.log("typeId:" + result);
@@ -294,7 +294,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0190', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0190 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.microsoft.portable-executable");
       console.log("typeId:" + result);
@@ -309,7 +309,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0200', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0200 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/java-archive");
       console.log("typeId:" + result);
@@ -324,7 +324,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0210', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0210 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-gtar");
       console.log("typeId:" + result);
@@ -339,7 +339,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0220', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0220', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0220 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-gzip");
       console.log("typeId:" + result);
@@ -353,7 +353,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0230', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0230 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/gzip");
       console.log("typeId:" + result);
@@ -368,7 +368,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0240', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0240 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-mobipocket-ebook");
       console.log("typeId:" + result);
@@ -382,7 +382,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0250', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0250 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.amazon.ebook");
       console.log("typeId:" + result);
@@ -396,7 +396,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0260', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0260', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0260 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.amazon.mobi8-ebook");
       console.log("typeId:" + result);
@@ -411,7 +411,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0270', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0270 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-mobi8-ebook");
       console.log("typeId:" + result);
@@ -425,7 +425,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0280', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0280', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0280 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/targa");
       console.log("typeId:" + result);
@@ -439,7 +439,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0290', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0290', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0290 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/tga");
       console.log("typeId:" + result);
@@ -453,7 +453,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0300', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0300 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/tga");
       console.log("typeId:" + result);
@@ -467,7 +467,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0310', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0310', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0310 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/sgi");
       console.log("typeId:" + result);
@@ -481,7 +481,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0320', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0320', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0320 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/fpx");
       console.log("typeId:" + result);
@@ -495,7 +495,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0330', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0330 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.fpx");
       console.log("typeId:" + result);
@@ -509,7 +509,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0340', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0340', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0340 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/efax");
       console.log("typeId:" + result);
@@ -523,7 +523,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0350', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0350 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/vnd.rn-realaudio");
       console.log("typeId:" + result);
@@ -537,7 +537,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0360', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0360', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0360 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-pn-realaudio");
       console.log("typeId:" + result);
@@ -551,7 +551,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0370', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0370', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0370 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/smil");
       console.log("typeId:" + result);
@@ -565,7 +565,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0380', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0380', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0380 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-stuffit");
       console.log("typeId:" + result);
@@ -579,7 +579,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0390', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0390', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0390 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-sit");
       console.log("typeId:" + result);
@@ -593,7 +593,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0400', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0400 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/stuffit");
       console.log("typeId:" + result);
@@ -607,7 +607,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0410', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0410 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
@@ -623,7 +623,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0420', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0420', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0420 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -637,7 +637,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0430', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0430', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0430 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.presentationml.presentation");
@@ -651,7 +651,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0440', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0440', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0440 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.text");
       expect(result).assertEqual(UTD.UniformDataType.OPENDOCUMENT_TEXT);
@@ -664,7 +664,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0450', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0450 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.spreadsheet");
       expect(result).assertEqual(UTD.UniformDataType.OPENDOCUMENT_SPREADSHEET);
@@ -677,7 +677,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.presentation");
       console.log("typeId:" + result);
@@ -691,7 +691,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0470', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0470', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0470 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.graphics");
       console.log("typeId:" + result);
@@ -706,7 +706,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.formula");
       console.log("typeId:" + result);
@@ -721,7 +721,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0490', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0490', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0490 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/png");
       console.log("typeId:" + result);
@@ -735,7 +735,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0500', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0500 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/jpeg");
       console.log("typeId:" + result);
@@ -749,7 +749,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0510', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0510', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0510 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/tiff");
       console.log("typeId:" + result);
@@ -764,7 +764,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-xbitmap");
       console.log("typeId:" + result);
@@ -778,7 +778,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0520', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0520', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0520 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/avi");
       console.log("typeId:" + result);
@@ -792,7 +792,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0530', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0530', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0530 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/msvideo");
       console.log("typeId:" + result);
@@ -806,7 +806,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0540', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0540', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0540 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-msvideo");
       console.log("typeId:" + result);
@@ -820,7 +820,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0550', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0550 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/mpg");
       console.log("typeId:" + result);
@@ -834,7 +834,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0560', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0560', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0560 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/mpeg");
       console.log("typeId:" + result);
@@ -848,7 +848,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0570', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0570', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0570 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-mpeg");
       console.log("typeId:" + result);
@@ -862,7 +862,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0580', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0580', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0580 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-mpg");
       console.log("typeId:" + result);
@@ -876,7 +876,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0590', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0590', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0590 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/mp4");
       console.log("typeId:" + result);
@@ -890,7 +890,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0600', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0600 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/mp4v");
       console.log("typeId:" + result);
@@ -904,7 +904,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0720', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0720', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0720 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/3gpp");
       console.log("typeId:" + result);
@@ -918,7 +918,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0610', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0610', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0610 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/3gpp2");
       console.log("typeId:" + result);
@@ -932,7 +932,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0620', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0620', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0620 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/ogg");
       console.log("typeId:" + result);
@@ -946,7 +946,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0630', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0630', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0630 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/aiff");
       console.log("typeId:" + result);
@@ -960,7 +960,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0640', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0640', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0640 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/pcm");
       console.log("typeId:" + result);
@@ -974,7 +974,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0650', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0650 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/flac");
       console.log("typeId:" + result);
@@ -988,7 +988,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0660', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0660', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0660 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/alac");
       console.log("typeId:" + result);
@@ -1002,7 +1002,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0670', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0670', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0670 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/mp3");
       console.log("typeId:" + result);
@@ -1016,7 +1016,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0680', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0680', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0680 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/aac");
       console.log("typeId:" + result);
@@ -1030,7 +1030,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0690', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0690', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0690 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/basic");
       console.log("typeId:" + result);
@@ -1044,7 +1044,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0700', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0700 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/au");
       console.log("typeId:" + result);
@@ -1058,7 +1058,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0710', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0710', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0710 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/snd");
       console.log("typeId:" + result);
@@ -1066,13 +1066,13 @@ export default function UtdfMimeTypeTest() {
     });
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0730
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0730,audio/x-aiff
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_073TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,audio/x-aiff
      * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-aiff"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0730', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0730', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0730 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-aiff");
       console.log("typeId:" + result);
@@ -1086,7 +1086,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0740', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0740', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0740 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-tar");
       console.log("typeId:" + result);
@@ -1100,7 +1100,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0750', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0750 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/tar");
       console.log("typeId:" + result);
@@ -1114,7 +1114,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0760', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0760', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0760 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/zip");
       console.log("typeId:" + result);
@@ -1129,7 +1129,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0770', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0770', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0770 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-bzip2");
       console.log("typeId:" + result);
@@ -1143,7 +1143,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0780', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0780', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0780 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/plain");
       console.log("typeId:" + result);
@@ -1158,7 +1158,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0790', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0790', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0790 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/html");
       console.log("typeId:" + result);
@@ -1172,7 +1172,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0800', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0800 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/xml");
       console.log("typeId:" + result);
@@ -1186,7 +1186,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0950', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0950 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/markdown");
       console.log("typeId:" + result);
@@ -1200,7 +1200,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0810', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0810', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0810 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-perl-script");
       console.log("typeId:" + result);
@@ -1214,7 +1214,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0820', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0820', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0820 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-python-script");
       console.log("typeId:" + result);
@@ -1228,7 +1228,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0830', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0830', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0830 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/ruby-script");
       console.log("typeId:" + result);
@@ -1242,7 +1242,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0840', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0840', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0840 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-php-script");
       console.log("typeId:" + result);
@@ -1256,7 +1256,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0850', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0850 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/php");
       console.log("typeId:" + result);
@@ -1270,7 +1270,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0860', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0860', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0860 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/php");
       console.log("typeId:" + result);
@@ -1284,7 +1284,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0870', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0870', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0870 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/javascript");
       console.log("typeId:" + result);
@@ -1298,7 +1298,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0880', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0880', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0880 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/calendar");
       console.log("typeId:" + result);
@@ -1312,7 +1312,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/calendar");
       console.log("typeId:" + result);
@@ -1327,7 +1327,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0900', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0900 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/epub+zip");
       console.log("typeId:" + result);
@@ -1341,7 +1341,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0910', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0910', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0910 start');
       let result = UTD.getUniformDataTypeByMIMEType("font/ttf");
       console.log("typeId:" + result);
@@ -1355,7 +1355,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0920', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0920', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0920 start');
       let result = UTD.getUniformDataTypeByMIMEType("font/collection");
       console.log("typeId:" + result);
@@ -1369,7 +1369,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0930', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0930', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0930 start');
       let result = UTD.getUniformDataTypeByMIMEType("font/otf");
       console.log("typeId:" + result);
@@ -1383,7 +1383,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/calendar");
       console.log("typeId:" + result);
@@ -1397,7 +1397,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0970', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0970', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0970 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-apple-diskimage");
       console.log("typeId:" + result);
@@ -1411,7 +1411,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0980', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0980', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0980 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-debian-package");
       console.log("typeId:" + result);
@@ -1425,7 +1425,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0990', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0990', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0990 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.debian.binary-package");
       console.log("typeId:" + result);
@@ -1439,7 +1439,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1000', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1000 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/css");
       console.log("typeId:" + result);
@@ -1453,7 +1453,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1010 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-ms-bmp");
       console.log("typeId:" + result);
@@ -1467,7 +1467,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1020', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1020 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-vob");
       console.log("typeId:" + result);
@@ -1481,7 +1481,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1030', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1030 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/dv");
       console.log("typeId:" + result);
@@ -1495,7 +1495,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1050', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1050 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/fli");
       console.log("typeId:" + result);
@@ -1509,7 +1509,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1060', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1060 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/flc");
       console.log("typeId:" + result);
@@ -1524,7 +1524,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1070', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1070 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-mng");
       console.log("typeId:" + result);
@@ -1538,7 +1538,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1080', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1080 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/vnd.mpegurl");
       console.log("typeId:" + result);
@@ -1552,7 +1552,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1090', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1090 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/mp2ts");
       console.log("typeId:" + result);
@@ -1566,7 +1566,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1100', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1100 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/mp2t");
       console.log("typeId:" + result);
@@ -1580,7 +1580,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1110', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1110 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/amr");
       console.log("typeId:" + result);
@@ -1594,7 +1594,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1120', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1120 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/amr-wb");
       console.log("typeId:" + result);
@@ -1608,7 +1608,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1130', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1130 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-gsm");
       console.log("typeId:" + result);
@@ -1622,7 +1622,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1140', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1140 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/GSM");
       console.log("typeId:" + result);
@@ -1636,7 +1636,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1150', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1150 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/imelody");
       console.log("typeId:" + result);
@@ -1650,7 +1650,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1160', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1160 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/midi");
       console.log("typeId:" + result);
@@ -1664,7 +1664,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1170', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1170 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/mpegurl");
       console.log("typeId:" + result);
@@ -1678,7 +1678,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1180', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1180 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-mpegurl");
       console.log("typeId:" + result);
@@ -1692,7 +1692,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1190', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1190 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/mpeg");
       console.log("typeId:" + result);
@@ -1706,7 +1706,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1230', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1230 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/mobile-xmf");
       console.log("typeId:" + result);
@@ -1720,7 +1720,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1250', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1250 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-scpls");
       console.log("typeId:" + result);
@@ -1734,7 +1734,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1270', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1270 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/prs.sid");
       console.log("typeId:" + result);
@@ -1748,7 +1748,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1280 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-icon");
       console.log("typeId:" + result);
@@ -1762,7 +1762,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1290 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-adobe-dng");
       console.log("typeId:" + result);
@@ -1776,7 +1776,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1300 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.template.macroEnabled.12");
       console.log("typeId:" + result);
@@ -1790,7 +1790,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1320', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1320', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1320 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/gif");
       console.log("typeId:" + result);
@@ -1804,7 +1804,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1330', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1330 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/vnd.djvu");
       console.log("typeId:" + result);
@@ -1818,7 +1818,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1340', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1340', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1340 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-jng");
       console.log("typeId:" + result);
@@ -1832,7 +1832,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1350', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1350 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/vnd.zbrush.pcx");
       console.log("typeId:" + result);
@@ -1846,7 +1846,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1360', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1360', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1360 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-portable-bitmap");
       console.log("typeId:" + result);
@@ -1860,7 +1860,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1370', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1370', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1370 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-portable-graymap");
       console.log("typeId:" + result);
@@ -1874,7 +1874,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1380', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1380', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1380 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-portable-anymap");
       console.log("typeId:" + result);
@@ -1888,7 +1888,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1390', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1390', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1390 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-portable-pixmap");
       console.log("typeId:" + result);
@@ -1902,7 +1902,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1400', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1400 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-rgb");
       console.log("typeId:" + result);
@@ -1916,7 +1916,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1420', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1420', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1420 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/svg+xml");
       console.log("typeId:" + result);
@@ -1930,7 +1930,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1430', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1430', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1430 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/vnd.wap.wbmp");
       console.log("typeId:" + result);
@@ -1944,7 +1944,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1440', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1440', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1440 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-xpixmap");
       console.log("typeId:" + result);
@@ -1958,7 +1958,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1450', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1450 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-xwindowdump");
       console.log("typeId:" + result);
@@ -1972,7 +1972,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1460', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1460', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1460 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/heif");
       console.log("typeId:" + result);
@@ -1986,7 +1986,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1470', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1470', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1470 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/heic");
       console.log("typeId:" + result);
@@ -2000,7 +2000,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1480', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1480', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1480 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-cdlink");
       console.log("typeId:" + result);
@@ -2014,7 +2014,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1490', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1490', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1490 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-haskell");
       console.log("typeId:" + result);
@@ -2028,7 +2028,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1500', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1500 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-literate-haskell");
       console.log("typeId:" + result);
@@ -2042,7 +2042,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1510', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1510', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1510 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-tcl");
       console.log("typeId:" + result);
@@ -2056,7 +2056,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1520 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rar");
       console.log("typeId:" + result);
@@ -2070,7 +2070,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1540', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1540', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1540 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/rtf");
       console.log("typeId:" + result);
@@ -2084,7 +2084,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1550', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1550 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/richtext");
       console.log("typeId:" + result);
@@ -2098,7 +2098,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1570', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1570', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1570 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/csv");
       console.log("typeId:" + result);
@@ -2112,7 +2112,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1590', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1590', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1590 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-setext");
       console.log("typeId:" + result);
@@ -2126,7 +2126,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1600', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1600 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-pcs-gcd");
       console.log("typeId:" + result);
@@ -2140,7 +2140,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1610', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1610', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1610 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/tab-separated-values");
       console.log("typeId:" + result);
@@ -2154,7 +2154,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1620', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1620', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1620 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-pkcs7-certreqresp");
       console.log("typeId:" + result);
@@ -2168,7 +2168,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1630', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1630', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1630 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-pem-file");
       console.log("typeId:" + result);
@@ -2182,7 +2182,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1640', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1640', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1640 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-chess-pgn");
       console.log("typeId:" + result);
@@ -2196,7 +2196,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1650', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1650 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.chess-pgn");
       console.log("typeId:" + result);
@@ -2210,7 +2210,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1660', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1660', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1660 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-lha");
       console.log("typeId:" + result);
@@ -2224,7 +2224,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1670', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1670', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1670 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-lzh");
       console.log("typeId:" + result);
@@ -2238,7 +2238,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1680', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1680', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1680 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-lzx");
       console.log("typeId:" + result);
@@ -2252,7 +2252,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1690 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/rar");
       console.log("typeId:" + result);
@@ -2266,7 +2266,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1700', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1700 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-shar");
       console.log("typeId:" + result);
@@ -2280,7 +2280,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1710', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1710', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1710 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-cpio");
       console.log("typeId:" + result);
@@ -2294,7 +2294,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1720', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1720', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1720 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-mimearchive");
       console.log("typeId:" + result);
@@ -2308,7 +2308,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1730', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1730', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1730 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-ustar");
       console.log("typeId:" + result);
@@ -2322,7 +2322,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1740', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1740', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1740 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/mathml");
       console.log("typeId:" + result);
@@ -2336,7 +2336,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1750', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1750 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/mathml+xml");
       console.log("typeId:" + result);
@@ -2350,7 +2350,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1760', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1760', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1760 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/xhtml+xml");
       console.log("typeId:" + result);
@@ -2364,7 +2364,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1770', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1770', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1770 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/rss+xml");
       console.log("typeId:" + result);
@@ -2378,7 +2378,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1780', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1780', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1780 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/rdf+xml");
       console.log("typeId:" + result);
@@ -2392,7 +2392,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1790', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1790', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1790 start');
       let result = UTD.getUniformDataTypeByMIMEType("model/iges");
       console.log("typeId:" + result);
@@ -2406,7 +2406,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1800', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1800 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/octet-stream");
       console.log("typeId:" + result);
@@ -2420,7 +2420,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1810', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1810', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1810 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-iso9660-image");
       console.log("typeId:" + result);
@@ -2434,7 +2434,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1820', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1820', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1820 start');
       let result = UTD.getUniformDataTypeByMIMEType("model/mesh");
       console.log("typeId:" + result);
@@ -2448,7 +2448,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1830', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1830', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1830 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-object");
       console.log("typeId:" + result);
@@ -2462,7 +2462,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1840', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1840', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1840 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/pkix-cert");
       console.log("typeId:" + result);
@@ -2476,7 +2476,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1850', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1850 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-x509-ca-cert");
       console.log("typeId:" + result);
@@ -2490,7 +2490,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1860', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1860', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1860 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-x509-server-cert");
       console.log("typeId:" + result);
@@ -2504,7 +2504,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1870', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1870', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1870 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-x509-user-cert");
       console.log("typeId:" + result);
@@ -2518,7 +2518,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1880', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1880', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1880 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-pkix-crl");
       console.log("typeId:" + result);
@@ -2532,7 +2532,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1890', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1890', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1890 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.chart");
       console.log("typeId:" + result);
@@ -2546,7 +2546,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1900', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1900 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.text-master");
       console.log("typeId:" + result);
@@ -2560,7 +2560,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1910', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1910', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1910 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.text-web");
       console.log("typeId:" + result);
@@ -2574,7 +2574,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1920', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1920', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1920 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.database");
       console.log("typeId:" + result);
@@ -2588,7 +2588,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1930', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1930', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1930 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.image");
       console.log("typeId:" + result);
@@ -2602,7 +2602,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1940', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1940', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1940 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.formula-template");
       console.log("typeId:" + result);
@@ -2616,7 +2616,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1950', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1950 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.chart-template");
       console.log("typeId:" + result);
@@ -2630,7 +2630,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1960', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1960', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1960 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.presentation-template");
       console.log("typeId:" + result);
@@ -2644,7 +2644,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1970', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1970', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1970 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.image-template");
       console.log("typeId:" + result);
@@ -2658,7 +2658,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1980', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1980', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1980 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.graphics-template");
       console.log("typeId:" + result);
@@ -2672,7 +2672,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1990', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1990', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1990 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.spreadsheet-template");
       console.log("typeId:" + result);
@@ -2686,7 +2686,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2000', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2000 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.text-template");
       console.log("typeId:" + result);
@@ -2700,7 +2700,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2010 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-sd2");
       console.log("typeId:" + result);
@@ -2715,7 +2715,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2020 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rn-realmedia");
       console.log("typeId:" + result);
@@ -2729,7 +2729,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2040 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.cinderella");
       console.log("typeId:" + result);
@@ -2743,7 +2743,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2050', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2050 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.visio");
       console.log("typeId:" + result);
@@ -2757,7 +2757,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2060', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2060 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.drawingml.drawing");
       console.log("typeId:" + result);
@@ -2771,7 +2771,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2070', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2070 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.wordprocessingml.template");
@@ -2786,7 +2786,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2080', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2080 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.presentationml.template");
@@ -2801,7 +2801,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2090', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2090 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.presentationml.slideshow");
@@ -2816,7 +2816,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2100', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2100 start');
       let result =
         UTD.getUniformDataTypeByMIMEType("application/vnd.openxmlformats-officedocument.spreadsheetml.template");
@@ -2831,7 +2831,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2110', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2110 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.calc");
       console.log("typeId:" + result);
@@ -2845,7 +2845,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2120', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2120 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.draw");
       console.log("typeId:" + result);
@@ -2859,7 +2859,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2130', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2130 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.writer.global");
       console.log("typeId:" + result);
@@ -2873,7 +2873,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2140', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2140 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.math");
       console.log("typeId:" + result);
@@ -2887,7 +2887,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2150', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2150 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.writer");
       console.log("typeId:" + result);
@@ -2901,7 +2901,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2160', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2160 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.calc.template");
       console.log("typeId:" + result);
@@ -2915,7 +2915,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2170', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2170 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.draw.template");
       console.log("typeId:" + result);
@@ -2929,7 +2929,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2180', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2180 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.impress.template");
       console.log("typeId:" + result);
@@ -2943,7 +2943,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.addin.macroEnabled.12");
       console.log("typeId:" + result);
@@ -2957,7 +2957,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2200', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2200 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.sun.xml.writer.template");
       console.log("typeId:" + result);
@@ -2971,7 +2971,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2210', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2210 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.draw");
       console.log("typeId:" + result);
@@ -2985,7 +2985,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2220', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2220', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2220 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.calc");
       console.log("typeId:" + result);
@@ -2999,7 +2999,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2230', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2230 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.impress");
       console.log("typeId:" + result);
@@ -3013,7 +3013,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2240 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.writer");
       console.log("typeId:" + result);
@@ -3027,7 +3027,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2250 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.chart");
       console.log("typeId:" + result);
@@ -3041,7 +3041,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2260 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.mail");
       console.log("typeId:" + result);
@@ -3055,7 +3055,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2270 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.writer-global");
       console.log("typeId:" + result);
@@ -3069,7 +3069,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2280 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.math");
       console.log("typeId:" + result);
@@ -3083,7 +3083,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2290 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.stardivision.template");
       console.log("typeId:" + result);
@@ -3097,7 +3097,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2300 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-bibtex");
       console.log("typeId:" + result);
@@ -3111,7 +3111,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-tex");
       console.log("typeId:" + result);
@@ -3125,7 +3125,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2320', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2320', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2310 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-coreldraw");
       console.log("typeId:" + result);
@@ -3139,7 +3139,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2340 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-latex");
       console.log("typeId:" + result);
@@ -3153,7 +3153,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2350 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-asf");
       console.log("typeId:" + result);
@@ -3167,7 +3167,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2360 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-asf");
       console.log("typeId:" + result);
@@ -3181,7 +3181,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2380 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-matroska");
       console.log("typeId:" + result);
@@ -3195,7 +3195,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2400 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-sgi-movie");
       console.log("typeId:" + result);
@@ -3209,7 +3209,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2410 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/m4v");
       console.log("typeId:" + result);
@@ -3223,7 +3223,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2420 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/webm");
       console.log("typeId:" + result);
@@ -3237,7 +3237,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2430 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/quicktime");
       console.log("typeId:" + result);
@@ -3251,7 +3251,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2460 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-coreldrawtemplate");
       console.log("typeId:" + result);
@@ -3265,7 +3265,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2470 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-corelphotopaint");
       console.log("typeId:" + result);
@@ -3279,7 +3279,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2480 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-coreldrawpattern");
       console.log("typeId:" + result);
@@ -3293,7 +3293,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2490 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/ico");
       console.log("typeId:" + result);
@@ -3307,7 +3307,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2500 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-cmu-raster");
       console.log("typeId:" + result);
@@ -3321,7 +3321,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2510 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/webp");
       console.log("typeId:" + result);
@@ -3335,7 +3335,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2520 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-koan");
       console.log("typeId:" + result);
@@ -3349,7 +3349,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2530 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-moc");
       console.log("typeId:" + result);
@@ -3363,7 +3363,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2540 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-font");
       console.log("typeId:" + result);
@@ -3377,7 +3377,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2560 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-font-pcf");
       console.log("typeId:" + result);
@@ -3391,7 +3391,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2570 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-ms-wmd");
       console.log("typeId:" + result);
@@ -3405,7 +3405,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2580 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-ms-wmz");
       console.log("typeId:" + result);
@@ -3419,7 +3419,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2590 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-msi");
       console.log("typeId:" + result);
@@ -3433,7 +3433,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2600 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-mspublisher");
       console.log("typeId:" + result);
@@ -3447,7 +3447,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2610 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-wpl");
       console.log("typeId:" + result);
@@ -3461,7 +3461,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2620 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/msaccess");
       console.log("typeId:" + result);
@@ -3475,7 +3475,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2630 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-pki.stl");
       console.log("typeId:" + result);
@@ -3489,7 +3489,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2640 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.apple.mpegurl");
       console.log("typeId:" + result);
@@ -3503,7 +3503,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2650 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-abiword");
       console.log("typeId:" + result);
@@ -3517,7 +3517,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2660 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-maker");
       console.log("typeId:" + result);
@@ -3531,7 +3531,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2670 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-cdf");
       console.log("typeId:" + result);
@@ -3545,7 +3545,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2690 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-director");
       console.log("typeId:" + result);
@@ -3559,7 +3559,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2710 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-gnumeric");
       console.log("typeId:" + result);
@@ -3573,7 +3573,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2720 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-hdf");
       console.log("typeId:" + result);
@@ -3587,7 +3587,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2730 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/mac-binhex40");
       console.log("typeId:" + result);
@@ -3601,7 +3601,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2740 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/hta");
       console.log("typeId:" + result);
@@ -3615,7 +3615,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2750 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-internet-signup");
       console.log("typeId:" + result);
@@ -3629,7 +3629,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2770 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/troff");
       console.log("typeId:" + result);
@@ -3643,7 +3643,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2780 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.mif");
       console.log("typeId:" + result);
@@ -3657,7 +3657,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2790 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-freemind");
       console.log("typeId:" + result);
@@ -3671,7 +3671,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2810 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.smaf");
       console.log("typeId:" + result);
@@ -3685,7 +3685,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2820 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/mathematica");
       console.log("typeId:" + result);
@@ -3699,7 +3699,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2830 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/ogg");
       console.log("typeId:" + result);
@@ -3713,7 +3713,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2840 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-ns-proxy-autoconfig");
       console.log("typeId:" + result);
@@ -3727,7 +3727,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2850 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-pkcs12");
       console.log("typeId:" + result);
@@ -3741,7 +3741,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2860 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/pgp-signature");
       console.log("typeId:" + result);
@@ -3755,7 +3755,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2870 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-quicktimeplayer");
       console.log("typeId:" + result);
@@ -3769,7 +3769,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2890 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rar");
       console.log("typeId:" + result);
@@ -3783,7 +3783,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2900 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-7z-compressed");
       console.log("typeId:" + result);
@@ -3797,7 +3797,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2910 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-go-sgf");
       console.log("typeId:" + result);
@@ -3811,7 +3811,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2920 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/x-wav");
       console.log("typeId:" + result);
@@ -3825,7 +3825,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2930 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/futuresplash");
       console.log("typeId:" + result);
@@ -3839,7 +3839,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2940 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-futuresplash");
       console.log("typeId:" + result);
@@ -3853,7 +3853,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2950 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-shockwave-flash");
       console.log("typeId:" + result);
@@ -3867,7 +3867,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2960 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-texinfo");
       console.log("typeId:" + result);
@@ -3881,7 +3881,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2970 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-bittorrent");
       console.log("typeId:" + result);
@@ -3895,7 +3895,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2980 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-doom");
       console.log("typeId:" + result);
@@ -3909,7 +3909,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2990 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-webarchive");
       console.log("typeId:" + result);
@@ -3923,7 +3923,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3000 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-webarchive-xml");
       console.log("typeId:" + result);
@@ -3937,7 +3937,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3010 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-xcf");
       console.log("typeId:" + result);
@@ -3951,7 +3951,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3020 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-xcf");
       console.log("typeId:" + result);
@@ -3965,7 +3965,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3030 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-eddx");
       console.log("typeId:" + result);
@@ -3979,7 +3979,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3040 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-emmx");
       console.log("typeId:" + result);
@@ -3993,7 +3993,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3050 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/caj");
       console.log("typeId:" + result);
@@ -4007,7 +4007,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3060 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/dbf");
       console.log("typeId:" + result);
@@ -4021,7 +4021,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3070 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/dbase");
       console.log("typeId:" + result);
@@ -4035,7 +4035,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3080 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/vnd.dwg");
       console.log("typeId:" + result);
@@ -4049,7 +4049,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3090 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/vnd.dxf");
       console.log("typeId:" + result);
@@ -4063,7 +4063,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3100 start');
       let result = UTD.getUniformDataTypeByMIMEType("model/vnd.dwf");
       console.log("typeId:" + result);
@@ -4077,7 +4077,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3110 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.hp-hpgl");
       console.log("typeId:" + result);
@@ -4091,7 +4091,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3120 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/avif");
       console.log("typeId:" + result);
@@ -4105,7 +4105,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3130 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/vnd-ms.dds");
       console.log("typeId:" + result);
@@ -4119,7 +4119,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3140 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-ilbm");
       console.log("typeId:" + result);
@@ -4133,7 +4133,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3150 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-canon-cr2");
       console.log("typeId:" + result);
@@ -4147,7 +4147,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3160 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-canon-cr3");
       console.log("typeId:" + result);
@@ -4161,7 +4161,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3170 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-canon-crw");
       console.log("typeId:" + result);
@@ -4175,7 +4175,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3180 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-nikon-nef");
       console.log("typeId:" + result);
@@ -4189,7 +4189,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3190 start');
       let result = UTD.getUniformDataTypeByMIMEType("message/rfc822");
       console.log("typeId:" + result);
@@ -4204,7 +4204,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3200 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/x-dvi");
       console.log("typeId:" + result);
@@ -4218,7 +4218,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3220 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-sony-arw");
       console.log("typeId:" + result);
@@ -4232,7 +4232,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-word.document.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4246,7 +4246,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3250', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-word.template.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4260,7 +4260,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3270', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3270', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3240 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.sheet.binary.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4274,7 +4274,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.sheet.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4288,7 +4288,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3290', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3290', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3280 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.addin.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4302,7 +4302,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.presentation.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4316,7 +4316,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3310 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.slideshow.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4330,7 +4330,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3320', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3320', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint.template.macroEnabled.12");
       console.log("typeId:" + result);
@@ -4344,7 +4344,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3330', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3300 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-boo");
       console.log("typeId:" + result);
@@ -4358,7 +4358,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3340 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-dsrc");
       console.log("typeId:" + result);
@@ -4372,7 +4372,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3350 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-component");
       console.log("typeId:" + result);
@@ -4386,7 +4386,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3360 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-pascal");
       console.log("typeId:" + result);
@@ -4400,7 +4400,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3370 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-xbm");
       console.log("typeId:" + result);
@@ -4414,7 +4414,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3380 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-csh");
       console.log("typeId:" + result);
@@ -4428,7 +4428,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3390 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-csrc");
       console.log("typeId:" + result);
@@ -4442,7 +4442,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3400 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-shellscript");
       console.log("typeId:" + result);
@@ -4456,7 +4456,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3410 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-c++src");
       console.log("typeId:" + result);
@@ -4470,7 +4470,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3420 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-c++hdr");
       console.log("typeId:" + result);
@@ -4484,7 +4484,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3430 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/x-chdr");
       console.log("typeId:" + result);
@@ -4498,7 +4498,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3440 start');
       let result = UTD.getUniformDataTypeByMIMEType("text/vcard");
       console.log("typeId:" + result);
@@ -4512,7 +4512,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3450 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/bmp");
       console.log("typeId:" + result);
@@ -4528,7 +4528,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-flv");
       console.log("typeId:" + result);
@@ -4542,7 +4542,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470 start');
       let result = UTD.getUniformDataTypesByMIMEType("video/mp4");
       console.log("typeId:" + result);
@@ -4556,7 +4556,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480 start');
       let result = UTD.getUniformDataTypesByMIMEType("video/mp2t");
       console.log("typeId:" + result);
@@ -4570,7 +4570,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/vnd.youtube.yt");
       console.log("typeId:" + result);
@@ -4585,7 +4585,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-webex");
       console.log("typeId:" + result);
@@ -4600,7 +4600,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510 start');
       let result = UTD.getUniformDataTypesByMIMEType("video/mpeg");
       console.log("typeId:" + result);
@@ -4614,7 +4614,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520 start');
       let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rn-realmedia-vbr");
       console.log("typeId:" + result);
@@ -4628,7 +4628,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-pn-realvideo");
       console.log("typeId:" + result);
@@ -4642,7 +4642,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/divx");
       console.log("typeId:" + result);
@@ -4656,7 +4656,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/annodex");
       console.log("typeId:" + result);
@@ -4670,7 +4670,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/ogg");
       console.log("typeId:" + result);
@@ -4684,7 +4684,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570 start');
       let result = UTD.getUniformDataTypeByMIMEType("video/x-la-asf");
       console.log("typeId:" + result);
@@ -4698,7 +4698,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/jp2");
       console.log("typeId:" + result);
@@ -4712,7 +4712,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/jpx");
       console.log("typeId:" + result);
@@ -4726,7 +4726,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/jpm");
       console.log("typeId:" + result);
@@ -4740,7 +4740,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-fuji-raf");
       console.log("typeId:" + result);
@@ -4754,7 +4754,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-nikon-nrw");
       console.log("typeId:" + result);
@@ -4768,7 +4768,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-panasonic-raw");
       console.log("typeId:" + result);
@@ -4782,7 +4782,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-pentax-pef");
       console.log("typeId:" + result);
@@ -4796,7 +4796,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-samsung-srw");
       console.log("typeId:" + result);
@@ -4810,7 +4810,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-epson-erf");
       console.log("typeId:" + result);
@@ -4824,7 +4824,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-olympus-orf");
       console.log("typeId:" + result);
@@ -4838,7 +4838,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/ief");
       console.log("typeId:" + result);
@@ -4852,7 +4852,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690 start');
       let result = UTD.getUniformDataTypeByMIMEType("image/x-jg");
       console.log("typeId:" + result);
@@ -4866,7 +4866,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/mp4");
       console.log("typeId:" + result);
@@ -4880,7 +4880,7 @@ export default function UtdfMimeTypeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710', 0, () => {
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710 start');
       let result = UTD.getUniformDataTypeByMIMEType("audio/ac3");
       console.log("typeId:" + result);

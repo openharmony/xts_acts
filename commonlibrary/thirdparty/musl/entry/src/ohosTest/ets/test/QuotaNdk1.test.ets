@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import quota from 'libquotandk1.so'
 export default function muslQuotaNdk1Test() {
@@ -31,7 +31,7 @@ export default function muslQuotaNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslQuotaQuotactl002', 0, async (done: Function) => {
+    it('testMuslQuotaQuotactl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = quota.quotactl();
       expect(result).assertEqual(-1);
       done()

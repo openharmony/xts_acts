@@ -50,7 +50,7 @@ class DrawingNativeShadowLayerTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_ShadowLayerCreate with integer values for blurRadius, x, and y
     OH_Drawing_ShadowLayer *shadow = OH_Drawing_ShadowLayerCreate(3, -3, 3, 0xFF00FF00);
     EXPECT_NE(shadow, nullptr);
@@ -69,7 +69,7 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateNormal, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ShadowLayerCreate with the first parameter being empty, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_ShadowLayer *shadow = OH_Drawing_ShadowLayerCreate(0, -3, 3, 0xFF00FF00);
@@ -98,7 +98,7 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateNull, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ShadowLayerCreate with the first parameter as a negative number, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_ShadowLayer *shadow = OH_Drawing_ShadowLayerCreate(-3, 3, 3, 0xFF00FF00);
@@ -127,7 +127,7 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateAbnormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMaximum, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ShadowLayerCreate with the first parameter as the maximum value
     OH_Drawing_ShadowLayer *shadow = OH_Drawing_ShadowLayerCreate(FLT_MAX, 3, 3, 0xFF00FF00);
     EXPECT_NE(shadow, nullptr);
@@ -155,7 +155,7 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMaximum, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ShadowLayerCreate 10 times with random values for blurRadius, x, y, and different colors
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -179,7 +179,7 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMultipleCalls, TestS
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_ShadowLayerCreate
     OH_Drawing_ShadowLayer *shadow = OH_Drawing_ShadowLayerCreate(3, 3, 3, 0xFF00FF00);
     // add assert
@@ -196,7 +196,7 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ShadowLayerDestroy with null parameter
     OH_Drawing_ShadowLayerDestroy(nullptr);
     // add assert

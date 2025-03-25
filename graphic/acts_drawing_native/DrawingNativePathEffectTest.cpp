@@ -60,7 +60,7 @@ class DrawingNativePathEffectTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CreateDashPathEffect
     float intervals[] = {1, 1, 1};
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDashPathEffect(intervals, 3, 0.0);
@@ -80,7 +80,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNull, Function | SmallTest | Level3) {
     float intervals[] = {1, 1};
     // 1. OH_Drawing_CreateDashPathEffect with nullptr as the first parameter, check the error code with
     // OH_Drawing_ErrorCodeGet
@@ -109,7 +109,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectAbnormal, Function | SmallTest | Level3) {
     float intervals[] = {1, 1, 1};
     // 1. OH_Drawing_CreateDashPathEffect with the first parameter not being even
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDashPathEffect(intervals, 3, 1.0);
@@ -142,7 +142,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectMultipleCalls, Function | SmallTest | Level3) {
     float intervals[] = {1, 1};
     // 1. Call OH_Drawing_CreateDashPathEffect 10 times
     for (int i = 0; i < 10; i++) {
@@ -162,7 +162,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectMultipleCalls, Tes
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNormal, Function | SmallTest | Level0) {
     float intervals[] = {1, 1, 1};
     // 1. OH_Drawing_CreateDashPathEffect
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDashPathEffect(intervals, 3, 0.0);
@@ -180,7 +180,7 @@ HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_PathEffectDestroy with nullptr as the parameter
     OH_Drawing_PathEffectDestroy(nullptr);
     // add assert
@@ -195,7 +195,7 @@ HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNull, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CreateCornerPathEffect with normal parameter
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateCornerPathEffect(10.0);
     // add assert
@@ -213,7 +213,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CreateCornerPathEffect with 0 as the parameter
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateCornerPathEffect(0);
     // add assert
@@ -230,7 +230,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CreateCornerPathEffect with 0xFFFFFFFF as the parameter
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateCornerPathEffect(0xFFFFFFFF);
     // add assert
@@ -262,7 +262,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateCornerPathEffectAbnormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CreateDiscretePathEffect with normal parameter
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDiscretePathEffect(10.0, 2.0);
     // add assert
@@ -280,7 +280,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNormal, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CreateDiscretePathEffect with 0 as the first parameter
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDiscretePathEffect(0, 2.0);
     // add assert
@@ -302,7 +302,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectNull, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CreateDiscretePathEffect with 0xFFFFFFFF as the first and second parameter
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDiscretePathEffect(0xFFFFFFFF, 0xFFFFFFFF);
     // add assert
@@ -344,7 +344,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDiscreatePathEffectAbnormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CreateCornerPathEffect
     OH_Drawing_PathEffect *cornerPathEffect = OH_Drawing_CreateCornerPathEffect(10.0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
@@ -375,7 +375,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNormal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CreateCornerPathEffect
     OH_Drawing_PathEffect *cornerPathEffect = OH_Drawing_CreateCornerPathEffect(10.0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
@@ -409,7 +409,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateComposePathEffectNull, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
@@ -444,7 +444,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
@@ -480,7 +480,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
@@ -519,7 +519,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreatePathDashEffectAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CreateCornerPathEffect
     OH_Drawing_PathEffect *firstPathEffect = OH_Drawing_CreateCornerPathEffect(50.0f);
     EXPECT_NE(firstPathEffect, nullptr);
@@ -543,7 +543,7 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathEffectTest, testCreateSumPathEffectNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CreateCornerPathEffect
     OH_Drawing_PathEffect *firstPathEffect = OH_Drawing_CreateCornerPathEffect(50.0f);
     EXPECT_NE(firstPathEffect, nullptr);

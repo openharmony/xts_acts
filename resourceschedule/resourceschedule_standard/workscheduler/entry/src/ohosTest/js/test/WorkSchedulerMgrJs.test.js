@@ -2041,5 +2041,83 @@ export default function WorkSchedulerMgrApiTest() {
                 done();
             }
         })
+
+        /*testStartWorkFun020
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_152
+         * @tc.name      testGetWorkStatusFun005
+         * @tc.desc      test getWorkStatus promise errorcode is 9700004. 
+         */
+        it("testGetWorkStatusFun005", 0, async function (done) {
+            console.info('----------------------testGetWorkStatusFun006---------------------------');
+            try{
+                workScheduler.getWorkStatus(1234).then(res => {
+                    console.info('testGetWorkStatusFun005 isLastWorkTimeOut promise success, data is:' + res);
+                })
+                .catch(error => {
+                    console.info('testGetWorkStatusFun005 isLastWorkTimeOut promise fail, because:' + error.code);
+                    expect(error.code).assertEqual(9700004);
+                done();
+            });
+            }catch(error){
+                console.info('testGetWorkStatusFun005 isLastWorkTimeOut promise fail ,' + error.code);               
+            }
+        })
+
+        /*testStartWorkFun021
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_153
+         * @tc.name      testGetWorkStatusFun005
+         * @tc.desc      test getWorkStatus callback errorcode is 9700004. 
+         */
+         it("testGetWorkStatusFun006", 0, async function (done) {
+            console.info('----------------------testGetWorkStatusFun006---------------------------');
+            try{
+                workScheduler.getWorkStatus(10, (error, res) => {
+                    if (error) {
+                        console.info('testGetWorkStatusFun006 getWorkStatuscallback fail because:' + error.code);
+                        expect(error.code).assertEqual(9700004);
+                        done();
+                    } else {
+                        console.info('testGetWorkStatusFun006 isLastWorkTimeOut promise success, data is:' + res);
+                    }
+                });
+            }catch(error){
+                console.info('testGetWorkStatusFun006 getWorkStatus promise fail ,' + error.code);                
+            }
+        })
+
+        /*
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_0154
+         * @tc.name      testStartWorkFun015
+         * @tc.desc      test workScheduler workInfo parameter.
+         */
+        it("testStartWorkFun054", 0, async function (done) {
+            console.info('----------------------testStartWorkFun054---------------------------');
+            workScheduler.stopAndClearWorks();
+            let workInfo = {
+                workId: 1,
+                bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+                abilityName: "com.mytest.abilityName",
+                networkType: 0,
+                isCharging: false,
+                batteryLevel: 50,
+                batteryStatus: 1,
+                storageRequest: 1,
+                isRepeat: false,
+                isPersisted: false,
+                isDeepIdle: false,
+                parameters: {
+                    mykey0: 1,
+                    mykey1: "string value",
+                    mykey2: true,
+                    mykey3: 1.5
+                }
+            }
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("testStartWorkFun054----------------error: " + error.code);
+            }
+        })
     })
 }

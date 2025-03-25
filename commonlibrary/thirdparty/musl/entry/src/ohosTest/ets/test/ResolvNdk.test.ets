@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import resolv from 'libresolvndk.so'
 
@@ -32,7 +32,7 @@ export default function resolvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResolvResInit001', 0, async (done: Function) => {
+    it('testMuslResolvResInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = resolv.resInit();
       console.info("Test result= " + result);
       expect(result).assertEqual(0);
@@ -47,7 +47,7 @@ export default function resolvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResolvResMkquery001', 0, async (done: Function) => {
+    it('testMuslResolvResMkquery001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = resolv.resMkquery(param);
       console.info("Test result= " + result);
@@ -63,7 +63,7 @@ export default function resolvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslResolvResMkquery002', 0, async (done: Function) => {
+    it('testMuslResolvResMkquery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = resolv.resMkquery(param);
       console.info("Test result= " + result);
@@ -80,7 +80,7 @@ export default function resolvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslReSoLvDnExpand001', 0, async (done: Function) => {
+    it('testMuslReSoLvDnExpand001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = false;
       if (resolv.dn_expand() != -1) {
         result = true;

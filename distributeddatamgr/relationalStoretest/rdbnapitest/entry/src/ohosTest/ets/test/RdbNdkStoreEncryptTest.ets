@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libencrypt.so'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -40,8 +40,11 @@ export default function RdbNdkStoreEncryptTest() {
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0100
          * @tc.desc: Exception testCase of NDK ENCRYPT.
          * @tc.type: FUNC
+         * @tc.name predicates encrypt normal test
+         * @tc.size   : MediumTest
+         * @tc.level  : Level 2
          */
-        it('SUB_DDM_RDB_ENCRYPT_0100',0, async () => {
+        it('SUB_DDM_RDB_ENCRYPT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_ENCRYPT_0100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_ENCRYPT_0100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
@@ -52,8 +55,11 @@ export default function RdbNdkStoreEncryptTest() {
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1100
          * @tc.desc: Exception testCase of NDK SecurityLevel.
          * @tc.type: FUNC
+         * @tc.name predicates encrypt normal test
+         * @tc.size   : MediumTest
+         * @tc.level  : Level 2
          */
-        it('SUB_DDM_RDB_ENCRYPT_0200',0, async () => {
+        it('SUB_DDM_RDB_ENCRYPT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_ENCRYPT_0200' , ' begin');
             let re = testNapi.SUB_DDM_RDB_ENCRYPT_0200();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');

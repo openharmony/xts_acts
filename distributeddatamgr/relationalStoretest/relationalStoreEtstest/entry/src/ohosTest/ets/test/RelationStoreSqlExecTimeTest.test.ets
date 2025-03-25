@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import common from '@ohos.app.ability.common';
@@ -94,7 +94,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0001', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0001 start *************");
       if(rdbStore == undefined){
         return;
@@ -142,7 +142,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0002', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0002 start *************");
       if(rdbStore == undefined){
         return;
@@ -191,7 +191,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0003', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0003 start *************");
       if(rdbStore == undefined){
         return;
@@ -241,7 +241,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0004', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0004 start *************");
       if(rdbStore == undefined){
         return;
@@ -291,7 +291,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0005', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0005 start *************");
       if(rdbStore == undefined){
         return;
@@ -335,7 +335,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0006', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0006 start *************");
       if(rdbStore == undefined){
         return;
@@ -378,7 +378,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0007', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0007 start *************");
       if(rdbStore == undefined){
         return;
@@ -421,7 +421,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0008', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0008 start *************");
       if(rdbStore == undefined){
         return;
@@ -464,7 +464,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0009', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0009 start *************");
       if(rdbStore == undefined){
         return;
@@ -518,7 +518,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0010', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0010 start *************");
       if(rdbStore == undefined){
         return;
@@ -553,7 +553,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0011', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0011 start *************");
       if(rdbStore == undefined){
         return;
@@ -606,7 +606,7 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0012', 0, async (done:Function) => {
+    it('testRdbStoreStatistics0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0012 start *************");
       if(rdbStore == undefined){
         return;

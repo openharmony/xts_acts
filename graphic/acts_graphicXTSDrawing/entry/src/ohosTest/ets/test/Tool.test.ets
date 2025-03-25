@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
 
@@ -47,7 +47,7 @@ export default function toolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMakeColorFromResourceColorNormal01', DEFAULT, () => {
+    it('testMakeColorFromResourceColorNormal01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMakeColorFromResourceColorNormal01';
       try {
         let color1: common2D.Color = drawing.Tool.makeColorFromResourceColor(Color.Orange);
@@ -146,7 +146,7 @@ export default function toolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMakeColorFromResourceColorNormal02', DEFAULT, () => {
+    it('testMakeColorFromResourceColorNormal02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMakeColorFromResourceColorNormal02';
       try {
         let color1: common2D.Color = drawing.Tool.makeColorFromResourceColor(0x5500ff005500ff005500ff005500ff005500ff005500ff005500ff005500ff00);
@@ -221,7 +221,7 @@ export default function toolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMakeColorFromResourceColorAbnormal01', DEFAULT, () => {
+    it('testMakeColorFromResourceColorAbnormal01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMakeColorFromResourceColorAbnormal01';
       try {
         let color1: common2D.Color = drawing.Tool.makeColorFromResourceColor('rgb(255, 255, -255)');
@@ -336,7 +336,7 @@ export default function toolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMakeColorFromResourceColorAbnormal02', DEFAULT, () => {
+    it('testMakeColorFromResourceColorAbnormal02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMakeColorFromResourceColorAbnormal02';
       try {
         let color1: common2D.Color = drawing.Tool.makeColorFromResourceColor($r('sys.string.general_paste'));
@@ -379,7 +379,7 @@ export default function toolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMakeColorFromResourceColorNull', DEFAULT, () => {
+    it('testMakeColorFromResourceColorNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMakeColorFromResourceColorNull';
       try {
         let color1: common2D.Color = drawing.Tool.makeColorFromResourceColor(null);
@@ -406,7 +406,7 @@ export default function toolTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMakeColorFromResourceColorMultipleCalls', DEFAULT, () => {
+    it('testMakeColorFromResourceColorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMakeColorFromResourceColorMultipleCalls';
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {

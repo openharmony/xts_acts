@@ -113,7 +113,7 @@ OH_Drawing_RecordCmd *threadFunctionTest1()
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, Function | SmallTest | Level0) {
     // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmd *picture = nullptr;
@@ -131,7 +131,7 @@ HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNULL, TestSize.Level0) {
+HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNULL, Function | SmallTest | Level0) {
     // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmd *picture = nullptr;

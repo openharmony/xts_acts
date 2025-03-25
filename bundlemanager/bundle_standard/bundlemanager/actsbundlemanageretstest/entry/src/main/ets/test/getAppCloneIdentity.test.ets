@@ -14,7 +14,7 @@
  */
 
 import bundleManager from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const BUNDLE_NAME1 = 'com.example.l3jsdemo';
 const BUNDLE_NAME2 = 'com.open.harmony.packagemag';
@@ -27,7 +27,7 @@ export default function getAppCloneIdentity() {
         * @tc.name BUNDLE::getAppCloneIdentity_0100
         * @tc.desc Test GetAppCloneIdentity interfaces with other hap.
         */
-        it('getAppCloneIdentity_0100', 0, async function (done) {
+        it('getAppCloneIdentity_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let dataInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
             let data : void | bundleManager.AppCloneIdentity = await bundleManager.getAppCloneIdentity(dataInfo.appInfo.uid).catch(err => {
                 console.info("getAppCloneIdentity fail:" + JSON.stringify(err));

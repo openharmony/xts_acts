@@ -26,5 +26,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
   } catch (e) {
     //print 10200006
     console.log(`testThreadWorkerErrorCode0018 main onexit code: ` + JSON.stringify(e));
+    workerPort.postMessage(e.code);
   }
 }

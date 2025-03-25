@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import statfs from 'libstatfsndk.so'
 
@@ -32,7 +32,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatfsStatfs001', 0, async (done: Function) => {
+    it('testMuslStatfsStatfs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1
       let c: number = statfs.statfs(a);
       expect(c).assertEqual(0);
@@ -47,7 +47,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatfsStatfs002', 0, async (done: Function) => {
+    it('testMuslStatfsStatfs002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2
       let c: number = statfs.statfs(a);
       expect(c).assertEqual(-1);
@@ -62,7 +62,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatfsStatfs64001', 0, async (done: Function) => {
+    it('testMuslStatfsStatfs64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1
       let c: number = statfs.statfs64(a);
       expect(c).assertEqual(0);
@@ -77,7 +77,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatfsStatfs64002', 0, async (done: Function) => {
+    it('testMuslStatfsStatfs64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2
       let c: number = statfs.statfs64(a);
       expect(c).assertEqual(-1);
@@ -92,7 +92,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatfsFstatfs001', 0, async (done: Function) => {
+    it('testMuslStatfsFstatfs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: boolean = statfs.fstatfs();
       expect(result).assertEqual(resultTrue);
@@ -107,7 +107,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatfsFstatfs64001', 0, async (done: Function) => {
+    it('testMuslStatfsFstatfs64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: boolean = statfs.fstatfs64();
       expect(result).assertEqual(resultTrue);
@@ -122,7 +122,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatfsFstatvfs001', 0, async (done: Function) => {
+    it('testMuslStatfsFstatvfs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: boolean = statfs.fstatvfs();
       expect(result).assertEqual(resultTrue);
@@ -137,7 +137,7 @@ export default function statfsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatfsFstatvfs64001', 0, async (done: Function) => {
+    it('testMuslStatfsFstatvfs64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: boolean = statfs.fstatvfs64();
       expect(result).assertEqual(resultTrue);

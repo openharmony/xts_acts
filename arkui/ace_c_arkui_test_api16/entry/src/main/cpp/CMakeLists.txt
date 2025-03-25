@@ -14,16 +14,18 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     postFrame/post_frame_callback_test.cpp
+    swiper/swiper_common.cpp
+    swiper/swiper_onselect_test.cpp
     swiper/swiper_test.cpp
     textArea/textArea_letter_spacing.cpp
     textpicker/textpicker_columnwidths_test.cpp
     component/component.cpp
-    component/calendarPicker_component.cpp  
+    component/swiper_component.cpp
+    component/text_component.cpp
     drag/drag_test.cpp
-    calendarPicker/calendar_picker_test.cpp
-    calendarPicker/calendarPicker_date_test.cpp
     ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
     move/node_util_move_test.cpp
+    timePicker/time_picke_test.cpp
 )
 
 add_library(nativefunc SHARED

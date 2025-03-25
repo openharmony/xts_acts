@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -84,7 +84,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomInsert0100', 0, async (done:Function) => {
+        it('testRdbStoreCustomInsert0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomInsert0100 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -140,7 +140,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomInsert0200', 0, async (done:Function) => {
+        it('testRdbStoreCustomInsert0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomInsert0200 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -211,7 +211,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomInsert0300', 0, async (done:Function) => {
+        it('testRdbStoreCustomInsert0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomInsert0300 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -260,7 +260,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomUpdate0100', 0, async (done:Function) => {
+        it('testRdbStoreCustomUpdate0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomUpdate0100 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -359,7 +359,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomUpdate0200', 0, async (done:Function) => {
+        it('testRdbStoreCustomUpdate0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomUpdate0200 ";
             console.info(TAGTEST + "************* start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -434,7 +434,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomDelete0100', 0, async (done:Function) => {
+        it('testRdbStoreCustomDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomDelete0100 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -525,7 +525,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomDelete0200', 0, async (done:Function) => {
+        it('testRdbStoreCustomDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomDelete0200 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -599,7 +599,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0100', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0100 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -674,7 +674,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0200', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0200 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -750,7 +750,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0300', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0300 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -819,7 +819,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0400', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0400 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -887,7 +887,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0500', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0500 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -962,7 +962,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0600', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0600 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1030,7 +1030,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0700', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0700 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1098,7 +1098,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0800', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0800 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1166,7 +1166,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery0900', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery0900 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1241,7 +1241,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1000', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1000 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1290,7 +1290,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1100', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1100 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1358,7 +1358,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1200', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1200 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1426,7 +1426,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1300', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1300 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1494,7 +1494,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1400', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1400 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1562,7 +1562,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1500', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1500 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1630,7 +1630,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1600', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1600 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1699,7 +1699,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1700', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1700 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1767,7 +1767,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1800', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1800 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1823,7 +1823,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery1900', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery1900 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -1944,7 +1944,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery2000', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery2000 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)
@@ -2002,7 +2002,7 @@ export default function RelationalStoreCustom() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRdbStoreCustomQuery2100', 0, async (done:Function) => {
+        it('testRdbStoreCustomQuery2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
             let TAGTEST = TAG + " testRdbStoreCustomQuery2100 ";
             console.info(TAGTEST + "*************  start *************");
             await ReturnGetRdbStore(customTypeSupported)

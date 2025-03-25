@@ -14,10 +14,14 @@
  */
 import ListSwipeTest from './ListTest/ListSwipe.test'
 import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
+import SwiperOnSelected from './SwiperTest/SwiperOnSelected.test'
 import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
+import TabsOnSelected from './TabsTest/TabsOnSelected.test'
 
 export default function testsuite() {
   ListSwipeTest();
   ScrollEffectEdge();
+  SwiperOnSelected();
   TabBarComponentContent();
+  TabsOnSelected();
 }

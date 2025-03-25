@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { test2019_01_ans } from './test2019_01'
 import { test2019_03_ans } from './test2019_03'
 import { test2019_06_ans } from './test2019_06'
@@ -29,7 +29,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testArray.prototype.flatMap', 0, () => {
+    it('testArray.prototype.flatMap', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2019_01_ans).assertDeepEquals([1, 2, 3, 4, 5, 6]);
     })
     /**
@@ -40,7 +40,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testArray.prototype.flat', 0, () => {
+    it('testArray.prototype.flat', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       const arr1 = [1, 2, [3, 4]];
       expect(arr1.flat()).assertDeepEquals([1, 2, 3, 4]);
       const arr2 = [1, 2, [3, 4, [5, 6]]];
@@ -58,7 +58,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testObject.fromEntries', 0, () => {
+    it('testObject.fromEntries', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2019_03_ans).assertDeepEquals({
         "one": 1, "two": 2, "three": 3
       });
@@ -71,7 +71,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTrimStart&TrimEnd', 0, () => {
+    it('testTrimStart&TrimEnd', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       const test = " hello "
       expect(test.trimStart()).assertEqual("hello ");
       expect(test.trimEnd()).assertEqual(" hello");
@@ -84,7 +84,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testAlternativeCatchParameter', 0, () => {
+    it('testAlternativeCatchParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       try {
         throw new Error("err");
       } catch {
@@ -99,7 +99,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSymbol.description', 0, () => {
+    it('testSymbol.description', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2019_06_ans).assertEqual("Desc")
     })
     /**
@@ -110,7 +110,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testJsonSuperSet', 0, () => {
+    it('testJsonSuperSet', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       const jsonObj: JSON = JSON.parse('"\u2028\u2029Hello,World!"');
       expect(jsonObj.toString()).assertContain("Hello,World!");
     })
@@ -122,7 +122,7 @@ export default function es2019Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testJson.stringfy', 0, () => {
+    it('testJson.stringfy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(JSON.stringify('\u{D800}')).assertEqual("\"\\ud800\"");
       expect(JSON.stringify('\u{D83D}')).assertEqual("\"\\ud83d\"");
       expect(JSON.stringify('\u{DFFF}')).assertEqual("\"\\udfff\"");

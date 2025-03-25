@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import buffer from "@ohos.buffer";
 export default function BufferTest() {
 describe('BufferTest', function () {
@@ -23,9 +23,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0010", 0, function () {
+  it("testAlloc0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     expect(buf.length).assertEqual(10);
   });
@@ -36,9 +36,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0011", 0, function () {
+  it("testAlloc0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -53,9 +53,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0012", 0, function () {
+  it("testAlloc0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.alloc(10);
     let buf = buffer.alloc(10).fill(buf1);
     expect(buf.length).assertEqual(10);
@@ -67,9 +67,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0013", 0, function () {
+  it("testAlloc0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(0);
     expect(buf.length).assertEqual(0);
   });
@@ -80,9 +80,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0014", 0, function () {
+  it("testAlloc0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -97,9 +97,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0015", 0, function () {
+  it("testAlloc0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.alloc(10);
     let buf = buffer.alloc(0).fill(buf1);
     expect(buf.length).assertEqual(0);
@@ -111,9 +111,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0016", 0, function () {
+  it("testAlloc0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.alloc(-5);
     } catch (err) {
@@ -129,9 +129,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testAlloc0017", 0, function () {
+   it("testAlloc0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -146,9 +146,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testAlloc0018", 0, function () {
+   it("testAlloc0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -163,9 +163,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAlloc0019", 0, function () {
+  it("testAlloc0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(5.5);
     expect(buf.length).assertEqual(5);
   });
@@ -176,9 +176,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0020", 0, function () {
+  it("testAllocUninitializedFromPool0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(10);
     expect(buf.length).assertEqual(10);
   });
@@ -189,9 +189,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0021", 0, function () {
+  it("testAllocUninitializedFromPool0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -206,9 +206,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0022", 0, function () {
+  it("testAllocUninitializedFromPool0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.allocUninitializedFromPool(10);
     let buf = buffer.allocUninitializedFromPool(10).fill(buf1);
     expect(buf.length).assertEqual(10);
@@ -220,9 +220,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0023", 0, function () {
+  it("testAllocUninitializedFromPool0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(0);
     expect(buf.length).assertEqual(0);
   });
@@ -233,9 +233,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testAllocUninitializedFromPool0024", 0, function () {
+   it("testAllocUninitializedFromPool0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -250,9 +250,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0025", 0, function () {
+  it("testAllocUninitializedFromPool0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.allocUninitializedFromPool(10);
     let buf = buffer.allocUninitializedFromPool(0).fill(buf1);
     expect(buf.length).assertEqual(0);
@@ -264,9 +264,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0026", 0, function () {
+  it("testAllocUninitializedFromPool0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.allocUninitializedFromPool(-5);
     } catch (err) {
@@ -282,9 +282,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitializedFromPool0029", 0, function () {
+  it("testAllocUninitializedFromPool0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(5.5);
     expect(buf.length).assertEqual(5);
   });
@@ -297,9 +297,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0030", 0, function () {
+  it("testByteLength0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let byteLen = buffer.byteLength("abcd");
     expect(byteLen).assertEqual(4);
   });
@@ -312,9 +312,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0031", 0, function () {
+  it("testByteLength0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let byteLen = buffer.byteLength("测试");
     expect(byteLen).assertEqual(6);
   });
@@ -327,9 +327,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0032", 0, function () {
+  it("testByteLength0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let byteLen = buffer.byteLength("$&@*%");
     expect(byteLen).assertEqual(5);
   });
@@ -342,9 +342,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0033", 0, function () {
+  it("testByteLength0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     let result = [4, 4, 8, 8, 4, 4, 4, 8, 8, 3, 3, 2];
@@ -362,9 +362,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-     it("testByteLength0034", 0, function () {
+     it("testByteLength0034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let byteLen = buffer.byteLength(10);
       } catch (err) {
@@ -382,9 +382,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0035", 0, function () {
+  it("testByteLength0035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uintarr = new Uint8Array(2);
     uintarr[0] = 21;
     uintarr[1] = 31;
@@ -398,9 +398,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if obj is a Buffer, false otherwise
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIsBuffer0040", 0, function () {
+  it("testIsBuffer0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(1);
     let flag = buffer.isBuffer(buf);
     expect(flag).assertEqual(true);
@@ -412,9 +412,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if obj is a Buffer, false otherwise
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIsBuffer0045", 0, function () {
+  it("testIsBuffer0045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = new Object(1);
     let flag = buffer.isBuffer(obj);
     expect(flag).assertEqual(false);
@@ -426,9 +426,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if encoding is the name of a supported character encoding, or false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIsEncoding0050", 0, function () {
+  it("testIsEncoding0050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let flag = buffer.isEncoding("utf8");
     expect(flag).assertEqual(true);
   });
@@ -439,9 +439,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if encoding is the name of a supported character encoding, or false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIsEncoding0053", 0, function () {
+  it("testIsEncoding0053", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -456,9 +456,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if encoding is the name of a supported character encoding, or false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIsEncoding0056", 0, function () {
+  it("testIsEncoding0056", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let flag = buffer.isEncoding('gbk');
     expect(flag).assertEqual(false);
   });
@@ -469,9 +469,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testStaticCompare0060", 0, function () {
+  it("testStaticCompare0060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1235");
     let res = buffer.compare(buf1, buf2);
@@ -484,9 +484,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testStaticCompare0061", 0, function () {
+  it("testStaticCompare0061", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1235");
     let buf2 = buffer.from("1236");
     let res = buffer.compare(buf1, buf2);
@@ -499,9 +499,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testStaticCompare0062", 0, function () {
+  it("testStaticCompare0062", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试一");
     let buf2 = buffer.from("测试二");
     let res = buffer.compare(buf1, buf2);
@@ -514,9 +514,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testStaticCompare0063", 0, function () {
+   it("testStaticCompare0063", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试$&*");
     let buf2 = buffer.from("测试$&*");
     let res = buffer.compare(buf1, buf2);
@@ -529,9 +529,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testStaticCompare0064", 0, function () {
+  it("testStaticCompare0064", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1236");
     let res = buffer.compare(buf1, buf2);
@@ -544,9 +544,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testStaticCompare0065", 0, function () {
+  it("testStaticCompare0065", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf2 = buffer.from("1236");
     try {
       let res = buffer.compare(10, buf2);
@@ -563,9 +563,9 @@ describe('BufferTest', function () {
    * @tc.desc: Compares buf1 to buf2.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testStaticCompare0066", 0, function () {
+  it("testStaticCompare0066", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     try {
       let res = buffer.compare(buf1, 10);
@@ -583,9 +583,9 @@ describe('BufferTest', function () {
    *           all the `Buffer`instances in the `list` together.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testConcat0070", 0, function () {
+  it("testConcat0070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1235");
     let buf = buffer.concat([buf1, buf2]);
@@ -600,9 +600,9 @@ describe('BufferTest', function () {
    *           all the `Buffer`instances in the `list` together.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testConcat0071", 0, function () {
+  it("testConcat0071", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试");
     let buf2 = buffer.from("$&*");
     let buf = buffer.concat([buf1, buf2]);
@@ -617,9 +617,9 @@ describe('BufferTest', function () {
    *           all the `Buffer`instances in the `list` together.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testConcat0072", 0, function () {
+  it("testConcat0072", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.concat("test string");
     } catch (err) {
@@ -635,9 +635,9 @@ describe('BufferTest', function () {
    *           all the `Buffer`instances in the `list` together.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testConcat0073", 0, function () {
+   it("testConcat0073", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123$");
     let buf2 = buffer.from("*35");
     let buf3 = buffer.concat([buf1, buf2]);
@@ -653,9 +653,9 @@ describe('BufferTest', function () {
    *           all the `Buffer`instances in the `list` together.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testConcat0074", 0, function () {
+  it("testConcat0074", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123$");
     let buf2 = buffer.from("*35");
     try {
@@ -673,9 +673,9 @@ describe('BufferTest', function () {
    *           all the `Buffer`instances in the `list` together.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testConcat0075", 0, function () {
+  it("testConcat0075", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uintarr = new Uint8Array(4);
     uintarr[0] = 0x31;
     uintarr[1] = 0x32;
@@ -693,9 +693,9 @@ describe('BufferTest', function () {
    * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testTranscode0080", 0, function () {
+  it("testTranscode0080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf = buffer.transcode(buf1, "ascii", "ucs2");
     let str = buf.toString("ucs2")
@@ -708,9 +708,9 @@ describe('BufferTest', function () {
    * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testTranscode0081", 0, function () {
+  it("testTranscode0081", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试");
     let buf = buffer.transcode(buf1, "utf8", "ucs2");
     let str = buf.toString("ucs2")
@@ -723,9 +723,9 @@ describe('BufferTest', function () {
    * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testTranscode0082", 0, function () {
+   it("testTranscode0082", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.transcode(10, "utf8", "ucs2");
     } catch (err) {
@@ -741,9 +741,9 @@ describe('BufferTest', function () {
    * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testTranscode0083", 0, function () {
+   it("testTranscode0083", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试");
     try {
       let buf = buffer.transcode(buf1, 0, "ucs2");
@@ -760,9 +760,9 @@ describe('BufferTest', function () {
    * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testTranscode0084", 0, function () {
+   it("testTranscode0084", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试");
     try {
       let buf = buffer.transcode(buf1, "utf8", 0);
@@ -779,9 +779,9 @@ describe('BufferTest', function () {
    * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFill0090", 0, function () {
+  it("testFill0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(3).fill("abc");
     let str = buf.toString();
     expect(str).assertEqual("abc");
@@ -793,9 +793,9 @@ describe('BufferTest', function () {
    * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFill0091", 0, function () {
+  it("testFill0091", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const buf1 = buffer.alloc(10).fill('F1刘FG', 0, 10, 'hex');
     let str = buf1.toString('hex');
     expect(str).assertEqual("f1f1f1f1f1f1f1f1f1f1");
@@ -831,9 +831,9 @@ describe('BufferTest', function () {
    * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFill0092", 0, function () {
+  it("testFill0092", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(3).fill("$*$");
     let str = buf.toString();
     expect(str).assertEqual("$*$");
@@ -845,9 +845,9 @@ describe('BufferTest', function () {
    * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFill0093", 0, function () {
+  it("testFill0093", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.alloc(3).fill("$*$", -1);
     } catch (err) {
@@ -863,9 +863,9 @@ describe('BufferTest', function () {
    * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFill0094", 0, function () {
+  it("testFill0094", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.alloc(3).fill("$*$", 0, 5);
     } catch (err) {
@@ -880,9 +880,9 @@ describe('BufferTest', function () {
    * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testFill0095", 0, function () {
+   it("testFill0095", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.alloc(3).fill("$*$", 0, 2, "code");
     } catch (err) {
@@ -898,9 +898,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0100", 0, function () {
+  it("testWrite0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(5);
     let offset = buf.write("abcde", "latin1");
     expect(offset).assertEqual(5);
@@ -914,9 +914,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0101", 0, function () {
+  it("testWrite0101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(6);
     let offset = buf.write("测试", "utf8");
     expect(offset).assertEqual(6);
@@ -930,9 +930,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0102", 0, function () {
+  it("testWrite0102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(8);
     let offset = buf.write("!@#$%^&*", "ascii");
     expect(offset).assertEqual(8);
@@ -946,9 +946,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testWrite0103", 0, function () {
+   it("testWrite0103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(8);
     try {
       let offset = buf.write("abcde", "utf9");
@@ -965,9 +965,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0104", 0, function () {
+  it("testWrite0104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(8);
     try {
       let offset = buf.write(10);
@@ -983,9 +983,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0105", 0, function () {
+  it("testWrite0105", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(8);
     try {
       let offset = buf.write("abcde", -1);
@@ -1001,9 +1001,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0106", 0, function () {
+  it("testWrite0106", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(8);
     try {
       let offset = buf.write("abcde", 1, 9);
@@ -1019,9 +1019,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWrite0107", 0, function () {
+  it("testWrite0107", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(8);
     try {
       let offset = buf.write("abcde", 1, "code");
@@ -1040,9 +1040,9 @@ describe('BufferTest', function () {
    *           bytes in each Buffer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCompare0110", 0, function () {
+  it("testCompare0110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1235");
     let res = buf1.compare(buf2);
@@ -1057,9 +1057,9 @@ describe('BufferTest', function () {
    *           bytes in each Buffer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testCompare0111", 0, function () {
+   it("testCompare0111", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     try {
       let res = buf1.compare(10);
@@ -1078,9 +1078,9 @@ describe('BufferTest', function () {
    *           bytes in each Buffer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testCompare0112", 0, function () {
+   it("testCompare0112", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1235");
     try {
@@ -1097,9 +1097,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testEquals0120", 0, function () {
+  it("testEquals0120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1235");
     let res = buf1.equals(buf2);
@@ -1112,9 +1112,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testEquals0121", 0, function () {
+  it("testEquals0121", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236测试");
     let buf2 = buffer.from("1236测试");
     let res = buf1.equals(buf2);
@@ -1127,9 +1127,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testEquals0122", 0, function () {
+  it("testEquals0122", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("O@O");
     let buf2 = buffer.from("O^O");
     let res = buf1.equals(buf2);
@@ -1142,9 +1142,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testEquals0123", 0, function () {
+  it("testEquals0123", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     try {
       let res = buf1.equals("1236");
@@ -1162,9 +1162,9 @@ describe('BufferTest', function () {
    *           but offset and cropped by the start and end indices.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSubarray0130", 0, function () {
+  it("testSubarray0130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf = buf1.subarray(0, 3);
     let str = buf.toString();
@@ -1178,9 +1178,9 @@ describe('BufferTest', function () {
    *           but offset and cropped by the start and end indices.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSubarray0133", 0, function () {
+  it("testSubarray0133", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf = buf1.subarray(3, 4);
     let str = buf.toString();
@@ -1194,9 +1194,9 @@ describe('BufferTest', function () {
    *           but offset and cropped by the start and end indices.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSubarray0136", 0, function () {
+  it("testSubarray0136", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf = buf1.subarray(-3, 0);
     expect(buf.length).assertEqual(0);
@@ -1209,9 +1209,9 @@ describe('BufferTest', function () {
    *           but offset and cropped by the start and end indices.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSubarray0139", 0, function () {
+  it("testSubarray0139", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf = buf1.subarray(6, 9);
     expect(buf.length).assertEqual(0);
@@ -1226,9 +1226,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0140", 0, function () {
+  it("testCopy0140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let buf2 = buffer.from("1235");
     let num = buf1.copy(buf2);
@@ -1246,9 +1246,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0141", 0, function () {
+  it("testCopy0141", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abcdefg");
     let buf2 = buffer.from("1235789");
     let num = buf1.copy(buf2, 2, 1, 3);
@@ -1266,9 +1266,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0143", 0, function () {
+  it("testCopy0143", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123656");
     let buf2 = buffer.from("1235");
     let num = buf1.copy(buf2);
@@ -1286,9 +1286,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testCopy0144", 0, function () {
+   it("testCopy0144", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123656");
     let buf2 = buffer.from("1235");
     try {
@@ -1308,9 +1308,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0145", 0, function () {
+  it("testCopy0145", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123656");
     try {
       let num = buf1.copy(10);
@@ -1330,9 +1330,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0146", 0, function () {
+  it("testCopy0146", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("ab$#");
     let buf2 = buffer.from("123556");
     let num = buf1.copy(buf2);
@@ -1347,9 +1347,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0150", 0, function () {
+  it("testToString0150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let str = buf1.toString();
     expect(str).assertEqual("1236");
@@ -1361,9 +1361,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0151", 0, function () {
+  it("testToString0151", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("张三");
     let str = buf1.toString();
     expect(str).assertEqual("张三");
@@ -1375,9 +1375,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0152", 0, function () {
+  it("testToString0152", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("binary");
     expect(str).assertEqual("abc");
@@ -1389,9 +1389,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0153", 0, function () {
+  it("testToString0153", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("ascii");
     expect(str).assertEqual("abc");
@@ -1403,9 +1403,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0154", 0, function () {
+  it("testToString0154", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("base64");
     expect(str).assertEqual("YWJj");
@@ -1417,9 +1417,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0155", 0, function () {
+  it("testToString0155", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("hex");
     expect(str).assertEqual("616263");
@@ -1431,9 +1431,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0156", 0, function () {
+  it("testToString0156", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("latin1");
     expect(str).assertEqual("abc");
@@ -1445,9 +1445,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0157", 0, function () {
+  it("testToString0157", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("ucs2");
     expect(str).assertEqual("扡");
@@ -1459,9 +1459,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0158", 0, function () {
+  it("testToString0158", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let str = buf1.toString("utf16le");
     expect(str).assertEqual("扡");
@@ -1473,9 +1473,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0159", 0, function () {
+  it("testToString0159", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("!@#$%^&*");
     let str = buf1.toString();
     expect(str).assertEqual("!@#$%^&*");
@@ -1487,9 +1487,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns a JSON representation of buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToJSON0160", 0, function () {
+  it("testToJSON0160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1236");
     let obj = buf1.toJSON();
     expect(obj.data.join("")).assertEqual("49505154");
@@ -1501,9 +1501,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0170", 0, function () {
+  it("testIndexOf0170", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let index = buf1.indexOf("3");
     expect(index).assertEqual(1);
@@ -1515,9 +1515,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0171", 0, function () {
+  it("testIndexOf0171", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let index = buf1.indexOf("3", 2);
     expect(index).assertEqual(3);
@@ -1529,9 +1529,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0173", 0, function () {
+  it("testIndexOf0173", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236235");
     let index = buf1.indexOf("23");
     expect(index).assertEqual(2);
@@ -1543,9 +1543,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0174", 0, function () {
+  it("testIndexOf0174", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试特殊字符$#@!");
     let index = buf1.indexOf("@");
     expect(index).assertEqual(20);
@@ -1557,9 +1557,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0175", 0, function () {
+  it("testIndexOf0175", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236235");
     let index = buf1.indexOf("23", 3);
     expect(index).assertEqual(5);
@@ -1571,9 +1571,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0176", 0, function () {
+  it("testIndexOf0176", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let index = buf1.indexOf("a");
     expect(index).assertEqual(-1);
@@ -1585,9 +1585,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testIndexOf0177", 0, function () {
+   it("testIndexOf0177", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                       'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     let buf = buffer.from("13236");
@@ -1603,9 +1603,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0178", 0, function () {
+  it("testIndexOf0178", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     try {
       let index = buf1.indexOf(true);
@@ -1622,9 +1622,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf0179", 0, function () {
+  it("testIndexOf0179", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     try {
       let index = buf1.indexOf("a", "code");
@@ -1641,9 +1641,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0180", 0, function () {
+  it("testLastIndexOf0180", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let index = buf1.lastIndexOf("3");
     expect(index).assertEqual(3);
@@ -1655,9 +1655,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0181", 0, function () {
+  it("testLastIndexOf0181", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let index = buf1.lastIndexOf("3", 2);
     expect(index).assertEqual(1);
@@ -1669,9 +1669,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0183", 0, function () {
+  it("testLastIndexOf0183", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236235");
     let index = buf1.lastIndexOf("23");
     expect(index).assertEqual(5);
@@ -1683,9 +1683,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0184", 0, function () {
+  it("testLastIndexOf0184", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236235");
     let index = buf1.lastIndexOf("23", 3);
     expect(index).assertEqual(2);
@@ -1697,9 +1697,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0186", 0, function () {
+  it("testLastIndexOf0186", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let index = buf1.lastIndexOf("a");
     expect(index).assertEqual(-1);
@@ -1711,9 +1711,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0187", 0, function () {
+  it("testLastIndexOf0187", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                       'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     let buf = buffer.from("13236");
@@ -1729,9 +1729,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0188", 0, function () {
+  it("testLastIndexOf0188", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     try {
       let index = buf1.lastIndexOf(true);
@@ -1748,9 +1748,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the last occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testLastIndexOf0189", 0, function () {
+  it("testLastIndexOf0189", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     try {
       let index = buf1.lastIndexOf("a", "code");
@@ -1767,9 +1767,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0190", 0, function () {
+  it("testIncludes0190", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let flag = buf1.includes("3");
     expect(flag).assertEqual(true);
@@ -1781,9 +1781,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0191", 0, function () {
+  it("testIncludes0191", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let flag = buf1.includes("3", 2);
     expect(flag).assertEqual(true);
@@ -1795,9 +1795,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0193", 0, function () {
+  it("testIncludes0193", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let flag = buf1.includes("32");
     expect(flag).assertEqual(true);
@@ -1809,9 +1809,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0194", 0, function () {
+  it("testIncludes0194", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let flag = buf1.includes("32", 2);
     expect(flag).assertEqual(false);
@@ -1823,9 +1823,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0195", 0, function () {
+  it("testIncludes0195", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("测试特殊字符$#@!");
     let flag = buf1.includes("#@");
     expect(flag).assertEqual(true);
@@ -1839,9 +1839,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0196", 0, function () {
+  it("testIncludes0196", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     let flag = buf1.includes("abc");
     expect(flag).assertEqual(false);
@@ -1853,9 +1853,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0197", 0, function () {
+  it("testIncludes0197", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
     for (const encode of encodeArr) {
@@ -1871,9 +1871,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIncludes0198", 0, function () {
+  it("testIncludes0198", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236");
     try {
       let flag = buf1.includes(true);
@@ -1890,9 +1890,9 @@ describe('BufferTest', function () {
    * @tc.desc: Interprets buf as an array of unsigned 16-bit integers and swaps the byte order in-place.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSwap160200", 0, function () {
+  it("testSwap160200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1323");
     buf1.swap16();
     let str = buf1.toString("hex");
@@ -1905,9 +1905,9 @@ describe('BufferTest', function () {
    * @tc.desc: Interprets buf as an array of unsigned 16-bit integers and swaps the byte order in-place.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSwap160201", 0, function () {
+  it("testSwap160201", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("132");
     try {
       buf1.swap16();
@@ -1923,9 +1923,9 @@ describe('BufferTest', function () {
    * @tc.desc: Interprets buf as an array of unsigned 32-bit integers and swaps the byte order in-place.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSwap320210", 0, function () {
+  it("testSwap320210", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1234");
     buf1.swap32();
     let str = buf1.toString();
@@ -1938,9 +1938,9 @@ describe('BufferTest', function () {
    * @tc.desc: Interprets buf as an array of unsigned 16-bit integers and swaps the byte order in-place.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testswap320211", 0, function () {
+   it("testswap320211", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("132");
     try {
       buf1.swap32();
@@ -1956,9 +1956,9 @@ describe('BufferTest', function () {
    * @tc.desc: Interprets buf as an array of unsigned 64-bit integers and swaps the byte order in-place.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testSwap640220", 0, function () {
+  it("testSwap640220", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("12345678");
     buf1.swap64();
     let str = buf1.toString();
@@ -1971,9 +1971,9 @@ describe('BufferTest', function () {
    * @tc.desc: Interprets buf as an array of unsigned 64-bit integers and swaps the byte order in-place.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testSwap640221", 0, function () {
+   it("testSwap640221", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1234567");
     try {
       buf1.swap64();
@@ -1989,9 +1989,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates and returns an iterator of buf keys (indices).
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testKeys0230", 0, function () {
+  it("testKeys0230", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1234");
     let keys = buf1.keys();
     let index = 0;
@@ -2007,9 +2007,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates and returns an iterator of buf keys (indices).
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testKeys0235", 0, function () {
+  it("testKeys0235", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uarr = new Uint8Array(4);
     uarr[0] = 0x31;
     uarr[1] = 0x32;
@@ -2030,9 +2030,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates and returns an iterator for buf values (bytes).
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testValues0240", 0, function () {
+  it("testValues0240", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1234");
     let keys = buf1.values();
     let va = 49;
@@ -2048,9 +2048,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates and returns an iterator for buf values (bytes).
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testValues0245", 0, function () {
+  it("testValues0245", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uarr = new Uint8Array(4);
     uarr[0] = 0x31;
     uarr[1] = 0x32;
@@ -2071,9 +2071,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates and returns an iterator of [index, byte] pairs from the contents of buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testEntries0250", 0, function () {
+  it("testEntries0250", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("1234");
     let entries = buf1.entries();
     let va = 49, index = 0;
@@ -2092,9 +2092,9 @@ describe('BufferTest', function () {
    *           which is contructed from an Uint8Array.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testEntries0255", 0, function () {
+  it("testEntries0255", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uarr = new Uint8Array(4);
     uarr[0] = 0x31;
     uarr[1] = 0x32;
@@ -2117,9 +2117,9 @@ describe('BufferTest', function () {
    * @tc.desc: Copies the passed buffer data onto a new Buffer instance.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0260", 0, function () {
+  it("testfrom0260", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uarr = new Uint8Array(3);
     uarr[0] = 0x12;
     uarr[1] = 0x34;
@@ -2136,9 +2136,9 @@ describe('BufferTest', function () {
    *           Array entries outside that range will be truncated to fit into it.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0261", 0, function () {
+  it("testfrom0261", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const buf = buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
     let str = buf.toString("hex");
     expect(str).assertEqual("627566666572");
@@ -2150,9 +2150,9 @@ describe('BufferTest', function () {
    * @tc.desc: This creates a view of the ArrayBuffer without copying the underlying memory.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0262", 0, function () {
+  it("testfrom0262", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const arr = new Uint8Array(2);
     arr[0] = 97;
     arr[1] = 98;
@@ -2170,9 +2170,9 @@ describe('BufferTest', function () {
    * @tc.desc: This creates a view of the ArrayBuffer without copying the underlying memory.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0263", 0, function () {
+  it("testfrom0263", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const arr = new Uint8Array(2);
     arr[0] = 97;
     arr[1] = 98;
@@ -2190,9 +2190,9 @@ describe('BufferTest', function () {
    * @tc.desc: Copies the passed buffer data onto a new Buffer instance.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0264", 0, function () {
+  it("testfrom0264", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const buf1 = buffer.from('buffer');
     const buf2 = buffer.from(buf1);
     buf1[0] = 0x61;
@@ -2209,9 +2209,9 @@ describe('BufferTest', function () {
    *           to be used when converting string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0265", 0, function () {
+  it("testfrom0265", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const buf1 = buffer.from('this is a test');
     let str = buf1.toString();
     expect(str).assertEqual("this is a test");
@@ -2224,9 +2224,9 @@ describe('BufferTest', function () {
    *           to be used when converting string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0266", 0, function () {
+  it("testfrom0266", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const buf1 = buffer.from('F1刘FG', 'hex');
     let str = buf1.toString('hex');
     expect(str).assertEqual("f1");
@@ -2291,9 +2291,9 @@ describe('BufferTest', function () {
    *           or supports symbol To primitive object, a new buffer instance is created.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0267", 0, function () {
+  it("testfrom0267", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const buf = buffer.from(new String('this is a test'));
     let str = buf.toString();
     expect(str).assertEqual("this is a test");
@@ -2306,9 +2306,9 @@ describe('BufferTest', function () {
    *           or supports symbol To primitive object, a new buffer instance is created.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0268", 0, function () {
+  it("testfrom0268", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     class Foo {
       [Symbol.toPrimitive]() {
         return 'this is a test';
@@ -2325,9 +2325,9 @@ describe('BufferTest', function () {
    * @tc.desc: Create a new buffer containing a newline character string. Creating using base64 encoding
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0269", 0, function () {
+  it("testfrom0269", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const str = `MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC/OgIQLaulKklB\npZltSaWwM3Cnzcmvh+LoqYFYjCePUxnoJRDusFqy4sjwBx9fn/XSxxJ9A0KxMtXa\nr7YFjwQo3FsIjLZ3+8wS+Kydcg==`;
     const buf = buffer.from(str, 'base64');
     let ref = buf.readInt8(buf.length - 1);
@@ -2340,9 +2340,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobConstructor0270", 0, async function () {
+  it("testBlobConstructor0270", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
     let promise = blob2.text();
     promise.then((value) => {
@@ -2356,9 +2356,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobConstructor0271", 0, async function () {
+  it("testBlobConstructor0271", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let arrBuf = new ArrayBuffer(3);
     let uint8arr = new Uint8Array(arrBuf);
     uint8arr[0] = 97;
@@ -2376,9 +2376,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobConstructor0272", 0, async function () {
+  it("testBlobConstructor0272", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let uint8arr = new Uint8Array(3);
     uint8arr[0] = 97;
     uint8arr[1] = 98;
@@ -2395,9 +2395,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobConstructor0273", 0, async function () {
+  it("testBlobConstructor0273", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let arrBuf = new ArrayBuffer(3);
     let uint8arr = new Uint8Array(arrBuf);
     uint8arr[0] = 97;
@@ -2416,9 +2416,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobConstructor0274", 0, async function () {
+  it("testBlobConstructor0274", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
     let blob = new buffer.Blob([blob2]);
     blob.text().then((value) => {
@@ -2432,9 +2432,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testBlobConstructor0275", 0, async function () {
+   it("testBlobConstructor0275", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     try {
       let blob = new buffer.Blob(["a", "b", "c"], 10);
     } catch (err) {
@@ -2450,9 +2450,9 @@ describe('BufferTest', function () {
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testBlobConstructor0276", 0, async function () {
+   it("testBlobConstructor0276", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     try {
       let blob = new buffer.Blob("abc", { type: "new type", endings: "transparent" });
     } catch (err) {
@@ -2468,9 +2468,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns a promise that fulfills with an <ArrayBuffer> containing a copy of the Blob data.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobArrayBuffer0280", 0, async function () {
+  it("testBlobArrayBuffer0280", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
     blob2.arrayBuffer().then((value) => {
       let arr = new Uint8Array(value)
@@ -2486,9 +2486,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns a promise that fulfills with the contents of the Blob decoded as a UTF-8 string.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobText0290", 0, async function () {
+  it("testBlobText0290", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
     blob2.text().then((value) => {
       expect(value).assertEqual("abc");
@@ -2502,9 +2502,9 @@ describe('BufferTest', function () {
    *           The original Blob is not altered.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobSlice0300", 0, async function () {
+  it("testBlobSlice0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
     let blob2 = new buffer.Blob(["c", "b", "a"], { type: "new type", endings: "transparent" });
     let blob = blob2.slice(0, 1);
     blob.arrayBuffer().then((value) => {
@@ -2520,9 +2520,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32BE0310", 0, function () {
+  it("testWriteInt32BE0310", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     let ref = buf.writeInt32BE(0x12345678, 0);
     expect(ref).assertEqual(4);
@@ -2536,9 +2536,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32BE0311", 0, function () {
+  it("testWriteInt32BE0311", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32BE(0x12345678, -1);
@@ -2555,9 +2555,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32BE0312", 0, function () {
+  it("testWriteInt32BE0312", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32BE(0x123456789, 0);
@@ -2574,9 +2574,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32BE0313", 0, function () {
+  it("testWriteInt32BE0313", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32BE(0x12345678, 1);
@@ -2593,9 +2593,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testWriteInt32BE0314", 0, function () {
+   it("testWriteInt32BE0314", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32BE("string", 1);
@@ -2613,9 +2613,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32LE0320", 0, function () {
+  it("testWriteInt32LE0320", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     let ref = buf.writeInt32LE(0x12345678, 0);
     expect(ref).assertEqual(4);
@@ -2628,9 +2628,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32LE0321", 0, function () {
+  it("testWriteInt32LE0321", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32LE(0x12345678, -1);
@@ -2647,9 +2647,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32LE0322", 0, function () {
+  it("testWriteInt32LE0322", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32LE(0x123456789, 0);
@@ -2666,9 +2666,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt32LE0323", 0, function () {
+  it("testWriteInt32LE0323", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     try {
       let ref = buf.writeInt32LE(0x12345678, 1);
@@ -2685,9 +2685,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16BE0330", 0, function () {
+  it("testWriteInt16BE0330", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     let ref = buf.writeInt16BE(0x7bca, 0);
     expect(ref).assertEqual(2);
@@ -2700,9 +2700,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16BE0331", 0, function () {
+  it("testWriteInt16BE0331", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     try {
       let ref = buf.writeInt16BE(0x7bca, -1);
@@ -2719,9 +2719,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16BE0332", 0, function () {
+  it("testWriteInt16BE0332", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     try {
       let ref = buf.writeInt16BE(0x123456, 0);
@@ -2738,9 +2738,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16BE0333", 0, function () {
+  it("testWriteInt16BE0333", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     try {
       let ref = buf.writeInt16BE(0x7bca, 1);
@@ -2757,9 +2757,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16LE0340", 0, function () {
+  it("testWriteInt16LE0340", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     let ref = buf.writeInt16LE(0x1234, 0);
     expect(ref).assertEqual(2);
@@ -2773,9 +2773,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16LE0341", 0, function () {
+  it("testWriteInt16LE0341", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     try {
       let ref = buf.writeInt16LE(0x7bca, -1);
@@ -2792,9 +2792,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16LE0342", 0, function () {
+  it("testWriteInt16LE0342", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     try {
       let ref = buf.writeInt16LE(0x123456, 0);
@@ -2811,9 +2811,9 @@ describe('BufferTest', function () {
    *           The value must be a valid signed 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt16LE0343", 0, function () {
+  it("testWriteInt16LE0343", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     try {
       let ref = buf.writeInt16LE(0x1234, 1);
@@ -2830,9 +2830,9 @@ describe('BufferTest', function () {
    *           value must be a valid signed 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt80350", 0, function () {
+  it("testWriteInt80350", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(2);
     let ref = buf.writeInt8(2, 0);
     expect(ref).assertEqual(1);
@@ -2845,9 +2845,9 @@ describe('BufferTest', function () {
    *           value must be a valid signed 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt80351", 0, function () {
+  it("testWriteInt80351", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(2);
     try {
       let ref = buf.writeInt8(2, -1);
@@ -2863,9 +2863,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset.value must be a valid signed 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt80352", 0, function () {
+  it("testWriteInt80352", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(2);
     try {
       let ref = buf.writeInt8(0x13245, 0);
@@ -2881,9 +2881,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset.value must be a valid signed 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteInt80353", 0, function () {
+  it("testWriteInt80353", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(2);
     let ref = buf.writeInt8(0x2, 1);
     expect(ref).assertEqual(2);
@@ -2896,9 +2896,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16BE0360", 0, function () {
+  it("testWriteUInt16BE0360", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt16BE(0xdead, 0);
     expect(ref).assertEqual(2);
@@ -2911,9 +2911,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16BE0361", 0, function () {
+  it("testWriteUInt16BE0361", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt16BE(0xdeadfc, 0);
@@ -2930,9 +2930,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16BE0362", 0, function () {
+  it("testWriteUInt16BE0362", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt16BE(0xdead, -1);
@@ -2949,9 +2949,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16BE0363", 0, function () {
+  it("testWriteUInt16BE0363", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt16BE(0xdead, 1);
     expect(ref).assertEqual(3);
@@ -2964,9 +2964,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16LE0370", 0, function () {
+  it("testWriteUInt16LE0370", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt16LE(0xdead, 0);
     expect(ref).assertEqual(2);
@@ -2979,9 +2979,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16LE0371", 0, function () {
+  it("testWriteUInt16LE0371", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt16LE(0xdeadfc, 0);
@@ -2998,9 +2998,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16LE0372", 0, function () {
+  it("testWriteUInt16LE0372", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt16LE(0xdead, -1);
@@ -3017,9 +3017,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 16-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt16LE0373", 0, function () {
+  it("testWriteUInt16LE0373", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt16LE(0xdead, 1);
     expect(ref).assertEqual(3);
@@ -3032,9 +3032,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt32BE0380", 0, function () {
+  it("testWriteUInt32BE0380", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt32BE(0xfeedface, 0);
     expect(ref).assertEqual(4);
@@ -3047,9 +3047,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt32BE0381", 0, function () {
+  it("testWriteUInt32BE0381", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt32BE(0xfeedface, -1);
@@ -3066,9 +3066,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt32BE0382", 0, function () {
+  it("testWriteUInt32BE0382", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt32BE(0xfeedface, 1);
@@ -3085,9 +3085,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt32LE0390", 0, function () {
+  it("testWriteUInt32LE0390", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt32LE(0xfeedface, 0);
     expect(ref).assertEqual(4);
@@ -3100,9 +3100,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt32LE0391", 0, function () {
+  it("testWriteUInt32LE0391", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt32LE(0xfeedface, -1);
@@ -3119,9 +3119,9 @@ describe('BufferTest', function () {
    *           The value must be a valid unsigned 32-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt32LE0392", 0, function () {
+  it("testWriteUInt32LE0392", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt32LE(0xfeedface, 1);
@@ -3137,9 +3137,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset. value must be a valid unsigned 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt80400", 0, function () {
+  it("testWriteUInt80400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt8(0x42, 3);
     expect(ref).assertEqual(4);
@@ -3151,9 +3151,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset. value must be a valid unsigned 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt80401", 0, function () {
+  it("testWriteUInt80401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUInt8(0x42, -1);
@@ -3169,9 +3169,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset. value must be a valid unsigned 8-bit integer.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUInt80402", 0, function () {
+  it("testWriteUInt80402", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUInt8(0x42, 1);
     expect(ref).assertEqual(2);
@@ -3183,9 +3183,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntBE0410", 0, function () {
+  it("testWriteUIntBE0410", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUIntBE(0x13141516, 0, 4);
     expect(ref).assertEqual(4);
@@ -3197,9 +3197,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntBE0411", 0, function () {
+  it("testWriteUIntBE0411", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUIntBE(0x13141516, 0, 1);
@@ -3215,9 +3215,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntBE0412", 0, function () {
+  it("testWriteUIntBE0412", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUIntBE(0x13141516, 1, 4);
@@ -3233,9 +3233,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntLE0420", 0, function () {
+  it("testWriteUIntLE0420", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeUIntLE(0x13141516, 0, 4);
     expect(ref).assertEqual(4);
@@ -3247,9 +3247,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntLE0421", 0, function () {
+  it("testWriteUIntLE0421", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUIntLE(0x13141516, 0, 1);
@@ -3265,9 +3265,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntLE0422", 0, function () {
+  it("testWriteUIntLE0422", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeUIntLE(0x13141516, 1, 4);
@@ -3283,9 +3283,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteUIntLE0423", 0, function () {
+  it("testWriteUIntLE0423", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(5);
     let ref = buf.writeUIntLE(0x13141516, 1, 4);
     expect(ref).assertEqual(5);
@@ -3297,9 +3297,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteIntBE0430", 0, function () {
+  it("testWriteIntBE0430", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     let ref = buf.writeIntBE(0x1234567890ab, 0, 6);
     expect(ref).assertEqual(6);
@@ -3311,9 +3311,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteIntBE0431", 0, function () {
+  it("testWriteIntBE0431", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     try {
       let ref = buf.writeIntBE(0x1234567890ab, 1, 6);
@@ -3329,9 +3329,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteIntLE0440", 0, function () {
+  it("testWriteIntLE0440", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     let ref = buf.writeIntLE(0x1234567890ab, 0, 6);
     expect(ref).assertEqual(6);
@@ -3343,9 +3343,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes byteLength bytes of value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteIntLE0441", 0, function () {
+  it("testWriteIntLE0441", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     try {
       let ref = buf.writeIntLE(0x1234567890ab, 1, 6);
@@ -3361,9 +3361,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteDoubleBE0450", 0, function () {
+  it("testWriteDoubleBE0450", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     let ref = buf.writeDoubleBE(123.456, 0);
     expect(ref).assertEqual(8);
@@ -3375,9 +3375,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteDoubleBE0451", 0, function () {
+  it("testWriteDoubleBE0451", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     try {
       let ref = buf.writeDoubleBE(123.456, 1);
@@ -3393,9 +3393,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteDoubleLE0460", 0, function () {
+  it("testWriteDoubleLE0460", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     let ref = buf.writeDoubleLE(123.456, 0);
     expect(ref).assertEqual(8);
@@ -3407,9 +3407,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteDoubleLE0461", 0, function () {
+  it("testWriteDoubleLE0461", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     try {
       let ref = buf.writeDoubleLE(123.456, 1);
@@ -3425,9 +3425,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteFloatBE0470", 0, function () {
+  it("testWriteFloatBE0470", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     let ref = buf.writeFloatBE(0xcabcbcbc, 0);
     expect(ref).assertEqual(4);
@@ -3439,9 +3439,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteFloatBE0471", 0, function () {
+  it("testWriteFloatBE0471", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeFloatBE(0xcabcbcbc, 5);
@@ -3457,9 +3457,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteFloatLE0480", 0, function () {
+  it("testWriteFloatLE0480", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(16);
     let ref = buf.writeFloatLE(0xcabcbcbc, 12);
     expect(ref).assertEqual(16);
@@ -3471,9 +3471,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteFloatLE0481", 0, function () {
+  it("testWriteFloatLE0481", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     try {
       let ref = buf.writeFloatLE(0xcabcbcbc, 5);
@@ -3489,9 +3489,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigInt64BE0490", 0, function () {
+  it("testWriteBigInt64BE0490", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     let ref = buf.writeBigInt64BE(0x0102030405060708n, 0);
     expect(ref).assertEqual(8);
@@ -3503,9 +3503,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigInt64BE0491", 0, function () {
+  it("testWriteBigInt64BE0491", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     try {
       let ref = buf.writeBigInt64BE(0x0102030405060708n, 1);
@@ -3521,9 +3521,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigInt64LE0500", 0, function () {
+  it("testWriteBigInt64LE0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     let ref = buf.writeBigInt64LE(0x0102030405060708n, 0);
     expect(ref).assertEqual(8);
@@ -3535,9 +3535,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigInt64LE0501", 0, function () {
+  it("testWriteBigInt64LE0501", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     try {
       let ref = buf.writeBigInt64LE(0x0102030405060708n, 1);
@@ -3553,9 +3553,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigUInt64BE0510", 0, function () {
+  it("testWriteBigUInt64BE0510", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     let ref = buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
     expect(ref).assertEqual(8);
@@ -3567,9 +3567,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as big-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigUInt64BE0511", 0, function () {
+  it("testWriteBigUInt64BE0511", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     try {
       let ref = buf.writeBigUInt64BE(0xdecafafecacefaden, 1);
@@ -3585,9 +3585,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigUInt64LE0520", 0, function () {
+  it("testWriteBigUInt64LE0520", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     let ref = buf.writeBigUInt64LE(0xdecafafecacefaden, 0);
     expect(ref).assertEqual(8);
@@ -3599,9 +3599,9 @@ describe('BufferTest', function () {
    * @tc.desc: Writes value to buf at the specified offset as little-endian.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testWriteBigUInt64LE0521", 0, function () {
+  it("testWriteBigUInt64LE0521", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     try {
       let ref = buf.writeBigUInt64LE(0xdecafafecacefaden, 1);
@@ -3617,9 +3617,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt32BE0530", 0, function () {
+  it("testReadInt32BE0530", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     buf.writeInt32BE(0x12345678, 0);
     let ref = buf.readInt32BE(0).toString(16);
@@ -3632,9 +3632,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt32BE0531", 0, function () {
+  it("testReadInt32BE0531", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     buf.writeInt32BE(0x12345678, 0);
     try {
@@ -3651,9 +3651,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testReadInt32BE0532", 0, function () {
+   it("testReadInt32BE0532", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     buf.writeInt32BE(0x12345678, 0);
     try {
@@ -3671,9 +3671,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, little-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt32LE0540", 0, function () {
+  it("testReadInt32LE0540", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     buf.writeInt32BE(0x12345678, 0);
     let ref = buf.readInt32LE(0).toString(16);
@@ -3686,9 +3686,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, little-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt32LE0541", 0, function () {
+  it("testReadInt32LE0541", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(4);
     buf.writeInt32BE(0x12345678, 0);
     try {
@@ -3705,9 +3705,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt16BE0550", 0, function () {
+  it("testReadInt16BE0550", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     buf.writeInt16BE(0x1234, 0);
     let ref = buf.readInt16BE(0).toString(16);
@@ -3720,9 +3720,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt16BE0551", 0, function () {
+  it("testReadInt16BE0551", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     buf.writeInt16BE(0x1234, 0);
     try {
@@ -3739,9 +3739,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, little-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt16LE0560", 0, function () {
+  it("testReadInt16LE0560", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     buf.writeInt16BE(0x1234, 0);
     let ref = buf.readInt16LE(0).toString(16);
@@ -3754,9 +3754,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, little-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt16LE0561", 0, function () {
+  it("testReadInt16LE0561", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(2);
     buf.writeInt16BE(0x1234, 0);
     try {
@@ -3773,9 +3773,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed 8-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt80570", 0, function () {
+  it("testReadInt80570", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(2);
     buf.writeInt8(0x12);
     let ref = buf.readInt8(0).toString(16);
@@ -3788,9 +3788,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed 8-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadInt80571", 0, function () {
+  it("testReadInt80571", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(2);
     buf.writeInt8(0x12);
     try {
@@ -3807,9 +3807,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, big-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt16BE0580", 0, function () {
+  it("testReadUInt16BE0580", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt16BE(0x1234, 0);
     let ref = buf.readUInt16BE(0).toString(16);
@@ -3822,9 +3822,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, big-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt16BE0581", 0, function () {
+  it("testReadUInt16BE0581", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt16BE(0x1234, 0);
     try {
@@ -3841,9 +3841,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, little-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt16LE0590", 0, function () {
+  it("testReadUInt16LE0590", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt16LE(0x1234, 0);
     let ref = buf.readUInt16LE(0).toString(16);
@@ -3856,9 +3856,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, little-endian 16-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt16LE0591", 0, function () {
+  it("testReadUInt16LE0591", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt16LE(0x1234, 0);
     try {
@@ -3875,9 +3875,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, big-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt32BE0600", 0, function () {
+  it("testReadUInt32BE0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt32BE(0x12345678, 0);
     let ref = buf.readUInt32BE(0).toString(16);
@@ -3890,9 +3890,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, big-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt32BE0601", 0, function () {
+  it("testReadUInt32BE0601", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt32BE(0x12345678, 0);
     try {
@@ -3909,9 +3909,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, little-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt32LE0610", 0, function () {
+  it("testReadUInt32LE0610", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt32LE(0x12345678, 0);
     let ref = buf.readUInt32LE(0).toString(16);
@@ -3924,9 +3924,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned, little-endian 32-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt32LE0611", 0, function () {
+  it("testReadUInt32LE0611", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt32LE(0x12345678, 0);
     try {
@@ -3943,9 +3943,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt80620", 0, function () {
+  it("testReadUInt80620", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt8(0x42);
     let ref = buf.readUInt8(0).toString(16);
@@ -3958,9 +3958,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUInt80621", 0, function () {
+  it("testReadUInt80621", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUInt8(0x42);
     try {
@@ -3977,9 +3977,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUIntBE0630", 0, function () {
+  it("testReadUIntBE0630", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUIntBE(0x13141516, 0, 4);
     let ref = buf.readUIntBE(0, 3).toString(16);
@@ -3992,9 +3992,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads an unsigned 8-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUIntBE0631", 0, function () {
+  it("testReadUIntBE0631", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUIntBE(0x13141516, 0, 4);
     try {
@@ -4012,9 +4012,9 @@ describe('BufferTest', function () {
    *           the result as an unsigned, little-endian integer supporting up to 48 bits of accuracy.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUIntLE0640", 0, function () {
+  it("testReadUIntLE0640", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUIntLE(0x13141516, 0, 4);
     let ref = buf.readUIntLE(0, 3).toString(16);
@@ -4028,9 +4028,9 @@ describe('BufferTest', function () {
    *           the result as an unsigned, little-endian integer supporting up to 48 bits of accuracy.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadUIntLE0641", 0, function () {
+  it("testReadUIntLE0641", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeUIntLE(0x13141516, 0, 4);
     try {
@@ -4048,9 +4048,9 @@ describe('BufferTest', function () {
    *           the result as a big-endian, two's complement signed value supporting up to 48 bits of accuracy.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadIntBE0650", 0, function () {
+  it("testReadIntBE0650", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     buf.writeIntBE(0x123456789011, 0, 6);
     let ref = buf.readIntBE(0, 5).toString(16);
@@ -4064,9 +4064,9 @@ describe('BufferTest', function () {
    *           the result as a big-endian, two's complement signed value supporting up to 48 bits of accuracy.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadIntBE0651", 0, function () {
+  it("testReadIntBE0651", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     buf.writeIntBE(0x123456789011, 0, 6);
     try {
@@ -4084,9 +4084,9 @@ describe('BufferTest', function () {
    *           the result as a little-endian, two's complement signed value supporting up to 48 bits of accuracy.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadIntLE0660", 0, function () {
+  it("testReadIntLE0660", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     buf.writeIntLE(0x123456789011, 0, 6);
     let ref = buf.readIntLE(0, 5).toString(16);
@@ -4100,9 +4100,9 @@ describe('BufferTest', function () {
    *           the result as a little-endian, two's complement signed value supporting up to 48 bits of accuracy.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadIntLE0661", 0, function () {
+  it("testReadIntLE0661", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(6);
     buf.writeIntLE(0x123456789011, 0, 6);
     try {
@@ -4119,9 +4119,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 64-bit, big-endian double from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadDoubleBE0670", 0, function () {
+  it("testReadDoubleBE0670", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeDoubleBE(123.456, 0);
     let ref = buf.readDoubleBE();
@@ -4134,9 +4134,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 64-bit, big-endian double from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadDoubleBE0671", 0, function () {
+  it("testReadDoubleBE0671", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeDoubleBE(123.456, 0);
     try {
@@ -4153,9 +4153,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 64-bit, little-endian double from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadDoubleLE0680", 0, function () {
+  it("testReadDoubleLE0680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeDoubleLE(123.456, 0);
     let ref = buf.readDoubleLE();
@@ -4168,9 +4168,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 64-bit, little-endian double from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadDoubleLE0681", 0, function () {
+  it("testReadDoubleLE0681", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeDoubleLE(123.456, 0);
     try {
@@ -4187,9 +4187,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 32-bit, big-endian float from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadFloatBE0690", 0, function () {
+  it("testReadFloatBE0690", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeFloatBE(0xcabcbcbc, 0);
     let ref = buf.readFloatBE(0).toString(16);
@@ -4202,9 +4202,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 32-bit, big-endian float from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadFloatBE0691", 0, function () {
+  it("testReadFloatBE0691", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeFloatBE(0xcabcbcbc, 0);
     try {
@@ -4221,9 +4221,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 32-bit, little-endian float from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadFloatLE0700", 0, function () {
+  it("testReadFloatLE0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeFloatLE(0xcabcbcbc, 0);
     let ref = buf.readFloatLE(0).toString(16);
@@ -4236,9 +4236,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a 32-bit, little-endian float from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadFloatLE0701", 0, function () {
+  it("testReadFloatLE0701", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(4);
     buf.writeFloatLE(0xcabcbcbc, 0);
     try {
@@ -4255,9 +4255,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigInt64BE0710", 0, function () {
+  it("testReadBigInt64BE0710", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigInt64BE(0x0102030405060708n, 0);
     let ref = buf.readBigInt64BE(0).toString(16);
@@ -4270,9 +4270,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, big-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigInt64BE0711", 0, function () {
+  it("testReadBigInt64BE0711", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigInt64BE(0x0102030405060708n, 0);
     try {
@@ -4289,9 +4289,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, little-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigInt64LE0720", 0, function () {
+  it("testReadBigInt64LE0720", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigInt64BE(0x0102030405060708n, 0);
     let ref = buf.readBigInt64LE(0).toString(16);
@@ -4304,9 +4304,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a signed, little-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigInt64LE0721", 0, function () {
+  it("testReadBigInt64LE0721", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigInt64BE(0x0102030405060708n, 0);
     try {
@@ -4323,9 +4323,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a unsigned, big-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigUInt64BE0730", 0, function () {
+  it("testReadBigUInt64BE0730", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
     let ref = buf.readBigUInt64BE(0).toString(16);
@@ -4338,9 +4338,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a unsigned, big-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigUInt64BE0731", 0, function () {
+  it("testReadBigUInt64BE0731", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
     try {
@@ -4357,9 +4357,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a unsigned, little-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigUInt64LE0740", 0, function () {
+  it("testReadBigUInt64LE0740", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
     let ref = buf.readBigUInt64LE(0).toString(16);
@@ -4372,9 +4372,9 @@ describe('BufferTest', function () {
    * @tc.desc: Reads a unsigned, little-endian 64-bit integer from buf at the specified offset.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testReadBigUInt64LE0741", 0, function () {
+  it("testReadBigUInt64LE0741", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(8);
     buf.writeBigUInt64BE(0xdecafafecacefaden, 0);
     try {
@@ -4391,9 +4391,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the number of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferLength0750", 0, function () {
+  it("testBufferLength0750", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.from("1236");
     let len = buf.length;
     expect(len).assertEqual(4);
@@ -4405,9 +4405,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the number of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferLength0751", 0, function () {
+  it("testBufferLength0751", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.from("1236");
     try {
       buf.length = 10;
@@ -4423,9 +4423,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the number of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferLength0752", 0, function () {
+  it("testBufferLength0752", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.from("测试特殊字符$#@!");
     let len = buf.length;
     expect(len).assertEqual(22);
@@ -4437,9 +4437,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the offset of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferByteOffset0755", 0, function () {
+  it("testBufferByteOffset0755", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.from("1236");
     let offset = buf.byteOffset;
     expect(offset >= 0).assertTrue();
@@ -4451,9 +4451,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the offset of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferByteOffset0756", 0, function () {
+  it("testBufferByteOffset0756", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     let offset = buf.byteOffset;
     expect(offset >= 0).assertTrue();
@@ -4465,9 +4465,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the offset of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferByteOffset0757", 0, function () {
+  it("testBufferByteOffset0757", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitializedFromPool(10);
     let offset = buf.byteOffset;
     expect(offset >= 0).assertTrue();
@@ -4479,9 +4479,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the offset of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferByteOffset0758", 0, function () {
+  it("testBufferByteOffset0758", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitialized(10);
     let offset = buf.byteOffset;
     expect(offset >= 0).assertTrue();
@@ -4493,9 +4493,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the offset of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferByteOffset0759", 0, function () {
+  it("testBufferByteOffset0759", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.from("1236");
     try {
       buf.byteOffset = 3;
@@ -4511,9 +4511,9 @@ describe('BufferTest', function () {
    * @tc.desc: The total size of the Blob in bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobSize0760", 0, function () {
+  it("testBlobSize0760", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let blob = new buffer.Blob(["a", "b", "c"]);
     let size = blob.size;
     expect(size).assertEqual(3);
@@ -4525,9 +4525,9 @@ describe('BufferTest', function () {
    * @tc.desc: The total size of the Blob in bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobSize0761", 0, function () {
+  it("testBlobSize0761", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let blob = new buffer.Blob([]);
     let size = blob.size;
     expect(size).assertEqual(0);
@@ -4539,9 +4539,9 @@ describe('BufferTest', function () {
    * @tc.desc: The total size of the Blob in bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobSize0762", 0, function () {
+  it("testBlobSize0762", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let blob = new buffer.Blob(["测试", "$#", "c"]);
     let size = blob.size;
     expect(size).assertEqual(9);
@@ -4553,9 +4553,9 @@ describe('BufferTest', function () {
    * @tc.desc: The content-type of the Blob.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobType0770", 0, function () {
+  it("testBlobType0770", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let blob = new buffer.Blob(["a", "b", "c"], { type: "mime", endings: "transparent" });
     let type = blob.type;
     expect(type).assertEqual("mime");
@@ -4567,9 +4567,9 @@ describe('BufferTest', function () {
    * @tc.desc: The content-type of the Blob.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBlobType0771", 0, function () {
+  it("testBlobType0771", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let blob = new buffer.Blob(["a", "b", "c"]);
     let type = blob.type;
     expect(type).assertEqual("");
@@ -4581,9 +4581,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitialized0780", 0, function () {
+  it("testAllocUninitialized0780", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitialized(10);
     expect(buf.length).assertEqual(10);
   });
@@ -4594,9 +4594,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitialized0781", 0, function () {
+  it("testAllocUninitialized0781", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.allocUninitialized(0);
     expect(buf.length).assertEqual(0);
   });
@@ -4607,9 +4607,9 @@ describe('BufferTest', function () {
    * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testAllocUninitialized0782", 0, function () {
+  it("testAllocUninitialized0782", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf = buffer.allocUninitialized(-5);
     } catch (err) {
@@ -4626,9 +4626,9 @@ describe('BufferTest', function () {
    *           or supports symbol To primitive object, a new buffer instance is created.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-   it("testfrom0783", 0, function () {
+   it("testfrom0783", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       const buf = buffer.from(10);
     } catch (err) {
@@ -4645,9 +4645,9 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the number of bytes in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testBufferBuffer0784", 0, function () {
+  it("testBufferBuffer0784", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.from("1236");
     let buf1 = buffer.from("123");
     try {
@@ -4664,9 +4664,9 @@ describe('BufferTest', function () {
    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testToString0785", 0, function () {
+  it("testToString0785", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     try {
       let str = buf1.toString("code");
@@ -4684,9 +4684,9 @@ describe('BufferTest', function () {
    *           or supports symbol To primitive object, a new buffer instance is created.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0786", 0, function () {
+  it("testfrom0786", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arrayBuffer = new ArrayBuffer(5);
     let array = new Int8Array(arrayBuffer);
     array[0] = '1';
@@ -4708,9 +4708,9 @@ describe('BufferTest', function () {
    * @tc.desc: The buffer handles a uint8array and decodes it with base64 and base64url.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it('testfrom0787', 0, function () {
+  it('testfrom0787', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let array = new Uint8Array([252,11,3,67,237,118,91,177,43]);
     let buf = buffer.from(array);
     let strUrl = buf.toString("base64url");
@@ -4762,9 +4762,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0036", 0, function () {
+  it("testByteLength0036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abc");
     let byteLen = buffer.byteLength(buf1);
     expect(byteLen).assertEqual(3);
@@ -4778,9 +4778,9 @@ describe('BufferTest', function () {
    *           for the encoding that is used to convert the string into bytes.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testByteLength0037", 0, function () {
+  it("testByteLength0037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.alloc(8);
     let byteLen = buffer.byteLength(buf1);
     expect(byteLen).assertEqual(8);
@@ -4792,9 +4792,9 @@ describe('BufferTest', function () {
     * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testToString0038", 0, function () {
+   it("testToString0038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let str = "abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
     let strbuf = buffer.from(str, "latin1");
     let toStr = strbuf.toString("latin1");
@@ -4807,9 +4807,9 @@ describe('BufferTest', function () {
     * @tc.desc: The index of the last occurrence of value in buf.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testLastIndexOf30000", 0, function () {
+   it("testLastIndexOf30000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("13236235");
     let index = buf1.lastIndexOf("23", 9999999999999);
     expect(index).assertEqual(5);
@@ -4821,9 +4821,9 @@ describe('BufferTest', function () {
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testIncludes30010", 0, function () {
+   it("testIncludes30010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abcdefghigk");
     let flag = buf1.includes("f", -3);
     expect(flag).assertEqual(false);
@@ -4835,9 +4835,9 @@ describe('BufferTest', function () {
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testIncludes30020", 0, function () {
+   it("testIncludes30020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abcdefghigk");
     let flag = buf1.includes("f", 9999999999999);
     expect(flag).assertEqual(false);
@@ -4849,9 +4849,9 @@ describe('BufferTest', function () {
     * @tc.desc: Returns true if value was found in buf, false otherwise.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testIncludes30030", 0, function () {
+   it("testIncludes30030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("abcdefghigk");
     let flag = buf1.includes("f", -9999999999999);
     expect(flag).assertEqual(true);
@@ -4863,9 +4863,9 @@ describe('BufferTest', function () {
     * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testAlloc30040", 0, function () {
+   it("testAlloc30040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10, '');
     expect(buf.length).assertEqual(10);
    });
@@ -4876,9 +4876,9 @@ describe('BufferTest', function () {
     * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 1
     */
-   it("testAlloc30050", 0, function () {
+   it("testAlloc30050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(20).fill('');
     expect(buf.length).assertEqual(20);
    });
@@ -4889,9 +4889,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf30060", 0, function () {
+  it("testIndexOf30060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123456789abcdefg");
     let index = buf1.indexOf("3", -1);
     expect(index).assertEqual(-1);
@@ -4903,9 +4903,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf30070", 0, function () {
+  it("testIndexOf30070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123456789abcdefg");
     let index = buf1.indexOf("3", 99999999999999);
     expect(index).assertEqual(-1);
@@ -4917,9 +4917,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf30080", 0, function () {
+  it("testIndexOf30080", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("123456789abcdefg");
     let index = buf1.indexOf("3", -99999999999999);
     expect(index).assertEqual(2);
@@ -4931,9 +4931,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf30090", 0, function () {
+  it("testIndexOf30090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("This is a buffer");
     let index = buf1.indexOf("is", -5);
     expect(index).assertEqual(-1);
@@ -4945,9 +4945,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testIndexOf30100", 0, function () {
+  it("testIndexOf30100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.from("This is a buffer");
     let index = buf1.indexOf("f", -20);
     expect(index).assertEqual(12);
@@ -4959,9 +4959,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFrom30110", 0, function () {
+  it("testFrom30110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf1 = buffer.from(null);
     } catch(err) {
@@ -4978,9 +4978,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFrom30120", 0, function () {
+  it("testFrom30120", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let buf1 = buffer.from(undefined);
     } catch(err) {
@@ -4997,9 +4997,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFrom30130", 0, function () {
+  it("testFrom30130", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let dateObj = new Date();
     let buf1 = buffer.from(dateObj, 0, 5);
     expect(buf1.length > 0).assertTrue();
@@ -5011,9 +5011,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFrom30140", 0, function () {
+  it("testFrom30140", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let obj = new Map()
       let buf1 = buffer.from(obj, 0, 5);
@@ -5031,9 +5031,9 @@ describe('BufferTest', function () {
    * @tc.desc: The index of the first occurrence of value in buf.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testFrom30150", 0, function () {
+  it("testFrom30150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let arrBuf = new ArrayBuffer(10);
       let buf1 = buffer.from(arrBuf, -1);
@@ -5054,9 +5054,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0147", 0, function () {
+  it("testCopy0147", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(0);
     let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
     let num = buf.copy(uint8array, 8);
@@ -5074,9 +5074,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0148", 0, function () {
+  it("testCopy0148", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(0);
     let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
     let num = buf.copy(uint8array, 0, 3);
@@ -5094,9 +5094,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0149", 0, function () {
+  it("testCopy0149", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(0);
     let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
     let num = buf.copy(uint8array, 0, 3, 255);
@@ -5114,9 +5114,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0150", 0, function () {
+  it("testCopy0150", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(0);
     let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
     let num = buf.copy(uint8array, 100, 3, 255);
@@ -5134,9 +5134,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0151", 0, function () {
+  it("testCopy0151", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let uint8array = new Uint8Array(10).fill(0);
       const buf = buffer.from([1,2,3,4,5,6,7]);
@@ -5155,9 +5155,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0152", 0, function () {
+  it("testCopy0152", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(0);
     let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
     let num = buf.copy(uint8array, 0, 9, 1);
@@ -5175,9 +5175,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0153", 0, function () {
+  it("testCopy0153", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(0);
     let buf = buffer.from([1, 2, 3, 4, 5, 6, 7]);
     let num = buf.copy(uint8array, 9, 1, 5);
@@ -5195,9 +5195,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0154", 0, function () {
+  it("testCopy0154", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let uint8array = new Uint8Array(10).fill(0);
       const buf = buffer.from([1,2,3,4,5,6,7]);
@@ -5216,9 +5216,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0155", 0, function () {
+  it("testCopy0155", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let uint8array = new Uint8Array(10).fill(9);
     const buf = buffer.from([1,2,3,4,5,6,7]);
     let num = buf.copy(uint8array, 9, 1, undefined);
@@ -5236,9 +5236,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0156", 0, function () {
+  it("testCopy0156", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf1 = buffer.alloc(1024);
     let buf2 = buffer.alloc(512);
     let cntr = 0;
@@ -5263,9 +5263,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0157", 0, function () {
+  it("testCopy0157", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     let buf1 = buffer.alloc(10).fill('!');
     for (let i = 0; i < 10; i++) {
@@ -5285,9 +5285,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0158", 0, function () {
+  it("testCopy0158", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     for (let i = 0; i < 10; i++) {
       buf[i] = i + 97;
@@ -5306,9 +5306,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0159", 0, function () {
+  it("testCopy0159", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     for (let i = 0; i < 10; i++) {
       buf[i] = i + 97;
@@ -5327,9 +5327,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0160", 0, function () {
+  it("testCopy0160", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     for (let i = 0; i < 10; i++) {
       buf[i] = i + 97;
@@ -5348,9 +5348,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testCopy0161", 0, function () {
+  it("testCopy0161", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let buf = buffer.alloc(10);
     for (let i = 0; i < 10; i++) {
       buf[i] = i + 97;
@@ -5369,9 +5369,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0788", 0, function () {
+  it("testfrom0788", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let sharedArr = new SharedArrayBuffer(20)
     let uint8Arr = new Uint8Array(sharedArr);
     uint8Arr[16] = 9;
@@ -5390,9 +5390,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0789", 0, function () {
+  it("testfrom0789", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let sharedArr = new SharedArrayBuffer(10)
     let uint8Arr = new Uint8Array(sharedArr);
     uint8Arr[9] = 9;
@@ -5411,9 +5411,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0790", 0, function () {
+  it("testfrom0790", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let sharedArr = new SharedArrayBuffer(1000)
     let bufObj = buffer.from(sharedArr, 5, undefined);
     expect(bufObj.length).assertEqual(995);
@@ -5428,9 +5428,9 @@ describe('BufferTest', function () {
    *           and the extra part will not be overwritten.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-  it("testfrom0791", 0, function () {
+  it("testfrom0791", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let sharedArr = new SharedArrayBuffer(10)
     let bufObj = buffer.from(sharedArr, undefined, 6);
     expect(bufObj.length).assertEqual(6);
@@ -5442,9 +5442,9 @@ describe('BufferTest', function () {
    * @tc.desc: Create a new buffer containing parameter is non integer
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
-       it("testfrom0792", 0, function () {
+       it("testfrom0792", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 1.2, 1.2);
         let res = buf.toString('hex');
@@ -5457,9 +5457,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testfrom0793", 0, function () {
+    it("testfrom0793", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 1, 1.2);
         let res = buf.toString('hex');
@@ -5472,9 +5472,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-       it("testfrom0794", 0, function () {
+       it("testfrom0794", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 1.2, 1);
         let res = buf.toString('hex');
@@ -5487,9 +5487,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testfrom0795", 0, function () {
+    it("testfrom0795", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 9.9, 9.9);
         let res = buf.toString('hex');
@@ -5502,9 +5502,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-     it("testfrom0796", 0, function () {
+     it("testfrom0796", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let ab = new ArrayBuffer(100);
       let buf = buffer.from(ab, 2.9, 2.9);
       let res = buf.toString('hex');
@@ -5517,9 +5517,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testfrom0275", 0, function () {
+    it("testfrom0275", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let buf = buffer.from('this buffer is a buffer');
       expect(buf.lastIndexOf('buffer', -4)).assertEqual(17);
       expect(buf.lastIndexOf('buffer', -5)).assertEqual(17);
@@ -5546,9 +5546,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testfrom0276", 0, function () {
+    it("testfrom0276", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let buf = buffer.from('this buffer is a buffer');
       expect(buf.lastIndexOf('is',undefined)).assertEqual(12);
       expect(buf.lastIndexOf('is', null, 'utf8')).assertEqual(-1);
@@ -5562,9 +5562,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testfrom0277", 0, function () {
+    it("testfrom0277", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let buf = buffer.from([11,12,13,14,15,16,17,18,19])
       expect(buf.lastIndexOf(13,-1)).assertEqual(2);
       expect(buf.lastIndexOf(13,-999)).assertEqual(-1);
@@ -5580,9 +5580,9 @@ describe('BufferTest', function () {
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 1
      */
-    it("testfrom0278", 0, function () {
+    it("testfrom0278", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
         let buf = buffer.from([11,12,13,14,15,16,17,18,19]);
         let buf1 = buffer.from([1,2,3,4,5,6,8,9,19])

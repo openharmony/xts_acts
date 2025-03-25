@@ -32,6 +32,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { Driver } from '@ohos.UiTest';
+import DemoProcess from '../process/AProcess';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
@@ -626,7 +627,6 @@ export default function ApiCoverTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["AbilityStage_StartAbility"]
       }
-
       commonEvent.createSubscriber(subscribeInfo, (err, data) => {
         console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
         subscriber = data
@@ -902,7 +902,7 @@ export default function ApiCoverTest() {
     it('SUB_AA_ChildProcessManager_startChildProcess_0100', 0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
       console.log(`${tag}, it begin`);
-
+      DemoProcess.toString();
       let mode: number;
       try {
         mode = childProcessManager.StartMode.SELF_FORK;

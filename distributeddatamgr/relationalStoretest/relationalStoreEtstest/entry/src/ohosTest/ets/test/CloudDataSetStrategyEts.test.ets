@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import cloudData from '@ohos.data.cloudData';
 import deviceInfo from '@ohos.deviceInfo';
 
@@ -39,7 +39,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest001', 0, async function (done) {
+        it('setCloudStrategyTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest001 start *************");
             try {
                 cloudData.setCloudStrategy(null).then(() => {
@@ -64,7 +64,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest002', 0, async function (done) {
+        it('setCloudStrategyTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest002 start *************");
             try {
                 cloudData.setCloudStrategy(undefined).then(() => {
@@ -89,7 +89,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest003', 0, async function (done) {
+        it('setCloudStrategyTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest003 start *************");
             try {
                 cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [undefined, "test"]).then(() => {
@@ -114,7 +114,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest004', 0, async function (done) {
+        it('setCloudStrategyTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest004 start *************");
             try {
                 cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI, "test"]).then(() => {
@@ -139,7 +139,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest005', 0, async function (done) {
+        it('setCloudStrategyTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest005 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
@@ -168,7 +168,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest006', 0, async function (done) {
+        it('setCloudStrategyTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest006 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.CELLULAR, cloudData.NetWorkStrategy.WIFI]).then(() => {
@@ -197,7 +197,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest007', 0, async function (done) {
+        it('setCloudStrategyTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest007 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK).then(() => {
@@ -226,7 +226,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest008', 0, async function (done) {
+        it('setCloudStrategyTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest008 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, undefined).then(() => {
@@ -255,7 +255,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setCloudStrategyTest009', 0, async function (done) {
+        it('setCloudStrategyTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setCloudStrategyTest009 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, null).then(() => {
@@ -284,7 +284,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest001', 0, async function (done) {
+        it('setGlobalCloudStrategyTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* setGlobalCloudStrategyTest001 start *************");
         try {
             cloudData.Config.setGlobalCloudStrategy(null).then(() => {
@@ -307,7 +307,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest002', 0, async function (done) {
+        it('setGlobalCloudStrategyTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest002 start *************");
             try {
                 cloudData.Config.setGlobalCloudStrategy(undefined).then(() => {
@@ -330,7 +330,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest003', 0, async function (done) {
+        it('setGlobalCloudStrategyTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest003 start *************");
             try {
                 cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [undefined, "test"]).then(() => {
@@ -353,7 +353,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest004', 0, async function (done) {
+        it('setGlobalCloudStrategyTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest004 start *************");
             try {
                 cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI, "test"]).then(() => {
@@ -376,7 +376,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest005', 0, async function (done) {
+        it('setGlobalCloudStrategyTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest005 start *************");
             try {
                 await cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
@@ -405,7 +405,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest006', 0, async function (done) {
+        it('setGlobalCloudStrategyTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest006 start *************");
             try {
                 await cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.CELLULAR, cloudData.NetWorkStrategy.WIFI]).then(() => {
@@ -434,7 +434,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest007', 0, async function (done) {
+        it('setGlobalCloudStrategyTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest007 start *************");
             try {
                 await cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK).then(() => {
@@ -463,7 +463,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest008', 0, async function (done) {
+        it('setGlobalCloudStrategyTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest008 start *************");
             try {
                 await cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, undefined).then(() => {
@@ -492,7 +492,7 @@ export default function cloudDataSetStrategyEtsTest() {
          * @tc.type Function
          * @tc.level Level 2
         */
-        it('setGlobalCloudStrategyTest009', 0, async function (done) {
+        it('setGlobalCloudStrategyTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log(TAG + "************* setGlobalCloudStrategyTest009 start *************");
             try {
                 await cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, null).then(() => {

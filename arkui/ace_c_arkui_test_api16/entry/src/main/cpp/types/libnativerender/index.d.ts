@@ -18,9 +18,9 @@ export const testPostFrameCallback: (a: string) => void;
 
 export const swiperAutoPlayTest: (a: string) => void;
 
-export const textAreaLetterSpacing001: (a: string) => void;
+export const swiperOnSelectTest: (a: string) => void;
 
-export const testCalendarPickerDate: (a: string) => void;
+export const textAreaLetterSpacing001: (a: string) => void;
 
 export const textInputLetterSpacing002: (a: string) => void;
 
@@ -33,8 +33,9 @@ export const TestDragDisableDropDataPrefetch002: (a: string) => void;
 export const TestDragCancelDataLoading003: (a: string) => void;
 
 export const GetResult: () => number[];
-export const calendarPickerTest: (a: string) => void;
 
 export const testExpectedFrameRateRangeCallback: (a: string) => void;
 
 export const testNodeUtilMove001: (a: string) => void;
+
+export const timePickerTest: (a: string) => void;

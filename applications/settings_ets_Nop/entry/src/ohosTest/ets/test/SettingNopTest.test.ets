@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import settings from '@ohos.settings';
 import { BusinessError } from '@ohos.base';
 import CommonFunc from './Common';
@@ -31,7 +31,7 @@ export default function SettingNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('Setting_nop_test_0100', 0, async (done : Function) => {
+    it('Setting_nop_test_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
       console.info('Setting_nop_test_0100 START');
       let strJson = getInspectorByKey('settingsId1');
       let obj: ESObject = JSON.parse(strJson);
@@ -49,7 +49,7 @@ export default function SettingNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('Setting_nop_test_0200', 0, async (done : Function) => {
+    it('Setting_nop_test_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
       console.info('Setting_nop_test_0200 START');
       let strJson = getInspectorByKey('settingsId2');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function SettingNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('Setting_nop_test_0300', 0, async (done : Function) => {
+    it('Setting_nop_test_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
       console.info('Setting_nop_test_0300 START');
       let strJson = getInspectorByKey('settingsId3');
       let obj: ESObject = JSON.parse(strJson);

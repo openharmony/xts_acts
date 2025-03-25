@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function ActscommonEventSupportTest() {
   describe('SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST', function () {
@@ -25,7 +25,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : This commonEvent means the device state
      */
-    it('Sub_Notification_Ces_Publish_Support_2100', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2100', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2100 START`)
       expect(commonEvent.Support.COMMON_EVENT_BOOT_COMPLETED).assertEqual('usual.event.BOOT_COMPLETED')
       expect(commonEvent.Support.COMMON_EVENT_LOCKED_BOOT_COMPLETED).assertEqual('usual.event.LOCKED_BOOT_COMPLETED')
@@ -39,7 +39,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : This commonEvent means the device battery state
      */
-    it('Sub_Notification_Ces_Publish_Support_2200', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2200', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2200 START`)
       expect(commonEvent.Support.COMMON_EVENT_BATTERY_LOW).assertEqual('usual.event.BATTERY_LOW')
       expect(commonEvent.Support.COMMON_EVENT_BATTERY_OKAY).assertEqual('usual.event.BATTERY_OKAY')
@@ -53,7 +53,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : This commonEvent means the screen,the thermal state level
      */
-    it('Sub_Notification_Ces_Publish_Support_2300', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2300', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2300 START`)
       expect(commonEvent.Support.COMMON_EVENT_SCREEN_OFF).assertEqual('usual.event.SCREEN_OFF')
       expect(commonEvent.Support.COMMON_EVENT_SCREEN_ON).assertEqual('usual.event.SCREEN_ON')
@@ -68,7 +68,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : This commonEvent means the time changed , the dialog to dismiss
      */
-    it('Sub_Notification_Ces_Publish_Support_2400', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2400', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2400 START`)
       expect(commonEvent.Support.COMMON_EVENT_TIME_TICK).assertEqual('usual.event.TIME_TICK')
       expect(commonEvent.Support.COMMON_EVENT_TIME_CHANGED).assertEqual('usual.event.TIME_CHANGED')
@@ -84,7 +84,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : This commonEvent means when a new version application package
      */
-    it('Sub_Notification_Ces_Publish_Support_2500', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2500', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2500 START`)
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_ADDED).assertEqual('usual.event.PACKAGE_ADDED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_INSTALLATION_STARTED)
@@ -103,7 +103,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : This commonEvent of package
      */
-    it('Sub_Notification_Ces_Publish_Support_2600', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2600', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2600 START`)
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_RESTARTED).assertEqual('usual.event.PACKAGE_RESTARTED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_DATA_CLEARED).assertEqual('usual.event.PACKAGE_DATA_CLEARED')
@@ -121,7 +121,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Sent by system package verifier
      */
-    it('Sub_Notification_Ces_Publish_Support_2700', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2700', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2700 START`)
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION).assertEqual('usual.event.PACKAGE_NEEDS_VERIFICATION')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_VERIFIED).assertEqual('usual.event.PACKAGE_VERIFIED')
@@ -136,7 +136,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Send by the smart function when the system in mode
      */
-    it('Sub_Notification_Ces_Publish_Support_2800', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2800', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2800 START`)
       expect(commonEvent.Support.COMMON_EVENT_LOCALE_CHANGED).assertEqual('usual.event.LOCALE_CHANGED')
       expect(commonEvent.Support.COMMON_EVENT_MANAGE_PACKAGE_STORAGE)
@@ -152,7 +152,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Remind previous user of that the service
      */
-    it('Sub_Notification_Ces_Publish_Support_2900', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_2900', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2900 START`)
       expect(commonEvent.Support.COMMON_EVENT_USER_STARTED).assertEqual('usual.event.USER_STARTED')
       expect(commonEvent.Support.COMMON_EVENT_USER_BACKGROUND).assertEqual('usual.event.USER_BACKGROUND')
@@ -170,7 +170,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : WIFI state
      */
-    it('Sub_Notification_Ces_Publish_Support_3000', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3000', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3000 START`)
     expect(commonEvent.Support.COMMON_EVENT_WIFI_POWER_STATE).assertEqual('usual.event.wifi.POWER_STATE')
       expect(commonEvent.Support.COMMON_EVENT_WIFI_SCAN_FINISHED).assertEqual('usual.event.wifi.SCAN_FINISHED')
@@ -194,7 +194,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Bluetooth
      */
-    it('Sub_Notification_Ces_Publish_Support_3100', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3100', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3100 START`)
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE).assertEqual('usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE')
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE).assertEqual('usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE')
@@ -227,7 +227,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Bluetooth.handsfreeunit
      */
-    it('Sub_Notification_Ces_Publish_Support_3200', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3200', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3200 START`)
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE).assertEqual('usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE')
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE).assertEqual('usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE')
@@ -241,7 +241,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Bluetooth.host
      */
-    it('Sub_Notification_Ces_Publish_Support_3300', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3300', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3300 START`)
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE).assertEqual('usual.event.bluetooth.host.STATE_UPDATE')
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE).assertEqual('usual.event.bluetooth.host.REQ_DISCOVERABLE')
@@ -259,7 +259,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : Bluetooth.a2dp,Nfc
      */
-    it('Sub_Notification_Ces_Publish_Support_3400', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3400', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3400 START`)
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE).assertEqual('usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE')
       expect(commonEvent.Support.COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE).assertEqual('usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE')
@@ -275,7 +275,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : charging battery,device's ,User,ability,Gps
      */
-    it('Sub_Notification_Ces_Publish_Support_3500', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3500', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3500 START`)
       expect(commonEvent.Support.COMMON_EVENT_DISCHARGING).assertEqual('usual.event.DISCHARGING')
       expect(commonEvent.Support.COMMON_EVENT_CHARGING).assertEqual('usual.event.CHARGING')
@@ -295,7 +295,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : ivi
      */
-    it('Sub_Notification_Ces_Publish_Support_3600', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3600', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3600 START`)
       expect(commonEvent.Support.COMMON_EVENT_IVI_SLEEP).assertEqual('common.event.IVI_SLEEP')
       expect(commonEvent.Support.COMMON_EVENT_IVI_PAUSE).assertEqual('common.event.IVI_PAUSE')
@@ -316,7 +316,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : USB
      */
-    it('Sub_Notification_Ces_Publish_Support_3700', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3700', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3700 START`)
       expect(commonEvent.Support.COMMON_EVENT_USB_DEVICE_ATTACHED).assertEqual('usual.event.hardware.usb.action.USB_DEVICE_ATTACHED')
       expect(commonEvent.Support.COMMON_EVENT_USB_DEVICE_DETACHED).assertEqual('usual.event.hardware.usb.action.USB_DEVICE_DETACHED')
@@ -330,7 +330,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : protected common event
      */
-    it('Sub_Notification_Ces_Publish_Support_3800', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3800', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3800 START`)
       expect(commonEvent.Support.COMMON_EVENT_DISK_REMOVED).assertEqual('usual.event.data.DISK_REMOVED')
       expect(commonEvent.Support.COMMON_EVENT_DISK_UNMOUNTED).assertEqual('usual.event.data.DISK_UNMOUNTED')
@@ -348,7 +348,7 @@ export default function ActscommonEventSupportTest() {
      * @tc.name      : commonEvent.Support
      * @tc.desc      : protected common event
      */
-    it('Sub_Notification_Ces_Publish_Support_3900', 0, async  function () {
+    it('Sub_Notification_Ces_Publish_Support_3900', Level.LEVEL2, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_3900 START`)
       expect(commonEvent.Support.COMMON_EVENT_FOUNDATION_READY).assertEqual('common.event.FOUNDATION_READY')
       expect(commonEvent.Support.COMMON_EVENT_AIRPLANE_MODE_CHANGED).assertEqual('usual.event.AIRPLANE_MODE')

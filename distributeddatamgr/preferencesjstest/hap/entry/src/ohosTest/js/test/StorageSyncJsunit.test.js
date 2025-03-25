@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import storage from '@ohos.data.storage'
 
 const PATH = '/data/storage/el2/database/test_storage';
@@ -51,7 +51,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testClear001', 0, function () {
+        it('testClear001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
             mPref.flushSync();
@@ -68,7 +68,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testConstructor002', 0, function () {
+        it('testConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             expect(typeof mPref).assertEqual("object");
         })
 
@@ -80,7 +80,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey003', 0, function () {
+        it('testHasKey003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             expect(true).assertEqual(mPref.hasSync(KEY_TEST_STRING_ELEMENT));
         })
@@ -93,7 +93,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey004', 0, function () {
+        it('testHasKey004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
             expect(true).assertEqual(mPref.hasSync(KEY_TEST_INT_ELEMENT));
         })
@@ -106,7 +106,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey005', 0, function () {
+        it('testHasKey005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
             expect(true).assertEqual(mPref.hasSync(KEY_TEST_BOOLEAN_ELEMENT));
         })
@@ -119,7 +119,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey006', 0, function () {
+        it('testHasKey006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
             expect(true).assertEqual(mPref.hasSync(KEY_TEST_LONG_ELEMENT));
         })
@@ -132,7 +132,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey007', 0, function () {
+        it('testHasKey007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
             expect(true).assertEqual(mPref.hasSync(KEY_TEST_FLOAT_ELEMENT));
         })
@@ -145,7 +145,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetBoolean005', 0, function () {
+        it('testGetBoolean005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.putSync(KEY_TEST_LONG_ELEMENT, true);
             expect(true).assertEqual(mPref.hasSync(KEY_TEST_LONG_ELEMENT));
         })
@@ -158,7 +158,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetDefValue006', 0, function () {
+        it('testGetDefValue006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             expect(-1).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, -1));
             expect(1.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 1.0));
@@ -175,7 +175,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetFloat007', 0, function () {
+        it('testGetFloat007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
             expect(3.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
@@ -190,7 +190,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetInt008', 0, function () {
+        it('testGetInt008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
             expect(3).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0.0));
@@ -204,7 +204,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetLong009', 0, function () {
+        it('testGetLong009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 3);
             expect(3).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
@@ -219,7 +219,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetString10', 0, function () {
+        it('testGetString10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
@@ -236,7 +236,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutBoolean012', 0, function () {
+        it('testPutBoolean012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, true);
             expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
@@ -252,7 +252,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutFloat013', 0, function () {
+        it('testPutFloat013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 4.0);
             expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
@@ -268,7 +268,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutInt014', 0, function () {
+        it('testPutInt014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_INT_ELEMENT, 4);
             expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
@@ -284,7 +284,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutLong015', 0, function () {
+        it('testPutLong015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 4);
             expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
@@ -300,7 +300,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutString016', 0, function () {
+        it('testPutString016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
             mPref.putSync(KEY_TEST_STRING_ELEMENT, '');
@@ -317,7 +317,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRegisterObserver001', 0, function () {
+        it('testRegisterObserver001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             var observer = function (key) {
                 expect('abcd').assertEqual(key);
@@ -334,7 +334,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRegisterObserver002', 0, function () {
+        it('testRegisterObserver002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref.clearSync();
             var observer = function (key) {
                 console.info('testRegisterObserver001 key' + key);
@@ -353,7 +353,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testUnRegisterObserver001', 0, function () {
+        it('testUnRegisterObserver001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             var observer = function (key) {
                 console.info('testUnRegisterObserver001 key' + key);
                 expect('').assertEqual(key);
@@ -371,7 +371,7 @@ export default function storageSyncTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetDefValue001', 0, async function (done) {
+        it('testGetDefValue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clear();
             var ret = mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, true)
             expect(ret).assertTrue();

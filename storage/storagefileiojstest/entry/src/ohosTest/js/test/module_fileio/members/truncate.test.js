@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioTruncate() {
 describe('fileio_truncate', function () {
@@ -169,6 +170,35 @@ describe('fileio_truncate', function () {
       });
     } catch(e) {
       console.log('fileio_truncate_async_004 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0500
+   * @tc.name fileio_truncate_async_005
+   * @tc.desc Test the truncate() interface. Promise.
+   * Use default truncateLen = 0.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_truncate_async_005', Level.LEVEL3, async function (done) {
+    let fpath = await nextFileName('fileio_truncate_async_005');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileio.truncate(fpath);
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      let readLen = fileio.readSync(fd, new ArrayBuffer(4096));
+      expect(readLen == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileio_truncate_async_005 has failed for ' + e);
       expect(false).assertTrue();
     }
   });

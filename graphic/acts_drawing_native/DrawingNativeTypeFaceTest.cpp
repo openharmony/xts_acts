@@ -73,7 +73,7 @@ class DrawingNativeTypeFaceTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     // add assert
@@ -101,7 +101,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     // add assert
@@ -135,7 +135,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNull, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     // add assert
@@ -167,7 +167,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     // add assert
@@ -202,7 +202,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     // add assert
@@ -233,7 +233,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     // add assert
@@ -267,7 +267,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_TypefaceCreateDefault
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateDefault();
     // add assert
@@ -284,7 +284,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(nullptr);
     // add assert
@@ -299,7 +299,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNull, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // add assert
@@ -325,7 +325,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNorm
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // add assert
@@ -355,7 +355,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // add assert
@@ -384,7 +384,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsAbno
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
     // add assert
@@ -414,7 +414,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMult
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
     // add assert
@@ -447,7 +447,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
     // add assert
@@ -482,7 +482,7 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
     // add assert

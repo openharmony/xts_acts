@@ -15,7 +15,7 @@
 
 import battery from '@system.battery';
 import batteryInfo from '@ohos.batteryInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function SystemBatteryTest() {
   describe('SystemBatteryTest', () => {
@@ -46,7 +46,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_success_test', 0, async (done) => {
+    it('get_status_success_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_success_test';
       battery.getStatus({
         success: (batteryResponse) => {
@@ -78,7 +78,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_success_null_test', 0, async (done) => {
+    it('get_status_success_null_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_success_null_test';
       battery.getStatus({
         success: null,
@@ -103,7 +103,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_success_empty_test', 0, async (done) => {
+    it('get_status_success_empty_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_success_empty_test';
       battery.getStatus({
         fail: (msg, code) => {
@@ -127,7 +127,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_fail_null_test', 0, async (done) => {
+    it('get_status_fail_null_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_fail_null_test';
       battery.getStatus({
         success: (batteryResponse) => {
@@ -154,7 +154,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_fail_empty_test', 0, async (done) => {
+    it('get_status_fail_empty_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_fail_empty_test';
       battery.getStatus({
         success: (batteryResponse) => {
@@ -180,7 +180,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_complete_null_test', 0, async (done) => {
+    it('get_status_complete_null_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_complete_null_test';
       battery.getStatus({
         success: (batteryResponse) => {
@@ -210,7 +210,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_complete_empty_test', 0, async (done) => {
+    it('get_status_complete_empty_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'get_status_complete_empty_test';
       battery.getStatus({
         success: (batteryResponse) => {
@@ -239,7 +239,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_all_null', 0, () => {
+    it('get_status_all_null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'get_status_all_null';
       battery.getStatus({
         success: null,
@@ -258,7 +258,7 @@ export default function SystemBatteryTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('get_status_all_empty', 0, () => {
+    it('get_status_all_empty', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'get_status_all_empty';
       battery.getStatus();
       console.info(`${TAG} all empty`);

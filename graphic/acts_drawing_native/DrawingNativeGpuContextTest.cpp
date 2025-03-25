@@ -108,7 +108,7 @@ void DrawingNativeGpuContextTest::TearDown()
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyNormal, Function | SmallTest | Level0) {
     OH_Drawing_GpuContextOptions options;
     options.allowPathMaskCaching = true;
     gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
@@ -124,7 +124,7 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyNormal, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeGpuContextTest, testGpuContextDestroyNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeGpuContextTest, testGpuContextDestroyNULL, Function | SmallTest | Level3) {
     OH_Drawing_GpuContextDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);
@@ -138,7 +138,7 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextDestroyNULL, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_GpuContextOptions options;
         options.allowPathMaskCaching = true;
@@ -156,7 +156,7 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyMultipleC
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateNormal, Function | SmallTest | Level0) {
 
     gpuContext_ = OH_Drawing_GpuContextCreate();
     EXPECT_NE(gpuContext_, nullptr);

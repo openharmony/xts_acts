@@ -15,9 +15,11 @@
 import webViewControllerPart3Test from './WebViewControllerPart3.test'
 import webOnInterceptKeyEvent from './WebOnInterceptKeyEvent.test'
 import webHitTestTypeEnumTest from './WebHitTestTypeEnumTest.test'
+import webKeyboardController from './webKeyboardController.test'
 
 export default function testsuite() {
   webViewControllerPart3Test()
   webOnInterceptKeyEvent()
   webHitTestTypeEnumTest()
+  webKeyboardController()
 }

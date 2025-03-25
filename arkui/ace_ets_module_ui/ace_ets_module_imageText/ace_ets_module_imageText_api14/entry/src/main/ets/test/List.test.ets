@@ -28,6 +28,7 @@ import textAreaNode from "./TextAreaTest/textAreaNode.test";
 import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
 import ImageOrientationTest from './ImageOrientation/ImageOrientation.test';
 import RichEditorOnWillChangeTest from './RichEditorTest/onWillChange.test';
+import RichEditorOnDoubleClickTest from './RichEditorTest/onDoubleClickOnHover.test';
 
 
 export default function testsuite() {
@@ -46,4 +47,5 @@ export default function testsuite() {
   SymbolGlyphNodeTest();
   ImageOrientationTest();
   RichEditorOnWillChangeTest();
+  RichEditorOnDoubleClickTest();
 }

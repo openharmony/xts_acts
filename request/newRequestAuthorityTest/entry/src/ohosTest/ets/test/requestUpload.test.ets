@@ -18,7 +18,7 @@ import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestUploadJSUnit() {
@@ -122,9 +122,9 @@ export default function requestUploadJSUnit() {
      * @tc.desc      Starts a upload session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_Misc_REQUEST_Create_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Upload_Callback_0010', Level.LEVEL0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 uploadTask: " + task);
@@ -152,9 +152,9 @@ export default function requestUploadJSUnit() {
      * @tc.desc      Starts a upload session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_Misc_REQUEST_Create_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Upload_Promise_0010', Level.LEVEL0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0010 is starting-----------------------");
       let task: request.agent.Task | undefined;
       try {
@@ -182,7 +182,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0010 is starting-----------------------");
       try {
         let task = await request.agent.create(baseContext, config);
@@ -216,7 +216,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0010 is starting-----------------------");
       try {
         let task = await request.agent.create(baseContext, config);
@@ -239,7 +239,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Start_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Start_Upload_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -269,7 +269,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Start_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Start_Upload_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 is starting-----------------------");
       try {
         let task = await request.agent.create(baseContext, config);
@@ -293,7 +293,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Pause_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Pause_Upload_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -326,7 +326,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Pause_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Pause_Upload_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 is starting-----------------------");
       let task = await request.agent.create(baseContext, config);
       console.info("====>SUB_Misc_REQUEST_Pause_Upload_Promise_0010 create task: " + JSON.stringify(task));
@@ -353,7 +353,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Resume_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Resume_Upload_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -389,7 +389,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Resume_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Resume_Upload_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 is starting-----------------------");
       let task = await request.agent.create(baseContext, config);
       console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 create task: " + JSON.stringify(task));
@@ -417,9 +417,9 @@ export default function requestUploadJSUnit() {
      * @tc.desc Get the upload task info
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Stop_Upload_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Stop_Upload_Callback_0010', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 is starting-----------------------");
       request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
@@ -450,9 +450,9 @@ export default function requestUploadJSUnit() {
      * @tc.desc Get the upload task info
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Stop_Upload_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Stop_Upload_Promise_0010', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Promise_0010 is starting-----------------------");
       let task = await request.agent.create(baseContext, config);
       console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 create task: " + JSON.stringify(task));
@@ -479,7 +479,7 @@ export default function requestUploadJSUnit() {
     * @tc.type: Function
     * @tc.level: Level 2
     */
-    it('SUB_REQUEST_Agent_UploadConfig_1700', 0, async (done: Function) => {
+    it('SUB_REQUEST_Agent_UploadConfig_1700', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1700 is starting-----------------------");
       let value: ESObject = {
         path: undefined,
@@ -520,7 +520,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Upload_broadcastEvent_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Upload_broadcastEvent_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Upload_broadcastEvent_0100 is starting-----------------------");
       let attachments: Array<request.agent.FormItem> = [
         {

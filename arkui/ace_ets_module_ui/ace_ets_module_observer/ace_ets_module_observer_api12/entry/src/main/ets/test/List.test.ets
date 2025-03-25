@@ -20,6 +20,8 @@ import ObserverApi1 from './observerTest/ObserverApi1.test';
 import DensityInfoTest from './observerTest/DensityInfo.test';
 import tabContentState from './observerTest/tabContentState.test';
 import observeTabJsunit from './observerTest/observeTabJsunit.test';
+import idScrollEvent from './observerTest/idScrollEvent.test'
+import indexTabs from './observerTest/indexTabs.test'
 
 export default function testsuite() {
   observerScrollTest()
@@ -30,4 +32,6 @@ export default function testsuite() {
   DensityInfoTest();
   tabContentState();
   observeTabJsunit();
+  idScrollEvent();
+  indexTabs();
 }

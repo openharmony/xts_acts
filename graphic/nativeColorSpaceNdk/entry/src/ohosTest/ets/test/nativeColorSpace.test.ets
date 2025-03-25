@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import nativeColorSpaceNdk from 'libcolorSpaceNdk.so';
 
 export default function nativeColorSpaceTest() {
@@ -26,7 +26,8 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHCreateColorSpaceFromName', 0, async (done: Function) => {
+    it('testOHCreateColorSpaceFromName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHCreateColorSpaceFromName();
       expect(result).assertEqual(0);
       done();
@@ -40,7 +41,8 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHCreateFromPrimariesAndGamma', 0, async (done: Function) => {
+    it('testOHCreateFromPrimariesAndGamma', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHCreateFromPrimariesAndGamma();
       expect(result).assertEqual(0);
       done();
@@ -54,7 +56,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHDestroy', 0, async (done: Function) => {
+    it('testOHDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHDestroy();
       expect(result).assertEqual(0);
       done();
@@ -68,7 +70,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetColorSpaceName', 0, async (done: Function) => {
+    it('testOHGetColorSpaceName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetColorSpaceName();
       expect(result).assertEqual(0);
       done();
@@ -82,7 +84,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetColorSpaceName001', 0, async (done: Function) => {
+    it('testOHGetColorSpaceName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetColorSpaceName001();
       expect(result).assertEqual(0);
       done();
@@ -96,7 +98,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetWhitePoint', 0, async (done: Function) => {
+    it('testOHGetWhitePoint', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetWhitePoint();
       expect(result).assertEqual(0);
       done();
@@ -110,7 +112,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetWhitePoint001', 0, async (done: Function) => {
+    it('testOHGetWhitePoint001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetWhitePoint001();
       expect(result).assertEqual(0);
       done();
@@ -124,7 +126,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetGamma', 0, async (done: Function) => {
+    it('testOHGetGamma', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetGamma();
       expect(result).assertEqual(0);
       done();
@@ -138,7 +140,7 @@ export default function nativeColorSpaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHGetGamma001', 0, async (done: Function) => {
+    it('testOHGetGamma001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL10, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetGamma001();
       expect(result).assertEqual(0);
       done();

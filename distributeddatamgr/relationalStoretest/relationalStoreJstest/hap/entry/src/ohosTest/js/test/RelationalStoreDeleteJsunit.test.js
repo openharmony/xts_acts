@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility'
 
@@ -55,8 +55,11 @@ describe('relationalStoreDeleteTest', function () {
      * @tc.name RelationalStore delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0100
      * @tc.desc RelationalStore delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0001', 0, async function (done) {
+    it('testRdbStoreDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0001 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -104,8 +107,11 @@ describe('relationalStoreDeleteTest', function () {
      * @tc.name RelationalStore delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0200
      * @tc.desc RelationalStore delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0002', 0, async function (done) {
+    it('testRdbStoreDelete0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0002 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -154,8 +160,11 @@ describe('relationalStoreDeleteTest', function () {
      * @tc.name RelationalStore delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0300
      * @tc.desc RelationalStore delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0003', 0, async function (done) {
+    it('testRdbStoreDelete0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0003 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -208,8 +217,11 @@ describe('relationalStoreDeleteTest', function () {
      * @tc.name RelationalStore delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0400
      * @tc.desc RelationalStore delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0004', 0, async function (done) {
+    it('testRdbStoreDelete0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0004 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -258,8 +270,11 @@ describe('relationalStoreDeleteTest', function () {
      * @tc.name RelationalStore delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0500
      * @tc.desc RelationalStore delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0005', 0, async function (done) {
+    it('testRdbStoreDelete0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0005 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
@@ -309,8 +324,11 @@ describe('relationalStoreDeleteTest', function () {
      * @tc.name RelationalStore delete test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0600
      * @tc.desc RelationalStore delete test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDelete0006', 0, async function (done) {
+    it('testRdbStoreDelete0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0006 start *************');
         let errInfo = undefined;
         let u8 = new Uint8Array([1, 2, 3])

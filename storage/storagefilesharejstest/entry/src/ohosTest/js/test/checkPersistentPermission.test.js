@@ -16,7 +16,7 @@
 import fileShare from '@ohos.fileshare';
 import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
-import { describe, it, expect, } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function FileSahre_CheckPersistentPermission_test() {
     describe('CheckPersistentPermission_test', function () {
@@ -153,7 +153,7 @@ export default function FileSahre_CheckPersistentPermission_test() {
       * @tc.level Level 3
       * @tc.require
       */
-      it('FileShare_checkPersistentPermission_003', 3, async function (done) {
+      it('FileShare_checkPersistentPermission_003', Level.LEVEL3, async function (done) {
         try {
         let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_checkPersistentPermission_003.txt";
         let uriObject1 = new fileuri.FileUri(fileStr1);
@@ -186,6 +186,7 @@ export default function FileSahre_CheckPersistentPermission_test() {
                 console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
                 console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[0].message));
                 expect(err.data[0].code == 4 && err.data[0].message == "PERMISSION_NOT_PERSISTED").assertTrue();
+                expect(err.data[0].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED).assertTrue();
                 done();
               }
         });

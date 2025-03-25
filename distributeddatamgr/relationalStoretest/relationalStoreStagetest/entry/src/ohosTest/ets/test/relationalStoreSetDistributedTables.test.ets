@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 const TAG = "[RELATIONAL_STORE_TEST]";
@@ -73,8 +73,11 @@ export default function relationalStoreSetDistributedTablesTest() {
      * @tc.name setDistributedTables with callback
      * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_1000
      * @tc.desc setDistributedTables with callback
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbSetDistributedTables001', 0, async function (done) {
+    it('testRdbSetDistributedTables001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testRdbSetDistributedTables001 start *************");
       try {
         let config = {
@@ -109,8 +112,11 @@ export default function relationalStoreSetDistributedTablesTest() {
      * @tc.name setDistributedTables with callback
      * @tc.number SUB_DistributedData_RelationalStore_SDK_AsyncDownloadAsset_1100
      * @tc.desc setDistributedTables with callback
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbSetDistributedTables002', 0, async function (done) {
+    it('testRdbSetDistributedTables002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testRdbSetDistributedTables002 start *************");
       try {
         rdbStore.setDistributedTables(['employee'], async(err) => {

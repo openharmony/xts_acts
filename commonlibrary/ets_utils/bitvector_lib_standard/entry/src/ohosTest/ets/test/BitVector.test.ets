@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium";
 import { collections, ArkTSUtils } from '@kit.ArkTS';
 
 export default function BitVectorTest() {
@@ -38,7 +38,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_constructor_Func_001", 0, async () => {
+    it("BitVector_constructor_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         expect(bitVector.length).assertEqual(10);
     });
@@ -50,7 +50,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_push_Func_001", 0, async () => {
+    it("BitVector_push_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let res0 = bitVector.push(0);
         let res1 = bitVector.push(1);
@@ -72,7 +72,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_push_Func_002", 0, async () => {
+    it("BitVector_push_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -89,7 +89,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_push_Func_003", 0, async () => {
+    it("BitVector_push_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -106,7 +106,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_pop_Func_001", 0, async () => {
+    it("BitVector_pop_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(1);
@@ -133,7 +133,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_pop_Func_002", 0, async () => {
+    it("BitVector_pop_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -155,7 +155,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_pop_Func_003", 0, async () => {
+    it("BitVector_pop_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -177,7 +177,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_has_Func_001", 0, async () => {
+    it("BitVector_has_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(0);
@@ -202,7 +202,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_has_Func_002", 0, async () => {
+    it("BitVector_has_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -230,7 +230,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_has_Func_003", 0, async () => {
+    it("BitVector_has_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -257,7 +257,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_has_Func_004", 0, async () => {
+    it("BitVector_has_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -285,7 +285,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_has_Func_005", 0, async () => {
+    it("BitVector_has_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -313,7 +313,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_has_Func_006", 0, async () => {
+    it("BitVector_has_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -343,7 +343,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_has_Func_007", 0, async () => {
+    it("BitVector_has_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -373,7 +373,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_setBitsByRange_Func_001", 0, async () => {
+    it("BitVector_setBitsByRange_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(1);
@@ -397,7 +397,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_setBitsByRange_Func_002", 0, async () => {
+    it("BitVector_setBitsByRange_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -425,7 +425,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_setBitsByRange_Func_003", 0, async () => {
+    it("BitVector_setBitsByRange_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -452,7 +452,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_setBitsByRange_Func_004", 0, async () => {
+    it("BitVector_setBitsByRange_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -480,7 +480,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_setBitsByRange_Func_005", 0, async () => {
+    it("BitVector_setBitsByRange_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -508,7 +508,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_setBitsByRange_Func_006", 0, async () => {
+    it("BitVector_setBitsByRange_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -538,7 +538,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_setBitsByRange_Func_007", 0, async () => {
+    it("BitVector_setBitsByRange_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -568,7 +568,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_getBitsByRange_Func_001", 0, async () => {
+    it("BitVector_getBitsByRange_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -588,7 +588,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitsByRange_Func_002", 0, async () => {
+    it("BitVector_getBitsByRange_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -616,7 +616,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitsByRange_Func_003", 0, async () => {
+    it("BitVector_getBitsByRange_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -643,7 +643,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitsByRange_Func_004", 0, async () => {
+    it("BitVector_getBitsByRange_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -671,7 +671,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitsByRange_Func_005", 0, async () => {
+    it("BitVector_getBitsByRange_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -699,7 +699,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getBitsByRange_Func_006", 0, async () => {
+    it("BitVector_getBitsByRange_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector_old = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -720,7 +720,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getBitsByRange_Func_007", 0, async () => {
+    it("BitVector_getBitsByRange_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector_old = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -741,7 +741,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_resize_Func_001", 0, async () => {
+    it("BitVector_resize_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -759,7 +759,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_resize_Func_002", 0, async () => {
+    it("BitVector_resize_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -781,7 +781,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_resize_Func_003", 0, async () => {
+    it("BitVector_resize_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -803,7 +803,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_resize_Func_004", 0, async () => {
+    it("BitVector_resize_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -831,7 +831,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_resize_Func_005", 0, async () => {
+    it("BitVector_resize_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -858,7 +858,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_resize_Func_006", 0, async () => {
+    it("BitVector_resize_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -876,7 +876,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_resize_Func_007", 0, async () => {
+    it("BitVector_resize_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -894,7 +894,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_resize_Func_008", 0, async () => {
+    it("BitVector_resize_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -914,7 +914,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_resize_Func_009", 0, async () => {
+    it("BitVector_resize_Func_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -933,7 +933,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_getBitCountByRange_Func_001", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(1);
@@ -953,7 +953,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitCountByRange_Func_002", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -981,7 +981,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitCountByRange_Func_003", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1008,7 +1008,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitCountByRange_Func_004", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1036,7 +1036,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getBitCountByRange_Func_005", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1064,7 +1064,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getBitCountByRange_Func_006", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1090,7 +1090,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getBitCountByRange_Func_007", 0, async () => {
+    it("BitVector_getBitCountByRange_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1116,7 +1116,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_getIndexOf_Func_001", 0, async () => {
+    it("BitVector_getIndexOf_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1136,7 +1136,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getIndexOf_Func_002", 0, async () => {
+    it("BitVector_getIndexOf_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1164,7 +1164,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getIndexOf_Func_003", 0, async () => {
+    it("BitVector_getIndexOf_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1192,7 +1192,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getIndexOf_Func_004", 0, async () => {
+    it("BitVector_getIndexOf_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1216,7 +1216,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getIndexOf_Func_005", 0, async () => {
+    it("BitVector_getIndexOf_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1243,7 +1243,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getIndexOf_Func_006", 0, async () => {
+    it("BitVector_getIndexOf_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1269,7 +1269,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getIndexOf_Func_007", 0, async () => {
+    it("BitVector_getIndexOf_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1295,7 +1295,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_getLastIndexOf_Func_001", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1315,7 +1315,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getLastIndexOf_Func_002", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1343,7 +1343,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getLastIndexOf_Func_003", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1371,7 +1371,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getLastIndexOf_Func_004", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1399,7 +1399,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_getLastIndexOf_Func_005", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1426,7 +1426,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getLastIndexOf_Func_006", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1452,7 +1452,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_getLastIndexOf_Func_007", 0, async () => {
+    it("BitVector_getLastIndexOf_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1478,7 +1478,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_flipBitByIndex_Func_001", 0, async () => {
+    it("BitVector_flipBitByIndex_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1504,7 +1504,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_flipBitByIndex_Func_002", 0, async () => {
+    it("BitVector_flipBitByIndex_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1532,7 +1532,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_flipBitByIndex_Func_003", 0, async () => {
+    it("BitVector_flipBitByIndex_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1559,7 +1559,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_flipBitByIndex_Func_004", 0, async () => {
+    it("BitVector_flipBitByIndex_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1591,7 +1591,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_flipBitByIndex_Func_005", 0, async () => {
+    it("BitVector_flipBitByIndex_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1623,7 +1623,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_flipBitsByRange_Func_001", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1644,7 +1644,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_flipBitsByRange_Func_002", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1672,7 +1672,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_flipBitsByRange_Func_003", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1700,7 +1700,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_flipBitsByRange_Func_004", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1728,7 +1728,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("BitVector_flipBitsByRange_Func_005", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1755,7 +1755,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_flipBitsByRange_Func_006", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1781,7 +1781,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_flipBitsByRange_Func_007", 0, async () => {
+    it("BitVector_flipBitsByRange_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1811,7 +1811,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_Values_Func_001", 0, async () => {
+    it("BitVector_Values_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1839,7 +1839,7 @@ export default function BitVectorTest() {
      * @tc.type:
      * @tc.level     : Level 1
      */
-    it("BitVector_Values_Func_002", 0, async () => {
+    it("BitVector_Values_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1867,7 +1867,7 @@ export default function BitVectorTest() {
      * @tc.type:
      * @tc.level     : Level 1
      */
-    it("BitVector_Values_Func_003", 0, async () => {
+    it("BitVector_Values_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1895,7 +1895,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("BitVector_setAllBits_Func_001", 0, async () => {
+    it("BitVector_setAllBits_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1923,7 +1923,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_setAllBits_Func_002", 0, async () => {
+    it("BitVector_setAllBits_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1948,7 +1948,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_setAllBits_Func_003", 0, async () => {
+    it("BitVector_setAllBits_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1973,7 +1973,7 @@ export default function BitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("BitVector_has_Func_008", 0, async () => {
+    it("BitVector_has_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 20;
         for (let i = 0; i < bitVectorLength; i++) {

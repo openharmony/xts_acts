@@ -16,6 +16,7 @@
 import { describe, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { application, common, Want } from '@kit.AbilityKit';
+import { Driver, ON} from '@ohos.UiTest';
 
 export default function ActsContextProcessNameTest() {
   const PROCESS_NAME = 'com.acts.contextprocessname'
@@ -138,7 +139,8 @@ export default function ActsContextProcessNameTest() {
      * @tc.size : MediumTest
      */
     it('SUB_Ability_AbilityRuntime_processName_1500', 0, async (done: Function) => {
-      let caseName = 'SUB_Ability_Ability_Runtime_processName_1500'
+      let caseName = 'SUB_Ability_AbilityRuntime_processName_1500'
+      let driver = Driver.create()
       console.log(`[${caseName}] create`)
       try {
         let uiAbilityContext = AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
@@ -163,6 +165,9 @@ export default function ActsContextProcessNameTest() {
           })
         })
         await uiAbilityContext.startAbility(want)
+        await driver.delayMs(2000);
+        let button = await driver.findComponent(ON.text('允许'));
+        await button?.click();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
