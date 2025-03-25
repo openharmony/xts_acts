@@ -530,13 +530,13 @@ napi_value SetReportPolicy(napi_env env, napi_callback_info info)
     std::fill(reinterpret_cast<uint8_t*>(&batchReport), reinterpret_cast<uint8_t*>(&batchReport) + batchSize, 0);
     std::fill(
         reinterpret_cast<uint8_t*>(&onStartReport),
-        reinterpret_cast<uint8_t*>(&onStartReport startReportSize, 0
+        reinterpret_cast<uint8_t*>(&onStartReport) + startReportSize, 0
         );
     std::fill(
-        reinterpret_cast<uint8_t*>(&onBackground),
-        reinterpret_cast<uint8_t*>(&onBackgroundReport) + backgroundReport, 0
+        reinterpret_cast<uint8_t*>(&onBackgroundReport),
+        reinterpret_cast<uint8_t*>(&onBackgroundReport) + backgroundReportSize, 0
         );
-    int OH_HiAppEvent_SetReportPolicy(
+    int result = OH_HiAppEvent_SetReportPolicy(
         processor, periodReport, batchReport, onStartReport, onBackgroundReport);
     napi_value napiResult;
     napi_create_int32(env, result, &napiResult);
