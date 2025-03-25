@@ -101,6 +101,7 @@ group("ability_runtime") {
       "registerjserror:registerjserror",
       "shareextensionability:actsshareextensionability",
       "stage:stage",
+      "startabilitytest:startabilitytest",
       "startup:startup",
       "stopserviceextension:stopserviceextension",
       "uiabilitycontext:uiabilitycontext",
