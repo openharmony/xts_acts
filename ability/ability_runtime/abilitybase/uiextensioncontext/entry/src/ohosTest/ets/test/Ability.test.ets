@@ -1245,7 +1245,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.level: Level 3
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionContext_2400', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0700";
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2400] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -1297,7 +1297,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.level: Level 3
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionContext_2500', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0800";
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2500] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -1457,7 +1457,7 @@ export default function ActsUIExtensionContextMethodTest() {
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2800] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1100_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2800_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2800] commonEventSubscribeInfo success: ');
@@ -1766,7 +1766,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.level: Level 3
     */
     it('SUB_Ability_AbilityRuntime_UIExtensionContext_3400', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1700";
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3400] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
