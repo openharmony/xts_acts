@@ -13,8 +13,4 @@ libnative_media_core.so libnative_media_codecbase.so libnative_media_venc.so
 libnative_window.so libavplayer.so libnative_image.so libGLESv3.so libEGL.so
 libace_napi.z.so libnative_buffer.so libhilog_ndk.z.so
 librawfile.z.so
-libmedia_asset_manager.so libimage_packer.so
-libimage_source.so libpixelmap.so libace_napi.z.so
-libnative_media_avdemuxer.so libnative_media_avmuxer.so
-libnative_media_adec.so libnative_media_avsource.so
 )
