@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it, Level , TestType, Size, Level } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it, TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources001', Level.LEVEL1, async (done: Function) => {
+    it('testInjectOfflineResources001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources001", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources001", true, 20001, done);
@@ -69,7 +69,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources002', Level.LEVEL1, async (done: Function) => {
+    it('testInjectOfflineResources002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources002", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources002", '401', 20002, done);
@@ -83,7 +83,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources003', Level.LEVEL1, async (done: Function) => {
+    it('testInjectOfflineResources003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources003", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources003", '401', 20003, done);
@@ -97,7 +97,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources004', Level.LEVEL1, async (done: Function) => {
+    it('testInjectOfflineResources004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources004", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources004", '17100002', 20004, done);
@@ -111,7 +111,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources005', Level.LEVEL1, async (done: Function) => {
+    it('testInjectOfflineResources005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources005", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources005", '17100001', 20005, done);
