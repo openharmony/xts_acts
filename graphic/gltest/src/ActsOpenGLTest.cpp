@@ -14,7 +14,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include "ActsOpenGLTest.h"
 
 namespace OHOS {
@@ -41,7 +41,8 @@ namespace OHOS {
     HWTEST_F(ActsOpenGLTest, TestOpenGLTestCase001, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGLTest------\n");
-        system("/data/local/tmp/opengl/mustpass/glcts --deqp-caselist-file=/data/local/tmp/opengl/mustpass/<value>  --deqp-log-filename=ActsOpenGLComputeTest.qpa");
+        system("/data/local/tmp/opengl/mustpass/glcts --deqp-caselist-file=/data/local/tmp/opengl/mustpass/<value>"
+               " --deqp-log-filename=ActsOpenGLComputeTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsOpenGLTest------\n");
     }

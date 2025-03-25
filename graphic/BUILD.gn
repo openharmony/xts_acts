@@ -61,9 +61,9 @@ group("graphic") {
     ]
     if (!(product_name == "ohcore")) {
       deps += [
+        "gltest:cpOpenGL",
         "vkgl:cpvkgl",
         "vktest:cpVulkan",
-        "gltest:cpOpenGL",
       ]
     }
   } else {
