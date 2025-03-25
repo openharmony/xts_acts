@@ -765,7 +765,7 @@ export default function sendablePreferencesPromiseTest() {
 
     /**
      * @tc.name testSendablePreferencesPutNumber0300
-     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_2700
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_5200
      * @tc.desc put PutNumber promise interface test
      * @tc.size MediumTest
      * @tc.type Function
@@ -785,7 +785,26 @@ export default function sendablePreferencesPromiseTest() {
     })
 
 
-
+    /**
+     * @tc.name testSendablePreferencesPutNumber0200
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_5300
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testSendablePreferencesPutNumber0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        await mPreferences.put(MAX_KEY_LENGTH, 333);
+        let data = await mPreferences.get(MAX_KEY_LENGTH, 'default');
+        expect(data === 333).assertTrue();
+        console.info(TAG + 'succeed in getting');
+      } catch (err) {
+        console.info(TAG + "trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
+        expect().assertFail();
+      }
+      done();
+    })
 
   })
 }
