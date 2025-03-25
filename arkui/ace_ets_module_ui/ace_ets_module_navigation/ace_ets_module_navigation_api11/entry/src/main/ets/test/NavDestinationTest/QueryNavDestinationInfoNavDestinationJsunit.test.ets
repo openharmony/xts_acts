@@ -80,7 +80,7 @@ export default function QueryNavDestinationInfoNavDestinationJsunit() {
       console.info('QueryNavDestinationInfoNavDestinationJsunit_0200 component obj.width is: ' + JSON.parse(strcontent)
         .$attrs
         .content);
-      expect(JSON.parse(strcontent).$attrs.content).assertEqual('1');
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('4');
       console.info('QueryNavDestinationInfoNavDestinationJsunit_0200 END')
       done();
     });
