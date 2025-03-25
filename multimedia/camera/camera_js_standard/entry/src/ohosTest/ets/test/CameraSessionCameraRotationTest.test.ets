@@ -276,7 +276,9 @@ export default function CameraSessionCameraRotationTest() {
     let cameraOutputCap =
       mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx], mode);
     let ratio = 4 / 3;
-
+    if (mode == cameraObj.SceneMode.NORMAL_VIDEO) {
+        ratio = 16 / 9;
+    }
     if (!isEmpty(cameraOutputCap)) {
       if (!isEmpty(cameraOutputCap.previewProfiles)) {
         console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);
