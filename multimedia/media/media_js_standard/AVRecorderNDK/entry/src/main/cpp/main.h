@@ -18,12 +18,6 @@
 #include "hilog/log.h"
 #include <multimedia/player_framework/avrecorder_base.h>
 #include <multimedia/player_framework/avrecorder.h>
-#include "multimedia/media_library/media_access_helper_capi.h"
-#include "multimedia/media_library/media_asset_base_capi.h"
-#include "multimedia/media_library/media_asset_capi.h"
-#include "multimedia/media_library/media_asset_change_request_capi.h"
-#include "multimedia/media_library/media_asset_manager_capi.h"
-#include <multimedia/image_framework/image/image_packer_native.h>
 
 struct OH_AVRecorder *g_avRecorder = {};
 OH_AVRecorder *InitRecorder();
