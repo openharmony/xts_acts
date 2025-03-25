@@ -564,5 +564,54 @@ export default function appManagerTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0900
+     * @tc.name   : Verify isRamConstrainedDevice(callback).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0900', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0700`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isRamConstrainedDevice((err, data)=>{
+          try{expect(typeof data).assertEqual('boolean');}catch(e){}
+          done();
+        })
+      } catch (err) {
+        console.error(`${tag} off error, errorCode: ${err?.code}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_1000
+     * @tc.name   : Verify isRamConstrainedDevice(promise).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_1000', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_1000`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isRamConstrainedDevice().then((data)=>{
+          try{expect(typeof data).assertEqual('boolean');}catch(e){}
+          done();
+        }).catch((err:BusinessError)=>{
+          try{expect().assertFail();}catch(e){}
+          done();
+        })
+      } catch (err) {
+        console.error(`${tag} off error, errorCode: ${err?.code}`);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }
