@@ -366,17 +366,19 @@ export default function windowPropertiesTest() {
         let windowStage2 = AppStorage.get('windowStage2') as ohosWindow.WindowStage;
         let windowClass2 = await windowStage2.getMainWindow();
         try {
-            windowStage2.setCustomDensity(3.0);
+            let densityInfo0: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
+            let newDen = Math.round(densityInfo0.customDensity) + 1
+            windowStage2.setCustomDensity(newDen);
             console.info(msgStr + `setCustomDensity 3.0 success`);
             let densityInfo1: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
             console.info(msgStr +`getWindowDensityInfo densityInfo1: `, JSON.stringify(densityInfo1));
-            expect(densityInfo1.customDensity).assertEqual(3);
+            expect(densityInfo1.customDensity).assertEqual(newDen);
             windowStage2.setDefaultDensityEnabled(true);
             console.info(msgStr +`setDefaultDensityEnabled true Success`);
             let densityInfo2: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
             console.info(msgStr +`getWindowDensityInfo densityInfo2: `, JSON.stringify(densityInfo2));
             expect(densityInfo2.customDensity).assertEqual(densityInfo2.defaultDensity);
-            expect(densityInfo2.customDensity != 3).assertTrue();
+            expect(densityInfo2.customDensity != newDen).assertTrue();
             await context2.terminateSelf();
             await sleep(500);
             done();
