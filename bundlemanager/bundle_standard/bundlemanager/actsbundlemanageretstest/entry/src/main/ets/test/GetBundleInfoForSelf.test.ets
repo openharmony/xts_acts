@@ -15,7 +15,7 @@
 
 import bundle from '@ohos.bundle.bundleManager';
 import util from "./Utils";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from "@ohos/hypium"
 
 export default function getBundleInfoForSelf() {
   describe('getBundleInfoForSelf', function () {
@@ -25,7 +25,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfAbilityPro
      * @tc.desc: Test getBundleInfoForSelf with ability flag(by promise).
      */
-    it('getBundleInfoForSelfAbilityPro', 0, async function (done) {
+    it('getBundleInfoForSelfAbilityPro', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       await bundle.getBundleInfoForSelf(
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY
       ).then(data => {
