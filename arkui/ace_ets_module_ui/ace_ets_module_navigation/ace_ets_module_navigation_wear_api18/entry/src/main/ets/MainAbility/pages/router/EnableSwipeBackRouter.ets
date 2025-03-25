@@ -23,7 +23,7 @@ struct EnableSwipeBackRouter {
       Column({ space: '5vp' }) {
         Button('push').id('pushOneId').onClick(() => {
           router.pushUrl({
-            url: 'MainAbility/pages/router/EnableSwipeBackPageOne',
+            url: 'MainAbility/pages/router/EnableSwipeBackRouterPageOne',
           })
         })
         .height('10%')
