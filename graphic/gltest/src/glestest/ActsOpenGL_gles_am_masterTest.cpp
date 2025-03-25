@@ -16,7 +16,6 @@
 #include <gtest/gtest.h>
 #include <cstdlib>
 #include "syscap_ndk.h"
-#include "syscap_ndk.h"
 #include "ActsOpenGL_gles_am_masterTest.h"
 
 namespace OHOS {
