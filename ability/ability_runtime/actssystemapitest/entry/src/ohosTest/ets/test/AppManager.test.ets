@@ -613,5 +613,33 @@ export default function appManagerTest() {
         done();
       }
     });
+
+     /**
+     * @tc.number: System_API_Test_App_Manager_1700
+     * @tc.name: promise form killProcessesByBundleName public interface interception test
+     * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
+     * @tc.level 3
+     */
+     it('System_API_Test_App_Manager_1700', 0, (done: Function) => {
+      let TAG = 'System_API_Test_App_Manager_1700';
+      let bundleName = "com.ohos.applicationsss";
+      try {
+        appManager.killProcessesByBundleName(bundleName, false).then((data) => {
+          console.log('System_API_Test_App_Manager_1700 killProcessesByBundleName success.');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`System_API_Test_App_Manager_1700 killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(16000050);
+          done();
+        });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`System_API_Test_App_Manager_1700 [appManager] error: ${code}, ${message}`);
+        expect(paramError.code).assertEqual(16000050);
+        done();
+      }
+    });
   })
 }
