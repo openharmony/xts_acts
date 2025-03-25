@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 import { Vec2, Rotation3, SceneResourceParameters, SceneNodeParameters, Scene, SceneResourceType } from '@ohos.graphics.scene'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import { Vec2, Rotation3, SceneResourceParameters, SceneNodeParameters, Scene } from '@ohos.graphics.scene'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
 
