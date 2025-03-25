@@ -57,9 +57,9 @@ describe("SystemServiceExceptionTest", function () {
      * @tc.name:newTestServiceException_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("newTestServiceException_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newTestServiceException_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newTestServiceException_SensorJsTest001---------------------------');
-		try {
+        try {
             sensor.on(invild, (data) => {
                 console.info('newTestServiceException_SensorJsTest001 data: ' + JSON.stringify(data))
             });
@@ -67,7 +67,7 @@ describe("SystemServiceExceptionTest", function () {
             console.info("newTestServiceException_SensorJsTest001 exception: " + JSON.stringify(err))
             console.info('newTestServiceException_SensorJsTest001 code: ' + err.code)
             console.info('newTestServiceException_SensorJsTest001 message: ' + err.message)
-			done()
+            done()
         }
     })
 

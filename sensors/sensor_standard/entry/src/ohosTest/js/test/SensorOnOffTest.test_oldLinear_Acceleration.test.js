@@ -74,7 +74,7 @@ describe("SensorJsTest_sensor_13", function () {
      * @tc.name: LinearAcceleration_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("LinearAcceleration_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("LinearAcceleration_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------LinearAcceleration_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
         setTimeout(() => {
@@ -108,10 +108,10 @@ describe("SensorJsTest_sensor_13", function () {
         console.info('----------------------LinearAcceleration_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
             console.info('LinearAcceleration_SensorJsTest003  on error');
-			expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.x)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try {
@@ -147,9 +147,9 @@ describe("SensorJsTest_sensor_13", function () {
         function onceSensorCallback(data) {
             console.info('LinearAcceleration_SensorJsTest005  on error');
             expect(typeof (data.x)).assertEqual("number");
-			expect(typeof (data.y)).assertEqual("number");
-			expect(typeof (data.z)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.y)).assertEqual("number");
+            expect(typeof (data.z)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try {
@@ -158,7 +158,7 @@ describe("SensorJsTest_sensor_13", function () {
             console.info("LinearAcceleration_SensorJsTest005 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-		    done();
+            done();
         }
     })
 
@@ -249,10 +249,10 @@ describe("SensorJsTest_sensor_13", function () {
         setTimeout(() => {
             console.info('----------------------LinearAcceleration_SensorJsTest010 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
+            } catch (error) {
             console.info("LinearAcceleration_SensorJsTest010 error:" + error);
-			}
+            }
             console.info('----------------------LinearAcceleration_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -292,10 +292,10 @@ describe("SensorJsTest_sensor_13", function () {
         setTimeout(() => {
             console.info('----------------------LinearAcceleration_SensorJsTest012 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
+            } catch (error) {
             console.info("LinearAcceleration_SensorJsTest012 error:" + error);
-			}
+            }
             console
             console.info('----------------------LinearAcceleration_SensorJsTest012 off end---------------------------');
         }, 500);

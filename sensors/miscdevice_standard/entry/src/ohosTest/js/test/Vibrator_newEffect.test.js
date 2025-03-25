@@ -75,11 +75,11 @@ describe("VibratorJsTest_misc_8", function () {
      * @tc.name:UniversalVibratorJsTest01
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_SmallComponentService_Miscdevice_UniversalVibratoin_0100
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("UniversalVibratorJsTest01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("UniversalVibratorJsTest01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "UniversalVibratorJsTest01"
         if (isAvailable) {
             let ret = vibrator.isSupportEffectSync(EFFECT_IDSUCCESS);
@@ -775,7 +775,7 @@ describe("VibratorJsTest_misc_8", function () {
             done();
         }
     })
-    
+
     /*
      * @tc.name:ReliabilityVibratorJsTest13
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -853,7 +853,7 @@ describe("VibratorJsTest_misc_8", function () {
                     console.info(TAG + ' vibrator times:' + times);
                 }
                 console.info(TAG + " end");
-                done();                
+                done();
             } else{
                 console.log(TAG + ' is not supported.');
                 done();
@@ -897,7 +897,7 @@ describe("VibratorJsTest_misc_8", function () {
                     console.info(TAG + ' vibrator times:' + times);
                 }
                 console.info(TAG + " end");
-                done();                
+                done();
             } else{
                 console.log(TAG + ' is not supported.');
                 done();

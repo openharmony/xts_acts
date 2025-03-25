@@ -19,13 +19,13 @@ export default function SensorJsTest_sensor_21() {
 describe("SensorJsTest_sensor_21", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-		expect(typeof (data.scalar)).assertEqual("number");
+        expect(typeof (data.scalar)).assertEqual("number");
         expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-		expect(typeof (data.scalar)).assertEqual("number");
+        expect(typeof (data.scalar)).assertEqual("number");
         expect(typeof (data.timestamp)).assertEqual("number");
     }
 
@@ -70,7 +70,7 @@ describe("SensorJsTest_sensor_21", function () {
      * @tc.name: SignificantMotion_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SignificantMotion_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("SignificantMotion_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SignificantMotion_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
         setTimeout(() => {
@@ -196,10 +196,10 @@ describe("SensorJsTest_sensor_21", function () {
         setTimeout(() => {
             console.info('----------------------SignificantMotion_SensorJsTest008 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
+            } catch (error) {
             console.info("SignificantMotion_SensorJsTest008 error:" + error);
-			}
+            }
             console.info('----------------------SignificantMotion_SensorJsTest008 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -239,10 +239,10 @@ describe("SensorJsTest_sensor_21", function () {
         setTimeout(() => {
             console.info('----------------------SignificantMotion_SensorJsTest010 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
+            } catch (error) {
             console.info("SignificantMotion_SensorJsTest010 error:" + error);
-			}
+            }
             console
             console.info('----------------------SignificantMotion_SensorJsTest010 off end---------------------------');
         }, 500);

@@ -89,11 +89,11 @@ describe("SensorJsTest_sensor_62", function () {
     * @tc.number:SUB_SensorsSystem_NEWSAR_JsTest_0010
     * @tc.name: newSar_SensorJsTest001
     * @tc.desc: Functional Use Cases
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("newSar_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newSar_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newSar_SensorJsTest001--------------');
         TAG = 'newSar_SensorJsTest001'
         try{
@@ -565,7 +565,7 @@ describe("SensorJsTest_sensor_62", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("newSar_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newSar_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'newSar_SensorJsTest013 '
         console.info('---------newSar_SensorJsTest013--------------');
         try{
@@ -931,7 +931,7 @@ describe("SensorJsTest_sensor_62", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("newSar_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newSar_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'newSar_SensorJsTest021 '
         try{
            sensor.getSingleSensor(sensor.SensorId.SAR,(error, data) => {

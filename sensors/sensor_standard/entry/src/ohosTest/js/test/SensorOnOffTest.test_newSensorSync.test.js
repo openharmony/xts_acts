@@ -58,10 +58,10 @@ describe("SensorJsTest_sensor_64", function () {
      * @tc.desc: verify sensor sync interface
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 3
      * @tc.number: SUB_SensorsSystem_NEWSENSORSYNC_JSTest_0010
      */
-    it("SensorSyncTest_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("SensorSyncTest_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SensorSyncTest_001---------------------------');
         TAG = 'SensorSyncTest_001';
         try {

@@ -13,21 +13,19 @@
  * limitations under the License.
  */
 import sensor from '@ohos.sensor'
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-
 export default function SensorJsTest_sensor_52() {
 describe("SensorJsTest_sensor_52", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-		expect(typeof (data.heartRate)).assertEqual("number");
+        expect(typeof (data.heartRate)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-		expect(typeof (data.heartRate)).assertEqual("number");
+        expect(typeof (data.heartRate)).assertEqual("number");
     }
-	
+
     beforeAll(function () {
 
         /*
@@ -61,22 +59,22 @@ describe("SensorJsTest_sensor_52", function () {
     })
 
     const PARAMETER_ERROR_CODE = 401
-	const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable',
-	'ReferenceError: xxx is not defined']
-	let errMessage
-	
+    let invalid  = -1;
+    let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable',
+    'ReferenceError: xxx is not defined']
+    let errMessage
+
      /*
      * @tc.number:SUB_SensorsSystem_Heart_Rate_JSTest_0120
      * @tc.name: newHeartRate_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newHeartRate_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newHeartRate_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newHeartRate_SensorJsTest012--------');
-		try {
+        try {
             sensor.on(sensor.SensorId.HEART_RATE, callback);
         } catch (error) {
             console.info("newHeartRate_SensorJsTest012 error:" + error);
@@ -84,7 +82,7 @@ describe("SensorJsTest_sensor_52", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-		 setTimeout(() => {
+         setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -97,7 +95,7 @@ describe("SensorJsTest_sensor_52", function () {
      */
     it("newHeartRate_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newHeartRate_SensorJsTest013--------');
-		try {
+        try {
             sensor.on(sensor.SensorId.HEART_RATE ,callback, { 'interval': 100000000 });
         } catch (error) {
             console.info("newHeartRate_SensorJsTest013 error:" + error);
@@ -119,8 +117,8 @@ describe("SensorJsTest_sensor_52", function () {
             expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
-            sensor.on(sensor.SensorId.HEART_RATE, 
-			onSensorCallback, { 'interval': 100000000 }, 5);
+            sensor.on(sensor.SensorId.HEART_RATE,
+            onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
             console.info("newHeartRate_SensorJsTest014 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
@@ -137,12 +135,12 @@ describe("SensorJsTest_sensor_52", function () {
     it("newHeartRate_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newHeartRate_SensorJsTest015--------');
         try{
-		sensor.once(sensor.SensorId.HEART_RATE, callback);
-		} catch (error) {
+        sensor.once(sensor.SensorId.HEART_RATE, callback);
+        } catch (error) {
             console.info("newHeartRate_SensorJsTest015 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-			done();
+            done();
         }
     })
 
@@ -177,10 +175,10 @@ describe("SensorJsTest_sensor_52", function () {
         try {
             sensor.off(string, "");
         } catch (error) {
-			errMessage 
+            errMessage
             console.info("newHeartRate_SensorJsTest017 error:" + error);
-			errMessage = error.toString();
-			expect(errMessage).assertEqual(errMessages[0]);
+            errMessage = error.toString();
+            expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
@@ -197,7 +195,7 @@ describe("SensorJsTest_sensor_52", function () {
             expect(typeof (data.heartRate)).assertEqual("number");
         }
        try {
-		   sensor.on(sensor.SensorId.HEART_RATE, onSensorCallback);
+           sensor.on(sensor.SensorId.HEART_RATE, onSensorCallback);
            sensor.off(sensor.SensorId.HEART_RATE);
             } catch (error) {
             console.info("newHeartRate_SensorJsTest018 error:" + error);
@@ -227,8 +225,8 @@ describe("SensorJsTest_sensor_52", function () {
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0200
      * @tc.name: newHeartRate_SensorJsTest020
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -248,8 +246,8 @@ describe("SensorJsTest_sensor_52", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0210
      * @tc.name: newHeartRate_SensorJsTest021
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -269,8 +267,8 @@ describe("SensorJsTest_sensor_52", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0220
      * @tc.name: newHeartRate_SensorJsTest022
      * @tc.desc:Verification results of the incorrect parameters of the test interface

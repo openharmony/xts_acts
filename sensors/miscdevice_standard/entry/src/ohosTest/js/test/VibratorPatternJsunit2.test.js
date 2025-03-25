@@ -90,7 +90,7 @@ export default function VibratorJsTest_misc_11() {
         * @tc.name:VibratorProgramticHapticTest043
         * @tc.desc:addContinuousEvent time is 0, events is 129
         * @tc.number:SUB_SensorSystem_SmallComponentService_Miscdevice_ProgramticHaptic_4300
-        * @tc.level:Level 0
+        * @tc.level:Level 3
         * @tc.type:Function
         * @tc.size:MediumTest
         */
