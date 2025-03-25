@@ -44,6 +44,18 @@ export default function VideoPlayerEnumTest() {
       expect(media.SeekMode.SEEK_CLOSEST).assertEqual(2);
       done();
     });
+      /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_ENUM_SEEK_MODE_0200
+        * @tc.name      : SeekMode
+        * @tc.desc      : SeekMode Enumeration test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+      it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_ENUM_SEEK_MODE_0200', 0, async (done: Function) => {
+        expect(media.SeekMode.SEEK_CONTINUOUS).assertEqual(3);
+        done();
+      });
     /* *
        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_ERROR_CODE_0100
        * @tc.name      : MediaErrorCode

@@ -83,6 +83,7 @@ import sendableAlbumModifyTest from './Sendable/Album/sendableAlbumModify.test'
 import cloneAssetTest from './PhotoAsset/cloneAsset.test';
 import getSupportedPhotoFormatsTest from './PhotoAccessHelper/getSupportedPhotoFormats';
 import setTest from './PhotoAsset/set.test.ets';
+import mediaAssetChangeRequestErrorTest from './MediaAssetChangeRequest/mediaAssetChangeRequestError.test.ets';
 
 export default function testsuite() {
   provisionResourcesTest();
@@ -112,6 +113,7 @@ export default function testsuite() {
   addResourceChangeRequestTest();
   getWriteCacheHandlerTest();
   handleCameraPhotoTest();
+  mediaAssetChangeRequestErrorTest();
   requestImageTest();
   requestImageDataTest();
   requestVideoNativeTest();
