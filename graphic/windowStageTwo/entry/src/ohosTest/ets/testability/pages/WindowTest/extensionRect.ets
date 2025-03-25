@@ -42,6 +42,9 @@ struct Extension {
           let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, (data: uiExtension.RectChangeOptions) => {
             console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
+            if (data.rect === undefined || data.reason === undefined) {
+              this.testNum--
+            }
             this.testNum++
           })
         })

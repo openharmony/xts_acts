@@ -66,7 +66,8 @@ struct Extension {
               uiExtension.EventFlag.EVENT_PAN_GESTURE_LEFT |
               uiExtension.EventFlag.EVENT_PAN_GESTURE_RIGHT |
               uiExtension.EventFlag.EVENT_PAN_GESTURE_DOWN |
-              uiExtension.EventFlag.EVENT_PAN_GESTURE_UP
+              uiExtension.EventFlag.EVENT_PAN_GESTURE_UP |
+              uiExtension.EventFlag.EVENT_NONE
             )
           } catch (err) {
             console.log('testUIExtensionHostOccupyEvents err in page, err : ' + JSON.stringify(err))
