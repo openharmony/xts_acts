@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function NormalizerInI18nTest() {
 describe('NormalizerInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('NormalizerInI18nTest', function () {
     * @tc.name   normalize the '1e9b 0323' in NFC mode
     * @tc.desc   get the NFC mode value
     */
-     it('i18n_normalizer_test_0100', 0, function () {
+     it('i18n_normalizer_test_0100', Level.LEVEL0, function () {
         console.log('i18n_normalizer_test_0100 ' + 'start');
         let str = '\u1e9b\u0323';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFC);
@@ -75,7 +75,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '1e9b 0323' in NFD mode
      * @tc.desc   get the NFD mode value
      */
-    it('i18n_normalizer_test_0200', 0, function () {
+    it('i18n_normalizer_test_0200', Level.LEVEL2, function () {
         console.log('i18n_normalizer_test_0200 ' + 'start');
         let str = '\u1e9b\u0323';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFD);
@@ -89,7 +89,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '1e9b 0323' in NFKC mode
      * @tc.desc   get the NFKC mode value
      */
-    it('i18n_normalizer_test_0300', 0, function () {
+    it('i18n_normalizer_test_0300', Level.LEVEL2, function () {
         console.log('i18n_normalizer_test_0300 ' + 'start');
         let str = '\u1e9b\u0323';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKC);
@@ -103,7 +103,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '1e9b 0323' in NFKD mode
      * @tc.desc   get the NFKD mode value
      */
-    it('i18n_normalizer_test_0400', 0, function () {
+    it('i18n_normalizer_test_0400', Level.LEVEL0, function () {
         console.log('i18n_normalizer_test_0400 ' + 'start');
         let str = '\u1e9b\u0323';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKD);
@@ -117,7 +117,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '0032 2075' in NFC mode
      * @tc.desc   get the NFC mode value
      */
-    it('i18n_normalizer_test_0500', 0, function () {
+    it('i18n_normalizer_test_0500', Level.LEVEL2, function () {
         console.log('i18n_normalizer_test_0500 ' + 'start');
         let str = '\u0032\u2075';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFC);
@@ -131,7 +131,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '0032 2075' in NFD mode
      * @tc.desc   get the NFD mode value
      */
-    it('i18n_normalizer_test_0600', 0, function () {
+    it('i18n_normalizer_test_0600', Level.LEVEL2, function () {
         console.log('i18n_normalizer_test_0600 ' + 'start');
         let str = '\u0032\u2075';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFD);
@@ -145,7 +145,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '0032 2075' in NFKC mode
      * @tc.desc   get the NFKC mode value
      */
-    it('i18n_normalizer_test_0700', 0, function () {
+    it('i18n_normalizer_test_0700', Level.LEVEL2, function () {
         console.log('i18n_normalizer_test_0700 ' + 'start');
         let str = '\u0032\u2075';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKC);
@@ -159,7 +159,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name   normalize the '0032 2075' in NFKD mode
      * @tc.desc   get the NFKD mode value
      */
-    it('i18n_normalizer_test_0800', 0, function () {
+    it('i18n_normalizer_test_0800', Level.LEVEL2, function () {
         console.log('i18n_normalizer_test_0800 ' + 'start');
         let str = '\u0032\u2075';
         let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKD);
@@ -173,7 +173,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name getInstance method return 401 error code
      * @tc.desc test the getInstance error code
      */
-     it('i18n_normalizer_test_0900', 0, function () {
+     it('i18n_normalizer_test_0900', Level.LEVEL3, function () {
         console.log('i18n_normalizer_test_0900 ' + 'start');
         let str = '\u0032\u2075';
         try{
@@ -190,7 +190,7 @@ describe('NormalizerInI18nTest', function () {
      * @tc.name normalize method return 401 error code
      * @tc.desc test the normalize error code
      */
-    it('i18n_normalizer_test_1000', 0, function () {
+    it('i18n_normalizer_test_1000', Level.LEVEL3, function () {
         console.log('i18n_normalizer_test_1000 ' + 'start');
         let str = '\u0032\u2075';
         let normal = I18n.Normalizer.getInstance(1);

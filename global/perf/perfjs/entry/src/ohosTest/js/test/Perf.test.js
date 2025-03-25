@@ -15,7 +15,7 @@
 
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function PerfTest() {
 describe('PerfTest', function () {
@@ -76,7 +76,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemLanguage
     * @tc.desc    check the performance of getSystemLanguage
     */
-    it('perf_test_0100', 0, function () {
+    it('perf_test_0100', Level.LEVEL0, function () {
         console.log('perf_test_0100 ' + 'start');
         let lang = 'test';
         let startTime = new Date().getTime();
@@ -102,7 +102,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemLanguage
     * @tc.desc    check the performance of getSystemLanguage
     */
-    it('perf_test_0120', 0, function () {
+    it('perf_test_0120', Level.LEVEL0, function () {
         console.log('perf_test_0120 ' + 'start');
         let lang = 'test';
         let startTime = new Date().getTime();
@@ -128,7 +128,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemLanguages
     * @tc.desc    check the performance of getSystemLanguages
     */
-    it('perf_test_0140', 0, function () {
+    it('perf_test_0140', Level.LEVEL0, function () {
         console.log('perf_test_0140 ' + 'start');
         let lang = 'test';
         let startTime = new Date().getTime();
@@ -154,7 +154,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemCountries
     * @tc.desc    check the performance of getSystemCountries
     */
-    it('perf_test_0160', 0, function () {
+    it('perf_test_0160', Level.LEVEL0, function () {
         console.log('perf_test_0160 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -178,7 +178,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isSuggested
     * @tc.desc    check the performance of isSuggested
     */
-    it('perf_test_0180', 0, function () {
+    it('perf_test_0180', Level.LEVEL0, function () {
         console.log('perf_test_0180 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -204,7 +204,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemRegion
     * @tc.desc    check the performance of getSystemRegion
     */
-    it('perf_test_0200', 0, function () {
+    it('perf_test_0200', Level.LEVEL0, function () {
         console.log('perf_test_0200 ' + 'start');
         let region = 'test';
         let startTime = new Date().getTime();
@@ -230,7 +230,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemRegion
     * @tc.desc    check the performance of getSystemRegion
     */
-    it('perf_test_0220', 0, function () {
+    it('perf_test_0220', Level.LEVEL0, function () {
         console.log('perf_test_0220 ' + 'start');
         let region = 'test';
         let startTime = new Date().getTime();
@@ -256,7 +256,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemLocale
     * @tc.desc    check the performance of getSystemLocale
     */
-    it('perf_test_0300', 0, function () {
+    it('perf_test_0300', Level.LEVEL0, function () {
         console.log('perf_test_0300 ' + 'start');
         let locale = 'test';
         let startTime = new Date().getTime();
@@ -282,7 +282,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getSystemLocale
     * @tc.desc    check the performance of getSystemLocale
     */
-    it('perf_test_0320', 0, function () {
+    it('perf_test_0320', Level.LEVEL0, function () {
         console.log('perf_test_0320 ' + 'start');
         let locale = 'test';
         let startTime = new Date().getTime();
@@ -308,7 +308,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDisplayCountry
     * @tc.desc    check the performance of getDisplayCountry
     */
-    it('perf_test_1000', 0, function () {
+    it('perf_test_1000', Level.LEVEL0, function () {
         console.log('perf_test_1000 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -334,7 +334,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDisplayCountry
     * @tc.desc    check the performance of getDisplayCountry
     */
-    it('perf_test_1020', 0, function () {
+    it('perf_test_1020', Level.LEVEL0, function () {
         console.log('perf_test_1020 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -360,7 +360,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDisplayLanguage
     * @tc.desc    check the performance of getDisplayLanguage
     */
-    it('perf_test_1100', 0, function () {
+    it('perf_test_1100', Level.LEVEL0, function () {
         console.log('perf_test_1100 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -386,7 +386,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDisplayLanguage
     * @tc.desc    check the performance of getDisplayLanguage
     */
-    it('perf_test_1120', 0, function () {
+    it('perf_test_1120', Level.LEVEL0, function () {
         console.log('perf_test_1120 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -412,7 +412,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of PhoneNumberFormat
     * @tc.desc    check the performance of PhoneNumberFormat
     */
-    it('perf_test_1200', 0, function () {
+    it('perf_test_1200', Level.LEVEL0, function () {
         console.log('perf_test_1200 ' + 'start');
         let phonenumber = null;
         let startTime = new Date().getTime();
@@ -438,7 +438,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isValidNumber
     * @tc.desc    check the performance of isValidNumber
     */
-    it('perf_test_1300', 0, function () {
+    it('perf_test_1300', Level.LEVEL0, function () {
         console.log('perf_test_1300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let valid = false;
@@ -467,7 +467,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of format
     * @tc.desc    check the performance of format
     */
-    it('perf_test_1400', 0, function () {
+    it('perf_test_1400', Level.LEVEL0, function () {
         console.log('perf_test_1400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let value = '1234';
@@ -496,7 +496,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of getLocationName
     * @tc.desc   check the performance of getLocationName
     */
-    it('perf_test_1450', 0, function () {
+    it('perf_test_1450', Level.LEVEL0, function () {
         console.log('perf_test_1450 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -526,7 +526,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getCalendar
     * @tc.desc    check the performance of getCalendar
     */
-    it('perf_test_1500', 0, function () {
+    it('perf_test_1500', Level.LEVEL0, function () {
         console.log('perf_test_1500 ' + 'start');
         let calendar = null;
         let startTime = new Date().getTime();
@@ -552,7 +552,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isWeekend
     * @tc.desc    check the performance of isWeekend
     */
-    it('perf_test_1600', 0, function () {
+    it('perf_test_1600', Level.LEVEL0, function () {
         console.log('perf_test_1600 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = false;
@@ -579,7 +579,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDisplayName
     * @tc.desc    check the performance of getDisplayName
     */
-    it('perf_test_1700', 0, function () {
+    it('perf_test_1700', Level.LEVEL0, function () {
         console.log('perf_test_1700 ' + 'start');
         let calendar = I18n.getCalendar('zh', 'chinese');
         let name = 'test';
@@ -606,7 +606,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.get
     * @tc.desc    check the performance of calendar.get
     */
-    it('perf_test_1800', 0, function () {
+    it('perf_test_1800', Level.LEVEL0, function () {
         console.log('perf_test_1800 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = 0;
@@ -633,7 +633,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.setTime with date param
     * @tc.desc    check the performance of calendar.setTime
     */
-    it('perf_test_1900', 0, function () {
+    it('perf_test_1900', Level.LEVEL0, function () {
         console.log('perf_test_1900 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
@@ -659,7 +659,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.setTime with time param
     * @tc.desc    check the performance of calendar.setTime
     */
-    it('perf_test_2000', 0, function () {
+    it('perf_test_2000', Level.LEVEL0, function () {
         console.log('perf_test_2000 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let startTime = new Date().getTime();
@@ -684,7 +684,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.set
     * @tc.desc    check the performance of calendar.set
     */
-    it('perf_test_2100', 0, function () {
+    it('perf_test_2100', Level.LEVEL0, function () {
         console.log('perf_test_2100 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let startTime = new Date().getTime();
@@ -709,7 +709,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.setTimeZone
     * @tc.desc    check the performance of calendar.setTimeZone
     */
-    it('perf_test_2200', 0, function () {
+    it('perf_test_2200', Level.LEVEL0, function () {
         console.log('perf_test_2200 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let startTime = new Date().getTime();
@@ -734,7 +734,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.getTimeZone
     * @tc.desc    check the performance of calendar.getTimeZone
     */
-    it('perf_test_2300', 0, function () {
+    it('perf_test_2300', Level.LEVEL0, function () {
         console.log('perf_test_2300 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = 'test';
@@ -761,7 +761,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.setFirstDayOfWeek
     * @tc.desc    check the performance of calendar.setFirstDayOfWeek
     */
-    it('perf_test_2400', 0, function () {
+    it('perf_test_2400', Level.LEVEL0, function () {
         console.log('perf_test_2400 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let startTime = new Date().getTime();
@@ -786,7 +786,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.getFirstDayOfWeek
     * @tc.desc    check the performance of calendar.getFirstDayOfWeek
     */
-    it('perf_test_2500', 0, function () {
+    it('perf_test_2500', Level.LEVEL0, function () {
         console.log('perf_test_2500 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = 0;
@@ -813,7 +813,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.setMinimalDaysInFirstWeek
     * @tc.desc    check the performance of calendar.setMinimalDaysInFirstWeek
     */
-    it('perf_test_2600', 0, function () {
+    it('perf_test_2600', Level.LEVEL0, function () {
         console.log('perf_test_2600 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let startTime = new Date().getTime();
@@ -838,7 +838,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of calendar.getMinimalDaysInFirstWeek
     * @tc.desc    check the performance of calendar.getMinimalDaysInFirstWeek
     */
-    it('perf_test_2700', 0, function () {
+    it('perf_test_2700', Level.LEVEL0, function () {
         console.log('perf_test_2700 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = 0;
@@ -865,7 +865,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of unitConvert
     * @tc.desc    check the performance of unitConvert
     */
-    it('perf_test_2800', 0, function () {
+    it('perf_test_2800', Level.LEVEL0, function () {
         console.log('perf_test_2800 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -895,7 +895,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDateOrder
     * @tc.desc    check the performance of getDateOrder
     */
-    it('perf_test_2850', 0, function () {
+    it('perf_test_2850', Level.LEVEL0, function () {
         console.log('perf_test_2850 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -921,7 +921,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isRTL
     * @tc.desc    check the performance of isRTL
     */
-    it('perf_test_2900', 0, function () {
+    it('perf_test_2900', Level.LEVEL0, function () {
         console.log('perf_test_2900 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -947,7 +947,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getLineInstance
     * @tc.desc    check the performance of getLineInstance
     */
-    it('perf_test_3000', 0, function () {
+    it('perf_test_3000', Level.LEVEL0, function () {
         console.log('perf_test_3000 ' + 'start');
         let iterator = null;
         let startTime = new Date().getTime();
@@ -972,7 +972,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of setLineBreakText
     * @tc.desc    check the performance of setLineBreakText
     */
-    it('perf_test_3100', 0, function () {
+    it('perf_test_3100', Level.LEVEL0, function () {
         console.log('perf_test_3100 ' + 'start');
         let iterator = I18n.getLineInstance('en');
         let startTime = new Date().getTime();
@@ -997,7 +997,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of current
     * @tc.desc    check the performance of current
     */
-    it('perf_test_3200', 0, function () {
+    it('perf_test_3200', Level.LEVEL0, function () {
         console.log('perf_test_3200 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1025,7 +1025,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of first
     * @tc.desc    check the performance of first
     */
-    it('perf_test_3300', 0, function () {
+    it('perf_test_3300', Level.LEVEL0, function () {
         console.log('perf_test_3300 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1053,7 +1053,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of last
     * @tc.desc    check the performance of last
     */
-    it('perf_test_3400', 0, function () {
+    it('perf_test_3400', Level.LEVEL0, function () {
         console.log('perf_test_3400 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1081,7 +1081,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of next
     * @tc.desc    check the performance of next
     */
-    it('perf_test_3500', 0, function () {
+    it('perf_test_3500', Level.LEVEL0, function () {
         console.log('perf_test_3500 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1109,7 +1109,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of previous
     * @tc.desc    check the performance of previous
     */
-    it('perf_test_3600', 0, function () {
+    it('perf_test_3600', Level.LEVEL0, function () {
         console.log('perf_test_3600 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1137,7 +1137,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of following
     * @tc.desc    check the performance of following
     */
-    it('perf_test_3700', 0, function () {
+    it('perf_test_3700', Level.LEVEL0, function () {
         console.log('perf_test_3700 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1165,7 +1165,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getLineBreakText
     * @tc.desc    check the performance of getLineBreakText
     */
-    it('perf_test_3800', 0, function () {
+    it('perf_test_3800', Level.LEVEL0, function () {
         console.log('perf_test_3800 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1193,7 +1193,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isBoundary
     * @tc.desc    check the performance of isBoundary
     */
-    it('perf_test_3900', 0, function () {
+    it('perf_test_3900', Level.LEVEL0, function () {
         console.log('perf_test_3900 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -1221,7 +1221,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getInstance
     * @tc.desc    check the performance of getInstance
     */
-    it('perf_test_4000', 0, function () {
+    it('perf_test_4000', Level.LEVEL0, function () {
         console.log('perf_test_4000 ' + 'start');
         let index = null;
         let startTime = new Date().getTime();
@@ -1246,7 +1246,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getIndex
     * @tc.desc    check the performance of getIndex
     */
-    it('perf_test_4100', 0, function () {
+    it('perf_test_4100', Level.LEVEL0, function () {
         console.log('perf_test_4100 ' + 'start');
         let index = I18n.getInstance();
         let value = 'test';
@@ -1273,7 +1273,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getIndexList
     * @tc.desc    check the performance of getIndexList
     */
-    it('perf_test_4200', 0, function () {
+    it('perf_test_4200', Level.LEVEL0, function () {
         console.log('perf_test_4200 ' + 'start');
         let index = I18n.getInstance();
         let value = new Array();
@@ -1300,7 +1300,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of addLocale
     * @tc.desc    check the performance of addLocale
     */
-    it('perf_test_4300', 0, function () {
+    it('perf_test_4300', Level.LEVEL0, function () {
         console.log('perf_test_4300 ' + 'start');
         let index = I18n.getInstance();
         let startTime = new Date().getTime();
@@ -1325,7 +1325,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isDigit
     * @tc.desc    check the performance of isDigit
     */
-    it('perf_test_4400', 0, function () {
+    it('perf_test_4400', Level.LEVEL0, function () {
         console.log('perf_test_4400 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1351,7 +1351,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isSpaceChar
     * @tc.desc    check the performance of isSpaceChar
     */
-    it('perf_test_4500', 0, function () {
+    it('perf_test_4500', Level.LEVEL0, function () {
         console.log('perf_test_4500 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1378,7 +1378,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isWhitespace
     * @tc.desc    check the performance of isWhitespace
     */
-    it('perf_test_4600', 0, function () {
+    it('perf_test_4600', Level.LEVEL0, function () {
         console.log('perf_test_4600 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1404,7 +1404,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isRTL
     * @tc.desc    check the performance of isRTL
     */
-    it('perf_test_4700', 0, function () {
+    it('perf_test_4700', Level.LEVEL0, function () {
         console.log('perf_test_4700 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1430,7 +1430,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isIdeograph
     * @tc.desc    check the performance of isIdeograph
     */
-    it('perf_test_4800', 0, function () {
+    it('perf_test_4800', Level.LEVEL0, function () {
         console.log('perf_test_4800 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1456,7 +1456,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isLetter
     * @tc.desc    check the performance of isLetter
     */
-    it('perf_test_4900', 0, function () {
+    it('perf_test_4900', Level.LEVEL0, function () {
         console.log('perf_test_4900 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1482,7 +1482,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isLowerCase
     * @tc.desc    check the performance of isLowerCase
     */
-    it('perf_test_5000', 0, function () {
+    it('perf_test_5000', Level.LEVEL0, function () {
         console.log('perf_test_5000 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1508,7 +1508,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of isUpperCase
     * @tc.desc    check the performance of isUpperCase
     */
-    it('perf_test_5100', 0, function () {
+    it('perf_test_5100', Level.LEVEL0, function () {
         console.log('perf_test_5100 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1534,7 +1534,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getType
     * @tc.desc    check the performance of getType
     */
-    it('perf_test_5200', 0, function () {
+    it('perf_test_5200', Level.LEVEL0, function () {
         console.log('perf_test_5200 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -1560,7 +1560,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of is24HourClock
     * @tc.desc    check the performance of is24HourClock
     */
-    it('perf_test_5300', 0, function () {
+    it('perf_test_5300', Level.LEVEL0, function () {
         console.log('perf_test_5300 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1586,7 +1586,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of is24HourClock
     * @tc.desc    check the performance of is24HourClock
     */
-    it('perf_test_5320', 0, function () {
+    it('perf_test_5320', Level.LEVEL0, function () {
         console.log('perf_test_5320 ' + 'start');
         let value = false;
         let startTime = new Date().getTime();
@@ -1612,7 +1612,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getPreferredLanguageList
     * @tc.desc    check the performance of getPreferredLanguageList
     */
-    it('perf_test_5500', 0, function () {
+    it('perf_test_5500', Level.LEVEL0, function () {
         console.log('perf_test_5500 ' + 'start');
         let value = new Array();
         let startTime = new Date().getTime();
@@ -1638,7 +1638,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getPreferredLanguageList
     * @tc.desc    check the performance of getPreferredLanguageList
     */
-    it('perf_test_5520', 0, function () {
+    it('perf_test_5520', Level.LEVEL0, function () {
         console.log('perf_test_5520 ' + 'start');
         let value = new Array();
         let startTime = new Date().getTime();
@@ -1664,7 +1664,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getFirstPreferredLanguage
     * @tc.desc    check the performance of getFirstPreferredLanguage
     */
-    it('perf_test_5600', 0, function () {
+    it('perf_test_5600', Level.LEVEL0, function () {
         console.log('perf_test_5600 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -1690,7 +1690,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getFirstPreferredLanguage
     * @tc.desc    check the performance of getFirstPreferredLanguage
     */
-    it('perf_test_5620', 0, function () {
+    it('perf_test_5620', Level.LEVEL0, function () {
         console.log('perf_test_5620 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -1716,7 +1716,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getAppPreferredLanguage
     * @tc.desc    check the performance of getAppPreferredLanguage
     */
-    it('perf_test_5640', 0, function () {
+    it('perf_test_5640', Level.LEVEL0, function () {
         console.log('perf_test_5640 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -1742,7 +1742,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Locale
     * @tc.desc    check the performance of Locale
     */
-    it('perf_test_5900', 0, function () {
+    it('perf_test_5900', Level.LEVEL0, function () {
         console.log('perf_test_5900 ' + 'start');
         let locale = null;
         let startTime = new Date().getTime();
@@ -1767,7 +1767,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Locale
     * @tc.desc    check the performance of Locale
     */
-    it('perf_test_5920', 0, function () {
+    it('perf_test_5920', Level.LEVEL0, function () {
         console.log('perf_test_5920 ' + 'start');
         let locale = null;
         let startTime = new Date().getTime();
@@ -1792,7 +1792,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of toString
     * @tc.desc    check the performance of toString
     */
-    it('perf_test_6000', 0, function () {
+    it('perf_test_6000', Level.LEVEL0, function () {
         console.log('perf_test_6000 ' + 'start');
         let locale = new Intl.Locale('zh');
         let value = 'test';
@@ -1819,7 +1819,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of minimize
     * @tc.desc    check the performance of minimize
     */
-    it('perf_test_6100', 0, function () {
+    it('perf_test_6100', Level.LEVEL0, function () {
         console.log('perf_test_6100 ' + 'start');
         let locale = new Intl.Locale('zh-Hans-CN');
         let locale2 = null;
@@ -1847,7 +1847,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of maximize
     * @tc.desc    check the performance of maximize
     */
-    it('perf_test_6200', 0, function () {
+    it('perf_test_6200', Level.LEVEL0, function () {
         console.log('perf_test_6200 ' + 'start');
         let locale = new Intl.Locale('zh-CN');
         let locale2 = null;
@@ -1875,7 +1875,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of DateTimeFormat
     * @tc.desc    check the performance of DateTimeFormat
     */
-    it('perf_test_6300', 0, function () {
+    it('perf_test_6300', Level.LEVEL0, function () {
         console.log('perf_test_6300 ' + 'start');
         let datefmt = null;
         let startTime = new Date().getTime();
@@ -1900,7 +1900,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of DateTimeFormat
     * @tc.desc    check the performance of DateTimeFormat
     */
-    it('perf_test_6320', 0, function () {
+    it('perf_test_6320', Level.LEVEL0, function () {
         console.log('perf_test_6320 ' + 'start');
         let datefmt = null;
         let startTime = new Date().getTime();
@@ -1925,7 +1925,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of DateTimeFormat.format
     * @tc.desc    check the performance of DateTimeFormat.format
     */
-    it('perf_test_6400', 0, function () {
+    it('perf_test_6400', Level.LEVEL0, function () {
         console.log('perf_test_6400 ' + 'start');
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('zh');
@@ -1953,7 +1953,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of DateTimeFormat.formatRange
     * @tc.desc    check the performance of DateTimeFormat.formatRange
     */
-    it('perf_test_6500', 0, function () {
+    it('perf_test_6500', Level.LEVEL0, function () {
         console.log('perf_test_6500 ' + 'start');
         let startdate = new Date(2020, 11, 20, 14, 23, 16);
         let enddate = new Date(2020, 11, 21, 14, 23, 16);
@@ -1982,7 +1982,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of DateTimeFormat.resolvedOptions
     * @tc.desc    check the performance of DateTimeFormat.resolvedOptions
     */
-    it('perf_test_6600', 0, function () {
+    it('perf_test_6600', Level.LEVEL0, function () {
         console.log('perf_test_6600 ' + 'start');
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'short', timeStyle: 'short' };
@@ -2009,7 +2009,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of NumberFormat
     * @tc.desc    check the performance of NumberFormat
     */
-    it('perf_test_6700', 0, function () {
+    it('perf_test_6700', Level.LEVEL0, function () {
         console.log('perf_test_6700 ' + 'start');
         let numfmt = null;
         let startTime = new Date().getTime();
@@ -2034,7 +2034,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of NumberFormat
     * @tc.desc    check the performance of NumberFormat
     */
-    it('perf_test_6720', 0, function () {
+    it('perf_test_6720', Level.LEVEL0, function () {
         console.log('perf_test_6720 ' + 'start');
         let numfmt = null;
         let startTime = new Date().getTime();
@@ -2059,7 +2059,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of NumberFormat.format
     * @tc.desc    check the performance of NumberFormat.format
     */
-    it('perf_test_6800', 0, function () {
+    it('perf_test_6800', Level.LEVEL0, function () {
         console.log('perf_test_6800 ' + 'start');
         let numfmt = new Intl.NumberFormat('zh-u-nu-latn');
         let value = 'test';
@@ -2086,7 +2086,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of NumberFormat.resolvedOptions
     * @tc.desc    check the performance of NumberFormat.resolvedOptions
     */
-    it('perf_test_6900', 0, function () {
+    it('perf_test_6900', Level.LEVEL0, function () {
         console.log('perf_test_6900 ' + 'start');
         let numfmt = new Intl.NumberFormat('ar', { style: 'percent',
                                                     minimumFractionDigits: 1,
@@ -2117,7 +2117,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of PluralRules
     * @tc.desc    check the performance of PluralRules
     */
-    it('perf_test_7000', 0, function () {
+    it('perf_test_7000', Level.LEVEL0, function () {
         console.log('perf_test_7000 ' + 'start');
         let pl = null;
         let startTime = new Date().getTime();
@@ -2142,7 +2142,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of PluralRules
     * @tc.desc    check the performance of PluralRules
     */
-    it('perf_test_7020', 0, function () {
+    it('perf_test_7020', Level.LEVEL0, function () {
         console.log('perf_test_7020 ' + 'start');
         let pl = null;
         let startTime = new Date().getTime();
@@ -2167,7 +2167,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of PluralRules.select
     * @tc.desc    check the performance of PluralRules.select
     */
-    it('perf_test_7100', 0, function () {
+    it('perf_test_7100', Level.LEVEL0, function () {
         console.log('perf_test_7100 ' + 'start');
         let pl = new Intl.PluralRules('zh', {'type': 'ordinal'});
         let value = 'test';
@@ -2194,7 +2194,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Collator
     * @tc.desc    check the performance of Collator
     */
-    it('perf_test_7200', 0, function () {
+    it('perf_test_7200', Level.LEVEL0, function () {
         console.log('perf_test_7200 ' + 'start');
         let coll = null;
         let startTime = new Date().getTime();
@@ -2219,7 +2219,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Collator
     * @tc.desc    check the performance of Collator
     */
-    it('perf_test_7220', 0, function () {
+    it('perf_test_7220', Level.LEVEL0, function () {
         console.log('perf_test_7220 ' + 'start');
         let coll = null;
         let startTime = new Date().getTime();
@@ -2244,7 +2244,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Collator.compare with same param
     * @tc.desc    check the performance of Collator.compare
     */
-    it('perf_test_7300', 0, function () {
+    it('perf_test_7300', Level.LEVEL0, function () {
         console.log('perf_test_7300 ' + 'start');
         let coll = new Intl.Collator('zh', {'sensitivity': 'base'});
         let value = 0;
@@ -2271,7 +2271,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Collator.compare
     * @tc.desc    check the performance of Collator.compare
     */
-    it('perf_test_7400', 0, function () {
+    it('perf_test_7400', Level.LEVEL0, function () {
         console.log('perf_test_7400 ' + 'start');
         let coll = new Intl.Collator('zh', {'sensitivity': 'base'});
         let value = 0;
@@ -2298,7 +2298,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of Collator.resolvedOptions
     * @tc.desc    check the performance of Collator.resolvedOptions
     */
-    it('perf_test_7500', 0, function () {
+    it('perf_test_7500', Level.LEVEL0, function () {
         console.log('perf_test_7500 ' + 'start');
         let coll = new Intl.Collator('zh', {'sensitivity': 'base'});
         let startTime = new Date().getTime();
@@ -2323,7 +2323,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of RelativeTimeFormat
     * @tc.desc    check the performance of RelativeTimeFormat
     */
-    it('perf_test_7600', 0, function () {
+    it('perf_test_7600', Level.LEVEL0, function () {
         console.log('perf_test_7600 ' + 'start');
         let relativetimefmt = null;
         let startTime = new Date().getTime();
@@ -2348,7 +2348,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of RelativeTimeFormat
     * @tc.desc    check the performance of RelativeTimeFormat
     */
-    it('perf_test_7620', 0, function () {
+    it('perf_test_7620', Level.LEVEL0, function () {
         console.log('perf_test_7620 ' + 'start');
         let relativetimefmt = null;
         let startTime = new Date().getTime();
@@ -2373,7 +2373,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of RelativeTimeFormat.format
     * @tc.desc    check the performance of RelativeTimeFormat.format
     */
-    it('perf_test_7700', 0, function () {
+    it('perf_test_7700', Level.LEVEL0, function () {
         console.log('perf_test_7700 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = 'test';
@@ -2400,7 +2400,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of RelativeTimeFormat.formatToParts
     * @tc.desc    check the performance of RelativeTimeFormat.formatToParts
     */
-    it('perf_test_7800', 0, function () {
+    it('perf_test_7800', Level.LEVEL0, function () {
         console.log('perf_test_7800 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = 'test';
@@ -2427,7 +2427,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of RelativeTimeFormat.resolvedOptions
     * @tc.desc    check the performance of RelativeTimeFormat.resolvedOptions
     */
-    it('perf_test_7900', 0, function () {
+    it('perf_test_7900', Level.LEVEL0, function () {
         console.log('perf_test_7900 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en', { localeMatcher: 'best fit',
                                                                     numeric: 'auto',
@@ -2454,7 +2454,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getTimeZone
     * @tc.desc    check the performance of getTimeZone
     */
-    it('perf_test_8000', 0, function () {
+    it('perf_test_8000', Level.LEVEL0, function () {
         console.log('perf_test_8000 ' + 'start');
         let timezone = null;
         let startTime = new Date().getTime();
@@ -2479,7 +2479,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getTimeZone with zoneID param
     * @tc.desc    check the performance of getTimeZone
     */
-    it('perf_test_8100', 0, function () {
+    it('perf_test_8100', Level.LEVEL0, function () {
         console.log('perf_test_8100 ' + 'start');
         let timezone = null;
         let startTime = new Date().getTime();
@@ -2504,7 +2504,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getID
     * @tc.desc    check the performance of getID
     */
-    it('perf_test_8200', 0, function () {
+    it('perf_test_8200', Level.LEVEL0, function () {
         console.log('perf_test_8200 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = 'test';
@@ -2531,7 +2531,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getDisplayName
     * @tc.desc    check the performance of getDisplayName
     */
-    it('perf_test_8300', 0, function () {
+    it('perf_test_8300', Level.LEVEL0, function () {
         console.log('perf_test_8300 ' + 'start');
         let timezone = I18n.getTimeZone('Asia/Shanghai');
         let value = 'test';
@@ -2558,7 +2558,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getRawOffset
     * @tc.desc    check the performance of getRawOffset
     */
-    it('perf_test_8400', 0, function () {
+    it('perf_test_8400', Level.LEVEL0, function () {
         console.log('perf_test_8400 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = 0;
@@ -2585,7 +2585,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getOffset
     * @tc.desc    check the performance of getOffset
     */
-    it('perf_test_8500', 0, function () {
+    it('perf_test_8500', Level.LEVEL0, function () {
         console.log('perf_test_8500 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = 0;
@@ -2612,7 +2612,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getAvailableIDs
     * @tc.desc    check the performance of getAvailableIDs
     */
-    it('perf_test_8700', 0, function () {
+    it('perf_test_8700', Level.LEVEL0, function () {
         console.log('perf_test_8700 ' + 'start');
         let value = null;
         let startTime = new Date().getTime();
@@ -2638,7 +2638,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of getInstance
     * @tc.desc    check the performance of getInstance
     */
-    it('perf_test_8800', 0, function () {
+    it('perf_test_8800', Level.LEVEL0, function () {
         console.log('perf_test_8800 ' + 'start');
         let value = null;
         let startTime = new Date().getTime();
@@ -2664,7 +2664,7 @@ describe('PerfTest', function () {
     * @tc.name    test the performance of transform
     * @tc.desc    check the performance of transform
     */
-    it('perf_test_8900', 0, function () {
+    it('perf_test_8900', Level.LEVEL0, function () {
         console.log('perf_test_8900 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-Latn');
         let value = 'test';
@@ -2691,7 +2691,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of getUsingLocalDigit
     * @tc.desc   check the performance of getUsingLocalDigit
     */
-    it('perf_test_9100', 0, function () {
+    it('perf_test_9100', Level.LEVEL0, function () {
         console.log('perf_test_9100 ' + 'start');
         let value = true;
         let startTime = new Date().getTime();
@@ -2717,7 +2717,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of timezone.getAvailableIDs
     * @tc.desc   check the performance of timezone.getAvailableIDs
     */
-    it('perf_test_9200', 0, function () {
+    it('perf_test_9200', Level.LEVEL0, function () {
         console.log('perf_test_9200 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -2743,7 +2743,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of getAvailableZoneCityIDs
     * @tc.desc   check the performance of getAvailableZoneCityIDs
     */
-    it('perf_test_9300', 0, function () {
+    it('perf_test_9300', Level.LEVEL0, function () {
         console.log('perf_test_9300 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -2769,7 +2769,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of getCityDisplayName
     * @tc.desc   check the performance of getCityDisplayName
     */
-    it('perf_test_9400', 0, function () {
+    it('perf_test_9400', Level.LEVEL0, function () {
         console.log('perf_test_9400 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -2795,7 +2795,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of getTimezoneFromCity
     * @tc.desc   check the performance of getTimezoneFromCity
     */
-    it('perf_test_9500', 0, function () {
+    it('perf_test_9500', Level.LEVEL0, function () {
         console.log('perf_test_9500 ' + 'start');
         let value = 'test';
         let startTime = new Date().getTime();
@@ -2821,7 +2821,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of Normalizer.getInstance
     * @tc.desc   check the performance of Normalizer.getInstance
     */
-    it('perf_test_9600', 0, function () {
+    it('perf_test_9600', Level.LEVEL0, function () {
         console.log('perf_test_9600 ' + 'start');
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
@@ -2845,7 +2845,7 @@ describe('PerfTest', function () {
     * @tc.name   test the performance of Normalizer.normalize
     * @tc.desc   check the performance of Normalizer.normalize
     */
-    it('perf_test_9700', 0, function () {
+    it('perf_test_9700', Level.LEVEL0, function () {
         console.log('perf_test_9700 ' + 'start');
         let str = '\u1e9b\u0323';
         let value = 'test';
