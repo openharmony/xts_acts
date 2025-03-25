@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, UiDirection, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter'
@@ -53,9 +53,9 @@ export default function EnableSwipeBackPage() {
      * @tc.number    EnableSwipeBackPage_0100
      * @tc.name      EnableSwipeBackPage_0100
      * @tc.desc      Test enableSwipeBack test true
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('EnableSwipeBackPage_0100', 0, async (done: Function) => {
+    it('EnableSwipeBackPage_0100', Level.LEVEL0, async (done: Function) => {
       console.info('EnableSwipeBackPage_0100 START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -84,9 +84,9 @@ export default function EnableSwipeBackPage() {
      * @tc.number    EnableSwipeBackPage_0200
      * @tc.name      EnableSwipeBackPage_0200
      * @tc.desc      Test enableSwipeBack test false
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('EnableSwipeBackPage_0200', 0, async (done: Function) => {
+    it('EnableSwipeBackPage_0200', Level.LEVEL0, async (done: Function) => {
       console.info('EnableSwipeBackPage_0200 START');
       let driver = Driver.create();
       await driver.delayMs(500);
