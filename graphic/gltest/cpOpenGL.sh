@@ -21,7 +21,7 @@ cp -rf "$root_opengl_path/third_party/vk-gl-cts/external/openglcts/data/mustpass
 
 cp -rf "graphic/graphic_2d/glcts" "suites/acts/acts/testcases/opengldata/mustpass"
 
-mv "suites/acts/acts/testcases/opengldata/mustpass/gl/aosp_mustpass" "suites/acts/acts/testldata/mustpass/gl/a_mustpass"
+mv "suites/acts/acts/testcases/opengldata/mustpass/gl/aosp_mustpass" "suites/acts/acts/testcases/opengldata/mustpass/gl/a_mustpass"
 mv "suites/acts/acts/testcases/opengldata/mustpass/egl/aosp_mustpass" "suites/acts/acts/testcases/opengldata/mustpass/egl/a_mustpass"
 mv "suites/acts/acts/testcases/opengldata/mustpass/gles/aosp_mustpass" "suites/acts/acts/testcases/opengldata/mustpass/gles/a_mustpass"
 
