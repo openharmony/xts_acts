@@ -110,8 +110,12 @@ export default function EnableSwipeBackRouter() {
       console.info('[EnableSwipeBackRouter_0200] bottom is ', bottom);
       await driver.fling({x: Math.round(vp2px(11)), y: Math.round(bottom/2)}, {x: Math.round(right/3), y: Math.round(bottom/2)}, 2, 40000);
       await driver.delayMs(1000)
-
       await driver.assertComponentExist(ON.id('enableId'));
+
+      let btn3: Component = await driver.findComponent(ON.id('enableId'));
+      await btn3.click();
+      console.info('[EnableSwipeBackRouter_0200] btn3 click');
+      await driver.delayMs(1000);
       console.log('[EnableSwipeBackRouter_0200] END');
       done();
     });
