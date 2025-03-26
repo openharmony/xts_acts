@@ -96,6 +96,7 @@ export default function displayAndWindowRefactorInterfaceTest() {
         expect(data[0].scaledDensity != null).assertTrue();
         expect(data[0].xDPI != null).assertTrue();
         expect(data[0].yDPI != null).assertTrue();
+        console.log(data[0].screenShape);
         done();
         console.log(msgStr + 'done ');
       });

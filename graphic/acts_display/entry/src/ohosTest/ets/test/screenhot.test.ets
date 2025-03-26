@@ -14,6 +14,8 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import screenshot from '@ohos.screenshot';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 async function sleep(time: number) {
     let timeoutId: number = 0;
@@ -32,7 +34,38 @@ export default function screenHotTest() {
             console.log('describe screenHotTest start!!!');
         });
 
-
+        /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_SCREEN_SHOT_CAPTURE_ERRORCODE_0100
+         * @tc.name      : tesScreenShot_Capture_ErrorCode201
+         * @tc.desc      : tesScreenShot_Capture_ErrorCode201 when without permission
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+        it('tesScreenShot_Capture_ErrorCode201', 0, async function (done) {
+            let caseName = 'tesScreenShot_Capture_ErrorCode201';
+            let msgStr = 'jsunittest ' + caseName + ' ';
+            console.log(msgStr + 'begin');
+            try {
+                let captureOptions: screenshot.CaptureOption = {
+                    "displayId": 0
+                }
+                let promise = screenshot.capture(captureOptions)
+                await promise.then((pixelMap: image.PixelMap) => {
+                    console.log(caseName + 'Succeeded in capture')
+                    expect().assertFail()
+                    done()
+                }).catch((err: BusinessError) => {
+                    console.log(caseName + 'Failed to capture, err : ' + JSON.stringify(err))
+                    expect(err.code).assertEqual(201)
+                    done()
+                })
+            } catch (exception) {
+                console.error(caseName + 'Failed to pick Code: ' + JSON.stringify(exception));
+                expect(exception.code).assertEqual(801)
+                done()
+            };
+        })
 
         // /**
         //  * @tc.number    : SUB_BASIC_WMS_SPCIAL_SCREEN_HOT_0100
