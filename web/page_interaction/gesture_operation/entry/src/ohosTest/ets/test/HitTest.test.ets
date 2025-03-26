@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it, expect, afterEach } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it, expect, afterEach , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -61,7 +61,7 @@ export default function HitTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('zoomAccess', 0, async (done: Function) => {
+    it('zoomAccess', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitZoomAccess", 10)
       Utils.registerEvent("zoomAccess", false, 428, done);
       let driver = Driver.create();
@@ -75,7 +75,7 @@ export default function HitTest() {
      *tc.name GetHitTestValue                                                                                                                                                                                                               
      *tc.desic get the type of th clicked component
      */
-    it('GetHitTestValue', 0, async (done: Function) => {
+    it('GetHitTestValue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue", 10)
       Utils.registerEvent("GetHitTestValue", "hitValue", 12, done);
       let driver = Driver.create();

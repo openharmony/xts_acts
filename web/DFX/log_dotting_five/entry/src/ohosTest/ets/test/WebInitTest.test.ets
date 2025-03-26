@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -47,7 +47,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testSchemeName001', 0, async (done: Function) => {
+    it('testSchemeName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSchemeName001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSchemeName001", '401', 300, done);
@@ -62,7 +62,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testCustomizeSchemes001', 0, async (done: Function) => {
+    it('testCustomizeSchemes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemes001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemes001", '401', 302, done);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -60,7 +60,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum001', 0, async (done: Function) => {
+    it('testWebDownloadEnum001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum001", 0, 70250, done);
@@ -75,7 +75,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum002', 0, async (done: Function) => {
+    it('testWebDownloadEnum002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum002", 1, 70251, done);
@@ -90,7 +90,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum003', 0, async (done: Function) => {
+    it('testWebDownloadEnum003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum003", 2, 70252, done);
@@ -105,7 +105,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum004', 0, async (done: Function) => {
+    it('testWebDownloadEnum004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum004", 3, 70253, done);
@@ -120,7 +120,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum005', 0, async (done: Function) => {
+    it('testWebDownloadEnum005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum005", 5, 70254, done);
@@ -135,7 +135,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum006', 0, async (done: Function) => {
+    it('testWebDownloadEnum006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum006", 6, 70255, done);
@@ -150,7 +150,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum007', 0, async (done: Function) => {
+    it('testWebDownloadEnum007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum007", 10, 70256, done);
@@ -165,7 +165,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum008', 0, async (done: Function) => {
+    it('testWebDownloadEnum008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum008", 11, 70257, done);
@@ -180,7 +180,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum009', 0, async (done: Function) => {
+    it('testWebDownloadEnum009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum009", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum009", 13, 70258, done);
@@ -195,7 +195,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum010', 0, async (done: Function) => {
+    it('testWebDownloadEnum010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum010", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum010", 14, 70259, done);
@@ -210,7 +210,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum011', 0, async (done: Function) => {
+    it('testWebDownloadEnum011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum011", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum011", 15, 70260, done);
@@ -225,7 +225,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum012', 0, async (done: Function) => {
+    it('testWebDownloadEnum012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum012", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum012", 20, 70261, done);
@@ -240,7 +240,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum013', 0, async (done: Function) => {
+    it('testWebDownloadEnum013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum013", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum013", 21, 70262, done);
@@ -255,7 +255,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum014', 0, async (done: Function) => {
+    it('testWebDownloadEnum014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum014", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum014", 22, 70263, done);
@@ -270,7 +270,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum015', 0, async (done: Function) => {
+    it('testWebDownloadEnum015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum015", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum015", 23, 70264, done);
@@ -285,7 +285,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum016', 0, async (done: Function) => {
+    it('testWebDownloadEnum016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum016", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum016", 24, 70265, done);
@@ -300,7 +300,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum017', 0, async (done: Function) => {
+    it('testWebDownloadEnum017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum017", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum017", 30, 70266, done);
@@ -315,7 +315,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum018', 0, async (done: Function) => {
+    it('testWebDownloadEnum018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum018", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum018", 31, 70267, done);
@@ -330,7 +330,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum019', 0, async (done: Function) => {
+    it('testWebDownloadEnum019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum019", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum019", 33, 70268, done);
@@ -345,7 +345,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum020', 0, async (done: Function) => {
+    it('testWebDownloadEnum020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum020", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum020", 34, 70269, done);
@@ -360,7 +360,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum021', 0, async (done: Function) => {
+    it('testWebDownloadEnum021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum021", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum021", 35, 70270, done);
@@ -375,7 +375,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum022', 0, async (done: Function) => {
+    it('testWebDownloadEnum022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum022", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum022", 36, 70271, done);
@@ -390,7 +390,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum023', 0, async (done: Function) => {
+    it('testWebDownloadEnum023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum023", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum023", 37, 70272, done);
@@ -405,7 +405,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum024', 0, async (done: Function) => {
+    it('testWebDownloadEnum024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum024", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum024", 38, 70273, done);
@@ -420,7 +420,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum025', 0, async (done: Function) => {
+    it('testWebDownloadEnum025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum025", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum025", 39, 70274, done);
@@ -435,7 +435,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum026', 0, async (done: Function) => {
+    it('testWebDownloadEnum026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum026", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum026", 40, 70275, done);
@@ -450,7 +450,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum027', 0, async (done: Function) => {
+    it('testWebDownloadEnum027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum027", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum027", 41, 70276, done);
@@ -465,7 +465,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum028', 0, async (done: Function) => {
+    it('testWebDownloadEnum028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum028", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum028", 50, 70277, done);
@@ -480,7 +480,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum029', 0, async (done: Function) => {
+    it('testWebDownloadEnum029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum029", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum029", 0, 70278, done);
@@ -495,7 +495,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum030', 0, async (done: Function) => {
+    it('testWebDownloadEnum030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum030", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum030", 1, 70279, done);
@@ -510,7 +510,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum031', 0, async (done: Function) => {
+    it('testWebDownloadEnum031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum031", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum031", 2, 70280, done);
@@ -525,7 +525,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum032', 0, async (done: Function) => {
+    it('testWebDownloadEnum032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum032", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum032", 3, 70281, done);
@@ -540,7 +540,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum033', 0, async (done: Function) => {
+    it('testWebDownloadEnum033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum033", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum033", 4, 70282, done);
@@ -555,7 +555,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum034', 0, async (done: Function) => {
+    it('testWebDownloadEnum034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum034", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum034", 5, 70283, done);
@@ -570,7 +570,7 @@ export default function webDownloadEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadEnum035', 0, async (done: Function) => {
+    it('testWebDownloadEnum035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadEnum035", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadEnum035", 6, 70284, done);

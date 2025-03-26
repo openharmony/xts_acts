@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewSrollableJsunit() {
      *tc.name NestedScrollMode01
      *tc.desic test NestedScrollMode01 interface when choose callback mode.
      */
-    it('NestedScrollMode01',0,async (done: Function) =>{
+    it('NestedScrollMode01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="NestedScrollMode02";
       Utils.registerEvent("NestedScrollMode01",true,20241129,done);
       sendEventByKey('NestedScrollModeTest',10,'');
@@ -81,7 +81,7 @@ export default function webViewSrollableJsunit() {
   *tc.name NestedScrollMode02
   *tc.desic test NestedScrollMode02 interface when choose callback mode.
   */
-    it('NestedScrollMode02',0,async (done: Function) =>{
+    it('NestedScrollMode02',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="NestedScrollMode03";
       Utils.registerEvent("NestedScrollMode02",true,20241130,done);
       sendEventByKey('NestedScrollModeTest',10,'');
@@ -92,7 +92,7 @@ export default function webViewSrollableJsunit() {
     *tc.name NestedScrollMode03
     *tc.desic test NestedScrollMode03 interface when choose callback mode.
     */
-    it('NestedScrollMode03',0,async (done: Function) =>{
+    it('NestedScrollMode03',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="NestedScrollMode04";
       Utils.registerEvent("NestedScrollMode03",true,20241131,done);
       sendEventByKey('NestedScrollModeTest',10,'');
@@ -103,7 +103,7 @@ export default function webViewSrollableJsunit() {
   *tc.name NestedScrollMode04
   *tc.desic test NestedScrollMode04 interface when choose callback mode.
   */
-    it('NestedScrollMode04',0,async (done: Function) =>{
+    it('NestedScrollMode04',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="NestedScrollMode04";
       Utils.registerEvent("NestedScrollMode04",true,20241132,done);
       sendEventByKey('NestedScrollModeTest',10,'');

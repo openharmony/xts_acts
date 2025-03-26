@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewSrollableJsunit() {
      * tc.name testScrollableOne
      * tc.desc When calling the scrollTo interface, the x,y input parameters are negative
    */
-    it('testScrollableOne',0,async (done: Function) =>{
+    it('testScrollableOne',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwo";
       Utils.registerEvent("testScrollableOne","[0,0]",214214,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -81,7 +81,7 @@ export default function webViewSrollableJsunit() {
      * tc.desc When calling the scrollTo interface, the x input parameter is negative and the y input parameter is
      * positive, which is greater than the page height
     */
-    it('testScrollableTwo',0,async (done: Function) =>{
+    it('testScrollableTwo',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThree";
       Utils.registerEvent("testScrollableTwo",false,216216,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -92,7 +92,7 @@ export default function webViewSrollableJsunit() {
      * tc.desc When calling the scrollTo interface, the x input parameter is negative and the y input parameter is
      * positive, which is less than the page height
     */
-    it('testScrollableThree',0,async (done: Function) =>{
+    it('testScrollableThree',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableFour";
       Utils.registerEvent("testScrollableThree","[0,0]",218218,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -103,7 +103,7 @@ export default function webViewSrollableJsunit() {
      * tc.desc When calling the scrollTo interface, the y input parameter is negative and the x input parameter is
      * positive, which is less than the page length
     */
-    it('testScrollableFour',0,async (done: Function) =>{
+    it('testScrollableFour',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableFive";
       Utils.registerEvent("testScrollableFour","[0,0]",220220,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -114,7 +114,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When calling the scrollTo interface, the y input parameter is negative and the x input parameter is
       * positive, which is greater than the page length
    */
-    it('testScrollableFive',0,async (done: Function) =>{
+    it('testScrollableFive',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableSix";
       Utils.registerEvent("testScrollableFive",false,222222,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -125,7 +125,7 @@ export default function webViewSrollableJsunit() {
      * tc.desc When calling the scrollTo interface, the y input parameter is a positive number and the x input parameter
      * is a positive number, both of which are less than the page height
    */
-    it('testScrollableSix',0,async (done: Function) =>{
+    it('testScrollableSix',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableSeven";
       Utils.registerEvent("testScrollableSix","[0,0]",224224,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -136,7 +136,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableSeven',0,async (done: Function) =>{
+    it('testScrollableSeven',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableEight";
       Utils.registerEvent("testScrollableSeven",false,226226,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -147,7 +147,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableEight',0,async (done: Function) =>{
+    it('testScrollableEight',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableNine";
       Utils.registerEvent("testScrollableEight",true,228228,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -158,7 +158,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableNine',0,async (done: Function) =>{
+    it('testScrollableNine',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTen";
       Utils.registerEvent("testScrollableNine",true,230230,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -169,7 +169,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTen',0,async (done: Function) =>{
+    it('testScrollableTen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableEleven";
       Utils.registerEvent("testScrollableTen",true,232232,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -180,7 +180,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableEleven',0,async (done: Function) =>{
+    it('testScrollableEleven',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwelve";
       Utils.registerEvent("testScrollableEleven",false,234234,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -191,7 +191,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwelve',0,async (done: Function) =>{
+    it('testScrollableTwelve',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirteen";
       Utils.registerEvent("testScrollableTwelve",true,236236,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -202,7 +202,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirteen',0,async (done: Function) =>{
+    it('testScrollableThirteen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableFourteen";
       Utils.registerEvent("testScrollableThirteen","[200,200]",238238,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -213,7 +213,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableFourteen',0,async (done: Function) =>{
+    it('testScrollableFourteen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableFifteen";
       Utils.registerEvent("testScrollableFourteen",true,240240,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -224,7 +224,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableFifteen',0,async (done: Function) =>{
+    it('testScrollableFifteen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableSixteen";
       Utils.registerEvent("testScrollableFifteen",true,242242,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -235,7 +235,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableSixteen',0,async (done: Function) =>{
+    it('testScrollableSixteen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableSeventeen";
       Utils.registerEvent("testScrollableSixteen",false,244244,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -246,7 +246,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableSeventeen',0,async (done: Function) =>{
+    it('testScrollableSeventeen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableEighteen";
       Utils.registerEvent("testScrollableSeventeen",true,246246,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -257,7 +257,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableEighteen',0,async (done: Function) =>{
+    it('testScrollableEighteen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableNineteen";
       Utils.registerEvent("testScrollableEighteen",true,248248,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -268,7 +268,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableNineteen',0,async (done: Function) =>{
+    it('testScrollableNineteen',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwenty";
       Utils.registerEvent("testScrollableNineteen",true,250250,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -279,7 +279,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwenty',0,async (done: Function) =>{
+    it('testScrollableTwenty',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentyOne";
       Utils.registerEvent("testScrollableTwenty",true,252252,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -290,7 +290,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyOne',0,async (done: Function) =>{
+    it('testScrollableTwentyOne',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentyTwo";
       Utils.registerEvent("testScrollableTwentyOne",true,254254,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -301,7 +301,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyTwo',0,async (done: Function) =>{
+    it('testScrollableTwentyTwo',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentyThree";
       Utils.registerEvent("testScrollableTwentyTwo",true,256256,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -312,7 +312,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyThree',0,async (done: Function) =>{
+    it('testScrollableTwentyThree',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentyFour";
       Utils.registerEvent("testScrollableTwentyThree",true,258258,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -323,7 +323,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyFour',0,async (done: Function) =>{
+    it('testScrollableTwentyFour',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentyFive";
       Utils.registerEvent("testScrollableTwentyFour",true,260260,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -334,7 +334,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyFive',0,async (done: Function) =>{
+    it('testScrollableTwentyFive',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentySix";
       Utils.registerEvent("testScrollableTwentyFive",true,262262,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -345,7 +345,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentySix',0,async (done: Function) =>{
+    it('testScrollableTwentySix',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentySeven";
       Utils.registerEvent("testScrollableTwentySix",true,264264,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -356,7 +356,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentySeven',0,async (done: Function)=>{
+    it('testScrollableTwentySeven',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function)=>{
       emitKey="emitScrollableTwentyEight";
       Utils.registerEvent("testScrollableTwentySeven",true,266266,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -367,7 +367,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyEight',0,async (done: Function) =>{
+    it('testScrollableTwentyEight',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableTwentyNine";
       Utils.registerEvent("testScrollableTwentyEight",true,268268,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -378,7 +378,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableTwentyNine',0,async (done: Function) =>{
+    it('testScrollableTwentyNine',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirty";
       Utils.registerEvent("testScrollableTwentyNine",true,270270,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -389,7 +389,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirty',0,async (done: Function) =>{
+    it('testScrollableThirty',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtyOne";
       Utils.registerEvent("testScrollableThirty",true,272272,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -400,7 +400,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirtyOne',0,async (done: Function) =>{
+    it('testScrollableThirtyOne',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtyTwo";
       Utils.registerEvent("testScrollableThirtyOne",true,274274,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -411,7 +411,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirtyTwo',0,async (done: Function) =>{
+    it('testScrollableThirtyTwo',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtyThree";
       Utils.registerEvent("testScrollableThirtyTwo",true,276276,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -422,7 +422,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirtyThree',0,async (done: Function) =>{
+    it('testScrollableThirtyThree',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtyFour";
       Utils.registerEvent("testScrollableThirtyThree",true,278278,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -433,7 +433,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirtyFour',0,async (done: Function) =>{
+    it('testScrollableThirtyFour',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtyFive";
       Utils.registerEvent("testScrollableThirtyFour",true,280280,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -444,7 +444,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirtyFive',0,async (done: Function) =>{
+    it('testScrollableThirtyFive',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtySix";
       Utils.registerEvent("testScrollableThirtyFive",true,282282,done);
       sendEventByKey('webcomponentScrollable',10,'');
@@ -455,7 +455,7 @@ export default function webViewSrollableJsunit() {
       * tc.desc When the scrollTo interface is called, the y input parameter is a positive number and the x input
       * parameter is a positive number, both of which are greater than the page width and height
     */
-    it('testScrollableThirtySix',0,async (done: Function) =>{
+    it('testScrollableThirtySix',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitScrollableThirtySix";
       Utils.registerEvent("testScrollableThirtySix",true,284284,done);
       sendEventByKey('webcomponentScrollable',10,'');

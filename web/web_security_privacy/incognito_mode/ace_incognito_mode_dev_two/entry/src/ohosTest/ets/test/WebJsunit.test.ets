@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -51,7 +51,7 @@ export default function webJsunit() {
      *tc.name clearHistory
      *tc.desic Clears the history in the Web
      */
-    it('clearHistory', 0, async (done: Function) => {
+    it('clearHistory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAllowGeolocation";
       Utils.registerEvent("clearHistory", false, 82, done);
       sendEventByKey('webcomponent', 10, '');
@@ -61,7 +61,7 @@ export default function webJsunit() {
      *tc.name allowGeolocation                                                                                                                                                                                                                
      *tc.desic allow specific url to access the geolocation
      */
-    it('allowGeolocation', 0, async (done: Function) => {
+    it('allowGeolocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteGeolocation";
       Utils.registerEvent("allowGeolocation", "resource://rawfile/, result: true", 402, done);
       sendEventByKey('webcomponent', 10, '');
@@ -71,7 +71,7 @@ export default function webJsunit() {
      *tc.name deleteGeolocation                                                                                                                                                                                                                
      *tc.desic delete specific restored geolocation
      */
-    it('deleteGeolocation', 0, async (done: Function) => {
+    it('deleteGeolocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteAllGeolocation";
       Utils.registerEvent("deleteGeolocation", "", 404, done);
       sendEventByKey('webcomponent', 10, '');
@@ -81,7 +81,7 @@ export default function webJsunit() {
      *tc.name deleteAllGeolocation                                                                                                                                                                                                                
      *tc.desic delete all restored geolocation
      */
-    it('deleteAllGeolocation', 0, async (done: Function) => {
+    it('deleteAllGeolocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteAllGeolocation";
       Utils.registerEvent("deleteAllGeolocation", "", 406, done);
       sendEventByKey('webcomponent', 10, '');

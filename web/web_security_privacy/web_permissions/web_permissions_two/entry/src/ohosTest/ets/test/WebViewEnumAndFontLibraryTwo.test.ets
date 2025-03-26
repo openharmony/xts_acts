@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function WebViewEnumAndFontLibraryTwo() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testProtectedResourceType001', 0, async (done: Function) => {
+    it('testProtectedResourceType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitProtectedResourceType", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testProtectedResourceType001", 'TYPE_VIDEO_CAPTURE,TYPE_AUDIO_CAPTURE', 1101, done);
@@ -77,7 +77,7 @@ export default function WebViewEnumAndFontLibraryTwo() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPermissionRequestGetOrigin001', 0, async (done: Function) => {
+    it('testPermissionRequestGetOrigin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPermissionRequestGetOrigin", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PermissionRequestGetOrigin", 'resource://rawfile/', 1102, done);
@@ -92,7 +92,7 @@ export default function WebViewEnumAndFontLibraryTwo() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPermissionRequest001', 0, async (done: Function) => {
+    it('testPermissionRequest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPermissionRequest", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPermissionRequest001", true, 1103, done);
