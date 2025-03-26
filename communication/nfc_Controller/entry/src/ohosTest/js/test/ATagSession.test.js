@@ -471,6 +471,24 @@ export default function nfcATagSessionTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_1700
+         * @tc.name getTagInfo
+         * @tc.desc Test getTagInfo api.
+         * @tc.size MEDIUM
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_NFC_nfcAtage_js_1700', Level.LEVEL0, function ()  {
+                try {
+                    tag.getNfcA(aTag).getTagInfo()
+                    console.log("[NFC_test]17 tagsession17 getTagInfo pass");
+                } catch (error) {
+                    console.log('[NFC_test]17 tagsession17 getTagInfo error' + error);
+                    expect().assertFail();
+                }          
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
