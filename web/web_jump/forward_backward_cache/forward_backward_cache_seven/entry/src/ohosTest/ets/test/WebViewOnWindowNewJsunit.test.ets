@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -73,7 +73,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testGetOriginsPromiseLoadLocalHtml01
     *tc.desc test api GetOrigins promise mode by load loacal html
     */
-    it('testGetOriginsPromiseLoadLocalHtml01', 0, async (done: Function)=>{
+    it('testGetOriginsPromiseLoadLocalHtml01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function)=>{
       emitKey = 'emitGetOriginsPromiseLoadLocalHtml01';
       Utils.registerLargerEvent("testGetOriginsPromiseLoadLocalHtml01", 7166, done);
       sendEventByKey('onWindowNew', 10, '');

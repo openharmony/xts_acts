@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webViewMinLogicalFontSize() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMinLogicalFontSize001', 0, async (done: Function) => {
+    it('testMinLogicalFontSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitMinLogicalFontSize", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMinLogicalFontSize001", true, 2602, done);
@@ -67,7 +67,7 @@ export default function webViewMinLogicalFontSize() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMinLogicalFontSizeMin001', 0, async (done: Function) => {
+    it('testMinLogicalFontSizeMin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitMinLogicalFontSizeMin", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMinLogicalFontSizeMin001", true, 2603, done);
@@ -82,7 +82,7 @@ export default function webViewMinLogicalFontSize() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMinLogicalFontSizeMax001', 0, async (done: Function) => {
+    it('testMinLogicalFontSizeMax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitMinLogicalFontSizeMax", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMinLogicalFontSizeMax001", true, 2604, done);

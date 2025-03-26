@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll,afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll,afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -65,7 +65,7 @@ export default function getSurfaceId() {
      *tc.name testGetSurfaceId
      *tc.desc getSurfaceId
      */
-    it('emitGetSurfaceId0100', 0, async (done: Function) => {
+    it('emitGetSurfaceId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetSurfaceId0200";
       Utils.registerEvent("emitGetSurfaceId0100", true, 28930, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -75,7 +75,7 @@ export default function getSurfaceId() {
      *tc.name testGetSurfaceId
      *tc.desc getSurfaceId
      */
-    it('emitGetSurfaceId0200', 0, async (done: Function) => {
+    it('emitGetSurfaceId0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetSurfaceId0300";
       Utils.registerEvent("emitGetSurfaceId0200", "17100001", 28938, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -85,7 +85,7 @@ export default function getSurfaceId() {
      *tc.name testGetSurfaceId
      *tc.desc getSurfaceId
      */
-    it('emitGetSurfaceId0300', 0, async (done: Function) => {
+    it('emitGetSurfaceId0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetWebIdTwo";
       Utils.registerEvent("emitGetSurfaceId0300", "Init error. The WebviewController must be associated with a Web component", 28939, done);
       sendEventByKey('getSurfaceIdButton', 10, '');

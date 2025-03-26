@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
@@ -59,7 +59,7 @@ export default function AceWeb() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testAsyncMethodList0100", 0, async (done: Function) => {
+    it("testAsyncMethodList0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_javaScriptProxy_asyncMethodList_0100 start')
       console.info('Sub_WEB_javaScriptProxy_asyncMethodList_0100 start')
       let driver = await Driver.create();
@@ -84,7 +84,7 @@ export default function AceWeb() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testAsyncMethodList0200", 0, async (done: Function) => {
+    it("testAsyncMethodList0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_javaScriptProxy_asyncMethodList_0200 start')
       console.info('Sub_WEB_javaScriptProxy_asyncMethodList_0200 start')
       let driver = await Driver.create();
@@ -109,7 +109,7 @@ export default function AceWeb() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testRegisterJavaScriptProxyAsyncMethodList0100", 0, async (done: Function) => {
+    it("testRegisterJavaScriptProxyAsyncMethodList0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testRegisterJavaScriptProxyAsyncMethodList0100 start')
       console.info('testRegisterJavaScriptProxyAsyncMethodList0100 start')
       let driver = await Driver.create();

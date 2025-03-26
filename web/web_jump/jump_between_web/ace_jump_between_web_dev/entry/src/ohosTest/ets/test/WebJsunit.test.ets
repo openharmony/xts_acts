@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function webJsunit() {
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_009
      *tc.name onRefreshAccessedHistory                                                                                                                                                                                                            *tc.desic Triggered when the Web page refreshes accessed history
      */
-    it('onRefreshAccessedHistory', 0, async (done: Function) => {
+    it('onRefreshAccessedHistory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAccessBackward";
       Utils.registerContainEvent("onRefreshAccessedHistory", "second.html", 116, done);
       sendEventByKey('webcomponent', 10, '');
@@ -59,7 +59,7 @@ export default function webJsunit() {
      *tc.name accessBackward
      *tc.desic Checks whether the web page can go back
      */
-    it('accessBackward', 0, async (done: Function) => {
+    it('accessBackward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAccessForward";
       Utils.registerEvent("accessBackward", "true", 128, done);
       sendEventByKey('webcomponent', 10, '');
@@ -69,7 +69,7 @@ export default function webJsunit() {
      *tc.name accessForward
      *tc.desic Checks whether the web page can go forward
      */
-    it('accessForward', 0, async (done: Function) => {
+    it('accessForward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAccessStep";
       Utils.registerEvent("accessForward", "false", 130, done);
       sendEventByKey('webcomponent', 10, '');
@@ -79,7 +79,7 @@ export default function webJsunit() {
      *tc.name accessStep
      *tc.desic Checks whether the web page can go back or forward the given number of steps
      */
-    it('accessStep', 0, async (done: Function) => {
+    it('accessStep', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitBackward";
       Utils.registerEvent("accessStep", "true", 132, done);
       sendEventByKey('webcomponent', 10, '');
@@ -89,7 +89,7 @@ export default function webJsunit() {
      *tc.name backward
      *tc.desic Goes back in the history of the web page
      */
-    it('backward', 0, async (done: Function) => {
+    it('backward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitForward";
       Utils.registerEvent("backward", "\"index\"", 134, done);
       sendEventByKey('webcomponent', 10, '');
@@ -99,7 +99,7 @@ export default function webJsunit() {
      *tc.name forward
      *tc.desic Goes forward in the history of the web page
      */
-    it('forward', 0, async (done: Function) => {
+    it('forward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitForward";
       Utils.registerEvent("forward", "resource://rawfile/index.html", 136, done);
       sendEventByKey('webcomponent', 10, '');
