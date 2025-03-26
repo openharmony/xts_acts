@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import connection from '@ohos.net.connection';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect , Level, Size, TestType} from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 
 
@@ -27,7 +27,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: ConnectionProperties Properties  detection
      * @tc.author: kangyuntao
      */
-    it("Telephony_connection_ConnectionProperties_0100", 0, (done: Function) => {
+    it("Telephony_connection_ConnectionProperties_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -112,7 +112,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: getConnectionProperties  detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getConnectionProperties_Async_0200', 0, (done: Function) => {
+    it('Telephony_connection_getConnectionProperties_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -161,7 +161,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: RouteInfo Properties  detection
      * @tc.author: kangyuntao
      */
-    it("Telephony_connection_RouteInfo_0300", 0, (done: Function) => {
+    it("Telephony_connection_RouteInfo_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -225,7 +225,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: getRouteInfo Properties detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getRouteInfo_Async_0400', 0, (done: Function) => {
+    it('Telephony_connection_getRouteInfo_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -265,7 +265,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: LinkAddress Properties  detection
      * @tc.author: kangyuntao
      */
-    it("Telephony_connection_LinkAddress_0500", 0, (done: Function) => {
+    it("Telephony_connection_LinkAddress_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -291,7 +291,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: getLinkAddress Properties detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getLinkAddress_Async_0600', 0, (done: Function) => {
+    it('Telephony_connection_getLinkAddress_Async_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -330,7 +330,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: NetAddress Properties  detection
      * @tc.author: kangyuntao
      */
-    it("Telephony_connection_NetAddress_0700", 0, (done: Function) => {
+    it("Telephony_connection_NetAddress_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -356,7 +356,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: getNetAddress Properties detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getNetAddress_Async_0800', 0, (done: Function) => {
+    it('Telephony_connection_getNetAddress_Async_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -395,7 +395,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: NetCap Properties detection
      * @tc.author: kangyuntao
      */
-    it("Telephony_connection_NetCap_0900", 0, (done: Function) => {
+    it("Telephony_connection_NetCap_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -425,7 +425,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: getNetCap Properties detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getNetCap_Async_1000', 0, (done: Function) => {
+    it('Telephony_connection_getNetCap_Async_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -462,7 +462,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: NetBearType Properties detection
      * @tc.author: kangyuntao
      */
-    it("Telephony_connection_NetBearType_1100", 0, (done: Function) => {
+    it("Telephony_connection_NetBearType_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -490,7 +490,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc:getNetBearType Properties detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getNetBearType_Async_1200', 0, (done: Function) => {
+    it('Telephony_connection_getNetBearType_Async_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -527,7 +527,7 @@ export default function connectionSecondJsUnit() {
      * @tc.desc: getNetCapabilities NetCap and NetBearType Properties detection
      * @tc.author: kangyuntao
      */
-    it('Telephony_connection_getNetCapabilities_Promise_1300', 0, (done: Function) => {
+    it('Telephony_connection_getNetCapabilities_Promise_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
