@@ -14,7 +14,7 @@
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { describe, beforeAll, it, expect, afterEach, beforeEach,, Level } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import commonEvent from '@ohos.commonEventManager';
