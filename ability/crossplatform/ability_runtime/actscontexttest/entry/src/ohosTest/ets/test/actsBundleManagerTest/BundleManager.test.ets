@@ -14,7 +14,7 @@
  */
 
 import bundleManager from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function BundleManager() {
   describe("BundleManager", () => {
@@ -43,7 +43,7 @@ export default function BundleManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testLaunchType001', 0, async (done: Function) => {
+    it('testLaunchType001', Level.LEVEL0, async (done: Function) => {
       try {
         console.log('testLaunchType001 begin');
         expect(bundleManager.LaunchType.SINGLETON).assertEqual(0);
@@ -63,7 +63,7 @@ export default function BundleManager() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testLaunchType002', 0, async (done: Function) => {
+    it('testLaunchType002', Level.LEVEL0, async (done: Function) => {
       try {
         console.log('testLaunchType002 begin');
         expect(bundleManager.LaunchType.MULTITON).assertEqual(1);
