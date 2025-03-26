@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import power from '@ohos.power';
@@ -127,7 +127,7 @@ export default function OnAndOffScreenTest() {
      * @tc.name    : Verify the life cycle of on / off screen ability
      * @tc.desc    : FA model is applied in the foreground, and the device is locked.
      */
-    it('SUB_AA_OpenHarmony_OnAndOffScreen_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_OnAndOffScreen_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0100 == ';
       console.log(TAG + "begin");
 
@@ -217,7 +217,7 @@ export default function OnAndOffScreenTest() {
      * @tc.name    : Verify the life cycle of on / off screen ability
      * @tc.desc    : Stage model is applied in the foreground, and the device locks the screen.
      */
-    it('SUB_AA_OpenHarmony_OnAndOffScreen_0300', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_OnAndOffScreen_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0300 == ';
       console.log(TAG + "begin");
 
@@ -307,7 +307,7 @@ export default function OnAndOffScreenTest() {
      * @tc.name    : Verify the life cycle of on / off screen ability
      * @tc.desc    : The stage model is applied in the foreground, the device locks the screen, and then unlocks.
      */
-    it('SUB_AA_OpenHarmony_OnAndOffScreen_0400', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_OnAndOffScreen_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0400 == ';
       console.log(TAG + "begin");
 
@@ -403,7 +403,7 @@ export default function OnAndOffScreenTest() {
      * @tc.name    : Verify the life cycle of on / off screen ability
      * @tc.desc    : Application in the background, device lock screen.
      */
-    it('SUB_AA_OpenHarmony_OnAndOffScreen_0500', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_OnAndOffScreen_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0500 == ';
       console.log(TAG + "begin");
 
@@ -524,7 +524,7 @@ export default function OnAndOffScreenTest() {
      * @tc.name    : Verify the life cycle of on / off screen ability
      * @tc.desc    : Application in the background, device lock screen.
      */
-    it('SUB_AA_OpenHarmony_OnAndOffScreen_0600', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_OnAndOffScreen_0600', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_OnAndOffScreen_0600 == ';
       console.log(TAG + "begin");
 
@@ -655,7 +655,7 @@ export default function OnAndOffScreenTest() {
      * @tc.name    : Verify the ability implicit start
      * @tc.desc    : Verify that the capability is started implicitly, and the input parameter is a nonexistent action.
      */
-    it('SUB_AA_OpenHarmony_Share_1000', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Share_1000', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_Share_1000 == ';
       console.log(TAG + "begin");
 

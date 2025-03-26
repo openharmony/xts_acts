@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -48,7 +48,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0100', Level.LEVEL0, async (done: Function) => {
         TAG = "ACTS_AddAbilityMonitor_Callback_0100";
         console.log(TAG + " start");
         context.startAbilityForResult({
@@ -81,7 +81,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0200";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -115,7 +115,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0300";
       console.log(TAG + " start");
        context.startAbilityForResult({
@@ -152,7 +152,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0400";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -186,7 +186,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0500";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -220,7 +220,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0600";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -254,7 +254,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0700";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -290,7 +290,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0800', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0800";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -329,7 +329,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_0900', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_0900";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -361,7 +361,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1000', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1000";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -393,7 +393,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1100', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1100";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -428,7 +428,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1200', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1200";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -465,7 +465,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1300', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1300";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -505,7 +505,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1400', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1400";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -542,7 +542,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1500', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1500";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -579,7 +579,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1600', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1600";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -616,7 +616,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1700', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1700";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -655,7 +655,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1800', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1800";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -696,7 +696,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_1900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_1900', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_1900";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -731,7 +731,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2000', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2000";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -766,7 +766,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2100', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2100";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -801,7 +801,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2200', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2200";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -836,7 +836,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2300', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2300";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -871,7 +871,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2400', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2400";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -906,7 +906,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2500', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2500";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -941,7 +941,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2600', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2600";
       console.log(TAG + " start");
       context.startAbilityForResult({
@@ -976,7 +976,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_StartUp_2700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartUp_2700', Level.LEVEL0, async (done: Function) => {
       TAG = "SUB_Ability_AbilityRuntime_StartUp_2700";
       console.log(TAG + " start");
       context.startAbilityForResult({

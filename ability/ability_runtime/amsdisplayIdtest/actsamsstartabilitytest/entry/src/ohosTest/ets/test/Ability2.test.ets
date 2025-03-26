@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, beforeAll, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent';
 import {Driver, ON} from '@ohos.UiTest';
 import display from '@ohos.display';
@@ -86,7 +86,7 @@ export default function abilityTest() {
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify Get displayId to start Ability
     */
-    it('ACTS_StartAbility_2100', 0, async (done:Function) => {
+    it('ACTS_StartAbility_2100', Level.LEVEL0, async (done:Function) => {
       console.log('ACTS_StartAbility_2100====<begin');
       let subscriber:CommonEventManager.CommonEventSubscriber;
       let id:number;
@@ -143,7 +143,7 @@ export default function abilityTest() {
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify that the ability to start when the displayId is undefined
     */
-    it('ACTS_StartAbility_2500', 0, async (done:Function) => {
+    it('ACTS_StartAbility_2500', Level.LEVEL0, async (done:Function) => {
       console.log('ACTS_StartAbility_2500====<begin');
       let subscriber:CommonEventManager.CommonEventSubscriber;
       let id:number;
@@ -200,7 +200,7 @@ export default function abilityTest() {
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Validation parameters want to filter the DISPLAY_ID of parameters
     */
-    it('ACTS_StartAbility_2700', 0, async (done:Function) => {
+    it('ACTS_StartAbility_2700', Level.LEVEL0, async (done:Function) => {
       console.log('ACTS_StartAbility_2700====<begin');
       let subscriber:CommonEventManager.CommonEventSubscriber;
       let id:number;

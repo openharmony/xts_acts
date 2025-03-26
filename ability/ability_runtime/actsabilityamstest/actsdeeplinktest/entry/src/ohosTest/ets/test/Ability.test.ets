@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import{ appManager, common, Want } from '@kit.AbilityKit';
 import{ BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import{ data } from '@kit.TelephonyKit';
@@ -57,7 +57,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_deeplink_1100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_deeplink_1100', Level.LEVEL0, async (done:Function) => {
       const  TAG = 'SUB_Ability_AbilityRuntime_deeplink_1100';
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_deeplink_1100';
       console.info('enter into test');

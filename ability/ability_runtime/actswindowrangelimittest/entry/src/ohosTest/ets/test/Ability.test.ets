@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from './utils';
 import { common, StartOptions, Want } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -37,7 +37,7 @@ export default function abilityTest(abilityContext: common.UIAbilityContext) {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('SUB_Ability_AbilityRuntime_windowRangeLimit_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_windowRangeLimit_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = '[SUB_Ability_AbilityRuntime_windowRangeLimit_0100]'
       console.log(`${tag}: start`);
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {

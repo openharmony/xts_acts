@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 // 加载js测试框架
 import { common, sendableContextManager, WantAgent, wantAgent } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -48,7 +48,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0100 start');
       try {
         abilityDelegator.addAbilityMonitor(undefined,(err, data)=>{
@@ -71,7 +71,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'Ability setTimeout');
       try {
         abilityDelegator.addAbilityMonitor(undefined).then((data)=>{
@@ -96,7 +96,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'Ability setTimeout');
       try {
         abilityDelegator.addAbilityMonitorSync(undefined);
@@ -117,7 +117,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0400 start');
       try {
         abilityDelegator.removeAbilityMonitor(undefined,(err, data)=>{
@@ -140,7 +140,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0500 start');
       try {
         abilityDelegator.removeAbilityMonitor(undefined).then((data)=>{
@@ -165,7 +165,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0600 start');
       try {
         abilityDelegator.removeAbilityMonitorSync(undefined);
@@ -186,7 +186,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0700 start');
       try {
         abilityDelegator.addAbilityStageMonitorSync(undefined);
@@ -207,7 +207,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0800 start');
       try {
         abilityDelegator.removeAbilityStageMonitor(undefined,(err, data)=>{
@@ -230,7 +230,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_0900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_0900 start');
       try {
         abilityDelegator.removeAbilityStageMonitor(undefined).then((data)=>{
@@ -255,7 +255,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1000 start');
       try {
         abilityDelegator.removeAbilityStageMonitorSync(undefined);
@@ -276,7 +276,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1100 start');
       try {
         abilityDelegator.waitAbilityMonitor(undefined, 5).then((data)=>{
@@ -301,7 +301,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1200 start');
       try {
         let state = abilityDelegator.getAbilityState(undefined);
@@ -323,7 +323,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1300 start');
       try {
         abilityDelegator.startAbility(undefined).then((data)=>{
@@ -351,7 +351,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'Ability setTimeout');
       try {
         abilityDelegator.startAbility(undefined, (err, data)=>{
@@ -373,7 +373,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1500 start');
       try {
         abilityDelegator.doAbilityForeground(undefined).then((data)=>{
@@ -401,7 +401,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1600 start');
       try {
         abilityDelegator.doAbilityForeground(undefined, (err, data)=>{
@@ -423,7 +423,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1700 start');
       try {
         abilityDelegator.doAbilityBackground(undefined).then((data)=>{
@@ -450,7 +450,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1800 start');
       try {
         abilityDelegator.doAbilityBackground(undefined, (err, data)=>{
@@ -472,7 +472,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_1900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_1900 start');
       try {
         abilityDelegator.finishTest(undefined, 101).then((data)=>{
@@ -499,7 +499,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2000 start');
       try {
         abilityDelegator.finishTest(undefined, 101, (err, data)=>{
@@ -521,7 +521,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2100 start');
       try {
         abilityDelegator.finishTest("FINISH TEST", undefined).then((data)=>{
@@ -548,7 +548,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2200 start');
       try {
         abilityDelegator.finishTest("FINISH TEST", undefined, (err, data)=>{
@@ -570,7 +570,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2300 start');
       try {
         abilityDelegator.addAbilityMonitor(null,(err, data)=>{
@@ -594,7 +594,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2400 start');
       try {
         abilityDelegator.addAbilityMonitor(null).then((data)=>{
@@ -619,7 +619,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2500 start');
       try {
         abilityDelegator.addAbilityMonitorSync(null);
@@ -640,7 +640,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2600 start');
       try {
         abilityDelegator.removeAbilityMonitor(null,(err, data)=>{
@@ -663,7 +663,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2700 start');
       try {
         abilityDelegator.removeAbilityMonitor(null).then((data)=>{
@@ -688,7 +688,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2800 start');
       try {
         abilityDelegator.removeAbilityMonitorSync(null);
@@ -709,7 +709,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_2900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_2900 start');
       try {
         abilityDelegator.addAbilityStageMonitorSync(null);
@@ -730,7 +730,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3000 start');
       try {
         abilityDelegator.removeAbilityStageMonitor(null,(err, data)=>{
@@ -754,7 +754,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3100 start');
       try {
         abilityDelegator.removeAbilityStageMonitor(null).then((data)=>{
@@ -779,7 +779,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3200 start');
       try {
         abilityDelegator.removeAbilityStageMonitorSync(null);
@@ -800,7 +800,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3300 start');
       try {
         abilityDelegator.waitAbilityMonitor(null, 5).then((data)=>{
@@ -825,7 +825,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3500 start');
       try {
         abilityDelegator.startAbility(null).then((data)=>{
@@ -852,7 +852,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3600 start');
       try {
         abilityDelegator.startAbility(null, (err, data)=>{
@@ -874,7 +874,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3700 start');
       try {
         abilityDelegator.doAbilityForeground(null).then((data)=>{
@@ -901,7 +901,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3800 start');
       try {
         abilityDelegator.doAbilityForeground(null, (err, data)=>{
@@ -923,7 +923,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_3900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_3900 start');
       try {
         abilityDelegator.doAbilityBackground(null).then((data)=>{
@@ -950,7 +950,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_4000 start');
       try {
         abilityDelegator.doAbilityBackground(null, (err, data)=>{
@@ -972,7 +972,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_4100 start');
       try {
         abilityDelegator.finishTest(null, 101).then((data)=>{
@@ -1000,7 +1000,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_4200 start');
       try {
         abilityDelegator.finishTest(null, 101, (err, data)=>{
@@ -1022,7 +1022,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_4300 start');
       try {
         abilityDelegator.finishTest("FINISH TEST", null).then((data)=>{
@@ -1049,7 +1049,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_AbilityDelegatorError_4400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_AbilityDelegatorError_4400 start');
       try {
         abilityDelegator.finishTest("FINISH TEST", null, (err, data)=>{

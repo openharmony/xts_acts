@@ -13,7 +13,7 @@
   * limitations under the License.
 */
 
-import { describe, it, expect, beforeAll, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, beforeEach, Level } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -59,7 +59,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900';
       // context为调用方UIAbility的UIAbilityContext;
       let KEY_NEW = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900';
@@ -98,7 +98,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800', Level.LEVEL0, async (done: Function) => {
       // context为调用方UIAbility的UIAbilityContext;
       let KEY_NEW = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800';
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800';
@@ -140,7 +140,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5700', Level.LEVEL0, async (done: Function) => {
       // context为调用方UIAbility的UIAbilityContext;
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5700';
       let KEY_NEW = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5700';
@@ -182,7 +182,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000', Level.LEVEL0, async (done: Function) => {
       // context为调用方UIAbility的UIAbilityContext;
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
@@ -260,7 +260,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.level Level 3
      */
 
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -336,7 +336,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5200', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5200';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -424,7 +424,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5300', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5300';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -494,7 +494,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -566,7 +566,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5900', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5900';
       let want: Want = {
         deviceId: '', // deviceId为空表示本设备
@@ -607,7 +607,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.level Level 3
      */
 
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_6000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_6000', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_6000';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -681,7 +681,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -757,7 +757,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME],
@@ -865,7 +865,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [TEST_CASE_NAME, 'singleentryability2', 'entryability1', 'SingleEntryAbility3'],
@@ -959,7 +959,7 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500', Level.LEVEL0, async (done: Function) => {
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500';
       let onForegroundFlagNumber = 0
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {

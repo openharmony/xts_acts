@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import base from '@ohos.base';
@@ -59,7 +59,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0200', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_ChildProcessManager_sendableContextManager_0200`;
       let moduleContext: common.Context;
       try {
@@ -79,7 +79,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0300', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_ChildProcessManager_sendableContextManager_0300`;
       try {
         context.getGroupDir(undefined, (err, data) => {
@@ -106,7 +106,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0400', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_ChildProcessManager_sendableContextManager_0400`;
       try {
         context.getGroupDir(undefined).then(data => {
@@ -132,7 +132,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0500', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_ChildProcessManager_sendableContextManager_0500`;
       let moduleContext: common.Context;
       try {
@@ -152,7 +152,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0700', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0700', Level.LEVEL0, (done: Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0700`;
       let applicationContext = context.getApplicationContext();
       try {
@@ -172,7 +172,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0900', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0900', Level.LEVEL0, (done: Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0900`;
       let applicationContext = context.getApplicationContext();
       let want: Want = {

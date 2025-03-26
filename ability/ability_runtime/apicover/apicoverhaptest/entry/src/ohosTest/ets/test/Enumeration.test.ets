@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, afterEach, it, expect, beforeAll, Level } from '@ohos/hypium';
 import abilityConstant from '@ohos.app.ability.AbilityConstant';
 import wantConstant from "@ohos.app.ability.wantConstant";
 import { Driver } from '@ohos.UiTest';
@@ -51,7 +51,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Test_AbilityConstant_0100', 0, async (done: Function) => {
+    it('SUB_AA_Test_AbilityConstant_0100', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.LaunchReason.START_ABILITY);
       done();
     })
@@ -64,7 +64,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0200', Level.LEVEL0, async (done: Function) => {
       expect(9).assertEqual(abilityConstant.LaunchReason.INSIGHT_INTENT);
       done();
     })
@@ -77,7 +77,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0300', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.LastExitReason.ABILITY_NOT_RESPONDING);
       done();
     })
@@ -89,7 +89,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0400', Level.LEVEL0, async (done: Function) => {
       expect(2).assertEqual(abilityConstant.LastExitReason.NORMAL);
       done();
     })
@@ -101,7 +101,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0500', Level.LEVEL0, async (done: Function) => {
       expect(3).assertEqual(abilityConstant.LastExitReason.CPP_CRASH);
       done();
     })
@@ -114,7 +114,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0600', Level.LEVEL0, async (done: Function) => {
       expect(4).assertEqual(abilityConstant.LastExitReason.JS_ERROR);
       done();
     })
@@ -127,7 +127,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0700', Level.LEVEL0, async (done: Function) => {
       expect(5).assertEqual(abilityConstant.LastExitReason.APP_FREEZE);
       done();
     })
@@ -140,7 +140,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0800', Level.LEVEL0, async (done: Function) => {
       expect(6).assertEqual(abilityConstant.LastExitReason.PERFORMANCE_CONTROL);
       done();
     })
@@ -153,7 +153,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0900', Level.LEVEL0, async (done: Function) => {
       expect(7).assertEqual(abilityConstant.LastExitReason.RESOURCE_CONTROL);
       done();
     })
@@ -166,7 +166,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1000', Level.LEVEL0, async (done: Function) => {
       expect(8).assertEqual(abilityConstant.LastExitReason.UPGRADE);
       done();
     })
@@ -179,7 +179,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1100', Level.LEVEL0, async (done: Function) => {
       expect(0).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_MODERATE);
 
       done();
@@ -193,7 +193,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1200', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_LOW);
       done();
     })
@@ -206,7 +206,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1300', Level.LEVEL0, async (done: Function) => {
       expect(2).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_CRITICAL);
       done();
     })
@@ -219,7 +219,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1400', Level.LEVEL0, async (done: Function) => {
       expect(5).assertEqual(abilityConstant.LaunchReason.SHARE);
       done();
     })
@@ -232,7 +232,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1500', Level.LEVEL0, async (done: Function) => {
       expect(0).assertEqual(abilityConstant.ContinueState.ACTIVE);
       done();
     })
@@ -245,7 +245,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1600', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.ContinueState.INACTIVE);
       done();
     })
@@ -258,7 +258,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1700', Level.LEVEL0, async (done: Function) => {
       expect(8).assertEqual(abilityConstant.LaunchReason.AUTO_STARTUP);
       done();
     })
@@ -271,7 +271,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1800', Level.LEVEL0, async (done: Function) => {
       expect(9).assertEqual(abilityConstant.LastExitReason.USER_REQUEST);
       done();
     })
@@ -284,7 +284,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_1900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_1900', Level.LEVEL0, async (done: Function) => {
       expect(10).assertEqual(abilityConstant.LastExitReason.SIGNAL);
       done();
     })
@@ -297,7 +297,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_2000', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.WindowMode.WINDOW_MODE_FULLSCREEN);
       done();
     })
@@ -310,7 +310,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_2100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_2100', Level.LEVEL0, async (done: Function) => {
       expect(100).assertEqual(abilityConstant.WindowMode.WINDOW_MODE_SPLIT_PRIMARY);
       done();
     })
@@ -323,7 +323,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_2200', Level.LEVEL0, async (done: Function) => {
       expect(101).assertEqual(abilityConstant.WindowMode.WINDOW_MODE_SPLIT_SECONDARY);
       done();
     })
@@ -336,7 +336,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_2300', Level.LEVEL0, async (done: Function) => {
       expect(0).assertEqual(abilityConstant.StateType.CONTINUATION);
       done();
     })
@@ -349,7 +349,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_2400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_2400', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.StateType.APP_RECOVERY);
       done();
     })
@@ -362,7 +362,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_AbilityConstant_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_2500', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.StateType.APP_RECOVERY);
       done();
     })
@@ -376,7 +376,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0100', Level.LEVEL0, async (done: Function) => {
       expect('ohos.extra.param.key.contentTitle').assertEqual(wantConstant.Params.CONTENT_TITLE_KEY);
       done();
     })
@@ -389,7 +389,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0200', Level.LEVEL0, async (done: Function) => {
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY);
       done();
     })
@@ -402,7 +402,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0300', Level.LEVEL0, async (done: Function) => {
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY);
       done();
     })
@@ -415,7 +415,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0400', Level.LEVEL0, async (done: Function) => {
       expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART);
       done();
     })
@@ -428,7 +428,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0500', Level.LEVEL0, async (done: Function) => {
       expect('ohos.extra.param.key.showMode').assertEqual(wantConstant.Params.SHOW_MODE_KEY);
       done();
     })
@@ -441,7 +441,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0600', Level.LEVEL0, async (done: Function) => {
       const result = 'ohos.extra.param.key.supportContinuePageStack';
       expect(result).assertEqual(wantConstant.Params.SUPPORT_CONTINUE_PAGE_STACK_KEY);
       done();
@@ -455,7 +455,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0700', Level.LEVEL0, async (done: Function) => {
       const result = 'ohos.extra.param.key.supportContinueSourceExit';
       expect(result).assertEqual(wantConstant.Params.SUPPORT_CONTINUE_SOURCE_EXIT_KEY);
       done();
@@ -469,7 +469,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0800', Level.LEVEL0, async (done: Function) => {
       expect('ability.params.stream').assertEqual(wantConstant.Params.PARAMS_STREAM);
       done();
     })
@@ -482,7 +482,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_0900', Level.LEVEL0, async (done: Function) => {
       expect('ohos.params.launchReasonMessage').assertEqual(wantConstant.Params.LAUNCH_REASON_MESSAGE);
       done();
     })
@@ -495,7 +495,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_1000', Level.LEVEL0, async (done: Function) => {
       expect(0x00000002).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
       done();
     })
@@ -508,7 +508,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_1100', Level.LEVEL0, async (done: Function) => {
       expect(0x00000040).assertEqual(wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION);
       done();
     })
@@ -521,7 +521,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_wantConstant_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_1200', Level.LEVEL0, async (done: Function) => {
       expect(0x00000800).assertEqual(wantConstant.Flags.FLAG_INSTALL_ON_DEMAND);
       done();
     })
@@ -534,7 +534,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_WantAgent_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_WantAgent_0100', Level.LEVEL0, async (done: Function) => {
       expect(0).assertEqual(wantAgent.OperationType.UNKNOWN_TYPE);
       done();
     })
@@ -547,7 +547,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityBase_WantAgent_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_WantAgent_0200', Level.LEVEL0, async (done: Function) => {
       expect(4).assertEqual(wantAgent.OperationType.SEND_COMMON_EVENT);
       done();
     })

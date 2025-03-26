@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import appManager from "@ohos.app.ability.appManager"
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -31,7 +31,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application without permission call appManager.on will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0100', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0100';
       let applicationStateObserver : appManager.ApplicationStateObserver= {
         onForegroundApplicationChanged(appStateData) {
@@ -72,7 +72,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application without permission call appManager.on will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0200', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0200';
       let applicationStateObserver : appManager.ApplicationStateObserver = {
         onForegroundApplicationChanged(appStateData) {
@@ -114,7 +114,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call getForegroundApplications will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0300', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0300';
       appManager.getForegroundApplications((err) => {
         console.log(TAG + "  err.code: " + err.code);
@@ -129,7 +129,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call getForegroundApplications will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0400', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0400';
       appManager.getForegroundApplications()
         .then(err => {
@@ -150,7 +150,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call killProcessWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0500', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0500';
       let bundleName = "com.ohos.application";
       let accountId = 100;
@@ -167,7 +167,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call killProcessWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0600', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0600';
       let bundleName = "com.ohos.application";
       let accountId = 100;
@@ -190,7 +190,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0700', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0700';
       let bundleName = "com.ohos.application";
       appManager.killProcessesByBundleName(bundleName, (err) => {
@@ -206,7 +206,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0800', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0800', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0800';
       let bundleName = "com.ohos.application";
       appManager.killProcessesByBundleName(bundleName)
@@ -228,7 +228,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call clearUpApplicationData will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_0900', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_0900', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_0900';
       let bundleName = "com.ohos.application";
       appManager.clearUpApplicationData(bundleName, (err) => {
@@ -244,7 +244,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call clearUpApplicationData will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1000', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1000', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1000';
       let bundleName = "com.ohos.application";
       appManager.clearUpApplicationData(bundleName)
@@ -267,7 +267,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call GetProcessMemoryByPid will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1100', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1100';
       let pid = 0;
       appManager.getProcessMemoryByPid(pid, (err) => {
@@ -283,7 +283,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call GetProcessMemoryByPid will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1200', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1200';
       let pid = 0;
       appManager.getProcessMemoryByPid(pid)
@@ -305,7 +305,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call getRunningProcessInfoByBundleName will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1300', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1300';
       let bundleName = "com.ohos.application";
       appManager.getRunningProcessInfoByBundleName(bundleName, (err) => {
@@ -321,7 +321,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call getRunningProcessInfoByBundleName will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1400', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1400';
       let bundleName = "com.ohos.application";
       appManager.getRunningProcessInfoByBundleName(bundleName)
@@ -343,7 +343,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call getRunningProcessInfoByBundleName will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1500', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1500';
       let bundleName = "com.ohos.application";
       let userId = 100;
@@ -360,7 +360,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application call getRunningProcessInfoByBundleName will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_App_Manager_1600', 0, (done: Function) => {
+    it('System_API_Test_App_Manager_1600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1600';
       let bundleName = "com.ohos.application";
       let userId = 100;
@@ -384,7 +384,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application get ProcessState enum will be right
      * @tc.level 3
      */
-    it('Public_API_Test_App_Manager_0100', 0, (done: Function) => {
+    it('Public_API_Test_App_Manager_0100', Level.LEVEL0, (done: Function) => {
       expect(appManager.ProcessState.STATE_CREATE).assertEqual(0);
       expect(appManager.ProcessState.STATE_FOREGROUND).assertEqual(1);
       expect(appManager.ProcessState.STATE_ACTIVE).assertEqual(2);
@@ -399,7 +399,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application get ApplicationState enum will be right
      * @tc.level 3
      */
-    it('Public_API_Test_App_Manager_0200', 0, (done: Function) => {
+    it('Public_API_Test_App_Manager_0200', Level.LEVEL0, (done: Function) => {
       expect(appManager.ApplicationState.STATE_CREATE).assertEqual(0);
       expect(appManager.ApplicationState.STATE_FOREGROUND).assertEqual(2);
       expect(appManager.ApplicationState.STATE_ACTIVE).assertEqual(3);
@@ -416,7 +416,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_0100`;
       console.log(`${tag}, it begin`);
         try {
@@ -444,7 +444,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0200', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0300`;
       console.log(`${tag}, it begin`);
       try {
@@ -468,7 +468,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0400', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_0400`;
       console.log(`${tag}, it begin`);
       try {
@@ -496,7 +496,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0500', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_0500`;
       console.log(`${tag}, it begin`);
       try {
@@ -523,7 +523,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0600', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_0600`;
       console.log(`${tag}, it begin`);
       try {
@@ -550,7 +550,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0700', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_0700`;
       console.log(`${tag}, it begin`);
       try {
@@ -573,7 +573,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_0900', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_0700`;
       console.log(`${tag}, it begin`);
       try {
@@ -596,7 +596,7 @@ export default function appManagerTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_AppManager_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AppManager_1000', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_AppManager_1000`;
       console.log(`${tag}, it begin`);
       try {
@@ -620,7 +620,7 @@ export default function appManagerTest() {
      * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
      * @tc.level 3
      */
-     it('System_API_Test_App_Manager_1700', 0, (done: Function) => {
+     it('System_API_Test_App_Manager_1700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_App_Manager_1700';
       let bundleName = "com.ohos.applicationsss";
       try {

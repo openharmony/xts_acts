@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs';
@@ -48,7 +48,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_001', 0, async (done: Function) => {
+    it('AMS_getGroupDir_001', Level.LEVEL0, async (done: Function) => {
       console.log("start AMS_getGroupDir_001 =====>");
       await abilityContext.getGroupDir("context_test1").then(data => {
         console.error("getGroupDir AMS_getGroupDir_001 ====> result data" + data);
@@ -66,7 +66,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_002', 0, async (done: Function) => {
+    it('AMS_getGroupDir_002', Level.LEVEL0, async (done: Function) => {
       console.log("start AMS_getGroupDir_002 =====>");
       await abilityContext.getGroupDir("111").then(data => {
         console.error("getGroupDir AMS_getGroupDir_002 ====> result data" + data);
@@ -84,7 +84,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_003', 0, async (done: Function) => {
+    it('AMS_getGroupDir_003', Level.LEVEL0, async (done: Function) => {
       console.log("start AMS_getGroupDir_003 =====>");
       await abilityContext.getGroupDir("context_hap1").then(data => {
         console.error("getGroupDir AMS_getGroupDir_003 ====> result data" + data);
@@ -102,7 +102,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_004', 0, async (done: Function) => {
+    it('AMS_getGroupDir_004', Level.LEVEL0, async (done: Function) => {
       console.log("start AMS_getGroupDir_004 =====>");
       await abilityContext.getGroupDir("context_test1", (err, data) => {
         console.error("AMS_getGroupDir_004 ====> result data" + data);
@@ -119,7 +119,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_005', 0, async (done: Function) => {
+    it('AMS_getGroupDir_005', Level.LEVEL0, async (done: Function) => {
       console.log("start AMS_getGroupDir_005 =====>");
       await abilityContext.getGroupDir("", (err, data) => {
         console.error("AMS_getGroupDir_005 ====> result data" + data);
@@ -136,7 +136,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_006', 0, async (done: Function) => {
+    it('AMS_getGroupDir_006', Level.LEVEL0, async (done: Function) => {
       console.log("start AMS_getGroupDir_006 =====>");
       await abilityContext.getGroupDir("context_hap1", (err, data) => {
         console.error("AMS_getGroupDir_006 ====> result data" + data);
@@ -153,7 +153,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_007', 0, async (done: Function) => {
+    it('AMS_getGroupDir_007', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let res = '';
       console.log("start AMS_getGroupDir_007 =====>");
@@ -204,7 +204,7 @@ export default function ActsGetgroupdirTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('AMS_getGroupDir_008', 0, async (done: Function) => {
+    it('AMS_getGroupDir_008', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let res = '';
       console.log("start AMS_getGroupDir_008 =====>");

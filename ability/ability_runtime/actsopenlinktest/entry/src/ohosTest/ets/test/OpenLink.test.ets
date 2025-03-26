@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 // 加载js测试框架
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -62,7 +62,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0100', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0100`;
       console.log(`${tag}, it begin`);
 
@@ -93,7 +93,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0200', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0200`;
       console.log(`${tag}, it begin`);
 
@@ -122,7 +122,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0300', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0300`;
       console.log(`${tag}, it begin`);
 
@@ -150,7 +150,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0400', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0400`;
       console.log(`${tag}, it begin`);
 
@@ -179,7 +179,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0500', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0500`;
       console.log(`${tag}, it begin`);
 
@@ -208,7 +208,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0600', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0600', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0600`;
       console.log(`${tag}, it begin`);
 
@@ -236,7 +236,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0700', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0700', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0700`;
       console.log(`${tag}, it begin`);
 
@@ -264,7 +264,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0800', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0800`;
       console.log(`${tag}, it begin`);
 
@@ -297,7 +297,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_0900', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_0900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_0900`;
       console.log(`${tag}, it begin`);
 
@@ -331,7 +331,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('AbilityRuntime_OpenLink_1000', 0, (done: Function) => {
+    it('AbilityRuntime_OpenLink_1000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_OpenLink_1000`;
       console.log(`${tag}, it begin`);
 

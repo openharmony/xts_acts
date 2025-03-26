@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 let resultCode = 123;
 let bundleName = 'ohso.act.aafwk';
@@ -47,7 +47,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAbility0100.
     * @tc.desc: StartAbility fail with want nothing.(by promise)
     */
-    it("SUB_AA_JsApi_StartAbility_0100", 0, async function (done) {
+    it("SUB_AA_JsApi_StartAbility_0100", Level.LEVEL0, async function (done) {
         let parameter = {
             'want': {}
         }
@@ -66,7 +66,7 @@ describe('StartAbilityTest', function () {
    * @tc.name: testAblity0200.
    * @tc.desc: StartAbility fail with want nothing.(by callback)
    */
-    it("SUB_AA_JsApi_Ability_0200", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_0200", Level.LEVEL0, async function (done) {
         let parameter = {
             'want': {}
         }
@@ -83,7 +83,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAbility0300.
     * @tc.desc: StartAbility fail with error parameter.(by promise)
     */
-    it("SUB_AA_JsApi_StartAbility_0300", 0, async function (done) {
+    it("SUB_AA_JsApi_StartAbility_0300", Level.LEVEL0, async function (done) {
         let startAbilityParameter = {
             'want': {}
         }
@@ -102,7 +102,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAbility0400.
     * @tc.desc: StartAbility fail with error parameter.(by callback)
     */
-    it("SUB_AA_JsApi_StartAbility_0400", 0, async function (done) {
+    it("SUB_AA_JsApi_StartAbility_0400", Level.LEVEL0, async function (done) {
         let startAbilityParameter = {
             'want': {}
         }
@@ -119,7 +119,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity0500.
     * @tc.desc: startAbility-want configure action+entities- there is no Ability corresponding to entities.(by promise)
     */
-    it("SUB_AA_JsApi_Ability_0500", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_0500", Level.LEVEL0, async function (done) {
         let parameter = {
             'want': {
                 'action': 'action.ohos.acts.aafwk.jsapi.MainAbility',
@@ -143,7 +143,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity0600.
     * @tc.desc: startAbility-want configure action+entities- there is no Ability corresponding to entities.(by callback)
     */
-    it("SUB_AA_JsApi_Ability_0600", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_0600", Level.LEVEL0, async function (done) {
         let parameter = {
             'want': {
                 'action': 'action.ohos.acts.aafwk.jsapi.MainAbility',
@@ -165,7 +165,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity0900.
     * @tc.desc: startAbility-want configure action+entities- entities is configurd as a string.(by promise)
     */
-    it("SUB_AA_JsApi_Ability_0900", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_0900", Level.LEVEL0, async function (done) {
         let startAbilityParameter = {
             'want': {
                 'bundleName': bundleName,
@@ -187,7 +187,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1000.
     * @tc.desc: startAbility-want configure action+entities- entities is configurd as a string.(by callback)
     */
-    it("SUB_AA_JsApi_Ability_1000", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1000", Level.LEVEL0, async function (done) {
         let startAbilityParameter = {
             'want': {
                 'bundleName': bundleName,
@@ -207,7 +207,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1100.
     * @tc.desc: startAbility: The input parameter want is not configured (the value is {}).(by promise)
     */
-    it("SUB_AA_JsApi_Ability_1100", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1100", Level.LEVEL0, async function (done) {
         let parameter = {}
         await featureAbility.startAbility(parameter).then((data) => {
             console.log('testAblity1100 data: ' + JSON.stringify(data))
@@ -224,7 +224,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1200.
     * @tc.desc: startAbility: The input parameter want is not configured (the value is {}).(by callback)
     */
-    it("SUB_AA_JsApi_Ability_1200", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1200", Level.LEVEL0, async function (done) {
         let parameter = {}
         featureAbility.startAbility(parameter, (error, data) => {
             console.log('testAblity1200 data: ' + JSON.stringify(data))
@@ -239,7 +239,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1300.
     * @tc.desc: startAbility: The input parameter is uddefined.(by promise)
     */
-    it("SUB_AA_JsApi_Ability_1300", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1300", Level.LEVEL0, async function (done) {
         await featureAbility.startAbility(undefined).then((data) => {
             console.log('testAblity1300 data: ' + JSON.stringify(data))
             expect().assertFail()
@@ -255,7 +255,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1400.
     * @tc.desc: startAbility: The input parameter is uddefined.(by callback)
     */
-    it("SUB_AA_JsApi_Ability_1400", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1400", Level.LEVEL0, async function (done) {
         featureAbility.startAbility(undefined, (error, data) => {
             console.log('testAblity1400 data: ' + JSON.stringify(data))
             console.log('testAblity1400 error: ' + JSON.stringify(error))
@@ -269,7 +269,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1500.
     * @tc.desc: startAbilityForResult: The input parameter want is not configured (the value is {}).(by promise)
     */
-    it("SUB_AA_JsApi_Ability_1500", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1500", Level.LEVEL0, async function (done) {
         let parameter = {}
         await featureAbility.startAbilityForResult(parameter).then((data) => {
             console.log('testAblity1500 data: ' + JSON.stringify(data))
@@ -286,7 +286,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1600.
     * @tc.desc: startAbilityForResult: The input parameter want is not configured (the value is {}).(by callback)
     */
-    it("SUB_AA_JsApi_Ability_1600", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1600", Level.LEVEL0, async function (done) {
         let parameter = {}
         featureAbility.startAbilityForResult(parameter, (error, data) => {
             console.log('testAblity1600 data: ' + JSON.stringify(data))
@@ -302,7 +302,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1700.
     * @tc.desc: startAbilityForResult: The input parameter optParam is undefined.(by promise)
     */
-    it("SUB_AA_JsApi_Ability_1700", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1700", Level.LEVEL0, async function (done) {
         await featureAbility.startAbilityForResult(undefined).then((data) => {
             console.log('testAblity1700 data: ' + JSON.stringify(data))
             expect.assertFail()
@@ -318,7 +318,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1800.
     * @tc.desc: startAbilityForResult: The input parameter optParam is undefined.(by callback)
     */
-    it("SUB_AA_JsApi_Ability_1800", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1800", Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult(undefined, (error) => {
             console.log('testAblity1800' + JSON.stringify(error));
             expect(errCode1).assertEqual(error.code)
@@ -331,7 +331,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity1900.
     * @tc.desc: startAbilityForResult-wrong input parameter format want a layer outside.(by promise)
     */
-    it("SUB_AA_JsApi_Ability_1900", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_1900", Level.LEVEL0, async function (done) {
         let startAbilityParameter = {
             'want': {
                 'bundleName': bundleName,
@@ -357,7 +357,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity2000.
     * @tc.desc: startAbilityForResult-wrong input parameter format want a layer outside.(by callback)
     */
-    it("SUB_AA_JsApi_Ability_2000", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_2000", Level.LEVEL0, async function (done) {
         let startAbilityParameter = {
             'want': {
                 'bundleName': bundleName,
@@ -380,7 +380,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity2100.
     * @tc.desc: startAbilityForResult-want-Set bundleName and abilityName+flag-flag to character strings.(by promise)
     */
-    it("SUB_AA_JsApi_Ability_2100", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_2100", Level.LEVEL0, async function (done) {
         let parameter = {
             'want': {
                 'bundleName': bundleName,
@@ -407,7 +407,7 @@ describe('StartAbilityTest', function () {
     * @tc.name: testAblity2200.
     * @tc.desc: startAbilityForResult-want-Set bundleName and abilityName+flag-flag to character strings.(by callback)
     */
-    it("SUB_AA_JsApi_Ability_2200", 0, async function (done) {
+    it("SUB_AA_JsApi_Ability_2200", Level.LEVEL0, async function (done) {
         let parameter = {
             'want': {
                 'bundleName': bundleName,

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import abilityManager from "@ohos.application.appManager";
@@ -67,7 +67,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level   0
  */
-    it(TAG_TEST_0100, 0, async (done: Function) => {
+    it(TAG_TEST_0100, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0100 + 'promise START');
       let detailed: boolean = false;
       let startTime = Utils.getNowTime();
@@ -93,7 +93,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by AsyncCallback)
  * @tc.level   0
  */
-    it(TAG_TEST_0200, 0, async (done: Function) => {
+    it(TAG_TEST_0200, Level.LEVEL0, async (done: Function) => {
       let detailed: boolean = false;
       console.info(TAG_TEST_0200 + 'callBack START');
       try {
@@ -122,7 +122,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level   0
  */
-    it(TAG_TEST_0300, 0, async (done: Function) => {
+    it(TAG_TEST_0300, Level.LEVEL0, async (done: Function) => {
       let detailed: ESObject;
       console.info(TAG_TEST_0300 + 'callBack START');
       let startTime = await Utils.getNowTime();
@@ -149,7 +149,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by AsyncCallback)
  * @tc.level   0
  */
-    it(TAG_TEST_0400, 0, async (done: Function) => {
+    it(TAG_TEST_0400, Level.LEVEL0, async (done: Function) => {
       let detailed: ESObject;
       console.info(TAG_TEST_0400 + 'callBack START');
       try {
@@ -177,7 +177,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level   0
  */
-    it(TAG_TEST_0500, 0, async (done: Function) => {
+    it(TAG_TEST_0500, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0500 + 'promise START');
       let detailed: number = 0;
       let startTime = await Utils.getNowTime();
@@ -203,7 +203,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by AsyncCallback)
  * @tc.level   0
  */
-    it(TAG_TEST_0600, 0, async (done: Function) => {
+    it(TAG_TEST_0600, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0600 + 'callBack START');
       let startTime = Utils.getNowTime();
       abilityManager.getAppMemorySize((error, data) => {
@@ -224,7 +224,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level   0
  */
-    it(TAG_TEST_0700, 0, async (done: Function) => {
+    it(TAG_TEST_0700, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0700 + 'promise START');
       let startTime = Utils.getNowTime();
       let detailed: boolean = true;
@@ -249,7 +249,7 @@ export default function addContextAndAbilityJsunit() {
  * @tc.desc: Check the return value of the interface (by AsyncCallback)
  * @tc.level   0
  */
-    it(TAG_TEST_0800, 0, async (done: Function) => {
+    it(TAG_TEST_0800, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0800 + 'callBack START');
       let startTime = await Utils.getNowTime();
       abilityManager.isRamConstrainedDevice((error, data) => {
@@ -269,7 +269,7 @@ export default function addContextAndAbilityJsunit() {
      * @tc.desc: Check the featureAbility.ErrorCode.NO_ERROR
      * @tc.level 0
      */
-    it(TAG_TEST_0900, 0, async (done: Function) => {
+    it(TAG_TEST_0900, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0900 + ' NO_ERROR START');
       let no_error = ability_featureAbility.ErrorCode.NO_ERROR;
       console.info(TAG_TEST_0900 + ' featureAbility no_error is: ' + no_error);
@@ -285,7 +285,7 @@ export default function addContextAndAbilityJsunit() {
      * @tc.desc: Check the featureAbility.ErrorCode.INVALID_PARAMETER
      * @tc.level 0
      */
-    it(TAG_TEST_0010, 0, async (done: Function) => {
+    it(TAG_TEST_0010, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0010 + ' INVALID_PARAMETER START');
       let invalid_parameter = ability_featureAbility.ErrorCode.INVALID_PARAMETER;
       console.info(TAG_TEST_0010 + ' featureAbility invalid_parameter is: ' + invalid_parameter);
@@ -301,7 +301,7 @@ export default function addContextAndAbilityJsunit() {
      * @tc.desc: Check the featureAbility.ErrorCode.ABILITY_NOT_FOUND
      * @tc.level 0
      */
-    it(TAG_TEST_0011, 0, async (done: Function) => {
+    it(TAG_TEST_0011, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0011 + ' ABILITY_NOT_FOUND START');
       let ability_not_found = ability_featureAbility.ErrorCode.ABILITY_NOT_FOUND;
       console.info(TAG_TEST_0011 + ' featureAbility ability_not_found is: ' + ability_not_found);
@@ -317,7 +317,7 @@ export default function addContextAndAbilityJsunit() {
      * @tc.desc: Check the featureAbility.ErrorCode.PERMISSION_DENY
      * @tc.level 0
      */
-    it(TAG_TEST_0012, 0, async (done: Function) => {
+    it(TAG_TEST_0012, Level.LEVEL0, async (done: Function) => {
       console.info(TAG_TEST_0012 + ' PERMISSION_DENY START');
       let permission_deny = ability_featureAbility.ErrorCode.PERMISSION_DENY;
       console.info(TAG_TEST_0012 + ' featureAbility permission_deny is: ' + permission_deny);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
  
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -46,7 +46,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('BackToCallerAbilityWithResultTest_0100', 0, async (done: Function) => {
+    it('BackToCallerAbilityWithResultTest_0100', Level.LEVEL0, async (done: Function) => {
       log('---------------BackToCallerAbilityWithResultTest_0100 is start---------------')
       abilityContext = AppStorage.get<common.UIAbilityContext>('abilityContext')!;
       if (!abilityContext) {

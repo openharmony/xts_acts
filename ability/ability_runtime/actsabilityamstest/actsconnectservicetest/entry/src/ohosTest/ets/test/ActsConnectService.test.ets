@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium';
 import { common, Want } from '@kit.AbilityKit';
 
 let testAbilityContext: common.UIAbilityContext;
@@ -45,7 +45,7 @@ export default function actsConnectServiceTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_Context_AbilityContext_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Context_AbilityContext_1600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_Context_AbilityContext_1600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let connection: number;
@@ -87,7 +87,7 @@ export default function actsConnectServiceTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_Context_AbilityContext_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Context_AbilityContext_1700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_Context_AbilityContext_1700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let options: common.ConnectOptions = {
