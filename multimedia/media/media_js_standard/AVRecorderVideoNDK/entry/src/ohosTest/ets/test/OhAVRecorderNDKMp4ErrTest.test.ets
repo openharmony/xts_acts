@@ -138,6 +138,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0011 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -196,6 +197,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0012 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -252,6 +254,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0013 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -309,6 +312,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0014 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -364,6 +368,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0015 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -419,6 +424,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0016 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -493,6 +499,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0021 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -542,6 +549,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0022 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -593,6 +601,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0023 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -646,6 +655,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0024 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -701,6 +711,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0025 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -750,6 +761,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0026 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -801,6 +813,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0027 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -852,6 +865,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0031 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
@@ -908,6 +922,7 @@ export default function OhAVRecorderNDKMp4ErrTest() { // L2
         console.info("Failed to obtain the default  object.Not support usb camera");
         expect(true).assertTrue();
         done();
+        return;
       }
       console.info(`testOhAvRecorder_mp4_errorevent_0041 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
