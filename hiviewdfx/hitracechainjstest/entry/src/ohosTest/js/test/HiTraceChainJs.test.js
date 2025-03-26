@@ -41,7 +41,7 @@ describe('HiTraceJsTest', function () {
     it('testHitraceApi01', 1, async function (done) {
         console.info('testHitraceApi01 start');
         try{
-            let traceId = hiTraceChain.begin("hitrace01");
+            let traceId = hiTraceChain.begin("hitrace01", hiTraceChain.HiTraceFlag.DEFAULT);
             let traceIdIsvalid = hiTraceChain.isValid(traceId);
             if(!traceIdIsvalid){
                 expect().assertFail();
