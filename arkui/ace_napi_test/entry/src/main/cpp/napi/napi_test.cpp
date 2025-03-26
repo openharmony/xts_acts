@@ -10803,9 +10803,9 @@ typedef struct {
     uint8_t *data;
     size_t length;
 } BufferData;
-void FinalizeCallBackBuffer(napi_env env, void *finalize_data, void *finalizeHint)
+void FinalizeCallBackBuffer(napi_env env, void *finalizeData, void *finalizeHint)
 {
-    BufferData *bufferData = static_cast<BufferData *>(finalize_data);
+    BufferData *bufferData = static_cast<BufferData *>(finalizeData);
     delete[] bufferData->data;
     delete bufferData;
 }
