@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgentManager'
 import notificationManager from '@ohos.notificationManager';
 
@@ -64,7 +64,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0100", 3, async function (done) {
+        it("reminderErrorCode_0100", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderErrorCode_0100---------------------------');
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderErrorCode_0300 cancelAllReminders success');
@@ -125,7 +125,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0200", 3, async function (done) {
+        it("reminderErrorCode_0200", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderErrorCode_0200---------------------------');
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderErrorCode_0200 cancelAllReminders success');
@@ -158,7 +158,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0300", 3, async function (done) {
+        it("reminderErrorCode_0300", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderErrorCode_0300---------------------------');
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderErrorCode_0300 cancelAllReminders success');
@@ -187,7 +187,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0400", 3, async function (done) {
+        it("reminderErrorCode_0400", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderErrorCode_0400---------------------------');
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderErrorCode_0400 cancelAllReminders success');
@@ -216,7 +216,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0500", 3, async function (done) {
+        it("reminderErrorCode_0500", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderRequestAttribute_0033---------------------------');
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderErrorCode_0500 cancelAllReminders success');
@@ -245,7 +245,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0600", 3, async function (done) {
+        it("reminderErrorCode_0600", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderRequestAttribute_0033---------------------------');
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderErrorCode_0600 cancelAllReminders success');
@@ -274,7 +274,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderErrorCode_0700", 3, async function (done) {
+        it("reminderErrorCode_0700", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderErrorCode_0700---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1

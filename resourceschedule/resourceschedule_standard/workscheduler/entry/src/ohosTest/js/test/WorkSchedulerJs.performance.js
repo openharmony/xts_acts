@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 import workscheduler from '@ohos.resourceschedule.workScheduler'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function WorkSchedulerPerformanceTest() {
 describe("WorkSchedulerPerformanceTest", function () {
@@ -32,7 +32,7 @@ describe("WorkSchedulerPerformanceTest", function () {
 })
 
 function performanceStartWork() {
-    it('WorkSchedulerPerformance_001', 0, async function(done) {
+    it('WorkSchedulerPerformance_001', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let totalTime = 0
         let workInfo = {
@@ -54,7 +54,7 @@ function performanceStartWork() {
 }
 
 function performanceStopWork() {
-    it('WorkSchedulerPerformance_002', 0, async function(done) {
+    it('WorkSchedulerPerformance_002', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let totalTime = 0
         let workingInfo = {
@@ -88,7 +88,7 @@ function performanceStopWork() {
 }
 
 function performanceGetWorkStatusCallback() {
-    it('WorkSchedulerPerformance_003', 0, async function(done) {
+    it('WorkSchedulerPerformance_003', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 203,
@@ -116,7 +116,7 @@ function performanceGetWorkStatusCallback() {
 }
 
 function performanceGetWorkStatusPromise() {
-    it('WorkSchedulerPerformance_004', 0, async function(done) {
+    it('WorkSchedulerPerformance_004', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 204,
@@ -149,7 +149,7 @@ function performanceGetWorkStatusPromise() {
 }
 
 function performanceObtainAllWorksCallback() {
-    it('WorkSchedulerPerformance_005', 0, async function(done) {
+    it('WorkSchedulerPerformance_005', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 205,
@@ -177,7 +177,7 @@ function performanceObtainAllWorksCallback() {
 }
 
 function performanceObtainAllWorksPromise() {
-    it('WorkSchedulerPerformance_006', 0, async function(done) {
+    it('WorkSchedulerPerformance_006', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 206,
@@ -209,7 +209,7 @@ function performanceObtainAllWorksPromise() {
 }
 
 function performanceIsLastWorkTimeOutCallback() {
-    it('WorkSchedulerPerformance_007', 0, async function(done) {
+    it('WorkSchedulerPerformance_007', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 207,
@@ -237,7 +237,7 @@ function performanceIsLastWorkTimeOutCallback() {
 }
 
 function performanceIsLastWorkTimeOutPromise() {
-    it('WorkSchedulerPerformance_008', 0, async function(done) {
+    it('WorkSchedulerPerformance_008', Level.LEVEL0, async function(done) {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 208,
@@ -269,7 +269,7 @@ function performanceIsLastWorkTimeOutPromise() {
 }
 
 function performanceStopAndClearWorks() {
-    it('WorkSchedulerPerformance_009', 0, function() {
+    it('WorkSchedulerPerformance_009', Level.LEVEL0, function() {
         workscheduler.stopAndClearWorks()
         let workInfo = {
             workId: 209,
