@@ -28,8 +28,8 @@ import { dataSharePredicates } from '@kit.ArkData'
 export default function positionTypeTest () {
   describe('positionTypeTest', () => {
 
-    let globalContext: common.UIAbilityContext = AppStorage.get('globalContext') as common.UIAbilityContext;
-    const helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(globalContext);
+    let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
+    const helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
     let fileNameList: Array<string> = ['positionType_01.jpg'];
 
     beforeAll(async () => {
