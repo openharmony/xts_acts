@@ -13,12 +13,10 @@
  * limitations under the License.
  */
 
-import OhAVRecorderNDKM4aErrTest from './OhAVRecorderNDKM4aErrTest.test'
-import OhAVRecorderNDKM4aTest from './OhAVRecorderNDKM4aTest.test'
-import OhAVRecorderNDKMp3Test from './OhAVRecorderNDKMp3Test.test'
+import OhAVRecorderNDKMp4ErrTest from './OhAVRecorderNDKMp4ErrTest.test'
+import OhAVRecorderNDKMp4Test from './OhAVRecorderNDKMp4Test.test'
 
 export default function testsuite() {
-  OhAVRecorderNDKM4aTest();
-  OhAVRecorderNDKMp3Test();
-  OhAVRecorderNDKM4aErrTest();
+  OhAVRecorderNDKMp4Test();
+  OhAVRecorderNDKMp4ErrTest();
 }

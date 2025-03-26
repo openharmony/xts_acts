@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
-import OhAVRecorderNDKM4aErrTest from './OhAVRecorderNDKM4aErrTest.test'
-import OhAVRecorderNDKM4aTest from './OhAVRecorderNDKM4aTest.test'
-import OhAVRecorderNDKMp3Test from './OhAVRecorderNDKMp3Test.test'
-
-export default function testsuite() {
-  OhAVRecorderNDKM4aTest();
-  OhAVRecorderNDKMp3Test();
-  OhAVRecorderNDKM4aErrTest();
+export default class Utils {
+  static sleep(time: number) {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
 }

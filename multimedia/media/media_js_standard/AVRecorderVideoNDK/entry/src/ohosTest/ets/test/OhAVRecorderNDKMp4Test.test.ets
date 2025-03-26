@@ -28,42 +28,92 @@ const Tag = 'OHAVRecorderNdk_test:';
 let avRecorderNdkTestBase = new AVRecorderNdkTestBase();
 let fdObject: ESObject;
 let fdPath: string;
+let videoFrameWidth: number;
+let videoFrameHeight: number;
 let audioSampleRate: number;
-let audioBitrate: number;
+let audioBiterate: number;
+let videoFrameRate: number;
+let videoOrientation: number;
+let cameraVideoProfileType: Array<camera.VideoProfile>;
+let isSupportCameraVideoProfiles = true;
 
-export default function OhAVRecorderNDKM4aTest() { // L2
-  describe('OhAVRecorderNDKM4aTest', () => {
+export default function OhAVRecorderNDKMp4Test() { // L2
+  describe('OhAVRecorderNDKMp4Test', () => {
 
     beforeAll(async () => {
       console.info(`case to beforeAll `);
       let permissionNames: Array<Permissions> =
         ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA', 'ohos.permission.WRITE_MEDIA',
-          'ohos.permission.MICROPHONE'];
+          'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'];
       await avRecorderNdkTestBase.getPermission(permissionNames);
       await avRecorderNdkTestBase.msleepAsync(200);
-      await avRecorderNdkTestBase.driveFn(3);
+      await avRecorderNdkTestBase.driveFn(4);
       await avRecorderNdkTestBase.msleepAsync(200);
+      if (avRecorderNdkTestBase.executeAVVideoRecorder()) {
+        let context: ESObject = AppStorage.get('testContext');
+        let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+        if (avRecorderNdkTestBase.isEmpty(cameraManager)) {
+          console.info("[camera] case getCameraManager FAILED");
+          expect().assertFail();
+        }
+        let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+
+        console.info("[camera] cameras[0]" + JSON.stringify(cameras[0]));
+        if (!avRecorderNdkTestBase.isEmpty(cameras[0])) {
+          let cameraoutputcapability: camera.CameraOutputCapability =
+            cameraManager.getSupportedOutputCapability(cameras[0]);
+          if (avRecorderNdkTestBase.isEmpty(cameraoutputcapability)) {
+            console.info("[camera] case getSupportedOutputCapability FAILED");
+            expect().assertFail();
+          }
+          cameraVideoProfileType = cameraoutputcapability.videoProfiles;
+        } else {
+          isSupportCameraVideoProfiles = false;
+          console.info("Failed to obtain the default cameraVideoProfileType object.Not support usb camera");
+        }
+      } else {
+        isSupportCameraVideoProfiles = false;
+        console.info("Failed to obtain the default  object.Not support usb camera");
+      }
+
 
     });
     beforeEach(async () => {
       console.info(`case to beforeEach `);
-      //audioSampleRate随机数AAC编码支持采样率范围
-      // [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]
-      let audioSampleRateList: Array<number> =
-        [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]
-      let audioSampleRateIndex: number = Math.floor(Math.random() * audioSampleRateList.length)
-      audioSampleRate = audioSampleRateList[audioSampleRateIndex]
+      if (isSupportCameraVideoProfiles) {
+        console.info("[camera] [videoProfiles.lenth=]" + cameraVideoProfileType.length);
+        let random_int: number = Math.floor(Math.random() * cameraVideoProfileType.length)
+        console.info("[camera] [videoProfiles.random_int=]" + random_int);
+        videoFrameWidth = cameraVideoProfileType[random_int].size.width;
+        videoFrameHeight = cameraVideoProfileType[random_int].size.height;
+        console.info("[camera] [videoFrameWidth[0]=]" + JSON.stringify(videoFrameWidth));
+        console.info("[camera] [videoFrameHeight[0]=]" + JSON.stringify(videoFrameHeight));
 
-      //audioBitrate随机数AAC编码格式支持比特率范围[32000 - 500000]
-      let audioBitrateList: Array<number> = [32000, 40000, 48000, 56000, 64000, 80000,
-        96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000, 500000]
-      let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
-      audioBitrate = audioBitrateList[audioBitrateIndex]
+        //audioSampleRate随机数
+        // [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]
+        let audioSampleRateList: Array<number> =
+          [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]
+        let audioSampleRateIndex: number = Math.floor(Math.random() * audioSampleRateList.length)
+        audioSampleRate = audioSampleRateList[audioSampleRateIndex]
 
+        //audioBiterate随机数AAC编码格式支持比特率范围[32000 - 500000]
+        let audioBitrateList: Array<number> = [32000, 40000, 480000, 56000, 64000, 80000,
+          96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000, 500000]
+        let audioBitrateIndex: number = Math.floor(Math.random() * audioBitrateList.length)
+        audioBiterate = audioBitrateList[audioBitrateIndex]
+
+        let videoFrameRateList: Array<number> = [15, 30, 60]
+        let videoFrameRateIndex: number = Math.floor(Math.random() * videoFrameRateList.length)
+        videoFrameRate = videoFrameRateList[videoFrameRateIndex]
+
+        let videoOrientationList: Array<number> = [0, 90, 180, 270]
+        let videoOrientationIndex: number = Math.floor(Math.random() * videoOrientationList.length)
+        videoOrientation = videoOrientationList[videoOrientationIndex]
+      }
     });
     afterEach(async () => {
       console.info(`case to afterEach `);
-      if (!avRecorderNdkTestBase.isRelease) {
+      if (!avRecorderNdkTestBase.isRelease && isSupportCameraVideoProfiles) {
         console.info(`case to releaseAVRecorder isRelease==false`);
         let result = await testapi.releaseAVRecorder();
         expect(result).assertEqual(0);
@@ -75,24 +125,35 @@ export default function OhAVRecorderNDKM4aTest() { // L2
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0010
-     * @tc.name       : testOhAvRecorder_m4a_success_0010
+     * @tc.number     : testOhAvRecorder_mp4_success_0010
+     * @tc.name       : testOhAvRecorder_mp4_success_0010
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0010', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0010 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0010', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0010 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -100,11 +161,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -120,28 +181,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0010 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0010 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00101
-     * @tc.name       : testOhAvRecorder_m4a_success_00101
+     * @tc.number     : testOhAvRecorder_mp4_success_00101
+     * @tc.name       : testOhAvRecorder_mp4_success_00101
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00101', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00101 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00101', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00101 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -149,11 +221,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -169,28 +241,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00101 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00101 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00102
-     * @tc.name       : testOhAvRecorder_m4a_success_00102
+     * @tc.number     : testOhAvRecorder_mp4_success_00102
+     * @tc.name       : testOhAvRecorder_mp4_success_00102
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00102', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00102 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00102', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00102 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -198,11 +281,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //resume err recorder
         avRecorderNdkTestBase.RESUME_RECORDER_ERR_EVENT,
@@ -214,28 +297,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00102 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00102 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00103
-     * @tc.name       : testOhAvRecorder_m4a_success_00103
+     * @tc.number     : testOhAvRecorder_mp4_success_00103
+     * @tc.name       : testOhAvRecorder_mp4_success_00103
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00103', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00103 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00103', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00103 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -243,11 +337,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -261,28 +355,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00103 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00103 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00104
-     * @tc.name       : testOhAvRecorder_m4a_success_00104
+     * @tc.number     : testOhAvRecorder_mp4_success_00104
+     * @tc.name       : testOhAvRecorder_mp4_success_00104
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00104', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00104 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00104', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00104 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -290,11 +395,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -310,28 +415,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00104 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00104 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00105
-     * @tc.name       : testOhAvRecorder_m4a_success_00105
+     * @tc.number     : testOhAvRecorder_mp4_success_00105
+     * @tc.name       : testOhAvRecorder_mp4_success_00105
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00105', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00104 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00105', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00105 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -339,11 +455,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -357,28 +473,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00104 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00105 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00106
-     * @tc.name       : testOhAvRecorder_m4a_success_00106
+     * @tc.number     : testOhAvRecorder_mp4_success_00106
+     * @tc.name       : testOhAvRecorder_mp4_success_00106
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00106', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00106 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00106', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00106 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -386,11 +513,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -408,28 +535,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00106 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00106 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00107
-     * @tc.name       : testOhAvRecorder_m4a_success_00107
+     * @tc.number     : testOhAvRecorder_mp4_success_00107
+     * @tc.name       : testOhAvRecorder_mp4_success_00107
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00107', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00107 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00107', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00107 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -437,11 +575,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -457,28 +595,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00107 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00107 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00108
-     * @tc.name       : testOhAvRecorder_m4a_success_00108
+     * @tc.number     : testOhAvRecorder_mp4_success_00108
+     * @tc.name       : testOhAvRecorder_mp4_success_00108
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00108', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00108 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00108', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00108 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -486,11 +635,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -506,28 +655,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00108 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00108 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_00109
-     * @tc.name       : testOhAvRecorder_m4a_success_00109
+     * @tc.number     : testOhAvRecorder_mp4_success_00109
+     * @tc.name       : testOhAvRecorder_mp4_success_00109
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_00109', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_00109 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_00109', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_00109 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -535,11 +695,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
         //resuem err recorder
@@ -553,28 +713,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_00109 test end `);
+      console.info(`testOhAvRecorder_mp4_success_00109 test end `);
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_OHAVPLAYERPREPARE_0100
-     * @tc.name       : testOhAvPlayerPrepare001
+     * @tc.number     : testOhAvRecorder_mp4_success_002
+     * @tc.name       : testOhAvRecorder_mp4_success_002
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_002', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_002 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_002', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_002 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -582,11 +753,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -598,28 +769,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_002 test end `);
+      console.info(`testOhAvRecorder_mp4_success_002 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0021
-     * @tc.name       : testOhAvRecorder_m4a_success_0021
+     * @tc.number     : testOhAvRecorder_mp4_success_0021
+     * @tc.name       : testOhAvRecorder_mp4_success_0021
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0021', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0021 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0021', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0021 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -627,11 +809,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -645,28 +827,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0021 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0021 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0022
-     * @tc.name       : testOhAvRecorder_m4a_success_0022
+     * @tc.number     : testOhAvRecorder_mp4_success_0022
+     * @tc.name       : testOhAvRecorder_mp4_success_0022
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0022', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0022 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0022', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0022 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -674,11 +867,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //resume err recorder
         avRecorderNdkTestBase.RESUME_RECORDER_ERR_EVENT,
@@ -692,28 +885,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0022 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0022 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0023
-     * @tc.name       : testOhAvRecorder_m4a_success_0023
+     * @tc.number     : testOhAvRecorder_mp4_success_0023
+     * @tc.name       : testOhAvRecorder_mp4_success_0023
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0023', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0023 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0023', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0023 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -721,11 +925,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
@@ -739,28 +943,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0023 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0023 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0024
-     * @tc.name       : testOhAvRecorder_m4a_success_0024
+     * @tc.number     : testOhAvRecorder_mp4_success_0024
+     * @tc.name       : testOhAvRecorder_mp4_success_0024
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0024', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0024 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0024', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0024 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -768,11 +983,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -788,28 +1003,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0024 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0024 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0025
-     * @tc.name       : testOhAvRecorder_m4a_success_0025
+     * @tc.number     : testOhAvRecorder_mp4_success_0025
+     * @tc.name       : testOhAvRecorder_mp4_success_0025
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0025', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0025 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0025', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0025 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -817,11 +1043,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
@@ -835,28 +1061,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0025 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0025 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0026
-     * @tc.name       : testOhAvRecorder_m4a_success_0026
+     * @tc.number     : testOhAvRecorder_mp4_success_0026
+     * @tc.name       : testOhAvRecorder_mp4_success_0026
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0026', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0026 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0026', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0026 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -864,11 +1101,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
@@ -886,28 +1123,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0026 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0026 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0027
-     * @tc.name       : testOhAvRecorder_m4a_success_0027
+     * @tc.number     : testOhAvRecorder_mp4_success_0027
+     * @tc.name       : testOhAvRecorder_mp4_success_0027
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0027', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0027 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0027', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0027 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -915,11 +1163,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait recorder
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
@@ -935,28 +1183,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0027 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0027 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_0028
-     * @tc.name       : testOhAvRecorder_m4a_success_0028
+     * @tc.number     : testOhAvRecorder_mp4_success_0028
+     * @tc.name       : testOhAvRecorder_mp4_success_0028
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_0028', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_0028 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_0028', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_0028 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -979,28 +1238,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       )
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_0028 test end `);
+      console.info(`testOhAvRecorder_mp4_success_0028 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_003
-     * @tc.name       : testOhAvRecorder_m4a_success_003
+     * @tc.number     : testOhAvRecorder_mp4_success_003
+     * @tc.name       : testOhAvRecorder_mp4_success_003
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_003', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_003 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_003', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_003 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1008,17 +1278,15 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // resume recorder
         avRecorderNdkTestBase.RESUME_RECORDER_EVENT,
@@ -1032,28 +1300,39 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_003 test end `);
+      console.info(`testOhAvRecorder_mp4_success_003 test end `);
     });
 
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_004
-     * @tc.name       : testOhAvRecorder_m4a_success_004
+     * @tc.number     : testOhAvRecorder_mp4_success_004
+     * @tc.name       : testOhAvRecorder_mp4_success_004
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_004', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_004 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_004', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_004 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1061,25 +1340,23 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // reset recorder
         avRecorderNdkTestBase.RESET_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         // pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -1095,28 +1372,38 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_004 test end `);
+      console.info(`testOhAvRecorder_mp4_success_004 test end `);
     });
-
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_005
-     * @tc.name       : testOhAvRecorder_m4a_success_005
+     * @tc.number     : testOhAvRecorder_mp4_success_005
+     * @tc.name       : testOhAvRecorder_mp4_success_005
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_005', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_005 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_005', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_005 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1124,30 +1411,24 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
         //start err recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //start err recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //start err recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
         //stop recorder
@@ -1160,28 +1441,38 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_005 test end `);
+      console.info(`testOhAvRecorder_mp4_success_005 test end `);
     });
-
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_006
-     * @tc.name       : testOhAvRecorder_m4a_success_006
+     * @tc.number     : testOhAvRecorder_mp4_success_006
+     * @tc.name       : testOhAvRecorder_mp4_success_006
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_006', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_006 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_006', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_006 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1189,11 +1480,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
 
@@ -1209,28 +1500,38 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_006 test end `);
+      console.info(`testOhAvRecorder_mp4_success_006 test end `);
     });
-
     /**
-     * @tc.number     : testOhAvRecorder_m4a_success_007
-     * @tc.name       : testOhAvRecorder_m4a_success_007
+     * @tc.number     : testOhAvRecorder_mp4_success_007
+     * @tc.name       : testOhAvRecorder_mp4_success_007
      * @tc.desc       : Prepare the playback environment and asynchronously cache media data.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_success_007', 0, async (done: Function) => {
-      console.info(`testOhAvRecorder_m4a_success_007 test start `);
-      let fileName: string = avRecorderNdkTestBase.resourceM4AName();
+    it('testOhAvRecorder_mp4_success_007', 0, async (done: Function) => {
+      if (!isSupportCameraVideoProfiles) {
+        console.info("Failed to obtain the default  object.Not support usb camera");
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.info(`testOhAvRecorder_mp4_success_007 test start `);
+      let fileName: string = avRecorderNdkTestBase.resourceMP4Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
       let config: ESObject = {
         fdNumber: fdObject.fdNumber,
         avOutName: fileName,
-        fileFormat: 6,
+        fileFormat: 2,
+        videoCodec: 2,
+        videoFrameWidth: videoFrameWidth,
+        videoFrameHeight: videoFrameHeight,
         audioSampleRate: audioSampleRate,
-        audioBitrate: audioBitrate,
+        audioBiterate: audioBiterate,
+        videoFrameRate: videoFrameRate,
+        videoOrientation: videoOrientation,
         recorderTimer: 2000
       }
       let mySteps = new Array(
@@ -1238,11 +1539,11 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.CREATE_RECORDER_EVENT,
         //prepare recorder
         avRecorderNdkTestBase.PREPARE_RECORDER_EVENT,
+        //prepare camera recorder
+        avRecorderNdkTestBase.PREPARE_CAMERA_EVENT,
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
@@ -1250,8 +1551,6 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         //start err  recorder
         avRecorderNdkTestBase.START_RECORDER_ERR_EVENT,
         // wait 2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
@@ -1264,7 +1563,7 @@ export default function OhAVRecorderNDKM4aTest() { // L2
         avRecorderNdkTestBase.END_EVENT
       );
       await avRecorderNdkTestBase.toNextStep(config, fdPath, mySteps, done);
-      console.info(`testOhAvRecorder_m4a_success_007 test end `);
+      console.info(`testOhAvRecorder_mp4_success_007 test end `);
     });
   });
 }
