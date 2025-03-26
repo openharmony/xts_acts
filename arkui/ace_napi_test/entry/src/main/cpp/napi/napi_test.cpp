@@ -10800,7 +10800,7 @@ typedef struct {
     uint8_t *data;
     size_t length;
 } BufferData;
-void FinalizeCallbackBuffer(napi_env env, void *finalize_data, void *finalize_hint)
+void FinalizeCallbackBuffer(napi_env env, void *finalize_data, void *finalizeHint)
 {
     BufferData *bufferData = static_cast<BufferData *>(finalize_data);
     delete[] bufferData->data;
@@ -13518,8 +13518,7 @@ static napi_value NapiWrapSendableWithSizeTest1(napi_env env, napi_callback_info
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
     //js_object is undefined
-    status = napi_wrap_sendable_with_size(
-        env, undefined, (void*)data,
+    status = napi_wrap_sendable_with_size(env, undefined, (void*)data,
         [](napi_env env, void* data, void* hint) {
             char* tmp = reinterpret_cast<char*>(data);
             delete[] tmp;
@@ -13528,8 +13527,7 @@ static napi_value NapiWrapSendableWithSizeTest1(napi_env env, napi_callback_info
     NAPI_ASSERT(env, status != napi_ok, "js_object is undefined, napi_wrap_sendable_with_size failed.");
 
     //env is null
-    status = napi_wrap_sendable_with_size(
-        nullptr, args[0], (void*)data,
+    status = napi_wrap_sendable_with_size(nullptr, args[0], (void*)data,
         [](napi_env env, void* data, void* hint) {
             char* tmp = reinterpret_cast<char*>(data);
             delete[] tmp;
@@ -13537,8 +13535,7 @@ static napi_value NapiWrapSendableWithSizeTest1(napi_env env, napi_callback_info
         (void*)data, nativeBindingSize);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap_sendable_with_size failed.");
     //js_object is null
-    status = napi_wrap_sendable_with_size(
-        env, nullptr, (void*)data,
+    status = napi_wrap_sendable_with_size(env, nullptr, (void*)data,
         [](napi_env env, void* data, void* hint) {
             char* tmp = reinterpret_cast<char*>(data);
             delete[] tmp;
@@ -13546,15 +13543,13 @@ static napi_value NapiWrapSendableWithSizeTest1(napi_env env, napi_callback_info
         (void*)data, nativeBindingSize);
     NAPI_ASSERT(env, status == napi_invalid_arg, "js_object is null, napi_wrap_sendable_with_size failed.");
     //void* native_object is null
-        status = napi_wrap_sendable_with_size(
-        env, args[0], nullptr,
+        status = napi_wrap_sendable_with_size(env, args[0], nullptr,
         [](napi_env env, void* data, void* hint) {
             char* tmp = reinterpret_cast<char*>(data);
             delete[] tmp;
         },
         (void*)data, nativeBindingSize);
-    NAPI_ASSERT(env, status == napi_invalid_arg, 
-                "void* native_object is null, napi_wrap_sendable_with_size failed.");
+    NAPI_ASSERT(env, status == napi_invalid_arg, "void* native_object is null, napi_wrap_sendable_with_size failed.");
 
     //all is null
     status = napi_wrap_sendable_with_size(nullptr, nullptr, nullptr, nullptr, nullptr, nativeBindingSize);
@@ -14914,27 +14909,21 @@ static napi_value NapiGetAllPropertyNamesTest(napi_env env, napi_callback_info i
     napi_get_undefined(env, &undefined);
 
     //object is undefined
-    status = napi_get_all_property_names(env,
-                                         undefined,
-                                         napi_key_own_only,
+    status = napi_get_all_property_names(env, undefined, napi_key_own_only,
                                          napi_key_writable,
                                          napi_key_keep_numbers,
                                          &result);
     NAPI_ASSERT(env, status != napi_ok, "object is undefined, napi_get_all_property_names failed.");
 
     //result is undefined
-    status = napi_get_all_property_names(env,
-                                         result,
-                                         napi_key_own_only,
+    status = napi_get_all_property_names(env, result, napi_key_own_only,
                                          napi_key_writable,
                                          napi_key_keep_numbers,
                                          &undefined);
     NAPI_ASSERT(env, status != napi_ok, "result is undefined, napi_get_all_property_names failed.");
 
     //env is null
-    status = napi_get_all_property_names(nullptr,
-                                         result,
-                                         napi_key_own_only,
+    status = napi_get_all_property_names(nullptr, result, napi_key_own_only,
                                          napi_key_writable,
                                          napi_key_keep_numbers,
                                          &result);
@@ -16541,33 +16530,33 @@ static napi_value NapiWrapTest(napi_env env, napi_callback_info info)
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
     const char* testStr = "test";
-    void* finalize_hint;
+    void* finalizeHint;
     napi_ref result;
     napi_value instanceValue;
 
     //js_object is undefined
     status = napi_wrap(
-        env, undefined, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalize_hint, &result);
+        env, undefined, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalizeHint, &result);
     NAPI_ASSERT(env, status == napi_object_expected, "js_object is undefined, napi_wrap failed.");
 
     //env is null
     status = napi_wrap(
-        nullptr, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalize_hint, &result);
+        nullptr, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalizeHint, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_wrap failed.");
 
     //js_object is null
     status = napi_wrap(
-        env, nullptr, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalize_hint, &result);
+        env, nullptr, (void*)testStr, [](napi_env env, void* data, void* hint) {}, finalizeHint, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "js_object is null, napi_wrap failed.");
 
     //native_object is null
     status = napi_wrap(
-        env, instanceValue, nullptr, [](napi_env env, void* data, void* hint) {}, finalize_hint, &result);
+        env, instanceValue, nullptr, [](napi_env env, void* data, void* hint) {}, finalizeHint, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "native_object is null, napi_wrap failed.");
 
     //finalize_cb is null
     status = napi_wrap(
-        env, instanceValue, (void*)testStr, nullptr, finalize_hint, &result);
+        env, instanceValue, (void*)testStr, nullptr, finalizeHint, &result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_cb is null, napi_wrap failed.");
 
     //all is null
@@ -16690,10 +16679,6 @@ static napi_value NapiGetNewTargetTest(napi_env env, napi_callback_info info)
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
     napi_value constructor = nullptr;
-
-    //result is undefined
-//     status = napi_get_new_target(env, info, &undefined);
-//     NAPI_ASSERT(env, status != napi_ok, "result is undefined, napi_get_new_target failed.");
 
     //env is null
     status = napi_get_new_target(nullptr, info, &constructor);
