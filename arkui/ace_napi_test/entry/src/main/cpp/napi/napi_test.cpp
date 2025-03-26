@@ -10761,8 +10761,11 @@ static napi_value NapiCreateExternalTest(napi_env env, napi_callback_info info)
     napi_value args[1];
 
     const size_t dataSize = 10;
-    void *data = malloc(dataSize);
-    memset(data, 0, dataSize);
+    void *data = calloc(1, dataSize);
+    if (data == nullptr) {
+        napi_throw_error(env, nullptr, "Failed to allocate memory");
+        return nullptr;
+    }
     napi_value result = nullptr;
     status = napi_create_external(env, data, finalizeCallback, nullptr, &result);
     //undefined
@@ -10800,7 +10803,7 @@ typedef struct {
     uint8_t *data;
     size_t length;
 } BufferData;
-void FinalizeCallbackBuffer(napi_env env, void *finalize_data, void *finalizeHint)
+void FinalizeCallBackBuffer(napi_env env, void *finalize_data, void *finalizeHint)
 {
     BufferData *bufferData = static_cast<BufferData *>(finalize_data);
     delete[] bufferData->data;
@@ -10814,73 +10817,38 @@ static napi_value NapiCreateExternalArrayBufferTest(napi_env env, napi_callback_
 
     // 创建一个有五个元素的C++数组
     uint8_t *dataArray = new uint8_t[5]{1, 2, 3, 4, 5};
-    napi_value externalBuffer = nullptr;
+    napi_value extBuffer = nullptr;
     BufferData *bufferData = new BufferData{dataArray, 5};
-    status = napi_create_external_arraybuffer(env,
-                                              dataArray,
-                                              5,
-                                              FinalizeCallbackBuffer,
-                                              bufferData,
-                                              &externalBuffer);
+    status = napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallBackBuffer, bufferData, &extBuffer);
     //undefined
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
     status = napi_create_external_arraybuffer(env,
                                               dataArray,
                                               5,
-                                              FinalizeCallbackBuffer,
+                                              FinalizeCallBackBuffer,
                                               bufferData,
                                               &undefined);
     NAPI_ASSERT(env, status == napi_ok, "*result is undefined, napi_create_external_arraybuffer ok.");
 
     //env is null
-    status = napi_create_external_arraybuffer(nullptr,
-                                              dataArray,
-                                              5,
-                                              FinalizeCallbackBuffer,
-                                              bufferData,
-                                              &externalBuffer);
+    status = napi_create_external_arraybuffer(nullptr, dataArray, 5, FinalizeCallBackBuffer, bufferData, &extBuffer);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_create_external_arraybuffer failed.");
     //*external_data is null
-    status = napi_create_external_arraybuffer(env,
-                                              nullptr,
-                                              5,
-                                              FinalizeCallbackBuffer,
-                                              bufferData,
-                                              &externalBuffer);
+    status = napi_create_external_arraybuffer(env, nullptr, 5, FinalizeCallBackBuffer, bufferData, &extBuffer);
     NAPI_ASSERT(env, status == napi_invalid_arg, "*external_data is null, napi_create_external_arraybuffer failed.");
     //finalize_cb is null
-    status = napi_create_external_arraybuffer(env,
-                                              dataArray,
-                                              5,
-                                              nullptr,
-                                              bufferData,
-                                              &externalBuffer);
+    status = napi_create_external_arraybuffer(env, dataArray, 5, nullptr, bufferData, &extBuffer);
     NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_cb is null, napi_create_external_arraybuffer failed.");
     //finalize_hint is null
-    status = napi_create_external_arraybuffer(env,
-                                              dataArray,
-                                              5,
-                                              FinalizeCallbackBuffer,
-                                              nullptr,
-                                              &externalBuffer);
+    status = napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallBackBuffer, nullptr, &extBuffer);
     NAPI_ASSERT(env, status == napi_ok, "finalize_hint is null, napi_create_external_arraybuffer ok.");
     //*result is null
     //finalize_hint is null
-    status = napi_create_external_arraybuffer(env,
-                                              dataArray,
-                                              5,
-                                              FinalizeCallbackBuffer,
-                                              bufferData,
-                                              nullptr);
+    status = napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallBackBuffer, bufferData, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "*result is null, napi_create_external_arraybuffer failed.");
     //all is null
-    status = napi_create_external_arraybuffer(nullptr,
-                                              nullptr,
-                                              5,
-                                              nullptr,
-                                              nullptr,
-                                              nullptr);
+    status = napi_create_external_arraybuffer(nullptr, nullptr, 5, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_external_arraybuffer failed.");
 
     napi_value rst;
@@ -11611,8 +11579,11 @@ static napi_value NapiGetValueExternalTest(napi_env env, napi_callback_info info
     napi_value args[1];
     
     const size_t dataSize = 10;
-    void *data = malloc(dataSize);
-    memset(data, 0, dataSize);
+    void *data = calloc(1, dataSize);
+    if (data == nullptr) {
+        napi_throw_error(env, nullptr, "Failed to allocate memory");
+        return nullptr;
+    }
     napi_value result = nullptr;
     status = napi_create_external(env, data, finalizeCallback, nullptr, &result);
     if (status != napi_ok) {
