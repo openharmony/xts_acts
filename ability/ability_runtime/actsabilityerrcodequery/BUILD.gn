@@ -19,6 +19,7 @@ group("actsabilityerrcodequery") {
     deps = [
       "actsabilityerrcodequerytestrely:ActsAbilityErrCodeQueryTestRely",
       "actsabilityerrcodequerytest:ActsAbilityErrCodeQueryTest",
+      "actsErrorCodeApplicationContextAssist:ActsErrorCodeApplicationContextAssist"
     ]
   }
 }
