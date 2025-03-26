@@ -1566,6 +1566,37 @@ export default function MultimodalInputConsumerTest() {
     });
 
     /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_inputConsumerOff_2200
+     * @tc.name: SUB_MMI_Input_Api_IptDev_inputConsumerOff_2200
+     * @tc.desc: Test callback inputConsumer.off interface to unsubscribe.
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_inputConsumerOff_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_inputConsumerOff_2200";
+      try {
+        let callback = (event: KeyEvent) => {
+          console.info(`${caseName} KeyEvent is: ${JSON.stringify(event)}`);
+        }
+        try {
+          inputConsumer.off("keyPressed", callback);
+          console.info(`${caseName} subscribe and unsubscribe success.`);
+          ExpectFalse(true);
+          done();
+        } catch (error) {
+          console.info(`${caseName} subscribe and unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          ExpectTrue(error.code == 801);
+          done();
+        }
+      } catch (error) {
+        console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
      * @tc.number: SUB_MMI_Input_Api_IptDev_inputConsumerOn_1800
      * @tc.name: SUB_MMI_Input_Api_IptDev_inputConsumerOn_1800
      * @tc.desc: Test callback inputConsumer.on and off interface to subscribe and unsubscribe power&down&repeatTrue listening.

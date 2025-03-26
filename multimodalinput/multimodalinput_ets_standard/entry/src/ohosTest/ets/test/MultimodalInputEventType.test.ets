@@ -35,7 +35,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_KeyEventTypeTest_0010', 0, () => {
+    it('MultimodalInput_KeyEventTypeTest_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_KeyEventTypeTest_0010 enter`);
 
       expect(keyEvent.Action.CANCEL == 0).assertTrue();
@@ -55,7 +55,7 @@ export default function MultimodalInputEventTypeTest() {
      */
 
 
-    it('MultimodalInput_KeyEventTypeTest_0020', 0, () => {
+    it('MultimodalInput_KeyEventTypeTest_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_KeyEventTypeTest_0020 enter`);
 
       let testKey: Key = {
@@ -78,7 +78,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_KeyEventTypeTest_0030', 0, () => {
+    it('MultimodalInput_KeyEventTypeTest_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_KeyEventTypeTest_0030 enter`);
 
       let testKey: Key = {
@@ -129,7 +129,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_0010', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0010 enter`);
 
       expect(mouseEvent.Action.CANCEL == 0).assertTrue();
@@ -152,7 +152,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_0020', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.LEFT == 0).assertTrue();
@@ -169,7 +169,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00201', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.MIDDLE == 1).assertTrue();
@@ -186,7 +186,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00202', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00202', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.RIGHT == 2).assertTrue();
@@ -203,7 +203,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00203', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00203', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.SIDE == 3).assertTrue();
@@ -220,7 +220,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00204', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00204', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.EXTRA == 4).assertTrue();
@@ -238,7 +238,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00205', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00205', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.FORWARD == 5).assertTrue();
@@ -255,7 +255,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00206', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00206', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
       expect(mouseEvent.Button.BACK == 6).assertTrue();
@@ -272,7 +272,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_00207', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_00207', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0020 enter` + mouseEvent.Button.LEFT + mouseEvent.Button.MIDDLE + mouseEvent.Button.RIGHT + mouseEvent.Button.SIDE + mouseEvent.Button.EXTRA + mouseEvent.Button.BACK + mouseEvent.Button.TASK);
 
 
@@ -290,7 +290,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_0030', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0030 enter`);
 
       expect(mouseEvent.Axis.SCROLL_VERTICAL == 0).assertTrue();
@@ -309,7 +309,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_0040', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0040 enter`);
 
       let testAxisValue: AxisValue = {
@@ -330,7 +330,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_MouseEventTypeTest_0050', 0, () => {
+    it('MultimodalInput_MouseEventTypeTest_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_MouseEventTypeTest_0050 enter`);
 
       let testAxisValue: AxisValue = {
@@ -396,7 +396,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_TouchEventTypeTest_0010', 0, () => {
+    it('MultimodalInput_TouchEventTypeTest_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_TouchEventTypeTest_0010 enter`);
 
       expect(touchEvent.Action.CANCEL == 0).assertTrue();
@@ -416,7 +416,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_TouchEventTypeTest_0020', 0, () => {
+    it('MultimodalInput_TouchEventTypeTest_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_TouchEventTypeTest_0020 enter`);
 
       expect(touchEvent.ToolType.FINGER == 0).assertTrue();
@@ -440,7 +440,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_TouchEventTypeTest_0030', 0, () => {
+    it('MultimodalInput_TouchEventTypeTest_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_TouchEventTypeTest_0030 enter`);
 
       expect(touchEvent.SourceType.TOUCH_SCREEN == 0).assertTrue();
@@ -459,7 +459,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_TouchEventTypeTest_0040', 0, () => {
+    it('MultimodalInput_TouchEventTypeTest_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_TouchEventTypeTest_0040 enter`);
 
       let testTouch: Touch = {
@@ -513,7 +513,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_TouchEventTypeTest_0050', 0, () => {
+    it('MultimodalInput_TouchEventTypeTest_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(`MultimodalInput_TouchEventTypeTest_0050 enter`);
 
       let testTouch: Touch = {
@@ -564,7 +564,7 @@ export default function MultimodalInputEventTypeTest() {
      * @tc.level     : Level 2
      */
 
-    it('MultimodalInput_InputEventTypeTest_0010', 0, () => {
+    it('MultimodalInput_InputEventTypeTest_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
 
       console.info(`MultimodalInput_InputEventTypeTest_0010 enter`);
       let testInputEvent: InputEvent = {
