@@ -389,10 +389,10 @@
         "name": "ohos.permission.GET_RUNNING_INFO"
       },
       {
-        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        "name":"ohos.permission.PRIVACY_WINDOW"
       },
       {
-        "name":"ohos.permission.PRIVACY_WINDOW"
+        "name":"ohos.permission.DISTRIBUTED_DATASYNC"
       }
     ]
   }

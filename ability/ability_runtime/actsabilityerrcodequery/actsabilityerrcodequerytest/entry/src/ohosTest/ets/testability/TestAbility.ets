@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
-import { AbilityConstant, Want } from '@kit.AbilityKit';
+import { AbilityConstant, common,Want } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -28,6 +28,7 @@ export default class TestAbility extends UIAbility {
     hilog.info(0x0000, TAG, '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, TAG, '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
     globalThis.context = this.context;
+    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
     let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
     abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
     let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
