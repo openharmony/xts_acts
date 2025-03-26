@@ -80,7 +80,7 @@ export default function EnableSwipeBackPage() {
       done();
     });
 
-        /**
+    /**
      * @tc.number    EnableSwipeBackPage_0200
      * @tc.name      EnableSwipeBackPage_0200
      * @tc.desc      Test enableSwipeBack test false
@@ -99,7 +99,7 @@ export default function EnableSwipeBackPage() {
       let btn2: Component = await driver.findComponent(ON.id('enableId'));
       await btn2.click();
       console.info('[EnableSwipeBackPage_0200] btn2 click');
-      await driver.delayMs(500);
+      await driver.delayMs(1000);
 
       let navComponent: Component = await driver.findComponent(ON.id('navId'));
       console.info('[EnableSwipeBackPage_0200] navComponent is ', navComponent);
@@ -109,9 +109,13 @@ export default function EnableSwipeBackPage() {
       console.info('[EnableSwipeBackPage_0200] right is ', right);
       console.info('[EnableSwipeBackPage_0200] bottom is ', bottom);
       await driver.fling({x: Math.round(vp2px(11)), y: Math.round(bottom/2)}, {x: Math.round(right/3), y: Math.round(bottom/2)}, 2, 40000);
-      await driver.delayMs(500)
-
+      await driver.delayMs(1000)
       await driver.assertComponentExist(ON.id('enableId'));
+
+      let btn3: Component = await driver.findComponent(ON.id('enableId'));
+      await btn3.click();
+      console.info('[EnableSwipeBackRouter_0200] btn3 click');
+      await driver.delayMs(1000);
       console.log('[EnableSwipeBackPage_0200] END');
       done();
     });
