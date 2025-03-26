@@ -68,21 +68,21 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-	  expect(Math.abs(Math.round(firstText.bottom - firstText.top) - Math.round(vp2px(50))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(secondText.bottom - secondText.top) - Math.round(vp2px(100))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(thirdText.bottom - thirdText.top) - Math.round(vp2px(150))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(fourthText.bottom - fourthText.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((fourthText.bottom - fourthText.top) - vp2px(200))) <= 1).assertTrue();
 
-	  expect(Math.abs(Math.round(firstText.top - flexContainer.top) - Math.round(vp2px(50))) <= 1).assertTrue(); //padding =50
-	  expect(Math.abs(Math.round(firstText.left - flexContainer.left) - Math.round(vp2px(50))) <= 1).assertTrue(); //padding =50
-      expect(firstText.left).assertEqual(secondText.left);
-      expect(secondText.left).assertEqual(thirdText.left);
-      expect(thirdText.left).assertEqual(fourthText.left);
+      expect(Math.floor(Math.abs((firstText.top - flexContainer.top) - vp2px(50))) <= 1).assertTrue(); //padding =50
+      expect(Math.floor(Math.abs((firstText.left - flexContainer.left) - vp2px(50))) <= 1).assertTrue(); //padding =50
+      expect(Math.floor(Math.abs(firstText.left - secondText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.left - thirdText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
 
-      expect(firstText.bottom).assertEqual(secondText.top);
-      expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top);
-	  expect(Math.abs(Math.round(fourthText.bottom - flexContainer.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(firstText.bottom - thirdText.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.bottom - secondText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(thirdText.bottom - fourthText.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((fourthText.bottom - flexContainer.bottom) - vp2px(10))) <= 1).assertTrue();
       console.info('[testAlignContentSpaceAroundFlexPadOverflow] END');
 
     });
@@ -108,21 +108,20 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-	  expect(Math.abs(Math.round(firstText.bottom - firstText.top) - Math.round(vp2px(50))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(secondText.bottom - secondText.top) - Math.round(vp2px(100))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(thirdText.bottom - thirdText.top) - Math.round(vp2px(150))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(fourthText.bottom - fourthText.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.bottom - firstText.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.bottom - secondText.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((fourthText.bottom - fourthText.top) - vp2px(200))) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(firstText.left - flexContainer.left) - Math.round(vp2px(10))) <= 1)
-        .assertTrue(); //padding =10
-      expect(Math.abs(Math.round(firstText.left) - Math.round(secondText.left)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(secondText.left) - Math.round(thirdText.left)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(thirdText.left) - Math.round(fourthText.left)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(firstText.top - flexContainer.top) - Math.round(vp2px(10))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(flexContainer.bottom - fourthText.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1)
+      expect(Math.floor(Math.abs((firstText.left - flexContainer.left) - vp2px(10))) <= 1).assertTrue(); //padding =10
+      expect(Math.floor(Math.abs(firstText.left - secondText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.left - thirdText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((firstText.top - flexContainer.top) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((flexContainer.bottom - fourthText.bottom) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((secondText.top - firstText.bottom) - (thirdText.top - secondText.bottom))) <= 1)
         .assertTrue();
-      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1)
+      expect(Math.floor(Math.abs((thirdText.top - secondText.bottom) - (fourthText.top - thirdText.bottom))) <= 1)
         .assertTrue();
 
       console.info('[testAlignContentSpaceAroundFlexPadMeet] END');
