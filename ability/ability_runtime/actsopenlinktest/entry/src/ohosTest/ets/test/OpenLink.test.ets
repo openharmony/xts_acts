@@ -40,7 +40,6 @@ let paramOptions: OpenLinkOptions = {
   parameters: {demo_key: "demo_value", demo_num: 111}
 };
 
-
 export default function openLinkTest() {
   describe('ActsOpenLinkTest', () => {
     beforeAll(() => {
