@@ -17,7 +17,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import { surfaceIds } from '../testability/pages/Index';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -270,13 +270,25 @@ export default function CameraSessionCameraRotationTest() {
     return true;
   }
 
+  let isSupportSixteenWithNineScale = (cameraOutputCap: cameraObj.CameraOutputCapability) => {
+    let ratio = 16 / 9;
+    for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+      let currentRatio = cameraOutputCap.previewProfiles[i].size.width / cameraOutputCap.previewProfiles[i].size.height;
+      if (Math.abs(currentRatio - ratio) > 0.01) {
+          continue;
+      }
+      return true;
+    }
+    return false;
+  }
+
   let createOutput = async (idx: number, mode: cameraObj.SceneMode) => {
     console.info('Enter createOutput');
 
     let cameraOutputCap =
       mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx], mode);
     let ratio = 4 / 3;
-    if (mode == cameraObj.SceneMode.NORMAL_VIDEO) {
+    if (mode == cameraObj.SceneMode.NORMAL_VIDEO && isSupportSixteenWithNineScale(cameraOutputCap)) {
         ratio = 16 / 9;
     }
     if (!isEmpty(cameraOutputCap)) {
@@ -547,6 +559,51 @@ export default function CameraSessionCameraRotationTest() {
 
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200
+     * @tc.name      : Check capture session support photo rotation get success or not
+     * @tc.desc      : Check capture session support photo rotation get success or not
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200--------------");
+      createCameraSessionInstance(cameraObj.SceneMode.NORMAL_PHOTO);
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 start for camera");
+        await startCameraSession(0, cameraObj.SceneMode.NORMAL_PHOTO);
+        try {
+          let cameraPhotoRotation = mPhotoOutput.getPhotoRotation(null);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 finish");
+          if (!isEmpty(cameraPhotoRotation)) {
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 PASSED with cameraVideoRotation is: " +
+              cameraPhotoRotation);
+          } else {
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 FAILED with cameraVideoRotation is: " +
+              cameraPhotoRotation);
+          }
+        } catch (err) {
+          console.info(TAG + "getPhotoRotation Failed: " + err.code);
+          expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT)
+        }
+        await stopCameraSession();
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 end for camera");
+      }
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0200 ends here");
+      done();
+    })
+
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100
      * @tc.name      : Check capture session support video rotation get success or not
      * @tc.desc      : Check capture session support video rotation get success or not
@@ -598,6 +655,52 @@ export default function CameraSessionCameraRotationTest() {
     })
 
 
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200
+     * @tc.name      : Check capture session support video rotation get success or not
+     * @tc.desc      : Check capture session support video rotation get success or not
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200--------------");
+      createCameraSessionInstance(cameraObj.SceneMode.NORMAL_VIDEO);
+      await getVideoReceiveSurface();
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 start for camera");
+        await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
+        try {
+          let cameraVideoRotation = mVideoOutput.getVideoRotation(null);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 finish");
+          if (!isEmpty(cameraVideoRotation)) {
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 PASSED with cameraVideoRotation is: " +
+              cameraVideoRotation);
+          } else {
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 FAILED with cameraVideoRotation is: " +
+              cameraVideoRotation);
+          }
+        } catch (err) {
+          console.info(TAG + "getVideoRotation Failed: " + err.code);
+          expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT)
+        }
+        await stopCameraSession();
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 end for camera");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0200 ends here");
+        done();
+      }
+    })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100
      * @tc.name      : Check capture session support preview rotation get success or not
@@ -647,6 +750,32 @@ export default function CameraSessionCameraRotationTest() {
         expect().assertFail();
         done();
       }
-    })
+    }) 
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0200
+     * @tc.name      : Test PreviewOutput getPreviewRotation 7400101
+     * @tc.desc      : Test PreviewOutput getPreviewRotation 7400101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0200--------------");
+      createCameraSessionInstance(cameraObj.SceneMode.NORMAL_PHOTO);
+      await startCameraSession(0, cameraObj.SceneMode.NORMAL_PHOTO);
+      try {
+        let cameraPreviewRotation = mPreviewOutput.getPreviewRotation(null);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0200 Success: " + cameraPreviewRotation);
+        expect().assertFail()
+      } catch (err) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0200 Failed: " + err.code);
+        expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT)
+      }
+      await stopCameraSession();
+      console.info(TAG + "Exit SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0200");
+      done();
+    }) 
+
   })
 }

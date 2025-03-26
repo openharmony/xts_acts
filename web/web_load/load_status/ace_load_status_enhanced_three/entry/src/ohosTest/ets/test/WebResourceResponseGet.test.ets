@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, it } from '@ohos/hypium';
+import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 
@@ -35,7 +35,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetRequestHeader001', 0, async (done: Function) => {
+    it('testGetRequestHeader001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetRequestHeader001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetRequestHeader001", true, 35010, done);
@@ -50,7 +50,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetRequestUrl001', 0, async (done: Function) => {
+    it('testGetRequestUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetRequestUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetRequestUrl001", 'https://gitee.com/openharmony/123', 35011, done);
@@ -65,7 +65,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testIsRequestGesture001', 0, async (done: Function) => {
+    it('testIsRequestGesture001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testIsRequestGesture001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testIsRequestGesture001", false, 35012, done);
@@ -80,7 +80,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testIsMainFrame001', 0, async (done: Function) => {
+    it('testIsMainFrame001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testIsMainFrame001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testIsMainFrame001", true, 35013, done);
@@ -95,7 +95,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testIsRedirect001', 0, async (done: Function) => {
+    it('testIsRedirect001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testIsRedirect001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testIsRedirect001", false, 35014, done);
@@ -110,7 +110,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetRequestMethod001', 0, async (done: Function) => {
+    it('testGetRequestMethod001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetRequestMethod001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetRequestMethod001", "GET", 35015, done);
@@ -125,7 +125,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetResponseData001', 0, async (done: Function) => {
+    it('testGetResponseData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetResponseData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetResponseData001", "\"\"", 35016, done);
@@ -140,7 +140,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetResponseEncoding001', 0, async (done: Function) => {
+    it('testGetResponseEncoding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetResponseEncoding001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetResponseEncoding001", "utf-8", 35017, done);
@@ -155,7 +155,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetResponseMimeType001', 0, async (done: Function) => {
+    it('testGetResponseMimeType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetResponseMimeType001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetResponseMimeType001", "text/html", 35018, done);
@@ -170,7 +170,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetReasonMessage001', 0, async (done: Function) => {
+    it('testGetReasonMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetReasonMessage001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetReasonMessage001", "Not Found", 35019, done);
@@ -185,7 +185,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetResponseHeader001', 0, async (done: Function) => {
+    it('testGetResponseHeader001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetResponseHeader001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetResponseHeader001", true, 35020, done);
@@ -200,7 +200,7 @@ export default function webResourceResponseGet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetResponseCode001', 0, async (done: Function) => {
+    it('testGetResponseCode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetResponseCode001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetResponseCode001", 404, 35021, done);

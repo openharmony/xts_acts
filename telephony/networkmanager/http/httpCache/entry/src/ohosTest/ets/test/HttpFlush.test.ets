@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -47,7 +47,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0100';
       console.info(`${caseName}---Start`);
       try {
@@ -88,7 +88,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0200';
       console.info(`${caseName}---Start`);
       try {
@@ -126,7 +126,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0300';
       console.info(`${caseName}---Start`);
       try {
@@ -187,7 +187,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0400';
       console.info(`${caseName}---Start`);
       try {
@@ -258,7 +258,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0500';
       console.info(`${caseName}---Start`);
       try {
@@ -339,7 +339,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0600';
       console.info(`${caseName}---Start`);
       try {
@@ -429,7 +429,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0800';
       console.info(`${caseName}---Start`);
       try {
@@ -480,7 +480,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush0900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush0900';
       console.info(`${caseName}---Start`);
       try {
@@ -539,7 +539,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1000';
       console.info(`${caseName}---Start`);
       try {
@@ -608,7 +608,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1100';
       console.info(`${caseName}---Start`);
       try {
@@ -687,7 +687,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1200';
       console.info(`${caseName}---Start`);
       try {
@@ -776,7 +776,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1300';
       console.info(`${caseName}---Start`);
       try {
@@ -843,7 +843,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1400';
       console.info(`${caseName}---Start`);
       try {
@@ -898,7 +898,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1500';
       console.info(`${caseName}---Start`);
       try {
@@ -957,7 +957,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1600';
       console.info(`${caseName}---Start`);
       try {
@@ -1026,7 +1026,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1700';
       console.info(`${caseName}---Start`);
       try {
@@ -1090,7 +1090,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1800';
       console.info(`${caseName}---Start`);
       try {
@@ -1152,7 +1152,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush1900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush1900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush1900';
       console.info(`${caseName}---Start`);
       try {
@@ -1211,7 +1211,7 @@ export default function HttpFlushTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheFlush2000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheFlush2000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheFlush2000';
       console.info(`${caseName}---Start`);
       try {

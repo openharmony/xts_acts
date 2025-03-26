@@ -25,6 +25,7 @@ import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
 import blurStyleOptions from './MenuTest/blurStyleOptions.test'
 import effectOptions from './MenuTest/effectOptions.test'
+import openDialogTransitionTest from './promptActionTest/openDialogTransition.test'
 import ActionSheetLifeTest from './dialogLifeTest/ActionSheetLife.test'
 import AlertDialogLifeTest from './dialogLifeTest/AlertDialogLife.test'
 import CustomDialogLifeTest from './dialogLifeTest/CustomDialogLife.test'
@@ -42,6 +43,7 @@ export default function testsuite() {
     menuitemOnChangeModifierTest();
     menuFontsizeModifierTest();
     menuBindMenuModifierTest();
+    openDialogTransitionTest();
     ActionSheetLifeTest();
     AlertDialogLifeTest();
     CustomDialogLifeTest();

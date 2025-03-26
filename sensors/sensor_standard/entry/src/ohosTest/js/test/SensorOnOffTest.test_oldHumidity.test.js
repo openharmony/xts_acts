@@ -20,16 +20,16 @@ export default function SensorJsTest_sensor_12() {
 describe("SensorJsTest_sensor_12", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-		expect(typeof (data.humidity)).assertEqual("number");
-		expect(typeof (data.timestamp)).assertEqual("number");
+        expect(typeof (data.humidity)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-		expect(typeof (data.humidity)).assertEqual("number");
-		expect(typeof (data.timestamp)).assertEqual("number");
+        expect(typeof (data.humidity)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
     }
-	
+
     beforeAll(function () {
 
         /*
@@ -63,21 +63,21 @@ describe("SensorJsTest_sensor_12", function () {
     })
 
     const PARAMETER_ERROR_CODE = 401
-	const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable','ReferenceError: xxx is not defined']
-	let errMessage
-	
+    let invalid  = -1;
+    let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable','ReferenceError: xxx is not defined']
+    let errMessage
+
      /*
      * @tc.number:SUB_SensorsSystem_Humidity_JSTest_0010
      * @tc.name: Humidity_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Humidity_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("Humidity_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------Humidity_SensorJsTest001--------');
-		try {
+        try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
         } catch (error) {
             console.info("Humidity_SensorJsTest001 error:" + error);
@@ -85,7 +85,7 @@ describe("SensorJsTest_sensor_12", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-		 setTimeout(() => {
+         setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -98,7 +98,7 @@ describe("SensorJsTest_sensor_12", function () {
      */
     it("Humidity_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------Humidity_SensorJsTest002--------');
-		try {
+        try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY ,callback, { 'interval': 100000000 });
         } catch (error) {
             console.info("Humidity_SensorJsTest002 error:" + error);
@@ -117,12 +117,12 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest003--------');
         function onSensorCallback(data) {
             console.info('Humidity_SensorJsTest003  on error');
-			expect(typeof (data.humidity)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
         try {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, 
-			onSensorCallback, { 'interval': 100000000 }, 5);
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY,
+            onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
             console.info("Humidity_SensorJsTest003 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
@@ -139,12 +139,12 @@ describe("SensorJsTest_sensor_12", function () {
     it("Humidity_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------Humidity_SensorJsTest004--------');
         try{
-		sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
-		} catch (error) {
+        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
+        } catch (error) {
             console.info("Humidity_SensorJsTest004 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-			done();
+            done();
         }
     })
 
@@ -157,8 +157,8 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest005--------');
         function onceSensorCallback(data) {
             console.info('Humidity_SensorJsTest005 on error');
-			expect(typeof (data.humidity)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
         try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, onceSensorCallback, 5);
@@ -180,10 +180,10 @@ describe("SensorJsTest_sensor_12", function () {
         try {
             sensor.off(string, "");
         } catch (error) {
-			errMessage 
+            errMessage
             console.info("Humidity_SensorJsTest006 error:" + error);
-			errMessage = error.toString();
-			expect(errMessage).assertEqual(errMessages[0]);
+            errMessage = error.toString();
+            expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
@@ -197,10 +197,10 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest007--------');
         function onSensorCallback(data) {
             console.info('Humidity_SensorJsTest007  on error');
- 			expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
         }
        try {
-		   sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, onSensorCallback);
+           sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, onSensorCallback);
            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY);
             } catch (error) {
             console.info("Humidity_SensorJsTest007 error:" + error);
@@ -219,7 +219,7 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest008--------');
         function onSensorCallback(data) {
             console.info('Humidity_SensorJsTest008  on error');
-			expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
         }
         try {
             sensor.off(1000000, onSensorCallback);
@@ -230,8 +230,8 @@ describe("SensorJsTest_sensor_12", function () {
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_Humidity_JSTest_0090
      * @tc.name: Humidity_SensorJsTest009
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -240,7 +240,7 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest009--------');
         function onSensorCallback(data) {
             console.info('Humidity_SensorJsTest009  on error');
-			expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
         }
         try {
             sensor.off(invalid, onSensorCallback);
@@ -251,8 +251,8 @@ describe("SensorJsTest_sensor_12", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Humidity_JSTest_0100
      * @tc.name: Humidity_SensorJsTest010
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -261,7 +261,7 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest010--------');
         function onSensorCallback(data) {
             console.info('Humidity_SensorJsTest010  on error');
-			expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
         }
         try {
             sensor.xxx(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, onSensorCallback);
@@ -272,8 +272,8 @@ describe("SensorJsTest_sensor_12", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Humidity_JSTest_0110
      * @tc.name: Humidity_SensorJsTest011
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -282,7 +282,7 @@ describe("SensorJsTest_sensor_12", function () {
         console.info('--------Humidity_SensorJsTest011--------');
         function onSensorCallback(data) {
             console.info('Humidity_SensorJsTest011  on error');
-			expect(typeof (data.humidity)).assertEqual("number");
+            expect(typeof (data.humidity)).assertEqual("number");
         }
         try {
             xxx.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, onSensorCallback);

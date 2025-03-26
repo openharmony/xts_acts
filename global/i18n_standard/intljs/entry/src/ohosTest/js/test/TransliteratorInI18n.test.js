@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function TransliteratorInI18nTest() {
 describe('TransliteratorInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test getAvailableIDs
     * @tc.desc    get the ID value
     */
-    it('transliterator_test_0100', 0, function () {
+    it('transliterator_test_0100', Level.LEVEL0, function () {
         console.log('transliterator_test_0100 ' + 'start');
         let value = I18n.Transliterator.getAvailableIDs();
         let len = value.length;
@@ -81,7 +81,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test getInstance with a param
     * @tc.desc    get the instance value
     */
-    it('transliterator_test_0200', 0, function () {
+    it('transliterator_test_0200', Level.LEVEL2, function () {
         console.log('transliterator_test_0200 ' + 'start');
         let value = I18n.Transliterator.getInstance('a');
         console.log('transliterator_test_0200 ' + value);
@@ -93,7 +93,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test transform with 中国 param
     * @tc.desc    get the transform value
     */
-    it('transliterator_test_0300', 0, function () {
+    it('transliterator_test_0300', Level.LEVEL2, function () {
         console.log('transliterator_test_0300 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-Accents');
         let value = trans.transform('中国');
@@ -106,7 +106,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test transform with Any-Latn param
     * @tc.desc    get the transform value
     */
-    it('transliterator_test_0400', 0, function () {
+    it('transliterator_test_0400', Level.LEVEL2, function () {
         console.log('transliterator_test_0400 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-Latn');
         let value = trans.transform('中国');
@@ -119,7 +119,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test transform with Any-Thai param
     * @tc.desc    get the transform value
     */
-    it('transliterator_test_0500', 0, function () {
+    it('transliterator_test_0500', Level.LEVEL2, function () {
         console.log('transliterator_test_0500 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-Thai');
         let value = trans.transform('中国');
@@ -132,7 +132,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test transform with Any-zh param
     * @tc.desc    get the transform value
     */
-    it('transliterator_test_0600', 0, function () {
+    it('transliterator_test_0600', Level.LEVEL2, function () {
         console.log('transliterator_test_0600 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-zh');
         let value = trans.transform('nihao');
@@ -145,7 +145,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test transform with Any-Hant param
     * @tc.desc    get the transform value
     */
-    it('transliterator_test_0700', 0, function () {
+    it('transliterator_test_0700', Level.LEVEL2, function () {
         console.log('transliterator_test_0700 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-Hant');
         let value = trans.transform('hello');
@@ -158,7 +158,7 @@ describe('TransliteratorInI18nTest', function () {
     * @tc.name    test transform with Any-Kannada param
     * @tc.desc    get the transform value
     */
-    it('transliterator_test_0800', 0, function () {
+    it('transliterator_test_0800', Level.LEVEL2, function () {
         console.log('transliterator_test_0800 ' + 'start');
         let trans = I18n.Transliterator.getInstance('Any-Kannada');
         let value = trans.transform('hello');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterAll, it, expect, beforeAll, beforeEach, afterEach } from '@ohos/hypium'
+import { describe, afterAll, it, expect, beforeAll, beforeEach, afterEach, TestType, Level, Size } from '@ohos/hypium'
 import { ArkTSUtils } from '@kit.ArkTS';
 import {
   ContainsLruCache,
@@ -63,7 +63,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity001', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -87,7 +87,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity002', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -110,7 +110,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity003', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -133,7 +133,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity004', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(50)
@@ -156,7 +156,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity005', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(200)
@@ -179,7 +179,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -202,7 +202,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGet002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -225,7 +225,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGet003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -254,7 +254,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGet004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -285,7 +285,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGet005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -317,7 +317,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet006', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGet006";
       let that = new ArkTSUtils.SendableLruCache<number | string | undefined, number | string>()
       let un = undefined;
@@ -344,7 +344,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGet007', 0, async (done: Function) => {
+    it('testSendableLRUCacheGet007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGet007";
       let that = new ArkTSUtils.SendableLruCache<number | string | null, number | string>()
       that.put(20, 'cdjcaxb')
@@ -370,7 +370,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut001', 0, async (done: Function) => {
+    it('testSendableLRUCachePut001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -392,7 +392,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut002', 0, async (done: Function) => {
+    it('testSendableLRUCachePut002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -415,7 +415,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut003', 0, async (done: Function) => {
+    it('testSendableLRUCachePut003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -444,7 +444,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut004', 0, async (done: Function) => {
+    it('testSendableLRUCachePut004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -475,7 +475,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut005', 0, async (done: Function) => {
+    it('testSendableLRUCachePut005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -507,7 +507,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut006', 0, async (done: Function) => {
+    it('testSendableLRUCachePut006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut006";
       let that = new ArkTSUtils.SendableLruCache<number | string | undefined, number | string>()
       let un = undefined;
@@ -533,7 +533,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut007', 0, async (done: Function) => {
+    it('testSendableLRUCachePut007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut007";
       let that = new ArkTSUtils.SendableLruCache<number | string | null, number | string>()
       try {
@@ -558,7 +558,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCachePut008', 0, async (done: Function) => {
+    it('testSendableLRUCachePut008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCachePut008";
       let that = new ArkTSUtils.SendableLruCache<number | string, number | string | null>()
       try {
@@ -583,7 +583,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCreateCount001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCreateCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCreateCount001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -611,7 +611,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCreateCount002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCreateCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCreateCount002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -639,7 +639,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCreateCount003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCreateCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCreateCount003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -665,7 +665,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCreateCount004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCreateCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCreateCount004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -693,7 +693,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCreateCount005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCreateCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCreateCount005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -721,7 +721,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMissCount001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMissCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMissCount001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -749,7 +749,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMissCount002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMissCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMissCount002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -777,7 +777,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMissCount003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMissCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMissCount003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -805,7 +805,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMissCount004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMissCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMissCount004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -833,7 +833,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMissCount005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMissCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMissCount005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -863,7 +863,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMissCount006', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMissCount006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMissCount006";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -891,7 +891,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetRemoveCount001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetRemoveCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetRemoveCount001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -918,7 +918,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetRemoveCount002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetRemoveCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetRemoveCount002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -944,7 +944,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetRemoveCount003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetRemoveCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetRemoveCount003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -969,7 +969,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetRemoveCount004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetRemoveCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetRemoveCount004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -997,7 +997,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetRemoveCount005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetRemoveCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetRemoveCount005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1026,7 +1026,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMatchCount001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMatchCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMatchCount001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1054,7 +1054,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMatchCount002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMatchCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMatchCount002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1083,7 +1083,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMatchCount003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMatchCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMatchCount003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1111,7 +1111,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMatchCount004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMatchCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMatchCount004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1142,7 +1142,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMatchCount005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMatchCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMatchCount005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1176,7 +1176,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetMatchCount006', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetMatchCount006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetMatchCount006";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1202,7 +1202,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetPutCount001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetPutCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetPutCount001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1225,7 +1225,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetPutCount002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetPutCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetPutCount002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1249,7 +1249,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetPutCount003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetPutCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetPutCount003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1274,7 +1274,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetPutCount004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetPutCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetPutCount004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1299,7 +1299,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetPutCount005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetPutCount005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetPutCount005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1325,7 +1325,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCapacity001', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCapacity001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCapacity001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1347,7 +1347,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCapacity002', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCapacity002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCapacity002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(2)
@@ -1369,7 +1369,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCapacity003', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCapacity003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCapacity003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -1391,7 +1391,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCapacity004', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCapacity004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCapacity004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1414,7 +1414,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheGetCapacity005', 0, async (done: Function) => {
+    it('testSendableLRUCacheGetCapacity005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheGetCapacity005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -1437,7 +1437,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheLength001', 0, async (done: Function) => {
+    it('testSendableLRUCacheLength001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheLength001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1459,7 +1459,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheLength002', 0, async (done: Function) => {
+    it('testSendableLRUCacheLength002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheLength002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1482,7 +1482,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheLength003', 0, async (done: Function) => {
+    it('testSendableLRUCacheLength003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheLength003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1506,7 +1506,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheLength004', 0, async (done: Function) => {
+    it('testSendableLRUCacheLength004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheLength004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1532,7 +1532,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheLength005', 0, async (done: Function) => {
+    it('testSendableLRUCacheLength005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheLength005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1561,7 +1561,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheClear001', 0, async (done: Function) => {
+    it('testSendableLRUCacheClear001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheClear001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1587,7 +1587,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheClear002', 0, async (done: Function) => {
+    it('testSendableLRUCacheClear002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheClear002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1616,7 +1616,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheClear003', 0, async (done: Function) => {
+    it('testSendableLRUCacheClear003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheClear003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1645,7 +1645,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheClear004', 0, async (done: Function) => {
+    it('testSendableLRUCacheClear004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheClear004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1674,7 +1674,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheClear005', 0, async (done: Function) => {
+    it('testSendableLRUCacheClear005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheClear005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1704,7 +1704,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheIsEmpty001', 0, async (done: Function) => {
+    it('testSendableLRUCacheIsEmpty001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheIsEmpty001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1727,7 +1727,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheIsEmpty002', 0, async (done: Function) => {
+    it('testSendableLRUCacheIsEmpty002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheIsEmpty002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1751,7 +1751,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheIsEmpty003', 0, async (done: Function) => {
+    it('testSendableLRUCacheIsEmpty003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheIsEmpty003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1776,7 +1776,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheIsEmpty004', 0, async (done: Function) => {
+    it('testSendableLRUCacheIsEmpty004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheIsEmpty004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1801,7 +1801,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheIsEmpty005', 0, async (done: Function) => {
+    it('testSendableLRUCacheIsEmpty005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheIsEmpty005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1827,7 +1827,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheContains001', 0, async (done: Function) => {
+    it('testSendableLRUCacheContains001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheContains001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1850,7 +1850,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheContains002', 0, async (done: Function) => {
+    it('testSendableLRUCacheContains002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheContains002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1873,7 +1873,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheContains003', 0, async (done: Function) => {
+    it('testSendableLRUCacheContains003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheContains003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1896,7 +1896,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheContains004', 0, async (done: Function) => {
+    it('testSendableLRUCacheContains004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheContains004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1922,7 +1922,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheContains005', 0, async (done: Function) => {
+    it('testSendableLRUCacheContains005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheContains005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -1950,7 +1950,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheContains006', 0, async (done: Function) => {
+    it('testSendableLRUCacheContains006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheContains006";
       let that = new ArkTSUtils.SendableLruCache<number | string | undefined, number | string>()
       that.put('abc', 'abc')
@@ -1977,7 +1977,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove001', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2000,7 +2000,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove002', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2026,7 +2026,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove003', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2051,7 +2051,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove004', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2077,7 +2077,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove005', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2106,7 +2106,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove006', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove006";
       let that = new ArkTSUtils.SendableLruCache<number | string | undefined, number | string>()
       that.put(1, 2)
@@ -2133,7 +2133,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheRemove007', 0, async (done: Function) => {
+    it('testSendableLRUCacheRemove007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheRemove007";
       let that = new ArkTSUtils.SendableLruCache<number | string | null, number | string>()
       that.put(1, 2)
@@ -2159,7 +2159,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheKeys001', 0, async (done: Function) => {
+    it('testSendableLRUCacheKeys001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheKeys001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2182,7 +2182,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheKeys002', 0, async (done: Function) => {
+    it('testSendableLRUCacheKeys002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheKeys002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2211,7 +2211,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheKeys003', 0, async (done: Function) => {
+    it('testSendableLRUCacheKeys003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheKeys003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2241,7 +2241,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheKeys004', 0, async (done: Function) => {
+    it('testSendableLRUCacheKeys004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheKeys004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2272,7 +2272,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheKeys005', 0, async (done: Function) => {
+    it('testSendableLRUCacheKeys005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheKeys005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2305,7 +2305,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheValues001', 0, async (done: Function) => {
+    it('testSendableLRUCacheValues001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheValues001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2328,7 +2328,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheValues002', 0, async (done: Function) => {
+    it('testSendableLRUCacheValues002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheValues002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2357,7 +2357,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheValues003', 0, async (done: Function) => {
+    it('testSendableLRUCacheValues003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheValues003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2387,7 +2387,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheValues004', 0, async (done: Function) => {
+    it('testSendableLRUCacheValues004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheValues004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2418,7 +2418,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheValues005', 0, async (done: Function) => {
+    it('testSendableLRUCacheValues005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheValues005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2451,7 +2451,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheToString001', 0, async (done: Function) => {
+    it('testSendableLRUCacheToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheToString001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2475,7 +2475,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheToString002', 0, async (done: Function) => {
+    it('testSendableLRUCacheToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheToString002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2501,7 +2501,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheToString003', 0, async (done: Function) => {
+    it('testSendableLRUCacheToString003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheToString003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -2528,7 +2528,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheToString004', 0, async (done: Function) => {
+    it('testSendableLRUCacheToString004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheToString004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -2556,7 +2556,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheToString005', 0, async (done: Function) => {
+    it('testSendableLRUCacheToString005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheToString005";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(100)
@@ -2586,7 +2586,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheEntries001', 0, async (done: Function) => {
+    it('testSendableLRUCacheEntries001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheEntries001";
       try {
         let that = new ArkTSUtils.SendableLruCache<string, string>()
@@ -2614,7 +2614,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheEntries002', 0, async (done: Function) => {
+    it('testSendableLRUCacheEntries002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheEntries002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2647,7 +2647,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheEntries003', 0, async (done: Function) => {
+    it('testSendableLRUCacheEntries003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheEntries003";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2681,7 +2681,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheEntries004', 0, async (done: Function) => {
+    it('testSendableLRUCacheEntries004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheEntries004";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>()
@@ -2717,7 +2717,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheEntries005', 0, async (done: Function) => {
+    it('testSendableLRUCacheEntries005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSendableLRUCacheEntries005';
       console.log(`${caseName} test start `);
       try {
@@ -2758,7 +2758,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheConstrcutor001', 0, async (done: Function) => {
+    it('testSendableLRUCacheConstrcutor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheConstrcutor001";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(0.1)
@@ -2782,7 +2782,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheConstrcutor002', 0, async (done: Function) => {
+    it('testSendableLRUCacheConstrcutor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheConstrcutor002";
       try {
         let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(-0.1)
@@ -2806,7 +2806,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity007', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity007";
       let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(200)
       try {
@@ -2831,7 +2831,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheUpdateGetCapacity008', 0, async (done: Function) => {
+    it('testSendableLRUCacheUpdateGetCapacity008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const TAG = "testSendableLRUCacheUpdateGetCapacity007";
       let that = new ArkTSUtils.SendableLruCache<number | string, number | string>(200)
       try {
@@ -2855,7 +2855,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheCombine001', 0, async (done: Function) => {
+    it('testSendableLRUCacheCombine001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheCombine001';
       console.log(`${TAG} test start `);
       try {
@@ -2897,7 +2897,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheCombine002', 0, async (done: Function) => {
+    it('testSendableLRUCacheCombine002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheCombine002';
       console.log(`${TAG} test start `);
       try {
@@ -2926,7 +2926,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheCombine003', 0, async (done: Function) => {
+    it('testSendableLRUCacheCombine003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheCombine003';
       console.log(`${TAG} test start `);
       try {
@@ -2959,7 +2959,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheCombine004', 0, async (done: Function) => {
+    it('testSendableLRUCacheCombine004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheCombine004';
       console.log(`${TAG} test start `);
       try {
@@ -2989,7 +2989,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheWorker001', 0, async (done: Function) => {
+    it('testSendableLRUCacheWorker001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheWorker001';
       console.log(`${TAG} test start `);
       try {
@@ -3012,7 +3012,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheWorker002', 0, async (done: Function) => {
+    it('testSendableLRUCacheWorker002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheWorker002';
       console.log(`${TAG} test start `);
       try {
@@ -3035,7 +3035,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheWorker003', 0, async (done: Function) => {
+    it('testSendableLRUCacheWorker003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheWorker003';
       console.log(`${TAG} test start `);
       try {
@@ -3058,7 +3058,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheTaskPool001', 0, async (done: Function) => {
+    it('testSendableLRUCacheTaskPool001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheTaskPool001';
       console.log(`${TAG} test start `);
       try {
@@ -3082,7 +3082,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheTaskPool002', 0, async (done: Function) => {
+    it('testSendableLRUCacheTaskPool002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheTaskPool002';
       console.log(`${TAG} test start `);
       try {
@@ -3105,7 +3105,7 @@ export default function SendableLruCacheTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableLRUCacheTaskPool003', 0, async (done: Function) => {
+    it('testSendableLRUCacheTaskPool003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG: string = 'testSendableLRUCacheTaskPool003';
       console.log(`${TAG} test start `);
       try {

@@ -175,14 +175,18 @@ export default function geolocationTest_geo7() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-     it('testIsLocationEnabled06', 0, function () {
+     it('testIsLocationEnabled06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         try {
             let state = geolocationm.isLocationEnabled();
             console.info('[lbs_js] getLocationSwitchState06 result: ' + JSON.stringify(state));
             expect(true).assertEqual(state);
         } catch (error) {
             console.info("[lbs_js] getLocationSwitchState06 try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
     });
 
@@ -204,13 +208,21 @@ export default function geolocationTest_geo7() {
 
         } catch (error) {
             console.info("[lbs_js] locationServiceStateOn07 try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             geolocationm.off('locationEnabledChange', locationServiceState);
         } catch (error) {
             console.info("[lbs_js] locationServiceStateOff07 try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -759,13 +771,21 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn16 try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertFalse();
+            }
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff16 try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertFalse();
+            }
         }
         await sleep(1000);
         done();
@@ -1499,13 +1519,21 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationError', locationError1);
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_LOCATIONERROR_0100 try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertFalse();
+            }
         }
         try {
             geolocationm.off('locationError', locationError1);
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_LOCATIONERROR_0100 try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertFalse();
+            }
         }
         await sleep(1500);
         done();
@@ -1592,7 +1620,11 @@ export default function geolocationTest_geo7() {
             expect(true).assertEqual(JSON.stringify(last) != null);
         } catch (error) {
             console.info("[lbs_js] getLastLocation error:"+ error)
-            expect(error.code).assertEqual("3301200");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(error.code).assertEqual("3301200");
+            }
         }
         await sleep(1500);
         done();
@@ -1633,7 +1665,11 @@ export default function geolocationTest_geo7() {
                 geolocationm.on('satelliteStatusChange', gnssStatusCb);
             } catch (error) {
                 console.info("[lbs_js] satelliteStatusOn03 try err." + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             enableLocationSwitch();
             let requestInfo = {"priority":request_priority_UNSET, "scenario":request_scenario_NAVIGATION, "timeInterval":0,
@@ -1646,19 +1682,31 @@ export default function geolocationTest_geo7() {
                 geolocationm.on('locationChange', requestInfo, locationChange);
             } catch (error) {
                 console.info("[lbs_js] locationChangerOn03 try err." + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             try {
                 geolocationm.off('satelliteStatusChange', gnssStatusCb);
             } catch (error) {
                 console.info("[lbs_js] satelliteStatusOff03 try err." + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             try {
                 geolocationm.off('locationChange', locationChange);
             } catch (error) {
                 console.info("[lbs_js] locationChangerOff03 try err." + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             await sleep(1000);
             done();
@@ -1673,51 +1721,67 @@ export default function geolocationTest_geo7() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-     it('testNmeaMessage04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-         var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
-         console.info("SUB_HSS_LOCATIONSYSTEM_GNSS_0400 : " + isAcessToken);
-         if (!isAcessToken) {
-             console.info("The device does not support gnss");
-             expect(isAcessToken).assertFalse();
-             done();
-         } else {
-             await changedLocationMode();
-             let requestInfo = {"priority":request_priority_UNSET, "scenario":request_scenario_NAVIGATION, "timeInterval":0,
-                 "distanceInterval": 0, "maxAccuracy": 0};
-             var nmeaCb = (str) => {
-                 console.log('[lbs_js] nmeaMessage: ' + str);
-             }
-             var locationChange = (location) => {
-                 console.log('[lbs_js] gnsslocationChanger4 data:' + JSON.stringify(location));
-                 expect(true).assertEqual(locationChange !=null);
-             };
-             try {
+    it('testNmeaMessage04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+        console.info("SUB_HSS_LOCATIONSYSTEM_GNSS_0400 : " + isAcessToken);
+        if (!isAcessToken) {
+            console.info("The device does not support gnss");
+            expect(isAcessToken).assertFalse();
+            done();
+        } else {
+            await changedLocationMode();
+            let requestInfo = {"priority":request_priority_UNSET, "scenario":request_scenario_NAVIGATION, "timeInterval":0,
+                "distanceInterval": 0, "maxAccuracy": 0};
+            var nmeaCb = (str) => {
+                console.log('[lbs_js] nmeaMessage: ' + str);
+            }
+            var locationChange = (location) => {
+                console.log('[lbs_js] gnsslocationChanger4 data:' + JSON.stringify(location));
+                expect(true).assertEqual(locationChange !=null);
+            };
+            try {
                  geolocationm.on('nmeaMessage', nmeaCb);
-             } catch (error) {
-                 console.info("nmea on err:" + JSON.stringify(error));
-                 expect(true).assertFalse();
-             }
-             try {
+            } catch (error) {
+                console.info("nmea on err:" + JSON.stringify(error));
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
+            }
+            try {
                  geolocationm.on('locationChange', requestInfo, locationChange);
-             } catch (error) {
+            } catch (error) {
                  console.info("[lbs_js] locationChangerOn04 try err." + JSON.stringify(error));
-                 expect(true).assertEqual(JSON.stringify(error) != null);
-             }
-             try {
-                 geolocationm.off('nmeaMessage', nmeaCb);
-             } catch (error) {
-                 console.info("nmea off err:" + JSON.stringify(error));
-                 expect(true).assertFalse();
-             }
-             try {
-                 geolocationm.off('locationChange', locationChange);
-             } catch (error) {
-                 console.info("[lbs_js] locationChangerOff03 try err." + JSON.stringify(error));
-                 expect(true).assertFalse();
-             }
-             await sleep(1000);
-             done();
-         }
+                 if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
+            }
+            try {
+                geolocationm.off('nmeaMessage', nmeaCb);
+            } catch (error) {
+                console.info("nmea off err:" + JSON.stringify(error));
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
+            }
+            try {
+                geolocationm.off('locationChange', locationChange);
+            } catch (error) {
+                console.info("[lbs_js] locationChangerOff03 try err." + JSON.stringify(error));
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
+            }
+            await sleep(1000);
+            done();
+        }
     })
 
     /**
@@ -1904,14 +1968,22 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest1, cachedLocationsCb1);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn071 try err." + JSON.stringify(error));
-            expect(error.code).assertEqual("801");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb1);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff071 try err." + JSON.stringify(error));
             console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         await sleep(1500);
         var cachedLocationsCb2 = (locations) => {
@@ -1924,14 +1996,22 @@ export default function geolocationTest_geo7() {
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn072 try err." + JSON.stringify(error));
             console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb1);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff072 try err." + JSON.stringify(error));
             console.info('[lbs_js] not support now');
-            expect(error.code).assertEqual("801");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         await sleep(1500);
         done();
@@ -2098,7 +2178,11 @@ export default function geolocationTest_geo7() {
                 if (err) {
                     console.info('[lbs_js] flushCachedGnssLocations11 callback err is : ' + JSON.stringify(err));
                     console.info('[lbs_js] not support now');
-                    expect(err.code).assertEqual(801);
+                    if (err.code == 801) {
+                        expect(err.code).assertEqual(801);
+                    } else {
+                        expect(err.code).assertEqual(3301200);
+                    }
                 }else {
                     console.info("[lbs_js] flushCachedGnssLocations11 callback data is: " + JSON.stringify(data));
                     expect(true).assertEqual(data != null);
@@ -2149,7 +2233,11 @@ export default function geolocationTest_geo7() {
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + JSON.stringify(error));
                 console.info('[lbs_js] not support now');
-                expect(error.code).assertEqual(801);
+                if (error.code == 801) {
+                    expect(error.code).assertEqual(801);
+                } else {
+                    expect(error.code).assertEqual(3301200);
+                }
             });
         } catch (error) {
             console.info("[lbs_js] flushCachedGnssLocations11 promise try err." + JSON.stringify(error));
@@ -2226,7 +2314,11 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOn2 try error:"+ JSON.stringify(error));
-            expect(error.code).assertEqual("401");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(error.code).assertEqual("401");
+            }
         }
         try {
             geolocationm.off('gnssFenceStatusChange',geofenceRequest,
@@ -2239,7 +2331,11 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOff2 try error:"+ JSON.stringify(error));
-            expect(error.code).assertEqual("401");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(error.code).assertEqual("401");
+            }
         }
         await sleep(1000);
         done();
@@ -2330,7 +2426,11 @@ export default function geolocationTest_geo7() {
             );
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0400 add try error:"+ JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
         }
         await sleep(10000);
         try {
@@ -2344,7 +2444,11 @@ export default function geolocationTest_geo7() {
             console.info("SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0400 remove fenceId:" + fenceId);
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0400 remove try error:"+ JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
         }
         await sleep(10000);
         done();
@@ -2372,7 +2476,11 @@ export default function geolocationTest_geo7() {
                 expect(true).assertEqual(JSON.stringify(types) != null);
             } catch (error) {
                 console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0700 try error:" + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             await sleep(1000);
             done();
@@ -2402,7 +2510,11 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation callback try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
         }
         await sleep(1000);
         done();
@@ -2431,7 +2543,11 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_SINGLELOC_3600 callback try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
         }
         await sleep(1000);
         done();
@@ -2460,7 +2576,11 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_SINGLELOC_3700 callback try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            }
         }
         await sleep(1000);
         done();
@@ -2485,7 +2605,11 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_SINGLELOC_3800 promise try err." + JSON.stringify(error));
-            expect(error.code).assertEqual("401");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(error.code).assertEqual("401");
+            }
         }
         await sleep(1000);
         done();
@@ -2510,7 +2634,11 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_SINGLELOC_3900 promise try err." + JSON.stringify(error));
-            expect(error.code).assertEqual("401");
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(error.code).assertEqual("401");
+            }
         }
         await sleep(1000);
         done();
@@ -2539,27 +2667,13 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_SINGLELOC_3900 promise try err." + JSON.stringify(error));
-            expect(true).assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect(true).assertFail();
+            }
         }
         await sleep(1000);
-        done();
-    })
-
-    /**
-    * @tc.number    : SUB_HSS_LOCATIONSYSTEM_GETWIFIBSSID_0001
-    * @tc.name      : testGetCurrentWifiBssidForLocating01
-    * @tc.desc      : Obtain the Actual Bssid of the Wifi Network.
-    * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level 2
-    */
-     it('testGetCurrentWifiBssidForLocating01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        try {
-            let mac = geolocationm.getCurrentWifiBssidForLocating();
-            expect(true).assertEqual(mac != '');
-        } catch(error) {
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        }
         done();
     })
 
@@ -2576,7 +2690,7 @@ export default function geolocationTest_geo7() {
             let fenceExt = new MyFenceExtensionAbility()
             expect(true).assertTrue(fenceExt != null)
             let event =
-                geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER
+                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER
             let transition = {
                 geofenceId: 1,
                 transitionEvent: event

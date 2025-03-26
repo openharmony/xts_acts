@@ -310,6 +310,7 @@ export default function cameraPreconfigTest() {
     afterEach(async () => {
       console.info('afterEach case');
       await sleep(100);
+      await releaseCameraSessionInstance();
     })
 
     afterAll(async () => {
@@ -444,6 +445,7 @@ export default function cameraPreconfigTest() {
      */
     it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100', 2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100--------------");
+      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100 SUCCESS");
         let canPreconfig = mCameraSession.canPreconfig(null);
@@ -467,6 +469,7 @@ export default function cameraPreconfigTest() {
      */
     it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100', 2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100--------------");
+      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100 SUCCESS");
         mCameraSession.preconfig(null);

@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_STREAM_HTTPS = "https://cn.bing.com/rp/Q5BJPjebyYN5QiqznkcMQmLrF9U.svg";
@@ -82,7 +82,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
     */
-    it('testHttpResponse0100', 0, async (done: Function) => {
+    it('testHttpResponse0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0100";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -132,7 +132,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testHttpResponse0200', 0, async (done: Function) => {
+    it('testHttpResponse0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0200";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -185,7 +185,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testHttpResponse0300', 0, async (done: Function) => {
+    it('testHttpResponse0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0300";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -239,7 +239,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testHttpResponse0400', 0, async (done: Function) => {
+    it('testHttpResponse0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0400";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -291,7 +291,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse005', 0, async (done: Function) => {
+    it('testHttpResponse005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0500";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -343,7 +343,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse0600', 0, async (done: Function) => {
+    it('testHttpResponse0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0600";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -396,7 +396,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse007', 0, async (done: Function) => {
+    it('testHttpResponse007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0700";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -449,7 +449,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse0800', 0, async (done: Function) => {
+    it('testHttpResponse0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0800";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -503,7 +503,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse0900', 0, async (done: Function) => {
+    it('testHttpResponse0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse0900";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
@@ -557,7 +557,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1000', 0, async (done: Function) => {
+    it('testHttpResponse1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1000";
       console.info(`${caseName} test Start`);
       try {
@@ -609,7 +609,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1100', 0, async (done: Function) => {
+    it('testHttpResponse1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1100";
       console.info(`${caseName} test Start`);
       try {
@@ -664,7 +664,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1200', 0, async (done: Function) => {
+    it('testHttpResponse1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1200";
       console.info(`${caseName} test Start`);
       try {
@@ -720,7 +720,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1300', 0, async (done: Function) => {
+    it('testHttpResponse1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1300";
       console.info(`${caseName} test Start`);
       try {
@@ -774,7 +774,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1400', 0, async (done: Function) => {
+    it('testHttpResponse1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1400";
       console.info(`${caseName} test Start`);
       try {
@@ -828,7 +828,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1500', 0, async (done: Function) => {
+    it('testHttpResponse1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1500";
       console.info(`${caseName} test Start`);
       try {
@@ -884,7 +884,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1600', 0, async (done: Function) => {
+    it('testHttpResponse1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1600";
       console.info(`${caseName} test Start`);
       try {
@@ -939,7 +939,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1700', 0, async (done: Function) => {
+    it('testHttpResponse1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1700";
       console.info(`${caseName} test Start`);
       try {
@@ -994,7 +994,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1800', 0, async (done: Function) => {
+    it('testHttpResponse1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1800";
       console.info(`${caseName} test Start`);
       try {
@@ -1050,7 +1050,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse1900', 0, async (done: Function) => {
+    it('testHttpResponse1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse1900";
       console.info(`${caseName} test Start`);
       const httpRequest: http.HttpRequest = http.createHttp();
@@ -1101,7 +1101,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2000', 0, async (done: Function) => {
+    it('testHttpResponse2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2000";
       console.info(`${caseName} test Start`);
       const httpRequest: http.HttpRequest = http.createHttp();
@@ -1152,7 +1152,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2100', 0, async (done: Function) => {
+    it('testHttpResponse2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2100";
       console.info(`${caseName} test Start`);
       const httpRequest: http.HttpRequest = http.createHttp();
@@ -1202,7 +1202,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2200', 0, async (done: Function) => {
+    it('testHttpResponse2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2200";
       console.info(`${caseName} test Start`);
       try {
@@ -1252,7 +1252,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2300', 0, async (done: Function) => {
+    it('testHttpResponse2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2300";
       console.info(`${caseName} test Start`);
       try {
@@ -1305,7 +1305,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2400', 0, async (done: Function) => {
+    it('testHttpResponse2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2400";
       console.info(`${caseName} test Start`);
       try {
@@ -1357,7 +1357,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2500', 0, async (done: Function) => {
+    it('testHttpResponse2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2500";
       console.info(`${caseName} test Start`);
       try {
@@ -1408,7 +1408,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2600', 0, async (done: Function) => {
+    it('testHttpResponse2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2600";
       console.info(`${caseName} test Start`);
       try {
@@ -1460,7 +1460,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2700', 0, async (done: Function) => {
+    it('testHttpResponse2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2700";
       console.info(`${caseName} test Start`);
       try {
@@ -1512,7 +1512,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2800', 0, async (done: Function) => {
+    it('testHttpResponse2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2800";
       console.info(`${caseName} test Start`);
       try {
@@ -1564,7 +1564,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse2900', 0, async (done: Function) => {
+    it('testHttpResponse2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse2900";
       console.info(`${caseName} test Start`);
       try {
@@ -1615,7 +1615,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3000', 0, async (done: Function) => {
+    it('testHttpResponse3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3000";
       console.info(`${caseName} test Start`);
       try {
@@ -1667,7 +1667,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3100', 0, async (done: Function) => {
+    it('testHttpResponse3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3100";
       console.info(`${caseName} test Start`);
       try {
@@ -1720,7 +1720,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3200', 0, async (done: Function) => {
+    it('testHttpResponse3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3200";
       console.info(`${caseName} test Start`);
       try {
@@ -1774,7 +1774,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3300', 0, async (done: Function) => {
+    it('testHttpResponse3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3300";
       console.info(`${caseName} test Start`);
       try {
@@ -1828,7 +1828,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3400', 0, async (done: Function) => {
+    it('testHttpResponse3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3400";
       console.info(`${caseName} test Start`);
       try {
@@ -1882,7 +1882,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3500', 0, async (done: Function) => {
+    it('testHttpResponse3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3500";
       console.info(`${caseName} test Start`);
       const httpRequest: http.HttpRequest = http.createHttp();
@@ -1929,7 +1929,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3600', 0, async (done: Function) => {
+    it('testHttpResponse3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3600";
       console.info(`${caseName} test Start`);
       try {
@@ -1977,7 +1977,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3700', 0, async (done: Function) => {
+    it('testHttpResponse3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3700";
       console.info(`${caseName} test Start`);
       try {
@@ -2026,7 +2026,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3800', 0, async (done: Function) => {
+    it('testHttpResponse3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3800";
       console.info(`${caseName} test Start`);
       try {
@@ -2076,7 +2076,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse3900', 0, async (done: Function) => {
+    it('testHttpResponse3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse3900";
       console.info(`${caseName} test Start`);
       try {
@@ -2124,7 +2124,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse4000', 0, async (done: Function) => {
+    it('testHttpResponse4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4000";
       console.info(`${caseName} test Start`);
       try {
@@ -2174,7 +2174,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpResponse4100', 0, async (done: Function) => {
+    it('testHttpResponse4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4100";
       console.info(`${caseName} test Start`);
       try {
@@ -2222,7 +2222,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpResponse4200', 0, async (done: Function) => {
+    it('testHttpResponse4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4200";
       console.info(`${caseName} test Start`);
       try {
@@ -2272,7 +2272,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse4300', 0, async (done: Function) => {
+    it('testHttpResponse4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4300";
       console.info(`${caseName} test Start`);
       const httpRequest: http.HttpRequest = http.createHttp();
@@ -2329,7 +2329,7 @@ export default function HttpResponsePropertiesTest() {
      * @tc.type:    Function
      * @tc.level:   level 3
      */
-    it('testHttpResponse4400', 0, async (done: Function) => {
+    it('testHttpResponse4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4400";
       console.info(`${caseName} test Start`);
       try {
@@ -2389,7 +2389,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse4500', 0, async (done: Function) => {
+    it('testHttpResponse4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4500";
       console.info(`${caseName} test Start`);
       try {
@@ -2444,7 +2444,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse4600', 0, async (done: Function) => {
+    it('testHttpResponse4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4600";
       console.info(`${caseName} test Start`);
       try {
@@ -2499,7 +2499,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse4700', 0, async (done: Function) => {
+    it('testHttpResponse4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4700";
       console.info(`${caseName} test Start`);
       try {
@@ -2554,7 +2554,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse4800', 0, async (done: Function) => {
+    it('testHttpResponse4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4800";
       console.info(`${caseName} test Start`);
       try {
@@ -2609,7 +2609,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse4900', 0, async (done: Function) => {
+    it('testHttpResponse4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse4900";
       console.info(`${caseName} test Start`);
       try {
@@ -2664,7 +2664,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5000', 0, async (done: Function) => {
+    it('testHttpResponse5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5000";
       console.info(`${caseName} test Start`);
       try {
@@ -2719,7 +2719,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5100', 0, async (done: Function) => {
+    it('testHttpResponse5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5100";
       console.info(`${caseName} test Start`);
       try {
@@ -2772,7 +2772,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5200', 0, async (done: Function) => {
+    it('testHttpResponse5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5200";
       console.info(`${caseName} test Start`);
       try {
@@ -2825,7 +2825,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5300', 0, async (done: Function) => {
+    it('testHttpResponse5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5300";
       console.info(`${caseName} test Start`);
       try {
@@ -2878,7 +2878,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5400', 0, async (done: Function) => {
+    it('testHttpResponse5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5400";
       console.info(`${caseName} test Start`);
       try {
@@ -2931,7 +2931,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5500', 0, async (done: Function) => {
+    it('testHttpResponse5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5500";
       console.info(`${caseName} test Start`);
       try {
@@ -2984,7 +2984,7 @@ export default function HttpResponsePropertiesTest() {
     * @tc.type:    Function
     * @tc.level:   level 3
     */
-    it('testHttpResponse5600', 0, async (done: Function) => {
+    it('testHttpResponse5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = "testHttpResponse5600";
       console.info(`${caseName} test Start`);
       try {

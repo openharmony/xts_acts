@@ -836,6 +836,46 @@ function openFileFailed() {
   console.info('case file fail');
 }
 
+async function subtitleUpdateON(avPlayer: media.AVPlayer, done: Function) {
+  let loopTime = 0;
+  avPlayer.on('subtitleUpdate', async (info: media.SubtitleInfo) => {
+    if (info) {
+      loopTime++;
+      let text = (!info.text) ? '' : info.text;
+      let startTime = (!info.startTime) ? 0 : info.startTime;
+      let duration = (!info.duration) ? 0 : info.duration;
+      console.info('subtitleUpdateON info: text=' + text + ' startTime=' + startTime +' duration=' + duration);
+      avPlayer.off('subtitleUpdate');
+      expect(loopTime).assertEqual(1);
+      done();
+    } else {
+      console.info('subtitleUpdate info is null');
+      expect(false).assertTrue();
+      done();
+    }
+  })
+}
+async function testsubtitleUpdateListening(src: string | media.AVFileDescriptor, subtitleSrc: string | media.AVFileDescriptor,
+  avPlayer: media.AVPlayer | null, subtitleUpdateListening:Function, done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+      subtitleUpdateListening(avPlayer,done);
+      setOnCallback(avPlayer, done);
+      setSource(avPlayer, src);
+      setSubtitle(avPlayer, subtitleSrc);
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
+}
+
 export default function AVPlayerLocalTest() {
   describe('AVPlayerLocalTest', () => {
     beforeAll(async () => {
@@ -1122,6 +1162,32 @@ export default function AVPlayerLocalTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_GET_PLAYBACK_POSITION_0100', 0, async (done: Function) => {
       if (fileDescriptor) {
         testGetPlaybackPosition(fileDescriptor, avPlayer, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0000
+        * @tc.name      : 001.test subtitle Function
+        * @tc.desc      : Local Video subtitle control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0000', 0, async (done: Function) => {
+      if (fileDescriptor && subtitleFdSrc) {
+        testsubtitleUpdateListening(fileDescriptor, subtitleFdSrc, avPlayer, subtitleUpdateON, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0100
+        * @tc.name      : 002.test subtitle Function
+        * @tc.desc      : Local Video subtitle control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0100', 0, async (done: Function) => {
+      if (fileDescriptor && subtitleFdSrc) {
+        testsubtitleUpdateListening(fileDescriptor, `fd://${subtitleFdSrc.fd}`, avPlayer, subtitleUpdateON, done);
       }
     });
   })

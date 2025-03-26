@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnRefreshAccessedHistory001', 0, async (done: Function) => {
+    it('testOnRefreshAccessedHistory001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnRefreshAccessedHistory001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnRefreshAccessedHistory001", "resource://rawfile/second.html", 60116, done);
@@ -78,7 +78,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnRefreshAccessedHistory002', 0, async (done: Function) => {
+    it('testOnRefreshAccessedHistory002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnRefreshAccessedHistory002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnRefreshAccessedHistory002", "resource://rawfile/second.html", 60118, done);

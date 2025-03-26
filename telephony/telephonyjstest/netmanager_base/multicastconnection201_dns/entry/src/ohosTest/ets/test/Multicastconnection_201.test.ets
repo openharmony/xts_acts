@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
 
@@ -47,7 +47,7 @@ export default function Multicastconnection201Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_NetworkManager_DNS_addCustomDNSRule_Async_0300",0,async (done:Function)=> {
+    it("SUB_NetworkManager_DNS_addCustomDNSRule_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,async (done:Function)=> {
       let caseName = "SUB_NetworkManager_DNS_addCustomDNSRule_Async_0300";
       connection.addCustomDnsRule(host,ip,(err,data)=>{
         if (err) {
@@ -70,7 +70,7 @@ export default function Multicastconnection201Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0200",0,async (done:Function)=> {
+    it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,async (done:Function)=> {
       let caseName = "SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0200";
       connection.addCustomDnsRule(host,ip).then((data)=>{
           console.log(`${caseName} addCustomDNSRule success, data: ${JSON.stringify(data)}`);
@@ -92,7 +92,7 @@ export default function Multicastconnection201Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
     */
-    it("SUB_NetworkManager_DNS_removeCustomDNSRule_Async_0300",0,async (done:Function)=> {
+    it("SUB_NetworkManager_DNS_removeCustomDNSRule_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,async (done:Function)=> {
       let caseName = "SUB_NetworkManager_DNS_removeCustomDNSRule_Async_0300";
       connection.removeCustomDnsRule(host,(err,data)=>{
         if (err) {
@@ -115,7 +115,7 @@ export default function Multicastconnection201Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
     */
-    it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0200",0,async (done:Function)=> {
+    it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,async (done:Function)=> {
          let caseName = "SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0200";
          connection.removeCustomDnsRule(host).then((data) => {
              console.log(`${caseName} removeCustomDNSRule success, data: ${JSON.stringify(data)}`);
@@ -136,7 +136,7 @@ export default function Multicastconnection201Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_NetworkManager_DNS_clearCustomDNSRule_Async_0300",0,async (done:Function)=> {
+    it("SUB_NetworkManager_DNS_clearCustomDNSRule_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,async (done:Function)=> {
       let caseName = "SUB_NetworkManager_DNS_clearCustomDNSRule_Async_0300";
       connection.clearCustomDnsRules((err,data)=>{
         if (err) {
@@ -159,7 +159,7 @@ export default function Multicastconnection201Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0300",0,async (done:Function)=> {
+    it("SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,async (done:Function)=> {
       let caseName = "SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0300";
       connection.clearCustomDnsRules().then((data)=>{
          console.log(`${caseName} clearCustomDnsRules success, data: ${JSON.stringify(data)}`);

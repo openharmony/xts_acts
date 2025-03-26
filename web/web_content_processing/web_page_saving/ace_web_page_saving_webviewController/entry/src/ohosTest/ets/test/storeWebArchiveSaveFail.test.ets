@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -71,7 +71,7 @@ export default function storeWebArchiveSaveFail() {
      *tc.name testStoreWebArchiveCallback
      *tc.desic test storeWebArchiveCallback interface when save file failed.
      */
-    it('testStoreWebArchiveCallback',0, async (done: Function) =>{
+    it('testStoreWebArchiveCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
       emitKey="emitStoreWebArchivePromiseSaveFail";
       Utils.registerEvent("testStoreWebArchiveCallback","/data/storage/el2/base/index.html-1.mht",138,done);
       sendEventByKey('webcomponent03',10,'');
@@ -82,7 +82,7 @@ export default function storeWebArchiveSaveFail() {
      *tc.name testStoreWebArchivePromise
      *tc.desic test storeWebArchivePromise interface when save file failed.
      */
-    it('testStoreWebArchivePromise',0,async (done: Function) =>{
+    it('testStoreWebArchivePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
 
       Utils.registerEvent("testStoreWebArchivePromise","/data/storage/el2/base/index.html-3.mht",140,done);
       sendEventByKey('webcomponent03',10,'');

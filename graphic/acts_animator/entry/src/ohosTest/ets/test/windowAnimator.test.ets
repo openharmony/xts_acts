@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -33,7 +33,8 @@ export default function windowAnimatorTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetExpectedFrameRateRange', 0, async (done: Function) => {
+    it('test_SetExpectedFrameRateRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
 
       let msg = "test_SetExpectedFrameRateRange"
       console.log(msg + ' begin')

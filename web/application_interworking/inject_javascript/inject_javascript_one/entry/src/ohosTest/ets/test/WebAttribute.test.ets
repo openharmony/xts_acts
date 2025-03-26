@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -54,7 +54,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testJavaScriptAccess001', 0, async (done: Function) => {
+    it('testJavaScriptAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testJavaScriptAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJavaScriptAccess001", true, 32019, done);

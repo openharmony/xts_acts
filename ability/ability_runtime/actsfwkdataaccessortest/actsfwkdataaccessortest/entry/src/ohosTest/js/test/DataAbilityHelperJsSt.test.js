@@ -1662,6 +1662,31 @@ describe('ActsDataAbilityHelperTest', function () {
     })
 
     /*
+    * @tc.number: ACTS_Query_1500
+    * @tc.name: Queries one or more data records in the database
+    * @tc.desc: Check the return value of the interface (by Promise)
+    */
+    it('ACTS_Query_1500', 0, async function (done) {
+      console.log('ACTS_Query_1500====<begin');
+      expect(typeof (DAHelper)).assertEqual("object");
+      try {
+          let queryPromise = DAHelper.query(
+              dataAbilityUri
+          );
+          console.debug("=ACTS_Query_1500 queryPromise ====>"
+              + ("json queryPromise 【") + JSON.stringify(queryPromise) + (" 】 ") + " , " + queryPromise);
+          expect(typeof (queryPromise)).assertEqual("object");
+          console.log('ACTS_Query_1500====<end');
+          done();
+      } catch (err) {
+          console.error('=ACTS_Query_1500 query catch(err)====>:' + err);
+          console.log('ACTS_Query_1500====<end catch');
+          expect(false).assertTrue();
+          done();
+      }
+  })
+  
+    /*
     * @tc.number: ACTS_Update_0100
     * @tc.name: Updates one or more data records in the database.
     * @tc.desc: Check the return value of the interface (by Promise)
@@ -2215,6 +2240,43 @@ describe('ActsDataAbilityHelperTest', function () {
         }
     })
 
+     /*
+    * @tc.number: ACTS_Update_1500
+    * @tc.name: Updates one or more data records in the database.
+    * @tc.desc: Check the return value of the interface (by Promise)
+    */
+     it('ACTS_Update_1500', 0, async function (done) {
+      console.log('ACTS_Update_1500====<begin');
+      expect(typeof (DAHelper)).assertEqual("object");
+      console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
+      try {
+          let valueBucketNull = {};
+          console.debug("=ACTS_Update_1500 predicates====>"
+              + ("json predicates 【") + JSON.stringify(predicates) + (" 】") + " , " + predicates);
+          DAHelper.update(
+              dataAbilityUri,
+              valueBucketNull
+          ).then((data) => {
+              console.debug("=ACTS_Update_1500 then data====>"
+                  + ("json data 【") + JSON.stringify(data) + (" 】"));
+              expect(data).assertEqual(-2);
+              console.log('ACTS_Update_1500====<end');
+              done();
+          }).catch((err) => {
+              console.debug("=ACTS_Update_1500 catch err ====>"
+                  + ("json err 【") + JSON.stringify(err) + (" 】 "));
+              expect(false).assertFalse();;
+              console.log('ACTS_Update_1500====<end .catch');
+              done();
+          });
+      } catch (err) {
+          console.error('=ACTS_Update_1500 catch(err)====>:' + err);
+          expect(false).assertFalse();;
+          console.log('ACTS_Update_1500====<end catch');
+          done();
+      }
+  })
+
     /*
     * @tc.number: ACTS_Delete_0100
     * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
@@ -2735,6 +2797,40 @@ describe('ActsDataAbilityHelperTest', function () {
         }
     })
 
+         /*
+    * @tc.number: ACTS_Delete_1500
+    * @tc.name: Deletes one or more data records. This method should be implemented by a Data ability.
+    * @tc.desc: Check the return value of the interface (by Promise)
+    */
+         it('ACTS_Delete_1500', 0, async function (done) {
+          console.log('ACTS_Delete_1500====<begin');
+          expect(typeof (DAHelper)).assertEqual("object");
+          console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
+          try {
+              console.debug("=ACTS_Delete_1500 predicates====>"
+                  + ("json predicates 【") + JSON.stringify(predicates) + (" 】") + " , " + predicates);
+              DAHelper.delete(
+                  dataAbilityUri
+              ).then((data) => {
+                  console.debug("=ACTS_Delete_1500 then data====>"
+                      + ("json data 【") + JSON.stringify(data) + (" 】"));
+                  expect(data).assertEqual(1);
+                  console.log('ACTS_Delete_1500====<end');
+                  done();
+              }).catch((err) => {
+                  console.debug("=ACTS_Delete_1500 catch err ====>"
+                      + ("json err 【") + JSON.stringify(err) + (" 】 "));
+                  expect(false).assertFalse();
+                  console.log('ACTS_Delete_1500====<end .catch');
+                  done();
+              });
+          } catch (err) {
+              console.error('=ACTS_Delete_1500 catch(err)====>:' + err);
+              expect(false).assertFalse();
+              console.log('ACTS_Delete_1500====<end catch');
+              done();
+          }
+      })
     /*
     * @tc.number: ACTS_GetFileTypes_0100
     * @tc.name: Obtains the MIME type of files.

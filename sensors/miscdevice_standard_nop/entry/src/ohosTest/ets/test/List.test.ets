@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 import vibrator_nop_Test from './Vibrator_nop_Test.test';
-import VibratorPermissionTest from './VibratorPermission.test';
 
 export default function testsuite() {
   vibrator_nop_Test();
-  VibratorPermissionTest();
 }

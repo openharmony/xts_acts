@@ -12,24 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-
 export default function windowErrCode1300004() {
   describe('windowErrCode1300004', () => {
     console.log('describe windowErrCode1300004 start!!!')
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
-
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
     })
-
     /**
      * @tc.number     : testOnSubWindowCloseErrCode1300004_0100
      * @tc.name       : testOnSubWindowCloseErrCode1300004_0100
@@ -38,11 +35,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnSubWindowCloseErrCode1300004_0100', 0, async (done: Function) => {
+    it('testOnSubWindowCloseErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnSubWindowCloseErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let mainWindow: ohosWindow.Window | undefined;
       await windowStage.getMainWindow().then((data) => {
         mainWindow = data;
@@ -52,7 +48,6 @@ export default function windowErrCode1300004() {
         done()
       });
       expect(!!mainWindow).assertTrue();
-
       try {
         mainWindow!.on('subWindowClose', () => {
         });
@@ -77,11 +72,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetRaiseByClickEnabledPromiseErrCode1300004_0100', 0, async (done: Function) => {
+    it('testSetRaiseByClickEnabledPromiseErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetRaiseByClickEnabledPromiseErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetRaiseByClickEnabledPromiseErrCode1300004_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -96,7 +90,6 @@ export default function windowErrCode1300004() {
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (tempWnd as ohosWindow.Window).showWindow();
-
       try {
         await (tempWnd as ohosWindow.Window)!.setRaiseByClickEnabled(true).then(async () => {
           await (tempWnd! as ohosWindow.Window).destroyWindow();
@@ -120,7 +113,6 @@ export default function windowErrCode1300004() {
         done()
       }
     })
-
     /**
      * @tc.number     : testMaximizePromiseErrCode1300004_0100
      * @tc.name       : testMaximizePromiseErrCode1300004_0100
@@ -129,11 +121,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMaximizePromiseErrCode1300004_0100', 0, async (done: Function) => {
+    it('testMaximizePromiseErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMaximizePromiseErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testMaximizePromiseErrCode1300004_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -148,7 +139,6 @@ export default function windowErrCode1300004() {
         expect().assertFail();
         done()
       }
-
       try {
         await win!.maximize(ohosWindow.MaximizePresentation.EXIT_IMMERSIVE).then(async () => {
           console.info(msgStr + 'Succeeded in calling maximize.');
@@ -176,11 +166,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTitleMoveEnabledErrCode1300004_0100', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabledErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTitleMoveEnabledErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetWindowTitleMoveEnabledErrCode1300004_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -195,7 +184,6 @@ export default function windowErrCode1300004() {
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (tempWnd as ohosWindow.Window).showWindow();
-
       try {
         (tempWnd! as ohosWindow.Window).setWindowTitleMoveEnabled(true);
         console.error(msgStr + 'Succeeded in calling setWindowTitleMoveEnabled.');
@@ -214,7 +202,6 @@ export default function windowErrCode1300004() {
         done();
       }
     })
-
     /**
      * @tc.number     : testSetDecorButtonStyleErrCode1300004_0100
      * @tc.name       : testSetDecorButtonStyleErrCode1300004_0100
@@ -223,11 +210,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetDecorButtonStyleErrCode1300004_0100', 0, async (done: Function) => {
+    it('testSetDecorButtonStyleErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetDecorButtonStyleErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetDecorButtonStyleErrCode1300004_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -242,7 +228,6 @@ export default function windowErrCode1300004() {
       expect(!!tempWnd).assertTrue();
       await (tempWnd as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (tempWnd as ohosWindow.Window).showWindow();
-
       try {
         // let param: ohosWindow.DecorButtonStyle = {}
         (tempWnd as ohosWindow.Window).setDecorButtonStyle((tempWnd as ohosWindow.Window).getDecorButtonStyle());
@@ -261,7 +246,6 @@ export default function windowErrCode1300004() {
         done();
       }
     })
-
     /**
      * @tc.number     : testGetDecorButtonStyleErrCode1300004_0100
      * @tc.name       : testGetDecorButtonStyleErrCode1300004_0100
@@ -270,7 +254,7 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetDecorButtonStyleErrCode1300004_0100', 0, async (done: Function) => {
+    it('testGetDecorButtonStyleErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testGetDecorButtonStyleErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -288,7 +272,6 @@ export default function windowErrCode1300004() {
         let win = data;
         win.setUIContent("testability/pages/second/PageOne");
         win.showWindow();
-
         try {
           (win! as ohosWindow.Window).getDecorButtonStyle();
           console.error(msgStr + 'Succeeded in calling getDecorButtonStyle.');
@@ -305,7 +288,6 @@ export default function windowErrCode1300004() {
         }
       })
     })
-
     /**
      * @tc.number     : testSetWindowTitleButtonVisibleErrCode1300004_0100
      * @tc.name       : testSetWindowTitleButtonVisibleErrCode1300004_0100
@@ -314,11 +296,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTitleButtonVisibleErrCode1300004_0100', 0, async (done: Function) => {
+    it('testSetWindowTitleButtonVisibleErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTitleButtonVisibleErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let subWin: ohosWindow.Window | undefined = undefined;
       await windowStage.createSubWindow('testSetWindowTitleButtonVisibleErrCode1300004_SubWindow_Promise')
         .then((data) => {
@@ -334,7 +315,6 @@ export default function windowErrCode1300004() {
       expect(!!subWin).assertTrue();
       await (subWin! as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (subWin! as ohosWindow.Window).showWindow();
-
       try {
         (subWin! as ohosWindow.Window).setWindowTitleButtonVisible(true, true, true);
         console.error(msgStr + 'Succeeded in calling setWindowTitleButtonVisible.');
@@ -353,7 +333,6 @@ export default function windowErrCode1300004() {
         done();
       }
     })
-
     /**
      * @tc.number     : testSetImmersiveModeEnabledStateErrCode1300004_0100
      * @tc.name       : testSetImmersiveModeEnabledStateErrCode1300004_0100
@@ -362,11 +341,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetImmersiveModeEnabledStateErrCode1300004_0100', 0, async (done: Function) => {
+    it('testSetImmersiveModeEnabledStateErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetImmersiveModeEnabledStateErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testSetImmersiveModeEnabledStateErrCode1300004_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -381,7 +359,6 @@ export default function windowErrCode1300004() {
         expect().assertFail();
         done()
       }
-
       try {
         (win as ohosWindow.Window).setImmersiveModeEnabledState(true);
         console.error(msgStr + 'Succeeded in calling setImmersiveModeEnabledState.');
@@ -396,7 +373,6 @@ export default function windowErrCode1300004() {
         done();
       }
     })
-
     /**
      * @tc.number     : testGetImmersiveModeEnabledStateErrCode1300004_0100
      * @tc.name       : testGetImmersiveModeEnabledStateErrCode1300004_0100
@@ -405,11 +381,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetImmersiveModeEnabledStateErrCode1300004_0100', 0, async (done: Function) => {
+    it('testGetImmersiveModeEnabledStateErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testGetImmersiveModeEnabledStateErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let windowConfig: ohosWindow.Configuration = {
         name: "testGetImmersiveModeEnabledStateErrCode1300004_0100",
         windowType: ohosWindow.WindowType.TYPE_DIALOG,
@@ -424,7 +399,6 @@ export default function windowErrCode1300004() {
         expect().assertFail();
         done()
       }
-
       try {
         (win as ohosWindow.Window).getImmersiveModeEnabledState();
         console.error(msgStr + 'Succeeded in calling getImmersiveModeEnabledState.');
@@ -439,7 +413,6 @@ export default function windowErrCode1300004() {
         done();
       }
     })
-
     /**
      * @tc.number     : testCreateSubWindowWithOptionsPromiseErrCode1300004_0100
      * @tc.name       : testCreateSubWindowWithOptionsPromiseErrCode1300004_0100
@@ -448,7 +421,7 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testCreateSubWindowWithOptionsPromiseErrCode1300004_0100', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsPromiseErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testCreateSubWindowWithOptionsPromiseErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -466,7 +439,6 @@ export default function windowErrCode1300004() {
         expect().assertFail();
         done()
       }
-
       try {
         let param: ohosWindow.SubWindowOptions = {
           title: "aa", decorEnabled: true
@@ -491,7 +463,6 @@ export default function windowErrCode1300004() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100
      * @tc.name       : testSetTitleAndDockHoverShownPromiseErrCode1300004_0100
@@ -500,11 +471,10 @@ export default function windowErrCode1300004() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetTitleAndDockHoverShownPromiseErrCode1300004_0100', 0, async (done: Function) => {
+    it('testSetTitleAndDockHoverShownPromiseErrCode1300004_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetTitleAndDockHoverShownPromiseErrCode1300004_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let subWin: ohosWindow.Window | undefined = undefined;
       await windowStage.createSubWindow('testSetTitleAndDockHoverShownPromiseErrCode1300004_SubWindow_Promise')
         .then((data) => {
@@ -520,7 +490,6 @@ export default function windowErrCode1300004() {
       expect(!!subWin).assertTrue();
       await (subWin! as ohosWindow.Window).setUIContent("testability/pages/second/PageOne");
       await (subWin! as ohosWindow.Window).showWindow();
-
       try {
         await (subWin! as ohosWindow.Window).setTitleAndDockHoverShown(true, true).then(async () => {
           console.info(msgStr + 'Succeeded in calling setTitleAndDockHoverShown.');

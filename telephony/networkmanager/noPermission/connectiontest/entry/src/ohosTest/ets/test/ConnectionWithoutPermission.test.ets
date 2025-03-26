@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
@@ -47,7 +47,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionRegister0800', 0, async (done: Function) => {
+    it('testNetConnectionRegister0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionRegister0800";
       console.info(`${caseName} test start`);
       try {
@@ -81,7 +81,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionUnregister0700', 0, async (done: Function) => {
+    it('testNetConnectionUnregister0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionUnregister0700";
       console.info(`${caseName} test start`);
       try {
@@ -115,7 +115,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionGetDefaultNetCallback0600', 0, async (done: Function) => {
+    it('testNetConnectionGetDefaultNetCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionGetDefaultNetCallback0600";
       console.info(`${caseName} test start`);
       try {
@@ -148,7 +148,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionGetDefaultNetPromise0600', 0, async (done: Function) => {
+    it('testNetConnectionGetDefaultNetPromise0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionGetDefaultNetPromise0600";
       console.info(`${caseName} test start`);
       try {
@@ -179,7 +179,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionIsDefaultNetMeteredCallback0600', 0, async (done: Function) => {
+    it('testNetConnectionIsDefaultNetMeteredCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionIsDefaultNetMeteredCallback0600";
       console.info(`${caseName} test start`);
       try {
@@ -212,7 +212,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionIsDefaultNetMeteredPromise0600', 0, async (done: Function) => {
+    it('testNetConnectionIsDefaultNetMeteredPromise0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionIsDefaultNetMeteredPromise0600";
       console.info(`${caseName} test start`);
       try {
@@ -243,7 +243,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNetConnectionIsDefaultNetMeteredSync0200', 0, async (done: Function) => {
+    it('testNetConnectionIsDefaultNetMeteredSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionIsDefaultNetMeteredSync0200";
       console.info(`${caseName} test start`);
       try {
@@ -268,7 +268,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionHasDefaultNet0500', 0, async (done: Function) => {
+    it('testNetConnectionHasDefaultNet0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionHasDefaultNet0500";
       console.info(`${caseName} test start`);
       try {
@@ -301,7 +301,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionHasDefaultNet1000', 0, async (done: Function) => {
+    it('testNetConnectionHasDefaultNet1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionHasDefaultNet1000";
       console.info(`${caseName} test start`);
       try {
@@ -332,7 +332,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetConnectionHasDefaultNetSync0500', 0, async (done: Function) => {
+    it('testNetConnectionHasDefaultNetSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetConnectionHasDefaultNetSync0500";
       console.info(`${caseName} test start`);
       try {
@@ -357,7 +357,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetAllNets5000', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAllNets5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAllNets5000";
       console.info(`${caseName} test start `);
       try {
@@ -390,7 +390,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetAllNets5100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAllNets5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAllNets5100";
       console.info(`${caseName} test start `);
       try {
@@ -421,7 +421,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNetworkMgrConnectionGetAllNetsSync0500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAllNetsSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrConnectionGetAllNetsSync0500";
       console.info(`${caseName} test start `);
       try {
@@ -446,7 +446,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0700';
       console.info(`${caseName}---Start`);
       try {
@@ -478,7 +478,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionAddCustomDnsRule0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionAddCustomDnsRule0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionAddCustomDnsRule0800';
       console.info(`${caseName}---Start`);
       try {
@@ -509,7 +509,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0700';
       console.info(`${caseName}---Start`);
       try {
@@ -541,7 +541,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionRemoveCustomDnsRule0800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionRemoveCustomDnsRule0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionRemoveCustomDnsRule0800';
       console.info(`${caseName}---Start`);
       try {
@@ -572,7 +572,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionClearCustomDnsRules0300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionClearCustomDnsRules0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionClearCustomDnsRules0300';
       console.info(`${caseName}---Start`);
       try {
@@ -604,7 +604,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrConnectionClearCustomDnsRules0400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionClearCustomDnsRules0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrConnectionClearCustomDnsRules0400';
       console.info(`${caseName}---Start`);
       try {
@@ -635,7 +635,7 @@ export default function ConnectionWithoutPermissionTest() {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('testNetworkMgrConnectionGetAddressByNameCallbackNop100', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAddressByNameCallbackNop100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNameCallbackNop100 begin');
       try {
         let host = "xxxx";
@@ -665,7 +665,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetAddressByNamePromiseNop200', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAddressByNamePromiseNop200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNamePromiseNop200 begin');
       try {
         let host = "xxxx";
@@ -693,7 +693,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300 begin');
       try {
         let host = "xxxx";
@@ -721,7 +721,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400 begin');
       try {
         let host = "xxxx";
@@ -752,7 +752,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500 begin');
       try {
         let netHandle = connection.getDefaultNetSync();
@@ -782,7 +782,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600 begin');
       try {
         let netHandle = connection.getDefaultNetSync();
@@ -810,7 +810,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700 begin');
       try {
         let netHandle = connection.getDefaultNetSync();
@@ -838,7 +838,7 @@ export default function ConnectionWithoutPermissionTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800', 0, async (done: Function) => {
+    it('testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800 begin');
       try {
         let netHandle = connection.getDefaultNetSync();

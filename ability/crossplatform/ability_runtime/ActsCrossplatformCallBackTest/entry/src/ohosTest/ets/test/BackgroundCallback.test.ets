@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -43,7 +43,7 @@ export default function BackgroundCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001", 0, async (done: Function) => {
+    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001", Level.LEVEL0, async (done: Function) => {
 
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001 start"
@@ -202,7 +202,7 @@ export default function BackgroundCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    /*it("actsDoAbilityBackgroundCallbackError0003", 0, async (done: Function) => {
+    /*it("actsDoAbilityBackgroundCallbackError0003", Level.LEVEL0, async (done: Function) => {
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 start"
       );
@@ -273,7 +273,7 @@ export default function BackgroundCallback() {
      * @tc.level Level 2
      */
 
-    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004", 0, async (done: Function) => {
+    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004", Level.LEVEL0, async (done: Function) => {
 
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004 start"

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size } from '@ohos/hypium'
 import display from '@ohos.display';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
@@ -1594,7 +1594,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnaddErrCode401_0100', 0, async (done: Function) => {
+    it('testOnaddErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnaddErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1621,7 +1621,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testoffaddErrCode401_0100', 0, async (done: Function) => {
+    it('testoffaddErrCode401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testoffaddErrCode401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1648,7 +1648,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testonfoldStatusChange401_0100', 0, async (done: Function) => {
+    it('testonfoldStatusChange401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testonfoldStatusChange401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1674,7 +1674,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testofffoldStatusChange401_0100', 0, async (done: Function) => {
+    it('testofffoldStatusChange401_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testofffoldStatusChange401_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1700,7 +1700,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testondisplayModeChange401', 0, async (done: Function) => {
+    it('testondisplayModeChange401', Level.LEVEL3, async (done: Function) => {
       let caseName = "testondisplayModeChange401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1725,7 +1725,7 @@ export default function displayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testoffdisplayModeChange401', 0, async (done: Function) => {
+    it('testoffdisplayModeChange401', Level.LEVEL3, async (done: Function) => {
       let caseName = "testoffdisplayModeChange401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');

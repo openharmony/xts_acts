@@ -15,7 +15,7 @@
 
 import common from '@ohos.app.ability.common';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 
 export default function ApplicationContext() {
@@ -46,7 +46,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testGetRunningProcessInformationPromise001', 0, async (done: Function) => {
+    it('testGetRunningProcessInformationPromise001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -83,7 +83,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testNativeLibraryPath001', 0, async (done: Function) => {
+    it('testNativeLibraryPath001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         let moduleContextNativeLibraryPath = abilityContext.currentHapModuleInfo.nativeLibraryPath;
@@ -107,7 +107,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testNativeLibraryPath002', 0, async (done: Function) => {
+    it('testNativeLibraryPath002', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         let moduleContextNativeLibraryPath = abilityContext.currentHapModuleInfo.nativeLibraryPath;
@@ -151,7 +151,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testGetRunningProcessInformationCb001', 0, async (done: Function) => {
+    it('testGetRunningProcessInformationCb001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -184,7 +184,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStageMode001', 0, async (done: Function) => {
+    it('testStageMode001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -207,7 +207,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResourceManager001', 0, async (done: Function) => {
+    it('testResourceManager001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -230,7 +230,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testApplicationInfo001', 0, async (done: Function) => {
+    it('testApplicationInfo001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -273,7 +273,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCacheDir001', 0, async (done: Function) => {
+    it('testCacheDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -297,7 +297,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTempDir001', 0, async (done: Function) => {
+    it('testTempDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -321,7 +321,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResourceDir001', 0, async (done: Function) => {
+    it('testResourceDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -345,7 +345,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testFilesDir001', 0, async (done: Function) => {
+    it('testFilesDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -369,7 +369,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDatabaseDir001', 0, async (done: Function) => {
+    it('testDatabaseDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -393,7 +393,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPreferencesDir001', 0, async (done: Function) => {
+    it('testPreferencesDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -417,7 +417,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testBundleCodeDir001', 0, async (done: Function) => {
+    it('testBundleCodeDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -441,7 +441,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext001", 0, async (done: Function) => {
+    it("testCreateModuleContext001", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext001 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -469,7 +469,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext002", 0, async (done: Function) => {
+    it("testCreateModuleContext002", Level.LEVEL0, async (done: Function) => {
       try {
         console.log("testCreateModuleContext002 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -497,7 +497,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext003", 0, async (done: Function) => {
+    it("testCreateModuleContext003", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext003 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -522,7 +522,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext004", 0, async (done: Function) => {
+    it("testCreateModuleContext004", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext004 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -547,7 +547,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext005", 0, async (done: Function) => {
+    it("testCreateModuleContext005", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext005 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -572,7 +572,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testGetApplicationContext001", 0, async (done: Function) => {
+    it("testGetApplicationContext001", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testGetApplicationContext001 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -597,7 +597,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100", 0, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -619,7 +619,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200", 0, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
@@ -641,7 +641,7 @@ export default function ApplicationContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300", 0, async (done: Function) => {
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300 begin");
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;

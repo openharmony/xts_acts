@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -76,7 +76,7 @@ export default function ActsAcewebViewCookieTrackEnhance() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testWebViewCookieTrackEnabled', 0, async (done: Function) => {
+    it('testWebViewCookieTrackEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableTrue";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableTrue", true, 3001, done);
@@ -92,7 +92,7 @@ export default function ActsAcewebViewCookieTrackEnhance() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testWebViewCookieTrackEnableFalseGroup', 0, async (done: Function) => {
+    it('testWebViewCookieTrackEnableFalseGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableFalse";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableFalse", true, 3002, done);
@@ -108,7 +108,7 @@ export default function ActsAcewebViewCookieTrackEnhance() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testWebViewCookieTrackEnabledGroup', 0, async (done: Function) => {
+    it('testWebViewCookieTrackEnabledGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnabled";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnabled", true, 3003, done);
@@ -124,7 +124,7 @@ export default function ActsAcewebViewCookieTrackEnhance() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testNoCookieTrackingPrevention', 0, async (done: Function) => {
+    it('testNoCookieTrackingPrevention', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let emitKey = "emitNoCookieTrackingPrevention";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testNoCookieTrackingPrevention", true, 3008, done);

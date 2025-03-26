@@ -124,11 +124,11 @@ describe("SensorJsTest_sensor_56", function () {
      * @tc.number:SUB_SensorsSystem_NEWPEDOMETER_JSTest_0010
      * @tc.name: newPedometer_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newPedometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newPedometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometer_SensorJsTest001---------------------------');
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER, (error, data) => {

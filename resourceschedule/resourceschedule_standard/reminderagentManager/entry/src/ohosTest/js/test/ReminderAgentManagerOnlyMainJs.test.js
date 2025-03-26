@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgentManager'
 import notificationManager from '@ohos.notificationManager';
 
@@ -26,6 +26,12 @@ export default function ReminderAgentManagerOnlyMainTest() {
              * @tc.setup: setup invoked before all testcases
              */
             console.info('beforeAll called')
+
+            reminderAgent.cancelAllReminders().then(() => {
+              console.info('beforeAll cancelAllReminders success');
+            }).catch((err) => {
+              console.error("beforeAll cancelAllReminders promise err code:" + err.code + " message:" + err.message);
+            });
         })
 
         afterAll(function () {
@@ -68,7 +74,7 @@ export default function ReminderAgentManagerOnlyMainTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0031", 3, async function (done) {
+        it("reminderRequestAttribute_0031", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderRequestAttribute_0031---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
@@ -115,7 +121,7 @@ export default function ReminderAgentManagerOnlyMainTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0032", 0, async function (done) {
+        it("reminderRequestAttribute_0032", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderRequestAttribute_0032---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
@@ -160,7 +166,7 @@ export default function ReminderAgentManagerOnlyMainTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0033", 0, async function (done) {
+        it("reminderRequestAttribute_0033", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderRequestAttribute_0033---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1

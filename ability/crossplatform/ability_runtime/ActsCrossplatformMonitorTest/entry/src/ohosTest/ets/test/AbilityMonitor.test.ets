@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
-import { describe, beforeEach, afterEach, expect, it } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, expect, it, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -89,7 +89,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100";
       console.log(LABLE + TAG + ":start")
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -127,7 +127,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200";
       console.log(LABLE + TAG + ":start")
       const want = factoryWant(
@@ -173,7 +173,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300";
       console.log(LABLE + TAG + ":start")
       const want = factoryWant(
@@ -216,7 +216,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0100";
       console.log(LABLE + TAG + ":start")
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -253,7 +253,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0200";
       console.log(LABLE + TAG + ":start")
       const want = factoryWant(
@@ -290,7 +290,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0300";
       console.log(LABLE + TAG + ":start")
       const want = factoryWant(
@@ -331,7 +331,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100";
       console.log(LABLE + TAG + ":start")
       let monitor = null;
@@ -368,7 +368,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -413,7 +413,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300";
       console.log(LABLE + TAG + "start");
       let result = 0;
@@ -455,7 +455,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -500,7 +500,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -545,7 +545,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100";
       console.log(LABLE + TAG + "start");
       let monitor = null;
@@ -584,7 +584,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -641,7 +641,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -702,7 +702,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -758,7 +758,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -818,7 +818,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100";
       console.log(LABLE + TAG + "start");
       let monitor = null;
@@ -856,7 +856,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300";
       console.log(LABLE + TAG + "start");
 
@@ -898,7 +898,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400";
       console.log(LABLE + TAG + "start");
       let monitor = null;
@@ -937,7 +937,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -986,7 +986,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600";
       console.log(LABLE + TAG + "start");
 
@@ -1032,7 +1032,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700";
       console.log(LABLE + TAG + "start");
 
@@ -1079,7 +1079,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800";
       console.log(LABLE + TAG + "start");
 
@@ -1126,7 +1126,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900";
       console.log(LABLE + TAG + "start");
 
@@ -1173,7 +1173,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000";
       console.log(LABLE + TAG + " start");
 
@@ -1222,7 +1222,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100";
       console.log(LABLE + TAG + " start");
       let monitor = null;
@@ -1258,7 +1258,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1315,7 +1315,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1373,7 +1373,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400", 0, async (done: Function) => {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(

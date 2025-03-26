@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -358,6 +358,33 @@ export default function UsbCoreEtsTest() {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostManager_JS_FuncErr_0700
+     * @tc.name     : testGetRawDescriptor801Err001
+     * @tc.desc     : Positive test: Get the original USB descriptor
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetRawDescriptor801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      try{
+      console.info(TAG, 'usb testGetRawDescriptor801Err001 begin');
+      if (!isDeviceConnected) {
+        expect(isDeviceConnected).assertFalse();
+        return
+      }
+
+      getPipe('testGetRawDescriptor801Err001');
+      let descriptor = usbMgr.getRawDescriptor(gPipe);
+      console.info(TAG, 'usb case testGetRawDescriptor801Err001 ret: ' + JSON.stringify(descriptor));
+      expect(descriptor.length).assertLarger(0);
+      toClosePipe('testGetRawDescriptor801Err001');
+      }catch(err){
+        console.error(TAG, 'testGetRawDescriptor801Err001 error:', error);
+        expect(error.code).assertEqual(801);
+      }
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostManager_JS_Func_0600
      * @tc.name     : testGetFileDescriptor001
      * @tc.desc     : Positive test: Get file descriptor
@@ -377,6 +404,33 @@ export default function UsbCoreEtsTest() {
       console.info(TAG, 'usb case testGetFileDescriptor001 ret: ' + fileDescriptor);
       expect(fileDescriptor >= 0).assertTrue();
       toClosePipe('testGetFileDescriptor001');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_FuncErr_0600
+     * @tc.name     : testGetFileDescriptor801Err001
+     * @tc.desc     : Positive test: Get file descriptor
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetFileDescriptor801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      try{
+      console.info(TAG, 'usb testGetFileDescriptor801Err001 begin');
+      if (!isDeviceConnected) {
+        expect(isDeviceConnected).assertFalse();
+        return
+      }
+
+      getPipe('testGetFileDescriptor801Err001');
+      let fileDescriptor = usbMgr.getFileDescriptor(gPipe);
+      console.info(TAG, 'usb case testGetFileDescriptor801Err001 ret: ' + fileDescriptor);
+      expect(fileDescriptor >= 0).assertTrue();
+      toClosePipe('testGetFileDescriptor801Err001');
+      }catch(err){
+        console.error(TAG, 'testGetRawDescriptor801Err001 error:', error);
+        expect(error.code).assertEqual(801);
+      }
     })
 
     /**

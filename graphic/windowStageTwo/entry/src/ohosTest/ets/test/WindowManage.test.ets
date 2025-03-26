@@ -397,6 +397,42 @@ export default function windowManageTest() {
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
+     * @tc.name      : testGetWindowsByCoordinateWithNegativeX
+     * @tc.desc      : Get windows by coordinate.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowsByCoordinateWithNegativeX', 0, (done: Function) => {
+      let caseName = 'testGetWindowsByCoordinateWithNegativeX';
+      let subWindowClass: window.Window;
+      createSubWindow(windowStage, caseName).then(async (data) => {
+        subWindowClass = data;
+        await sleep(1000);
+        window.getWindowsByCoordinate(displayId, 3, -1).then(async (data) => {
+          await subWindowClass.destroyWindow();
+          console.info(`${caseName} The window displayId is: ` + displayId);
+          console.info(`${caseName} Succeeded in getting window from point. Data: ` + JSON.stringify(data));
+          expect(data.length).assertEqual(2);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }).catch((err: BusinessError) => {
+        if (err.code === 801) {
+          console.info(`${caseName} The current device type does not support to resize.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
      * @tc.name      : testOnWindowStageClose
      * @tc.desc      : Listener for window stage close event.
      * @tc.size      : MediumTest

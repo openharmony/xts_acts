@@ -14,7 +14,7 @@
  */
 
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function Common() {
   describe("Common",  () =>{
@@ -43,7 +43,7 @@ export default function Common() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCommon001', 0, async  (done:Function) => {
+    it('testCommon001', Level.LEVEL0, async  (done:Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -64,7 +64,7 @@ export default function Common() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCommon002', 0, async  (done:Function) => {
+    it('testCommon002', Level.LEVEL0, async  (done:Function) => {
       try {
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
         expect(stageContext != null).assertTrue();
@@ -85,7 +85,7 @@ export default function Common() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCommon003', 0, async  (done:Function) => {
+    it('testCommon003', Level.LEVEL0, async  (done:Function) => {
       try {
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
@@ -108,7 +108,7 @@ export default function Common() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCommon004', 0, async  (done:Function) => {
+    it('testCommon004', Level.LEVEL0, async  (done:Function) => {
       try {
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
         expect(stageContext != null).assertTrue();
@@ -131,7 +131,7 @@ export default function Common() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCommon005', 0, async  (done:Function) => {
+    it('testCommon005', Level.LEVEL0, async  (done:Function) => {
       try {
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
         expect(stageContext != null).assertTrue();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -50,7 +50,7 @@ export default function webJsunit() {
      *tc.name onErrorReceive
      *tc.desic Triggered when the web page receives a web resource loading error
      */
-    it('onErrorReceive', 0, async (done: Function) => {
+    it('onErrorReceive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnHttpErrorReceive";
       Utils.registerEvent("onErrorReceive", "http://bianixnbo.com/", 65, done);
       sendEventByKey('webcomponent', 10, '');
@@ -60,7 +60,7 @@ export default function webJsunit() {
      *tc.name onHttpErrorReceive
      *tc.desic Triggered when the web page receives a web resource loading HTTP error
      */
-    it('onHttpErrorReceive', 0, async (done: Function) => {
+    it('onHttpErrorReceive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnHttpErrorReceive";
       Utils.registerEvent("onHttpErrorReceive", true, 66, done);
       sendEventByKey('webcomponent', 10, '');

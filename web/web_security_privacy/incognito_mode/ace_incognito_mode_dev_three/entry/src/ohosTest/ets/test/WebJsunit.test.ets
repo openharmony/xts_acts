@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webJsunit() {
      *tc.name GetStoredGeolocation                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('GetStoredGeolocation', 0, async (done: Function) => {
+    it('GetStoredGeolocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetHttpDnsSuccess";
       Utils.registerEvent("GetStoredGeolocation", "file:///", 120, done);
       sendEventByKey('webcomponent', 10, '');
@@ -62,7 +62,7 @@ export default function webJsunit() {
      *tc.name SetHttpDnsSuccess                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('SetHttpDnsSuccess', 0, async (done: Function) => {
+    it('SetHttpDnsSuccess', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocation";
       Utils.registerEvent("SetHttpDnsSuccess", 1, 446, done);
       sendEventByKey('webcomponent', 10, '');
@@ -72,7 +72,7 @@ export default function webJsunit() {
      *tc.name GetAccessibleGeolocation                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('GetAccessibleGeolocation', 0, async (done: Function) => {
+    it('GetAccessibleGeolocation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationPromise";
       Utils.registerEvent("GetAccessibleGeolocation", true, 451, done);
       sendEventByKey('webcomponent', 10, '');
@@ -82,7 +82,7 @@ export default function webJsunit() {
      *tc.name GetAccessibleGeolocationPromise                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('GetAccessibleGeolocationPromise', 0, async (done: Function) => {
+    it('GetAccessibleGeolocationPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetStoredGeolocationPromise";
       Utils.registerEvent("GetAccessibleGeolocationPromise", true, 517, done);
       sendEventByKey('webcomponent', 10, '');
@@ -92,7 +92,7 @@ export default function webJsunit() {
      *tc.name GetStoredGeolocationPromise                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('GetStoredGeolocationPromise', 0, async (done: Function) => {
+    it('GetStoredGeolocationPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetStoredGeolocationPromise";
       Utils.registerEvent("GetStoredGeolocationPromise", "file:///", 521, done);
       sendEventByKey('webcomponent', 10, '');

@@ -1853,6 +1853,34 @@ describe('UsbApiParamExceJsunitTest', function () {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostManager_JS_ParamExCon_6300
+     * @tc.name     : testSetConfigurationParam801Err002
+     * @tc.desc     : Negative test: configs id add 100
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testSetConfigurationParam801Err002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info(TAG, 'usb testSetConfigurationParam801Err002 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+        getPipe("testSetConfigurationParam801Err002");
+        try {
+            let tmpConfig = devices.configs[0];
+            tmpConfig.id = tmpConfig.id + 100;
+            let ret = usbManager.setConfiguration(gPipe, tmpConfig);
+            console.info(TAG, 'usb [', tmpConfig.id, '] setConfiguration ret : ', ret);
+            expect(ret !== 0).assertTrue();
+        } catch (err) {
+            console.info(TAG, 'testSetConfigurationParam801Err002 catch err code: ', err);
+            expect(err.code).assertEqual(801);
+        }
+        toClosePipe("testSetConfigurationParam801Err0021");
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamEx_6500
      * @tc.name     : testSetConfigurationParamEx003
      * @tc.desc     : Negative test: configs name is ""
@@ -2652,6 +2680,37 @@ describe('UsbApiParamExceJsunitTest', function () {
         }
         toReleaseInterface("testReleaseInterfaceParamEx001", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx001");
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_ParamExRel_0100
+     * @tc.name     : testReleaseInterfaceParam801Err001
+     * @tc.desc     : Negative test: pipe busNum +1000
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testReleaseInterfaceParamEx801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info(TAG, 'usb testReleaseInterfaceParamEx801Err001 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+        getPipe("testReleaseInterfaceParamEx801Err001");
+        let tmpInterface = devices.configs[0].interfaces[0];
+        try {
+            let isClaim = usbManager.claimInterface(gPipe, tmpInterface, true);
+            expect(isClaim).assertEqual(0);
+            gPipe.busNum = gPipe.busNum + 1000;
+            let ret = usbManager.releaseInterface(gPipe, tmpInterface);
+            console.info(TAG, 'usb [', gPipe.busNum, '] releaseInterface ret : ', ret);
+            expect(ret !== 0).assertTrue();
+        } catch (err) {
+            console.info(TAG, 'testReleaseInterfaceParamEx801Err001 catch err code: ', err);
+            expect(err.code).assertEqual(801);
+        }
+        toReleaseInterface("testReleaseInterfaceParamEx801Err001", tmpInterface);
+        toClosePipe("testReleaseInterfaceParamEx801Err001");
     })
 
     /**

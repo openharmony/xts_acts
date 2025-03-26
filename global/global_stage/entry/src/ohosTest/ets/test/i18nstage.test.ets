@@ -14,7 +14,7 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect ,Level } from '@ohos/hypium'
 import I18n from '@ohos.i18n'
 
 export default function i18nStageTest() {
@@ -42,7 +42,7 @@ export default function i18nStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getTimePeriodName_stagetest_0100', 0, async (done: Function) => {
+    it('getTimePeriodName_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value = I18n.I18NUtil.getTimePeriodName(2, 'zh-CN');
       console.log('getTimePeriodName_stagetest_0100 1' + value);
       expect(value).assertEqual('凌晨');
@@ -57,7 +57,7 @@ export default function i18nStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('add_stagetest_0100', 0, async (done: Function) => {
+    it('add_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let calendar = I18n.getCalendar('zh-CN');
       calendar.set(2021, 11, 11, 8, 0, 0);
       calendar.add('year', 8);
@@ -75,7 +75,7 @@ export default function i18nStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getTimeInMillis_stagetest_0100', 0, async (done: Function) => {
+    it('getTimeInMillis_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let calendar = I18n.getCalendar('zh-CN');
       calendar.setTime(5000);
       let millisecond = calendar.getTimeInMillis();
@@ -92,7 +92,7 @@ export default function i18nStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('compareDays_stagetest_0100', 0, async (done: Function) => {
+    it('compareDays_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let calendar = I18n.getCalendar('zh-CN');
       calendar.setTime(5000);
       let date = new Date(6000);
@@ -110,7 +110,7 @@ export default function i18nStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('HolidayManager_stagetest_0100', 0, async (done: Function) => {
+    it('HolidayManager_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let holiday = new I18n.HolidayManager('/system/lib/US.ics');
       console.log('HolidayManager_stagetest_0100 1' + holiday);
       expect(holiday !== null).assertTrue();
@@ -140,7 +140,7 @@ export default function i18nStageTest() {
      * @tc.type     :Function
      * @tc.level    :Level 0
      */
-    it('i18n_test_getBestMatchLocale_0010', 0, () => {
+    it('i18n_test_getBestMatchLocale_0010', Level.LEVEL0, () => {
       console.log('i18n_test_getBestMatchLocale_0010' + 'start');
       try {
         let matchedLocaledId: string = I18n.I18NUtil.getBestMatchLocale("en-US", [""]);
@@ -155,7 +155,7 @@ export default function i18nStageTest() {
      * @tc.name     :Get a three-letter abbreviation of the specified language
      * @tc.desc     :transfer GB and return GBR
      */
-    it('testgetThreeLetterRegion_0030', 0, () => {
+    it('testgetThreeLetterRegion_0030', Level.LEVEL0, () => {
       let language: string = I18n.I18NUtil.getThreeLetterRegion('GB');
       console.info('aaa+++', language);
       expect('GBR').assertEqual(language);
@@ -166,7 +166,7 @@ export default function i18nStageTest() {
      * @tc.name     :Get a three-letter abbreviation of the specified language
      * @tc.desc     :transfer en and return eng
      */
-    it('testgetThreeLetterLanguage_0030', 0, () => {
+    it('testgetThreeLetterLanguage_0030', Level.LEVEL0, () => {
       let language: string = I18n.I18NUtil.getThreeLetterLanguage('en');
       console.info('aaa+++', language);
       expect('eng').assertEqual(language);

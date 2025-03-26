@@ -21,6 +21,7 @@ import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest';
 import settings from '@ohos.settings';
 import { image } from '@kit.ImageKit';
+import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -3281,7 +3282,56 @@ export default function windowPromiseTest() {
       }
 
     })
+/**
+     * @tc.number     : SUB_BASIC_WMS_moveWindowToAsync_3_parameters_0100
+     * @tc.name       : testmoveWindowToAsync_3_parameters
+     * @tc.desc       : testmoveWindowToAsync_3_parameters
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testmoveWindowToAsync_3_parameters', 0, async (done: Function) => {
+      let caseName = "testmoveWindowToAsync_3_parameters";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let displayId = mainWindow.getWindowProperties().displayId;
+      console.info(msgStr +'windowId :'+displayId)
+      let moveConfiguration: ohosWindow.MoveConfiguration = {
+        displayId: displayId
+      };
+      let subWindow = await windowStage.createSubWindow('testmoveWindowToAsync_3_parameters');
+      await subWindow.loadContentByName(LoadContentByName.entryName);
+      await  subWindow.showWindow();
+      try {
+      let promise = subWindow.moveWindowToAsync(300, 300, moveConfiguration);
+      promise.then(async () => {
+        console.info(msgStr +'Succeeded in moving the window.');
+        let rect = subWindow.getWindowProperties().windowRect;
+        console.info(msgStr +`Get window rect: ` + JSON.stringify(rect));
+        expect(true).assertTrue();
+        await subWindow.destroyWindow();
+        done()
+      }).catch(async (err: BusinessError) => {
+        console.error(msgStr +`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+        await subWindow.destroyWindow();
+        if (err.code == 801) {
+            console.error(`${caseName}  Capability not supported. Failed to call the API due to limited device capabilities`);
+            expect(false).assertFalse();
+            done();
+        } else {
+            expect().assertFail();
+            done();
+          }
+      });
+      } catch (exception) {
+      console.error(msgStr +`Failed. Cause code: ${exception.code}, message: ${exception.message}`);
+      await subWindow.destroyWindow();
+      expect(false).assertFail();
+      done();
+      }
 
+    })
 
   })
 }

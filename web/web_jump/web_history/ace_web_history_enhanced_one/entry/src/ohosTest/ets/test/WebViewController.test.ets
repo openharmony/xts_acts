@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHistoryItemIcon001', 0, async (done: Function) => {
+    it('testHistoryItemIcon001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHistoryItemIcon001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHistoryItemIcon001", true, 31023, done);
@@ -70,7 +70,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHistoryItemHistoryUrl001', 0, async (done: Function) => {
+    it('testHistoryItemHistoryUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHistoryItemHistoryUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHistoryItemHistoryUrl001", "resource://rawfile/HistoryItem.html", 31024, done);
@@ -85,7 +85,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHistoryRawUrl001', 0, async (done: Function) => {
+    it('testHistoryRawUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHistoryRawUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHistoryRawUrl001", "resource://rawfile/HistoryItem.html", 31025, done);
@@ -100,7 +100,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHistoryItemTitle001', 0, async (done: Function) => {
+    it('testHistoryItemTitle001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHistoryItemTitle001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHistoryItemTitle001", "index", 31026, done);
@@ -115,7 +115,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackForwardListCurrentIndex001', 0, async (done: Function) => {
+    it('testBackForwardListCurrentIndex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackForwardListCurrentIndex001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackForwardListCurrentIndex001", 0, 31027, done);
@@ -130,7 +130,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackForwardListCurrentSize001', 0, async (done: Function) => {
+    it('testBackForwardListCurrentSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackForwardListCurrentSize001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackForwardListCurrentSize001", 1, 31028, done);

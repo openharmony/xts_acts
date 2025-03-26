@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -42,7 +42,7 @@ export default function ForegroundPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_DO_ABILITY_FOREGROUND_PROMISE_0001", 0, async (done: Function) => {
+    it("ACTS_DO_ABILITY_FOREGROUND_PROMISE_0001", Level.LEVEL0, async (done: Function) => {
 
       setTimeout(() => {
         abilityDelegator.printSync(
@@ -293,7 +293,7 @@ export default function ForegroundPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_DO_ABILITY_FOREGROUND_PROMISE_0004", 0, async (done: Function) => {
+    it("ACTS_DO_ABILITY_FOREGROUND_PROMISE_0004", Level.LEVEL0, async (done: Function) => {
 
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_FOREGROUND_PROMISE_0004 start"

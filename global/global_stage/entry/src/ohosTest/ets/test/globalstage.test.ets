@@ -47,9 +47,9 @@ export default function globalStageTest() {
      * @tc.desc      : getStringSync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringSync_stagetest_0100', 0, async (done: Function) => {
+    it('getStringSync_stagetest_0100', Level.LEVEL2, async (done: Function) => {
       let mgr: resourceManager.ResourceManager = res;
       try {
         let value: string = mgr.getStringSync(
@@ -76,7 +76,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringSync_stagetest_0200', 0, async (done: Function) => {
+    it('getStringSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
       let mgr: resourceManager.ResourceManager = res;
       try {
         let value: string = mgr.getStringSync(
@@ -103,7 +103,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringByNameSync_stagetest_0100', 0, async (done: Function) => {
+    it('getStringByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getStringByNameSync('app_name');
       console.log('getStringByNameSync_stagetest_0100 1' + value);
       expect(value).assertEqual('ohosProject %d');
@@ -116,9 +116,9 @@ export default function globalStageTest() {
      * @tc.desc      : getStringByNameSync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringByNameSync_stagetest_0200', 0, async (done: Function) => {
+    it('getStringByNameSync_stagetest_0200', Level.LEVEL2, async (done: Function) => {
       let value: string = res.getStringByNameSync('app_name', 100);
       console.log('getStringByNameSync_stagetest_0200 1' + value);
       expect(value).assertEqual('ohosProject 100');
@@ -131,9 +131,9 @@ export default function globalStageTest() {
      * @tc.desc      : getStringValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringValue_stage_test_0100', 0, async (done: Function) => {
+    it('getStringValue_stage_test_0100', Level.LEVEL2, async (done: Function) => {
       res.getStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -152,9 +152,9 @@ export default function globalStageTest() {
      * @tc.desc      : getStringValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringValue_stage_test_0200', 0, async (done: Function) => {
+    it('getStringValue_stage_test_0200', Level.LEVEL2, async (done: Function) => {
       res.getStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -173,9 +173,9 @@ export default function globalStageTest() {
      * @tc.desc      : getStringArrayValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringArrayValue_stage_test_0100', 0, async (done: Function) => {
+    it('getStringArrayValue_stage_test_0100', Level.LEVEL2, async (done: Function) => {
       res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -197,9 +197,9 @@ export default function globalStageTest() {
      * @tc.desc      : getStringArrayValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringArrayValue_stage_test_0200', 0, async (done: Function) => {
+    it('getStringArrayValue_stage_test_0200', Level.LEVEL2, async (done: Function) => {
       res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -223,7 +223,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContent_stage_test_0100', 0, async (done: Function) => {
+    it('getMediaContent_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -243,7 +243,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContent_stage_test_0200', 0, async (done: Function) => {
+    it('getMediaContent_stage_test_0200', Level.LEVEL0, async (done: Function) => {
       res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -261,9 +261,9 @@ export default function globalStageTest() {
      * @tc.desc      : getMediaContent
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getMediaContent_stage_test_0300', 0, async (done: Function) => {
+    it('getMediaContent_stage_test_0300', Level.LEVEL2, async (done: Function) => {
       res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -281,9 +281,9 @@ export default function globalStageTest() {
      * @tc.desc      : getMediaContent
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getMediaContent_stage_test_0400', 0, async (done: Function) => {
+    it('getMediaContent_stage_test_0400', Level.LEVEL2, async (done: Function) => {
       res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -303,7 +303,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0100', 0, async (done: Function) => {
+    it('getMediaContentBase64_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -323,7 +323,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0200', 0, async (done: Function) => {
+    it('getMediaContentBase64_stage_test_0200', Level.LEVEL0, async (done: Function) => {
       res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -343,7 +343,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0300', 0, async (done: Function) => {
+    it('getMediaContentBase64_stage_test_0300', Level.LEVEL0, async (done: Function) => {
       res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -363,7 +363,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0400', 0, async (done: Function) => {
+    it('getMediaContentBase64_stage_test_0400', Level.LEVEL0, async (done: Function) => {
       res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -383,7 +383,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValue_stage_test_0100', 0, async (done: Function) => {
+    it('getPluralStringValue_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -404,7 +404,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValue_stage_test_0200', 0, async (done: Function) => {
+    it('getPluralStringValue_stage_test_0200', Level.LEVEL0, async (done: Function) => {
       res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -425,7 +425,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getBoolean_stage_test_0100', 0, async (done: Function) => {
+    it('getBoolean_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       let value: boolean = res.getBoolean({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -444,7 +444,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getNumber_stage_test_0100', 0, async (done: Function) => {
+    it('getNumber_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       let value: number = res.getNumber({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -463,7 +463,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getDrawableDescriptor_stage_test_0100', 0, async (done: Function) => {
+    it('getDrawableDescriptor_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       let out = true;
       let value: DrawableDescriptor = res.getDrawableDescriptor(
         {
@@ -483,7 +483,7 @@ export default function globalStageTest() {
     * @tc.name    test getColor method with resource param in callback mode
     * @tc.desc    get the color in callback mode
     */
-    it('getColor_test_0100', 0, async (done: Function) => {
+    it('getColor_test_0100', Level.LEVEL0, async (done: Function) => {
       res.getColor({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -501,7 +501,7 @@ export default function globalStageTest() {
     * @tc.name    test getColor method with resource param in promise mode
     * @tc.desc    get the color in promise mode
     */
-    it('getColor_test_0200', 0, async (done: Function) => {
+    it('getColor_test_0200', Level.LEVEL0, async (done: Function) => {
       res.getColor({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -519,7 +519,7 @@ export default function globalStageTest() {
     * @tc.name    test getColorSync method with resource param in promise mode
     * @tc.desc    get the sync color in promise mode
     */
-    it('getColorSync_test_0100', 0, async (done: Function) => {
+    it('getColorSync_test_0100', Level.LEVEL0, async (done: Function) => {
       let value: number = res.getColorSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -539,7 +539,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getRawFdSync_stagetest_0100', 0, async (done: Function) => {
+    it('getRawFdSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: resourceManager.RawFileDescriptor = res.getRawFdSync('rawfiletest.xml');
       console.log('getRawFdSync_stagetest_0100 1' + value.fd);
       console.log('getRawFdSync_stagetest_0100 1' + value.offset);
@@ -556,7 +556,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getRawFileListSync_stagetest_0100', 0, async (done: Function) => {
+    it('getRawFileListSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Array<string> = res.getRawFileListSync('');
       console.log('getRawFileListSync_stagetest_0100 1' + value);
       console.log('getRawFileListSync_stagetest_0100 1' + value.length);
@@ -572,7 +572,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getRawFileContentSync_stagetest_0100', 0, async (done: Function) => {
+    it('getRawFileContentSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Uint8Array =
       res.getRawFileContentSync('rawfiletest.xml');
       console.log('getRawFileContentSync_stagetest_0100 1' + value);
@@ -588,7 +588,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentSync_stagetest_0100', 0, async (done: Function) => {
+    it('getMediaContentSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Uint8Array = res.getMediaContentSync($r('app.media.icon').id);
       console.log('getMediaContentSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -603,7 +603,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentSync_stagetest_0200', 0, async (done: Function) => {
+    it('getMediaContentSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
       let value: Uint8Array = res.getMediaContentSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -622,7 +622,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64Sync_stagetest_0100', 0, async (done: Function) => {
+    it('getMediaContentBase64Sync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getMediaContentBase64Sync($r('app.media.icon').id);
       console.log('getMediaContentBase64Sync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -637,7 +637,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64Sync_stagetest_0200', 0, async (done: Function) => {
+    it('getMediaContentBase64Sync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getMediaContentBase64Sync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -656,7 +656,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValueSync_stagetest_0100', 0, async (done: Function) => {
+    it('getPluralStringValueSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getPluralStringValueSync($r('app.plural.plural_name').id, 0);
       console.log('getPluralStringValueSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -671,7 +671,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValueSync_stagetest_0200', 0, async (done: Function) => {
+    it('getPluralStringValueSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getPluralStringValueSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -690,7 +690,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringArrayValueSync_stagetest_0100', 0, async (done: Function) => {
+    it('getStringArrayValueSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Array<string> =
       res.getStringArrayValueSync($r('app.strarray.sizeList').id);
       console.log('getStringArrayValueSync_stagetest_0100 1' + value);
@@ -706,7 +706,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringArrayValueSync_stagetest_0200', 0, async (done: Function) => {
+    it('getStringArrayValueSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
       let value: Array<string> = res.getStringArrayValueSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -725,7 +725,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringByNameSync_stagetest_0100', 0, async (done: Function) => {
+    it('getPluralStringByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getPluralStringByNameSync('plural_name', 2);
       console.log('getPluralStringByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -740,7 +740,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaByNameSync_stagetest_0100', 0, async (done: Function) => {
+    it('getMediaByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Uint8Array = res.getMediaByNameSync('icon');
       console.log('getMediaByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -755,7 +755,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaBase64ByNameSync_stagetest_0100', 0, async (done: Function) => {
+    it('getMediaBase64ByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getMediaBase64ByNameSync('icon');
       console.log('getMediaBase64ByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -770,7 +770,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringArrayByNameSync_stagetest_0100', 0, async (done: Function) => {
+    it('getStringArrayByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Array<string> = res.getStringArrayByNameSync('sizeList');
       console.log('getStringArrayByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
@@ -785,7 +785,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getConfigurationSync_stagetest_0100', 0, async (done: Function) => {
+    it('getConfigurationSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: resourceManager.Configuration = res.getConfigurationSync();
       console.log('getStringArrayByNameSync_stagetest_0100 1' + value.locale);
       console.log('getStringArrayByNameSync_stagetest_0100 1' + value.direction);
@@ -801,7 +801,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getDeviceCapabilitySync_stagetest_0100', 0, async (done: Function) => {
+    it('getDeviceCapabilitySync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: resourceManager.DeviceCapability = res.getDeviceCapabilitySync();
       console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.screenDensity);
       console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.deviceType);
@@ -817,7 +817,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_GLOBAL_GetLocales_0010', 0, async (done: Function) => {
+    it('SUB_GLOBAL_GetLocales_0010', Level.LEVEL0, async (done: Function) => {
       let value: string = res.getLocales().toString();
       console.log('SUB_GLOBAL_GetLocales_0010' + value);
       expect(value == 'en-US,zh-CN').assertTrue();
@@ -830,9 +830,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('SUB_GLOBAL_GetSymbol_0010', 0, async (done: Function) => {
+    it('SUB_GLOBAL_GetSymbol_0010', Level.LEVEL3, async (done: Function) => {
       let value: number = res.getSymbol($r('app.symbol.symbolTest1').id);
       console.log('SUB_GLOBAL_Getsymbol_0010_value' + value);
       expect(value == 983043).assertTrue();
@@ -847,26 +847,26 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_GLOBAL_GetSymbol_0130', 0, async (done: Function) => {
+    it('SUB_GLOBAL_GetSymbol_0130', Level.LEVEL0, async (done: Function) => {
       let value: number = res.getSymbolByName('symbolTest1');
       console.log('SUB_GLOBAL_Getsymbol_0130' + value);
       expect(value == 983043).assertTrue();
       done();
     })
 
-    it('SUB_GOLBAL_REMSGR_isRawDir_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_isRawDir_0010', Level.LEVEL0, async () => {
       let value: boolean = res.isRawDir('rawfiletest.xml');
       console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_value' + value);
       expect(value == false).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010', Level.LEVEL0, async () => {
       let value: resourceManager.Configuration = res.getOverrideConfiguration();
       console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_value' + value.mnc);
       expect(value.mnc == 0).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010', Level.LEVEL0, async () => {
       let completeOverrideConfiguration: resourceManager.Configuration = {
         mcc: 460,
         mnc: 101,
@@ -883,7 +883,7 @@ export default function globalStageTest() {
       expect(value.getOverrideConfiguration().mcc == 460).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010', Level.LEVEL0, async () => {
       let completeOverrideConfiguration: resourceManager.Configuration = {
         mcc: 461,
         mnc: 101,
@@ -904,7 +904,7 @@ export default function globalStageTest() {
       expect(value.getOverrideConfiguration().mcc == 461).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010', Level.LEVEL0, async () => {
       let resource: resourceManager.Resource = {
         bundleName: 'com.example.myapplication',
         moduleName: 'entry',
@@ -921,7 +921,7 @@ export default function globalStageTest() {
       expect(value.type == 10001).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010', Level.LEVEL0, async () => {
       let resource: resourceManager.Resource = {
         bundleName: 'com.example.myapplication',
         moduleName: 'entry',
@@ -944,7 +944,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0010', 0, () => {
+    it('resourceManager_test_getStringSync_0010', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -970,7 +970,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0020', 0, () => {
+    it('resourceManager_test_getStringSync_0020', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -996,7 +996,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0030', 0, () => {
+    it('resourceManager_test_getStringSync_0030', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1022,7 +1022,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0040', 0, () => {
+    it('resourceManager_test_getStringSync_0040', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1048,7 +1048,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0050', 0, () => {
+    it('resourceManager_test_getStringSync_0050', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1074,7 +1074,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0060', 0, () => {
+    it('resourceManager_test_getStringSync_0060', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1100,7 +1100,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0070', 0, () => {
+    it('resourceManager_test_getStringSync_0070', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1126,7 +1126,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0080', 0, () => {
+    it('resourceManager_test_getStringSync_0080', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1153,7 +1153,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0090', 0, () => {
+    it('resourceManager_test_getStringSync_0090', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1180,7 +1180,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0100', 0, () => {
+    it('resourceManager_test_getStringSync_0100', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1207,7 +1207,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0110', 0, () => {
+    it('resourceManager_test_getStringSync_0110', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1233,7 +1233,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0120', 0, () => {
+    it('resourceManager_test_getStringSync_0120', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1260,7 +1260,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0130', 0, () => {
+    it('resourceManager_test_getStringSync_0130', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1286,7 +1286,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0140', 0, () => {
+    it('resourceManager_test_getStringSync_0140', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1314,7 +1314,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0150', 0, () => {
+    it('resourceManager_test_getStringSync_0150', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1342,7 +1342,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0160', 0, () => {
+    it('resourceManager_test_getStringSync_0160', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1368,7 +1368,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0170', 0, () => {
+    it('resourceManager_test_getStringSync_0170', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1394,7 +1394,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0180', 0, () => {
+    it('resourceManager_test_getStringSync_0180', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1423,7 +1423,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0190', 0, () => {
+    it('resourceManager_test_getStringSync_0190', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1449,7 +1449,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0200', 0, () => {
+    it('resourceManager_test_getStringSync_0200', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1475,7 +1475,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0210', 0, () => {
+    it('resourceManager_test_getStringSync_0210', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1503,7 +1503,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0220', 0, () => {
+    it('resourceManager_test_getStringSync_0220', Level.LEVEL2, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1530,9 +1530,9 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0230', 0, () => {
+    it('resourceManager_test_getStringSync_0230', Level.LEVEL3, () => {
       let resMgr = res;
       try {
         resMgr.getStringSync($r('app.string.test_stringTwentyThree').id);
@@ -1548,9 +1548,9 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0240', 0, () => {
+    it('resourceManager_test_getStringSync_0240', Level.LEVEL3, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1571,9 +1571,9 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringByNameSync_0250', 0, () => {
+    it('resourceManager_test_getStringByNameSync_0250', Level.LEVEL3, () => {
       let resMgr = res;
       try {
         resMgr.getStringByNameSync('test_stringTwentyThree');
@@ -1589,9 +1589,9 @@ export default function globalStageTest() {
      * @tc.desc      : The wrong parameter type
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0260', 0, () => {
+    it('resourceManager_test_getStringSync_0260', Level.LEVEL3, () => {
       let resMgr = res;
       try {
         resMgr.getStringSync($r('app.string.test_stringTwentyFour').id, "format string", "format", "1.5", "string");
@@ -1607,9 +1607,9 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0270', 0, () => {
+    it('resourceManager_test_getStringSync_0270', Level.LEVEL3, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1630,9 +1630,9 @@ export default function globalStageTest() {
      * @tc.desc      : Parameter out of index
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringByNameSync_0280', 0, () => {
+    it('resourceManager_test_getStringByNameSync_0280', Level.LEVEL3, () => {
       let resMgr = res;
       try {
         resMgr.getStringByNameSync('test_stringTwentyFour', "format string", "format", "1.5", "string");
@@ -1648,9 +1648,9 @@ export default function globalStageTest() {
      * @tc.desc      : Parameters less than required
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0290', 0, () => {
+    it('resourceManager_test_getStringSync_0290', Level.LEVEL3, () => {
       let resMgr = res;
       try {
         resMgr.getStringSync($r('app.string.test_stringTwentyFive').id);
@@ -1666,9 +1666,9 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0300', 0, () => {
+    it('resourceManager_test_getStringSync_0300', Level.LEVEL3, () => {
       let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
@@ -1689,9 +1689,9 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringByNameSync_0310', 0, () => {
+    it('resourceManager_test_getStringByNameSync_0310', Level.LEVEL3, () => {
       let resMgr = res;
       try {
         resMgr.getStringByNameSync('test_stringTwentyFive');
@@ -1709,7 +1709,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0020', 0, () => {
+    it('resourceManager_test_getSymbol_0020', Level.LEVEL2, () => {
       let value = res.getSymbol($r('app.symbol.symbolTestReference').id);
       console.log('resourceManager_test_getSymbol_0020:' + value);
       expect(value == 983043).assertTrue();
@@ -1721,9 +1721,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource resId invalid
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0040', 0, () => {
+    it('resourceManager_test_getSymbol_0040', Level.LEVEL3, () => {
       try {
         let value = res.getSymbol(0x01234567);
         console.log('resourceManager_test_getSymbol_0040:' + value);
@@ -1740,9 +1740,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource resId invalid
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0050', 0, () => {
+    it('resourceManager_test_getSymbol_0050', Level.LEVEL3, () => {
       try {
         let value = res.getSymbol($r('app.string.test_stringTwo').id);
         console.log('resourceManager_test_getSymbol_0050:' + value);
@@ -1759,9 +1759,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource resource re-ref too much by resId
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0060', 0, () => {
+    it('resourceManager_test_getSymbol_0060', Level.LEVEL3, () => {
       try {
         let value = res.getSymbol($r('app.symbol.symbolTestA').id);
         console.log('resourceManager_test_getSymbol_0060:' + value);
@@ -1780,7 +1780,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0070', 0, () => {
+    it('resourceManager_test_getSymbol_0070', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1799,7 +1799,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0080', 0, () => {
+    it('resourceManager_test_getSymbol_0080', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1818,7 +1818,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0100', 0, () => {
+    it('resourceManager_test_getSymbol_0100', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1840,9 +1840,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource not found by resource object
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0110', 0, () => {
+    it('resourceManager_test_getSymbol_0110', Level.LEVEL3, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1864,9 +1864,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource re-ref too much by resource object
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0120', 0, () => {
+    it('resourceManager_test_getSymbol_0120', Level.LEVEL3, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1890,7 +1890,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0140', 0, () => {
+    it('resourceManager_test_getSymbol_0140', Level.LEVEL2, () => {
       let value = res.getSymbolByName('symbolTestReference');
       console.log('resourceManager_test_getSymbol_0140:' + value);
       expect(value == 983043).assertTrue();
@@ -1902,9 +1902,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbolByName resName invalid
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0160', 0, () => {
+    it('resourceManager_test_getSymbol_0160', Level.LEVEL3, () => {
       try {
         let value = res.getSymbolByName('invalidName');
         console.log('resourceManager_test_getSymbol_0160:' + value);
@@ -1921,9 +1921,9 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbolByName resource re-ref too much
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0180', 0, () => {
+    it('resourceManager_test_getSymbol_0180', Level.LEVEL3, () => {
       try {
         let value = res.getSymbolByName('symbolTestB');
         console.log('resourceManager_test_getSymbol_0180:' + value);
@@ -1942,7 +1942,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0190', 0, () => {
+    it('resourceManager_test_getSymbol_0190', Level.LEVEL2, () => {
       let value = res.getSymbol($r('app.symbol.symbolTest2').id);
       console.log('resourceManager_test_getSymbol_0190:' + value);
       expect(value == 983041).assertTrue();
@@ -1956,7 +1956,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0200', 0, () => {
+    it('resourceManager_test_getSymbol_0200', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1975,7 +1975,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0210', 0, () => {
+    it('resourceManager_test_getSymbol_0210', Level.LEVEL2, () => {
       let value = res.getSymbolByName('symbolTest2');
       console.log('resourceManager_test_getSymbol_0210:' + value);
       expect(value == 983041).assertTrue();
@@ -1987,9 +1987,9 @@ export default function globalStageTest() {
      * @tc.desc      : getDrawableDescriptor with resource Object not exist resource id
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getDrawable_1400', 0, () => {
+    it('resourceManager_test_getDrawable_1400', Level.LEVEL3, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -2011,9 +2011,9 @@ export default function globalStageTest() {
      * @tc.desc      : getDrawableDescriptorByName with not exist pic name
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getDrawable_0900', 0, () => {
+    it('resourceManager_test_getDrawable_0900', Level.LEVEL3, () => {
       try {
         let value = res.getDrawableDescriptorByName('symbolTest2');
         console.log('resourceManager_test_getDrawable_0900:' + value);
@@ -2032,7 +2032,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFdSync_0020', 0, () => {
+    it('resourceManager_test_getRawFdSync_0020', Level.LEVEL2, () => {
       let value = res.getRawFdSync('A/test.txt');
       console.log('resourceManager_test_getRawFdSync_0020_fd' + value.fd);
       console.log('resourceManager_test_getRawFdSync_0020_offset' + value.offset);
@@ -2049,7 +2049,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFdSync_0030', 0, () => {
+    it('resourceManager_test_getRawFdSync_0030', Level.LEVEL2, () => {
       let value = res.getRawFdSync('A/none.xml');
       console.log('resourceManager_test_getRawFdSync_0030_fd' + value.fd);
       console.log('resourceManager_test_getRawFdSync_0030_offset' + value.offset);
@@ -2064,9 +2064,9 @@ export default function globalStageTest() {
      * @tc.desc      : getRawFdSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getRawFdSync_0050', 0, () => {
+    it('resourceManager_test_getRawFdSync_0050', Level.LEVEL3, () => {
       try {
         let value = res.getRawFdSync('error_path.xml');
         console.log('resourceManager_test_getRawFdSync_0050:' + value);
@@ -2085,7 +2085,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFileContentSync_0170', 0, () => {
+    it('resourceManager_test_getRawFileContentSync_0170', Level.LEVEL2, () => {
       let value = res.getRawFileContentSync('A/none.xml');
       console.log('resourceManager_test_getRawFileContentSync_0170:' + value);
       expect(value.length == 0).assertTrue();
@@ -2099,7 +2099,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFileContentSync_0160', 0, () => {
+    it('resourceManager_test_getRawFileContentSync_0160', Level.LEVEL2, () => {
       let value = res.getRawFileContentSync('A/test.txt');
       console.log('resourceManager_test_getRawFileContentSync_0160:' + value);
       expect(value.length == 4).assertTrue();
@@ -2111,9 +2111,9 @@ export default function globalStageTest() {
      * @tc.desc      : getRawFileContentSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getRawFileContentSync_0190', 0, () => {
+    it('resourceManager_test_getRawFileContentSync_0190', Level.LEVEL3, () => {
       try {
         let value = res.getRawFileContentSync('error_path.xml');
         console.log('resourceManager_test_getRawFileContentSync_0190:' + value);
@@ -2132,7 +2132,7 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFileListSync_0120', 0, () => {
+    it('resourceManager_test_getRawFileListSync_0120', Level.LEVEL2, () => {
       let value = res.getRawFileListSync('A');
       console.log('resourceManager_test_getRawFileListSync_0120:' + value);
       expect(value.length >= 102).assertTrue();
@@ -2144,9 +2144,9 @@ export default function globalStageTest() {
      * @tc.desc      : getRawFileListSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getRawFileListSync_0140', 0, () => {
+    it('resourceManager_test_getRawFileListSync_0140', Level.LEVEL3, () => {
       try {
         let value = res.getRawFileListSync('error_path');
         console.log('resourceManager_test_getRawFileListSync_0140:' + value);
@@ -2163,9 +2163,9 @@ export default function globalStageTest() {
      * @tc.desc      : closeRawFdSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_closeRawFdSync_0100', 0, () => {
+    it('resourceManager_test_closeRawFdSync_0100', Level.LEVEL3, () => {
       try {
         let value = res.closeRawFdSync('error_path.xml');
         console.log('resourceManager_test_closeRawFdSync_0100:' + value);
@@ -4920,9 +4920,9 @@ export default function globalStageTest() {
      * @tc.desc      : getMediaContentSync with res id density
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getMediaContentSync_test_0500', 0, () => {
+    it('getMediaContentSync_test_0500', Level.LEVEL2, () => {
       let value: Uint8Array = res.getMediaContentSync($r('app.media.icon').id, 0);
       console.log('getMediaContentSync_test_0500 1' + value);
       expect(value !== null).assertTrue();
@@ -4934,9 +4934,9 @@ export default function globalStageTest() {
      * @tc.desc      : getMediaContentSync with resource object density
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getMediaContentSync_test_0600', 0, () => {
+    it('getMediaContentSync_test_0600', Level.LEVEL2, () => {
       let value: Uint8Array = res.getMediaContentSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,7 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 
 const TAG = "ContinuousTaskJsTest ";
 let subscribe_;
@@ -107,7 +107,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest001
      * @tc.desc:verify old startBackgroundrunning interface callback mode work properly
      */
-    it("ContinuousTaskJsTest001", 0, async function (done) {
+    it("ContinuousTaskJsTest001", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest001 begin--------------------');
         startAbilityWithOption({ events: ["startTaskUseApi7Callback"] }, "testcase1", "startTaskUseApi7Callback", done);
     })
@@ -117,7 +117,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest002
      * @tc.desc:verify cancelBackgroundrunning interface callback mode work properly
      */
-    it("ContinuousTaskJsTest002", 0, async function (done) {
+    it("ContinuousTaskJsTest002", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest002 begin--------------------');
         startAbilityWithOption({ events: ["stopTaskUseApi7Callback"] }, "testcase2", "stopTaskUseApi7Callback", done);
     })
@@ -127,7 +127,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest003
      * @tc.desc:verify new startBackgroundrunning interface callback mode work properly
      */
-    it("ContinuousTaskJsTest003", 0, async function (done) {
+    it("ContinuousTaskJsTest003", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest003 begin--------------------');
         startAbilityWithOption({ events: ["startTaskUseApi8Callback"] }, "testcase3", "startTaskUseApi8Callback", done);
     })
@@ -137,7 +137,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest004
      * @tc.desc:verify new stopBackgroundrunning interface callback mode work properly
      */
-    it("ContinuousTaskJsTest004", 0, async function (done) {
+    it("ContinuousTaskJsTest004", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest004 begin--------------------');
         startAbilityWithOption({ events: ["stopTaskUseApi8Callback"] }, "testcase4", "stopTaskUseApi8Callback", done);
     })
@@ -147,7 +147,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest005
      * @tc.desc:verify old startBackgroundrunning interface promise mode work properly
      */
-    it("ContinuousTaskJsTest005", 0, async function (done) {
+    it("ContinuousTaskJsTest005", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest005 begin--------------------');
         startAbilityWithOption({ events: ["startTaskUseApi7Promise"] }, "testcase5", "startTaskUseApi7Promise", done);
     })
@@ -157,7 +157,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest006
      * @tc.desc:verify cancelBackgroundrunning interface promise mode work properly
      */
-    it("ContinuousTaskJsTest006", 0, async function (done) {
+    it("ContinuousTaskJsTest006", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest006 begin--------------------');
         startAbilityWithOption({ events: ["stopTaskUseApi7Promise"] }, "testcase6", "stopTaskUseApi7Promise", done);
     })
@@ -167,7 +167,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest007
      * @tc.desc:verify new startBackgroundrunning interface promise mode work properly
      */
-    it("ContinuousTaskJsTest007", 0, async function (done) {
+    it("ContinuousTaskJsTest007", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest007 begin--------------------');
         startAbilityWithOption({ events: ["startTaskUseApi8Promise"] }, "testcase7", "startTaskUseApi8Promise", done);
     })
@@ -177,7 +177,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest008
      * @tc.desc:verify new stopBackgroundrunning interface promise mode work properly
      */
-    it("ContinuousTaskJsTest008", 0, async function (done) {
+    it("ContinuousTaskJsTest008", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest008 begin--------------------');
         startAbilityWithOption({ events: ["stopTaskUseApi8Promise"] }, "testcase8", "stopTaskUseApi8Promise", done);
     })
@@ -187,7 +187,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest009
      * @tc.desc:verify continuous task request failed with invalid background mode
      */
-    it("ContinuousTaskJsTest009", 0, async function (done) {
+    it("ContinuousTaskJsTest009", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest009 begin--------------------');
         startAbilityWithOption({ events: ["startTaskInvalidBgmode"] }, "testcase9", "startTaskInvalidBgmode", done);
     })
@@ -197,7 +197,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest010
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest010", 0, async function (done) {
+    it("ContinuousTaskJsTest010", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest010 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.DATA_TRANSFER;
         expect(value1).assertEqual(1);
@@ -209,7 +209,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest011
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest011", 0, async function (done) {
+    it("ContinuousTaskJsTest011", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest011 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK;
         expect(value1).assertEqual(2);
@@ -221,7 +221,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest012
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest012", 0, async function (done) {
+    it("ContinuousTaskJsTest012", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest012 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.AUDIO_RECORDING;
         expect(value1).assertEqual(3);
@@ -233,7 +233,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest013
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest013", 0, async function (done) {
+    it("ContinuousTaskJsTest013", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest013 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.LOCATION;
         expect(value1).assertEqual(4);
@@ -245,7 +245,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest014
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest014", 0, async function (done) {
+    it("ContinuousTaskJsTest014", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest014 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.BLUETOOTH_INTERACTION;
         expect(value1).assertEqual(5);
@@ -257,7 +257,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest015
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest015", 0, async function (done) {
+    it("ContinuousTaskJsTest015", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest015 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.MULTI_DEVICE_CONNECTION;
         expect(value1).assertEqual(6);
@@ -269,7 +269,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name: ContinuousTaskJsTest016
      * @tc.desc: test backgroudManager BackgroudMode constant
      */
-    it("ContinuousTaskJsTest016", 0, async function (done) {
+    it("ContinuousTaskJsTest016", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest016 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.TASK_KEEPING;
         expect(value1).assertEqual(9);
@@ -281,7 +281,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.name:ContinuousTaskJsTest017
      * @tc.desc:verify continuous task updateBackgroundRunning
      */
-    it("ContinuousTaskJsTest017", 0, async function (done) {
+    it("ContinuousTaskJsTest017", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest017 begin--------------------');
         startAbilityWithOption({ events: ["updateTaskUseApi12Promise"] }, "testcase10", "updateTaskUseApi12Promise", done);
     })
@@ -295,7 +295,7 @@ describe("ContinuousTaskJsTest", function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it("ContinuousTaskJsTest018", 0, async function (done) {
+    it("ContinuousTaskJsTest018", Level.LEVEL0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest018 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.VOIP;
         expect(value1).assertEqual(8);

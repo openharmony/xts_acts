@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
 
@@ -315,6 +315,36 @@ export default function documentPickerCallback(abilityContext: Context) {
       let testNum = "test_Documentpicker_Select_Callback_019";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.PICTURE;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_2000
+     * @tc.name   : test_Documentpicker_Select_Callback_020
+     * @tc.desc   : select with option multiAuthMode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_020", Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_020";
+      let option = new picker.DocumentSelectOptions();
+      option.isEncryptionSupported = true;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_2100
+     * @tc.name   : test_Documentpicker_Select_Callback_021
+     * @tc.desc   : select with option multiAuthMode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_021", Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_021";
+      let option = new picker.DocumentSelectOptions();
+      option.isEncryptionSupported = false;
       await selectWithOption(testNum, done, option);
     });
 

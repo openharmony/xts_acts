@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -59,7 +59,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testMediaPlayGestureAccess001', 0, async (done: Function) => {
+    it('testMediaPlayGestureAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitMediaPlayGestureAccessTrue", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaPlayGestureAccess001", "false_", 60504, done);
@@ -74,7 +74,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testMediaPlayGestureAccess002', 0, async (done: Function) => {
+    it('testMediaPlayGestureAccess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitMediaPlayGestureAccessFalsePlay", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaPlayGestureAccess002", "true_true_", 60506, done);
@@ -89,7 +89,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testMediaPlayGestureAccess003', 0, async (done: Function) => {
+    it('testMediaPlayGestureAccess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitMediaPlayGestureAccessFalsePause", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaPlayGestureAccess003", "true_false_false_", 60508, done);

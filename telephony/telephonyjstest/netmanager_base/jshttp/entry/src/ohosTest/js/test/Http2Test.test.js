@@ -14,7 +14,7 @@
  */
 
 import net_Http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium'
 
 export default function Http2Test() {
     describe('Http2Test', function () {
@@ -25,7 +25,7 @@ export default function Http2Test() {
          * @tc.name set usingCache to true
          * @tc.desc usingCache test
          */
-        it('Telephony_NETSTACK_Http2TestBasicGet_0100', 0, async function (done) {
+        it('Telephony_NETSTACK_Http2TestBasicGet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let http = net_Http.createHttp();
             http.request("https://www.baidu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP1_1
@@ -41,7 +41,7 @@ export default function Http2Test() {
          * @tc.name set usingCache to true
          * @tc.desc usingCache test
          */
-        it('Telephony_NETSTACK_Http2TestBasicGet_0200', 0, async function (done) {
+        it('Telephony_NETSTACK_Http2TestBasicGet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let http = net_Http.createHttp();
             http.request("https://www.baidu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP2
@@ -58,7 +58,7 @@ export default function Http2Test() {
          * @tc.name set usingCache to true
          * @tc.desc usingCache test
          */
-        it('Telephony_NETSTACK_Http2TestBasicGet_0300', 0, async function (done) {
+        it('Telephony_NETSTACK_Http2TestBasicGet_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let http = net_Http.createHttp();
             http.request("https://www.baidu.com").then(function (data) {
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0300" + JSON.stringify(data));
@@ -73,7 +73,7 @@ export default function Http2Test() {
          * @tc.name set usingCache to true
          * @tc.desc usingCache test
          */
-        it('Telephony_NETSTACK_Http2TestBasicGet_0400', 0, async function (done) {
+        it('Telephony_NETSTACK_Http2TestBasicGet_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             expect(net_Http.HttpProtocol.HTTP1_1).assertEqual(0);
             expect(net_Http.HttpProtocol.HTTP2).assertEqual(1);
             done();
@@ -84,7 +84,7 @@ export default function Http2Test() {
          * @tc.name set usingCache to true
          * @tc.desc usingCache test
          */
-        it('Telephony_NETSTACK_Http2TestBasicGet_0500', 0, async function (done) {
+        it('Telephony_NETSTACK_Http2TestBasicGet_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             expect(net_Http.HttpDataType.STRING).assertEqual(0);
             expect(net_Http.HttpDataType.OBJECT).assertEqual(1);
             expect(net_Http.HttpDataType.ARRAY_BUFFER).assertEqual(2);
@@ -96,7 +96,7 @@ export default function Http2Test() {
          * @tc.name set usingCache to true
          * @tc.desc usingCache test
          */
-        it('Telephony_http_HttpTestPriority_0100', 0, async function (done) {
+        it('Telephony_http_HttpTestPriority_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let CaseName = 'Telephony_http_HttpTestPriority_0100';
             try {
                 let httpRequestOptions = {

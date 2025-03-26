@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOAccess() {
 describe('fileIO_fs_access', function () {
@@ -217,12 +218,12 @@ describe('fileIO_fs_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('test_FileIO_Access_Sync_007', 0, async function () {
+  it('test_FileIO_Access_Sync_007', Level.LEVEL0, async function () {
     let fpath = await nextFileName('test_FileIO_Access_Sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.EXIST, 0);
+      let ret = fileIO.accessSync(fpath, fileIO.AccessModeType.EXIST, fileIO.AccessFlagType.LOCAL);
       expect(ret == true).assertTrue();
       let file = fileIO.openSync(fpath);
       expect(isIntNum(file.fd)).assertTrue();

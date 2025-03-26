@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import networkSecurity from '@ohos.net.networkSecurity';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -765,5 +765,55 @@ export default function netWorkSecurityTest() {
       }
       console.info(`${caseName} test end`);
     });
+
+    
+    /**
+     * @tc.number    : SUB_NetworkMgr_NetworkSecurity_IsCleartextPermitted_1000
+     * @tc.name      : testNetworkMgrNetworkSecurityIsCleartextPermitted_1000
+     * @tc.desc      : Obtains whether plaintext HTTP access is allowed. By default, plaintext HTTP access is allowed.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testNetworkMgrNetworkSecurityIsCleartextPermitted_1000',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrNetworkSecurityIsCleartextPermitted_1000';
+      console.info(`${caseName} test start`);
+      try {
+        let resultSync: boolean = networkSecurity.isCleartextPermitted();
+        console.info(`${caseName} is CleartextPermitted Result: ${JSON.stringify(resultSync)}`);
+        expectTrue(resultSync, caseName);
+        done();
+      } catch (err) {
+        console.info(`${caseName}  err:${err}`);
+        expectFalse(true, caseName);
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
+    /**
+     * @tc.number    : SUB_NetworkMgr_NetworkSecurity_IsCleartextPermittedByHostName_1100
+     * @tc.name      : testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100
+     * @tc.desc      : Obtains whether plaintext HTTP access is allowed. By default, plaintext HTTP access is allowed.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100';
+      console.info(`${caseName} test start`);
+      try {
+        let resultSync: boolean = networkSecurity.isCleartextPermittedByHostName("passport.baidu.com");
+        console.info(`${caseName} is cleartextPermittedByHostName Result:: ${JSON.stringify(resultSync)}`);
+        expectTrue(resultSync, caseName);
+        done();
+      } catch (err) {
+        console.info(`${caseName}  err:${err}`);
+        expectFalse(true, caseName);
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
+
   });
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, Level } from '@ohos/hypium'
 import shortTimeTaskNdk from 'libshorttimetaskndk.so'
 
 export default function ActsShortTimeTaskNdkTest() {
@@ -27,7 +27,7 @@ export default function ActsShortTimeTaskNdkTest() {
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Resourceschedule_ShortTimeTask_RequestSuspendDelay_0100', 0, async (done: Function) => {
+    it('SUB_Resourceschedule_ShortTimeTask_RequestSuspendDelay_0100', Level.LEVEL0, async (done: Function) => {
       try {
         console.info("====>SUB_Resourceschedule_ShortTimeTask_RequestSuspendDelay_0100 start====");
         shortTimeTaskNdk.CancelSuspendDelay();
@@ -49,7 +49,7 @@ export default function ActsShortTimeTaskNdkTest() {
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Resourceschedule_ShortTimeTask_GetRemainingDelayTime_0100', 0, async (done: Function) => {
+    it('SUB_Resourceschedule_ShortTimeTask_GetRemainingDelayTime_0100', Level.LEVEL0, async (done: Function) => {
       try {
         console.info("====>SUB_Resourceschedule_ShortTimeTask_GetRemainingDelayTime_0100 start====");
         let time: number = shortTimeTaskNdk.GetRemainingDelayTime();
@@ -70,7 +70,7 @@ export default function ActsShortTimeTaskNdkTest() {
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Resourceschedule_ShortTimeTask_CancelSuspendDelay_0100', 0, async (done: Function) => {
+    it('SUB_Resourceschedule_ShortTimeTask_CancelSuspendDelay_0100', Level.LEVEL0, async (done: Function) => {
       try {
         console.info("====>SUB_Resourceschedule_ShortTimeTask_CancelSuspendDelay_0100 start====");
         let ret: number = shortTimeTaskNdk.CancelSuspendDelay();

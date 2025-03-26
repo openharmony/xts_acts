@@ -5357,5 +5357,78 @@ export default function TaskPoolTest() {
       expect(result).assertEqual(true);
       done();
     })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0234
+     * @tc.name      : TaskPoolTestClass234
+     * @tc.desc      : Test asyncRunnerTask cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass234', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let cancelNum = 0;
+      let catchCount = 0;
+      let asyncRunner:taskpool.AsyncRunner = new taskpool.AsyncRunner(1);
+      let size = 30;
+      for (let i = 0; i < size; i++) {
+        let task: taskpool.Task = new taskpool.Task(printArgs, i);
+        asyncRunner.execute(task).catch((e: BusinessError) => {
+          catchCount++;
+          if (e.code == 10200055) {
+            cancelNum++;
+          }
+        })
+        taskpool.cancel(task);
+      }
+      while (catchCount < size) {
+        await promiseCase();
+      }
+      expect(cancelNum).assertEqual(size);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0235
+     * @tc.name      : TaskPoolTestClass235
+     * @tc.desc      : Test task cancel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass235', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let cancelNum = 0;
+      let catchCount = 0;
+      let size = 20;
+      for (let i = 0; i < size; i++) {
+        let task: taskpool.Task = new taskpool.Task(printArgs, i);
+        taskpool.execute(task).catch((e: BusinessError) => {
+          catchCount++;
+          if (e.code == 0) {
+            cancelNum++;
+          }
+        })
+        taskpool.cancel(task);
+      }
+      let asyncRunner:taskpool.AsyncRunner = new taskpool.AsyncRunner(1);
+      let asyncSize = 10;
+      let asyncCatchNum = 0;
+      for (let i = 0; i < asyncSize; i++) {
+        let task: taskpool.Task = new taskpool.Task(printArgs, i);
+        asyncRunner.execute(task).catch((e: BusinessError) => {
+          catchCount++;
+          if (e.code == 10200055) {
+            asyncCatchNum++;
+          }
+        })
+        taskpool.cancel(task);
+      }
+      while (catchCount < (size+asyncSize)) {
+        await promiseCase();
+      }
+      expect(cancelNum).assertEqual(size);
+      expect(asyncCatchNum).assertEqual(asyncSize);
+      done();
+    })
   })
 }

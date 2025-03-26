@@ -13,7 +13,7 @@
  * limitations under the License.
  */
  
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 let emitKey = "emitGetFaviconAgain";
@@ -50,7 +50,7 @@ export default function webViewControllerJsunit() {
      *tc.name testGetFaviconAgain
      *tc.desc test for getFavicon again
      */
-    it('testGetFaviconAgain',0,async (done: Function) =>{
+    it('testGetFaviconAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitGetFaviconAgain";
       Utils.registerEvent("testGetFaviconAgain",true,116,done);
       sendEventByKey('webcomponent',10,'');

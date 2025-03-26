@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 // import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from './Utils';
@@ -50,7 +50,7 @@ export default function webViewOnErrorReceive02Jsunit() {
         *tc.desc test api onErrorReceive  by load html which contain of "<iframe
                  src="https://wrong.host.badssl.com"></iframe>"
         */
-        it('testOnErrorReceive02',0,async (done: Function) =>{
+        it('testOnErrorReceive02',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
             let isMainFrame = false;
             Utils.registerEvent("testOnErrorReceive02", isMainFrame, 7120, done);
             sendEventByKey('onErrorReceive02',10,'');

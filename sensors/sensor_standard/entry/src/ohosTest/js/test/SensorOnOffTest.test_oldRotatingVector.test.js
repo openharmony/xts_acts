@@ -79,11 +79,11 @@ describe("SensorJsTest_sensor_20", function () {
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0010
      * @tc.name:RotatingVector_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("RotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------RotatingVector_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
@@ -541,7 +541,7 @@ describe("SensorJsTest_sensor_20", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("RotatingVector_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("RotatingVector_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------RotatingVector_SensorJsTest014--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function CalendarInI18nTest() {
 describe('CalendarInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test isWeekend interface
     * @tc.desc    get the isWeekend value
     */
-     it('i18n_calendar_test_0100', 0, function () {
+     it('i18n_calendar_test_0100', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_0100 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.isWeekend(new Date(2021, 10, 1, 10, 0, 0, 0));
@@ -74,7 +74,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test getCalendar interface
     * @tc.desc    get the getCalendar value
     */
-     it('i18n_calendar_test_0200', 0, function () {
+     it('i18n_calendar_test_0200', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_0200 ' + 'start');
         let calendar = I18n.getCalendar('ja', 'japanese');
         let name = calendar.getDisplayName('ja');
@@ -99,7 +99,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test getCalendar interface with zh param
     * @tc.desc    get the getCalendar value
     */
-    it('i18n_calendar_test_0300', 0, function () {
+    it('i18n_calendar_test_0300', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_0300 ' + 'start');
         let calendar = I18n.getCalendar('zh', 'chinese');
         let name = calendar.getDisplayName('zh');
@@ -112,7 +112,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test getCalendar interface with zh param
     * @tc.desc    get the getCalendar value
     */
-    it('i18n_calendar_test_0400', 0, function () {
+    it('i18n_calendar_test_0400', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_0400 ' + 'start');
         let calendar = I18n.getCalendar('zh', 'japanese');
         let name = calendar.getDisplayName('zh');
@@ -125,7 +125,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test getDisplayName interface
     * @tc.desc    get the getDisplayName value
     */
-    it('i18n_calendar_test_0500', 0, function () {
+    it('i18n_calendar_test_0500', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_0500 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.getDisplayName('zh');
@@ -138,7 +138,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test getDisplayName interface with en param
     * @tc.desc    get the getDisplayName value
     */
-    it('i18n_calendar_test_0600', 0, function () {
+    it('i18n_calendar_test_0600', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_0600 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.getDisplayName('en');
@@ -151,7 +151,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test get interface
     * @tc.desc    get the get value
     */
-    it('i18n_calendar_test_0700', 0, function () {
+    it('i18n_calendar_test_0700', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_0700 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.get('year');
@@ -164,7 +164,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test get interface with month param
     * @tc.desc    get the get value
     */
-     it('i18n_calendar_test_0800', 0, function () {
+     it('i18n_calendar_test_0800', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_0800 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
@@ -179,7 +179,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test get interface with day_of_year param
     * @tc.desc    get the get value
     */
-    it('i18n_calendar_test_0900', 0, function () {
+    it('i18n_calendar_test_0900', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_0900 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.get('day_of_year');
@@ -192,7 +192,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
-    it('i18n_calendar_test_1000', 0, function () {
+    it('i18n_calendar_test_1000', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_1000 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(1);
@@ -206,7 +206,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setMinimalDaysInFirstWeek with 0 param and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
-    it('i18n_calendar_test_1100', 0, function () {
+    it('i18n_calendar_test_1100', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1100 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(0);
@@ -220,7 +220,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setMinimalDaysInFirstWeek with 8 param and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
-    it('i18n_calendar_test_1200', 0, function () {
+    it('i18n_calendar_test_1200', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1200 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(8);
@@ -234,7 +234,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setMinimalDaysInFirstWeek with 7 param and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
-    it('i18n_calendar_test_1300', 0, function () {
+    it('i18n_calendar_test_1300', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1300 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(7);
@@ -248,7 +248,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setFirstDayOfWeek and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
-    it('i18n_calendar_test_1400', 0, function () {
+    it('i18n_calendar_test_1400', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_1400 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(1);
@@ -262,7 +262,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setFirstDayOfWeek with 0 param and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
-    it('i18n_calendar_test_1500', 0, function () {
+    it('i18n_calendar_test_1500', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1500 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(0);
@@ -276,7 +276,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setFirstDayOfWeek with 7 param and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
-    it('i18n_calendar_test_1600', 0, function () {
+    it('i18n_calendar_test_1600', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1600 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(7);
@@ -290,7 +290,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setFirstDayOfWeek with 8 param and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
-    it('i18n_calendar_test_1700', 0, function () {
+    it('i18n_calendar_test_1700', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1700 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(8);
@@ -304,7 +304,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setTimeZone and getTimeZone interface
     * @tc.desc    get the setTimeZone and getTimeZone value
     */
-    it('i18n_calendar_test_1800', 0, function () {
+    it('i18n_calendar_test_1800', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_1800 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTimeZone('Asia/Shanghai');
@@ -318,7 +318,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setTimeZone with AAA param and getTimeZone interface
     * @tc.desc    get the setTimeZone and getTimeZone value
     */
-    it('i18n_calendar_test_1900', 0, function () {
+    it('i18n_calendar_test_1900', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_1900 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTimeZone('AAA');
@@ -332,7 +332,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test set interface
     * @tc.desc    get the set value
     */
-    it('i18n_calendar_test_2000', 0, function () {
+    it('i18n_calendar_test_2000', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_2000 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11);
@@ -346,7 +346,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test set interface with hour,minute,second param
     * @tc.desc    get the set value
     */
-    it('i18n_calendar_test_2100', 0, function () {
+    it('i18n_calendar_test_2100', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_2100 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11, 10, 10, 10);
@@ -360,7 +360,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test set interface with hour,minute param
     * @tc.desc    get the set value
     */
-    it('i18n_calendar_test_2200', 0, function () {
+    it('i18n_calendar_test_2200', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_2200 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11, 10, 10);
@@ -374,7 +374,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setTime interface with date param
     * @tc.desc    get the setTime value
     */
-    it('i18n_calendar_test_2300', 0, function () {
+    it('i18n_calendar_test_2300', Level.LEVEL0, function () {
         console.log('i18n_calendar_test_2300 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         //actuall month is 9
@@ -390,7 +390,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setTime interface with wrong month param
     * @tc.desc    get the setTime value
     */
-    it('i18n_calendar_test_2400', 0, function () {
+    it('i18n_calendar_test_2400', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_2400 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let date1 = new Date(2021, 18, 8, 8, 8, 8, 8);
@@ -405,7 +405,7 @@ describe('CalendarInI18nTest', function () {
     * @tc.name    test setTime interface
     * @tc.desc    get the setTime value
     */
-    it('i18n_calendar_test_2500', 0, function () {
+    it('i18n_calendar_test_2500', Level.LEVEL2, function () {
         console.log('i18n_calendar_test_2500 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTime(10540800000);
@@ -422,7 +422,7 @@ describe('CalendarInI18nTest', function () {
     *@tc.type     :Function
     *@tc.level    :Level 0
     */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', 0, function(done){
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', Level.LEVEL0, function(done){
         try{
           let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
           console.log('SUB_GLOBAL_I18N_SR000IFGNH_0010' + holidayManager);
