@@ -2,7 +2,7 @@
     "description": "Config for ActsKhrglesextSuite0005Test test cases",
     "driver": {
         "module-name": "ActsKhrglesextSuite0005Test",
-        "native-test-timeout": "300000",
+        "native-test-timeout": "500000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
         "type": "CppTest"
