@@ -43,12 +43,14 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [100, 200, 300, 400];
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -67,6 +69,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [];
@@ -75,7 +78,8 @@ export default function MultimodalInputInfraredEmitterTest() {
         }
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -169,12 +173,14 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [100, 200, 300];
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -193,12 +199,14 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [400, 200, 300, 100, 500];
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
