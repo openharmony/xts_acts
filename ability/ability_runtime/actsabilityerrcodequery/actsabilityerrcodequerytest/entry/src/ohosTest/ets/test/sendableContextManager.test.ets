@@ -165,6 +165,54 @@ export default function sendableContextManagerTest() {
     })
 
     /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0800
+     * @tc.name   : restartApp in background
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 0
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0800', 0, (done:Function) => {
+      let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
+      let link:string = 'https://www.applicationContext02.com'
+      let want: Want = {
+        bundleName:"ohos.example.myapplication",
+        abilityName:"applicationContext02",
+        parameters: {
+          appLinkingOnly: false,
+          demo_num: 111
+        }
+      }
+      commonEventManager.createSubscriber(ACTS_EVENT)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          let unSubscribeCallback = () => {
+            setTimeout(async () => {
+              console.info(`====>${tag} unSubscribeCallback`);
+              done();
+            }, 1000);
+          }
+          let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
+            console.log("OpenLink subscribeCallBack success")
+            if (data.event == 'ACTS_TEST_OPENLINK') {
+              context.startAbility(want, (err: BusinessError) => {
+                console.info('context.startAbility applicationContext02 succeed');
+              })
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              setTimeout(() => {
+                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+              }, 500);
+            }
+          }
+          commonEventManager.subscribe(subscriber, subscribeCallBack);
+          setTimeout(() => {
+            commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
+          }, 100)
+        })
+    })
+
+    /*
      * @tc.number : SUB_ChildProcessManager_sendableContextManager_0900
      * @tc.name   : restartApp with other want
      * @tc.desc   : Function test
