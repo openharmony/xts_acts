@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, TestType, Size } from '@ohos/hypium';
 import cellular from '@ohos.telephony.data';
 import observer from '@ohos.telephony.observer';
 import radio from '@ohos.telephony.radio';
@@ -29,7 +29,7 @@ export default function ObserverJsunit() {
      * @tc.name      : DataConnectState
      * @tc.desc      : check the getCellularDataState callback to verify the call back data
      */
-    it('Telephony_observer_observer_DataConnectState_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_DataConnectState_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_DataConnectState_0100 Test start *************");
       cellular.getCellularDataState((err, data) => {
         if (!err) {
@@ -53,7 +53,7 @@ export default function ObserverJsunit() {
      * @tc.name      : on_networkStateChange
      * @tc.desc      : call the on method of networkStateChange
      */
-    it('Telephony_observer_observer_on_networkStateChange_0200', 0, (done:Function)=> {
+    it('Telephony_observer_observer_on_networkStateChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_on_networkStateChange_0200 Test start *************");
       try {
         let callback = (NetworkState: radio.NetworkState)=> {
@@ -78,7 +78,7 @@ export default function ObserverJsunit() {
      * @tc.name      : off_networkStateChange
      * @tc.desc      : call the off method of networkStateChange
      */
-    it('Telephony_observer_observer_off_networkStateChange_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_off_networkStateChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_off_networkStateChange_0100 Test start *************");
       try {
         let callback = (NetworkState: radio.NetworkState) => {
@@ -104,7 +104,7 @@ export default function ObserverJsunit() {
      * @tc.name      : on_signalInfoChange
      * @tc.desc      : call the on method of signalInfoChange
      */
-    it('Telephony_observer_observer_on_signalInfoChange_0200', 0, (done:Function)=> {
+    it('Telephony_observer_observer_on_signalInfoChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_on_signalInfoChange_0200 Test start *************");
       try {
         let callback = (SignalInformation:Array<radio.SignalInformation>) => {
@@ -128,7 +128,7 @@ export default function ObserverJsunit() {
      * @tc.name      : off_signalInfoChange
      * @tc.desc      : call the off method of signalInfoChange
      */
-    it('Telephony_observer_observer_off_signalInfoChange_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_off_signalInfoChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_off_signalInfoChange_0100 Test start *************");
       try {
         let callback = (SignalInformation:Array<radio.SignalInformation>) => {
@@ -155,7 +155,7 @@ export default function ObserverJsunit() {
      * @tc.name      : on_cellularDataConnectionStateChange
      * @tc.desc      : call the on method of cellularDataConnectionStateChange
      */
-    it('Telephony_observer_observer_on_cellularDataConnectionStateChange_0200', 0, (done:Function)=> {
+    it('Telephony_observer_observer_on_cellularDataConnectionStateChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0200 Test start *************");
       try {
         let callback = (value:observer.DataConnectionStateInfo) => {
@@ -180,7 +180,7 @@ export default function ObserverJsunit() {
      * @tc.name      : off_cellularDataConnectionStateChange
      * @tc.desc      : call the off method of cellularDataConnectionStateChange
      */
-    it('Telephony_observer_observer_off_cellularDataConnectionStateChange_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_off_cellularDataConnectionStateChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_off_cellularDataConnectionStateChange_0100 Test start *************");
       try {
         let callback = (value:observer.DataConnectionStateInfo) => {
@@ -203,7 +203,7 @@ export default function ObserverJsunit() {
      * @tc.name      : on_cellularDataFlowChange
      * @tc.desc      : call the on method of cellularDataFlowChange
      */
-    it('Telephony_observer_observer_on_cellularDataFlowChange_0200', 0, (done:Function)=> {
+    it('Telephony_observer_observer_on_cellularDataFlowChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0200 Test start *************");
       try {
 		let callback = (DataFlowType:cellular.DataFlowType) => {
@@ -227,7 +227,7 @@ export default function ObserverJsunit() {
      * @tc.name      : off_cellularDataFlowChange
      * @tc.desc      : call the off method of cellularDataFlowChange
      */
-    it('Telephony_observer_observer_off_cellularDataFlowChange_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_off_cellularDataFlowChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function)=> {
       console.log("************* Telephony_observer_observer_off_cellularDataFlowChange_0100 Test start *************");
       try {
         let callback = (data:cellular.DataFlowType) => {
@@ -250,7 +250,7 @@ export default function ObserverJsunit() {
      * @tc.name      : on_callStateChange
      * @tc.desc      : call the on method of callStateChange
      */
-    it('Telephony_observer_observer_on_callStateChange_0200', 0, (done:Function)=> {
+    it('Telephony_observer_observer_on_callStateChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       console.log("************* Telephony_observer_observer_on_callStateChange_0200 Test start *************");
       try {
 		let callback = (value:observer.CallStateInfo) => {
@@ -274,7 +274,7 @@ export default function ObserverJsunit() {
      * @tc.name      : off_callStateChange
      * @tc.desc      : call the off method of callStateChange
      */
-    it('Telephony_observer_observer_off_callStateChange_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_off_callStateChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       console.log("************* Telephony_observer_observer_off_callStateChange_0100 Test start *************");
       try {
         let callback = (value:observer.CallStateInfo) => {
@@ -298,7 +298,7 @@ export default function ObserverJsunit() {
      * @tc.name      : on_simStateChange
      * @tc.desc      : call the on method of simStateChange
      */
-    it('Telephony_observer_observer_on_simStateChange_0200', 0, (done:Function)=> {
+    it('Telephony_observer_observer_on_simStateChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_observer_on_simStateChange_0200 Test start *************");
       try {
 		let callback = (SimStateData:observer.SimStateData) => {
@@ -322,7 +322,7 @@ export default function ObserverJsunit() {
      * @tc.name      : off_simStateChange
      * @tc.desc      : call the off method of simStateChange
      */
-    it('Telephony_observer_observer_off_simStateChange_0100', 0, (done:Function)=> {
+    it('Telephony_observer_observer_off_simStateChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_observer_off_simStateChange_0100 Test start *************");
       try {
         let callback = (SimStateData:observer.SimStateData) => {
@@ -348,7 +348,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_NONE
      * @tc.desc      : check the SIM_NONE property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_NONE_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_NONE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_NONE_0100 Test start *************")
       expect(0).assertEqual(observer.LockReason.SIM_NONE);
       done();
@@ -360,7 +360,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PIN
      * @tc.desc      : check the SIM_PIN property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PIN_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PIN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PIN_0100 Test start *************");
       expect(1).assertEqual(observer.LockReason.SIM_PIN);
       done();
@@ -372,7 +372,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PUK
      * @tc.desc      : check the SIM_PUK property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PUK_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PUK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PUK_0100 Test start *************");
       expect(2).assertEqual(observer.LockReason.SIM_PUK);
       done();
@@ -384,7 +384,7 @@ export default function ObserverJsunit() {
     * @tc.name      : SIM_PN_PIN
     * @tc.desc      : check the SIM_PN_PIN property of LockReason
     */
-    it('Telephony_observer_LockReason_SIM_PN_PIN_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PN_PIN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PN_PIN_0100 Test start *************");
       expect(3).assertEqual(observer.LockReason.SIM_PN_PIN);
       done();
@@ -395,7 +395,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PN_PUK
      * @tc.desc      : check the SIM_PN_PUK property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PN_PUK_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PN_PUK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PN_PUK_0100 Test start *************");
       expect(4).assertEqual(observer.LockReason.SIM_PN_PUK);
       done();
@@ -407,7 +407,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PU_PIN
      * @tc.desc      : check the SIM_PU_PIN property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PU_PIN_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PU_PIN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PU_PIN_0100 Test start *************");
       expect(5).assertEqual(observer.LockReason.SIM_PU_PIN);
       done();
@@ -419,7 +419,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PU_PUK
      * @tc.desc      : check the SIM_PU_PUK property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PU_PUK_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PU_PUK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PU_PUK_0100 Test start *************");
       expect(6).assertEqual(observer.LockReason.SIM_PU_PUK);
       done();
@@ -431,7 +431,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PP_PIN
      * @tc.desc      : check the SIM_PP_PIN property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PP_PIN_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PP_PIN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PP_PIN_0100 Test start *************");
       expect(7).assertEqual(observer.LockReason.SIM_PP_PIN);
       done();
@@ -443,7 +443,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PP_PUK
      * @tc.desc      : check the SIM_PP_PUK property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PP_PUK_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PP_PUK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PP_PUK_0100 Test start *************");
       expect(8).assertEqual(observer.LockReason.SIM_PP_PUK);
       done();
@@ -455,7 +455,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PC_PIN
      * @tc.desc      : check the SIM_PC_PIN property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PC_PIN_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PC_PIN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PC_PIN_0100 Test start *************");
       expect(9).assertEqual(observer.LockReason.SIM_PC_PIN);
       done();
@@ -467,7 +467,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_PC_PUK
      * @tc.desc      : check the SIM_PC_PUK property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_PC_PUK_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_PC_PUK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_PC_PUK_0100 Test start *************");
       expect(10).assertEqual(observer.LockReason.SIM_PC_PUK);
       done();
@@ -479,7 +479,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_SIM_PIN
      * @tc.desc      : check the SIM_SIM_PIN property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_SIM_PIN_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_SIM_PIN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_SIM_PIN_0100 Test start *************");
       expect(11).assertEqual(observer.LockReason.SIM_SIM_PIN);
       done();
@@ -491,7 +491,7 @@ export default function ObserverJsunit() {
      * @tc.name      : SIM_SIM_PUK
      * @tc.desc      : check the SIM_SIM_PUK property of LockReason
      */
-    it('Telephony_observer_LockReason_SIM_SIM_PUK_0100', 0, (done:Function)=> {
+    it('Telephony_observer_LockReason_SIM_SIM_PUK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done:Function)=> {
       console.log("************* Telephony_observer_LockReason_SIM_SIM_PUK_0100 Test start *************");
       expect(12).assertEqual(observer.LockReason.SIM_SIM_PUK);
       done();
