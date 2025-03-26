@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { ArrayList, buffer } from '@kit.ArkTS';
 
 function init(size: number): string {
   let ans = '[';

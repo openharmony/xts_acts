@@ -14,6 +14,7 @@
  */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import Url from '@ohos.url';
+import { url } from '@kit.ArkTS';
 import { ArrayList } from '@kit.ArkTS';
 
 let str2 =
