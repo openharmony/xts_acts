@@ -40,8 +40,8 @@ const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const context = delegator.getAppContext().getApplicationContext();
 const TAG = ['testlog']
 
-export default function sendablePreferencesPromiseTest() {
-  describe('preferencesPromiseTest', () => {
+export default function sendablePreferencesErrTest() {
+  describe('sendablePreferencesErrTest', () => {
     beforeAll(async () => {
       console.info('beforeAll');
 
@@ -202,11 +202,182 @@ export default function sendablePreferencesPromiseTest() {
 
 
 
-        
+    /**
+        * @tc.name testSendablePreferencesremovePreferencesFromCachePromiseErr0100
+        * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseErrTest_0600
+        * @tc.desc put PutNumber promise interface test
+        * @tc.size MediumTest
+        * @tc.type Function
+        * @tc.level Level 2
+        */
+
+        it('testPreferencesRemovePreferencesFromCachePromiserr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        try {
+            const options = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:GSKV
+            }
+            const options1 = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:XML
+            }
+            await mPreferences removePreferencesFromCache(context, options);
+            await mPreferences removePreferencesFromCache(context, options1);
+            expect().assertFail();
+            done();
+        } catch(err) {
+            onsole.info('removePreferencesFromCache is fail' + err.code);
+            expect(801).assertEqual(err.code);
+            done();
+            }
+
+        })
 
 
 
 
+        /**
+        * @tc.name removePreferencesFromCacheSync interface test
+        * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseErrTest_0700
+        * @tc.desc put PutNumber promise interface test
+        * @tc.size MediumTest
+        * @tc.type Function
+        * @tc.level Level 2
+        */
+
+        it('testPreferencesRemovePreferencesFromCacheSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        try {
+            const options = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:GSKV
+            }
+            const options1 = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:XML
+            }
+            await mPreferences removePreferencesFromCacheSync(context, options);
+            await mPreferences removePreferencesFromCacheSync(context, options1);
+            expect().assertFail();
+            done();
+        } catch(err) {
+            onsole.info('getPreferencesSync is fail' + err.code);
+            expect(801).assertEqual(err.code);
+            done();
+            }
+        })
+
+
+
+
+
+        /**
+        * @tc.name getPreferencesDeletePreferences interface test
+        * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseErrTest_0800
+        * @tc.desc put PutNumber promise interface test
+        * @tc.size MediumTest
+        * @tc.type Function
+        * @tc.level Level 2
+        */
+
+        it('testSendablePreferencesDeletePreferencesPromiseErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        try {
+            const options = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:GSKV
+            }
+            const options1 = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:XML
+            }
+            await mPreferences deletePreferences(context, options);
+            await mPreferences deletePreferences(context, options1);
+            expect().assertFail();
+            done();
+        } catch(err) {
+            onsole.info('getPreferencesSync is fail' + err.code);
+            expect(801).assertEqual(err.code);
+            done();
+            }
+        })
+
+
+
+
+
+        /**
+        * @tc.name getPreferencesCallback interface test
+        * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseErrTest_0900
+        * @tc.desc put PutNumber promise interface test
+        * @tc.size MediumTest
+        * @tc.type Function
+        * @tc.level Level 2
+        */
+
+        it('testSendablePreferencesgetPreferencesSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        try {
+            const options = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:GSKV
+            }
+            const options1 = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:XML
+            }
+            await mPreferences getPreferencesSync(context, options);
+            await mPreferences getPreferencesSync(context, options1);
+            expect().assertFail();
+            done();
+        } catch(err) {
+            onsole.info('getPreferencesSync is fail' + err.code);
+            expect(801).assertEqual(err.code);
+            done();
+            }
+        })
+
+
+
+
+
+        /**
+        * @tc.name getPreferencesCallback interface test
+        * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseErrTest_1000
+        * @tc.desc put PutNumber promise interface test
+        * @tc.size MediumTest
+        * @tc.type Function
+        * @tc.level Level 2
+        */
+
+        it('testSendablePreferencesgetPreferencesPromiseErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        try {
+            const options = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:GSKV
+            }
+            const options1 = {
+                name: 'test_preferences',
+                dataGroupId: "123456",
+                storageType:XML
+            }
+            await mPreferences getPreferences(context, options);
+            await mPreferences getPreferences(context, options1);
+            expect().assertFail();
+            done();
+        } catch(err) {
+            onsole.info('getPreferencesSync is fail' + err.code);
+            expect(801).assertEqual(err.code);
+            done();
+            }
+
+        })
 
 
   })
