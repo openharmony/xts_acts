@@ -429,7 +429,6 @@ function setInvalidPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playb
   avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
     console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
      if (error.code == media.AVErrorCode.AVERR_INVALID_PARAMETER) {
-      console.info(`error.code is 401`);
       checkPlaybackStrategySuccess = true;
     } else {
       expect().assertFail();
