@@ -114,7 +114,7 @@ export default function EnableSwipeBackPage() {
 
       let btn3: Component = await driver.findComponent(ON.id('enableId'));
       await btn3.click();
-      console.info('[EnableSwipeBackRouter_0200] btn3 click');
+      console.info('[EnableSwipeBackPage_0200] btn3 click');
       await driver.delayMs(1000);
       console.log('[EnableSwipeBackPage_0200] END');
       done();
