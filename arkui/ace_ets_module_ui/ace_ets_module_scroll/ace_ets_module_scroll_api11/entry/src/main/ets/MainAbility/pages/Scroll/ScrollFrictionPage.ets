@@ -38,7 +38,22 @@ struct ScrollFrictionPage {
   }
 
   build() {
-    Stack({ alignContent: Alignment.TopStart }) {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          ForEach(this.arr, (item: number) => {
+            Text(item.toString())
+              .width('100%')
+              .height('30%')
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+          }, (item: number) => `${item}`)
+        }.width('100%')
+      }
+      .width('90%')
+      .height('10%')
+      .key('scroll_friction_default')
+
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item: number) => {
@@ -53,6 +68,8 @@ struct ScrollFrictionPage {
           }, (item: number) => `${item}`)
         }.width('100%')
       }
+      .width('90%')
+      .height('60%')
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
       .scrollBar(BarState.On) // 滚动条常驻显示
       .scrollBarColor(Color.Gray) // 滚动条颜色
