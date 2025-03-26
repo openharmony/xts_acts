@@ -15,14 +15,19 @@
  
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { AtomicServiceOptions, common, contextConstant,
+import { AtomicServiceOptions,
+  Caller,
+  common, contextConstant,
   OpenLinkOptions,
   StartOptions, startupManager,
-  UIAbility } from '@kit.AbilityKit';
+  UIAbility, dialogRequest  } from '@kit.AbilityKit';
 import { BusinessError ,systemParameterEnhance} from '@kit.BasicServicesKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { image } from '@kit.ImageKit';
-
+import { rpc } from '@kit.IPCKit';
+function sleep(ms: number) {
+  return new Promise<string>(resolve => setTimeout(resolve, ms));
+}
 const DOMAIN = 0xeeee;
 const TAG: string = '[openLinkDemo]';
 let buffer = new ArrayBuffer(640 * 1024);
@@ -39,12 +44,21 @@ function generateLargeString(length: number): string {
   }
   return result;
 }
+let TestAbilityContext:common.UIAbilityContext;
+let mpEnable="";
 export default function UIAbilityContex() {
   describe('ActsAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
+      TestAbilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext
+      try {
+        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable', 'false');
+      } catch(err) {
+        console.info(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
+      }
+      console.log(`MoveAbilityToBackground Get system parameter mpEnable is ${mpEnable}`);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -60,13 +74,13 @@ export default function UIAbilityContex() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-
+    
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100
      * @tc.desc: run parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100', 0, async (done: Function) => {
       let startParams = ['StartupTask_001'];
       try {
         startupManager.run(undefined).then(() => {
@@ -91,7 +105,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100
      * @tc.desc: getStartupTaskResult parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100', 0, async (done: Function) => {
       try {
         const data = startupManager.getStartupTaskResult(undefined)
       } catch (error) {
@@ -107,37 +121,39 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100
      * @tc.desc: isStartupTaskInitialized parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100', 0, async (done:Function) => {
-      try {
-        const data = startupManager.isStartupTaskInitialized(undefined)
-      } catch (error) {
-        console.log(`Error occurred while isStartupTaskInitialized:  ${JSON.stringify(error.code)}`);
-        expect(error.code).assertEqual(401);
-        done();
-      }
-    })
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100', 0,
+      async (done: Function) => {
+        try {
+          const data = startupManager.isStartupTaskInitialized(undefined)
+        } catch (error) {
+          console.log(`Error occurred while isStartupTaskInitialized:  ${JSON.stringify(error.code)}`);
+          expect(error.code).assertEqual(401);
+          done();
+        }
+      })
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100
      * @tc.desc: removeStartupTaskResult parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100', 0, async (done:Function) => {
-      try {
-        const data = startupManager.removeStartupTaskResult(undefined)
-      } catch (error) {
-        console.log(`Error occurred while isStartupTaskInitialized:  ${JSON.stringify(error.code)}`);
-        expect(error.code).assertEqual(401);
-        done();
-      }
-    })
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100', 0,
+      async (done: Function) => {
+        try {
+          const data = startupManager.removeStartupTaskResult(undefined)
+        } catch (error) {
+          console.log(`Error occurred while isStartupTaskInitialized:  ${JSON.stringify(error.code)}`);
+          expect(error.code).assertEqual(401);
+          done();
+        }
+      })
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100
      * @tc.desc: startAbilityByType parameter error, pass undefined Async
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_5', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100', 0, async (done: Function) => {
       let wantParam: Record<string, Object> = {
         'time': '2023-10-23 20:45'
       };
@@ -149,13 +165,13 @@ export default function UIAbilityContex() {
           console.log(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
         }
       };
-      try{
+      try {
         globalThis.context.startAbilityByType(undefined, wantParam, abilityStartCallback).then(() => {
           console.log(`startAbilityByType success`);
         }).catch((err: BusinessError) => {
           console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
         });
-      }catch (err) {
+      } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         expect(err.code).assertEqual(401)
@@ -169,7 +185,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200
      * @tc.desc: startAbilityByType parameter error, pass undefined Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200', 0, async (done: Function) => {
       let wantParam: Record<string, Object> = {
         'time': '2023-10-23 20:45'
       };
@@ -181,15 +197,15 @@ export default function UIAbilityContex() {
           console.log(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
         }
       };
-      try{
-        globalThis.context.startAbilityByType(undefined, wantParam, abilityStartCallback, (err:BusinessError) => {
+      try {
+        globalThis.context.startAbilityByType(undefined, wantParam, abilityStartCallback, (err: BusinessError) => {
           if (err) {
             console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
           } else {
             console.log(`success`);
           }
         });
-      }catch (err) {
+      } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         expect(err.code).assertEqual(401)
@@ -203,12 +219,12 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100
      * @tc.desc: openAtomicService parameter error, pass undefined Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', 0, async (done: Function) => {
       let appId: string = '6918661953712445909';
       let options: AtomicServiceOptions = {
         displayId: 0
       };
-      try{
+      try {
         globalThis.context.openAtomicService(undefined, options)
           .then((result: common.AbilityResult) => {
             console.info('openAtomicService succeed');
@@ -216,7 +232,7 @@ export default function UIAbilityContex() {
           .catch((err: BusinessError) => {
             console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
           });
-      }catch (err) {
+      } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         expect(err.code).assertEqual(401)
@@ -225,12 +241,12 @@ export default function UIAbilityContex() {
       }
     })
 
-   /**
+    /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100
      * @tc.desc: Capability not support
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', 0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -248,29 +264,27 @@ export default function UIAbilityContex() {
         let message = (err as BusinessError).message;
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
       }
-      let info:string;
+      let info: string;
       globalThis.context.showAbility().then(() => {
-            console.log(`showAbility success`);
-          }).catch((err: BusinessError) => {
-            console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
-            if(err.code===801)
-            {
+        console.log(`showAbility success`);
+      }).catch((err: BusinessError) => {
+        console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
+        if (err.code === 801) {
+          done();
+        } else {
+          try {
+            let info: string =
+              systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync" + JSON.stringify(info));
+            if (!info) {
+              expect(err.code).assertEqual(16000067);
               done();
             }
-            else{
-              try {
-                let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
-                console.log("getSync"+JSON.stringify(info));
-                if(!info)
-                {
-                    expect(err.code).assertEqual(16000067);
-                    done();
-                }
-              } catch(e) {
-                console.log("getSync unexpected error: " + e);
-              }
-            }
-          });
+          } catch (e) {
+            console.log("getSync unexpected error: " + e);
+          }
+        }
+      });
     })
 
     /**
@@ -278,7 +292,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200
      * @tc.desc: Start options check failed.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', 0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -296,24 +310,22 @@ export default function UIAbilityContex() {
         let message = (err as BusinessError).message;
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
       }
-      let info:string;
+      let info: string;
       globalThis.context.showAbility().then(() => {
         console.log(`showAbility success`);
       }).catch((err: BusinessError) => {
         console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
-        if(err.code===801)
-        {
+        if (err.code === 801) {
           done();
-        }
-        else{
+        } else {
           try {
-            let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
-            console.log("getSync"+JSON.stringify(info));
-            if(!info)
-            {
+            let info: string =
+              systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync" + JSON.stringify(info));
+            if (!info) {
               expect(err.code).assertEqual(16000067);
             }
-          } catch(e) {
+          } catch (e) {
             console.log("getSync unexpected error: " + e);
           }
         }
@@ -325,7 +337,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100
      * @tc.desc: Capability not support.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', 0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -343,24 +355,22 @@ export default function UIAbilityContex() {
         let message = (err as BusinessError).message;
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
       }
-      let info:string;
+      let info: string;
       globalThis.context.hideAbility().then(() => {
         console.log(`highAbility success`);
       }).catch((err: BusinessError) => {
         console.error(`highAbility fail, err: ${JSON.stringify(err)}`);
-        if(err.code===801)
-        {
+        if (err.code === 801) {
           done();
-        }
-        else{
+        } else {
           try {
-            let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
-            console.log("getSync"+JSON.stringify(info));
-            if(!info)
-            {
+            let info: string =
+              systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync" + JSON.stringify(info));
+            if (!info) {
               expect(err.code).assertEqual(16000067);
             }
-          } catch(e) {
+          } catch (e) {
             console.log("getSync unexpected error: " + e);
           }
         }
@@ -372,7 +382,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200
      * @tc.desc: Start options check failed.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', 0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -390,24 +400,22 @@ export default function UIAbilityContex() {
         let message = (err as BusinessError).message;
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
       }
-      let info:string;
+      let info: string;
       globalThis.context.hideAbility().then(() => {
         console.log(`highAbility success`);
       }).catch((err: BusinessError) => {
         console.error(`highAbility fail, err: ${JSON.stringify(err)}`);
-        if(err.code===801)
-        {
+        if (err.code === 801) {
           done();
-        }
-        else{
+        } else {
           try {
-            let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
-            console.log("getSync"+JSON.stringify(info));
-            if(!info)
-            {
+            let info: string =
+              systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
+            console.log("getSync" + JSON.stringify(info));
+            if (!info) {
               expect(err.code).assertEqual(16000067);
             }
-          } catch(e) {
+          } catch (e) {
             console.log("getSync unexpected error: " + e);
           }
         }
@@ -419,11 +427,11 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400
      * @tc.desc: startAbility set flags=-1
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', 0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.test.actscommoncomponenttest',
         abilityName: 'MainAbility1',
-        flags:-1
+        flags: -1
       };
       try {
         globalThis.context.startAbility(startWant, (err: BusinessError) => {
@@ -446,72 +454,74 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
      * @tc.desc: startAbilityForResult set flags=-1   Async
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0, async (done:Function) => {
-      let startWant: Want = {
-        bundleName: 'com.test.actscommoncomponenttest',
-        abilityName: 'MainAbility2',
-        flags:-1
-      };
-      try {
-        globalThis.context.startAbilityForResult(startWant, (err: BusinessError, result: common.AbilityResult) => {
-          if (err.code) {
-            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000010)
-            done();
-          }
-          console.info('startAbilityForResult succeed');
-        });
-      } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
-      }
-    })
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0,
+      async (done: Function) => {
+        let startWant: Want = {
+          bundleName: 'com.test.actscommoncomponenttest',
+          abilityName: 'MainAbility2',
+          flags: -1
+        };
+        try {
+          globalThis.context.startAbilityForResult(startWant, (err: BusinessError, result: common.AbilityResult) => {
+            if (err.code) {
+              console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(16000010)
+              done();
+            }
+            console.info('startAbilityForResult succeed');
+          });
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
+        }
+      })
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
      * @tc.desc: startAbilityForResult set flags=-1   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0, async (done:Function) => {
-      let startWant: Want = {
-        bundleName: 'com.test.actscommoncomponenttest',
-        abilityName: 'MainAbility1',
-        flags:-1
-      };
-      let options: StartOptions = {
-        displayId: 0
-      };
-      try {
-        globalThis.context.startAbilityForResult(startWant, options)
-          .then((result: common.AbilityResult) => {
-            console.info('startAbilityForResult succeed');
-          })
-          .catch((err: BusinessError) => {
-            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000010)
-            done();
-          });
-      } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
-      }
-    })
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0,
+      async (done: Function) => {
+        let startWant: Want = {
+          bundleName: 'com.test.actscommoncomponenttest',
+          abilityName: 'MainAbility1',
+          flags: -1
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        try {
+          globalThis.context.startAbilityForResult(startWant, options)
+            .then((result: common.AbilityResult) => {
+              console.info('startAbilityForResult succeed');
+            })
+            .catch((err: BusinessError) => {
+              console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+              expect(err.code).assertEqual(16000010)
+              done();
+            });
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
+        }
+      })
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
      * @tc.desc: The premeters within the Want carry parameters with a size of more than 200k
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500', 0, async (done: Function) => {
       // 构造一个超过 200KB 的对象
       const largeObject = generateLargeString(TWO_HUNDRED_KB + 100)
       let startWant: Want = {
         bundleName: 'com.test.actscommoncomponenttest',
         abilityName: 'MainAbility1',
-        parameters:{
-          key:largeObject
+        parameters: {
+          key: largeObject
         }
       };
       try {
@@ -527,6 +537,515 @@ export default function UIAbilityContex() {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+    })
+
+
+    //新增用例
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100
+     * @tc.desc: The onBackground callback is called in the background   Promise
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        TestAbilityContext.startAbility(startWant,(err: BusinessError) => {
+          if (err.code) {
+            console.error(`startactsmissiontest failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          }
+          console.info('startactsmissiontest succeed');
+        });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600
+     * @tc.desc: The onBackground callback is called in the background
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        TestAbilityContext.startAbility(startWant,options,(err: BusinessError) => {
+          if (err.code) {
+            console.error(`startactsmissiontest failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          }
+          console.info('startactsmissiontest succeed');
+        });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
+     * @tc.desc: The onBackground callback is called in the background   Promise
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        TestAbilityContext.startAbility(startWant, options)
+          .then(() => {
+            console.info('startAbility succeed');
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
+     * @tc.desc: The onBackground callback is called in the background   Promise
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        TestAbilityContext.startAbility(startWant, options)
+          .then(() => {
+            console.info('startAbility succeed');
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100
+     * @tc.desc: The onBackground callback of openLink is called in the background   Promise
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let options: OpenLinkOptions  = {
+          parameters: { demo_key: 'demo_value' }
+        };
+        let link: string = 'https://www.example.com';
+        TestAbilityContext.openLink(
+          link,
+          options,
+          (err, result) => {
+            hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err)}`);
+            hilog.info(DOMAIN, TAG, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+            hilog.info(DOMAIN, TAG, `openLink callback result data: ${JSON.stringify(result.want)}`);
+          }
+        ).then(() => {
+          hilog.info(DOMAIN, TAG, `open link success.`);
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, TAG, `open link failed, errCode ${JSON.stringify(err.code)}`);
+          expect(err.code).assertEqual(201);
+          done();
+        });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100
+     * @tc.desc: The onBackground callback of startAbilityForResult is called in the background
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        TestAbilityContext.startAbilityForResult(startWant, (err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          }
+          console.info('startAbilityForResult succeed');
+        });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400
+     * @tc.desc: The onBackground callback of startAbilityForResult(option) is called in the background
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        TestAbilityContext.startAbilityForResult(startWant, options, (err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          }
+          console.info('startAbilityForResult succeed');
+        });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600
+     * @tc.desc: The onBackground callback of startAbilityForResult(option) is called in the background promise
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600', 0, async (done: Function) => {
+      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600`;
+      if (mpEnable === 'true') {
+        await TestAbilityContext.moveAbilityToBackground().then(() => {
+          console.log('StartupTest startupManager run then, startParams = ');
+        }).catch((error: BusinessError) => {
+          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("StartupTest promise catch error, startParams = "
+          );
+        })
+        await sleep(2000);
+        let startWant: Want = {
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility2',
+        };
+        let options: StartOptions = {
+          displayId: 0
+        };
+        TestAbilityContext.startAbilityForResult(startWant, options)
+          .then((result: common.AbilityResult) => {
+            console.info('startAbilityForResult succeed');
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(201);
+            done();
+          });
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0200
+     * @tc.desc: The exported value of the target ability is false
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0200', 0, async (done: Function) => {
+      let startWant: Want = {
+        bundleName: 'com.example.actsabilityerrcodequerytestrely',
+        abilityName: 'EntryAbility',
+      };
+      try {
+        globalThis.context.startAbility(startWant, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000004)
+            done();
+          }
+          console.info('startAbility succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0300
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0300
+     * @tc.desc: Configure the Capability permission for the target
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0300', 0, async (done: Function) => {
+      let startWant: Want = {
+        bundleName: 'com.example.actsabilityerrcodequerytestrely',
+        abilityName: 'EntryAbility2',
+      };
+      try {
+        globalThis.context.startAbility(startWant, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000005)
+            done();
+          }
+          console.info('startAbility succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0700
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0700
+     * @tc.desc: Configure the Capability permission for the target
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0700', 0, async (done: Function) => {
+      let startWant: Want = {
+        bundleName: 'com.example.actsabilityerrcodequerytestrely',
+        abilityName: 'EntryAbility2',
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      try {
+        globalThis.context.startAbility(startWant, options,(err: BusinessError) => {
+          if (err.code) {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000005)
+            done();
+          }
+          console.info('startAbility succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0200
+     * @tc.desc: Configure the Capability permission for the target startAbilityForResult
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0200', 0, async (done: Function) => {
+      let startWant: Want = {
+        bundleName: 'com.example.actsabilityerrcodequerytestrely',
+        abilityName: 'EntryAbility2',
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      try {
+        globalThis.context.startAbilityForResult(startWant, (err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000005);
+            done();
+          }
+          console.info('startAbilityForResult succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
+      }
+    })
+
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0500
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0500
+     * @tc.desc: Configure the Capability permission for the target startAbilityForResult
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0500', 0, async (done: Function) => {
+      let startWant: Want = {
+        bundleName: 'com.example.actsabilityerrcodequerytestrely',
+        abilityName: 'EntryAbility2',
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      try {
+        globalThis.context.startAbilityForResult(startWant, options,(err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000005);
+            done();
+          }
+          console.info('startAbilityForResult succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
+      }
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResutc.numberlt_0700
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0700
+     * @tc.desc: Configure the Capability permission for the target startAbilityForResult
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0700', 0, async (done: Function) => {
+      let startWant: Want = {
+        bundleName: 'com.example.actsabilityerrcodequerytestrely',
+        abilityName: 'EntryAbility2',
+      };
+      let options: StartOptions = {
+        displayId: 0
+      };
+      try {
+        globalThis.context.startAbilityForResult(startWant, options)
+          .then((result: common.AbilityResult) => {
+            console.info('startAbilityForResult succeed');
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000005);
+            done();
+          });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
       }
     })
   })
