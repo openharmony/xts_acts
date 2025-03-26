@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 
 export default function GetAppContextTest() {
@@ -25,7 +25,7 @@ export default function GetAppContextTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_APP_CONTENT_0001", 0, async (done: Function) => {
+    it("ACTS_GET_APP_CONTENT_0001", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_APP_CONTENT_0001 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();

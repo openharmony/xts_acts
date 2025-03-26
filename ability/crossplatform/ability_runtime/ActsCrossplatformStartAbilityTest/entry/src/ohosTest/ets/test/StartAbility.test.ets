@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { Driver, ON, Component } from "@ohos.UiTest";
 import { BusinessError } from '@ohos.base';
@@ -95,7 +95,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_START_ABILITY_CALLBACK_0001", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_0001", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_0001';
       console.log(TAG, ' start');
       setTimeout(() => {
@@ -154,7 +154,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_PARAMETER_0002", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_PARAMETER_0002", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_PARAMETER_0002';
       console.log(TAG, ' start');
       abilityDelegator.startAbility({
@@ -213,7 +213,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_START_ABILITY_PROMISE_0001", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_0001", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_0001';
       console.log(TAG, ' start');
       console.log(TAG, ' startAbility start');
@@ -248,7 +248,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_PARAMETER_0002", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_PARAMETER_0002", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_PARAMETER_0002';
       console.log(TAG, ' start');
       await abilityDelegator.startAbility({
@@ -310,7 +310,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0001", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0001", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0001';
       console.log(TAG, ' start');
       try {
@@ -361,7 +361,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0002", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0002", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0002';
       console.log(TAG, ' start');
       try {
@@ -411,7 +411,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0003", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0003", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0003';
       console.log(TAG, ' start');
       try {
@@ -461,7 +461,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0006", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0006", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0006';
       console.log(TAG, ' start');
       try {
@@ -508,7 +508,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0007", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0007", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0007';
       console.log(TAG, ' start');
       const want = undefined;
@@ -555,7 +555,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0001", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0001", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0001';
       console.log(TAG, ' start');
       abilityDelegator.startAbility({
@@ -608,7 +608,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0002", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0002", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0002';
       console.log(TAG, ' start');
       abilityDelegator.startAbility({
@@ -660,7 +660,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0003", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0003", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0003';
       console.log(TAG, ' start');
       abilityDelegator.startAbility({
@@ -712,7 +712,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0006", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0006", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0006';
       console.log(TAG, ' start');
       abilityDelegator.startAbility({}, (err: BusinessError) => {
@@ -762,7 +762,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0007", 0, async (done: Function) => {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0007", Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0007';
       console.log(TAG, ' start');
       const want = undefined;

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 
 export default function AbilityDelegatorTest() {
@@ -25,7 +25,7 @@ export default function AbilityDelegatorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("GET_ABILITY_DELEGATOR_0001", 0, async (done: Function) => {
+    it("GET_ABILITY_DELEGATOR_0001", Level.LEVEL0, async (done: Function) => {
       const abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       expect(abilityDelegator != null).assertTrue();
       abilityDelegator.printSync("GET_ABILITY_DELEGATOR_0001 pass");
@@ -40,7 +40,7 @@ export default function AbilityDelegatorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("GET_ARGUMENTS_0001", 0, async (done: Function) => {
+    it("GET_ARGUMENTS_0001", Level.LEVEL0, async (done: Function) => {
       const abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       const abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
       let bundleName: string = abilityDelegatorArguments.bundleName;

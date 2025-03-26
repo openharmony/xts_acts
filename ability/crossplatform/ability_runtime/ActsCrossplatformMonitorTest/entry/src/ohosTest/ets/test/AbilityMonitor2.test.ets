@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -88,7 +88,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0100", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0100";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -140,7 +140,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0200", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0200";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -196,7 +196,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0300", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0300";
       console.log(LABLE + TAG + " start");
       if (deviceType === '2in1') {
@@ -246,7 +246,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0400", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0400";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -289,7 +289,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0500", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_2_0500";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -335,7 +335,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0100", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0100";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -388,7 +388,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0200", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0200";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -449,7 +449,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0300", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0300";
       console.log(LABLE + TAG + " start");
       if (deviceType === '2in1') {
@@ -516,7 +516,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0400", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0400";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -565,7 +565,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0500", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_2_0500";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -612,7 +612,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0100", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0100";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -660,7 +660,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0200", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0200";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -710,7 +710,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0300", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0300";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -769,7 +769,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0400", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0400";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -825,7 +825,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0500", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_2_0500";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -879,7 +879,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0100", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0100", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0100";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -935,7 +935,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0200", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0200", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0200";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -989,7 +989,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0300", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0300", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0300";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1055,7 +1055,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0400", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0400", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0400";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1121,7 +1121,7 @@ export default function AbilityMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0500", 0, async (done: Function) => {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0500", Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_2_0500";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(

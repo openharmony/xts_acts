@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 // // @ts-nocheck
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { BusinessError } from '@ohos.base';
 
@@ -29,7 +29,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0001", 0, async (done: Function) => {
+    it("ACTS_PRINT_CALLBACK_0001", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_CALLBACK_0001 :start");
       let msg = "print_Callback normal message: hello print callback.";
       abilityDelegator.print(msg, (err: BusinessError) => {
@@ -49,7 +49,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0003", 0, async (done: Function) => {
+    it("ACTS_PRINT_CALLBACK_0003", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_CALLBACK_0003 :start");
       let msg = "print_Callback escape character: \n";
 
@@ -68,7 +68,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0004", 0, async (done: Function) => {
+    it("ACTS_PRINT_CALLBACK_0004", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_CALLBACK_0004 :start");
       let msg: string = "print_Callback special character: © ® ℃ ℉ ™ ↵";
 
@@ -87,7 +87,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0005", 0, async (done: Function) => {
+    it("ACTS_PRINT_CALLBACK_0005", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_CALLBACK_0005 :start");
       let msg: string = "print_Callback language: 中文 English  Русский язык Français";
 
@@ -106,7 +106,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0006", 0, async (done: Function) => {
+    it("ACTS_PRINT_CALLBACK_0006", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_CALLBACK_0006 :start");
       let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
@@ -138,7 +138,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0001", 0, async (done: Function) => {
+    it("ACTS_PRINT_PROMISE_0001", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_PROMISE_0001 :start");
       let msg = "print_Promise normal message: hello print promise.";
       abilityDelegator
@@ -165,7 +165,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0003", 0, async (done: Function) => {
+    it("ACTS_PRINT_PROMISE_0003", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_PROMISE_0003 :start");
       let msg = "print_Promise escape character: \n";
       abilityDelegator
@@ -192,7 +192,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0004", 0, async (done: Function) => {
+    it("ACTS_PRINT_PROMISE_0004", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_PROMISE_0004 :start");
       let msg = "print_Promise special character: © ® ℃ ℉ ™ ↵";
       abilityDelegator
@@ -219,7 +219,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0005", 0, async (done: Function) => {
+    it("ACTS_PRINT_PROMISE_0005", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_PROMISE_0005 :start");
       let msg = "print_Promise language: 中文 English  Русский язык Français";
       abilityDelegator
@@ -246,7 +246,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0006", 0, async (done: Function) => {
+    it("ACTS_PRINT_PROMISE_0006", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_PROMISE_0006 :start");
       let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
@@ -282,7 +282,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0001", 0, async (done: Function) => {
+    it("ACTS_PRINT_SYNC_0001", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_SYNC_0001 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       let msg = "printSync msg";
@@ -301,7 +301,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0003", 0, async (done: Function) => {
+    it("ACTS_PRINT_SYNC_0003", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_SYNC_0003 :start");
       let msg: string = "printSync escape character: \n";
       abilityDelegator.printSync(msg);
@@ -318,7 +318,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0004", 0, async (done: Function) => {
+    it("ACTS_PRINT_SYNC_0004", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_SYNC_0004 :start");
       let msg: string = "printSync special character: © ® ℃ ℉ ™ ↵";
       abilityDelegator.printSync(msg);
@@ -335,7 +335,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0005", 0, async (done: Function) => {
+    it("ACTS_PRINT_SYNC_0005", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_SYNC_0005 :start");
       let msg: string = "printSync language: 中文 English  Русский язык Français";
       abilityDelegator.printSync(msg);
@@ -352,7 +352,7 @@ export default function PrintTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0006", 0, async (done: Function) => {
+    it("ACTS_PRINT_SYNC_0006", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_PRINT_SYNC_0006 :start");
       let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +

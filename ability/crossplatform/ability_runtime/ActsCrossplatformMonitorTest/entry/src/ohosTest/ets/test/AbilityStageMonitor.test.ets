@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -136,7 +136,7 @@ export default function AbilityStageMonitorTest() {
      * @tc.type      : Method
      * @tc.level     : Level 3
      */
-    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let monitor = null;
       console.log("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100 :start");
@@ -171,7 +171,7 @@ export default function AbilityStageMonitorTest() {
      * @tc.type      : Method
      * @tc.level     : Level 2
      */
-    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200", 0, async (done: Function) => {
+    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       const want = factoryWant(
         "com.example.delegatortest",
         "MainAbility",

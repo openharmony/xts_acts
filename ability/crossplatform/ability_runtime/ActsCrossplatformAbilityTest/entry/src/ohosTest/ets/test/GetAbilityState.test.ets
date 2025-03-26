@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -40,7 +40,7 @@ export default function GetAbilityStateTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_ABILITY_STATE_0001", 0, async (done: Function) => {
+    it("ACTS_GET_ABILITY_STATE_0001", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_ABILITY_STATE_0001 :start");
       setTimeout(() => {
         abilityDelegator.startAbility({
@@ -81,7 +81,7 @@ export default function GetAbilityStateTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_ABILITY_STATE_0002", 0, async (done: Function) => {
+    it("ACTS_GET_ABILITY_STATE_0002", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_ABILITY_STATE_0002 :start");
       if (deviceType === '2in1') {
         done();
@@ -133,7 +133,7 @@ export default function GetAbilityStateTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_ABILITY_STATE_0003", 0, async (done: Function) => {
+    it("ACTS_GET_ABILITY_STATE_0003", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_ABILITY_STATE_0003 :start");
       let ability1 = null;
       let stateNum = abilityDelegator.getAbilityState(ability1);

@@ -15,7 +15,7 @@
 
 import common from '@ohos.app.ability.common';
 import configurationConstant from '@ohos.app.ability.ConfigurationConstant';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function Configuration() {
   describe("Configuration", () => {
@@ -44,7 +44,7 @@ export default function Configuration() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testColorMode001', 0, async (done: Function) => {
+    it('testColorMode001', Level.LEVEL0, async (done: Function) => {
       try {
         let colorMode: ESObject = globalThis.colorMode as ESObject;
         let context: common.UIAbilityContext = globalThis.abilityContext;
@@ -77,7 +77,7 @@ export default function Configuration() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDirection001', 0, async (done: Function) => {
+    it('testDirection001', Level.LEVEL0, async (done: Function) => {
       try {
         let direction: ESObject = globalThis.direction as ESObject;
         let context: common.UIAbilityContext = globalThis.abilityContext;
