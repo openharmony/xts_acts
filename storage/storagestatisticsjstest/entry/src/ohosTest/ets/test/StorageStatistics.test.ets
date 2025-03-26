@@ -37,7 +37,7 @@ export default function storageStatisticsTest() {
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_000", 0, async (done: Function) => {
+    it("storage_statistics_test_get_current_bundle_stats_async_000", Level.LEVEL0, async (done: Function) => {
       try {
         let bundleStat = await storageStatistics.getCurrentBundleStats();
         expect(bundleStat != null).assertTrue();
@@ -59,7 +59,7 @@ export default function storageStatisticsTest() {
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_001", 0, async (done: Function) => {
+    it("storage_statistics_test_get_current_bundle_stats_async_001", Level.LEVEL0, async (done: Function) => {
       try {
         storageStatistics.getCurrentBundleStats((error, bundleStat) => {
           expect(bundleStat != null).assertTrue();
@@ -82,7 +82,7 @@ export default function storageStatisticsTest() {
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_002", 0, async (done: Function) => {
+    it("storage_statistics_test_get_current_bundle_stats_async_002", Level.LEVEL0, async (done: Function) => {
       try {
         let tasks = [delay(), delay(), delay(), delay()];
         Promise.all(tasks).then(results => {

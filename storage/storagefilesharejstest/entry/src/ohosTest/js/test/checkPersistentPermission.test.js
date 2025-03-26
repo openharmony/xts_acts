@@ -31,7 +31,7 @@ export default function FileSahre_CheckPersistentPermission_test() {
       * @tc.level Level 0
       * @tc.require
       */
-      it('FileShare_checkPersistentPermission_001', 0, async function (done) {
+      it('FileShare_checkPersistentPermission_001', Level.LEVEL0, async function (done) {
         try {
         let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_checkPersistentPermission_001.txt";
         let uriObject1 = new fileuri.FileUri(fileStr1);
@@ -92,7 +92,7 @@ export default function FileSahre_CheckPersistentPermission_test() {
       * @tc.level Level 0
       * @tc.require
       */
-      it('FileShare_checkPersistentPermission_002', 0, async function (done) {
+      it('FileShare_checkPersistentPermission_002', Level.LEVEL0, async function (done) {
         try {
         let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_checkPersistentPermission_002.txt";
         let uriObject1 = new fileuri.FileUri(fileStr1);

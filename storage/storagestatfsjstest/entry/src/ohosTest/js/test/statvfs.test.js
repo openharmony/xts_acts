@@ -15,6 +15,7 @@
 
 import {describe, it, expect, isIntNum, statvfs} from './Common';
 import featureAbility from '@ohos.ability.featureAbility';
+import { Level } from '@ohos/hypium';
 
 export default function statvfs_test() {
 describe('statvfs_test', function () {
@@ -28,7 +29,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_sync_000', 0, async function () {
+  it('statvfs_test_get_free_size_sync_000', Level.LEVEL0, async function () {
     try {
       let context = featureAbility.getContext();
       let data = await context.getFilesDir();
@@ -50,7 +51,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_sync_001', 0, async function () {
+  it('statvfs_test_get_free_size_sync_001', Level.LEVEL0, async function () {
     try {
       let number = statvfs.getFreeSizeSync("/dev");
       console.log("getFreeSizeNumber dev===>:" + (number / 1024));
@@ -70,7 +71,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('statvfs_test_get_free_size_sync_002', 3, async function () {
+  it('statvfs_test_get_free_size_sync_002', Level.LEVEL3, async function () {
     try {
       statvfs.getFreeSizeSync(1);
       expect(false).assertTrue();
@@ -89,7 +90,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('statvfs_test_get_free_size_sync_003', 3, async function () {
+  it('statvfs_test_get_free_size_sync_003', Level.LEVEL3, async function () {
     try {
       statvfs.getFreeSizeSync();
       expect(false).assertTrue();
@@ -108,7 +109,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('statvfs_test_get_free_size_sync_005', 3, async function () {
+  it('statvfs_test_get_free_size_sync_005', Level.LEVEL3, async function () {
     try {
       statvfs.getFreeSizeSync("");
       expect(false).assertTrue();
@@ -127,7 +128,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_sync_000', 0, async function () {
+  it('statvfs_test_get_total_size_sync_000', Level.LEVEL0, async function () {
     try {
       let context = featureAbility.getContext();
       let data = await context.getFilesDir();
@@ -149,7 +150,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_sync_001', 0, async function () {
+  it('statvfs_test_get_total_size_sync_001', Level.LEVEL0, async function () {
     try {
       let number = statvfs.getTotalSizeSync("/dev");
       console.log("getTotalSizeNumber dev===>:" + (number / 1024));
@@ -169,7 +170,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('statvfs_test_get_total_size_sync_002', 3, async function () {
+  it('statvfs_test_get_total_size_sync_002', Level.LEVEL3, async function () {
     try {
       statvfs.getTotalSizeSync(1);
       expect(false).assertTrue();
@@ -188,7 +189,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('statvfs_test_get_total_size_sync_003', 3, async function () {
+  it('statvfs_test_get_total_size_sync_003', Level.LEVEL3, async function () {
     try {
       statvfs.getTotalSizeSync();
       expect(false).assertTrue();
@@ -207,7 +208,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('statvfs_test_get_total_size_sync_004', 3, async function () {
+  it('statvfs_test_get_total_size_sync_004', Level.LEVEL3, async function () {
     try {
       statvfs.getTotalSizeSync("");
       expect(false).assertTrue();
@@ -226,7 +227,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_async_000', 0, async function (done) {
+  it('statvfs_test_get_free_size_async_000', Level.LEVEL0, async function (done) {
     try {
       let context = featureAbility.getContext();
       let data = await context.getFilesDir();
@@ -249,7 +250,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_async_001', 0, async function (done) {
+  it('statvfs_test_get_free_size_async_001', Level.LEVEL0, async function (done) {
     try {
       statvfs.getFreeSize("/dev", (err, number) => {
         if (err) {
@@ -275,7 +276,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_async_002', 0, async function (done) {
+  it('statvfs_test_get_free_size_async_002', Level.LEVEL0, async function (done) {
     try {
       await statvfs.getFreeSize(1);
       expect(false).assertTrue();
@@ -295,7 +296,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_async_003', 0, async function (done) {
+  it('statvfs_test_get_free_size_async_003', Level.LEVEL0, async function (done) {
     try {
       await statvfs.getFreeSize();
       expect(false).assertTrue();
@@ -315,7 +316,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_async_004', 0, async function (done) {
+  it('statvfs_test_get_free_size_async_004', Level.LEVEL0, async function (done) {
     try {
       await statvfs.getFreeSize("");
       expect(false).assertTrue();
@@ -335,7 +336,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_free_size_async_005', 0, async function (done) {
+  it('statvfs_test_get_free_size_async_005', Level.LEVEL0, async function (done) {
     try {
       statvfs.getFreeSize("", (err) => {
         if (err) {
@@ -360,7 +361,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_async_000', 0, async function (done) {
+  it('statvfs_test_get_total_size_async_000', Level.LEVEL0, async function (done) {
 
     try {
       let context = featureAbility.getContext();
@@ -384,7 +385,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_async_001', 0, async function (done) {
+  it('statvfs_test_get_total_size_async_001', Level.LEVEL0, async function (done) {
 
     try {
       statvfs.getTotalSize("/dev", (err, number) => {
@@ -411,7 +412,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_async_002', 0, async function (done) {
+  it('statvfs_test_get_total_size_async_002', Level.LEVEL0, async function (done) {
 
     try {
       await statvfs.getTotalSize(1);
@@ -432,7 +433,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_async_003', 0, async function (done) {
+  it('statvfs_test_get_total_size_async_003', Level.LEVEL0, async function (done) {
 
     try {
       await statvfs.getTotalSize();
@@ -453,7 +454,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_async_004', 0, async function (done) {
+  it('statvfs_test_get_total_size_async_004', Level.LEVEL0, async function (done) {
 
     try {
       await statvfs.getTotalSize("");
@@ -474,7 +475,7 @@ describe('statvfs_test', function () {
    * @tc.level Level 0
    * @tc.require
   */
-  it('statvfs_test_get_total_size_async_005', 0, async function (done) {
+  it('statvfs_test_get_total_size_async_005', Level.LEVEL0, async function (done) {
 
     try {
       statvfs.getTotalSize("", (err) => {

@@ -14,7 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import { describe,it,expect}from '@ohos/hypium'
+import { describe, it, expect, Level }from '@ohos/hypium'
 import {
   FILE_CONTENT,
   prepareFile,
@@ -33,7 +33,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_close_sync_000
      * @tc.desc Function of API, openSync. The test file is exist.
      */
-    it('fileio_test_open_close_sync_000', 0, async function () {
+    it('fileio_test_open_close_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_close_sync_000');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -52,7 +52,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_000
      * @tc.desc Function of API, openSync(mode not for value). The test file is exist.
      */
-    it('fileio_test_open_000', 0, async function () {
+    it('fileio_test_open_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -72,7 +72,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_001
      * @tc.desc Function of API, flags=0o100. mode=0o001
      */
-    it('fileio_test_open_001', 0, async function () {
+    it('fileio_test_open_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -92,7 +92,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_002
      * @tc.desc Function of API,
      */
-    it('fileio_test_open_002', 0, async function () {
+    it('fileio_test_open_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_002');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -112,7 +112,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_003
      * @tc.desc Function of API, flags=0o100. mode=0o004
      */
-    it('fileio_test_open_003', 0, async function () {
+    it('fileio_test_open_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_003');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -135,7 +135,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_004
      * @tc.desc Function of API, flags=0o101. mode=0o002
      */
-    it('fileio_test_open_004', 0, async function () {
+    it('fileio_test_open_004', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_004');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -156,7 +156,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_005
      * @tc.desc Function of API, flags=0o102. mode=0o001.
      */
-    it('fileio_test_open_005', 0, async function () {
+    it('fileio_test_open_005', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_005');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -186,7 +186,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_006
      * @tc.desc Function of API, flags=0o200. mode=0o700
      */
-    it('fileio_test_open_006', 0, async function () {
+    it('fileio_test_open_006', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_006');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -204,7 +204,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_007
      * @tc.desc Function of API, flags=0o302. mode=0o700.
      */
-    it('fileio_test_open_007', 0, async function () {
+    it('fileio_test_open_007', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_007');
       try {
         let fd = fileio.openSync(fpath, 0o302, 0o700);
@@ -233,7 +233,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_008
      * @tc.desc Function of API, flags=0o102. mode=0o700
      */
-    it('fileio_test_open_008', 0, async function () {
+    it('fileio_test_open_008', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_008');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o700);
@@ -262,7 +262,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_009
      * @tc.desc Function of API, flags=0o302.
      */
-    it('fileio_test_open_009', 0, async function () {
+    it('fileio_test_open_009', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_009');
       try {
         fileio.openSync(fpath, 0o302);
@@ -277,7 +277,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_010
      * @tc.desc Function of API, flags=0o402.
      */
-    it('fileio_test_open_010', 0, async function () {
+    it('fileio_test_open_010', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_010');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -307,7 +307,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_011
      * @tc.desc Function of API, flags=0o1000.
      */
-    it('fileio_test_open_011', 0, async function () {
+    it('fileio_test_open_011', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_011');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -331,7 +331,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_012
      * @tc.desc Function of API, flags=0o1001.
      */
-    it('fileio_test_open_012', 0, async function () {
+    it('fileio_test_open_012', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_012');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -353,7 +353,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_013
      * @tc.desc Function of API, flags=0o2002.
      */
-    it('fileio_test_open_013', 0, async function () {
+    it('fileio_test_open_013', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_013');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -383,7 +383,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_014
      * @tc.desc Function of API, flags=0o4002.
      */
-    it('fileio_test_open_014', 0, async function (done) {
+    it('fileio_test_open_014', Level.LEVEL1, async function (done) {
       let fpath = await nextFileName('fileio_test_open_014');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -407,7 +407,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_015
      * @tc.desc Function of API, flags=0o20002.
      */
-    it('fileio_test_open_015', 0, async function () {
+    it('fileio_test_open_015', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_015');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -427,7 +427,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_016
      * @tc.desc Function of API, flags=0o10002.
      */
-    it('fileio_test_open_016', 0, async function () {
+    it('fileio_test_open_016', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_016');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -447,7 +447,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_017
      * @tc.desc Function of API, flags=0o4010002.
      */
-    it('fileio_test_open_017', 0, async function () {
+    it('fileio_test_open_017', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_017');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -467,7 +467,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_018
      * @tc.desc Function of API, flags=0o100002.
      */
-    it('fileio_test_open_018', 0, async function () {
+    it('fileio_test_open_018', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_018');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -487,7 +487,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_019
      * @tc.desc Function of API, flags=0o40002. mode=0o700
      */
-    it('fileio_test_open_019', 0, async function () {
+    it('fileio_test_open_019', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_019');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -504,7 +504,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_021
      * @tc.desc Function of API, flags=0o2000002.
      */
-    it('fileio_test_open_021', 0, async function () {
+    it('fileio_test_open_021', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_021');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -524,7 +524,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_022
      * @tc.desc Function of API, flags=0o200000.
      */
-    it('fileio_test_open_022', 0, async function () {
+    it('fileio_test_open_022', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_open_022') + 'd';
       fileio.mkdirSync(dpath);
       try {
@@ -542,7 +542,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_023
      * @tc.desc Function of API, flags=0o400002.
      */
-    it('fileio_test_open_023', 0, async function () {
+    it('fileio_test_open_023', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_023');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -562,7 +562,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_024
      * @tc.desc Function of API, flags=0o1000002.mode=0o700
      */
-    it('fileio_test_open_024', 0, async function () {
+    it('fileio_test_open_024', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_024');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -582,7 +582,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_025
      * @tc.desc Function of API, flags=0o10000002.
      */
-    it('fileio_test_open_025', 0, async function () {
+    it('fileio_test_open_025', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_025');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -602,7 +602,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_026
      * @tc.desc Function of API,flags=0o002.mode=0o700
      */
-    it('fileio_test_open_026', 0, async function () {
+    it('fileio_test_open_026', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_026');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -622,7 +622,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_027
      * @tc.desc Function of API, flags=0o002.mode=0o400
      */
-    it('fileio_test_open_027', 0, async function () {
+    it('fileio_test_open_027', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_027');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -650,7 +650,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_028
      * @tc.desc Function of API, flags=0o002.mode=0o200
      */
-    it('fileio_test_open_028', 0, async function () {
+    it('fileio_test_open_028', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_028');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -678,7 +678,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_029
      * @tc.desc Function of API, flags=0o002.mode=0o100
      */
-    it('fileio_test_open_029', 0, async function () {
+    it('fileio_test_open_029', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_029');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -698,7 +698,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_030
      * @tc.desc Function of API,  flags=0o002.mode=0o070
      */
-    it('fileio_test_open_030', 0, async function () {
+    it('fileio_test_open_030', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_030');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -728,7 +728,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_031
      * @tc.desc Function of API, flags=0o002.mode=0o040
      */
-    it('fileio_test_open_031', 0, async function () {
+    it('fileio_test_open_031', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_031');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -756,7 +756,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_032
      * @tc.desc Function of API, flags=0o002.mode=0o020
      */
-    it('fileio_test_open_032', 0, async function () {
+    it('fileio_test_open_032', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_032');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -784,7 +784,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_033
      * @tc.desc Function of API, flags=0o002.mode=0o010
      */
-    it('fileio_test_open_033', 0, async function () {
+    it('fileio_test_open_033', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_033');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -804,7 +804,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_034
      * @tc.desc Function of API, flags=0o002.mode=0o007
      */
-    it('fileio_test_open_034', 0, async function () {
+    it('fileio_test_open_034', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_034');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -834,7 +834,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_035
      * @tc.desc Function of API, flags=0o002.mode=0o004
      */
-    it('fileio_test_open_035', 0, async function () {
+    it('fileio_test_open_035', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_035');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -862,7 +862,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_036
      * @tc.desc Function of API, flags=0o002.mode=0o002
      */
-    it('fileio_test_open_036', 0, async function () {
+    it('fileio_test_open_036', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_036');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -890,7 +890,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_037
      * @tc.desc Function of API, flags=0o002.mode=0o001
      */
-    it('fileio_test_open_037', 0, async function () {
+    it('fileio_test_open_037', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_037');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -909,7 +909,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_038
      * @tc.desc Function of API, flags=0o102.mode=0o700
      */
-    it('fileio_test_open_038', 0, async function () {
+    it('fileio_test_open_038', Level.LEVEL1, async function () {
       let txt = randomString(4100);
       let fpath = await nextFileName(txt);
       try {
@@ -926,7 +926,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_001
      * @tc.desc Function of API, openSync(flags=0o200). The test file is exist.
      */
-    it('fileio_test_open_sync_001', 0, async function () {
+    it('fileio_test_open_sync_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_sync_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -946,7 +946,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_002
      * @tc.desc Function of API, openSync(flags=0o201). The test file is exist.
      */
-    it('fileio_test_open_sync_002', 0, async function () {
+    it('fileio_test_open_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_sync_002');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -966,7 +966,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_003
      * @tc.desc Function of API, openSync(flags=0o202). The test file is exist.
      */
-    it('fileio_test_open_sync_003', 0, async function () {
+    it('fileio_test_open_sync_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_sync_003');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -986,7 +986,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_004
      * @tc.desc Function of API, openSync(flags=0o102, mode=0o777). The test file is not exist.
      */
-    it('fileio_test_open_sync_004', 0, async function () {
+    it('fileio_test_open_sync_004', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_open_sync_004');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o777);
@@ -1005,7 +1005,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_005
      * @tc.desc Function of API, openSync(flags not for value, mode not for value).
      */
-    it('fileio_test_open_sync_005', 0, async function () {
+    it('fileio_test_open_sync_005', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_open_sync_005') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -1025,7 +1025,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_006
      * @tc.desc Function of API, openSync(flags=0o1, illegal parameter).
      */
-    it('fileio_test_open_sync_006', 0, async function () {
+    it('fileio_test_open_sync_006', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_open_sync_006') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -1042,7 +1042,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_007
      * @tc.desc Function of API, openSync(fpath too long).
      */
-    it('fileio_test_open_sync_007', 0, async function () {
+    it('fileio_test_open_sync_007', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_open_sync_007');
       fileio.mkdirSync(dpath);
       try {
@@ -1069,7 +1069,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_008
      * @tc.desc Function of API, openSync(filename too long).
      */
-    it('fileio_test_open_sync_008', 0, async function () {
+    it('fileio_test_open_sync_008', Level.LEVEL1, async function () {
       let fpath = await nextFileName(randomString(256));
       try {
         fileio.openSync(fpath, 0o102, 0o777);
@@ -1085,7 +1085,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_009
      * @tc.desc Function of API, openSync(dir layers too long).
      */
-    it('fileio_test_open_sync_009', 0, async function () {
+    it('fileio_test_open_sync_009', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_open_sync_009');
       fileio.mkdirSync(dpath);
       try {
@@ -1112,7 +1112,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_open_sync_010
      * @tc.desc Function of API, openSync(filename has special characters).
      */
-    it('fileio_test_open_sync_010', 0, async function () {
+    it('fileio_test_open_sync_010', Level.LEVEL1, async function () {
       let fpath = await nextFileName('?*:<>/|');
       try {
         fileio.openSync(fpath, 0o102, 0o777);
@@ -1127,7 +1127,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_close_sync_000
      * @tc.desc Function of API, close. The test file is not exist.
      */
-    it('fileio_test_close_sync_000', 0, async function () {
+    it('fileio_test_close_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_chmod_sync_000');
       try {
         fileio.closeSync(fpath);
@@ -1143,7 +1143,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_close_sync_001
      * @tc.desc Function of API, close(fpath=vaild value). The test file is not exist.
      */
-    it('fileio_test_close_sync_001', 0, async function () {
+    it('fileio_test_close_sync_001', Level.LEVEL1, async function () {
       try {
         fileio.closeSync(-1);
         expect(false).assertTrue();
@@ -1159,7 +1159,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_000
      * @tc.desc Function of API,access. The test file is exist.
      */
-    it('fileio_test_access_sync_000', 0, async function () {
+    it('fileio_test_access_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_access_sync_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1177,7 +1177,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_001
      * @tc.desc Function of API, launch via fileio. The test file is not exist.
      */
-    it('fileio_test_access_sync_001', 0, async function () {
+    it('fileio_test_access_sync_001', Level.LEVEL1, async function () {
       try {
         fileio.accessSync(1);
       } catch (err) {
@@ -1191,7 +1191,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_002
      * @tc.desc Function of API, access. The test file is not exist.
      */
-    it('fileio_test_access_sync_002', 0, async function () {
+    it('fileio_test_access_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileIOTest');
       try {
         fileio.accessSync(fpath);
@@ -1206,7 +1206,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_003
      * @tc.desc Function of API, access(mode=1). The test file is exist and have the authority.
      */
-    it('fileio_test_access_sync_003', 0, async function () {
+    it('fileio_test_access_sync_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_access_sync_004');
       expect(prepareEmptyFile(fpath)).assertTrue();
       try {
@@ -1225,7 +1225,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_004
      * @tc.desc Function of API, access(mode=2). The test file is exist and have the authority.
      */
-    it('fileio_test_access_sync_004', 0, async function () {
+    it('fileio_test_access_sync_004', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_access_sync_004');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1244,7 +1244,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_005
      * @tc.desc Function of API, access(fpath=dir address). The test dir is exist.
      */
-    it('fileio_test_access_sync_005', 0, async function () {
+    it('fileio_test_access_sync_005', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_access_sync_005') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -1262,7 +1262,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_006
      * @tc.desc Function of API, access(fpath=dir address). The test dir is not exist.
      */
-    it('fileio_test_access_sync_006', 0, async function () {
+    it('fileio_test_access_sync_006', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_access_sync_006') + 'd'
       try {
         fileio.accessSync(dpath);
@@ -1278,7 +1278,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_sync_007
      * @tc.desc Function of API, access(mode=4).
      */
-    it('fileio_test_access_sync_007', 0, async function () {
+    it('fileio_test_access_sync_007', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_access_sync_007');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1297,7 +1297,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_promise_001
      * @tc.desc Function of API, access(mode=4).
      */
-    it('fileio_test_access_promise_001', 0, async function () {
+    it('fileio_test_access_promise_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_access_promise_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
   
@@ -1315,7 +1315,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_access_async_001
      * @tc.desc Function of API, access(mode=4).
      */
-    it('fileio_test_access_async_001', 0, async function () {
+    it('fileio_test_access_async_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_access_async_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let fd = fileio.access(fpath, function (err) {
@@ -1329,7 +1329,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_unlink_sync_000
      * @tc.desc Function of API,unlinkSync. The test file is exist.
      */
-    it('fileio_test_unlink_sync_000', 0, async function () {
+    it('fileio_test_unlink_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_unlink_sync_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1346,7 +1346,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_unlink_sync_001
      * @tc.desc Function of API, no parameter.
      */
-    it('fileio_test_unlink_sync_001', 0, async function () {
+    it('fileio_test_unlink_sync_001', Level.LEVEL1, async function () {
       try {
         fileio.unlinkSync(1);
       } 
@@ -1361,7 +1361,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_unlink_sync_002
      * @tc.desc Function of API, invalid parameter
      */
-    it('fileio_test_unlink_sync_002', 0, async function () {
+    it('fileio_test_unlink_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileIOTest');
       try {
         fileio.unlinkSync(fpath);
@@ -1376,7 +1376,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_000
      * @tc.desc Function of API, writeSync.
      */
-    it('fileio_test_write_sync_000', 0, async function () {
+    it('fileio_test_write_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_000');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -1396,7 +1396,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_001
      * @tc.desc Function of API, encoding=UTF-8.
      */
-    it('fileio_test_write_sync_001', 0, async function () {
+    it('fileio_test_write_sync_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_001');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -1418,7 +1418,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_002
      * @tc.desc Function of API, offset=1.
      */
-    it('fileio_test_write_sync_002', 0, async function () {
+    it('fileio_test_write_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_002');
       let text = '0123456789abcdefg';
       try {
@@ -1440,7 +1440,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_003
      * @tc.desc Function of API, length = - 1.
      */
-    it('fileio_test_write_sync_003', 0, async function () {
+    it('fileio_test_write_sync_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_003');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -1461,7 +1461,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_004
      * @tc.desc Function of API, length = 1, offset = 1.
      */
-    it('fileio_test_write_sync_004', 0, async function () {
+    it('fileio_test_write_sync_004', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_004');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -1484,7 +1484,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_005
      * @tc.desc Function of API, invalid offset.
      */
-    it('fileio_test_write_sync_005', 0, async function () {
+    it('fileio_test_write_sync_005', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_005');
       const invalidOffset = 999
       let fd
@@ -1508,7 +1508,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_006
      * @tc.desc Function of API, invalid length.
      */
-    it('fileio_test_write_sync_006', 0, async function () {
+    it('fileio_test_write_sync_006', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_006');
       const invalidLength = 999
       let fd
@@ -1532,7 +1532,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_007
      * @tc.desc Function of API, no parameter.
      */
-    it('fileio_test_write_sync_007', 0, async function () {
+    it('fileio_test_write_sync_007', Level.LEVEL1, async function () {
       try {
         fileio.writeSync(1, 1);
       }catch (err) {
@@ -1546,7 +1546,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_008
      * @tc.desc Function of API, invalid parameter.
      */
-    it('fileio_test_write_sync_008', 0, async function () {
+    it('fileio_test_write_sync_008', Level.LEVEL1, async function () {
       try {
         fileio.writeSync(-1, FILE_CONTENT);
         expect(false).assertTrue();
@@ -1562,7 +1562,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_009
      * @tc.desc Function of API, Set all parameters.
      */
-    it('fileio_test_write_sync_009', 0, async function () {
+    it('fileio_test_write_sync_009', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_009');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -1587,7 +1587,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_write_sync_010
      * @tc.desc Function of API, encoding=gb2312.
      */
-    it('fileio_test_write_sync_010', 0, async function () {
+    it('fileio_test_write_sync_010', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_write_sync_010');
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       try {
@@ -1607,7 +1607,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_001
      * @tc.desc Function of API, offset = 1.
      */
-    it('fileio_test_read_sync_001', 0, async function () {
+    it('fileio_test_read_sync_001', Level.LEVEL1, async function () {
       let bufLen = 5
       expect(FILE_CONTENT.length > bufLen).assertTrue();
       let fpath = await nextFileName('fileio_test_read_sync_001');
@@ -1632,7 +1632,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_002
      * @tc.desc Function of API, length = 1.
      */
-    it('fileio_test_read_sync_002', 0, async function () {
+    it('fileio_test_read_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_read_sync_002');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1655,7 +1655,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_003
      * @tc.desc Function of API, invalid offset
      */
-    it('fileio_test_read_sync_003', 0, async function () {
+    it('fileio_test_read_sync_003', Level.LEVEL1, async function () {
       let fd
       const invalidOffset = 99999
       let fpath = await nextFileName('fileio_test_read_sync_003');
@@ -1678,7 +1678,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_004
      * @tc.desc Function of API, invalid length.
      */
-    it('fileio_test_read_sync_004', 0, async function () {
+    it('fileio_test_read_sync_004', Level.LEVEL1, async function () {
       let fd
       const invalidLength = 9999
       let fpath = await nextFileName('fileio_test_read_sync_004');
@@ -1702,7 +1702,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_005
      * @tc.desc Function of API, fpatch = -1.
      */
-    it('fileio_test_read_sync_005', 0, async function () {
+    it('fileio_test_read_sync_005', Level.LEVEL1, async function () {
       try {
         fileio.readSync(-1, new ArrayBuffer(4096));
       } 
@@ -1717,7 +1717,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_006
      * @tc.desc Function of API, offset & length & position = 1.
      */
-    it('fileio_test_read_sync_006', 0, async function () {
+    it('fileio_test_read_sync_006', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_read_sync_006');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1740,7 +1740,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_007
      * @tc.desc Function of API, invalid position.
      */
-    it('fileio_test_read_sync_007', 0, async function () {
+    it('fileio_test_read_sync_007', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_read_sync_007');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1763,7 +1763,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_008
      * @tc.desc Function of API, Enter all parameters correctly.
      */
-    it('fileio_test_read_sync_008', 0, async function () {
+    it('fileio_test_read_sync_008', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_read_sync_008');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1788,7 +1788,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_009
      * @tc.desc Function of API, Set offset and length.
      */
-    it('fileio_test_read_sync_009', 0, async function () {
+    it('fileio_test_read_sync_009', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_read_sync_009');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -1812,7 +1812,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_read_sync_010
      * @tc.desc Function of API, Set error parameters (options).
      */
-    it('fileio_test_read_sync_010', 0, async function () {
+    it('fileio_test_read_sync_010', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_read_sync_010');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let fd;
@@ -1835,7 +1835,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_000
      * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, same path, file not same.
      */
-    it('fileio_test_copy_file_sync_000', 0, async function () {
+    it('fileio_test_copy_file_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_000');
       let fpathTarget = fpath + 'tgt'
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -1855,7 +1855,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_001
      * @tc.desc Function of API, copy. fpatch is invalid, fpathTarget is vaild, same path, file not same.
      */
-    it('fileio_test_copy_file_sync_001', 0, async function () {
+    it('fileio_test_copy_file_sync_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_001') + 'd'
       let fpathTarget = fpath + 'tgt'
       try {
@@ -1871,7 +1871,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_002
      * @tc.desc Function of API, copyFileSync. fpath is vaild, fpathTarget is invalid.
      */
-    it('fileio_test_copy_file_sync_002', 0, async function () {
+    it('fileio_test_copy_file_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_002');
       try {
         fileio.copyFileSync(fpath, 0);
@@ -1887,7 +1887,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_003
      * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, path not same, file not same.
      */
-    it('fileio_test_copy_file_sync_003', 0, async function () {
+    it('fileio_test_copy_file_sync_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_003');
       let fpathTarget = fpath + 'f1'
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -1907,7 +1907,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_004
      * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, path not same, file not same.
      */
-    it('fileio_test_copy_file_sync_004', 0, async function () {
+    it('fileio_test_copy_file_sync_004', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_004');
       let fpathTarget = await fileName('fileio_test_copy_file_sync_004');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -1927,7 +1927,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_005
      * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, path not same, file not same.
      */
-    it('fileio_test_copy_file_sync_005', 0, async function () {
+    it('fileio_test_copy_file_sync_005', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_005');
       let fpathTarget = fpath
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -1946,7 +1946,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_006
      * @tc.desc Function of API, copy.When missing parameters.
      */
-    it('fileio_test_copy_file_sync_006', 0, async function () {
+    it('fileio_test_copy_file_sync_006', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_006');
       try {
         fileio.copyFileSync(fpath);
@@ -1961,7 +1961,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_007
      * @tc.desc Function of API, copy. fpatch is invalid, fpathTarget is invalid.
      */
-    it('fileio_test_copy_file_sync_007', 0, async function () {
+    it('fileio_test_copy_file_sync_007', Level.LEVEL1, async function () {
       try {
         fileio.copyFileSync(-1, -1);
       } catch (err) {
@@ -1975,7 +1975,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_008
      * @tc.desc Function of API, parameter more than 4096.
      */
-    it('fileio_test_copy_file_sync_008', 0, async function () {
+    it('fileio_test_copy_file_sync_008', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_008');
       fileio.openSync(fpath, 0o102, 0o777);
       let dpath = await nextFileName('fileio_test_copy_file_sync_008') + 'd';
@@ -2005,7 +2005,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_009
      * @tc.desc Function of API, filename is too long.
      */
-    it('fileio_test_copy_file_sync_009', 0, async function () {
+    it('fileio_test_copy_file_sync_009', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_009');
       fileio.openSync(fpath, 0o102, 0o777);
       let fpathTarget = await nextFileName(randomString(256));
@@ -2024,7 +2024,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_010
      * @tc.desc Function of API, dir layers too long
      */
-    it('fileio_test_copy_file_sync_010', 0, async function () {
+    it('fileio_test_copy_file_sync_010', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_010');
       fileio.openSync(fpath, 0o102, 0o777);
       let dpath = await nextFileName('fileio_test_copy_file_sync_010') + 'd';
@@ -2054,7 +2054,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_011
      * @tc.desc Function of API, special parameter.
      */
-    it('fileio_test_copy_file_sync_011', 0, async function () {
+    it('fileio_test_copy_file_sync_011', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_011');
       fileio.openSync(fpath, 0o102, 0o777);
       let fpathTarget = await nextFileName('?*:<>/|');
@@ -2073,7 +2073,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_sync_012
      * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, same path, file not same, mode is 0.
      */
-    it('fileio_test_copy_file_sync_012', 0, async function () {
+    it('fileio_test_copy_file_sync_012', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_012');
       let fpathTarget = fpath + 'tgt'
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -2093,7 +2093,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_copy_file_async_001
      * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, same path, file not same, mode is 0.
      */
-    it('fileio_test_copy_file_async_001', 0, async function () {
+    it('fileio_test_copy_file_async_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_async_001');
       let fpathTarget = fpath + 'tgt'
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -2112,7 +2112,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_truncate_sync_000
      * @tc.desc Function of API, truncateSync.
      */
-    it('fileio_test_truncate_sync_000', 0, async function () {
+    it('fileio_test_truncate_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_truncate_sync_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2131,7 +2131,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_truncate_sync_001
      * @tc.desc Function of API, no value for parameter.
      */
-    it('fileio_test_truncate_sync_001', 0, async function () {
+    it('fileio_test_truncate_sync_001', Level.LEVEL1, async function () {
       try {
         fileio.truncateSync();
       }catch (err) {
@@ -2145,7 +2145,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_truncate_sync_002
      * @tc.desc Function of API, no invalid parameter.
      */
-    it('fileio_test_truncate_sync_002', 0, async function () {
+    it('fileio_test_truncate_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_truncate_sync_001');
       try {
         fileio.truncateSync(fpath);
@@ -2160,7 +2160,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_truncate_sync_003
      * @tc.desc Function of API, .
      */
-    it('fileio_test_truncate_sync_003', 0, async function () {
+    it('fileio_test_truncate_sync_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_truncate_sync_003');
       try {
         fileio.truncateSync(fpath, -1);
@@ -2176,7 +2176,7 @@ export default function fileIOTest() {
      * @tc.desc Function of API, renameSync. The test file is exist,
      * fpathTarget is not same with fpatch, file name are same.
      */
-    it('fileio_test_rename_sync_000', 0, async function () {
+    it('fileio_test_rename_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_rename_sync_000');
       let fpathTarget = fpath + 'tgt'
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -2197,7 +2197,7 @@ export default function fileIOTest() {
      * @tc.desc Function of API, renameSync. The test file is not exist, 
      * fpathTarget is not same with fpatch, file name are same.
      */
-    it('fileio_test_rename_sync_001', 0, async function () {
+    it('fileio_test_rename_sync_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_rename_sync_001');
       let fpathTarget = fpath + 'tgt'
       try {
@@ -2213,7 +2213,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_002
      * @tc.desc Function of API, renameSync. The test file is exist, fpathTarget is invalid.
      */
-    it('fileio_test_rename_sync_002', 0, async function () {
+    it('fileio_test_rename_sync_002', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_rename_sync_002');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2231,7 +2231,7 @@ export default function fileIOTest() {
      * @tc.desc Function of API, renameSync.
      * The test file is not exist, fpathTarget is same with fpatch, file name are same.
      */
-    it('fileio_test_rename_sync_003', 0, async function () {
+    it('fileio_test_rename_sync_003', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_rename_sync_003');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2250,7 +2250,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_004
      * @tc.desc Function of API, no fpath parameter.
      */
-    it('fileio_test_rename_sync_004', 0, async function () {
+    it('fileio_test_rename_sync_004', Level.LEVEL1, async function () {
       try {
         fileio.renameSync(1, 1);
       } 
@@ -2265,7 +2265,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_005
      * @tc.desc Function of API, no fpathTarget parameter.
      */
-    it('fileio_test_rename_sync_005', 0, async function () {
+    it('fileio_test_rename_sync_005', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_rename_sync_005');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2283,7 +2283,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_006
      * @tc.desc Function of API, rename dir.
      */
-    it('fileio_test_rename_sync_006', 0, async function () {
+    it('fileio_test_rename_sync_006', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_rename_sync_006') + 'd'
       let dpathTarget = await nextFileName('fileio_test_rename_sync_006-1') + 'd'
       try {
@@ -2303,7 +2303,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_007
      * @tc.desc Function of API, dir not exist. The test dir is not exist.
      */
-    it('fileio_test_rename_sync_007', 0, async function () {
+    it('fileio_test_rename_sync_007', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_rename_sync_007') + 'd'
       let dpathTarget = await nextFileName('fileio_test_rename_sync_007-1') + 'd'
       try {
@@ -2319,7 +2319,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_008
      * @tc.desc Function of API, fpathTarget not exist. fpathTarget not exist.
      */
-    it('fileio_test_rename_sync_008', 0, async function () {
+    it('fileio_test_rename_sync_008', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_rename_sync_008') + 'd'
       let dpathTarget = '/data/accounts/account_0/appdata/aaa/bbb/fileio_test_rename_sync_008-1d'
       try {
@@ -2337,7 +2337,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_rename_sync_009
      * @tc.desc Function of API, fpath is same with fpathTarget. fpath is same with fpathTarget.
      */
-    it('fileio_test_rename_sync_009', 0, async function () {
+    it('fileio_test_rename_sync_009', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_rename_sync_009') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -2356,7 +2356,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_ftruncate_sync_000
      * @tc.desc Function of API, ftruncateSync. The test file is exist.
      */
-    it('fileio_test_ftruncate_sync_000', 0, async function () {
+    it('fileio_test_ftruncate_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_ftruncate_sync_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2376,7 +2376,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_ftruncate_sync_001
      * @tc.desc Function of API, len not for value. The test file is exist.
      */
-    it('fileio_test_ftruncate_sync_001', 0, async function () {
+    it('fileio_test_ftruncate_sync_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_ftruncate_sync_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2396,7 +2396,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_ftruncate_sync_002
      * @tc.desc Function of API, invalid parameter. The test file is not exist.
      */
-    it('fileio_test_ftruncate_sync_002', 0, async function () {
+    it('fileio_test_ftruncate_sync_002', Level.LEVEL1, async function () {
       try {
         fileio.ftruncateSync(1);
       }catch (err) {
@@ -2410,7 +2410,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_ftruncate_sync_003
      * @tc.desc Function of API, invalid parameter. The test file is not exist.
      */
-    it('fileio_test_ftruncate_sync_003', 0, async function () {
+    it('fileio_test_ftruncate_sync_003', Level.LEVEL1, async function () {
       try {
         fileio.ftruncateSync(-1);
       }catch (err) {
@@ -2424,7 +2424,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_ftruncate_sync_004
      * @tc.desc Function of API, Parameter exception(len = -1).
      */
-    it('fileio_test_ftruncate_sync_004', 0, async function () {
+    it('fileio_test_ftruncate_sync_004', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_ftruncate_sync_004');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2442,7 +2442,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fsync_sync_000
      * @tc.desc Function of API, fsyneSync.
      */
-    it('fileio_test_fsync_sync_000', 0, async function () {
+    it('fileio_test_fsync_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_fsync_sync_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2462,7 +2462,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fsync_sync_001
      * @tc.desc Function of API, no value of parameter.
      */
-    it('fileio_test_fsync_sync_001', 0, async function () {
+    it('fileio_test_fsync_sync_001', Level.LEVEL1, async function () {
       try {
         fileio.fsyncSync(1);
       } 
@@ -2477,7 +2477,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fsync_sync_002
      * @tc.desc Function of API, invalid parameter.
      */
-    it('fileio_test_fsync_sync_002', 0, async function () {
+    it('fileio_test_fsync_sync_002', Level.LEVEL1, async function () {
       try {
         fileio.fsyncSync(-1);
         expect(false).assertTrue();
@@ -2493,7 +2493,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_000
      * @tc.desc Sync to mkdir and rmdir.
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_000', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_000', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_fsync_sync_000') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -2510,7 +2510,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_001
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o660).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_001', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_001', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_001') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o660);
@@ -2527,7 +2527,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_002
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o460).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_002', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_002', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_002') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o460);
@@ -2544,7 +2544,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_003
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o260).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_003', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_003', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_003') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o260);
@@ -2561,7 +2561,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_004
      * @tc.desc Function of API, invalid parameter. The test file is not exist.
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_004', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_004', Level.LEVEL1, async function () {
       try {
         fileio.mkdirSync(1);
       }catch (err) {
@@ -2575,7 +2575,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_005
      * @tc.desc Function of API, invalid parameter. The test file is not exist.
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_005', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_005', Level.LEVEL1, async function () {
       try {
         fileio.mkdirSync('/', 1);
       } 
@@ -2590,7 +2590,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_006
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o700).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_006', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_006', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_006') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o700);
@@ -2607,7 +2607,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_007
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o400).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_007', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_007', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_007') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o400);
@@ -2624,7 +2624,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_008
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o200).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_008', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_008', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_008') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o200);
@@ -2641,7 +2641,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_009
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o100).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_009', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_009', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_009') + 'd'
       try {
         fileio.mkdirSync(dpath, 0o100);
@@ -2658,7 +2658,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_010
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o070).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_010', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_010', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_010') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o070);
@@ -2675,7 +2675,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_011
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o040).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_011', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_011', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_011') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o040);
@@ -2692,7 +2692,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_012
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o020).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_012', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_012', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_012') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o020);
@@ -2709,7 +2709,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_013
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o010).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_013', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_013', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_013') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o010);
@@ -2726,7 +2726,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_014
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o007).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_014', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_014', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_014') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o007);
@@ -2743,7 +2743,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_015
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o004).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_015', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_015', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_015') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o004);
@@ -2760,7 +2760,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_016
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o002).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_016', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_016', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_016') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o002);
@@ -2777,7 +2777,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_mkdir_sync_rmdir_sync_017
      * @tc.desc Sync to mkdir and rmdir. mkdirSync(mode=0o001).
      */
-    it('fileio_test_mkdir_sync_rmdir_sync_017', 0, async function () {
+    it('fileio_test_mkdir_sync_rmdir_sync_017', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_mkdir_sync_rmdir_sync_017') + 'd';
       try {
         fileio.mkdirSync(dpath, 0o001);
@@ -2794,7 +2794,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fstat_sync_000
      * @tc.desc Function of API, fstatSync. The test file is exist.
      */
-    it('fileio_test_fstat_sync_000', 0, async function () {
+    it('fileio_test_fstat_sync_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_fstat_sync_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       try {
@@ -2815,7 +2815,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fstat_sync_001
      * @tc.desc Function of API, fstatSync, fd = -1. The test file is not exist.
      */
-    it('fileio_test_fstat_sync_001', 0, async function () {
+    it('fileio_test_fstat_sync_001', Level.LEVEL1, async function () {
       try {
         fileio.fstatSync(-1);
         expect(false).assertTrue();
@@ -2830,7 +2830,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fstat_sync_002
      * @tc.desc Function of API, fstatSync, fd is string type.
      */
-    it('fileio_test_fstat_sync_002', 0, async function () {
+    it('fileio_test_fstat_sync_002', Level.LEVEL1, async function () {
       try {
         fileio.fstatSync("");
       }catch (err) {
@@ -2844,7 +2844,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_fstat_sync_003
      * @tc.desc Function of API, fstatSync, vaild fd. The test file is exist.
      */
-    it('fileio_test_fstat_sync_003', 0, async function () {
+    it('fileio_test_fstat_sync_003', Level.LEVEL1, async function () {
       let dpath = await nextFileName('fileio_test_fstat_sync_003') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -2866,7 +2866,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_prop_write_open_read_4k_sync
      * @tc.desc Sync to write & open & read 4K file.
      */
-    it('fileio_test_prop_write_open_read_4k_sync', 0, async function () {
+    it('fileio_test_prop_write_open_read_4k_sync', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_prop_write_open_read_4k_sync');
       try {
         let fd = fileio.openSync(fpath, 0o102, 0o777);
@@ -2890,7 +2890,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_prop_copyFile_4k_sync
      * @tc.desc Sync to copy 4K file.
      */
-    it('fileio_test_prop_copyFile_4k_sync', 0, async function () {
+    it('fileio_test_prop_copyFile_4k_sync', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_prop_copyFile_4k_sync');
       let fpath1 = await fileName('fileio_test_prop_copyFile_4k_1_sync');
       try {
@@ -2913,7 +2913,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_close_async_000
      * @tc.desc Function of API close promise
      */
-    it('fileio_test_close_async_000', 0, async function () {
+    it('fileio_test_close_async_000', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_close_async_000');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let fd = fileio.openSync(fpath);
@@ -2927,7 +2927,7 @@ export default function fileIOTest() {
      * @tc.name fileio_test_close_async_001
      * @tc.desc Function of API close
      */
-    it('fileio_test_close_async_001', 0, async function () {
+    it('fileio_test_close_async_001', Level.LEVEL1, async function () {
       let fpath = await nextFileName('fileio_test_close_async_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let fd = fileio.openSync(fpath);

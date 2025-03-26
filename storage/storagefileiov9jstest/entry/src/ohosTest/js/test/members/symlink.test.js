@@ -17,6 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOSymlink() {
 describe('fileIO_fs_symlink', function () {
@@ -31,7 +32,7 @@ describe('fileIO_fs_symlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_symlink_sync_000', 0, async function () {
+  it('fileIO_test_symlink_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_symlink_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -55,7 +56,7 @@ describe('fileIO_fs_symlink', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_symlink_async_001', 0, async function (done) {
+  it('fileIO_test_symlink_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_symlink_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -81,7 +82,7 @@ describe('fileIO_fs_symlink', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_symlink_async_002', 0, async function (done) {
+  it('fileIO_test_symlink_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_symlink_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

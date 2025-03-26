@@ -20,6 +20,7 @@ import {
   it,
   expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioDirClose() {
 describe('fileio_dir_close', function () {
@@ -33,7 +34,7 @@ describe('fileio_dir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dir_close_async_000', 0, async function (done) {
+  it('fileio_test_dir_close_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_close_async_000') + 'd';
 
     try {
@@ -57,7 +58,7 @@ describe('fileio_dir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dir_close_async_001', 0, async function (done) {
+  it('fileio_test_dir_close_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_close_async_001') + 'd';
 
     try {
@@ -82,7 +83,7 @@ describe('fileio_dir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileio_test_dir_close_async_002', 0, async function (done) {
+   it('fileio_test_dir_close_async_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_close_async_002') + 'd';
     try {
       fileio.mkdirSync(dpath);

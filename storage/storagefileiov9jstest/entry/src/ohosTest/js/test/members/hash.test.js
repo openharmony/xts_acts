@@ -19,6 +19,7 @@ import {
 } from '../Common';
 import fs from '@ohos.file.fs';
 import Hash from '@ohos.file.hash';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOHash() {
 describe('fileIO_fs_hash', function () {
@@ -33,7 +34,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_hash_async_000', 0, async function (done) {
+  it('fileIO_test_hash_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -59,7 +60,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_001', 0, async function (done) {
+  it('fileIO_test_hash_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -90,7 +91,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_002', 0, async function (done) {
+  it('fileIO_test_hash_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -116,7 +117,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_003', 0, async function (done) {
+  it('fileIO_test_hash_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -147,7 +148,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_004', 0, async function (done) {
+  it('fileIO_test_hash_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -173,7 +174,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_005', 0, async function (done) {
+  it('fileIO_test_hash_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -204,7 +205,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_006', 0, async function (done) {
+  it('fileIO_test_hash_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -229,7 +230,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_async_007', 0, async function (done) {
+  it('fileIO_test_hash_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_hash_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -255,7 +256,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_createHash_008', 0, async function () {
+  it('fileIO_test_hash_createHash_008', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_hash_createHash_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -289,7 +290,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_createHash_009', 0, async function () {
+  it('fileIO_test_hash_createHash_009', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_hash_createHash_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -323,7 +324,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_createHash_010', 0, async function () {
+  it('fileIO_test_hash_createHash_010', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_hash_createHash_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -357,7 +358,7 @@ describe('fileIO_fs_hash', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_hash_createHash_011', 0, async function () {
+  it('fileIO_test_hash_createHash_011', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_hash_createHash_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

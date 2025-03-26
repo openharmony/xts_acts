@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioCreateWatcher() {
 describe('fileio_createWatcher', function () {
@@ -30,7 +31,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_000', 0, async function (done) {
+  it('fileio_test_createWatcher_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -68,7 +69,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_001', 0, async function (done) {
+  it('fileio_test_createWatcher_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -105,7 +106,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_002', 0, async function (done) {
+  it('fileio_test_createWatcher_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -142,7 +143,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_003', 0, async function (done) {
+  it('fileio_test_createWatcher_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -179,7 +180,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_004', 0, async function (done) {
+  it('fileio_test_createWatcher_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -218,7 +219,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_005', 0, async function (done) {
+  it('fileio_test_createWatcher_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -258,7 +259,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_006', 0, async function (done) {
+  it('fileio_test_createWatcher_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -297,7 +298,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_007', 0, async function (done) {
+  it('fileio_test_createWatcher_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -336,7 +337,7 @@ describe('fileio_createWatcher', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_createWatcher_async_008', 0, async function (done) {
+  it('fileio_test_createWatcher_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_createWatcher_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {

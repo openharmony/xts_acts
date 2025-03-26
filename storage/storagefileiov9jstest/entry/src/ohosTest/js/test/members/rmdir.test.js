@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIORmdir() {
 describe('fileIO_fs_rmdir', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_rmdir_sync_000', 0, async function () {
+  it('fileIO_test_rmdir_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_rmdir_sync_000') + 'd';
     let fpath = dpath + '/rmdir_sync_000';
     let ffpath = dpath + '/rmdir_sync_000_1';
@@ -65,7 +66,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_sync_001', 0, async function () {
+  it('fileIO_test_rmdir_sync_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_rmdir_sync_001') + 'd';
 
     try {
@@ -87,7 +88,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_sync_002', 0, async function () {
+  it('fileIO_test_rmdir_sync_002', Level.LEVEL0, async function () {
 
     try {
       fileIO.rmdirSync();
@@ -108,7 +109,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_sync_003', 0, function () {
+  it('fileIO_test_rmdir_sync_003', Level.LEVEL0, function () {
 
     try {
       fileIO.rmdirSync(12);
@@ -129,7 +130,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_sync_004', 0, async function () {
+  it('fileIO_test_rmdir_sync_004', Level.LEVEL0, async function () {
     let dpath = await nextFileName('../cache/fileIO_test_rmdir_sync_003') + 'd';
 
     try {
@@ -153,7 +154,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_async_000', 0, async function (done) {
+  it('fileIO_test_rmdir_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rmdir_async_000') + 'd';
     let fpath = dpath + '/rmdir_async_000';
     let ffpath = dpath + '/rmdir_async_000_1';
@@ -189,7 +190,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_async_001', 0, async function (done) {
+  it('fileIO_test_rmdir_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rmdir_async_001') + 'd';
     let fpath = dpath + '/rmdir_async_001';
     let ffpath = dpath + '/rmdir_async_001_1';
@@ -230,7 +231,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_async_002', 0, async function (done) {
+  it('fileIO_test_rmdir_async_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rmdir_async_002') + 'd';
 
     try {
@@ -253,7 +254,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_async_003', 0, async function (done) {
+  it('fileIO_test_rmdir_async_003', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rmdir_async_003') + 'd';
 
     try {
@@ -280,7 +281,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */ 
-  it('fileIO_test_rmdir_async_004', 0, async function (done) {
+  it('fileIO_test_rmdir_async_004', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rmdir_async_004') + 'd';
 
     try {
@@ -307,7 +308,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_async_005', 0, async function (done) {
+  it('fileIO_test_rmdir_async_005', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.rmdir();
@@ -329,7 +330,7 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdir_async_006', 0, async function () {
+  it('fileIO_test_rmdir_async_006', Level.LEVEL0, async function () {
     let dpath = await nextFileName('../cache/fileIO_test_rmdir_async_006') + 'd';
 
     try {

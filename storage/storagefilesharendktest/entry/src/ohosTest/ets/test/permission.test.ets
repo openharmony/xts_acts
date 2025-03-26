@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import fileshare from 'libfileshare.so';
 import { fileUri } from '@kit.CoreFileKit';
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -31,7 +31,7 @@ export default function permissionNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('FileShare_PersistPermission_001', 0, async (done: Function) => {
+    it('FileShare_PersistPermission_001', Level.LEVEL0, async (done: Function) => {
       let filepath = "/data/storage/el2/base/files/test1.txt";
       console.info("FileShare_PersistPermission_001: " + filepath);
       fs.openSync(filepath,0o102);
@@ -57,7 +57,7 @@ export default function permissionNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('FileShare_PersistPermission_002', 0, async (done: Function) => {
+    it('FileShare_PersistPermission_002', Level.LEVEL0, async (done: Function) => {
       let filepath = "/data/storage/el2/base/files/test2.txt";
       fs.openSync(filepath,0o102);
       new fileUri.FileUri(filepath);
@@ -85,7 +85,7 @@ export default function permissionNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('FileShare_ActivatePermission_001', 0, async (done: Function) => {
+    it('FileShare_ActivatePermission_001', Level.LEVEL0, async (done: Function) => {
       let filepath = "/data/storage/el2/base/files/test3.txt";
       fs.openSync(filepath,0o102);
       new fileUri.FileUri(filepath);
@@ -110,7 +110,7 @@ export default function permissionNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('FileShare_DeactivatePermission_001', 0, async (done: Function) => {
+    it('FileShare_DeactivatePermission_001', Level.LEVEL0, async (done: Function) => {
       let filepath = "/data/storage/el2/base/files/test4.txt";
       fs.openSync(filepath,0o102);
       new fileUri.FileUri(filepath);
@@ -135,7 +135,7 @@ export default function permissionNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('FileShare_RevokePermission_001', 0, async (done: Function) => {
+    it('FileShare_RevokePermission_001', Level.LEVEL0, async (done: Function) => {
       let filepath = "/data/storage/el2/base/files/test5.txt";
       fs.openSync(filepath,0o102);
       new fileUri.FileUri(filepath);
@@ -160,7 +160,7 @@ export default function permissionNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('FileShare_CheckPersistentPermission_001', 0, async (done: Function) => {
+    it('FileShare_CheckPersistentPermission_001', Level.LEVEL0, async (done: Function) => {
       let filepath = "/data/storage/el2/base/files/test6.txt";
       fs.openSync(filepath,0o102);
       new fileUri.FileUri(filepath);
