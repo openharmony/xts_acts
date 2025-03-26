@@ -1836,7 +1836,7 @@ export default function TaskPoolErrorCodeTest() {
       });
       await taskpool.execute(task).then((data) => {
         console.info(`${caseName} Taskpool: sendData code ${data}`);
-        expect(error.code).assertEqual(10200006);
+        expect(data).assertEqual(10200006);
       }).catch((error: BusinessError) => {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200006);
@@ -1859,7 +1859,7 @@ export default function TaskPoolErrorCodeTest() {
 
       await taskpool.execute(task).then((data) => {
         console.info(`${caseName} Taskpool: sendData code ${data}`);
-        expect(error.code).assertEqual(10200024);
+        expect(data).assertEqual(10200024);
       }).catch((error: BusinessError) => {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200024);
