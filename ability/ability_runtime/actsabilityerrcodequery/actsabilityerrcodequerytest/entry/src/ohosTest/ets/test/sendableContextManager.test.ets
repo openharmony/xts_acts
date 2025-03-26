@@ -176,7 +176,7 @@ export default function sendableContextManagerTest() {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
       let link:string = 'https://www.applicationContext02.com'
       let want: Want = {
-        bundleName:"ohos.example.myapplication",
+        bundleName:"com.test.actsabilityerrcodequerytest",
         abilityName:"applicationContext02",
         parameters: {
           appLinkingOnly: false,
