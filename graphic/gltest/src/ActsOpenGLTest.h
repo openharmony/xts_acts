@@ -17,6 +17,8 @@
 #define OPENGL_TESTCASE_H
 
 #include <gtest/gtest.h>
+#include "syscap_ndk.h"
+
 namespace OHOS {
     class ActsOpenGLTest : public testing::Test {
     public:
