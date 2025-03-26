@@ -20,31 +20,31 @@ export default function SensorJsTest_sensor_60() {
 describe("SensorJsTest_sensor_60", function () {
 
     beforeAll(function() {
-		
+
         /*
          * @tc.setup: setup invoked before all testcases
          */
          console.info('beforeAll called')
     })
-    
+
     afterAll(function() {
-		
+
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
          console.info('afterAll called')
     })
-    
+
     beforeEach(function() {
-		
+
         /*
          * @tc.setup: setup invoked before each testcases
          */
          console.info('beforeEach called')
     })
-    
+
     afterEach(function() {
-		
+
          /*
          * @tc.teardown: teardown invoked after each testcases
          */
@@ -86,7 +86,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_001', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_001----------------------------------");
         let  promiseArray = []
         for (let i = 0; i < timeMillis.length; i++) {
@@ -127,14 +127,14 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_002', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_002----------------------------------");
         let  promiseArray = []
         for (let i = 0; i < GEOMAGNETIC_COORDINATES.length; i++) {
             promiseArray.push(new Promise((resolve, reject) => {
                 let j = i
                 sensor.getGeomagneticInfo({'latitude':GEOMAGNETIC_COORDINATES[j][0], 'longitude':GEOMAGNETIC_COORDINATES[j][1],
-				'altitude':GEOMAGNETIC_COORDINATES[j][2]}, timeMillis[0], (error, data) => {
+                'altitude':GEOMAGNETIC_COORDINATES[j][2]}, timeMillis[0], (error, data) => {
                     if (error) {
                         console.info('Sensor_GetGeomagneticInfo_002 failed');
                         expect(false).assertTrue();
@@ -169,7 +169,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_003', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_003----------------------------------");
         let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125,
             -27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
@@ -202,10 +202,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_004', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_004----------------------------------");
         let geomagneticComponent = [1824.141845703125, 2.9950538714314696e+33, 56727.7734375, 1.0852099087396978e-27,
-		90, 2.9950538714314696e+33, Infinity]
+        90, 2.9950538714314696e+33, Infinity]
         sensor.getGeomagneticInfo({'latitude':Number.MAX_VALUE, 'longitude':0, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
                 console.info('Sensor_GetGeomagneticInfo_004 failed');
@@ -213,7 +213,7 @@ describe("SensorJsTest_sensor_60", function () {
             } else {
                 console.info('Sensor_GetGeomagneticInfo_004 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
                 + ',geomagneticDip: ' + data.geomagneticDip + ',deflectionAngle: ' + data.deflectionAngle
-	            + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
+                + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
                 expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
                 expect(Math.abs((data.y - geomagneticComponent[1]) / 1.0e+33) < EPS).assertTrue()
                 expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
@@ -236,10 +236,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_005', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_005----------------------------------");
         let geomagneticComponent = [1824.141845703125, 2.9950538714314696e+33, 56727.7734375, 1.0852099087396978e-27,
-		90, 2.9950538714314696e+33, Infinity]
+        90, 2.9950538714314696e+33, Infinity]
         sensor.getGeomagneticInfo({'latitude':Number.NaN, 'longitude':0, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
                 console.info('Sensor_GetGeomagneticInfo_005 failed');
@@ -247,7 +247,7 @@ describe("SensorJsTest_sensor_60", function () {
             } else {
                 console.info('Sensor_GetGeomagneticInfo_005 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
                 + ',geomagneticDip: ' + data.geomagneticDip + ',deflectionAngle: ' + data.deflectionAngle
-	            + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
+                + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
                 expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
                 expect(Math.abs((data.y - geomagneticComponent[1]) / 1.0e+33) < EPS).assertTrue()
                 expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
@@ -270,7 +270,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_006', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_006----------------------------------");
         let geomagneticComponent = [14425.57421875, -4.4076765967073136e+35, -52023.21484375, -6.76254414480036e-30, -90, 4.4076765967073136e+35, Infinity]
         sensor.getGeomagneticInfo({'latitude':Number.NEGATIVE_INFINITY, 'longitude':0, 'altitude':0}, timeMillis[0], (error, data) => {
@@ -302,7 +302,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_007', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_007----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.MAX_VALUE, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -327,7 +327,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_008', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_008----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NaN, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -352,7 +352,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_009', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_009----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NEGATIVE_INFINITY, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -377,7 +377,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_010', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_010----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MAX_VALUE}, timeMillis[0], (error, data) => {
             if (error) {
@@ -402,7 +402,7 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('Sensor_GetGeomagneticInfo_011', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_011----------------------------------");
         let geomagneticComponent = [27536.40234375, -2248.586669921875, -16022.4306640625, -30.110872268676758, -4.66834020614624, 27628.05859375, 31937.875]
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MIN_VALUE}, timeMillis[0], (error, data) => {
@@ -434,7 +434,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_012', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_012----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NaN}, timeMillis[0], (error, data) => {
             if (error) {
@@ -459,7 +459,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_013', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_013----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0], (error, data) => {
             if (error) {
@@ -484,7 +484,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_014', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_014----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NaN, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -509,7 +509,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_015', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_015----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NEGATIVE_INFINITY, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -534,7 +534,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_016', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_016----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MAX_VALUE}, timeMillis[0], (error, data) => {
             if (error) {
@@ -559,7 +559,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_017', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_017----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NaN}, timeMillis[0], (error, data) => {
             if (error) {
@@ -584,7 +584,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_018', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_018----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0], (error, data) => {
             if (error) {
@@ -609,7 +609,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_019', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_019----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.MAX_VALUE, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -634,7 +634,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_020', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_020----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NaN, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -659,7 +659,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_021', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_021----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NEGATIVE_INFINITY, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
@@ -684,7 +684,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_022', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_022----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MAX_VALUE}, timeMillis[0], (error, data) => {
             if (error) {
@@ -709,7 +709,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_023', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_023----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NaN}, timeMillis[0], (error, data) => {
             if (error) {
@@ -734,7 +734,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_024', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_024----------------------------------");
         sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0], (error, data) => {
             if (error) {
@@ -759,7 +759,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_025", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_025----------------------------------");
         for (var i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticInfo({'latitude':80, 'longitude':0, 'altitude':0}, timeMillis[i]).then((data) => {
@@ -787,7 +787,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_026", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_026---------------------------');
         let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':0}, Number.MIN_VALUE).then((data) => {
@@ -814,10 +814,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_027", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_027---------------------------');
         let geomagneticComponent = [1824.141845703125, 2.9950538714314696e+33, 56727.7734375, 1.0852099087396978e-27,
-		90, 2.9950538714314696e+33, Infinity]
+        90, 2.9950538714314696e+33, Infinity]
         await sensor.getGeomagneticInfo({'latitude':Number.MAX_VALUE, 'longitude':0, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_027 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
@@ -842,10 +842,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_028", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_028---------------------------');
         let geomagneticComponent = [1824.141845703125, 2.9950538714314696e+33, 56727.7734375, 1.0852099087396978e-27,
-		90, 2.9950538714314696e+33, Infinity]
+        90, 2.9950538714314696e+33, Infinity]
         await sensor.getGeomagneticInfo({'latitude':Number.NaN, 'longitude':0, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_028 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
@@ -870,10 +870,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_029", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_029---------------------------');
-        let geomagneticComponent = [14425.57421875, -4.4076765967073136e+35, -52023.21484375, -6.76254414480036e-30, -90, 
-		4.4076765967073136e+35, Infinity]
+        let geomagneticComponent = [14425.57421875, -4.4076765967073136e+35, -52023.21484375, -6.76254414480036e-30, -90,
+        4.4076765967073136e+35, Infinity]
         await sensor.getGeomagneticInfo({'latitude':Number.NEGATIVE_INFINITY, 'longitude':0, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_029 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
@@ -898,7 +898,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_030", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_030---------------------------');
         let geomagneticComponent = [NaN, NaN, NaN]
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.MAX_VALUE, 'altitude':0}, timeMillis[0]).then((data) => {
@@ -919,7 +919,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_031", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_031---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NaN, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_031 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -939,7 +939,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_032", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_032---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NEGATIVE_INFINITY, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_032 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -959,7 +959,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_033", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_033---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MAX_VALUE}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_033 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -979,7 +979,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_034", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_034---------------------------');
         let geomagneticComponent = [27536.40234375, -2248.586669921875, -16022.4306640625, -30.110872268676758, -4.66834020614624, 27628.05859375, 31937.875]
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MIN_VALUE}, timeMillis[0]).then((data) => {
@@ -1006,7 +1006,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_035", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_035---------------------------start');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NaN}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_035 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1026,7 +1026,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_036", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_036---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_036 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1046,7 +1046,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticInfo_037', 0, async function (done) {
+    it('Sensor_GetGeomagneticInfo_037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         for (var i = 0; i < timeMillis.length; i++) {
             console.info('----------------------Sensor_GetGeomagneticInfo_037---------------------------');
             await sensor.getGeomagneticInfo({'latitude':80, 'longitude':0, 'altitude':0}, timeMillis[i]).then((data) => {
@@ -1074,7 +1074,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_038", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_038---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NaN, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_038 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1094,7 +1094,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_039", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_039---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NEGATIVE_INFINITY, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_039 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1114,7 +1114,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_040", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_040 max ---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MAX_VALUE}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_040 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1134,7 +1134,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_041", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_041---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NaN}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_041 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1154,7 +1154,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_042", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_042---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_042 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1174,11 +1174,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-   it('Sensor_GetGeomagneticInfo_043', 0, async function (done) {
+   it('Sensor_GetGeomagneticInfo_043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_043---------------------------');
        for (var i = 0; i < GEOMAGNETIC_COORDINATES.length; i++) {
-            await sensor.getGeomagneticInfo({'latitude':GEOMAGNETIC_COORDINATES[i][0], 'longitude':GEOMAGNETIC_COORDINATES[i][1], 
-			'altitude':GEOMAGNETIC_COORDINATES[i][2]}, timeMillis[0]).then((data) => {
+            await sensor.getGeomagneticInfo({'latitude':GEOMAGNETIC_COORDINATES[i][0], 'longitude':GEOMAGNETIC_COORDINATES[i][1],
+            'altitude':GEOMAGNETIC_COORDINATES[i][2]}, timeMillis[0]).then((data) => {
                console.info('Sensor_GetGeomagneticInfo_043 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
                + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
                expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][0]) < EPS).assertTrue()
@@ -1203,7 +1203,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_044", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_044---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.MAX_VALUE, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_044 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1223,7 +1223,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_045", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_045---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NaN, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_045 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1243,7 +1243,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_046", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_046---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':Number.NEGATIVE_INFINITY, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_046 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1263,7 +1263,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_047", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_047", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_047---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.MAX_VALUE}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_047 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1283,7 +1283,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_048", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_048", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_048---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NaN}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_048 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1303,7 +1303,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_049", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_049", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_049---------------------------');
         await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_049 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -1323,7 +1323,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_050", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_050---------------------------');
         try {
             await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}).then((data) => {
@@ -1333,7 +1333,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_050 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_050 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1348,7 +1348,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_051", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_051", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_051---------------------------');
         try {
             await sensor.getGeomagneticInfo(-1, timeMillis[0]).then((data) => {
@@ -1358,7 +1358,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_051 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_051 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1373,7 +1373,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_052", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_052", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_052---------------------------');
         try {
             await sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, 'invalid').then((data) => {
@@ -1383,7 +1383,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_052 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_052 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1398,7 +1398,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_053", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_053", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_053---------------------------');
         try {
             await sensor.getGeomagneticInfo({'invalid':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0]).then((data) => {
@@ -1408,7 +1408,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_053 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_053 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1423,7 +1423,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_054", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_054", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_054---------------------------');
         try {
             sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, (err, data) => {
@@ -1433,7 +1433,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_054 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_054 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1448,7 +1448,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_055", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_055", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_055---------------------------');
         try {
             await sensor.getGeomagneticInfo(-1, timeMillis[0], (err, data) => {
@@ -1458,7 +1458,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_055 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_055 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1473,7 +1473,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_056", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_056", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_056---------------------------');
         try {
             sensor.getGeomagneticInfo({'latitude':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, 'invalid', (err, data) => {
@@ -1483,7 +1483,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_056 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_056 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1498,7 +1498,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetGeomagneticInfo_057", 0, async function (done) {
+    it("Sensor_GetGeomagneticInfo_057", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_057---------------------------');
         try {
             sensor.getGeomagneticInfo({'invalid':0, 'longitude':0, 'altitude':Number.NEGATIVE_INFINITY}, timeMillis[0], (err, data) => {
@@ -1508,7 +1508,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(err) {
-			console.info("Sensor_GetGeomagneticInfo_057 catch error " + err);
+            console.info("Sensor_GetGeomagneticInfo_057 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1577,7 +1577,7 @@ describe("SensorJsTest_sensor_60", function () {
             0.08217836916446686,-0.7372390031814575,-0.007406365126371384,0.6755914688110352],
         [1,0,0,0,1,0,0,0,1]
         ]
-    
+
     /*
     * @tc.name:Sensor_CreateRotationMatrix_001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1586,7 +1586,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateRotationMatrix_001', 0, async function (done) {
+     it('Sensor_CreateRotationMatrix_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[0], geomagnetic[0], (error,data)=>{
             if (error) {
                 console.info('Sensor_CreateRotationMatrix_001 failed');
@@ -1607,7 +1607,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_002', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[2],geomagnetic[2],(error,data)=>{
             if (error) {
                 console.info('Sensor_CreateRotationMatrix_002 failed');
@@ -1628,7 +1628,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateRotationMatrix_003', 0, async function (done) {
+     it('Sensor_CreateRotationMatrix_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[0],geomagnetic[0]).then((data) => {
             console.info("Sensor_CreateRotationMatrix_003" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[0]))
@@ -1647,7 +1647,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_004', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[1],geomagnetic[1]).then((data) => {
             console.info("Sensor_CreateRotationMatrix_004" + JSON.stringify(data))
             expect(data.rotation.length).assertEqual(SENSOR_DATA_MATRIX[1].rotation.length)
@@ -1673,7 +1673,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_005', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[2],geomagnetic[2]).then((data) => {
             console.info("Sensor_CreateRotationMatrix_005" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[2]))
@@ -1692,11 +1692,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateRotationMatrix_006', 0, async function (done) {
+     it('Sensor_CreateRotationMatrix_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix()
         } catch (err) {
-			console.info("Sensor_CreateRotationMatrix_006 catch error " + err);
+            console.info("Sensor_CreateRotationMatrix_006 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1711,11 +1711,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateRotationMatrix_007', 0, async function (done) {
+     it('Sensor_CreateRotationMatrix_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix(-1)
         } catch (err) {
-			console.info("Sensor_CreateRotationMatrix_007 catch error " + err);
+            console.info("Sensor_CreateRotationMatrix_007 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1730,7 +1730,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_008', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix([-0.0245, 0.402, 0.0465], -1).then((data) => {
             for(let i = 0; i < data.length; i++) {
                 console.info("Sensor_CreateRotationMatrix_008 [" + i + "] : " + data[i]);
@@ -1751,7 +1751,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateRotationMatrix_009', 0, async function (done) {
+     it('Sensor_CreateRotationMatrix_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix().then((data) => {
                 expect(true).assertfalse()
@@ -1761,7 +1761,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (err) {
-			console.info("Sensor_CreateRotationMatrix_009 catch error " + err);
+            console.info("Sensor_CreateRotationMatrix_009 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1776,7 +1776,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_010', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix(-1).then((data) => {
                 expect(true).assertfalse()
@@ -1786,7 +1786,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (err) {
-			console.info("Sensor_CreateRotationMatrix_010 catch error " + err);
+            console.info("Sensor_CreateRotationMatrix_010 catch error " + err);
             expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -1801,7 +1801,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_011', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix([-0.0245, 0.402, 0.0465], -1).then((data) => {
             for(let i = 0; i < data.length; i++) {
                 console.info("Sensor_CreateRotationMatrix_011 [" + i + "] : " + data[i]);
@@ -1813,7 +1813,7 @@ describe("SensorJsTest_sensor_60", function () {
             done()
         })
     })
-		
+
     /*
     * @tc.name:Sensor_CreateRotationMatrix_012
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1822,7 +1822,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_012', 0, async function (done) {
+    it('Sensor_CreateRotationMatrix_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_CreateRotationMatrix_012 start");
         sensor.getRotationMatrix([-0.0245, 0.402, 0.0465], (error, data) =>{
             console.info("Sensor_CreateRotationMatrix_012");
@@ -1848,7 +1848,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_013', 0,async function (done) {
+    it('Sensor_CreateRotationMatrix_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateRotationMatrix_013 start')
         sensor.getRotationMatrix([-0.0245, 0.402, 0.0465]).then((data) => {
             for(var i = 0;i < data.length; i++) {
@@ -1857,7 +1857,7 @@ describe("SensorJsTest_sensor_60", function () {
             }
             done()
         },(error) => {
-            console.info('Sensor_CreateRotationMatrix_013 promise failed' + error)			
+            console.info('Sensor_CreateRotationMatrix_013 promise failed' + error)
             expect(false).assertTrue();
             done()
         })
@@ -1872,7 +1872,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateRotationMatrix_014', 0,async function (done) {
+    it('Sensor_CreateRotationMatrix_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateRotationMatrix_014 start')
         sensor.getRotationMatrix([0, 0, 0]).then((data) => {
             for(var i = 0;i < data.length; i++) {
@@ -1881,7 +1881,7 @@ describe("SensorJsTest_sensor_60", function () {
             }
             done()
         }, (error) => {
-			console.info('Sensor_CreateRotationMatrix_014 promise failed' + error)
+            console.info('Sensor_CreateRotationMatrix_014 promise failed' + error)
             expect(false).assertTrue();
             done()
         })
@@ -1896,7 +1896,7 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('Sensor_GetDirection_001', 0, async function (done) {
+    it('Sensor_GetDirection_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getOrientation(rotationMatrix[0],(error,data)=>{
             if (error) {
                 console.info('Sensor_GetDirection_001 failed');
@@ -1919,7 +1919,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetDirection_002', 0, async function (done) {
+    it('Sensor_GetDirection_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getOrientation(rotationMatrix[1],function(error,data){
             if (error) {
                 console.info('Sensor_GetDirection_002 failed');
@@ -1942,7 +1942,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetDirection_003', 0, async function (done) {
+    it('Sensor_GetDirection_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getOrientation(rotationMatrix[0]).then((data) => {
             for (var i = 0; i<data.length; i++) {
                 console.info("Sensor_GetDirection_003" + data[i])
@@ -1963,7 +1963,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetDirection_004', 0, async function (done) {
+    it('Sensor_GetDirection_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getOrientation(rotationMatrix[1]).then((data) => {
             for (var i = 0; i<data.length; i++) {
                 console.info("Sensor_GetDirection_004" + data[i])
@@ -1984,7 +1984,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetDirection_005', 0, async function (done) {
+    it('Sensor_GetDirection_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try  {
             sensor.getOrientation([1,2,3,1,2,3,1,2,3,0]).then((data) => {
                 for (var i = 0; i<data.length; i++) {
@@ -1998,7 +1998,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_GetDirection_005 catch error:" + error);
+            console.info("Sensor_GetDirection_005 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2013,11 +2013,11 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-     it('Sensor_GetDirection_006', 0, async function (done) {
+     it('Sensor_GetDirection_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix()
         } catch (error) {
-			console.info("Sensor_GetDirection_006 catch error:" + error);
+            console.info("Sensor_GetDirection_006 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2032,11 +2032,11 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-     it('Sensor_GetDirection_007', 0, async function (done) {
+     it('Sensor_GetDirection_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix(-1)
         } catch (error) {
-			console.info("Sensor_GetDirection_007 catch error:" + error);
+            console.info("Sensor_GetDirection_007 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2051,11 +2051,11 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-     it('Sensor_GetDirection_008', 0, async function (done) {
+     it('Sensor_GetDirection_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix(rotationMatrix[1], -1)
         } catch (error) {
-			console.info("Sensor_GetDirection_008 catch error:" + error);
+            console.info("Sensor_GetDirection_008 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2070,7 +2070,7 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-     it('Sensor_GetDirection_009', 0, async function (done) {
+     it('Sensor_GetDirection_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix().then((data) => {
                 expect(true).assertfalse()
@@ -2080,7 +2080,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_GetDirection_009 catch error:" + error);
+            console.info("Sensor_GetDirection_009 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2095,7 +2095,7 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('Sensor_GetDirection_010', 0, async function (done) {
+    it('Sensor_GetDirection_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix(-1).then((data) => {
                 expect(true).assertfalse()
@@ -2105,7 +2105,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_GetDirection_010 catch error:" + error);
+            console.info("Sensor_GetDirection_010 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2120,7 +2120,7 @@ describe("SensorJsTest_sensor_60", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-     it('Sensor_GetDirection_011', 0, async function (done) {
+     it('Sensor_GetDirection_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.getRotationMatrix(rotationMatrix[1], -1).then((data) => {
                 expect(true).assertfalse()
@@ -2130,7 +2130,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_GetDirection_011 catch error:" + error);
+            console.info("Sensor_GetDirection_011 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2152,7 +2152,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_001', 0, async function (done) {
+    it('Sensor_GetAngleModify_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("SensorJsAPI--->Sensor_GetAngleModify_001");
         sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], [2,2,2,2,2,2,2,2,2], function(error, data) {
             if (error) {
@@ -2177,7 +2177,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_002', 0, async function (done) {
+    it('Sensor_GetAngleModify_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_002");
         sensor.getAngleVariation([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38],
             [3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38],
@@ -2204,7 +2204,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_003', 0, async function (done) {
+    it('Sensor_GetAngleModify_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_003 in");
         sensor.getAngleVariation([1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38],
             [1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38],
@@ -2232,7 +2232,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_004', 0, async function (done) {
+    it('Sensor_GetAngleModify_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_004");
         sensor.getAngleVariation([3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1],
             [3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1, 3.40282e+38+1],
@@ -2258,7 +2258,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_005', 0, async function (done) {
+    it('Sensor_GetAngleModify_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_005 in");
         sensor.getAngleVariation([0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0],
             [0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0],
@@ -2284,7 +2284,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_006', 0, async function (done) {
+    it('Sensor_GetAngleModify_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_006 in");
         sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], [2,2,2,2,2,2,2,2,2]).then((data) => {
             for(var i = 0; i < data.length; i++) {
@@ -2307,7 +2307,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_007', 0, async function (done) {
+    it('Sensor_GetAngleModify_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_007 in");
         sensor.getAngleVariation([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38],
             [3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38]).then((data) => {
@@ -2330,7 +2330,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_008', 0, async function (done) {
+    it('Sensor_GetAngleModify_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_008 in");
         sensor.getAngleVariation([1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38],
             [1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38]).then((data) => {
@@ -2355,7 +2355,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_009', 0, async function (done) {
+    it('Sensor_GetAngleModify_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_009 in");
         sensor.getAngleVariation([3.40282e+38 + 1,3.40282e+38 + 1,3.40282e+38 + 1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1],
             [3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1,3.40282e+38+1])
@@ -2379,7 +2379,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAngleModify_010', 0, async function (done) {
+    it('Sensor_GetAngleModify_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("Sensor_GetAngleModify_010 in");
         sensor.getAngleVariation([0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0],
             [0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0]).then((data) => {
@@ -2402,7 +2402,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetAngleModify_011", 0, async function (done) {
+    it("Sensor_GetAngleModify_011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_011---------------------------');
         try {
             await sensor.getAngleVariation([1,2,3,1,2,3,1,2,3]).then((data) => {
@@ -2412,7 +2412,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(error) {
-			console.info("Sensor_GetAngleModify_011 catch error:" + error);
+            console.info("Sensor_GetAngleModify_011 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2427,7 +2427,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetAngleModify_012", 0, async function (done) {
+    it("Sensor_GetAngleModify_012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_012---------------------------');
         try {
             await sensor.getAngleVariation(-1, [2,2,2,2,2,2,2,2,2]).then((data) => {
@@ -2437,7 +2437,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(error) {
-			console.info("Sensor_GetAngleModify_012 catch error:" + error);
+            console.info("Sensor_GetAngleModify_012 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2452,7 +2452,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetAngleModify_013", 0, async function (done) {
+    it("Sensor_GetAngleModify_013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_013---------------------------');
         try {
             await sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], 'invalid').then((data) => {
@@ -2462,7 +2462,7 @@ describe("SensorJsTest_sensor_60", function () {
             });
             done()
         } catch(error) {
-			console.info("Sensor_GetAngleModify_013 catch error:" + error);
+            console.info("Sensor_GetAngleModify_013 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2477,7 +2477,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetAngleModify_014", 0, async function (done) {
+    it("Sensor_GetAngleModify_014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_014---------------------------');
         try {
             sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], (error, data) => {
@@ -2487,7 +2487,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(error) {
-			console.info("Sensor_GetAngleModify_014 catch error:" + error);
+            console.info("Sensor_GetAngleModify_014 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2502,7 +2502,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetAngleModify_015", 0, async function (done) {
+    it("Sensor_GetAngleModify_015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_015---------------------------');
         try {
             await sensor.getAngleVariation(-1, [2,2,2,2,2,2,2,2,2], (error, data) => {
@@ -2512,7 +2512,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(error) {
-			console.info("Sensor_GetAngleModify_015 catch error:" + error);
+            console.info("Sensor_GetAngleModify_015 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2527,7 +2527,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_GetAngleModify_016", 0, async function (done) {
+    it("Sensor_GetAngleModify_016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Sensor_GetAngleModify_016---------------------------');
         try {
             sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], 'invalid', (error, data) => {
@@ -2537,7 +2537,7 @@ describe("SensorJsTest_sensor_60", function () {
                 }, 500)
             });
         } catch(error) {
-			console.info("Sensor_GetAngleModify_016 catch error:" + error);
+            console.info("Sensor_GetAngleModify_016 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2560,7 +2560,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_001', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_001 start')
         sensor.getQuaternion([0.52, -0.336, -0.251], (error, data) =>{
             console.info('Sensor_CreateQuaterniont_001' + 'lengh:' + data.length);
@@ -2585,7 +2585,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_002', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_002 start')
         sensor.getQuaternion([3.40282e+38, 3.40282e+38, 3.40282e+38], (error, data) =>{
             if (error) {
@@ -2609,7 +2609,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_003', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_003 start')
         sensor.getQuaternion([0, 0, 0], (error, data) =>{
             if (error) {
@@ -2634,7 +2634,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_004', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_004 start')
         sensor.getQuaternion([-0.325, -0.562, -0.25], (error, data) =>{
             if (error) {
@@ -2659,7 +2659,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_005', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_005 start')
         try {
             sensor.getQuaternion([0.25, 0.14], (error, data) =>{
@@ -2671,7 +2671,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_CreateQuaterniont_005 catch error:" + error);
+            console.info("Sensor_CreateQuaterniont_005 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2687,7 +2687,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_006', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_006 start')
         sensor.getQuaternion([0.52, -0.336, -0.251]).then((data) => {
             console.info('Sensor_CreateQuaterniont_006');
@@ -2697,7 +2697,7 @@ describe("SensorJsTest_sensor_60", function () {
             }
             done()
         }, (error) => {
-			console.info("Sensor_CreateQuaterniont_006 promise failed error:" + error);
+            console.info("Sensor_CreateQuaterniont_006 promise failed error:" + error);
             expect(false).assertTrue();
             done()
         })
@@ -2712,7 +2712,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_007', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_007 start')
         try {
             sensor.getQuaternion([0, 0]).then((data) => {
@@ -2725,7 +2725,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info('Sensor_CreateQuaterniont_007 catch error' + error)
+            console.info('Sensor_CreateQuaterniont_007 catch error' + error)
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2741,7 +2741,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_008', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_CreateQuaterniont_008 start')
         sensor.getQuaternion([0, 0, 0]).then((data) => {
             console.info('Sensor_CreateQuaterniont_008---------------in-----------');
@@ -2751,8 +2751,8 @@ describe("SensorJsTest_sensor_60", function () {
             }
             done()
         }, (error) => {
-            console.info('Sensor_CreateQuaterniont_008 promise failed')            
-			expect(false).assertTrue();
+            console.info('Sensor_CreateQuaterniont_008 promise failed')
+            expect(false).assertTrue();
             done()
         })
         console.info("Sensor_CreateQuaterniont_008 end")
@@ -2766,7 +2766,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_009', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_CreateQuaterniont_009 start')
         sensor.getQuaternion([-0.325, -0.562, -0.25]).then((data) => {
             console.info('Sensor_CreateQuaterniont_009');
@@ -2777,7 +2777,7 @@ describe("SensorJsTest_sensor_60", function () {
             done()
         },(error) => {
             console.info('Sensor_CreateQuaterniont_009 promise failed')
-			expect(false).assertTrue();
+            expect(false).assertTrue();
             done()
         })
     })
@@ -2790,7 +2790,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_010', 0,async function (done) {
+    it('Sensor_CreateQuaterniont_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async function (done) {
         console.info('Sensor_CreateQuaterniont_010 start')
         try {
             sensor.getQuaternion([0.25, 0.14]).then((data) => {
@@ -2803,7 +2803,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_CreateQuaterniont_010 catch error:" + error);
+            console.info("Sensor_CreateQuaterniont_010 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2818,11 +2818,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateQuaterniont_011', 0, async function (done) {
+     it('Sensor_CreateQuaterniont_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.createQuaternion()
         } catch (error) {
-			console.info("Sensor_CreateQuaterniont_011 catch error:" + error);
+            console.info("Sensor_CreateQuaterniont_011 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2837,11 +2837,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateQuaterniont_012', 0, async function (done) {
+     it('Sensor_CreateQuaterniont_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.createQuaternion(-1)
         } catch (error) {
-			console.info("Sensor_CreateQuaterniont_012 catch error:" + error);
+            console.info("Sensor_CreateQuaterniont_012 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2856,7 +2856,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_013', 0, async function (done) {
+    it('Sensor_CreateQuaterniont_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.createQuaternion([0.52, -0.336, -0.251], -1).then((data) => {
             console.info('Sensor_CreateQuaterniont_013');
             for (let i = 0; i < data.length; i++) {
@@ -2879,7 +2879,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_CreateQuaterniont_014', 0, async function (done) {
+     it('Sensor_CreateQuaterniont_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.createQuaternion().then((data) => {
                 expect(true).assertfalse()
@@ -2889,7 +2889,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_CreateQuaterniont_014 catch error:" + error);
+            console.info("Sensor_CreateQuaterniont_014 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2904,7 +2904,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_015', 0, async function (done) {
+    it('Sensor_CreateQuaterniont_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.createQuaternion(-1).then((data) => {
                 expect(true).assertfalse()
@@ -2914,7 +2914,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_CreateQuaterniont_015 catch error:" + error);
+            console.info("Sensor_CreateQuaterniont_015 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -2929,7 +2929,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_CreateQuaterniont_016', 0, async function (done) {
+    it('Sensor_CreateQuaterniont_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.createQuaternion([0.52, -0.336, -0.251], -1).then((data) => {
             console.info('Sensor_CreateQuaterniont_016');
             for (let i = 0; i < data.length; i++) {
@@ -2953,7 +2953,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticDip_001', 0, async function (done) {
+    it('Sensor_GetGeomagneticDip_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetGeomagneticDip_001 start')
         sensor.getInclination([1, 2, 3, 4, 5, 6, 7, 8, 9], (error, data) => {
             if (error) {
@@ -2964,7 +2964,7 @@ describe("SensorJsTest_sensor_60", function () {
                expect(data).assertEqual(getGeomagneticDipResult[0])
             }
             console.info('Sensor_GetGeomagneticDip_001' + 'lengh:' + data.length);
-			done()
+            done()
         })
         console.info("Sensor_GetGeomagneticDip_001 end")
     })
@@ -2977,7 +2977,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticDip_002', 0, async function (done) {
+    it('Sensor_GetGeomagneticDip_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetGeomagneticDip_002 start')
         try {
             sensor.getInclination([1, 2, 3, 4], (error,data) => {
@@ -2989,7 +2989,7 @@ describe("SensorJsTest_sensor_60", function () {
                 done()
             })
         } catch (error) {
-			console.info("Sensor_GetGeomagneticDip_002 catch error:" + error);
+            console.info("Sensor_GetGeomagneticDip_002 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
@@ -3005,7 +3005,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticDip_003', 0, async function (done) {
+    it('Sensor_GetGeomagneticDip_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetGeomagneticDip_003 start')
         try {
             sensor.getInclination()
@@ -3026,7 +3026,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticDip_004', 0, async function (done) {
+    it('Sensor_GetGeomagneticDip_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetGeomagneticDip_004 start')
         try {
             sensor.getInclination(-1, (error, data) => {
@@ -3057,7 +3057,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticDip_005', 0, async function (done) {
+    it('Sensor_GetGeomagneticDip_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetGeomagneticDip_005 start')
         try {
             sensor.getInclination().then((data)=>{
@@ -3085,7 +3085,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetGeomagneticDip_006', 0, async function (done) {
+    it('Sensor_GetGeomagneticDip_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetGeomagneticDip_006 start')
         try {
             sensor.getInclination(-1).then((data)=>{
@@ -3113,7 +3113,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_001', 0, async function (done) {
+    it('Sensor_GetAltitude_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetAltitude_001 start')
         sensor.getDeviceAltitude(0, 100, (error, data) => {
             if (error) {
@@ -3136,7 +3136,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_002', 0, async function (done) {
+    it('Sensor_GetAltitude_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetAltitude_002 start')
         sensor.getDeviceAltitude(5, 0, (error, data) => {
             if (error) {
@@ -3159,7 +3159,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_003', 0, async function (done) {
+    it('Sensor_GetAltitude_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getDeviceAltitude(0, 100).then((data)=>{
             console.info("Sensor_GetAltitude_003" + data)
             expect(data).assertEqual(getGeomagneticDipResult[2])
@@ -3179,7 +3179,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_004', 0, async function (done) {
+    it('Sensor_GetAltitude_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getDeviceAltitude(5, 0).then((data)=>{
             console.info("Sensor_GetAltitude_004" + data)
             expect(data).assertEqual(getGeomagneticDipResult[3])
@@ -3199,7 +3199,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_005', 0, async function (done) {
+    it('Sensor_GetAltitude_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetAltitude_005 start')
         try {
             sensor.getDeviceAltitude()
@@ -3220,7 +3220,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_006', 0, async function (done) {
+    it('Sensor_GetAltitude_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetAltitude_006 start')
         try {
             sensor.getDeviceAltitude("invalid", 0, (error, data) => {
@@ -3251,7 +3251,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_007', 0, async function (done) {
+    it('Sensor_GetAltitude_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetAltitude_007 start')
         try {
             sensor.getDeviceAltitude().then((data)=>{
@@ -3279,7 +3279,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_GetAltitude_008', 0, async function (done) {
+    it('Sensor_GetAltitude_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_GetAltitude_008 start')
         try {
             sensor.getDeviceAltitude("invalid", 0).then((data)=>{
@@ -3314,7 +3314,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-     it('Sensor_TransformCoordinateSystem_001', 0, async function (done) {
+     it('Sensor_TransformCoordinateSystem_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_001----------------------------------");
         sensor.transformRotationMatrix([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {'x':1, 'y':2}, (error, data) => {
             if (error) {
@@ -3336,10 +3336,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_002', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_002----------------------------------");
-        sensor.transformRotationMatrix([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 
-		3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38], {'x':1, 'y':2}, (error, data) => {
+        sensor.transformRotationMatrix([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38,
+        3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38], {'x':1, 'y':2}, (error, data) => {
             if (error) {
                 console.info('Sensor_TransformCoordinateSystem_002 failed');
                 expect(false).assertTrue();
@@ -3359,7 +3359,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_TransformCoordinateSystem_003", 0, async function (done) {
+    it("Sensor_TransformCoordinateSystem_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_003----------------------------------");
         sensor.transformRotationMatrix([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {'x':1, 'y':2}).then((data) => {
             for (var i = 0; i < data.length; i++) {
@@ -3382,10 +3382,10 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("Sensor_TransformCoordinateSystem_004", 0, async function (done) {
+    it("Sensor_TransformCoordinateSystem_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------Sensor_TransformCoordinateSystem_004----------------------------------");
-        sensor.transformRotationMatrix([3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39, 
-		3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39],{'x':1, 'y':3}).then((data) => {
+        sensor.transformRotationMatrix([3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39,
+        3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39],{'x':1, 'y':3}).then((data) => {
             for (var i = 0; i < data.length; i++) {
                 console.info("Sensor_TransformCoordinateSystem_004 data[ " + i + "] = " + data[i]);
                 expect(data[i]).assertEqual(transformCoordinateSystemResult[2][i]);
@@ -3406,7 +3406,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_005', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_005 start')
         try {
             sensor.transformRotationMatrix()
@@ -3427,7 +3427,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_006', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_006 start')
         try {
             sensor.transformRotationMatrix("invalid", 0, (error, data) => {
@@ -3457,7 +3457,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_007', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_007 start')
         try {
             sensor.transformRotationMatrix().then((data)=>{
@@ -3485,7 +3485,7 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_008', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_008 start')
         try {
             sensor.transformRotationMatrix("invalid", 0).then((data)=>{
@@ -3513,11 +3513,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_009', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_008 start')
         try {
-            sensor.transformRotationMatrix([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 
-			{'x':1, 'y':1}).then((data)=>{
+            sensor.transformRotationMatrix([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            {'x':1, 'y':1}).then((data)=>{
                 console.info("Sensor_TransformCoordinateSystem_009" + data)
                 expect(true).assertfalse()
                 done()
@@ -3542,11 +3542,11 @@ describe("SensorJsTest_sensor_60", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('Sensor_TransformCoordinateSystem_010', 0, async function (done) {
+    it('Sensor_TransformCoordinateSystem_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('Sensor_TransformCoordinateSystem_010 start')
         try {
             sensor.transformRotationMatrix([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-			{'x':1, 'y':1}, (error, data) => {
+            {'x':1, 'y':1}, (error, data) => {
                 if (error) {
                     console.info('Sensor_TransformCoordinateSystem_010 failed');
                     expect(false).assertTrue();

@@ -65,14 +65,14 @@ describe("SensorJsTest_sensor_50", function () {
     const SERVICE_EXCEPTION_CODE = 14500101
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	
-	/*
+    let invalid  = -1;
+
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0120
      * @tc.name: newSignificant_Motion_SensorJsTest012
      * @tc.desc: Functional Use Cases
      */
-    it("newSignificant_Motion_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newSignificant_Motion_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newSignificant_Motion_SensorJsTest012--------------');
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback);
         setTimeout(()=>{
@@ -81,7 +81,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 500);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0130
      * @tc.name: newSignificant_Motion_SensorJsTest013
      * @tc.desc: Illegal ID passed in
@@ -102,7 +102,7 @@ describe("SensorJsTest_sensor_50", function () {
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0140
      * @tc.name: newSignificant_Motion_SensorJsTest014
      * @tc.desc: For normal scenarios
@@ -118,7 +118,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 500);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0150
      * @tc.name: newSignificant_Motion_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -127,8 +127,8 @@ describe("SensorJsTest_sensor_50", function () {
         console.info('---------newSignificant_Motion_SensorJsTest015--------------');
         function onSensorCallback(data) {
             console.info('newSignificant_Motion_SensorJsTest015  callback in');
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }
         try {
             sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, onSensorCallback, {'interval': 100000000}, 5);
@@ -145,7 +145,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 500);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0160
      * @tc.name: newSignificant_Motion_SensorJsTest016
      * @tc.desc: Once Normal Subscription Scenario Use Case
@@ -158,7 +158,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 500);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0170
      * @tc.name: newSignificant_Motion_SensorJsTest017
      * @tc.desc: Use case of illegal parameter passed into once interface
@@ -178,8 +178,8 @@ describe("SensorJsTest_sensor_50", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0180
      * @tc.name: newSignificant_Motion_SensorJsTest018
      * @tc.desc: Use case of illegal parameter passed into off interface
@@ -195,7 +195,7 @@ describe("SensorJsTest_sensor_50", function () {
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0190
      * @tc.name: newSignificant_Motion_SensorJsTest019
      * @tc.desc: Unsubscribe directly without waiting after starting subscription
@@ -214,7 +214,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 500);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0200
      * @tc.name: newSignificant_Motion_SensorJsTest020
      * @tc.desc:SensorId1000000 of incoming exception
@@ -234,7 +234,7 @@ describe("SensorJsTest_sensor_50", function () {
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0210
      * @tc.name: newSignificant_Motion_SensorJsTest021
      * @tc.desc:Call interface multiple times
@@ -242,13 +242,13 @@ describe("SensorJsTest_sensor_50", function () {
     it("newSignificant_Motion_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data)=>{
             console.info("newSignificant_Motion_SensorJsTest021 callback: " + JSON.stringify(data));
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         });
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data)=>{
             console.info("newSignificant_Motion_SensorJsTest021 callback2: " + JSON.stringify(data));
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         });
         setTimeout(()=>{
             console.info('---------newSignificant_Motion_SensorJsTest021 off in--------------');
@@ -258,7 +258,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 1000);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0220
      * @tc.name: newSignificant_Motion_SensorJsTest022
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -274,7 +274,7 @@ describe("SensorJsTest_sensor_50", function () {
         }
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0230
      * @tc.name: newSignificant_Motion_SensorJsTest023
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
@@ -283,13 +283,13 @@ describe("SensorJsTest_sensor_50", function () {
         console.info('---------newSignificant_Motion_SensorJsTest023--------------');
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data)=>{
             console.info("newSignificant_Motion_SensorJsTest023 callback: " + JSON.stringify(data));
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }, {'interval': 100000000});
         sensor.once(sensor.SensorId.SIGNIFICANT_MOTION, (data)=>{
             console.info("newSignificant_Motion_SensorJsTest023 callback2: " + JSON.stringify(data));
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         });
         setTimeout(()=>{
             console.info('---------newSignificant_Motion_SensorJsTest023 off in--------------');
@@ -299,7 +299,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 1000);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0240
      * @tc.name: newSignificant_Motion_SensorJsTest024
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -308,13 +308,13 @@ describe("SensorJsTest_sensor_50", function () {
         console.info('---------newSignificant_Motion_SensorJsTest024--------------');
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data)=>{
             console.info("newSignificant_Motion_SensorJsTest024 callback: " + JSON.stringify(data));
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }, {'interval': 100000000});
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data)=>{
             console.info("newSignificant_Motion_SensorJsTest024 callback2: " + JSON.stringify(data));
-			expect(typeof (data.scalar)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.scalar)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
         }, {'interval': 100000000});
         setTimeout(()=>{
             console.info('---------newSignificant_Motion_SensorJsTest024 off in--------------');
@@ -324,7 +324,7 @@ describe("SensorJsTest_sensor_50", function () {
         }, 1000);
     })
 
-	/*
+    /*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0250
      * @tc.name: newSignificant_Motion_SensorJsTest025
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -334,7 +334,7 @@ describe("SensorJsTest_sensor_50", function () {
         try {
             sensor.on();
         } catch (error) {
-			console.info("newSignificant_Motion_SensorJsTest025 error:" +error);
+            console.info("newSignificant_Motion_SensorJsTest025 error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -342,7 +342,7 @@ describe("SensorJsTest_sensor_50", function () {
         try {
             sensor.once();
         } catch (error) {
-			console.info("newSignificant_Motion_SensorJsTest025 error:" +error);
+            console.info("newSignificant_Motion_SensorJsTest025 error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -350,14 +350,14 @@ describe("SensorJsTest_sensor_50", function () {
         try {
             sensor.off();
         } catch (error) {
-			console.info("newSignificant_Motion_SensorJsTest025 error:" +error);
+            console.info("newSignificant_Motion_SensorJsTest025 error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0260
      * @tc.name: newSignificant_Motion_SensorJsTest026
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -369,10 +369,10 @@ describe("SensorJsTest_sensor_50", function () {
         setTimeout(() => {
             console.info('----------------------newSignificant_Motion_SensorJsTest026 off in--------------');
             try {
-			sensor.off(sensor.SensorId.SIGNIFICANT_MOTION, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorId.SIGNIFICANT_MOTION, callback);
+            } catch (error) {
             console.info("newSignificant_Motion_SensorJsTest026 error:" + error);
-			}
+            }
             console.info('----------------------newSignificant_Motion_SensorJsTest026 off end--------------');
         }, 500);
         setTimeout(() => {
@@ -382,8 +382,8 @@ describe("SensorJsTest_sensor_50", function () {
             done();
         }, 1000);
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0270
      * @tc.name: newSignificant_Motion_SensorJsTest027
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -395,10 +395,10 @@ describe("SensorJsTest_sensor_50", function () {
         setTimeout(() => {
             console.info('----------------------newSignificant_Motion_SensorJsTest027 off in--------------');
             try {
-			sensor.off(sensor.SensorId.SIGNIFICANT_MOTION, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorId.SIGNIFICANT_MOTION, callback);
+            } catch (error) {
             console.info("newSignificant_Motion_SensorJsTest027 error:" + error);
-			}
+            }
             console
             console.info('----------------------newSignificant_Motion_SensorJsTest027 off end--------------');
         }, 500);

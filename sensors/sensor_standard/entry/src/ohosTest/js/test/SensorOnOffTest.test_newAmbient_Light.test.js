@@ -119,11 +119,11 @@ describe("SensorJsTest_sensor_41", function () {
      * @tc.number:SUB_SensorsSystem_NEWAMBIENT_LIGHT_JSTest_0010
      * @tc.name: newAmbientLight_SensorJsTest001
      * @tc.desc: Functional Use Cases
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newAmbientLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newAmbientLight_SensorJsTest001--------------');
         TAG = 'newAmbientLight_SensorJsTest001'
         try{
@@ -936,7 +936,7 @@ describe("SensorJsTest_sensor_41", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAmbientLight_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newAmbientLight_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newAmbientLight_SensorJsTest020--------------');
         TAG = 'newAmbientLight_SensorJsTest020'
         try{

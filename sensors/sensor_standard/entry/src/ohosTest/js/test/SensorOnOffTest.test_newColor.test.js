@@ -91,11 +91,11 @@ describe("SensorJsTest_sensor_61", function () {
     * @tc.number:SUB_SensorsSystem_NEWCOLOR_JsTest_0010
     * @tc.name: newColor_SensorJsTest001
     * @tc.desc: Functional Use Cases
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("newColor_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newColor_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newColor_SensorJsTest001--------------');
         TAG = 'newColor_SensorJsTest001'
         try{

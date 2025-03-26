@@ -794,7 +794,7 @@ export default function VibratorJsTest_misc_10() {
         * @tc.name:VibratorProgramticHapticTest035
         * @tc.desc:time is 0, intensity is 100, frequency is 50, index is 0
         * @tc.number:SUB_SensorSystem_SmallComponentService_Miscdevice_ProgramticHaptic_3500
-        * @tc.level:Level 0
+        * @tc.level:Level 3
         * @tc.type:Function
         * @tc.size:MediumTest
         */
@@ -1060,7 +1060,7 @@ export default function VibratorJsTest_misc_10() {
         * @tc.name:VibratorProgramticHapticTest040
         * @tc.desc:addTransientEvent time is 0, intensity is 101, frequency is 50, index is 0, duration is 6000
         * @tc.number:SUB_SensorSystem_SmallComponentService_Miscdevice_ProgramticHaptic_4000
-        * @tc.level:Level 0
+        * @tc.level:Level 3
         * @tc.type:Function
         * @tc.size:MediumTest
         */

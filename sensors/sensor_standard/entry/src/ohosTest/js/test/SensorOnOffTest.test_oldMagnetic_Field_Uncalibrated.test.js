@@ -79,11 +79,11 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.number:SUB_SensorsSystem_Magnetic_Field_Uncalibrated_JSTest_0010
      * @tc.name: MagneticField_Uncalibrated_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
-    it("MagneticField_Uncalibrated_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("MagneticField_Uncalibrated_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
         setTimeout(() => {
@@ -98,7 +98,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest002---------------------------');
@@ -117,7 +117,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest003---------------------------');
@@ -129,7 +129,7 @@ describe("SensorJsTest_sensor_14", function () {
             expect(typeof (data.biasX)).assertEqual("number");
             expect(typeof (data.biasY)).assertEqual("number");
             expect(typeof (data.biasZ)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try {
@@ -147,7 +147,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest004---------------------------');
@@ -164,7 +164,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest005---------------------------');
@@ -176,7 +176,7 @@ describe("SensorJsTest_sensor_14", function () {
             expect(typeof (data.biasX)).assertEqual("number");
             expect(typeof (data.biasY)).assertEqual("number");
             expect(typeof (data.biasZ)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try {
@@ -185,7 +185,7 @@ describe("SensorJsTest_sensor_14", function () {
             console.info("MagneticField_Uncalibrated_SensorJsTest005 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-		    done();
+            done();
         }
     })
 
@@ -195,7 +195,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest006---------------------------');
@@ -215,7 +215,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest007---------------------------');
@@ -238,7 +238,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest008---------------------------');
@@ -262,7 +262,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest009---------------------------');
@@ -282,7 +282,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest010---------------------------');
@@ -291,10 +291,10 @@ describe("SensorJsTest_sensor_14", function () {
         setTimeout(() => {
             console.info('----------------------MagneticField_Uncalibrated_SensorJsTest010 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
+            } catch (error) {
             console.info("MagneticField_Uncalibrated_SensorJsTest010 error:" + error);
-			}
+            }
             console.info('----------------------MagneticField_Uncalibrated_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -311,7 +311,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest011---------------------------');
@@ -331,7 +331,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest012---------------------------');
@@ -340,10 +340,10 @@ describe("SensorJsTest_sensor_14", function () {
         setTimeout(() => {
             console.info('----------------------MagneticField_Uncalibrated_SensorJsTest012 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
+            } catch (error) {
             console.info("MagneticField_Uncalibrated_SensorJsTest012 error:" + error);
-			}
+            }
             console
             console.info('----------------------MagneticField_Uncalibrated_SensorJsTest012 off end---------------------------');
         }, 500);
@@ -361,7 +361,7 @@ describe("SensorJsTest_sensor_14", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
-     * @tc.size:MediumTest      
+     * @tc.size:MediumTest
      */
     it("MagneticField_Uncalibrated_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_Uncalibrated_SensorJsTest013---------------------------');

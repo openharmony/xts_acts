@@ -67,7 +67,7 @@ describe("SensorJsTest_sensor_4", function () {
     const PARAMETER_ERROR_CODE = 401
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
-    const SENSOR_NO_SUPPORT_CODE = 14500102    
+    const SENSOR_NO_SUPPORT_CODE = 14500102
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let errMessages = ['string is not defined','The parameter invalid'];
     let errMessage;
@@ -76,11 +76,11 @@ describe("SensorJsTest_sensor_4", function () {
      * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0010
      * @tc.name: AmbientLight_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("AmbientLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("AmbientLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------AmbientLight_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT,(error, data) => {

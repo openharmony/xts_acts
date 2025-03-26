@@ -465,7 +465,7 @@ describe("SensorJsTest_sensor_38", function () {
             done()
         });
     })
-	
+
     /*
      * @tc.name:SensorJsTest_017
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -543,7 +543,7 @@ describe("SensorJsTest_sensor_38", function () {
             done()
         });
     })
-	
+
     /*
      * @tc.name:SensorJsTest_021
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -583,7 +583,7 @@ describe("SensorJsTest_sensor_38", function () {
             done()
         });
     })
-	
+
     /*
     * @tc.name:SensorJsTest_023
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -591,31 +591,31 @@ describe("SensorJsTest_sensor_38", function () {
     */
     it("SensorJsTest_023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('SensorJsTest_023 start')
-		let inclinationMatrix = [
-			1, 0, 0, 1,
-			0, 1, 0, 0,
-			0, 0, 1, 0,
-			1, 0, 0, 0
-		]		
+        let inclinationMatrix = [
+            1, 0, 0, 1,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            1, 0, 0, 0
+        ]
         try {
             sensor.getGeomagneticDip(inclinationMatrix, (error, data) => {
                 if (error) {
-					console.info("SensorJsTest_023 error:" + error);
-					expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-					expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-					done()
+                    console.info("SensorJsTest_023 error:" + error);
+                    expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                    expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                    done()
                 } else {
-					console.info("SensorJsTest_023 data:" + data)
-					expect(data).assertEqual(0);
-					done()
+                    console.info("SensorJsTest_023 data:" + data)
+                    expect(data).assertEqual(0);
+                    done()
                 }
-            })	
+            })
         } catch(error) {
             console.info("SensorJsTest_023 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }	
+        }
         console.info("SensorJsTest_023 end")
-    })		
+    })
 })}

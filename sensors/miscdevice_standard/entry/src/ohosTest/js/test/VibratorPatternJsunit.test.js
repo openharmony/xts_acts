@@ -90,11 +90,11 @@ export default function VibratorJsTest_misc_9() {
         * @tc.name:VibratorProgramticHapticTest001
         * @tc.desc:VibratorEventType CONTINUOUS is 0
         * @tc.number:SUB_SensorSystem_SmallComponentService_Miscdevice_ProgramticHaptic_0100
-        * @tc.level:Level 0
+        * @tc.level:Level 3
         * @tc.type:Function
         * @tc.size:MediumTest
         */
-        it("VibratorProgramticHapticTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        it("VibratorProgramticHapticTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             TAG = "VibratorProgramticHapticTest001";
             console.info(TAG + ' Device type = ' + deviceInfo.deviceType);
             console.info(TAG +  ' isAvailable = ' + isAvailable);

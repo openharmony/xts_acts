@@ -93,11 +93,11 @@ describe("SensorJsTest_sensor_39", function () {
      * @tc.number: SUB_SensorsSystem_NEWACCELEROMETER_JSTest_0010
      * @tc.name: newAccelerometer_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newAccelerometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newAccelerometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newAccelerometer_SensorJsTest001--------------');
         TAG = 'newAccelerometer_SensorJsTest001';
         try{

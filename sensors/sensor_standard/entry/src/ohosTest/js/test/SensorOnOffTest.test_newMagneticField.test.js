@@ -93,11 +93,11 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.number:SUB_SensorsSystem_NEWMAGNETIC_FIELD_JSTest_0010
      * @tc.name: newMagneticField_SensorJsTest001
      * @tc.desc: Illegal ID passed in
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newMagneticField_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newMagneticField_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newMagneticField_SensorJsTest001--------------');
         TAG = 'newMagneticField_SensorJsTest001';
         try{
@@ -128,7 +128,7 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newMagneticField_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newMagneticField_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newMagneticField_SensorJsTest002--------------');
         TAG = 'newMagneticField_SensorJsTest002';
         try{
@@ -1109,7 +1109,7 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newMagneticField_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newMagneticField_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newMagneticField_SensorJsTest025--------------');
         TAG = 'newMagneticField_SensorJsTest025';
         try{

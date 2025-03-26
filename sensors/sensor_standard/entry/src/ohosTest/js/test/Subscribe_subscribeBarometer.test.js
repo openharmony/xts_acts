@@ -61,11 +61,11 @@ describe("SensorJsTest_sensor_26", function () {
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0010
      * @tc.name:subscribeBarometer_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("subscribeBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(BarometerId ,(error, data) => {
