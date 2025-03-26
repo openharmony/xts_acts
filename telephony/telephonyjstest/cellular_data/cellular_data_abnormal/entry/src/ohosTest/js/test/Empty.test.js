@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 
 export default function EmptyTest() {
     describe('EmptyTest', function () {
@@ -25,7 +25,7 @@ export default function EmptyTest() {
       * @tc.type  : Function
       * @tc.level : Level 3
       */
-    it('testTheDevicesNotSupportSyscap001', 0, async function(done) {
+    it('testTheDevicesNotSupportSyscap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async function(done) {
       let a = 1;
       let b = 2;
       expect(a+b).assertEqual(3);
