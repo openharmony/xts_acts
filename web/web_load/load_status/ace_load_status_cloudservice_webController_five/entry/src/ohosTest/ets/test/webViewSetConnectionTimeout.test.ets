@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -59,7 +59,7 @@ export default function ActsAceWebViewSetConnectionTimeout() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSetConnectionTimeoutZeroSeconds', 0, async (done: Function) => {
+    it('testWebViewSetConnectionTimeoutZeroSeconds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewSetConnectionTimeoutZeroSeconds"
         Utils.emitEvent(emitKey, 10);
         Utils.registerBaseEvent("testWebViewSetConnectionTimeoutZeroSeconds", 'Error', 8001, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -77,7 +77,7 @@ export default function ActsAceWebViewSetConnectionTimeout() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSetConnectionTimeoutPointFiveSeconds', 0, async (done: Function) => {
+    it('testWebViewSetConnectionTimeoutPointFiveSeconds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutPointFiveSeconds"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewSetConnectionTimeoutPointFiveSeconds", 'Error', 8002, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -94,7 +94,7 @@ export default function ActsAceWebViewSetConnectionTimeout() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSetConnectionTimeoutNegativeOneSeconds', 0, async (done: Function) => {
+    it('testWebViewSetConnectionTimeoutNegativeOneSeconds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutNegativeOneSeconds"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewSetConnectionTimeoutNegativeOneSeconds", 'Error', 8003, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -111,7 +111,7 @@ export default function ActsAceWebViewSetConnectionTimeout() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSetConnectionTimeoutWithA', 0, async (done: Function) => {
+    it('testWebViewSetConnectionTimeoutWithA', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutWithA"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewSetConnectionTimeoutWithA", 'Error', 8004, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -128,7 +128,7 @@ export default function ActsAceWebViewSetConnectionTimeout() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSetConnectionTimeoutTenSeconds', 0, async (done: Function) => {
+    it('testWebViewSetConnectionTimeoutTenSeconds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutTenSeconds"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewSetConnectionTimeoutTenSeconds", 'Time_out', 8005, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -145,7 +145,7 @@ export default function ActsAceWebViewSetConnectionTimeout() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebViewSetConnectionAboutAppearTimeoutFiveSeconds', 0, async (done: Function) => {
+    it('testWebViewSetConnectionAboutAppearTimeoutFiveSeconds', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionAboutAppearTimeoutFiveSeconds"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewSetConnectionAboutAppearTimeoutFiveSeconds", 'Time_out', 24801, done, (backData: events_emitter.EventData, expected: Object) => {

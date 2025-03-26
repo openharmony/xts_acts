@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType  } from '@ohos/hypium';
 import http from '@ohos.net.http';
 
 export default function NetworkManagerCaPathTest() {
@@ -58,7 +58,7 @@ export default function NetworkManagerCaPathTest() {
 		 * @tc.type Function
          * @tc.size SmallTest
          */
-        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0100", 0, function (done) {
+        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0100';
 			try {
 				let httpRequest = http.createHttp();
@@ -83,7 +83,7 @@ export default function NetworkManagerCaPathTest() {
          * @tc.type Function
          * @tc.size SmallTest
          */
-        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0200", 0, function (done) {
+        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0200';
             try {
                 let httpRequest = http.createHttp();
@@ -108,7 +108,7 @@ export default function NetworkManagerCaPathTest() {
          * @tc.type Function
          * @tc.size SmallTest
          */
-        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0300", 0, function (done) {
+        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0300';
             try {
                 let httpRequest = http.createHttp();

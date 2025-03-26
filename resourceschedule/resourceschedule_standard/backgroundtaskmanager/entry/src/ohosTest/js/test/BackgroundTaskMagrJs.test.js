@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function TransientTaskJsTest() {
 describe("TransientTaskJsTest", function () {
@@ -55,7 +55,7 @@ describe("TransientTaskJsTest", function () {
      * @tc.name: TransientTaskJsTest001
      * @tc.desc: test request a suspend delay
      */
-    it("TransientTaskJsTest001", 0, async function (done) {
+    it("TransientTaskJsTest001", Level.LEVEL0, async function (done) {
         console.info('----------------------TransientTaskJsTest001---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -74,7 +74,7 @@ describe("TransientTaskJsTest", function () {
      * @tc.name: TransientTaskJsTest002
      * @tc.desc: test transient task more than three
      */
-    it("TransientTaskJsTest002", 0, async function (done) {
+    it("TransientTaskJsTest002", Level.LEVEL0, async function (done) {
         console.info('----------------------TransientTaskJsTest002---------------------------');
         function callback() {}
         let info1 =  backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -98,7 +98,7 @@ describe("TransientTaskJsTest", function () {
      * @tc.name: TransientTaskJsTest003
      * @tc.desc: test getRemainingDelayTime Promise
      */
-    it("TransientTaskJsTest003", 0, async function (done) {
+    it("TransientTaskJsTest003", Level.LEVEL0, async function (done) {
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
@@ -129,7 +129,7 @@ describe("TransientTaskJsTest", function () {
      * @tc.name: TransientTaskJsTest004
      * @tc.desc: test getRemainingDelayTime Callback
      */
-    it("TransientTaskJsTest004", 0, async function (done) {
+    it("TransientTaskJsTest004", Level.LEVEL0, async function (done) {
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
@@ -162,7 +162,7 @@ describe("TransientTaskJsTest", function () {
      * @tc.name: TransientTaskJsTest005
      * @tc.desc: test request a suspend delay
      */
-    it("TransientTaskJsTest005", 0, async function (done) {
+    it("TransientTaskJsTest005", Level.LEVEL0, async function (done) {
         console.info('----------------------TransientTaskJsTest005---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -182,7 +182,7 @@ describe("TransientTaskJsTest", function () {
      * @tc.name: TransientTaskJsTest006
      * @tc.desc: test DelaySuspendInfo actualDelayTime
      */
-    it("TransientTaskJsTest006", 0, async function (done) {
+    it("TransientTaskJsTest006", Level.LEVEL0, async function (done) {
         console.info('----------------------TransientTaskJsTest006---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("123456", callback);

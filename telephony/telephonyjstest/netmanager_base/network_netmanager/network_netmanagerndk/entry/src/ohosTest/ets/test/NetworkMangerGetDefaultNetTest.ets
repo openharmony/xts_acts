@@ -14,7 +14,7 @@
  */
 
 import testNapi from 'libtestNetConnectionNdk.so'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 
 export default function abilityTest() {
   describe('NetworkMangerNetConnectionTest', () => {
@@ -45,7 +45,7 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHNetConnGetDefaultNet401', 0, () => {
+    it('test_OHNetConnGetDefaultNet401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let testNumber = -1;
       let codeNumber = testNapi.OHNetConnGetDefaultNet(testNumber);
       expect(codeNumber).assertEqual(401)
@@ -60,7 +60,7 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHNetConnGetDefaultNet0', 0, () => {
+    it('test_OHNetConnGetDefaultNet0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let testNumber = 111111111;
       let codeNumber = testNapi.OHNetConnGetDefaultNet(testNumber);
       expect(codeNumber).assertEqual(0)

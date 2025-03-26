@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 
 import systemLoad from '@ohos.resourceschedule.systemload';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function ThermalControlMgrTest() {
     describe("ThermalControlMgrTest", function () {
@@ -60,7 +60,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest001", 0, async function (done) {
+        it("ThermalControlMgrTest001", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest001---------------------------');
             function onSystemLoadChange(res) {
                 console.info('ThermalControlMgrTest001 res is ' + res);    
@@ -87,7 +87,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest002", 0, async function (done) {
+        it("ThermalControlMgrTest002", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest002---------------------------');
             function onSystemLoadChange(res) {
                 console.info('ThermalControlMgrTest002 res is ' + res);
@@ -113,7 +113,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest003", 0, async function (done) {
+        it("ThermalControlMgrTest003", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest003---------------------------');
             systemLoad.getLevel().then((res) => {
                 console.log('ThermalControlMgrTest003 promise res is ' + JSON.stringify(res));
@@ -135,7 +135,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest004", 0, async function (done) {
+        it("ThermalControlMgrTest004", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest004---------------------------');
             let level = systemLoad.SystemLoadLevel.LOW
 
@@ -152,7 +152,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest005", 0, async function (done) {
+        it("ThermalControlMgrTest005", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest005---------------------------');
             let level = systemLoad.SystemLoadLevel.NORMAL
 
@@ -169,7 +169,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest006", 0, async function (done) {
+        it("ThermalControlMgrTest006", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest006---------------------------');
             let level = systemLoad.SystemLoadLevel.MEDIUM
 
@@ -186,7 +186,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest007", 0, async function (done) {
+        it("ThermalControlMgrTest007", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest007---------------------------');
             let level = systemLoad.SystemLoadLevel.HIGH
 
@@ -203,7 +203,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest008", 0, async function (done) {
+        it("ThermalControlMgrTest008", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest008---------------------------');
             let level = systemLoad.SystemLoadLevel.OVERHEATED
 
@@ -220,7 +220,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest009", 0, async function (done) {
+        it("ThermalControlMgrTest009", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest009---------------------------');
             let level = systemLoad.SystemLoadLevel.WARNING
 
@@ -237,7 +237,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest010", 0, async function (done) {
+        it("ThermalControlMgrTest010", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest010---------------------------');
             let level = systemLoad.SystemLoadLevel.EMERGENCY
 
@@ -254,7 +254,7 @@ export default function ThermalControlMgrTest() {
          * @tc.level Level 0
          * @tc.require
          */
-        it("ThermalControlMgrTest011", 0, async function (done) {
+        it("ThermalControlMgrTest011", Level.LEVEL0, async function (done) {
             console.info('----------------------ThermalControlMgrTest011---------------------------');
             let level = systemLoad.SystemLoadLevel.ESCAPE
 

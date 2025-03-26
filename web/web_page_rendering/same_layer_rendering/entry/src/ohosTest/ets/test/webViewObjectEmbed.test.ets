@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -59,7 +59,7 @@ export default function ActsAceWebViewObjectEmbed() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewObjectEmbed01', 0, async (done: Function) => {
+    it('testWebViewObjectEmbed01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbed01"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewObjectEmbed01", 'success', 8014, done);
@@ -76,7 +76,7 @@ export default function ActsAceWebViewObjectEmbed() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewObjectEmbed04', 0, async (done: Function) => {
+    it('testWebViewObjectEmbed04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbed04"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewObjectEmbed04", 'success', 8017, done);
@@ -91,7 +91,7 @@ export default function ActsAceWebViewObjectEmbed() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewObjectEmbedGesture01', 0, async (done: Function) => {
+    it('testWebViewObjectEmbedGesture01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedGesture01"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewObjectEmbedGesture01", 'success', 8000, done);
@@ -105,7 +105,7 @@ export default function ActsAceWebViewObjectEmbed() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewObjectEmbedGesture02', 0, async (done: Function) => {
+    it('testWebViewObjectEmbedGesture02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedGesture02"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewObjectEmbedGesture02", 'success', 8001, done);
@@ -119,7 +119,7 @@ export default function ActsAceWebViewObjectEmbed() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewObjectEmbedGesture03', 0, async (done: Function) => {
+    it('testWebViewObjectEmbedGesture03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewObjectEmbedGesture03"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewObjectEmbedGesture03", 'success', 8002, done);

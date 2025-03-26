@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function ShortTaskMgrApiTest() {
 describe("ShortTaskMgrApiTest", function () {
@@ -55,7 +55,7 @@ describe("ShortTaskMgrApiTest", function () {
      * @tc.name      testRequestSuspendDelayFun001
      * @tc.desc      test request a suspend daly reason is NumberType.
      */
-    it("testRequestSuspendDelayFun001", 0, async function (done) {
+    it("testRequestSuspendDelayFun001", Level.LEVEL0, async function (done) {
         console.info('----------------------testRequestSuspendDelayFun001---------------------------');
         function callback() {}
         let reason = 123;
@@ -81,7 +81,7 @@ describe("ShortTaskMgrApiTest", function () {
      * @tc.name      testRequestSuspendDelayFun002
      * @tc.desc      test request a suspend daly reason is BooleanType.
      */
- it("testRequestSuspendDelayFun002", 0, async function (done) {
+ it("testRequestSuspendDelayFun002", Level.LEVEL0, async function (done) {
     console.info('----------------------testRequestSuspendDelayFun002---------------------------');
     function callback() {}
     let reason = true;
@@ -107,7 +107,7 @@ describe("ShortTaskMgrApiTest", function () {
      * @tc.name      testRequestSuspendDelayFun003
      * @tc.desc      test request a suspend daly reason is NullType.
      */
-it("testRequestSuspendDelayFun003", 0, async function (done) {
+it("testRequestSuspendDelayFun003", Level.LEVEL0, async function (done) {
     console.info('----------------------testRequestSuspendDelayFun003---------------------------');
     function callback() {}
     let reason = null;
@@ -133,7 +133,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testRequestSuspendDelayFun004
      * @tc.desc      test request a suspend daly reason is EmptyString.
      */
-    it("testRequestSuspendDelayFun004", 0, async function (done) {
+    it("testRequestSuspendDelayFun004", Level.LEVEL0, async function (done) {
         console.info('----------------------testRequestSuspendDelayFun004---------------------------');
         function callback() {}
         let reason = "";
@@ -160,7 +160,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testRequestSuspendDelayFun005
      * @tc.desc      test request a suspend daly reason Undefined.
      */
-    it("testRequestSuspendDelayFun005", 0, async function (done) {
+    it("testRequestSuspendDelayFun005", Level.LEVEL0, async function (done) {
         console.info('----------------------testRequestSuspendDelayFun005---------------------------');
         function callback() {}
         let reason;
@@ -186,7 +186,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testGetRemainingDelayTimeFun001
      * @tc.desc      test getRemainingDelayTime Callback ,requestId non-existent.
      */
-    it("testGetRemainingDelayTimeFun001", 0, async function (done) {
+    it("testGetRemainingDelayTimeFun001", Level.LEVEL0, async function (done) {
         console.info('----------------------testGetRemainingDelayTimeFun001---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -221,7 +221,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testGetRemainingDelayTimeFun002
      * @tc.desc      test getRemainingDelayTime Promise ,requestId non-existent.
      */
-    it("testGetRemainingDelayTimeFun002", 0, async function (done) {
+    it("testGetRemainingDelayTimeFun002", Level.LEVEL0, async function (done) {
         console.info('----------------------testGetRemainingDelayTimeFun002---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -254,7 +254,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testGetRemainingDelayTimeFun003
      * @tc.desc      test getRemainingDelayTime Promise ,requestId is null.
      */
-    it("testGetRemainingDelayTimeFun003", 0, async function (done) {
+    it("testGetRemainingDelayTimeFun003", Level.LEVEL0, async function (done) {
         console.info('----------------------testGetRemainingDelayTimeFun003---------------------------');
         let requestId = null;
         try{
@@ -280,7 +280,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testGetRemainingDelayTimeFun004
      * @tc.desc      test getRemainingDelayTime Callback ,requestId = -1.
      */
-    it("testGetRemainingDelayTimeFun004", 0, async function (done) {
+    it("testGetRemainingDelayTimeFun004", Level.LEVEL0, async function (done) {
         console.info('----------------------testGetRemainingDelayTimeFun004---------------------------');
         let requestId = -1;
         backgroundTaskManager.getRemainingDelayTime(requestId, (err, res) => {
@@ -303,7 +303,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
      * @tc.name      testGetRemainingDelayTimeFun005
      * @tc.desc      test getRemainingDelayTime Promise ,requestId = 0.
      */
-    it("testGetRemainingDelayTimeFun005", 0, async function (done) {
+    it("testGetRemainingDelayTimeFun005", Level.LEVEL0, async function (done) {
         console.info('----------------------testGetRemainingDelayTimeFun005---------------------------');
         let requestId = 0;
         try{

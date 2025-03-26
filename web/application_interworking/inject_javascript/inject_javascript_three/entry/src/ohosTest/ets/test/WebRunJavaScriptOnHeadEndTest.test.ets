@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach,afterEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach,afterEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function ActsWebRunJavaScriptHeadEndTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebRunJavaScriptOnHeadEnd001', 0, async (done: Function) => {
+    it('testWebRunJavaScriptOnHeadEnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebRunJavaScriptOnHeadEnd001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnHeadEnd001", '"testValue"', 2025022103, done);
@@ -77,7 +77,7 @@ export default function ActsWebRunJavaScriptHeadEndTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebRunJavaScriptOnHeadEnd002', 0, async (done: Function) => {
+    it('testWebRunJavaScriptOnHeadEnd002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       await Utils.emitEvent("emitWebRunJavaScriptOnHeadEnd002", 10)
       Utils.registerEvent("testWebRunJavaScriptOnHeadEnd002", '"test msg"', 2025022104, done);
       sendEventByKey('WebRunJavaScriptOnHeadEndTestButton', 10, '');
@@ -91,7 +91,7 @@ export default function ActsWebRunJavaScriptHeadEndTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebRunJavaScriptOnHeadEnd003', 0, async (done: Function) => {
+    it('testWebRunJavaScriptOnHeadEnd003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitWebRunJavaScriptOnHeadEnd003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnHeadEnd003", '"testValue1"', 2025022105, done);

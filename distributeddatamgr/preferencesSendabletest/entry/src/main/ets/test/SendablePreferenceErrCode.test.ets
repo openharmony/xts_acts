@@ -69,7 +69,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesOn0210', 0, async (done: Function) => {
+    it('testSendablePreferencesOn0210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let observer = (key: string) => {
         console.info("====>testSendablePreferencesOn0210 multiProcessChange key " + key + " changed.");
       }
@@ -93,7 +93,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetPreferencesHelper003', 0, async (done: Function) => {
+    it('testGetPreferencesHelper003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const options:sendablePreferences.Options= {name: null}
       try {
         await sendablePreferences.getPreferences(context, options);
@@ -115,7 +115,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetPreferencesSyncinterface002', 0, async (done: Function) => {
+    it('testGetPreferencesSyncinterface002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const options:sendablePreferences.Options= {name: null}
       try {
         sendablePreferences.getPreferencesSync(context, options);
@@ -137,7 +137,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRemovePreferencesFromCache002', 0, async (done: Function) => {
+    it('testRemovePreferencesFromCache002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const options:sendablePreferences.Options= {name: null}
       try {
         await sendablePreferences.removePreferencesFromCache(context, options);
@@ -159,7 +159,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0200', 0, async (done: Function) => {
+    it('SUB_DDM_Preferences_removePreferencesFromCacheSync_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const options:sendablePreferences.Options= {name: null}
       try {
         sendablePreferences.removePreferencesFromCacheSync(context, options);
@@ -181,7 +181,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testDeletePreferencesHelper003', 0, async (done: Function) => {
+    it('testDeletePreferencesHelper003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const options:sendablePreferences.Options= {name: null}
       try {
         await sendablePreferences.deletePreferences(context, options);
@@ -203,7 +203,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesGetErr0100', 0, async (done: Function) => {
+    it('testPreferencesGetErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.get(null, null);
         console.info("====>testPreferencesGetErr0100 get success");
@@ -224,7 +224,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesGetSyncErr0100', 0, async (done: Function) => {
+    it('testPreferencesGetSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.getSync(null, null);
         console.info("====>testPreferencesGetSyncErr0100 getSync success");
@@ -245,7 +245,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesHasErr0100', 0, async (done: Function) => {
+    it('testPreferencesHasErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.has(null);
         console.info("====>testPreferencesHasErr0100 has success");
@@ -266,7 +266,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesHasSyncErr0100', 0, async (done: Function) => {
+    it('testPreferencesHasSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.hasSync(null);
         console.info("====>testPreferencesHasSyncErr0100 HasSync success");
@@ -288,7 +288,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutErr0100', 0, async (done: Function) => {
+    it('testPreferencesPutErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.put(null, null);
         console.info("====>testPreferencesPutErr0100 put success");
@@ -309,7 +309,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesPutSyncErr0100', 0, async (done: Function) => {
+    it('testPreferencesPutSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.putSync(null, null);
         console.info("====>testPreferencesPutSyncErr0100 putSync success");
@@ -330,7 +330,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesDeleteErr0100', 0, async (done: Function) => {
+    it('testPreferencesDeleteErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.delete(null);
         console.info("====>testPreferencesDeleteErr0100 delete success");
@@ -351,7 +351,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testPreferencesDeleteSyncErr0100', 0, async (done: Function) => {
+    it('testPreferencesDeleteSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.deleteSync(null);
         console.info("====>testPreferencesDeleteSyncErr0100 deleteSync success");
@@ -372,7 +372,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesOff0210', 0, async (done: Function) => {
+    it('testSendablePreferencesOff0210', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let observer = (key: string) => {
         console.info("====>testSendablePreferencesOff0210 multiProcessChange off key " + key + " changed.");
       }
@@ -396,7 +396,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesOn0400', 0, async (done: Function) => {
+    it('testSendablePreferencesOn0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let observer = (data: lang.ISendable) => {
         console.info(TAG + `observer : ${data}`)
         done();
@@ -594,5 +594,217 @@ export default function sendablePreferencesPromiseTest() {
         done();
       }
       })
+
+
+    /**
+     * @tc.name testSendablePreferencesOnErr0400
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_4600
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+      it('testSendablePreferencesOnErr0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        for(let i = 0;i<100;i++){
+          mPreferences.on('multiProcessChange', (key: string) => {
+            console.info(TAG + 'testSendablePreferencesOnErr0400 keyValue' +  key);
+            done();
+          })
+        }
+      } catch (err) {
+        console.error( TAG + 'testSendablePreferencesOnErr0400' + err.message + err.code);
+        expect(err.code).assertEqual(15500019);
+        mPreferences.off('multiProcessChange');
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.name testSendablePreferencesgetpreferenceErr0100
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_4700
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+      it('testSendablePreferencesgetpreferenceErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        const options = {
+            name: 'test_preferences',
+            dataGroupId: "12345678"
+        }
+        mPreferences = await sendablePreferences.getPreferences(context, options);
+        expect().assertFail();
+        done();
+      } catch(err) {
+        onsole.info('getPreferencesSync is fail' + err.code);
+        expect('15501002').assertEqual(err.code);
+        done();
+        }
+
+    })
+
+
+
+
+    /**
+     * @tc.name testSendablePreferencesgetpreferencesyncErr0100
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_4800
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+      it('testSendablePreferencesgetpreferencesyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        const options = {
+            name: 'test_preferences',
+            dataGroupId: "12345678"
+        }
+        mPreferences = await sendablePreferences.getPreferencesSync(context, options);
+        expect().assertFail();
+        done();
+      } catch(err) {
+        onsole.info('getPreferencesSync is fail' + err.code);
+        expect('15501002').assertEqual(err.code);
+        done();
+        }
+
+    })
+
+
+
+    /**
+     * @tc.name testSendablePreferencesdeletePreferencesErr0100
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_4900
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+      it('testSendablePreferencesdeletePreferencesErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        const options = {
+            name: 'test_preferences',
+            dataGroupId: "12345678"
+        }
+        mPreferences = await sendablePreferences.deletePreferences(context, options);
+        expect().assertFail();
+        done();
+      } catch(err) {
+        onsole.info('getPreferencesSync is fail' + err.code);
+        expect('15501002').assertEqual(err.code);
+        done();
+        }
+
+    })
+
+
+
+    /**
+     * @tc.name testSendablePreferencesremovePreferencesFromCacheErr0100
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_5000
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+      it('testSendablePreferencesremovePreferencesFromCacheErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        const options = {
+            name: 'test_preferences',
+            dataGroupId: "12345678"
+        }
+        mPreferences = await sendablePreferences.removePreferencesFromCache(context, options);
+        expect().assertFail();
+        done();
+      } catch(err) {
+        onsole.info('getPreferencesSync is fail' + err.code);
+        expect('15501002').assertEqual(err.code);
+        done();
+        }
+
+    })
+
+
+
+    /**
+     * @tc.name testSendablePreferencesremovePreferencesFromCacheSyncErr0100
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_5100
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+      it('testSendablePreferencesremovePreferencesFromCacheSyncErr0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        const options = {
+            name: 'test_preferences',
+            dataGroupId: "12345678"
+        }
+        mPreferences = await sendablePreferences.removePreferencesFromCacheSync(context, options);
+        expect().assertFail();
+        done();
+      } catch(err) {
+        onsole.info('getPreferencesSync is fail' + err.code);
+        expect('15501002').assertEqual(err.code);
+        done();
+        }
+
+    })
+
+
+
+    /**
+     * @tc.name testSendablePreferencesPutNumber0300
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_5200
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testSendablePreferencesPutNumber0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        await mPreferences.putsync('test', MAX_VALUE_LENGTH);
+        let data = await mPreferences.getSync("test", "defaultvalue");
+        expect(MAX_VALUE_LENGTH == mPreferences.getSync("test", "defaultvalue");).assertTrue();
+        console.info(TAG + 'succeed in getting');
+      } catch (err) {
+        console.info(TAG + "trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
+        expect().assertFail();
+      }
+      done();
+    })
+
+
+    /**
+     * @tc.name testSendablePreferencesPutNumber0200
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_5300
+     * @tc.desc put PutNumber promise interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testSendablePreferencesPutNumber0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try {
+        await mPreferences.put(MAX_KEY_LENGTH, 333);
+        let data = await mPreferences.get(MAX_KEY_LENGTH, 'default');
+        expect(data === 333).assertTrue();
+        console.info(TAG + 'succeed in getting');
+      } catch (err) {
+        console.info(TAG + "trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
+        expect().assertFail();
+      }
+      done();
+    })
+
   })
 }

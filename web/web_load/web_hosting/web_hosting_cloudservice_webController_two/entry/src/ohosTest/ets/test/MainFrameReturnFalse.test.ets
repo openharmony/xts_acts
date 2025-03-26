@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -86,7 +86,7 @@ export default function ActsWebViewTest4() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_LoadCommittedDetails_SDK_0200', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_LoadCommittedDetails_SDK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_isMainFrame_return_false', false, 5010, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));

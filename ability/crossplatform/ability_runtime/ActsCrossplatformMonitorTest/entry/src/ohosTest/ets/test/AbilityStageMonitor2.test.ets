@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -45,7 +45,7 @@ export default function AbilityStageMonitor2Test() {
          * @tc.type Function
          * @tc.level Level 2
          */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0100', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0100', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassista');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0100 :start");
       abilityDelegator.waitAbilityStageMonitor({
@@ -79,7 +79,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0200', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0200', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistb');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0200 :start");
       abilityDelegator.waitAbilityStageMonitor({
@@ -110,7 +110,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0300', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0300', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistc');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0300 :start");
       abilityDelegator.waitAbilityStageMonitor({
@@ -147,7 +147,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0400', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0400', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistd');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0400 :start");
       abilityDelegator.waitAbilityStageMonitor({
@@ -175,7 +175,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0500', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0500', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassista');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0500 :start");
       abilityDelegator.addAbilityStageMonitor({
@@ -220,7 +220,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0600', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0600', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistb');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0600 :start");
       abilityDelegator.addAbilityStageMonitor({
@@ -262,7 +262,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0700', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0700', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistc');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0700 :start");
       abilityDelegator.waitAbilityStageMonitor({
@@ -299,7 +299,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0800', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0800', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistd');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0800 :start");
       await abilityDelegator.waitAbilityStageMonitor({
@@ -334,7 +334,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_0900', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_0900', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'feature_error');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_0900 :start");
       await abilityDelegator.waitAbilityStageMonitor({
@@ -359,7 +359,7 @@ export default function AbilityStageMonitor2Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('PHASE2_ABILITY_STAGE_MONITOR_1000', 0, async  (done:Function) => {
+    it('PHASE2_ABILITY_STAGE_MONITOR_1000', Level.LEVEL0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassista');
       console.log("PHASE2_ABILITY_STAGE_MONITOR_1000 :start");
       await abilityDelegator.waitAbilityStageMonitor({
