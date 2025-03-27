@@ -261,10 +261,10 @@ export default function UIAbilityContex() {
               try {
                 let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
                 console.log("getSync"+JSON.stringify(info));
-                if(!info)
+                if(info == "true")
                 {
-                    expect(err.code).assertEqual(16000067);
-                    done();
+                  expect(err.code).assertEqual(16000067);
+                  done();
                 }
               } catch(e) {
                 console.log("getSync unexpected error: " + e);
@@ -309,9 +309,10 @@ export default function UIAbilityContex() {
           try {
             let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
             console.log("getSync"+JSON.stringify(info));
-            if(!info)
+            if(info == "true")
             {
               expect(err.code).assertEqual(16000067);
+              done();
             }
           } catch(e) {
             console.log("getSync unexpected error: " + e);
@@ -356,9 +357,10 @@ export default function UIAbilityContex() {
           try {
             let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
             console.log("getSync"+JSON.stringify(info));
-            if(!info)
+            if(info == "true")
             {
               expect(err.code).assertEqual(16000067);
+              done();
             }
           } catch(e) {
             console.log("getSync unexpected error: " + e);
@@ -403,9 +405,10 @@ export default function UIAbilityContex() {
           try {
             let info: string = systemParameterEnhance.getSync("persist.sys.abilityms.start_options_with_process_option");
             console.log("getSync"+JSON.stringify(info));
-            if(!info)
+            if(info == "true")
             {
               expect(err.code).assertEqual(16000067);
+              done();
             }
           } catch(e) {
             console.log("getSync unexpected error: " + e);
