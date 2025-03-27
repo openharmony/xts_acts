@@ -43,12 +43,12 @@ export default function requestCancelNativeTest() {
         let files: string[] = fs.listFileSync(testContext.filesDir);
         for (let i = 0; i < files.length; i++) {
           if (files[i].includes('test')) {
-            console.info(`requestVideoNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
+            console.info(`requestCancelNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
             fs.unlinkSync(`${testContext.filesDir}/${files[i]}`);
           }
         }
       } catch (error) {
-        console.error(`requestVideoNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
+        console.error(`requestCancelNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
       }
     });
 
