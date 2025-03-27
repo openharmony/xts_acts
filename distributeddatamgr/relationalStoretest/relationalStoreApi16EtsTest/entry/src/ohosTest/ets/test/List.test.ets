@@ -16,13 +16,13 @@ import relationalStoreEtsTest from './RelationalStoreEtsTest.test';
 import relationalStoreBatchInsertTest from './relationalStoreEtsApi16Test.test';
 import relationalStoreBatchinsertTransactionTest from './relationalStoreTransaction.test';
 import rdbStoreReadOnlyEtsTest from './relationalStoreReadOnly.test';
-import MemoryDbJsTest from './RelationalStoreMemoryDb.test';
+import MemoryDbEtsTest from './RelationalStoreMemoryDb.test';
 
 
 export default function testsuite() {
   relationalStoreEtsTest();
   relationalStoreBatchInsertTest();
   relationalStoreBatchinsertTransactionTest();
-  rdbStoreReadOnlyEtsTest()
-  MemoryDbJsTest()
+  rdbStoreReadOnlyEtsTest();
+  MemoryDbEtsTest();
 }
