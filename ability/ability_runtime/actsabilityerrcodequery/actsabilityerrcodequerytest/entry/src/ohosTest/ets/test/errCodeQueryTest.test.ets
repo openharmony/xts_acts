@@ -18,12 +18,15 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { common, UIAbility, Want, dialogRequest, StartOptions, InsightIntentContext,
   OpenLinkOptions } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager, systemParameterEnhance } from '@kit.BasicServicesKit';
 
 let TAG = 'RunTimeTest';
 let uiAbilityContext = getContext(this) as common.UIAbilityContext;
 let uiExtentionContext = getContext(this) as common.UIExtensionContext;
 let insightIntentContext: InsightIntentContext;
+let testAbilityContext: common.UIAbilityContext;
+let sub : commonEventManager.CommonEventSubscriber;
+let mpEnable: string;
 
 function sleep(ms: number) {
   return new Promise<string>(resolve => setTimeout(resolve, ms));
@@ -35,24 +38,22 @@ export default function errCodeQueryTest() {
       uiAbilityContext = globalThis.context;
       uiExtentionContext = globalThis.context;
       insightIntentContext = globalThis.context;
+      testAbilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;
+      try {
+        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model');
+      } catch (err) {
+        console.error(`ACTS_NativeStartChildProcess Get system parameter error: ${JSON.stringify(err)}`);
+        mpEnable = 'fail';
+      }
     })
 
     beforeEach(() => {
-      let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-      abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
-      abilityDelegator.executeShellCommand('aa force-stop com.example.helloworld').then(data => {
-        hilog.info(0x0000, 'childProcessManager', '%{public}s',
-          'beforeEach ActsDebuggableAaStartTest force-stop data is: ' + JSON.stringify(data));
-      }).catch((err: BusinessError) => {
-        hilog.info(0x0000, 'childProcessManager', '%{public}s',
-          'beforeEach ActsDebuggableAaStartTest force-stop err is: ' + JSON.stringify(err));
-      });
     })
 
     afterEach(async () => {
       console.log(`[${TAG}] sleep start`);
-      await sleep(700);
+      await sleep(1500);
       console.log(`[${TAG}] sleep over`);
     })
 
@@ -147,6 +148,190 @@ export default function errCodeQueryTest() {
     })
 
     /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0100
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0100
+     * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void. Errcode 16000004, configure exported as false in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0100', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0100';
+      try {
+        let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+        let want: Want = {
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          abilityName: 'AbilityE',
+        };
+        abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        console.log(`[${TAG}] abilityDelegator: ${abilityDelegator}`);
+        abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
+          console.info(`[${TAG}] startAbility callback`);
+          if (err) {
+            console.log(`[${TAG}] err: ${JSON.stringify(err)}`);
+            expect(err.code).assertEqual(16000004);
+            done();
+          } else {
+            console.log(`[${TAG}] startAbility data: ${JSON.stringify(data)}`);
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(16000004);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0200
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0200
+     * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void. Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0200', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0200';
+      try {
+        let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+        let want: Want = {
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          abilityName: 'AbilityB',
+        };
+        abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        console.log(`[${TAG}] abilityDelegator: ${abilityDelegator}`);
+        abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
+          console.info(`[${TAG}] startAbility callback`);
+          if (err) {
+            console.log(`[${TAG}] err: ${JSON.stringify(err)}`);
+            expect(err.code).assertEqual(16000005);
+            done();
+          } else {
+            console.log(`[${TAG}] startAbility data: ${JSON.stringify(data)}`);
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(16000005);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0300
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0300
+     * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 16000004, configure exported as false in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0300', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0300';
+      try {
+        let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+        let want: Want = {
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          abilityName: 'AbilityE',
+        };
+        abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        console.log(`[${TAG}] abilityDelegator: ${abilityDelegator}`);
+        let errObject = {} as BusinessError;
+        await abilityDelegator.startAbility(want)
+          .then((data: void) => {
+            console.log(`[${TAG}] startAbility promise`);
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] err: ${JSON.stringify(err)}`);
+            errObject = err;
+          })
+        expect(errObject.code).assertEqual(16000004);
+        done();
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(16000004);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0400
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0400
+     * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 16000005, configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0400', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_AbilityDelegator_startAbility_0400';
+      try {
+        let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+        let want: Want = {
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          abilityName: 'AbilityB',
+        };
+        abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        console.log(`[${TAG}] abilityDelegator: ${abilityDelegator}`);
+        let errObject = {} as BusinessError;
+        await abilityDelegator.startAbility(want)
+          .then((data: void) => {
+            console.log(`[${TAG}] startAbility promise`);
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] err: ${JSON.stringify(err)}`);
+            errObject = err;
+          })
+        expect(errObject.code).assertEqual(16000005);
+        done();
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(16000005);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200
+     * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void. Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo) // 创建订阅SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event事件的Subscriber
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => { // 接收公共事件数据的回调函数
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          // 启动测试用的入口ability
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
+    })
+
+    /*
      * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300
      * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300
      * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void. Errcode 16000010, set flags to -1
@@ -154,28 +339,125 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300';
-      let want: Want = {
-        bundleName: 'com.test.actsabilityerrcodequerytest',
-        abilityName: 'AbilityA',
-        flags: -1
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event"]
       };
-      try {
-        uiExtentionContext.startAbility(want, (err: BusinessError) => {
-          if (err.code) {
-            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            expect(err.code).assertEqual(16000010);
-            done();
-          } else {
-            console.info(`[${TAG}] startAbility succeed`);
-            expect().assertFail();
-            done();
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000010);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
           }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
         })
-      } catch (paramError) {
-        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        expect(paramError.code).assertEqual(16000100);
-        done();
-      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500
+     * @tc.desc    startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void; Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700
+     * @tc.desc    startAbility(want: Want, options?: StartOptions): Promise<void>; Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
     })
 
     /*
@@ -186,32 +468,82 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800';
-      let want: Want = {
-        bundleName: 'com.test.actsabilityerrcodequerytest',
-        abilityName: 'AbilityA',
-        flags: -1
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event"]
       };
-      let options: StartOptions = {
-        displayId: 0
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000010);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200
+     * @tc.desc    startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void; Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event"]
       };
-      let errObject = {} as BusinessError;
-      try {
-        await uiExtentionContext.startAbility(want, options)
-          .then(() => {
-            console.info(`[${TAG}] startAbility succeed`);
-            expect().assertFail();
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
           })
-          .catch((err: BusinessError) => {
-            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            errObject = err;
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
           })
-        expect(errObject.code).assertEqual(16000010);
-        done();
-      } catch (paramError) {
-        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        expect(paramError.code).assertEqual(16000010);
-        done();
-      }
+        })
     })
 
     /*
@@ -222,28 +554,125 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300';
-      let want: Want = {
-        bundleName: 'com.test.actsabilityerrcodequerytest',
-        abilityName: 'AbilityC',
-        flags: -1
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event"]
       };
-      try {
-        uiExtentionContext.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
-          if (err.code) {
-            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            expect(err.code).assertEqual(16000010);
-            done();
-          } else {
-            console.info(`[${TAG}] startAbility succeed, result: ${JSON.stringify(result)}`);
-            expect().assertFail();
-            done();
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000010);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
           }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
         })
-      } catch (paramError) {
-        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        expect(paramError.code).assertEqual(16000100);
-        done();
-      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500
+     * @tc.desc    startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void; Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700
+     * @tc.desc    startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>; Errcode 16000005, Configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
     })
 
     /*
@@ -254,30 +683,103 @@ export default function errCodeQueryTest() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000010);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200
+     * @tc.desc    openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>; Errcode 16000005, configure permission in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200_event"]
+      };
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          sub = commonEventSubscriber;
+          console.info(`[${TAG}] createSubscriber succeed`);
+          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(16000005);
+            } catch {
+            }
+            commonEventManager.publish("terminateEntryAbility1",() => {});
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              done();
+            });
+          })
+          let entryWant: Want = {
+            bundleName: "com.test.actsabilityerrcodequerytest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": TAG
+            }
+          }
+          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
+            if (err.code) {
+              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            } else {
+              console.info(`[${TAG}] startEntryAbility succeed`);
+            }
+          })
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100
+     * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void; Errcode 401, pass the parameter wrongly as undefined
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100';
       let want: Want = {
-        bundleName: 'com.test.actsabilityerrcodequerytest',
-        abilityName: 'AbilityC',
-        flags: -1
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        abilityName: 'AbilityA',
       };
-      let options: StartOptions = {
-        displayId: 0
-      };
-      let errObject = {} as BusinessError;
       try {
-        await uiExtentionContext.startAbilityForResult(want, options)
-          .then((result: common.AbilityResult) => {
-            console.info(`[${TAG}] startAbility succeed, result: ${JSON.stringify(result)}`);
-            expect().assertFail();
-          })
-          .catch((err: BusinessError) => {
-            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            errObject = err;
-          })
-        expect(errObject.code).assertEqual(16000010);
+        insightIntentContext.startAbility(undefined, undefined);
+        expect().assertFail();
         done();
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        expect(paramError.code).assertEqual(16000010);
+        expect(paramError.code).assertEqual(401);
         done();
       }
     })
@@ -291,7 +793,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200';
       let want: Want = {
-        bundleName: 'com.test.actsabilityerrcodequerytest',
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
         abilityName: 'AbilityAbility',
       };
       try {
@@ -314,6 +816,69 @@ export default function errCodeQueryTest() {
     })
 
     /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300
+     * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void; Errcode 16000004, configure exported as false in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300';
+      let want: Want = {
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        abilityName: 'AbilityE',
+      };
+      try {
+        insightIntentContext.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            expect(err.code).assertEqual(16000004);
+            done();
+          } else {
+            console.info(`[${TAG}] startAbility succeed`);
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(16000004);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400
+     * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 401, pass the parameter wrongly as undefined
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400';
+      let want: Want = {
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        abilityName: 'AbilityA',
+      };
+      let errObject = {} as BusinessError;
+      try {
+        await insightIntentContext.startAbility(undefined)
+          .then(() => {
+            console.info(`[${TAG}] startAbility succeed`);
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            errObject = err;
+          })
+        expect(errObject.code).assertEqual(401);
+        done();
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /*
      * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500
      * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500
      * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 16000001, set the ability name wrongly
@@ -322,7 +887,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500';
       let want: Want = {
-        bundleName: 'com.test.actsabilityerrcodequerytest',
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
         abilityName: 'AbilityAbility',
       };
       let errObject = {} as BusinessError;
@@ -341,6 +906,38 @@ export default function errCodeQueryTest() {
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
         expect(paramError.code).assertEqual(16000001);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600
+     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600
+     * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 16000004, configure exported as false in the target ability
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600', 0, async (done: Function) => {
+      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600';
+      let want: Want = {
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        abilityName: 'AbilityE',
+      };
+      let errObject = {} as BusinessError;
+      try {
+        await insightIntentContext.startAbility(want)
+          .then(() => {
+            console.info(`[${TAG}] startAbility succeed`);
+            expect().assertFail();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
+            errObject = err;
+          })
+        expect(errObject.code).assertEqual(16000004);
+        done();
+      } catch (paramError) {
+        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
+        expect(paramError.code).assertEqual(16000004);
         done();
       }
     })

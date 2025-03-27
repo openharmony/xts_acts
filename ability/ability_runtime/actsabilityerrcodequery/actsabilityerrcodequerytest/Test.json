@@ -12,7 +12,8 @@
             "test-file-name": [
                 "ActsAbilityErrCodeQueryTest.hap",
                 "ActsAbilityErrCodeQueryTestRely.hap",
-                "ActsErrorCodeApplicationContextAssist.hap"
+                "ActsErrorCodeApplicationContextAssist.hap",
+                "ActsAbilityErrCodeQueryTestRely2.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

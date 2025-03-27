@@ -239,7 +239,25 @@
           }
         ]
       },
-
+      {
+        "name": "EntryAbility1",
+        "srcEntry": "./ets/entryability1/EntryAbility1.ets",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ]
+      }
     ],
     "extensionAbilities": [
       {
@@ -250,6 +268,12 @@
         "exported": true,
         "extensionProcessMode": "bundle"
       },
+      {
+        "name": "EntryEmbeddedUIExtAbility",
+        "srcEntry": "./ets/entryembeddeduiextability/EntryEmbeddedUIExtAbility.ets",
+        "description": "EntryEmbeddedUIExtAbility",
+        "type": "embeddedUI"
+      }
     ],
     "requestPermissions": [
       {
