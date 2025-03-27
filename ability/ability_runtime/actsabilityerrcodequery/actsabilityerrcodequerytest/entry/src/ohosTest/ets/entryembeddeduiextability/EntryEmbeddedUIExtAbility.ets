@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -63,13 +63,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
           if (err.code) {
             console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
             commonEventData.parameters = {'result': err.code};
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
           } else {
             console.info(`[${TAG}] startAbility succeed`);
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
@@ -77,7 +77,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
         })
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0200_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -100,13 +100,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
           if (err.code) {
             console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
             commonEventData.parameters = {'result': err.code};
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
           } else {
             console.info(`[${TAG}] startAbility succeed`);
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
@@ -114,7 +114,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
         })
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -139,13 +139,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
           if (err.code) {
             console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
             commonEventData.parameters = {'result': err.code};
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
           } else {
             console.info(`[${TAG}] startAbility succeed`);
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
@@ -153,7 +153,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
         })
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0500_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -184,13 +184,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             errObject = err;
           })
         commonEventData.parameters = {'result': errObject.code};
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0700_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -222,13 +222,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             errObject = err;
           })
         commonEventData.parameters = {'result': errObject.code};
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -250,13 +250,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
           if (err.code) {
             console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
             commonEventData.parameters = {'result': err.code};
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
           } else {
             console.info(`[${TAG}] startAbility succeed`);
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
@@ -264,7 +264,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
         })
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0200_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -287,13 +287,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
           if (err.code) {
             console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
             commonEventData.parameters = {'result': err.code};
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
           } else {
             console.info(`[${TAG}] startAbility succeed`);
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
@@ -301,7 +301,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
         })
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -326,13 +326,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
           if (err.code) {
             console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
             commonEventData.parameters = {'result': err.code};
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
           } else {
             console.info(`[${TAG}] startAbility succeed`);
-            commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event", commonEventData, (result) => {
+            commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event', commonEventData, (result) => {
               console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
               this.context.terminateSelf()
             });
@@ -340,7 +340,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
         })
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0500_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -371,13 +371,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             errObject = err;
           })
         commonEventData.parameters = {'result': errObject.code};
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0700_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -409,13 +409,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             errObject = err;
           })
         commonEventData.parameters = {'result': errObject.code};
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
@@ -441,13 +441,13 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             errObject = err;
           })
         commonEventData.parameters = {'result': errObject.code};
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        commonEventManager.publish("SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200_event", commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200_event', commonEventData, (result) => {
           console.info(`[${TAG}] EntryEmbeddedUIExtAbility: Event publish succeed. Result: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });

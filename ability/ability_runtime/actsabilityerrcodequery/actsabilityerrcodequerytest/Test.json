@@ -21,6 +21,8 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "param set persist.sys.abilityms.multi_process_model true",
+                "reboot",
                 "power-shell wakeup",
                 "power-shell setmode 602"
             ]
