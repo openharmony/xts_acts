@@ -24,22 +24,13 @@
 #include "drawing_pen.h"
 #include "drawing_text_declaration.h"
 #include "drawing_text_typography.h"
-#ifndef USE_GRAPHIC_TEXT_GINE
-#include "rosen_text/ui/typography.h"
-#include "rosen_text/ui/typography_create.h"
-#else
 #include "rosen_text/typography.h"
 #include "rosen_text/typography_create.h"
-#endif
 
 #include <string>
 #include <fstream>
 
-#ifndef USE_GRAPHIC_TEXT_GINE
-using namespace rosen;
-#else
 using namespace OHOS::Rosen;
-#endif
 using namespace testing;
 using namespace testing::ext;
 
