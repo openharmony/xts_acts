@@ -65,6 +65,8 @@ export default function AlertDialogJsunit() {
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[AlertDialogJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.label).assertEqual("two button dialog");
+      await driver.triggerKey(2070)
+      await CommonFunc.sleep(1000);
       console.info('[AlertDialogJsunit_0100] END');
       done();
     });

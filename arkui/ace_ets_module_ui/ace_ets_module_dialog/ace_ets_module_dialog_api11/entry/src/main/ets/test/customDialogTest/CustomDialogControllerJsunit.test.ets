@@ -16,6 +16,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import events_emitter from '@ohos.events.emitter';
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+
 
 export default function customDialogControllerJsunit() {
   describe('customDialogControllerTest', () => {
@@ -46,6 +48,7 @@ export default function customDialogControllerJsunit() {
 
     it('testCustomDialogControllers_100', 0, async (done: Function) => {
       console.info('[testCustomDialogControllers_100] START');
+      let driver = await Driver.create()
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[testClickEvent001] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data?.ACTION).assertEqual(true)
@@ -62,6 +65,7 @@ export default function customDialogControllerJsunit() {
       }
       console.info('[testClickEvent001] sendEventByKey ' + JSON.stringify(sendEventByKey('dialogController', 10, "")));
       await Utils.sleep(1000)
+      await driver.pressBack();
       console.info('[testClickEvent001] testSendTouchEvent END');
     });
 
