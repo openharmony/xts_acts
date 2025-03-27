@@ -11162,6 +11162,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testArrayBuffer2", testArrayBuffer2),
         DECLARE_NAPI_FUNCTION("testArrayBuffer3", testArrayBuffer3),
         DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
+        DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
+        DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
         DECLARE_NAPI_FUNCTION("wrapperObjectTest", WrapperObjectTest),
         DECLARE_NAPI_FUNCTION("wellKnownSymbolsTest", WellKnownSymbolsTest),
         DECLARE_NAPI_FUNCTION("traceTest", TraceTest),
@@ -11173,8 +11175,6 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("ProxyTest", ProxyTest),
         DECLARE_NAPI_FUNCTION("privateTest", PrivateTest),
         DECLARE_NAPI_FUNCTION("externalStringTest", ExternalStringTest),
-        DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
-        DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;
