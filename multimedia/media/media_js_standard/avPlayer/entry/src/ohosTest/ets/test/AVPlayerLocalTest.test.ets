@@ -425,8 +425,9 @@ function setPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStra
   })
 }
 
-function setInvalidPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStrategy: media.PlaybackStrategy) {
-  avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
+async function setInvalidPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null,
+  playbackStrategy: media.PlaybackStrategy) {
+  await avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
     console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
      if (error.code == media.AVErrorCode.AVERR_INVALID_PARAMETER && invalidPlaybackStrategy) {
       checkPlaybackStrategySuccess = true;
