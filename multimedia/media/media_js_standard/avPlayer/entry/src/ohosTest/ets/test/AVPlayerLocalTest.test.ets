@@ -428,7 +428,7 @@ function setPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStra
 function setInvalidPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStrategy: media.PlaybackStrategy) {
   avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
     console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
-     if (error.code == media.AVErrorCode.AVERR_INVALID_PARAMETER) {
+     if (error.code == media.AVErrorCode.AVERR_INVALID_PARAMETER && invalidPlaybackStrategy) {
       checkPlaybackStrategySuccess = true;
     } else {
       expect().assertFail();
@@ -542,11 +542,7 @@ async function setPlaybackStrategyFlv(avPlayer: media.AVPlayer | null, done: Fun
           break;
         }
         avPlayer.surfaceId = surfaceID;
-        if (!invalidPlaybackStrategy) {
-          setPlayerPlaybackStrategy(avPlayer, playbackStrategy)
-        } else {
-          setInvalidPlayerPlaybackStrategy(avPlayer, playbackStrategy);
-        }
+        await setInvalidPlayerPlaybackStrategy(avPlayer, playbackStrategy);
         avPlayer.prepare()
         break;
       case PREPARED:
@@ -569,7 +565,7 @@ async function setPlaybackStrategyFlv(avPlayer: media.AVPlayer | null, done: Fun
         done();
         break;
       case ERROR:
-        avPlayer?.release().then(() => {
+        await avPlayer?.release().then(() => {
         },
           mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         avPlayer = null;
@@ -717,7 +713,7 @@ async function testSetPlaybackStrategyDASH(src: string | media.AVFileDescriptor,
 async function testSetPlaybackStrategyFlv(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
   done: Function, playbackStrategy: media.PlaybackStrategy) {
   console.info(`case media source: ${src}`)
-  media.createAVPlayer((err, video) => {
+  await media.createAVPlayer((err, video) => {
     console.info(`case media err: ${err}`)
     if (typeof (video) !== 'undefined') {
       console.info('case createAVPlayer success');
@@ -1212,7 +1208,7 @@ export default function AVPlayerLocalTest() {
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0100
         * @tc.name      : 001.test setPlaybackStrategy Function
-        * @tc.desc      : flv live set thresholdForAutoQuickPlay to to valid value
+        * @tc.desc      : flv live set thresholdForAutoQuickPlay to valid value
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
@@ -1226,7 +1222,7 @@ export default function AVPlayerLocalTest() {
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0200
         * @tc.name      : 001.test setPlaybackStrategy Function
-        * @tc.desc      : flv live set thresholdForAutoQuickPlay to to invalid value
+        * @tc.desc      : flv live set thresholdForAutoQuickPlay to invalid value
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
@@ -1241,7 +1237,7 @@ export default function AVPlayerLocalTest() {
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0300
         * @tc.name      : 001.test setPlaybackStrategy Function
-        * @tc.desc      : flv live set thresholdForAutoQuickPlay to to default value
+        * @tc.desc      : flv live set thresholdForAutoQuickPlay to default value
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
