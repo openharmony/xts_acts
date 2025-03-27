@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import cipher from '@system.cipher';
 export default function hitscipher_test() {
 describe('hitscipher_test', function () {
@@ -58,7 +58,7 @@ describe('hitscipher_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2400', 4, function () {
+   it('SUB_Security_DataPro_cipher_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, function () {
 	   for (var j = 0; j < 1000; j++)
 	   {
 		  cipher.rsa({
@@ -99,7 +99,7 @@ describe('hitscipher_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2500', 4, function () {
+   it('SUB_Security_DataPro_cipher_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, function () {
 	   for (var i = 0; i < 1000; i++)
 	   {
 		  cipher.aes({
@@ -146,7 +146,7 @@ describe('hitscipher_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2600', 3, function () {
+   it('SUB_Security_DataPro_cipher_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	   var timestamp1 = new Date().getTime();
 	   for (var j = 0; j < 10; j++)
 	   {
@@ -192,7 +192,7 @@ describe('hitscipher_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2700', 3, function () {
+   it('SUB_Security_DataPro_cipher_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	   var timestamp1 = new Date().getTime();
 	   for (var i = 0; i < 10; i++)
 	   {

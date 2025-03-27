@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 import { Driver,ON } from '@ohos.UiTest';
 
 export default function abilityTest() {
@@ -45,7 +45,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('SUB_Security_IAM_authWidget_Func_0330', 0, async(done: Function) => {
+    it('SUB_Security_IAM_authWidget_Func_0330', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async(done: Function) => {
       console.log("SUB_Security_IAM_authWidget_Func_0330: started ");
       let driver = Driver.create()
       let select = await driver.findComponent(ON.isAfter(ON.text("authTrustLevel=-1")))

@@ -18,7 +18,7 @@ import userAuth from '@ohos.userIAM.userAuth'
 let UserAuthKit = new userAuth.UserAuth()
 var index = require('../../../main/js/MainAbility/pages/index/index.js');
 var waitFlag = false;
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 
 /**
  * test case
@@ -45,7 +45,7 @@ describe('userAuthTestExecute', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-      it('JSAPI_Function_Nopermission_2100', 0, function (done) {
+      it('JSAPI_Function_Nopermission_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.log("JSAPI_Function_Nopermission_2100 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("FACE_ONLY", "S1").catch(function(data) {
@@ -66,7 +66,7 @@ describe('userAuthTestExecute', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-       it('JSAPI_Function_Nopermission_1800', 0, function () {
+       it('JSAPI_Function_Nopermission_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         console.log("JSAPI_Function_Nopermission_1800 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("FACE_ONLY", "S1", function(data) {
@@ -84,7 +84,7 @@ describe('userAuthTestExecute', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-        it('Security_IAM_Nopermission_API8_Func_0101', 0, async function (done) {
+        it('Security_IAM_Nopermission_API8_Func_0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             let getversionresult = null;
             getversionresult = UserAuthKit.getVersion();
@@ -106,7 +106,7 @@ describe('userAuthTestExecute', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-        it('Security_IAM_Nopermission_API8_Func_0112', 0, async function (done) {
+        it('Security_IAM_Nopermission_API8_Func_0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testFace Security_IAM_Nopermission_API8_Func_0112 start');
         let authType = [2, 4]
         for (let idx0 = 0; idx0 < authType.length; idx0++){
@@ -132,7 +132,7 @@ describe('userAuthTestExecute', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-        it('Security_IAM_Nopermission_API8_Func_0103', 0, async function (done) {
+        it('Security_IAM_Nopermission_API8_Func_0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let contextID1 = null
             let challenge = new Uint8Array([253, 19, 58, 160, 67, 200, 247, 37])
             let onresult = {
@@ -178,7 +178,7 @@ describe('userAuthTestExecute', function () {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-        it('Security_IAM_Nopermission_API9_Func_0104', 0, async function (done) {
+        it('Security_IAM_Nopermission_API9_Func_0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testFace Security_IAM_Nopermission_API9_Func_0104 start');
             let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT];
             for (let idx0 = 0; idx0 < authType.length; idx0++) {
@@ -202,7 +202,7 @@ describe('userAuthTestExecute', function () {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('Security_IAM_Nopermission_API9_Func_0110', 0, async function (done) {
+        it('Security_IAM_Nopermission_API9_Func_0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let challenge = new Uint8Array([253, 19, 58, 160, 67, 200, 247, 37])
             let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT];
             let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
@@ -226,7 +226,7 @@ describe('userAuthTestExecute', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('Security_IAM_Nopermission_API9_Func_0103', 0, async function (done) {
+         it('Security_IAM_Nopermission_API9_Func_0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let challenge = new Uint8Array([253, 19, 58, 160, 67, 200, 247, 37])
             let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT];
             let authTrustLevel = userAuth.AuthTrustLevel.ATL1;

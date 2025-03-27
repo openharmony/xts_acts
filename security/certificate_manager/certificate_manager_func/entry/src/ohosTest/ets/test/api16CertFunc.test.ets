@@ -432,7 +432,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0010: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_SYSTEM,
@@ -457,7 +457,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0011', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0011: started ");
       let property: certManager.CertStoreProperty = {
         certType: 2,
@@ -482,7 +482,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0012', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0012: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_SYSTEM,
@@ -507,7 +507,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0013', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0013: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_SYSTEM,
@@ -532,7 +532,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0014', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0014: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_SYSTEM,
@@ -556,7 +556,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0015', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0015: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_USER,
@@ -581,7 +581,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0016', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0016: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_USER,
@@ -606,7 +606,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0018', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0013: started ");
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_USER,
@@ -630,7 +630,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.type Function
      * @tc.level Level1
      */
-    it('Security_CertManager_VerifyPromiseSM3_Func_0010', 0, async (done: Function) => {
+    it('Security_CertManager_VerifyPromiseSM3_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('Security_CertManager_VerifyPromiseSM3_Func_0010 start');
       let keyUri: string | undefined;
       let pwd = '12345678';
@@ -679,7 +679,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('Security_CertManager_VerifyPromiseSM3_Func_0011', 0, async (done: Function) => {
+    it('Security_CertManager_VerifyPromiseSM3_Func_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('Security_CertManager_VerifyPromiseSM3_Func_0011 start');
       let keyUri: string | undefined;
       let pwd = '12345678';
@@ -730,7 +730,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.type Function
      * @tc.level Level2
      */
-    it('Security_CertManager_VerifyPromiseSM3_Func_0012', 0, async (done: Function) => {
+    it('Security_CertManager_VerifyPromiseSM3_Func_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('Security_CertManager_VerifyPromiseSM3_Func_0010 start');
       let keyUri: string | undefined;
       let pwd = '123456';
@@ -780,7 +780,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0011', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('SUB_Security_CertManager_GetAllUserTrustedCertificates_0011 start');
       try {
         await certManager.getAllUserTrustedCertificates(undefined);
@@ -809,7 +809,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0012', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('SUB_Security_CertManager_GetAllUserTrustedCertificates_0012 start');
       try {
         let scope: certManager.CertScope = certManager.CertScope.CURRENT_USER;
@@ -835,7 +835,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0013', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('SUB_Security_CertManager_GetAllUserTrustedCertificates_0013 start');
       try {
         let scope: certManager.CertScope = certManager.CertScope.GLOBAL_USER;
@@ -861,7 +861,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_InstallUserTrustedCertificates_0011', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_InstallUserTrustedCertificates_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0011 start');
       let caCert1 = new Uint8Array();
       try {
@@ -899,7 +899,7 @@ export default function api16CertFuncTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_InstallUserTrustedCertificates_0012', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_InstallUserTrustedCertificates_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0012 start');
       let certData: Uint8Array = new Uint8Array([
         0x30, 0x82, 0x0b, 0xc1,

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, it, expect} from '@ohos/hypium'
+import {describe, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
 import { checkSupportOrNot } from './utils/commonFunc';
 
@@ -30,7 +30,7 @@ export default function userauthTest() {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-        it('Security_IAM_PIN_Kit_Func_0101', 0, async function (done) {
+        it('Security_IAM_PIN_Kit_Func_0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 userAuthNorth.getAvailableStatus(userAuthNorth.UserAuthType.FACE, 10000);
             } catch (e) {
@@ -59,7 +59,7 @@ export default function userauthTest() {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-        it('Security_IAM_PIN_Kit_Func_0102', 0, async function (done) {
+        it('Security_IAM_PIN_Kit_Func_0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('testFace Security_IAM_PIN_Kit_Func_0102 start');
             let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT];
             let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3];
@@ -121,7 +121,7 @@ export default function userauthTest() {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-        it('Security_IAM_PIN_Kit_Func_0112', 0, async function (done) {
+        it('Security_IAM_PIN_Kit_Func_0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('testFace Security_IAM_PIN_Kit_Func_0112 start');
             let availabeStatus;
             //No AuthType
@@ -200,7 +200,7 @@ export default function userauthTest() {
            * @tc.type      : Function
            * @tc.level     : Level 0
            */
-        it('Security_IAM_PIN_Kit_Func_0113', 0, async function (done) {
+        it('Security_IAM_PIN_Kit_Func_0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let contextID1 = null
             let challenge = new Uint8Array([253, 19, 58, 160, 67, 200, 247, 37])
             let onresult = {
@@ -271,7 +271,7 @@ export default function userauthTest() {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-        it('Security_IAM_PIN_Kit_Func_0107', 0, async function (done) {
+        it('Security_IAM_PIN_Kit_Func_0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('testFace Security_IAM_PIN_Kit_Func_0107 start');
             expect(0).assertEqual(userAuthNorth.ResultCode.SUCCESS);
             expect(1).assertEqual(userAuthNorth.ResultCode.FAIL);
