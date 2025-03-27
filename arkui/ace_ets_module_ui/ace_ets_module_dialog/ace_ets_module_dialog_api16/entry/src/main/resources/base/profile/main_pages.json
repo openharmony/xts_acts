@@ -17,6 +17,7 @@
     "MainAbility/pages/Menu/EffectOptions",
     "MainAbility/pages/dialogLife/ActionSheetLife",
     "MainAbility/pages/dialogLife/AlertDialogLife",
-    "MainAbility/pages/dialogLife/CustomDialogLife"
+    "MainAbility/pages/dialogLife/CustomDialogLife",
+    "MainAbility/pages/bindSheet/showInSubWindowBindSheet"
   ]
 }

@@ -32,6 +32,7 @@ group("ActsAceEtsModuleDialogTest") {
       "ace_ets_module_dialog_nowear_api11:ActsAceEtsModuleDialogNoWearApi11Test",
       "ace_ets_module_dialog_nowear_api12:ActsAceEtsModuleDialogNoWearApi12Test",
       "ace_ets_module_dialog_nowear_api15:ActsAceEtsModuleDialogNoWearApi15Test",
+      "ace_ets_module_dialog_nowear_api18:ActsAceEtsModuleDialogNoWearApi18Test",
     ]
   }
 }
