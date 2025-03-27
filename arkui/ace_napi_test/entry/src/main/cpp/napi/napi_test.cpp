@@ -10793,6 +10793,7 @@ static napi_value NapiCreateExternalTest(napi_env env, napi_callback_info info)
     status = napi_create_external(nullptr, nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_arraybuffer failed.");
 
+    free(data);
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
@@ -11612,6 +11613,7 @@ static napi_value NapiGetValueExternalTest(napi_env env, napi_callback_info info
     status = napi_get_value_external(nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_value_double failed.");
 
+    free(data);
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
@@ -14540,6 +14542,7 @@ static napi_value NapiQueueAsyncWorkWithQosTest(napi_env env, napi_callback_info
     status = napi_queue_async_work_with_qos(nullptr, nullptr, napi_qos_default);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_run_script_path failed.");
 
+    free(data);
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
@@ -14794,6 +14797,7 @@ static napi_value NapiSetInstanceDataTest(napi_env env, napi_callback_info info)
     status = napi_set_instance_data(nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_set_instance_data failed.");
 
+    free(data);
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
