@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import screen from '@ohos.screen';
 import display from '@ohos.display';
@@ -44,7 +44,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_NotAppWin_Callback', 0, async (done: Function) => {
+    it('testSetWindowBrightness_NotAppWin_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowBrightness_NotAppWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -90,7 +90,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_NotAppWin_Promise', 0, async () => {
+    it('testSetWindowBrightness_NotAppWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowBrightness_NotAppWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -128,7 +128,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_MainWin_DefaultValue_Promise', 0, async () => {
+    it('testSetWindowBrightness_MainWin_DefaultValue_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowBrightness_MainWin_DefaultValue_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -155,7 +155,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_MainWin_DefaultValue_Callback', 0, async (done: Function) => {
+    it('testSetWindowBrightness_MainWin_DefaultValue_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowBrightness_NotAppWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -188,7 +188,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_SubWin_DefaultValue_Callback', 0, async (done: Function) => {
+    it('testSetWindowBrightness_SubWin_DefaultValue_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowBrightness_SubWin_DefaultValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -229,7 +229,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_SubWin_DefaultValue_Promise', 0, async () => {
+    it('testSetWindowBrightness_SubWin_DefaultValue_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowBrightness_SubWin_DefaultValue_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -262,7 +262,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_FullScreen_Promise', 0, async () => {
+    it('testResize_FullScreen_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_FullScreen_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -307,7 +307,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResizeAsync_FullScreen', 0, async () => {
+    it('testResizeAsync_FullScreen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResizeAsync_FullScreen';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -361,7 +361,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowToAsync_FullScreen', 0, async () => {
+    it('testMoveWindowToAsync_FullScreen', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowToAsync_FullScreen';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -416,7 +416,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_Max_Value_Promise', 0, async () => {
+    it('testSetAspectRatio_Max_Value_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_Max_Value_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -443,7 +443,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_Max_Value_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_Max_Value_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetAspectRatio_Max_Value_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -477,7 +477,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_Min_Value_Promise', 0, async () => {
+    it('testSetAspectRatio_Min_Value_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_Min_Value_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -505,7 +505,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_Minus_Min_Value_Promise', 0, async () => {
+    it('testSetAspectRatio_Minus_Min_Value_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_Minus_Min_Value_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -533,7 +533,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_Min_Value_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_Min_Value_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetAspectRatio_Min_Value_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -567,7 +567,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_Minus_Min_Value_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_Minus_Min_Value_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetAspectRatio_Minus_Min_Value_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -601,7 +601,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_Dialog_SetLessThenWindowLimits', 0, async () => {
+    it('testResize_Dialog_SetLessThenWindowLimits', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_Dialog_SetLessThenWindowLimits';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -649,7 +649,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetPreferredOrientation_AutoRotationUnspecified', 0, async () => {
+    it('testGetPreferredOrientation_AutoRotationUnspecified', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName: string = 'testGetPreferredOrientation_AutoRotationUnspecified';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -685,7 +685,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetPreferredOrientation_UserRotationPortrait', 0, async () => {
+    it('testGetPreferredOrientation_UserRotationPortrait', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName: string = 'testGetPreferredOrientation_UserRotationPortrait';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -721,7 +721,7 @@ export default function windowVerificationProblemTest(context: common.UIAbilityC
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetPreferredOrientation_WindowAbnormal', 0, async () => {
+    it('testGetPreferredOrientation_WindowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName: string = 'testGetPreferredOrientation_WindowAbnormal';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

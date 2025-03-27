@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOMoveFile() {
   describe('fileIO_fs_moveFile', function () {
@@ -30,7 +31,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_000', 0, async function () {
+  it('fileIO_test_moveFile_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_moveFile_sync_000');
     let fpath = dpath + '/file_000.txt';
     let ddpath = dpath + '/dir_000';
@@ -60,7 +61,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_001', 0, async function () {
+  it('fileIO_test_moveFile_sync_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_moveFile_sync_001');
     let fpath = dpath + '/file_001.txt';
     let ddpath = dpath + '/dir_001';
@@ -90,7 +91,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_002', 0, async function () {
+  it('fileIO_test_moveFile_sync_002', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_moveFile_sync_002');
     let fpath = dpath + '/file_002.txt';
     let ddpath = dpath + '/dir_002';
@@ -118,7 +119,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_004', 0, async function () {
+  it('fileIO_test_moveFile_sync_004', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_moveFile_sync_004');
     let ddpath = dpath + '/dir_003';
     fileIO.mkdirSync(dpath);
@@ -143,7 +144,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_005', 0, async function () {
+  it('fileIO_test_moveFile_sync_005', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_moveFile_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -167,7 +168,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_006', 0, async function () {
+  it('fileIO_test_moveFile_sync_006', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_moveFile_sync_006');
     let fpath = dpath + '/file_004.txt';
     let ddpath = dpath + '/dir_004';
@@ -198,7 +199,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_sync_007', 3, async function () {
+  it('fileIO_test_moveFile_sync_007', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_moveFile_sync_007');
     let fpath = dpath + '/file_015.txt';
     let ddpath = dpath + '/dir_015';
@@ -228,7 +229,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_000', 0, async function (done) {
+  it('fileIO_test_moveFile_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_000');
     let fpath = dpath + '/file_005.txt';
     let ddpath = dpath + '/dir_005';
@@ -259,7 +260,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_001', 0, async function (done) {
+  it('fileIO_test_moveFile_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_001');
     let fpath = dpath + '/file_006.txt';
     let ddpath = dpath + '/dir_006';
@@ -295,7 +296,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_002', 0, async function (done) {
+  it('fileIO_test_moveFile_async_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_002');
     let fpath = dpath + '/file_007.txt';
     let ddpath = dpath + '/dir_007';
@@ -326,7 +327,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_003', 0, async function (done) {
+  it('fileIO_test_moveFile_async_003', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_003');
     let fpath = dpath + '/file_008.txt';
     let ddpath = dpath + '/dir_008';
@@ -361,7 +362,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_004', 0, async function (done) {
+  it('fileIO_test_moveFile_async_004', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_004');
     let fpath = dpath + '/file_009.txt';
     let ddpath = dpath + '/dir_009';
@@ -390,7 +391,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_005', 0, async function (done) {
+  it('fileIO_test_moveFile_async_005', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_005');
     let fpath = dpath + '/file_010.txt';
     let ddpath = dpath + '/dir_010';
@@ -423,7 +424,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_006', 0, async function (done) {
+  it('fileIO_test_moveFile_async_006', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_006');
     let ddpath = dpath + '/dir_011';
     fileIO.mkdirSync(dpath);
@@ -449,7 +450,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_007', 0, async function (done) {
+  it('fileIO_test_moveFile_async_007', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_007');
     let ddpath = dpath + '/dir_012';
     fileIO.mkdirSync(dpath);
@@ -479,7 +480,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_008', 0, async function (done) {
+  it('fileIO_test_moveFile_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_moveFile_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -504,7 +505,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_009', 0, async function (done) {
+  it('fileIO_test_moveFile_async_009', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_009');
     let fpath = dpath + '/file_013.txt';
     let ddpath = dpath + '/dir_013';
@@ -536,7 +537,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_010', 0, async function (done) {
+  it('fileIO_test_moveFile_async_010', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_010');
     let fpath = dpath + '/file_014.txt';
     let ddpath = dpath + '/dir_014';
@@ -573,7 +574,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_011', 3, async function (done) {
+  it('fileIO_test_moveFile_async_011', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_011');
     let fpath = dpath + '/file_016.txt';
     let ddpath = dpath + '/dir_016';
@@ -605,7 +606,7 @@ export default function fileIOMoveFile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_moveFile_async_012', 3, async function (done) {
+  it('fileIO_test_moveFile_async_012', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_moveFile_async_012');
     let fpath = dpath + '/file_017.txt';
     let ddpath = dpath + '/dir_017';

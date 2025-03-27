@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
@@ -55,7 +55,7 @@ export default function drawingTsCanvasPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasRestoreToCountNormal', DEFAULT, () => {
+    it('testCanvasRestoreToCountNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasRestoreToCountNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -101,7 +101,7 @@ export default function drawingTsCanvasPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasRestoreToCountNull', DEFAULT, () => {
+    it('testCanvasRestoreToCountNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasRestoreToCountNull';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -129,7 +129,7 @@ export default function drawingTsCanvasPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasRestoreToCountMultipleCalls', DEFAULT, () => {
+    it('testCanvasRestoreToCountMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasRestoreToCountMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -152,7 +152,7 @@ export default function drawingTsCanvasPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasRestoreNormal', DEFAULT, () => {
+    it('testCanvasRestoreNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCanvasRestoreNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -174,7 +174,7 @@ export default function drawingTsCanvasPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasRestoreMultipleCalls', DEFAULT, () => {
+    it('testCanvasRestoreMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasRestoreMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -205,7 +205,7 @@ export default function drawingTsCanvasPart3Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasRestoreWhenNoSave', DEFAULT, () => {
+    it('testCanvasRestoreWhenNoSave', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCanvasRestoreWhenNoSave';
       try {
         const canvas = new drawing.Canvas(pixel);

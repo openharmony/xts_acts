@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,7 @@ import usbManager from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import EventConstants from './EventConstants.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
 export default function UsbApiTransferCompatJsunitTest() {
@@ -25,7 +25,6 @@ describe('UsbApiTransferCompatJsunitTest', function () {
 
     const TAG = "[UsbApiTransferCompatJsunitTest]";
     const PARAM_NULLSTRING = "";
-    const PARAM_ERRCODE = 401;
     let gDeviceList;
     let devices;
     let testParam;
@@ -232,7 +231,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat001', 0, async function () {
+    it('testBulkTransferCompat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -267,7 +266,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat002', 0, async function () {
+    it('testBulkTransferCompat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -302,7 +301,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat003', 0, async function () {
+    it('testBulkTransferCompat003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -337,7 +336,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat004', 0, async function () {
+    it('testBulkTransferCompat004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -372,7 +371,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat005', 0, async function () {
+    it('testBulkTransferCompat005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -407,7 +406,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat006', 0, async function () {
+    it('testBulkTransferCompat006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -442,7 +441,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat007', 0, async function () {
+    it('testBulkTransferCompat007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -477,7 +476,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat008', 0, async function () {
+    it('testBulkTransferCompat008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -512,7 +511,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat009', 0, async function () {
+    it('testBulkTransferCompat009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -547,7 +546,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat010', 0, async function () {
+    it('testBulkTransferCompat010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -582,7 +581,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat011', 0, async function () {
+    it('testBulkTransferCompat011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -617,7 +616,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat012', 0, async function () {
+    it('testBulkTransferCompat012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -652,7 +651,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat013', 0, async function () {
+    it('testBulkTransferCompat013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -687,7 +686,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat014', 0, async function () {
+    it('testBulkTransferCompat014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -722,7 +721,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat015', 0, async function () {
+    it('testBulkTransferCompat015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -757,7 +756,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat016', 0, async function () {
+    it('testBulkTransferCompat016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -792,7 +791,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat017', 0, async function () {
+    it('testBulkTransferCompat017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -816,7 +815,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
             })
         } catch (err) {
             console.info(TAG, 'usb testBulkTransferCompat017 send error : ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
         toReleaseInterface('testBulkTransferCompat017');
     })
@@ -829,7 +828,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat018', 0, async function () {
+    it('testBulkTransferCompat018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -853,7 +852,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
             })
         } catch (err) {
             console.info(TAG, 'usb testBulkTransferCompat018 send error : ', err.code, ', message: ', err.message);
-            expect(err.code).assertEqual(PARAM_ERRCODE);
+            expect(err.code).assertEqual(401);
         }
         toReleaseInterface('testBulkTransferCompat018');
     })
@@ -866,7 +865,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat019', 0, async function () {
+    it('testBulkTransferCompat019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -901,7 +900,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat020', 0, async function () {
+    it('testBulkTransferCompat020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -936,7 +935,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat021', 0, async function () {
+    it('testBulkTransferCompat021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -971,7 +970,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testBulkTransferCompat022', 0, async function () {
+    it('testBulkTransferCompat022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testBulkTransferCompat022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1007,7 +1006,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-     it('testUsbControlTransferCompat001', 0, async function () {
+     it('testUsbControlTransferCompat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testUsbControlTransferCompat001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1021,7 +1020,7 @@ describe('UsbApiTransferCompatJsunitTest', function () {
             return
         }
 
-        let requestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), 0, 18);
+        let requestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
         let timeout = 5000;
 
         await usbManager.usbControlTransfer(testParam.pip, requestparam, timeout, testParam.pip).then(data => {
@@ -1031,6 +1030,41 @@ describe('UsbApiTransferCompatJsunitTest', function () {
         }).catch (error => {
             console.info(TAG, 'usb testUsbControlTransferCompat001 send error : ' + JSON.stringify(error));
             expect(error !== null).assertFalse();
+        });
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibilityErr_3200
+     * @tc.name     : testUsbControlTransferCompat801Err001
+     * @tc.desc     : Negative test: Enter four parameters
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbControlTransferCompat801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+        console.info(TAG, 'usb testUsbControlTransferCompat801Err001 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.inEndpoint == null).assertFalse();
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        let requestparam = getControlTransferParam(0x80, 0x60, (0x01 << 8 | 0), TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, 18);
+        let timeout = 5000;
+
+        await usbManager.usbControlTransfer(testParam.pip, requestparam, timeout, testParam.pip).then(data => {
+            console.info(TAG, 'usb [Enter four parameters] usbControlTransfer data: ' + data);
+            console.info(TAG, 'usb [Enter four parameters] usbControlTransfer buffer data: ' + requestparam.data);
+            expect(data >= 0).assertTrue();
+        }).catch (error => {
+            console.info(TAG, 'usb testUsbControlTransferCompat801Err001 send error : ' + JSON.stringify(error));
+            expect(err.code).assertEqual(801);
         });
     })
 

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from "@ohos/hypium"
+import { describe, it, expect, afterEach, TestType, Size, Level } from "@ohos/hypium"
 import { worker } from "@kit.ArkTS";
 import { Sleep } from "./utils/utils";
 import { harAbsolutePathLoadWorker, harRelativePathLoadWorker, } from "har";
@@ -35,7 +35,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap01', 0, async () => {
+    it('testWorkerLoadingInHap01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHap01";
       try {
         let state: boolean = false;
@@ -66,7 +66,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap02', 0, async () => {
+    it('testWorkerLoadingInHap02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHap02";
       try {
         let state: boolean = false;
@@ -97,7 +97,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap03', 0, async () => {
+    it('testWorkerLoadingInHap03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHap03";
       try {
         let state: boolean = false;
@@ -128,7 +128,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap04', 0, async () => {
+    it('testWorkerLoadingInHap04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHap04";
       try {
         let state: boolean = false;
@@ -159,7 +159,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testWorkerLoadingInHar01", 0, async () => {
+    it("testWorkerLoadingInHar01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHar01";
       try {
         let res = false;
@@ -178,7 +178,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHar02', 0, async () => {
+    it('testWorkerLoadingInHar02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHar02";
       try {
         let res = false;
@@ -198,7 +198,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHsp01', 0, async () => {
+    it('testWorkerLoadingInHsp01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHsp01";
       try {
         let res = false;
@@ -218,7 +218,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHsp02', 0, async () => {
+    it('testWorkerLoadingInHsp02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHsp02";
       try {
         let res = false;
@@ -238,7 +238,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHsp03', 0, async () => {
+    it('testWorkerLoadingInHsp03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const caseName: string = "testWorkerLoadingInHsp03";
       try {
         let res = false;

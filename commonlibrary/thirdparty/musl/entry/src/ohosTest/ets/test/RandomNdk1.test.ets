@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import random from 'librandomndk1.so'
 
@@ -32,7 +32,7 @@ export default function muslRandomNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslRandomGetrandom001', 0, async (done: Function) => {
+    it('testMuslRandomGetrandom001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(random.getrandom()).assertEqual(0)
       done()
     });

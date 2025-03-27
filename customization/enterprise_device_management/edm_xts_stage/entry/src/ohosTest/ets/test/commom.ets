@@ -16,10 +16,12 @@
 import Want from '@ohos.app.ability.Want'
 import { BusinessError } from '@ohos.base';
 import installer from '@ohos.bundle.installer';
+import accountManager from '@ohos.enterprise.accountManager';
 import adminManager from '@ohos.enterprise.adminManager'
 import bundleManager from '@ohos.enterprise.bundleManager'
 import securityManager from '@ohos.enterprise.securityManager'
 import image from '@ohos.multimedia.image';
+import osAccount from '@ohos.account.osAccount';
 
 const BUNDLENAME1: string = "com.example.extensionzerotest"
 const ENTINFO1: adminManager.EnterpriseInfo = {
@@ -97,6 +99,7 @@ const TEST_POLICY_NAME: string = "test_policy_name";
 const TEST_POLICY_VALUE: string = "\"test_policy_value\"";
 const TEST_TOKEN_ID: number = 123;
 const TEST_CLIPBOARD_POLICY = securityManager.ClipboardPolicy.IN_APP;
+const INVALID_BUNDLE_NAME: string = "com.test.test";
 
 const EDM_INSTALL_PARAM : bundleManager.InstallParam = {
   userId: 100,
@@ -138,8 +141,24 @@ function getPixelMap() {
   })
 }
 
+function getCurrentUserId() {
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountLocalId((err: BusinessError, localId: number) => {
+      if (err) {
+        console.log('getOsAccountLocalId failed, error: ' + JSON.stringify(err));
+      } else {
+        CURRENT_USER_ID = localId;
+      }
+    });
+  } catch (err) {
+    console.log('getOsAccountLocalId exception: ' + JSON.stringify(err));
+  }
+}
+
 let PIXEL_MAP: image.PixelMap;
 const WATERMARK_BUNDLE_NAME = "testBundleName";
+let CURRENT_USER_ID: number = 100;
 
 let PARAMETERS_LOWER_BOUND: Record<string, string> = {
   "activateId" : "12345678901234567890123456789012"
@@ -153,6 +172,18 @@ let INVALID_PARAMETERS: Record<string, string> = {
   "invalidKey" : "123456"
 }
 
+const DOMAIN_ACCOUNT_INFO1: osAccount.DomainAccountInfo = {
+  domain: '',
+  accountName: '',
+  serverConfigId: '',
+};
+
+const DOMAIN_ACCOUNT_POLICY1: accountManager.DomainAccountPolicy = {
+  authenticationValidityPeriod: 120,
+  passwordValidityPeriod: 90,
+  passwordExpirationNotification: 60,
+};
+
 export {
   BUNDLENAME1, ENTINFO1, SELFWANT, AUTOSTARTAPP1, AUTOSTARTAPP2, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
   ENTINFO2, NETWORK_ETH_LOCAL, NETWORK_ETH_INVALID, DEFAULT_USER_ID, INVALID_USER_ID,
@@ -161,5 +192,6 @@ export {
   APP_IDS_200, APP_IDS_201, TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE,
   INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION, getPixelMap,
   PIXEL_MAP, WATERMARK_BUNDLE_NAME, TEST_BUNDLENAME, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS,
-  INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND
+  INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND,INVALID_BUNDLE_NAME, CURRENT_USER_ID, getCurrentUserId,
+  DOMAIN_ACCOUNT_INFO1, DOMAIN_ACCOUNT_POLICY1
 }

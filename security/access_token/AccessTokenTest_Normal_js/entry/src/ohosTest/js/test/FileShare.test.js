@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import fileShare from '@ohos.fileshare';
 import bundleManager from '@ohos.bundle.bundleManager'
 
@@ -66,10 +66,10 @@ export default function FileShareJsTest() {
          * @tc.name: Test fileShare checkPath abnormal scene
          * @tc.desc: Test checkPathPermission no system 202
          * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_FileShare_CheckPath_Abnormal_0100", 0, function (done) {
+        it("SUB_Security_FileShare_CheckPath_Abnormal_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------SUB_Security_FileShare_CheckPath_Abnormal_0100---------------------------');
             try {
                 let PathPolicyInfo = {
@@ -97,10 +97,10 @@ export default function FileShareJsTest() {
          * @tc.name: Test fileShare checkPath TEMPORARY_TYPE Const Attribute
          * @tc.desc: Test fileShare PolicyType const TEMPORARY_TYPE
          * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_FileShare_CheckPath_Const_0100", 0, function (done) {
+        it("SUB_Security_FileShare_CheckPath_Const_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------SUB_Security_FileShare_CheckPath_Const_0100---------------------------');
             let value = fileShare.PolicyType.TEMPORARY_TYPE;
             console.info('SUB_Security_FileShare_CheckPath_Const_0100 value is: ' + value);
@@ -113,10 +113,10 @@ export default function FileShareJsTest() {
          * @tc.name: Test fileShare checkPath PERSISTENT_TYPE Const Attribute
          * @tc.desc: Test fileShare PolicyType const PERSISTENT_TYPE
          * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_FileShare_CheckPath_Const_0200", 0, function (done) {
+        it("SUB_Security_FileShare_CheckPath_Const_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------SUB_Security_FileShare_CheckPath_Const_0200---------------------------');
             let value = fileShare.PolicyType.PERSISTENT_TYPE;
             console.info('SUB_Security_FileShare_CheckPath_Const_0200 value is: ' + value);

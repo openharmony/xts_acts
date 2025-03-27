@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function webJsunit() {
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_008
      *tc.name onProgressChange                                                                                                                                                                                                                    *tc.desic Triggered when the page loading progress changes
      */
-    it('onProgressChange', 0, async (done: Function) => {
+    it('onProgressChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnProgressChange";
       Utils.registerEvent("onProgressChange", "100", 114, done);
       sendEventByKey('webcomponent', 10, '');

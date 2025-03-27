@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size } from '@ohos/hypium'
 import eglndk from 'libentry.so'
 
 export default function libEglNdkTest() {
@@ -26,7 +26,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglChooseConfig001', 0, async (done: Function) => {
+    it('testEglChooseConfig001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglChooseConfig();
       expect(result).assertEqual(1);
       done();
@@ -40,7 +40,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglChooseConfig002', 0, async (done: Function) => {
+    it('testEglChooseConfig002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglChooseConfigAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -54,7 +54,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCopyBuffers001', 0, async (done: Function) => {
+    it('testEglCopyBuffers001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCopyBuffersAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -68,7 +68,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateContext001', 0, async (done: Function) => {
+    it('testEglCreateContext001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateContext();
       expect(result).assertEqual(1);
       done();
@@ -82,7 +82,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateContext002', 0, async (done: Function) => {
+    it('testEglCreateContext002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateContextAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -96,7 +96,8 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreatePbufferSurface001', 0, async (done: Function) => {
+    it('testEglCreatePbufferSurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = eglndk.eglCreatePbufferSurface();
       expect(result).assertEqual(1);
       done();
@@ -110,7 +111,8 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreatePbufferSurface002', 0, async (done: Function) => {
+    it('testEglCreatePbufferSurface002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = eglndk.eglCreatePbufferSurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -124,7 +126,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreatePixmapSurface001', 0, async (done: Function) => {
+    it('testEglCreatePixmapSurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreatePixmapSurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -138,7 +140,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateWindowSurface001', 0, async (done: Function) => {
+    it('testEglCreateWindowSurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateWindowSurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -152,7 +154,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroyContext001', 0, async (done: Function) => {
+    it('testEglDestroyContext001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroyContext();
       expect(result).assertEqual(1);
       done();
@@ -166,7 +168,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroyContext002', 0, async (done: Function) => {
+    it('testEglDestroyContext002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroyContextAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -180,7 +182,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroySurface001', 0, async (done: Function) => {
+    it('testEglDestroySurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroySurface();
       expect(result).assertEqual(1);
       done();
@@ -194,7 +196,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroySurface002', 0, async (done: Function) => {
+    it('testEglDestroySurface002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroySurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -208,7 +210,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetConfigAttrib001', 0, async (done: Function) => {
+    it('testEglGetConfigAttrib001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetConfigAttrib();
       expect(result).assertEqual(1);
       done();
@@ -222,7 +224,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetConfigAttrib002', 0, async (done: Function) => {
+    it('testEglGetConfigAttrib002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetConfigAttribAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -236,7 +238,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetConfigs001', 0, async (done: Function) => {
+    it('testEglGetConfigs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetConfigs();
       expect(result).assertEqual(1);
       done();
@@ -250,7 +252,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetConfigs002', 0, async (done: Function) => {
+    it('testEglGetConfigs002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetConfigsAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -264,7 +266,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetCurrentDisplay001', 0, async (done: Function) => {
+    it('testEglGetCurrentDisplay001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetCurrentDisplay();
       expect(result).assertEqual(1);
       done();
@@ -278,7 +280,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetCurrentDisplay002', 0, async (done: Function) => {
+    it('testEglGetCurrentDisplay002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetCurrentDisplayAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -292,7 +294,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetCurrentSurface001', 0, async (done: Function) => {
+    it('testEglGetCurrentSurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetCurrentSurface();
       expect(result).assertEqual(1);
       done();
@@ -306,7 +308,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetCurrentSurface002', 0, async (done: Function) => {
+    it('testEglGetCurrentSurface002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetCurrentSurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -320,7 +322,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetDisplay001', 0, async (done: Function) => {
+    it('testEglGetDisplay001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetDisplay();
       expect(result).assertEqual(1);
       done();
@@ -334,7 +336,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetError001', 0, async (done: Function) => {
+    it('testEglGetError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetError();
       expect(result).assertEqual(1);
       done();
@@ -349,7 +351,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetProcAddress001', 0, async (done: Function) => {
+    it('testEglGetProcAddress001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetProcAddress();
       expect(result).assertEqual(1);
       done();
@@ -363,7 +365,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetProcAddress002', 0, async (done: Function) => {
+    it('testEglGetProcAddress002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetProcAddressAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -377,7 +379,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglInitialize001', 0, async (done: Function) => {
+    it('testEglInitialize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglInitialize();
       expect(result).assertEqual(1);
       done();
@@ -391,7 +393,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglInitialize002', 0, async (done: Function) => {
+    it('testEglInitialize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglInitializeAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -405,7 +407,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglMakeCurrent001', 0, async (done: Function) => {
+    it('testEglMakeCurrent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglMakeCurrent();
       expect(result).assertEqual(1);
       done();
@@ -419,7 +421,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglMakeCurrent002', 0, async (done: Function) => {
+    it('testEglMakeCurrent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglMakeCurrentAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -433,7 +435,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQueryContext001', 0, async (done: Function) => {
+    it('testEglQueryContext001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQueryContext();
       expect(result).assertEqual(1);
       done();
@@ -447,7 +449,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQueryContext002', 0, async (done: Function) => {
+    it('testEglQueryContext002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQueryContextAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -461,7 +463,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQueryString001', 0, async (done: Function) => {
+    it('testEglQueryString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQueryString();
       expect(result).assertEqual(1);
       done();
@@ -475,7 +477,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQueryString002', 0, async (done: Function) => {
+    it('testEglQueryString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQueryStringAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -489,7 +491,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQuerySurface001', 0, async (done: Function) => {
+    it('testEglQuerySurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQuerySurface();
       expect(result).assertEqual(1);
       done();
@@ -503,7 +505,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQuerySurface002', 0, async (done: Function) => {
+    it('testEglQuerySurface002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQuerySurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -517,7 +519,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglSwapBuffers001', 0, async (done: Function) => {
+    it('testEglSwapBuffers001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglSwapBuffers();
       expect(result).assertEqual(1);
       done();
@@ -531,7 +533,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglSwapBuffers002', 0, async (done: Function) => {
+    it('testEglSwapBuffers002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglSwapBuffersAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -545,7 +547,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglTerminate001', 0, async (done: Function) => {
+    it('testEglTerminate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglTerminate();
       expect(result).assertEqual(1);
       done();
@@ -559,7 +561,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglTerminate002', 0, async (done: Function) => {
+    it('testEglTerminate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglTerminateAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -573,7 +575,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglWaitGL001', 0, async (done: Function) => {
+    it('testEglWaitGL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglWaitGL();
       expect(result).assertEqual(1);
       done();
@@ -587,7 +589,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglWaitNative001', 0, async (done: Function) => {
+    it('testEglWaitNative001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglWaitNative();
       expect(result).assertEqual(1);
       done();
@@ -602,7 +604,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglBindTexImage001', 0, async (done: Function) => {
+    it('testEglBindTexImage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglBindTexImage();
       expect(result).assertEqual(1);
       done();
@@ -616,7 +618,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglBindTexImage002', 0, async (done: Function) => {
+    it('testEglBindTexImage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglBindTexImageAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -630,7 +632,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglReleaseTexImage001', 0, async (done: Function) => {
+    it('testEglReleaseTexImage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglReleaseTexImage();
       expect(result).assertEqual(1);
       done();
@@ -644,7 +646,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglReleaseTexImage002', 0, async (done: Function) => {
+    it('testEglReleaseTexImage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglReleaseTexImageAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -658,7 +660,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglSurfaceAttrib001', 0, async (done: Function) => {
+    it('testEglSurfaceAttrib001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglSurfaceAttrib();
       expect(result).assertEqual(1);
       done();
@@ -672,7 +674,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglSurfaceAttrib002', 0, async (done: Function) => {
+    it('testEglSurfaceAttrib002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglSurfaceAttribAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -695,7 +697,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglSwapInterval002', 0, async (done: Function) => {
+    it('testEglSwapInterval002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglSwapIntervalAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -709,7 +711,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglBindAPI001', 0, async (done: Function) => {
+    it('testEglBindAPI001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglBindAPI();
       expect(result).assertEqual(1);
       done();
@@ -723,7 +725,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglBindAPI002', 0, async (done: Function) => {
+    it('testEglBindAPI002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglBindAPIAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -737,7 +739,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglQueryAPI001', 0, async (done: Function) => {
+    it('testEglQueryAPI001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglQueryAPI();
       expect(result).assertEqual(1);
       done();
@@ -751,7 +753,8 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreatePbufferFromClientBuffer001', 0, async (done: Function) => {
+    it('testEglCreatePbufferFromClientBuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = eglndk.eglCreatePbufferFromClientBufferAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -765,7 +768,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglReleaseThread001', 0, async (done: Function) => {
+    it('testEglReleaseThread001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglReleaseThread();
       expect(result).assertEqual(1);
       done();
@@ -779,7 +782,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglWaitClient001', 0, async (done: Function) => {
+    it('testEglWaitClient001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglWaitClient();
       expect(result).assertEqual(1);
       done();
@@ -793,7 +796,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetCurrentContext001', 0, async (done: Function) => {
+    it('testEglGetCurrentContext001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetCurrentContext();
       expect(result).assertEqual(1);
       done();
@@ -807,7 +810,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateSync001', 0, async (done: Function) => {
+    it('testEglCreateSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateSync();
       expect(result).assertEqual(1);
       done();
@@ -821,7 +824,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateSync002', 0, async (done: Function) => {
+    it('testEglCreateSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateSyncAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -835,7 +838,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroySync001', 0, async (done: Function) => {
+    it('testEglDestroySync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroySync();
       expect(result).assertEqual(1);
       done();
@@ -849,7 +852,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroySync002', 0, async (done: Function) => {
+    it('testEglDestroySync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroySyncAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -863,7 +866,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglClientWaitSync001', 0, async (done: Function) => {
+    it('testEglClientWaitSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglClientWaitSync();
       expect(result).assertEqual(1);
       done();
@@ -877,7 +880,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglClientWaitSync002', 0, async (done: Function) => {
+    it('testEglClientWaitSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglClientWaitSyncAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -891,7 +894,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetSyncAttrib001', 0, async (done: Function) => {
+    it('testEglGetSyncAttrib001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetSyncAttrib();
       expect(result).assertEqual(1);
       done();
@@ -905,7 +908,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetSyncAttrib002', 0, async (done: Function) => {
+    it('testEglGetSyncAttrib002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetSyncAttribAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -919,7 +922,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateImage001', 0, async (done: Function) => {
+    it('testEglCreateImage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateImage();
       expect(result).assertEqual(1);
       done();
@@ -933,7 +936,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreateImage002', 0, async (done: Function) => {
+    it('testEglCreateImage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglCreateImageAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -947,7 +950,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroyImage001', 0, async (done: Function) => {
+    it('testEglDestroyImage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroyImage();
       expect(result).assertEqual(1);
       done();
@@ -961,7 +964,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglDestroyImage002', 0, async (done: Function) => {
+    it('testEglDestroyImage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglDestroyImageAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -975,7 +978,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetPlatformDisplay001', 0, async (done: Function) => {
+    it('testEglGetPlatformDisplay001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetPlatformDisplay();
       expect(result).assertEqual(1);
       done();
@@ -989,7 +992,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglGetPlatformDisplay002', 0, async (done: Function) => {
+    it('testEglGetPlatformDisplay002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglGetPlatformDisplayAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -1003,7 +1006,8 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreatePlatformWindowSurface001', 0, async (done: Function) => {
+    it('testEglCreatePlatformWindowSurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = eglndk.eglCreatePlatformWindowSurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -1017,7 +1021,8 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglCreatePlatformPixmapSurface001', 0, async (done: Function) => {
+    it('testEglCreatePlatformPixmapSurface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = eglndk.eglCreatePlatformPixmapSurfaceAbnormal();
       expect(result).assertEqual(1);
       done();
@@ -1031,7 +1036,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglWaitSync001', 0, async (done: Function) => {
+    it('testEglWaitSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglWaitSync();
       expect(result).assertEqual(1);
       done();
@@ -1045,7 +1050,7 @@ export default function libEglNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEglWaitSync002', 0, async (done: Function) => {
+    it('testEglWaitSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = eglndk.eglWaitSyncAbnormal();
       expect(result).assertEqual(1);
       done();

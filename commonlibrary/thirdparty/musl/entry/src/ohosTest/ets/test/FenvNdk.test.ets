@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import fenvndk from 'libfenvndk.so'
 
@@ -32,7 +32,7 @@ export default function fenvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFEnvFeTestExcept001', 0, async (done: Function) => {
+    it('testMuslFEnvFeTestExcept001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0;
       let data: number = fenvndk.fetestexcept(a);
       expect(data).assertEqual(0);
@@ -47,7 +47,7 @@ export default function fenvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFEnvFeSetRound001', 0, async (done: Function) => {
+    it('testMuslFEnvFeSetRound001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0x800000;
       let data: number = fenvndk.fesetround(a);
       expect(data).assertEqual(0);
@@ -62,7 +62,7 @@ export default function fenvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFEnvFeSetExceptFlag001', 0, async (done: Function) => {
+    it('testMuslFEnvFeSetExceptFlag001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let data: number = fenvndk.fesetexceptflag(a);
       expect(data).assertEqual(0);
@@ -77,7 +77,7 @@ export default function fenvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFEnvFeRaiseExcept001', 0, async (done: Function) => {
+    it('testMuslFEnvFeRaiseExcept001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1;
       let data: number = fenvndk.feraiseexcept(a);
       expect(data).assertEqual(0);
@@ -92,7 +92,7 @@ export default function fenvNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFEnvFeClearExcept001', 0, async (done: Function) => {
+    it('testMuslFEnvFeClearExcept001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 0;
       let data: number = fenvndk.feclearexcept(a);
       expect(data).assertEqual(0);

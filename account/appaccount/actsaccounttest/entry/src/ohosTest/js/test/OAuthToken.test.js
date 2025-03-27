@@ -15,7 +15,7 @@
 
 import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const LENGTHLIMIT = 512;
 const TOKENLENGTHLIMIT = 1024;
@@ -36,7 +36,7 @@ export default function ActsAccountOAuthToken() {
         */
 
 
-        it('ActsAccountOAuthToken_9100', 0, async function (done) {
+        it('ActsAccountOAuthToken_9100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_9100 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_tokenTest_name",(err,)=>{
@@ -90,7 +90,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_9000', 0, async function (done) {
+        it('ActsAccountOAuthToken_9000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_9000 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_tokenTest_name",(err,)=>{
@@ -150,7 +150,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_7100', 0, async function (done) {
+        it('ActsAccountOAuthToken_7100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_7100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_7100 addAccount start====");
@@ -207,7 +207,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_7200', 0, async function (done) {
+        it('ActsAccountOAuthToken_7200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_7200 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_tokenTest_name",(err,)=>{
@@ -238,7 +238,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_7300', 0, async function (done) {
+        it('ActsAccountOAuthToken_7300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_7300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_7300 addAccount start====");
@@ -284,7 +284,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_7400', 0, async function (done) {
+        it('ActsAccountOAuthToken_7400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             var limitAuthType = '';
             for(var i = 0;i < AUTHTYPELENGTHLIMIT + 1; i++){
                 limitAuthType += 'c';
@@ -313,7 +313,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_7500', 0, async function (done) {
+        it('ActsAccountOAuthToken_7500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             var limitAuthType = '';
             for(var i = 0;i < AUTHTYPELENGTHLIMIT + 1; i++){
                 limitAuthType += 'c';
@@ -338,7 +338,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_7600', 0, async function (done) {
+        it('ActsAccountOAuthToken_7600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             var limitAuthType = '';
             for(var i = 0;i < AUTHTYPELENGTHLIMIT; i++){
                 limitAuthType += 'c';
@@ -366,7 +366,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_7700', 0, async function (done) {
+        it('ActsAccountOAuthToken_7700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             var limitAuthType = '';
             for(var i = 0;i < AUTHTYPELENGTHLIMIT; i++){
                 limitAuthType += 'c';
@@ -388,7 +388,7 @@ export default function ActsAccountOAuthToken() {
 
 
         
-        it('ActsAccountOAuthToken_7800', 0, async function (done) {
+        it('ActsAccountOAuthToken_7800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_7800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_7800 addAccount start====");
@@ -418,7 +418,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_7900', 0, async function (done) {
+        it('ActsAccountOAuthToken_7900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_7900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_7900 addAccount start====");
@@ -437,7 +437,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_8000', 0, async function (done) {
+        it('ActsAccountOAuthToken_8000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_8000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_8000 addAccount start====");
@@ -475,7 +475,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-    it('ActsAccountOAuthToken_8100', 0, async function (done) {
+    it('ActsAccountOAuthToken_8100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
         var limitName = '';
         for(var i = 0;i < LENGTHLIMIT + 1; i++){
             limitName += 'c';
@@ -494,7 +494,7 @@ export default function ActsAccountOAuthToken() {
         })
     });
     
-    it('ActsAccountOAuthToken_8200', 0, async function (done) {
+    it('ActsAccountOAuthToken_8200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("====>ActsAccountOAuthToken_8200 start====");
         var appAccountManager = account.createAppAccountManager();
         console.info("====>ActsAccountOAuthToken_8200 getAllOAuthTokens start====");
@@ -507,7 +507,7 @@ export default function ActsAccountOAuthToken() {
         });
     });
 
-        it('ActsAccountOAuthToken_8300', 0, async function (done) {
+        it('ActsAccountOAuthToken_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_8300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_8300 getAllOAuthTokens start====");
@@ -523,7 +523,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_8400', 0, async function (done) {
+        it('ActsAccountOAuthToken_8400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_8400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_8400 addAccount start====");
@@ -547,7 +547,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_8500', 0, async function (done) {
+        it('ActsAccountOAuthToken_8500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             var limitName = '';
             for(var i = 0;i < LENGTHLIMIT; i++){
                 limitName += 'c';
@@ -580,7 +580,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_8600', 0, async function (done) {
+        it('ActsAccountOAuthToken_8600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
             var limitOwner = '';
             for(var i = 0;i < OWNERLENGTHLIMIT + 1; i++){
                 limitOwner += 'c';
@@ -607,7 +607,7 @@ export default function ActsAccountOAuthToken() {
         });
         
 
-        it('ActsAccountOAuthToken_8700', 0, async function (done) {
+        it('ActsAccountOAuthToken_8700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_8700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_8700 addAccount start====");
@@ -630,7 +630,7 @@ export default function ActsAccountOAuthToken() {
         });
 
         
-        it('ActsAccountOAuthToken_8800', 0, async function (done) {
+        it('ActsAccountOAuthToken_8800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_8800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_8800 addAccount start====");
@@ -652,7 +652,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_8900', 0, async function (done) {
+        it('ActsAccountOAuthToken_8900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_8900 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_8900 addAccount start====");
@@ -677,7 +677,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_0100', 0, async function (done) {
+        it('ActsAccountOAuthToken_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0100 addAccount start====");
@@ -714,7 +714,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_0200', 0, async function (done) {
+        it('ActsAccountOAuthToken_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0200 addAccount start====");
@@ -740,7 +740,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_0300', 0, async function (done) {
+        it('ActsAccountOAuthToken_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0300 getOAuthToken start====");
@@ -762,7 +762,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_0400', 0, async function (done) {
+        it('ActsAccountOAuthToken_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0400 addAccount start====");
@@ -782,7 +782,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_0500', 0, async function (done) {
+        it('ActsAccountOAuthToken_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0500 getOAuthToken start====");
@@ -795,7 +795,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_0600', 0, async function (done) {
+        it('ActsAccountOAuthToken_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountOAuthToken_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0600 getOAuthToken start====");
@@ -811,7 +811,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_0700', 0, async function (done) {
+        it('ActsAccountOAuthToken_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0700 addAccount start====");
@@ -854,7 +854,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_0800', 0, async function (done) {
+        it('ActsAccountOAuthToken_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountOAuthToken_0800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_0800 addAccount start====");
@@ -879,7 +879,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_0900', 0, async function(done) {
+        it('ActsAccountOAuthToken_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.info("====>ActsAccountOAuthToken_0900 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_setDiff", (err)=>{
@@ -916,7 +916,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_1000', 0, async function(done) {
+        it('ActsAccountOAuthToken_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.info("====>ActsAccountOAuthToken_1000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_1000 addAccount start====");
@@ -947,7 +947,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_1100', 0, async function(done) {
+        it('ActsAccountOAuthToken_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.info("====>ActsAccountOAuthToken_1100 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_setDeleteGet", (err)=>{
@@ -1013,7 +1013,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_1200', 0, async function(done) {
+        it('ActsAccountOAuthToken_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.info("====>ActsAccountOAuthToken_1200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_1200 addAccount start====");
@@ -1098,7 +1098,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_1300', 0, async function(done) {
+        it('ActsAccountOAuthToken_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_1300 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_setDeleteGet", (err)=>{
@@ -1128,7 +1128,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_1400', 0, async function(done) {
+        it('ActsAccountOAuthToken_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_1400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_1400 addAccount start====");
@@ -1153,7 +1153,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_1500', 0, async function(done) {
+        it('ActsAccountOAuthToken_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.info("====>ActsAccountOAuthToken_1500 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.setOAuthToken("account_callback_accountNotExit","authType","account_callback_accountNotExit_token", (err)=>{
@@ -1164,7 +1164,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_1600', 0, async function(done) {
+        it('ActsAccountOAuthToken_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.info("====>ActsAccountOAuthToken_1600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>setOAuthToken ActsAccountOAuthToken_1600 start====");
@@ -1181,7 +1181,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_1700', 0, async function(done) {
+        it('ActsAccountOAuthToken_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_1700 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.deleteOAuthToken("account_callback_accountNotExit",OWNERSELF,"authType","account_callback_accountNotExit_token", (err)=>{
@@ -1192,7 +1192,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_1800', 0, async function(done) {
+        it('ActsAccountOAuthToken_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_1800 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>deleteOAuthToken ActsAccountOAuthToken_1800 start====");
@@ -1209,7 +1209,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_1900', 0, async function(done) {
+        it('ActsAccountOAuthToken_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_1900 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_repeatDelete", (err)=>{
@@ -1234,7 +1234,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2000', 0, async function(done) {
+        it('ActsAccountOAuthToken_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_2000 addAccount start====");
@@ -1258,7 +1258,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2100', 0, async function(done) {
+        it('ActsAccountOAuthToken_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2100 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_repeatDelete", (err)=>{
@@ -1297,7 +1297,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_2200', 0, async function(done) {
+        it('ActsAccountOAuthToken_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_2200 addAccount start====");
@@ -1328,7 +1328,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2300', 0, async function(done) {
+        it('ActsAccountOAuthToken_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2300 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_setEmptyToken", (err)=>{
@@ -1354,7 +1354,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2400', 0, async function(done) {
+        it('ActsAccountOAuthToken_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_2400 addAccount start====");
@@ -1377,7 +1377,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_2500', 0, async function(done) {
+        it('ActsAccountOAuthToken_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2500 start====");
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_callback_spaceToken", (err)=>{
@@ -1403,7 +1403,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2600', 0, async function(done) {
+        it('ActsAccountOAuthToken_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             console.info("====>ActsAccountOAuthToken_2600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>ActsAccountOAuthToken_2600 addAccount start====");
@@ -1421,7 +1421,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_2700', 0, async function(done) {
+        it('ActsAccountOAuthToken_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             var limitToken = '';
                 for (let i = 0; i < TOKENLENGTHLIMIT + 1; i++) {
                     limitToken += 't';
@@ -1445,7 +1445,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2800', 0, async function(done) {
+        it('ActsAccountOAuthToken_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function(done) {
             var limitToken = '';
                 for (let i = 0; i < TOKENLENGTHLIMIT + 1; i++) {
                     limitToken += 't';
@@ -1469,7 +1469,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_2900', 0, async function(done) {
+        it('ActsAccountOAuthToken_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function(done) {
             var limitToken = '';
                 for (let i = 0; i < TOKENLENGTHLIMIT; i++) {
                     limitToken += 't';
@@ -1499,7 +1499,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_3000', 0, async function(done) {
+        it('ActsAccountOAuthToken_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             var limitToken = '';
                 for (let i = 0; i < TOKENLENGTHLIMIT; i++) {
                     limitToken += 't';
@@ -1520,7 +1520,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_3100', 0, async function(done) {
+        it('ActsAccountOAuthToken_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             var limitAuthType = '';
                 for (let i = 0; i < AUTHTYPELENGTHLIMIT + 1; i++) {
                     limitAuthType += 't';
@@ -1544,7 +1544,7 @@ export default function ActsAccountOAuthToken() {
         });
 
 
-        it('ActsAccountOAuthToken_3200', 0, async function(done) {
+        it('ActsAccountOAuthToken_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
             var limitAuthType = '';
                 for (let i = 0; i < AUTHTYPELENGTHLIMIT + 1; i++) {
                     limitAuthType += 't';
@@ -1569,7 +1569,7 @@ export default function ActsAccountOAuthToken() {
 
 
 
-        it('ActsAccountOAuthToken_3300', 0, async function(done) {
+        it('ActsAccountOAuthToken_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function(done) {
             var limitAuthType = '';
                 for (let i = 0; i < AUTHTYPELENGTHLIMIT + 1; i++) {
                     limitAuthType += 't';
@@ -1593,7 +1593,7 @@ export default function ActsAccountOAuthToken() {
             });
         });
 
-        it('ActsAccountOAuthToken_3400', 0, async function(done) {
+        it('ActsAccountOAuthToken_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function(done) {
             var limitAuthType = '';
                 for (let i = 0; i < AUTHTYPELENGTHLIMIT + 1; i++) {
                     limitAuthType += 't';
@@ -1623,7 +1623,7 @@ export default function ActsAccountOAuthToken() {
         * @tc.name       : Test oauth token in callback form
         * @tc.desc       : 设置一个authType长度刚好为限制长度的token  查询
         */
-            it('ActsAccountOAuthToken_3500', 0, async function(done) {
+            it('ActsAccountOAuthToken_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function(done) {
                 console.info("====>ActsAccountOAuthToken_3500 start====");
                 var limitAuthType = '';
                 for (let i = 0; i < AUTHTYPELENGTHLIMIT; i++) {
@@ -1665,7 +1665,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.desc       : Clear token parameter name is an empty string
             */
             //测试 删除一个账号名为空的token callback方式
-            it('ActsAccountOAuthToken_4100', 0, async function(done) {
+            it('ActsAccountOAuthToken_4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4100 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4100 create finish====");
@@ -1683,7 +1683,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.desc       : Clear token parameter name is an empty string
             */
             //测试 删除一个账号名为空的token promise方式
-            it('ActsAccountOAuthToken_4200', 0, async function(done) {
+            it('ActsAccountOAuthToken_4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4200 create finish====");
@@ -1704,7 +1704,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.name       : Test oauth token in callback form
             * @tc.desc       : The clear token parameter name is a space string
             */
-            it('ActsAccountOAuthToken_4300', 0, async function(done) {
+            it('ActsAccountOAuthToken_4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4300 create finish====");
@@ -1721,7 +1721,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.name       : Test oauth token in promise form
             * @tc.desc       : The clear token parameter name is a space string
             */
-            it('ActsAccountOAuthToken_4400', 0, async function(done) {
+            it('ActsAccountOAuthToken_4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4400 create finish====");
@@ -1742,7 +1742,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.name       : Test oauth token in callback form
             * @tc.desc       : Clear the token parameter name exceeds the length limit of 1024 characters
             */
-            it('ActsAccountOAuthToken_4500', 0, async function(done) {
+            it('ActsAccountOAuthToken_4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4500 start====");
                 var nameLimit = '';
                 for (let i = 0; i < LENGTHLIMIT + 1; i++) {
@@ -1763,7 +1763,7 @@ export default function ActsAccountOAuthToken() {
             * @tc.name       : Test oauth token in promise form
             * @tc.desc       : Clear the token parameter name exceeds the length limit of 1024 characters
             */
-            it('ActsAccountOAuthToken_4600', 0, async function(done) {
+            it('ActsAccountOAuthToken_4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4600 start====");
                 var nameLimit = '';
                 for (let i = 0; i < LENGTHLIMIT + 1; i++) {
@@ -1784,7 +1784,7 @@ export default function ActsAccountOAuthToken() {
             });
         
             //查询无效包名owner（为其他字符串时）账号的token callback方式
-            it('ActsAccountOAuthToken_4700', 0, async function(done) {
+            it('ActsAccountOAuthToken_4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done) {
                 console.info("====>ActsAccountOAuthToken_4700 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4700 create finish====");
@@ -1807,7 +1807,7 @@ export default function ActsAccountOAuthToken() {
             });
 
 
-            it('ActsAccountOAuthToken_3600', 0, async function (done) {
+            it('ActsAccountOAuthToken_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
                 console.info("====>ActsAccountOAuthToken_3600 start====");
                 var limitAuthType = '';
                 for (var i = 0; i < AUTHTYPELENGTHLIMIT; i++) {
@@ -1828,7 +1828,7 @@ export default function ActsAccountOAuthToken() {
             });
         
             
-            it('ActsAccountOAuthToken_3700', 0, async function (done) {
+            it('ActsAccountOAuthToken_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_3700 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_3700 addAccount start====");
@@ -1854,7 +1854,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
             
-            it('ActsAccountOAuthToken_3800', 0, async function (done) {
+            it('ActsAccountOAuthToken_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_3800 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_3800 addAccount start====");
@@ -1870,7 +1870,7 @@ export default function ActsAccountOAuthToken() {
                 done();
             });
         
-            it('ActsAccountOAuthToken_3900', 0, async function (done) {
+            it('ActsAccountOAuthToken_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_3900 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_3900 addAccount start====");
@@ -1896,7 +1896,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_4000', 0, async function (done) {
+            it('ActsAccountOAuthToken_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_4000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4000 addAccount start====");
@@ -1913,7 +1913,7 @@ export default function ActsAccountOAuthToken() {
             });
         
         
-            it('ActsAccountOAuthToken_4800', 0, async function (done) {
+            it('ActsAccountOAuthToken_4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_4800 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4800 addAccount start====");
@@ -1932,7 +1932,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_4900', 0, async function (done) {
+            it('ActsAccountOAuthToken_4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_4900 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_4900 addAccount start====");
@@ -1954,7 +1954,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_5000', 0, async function (done) {
+            it('ActsAccountOAuthToken_5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5000 addAccount start====");
@@ -1973,7 +1973,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_5100', 0, async function (done) {
+            it('ActsAccountOAuthToken_5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5100 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5100 addAccount start====");
@@ -1995,7 +1995,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_5200', 0, async function (done) {
+            it('ActsAccountOAuthToken_5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5200 addAccount start====");
@@ -2014,7 +2014,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_5300', 0, async function (done) {
+            it('ActsAccountOAuthToken_5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5300 addAccount start====");
@@ -2040,7 +2040,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_5400', 0, async function (done) {
+            it('ActsAccountOAuthToken_5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5400 addAccount start====");
@@ -2061,7 +2061,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_5500', 0, async function (done) {
+            it('ActsAccountOAuthToken_5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5500 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5500 addAccount start====");
@@ -2087,7 +2087,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_5600', 0, async function (done) {
+            it('ActsAccountOAuthToken_5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5600 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5600 addAccount start====");
@@ -2108,7 +2108,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_5700', 0, async function (done) {
+            it('ActsAccountOAuthToken_5700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5700 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5700 addAccount start====");
@@ -2134,7 +2134,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_5800', 0, async function (done) {
+            it('ActsAccountOAuthToken_5800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5800 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5800 addAccount start====");
@@ -2155,7 +2155,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_5900', 0, async function (done) {
+            it('ActsAccountOAuthToken_5900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_5900 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_5900 addAccount start====");
@@ -2179,7 +2179,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_6000', 0, async function (done) {
+            it('ActsAccountOAuthToken_6000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_6000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_6000 addAccount start====");
@@ -2200,7 +2200,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_6100', 0, async function (done) {
+            it('ActsAccountOAuthToken_6100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_6100 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_6100 addAccount start====");
@@ -2224,7 +2224,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_6200', 0, async function (done) {
+            it('ActsAccountOAuthToken_6200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_6200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_6200 addAccount start====");
@@ -2245,7 +2245,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_6300', 0, async function (done) {
+            it('ActsAccountOAuthToken_6300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_6300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_6300 addAccount start====");
@@ -2269,7 +2269,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_6400', 0, async function (done) {
+            it('ActsAccountOAuthToken_6400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_6400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_6400 addAccount start====");
@@ -2290,7 +2290,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_6500', 0, async function (done) {
+            it('ActsAccountOAuthToken_6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitToken = '';
                 for(var i = 0;i < TOKENLENGTHLIMIT + 1; i++){
                     limitToken += 'c';
@@ -2314,7 +2314,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_6600', 0, async function (done) {
+            it('ActsAccountOAuthToken_6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitToken = '';
                 for(var i = 0;i < TOKENLENGTHLIMIT + 1; i++){
                     limitToken += 'c';
@@ -2337,7 +2337,7 @@ export default function ActsAccountOAuthToken() {
                 }
             });
         
-            it('ActsAccountOAuthToken_6700', 0, async function (done) {
+            it('ActsAccountOAuthToken_6700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
                 var limitToken = '';
                 for(var i = 0;i < TOKENLENGTHLIMIT; i++){
                     limitToken += 'c';
@@ -2365,7 +2365,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_6800', 0, async function (done) {
+            it('ActsAccountOAuthToken_6800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
                 var limitToken = '';
                 for(var i = 0;i < TOKENLENGTHLIMIT; i++){
                     limitToken += 'c';
@@ -2384,7 +2384,7 @@ export default function ActsAccountOAuthToken() {
                 done();
             });
         
-            it('ActsAccountOAuthToken_6900', 0, async function (done) {
+            it('ActsAccountOAuthToken_6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_6900 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_6900 addAccount start====");
@@ -2419,7 +2419,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_7000', 0, async function (done) {
+            it('ActsAccountOAuthToken_7000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_7000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 console.info("====>ActsAccountOAuthToken_7000 addAccount start====");
@@ -2437,7 +2437,7 @@ export default function ActsAccountOAuthToken() {
                 done();
             });
         
-            it('ActsAccountOAuthToken_9200', 0, async function (done) {
+            it('ActsAccountOAuthToken_9200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9200 start====");
             	var appAccountManager = account.createAppAccountManager();
             	appAccountManager.getAuthenticatorCallback("test_sessionId").then((databack)=>{
@@ -2451,7 +2451,7 @@ export default function ActsAccountOAuthToken() {
             	})
             });
         
-            it('ActsAccountOAuthToken_9300', 0, async function (done) {
+            it('ActsAccountOAuthToken_9300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getAuthenticatorCallback("",(err,databack)=>{
@@ -2462,7 +2462,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_9400', 0, async function (done) {
+            it('ActsAccountOAuthToken_9400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getAuthenticatorCallback(" ",(err,databack)=>{
@@ -2473,7 +2473,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_9500', 0, async function (done) {
+            it('ActsAccountOAuthToken_9500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9500 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getAuthenticatorInfo(OWNERSELF,(err,databack)=>{
@@ -2502,7 +2502,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_9600', 0, async function (done) {
+            it('ActsAccountOAuthToken_9600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9600 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getAuthenticatorInfo("",(err,databack)=>{
@@ -2527,7 +2527,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_9700', 0, async function (done) {
+            it('ActsAccountOAuthToken_9700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9700 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getAuthenticatorInfo(" ",(err,databack)=>{
@@ -2537,7 +2537,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_9800', 0, async function (done) {
+            it('ActsAccountOAuthToken_9800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limiOwner = '';
                 for(var i = 0;i < OWNERLENGTHLIMIT + 1; i++){
                     limiOwner += 't';
@@ -2551,7 +2551,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_9900', 0, async function (done) {
+            it('ActsAccountOAuthToken_9900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_9900 start====");
             	var appAccountManager = account.createAppAccountManager();
             	appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err,)=>{
@@ -2583,7 +2583,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10000', 0, async function (done) {
+            it('ActsAccountOAuthToken_10000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err,)=>{
@@ -2612,7 +2612,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10100', 0, async function (done) {
+            it('ActsAccountOAuthToken_10100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10100 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err)=>{
@@ -2641,7 +2641,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10200', 0, async function (done) {
+            it('ActsAccountOAuthToken_10200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err)=>{
@@ -2664,7 +2664,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10300', 0, async function (done) {
+            it('ActsAccountOAuthToken_10300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err)=>{
@@ -2694,7 +2694,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
             
-            it('ActsAccountOAuthToken_10400', 0, async function (done) {
+            it('ActsAccountOAuthToken_10400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitBundleName = '';
                 for(var i = 0;i < OWNERLENGTHLIMIT + 1; i++){
                     limitBundleName += 't';
@@ -2721,7 +2721,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10500', 0, async function (done) {
+            it('ActsAccountOAuthToken_10500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10500 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err)=>{
@@ -2757,7 +2757,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10600', 0, async function (done) {
+            it('ActsAccountOAuthToken_10600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10600 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err)=>{
@@ -2794,7 +2794,7 @@ export default function ActsAccountOAuthToken() {
             });
         
         
-            it('ActsAccountOAuthToken_10700', 0, async function (done) {
+            it('ActsAccountOAuthToken_10700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitAuthType = '';
                 for(var i = 0;i < AUTHTYPELENGTHLIMIT + 1; i++){
                     limitAuthType += 't';
@@ -2827,7 +2827,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10800', 0, async function (done) {
+            it('ActsAccountOAuthToken_10800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10800 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err)=>{
@@ -2863,7 +2863,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_10900', 0, async function (done) {
+            it('ActsAccountOAuthToken_10900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_10900 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.setOAuthTokenVisibility("","authType","test_bundleName",true,(err)=>{
@@ -2873,7 +2873,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11000', 0, async function (done) {
+            it('ActsAccountOAuthToken_11000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.setOAuthTokenVisibility(" ","authType","test_bundleName",true,(err)=>{
@@ -2883,7 +2883,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11100', 0, async function (done) {
+            it('ActsAccountOAuthToken_11100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitName = '';
                 for(var i = 0; i < LENGTHLIMIT + 1; i++){
                     limitName += 't';
@@ -2897,7 +2897,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11200', 0, async function (done) {
+            it('ActsAccountOAuthToken_11200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.setOAuthTokenVisibility("no_add_account","authType","test_bundleName",true,(err)=>{
@@ -2907,7 +2907,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11300', 0, async function (done) {
+            it('ActsAccountOAuthToken_11300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.checkOAuthTokenVisibility("","authType","test_bundleName",(err,stateBack)=>{
@@ -2917,7 +2917,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11400', 0, async function (done) {
+            it('ActsAccountOAuthToken_11400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.checkOAuthTokenVisibility(" ","authType","test_bundleName",(err,stateBack)=>{
@@ -2927,7 +2927,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11500', 0, async function (done) {
+            it('ActsAccountOAuthToken_11500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitName = '';
                 for(var i = 0; i < LENGTHLIMIT + 1; i++){
                     limitName += 't';
@@ -2941,7 +2941,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11600', 0, async function (done) {
+            it('ActsAccountOAuthToken_11600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11600 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.checkOAuthTokenVisibility("no_add_account","authType","test_bundleName",(err,stateBack)=>{
@@ -2951,7 +2951,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11700', 0, async function (done) {
+            it('ActsAccountOAuthToken_11700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11700 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_checkOAuthTokenVisibility_name",(err)=>{
@@ -2982,7 +2982,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11800', 0, async function (done) {
+            it('ActsAccountOAuthToken_11800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_11800 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_checkOAuthTokenVisibility_name",(err)=>{
@@ -3013,7 +3013,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_11900', 0, async function (done) {
+            it('ActsAccountOAuthToken_11900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitAuthType ='';
                 for(var i = 0; i < AUTHTYPELENGTHLIMIT + 1; i++){
                     limitAuthType += 't';
@@ -3044,7 +3044,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12000', 0, async function (done) {
+            it('ActsAccountOAuthToken_12000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_checkOAuthTokenVisibility_name",(err)=>{
@@ -3075,7 +3075,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12100', 0, async function (done) {
+            it('ActsAccountOAuthToken_12100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12100 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_checkOAuthTokenVisibility_name",(err)=>{
@@ -3099,7 +3099,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12200', 0, async function (done) {
+            it('ActsAccountOAuthToken_12200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_checkOAuthTokenVisibility_name",(err)=>{
@@ -3124,7 +3124,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12300', 0, async function (done) {
+            it('ActsAccountOAuthToken_12300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitBundleName = '';
                 for(var i = 0; i < OWNERLENGTHLIMIT + 1; i++){
                     limitBundleName += 't';
@@ -3152,7 +3152,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12400', 0, async function (done) {
+            it('ActsAccountOAuthToken_12400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_testGetOAuthList_name",(err)=>{
@@ -3181,7 +3181,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12500', 0, async function (done) {
+            it('ActsAccountOAuthToken_12500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12500 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_testGetOAuthList_name",(err)=>{
@@ -3210,7 +3210,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12600', 0, async function (done) {
+            it('ActsAccountOAuthToken_12600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitAuthType ='';
                 for(var i = 0; i < AUTHTYPELENGTHLIMIT + 1; i++){
                     limitAuthType += 't';
@@ -3243,7 +3243,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12700', 0, async function (done) {
+            it('ActsAccountOAuthToken_12700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12700 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getOAuthList("","authType").then((dataArray)=>{
@@ -3256,7 +3256,7 @@ export default function ActsAccountOAuthToken() {
                 })
             });
         
-            it('ActsAccountOAuthToken_12800', 0, async function (done) {
+            it('ActsAccountOAuthToken_12800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_12800 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getOAuthList(" ","authType",(err,dataArray)=>{
@@ -3268,7 +3268,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_12900', 0, async function (done) {
+            it('ActsAccountOAuthToken_12900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 var limitName = '';
                 for(var i = 0; i < LENGTHLIMIT + 1; i++){
                     limitName += 't';
@@ -3284,7 +3284,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_13000', 0, async function (done) {
+            it('ActsAccountOAuthToken_13000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_13000 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getOAuthList("no_add_account","authType",(err,dataArray)=>{
@@ -3296,7 +3296,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_13100', 0, async function (done) {
+            it('ActsAccountOAuthToken_13100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_13100 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccount("account_tokenTest_name",(err,)=>{
@@ -3350,7 +3350,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
         
-            it('ActsAccountOAuthToken_13200', 0, async function (done) {
+            it('ActsAccountOAuthToken_13200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_13200 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.getAuthenticatorInfo("com.example.actsaccountOauthtoken",(err,dataInfo)=>{
@@ -3363,7 +3363,7 @@ export default function ActsAccountOAuthToken() {
                 });
             });
 			
-			it('ActsAccountOAuthToken_13201', 0, async function (done) {
+			it('ActsAccountOAuthToken_13201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 				console.info("====>ActsAccountOAuthToken_13201 start====");
 				var appAccountManager = account.createAppAccountManager();
 				await appAccountManager.getAuthenticatorInfo("com.example.actsaccountOauthtoken").then((dataInfo) =>{
@@ -3376,7 +3376,7 @@ export default function ActsAccountOAuthToken() {
 				});
 			});
         
-            it('ActsAccountOAuthToken_13300', 0, async function (done) {
+            it('ActsAccountOAuthToken_13300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_13300 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.authenticate("authenticate_test_account","com.example.actsaccountOauthtoken","authType",{},{
@@ -3394,7 +3394,7 @@ export default function ActsAccountOAuthToken() {
                 done();
             });
         
-            it('ActsAccountOAuthToken_13400', 0, async function (done) {
+            it('ActsAccountOAuthToken_13400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
                 console.info("====>ActsAccountOAuthToken_13400 start====");
                 var appAccountManager = account.createAppAccountManager();
                 appAccountManager.addAccountImplicitly("com.example.actsaccountOauthtoken", "authType", {},{

@@ -71,7 +71,7 @@ class DrawingRecordCmdUtilsDestroyTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingRecordCmdUtilsDestroyTest, testRecordCmdUtilsDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingRecordCmdUtilsDestroyTest, testRecordCmdUtilsDestroyNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RecordCmdUtilsCreate
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();

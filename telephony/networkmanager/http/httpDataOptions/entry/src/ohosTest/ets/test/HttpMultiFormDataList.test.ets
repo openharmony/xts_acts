@@ -13,7 +13,7 @@
  *  limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -71,7 +71,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0100", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0100";
       console.info(`${caseName} test Start`);
       try {
@@ -117,7 +117,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0200", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0200";
       console.info(`${caseName} test Start`);
       try {
@@ -161,7 +161,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0300", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0300",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0300";
       console.info(`${caseName} test Start`);
       try {
@@ -207,7 +207,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0400", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0400";
       console.info(`${caseName} test Start`);
       try {
@@ -256,7 +256,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0500", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0500";
       console.info(`${caseName} test Start`);
       try {
@@ -313,7 +313,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0600", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0600",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0600";
       console.info(`${caseName} test Start`);
       try {
@@ -366,7 +366,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0700", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0700",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0700";
       console.info(`${caseName} test Start`);
       try {
@@ -426,7 +426,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0800", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0800",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0800";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -481,7 +481,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList0900", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList0900",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList0900";
       console.info(`${caseName} test Start`);
       try {
@@ -539,7 +539,7 @@ export default function HttpMultiFormDataListTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it("testHttpMultiFormDataList1000", 0, async (done: Function) => {
+    it("testHttpMultiFormDataList1000",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       let caseName: string = "testHttpMultiFormDataList1000";
       console.info(`${caseName} test Start`);
       try {

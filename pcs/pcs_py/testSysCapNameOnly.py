@@ -33,7 +33,7 @@ class testSysCapNameOnly(TestCase):
 
     def process(self):
         Step("Process")
-        sysCapsStr = self.device1.execute_shell_command("cat /system/etc/param/syscap.para")
+        sysCapsStr = self.device1.execute_shell_command("cat ./system/etc/param/syscap.para")
         sysCapsList = sysCapUtils.getAllSysCaps(sysCapsStr)
         # SystemCapability名称在OpenHarmony系统中唯一。
         print(sysCapsList)

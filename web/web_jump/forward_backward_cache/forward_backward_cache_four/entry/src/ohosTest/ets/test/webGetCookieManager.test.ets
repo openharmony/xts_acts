@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -70,7 +70,7 @@ export default function webGetCookieManager() {
      *tc.name testGetCookieManagerWebc
      *tc.desc test interface of onfullscreenexit with runjavascript exitFullscreen
      */
-    it('testGetCookieManagerWebc', 0, async (done: Function) => {
+    it('testGetCookieManagerWebc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetCookieManagerWebc";
       Utils.registerEvent("testGetCookieManagerWebc", 2, 446, done);
       sendEventByKey('webGetCookieManager', 10, '');

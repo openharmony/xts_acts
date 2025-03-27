@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect, randomString
 } from '../Common';
+import { TestType, Size, Level } from '@ohos/hypium';
 
 export default function fileIOListfile() {
   describe('fileIO_fs_listfile', function () {
@@ -30,7 +31,7 @@ export default function fileIOListfile() {
    * @tc.level Level 0
    * @tc.require
   */
-  it('fileIO_test_listfile_sync_000', 0, async function () {
+  it('fileIO_test_listfile_sync_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_000');
     let fpath1 = dpath + '/listfile_sync_000.txt';
     let fpath2 = dpath + '/listfile_sync_000.doc';
@@ -60,7 +61,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_001', 0, async function () {
+  it('fileIO_test_listfile_sync_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_001');
     let fpath1 = dpath + '/listfile_sync_001.txt';
     let fpath2 = dpath + '/listfile_sync_001.doc';
@@ -93,7 +94,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_002', 0, async function () {
+  it('fileIO_test_listfile_sync_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_002');
     let fpath1 = dpath + '/listfile_sync_002.txt';
     let fpath2 = dpath + '/listfile_sync_002.doc';
@@ -132,7 +133,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_003', 0, async function () {
+  it('fileIO_test_listfile_sync_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_003');
     let fpath1 = dpath + '/listfile_sync_003.txt';
     let fpath2 = dpath + '/listfile_sync_003.doc';
@@ -171,7 +172,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_004', 0, async function () {
+  it('fileIO_test_listfile_sync_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_004');
     let fpath1 = dpath + '/listfile_sync_004.txt';
     let fpath2 = dpath + '/listfile_sync_004.doc';
@@ -229,7 +230,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_005', 0, async function () {
+  it('fileIO_test_listfile_sync_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_005') ;
     let fpath1 = dpath + '/listfile_sync_005.txt';
     let fpath2 = dpath + '/listfile_sync_005.doc';
@@ -271,7 +272,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_006', 0, async function () {
+  it('fileIO_test_listfile_sync_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_006');
     let fpath1 = dpath + '/listfile_sync_006.txt';
     let fpath2 = dpath + '/listfile_sync_006.doc';
@@ -311,7 +312,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_007', 0, async function () {
+  it('fileIO_test_listfile_sync_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_007');
     let fpath1 = dpath + '/listfile_sync_007.txt';
     let fpath2 = dpath + '/listfile_sync_007.doc';
@@ -351,7 +352,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_008', 0, async function () {
+  it('fileIO_test_listfile_sync_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_008');
     let fpath1 = dpath + '/listfile_sync_008.txt';
     let fpath2 = dpath + '/listfile_sync_008.doc';
@@ -393,7 +394,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_009', 0, async function () {
+  it('fileIO_test_listfile_sync_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
 
     try {
       fileIO.listFileSync();
@@ -414,7 +415,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_010', 0, async function () {
+  it('fileIO_test_listfile_sync_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_010');
     let fpath1 = dpath + '/listfile_sync_009.txt';
     let fpath2 = dpath + '/listfile_sync_009.doc';
@@ -444,7 +445,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_011', 3, async function () {
+  it('fileIO_test_listfile_sync_011', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_011');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_sync_010.txt';
@@ -488,7 +489,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_012', 3, async function () {
+  it('fileIO_test_listfile_sync_012', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_012');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_sync_011.txt';
@@ -524,7 +525,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_sync_013', 0, async function () {
+  it('fileIO_test_listfile_sync_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_002');
     let fpath1 = dpath + '/listfile_sync_013.txt';
     let fpath2 = dpath + '/listfile_sync_013.doc';
@@ -556,6 +557,84 @@ export default function fileIOListfile() {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_SYNC_1400
+   * @tc.name fileIO_test_listfile_sync_014
+   * @tc.desc Test listFileSync() interfaces.
+   * No such file or directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_sync_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_sync_014');
+
+    try {
+      let dirents = fileIO.listFileSync(dpath, {
+        listNum: 2,
+        recursion: false
+      });
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_sync_014 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_SYNC_1500
+   * @tc.name fileIO_test_listfile_sync_015
+   * @tc.desc Test listFileSync() interfaces.
+   * Not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_sync_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_sync_015');
+    expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let dirents = fileIO.listFileSync(dpath, {
+        listNum: 2,
+        recursion: false
+      });
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_sync_015 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_SYNC_1600
+   * @tc.name fileIO_test_listfile_sync_016
+   * @tc.desc Test listFileSync() interfaces.
+   * Not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_sync_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_sync_016');
+    expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let dirents = fileIO.listFileSync(dpath, {
+        listNum: 2,
+        recursion: false,
+        mimeType: [".txt"],
+      });
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_sync_016 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_0000
    * @tc.name fileIO_test_listfile_async_000
    * @tc.desc Test listFile() interface. Callback.
@@ -565,7 +644,7 @@ export default function fileIOListfile() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_listfile_async_000', 0, async function () {
+  it('fileIO_test_listfile_async_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_000') ;
     let fpath1 = dpath + '/listfile_async_000.txt';
     let fpath2 = dpath + '/listfile_async_000.doc';
@@ -600,7 +679,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_001', 0, async function (done) {
+  it('fileIO_test_listfile_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_001');
     let fpath1 = dpath + '/listfile_async_001.txt';
     let fpath2 = dpath + '/listfile_async_001_1.doc';
@@ -631,7 +710,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_async_002', 0, async function () {
+  it('fileIO_test_listfile_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_002');
     let fpath1 = dpath + '/listfile_async_002.txt';
     let fpath2 = dpath + '/listfile_async_002.doc';
@@ -669,7 +748,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_003', 0, async function (done) {
+  it('fileIO_test_listfile_async_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_003');
     let fpath1 = dpath + '/listfile_async_003.txt';
     let fpath2 = dpath + '/listfile_async_003.doc';
@@ -703,7 +782,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_004', 0, async function () {
+  it('fileIO_test_listfile_async_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_004');
     let fpath1 = dpath + '/listfile_async_004.txt';
     let fpath2 = dpath + '/listfile_async_004.doc';
@@ -747,7 +826,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_005', 0, async function (done) {
+  it('fileIO_test_listfile_async_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_005');
     let fpath1 = dpath + '/listfile_async_005.txt';
     let fpath2 = dpath + '/listfile_async_005.doc';
@@ -787,7 +866,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_006', 0, async function () {
+  it('fileIO_test_listfile_async_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_006');
     let fpath1 = dpath + '/listfile_async_006.txt';
     let fpath2 = dpath + '/listfile_async_006.doc';
@@ -831,7 +910,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_007', 0, async function (done) {
+  it('fileIO_test_listfile_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_007');
     let fpath1 = dpath + '/listfile_async_007.txt';
     let fpath2 = dpath + '/listfile_async_007.doc';
@@ -871,7 +950,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_008', 0, async function () {
+  it('fileIO_test_listfile_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_008');
     let fpath1 = dpath + '/listfile_async_008.txt';
     let fpath2 = dpath + '/listfile_async_008.doc';
@@ -934,7 +1013,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_009', 0, async function (done) {
+  it('fileIO_test_listfile_async_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_009');
     let fpath1 = dpath + '/listfile_async_009.txt';
     let fpath2 = dpath + '/listfile_async_009.doc';
@@ -993,7 +1072,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_010', 0, async function () {
+  it('fileIO_test_listfile_async_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_010');
     let fapth1 = dpath + '/listfile_async_010.txt';
     let fapth2 = dpath + '/listfile_async_010.doc';
@@ -1040,7 +1119,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_011', 0, async function (done) {
+  it('fileIO_test_listfile_async_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_011');
     let fapth1 = dpath + '/listfile_async_011.txt';
     let fapth2 = dpath + '/listfile_async_011.doc';
@@ -1083,7 +1162,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_012', 0, async function () {
+  it('fileIO_test_listfile_async_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_012');
     let fapth1 = dpath + '/listfile_async_012.txt';
     let fapth2 = dpath + '/listfile_async_012.doc';
@@ -1126,7 +1205,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_013', 0, async function (done) {
+  it('fileIO_test_listfile_async_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_013');
     let fapth1 = dpath + '/listfile_async_013.txt';
     let fapth2 = dpath + '/listfile_async_013.doc';
@@ -1169,7 +1248,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_014', 0, async function () {
+  it('fileIO_test_listfile_async_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_014');
     let fapth1 = dpath + '/listfile_async_014.txt';
     let fapth2 = dpath + '/listfile_async_014.doc';
@@ -1214,7 +1293,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_015', 0, async function (done) {
+  it('fileIO_test_listfile_async_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_015');
     let fapth1 = dpath + '/listfile_async_015.txt';
     let fapth2 = dpath + '/listfile_async_015.doc';
@@ -1255,7 +1334,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_016', 0, async function () {
+  it('fileIO_test_listfile_async_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_016');
     let fapth1 = dpath + '/listfile_async_016.txt';
     let fapth2 = dpath + '/listfile_async_016.doc';
@@ -1302,7 +1381,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_017', 0, async function (done) {
+  it('fileIO_test_listfile_async_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_017');
     let fapth1 = dpath + '/listfile_async_017.txt';
     let fapth2 = dpath + '/listfile_async_017.doc';
@@ -1345,7 +1424,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_018', 0, async function (done) {
+  it('fileIO_test_listfile_async_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.listFile();
@@ -1367,7 +1446,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_019', 0, async function (done) {
+  it('fileIO_test_listfile_async_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_019');
     let fapth1 = dpath + '/listfile_async_019.txt';
     let fapth2 = dpath + '/listfile_async_019.doc';
@@ -1398,7 +1477,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_020', 3, async function () {
+  it('fileIO_test_listfile_async_020', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_020');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_020.txt';
@@ -1447,7 +1526,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_021', 3, async function () {
+  it('fileIO_test_listfile_async_021', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_021');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_021.txt';
@@ -1488,7 +1567,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_022', 3, async function (done) {
+  it('fileIO_test_listfile_async_022', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_022');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_022.txt';
@@ -1533,7 +1612,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_023', 3, async function (done) {
+  it('fileIO_test_listfile_async_023', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_023');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_023.txt';
@@ -1570,7 +1649,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_024', 0, async function () {
+  it('fileIO_test_listfile_async_024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_024');
     let fpath1 = dpath + '/listfile_async_024.txt';
     let fpath2 = dpath + '/listfile_async_024.doc';
@@ -1615,7 +1694,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_025', 0, async function (done) {
+  it('fileIO_test_listfile_async_025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_025');
     let fpath1 = dpath + '/listfile_async_025.txt';
     let fpath2 = dpath + '/listfile_async_025.doc';
@@ -1643,6 +1722,104 @@ export default function fileIOListfile() {
       done();
     } catch (err) {
       console.log('fileIO_test_listfile_async_025 has failed for ' + err.message + ', code:' + err.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_2600
+   * @tc.name fileIO_test_listfile_async_026
+   * @tc.desc Test listFile() interface. Callback.
+   * No such file or directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_listfile_async_026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_async_026');
+
+    try {
+      fileIO.listFile(dpath, (err, dirents) => {
+        if (err) {
+          console.log('fileIO_test_listfile_async_026 err package ' + err.message + ', code:' + err.code);
+          expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_listfile_async_026 has failed for ' + e.message + ', code:' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_2700
+   * @tc.name fileIO_test_listfile_async_027
+   * @tc.desc Test listFile() interface. Promise.
+   * No such file or directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_async_027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_async_027');
+
+    try {
+      await fileIO.listFile(dpath);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_async_027 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_2800
+   * @tc.name fileIO_test_listfile_async_028
+   * @tc.desc Test listFile() interface. Promise.
+   * Not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_async_028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_async_028');
+    expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileIO.listFile(dpath);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_async_028 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_2900
+   * @tc.name fileIO_test_listfile_async_029
+   * @tc.desc Test listFile() interface. Callback.
+   * Not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_listfile_async_029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_async_029');
+    expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.listFile(dpath, (err, dirents) => {
+        if (err) {
+          console.log('fileIO_test_listfile_async_029 err package ' + err.message + ', code:' + err.code);
+          expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_listfile_async_026 has failed for ' + e.message + ', code:' + e.code);
       expect(false).assertTrue();
     }
   });

@@ -15,7 +15,7 @@
 import { BusinessError } from '@kit.BasicServicesKit';
 import bundle from '@ohos.bundle.bundleManager';
 import defaultAppMgr from '@ohos.bundle.defaultAppManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium";
 
 const BUNDLE_NAME = "ohos.acts.bundle.stage.test";
 const MODULE_NAME = "testModule";
@@ -37,7 +37,7 @@ export default function PublicApiNineTest() {
      * @tc.name: getBundleInfoForSelfProTest
      * @tc.desc: Test getBundleInfoForSelf of API9 in version9 normal project
      */
-    it('getBundleInfoForSelfProTest', 0, async (done: Function) =>  {
+    it('getBundleInfoForSelfProTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then(data => {
         console.info("getBundleInfoForSelfPro" + JSON.stringify(data));
         expect(data.name).assertEqual(BUNDLE_NAME);
@@ -57,7 +57,7 @@ export default function PublicApiNineTest() {
      * @tc.name: getProfileByAbilityTest
      * @tc.desc: Test getProfileByAbility of API9 in version9 normal project
      */
-    it('getProfileByAbilityTest', 0, async (done: Function) =>  {
+    it('getProfileByAbilityTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await bundle.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME).then(data => {
         console.info('getProfileByAbility promise data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
@@ -80,7 +80,7 @@ export default function PublicApiNineTest() {
     * @tc.name: getProfileByExtensionAbilityTest
     * @tc.desc: Test getProfileByExtensionAbility of API9 in version9 normal project
     */
-    it('getProfileByExtensionAbilityPromise', 0, async (done: Function) =>  {
+    it('getProfileByExtensionAbilityPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await bundle.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME1, METADATA_NAME1).then(data => {
         console.info('getProfileByExtensionAbility promise data is: ' + JSON.stringify(data));
         expect(data[0]).assertEqual(PROFILE_JSON_STRING1);
@@ -100,7 +100,7 @@ export default function PublicApiNineTest() {
     * @tc.name: isDefaultApplicationTest
     * @tc.desc: Test isDefaultApplication of API9 in version9 normal project
     */
-    it('isDefaultApplication_0100', 0, async (done: Function) =>  {
+    it('isDefaultApplication_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
       await defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE).then(data => {
         expect(data).assertFalse()
       }).catch((err: BusinessError) => {

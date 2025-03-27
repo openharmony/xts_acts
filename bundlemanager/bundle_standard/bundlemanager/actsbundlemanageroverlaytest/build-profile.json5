@@ -37,6 +37,18 @@
           ]
         }
       ]
+    },
+    {
+      "name": "hsp",
+      "srcPath": "./hsp",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }

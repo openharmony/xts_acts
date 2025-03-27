@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -79,7 +79,7 @@ export default function ActsAceWebviewBFCacheSuspendPlayer() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */   
-    it('testWebviewBFCacheSuspendPlayerTwo', 0, async (done: Function) => {
+    it('testWebviewBFCacheSuspendPlayerTwo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebviewBFCacheSuspendPlayerTwo"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheSuspendPlayerTwo", "success", 10003,
@@ -97,7 +97,7 @@ export default function ActsAceWebviewBFCacheSuspendPlayer() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */   
-    it('testWebviewBFCacheSuspendPlayerZero', 0, async (done: Function) => {
+    it('testWebviewBFCacheSuspendPlayerZero', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebviewBFCacheSuspendPlayerZero"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheSuspendPlayerZero", "success", 10001,
@@ -116,7 +116,7 @@ export default function ActsAceWebviewBFCacheSuspendPlayer() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */   
-    it('testWebviewBFCacheSuspendPlayerOne', 0, async (done: Function) => {
+    it('testWebviewBFCacheSuspendPlayerOne', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebviewBFCacheSuspendPlayerOne"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheSuspendPlayerOne", "success", 10002,

@@ -70,7 +70,7 @@ class DrawingNativeCanvasPart4Test : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -117,7 +117,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -142,7 +142,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMaximum, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -163,7 +163,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMaximum, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -175,7 +175,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewInputDestroyed, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -203,7 +203,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSkewMultipleCalls, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -235,7 +235,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNorm
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -258,7 +258,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightNull
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -313,7 +313,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMult
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -325,7 +325,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightInpu
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMultipleCallsBoudary, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -378,7 +378,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetWidthtestCanvasGetHeightMult
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -406,7 +406,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNormal, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -458,7 +458,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsNull, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -523,7 +523,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsAbnormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -583,7 +583,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCalls
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -595,7 +595,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsInputDestroye
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCallsBoundary, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCallsBoundary, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -651,7 +651,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetLocalClipBoundsMultipleCalls
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -685,7 +685,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalM
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -717,7 +717,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixNull, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetTotalMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetTotalMatrixNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -747,7 +747,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetTotalMatrixNull, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -841,7 +841,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalM
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalMatrixInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -853,7 +853,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasConcatMatrixtestCanvasGetTotalM
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -888,7 +888,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -931,7 +931,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowNull, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -967,7 +967,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowAbnormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowMaximum, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1004,7 +1004,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowMaximum, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -1016,7 +1016,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawShadowInputDestroyed, TestS
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1040,7 +1040,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1061,7 +1061,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1082,7 +1082,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearAbnormal, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1103,7 +1103,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMultipleCalls, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -1115,7 +1115,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearInputDestroyed, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMaximum, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1134,7 +1134,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClearMaximum, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1164,7 +1164,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1195,7 +1195,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixNull, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1225,7 +1225,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixMultipleCalls, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -1237,7 +1237,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasSetMatrixInputDestroyed, TestSi
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1258,7 +1258,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNormal, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_CanvasResetMatrix with a null parameter
     OH_Drawing_CanvasResetMatrix(nullptr);
     // add assert
@@ -1273,7 +1273,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixNull, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1319,7 +1319,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasResetMatrixMultipleCalls, TestS
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -1361,7 +1361,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNull, Function | SmallTest | Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
@@ -1411,7 +1411,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectWithSrcNull, TestS
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNormal, Function | SmallTest | Level0) {
     // 1. Create a canvas object using OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1446,7 +1446,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNull, Function | SmallTest | Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
     EXPECT_NE(canvas, nullptr);
@@ -1491,7 +1491,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawImageRectNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNormal, Function | SmallTest | Level0) {
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
@@ -1546,7 +1546,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNull, Function | SmallTest | Level3) {
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
@@ -1604,7 +1604,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesNull, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesAbnormal, Function | SmallTest | Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1628,7 +1628,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesAbnormal, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesMaximum, Function | SmallTest | Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
@@ -1668,7 +1668,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawVerticesMaximum, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNormal, Function | SmallTest | Level0) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1699,7 +1699,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNull, Function | SmallTest | Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
     EXPECT_NE(canvas, nullptr);
@@ -1739,7 +1739,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsNull, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMismatch, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMismatch, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -1751,7 +1751,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMismatch, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsAbnormal, Function | SmallTest | Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1785,7 +1785,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsAbnormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMaximum, Function | SmallTest | Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1818,7 +1818,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsMaximum, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsBoundary, Function | SmallTest | Level0) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1847,7 +1847,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsBoundary, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNormal, Function | SmallTest | Level0) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1873,7 +1873,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNormal, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNull, Function | SmallTest | Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
     EXPECT_NE(canvas, nullptr);
@@ -1906,7 +1906,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapNull, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapAbnormal, Function | SmallTest | Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1932,7 +1932,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapAbnormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapMaximum, Function | SmallTest | Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -1957,7 +1957,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasReadPixelsToBitmapMaximum, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacter, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacter, Function | SmallTest | Level1)
 {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
@@ -1989,7 +1989,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacter, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2035,7 +2035,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNormal, Test
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2080,7 +2080,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawSingleCharacterNull, TestSi
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2110,7 +2110,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2134,7 +2134,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointNull, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointMultipleCalls, Function | SmallTest | Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvases[10];
     for (int i = 0; i < 10; i++) {
@@ -2157,7 +2157,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawPointMultipleCalls, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2189,7 +2189,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2226,7 +2226,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorNull, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMaximum, Function | SmallTest | Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2259,7 +2259,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMaximum, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMultipleCalls, Function | SmallTest | Level3) {
     //1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2286,7 +2286,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasDrawColorMultipleCalls, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2323,7 +2323,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNormal, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2364,7 +2364,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyNull, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyMultipleCalls, Function | SmallTest | Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2408,7 +2408,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasIsClipEmptyMultipleCalls, TestS
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     // add assert
@@ -2449,7 +2449,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     // add assert
@@ -2494,7 +2494,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoNull, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoMultipleCalls, Function | SmallTest | Level3) {
     //1. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     // add assert
@@ -2544,7 +2544,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasGetImageInfoMultipleCalls, Test
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNormal, Function | SmallTest | Level0) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     // add assert
@@ -2575,7 +2575,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNull, Function | SmallTest | Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -2610,7 +2610,7 @@ HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionNull, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasPart4Test, testCanvasClipRegionMultipleCalls, Function | SmallTest | Level3) {
     //1. OH_Drawing_RectCreate
     OH_Drawing_Canvas *canvases[10];
     for (int i = 0; i < 10; i++) {

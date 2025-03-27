@@ -13,6 +13,21 @@
  * limitations under the License.
  */
 import buttonType from './buttonType/buttonTypeApi.test';
+import overlayManagerTest from './overlayManager/overlayManagerTest.test'
+import customDialogLevelOrder from './dialog/customDialogLevelOrder.test'
+import showDialogLevelOrder from './dialog/showDialogLevelOrder.test'
+import openCustomDialogLevelOrder from './dialog/openCustomDialogLevelOrder.test'
+import openCustomDialogWithConOrder from './dialog/openCustomDialogWithConOrder.test'
+import presentCustomDialogOrder from './dialog/presentCustomDialogOrder.test'
+import alertDialogLevelOrder from './dialog/alertDialogLevelOrder.test'
+
 export default function testsuite() {
     buttonType()
+    overlayManagerTest()
+    customDialogLevelOrder()
+    showDialogLevelOrder()
+    openCustomDialogLevelOrder()
+    openCustomDialogWithConOrder()
+    presentCustomDialogOrder()
+    alertDialogLevelOrder()
 }

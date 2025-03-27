@@ -165,7 +165,38 @@
         "startWindowIcon": "$media:icon",
         "visible": true,
         "startWindowBackground": "$color:start_window_background",
+      },
+      {
+        "name": "PageAbility100",
+        "srcEntry": "./ets/MainAbility/PageAbility100.ets",
+        "description": "$string:MainAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:MainAbility_label",
+        "startWindowIcon": "$media:icon",
+        "visible": true,
+        "startWindowBackground": "$color:start_window_background",
+      },
+      {
+        "name": "PageAbility102",
+        "srcEntry": "./ets/MainAbility/PageAbility102.ets",
+        "description": "$string:MainAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:MainAbility_label",
+        "startWindowIcon": "$media:icon",
+        "visible": true,
+        "startWindowBackground": "$color:start_window_background",
+      },
+      {
+        "name": "PageAbility103",
+        "srcEntry": "./ets/MainAbility/PageAbility103.ets",
+        "description": "$string:MainAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:MainAbility_label",
+        "startWindowIcon": "$media:icon",
+        "visible": true,
+        "startWindowBackground": "$color:start_window_background",
       }
+      
     ],
     "extensionAbilities": [
       {
@@ -316,6 +347,38 @@
         "name": "Sample_019",
         "srcEntry": "./ets/startup/Sample_019.ets",
         "description": "Sample_019",
+        "type": "embeddedUI",
+        "label": "$string:MainAbility_label",
+        "exported": true
+      },
+      {
+        "name": "Sample_100",
+        "srcEntry": "./ets/startup/Sample_100.ets",
+        "description": "Sample_100",
+        "type": "embeddedUI",
+        "label": "$string:MainAbility_label",
+        "exported": true
+      },
+      {
+        "name": "Sample_101",
+        "srcEntry": "./ets/startup/Sample_101.ets",
+        "description": "Sample_101",
+        "type": "embeddedUI",
+        "label": "$string:MainAbility_label",
+        "exported": true
+      },
+       {
+        "name": "Sample_102",
+        "srcEntry": "./ets/startup/Sample_102.ets",
+        "description": "Sample_102",
+        "type": "embeddedUI",
+        "label": "$string:MainAbility_label",
+        "exported": true
+      },
+      {
+        "name": "Sample_103",
+        "srcEntry": "./ets/startup/Sample_103.ets",
+        "description": "Sample_103",
         "type": "embeddedUI",
         "label": "$string:MainAbility_label",
         "exported": true

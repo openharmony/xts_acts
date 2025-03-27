@@ -99,6 +99,14 @@
     {
       "name": "Caretwidth001",
       "value": "5vp"
+    },
+    {
+      "name": "fontFamily",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "lineHeight",
+      "value": "20vp"
     }
   ]
 }

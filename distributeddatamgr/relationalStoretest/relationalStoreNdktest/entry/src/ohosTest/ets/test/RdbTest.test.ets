@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import rdb from 'libentry.so';
 
 export default function rdbTest() {
@@ -27,7 +27,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCreateValueObject001', 0, async (done: Function) => {
+    it('testCreateValueObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.CreateValueObject();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -42,7 +42,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCreateValuesBucket001', 0, async (done: Function) => {
+    it('testCreateValuesBucket001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.CreateValuesBucket();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -57,7 +57,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCreatePredicates001', 0, async (done: Function) => {
+    it('testCreatePredicates001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.CreatePredicatesOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -71,7 +71,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCreatePredicates002', 0, async (done: Function) => {
+    it('testCreatePredicates002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.CreatePredicatesTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -86,7 +86,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCreatePredicates003', 0, async (done: Function) => {
+    it('testCreatePredicates003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.CreatePredicatesThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -101,7 +101,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetOrOpen001', 0, async (done: Function) => {
+    it('testGetOrOpen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.GetOrOpenOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -116,7 +116,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetOrOpen002', 0, async (done: Function) => {
+    it('testGetOrOpen002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.GetOrOpenTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -131,7 +131,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetOrOpen003', 0, async (done: Function) => {
+    it('testGetOrOpen003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.GetOrOpenThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -146,7 +146,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetOrOpen004', 0, async (done: Function) => {
+    it('testGetOrOpen004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.GetOrOpenFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -161,7 +161,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCloseStore001', 0, async (done: Function) => {
+    it('testCloseStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.CloseStoreOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -176,7 +176,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCloseStore002', 0, async (done: Function) => {
+    it('testCloseStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.CloseStoreTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -191,7 +191,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCloseStore003', 0, async (done: Function) => {
+    it('testCloseStore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.CloseStoreThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -206,7 +206,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDeleteStore001', 0, async (done: Function) => {
+    it('testDeleteStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.DeleteStoreOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -221,7 +221,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDeleteStore002', 0, async (done: Function) => {
+    it('testDeleteStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.DeleteStoreTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -236,7 +236,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDeleteStore003', 0, async (done: Function) => {
+    it('testDeleteStore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.DeleteStoreThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -251,7 +251,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testInsert001', 0, async (done: Function) => {
+    it('testInsert001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = rdb.InsertOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -266,7 +266,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testInsert002', 0, async (done: Function) => {
+    it('testInsert002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.InsertTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -281,7 +281,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testInsert003', 0, async (done: Function) => {
+    it('testInsert003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.InsertThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -296,7 +296,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testInsert004', 0, async (done: Function) => {
+    it('testInsert004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.InsertFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -311,7 +311,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testInsert005', 0, async (done: Function) => {
+    it('testInsert005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.InsertFive();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -326,7 +326,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testUpdate001', 0, async (done: Function) => {
+    it('testUpdate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = rdb.UpdateOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -341,7 +341,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUpdate002', 0, async (done: Function) => {
+    it('testUpdate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UpdateTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -356,7 +356,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUpdate003', 0, async (done: Function) => {
+    it('testUpdate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UpdateThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -371,7 +371,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUpdate004', 0, async (done: Function) => {
+    it('testUpdate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UpdateFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -386,7 +386,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUpdate005', 0, async (done: Function) => {
+    it('testUpdate005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UpdateFive();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -401,7 +401,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUpdate006', 0, async (done: Function) => {
+    it('testUpdate006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UpdateSix();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -416,7 +416,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testUpdate007', 0, async (done: Function) => {
+    it('testUpdate007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UpdateSeven();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -431,7 +431,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDelete001', 0, async (done: Function) => {
+    it('testDelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.DeleteOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -446,7 +446,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDelete002', 0, async (done: Function) => {
+    it('testDelete002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.DeleteTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -461,7 +461,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDelete003', 0, async (done: Function) => {
+    it('testDelete003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.DeleteThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -476,7 +476,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDelete004', 0, async (done: Function) => {
+    it('testDelete004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.DeleteFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -491,7 +491,7 @@ export default function rdbTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDelete005', 0, async (done: Function) => {
+    it('testDelete005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.DeleteFive();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);

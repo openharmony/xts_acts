@@ -14,7 +14,7 @@
  */
 
 import testndk from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import batteryInfo from '@ohos.batteryInfo';
 import collections from '@arkts.collections';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -38,7 +38,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetMimeTypes0100', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetMimeTypes0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = testndk.OH_Pasteboard_GetMimeTypes0100();
       console.info(TAG + "OH_Pasteboard_GetMimeTypes0100 data = " + data);
       expect(data).assertEqual(1);
@@ -54,7 +54,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetMimeTypes0200', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetMimeTypes0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = testndk.OH_Pasteboard_GetMimeTypes0200();
       console.info(TAG + "OH_Pasteboard_GetMimeTypes0200 data = " + data);
       expect(data).assertEqual(1);
@@ -70,7 +70,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetMimeTypes0300', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetMimeTypes0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = testndk.OH_Pasteboard_GetMimeTypes0300();
       console.info(TAG + "OH_Pasteboard_GetMimeTypes0300 data = " + data);
       expect(data).assertEqual(1);
@@ -85,7 +85,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_GetDataWithNoProgress001', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithNoProgress001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)

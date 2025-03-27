@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedKVStore'
 import dataShare from '@ohos.data.dataSharePredicates';
 import abilityFeatureAbility from '@ohos.ability.featureAbility'
@@ -116,8 +116,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(String) testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(String) testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutStringCallbackTest001');
         try {
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, function (err,data) {
@@ -141,8 +143,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(String) testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(String) testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_0200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutStringCallbackTest002');
         try {
             var str = '';
@@ -170,8 +174,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetString() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetString() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetStringCallbackTest001');
         try{
             await kvStore.get(KEY_TEST_STRING_ELEMENT, function (err,data) {
@@ -196,8 +202,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetString() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetString() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetStringCallbackTest002');
         try{
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
@@ -221,8 +229,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutIntCallbackTest001');
         try {
             await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -246,8 +256,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutIntCallbackTest002');
         try {
             var intValue = 987654321;
@@ -272,8 +284,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutIntCallbackTest003');
         try {
             var intValue = Number.MIN_VALUE;
@@ -298,8 +312,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0800', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutIntCallbackTest004');
         try {
             var intValue = Number.MAX_VALUE;
@@ -324,8 +340,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetInt() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetInt() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetIntCallbackTest001');
         try {
             await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -349,8 +367,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetInt() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetInt() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetIntCallbackTest002');
         try {
             await kvStore.get(KEY_TEST_INT_ELEMENT, function (err,data) {
@@ -375,8 +395,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Bool) testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Bool) testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_1100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBoolCallbackTest001');
         try {
             await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -396,8 +418,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetBool() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetBool() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetBoolCallbackTest001');
         try {
             await kvStore.get(KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -422,8 +446,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetBool() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetBool() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetBoolCallbackTest002');
         try {
             await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, async function (err, data) {
@@ -447,8 +473,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Float) testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_1400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUT_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutFloatCallbackTest001');
         try {
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -468,8 +496,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Float) testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutFloatCallbackTest002');
         try {
             var floatValue = 123456.654321;
@@ -495,8 +525,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Float) testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutFloatCallbackTest003');
         try {
             var floatValue = 123456.0;
@@ -522,8 +554,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Put(Float) testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutFloatCallbackTest004');
         try {
             var floatValue = 123456.00;
@@ -549,8 +583,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetFloat() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetFloat() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1800', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GET_CALLBACK_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetFloatCallbackTest001');
         try {
             await kvStore.get(KEY_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -575,8 +611,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteString() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteString() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_1900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteStringCallbackTest001');
         try {
             await kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
@@ -600,8 +638,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteString() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteString() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteStringCallbackTest002');
         try {
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err, data) {
@@ -625,8 +665,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteInt() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteInt() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteIntCallbackTest001');
         try{
             await kvStore.delete(KEY_TEST_INT_ELEMENT, function (err,data) {
@@ -650,8 +692,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteInt() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteInt() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteIntCallbackTest002');
         try{
             await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -675,8 +719,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteFloat() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteFloat() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteFloatCallbackTest001');
         try{
             await kvStore.delete(KEY_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -700,8 +746,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteFloat() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteFloat() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteFloatCallbackTest002');
         try{
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT, async function (err, data) {
@@ -725,8 +773,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteBool() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteBool() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteBoolCallbackTest001');
         try{
             await kvStore.delete(KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -750,8 +800,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteBool() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteBool() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteBoolCallbackTest002');
         try{
             await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, async function (err, data) {
@@ -775,8 +827,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Delete() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Delete() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700', 0, async function (done) {
+     it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700');
         try {
             await kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
@@ -797,8 +851,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Delete() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Delete() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2800', 0, async function (done) {
+     it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log('SingleKvStoreDeletePredicatesCallbackTest002');
         try {
             await kvStore.put("name", "Bob", async function (err, data) {
@@ -822,8 +878,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Delete() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Delete() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900', 0, async function (done) {
+     it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900');
         try {
             let arr = [null];
@@ -847,8 +905,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.OnChange() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreOnChangeCallbackTest001');
         try {
             kvStore.on('dataChange', 0, function (data) {
@@ -872,8 +932,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.OnChange() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreOnChangeCallbackTest002');
         try {
             kvStore.on('dataChange', 1, function (data) {
@@ -897,8 +959,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.OnChange() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreOnChangeCallbackTest003');
         try {
             kvStore.on('dataChange', 2, function (data) {
@@ -922,8 +986,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.OnSyncComplete() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
                 console.info('SingleKvStoreOnSyncCompleteCallbackTest001 dataChange');
@@ -952,8 +1018,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.OnSyncComplete() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
                 console.info('SingleKvStoreOnSyncCompleteCallbackTest002 dataChange');
@@ -982,8 +1050,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.OnSyncComplete() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ON_CALLBACK_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             kvStore.on('syncComplete', function (data) {
                 console.info('SingleKvStoreOnSyncCompleteCallbackTest003 dataChange');
@@ -1012,8 +1082,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncRange() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_3600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncRangeCallbackTest001');
         try {
             var localLabels = ['A', 'B'];
@@ -1035,8 +1107,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncRange() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_3700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncRangeCallbackTest002');
         try {
             var localLabels = ['A', 'B'];
@@ -1058,8 +1132,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncRange() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_3800', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncRangeCallbackTest003');
         try {
             var localLabels = ['A', 'B'];
@@ -1081,8 +1157,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_3900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBatchEntryCallbackTest001');
         try {
             let entries = [];
@@ -1122,8 +1200,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBatchEntryCallbackTest002');
         try {
             let entries = [];
@@ -1163,8 +1243,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBatchEntryCallbackTest003');
         try {
             let entries = [];
@@ -1204,8 +1286,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBatchEntryCallbackTest004');
         try {
             let entries = [];
@@ -1245,8 +1329,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 005
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBatchEntryCallbackTest005');
         try {
             var bo = false;
@@ -1287,8 +1373,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 006
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 006
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorePutBatchEntryCallbackTest006');
         try {
             var arr = new Uint8Array([21,31]);
@@ -1329,8 +1417,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteBatch() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_CALLBACK_4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteBatchCallbackTest001');
         try {
             let entries = [];
@@ -1369,8 +1459,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteBatch() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCH_CALLBACK_4600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCH_CALLBACK_4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteBatchCallbackTest002');
         try {
             let keys = ['batch_test_string_key1', 'batch_test_string_key2'];
@@ -1391,8 +1483,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.DeleteBatch() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCH_CALLBACK_4700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCH_CALLBACK_4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreDeleteBatchCallbackTest003');
         try {
             let entries = [];
@@ -1430,8 +1524,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.startTransaction() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_4800', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorestartTransactionCallbackTest001');
         try {
             var count = 0;
@@ -1473,8 +1569,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.startTransaction() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_4900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorestartTransactionCallbackTest002');
         try {
             var count = 0;
@@ -1516,8 +1614,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.startTransaction() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_5000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorestartTransactionCallbackTest003');
         try {
             await kvStore.startTransaction(1, function (err,data) {
@@ -1540,8 +1640,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.startTransaction() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_5100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorestartTransactionCallbackTest004');
         try {
             await kvStore.startTransaction('test_string', function (err,data) {
@@ -1564,8 +1666,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.startTransaction() testcase 005
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_5200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_TRANS_CALLBACK_5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStorestartTransactionCallbackTest005');
         try {
             await kvStore.startTransaction(2.000, function (err,data) {
@@ -1588,8 +1692,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Commit() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Commit() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_CALLBACK_5300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_CALLBACK_5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCommitCallbackTest001');
         try {
             await kvStore.commit(1, function (err,data) {
@@ -1612,8 +1718,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Commit() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Commit() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_CALLBACK_5400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_CALLBACK_5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCommitCallbackTest002');
         try {
             await kvStore.commit('test_string', function (err,data) {
@@ -1636,8 +1744,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Commit() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Commit() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_CALLBACK_5500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_CALLBACK_5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCommitCallbackTest003');
         try {
             await kvStore.commit(2.000, function (err,data) {
@@ -1660,8 +1770,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Rollback() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ROLLBACK_CALLBACK_5600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ROLLBACK_CALLBACK_5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRollbackCallbackTest001');
         try {
             await kvStore.rollback(1, function (err,data) {
@@ -1684,8 +1796,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Rollback() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ROLLBACK_CALLBACK_5700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ROLLBACK_CALLBACK_5700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRollbackCallbackTest002');
         try {
             await kvStore.rollback('test_string', function (err,data) {
@@ -1708,8 +1822,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.Rollback() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ROLLBACK_CALLBACK_5800', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ROLLBACK_CALLBACK_5800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRollbackCallbackTest003');
         try {
             await kvStore.rollback(2.000, function (err,data) {
@@ -1732,8 +1848,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.EnableSync() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_5900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_5900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreEnableSyncCallbackTest001');
         try {
             await kvStore.enableSync(true, function (err,data) {
@@ -1758,8 +1876,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.EnableSync() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_6000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_6000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreEnableSyncCallbackTest002');
         try {
             await kvStore.enableSync(false, function (err,data) {
@@ -1784,8 +1904,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.EnableSync() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_6100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_6100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreEnableSyncCallbackTest003');
         try {
             await kvStore.enableSync(function (err,data) {
@@ -1808,8 +1930,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.EnableSync() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_6200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_ENABLE_CALLBACK_6200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreEnableSyncCallbackTest004');
         try {
             await kvStore.enableSync(null, function (err,data) {
@@ -1832,8 +1956,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.RemoveDeviceData() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRemoveDeviceDataCallbackTest001');
         try {
             await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
@@ -1867,8 +1993,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.RemoveDeviceData() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRemoveDeviceDataCallbackTest002');
         try {
             await kvStore.removeDeviceData(function (err,data) {
@@ -1891,8 +2019,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.RemoveDeviceData() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6500', 0, async function (done) {
+     it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRemoveDeviceDataCallbackTest003');
         try {
             await kvStore.removeDeviceData('', function (err,data) {
@@ -1915,8 +2045,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.RemoveDeviceData() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_REMOVE_CALLBACK_6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreRemoveDeviceDataCallbackTest004');
         try {
             await kvStore.removeDeviceData(null, function (err,data) {
@@ -1939,8 +2071,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncParam() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_6700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_6700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncParamCallbackTest001');
         try {
             var defaultAllowedDelayMs = 500;
@@ -1961,8 +2095,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncParam() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_6800', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_6800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncParamCallbackTest002');
         try {
             await kvStore.setSyncParam(function (err,data) {
@@ -1985,8 +2121,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncParam() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_6900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncParamCallbackTest003');
         try {
             await kvStore.setSyncParam('', function (err,data) {
@@ -2009,8 +2147,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.SetSyncParam() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_7000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNC_CALLBACK_7000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreSetSyncParamCallbackTest004');
         try {
             await kvStore.setSyncParam(null, function (err,data) {
@@ -2033,8 +2173,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetSecurityLevel() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetSecurityLevelCallbackTest001');
         try {
             await kvStore.getSecurityLevel(function (err,data) {
@@ -2055,8 +2197,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 002
      * @tc.type: FUNC
      * @tc.name  Test Js Api SingleKvStore.GetSecurityLevel() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetSecurityLevelCallbackTest002');
         try {
             await kvStore.getSecurityLevel(1, function (err,data) {
@@ -2080,8 +2224,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetSecurityLevel() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetSecurityLevelCallbackTest003');
         try {
             await kvStore.getSecurityLevel('test_string', function (err,data) {
@@ -2105,8 +2251,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetSecurityLevel() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7400', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITY_CALLBACK_7400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetSecurityLevelCallbackTest004');
         try {
             await kvStore.getSecurityLevel(2.00, function (err,data) {
@@ -2130,8 +2278,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7500', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetResultSetCallbackTest001');
         try {
             let resultSet;
@@ -2173,8 +2323,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7600', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetResultSetCallbackTest002');
         try {
             let resultSet;
@@ -2195,8 +2347,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7700', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetResultSetCallbackTest003');
         try {
             let resultSet;
@@ -2217,8 +2371,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-     it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7800', 0, async function (done) {
+     it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log('SingleKvStoreGetResultSetPredicatesCallbackTest001');
         try {
             let query = new factory.Query();
@@ -2240,8 +2396,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.CloseResultSet() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_7900', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_7900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest001');
         try {
             console.info('SingleKvStoreCloseResultSetCallbackTest001 success');
@@ -2267,8 +2425,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.CloseResultSet() testcase 002
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8000', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest002');
         try {
             let resultSet = null;
@@ -2298,8 +2458,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.CloseResultSet() testcase 003
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest003');
         try {
             console.info('SingleKvStoreCloseResultSetCallbackTest003 success');
@@ -2324,8 +2486,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.CloseResultSet() testcase 004
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8200', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest004');
 
         try{
@@ -2347,8 +2511,10 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.GetEntries() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.GetEntries() testcase 001
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETENTRIES_CALLBACK_8300', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETENTRIES_CALLBACK_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('SingleKvStoreGetEntriesCallbackTest001');
         try {
             var arr = new Uint8Array([21,31]);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import unistd from 'libunistdndk.so'
 import fs from '@ohos.file.fs';
@@ -34,7 +34,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSetpgid001', 0, async (done: Function) => {
+    it('testMuslUnistdSetpgid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let c = 0
       let a: number = unistd.setpgid(b, c);
@@ -50,7 +50,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSetpgid003', 0, async (done: Function) => {
+    it('testMuslUnistdSetpgid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0
       let c = -1
       let a: number = unistd.setpgid(b, c);
@@ -66,7 +66,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSetpgid004', 0, async (done: Function) => {
+    it('testMuslUnistdSetpgid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 1
       let c = 0
       let a: number = unistd.setpgid(b, c);
@@ -82,7 +82,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSetpgrp001', 0, async (done: Function) => {
+    it('testMuslUnistdSetpgrp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = -1
       let a: number = unistd.setpgrp(b);
       expect(a).assertEqual(1);
@@ -97,7 +97,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSetpgrp002', 0, async (done: Function) => {
+    it('testMuslUnistdSetpgrp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 0;
       let a: number = unistd.setpgrp(b);
       expect(a).assertEqual(0);
@@ -112,7 +112,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdRead001', 0, async (done: Function) => {
+    it('testMuslUnistdRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -134,7 +134,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdRmdir001', 0, async (done: Function) => {
+    it('testMuslUnistdRmdir001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -1;
       let result: number = unistd.rmdir(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -150,7 +150,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdRmdir002', 0, async (done: Function) => {
+    it('testMuslUnistdRmdir002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.rmdir(param);
       console.info("Test result = " + JSON.stringify(result));
@@ -166,7 +166,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetGroups001', 0, async (done: Function) => {
+    it('testMuslUnistdGetGroups001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getGroups(0);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -180,7 +180,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetGroups002', 0, async (done: Function) => {
+    it('testMuslUnistdGetGroups002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getGroups(10);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -194,7 +194,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetGroups003', 0, async (done: Function) => {
+    it('testMuslUnistdGetGroups003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getGroups(5);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -208,7 +208,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetPid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetPid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getPid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(-1);
@@ -222,7 +222,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetPPid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetPPid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getPPid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(-1);
@@ -236,7 +236,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetPGrp001', 0, async (done: Function) => {
+    it('testMuslUnistdGetPGrp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getPGrp();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -250,7 +250,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdCrypt001', 0, async (done: Function) => {
+    it('testMuslUnistdCrypt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let salt: String = "$1$";
       let c: String = unistd.crypt(salt);
       let d: String = unistd.crypt(salt);
@@ -265,7 +265,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdCrypt002', 0, async (done: Function) => {
+    it('testMuslUnistdCrypt002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let salt: String = "$2$";
       let c: String = unistd.crypt(salt);
       let d: String = unistd.crypt(salt);
@@ -280,7 +280,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdCrypt003', 0, async (done: Function) => {
+    it('testMuslUnistdCrypt003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let salt: String = "$5$";
       let c: String = unistd.crypt(salt);
       let d: String = unistd.crypt(salt);
@@ -295,7 +295,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetPGid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetPGid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getPGid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -309,7 +309,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetSid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetSid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getSid(0);
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -323,7 +323,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetUid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetUid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getUid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -337,7 +337,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetOpt001', 0,
+    it('testMuslUnistdGetOpt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
         let data: number = unistd.getOpt("-a");
         console.info("Test NAPI data= " + JSON.stringify(data));
@@ -352,7 +352,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetOpt002', 0, async (done: Function) => {
+    it('testMuslUnistdGetOpt002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getOpt("-b");
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(98);
@@ -366,7 +366,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetOpt003', 0, async (done: Function) => {
+    it('testMuslUnistdGetOpt003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getOpt("-c");
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(99);
@@ -380,7 +380,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetTid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetTid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getTid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(-1);
@@ -394,7 +394,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetEUid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetEUid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getEUid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(0);
@@ -408,7 +408,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetGid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetGid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getGid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(-1);
@@ -422,7 +422,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetEGid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetEGid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getEGid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(-1);
@@ -436,7 +436,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetHostName001', 0, async (done: Function) => {
+    it('testMuslUnistdGetHostName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getHostName();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -450,7 +450,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetPageSize001', 0, async (done: Function) => {
+    it('testMuslUnistdGetPageSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getPageSize();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(0);
@@ -464,7 +464,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetDTableSize001', 0, async (done: Function) => {
+    it('testMuslUnistdGetDTableSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getDTableSize();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertLarger(0);
@@ -478,7 +478,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGtReSuid001', 0, async (done: Function) => {
+    it('testMuslUnistdGtReSuid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getReSuid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -492,7 +492,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdGetResGid001', 0, async (done: Function) => {
+    it('testMuslUnistdGetResGid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getResGid();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -507,7 +507,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSleep001', 0, async (done: Function) => {
+    it('testMuslUnistdSleep001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 1;
       let c = 0
       let a: number = unistd.sleep(b);
@@ -523,7 +523,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSleep002', 0, async (done: Function) => {
+    it('testMuslUnistdSleep002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 2;
       let c = 0
       let a: number = unistd.sleep(b);
@@ -539,7 +539,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdIsatty001', 0, async (done: Function) => {
+    it('testMuslUnistdIsatty001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.isatty();
       expect(a).assertEqual(0);
       done();
@@ -554,7 +554,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSwab001', 0, async (done: Function) => {
+    it('testMuslUnistdSwab001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = 0
       let c: String = unistd.swab(a);
       expect(c).assertEqual("BAcd");
@@ -569,7 +569,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSwab002', 0, async (done: Function) => {
+    it('testMuslUnistdSwab002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = 1
       let c: String = unistd.swab(a);
       expect(c).assertEqual("abcd");
@@ -584,7 +584,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSync001', 0, async (done: Function) => {
+    it('testMuslUnistdSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.sync();
       expect(c).assertEqual(0);
       done();
@@ -598,7 +598,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSyncfs001', 0, async (done: Function) => {
+    it('testMuslUnistdSyncfs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.syncfs();
       expect(c).assertEqual(-1);
       done();
@@ -612,7 +612,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSyscall001', 0, async (done: Function) => {
+    it('testMuslUnistdSyscall001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.syscall();
       expect(c).assertEqual(0);
       done();
@@ -626,7 +626,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSysinfo001', 0, async (done: Function) => {
+    it('testMuslUnistdSysinfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.sysinfo(0);
       expect(c).assertEqual(0);
       done();
@@ -639,7 +639,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSysinfo002', 0, async (done: Function) => {
+    it('testMuslUnistdSysinfo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.sysinfo(1);
       expect(c).assertEqual(-1);
       done();
@@ -653,7 +653,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSyncFileRange001', 0, async (done: Function) => {
+    it('testMuslUnistdSyncFileRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.sync_file_range();
       expect(c).assertEqual(-1);
       done();
@@ -667,7 +667,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdTcgetpgrp001', 0, async (done: Function) => {
+    it('testMuslUnistdTcgetpgrp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.tcgetpgrp(0);
       expect(c).assertEqual(-1);
       done();
@@ -681,7 +681,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdTcsetpgrp001', 0, async (done: Function) => {
+    it('testMuslUnistdTcsetpgrp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = unistd.tcsetpgrp(0);
       expect(c).assertEqual(-1);
       done();
@@ -695,7 +695,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdTtyname002', 0, async (done: Function) => {
+    it('testMuslUnistdTtyname002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let toCpp = 1;
       let result: number = unistd.ttyname(toCpp);
       console.info("Test result= " + result);
@@ -711,7 +711,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdTtynameR001', 0, async (done: Function) => {
+    it('testMuslUnistdTtynameR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let toCpp = 0;
       let result: number = unistd.ttyname_r(toCpp);
       console.info("Test result= " + result);
@@ -728,7 +728,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdUnlink001', 0, async (done: Function) => {
+    it('testMuslUnistdUnlink001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.unlink(-1);
       expect(result).assertEqual(-1);
       done();
@@ -742,7 +742,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdUnlink002', 0, async (done: Function) => {
+    it('testMuslUnistdUnlink002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.unlink(0);
       expect(result).assertEqual(0);
       done();
@@ -756,7 +756,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdUnlinkat001', 0, async (done: Function) => {
+    it('testMuslUnistdUnlinkat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.unlinkat(-1);
       expect(result).assertEqual(-1);
       done();
@@ -770,7 +770,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdUnlinkat002', 0, async (done: Function) => {
+    it('testMuslUnistdUnlinkat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.unlinkat(0);
       expect(result).assertEqual(0);
       done();
@@ -784,7 +784,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdUsleep001', 0, async (done: Function) => {
+    it('testMuslUnistdUsleep001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 2000000;
       let result: number = unistd.usleep(b);
       console.info("Test result= " + result);
@@ -801,7 +801,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdAccess001', 0, async (done: Function) => {
+    it('testMuslUnistdAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.access();
       expect(a).assertEqual(0);
       done();
@@ -815,7 +815,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdEaccess001', 0, async (done: Function) => {
+    it('testMuslUnistdEaccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.eaccess();
       expect(a).assertEqual(0);
       done();
@@ -830,7 +830,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 0
      * @
      */
-    it('testMuslUnistdAlarm001', 0, async (done: Function) => {
+    it('testMuslUnistdAlarm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let resultValue = 0;
       let result: number = unistd.alarm(param);
@@ -846,7 +846,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdOptarg001', 0, async (done: Function) => {
+    it('testMuslUnistdOptarg001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.optarg();
       expect(a).assertEqual(1);
       done();
@@ -859,7 +859,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdOpterr001', 0, async (done: Function) => {
+    it('testMuslUnistdOpterr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.opterr();
       expect(a).assertEqual(1);
       done();
@@ -872,7 +872,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdOptind001', 0, async (done: Function) => {
+    it('testMuslUnistdOptind001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.optind();
       expect(a).assertEqual(1);
       done();
@@ -885,7 +885,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdOptopt001', 0, async (done: Function) => {
+    it('testMuslUnistdOptopt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.optopt();
       expect(a).assertEqual(1);
       done();
@@ -898,7 +898,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPRead001', 0, async (done: Function) => {
+    it('testMuslUnistdPRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.pRead();
       expect(a).assertEqual(1);
       done();
@@ -912,7 +912,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPipe001', 0, async (done: Function) => {
+    it('testMuslUnistdPipe001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.pipe();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -928,7 +928,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPipe2001', 0, async (done: Function) => {
+    it('testMuslUnistdPipe2001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.pipe2();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -944,7 +944,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdPathconf001', 0, async (done: Function) => {
+    it('testMuslUnistdPathconf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: string = unistd.pathconf();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -960,7 +960,7 @@ export default function unistdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUnistdSetresuid001', 0, async (done: Function) => {
+    it('testMuslUnistdSetresuid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.setresuid();
       expect(result).assertEqual(0)
       done();
@@ -974,7 +974,7 @@ export default function unistdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUnistdTruncate001', 0, async (done: Function) => {
+    it('testMuslUnistdTruncate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.truncate();
       expect(result).assertEqual(0)
       done();
@@ -988,7 +988,7 @@ export default function unistdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUnistdTruncate64001', 0, async (done: Function) => {
+    it('testMuslUnistdTruncate64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.truncate64();
       expect(result).assertEqual(0)
       done();
@@ -1002,7 +1002,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdNice001', 0, async (done: Function) => {
+    it('testMuslUnistdNice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = 10;
       let data: number = unistd.nice(a);
       console.info("Test NAPI data = \"" + data + "\"");
@@ -1020,7 +1020,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdGetentropy001', 0, async (done: Function) => {
+    it('testMuslUnistdGetentropy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.getentropy();
       expect(result).assertEqual(resultValue);
@@ -1037,7 +1037,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdGetdomainname001', 0, async (done: Function) => {
+    it('testMuslUnistdGetdomainname001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.getdomainname();
       expect(result).assertEqual(resultValue);
@@ -1053,7 +1053,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdGetcwd001', 0, async (done: Function) => {
+    it('testMuslUnistdGetcwd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 1;
       let result: number = unistd.getcwd();
       expect(result).assertEqual(resultValue);
@@ -1069,7 +1069,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdFpathconf001', 0, async (done: Function) => {
+    it('testMuslUnistdFpathconf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 1;
       let result: number = unistd.fpathconf();
       expect(result).assertEqual(resultValue);
@@ -1085,7 +1085,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdChdir001', 0, async (done: Function) => {
+    it('testMuslUnistdChdir001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.chdir();
       expect(result).assertEqual(resultValue);
@@ -1101,7 +1101,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdChown001', 0, async (done: Function) => {
+    it('testMuslUnistdChown001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.chown();
       expect(result).assertEqual(resultValue);
@@ -1117,7 +1117,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdChroot001', 0, async (done: Function) => {
+    it('testMuslUnistdChroot001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.chroot();
       expect(result).assertEqual(resultValue);
@@ -1133,7 +1133,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdFsync001', 0, async (done: Function) => {
+    it('testMuslUnistdFsync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.fsync();
       expect(result).assertEqual(resultValue);
@@ -1149,7 +1149,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdFtruncate001', 0, async (done: Function) => {
+    it('testMuslUnistdFtruncate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.ftruncate();
       expect(result).assertEqual(resultValue);
@@ -1165,7 +1165,7 @@ export default function unistdNdkTest() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslUnistdFtruncate64001', 0, async (done: Function) => {
+    it('testMuslUnistdFtruncate64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultValue = 0;
       let result: number = unistd.ftruncate64();
       expect(result).assertEqual(resultValue);
@@ -1180,7 +1180,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdTtyname001', 0, async (done: Function) => {
+    it('testMuslUnistdTtyname001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let toCpp = 0;
       let result: number = unistd.ttyname(toCpp);
       expect(result).assertEqual(0);
@@ -1196,7 +1196,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslIssetugid001', 0, async (done: Function) => {
+    it('testMuslIssetugid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = unistd.issetugid();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
@@ -1210,7 +1210,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSetegid001', 0, async (done: Function) => {
+    it('testMuslUnistdSetegid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = unistd.setegid();
       expect(a).assertEqual(0);
       done();
@@ -1224,7 +1224,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdGetLogin001', 0, async (done: Function) => {
+    it('testMuslUnistdGetLogin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getLogin();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -1239,7 +1239,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdGetLoginR001', 0, async (done: Function) => {
+    it('testMuslUnistdGetLoginR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = unistd.getLoginR();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -1254,7 +1254,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdLink002', 0, async (done: Function) => {
+    it('testMuslUnistdLink002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = "";
       let b = "";
       let c: number = unistd.link(a, b);
@@ -1270,7 +1270,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdLinkAt002', 0, async (done: Function) => {
+    it('testMuslUnistdLinkAt002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = "";
       let b = "";
       let c: number = unistd.linkAt(a, b);
@@ -1286,7 +1286,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdLockF001', 0, async (done: Function) => {
+    it('testMuslUnistdLockF001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1306,7 +1306,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdLockF64001', 0, async (done: Function) => {
+    it('testMuslUnistdLockF64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1326,7 +1326,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdClose001', 0, async (done: Function) => {
+    it('testMuslUnistdClose001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1347,7 +1347,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdCopyFileRange001', 0, async (done: Function) => {
+    it('testMuslUnistdCopyFileRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1370,7 +1370,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdCtermid001', 0, async (done: Function) => {
+    it('testMuslUnistdCtermid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = "/dev/tty";
       let result: string = unistd.ctermid();
       expect(result).assertEqual(param);
@@ -1384,7 +1384,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSysconf001', 0, async (done: Function) => {
+    it('testMuslUnistdSysconf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 30;
       let sysconfResult: number = unistd.sysconf(param);
       expect(sysconfResult).assertEqual(4096);
@@ -1400,7 +1400,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdSysconf002', 0, async (done: Function) => {
+    it('testMuslUnistdSysconf002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = -100;
       let sysconfResult: number = unistd.sysconf(param);
       expect(sysconfResult).assertEqual(-1);
@@ -1416,7 +1416,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdSbrk001', 0, async (done: Function) => {
+    it('testMuslUnistdSbrk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.sbrk();
       console.info("Test result = " + JSON.stringify(result));
@@ -1432,7 +1432,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdWrite001', 0, async (done: Function) => {
+    it('testMuslUnistdWrite001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 2;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
@@ -1454,7 +1454,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdEnviron001', 0, async (done: Function) => {
+    it('testMuslUnistdEnviron001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.environ();
       expect(result).assertEqual(param);
@@ -1469,7 +1469,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdDup001', 0, async (done: Function) => {
+    it('testMuslUnistdDup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1490,7 +1490,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdDup2001', 0, async (done: Function) => {
+    it('testMuslUnistdDup2001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1511,7 +1511,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdDup3001', 0, async (done: Function) => {
+    it('testMuslUnistdDup3001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1532,7 +1532,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdExecv001', 0, async (done: Function) => {
+    it('testMuslUnistdExecv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.execv();
       expect(result).assertEqual(param);
@@ -1547,7 +1547,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdExecvp001', 0, async (done: Function) => {
+    it('testMuslUnistdExecvp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.execvp();
       expect(result).assertEqual(param);
@@ -1561,7 +1561,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdExecvpe001', 0, async (done: Function) => {
+    it('testMuslUnistdExecvpe001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.execvpe();
       expect(result).assertEqual(param);
@@ -1576,7 +1576,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdFexecve001', 0, async (done: Function) => {
+    it('testMuslUnistdFexecve001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.fexecve();
       expect(result).assertEqual(param);
@@ -1590,7 +1590,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdExecve001', 0, async (done: Function) => {
+    it('testMuslUnistdExecve001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.execve();
       expect(result).assertEqual(param);
@@ -1605,7 +1605,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdFaccessat001', 0, async (done: Function) => {
+    it('testMuslUnistdFaccessat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1627,7 +1627,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdFchdir001', 0, async (done: Function) => {
+    it('testMuslUnistdFchdir001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1645,7 +1645,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdFchownat001', 0, async (done: Function) => {
+    it('testMuslUnistdFchownat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1666,7 +1666,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdFdatasync001', 0, async (done: Function) => {
+    it('testMuslUnistdFdatasync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1687,7 +1687,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdFchown001', 0, async (done: Function) => {
+    it('testMuslUnistdFchown001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -1709,7 +1709,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUnistdDaemon001', 0, async (done: Function) => {
+    it('testMuslUnistdDaemon001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let param = 0;
       let result: number = unistd.daemon();
       expect(result).assertEqual(param);
@@ -1725,7 +1725,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdWrite002', 0, async (done: Function) => {
+    it('testMuslUnistdWrite002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = -1;
       let result: number = unistd.vwarn();
       expect(result).assertEqual(resultTrue);
@@ -1740,7 +1740,7 @@ export default function unistdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUnistdWrite003', 0, async (done: Function) => {
+    it('testMuslUnistdWrite003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = -1;
       let result: number = unistd.vwarnx();
       expect(result).assertEqual(resultTrue);

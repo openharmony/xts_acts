@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import systemTime from "@ohos.systemTime";
 import commonEvent from '@ohos.commonEvent';
 import Base from '@ohos.base';
@@ -94,7 +94,7 @@ export default function systemTimeCommonEventTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_systemTime_commonEvent_timeChanged_0010', 0, async (done: Function) => {
+    it('SUB_systemTime_commonEvent_timeChanged_0010', Level.LEVEL2, async (done: Function) => {
       let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
         events: ['usual.event.TIME_CHANGED']
       }
@@ -120,7 +120,7 @@ export default function systemTimeCommonEventTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_systemTime_commonEvent_timeTick_0010', 0, async (done: Function) => {
+    it('SUB_systemTime_commonEvent_timeTick_0010', Level.LEVEL2, async (done: Function) => {
       let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
         events: ['usual.event.TIME_TICK']
       }
@@ -148,7 +148,7 @@ export default function systemTimeCommonEventTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_systemTime_commonEvent_timezoneChanged_0010', 0, async (done: Function) => {
+    it('SUB_systemTime_commonEvent_timezoneChanged_0010', Level.LEVEL2, async (done: Function) => {
       let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
         events: ['usual.event.TIMEZONE_CHANGED']
       }

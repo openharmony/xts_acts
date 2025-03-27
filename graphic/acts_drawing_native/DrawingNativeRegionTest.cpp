@@ -53,7 +53,7 @@ class DrawingNativeRegionTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRegionTest, testRegionCreateNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RegionCreate
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
@@ -68,7 +68,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionCreateNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionCreateMoreTimes, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionCreateMoreTimes, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionCreate
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
@@ -89,7 +89,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionCreateMoreTimes, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RegionCreate returns a pointer value regionObject
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
@@ -105,7 +105,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNull, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionDestroy takes nullptr as input
     OH_Drawing_RegionDestroy(nullptr);
     // add assert
@@ -120,7 +120,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionDestroyNull, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionContainsInRange, TestSize.Level0) {
+HWTEST_F(DrawingNativeRegionTest, testRegionContainsInRange, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RegionCreate returns a pointer value regionObject, the call is successful and the return value is
     // not nullptr
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
@@ -149,7 +149,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsInRange, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionContainsXvalueNotInRange, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionContainsXvalueNotInRange, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionCreate returns a pointer value regionObject
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
@@ -177,7 +177,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsXvalueNotInRange, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionContainsYvalueNotInRange, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionContainsYvalueNotInRange, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionCreate returns a pointer value regionObject
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
@@ -205,7 +205,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsYvalueNotInRange, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionContainsAllNotInRange, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionContainsAllNotInRange, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionCreate returns a pointer value regionObject
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
@@ -233,7 +233,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsAllNotInRange, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionContainsRegionNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionContainsRegionNull, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionContains takes nullptr as input, x: a value within the range, y: a value within the range
     OH_Drawing_RegionContains(nullptr, 100, 100);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -247,7 +247,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionContainsRegionNull, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionOpNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRegionTest, testRegionOpNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_RegionCreate returns a pointer value regionObject
     OH_Drawing_Region *regionObject = OH_Drawing_RegionCreate();
     EXPECT_NE(regionObject, nullptr);
@@ -284,7 +284,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionNull, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionCreate returns a pointer value dst
     OH_Drawing_Region *dst = OH_Drawing_RegionCreate();
     EXPECT_NE(dst, nullptr);
@@ -309,7 +309,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionNull, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionDstNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionDstNull, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionCreate returns a pointer value region
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
@@ -333,7 +333,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionOpRegionDstNull, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultTrue, TestSize.Level0) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultTrue, Function | SmallTest | Level0) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
@@ -355,7 +355,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultTrue, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRegionNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRegionNull, Function | SmallTest | Level1) {
     // 1. OH_Drawing_RegionSetRect takes a correct rect object pointer as input, region is nullptr, returns
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
@@ -374,7 +374,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRegionNull, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRectNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRectNull, Function | SmallTest | Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     // add assert
     EXPECT_NE(region, nullptr);
@@ -392,7 +392,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectRectNull, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultFalse, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultFalse, Function | SmallTest | Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 0.0f, 0.0f);
@@ -415,7 +415,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetRectResultFalse, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultTrue, TestSize.Level0) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultTrue, Function | SmallTest | Level0) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
     EXPECT_NE(path, nullptr);
@@ -450,7 +450,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultTrue, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetPathRegionNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetPathRegionNull, Function | SmallTest | Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
     EXPECT_NE(path, nullptr);
@@ -483,7 +483,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathRegionNull, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetPathPathNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetPathPathNull, Function | SmallTest | Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
     EXPECT_NE(path, nullptr);
@@ -516,7 +516,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathPathNull, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetPathClipNull, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetPathClipNull, Function | SmallTest | Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
     EXPECT_NE(path, nullptr);
@@ -549,7 +549,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathClipNull, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultFalse, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultFalse, Function | SmallTest | Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
     EXPECT_NE(path, nullptr);

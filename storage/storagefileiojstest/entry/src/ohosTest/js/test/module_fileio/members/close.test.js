@@ -17,6 +17,7 @@ import {
   fileio,
   describe, it, expect, nextFileName, prepareFile, FILE_CONTENT
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioClose() {
 describe('fileio_close', function () {
@@ -30,7 +31,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileio_test_close_sync_000', 0,async function () {
+   it('fileio_test_close_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_close_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -53,7 +54,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_close_sync_001', 0, function () {
+  it('fileio_test_close_sync_001', Level.LEVEL0, function () {
     try {
       fileio.closeSync();
     } catch (e) {
@@ -71,7 +72,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_close_sync_002', 0, function () {
+  it('fileio_test_close_sync_002', Level.LEVEL0, function () {
     try {
       fileio.closeSync(-1);
       expect(false).assertTrue();
@@ -90,7 +91,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_close_async_000', 0, async function (done) {
+  it('fileio_test_close_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_close_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -115,7 +116,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_close_async_001', 0, async function (done) {
+  it('fileio_test_close_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_close_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -140,7 +141,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_close_async_002', 0, async function (done) {
+  it('fileio_test_close_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_close_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -165,7 +166,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileio_test_close_async_003', 0, async function (done) {
+   it('fileio_test_close_async_003', Level.LEVEL0, async function (done) {
      try {
        await fileio.close(-1);
        expect(false).assertTrue();
@@ -185,7 +186,7 @@ describe('fileio_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileio_test_close_async_004', 0, async function (done) {
+   it('fileio_test_close_async_004', Level.LEVEL0, async function (done) {
      try {
        await fileio.close();
      } catch (e) {

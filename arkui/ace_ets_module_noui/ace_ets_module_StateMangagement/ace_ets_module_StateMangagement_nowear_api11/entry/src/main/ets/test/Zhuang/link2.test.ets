@@ -71,7 +71,7 @@ export default function link2() {
       // console.info("[link2_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       // expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
       console.info("[link2_0100] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[link2_0100] END');
       done();
 
@@ -89,7 +89,7 @@ export default function link2() {
       // console.info("[link2_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       //       // expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
       console.info("[link2_0200] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[link2_0200] END');
       done();
 
@@ -141,7 +141,7 @@ export default function link2() {
       // console.info("[link2_0500] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       // expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
       console.info("[link2_0500] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[link2_0500] END');
       done();
 
@@ -161,7 +161,7 @@ export default function link2() {
       // console.info("[link2_0600] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       // expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
       console.info("[link2_0600] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[link2_0600] END');
       done();
 

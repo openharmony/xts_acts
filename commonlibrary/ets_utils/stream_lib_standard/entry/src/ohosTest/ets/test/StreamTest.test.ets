@@ -14,7 +14,7 @@
  */
 
 import stream from '@ohos.util.stream';
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, TestType, Size, Level} from '@ohos/hypium';
 import { common } from './common';
 import emitter from '@ohos.events.emitter';
 
@@ -33,7 +33,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritable001', 0, () => {
+    it('testStreamWritable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writable).assertEqual(true);
       writableStream.end();
@@ -49,7 +49,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritable002', 0, () => {
+    it('testStreamWritable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writable).assertEqual(true);
       writableStream.end();
@@ -66,7 +66,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritable003', 0, () => {
+    it('testStreamWritable003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback(new Error());
@@ -87,7 +87,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritable004', 0, () => {
+    it('testStreamWritable004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         expect(chunk.toString()).assertEqual('write content');
@@ -107,7 +107,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritable005', 0, () => {
+    it('testStreamWritable005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = common.mustNotCall();
       expect(writableStream.writable).assertEqual(true);
@@ -124,7 +124,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCbError001', 0, () => {
+    it('testStreamWritableCbError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let callbackCalled = false;
       let writable = new stream.Writable();
       writable.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -147,7 +147,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCbError002', 0, () => {
+    it('testStreamWritableCbError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback(new Error());
@@ -170,7 +170,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCbTwice001', 0, async () => {
+    it('testStreamWritableCbTwice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -193,7 +193,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCbTwice002', 0, () => {
+    it('testStreamWritableCbTwice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -217,7 +217,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCbTwice003', 0, () => {
+    it('testStreamWritableCbTwice003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         setTimeout(() => {
@@ -243,7 +243,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWriteError001', 0, () => {
+    it('testStreamWritableWriteError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       let ticked = false;
       writableStream.doWrite = (chunk, encoding, callback) => {
@@ -268,7 +268,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWriteError002', 0, () => {
+    it('testStreamWritableWriteError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       const test: Function = () => {
         writableStream.write(...[]);
@@ -285,7 +285,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWriteError003', 0, () => {
+    it('testStreamWritableWriteError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const test: Function = () => {
         let writableStream = new stream.Writable();
         writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -305,7 +305,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish001', 0, (done) => {
+    it('testStreamWritableWritevFinish001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done) => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback(new Error('write test error'));
@@ -328,7 +328,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish002', 0, () => {
+    it('testStreamWritableWritevFinish002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         setTimeout(() => {
@@ -352,7 +352,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish003', 0, () => {
+    it('testStreamWritableWritevFinish003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback(new Error('write error'));
@@ -381,7 +381,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish004', 0, () => {
+    it('testStreamWritableWritevFinish004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         setTimeout(() => {
@@ -414,7 +414,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish005', 0, async (done) => {
+    it('testStreamWritableWritevFinish005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
       let readableStream = new stream.Readable();
       readableStream.push('ok');
       readableStream.push(null);
@@ -445,7 +445,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritevFinish006', 0, () => {
+    it('testStreamWritableWritevFinish006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         setTimeout(callback);
@@ -468,7 +468,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableConstructorSetMethods001', 0, () => {
+    it('testStreamWritableConstructorSetMethods001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       const test: Function = () => {
         writableStream.end('test');
@@ -485,7 +485,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableConstructorSetMethods002', 0, () => {
+    it('testStreamWritableConstructorSetMethods002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let _writev = (chunk, callback) => {
         expect(chunk.length).assertEqual(2);
         callback();
@@ -514,7 +514,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableEndCbError001', 0, () => {
+    it('testStreamWritableEndCbError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       const _error = new Error('new error');
       writable.doWrite = (chunk, encoding, callback) => {
@@ -543,7 +543,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableEndedState001', 0, () => {
+    it('testStreamWritableEndedState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       let endCalled = false;
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -573,7 +573,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableFinished001', 0, () => {
+    it('testStreamWritableFinished001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(stream.Writable.prototype.hasOwnProperty('writableFinished')).assertEqual(true);
     });
 
@@ -586,7 +586,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableFinished002', 0, () => {
+    it('testStreamWritableFinished002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         expect(writable.writableFinished).assertEqual(false);
@@ -609,7 +609,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableFinished003', 0, () => {
+    it('testStreamWritableFinished003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       let finishCalled = false;
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -633,7 +633,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableFinished004', 0, () => {
+    it('testStreamWritableFinished004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -655,7 +655,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableFinished005', 0, () => {
+    it('testStreamWritableFinished005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -680,7 +680,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties001', 0, () => {
+    it('testStreamWritableProperties001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writableCorked).assertEqual(0);
       writableStream.uncork();
@@ -706,7 +706,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties002', 0, () => {
+    it('testStreamWritableProperties002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writableObjectMode).assertEqual(false);
     });
@@ -720,7 +720,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties003', 0, () => {
+    it('testStreamWritableProperties003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writableHighWatermark).assertEqual(16 * 1024);
     });
@@ -734,7 +734,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties004', 0, () => {
+    it('testStreamWritableProperties004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.on('finish', () => {
         expect(writableStream.writable).assertEqual(false);
@@ -751,7 +751,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties005', 0, () => {
+    it('testStreamWritableProperties005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         setTimeout(() => {
@@ -771,7 +771,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties006', 0, () => {
+    it('testStreamWritableProperties006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writableLength).assertEqual(0);
     });
@@ -785,7 +785,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties007', 0, () => {
+    it('testStreamWritableProperties007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let customWritable = new CustomWritable();
       customWritable.write('hello');
       expect(customWritable.writableLength).assertEqual(5);
@@ -800,7 +800,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties008', 0, () => {
+    it('testStreamWritableProperties008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let customWritable = new CustomWritable();
       customWritable.write('hello');
       customWritable.write('world');
@@ -816,7 +816,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties009', 0, async () => {
+    it('testStreamWritableProperties009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let customWritable = new CustomWritable();
       customWritable.write('hello');
       expect(customWritable.writableLength).assertEqual(5);
@@ -834,7 +834,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties010', 0, () => {
+    it('testStreamWritableProperties010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const largeData = Array.from({
         length: Math.floor(16384 / 2)
       }, () => 'ab').join('');
@@ -857,7 +857,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties011', 0, async () => {
+    it('testStreamWritableProperties011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const largeData = Array.from({
         length: Math.floor(16384 / 2)
       }, () => 'ab').join('');
@@ -880,7 +880,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties012', 0, async () => {
+    it('testStreamWritableProperties012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       const largeData = Array.from({
         length: Math.floor(16384 / 2)
       }, () => 'ab').join('');
@@ -901,7 +901,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties013', 0, () => {
+    it('testStreamWritableProperties013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const largeData = Array.from({
         length: Math.floor(16384 / 2)
       }, () => 'ab').join('');
@@ -921,7 +921,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties014', 0, () => {
+    it('testStreamWritableProperties014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new CustomWritable();
       expect(writableStream.writableCorked).assertEqual(0);
       writableStream.cork();
@@ -941,7 +941,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties015', 0, () => {
+    it('testStreamWritableProperties015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let errorEvent = new ErrorEventWritable();
       let chunks = 'C';
       errorEvent.write(chunks);
@@ -959,7 +959,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties016', 0, () => {
+    it('testStreamWritableProperties016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new ErrorEventWritable();
       let chunks = 'C';
       writableStream.write(chunks);
@@ -978,7 +978,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableProperties017', 0, () => {
+    it('testStreamWritableProperties017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.on('close', common.mustCall(() => {
         expect(writableStream.writableFinished).assertEqual(true);
@@ -995,7 +995,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCork001', 0, () => {
+    it('testStreamWritableCork001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let dataWritten = '';
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -1018,7 +1018,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCork002', 0, () => {
+    it('testStreamWritableCork002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let dataWritten = '';
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -1046,7 +1046,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableCork003', 0, () => {
+    it('testStreamWritableCork003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let dataWritten = '';
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -1072,7 +1072,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableOff001', 0, () => {
+    it('testStreamWritableOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -1099,7 +1099,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableOff002', 0, () => {
+    it('testStreamWritableOff002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -1132,7 +1132,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableChangeDefaultEncoding001', 0, () => {
+    it('testStreamWritableChangeDefaultEncoding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let testWritable = new TestWritable((chunk, type, enc) => {
         expect(enc).assertEqual('utf8');
       });
@@ -1149,7 +1149,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableChangeDefaultEncoding002', 0, () => {
+    it('testStreamWritableChangeDefaultEncoding002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let testWritable = new TestWritable((chunk, type, enc) => {
         expect(enc).assertEqual('ascii');
         expect(type).assertEqual('string');
@@ -1168,7 +1168,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableChangeDefaultEncoding003', 0, () => {
+    it('testStreamWritableChangeDefaultEncoding003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const test: Function = () => {
         let testWritable = new TestWritable(
           (type, enc) => {
@@ -1189,7 +1189,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableInvalidChunk001', 0, () => {
+    it('testStreamWritableInvalidChunk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       testWriteType(true, 'Parameter error. The type of true must be string or UintArray');
       testWriteType(undefined, 'Parameter error. The type of undefined must be string or UintArray');
       testWriteType(null, "Parameter error. The type of null must be string or UintArray");
@@ -1219,7 +1219,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableDrain001', 0, () => {
+    it('testStreamWritableDrain001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writableStream = new stream.Writable();
       let drainCalled = false;
       writableStream.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
@@ -1244,7 +1244,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritableWritev001', 0, () => {
+    it('testStreamWritableWritev001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       let doWriteVCalled = false;
       writable.doWritev = common.mustCall((chunks, cb) => {
@@ -1264,7 +1264,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexEnd001', 0, () => {
+    it('testStreamDuplexEnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       let finishCalled = false;
       duplex.doRead = () => {
@@ -1286,7 +1286,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexWritableFinished001', 0, () => {
+    it('testStreamDuplexWritableFinished001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(stream.Duplex.prototype.hasOwnProperty('writableFinished')).assertEqual(true);
     });
 
@@ -1299,7 +1299,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexWritableFinished002', 0, () => {
+    it('testStreamDuplexWritableFinished002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         expect(duplex.writableFinished).assertEqual(false);
@@ -1322,7 +1322,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplex001', 0, () => {
+    it('testStreamDuplex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       expect(duplex instanceof stream.Duplex).assertEqual(true);
       let written: string | Uint8Array;
@@ -1353,7 +1353,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplex002', 0, () => {
+    it('testStreamDuplex002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback();
@@ -1380,7 +1380,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplex003', 0, () => {
+    it('testStreamDuplex003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = (chunk: string | Uint8Array, encoding: string, callback: (error?: (Error | null)) => void) => {
         callback(new Error('Write error'));
@@ -1401,7 +1401,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplex004', 0, () => {
+    it('testStreamDuplex004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doRead = () => {
         duplex.push('Sync data');
@@ -1427,7 +1427,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexProperties001', 0, () => {
+    it('testStreamDuplexProperties001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       expect(duplex.writableObjectMode).assertEqual(false);
     });
@@ -1441,7 +1441,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableResumePause001', 0, async () => {
+    it('testStreamReadableResumePause001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let readable = new TestReadable();
       let dataEmittedAfterResume = false;
       let dataCalled = false;
@@ -1470,7 +1470,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableResumePause002', 0, () => {
+    it('testStreamReadableResumePause002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       readable.push('test');
       readable.pause();
@@ -1487,7 +1487,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableResumePause003', 0, () => {
+    it('testStreamReadableResumePause003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       readable.pause();
       readable.on('readable', common.mustCall());
@@ -1507,7 +1507,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableResumePause004', 0, () => {
+    it('testStreamReadableResumePause004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       expect(readable.isPaused()).assertEqual(false);
     });
@@ -1521,7 +1521,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableResumePause005', 0, () => {
+    it('testStreamReadableResumePause005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       readable.pause();
       expect(readable.isPaused()).assertEqual(true);
@@ -1536,7 +1536,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableResumePause006', 0, () => {
+    it('testStreamReadableResumePause006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       readable.pause();
       readable.resume();
@@ -1552,7 +1552,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties001', 0, () => {
+    it('testStreamReadableProperties001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       expect(readable.readableObjectMode).assertEqual(false);
     });
@@ -1566,7 +1566,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties002', 0, () => {
+    it('testStreamReadableProperties002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       expect(readable.readable).assertEqual(true);
     });
@@ -1580,7 +1580,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties003', 0, () => {
+    it('testStreamReadableProperties003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
         throw new Error('Simulated error');
@@ -1601,7 +1601,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties004', 0, () => {
+    it('testStreamReadableProperties004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       expect(readable.readableHighWatermark).assertEqual(16 * 1024);
     });
@@ -1615,7 +1615,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties005', 0, () => {
+    it('testStreamReadableProperties005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1633,7 +1633,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties006', 0, () => {
+    it('testStreamReadableProperties006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1650,7 +1650,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties007', 0, () => {
+    it('testStreamReadableProperties007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       expect(readable.readableLength).assertEqual(0);
     });
@@ -1664,7 +1664,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties008', 0, () => {
+    it('testStreamReadableProperties008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       let testData = 'Hello world';
       readable.doRead = () => {
@@ -1682,7 +1682,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties009', 0, () => {
+    it('testStreamReadableProperties009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       let testData = 'Hello world!';
       readable.doRead = () => {
@@ -1705,7 +1705,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties010', 0, () => {
+    it('testStreamReadableProperties010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1727,7 +1727,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties011', 0, () => {
+    it('testStreamReadableProperties011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       let testData1 = 'First part';
       let testData2 = 'Second part';
@@ -1748,7 +1748,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties012', 0, () => {
+    it('testStreamReadableProperties012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1768,7 +1768,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties013', 0, () => {
+    it('testStreamReadableProperties013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       expect(readable.readable).assertEqual(true);
     });
@@ -1782,7 +1782,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties014', 0, () => {
+    it('testStreamReadableProperties014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1799,7 +1799,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties015', 0, () => {
+    it('testStreamReadableProperties015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1815,7 +1815,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties016', 0, () => {
+    it('testStreamReadableProperties016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1835,7 +1835,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableProperties017', 0, () => {
+    it('testStreamReadableProperties017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1854,7 +1854,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableConstructorSetMethods001', 0, () => {
+    it('testStreamReadableConstructorSetMethods001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let doReadCalled = true;
       let doRead = function doRead() {
         readableStream.push(null);
@@ -1875,7 +1875,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableData001', 0, () => {
+    it('testStreamReadableData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -1902,7 +1902,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableData002', 0, () => {
+    it('testStreamReadableData002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readableStream = new stream.Readable();
       let dataSource = ["x"];
       readableStream.doRead = (size) => {
@@ -1923,7 +1923,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableDefaultEncoding001', 0, () => {
+    it('testStreamReadableDefaultEncoding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const test: Function = () => {
         let readableStream = new stream.Readable();
         readableStream.setEncoding('my invalid encoding')
@@ -1940,7 +1940,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableEmitReadableShortStream001', 0, () => {
+    it('testStreamReadableEmitReadableShortStream001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readableStream = new TestReadable();
       readableStream.on('readable', () => {
         while (true) {
@@ -1964,7 +1964,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableEmitReadableShortStream002', 0, () => {
+    it('testStreamReadableEmitReadableShortStream002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readableStream = new TestReadable();
       let count = 0;
       readableStream.on('readable', () => {
@@ -1990,7 +1990,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableEnded001', 0, () => {
+    it('testStreamReadableEnded001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(stream.Readable.prototype.hasOwnProperty('readableEnded')).assertTrue();
     });
 
@@ -2003,7 +2003,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableEnded002', 0, () => {
+    it('testStreamReadableEnded002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readableStream = new TestReadable();
       readableStream.doRead = () => {
         expect(readableStream.readableEnded).assertEqual(false);
@@ -2029,7 +2029,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableEnded003', 0, () => {
+    it('testStreamReadableEnded003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.on('readable', () => {
         readable.read();
@@ -2051,7 +2051,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableHwm0Async001', 0, () => {
+    it('testStreamReadableHwm0Async001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let count = 5;
       let dataTimes = 0;
       let readable = new stream.Readable();
@@ -2081,7 +2081,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableInvalidChunk001', 0, () => {
+    it('testStreamReadableInvalidChunk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       testPushInvalidArg([]);
       testPushInvalidArg({});
       testPushInvalidArg(0);
@@ -2106,7 +2106,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadablePauseAndResume001', 0, () => {
+    it('testStreamReadablePauseAndResume001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.doRead = () => {
       };
@@ -2132,7 +2132,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableReadable001', 0, () => {
+    it('testStreamReadableReadable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let mustNotCall = common.mustNotCall();
       let readable = new stream.Readable();
       readable.doRead = () => {
@@ -2157,7 +2157,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableSetEncoding001', 0, () => {
+    it('testStreamReadableSetEncoding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.setEncoding(null);
       expect(readable.readableEncoding).assertEqual('utf-8');
@@ -2172,7 +2172,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableWithUnimplementedDoRead001', 0, () => {
+    it('testStreamReadableWithUnimplementedDoRead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.read();
       readable.on('error', common.mustCall((error: emitter.EventData) => {
@@ -2191,7 +2191,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformCallbackTwice001', 0, () => {
+    it('testStreamTransformCallbackTwice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       transform.doTransform = (chunk: string, encoding: string, callback: Function) => {
         callback();
@@ -2213,7 +2213,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformConstructor001', 0, () => {
+    it('testStreamTransformConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       const test: Function = () => {
         transform.end('test');
@@ -2230,7 +2230,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformFlushData001', 0, () => {
+    it('testStreamTransformFlushData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       let expected = 'test';
 
@@ -2259,7 +2259,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform001', 0, () => {
+    it('testStreamTransform001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       transform.doTransform = (chunk: string, encoding: string, callback: Function) => {
         let transformedChunk = chunk.toString().toUpperCase();
@@ -2286,7 +2286,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform002', 0, () => {
+    it('testStreamTransform002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       let endCalled = false;
       transform.doTransform = (chunk: string, encoding: string, callback: Function) => {
@@ -2310,7 +2310,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform003', 0, () => {
+    it('testStreamTransform003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class MyTransform extends stream.Transform {
         doInitialize(callback: Function) {
           super.doInitialize(callback);
@@ -2338,7 +2338,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform004', 0, () => {
+    it('testStreamTransform004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       let result = transformStream.setDefaultEncoding('utf8');
       expect(result).assertEqual(true);
@@ -2353,7 +2353,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform005', 0, () => {
+    it('testStreamTransform005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       let dataSource = ["x"];
       transformStream.doRead = (size) => {
@@ -2374,7 +2374,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform006', 0, (done) => {
+    it('testStreamTransform006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done) => {
       let transformStream = new stream.Transform();
       let dataCalled = false;
       transformStream.on('data', () => {
@@ -2400,7 +2400,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform007', 0, (done) => {
+    it('testStreamTransform007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done) => {
       let transformStream = new stream.Transform();
       let dataCalled = false;
       transformStream.on('data', () => {
@@ -2426,7 +2426,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform008', 0, () => {
+    it('testStreamTransform008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       let result = transformStream.setEncoding('utf8');
       expect(result).assertEqual(true);
@@ -2441,7 +2441,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform009', 0, () => {
+    it('testStreamTransform009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       expect(transformStream.isPaused()).assertEqual(false);
       transformStream.pause();
@@ -2457,7 +2457,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform010', 0, () => {
+    it('testStreamTransform010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class MyRead extends stream.Readable {
         doRead(size: number) {
           this.push("hello");
@@ -2489,7 +2489,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform011', 0, () => {
+    it('testStreamTransform011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class MyRead extends stream.Readable {
         doRead(size: number) {
           this.push("hello");
@@ -2526,7 +2526,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransform012', 0, () => {
+    it('testStreamTransform012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class TestTransform extends stream.Transform {
         constructor() {
           super();
@@ -2558,7 +2558,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformProperties001', 0, () => {
+    it('testStreamTransformProperties001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       expect(transform.writableHighWatermark).assertEqual(16 * 1024);
     });
@@ -2572,7 +2572,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformProperties002', 0, () => {
+    it('testStreamTransformProperties002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       expect(transform.readableHighWatermark).assertEqual(16 * 1024);
     });
@@ -2586,7 +2586,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformEvent001', 0, () => {
+    it('testStreamTransformEvent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       transform.doTransform = (chunk: string, encoding: string, callback: Function) => {
         let transformedChunk = chunk.toString().toUpperCase();
@@ -2613,7 +2613,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformEvent002', 0, () => {
+    it('testStreamTransformEvent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       transformStream.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('data1');
@@ -2635,7 +2635,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformEvent003', 0, () => {
+    it('testStreamTransformEvent003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       transformStream.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('test');
@@ -2654,7 +2654,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformEvent004', 0, () => {
+    it('testStreamTransformEvent004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transformStream = new stream.Transform();
       let testListenerCalled = false;
       let testListener = () => {
@@ -2676,7 +2676,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamTransformEvent005', 0, (done) => {
+    it('testStreamTransformEvent005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done) => {
       let transformStream = new stream.Transform();
       let testListener1Called = false;
       let testListener2Called = false;
@@ -2707,7 +2707,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamPipe001', 0, () => {
+    it('testStreamPipe001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class MyRead extends stream.Readable {
         doRead(size: number) {
           this.push("hello");
@@ -2740,7 +2740,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamPipe002', 0, () => {
+    it('testStreamPipe002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class MyRead extends stream.Readable {
         doRead(size: number) {
           this.push("hello");
@@ -2774,7 +2774,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamPipe003', 0, () => {
+    it('testStreamPipe003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       readable.doRead = () => {
         readable.push('test data');
@@ -2798,7 +2798,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamPipe004', 0, () => {
+    it('testStreamPipe004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new TestReadable();
       readable.doRead = () => {
         readable.push('Some data');
@@ -2819,7 +2819,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexProperties002', 0, () => {
+    it('testStreamDuplexProperties002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       expect(duplex.writableHighWatermark).assertEqual(16 * 1024);
     });
@@ -2833,7 +2833,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexProperties003', 0, () => {
+    it('testStreamDuplexProperties003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       expect(duplex.readableHighWatermark).assertEqual(16 * 1024);
     });
@@ -2846,7 +2846,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread001', 0, () => {
+    it('testStreamReadableread001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const stringdecoder = new StringDecoderReadable();
       let ss = stringdecoder.setEncoding("utf-8");
       expect(ss).assertEqual(true);
@@ -2860,7 +2860,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread002', 0, () => {
+    it('testStreamReadableread002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const stringdecoder = new StringDecoderReadable();
       let ss = stringdecoder.setEncoding("utf8");
       expect(ss).assertEqual(true);
@@ -2874,7 +2874,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread003', 0, () => {
+    it('testStreamReadableread003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const stringdecoder = new StringDecoderReadable();
       stringdecoder.push(input);
@@ -2893,7 +2893,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread004', 0, () => {
+    it('testStreamReadableread004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const stringdecoder = new StringDecoderReadable();
       stringdecoder.push(input);
@@ -2910,7 +2910,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread005', 0, () => {
+    it('testStreamReadableread005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let enc : stream.ReadableOptions = {
         encoding : "utf-8"
       };
@@ -2929,7 +2929,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread006', 0, () => {
+    it('testStreamReadableread006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let enc : stream.ReadableOptions = {
         encoding : "windows-1250"
       };
@@ -2949,7 +2949,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread007', 0, () => {
+    it('testStreamReadableread007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let enc : stream.ReadableOptions = {
         encoding : "windows-1250"
       };
@@ -2966,7 +2966,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread008', 0, () => {
+    it('testStreamReadableread008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const stringdecoder = new StringDecoderReadable();
       let res = stringdecoder.readableEncoding;
       expect(res).assertEqual('utf-8');
@@ -2980,7 +2980,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamReadableread009', 0, () => {
+    it('testStreamReadableread009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let input = new Uint8Array([0xE4, 0xBD, 0xA0, 0xE5, 0xA5, 0xBD]);
       const stringdecoder = new StringDecoderReadable();
       stringdecoder.push(input);
@@ -2997,7 +2997,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamPipe005', 0, (done) => {
+    it('testStreamPipe005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done) => {
       let sumData = 0;
       const readable = new stream.Readable();
       readable.doRead = (size)=>{
@@ -3038,7 +3038,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamPipe006', 0, async (done) => {
+    it('testStreamPipe006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
       let a = 0;
       const readable = new stream.Readable();
       readable.doRead = async (size) => {
@@ -3089,7 +3089,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexDoWritev001', 0, () => {
+    it('testStreamDuplexDoWritev001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class CustomDuplex extends stream.Duplex {
         data: string;
 
@@ -3122,7 +3122,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexDoWritev002', 0, () => {
+    it('testStreamDuplexDoWritev002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       class CustomDuplex extends stream.Duplex {
         constructor() {
           super();
@@ -3149,7 +3149,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamDuplexDoWritev003', 0, () => {
+    it('testStreamDuplexDoWritev003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWritev = common.mustCall((chunks: string[] | Uint8Array[], callback: Function) => {
         callback();
@@ -3171,7 +3171,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding001', 0, () => {
+    it('testStreamEncoding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('测试');
@@ -3191,7 +3191,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding002', 0, () => {
+    it('testStreamEncoding002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3211,7 +3211,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding003', 0, () => {
+    it('testStreamEncoding003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3231,7 +3231,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding004', 0, () => {
+    it('testStreamEncoding004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('测试');
@@ -3250,7 +3250,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding005', 0, () => {
+    it('testStreamEncoding005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3269,7 +3269,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding006', 0, () => {
+    it('testStreamEncoding006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3288,7 +3288,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding007', 0, () => {
+    it('testStreamEncoding007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.setDefaultEncoding('gb18030');
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
@@ -3308,7 +3308,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding008', 0, () => {
+    it('testStreamEncoding008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.setDefaultEncoding('gbk');
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
@@ -3328,7 +3328,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding009', 0, () => {
+    it('testStreamEncoding009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let writable = new stream.Writable();
       writable.setDefaultEncoding('gb2312');
       writable.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
@@ -3348,7 +3348,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding010', 0, () => {
+    it('testStreamEncoding010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       let result = readable.setEncoding('gb18030');
       expect(readable.readableEncoding).assertEqual('gb18030');
@@ -3364,7 +3364,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding011', 0, () => {
+    it('testStreamEncoding011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       let result = readable.setEncoding('gbk');
       expect(readable.readableEncoding).assertEqual('gbk');
@@ -3380,7 +3380,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding012', 0, () => {
+    it('testStreamEncoding012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       let result = readable.setEncoding('gb2312');
       expect(readable.readableEncoding).assertEqual('gb2312');
@@ -3396,7 +3396,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding013', 0, () => {
+    it('testStreamEncoding013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.push('你好', 'gb18030');
       expect(readable.readableEncoding).assertEqual('gb18030');
@@ -3411,7 +3411,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding014', 0, () => {
+    it('testStreamEncoding014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.push('你好', 'gbk');
       expect(readable.readableEncoding).assertEqual('gbk');
@@ -3426,7 +3426,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding015', 0, () => {
+    it('testStreamEncoding015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let readable = new stream.Readable();
       readable.push('你好', 'gb2312');
       expect(readable.readableEncoding).assertEqual('gb2312');
@@ -3441,7 +3441,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding016', 0, () => {
+    it('testStreamEncoding016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3460,7 +3460,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding017', 0, () => {
+    it('testStreamEncoding017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3479,7 +3479,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding018', 0, () => {
+    it('testStreamEncoding018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('你好');
@@ -3498,7 +3498,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding019', 0, () => {
+    it('testStreamEncoding019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('测试');
@@ -3517,7 +3517,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding020', 0, () => {
+    it('testStreamEncoding020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('测试');
@@ -3536,7 +3536,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding021', 0, () => {
+    it('testStreamEncoding021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
         expect(chunk).assertEqual('测试');
@@ -3555,7 +3555,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding022', 0, () => {
+    it('testStreamEncoding022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       let result = duplex.setDefaultEncoding('gb18030');
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
@@ -3575,7 +3575,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding023', 0, () => {
+    it('testStreamEncoding023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       let result = duplex.setDefaultEncoding('gbk');
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
@@ -3595,7 +3595,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding024', 0, () => {
+    it('testStreamEncoding024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let duplex = new stream.Duplex();
       let result = duplex.setDefaultEncoding('gb2312');
       duplex.doWrite = common.mustCall((chunk: string | Uint8Array, encoding: string, callback: Function) => {
@@ -3615,7 +3615,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding025', 0, () => {
+    it('testStreamEncoding025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       transform.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
         expect(encoding).assertEqual('gb18030');
@@ -3635,7 +3635,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding026', 0, () => {
+    it('testStreamEncoding026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       transform.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
         expect(encoding).assertEqual('gbk');
@@ -3655,7 +3655,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamEncoding027', 0, () => {
+    it('testStreamEncoding027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let transform = new stream.Transform();
       transform.doTransform = common.mustCall((chunk: string, encoding: string, callback: Function) => {
         expect(encoding).assertEqual('gb2312');

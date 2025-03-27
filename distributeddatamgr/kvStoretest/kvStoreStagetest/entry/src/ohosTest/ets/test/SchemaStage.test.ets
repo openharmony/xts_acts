@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import ddm from '@ohos.data.distributedKVStore';
 import common from "@ohos.app.ability.common";
 
@@ -145,8 +145,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_2100
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 001
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsToJsonString001', 0, async function(done) {
+    it('testEtsToJsonString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let first = new ddm.FieldNode('first');
         first.type = ddm.ValueType.STRING;
@@ -177,8 +180,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_2200
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 002
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsToJsonString002', 0, async function(done) {
+    it('testEtsToJsonString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let first = new ddm.FieldNode('first');
         first.type = ddm.ValueType.STRING;
@@ -213,8 +219,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_2300
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 003
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsToJsonString003', 0, async function(done) {
+    it('testEtsToJsonString003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let name = new ddm.FieldNode('name');
         name.type = ddm.ValueType.INTEGER;
@@ -258,8 +267,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_2000
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 004
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-      it('testEtsToJsonString004', 0, async function(done) {
+      it('testEtsToJsonString004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
         try {
           let name = new ddm.FieldNode('name');
           name.type = ddm.ValueType.FLOAT;
@@ -299,8 +311,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1800
      * @tc.name [JS-API8]Schema.root
      * @tc.desc Test Js Api Schema.root testcase 001
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsroot001', 0, async function(done) {
+    it('testEtsroot001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let english = new ddm.FieldNode('english');
         english.type = ddm.ValueType.STRING;
@@ -318,8 +333,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1500
      * @tc.name [JS-API8]Schema.indexes
      * @tc.desc Test Js Api Schema.indexes testcase 001
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsindexes001', 0, async function(done) {
+    it('testEtsindexes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
 
         let schema = new ddm.Schema();
@@ -336,8 +354,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1700
      * @tc.name [JS-API8]Schema.mode
      * @tc.desc Test Js Api Schema.mode testcase 001
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsmode001', 0, async function(done) {
+    it('testEtsmode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
 
         let schema = new ddm.Schema();
@@ -355,8 +376,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1600
      * @tc.name [JS-API8]Schema.mode
      * @tc.desc Test Js Api Schema.mode testcase 002
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsmode002', 0, async function(done) {
+    it('testEtsmode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
 
         let schema = new ddm.Schema();
@@ -374,8 +398,11 @@ export default function schemaStageTest(){
      * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1900
      * @tc.name [JS-API8]Schema.skip
      * @tc.desc Test Js Api Schema.skip testcase 001
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testEtsskip001', 0, async function(done) {
+    it('testEtsskip001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
 
         let schema = new ddm.Schema();

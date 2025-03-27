@@ -93,11 +93,11 @@ describe("SensorJsTest_sensor_43", function () {
     * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0010
     * @tc.name: newGyroScope_SensorJsTest001
     * @tc.desc: Functional Use Cases
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("newGyroScope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newGyroScope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGyroScope_SensorJsTest001--------------');
         TAG = 'newGyroScope_SensorJsTest001';
         try{
@@ -537,14 +537,14 @@ describe("SensorJsTest_sensor_43", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0120
-     * @tc.name: newGravity_SensorJsTest012
+     * @tc.name: newGyroScope_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        TAG = 'newGravity_SensorJsTest012';
+    it("newGyroScope_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest012';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -570,15 +570,15 @@ describe("SensorJsTest_sensor_43", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0130
-     * @tc.name: newGravity_SensorJsTest013
+     * @tc.name: newGyroScope_SensorJsTest013
      * @tc.desc:Call on interface and once interface respectively, and use an off interface to close
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGravity_SensorJsTest013--------------');
-        TAG = 'newGravity_SensorJsTest013';
+    it("newGyroScope_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest013--------------');
+        TAG = 'newGyroScope_SensorJsTest013';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -633,15 +633,15 @@ describe("SensorJsTest_sensor_43", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0140
-     * @tc.name: newGravity_SensorJsTest014
+     * @tc.name: newGyroScope_SensorJsTest014
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGravity_SensorJsTest014--------------');
-        TAG = 'newGravity_SensorJsTest014';
+    it("newGyroScope_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest014--------------');
+        TAG = 'newGyroScope_SensorJsTest014';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -696,15 +696,15 @@ describe("SensorJsTest_sensor_43", function () {
 
     /*
      * @tc.number:SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0150
-     * @tc.name: newGravity_SensorJsTest015
+     * @tc.name: newGyroScope_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newGravity_SensorJsTest015--------------');
-        TAG = 'newGravity_SensorJsTest015';
+    it("newGyroScope_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newGyroScope_SensorJsTest015--------------');
+        TAG = 'newGyroScope_SensorJsTest015';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -744,15 +744,15 @@ describe("SensorJsTest_sensor_43", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0160
-     * @tc.name: newGravity_SensorJsTest016
+     * @tc.name: newGyroScope_SensorJsTest016
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newGravity_SensorJsTest016--------------');
-        TAG = 'newGravity_SensorJsTest016';
+    it("newGyroScope_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newGyroScope_SensorJsTest016--------------');
+        TAG = 'newGyroScope_SensorJsTest016';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -763,18 +763,18 @@ describe("SensorJsTest_sensor_43", function () {
                     sensor.on(sensor.SensorId.GYROSCOPE, callback);
                     sensor.on(sensor.SensorId.GYROSCOPE, callback2);
                     setTimeout(() => {
-                        console.info('----------------------newGravity_SensorJsTest016 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest016 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.GYROSCOPE, callback);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                         }
-                        console.info('----------------------newGravity_SensorJsTest016 off end--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest016 off end--------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------newGravity_SensorJsTest016 off in--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest016 off in--------------');
                         sensor.off(sensor.SensorId.GYROSCOPE, callback2);
-                        console.info('----------------------newGravity_SensorJsTest016 off end--------------');
+                        console.info('----------------------newGyroScope_SensorJsTest016 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -788,15 +788,14 @@ describe("SensorJsTest_sensor_43", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0170
-     * @tc.name: newGravity_SensorJsTest017
+     * @tc.name: newGyroScope_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newGravity_SensorJsTest017--------------');
-        TAG = 'newGravity_SensorJsTest017';
+    it("newGyroScope_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest017';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -807,18 +806,14 @@ describe("SensorJsTest_sensor_43", function () {
                     sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': 100000000 });
                     sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': 100000000 });
                     setTimeout(() => {
-                        console.info('----------------------newGravity_SensorJsTest017 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.GYROSCOPE, callback);
                         } catch (error) {
                             console.info(TAG + ' catch error:' + error);
                         }
-                        console.info('----------------------newGravity_SensorJsTest017 off end--------------');
                     }, 500);
                     setTimeout(() => {
-                        console.info('----------------------newGravity_SensorJsTest017_2 off in--------------');
                         sensor.off(sensor.SensorId.GYROSCOPE, callback2);
-                        console.info('----------------------newGravity_SensorJsTest017_2 off end--------------');
                         done();
                     }, 1000);
                 }
@@ -832,15 +827,14 @@ describe("SensorJsTest_sensor_43", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0180
-     * @tc.name: newGravity_SensorJsTest018
+     * @tc.name: newGyroScope_SensorJsTest018
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newGravity_SensorJsTest018--------------');
-        TAG = 'newGravity_SensorJsTest018';
+    it("newGyroScope_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest018';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -848,10 +842,8 @@ describe("SensorJsTest_sensor_43", function () {
                     done();
                 } else {
                     expect(typeof(data)).assertEqual("object");
-                    console.info('----------------------newGravity_SensorJsTest018 off in--------------');
                     try{
                         sensor.off(-1, callback);
-                        console.info('----------------------newGravity_SensorJsTest018 off end--------------');
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
                         expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
@@ -868,15 +860,14 @@ describe("SensorJsTest_sensor_43", function () {
 
      /*
      * @tc.number: SUB_SensorsSystem_NEWGYROSCOPE_JSTest_0190
-     * @tc.name: newGravity_SensorJsTest019
+     * @tc.name: newGyroScope_SensorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGravity_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------newGravity_SensorJsTest019--------------');
-        TAG = 'newGravity_SensorJsTest019';
+    it("newGyroScope_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'newGyroScope_SensorJsTest019';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
                 if (error) {
@@ -885,9 +876,7 @@ describe("SensorJsTest_sensor_43", function () {
                 } else {
                     try {
                         sensor.on(sensor.SensorId.GYROSCOPE, callback, {'interval': -100000000});
-                        console.info('----------------------newGravity_SensorJsTest019 off in---------------------------');
                         sensor.off(sensor.SensorId.GYROSCOPE);
-                        console.info('----------------------newGravity_SensorJsTest019 off end---------------------------');
                         done();
                     } catch (error) {
                         console.info(TAG + ' catch error:' + error);
@@ -911,8 +900,7 @@ describe("SensorJsTest_sensor_43", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newGyroScope_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newGyroScope_SensorJsTest020--------------');
+    it("newGyroScope_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'newGyroScope_SensorJsTest020';
         try{
            sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
@@ -924,7 +912,6 @@ describe("SensorJsTest_sensor_43", function () {
                     sensor.on(sensor.SensorId.GYROSCOPE, callback, { 'interval': undefined });
                     sensor.on(sensor.SensorId.GYROSCOPE, callback2, { 'interval': undefined });
                     setTimeout(() => {
-                        console.info('----------------------newGyroScope_SensorJsTest020 off in--------------');
                         try {
                             sensor.off(sensor.SensorId.GYROSCOPE, callback);
                             sensor.off(sensor.SensorId.GYROSCOPE, callback2);
@@ -932,7 +919,6 @@ describe("SensorJsTest_sensor_43", function () {
                             console.info(TAG + ' catch error:' + error);
                             expect(false).assertTrue();
                         }
-                        console.info('----------------------newGyroScope_SensorJsTest020 off end--------------');
                         done()
                     }, 1000);
                 }

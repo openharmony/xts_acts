@@ -71,7 +71,7 @@ class DrawingNativeFilterTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNormal, Function | SmallTest | Level0) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     EXPECT_NE(filter, nullptr);
 
@@ -86,7 +86,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, Function | SmallTest | Level3) {
     OH_Drawing_FilterDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);
@@ -100,7 +100,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyMultipleCalls, Function | SmallTest | Level3) {
 
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
@@ -117,7 +117,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyMultipleCalls, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNormal, Function | SmallTest | Level0) {
     OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
     // add assert
     EXPECT_NE(cFilter, nullptr);
@@ -142,7 +142,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNULL, Function | SmallTest | Level3) {
     OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
     // add assert
     EXPECT_NE(cFilter, nullptr);
@@ -168,7 +168,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNULL, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
         // add assert
@@ -193,7 +193,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterMultipleCalls, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, Function | SmallTest | Level0) {
     // 1. Create OH_Drawing_Filter using OH_Drawing_FilterCreate and OH_Drawing_MaskFilter using
     // OH_Drawing_MaskFilterCreateBlur
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
@@ -219,7 +219,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, Function | SmallTest | Level3) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     // add assert
     EXPECT_NE(filter, nullptr);
@@ -252,7 +252,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_FilterSetMaskFilter 10 times with different OH_Drawing_Filter and OH_Drawing_MaskFilter
     // objects.
     for (int i = 0; i < 10; i++) {
@@ -276,7 +276,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, Function | SmallTest | Level0) {
     // 1. Create OH_Drawing_Filter using OH_Drawing_FilterCreate
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     // add assert
@@ -312,7 +312,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, Function | SmallTest | Level3) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     // add assert
     EXPECT_NE(filter, nullptr);
@@ -363,7 +363,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_FilterSetColorFilter 10 times with different OH_Drawing_Filter and OH_Drawing_ColorFilter
     // objects. Call successful, errorcode returns OH_DRAWING_SUCCESS
     for (int i = 0; i < 10; i++) {

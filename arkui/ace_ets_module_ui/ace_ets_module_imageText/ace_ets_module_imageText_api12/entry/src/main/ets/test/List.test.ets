@@ -155,6 +155,7 @@ import SearchXtsJsunit from './xts/SearchXtsJsunit.test'
 import TextAreaXtsJsunit from './xts/TextAreaXtsJsunit.test'
 import TextInputXtsJsunit from './xts/TextInputXtsJsunit.test'
 import spanTest from './spanTest/SpanJsunit1.test'
+import ContainerSpanModifierTest from './TextTest/ContainerSpanModifierTest.test'
 
 import RichEditor001 from './RichEditorEmojiTest/RichEditor001.test'
 import RichEditor002 from './RichEditorEmojiTest/RichEditor002.test'
@@ -494,6 +495,11 @@ import TextCommonTextComputing7 from './TextTest/MeasureSizeTest/TextCommonTextC
 import TextCommonTextComputing8 from './TextTest/MeasureSizeTest/TextCommonTextComputing8.test';
 import TextCommonTextComputing9 from './TextTest/MeasureSizeTest/TextCommonTextComputing9.test';
 
+import getStyles from './StyledString/getStyles.test';
+import replaceString from './StyledString/replaceString.test';
+import TextAreaTypeTest from "./TextArea/TextAreaType.test";
+import TextInputTypeTest from "./TextInput/TextInputType.test";
+
 export default function testsuite() {
   TextCommonTextComputing1();
   TextCommonTextComputing2();
@@ -639,6 +645,8 @@ export default function testsuite() {
   TextAreaXtsJsunit();
   TextInputXtsJsunit();
   spanTest();
+  ContainerSpanModifierTest();
+  
   RichEditor001();
   RichEditor002();
   RichEditor003();
@@ -966,4 +974,8 @@ export default function testsuite() {
   RichEditorDoubleClick019();
 
   RichEditorScroll001();
+  getStyles();
+  replaceString();
+  TextAreaTypeTest();
+  TextInputTypeTest();
 }

@@ -24,6 +24,7 @@ import AVMetadata from './AVPlayerAVMetadata.test'
 import AVTransCoderTest from './Transcoder.test'
 import AVPlayerAmr from './AVPlayerAmrTest.test'
 import AVPlayerMediaSource from './AVPlayerMediaSource.test'
+import PreDownLoadTest from './PreDownLoadTest.test'
 import AVPlayerSelectTrackTest from './AVPlayerSelectTrackTest.test'
 import AVPlayerFlvFuncTest from './AVPlayerFlvFuncTest.test'
 import AVPlayerPostProcessorTest from './AVPlayerPostProcessorTest.test'
@@ -38,6 +39,7 @@ export default function testsuite() {
   // AVPlayerMultiTrackTest();
   // AVPlayerStabilityTest();
   AVMetadata();
+  PreDownLoadTest();
   AVTransCoderTest()
   AVPlayerAmr();
   AVPlayerMediaSource();

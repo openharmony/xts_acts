@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base'
 
 export default function ActsAppAccountOptionalParameterTest() {
@@ -42,7 +42,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0100 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>create finish====");
@@ -66,7 +66,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0200 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -93,7 +93,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0300 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -117,7 +117,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0400 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -144,7 +144,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0500 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -168,7 +168,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0600 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -195,7 +195,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0700 start====");
       let createAccountOptions: account.CreateAccountOptions = {}
       let appAccountManager = account.createAppAccountManager();
@@ -220,7 +220,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_0800 start====");
       let createAccountOptions: account.CreateAccountOptions = {}
       let appAccountManager = account.createAppAccountManager();
@@ -248,7 +248,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_0900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountCreateAccount_0300 start====");
       let createAccountOptions: account.CreateAccountOptions = {
         customData: undefined
@@ -275,7 +275,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountCreateAccount_0400 start====");
       let createAccountOptions: account.CreateAccountOptions = {
         customData: undefined
@@ -305,7 +305,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1100 start====");
       let createAccountOptions: account.CreateAccountOptions = {
         customData: undefined
@@ -332,7 +332,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1200 start====");
       let createAccountOptions: account.CreateAccountOptions = {
         customData: undefined
@@ -365,7 +365,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1300 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
@@ -401,7 +401,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -447,7 +447,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1500 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
@@ -483,7 +483,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1600 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
@@ -519,7 +519,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {}
@@ -558,7 +558,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -599,7 +599,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_1900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_1900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -640,7 +640,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -681,7 +681,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -722,7 +722,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -763,7 +763,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -804,7 +804,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -845,7 +845,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -886,7 +886,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -929,7 +929,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -972,7 +972,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1022,7 +1022,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_2900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_2900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1070,7 +1070,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1118,7 +1118,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1166,7 +1166,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1216,7 +1216,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1266,7 +1266,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1316,7 +1316,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1359,7 +1359,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1402,7 +1402,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.CreateAccountImplicitlyOptions = {
@@ -1445,7 +1445,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3800 start====");
       let appAccountManager = account.createAppAccountManager();
       try {
@@ -1480,7 +1480,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_3900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_3900 start====");
       let appAccountManager = account.createAppAccountManager();
       try {
@@ -1520,7 +1520,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4000 start====");
       let appAccountManager = account.createAppAccountManager();
       try {
@@ -1556,7 +1556,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4100 start====");
       let appAccountManager = account.createAppAccountManager();
       try {
@@ -1592,7 +1592,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4200 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
@@ -1633,7 +1633,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1683,7 +1683,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1730,7 +1730,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1777,7 +1777,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {}
@@ -1819,7 +1819,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1863,7 +1863,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1907,7 +1907,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_4900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_4900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1951,7 +1951,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -1995,7 +1995,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2039,7 +2039,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2083,7 +2083,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2127,7 +2127,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2171,7 +2171,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2217,7 +2217,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2263,7 +2263,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2309,7 +2309,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2353,7 +2353,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_5900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_5900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_5900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2397,7 +2397,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2441,7 +2441,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2487,7 +2487,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2533,7 +2533,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2579,7 +2579,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2625,7 +2625,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2671,7 +2671,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2717,7 +2717,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.VerifyCredentialOptions = {
@@ -2763,7 +2763,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6800 start====");
       let appAccountManager = account.createAppAccountManager();
       console.info("====>start finish====");
@@ -2804,7 +2804,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_6900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_6900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -2856,7 +2856,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -2905,7 +2905,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -2954,7 +2954,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {}
@@ -3000,7 +3000,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
             */
-    it('ActsAccountOptionalParameter_7500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -3050,7 +3050,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -3100,7 +3100,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -3150,7 +3150,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -3200,7 +3200,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_7900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_7900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_7900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -3250,7 +3250,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SetPropertiesOptions = {
@@ -3300,7 +3300,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {}
@@ -3332,7 +3332,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {}
@@ -3368,7 +3368,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3404,7 +3404,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3444,7 +3444,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3479,7 +3479,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3518,7 +3518,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3553,7 +3553,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_8800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3592,7 +3592,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_8900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_8900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_8900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3629,7 +3629,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3670,7 +3670,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3706,7 +3706,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3747,7 +3747,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3783,7 +3783,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3824,7 +3824,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3859,7 +3859,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3898,7 +3898,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3932,7 +3932,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_9800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -3971,7 +3971,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_9900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_9900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_9900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4005,7 +4005,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4044,7 +4044,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4079,7 +4079,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4118,7 +4118,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4153,7 +4153,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4192,7 +4192,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4226,7 +4226,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4265,7 +4265,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4302,7 +4302,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_10800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4343,7 +4343,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_10900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_10900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_10900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4380,7 +4380,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4421,7 +4421,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4458,7 +4458,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4499,7 +4499,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4536,7 +4536,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4577,7 +4577,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11500', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11500 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4614,7 +4614,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11600', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11600 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4655,7 +4655,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11700', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11700 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4692,7 +4692,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_11800', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11800 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4733,7 +4733,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_11900', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_11900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_11900 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4768,7 +4768,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_12000', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_12000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12000 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4807,7 +4807,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_12100', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_12100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12100 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4842,7 +4842,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_12200', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_12200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12200 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4881,7 +4881,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
      */
-    it('ActsAccountOptionalParameter_12300', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_12300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12300 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {
@@ -4916,7 +4916,7 @@ export default function ActsAppAccountOptionalParameterTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     */
-    it('ActsAccountOptionalParameter_12400', 0, async (done: Function) => {
+    it('ActsAccountOptionalParameter_12400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info("====>ActsAccountOptionalParameter_12400 start====");
       let appAccountManager = account.createAppAccountManager();
       let options: account.SelectAccountsOptions = {

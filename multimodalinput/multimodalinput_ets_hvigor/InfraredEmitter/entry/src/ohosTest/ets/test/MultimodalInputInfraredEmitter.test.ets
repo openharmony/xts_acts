@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { infraredEmitter } from '@kit.InputKit';
 
 export default function MultimodalInputInfraredEmitterTest() {
@@ -43,12 +43,14 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0100";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [100, 200, 300, 400];
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -67,6 +69,7 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0200";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [];
@@ -75,7 +78,8 @@ export default function MultimodalInputInfraredEmitterTest() {
         }
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -169,12 +173,14 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0600";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [100, 200, 300];
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -193,12 +199,40 @@ export default function MultimodalInputInfraredEmitterTest() {
      */
     it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700", 0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0700";
+      let ifTransmitInfraredSuccess = 0;
       try {
         let infraredFrequency: number = 38000;
         let pattern: Array<number> = [400, 200, 300, 100, 500];
         infraredEmitter.transmitInfrared(infraredFrequency, pattern);
         console.info(`${caseName} transmitInfrared success.`);
-        ExpectTrue(true);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
+        done();
+      } catch (error) {
+        console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0800
+     * @tc.name: SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0800
+     * @tc.desc: Test transmitInfrared interface to generate an infrared signal of a specific frequency and a special level with pattern(empty).
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_InfraredEmitter_transmitInfrared_0800";
+      let ifTransmitInfraredSuccess = 0;
+      try {
+        let infraredFrequency: number = 38000;
+        let pattern: Array<number> = [];
+        infraredEmitter.transmitInfrared(infraredFrequency, pattern);
+        console.info(`${caseName} transmitInfrared success.`);
+        ifTransmitInfraredSuccess++;
+        ExpectTrue(ifTransmitInfraredSuccess == 1);
         done();
       } catch (error) {
         console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -215,15 +249,19 @@ export default function MultimodalInputInfraredEmitterTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_InfraredEmitter_getInfraredFrequencies_0100";
       try {
-        let frequencies = infraredEmitter.getInfraredFrequencies();
+        let frequencies: infraredEmitter.InfraredFrequency[] = [{
+          max: 0,
+          min: 0
+        }];
+        frequencies = infraredEmitter.getInfraredFrequencies();
         console.info(`${caseName} getInfraredFrequencies success, frequencies: ${JSON.stringify(frequencies)}`);
-        ExpectTrue(true);
+        ExpectTrue(Array.isArray(frequencies));
         done();
       } catch (error) {
-        console.info(`${caseName} transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        console.info(`${caseName} get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
       }

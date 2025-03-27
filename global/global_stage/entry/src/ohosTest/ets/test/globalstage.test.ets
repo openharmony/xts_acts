@@ -23,14 +23,16 @@ import { GlobalContext } from '../test/global';
 export default function globalStageTest() {
   describe("globalStageTest", () => {
     console.log('*************start globalStageTest*************');
-    let res: Context;
+    let resContext: Context;
+    let res: resourceManager.ResourceManager;
 
     beforeAll(async () => {
       console.info("beforeAll case");
     });
     beforeEach(() => {
       console.info("beforeEach case");
-      res = (GlobalContext.getContext().getObject('yq') as Context)
+      resContext = (GlobalContext.getContext().getObject('yq') as Context)
+      res = resContext.resourceManager
     });
     afterEach(async () => {
       console.info("afterEach case");
@@ -45,10 +47,10 @@ export default function globalStageTest() {
      * @tc.desc      : getStringSync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringSync_stagetest_0100', 0, async (done: Function) => {
-      let mgr: resourceManager.ResourceManager = res.resourceManager;
+    it('getStringSync_stagetest_0100', Level.LEVEL2, async (done: Function) => {
+      let mgr: resourceManager.ResourceManager = res;
       try {
         let value: string = mgr.getStringSync(
           {
@@ -74,8 +76,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringSync_stagetest_0200', 0, async (done: Function) => {
-      let mgr: resourceManager.ResourceManager = res.resourceManager;
+    it('getStringSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
+      let mgr: resourceManager.ResourceManager = res;
       try {
         let value: string = mgr.getStringSync(
           {
@@ -101,8 +103,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringByNameSync_stagetest_0100', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getStringByNameSync('app_name');
+    it('getStringByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getStringByNameSync('app_name');
       console.log('getStringByNameSync_stagetest_0100 1' + value);
       expect(value).assertEqual('ohosProject %d');
       done();
@@ -114,10 +116,10 @@ export default function globalStageTest() {
      * @tc.desc      : getStringByNameSync
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringByNameSync_stagetest_0200', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getStringByNameSync('app_name', 100);
+    it('getStringByNameSync_stagetest_0200', Level.LEVEL2, async (done: Function) => {
+      let value: string = res.getStringByNameSync('app_name', 100);
       console.log('getStringByNameSync_stagetest_0200 1' + value);
       expect(value).assertEqual('ohosProject 100');
       done();
@@ -129,10 +131,10 @@ export default function globalStageTest() {
      * @tc.desc      : getStringValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringValue_stage_test_0100', 0, async (done: Function) => {
-      res.resourceManager.getStringValue({
+    it('getStringValue_stage_test_0100', Level.LEVEL2, async (done: Function) => {
+      res.getStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.app_name').id
@@ -150,10 +152,10 @@ export default function globalStageTest() {
      * @tc.desc      : getStringValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringValue_stage_test_0200', 0, async (done: Function) => {
-      res.resourceManager.getStringValue({
+    it('getStringValue_stage_test_0200', Level.LEVEL2, async (done: Function) => {
+      res.getStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.app_name').id
@@ -171,10 +173,10 @@ export default function globalStageTest() {
      * @tc.desc      : getStringArrayValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringArrayValue_stage_test_0100', 0, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+    it('getStringArrayValue_stage_test_0100', Level.LEVEL2, async (done: Function) => {
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.strarray.sizeList').id
@@ -195,10 +197,10 @@ export default function globalStageTest() {
      * @tc.desc      : getStringArrayValue
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getStringArrayValue_stage_test_0200', 0, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+    it('getStringArrayValue_stage_test_0200', Level.LEVEL2, async (done: Function) => {
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.strarray.sizeList').id
@@ -221,8 +223,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContent_stage_test_0100', 0, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+    it('getMediaContent_stage_test_0100', Level.LEVEL0, async (done: Function) => {
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -241,8 +243,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContent_stage_test_0200', 0, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+    it('getMediaContent_stage_test_0200', Level.LEVEL0, async (done: Function) => {
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -259,10 +261,10 @@ export default function globalStageTest() {
      * @tc.desc      : getMediaContent
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getMediaContent_stage_test_0300', 0, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+    it('getMediaContent_stage_test_0300', Level.LEVEL2, async (done: Function) => {
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -279,10 +281,10 @@ export default function globalStageTest() {
      * @tc.desc      : getMediaContent
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getMediaContent_stage_test_0400', 0, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+    it('getMediaContent_stage_test_0400', Level.LEVEL2, async (done: Function) => {
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -301,8 +303,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0100', 0, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+    it('getMediaContentBase64_stage_test_0100', Level.LEVEL0, async (done: Function) => {
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -321,8 +323,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0200', 0, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+    it('getMediaContentBase64_stage_test_0200', Level.LEVEL0, async (done: Function) => {
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -341,8 +343,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0300', 0, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+    it('getMediaContentBase64_stage_test_0300', Level.LEVEL0, async (done: Function) => {
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -361,8 +363,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64_stage_test_0400', 0, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+    it('getMediaContentBase64_stage_test_0400', Level.LEVEL0, async (done: Function) => {
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -381,8 +383,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValue_stage_test_0100', 0, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+    it('getPluralStringValue_stage_test_0100', Level.LEVEL0, async (done: Function) => {
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.plural.plural_name').id
@@ -402,8 +404,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValue_stage_test_0200', 0, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+    it('getPluralStringValue_stage_test_0200', Level.LEVEL0, async (done: Function) => {
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.plural.plural_name').id
@@ -423,8 +425,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getBoolean_stage_test_0100', 0, async (done: Function) => {
-      let value: boolean = res.resourceManager.getBoolean({
+    it('getBoolean_stage_test_0100', Level.LEVEL0, async (done: Function) => {
+      let value: boolean = res.getBoolean({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.boolean.boolean_1').id
@@ -442,8 +444,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getNumber_stage_test_0100', 0, async (done: Function) => {
-      let value: number = res.resourceManager.getNumber({
+    it('getNumber_stage_test_0100', Level.LEVEL0, async (done: Function) => {
+      let value: number = res.getNumber({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.integer.integer_1').id
@@ -461,9 +463,9 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getDrawableDescriptor_stage_test_0100', 0, async (done: Function) => {
+    it('getDrawableDescriptor_stage_test_0100', Level.LEVEL0, async (done: Function) => {
       let out = true;
-      let value: DrawableDescriptor = res.resourceManager.getDrawableDescriptor(
+      let value: DrawableDescriptor = res.getDrawableDescriptor(
         {
           bundleName: "ohos.acts.globalstage", moduleName: "entry_test", id: $r('app.media.icon').id
         });
@@ -481,8 +483,8 @@ export default function globalStageTest() {
     * @tc.name    test getColor method with resource param in callback mode
     * @tc.desc    get the color in callback mode
     */
-    it('getColor_test_0100', 0, async (done: Function) => {
-      res.resourceManager.getColor({
+    it('getColor_test_0100', Level.LEVEL0, async (done: Function) => {
+      res.getColor({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.color.color_test1').id
@@ -499,8 +501,8 @@ export default function globalStageTest() {
     * @tc.name    test getColor method with resource param in promise mode
     * @tc.desc    get the color in promise mode
     */
-    it('getColor_test_0200', 0, async (done: Function) => {
-      res.resourceManager.getColor({
+    it('getColor_test_0200', Level.LEVEL0, async (done: Function) => {
+      res.getColor({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.color.color_test1').id
@@ -517,8 +519,8 @@ export default function globalStageTest() {
     * @tc.name    test getColorSync method with resource param in promise mode
     * @tc.desc    get the sync color in promise mode
     */
-    it('getColorSync_test_0100', 0, async (done: Function) => {
-      let value: number = res.resourceManager.getColorSync({
+    it('getColorSync_test_0100', Level.LEVEL0, async (done: Function) => {
+      let value: number = res.getColorSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.color.color_test1').id
@@ -537,12 +539,12 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getRawFdSync_stagetest_0100', 0, async (done: Function) => {
-      let value: resourceManager.RawFileDescriptor = res.resourceManager.getRawFdSync('rawfiletest.xml');
+    it('getRawFdSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: resourceManager.RawFileDescriptor = res.getRawFdSync('rawfiletest.xml');
       console.log('getRawFdSync_stagetest_0100 1' + value.fd);
       console.log('getRawFdSync_stagetest_0100 1' + value.offset);
       expect(value !== null).assertTrue();
-      res.resourceManager.closeRawFdSync('rawfiletest.xml');
+      res.closeRawFdSync('rawfiletest.xml');
       done();
     })
 
@@ -554,8 +556,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getRawFileListSync_stagetest_0100', 0, async (done: Function) => {
-      let value: Array<string> = res.resourceManager.getRawFileListSync('');
+    it('getRawFileListSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: Array<string> = res.getRawFileListSync('');
       console.log('getRawFileListSync_stagetest_0100 1' + value);
       console.log('getRawFileListSync_stagetest_0100 1' + value.length);
       expect(value !== null).assertTrue();
@@ -570,9 +572,9 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getRawFileContentSync_stagetest_0100', 0, async (done: Function) => {
+    it('getRawFileContentSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Uint8Array =
-      res.resourceManager.getRawFileContentSync('rawfiletest.xml');
+      res.getRawFileContentSync('rawfiletest.xml');
       console.log('getRawFileContentSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -586,8 +588,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentSync_stagetest_0100', 0, async (done: Function) => {
-      let value: Uint8Array = res.resourceManager.getMediaContentSync($r('app.media.icon').id);
+    it('getMediaContentSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: Uint8Array = res.getMediaContentSync($r('app.media.icon').id);
       console.log('getMediaContentSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -601,8 +603,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentSync_stagetest_0200', 0, async (done: Function) => {
-      let value: Uint8Array = res.resourceManager.getMediaContentSync({
+    it('getMediaContentSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
+      let value: Uint8Array = res.getMediaContentSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -620,8 +622,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64Sync_stagetest_0100', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getMediaContentBase64Sync($r('app.media.icon').id);
+    it('getMediaContentBase64Sync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getMediaContentBase64Sync($r('app.media.icon').id);
       console.log('getMediaContentBase64Sync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -635,8 +637,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaContentBase64Sync_stagetest_0200', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getMediaContentBase64Sync({
+    it('getMediaContentBase64Sync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getMediaContentBase64Sync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -654,8 +656,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValueSync_stagetest_0100', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getPluralStringValueSync($r('app.plural.plural_name').id, 0);
+    it('getPluralStringValueSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getPluralStringValueSync($r('app.plural.plural_name').id, 0);
       console.log('getPluralStringValueSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -669,8 +671,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringValueSync_stagetest_0200', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getPluralStringValueSync({
+    it('getPluralStringValueSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getPluralStringValueSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.plural.plural_name').id
@@ -688,9 +690,9 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringArrayValueSync_stagetest_0100', 0, async (done: Function) => {
+    it('getStringArrayValueSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
       let value: Array<string> =
-      res.resourceManager.getStringArrayValueSync($r('app.strarray.sizeList').id);
+      res.getStringArrayValueSync($r('app.strarray.sizeList').id);
       console.log('getStringArrayValueSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -704,8 +706,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringArrayValueSync_stagetest_0200', 0, async (done: Function) => {
-      let value: Array<string> = res.resourceManager.getStringArrayValueSync({
+    it('getStringArrayValueSync_stagetest_0200', Level.LEVEL0, async (done: Function) => {
+      let value: Array<string> = res.getStringArrayValueSync({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.strarray.sizeList').id
@@ -723,8 +725,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPluralStringByNameSync_stagetest_0100', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getPluralStringByNameSync('plural_name', 2);
+    it('getPluralStringByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getPluralStringByNameSync('plural_name', 2);
       console.log('getPluralStringByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -738,8 +740,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaByNameSync_stagetest_0100', 0, async (done: Function) => {
-      let value: Uint8Array = res.resourceManager.getMediaByNameSync('icon');
+    it('getMediaByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: Uint8Array = res.getMediaByNameSync('icon');
       console.log('getMediaByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -753,8 +755,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getMediaBase64ByNameSync_stagetest_0100', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getMediaBase64ByNameSync('icon');
+    it('getMediaBase64ByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getMediaBase64ByNameSync('icon');
       console.log('getMediaBase64ByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -768,8 +770,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getStringArrayByNameSync_stagetest_0100', 0, async (done: Function) => {
-      let value: Array<string> = res.resourceManager.getStringArrayByNameSync('sizeList');
+    it('getStringArrayByNameSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: Array<string> = res.getStringArrayByNameSync('sizeList');
       console.log('getStringArrayByNameSync_stagetest_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
@@ -783,8 +785,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getConfigurationSync_stagetest_0100', 0, async (done: Function) => {
-      let value: resourceManager.Configuration = res.resourceManager.getConfigurationSync();
+    it('getConfigurationSync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: resourceManager.Configuration = res.getConfigurationSync();
       console.log('getStringArrayByNameSync_stagetest_0100 1' + value.locale);
       console.log('getStringArrayByNameSync_stagetest_0100 1' + value.direction);
       expect(value !== null).assertTrue();
@@ -799,8 +801,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getDeviceCapabilitySync_stagetest_0100', 0, async (done: Function) => {
-      let value: resourceManager.DeviceCapability = res.resourceManager.getDeviceCapabilitySync();
+    it('getDeviceCapabilitySync_stagetest_0100', Level.LEVEL0, async (done: Function) => {
+      let value: resourceManager.DeviceCapability = res.getDeviceCapabilitySync();
       console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.screenDensity);
       console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.deviceType);
       expect(value !== null).assertTrue();
@@ -815,8 +817,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_GLOBAL_GetLocales_0010', 0, async (done: Function) => {
-      let value: string = res.resourceManager.getLocales().toString();
+    it('SUB_GLOBAL_GetLocales_0010', Level.LEVEL0, async (done: Function) => {
+      let value: string = res.getLocales().toString();
       console.log('SUB_GLOBAL_GetLocales_0010' + value);
       expect(value == 'en-US,zh-CN').assertTrue();
       done();
@@ -828,10 +830,10 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('SUB_GLOBAL_GetSymbol_0010', 0, async (done: Function) => {
-      let value: number = res.resourceManager.getSymbol($r('app.symbol.symbolTest1').id);
+    it('SUB_GLOBAL_GetSymbol_0010', Level.LEVEL3, async (done: Function) => {
+      let value: number = res.getSymbol($r('app.symbol.symbolTest1').id);
       console.log('SUB_GLOBAL_Getsymbol_0010_value' + value);
       expect(value == 983043).assertTrue();
       done();
@@ -845,54 +847,54 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_GLOBAL_GetSymbol_0130', 0, async (done: Function) => {
-      let value: number = res.resourceManager.getSymbolByName('symbolTest1');
+    it('SUB_GLOBAL_GetSymbol_0130', Level.LEVEL0, async (done: Function) => {
+      let value: number = res.getSymbolByName('symbolTest1');
       console.log('SUB_GLOBAL_Getsymbol_0130' + value);
       expect(value == 983043).assertTrue();
       done();
     })
 
-    it('SUB_GOLBAL_REMSGR_isRawDir_0010', 0, async () => {
-      let value: boolean = res.resourceManager.isRawDir('rawfiletest.xml');
+    it('SUB_GOLBAL_REMSGR_isRawDir_0010', Level.LEVEL0, async () => {
+      let value: boolean = res.isRawDir('rawfiletest.xml');
       console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_value' + value);
       expect(value == false).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010', 0, async () => {
-      let value: resourceManager.Configuration = res.resourceManager.getOverrideConfiguration();
+    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010', Level.LEVEL0, async () => {
+      let value: resourceManager.Configuration = res.getOverrideConfiguration();
       console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_value' + value.mnc);
       expect(value.mnc == 0).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010', Level.LEVEL0, async () => {
       let completeOverrideConfiguration: resourceManager.Configuration = {
         mcc: 460,
         mnc: 101,
         locale: 'en-US',
         direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
         deviceType: resourceManager.DeviceType.DEVICE_TYPE_PHONE,
-        colorMode: 1,
+        colorMode: resourceManager.ColorMode.LIGHT,
         screenDensity: resourceManager.ScreenDensity.SCREEN_SDPI
       }
 
       let value =
-      res.resourceManager.getOverrideResourceManager(completeOverrideConfiguration);
+      res.getOverrideResourceManager(completeOverrideConfiguration);
       console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_value' + value.getOverrideConfiguration().mcc);
       expect(value.getOverrideConfiguration().mcc == 460).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010', Level.LEVEL0, async () => {
       let completeOverrideConfiguration: resourceManager.Configuration = {
         mcc: 461,
         mnc: 101,
         locale: 'en-US',
         direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
         deviceType: resourceManager.DeviceType.DEVICE_TYPE_PHONE,
-        colorMode: 1,
+        colorMode: resourceManager.ColorMode.DARK,
         screenDensity: resourceManager.ScreenDensity.SCREEN_SDPI
       }
 
-      let value = res.resourceManager.getOverrideResourceManager();
+      let value = res.getOverrideResourceManager();
       console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-before' +
       value.getOverrideConfiguration().mcc);
       expect(value.getOverrideConfiguration().mcc != 461).assertTrue();
@@ -902,7 +904,7 @@ export default function globalStageTest() {
       expect(value.getOverrideConfiguration().mcc == 461).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010', Level.LEVEL0, async () => {
       let resource: resourceManager.Resource = {
         bundleName: 'com.example.myapplication',
         moduleName: 'entry',
@@ -912,10 +914,14 @@ export default function globalStageTest() {
       }
       let value = sendableResourceManager.resourceToSendableResource(resource);
       console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_value' + value.type);
+      expect(value.bundleName == 'com.example.myapplication').assertTrue();
+      expect(value.moduleName == 'entry').assertTrue();
+      expect(value.id != null).assertTrue();
+      expect(value.params != null).assertTrue();
       expect(value.type == 10001).assertTrue();
     })
 
-    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010', 0, async () => {
+    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010', Level.LEVEL0, async () => {
       let resource: resourceManager.Resource = {
         bundleName: 'com.example.myapplication',
         moduleName: 'entry',
@@ -938,8 +944,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0010', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0010', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -964,8 +970,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0020', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0020', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -990,8 +996,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0030', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0030', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1016,8 +1022,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0040', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0040', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1042,8 +1048,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0050', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0050', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1068,8 +1074,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0060', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0060', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1094,8 +1100,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0070', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0070', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1120,8 +1126,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0080', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0080', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1147,8 +1153,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0090', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0090', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1174,8 +1180,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0100', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0100', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1201,8 +1207,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0110', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0110', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1227,8 +1233,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0120', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0120', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1254,8 +1260,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0130', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0130', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1280,8 +1286,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0140', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0140', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1308,8 +1314,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0150', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0150', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1336,8 +1342,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0160', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0160', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1362,8 +1368,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0170', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0170', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1388,8 +1394,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0180', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0180', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1417,8 +1423,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0190', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0190', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1443,8 +1449,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0200', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0200', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1469,8 +1475,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0210', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0210', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1497,8 +1503,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getStringSync_0220', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0220', Level.LEVEL2, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1524,10 +1530,10 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0230', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0230', Level.LEVEL3, () => {
+      let resMgr = res;
       try {
         resMgr.getStringSync($r('app.string.test_stringTwentyThree').id);
       } catch (error) {
@@ -1542,10 +1548,10 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0240', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0240', Level.LEVEL3, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1565,10 +1571,10 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringByNameSync_0250', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringByNameSync_0250', Level.LEVEL3, () => {
+      let resMgr = res;
       try {
         resMgr.getStringByNameSync('test_stringTwentyThree');
       } catch (error) {
@@ -1583,10 +1589,10 @@ export default function globalStageTest() {
      * @tc.desc      : The wrong parameter type
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0260', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0260', Level.LEVEL3, () => {
+      let resMgr = res;
       try {
         resMgr.getStringSync($r('app.string.test_stringTwentyFour').id, "format string", "format", "1.5", "string");
       } catch (error) {
@@ -1601,10 +1607,10 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0270', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0270', Level.LEVEL3, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1624,10 +1630,10 @@ export default function globalStageTest() {
      * @tc.desc      : Parameter out of index
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringByNameSync_0280', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringByNameSync_0280', Level.LEVEL3, () => {
+      let resMgr = res;
       try {
         resMgr.getStringByNameSync('test_stringTwentyFour', "format string", "format", "1.5", "string");
       } catch (error) {
@@ -1642,10 +1648,10 @@ export default function globalStageTest() {
      * @tc.desc      : Parameters less than required
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0290', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0290', Level.LEVEL3, () => {
+      let resMgr = res;
       try {
         resMgr.getStringSync($r('app.string.test_stringTwentyFive').id);
       } catch (error) {
@@ -1660,10 +1666,10 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringSync_0300', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringSync_0300', Level.LEVEL3, () => {
+      let resMgr = res;
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
@@ -1683,10 +1689,10 @@ export default function globalStageTest() {
      * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getStringByNameSync_0310', 0, () => {
-      let resMgr = res.resourceManager;
+    it('resourceManager_test_getStringByNameSync_0310', Level.LEVEL3, () => {
+      let resMgr = res;
       try {
         resMgr.getStringByNameSync('test_stringTwentyFive');
       } catch (error) {
@@ -1703,8 +1709,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0020', 0, () => {
-      let value = res.resourceManager.getSymbol($r('app.symbol.symbolTestReference').id);
+    it('resourceManager_test_getSymbol_0020', Level.LEVEL2, () => {
+      let value = res.getSymbol($r('app.symbol.symbolTestReference').id);
       console.log('resourceManager_test_getSymbol_0020:' + value);
       expect(value == 983043).assertTrue();
     })
@@ -1715,11 +1721,11 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource resId invalid
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0040', 0, () => {
+    it('resourceManager_test_getSymbol_0040', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getSymbol(0x01234567);
+        let value = res.getSymbol(0x01234567);
         console.log('resourceManager_test_getSymbol_0040:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0040_errorCode' + e.code);
@@ -1734,11 +1740,11 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource resId invalid
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0050', 0, () => {
+    it('resourceManager_test_getSymbol_0050', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getSymbol($r('app.string.test_stringTwo').id);
+        let value = res.getSymbol($r('app.string.test_stringTwo').id);
         console.log('resourceManager_test_getSymbol_0050:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0050_errorCode' + e.code);
@@ -1753,11 +1759,11 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource resource re-ref too much by resId
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0060', 0, () => {
+    it('resourceManager_test_getSymbol_0060', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getSymbol($r('app.symbol.symbolTestA').id);
+        let value = res.getSymbol($r('app.symbol.symbolTestA').id);
         console.log('resourceManager_test_getSymbol_0060:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0060_errorCode' + e.code);
@@ -1774,13 +1780,13 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0070', 0, () => {
+    it('resourceManager_test_getSymbol_0070', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.symbol.symbolTest1').id
       };
-      let value = res.resourceManager.getSymbol(resource);
+      let value = res.getSymbol(resource);
       console.log('resourceManager_test_getSymbol_0070:' + value);
       expect(value == 983043).assertTrue();
     })
@@ -1793,13 +1799,13 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0080', 0, () => {
+    it('resourceManager_test_getSymbol_0080', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.symbol.symbolTestReference').id
       };
-      let value = res.resourceManager.getSymbol(resource);
+      let value = res.getSymbol(resource);
       console.log('resourceManager_test_getSymbol_0080:' + value);
       expect(value == 983043).assertTrue();
     })
@@ -1812,14 +1818,14 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0100', 0, () => {
+    it('resourceManager_test_getSymbol_0100', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
       };
       try {
-        let value = res.resourceManager.getSymbol(resource);
+        let value = res.getSymbol(resource);
         console.log('resourceManager_test_getSymbol_0100:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0100_errorCode' + e.code);
@@ -1834,16 +1840,16 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource not found by resource object
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0110', 0, () => {
+    it('resourceManager_test_getSymbol_0110', Level.LEVEL3, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.test_stringTwo').id
       };
       try {
-        let value = res.resourceManager.getSymbol(resource);
+        let value = res.getSymbol(resource);
         console.log('resourceManager_test_getSymbol_0110:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0110_errorCode' + e.code);
@@ -1858,16 +1864,16 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbol resource re-ref too much by resource object
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0120', 0, () => {
+    it('resourceManager_test_getSymbol_0120', Level.LEVEL3, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.symbol.symbolTestA').id
       };
       try {
-        let value = res.resourceManager.getSymbol(resource);
+        let value = res.getSymbol(resource);
         console.log('resourceManager_test_getSymbol_0120:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0120_errorCode' + e.code);
@@ -1884,8 +1890,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0140', 0, () => {
-      let value = res.resourceManager.getSymbolByName('symbolTestReference');
+    it('resourceManager_test_getSymbol_0140', Level.LEVEL2, () => {
+      let value = res.getSymbolByName('symbolTestReference');
       console.log('resourceManager_test_getSymbol_0140:' + value);
       expect(value == 983043).assertTrue();
     })
@@ -1896,11 +1902,11 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbolByName resName invalid
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0160', 0, () => {
+    it('resourceManager_test_getSymbol_0160', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getSymbolByName('invalidName');
+        let value = res.getSymbolByName('invalidName');
         console.log('resourceManager_test_getSymbol_0160:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0160_errorCode' + e.code);
@@ -1915,11 +1921,11 @@ export default function globalStageTest() {
      * @tc.desc      : getSymbolByName resource re-ref too much
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getSymbol_0180', 0, () => {
+    it('resourceManager_test_getSymbol_0180', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getSymbolByName('symbolTestB');
+        let value = res.getSymbolByName('symbolTestB');
         console.log('resourceManager_test_getSymbol_0180:' + value);
       } catch (e) {
         console.log('resourceManager_test_getSymbol_0180_errorCode' + e.code);
@@ -1936,8 +1942,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0190', 0, () => {
-      let value = res.resourceManager.getSymbol($r('app.symbol.symbolTest2').id);
+    it('resourceManager_test_getSymbol_0190', Level.LEVEL2, () => {
+      let value = res.getSymbol($r('app.symbol.symbolTest2').id);
       console.log('resourceManager_test_getSymbol_0190:' + value);
       expect(value == 983041).assertTrue();
     })
@@ -1950,13 +1956,13 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0200', 0, () => {
+    it('resourceManager_test_getSymbol_0200', Level.LEVEL2, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.symbol.symbolTest2').id
       };
-      let value = res.resourceManager.getSymbol(resource);
+      let value = res.getSymbol(resource);
       console.log('resourceManager_test_getSymbol_0200:' + value);
       expect(value == 983041).assertTrue();
     })
@@ -1969,8 +1975,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getSymbol_0210', 0, () => {
-      let value = res.resourceManager.getSymbolByName('symbolTest2');
+    it('resourceManager_test_getSymbol_0210', Level.LEVEL2, () => {
+      let value = res.getSymbolByName('symbolTest2');
       console.log('resourceManager_test_getSymbol_0210:' + value);
       expect(value == 983041).assertTrue();
     })
@@ -1981,16 +1987,16 @@ export default function globalStageTest() {
      * @tc.desc      : getDrawableDescriptor with resource Object not exist resource id
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getDrawable_1400', 0, () => {
+    it('resourceManager_test_getDrawable_1400', Level.LEVEL3, () => {
       let resource: resourceManager.Resource = {
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
       };
       try {
-        let value = res.resourceManager.getDrawableDescriptor(resource);
+        let value = res.getDrawableDescriptor(resource);
         console.log('resourceManager_test_getDrawable_1400:' + value);
       } catch (e) {
         console.log('resourceManager_test_getDrawable_1400_errorCode' + e.code);
@@ -2005,11 +2011,11 @@ export default function globalStageTest() {
      * @tc.desc      : getDrawableDescriptorByName with not exist pic name
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getDrawable_0900', 0, () => {
+    it('resourceManager_test_getDrawable_0900', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getDrawableDescriptorByName('symbolTest2');
+        let value = res.getDrawableDescriptorByName('symbolTest2');
         console.log('resourceManager_test_getDrawable_0900:' + value);
       } catch (e) {
         console.log('resourceManager_test_getDrawable_0900_errorCode' + e.code);
@@ -2026,13 +2032,13 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFdSync_0020', 0, () => {
-      let value = res.resourceManager.getRawFdSync('A/test.txt');
+    it('resourceManager_test_getRawFdSync_0020', Level.LEVEL2, () => {
+      let value = res.getRawFdSync('A/test.txt');
       console.log('resourceManager_test_getRawFdSync_0020_fd' + value.fd);
       console.log('resourceManager_test_getRawFdSync_0020_offset' + value.offset);
       console.log('resourceManager_test_getRawFdSync_0020_length' + value.length);
       expect(value != null && value.length == 4).assertTrue();
-      res.resourceManager.closeRawFdSync('A/test.txt');
+      res.closeRawFdSync('A/test.txt');
     })
 
     /**
@@ -2043,13 +2049,13 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFdSync_0030', 0, () => {
-      let value = res.resourceManager.getRawFdSync('A/none.xml');
+    it('resourceManager_test_getRawFdSync_0030', Level.LEVEL2, () => {
+      let value = res.getRawFdSync('A/none.xml');
       console.log('resourceManager_test_getRawFdSync_0030_fd' + value.fd);
       console.log('resourceManager_test_getRawFdSync_0030_offset' + value.offset);
       console.log('resourceManager_test_getRawFdSync_0030_length' + value.length);
       expect(value != null && value.length == 0).assertTrue();
-      res.resourceManager.closeRawFdSync('A/none.xml');
+      res.closeRawFdSync('A/none.xml');
     })
 
     /**
@@ -2058,11 +2064,11 @@ export default function globalStageTest() {
      * @tc.desc      : getRawFdSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getRawFdSync_0050', 0, () => {
+    it('resourceManager_test_getRawFdSync_0050', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getRawFdSync('error_path.xml');
+        let value = res.getRawFdSync('error_path.xml');
         console.log('resourceManager_test_getRawFdSync_0050:' + value);
       } catch (e) {
         console.log('resourceManager_test_getRawFdSync_0050_errorCode' + e.code);
@@ -2079,8 +2085,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFileContentSync_0170', 0, () => {
-      let value = res.resourceManager.getRawFileContentSync('A/none.xml');
+    it('resourceManager_test_getRawFileContentSync_0170', Level.LEVEL2, () => {
+      let value = res.getRawFileContentSync('A/none.xml');
       console.log('resourceManager_test_getRawFileContentSync_0170:' + value);
       expect(value.length == 0).assertTrue();
     })
@@ -2093,8 +2099,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFileContentSync_0160', 0, () => {
-      let value = res.resourceManager.getRawFileContentSync('A/test.txt');
+    it('resourceManager_test_getRawFileContentSync_0160', Level.LEVEL2, () => {
+      let value = res.getRawFileContentSync('A/test.txt');
       console.log('resourceManager_test_getRawFileContentSync_0160:' + value);
       expect(value.length == 4).assertTrue();
     })
@@ -2105,11 +2111,11 @@ export default function globalStageTest() {
      * @tc.desc      : getRawFileContentSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getRawFileContentSync_0190', 0, () => {
+    it('resourceManager_test_getRawFileContentSync_0190', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getRawFileContentSync('error_path.xml');
+        let value = res.getRawFileContentSync('error_path.xml');
         console.log('resourceManager_test_getRawFileContentSync_0190:' + value);
       } catch (e) {
         console.log('resourceManager_test_getRawFileContentSync_0190_errorCode' + e.code);
@@ -2126,8 +2132,8 @@ export default function globalStageTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('resourceManager_test_getRawFileListSync_0120', 0, () => {
-      let value = res.resourceManager.getRawFileListSync('A');
+    it('resourceManager_test_getRawFileListSync_0120', Level.LEVEL2, () => {
+      let value = res.getRawFileListSync('A');
       console.log('resourceManager_test_getRawFileListSync_0120:' + value);
       expect(value.length >= 102).assertTrue();
     })
@@ -2138,11 +2144,11 @@ export default function globalStageTest() {
      * @tc.desc      : getRawFileListSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_getRawFileListSync_0140', 0, () => {
+    it('resourceManager_test_getRawFileListSync_0140', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.getRawFileListSync('error_path');
+        let value = res.getRawFileListSync('error_path');
         console.log('resourceManager_test_getRawFileListSync_0140:' + value);
       } catch (e) {
         console.log('resourceManager_test_getRawFileListSync_0140_errorCode' + e.code);
@@ -2157,11 +2163,11 @@ export default function globalStageTest() {
      * @tc.desc      : closeRawFdSync with error path
      * @tc.size      : Medium Test
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
-    it('resourceManager_test_closeRawFdSync_0100', 0, () => {
+    it('resourceManager_test_closeRawFdSync_0100', Level.LEVEL3, () => {
       try {
-        let value = res.resourceManager.closeRawFdSync('error_path.xml');
+        let value = res.closeRawFdSync('error_path.xml');
         console.log('resourceManager_test_closeRawFdSync_0100:' + value);
       } catch (e) {
         console.log('resourceManager_test_closeRawFdSync_0100_errorCode' + e.code);
@@ -2179,7 +2185,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2199,7 +2205,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.module_test_desc').id
@@ -2219,7 +2225,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.strarray.sizeListThree').id
@@ -2239,7 +2245,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.strarray.sizeList').id
@@ -2259,7 +2265,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0700', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2280,7 +2286,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0800', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.module_test_desc').id
@@ -2301,7 +2307,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_0900', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.strarray.sizeListThree').id
@@ -2322,7 +2328,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getStringArrayValue_stage_test_1000', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue({
+      res.getStringArrayValue({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.strarray.sizeList').id
@@ -2343,7 +2349,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_0500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2363,7 +2369,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_0600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.module_test_desc').id
@@ -2383,7 +2389,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_0700', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -2403,7 +2409,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_0800', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2423,7 +2429,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_0900', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.module_test_desc').id
@@ -2443,7 +2449,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_1000', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -2463,7 +2469,7 @@ export default function globalStageTest() {
      * @tc.level     : Level 3
      */
     it('getMediaContent_stage_test_1100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2484,7 +2490,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.module_test_desc').id
@@ -2505,7 +2511,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -2526,7 +2532,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2547,7 +2553,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.module_test_desc').id
@@ -2568,7 +2574,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent({
+      res.getMediaContent({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -2590,7 +2596,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringValue_stage_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringValue({
+      res.getStringValue({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.string.app_name').id
@@ -2611,7 +2617,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayValue_stage_test_1100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue(0x01234567, (err: BusinessError) => {
+      res.getStringArrayValue(0x01234567, (err: BusinessError) => {
         console.log('getStringArrayValue_stage_test_1100 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
         done();
@@ -2627,7 +2633,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayValue_stage_test_1200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue($r('app.string.module_test_desc').id, (err: BusinessError) => {
+      res.getStringArrayValue($r('app.string.module_test_desc').id, (err: BusinessError) => {
         console.log('getStringArrayValue_stage_test_1200 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
         done();
@@ -2643,7 +2649,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayValue_stage_test_1300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue($r('app.strarray.sizeListThree').id, (err: BusinessError) => {
+      res.getStringArrayValue($r('app.strarray.sizeListThree').id, (err: BusinessError) => {
         console.log('getStringArrayValue_stage_test_1300 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
         done();
@@ -2659,7 +2665,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayValue_stage_test_1400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue(0x01234567).then(() => {
+      res.getStringArrayValue(0x01234567).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringArrayValue_stage_test_1400 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
@@ -2676,7 +2682,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayValue_stage_test_1500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue($r('app.string.module_test_desc').id).then(() => {
+      res.getStringArrayValue($r('app.string.module_test_desc').id).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringArrayValue_stage_test_1500 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
@@ -2693,7 +2699,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayValue_stage_test_1600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayValue($r('app.strarray.sizeListThree').id).then(() => {
+      res.getStringArrayValue($r('app.strarray.sizeListThree').id).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringArrayValue_stage_test_1600 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
@@ -2710,7 +2716,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1700', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent(0x01234567, (err: BusinessError) => {
+      res.getMediaContent(0x01234567, (err: BusinessError) => {
         console.log('getMediaContent_stage_test_1700 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
         done();
@@ -2726,7 +2732,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1800', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id, (err: BusinessError) => {
+      res.getMediaContent($r('app.string.module_test_desc').id, (err: BusinessError) => {
         console.log('getMediaContent_stage_test_1800 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
         done();
@@ -2742,7 +2748,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_1900', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent(0x01234567, 0, (err: BusinessError) => {
+      res.getMediaContent(0x01234567, 0, (err: BusinessError) => {
         console.log('getMediaContent_stage_test_1900 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
         done();
@@ -2758,7 +2764,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_2000', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id, 0, (err: BusinessError) => {
+      res.getMediaContent($r('app.string.module_test_desc').id, 0, (err: BusinessError) => {
         console.log('getMediaContent_stage_test_2000 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
         done();
@@ -2774,7 +2780,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_2100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent(0x01234567).then(() => {
+      res.getMediaContent(0x01234567).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContent_stage_test_2100 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
@@ -2791,7 +2797,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_2200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id).then(() => {
+      res.getMediaContent($r('app.string.module_test_desc').id).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContent_stage_test_2200 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
@@ -2808,7 +2814,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_2300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent(0x01234567, 0).then(() => {
+      res.getMediaContent(0x01234567, 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContent_stage_test_2300 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
@@ -2825,7 +2831,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContent_stage_test_2400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContent($r('app.string.module_test_desc').id, 0).then(() => {
+      res.getMediaContent($r('app.string.module_test_desc').id, 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContent_stage_test_2400 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
@@ -2842,7 +2848,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_0500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2862,7 +2868,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_0600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.test_stringTwo').id
@@ -2882,7 +2888,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_0700', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -2902,7 +2908,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_0800', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2922,7 +2928,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_0900', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.test_stringTwo').id
@@ -2942,7 +2948,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1000', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -2962,7 +2968,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -2983,7 +2989,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.test_stringTwo').id
@@ -3004,7 +3010,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -3025,7 +3031,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -3047,7 +3053,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.string.test_stringTwo').id
@@ -3068,7 +3074,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64({
+      res.getMediaContentBase64({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.media.icon').id
@@ -3090,7 +3096,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1700', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64(0x01234567, (err: BusinessError) => {
+      res.getMediaContentBase64(0x01234567, (err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_1600 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
         done();
@@ -3106,7 +3112,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1800', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id, (err: BusinessError) => {
+      res.getMediaContentBase64($r('app.string.test_stringTwo').id, (err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_1600 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
         done();
@@ -3122,7 +3128,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_1900', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64(0x01234567, 0, (err: BusinessError) => {
+      res.getMediaContentBase64(0x01234567, 0, (err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_1900 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
         done();
@@ -3139,7 +3145,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_2000', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id, 0, (err: BusinessError) => {
+      res.getMediaContentBase64($r('app.string.test_stringTwo').id, 0, (err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_2000 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
         done();
@@ -3155,7 +3161,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_2100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64(0x01234567).then(() => {
+      res.getMediaContentBase64(0x01234567).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_2100 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
@@ -3172,7 +3178,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_2200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id).then(() => {
+      res.getMediaContentBase64($r('app.string.test_stringTwo').id).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_2200 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
@@ -3190,7 +3196,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_2300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64(0x01234567, 0).then(() => {
+      res.getMediaContentBase64(0x01234567, 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_2300 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
@@ -3208,7 +3214,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaContentBase64_stage_test_2400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaContentBase64($r('app.string.test_stringTwo').id, 0).then(() => {
+      res.getMediaContentBase64($r('app.string.test_stringTwo').id, 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaContentBase64_stage_test_2400 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
@@ -3227,7 +3233,7 @@ export default function globalStageTest() {
      */
 
     it('getPluralStringValue_stage_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -3249,7 +3255,7 @@ export default function globalStageTest() {
      */
 
     it('getPluralStringValue_stage_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -3270,7 +3276,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_0500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.plural.plural_name_loop').id
@@ -3290,7 +3296,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_0600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.plural.plural_name').id
@@ -3311,7 +3317,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_0700', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: 0x01234567
@@ -3332,7 +3338,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_0800', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.media.icon').id
@@ -3353,7 +3359,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_0900', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
         moduleName: "entry_test",
         id: $r('app.plural.plural_name_loop').id
@@ -3375,7 +3381,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_1000', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue({
+      res.getPluralStringValue({
         bundleName: "error",
         moduleName: "error",
         id: $r('app.plural.plural_name').id
@@ -3396,7 +3402,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_1100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue(0x01234567, 2, (err: BusinessError) => {
+      res.getPluralStringValue(0x01234567, 2, (err: BusinessError) => {
         console.log('getPluralStringValue_stage_test_1100 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
         done();
@@ -3412,7 +3418,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_1200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue($r('app.media.icon').id, 2, (err: BusinessError) => {
+      res.getPluralStringValue($r('app.media.icon').id, 2, (err: BusinessError) => {
         console.log('getPluralStringValue_stage_test_1200 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
         done();
@@ -3428,7 +3434,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_1300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue($r('app.plural.plural_name_loop').id, 2, (err: BusinessError) => {
+      res.getPluralStringValue($r('app.plural.plural_name_loop').id, 2, (err: BusinessError) => {
         console.log('getPluralStringValue_stage_test_1300 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
         done();
@@ -3444,7 +3450,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_1400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue(0x01234567, 2).then(() => {
+      res.getPluralStringValue(0x01234567, 2).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getPluralStringValue_stage_test_1400 error code:' + err.code);
         expect(err.code).assertEqual(9001001);
@@ -3462,7 +3468,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 1
      */
     it('getPluralStringValue_stage_test_1500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue($r('app.media.icon').id, 2).then(() => {
+      res.getPluralStringValue($r('app.media.icon').id, 2).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getPluralStringValue_stage_test_1500 error code:' + err.code);
         expect(err.code).assertEqual(9001002);
@@ -3480,7 +3486,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringValue_stage_test_1600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringValue($r('app.plural.plural_name_loop').id, 2).then(() => {
+      res.getPluralStringValue($r('app.plural.plural_name_loop').id, 2).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getPluralStringValue_stage_test_1600 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
@@ -3497,7 +3503,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringByName_stage_test_0100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringByName('', (err: BusinessError) => {
+      res.getStringByName('', (err: BusinessError) => {
         console.log('getStringByName_stage_test_0100 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3513,7 +3519,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringByName_stage_test_0200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringByName('test_stringLoopA', (err: BusinessError) => {
+      res.getStringByName('test_stringLoopA', (err: BusinessError) => {
         console.log('getStringByName_stage_test_0200 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
         done();
@@ -3530,7 +3536,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringByName_stage_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringByName('').then(() => {
+      res.getStringByName('').then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringByName_stage_test_0300 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3547,7 +3553,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringByName_stage_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringByName('test_stringLoopA').then(() => {
+      res.getStringByName('test_stringLoopA').then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringByName_stage_test_0400 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
@@ -3564,7 +3570,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayByName_stage_test_0100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayByName('', (err: BusinessError) => {
+      res.getStringArrayByName('', (err: BusinessError) => {
         console.log('getStringArrayByName_stage_test_0100 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3580,7 +3586,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayByName_stage_test_0200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayByName('sizeListThree', (err: BusinessError) => {
+      res.getStringArrayByName('sizeListThree', (err: BusinessError) => {
         console.log('getStringArrayByName_stage_test_0200 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
         done();
@@ -3596,7 +3602,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayByName_stage_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayByName('').then(() => {
+      res.getStringArrayByName('').then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringArrayByName_stage_test_0300 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3613,7 +3619,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getStringArrayByName_stage_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getStringArrayByName('sizeListThree').then(() => {
+      res.getStringArrayByName('sizeListThree').then(() => {
       }).catch((err: BusinessError) => {
         console.log('getStringArrayByName_stage_test_0400 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
@@ -3630,7 +3636,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaByName_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaByName('', (err: BusinessError) => {
+      res.getMediaByName('', (err: BusinessError) => {
         console.log('getMediaByName_test_0300 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3646,7 +3652,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaByName_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaByName('', 0, (err: BusinessError) => {
+      res.getMediaByName('', 0, (err: BusinessError) => {
         console.log('getMediaByName_test_0400 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3662,7 +3668,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaByName_test_0500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaByName('').then(() => {
+      res.getMediaByName('').then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaByName_test_0500 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3679,7 +3685,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaByName_test_0600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaByName('', 0).then(() => {
+      res.getMediaByName('', 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaByName_test_0600 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3696,7 +3702,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaBase64ByName_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaBase64ByName('', (err: BusinessError) => {
+      res.getMediaBase64ByName('', (err: BusinessError) => {
         console.log('getMediaBase64ByName_test_0300 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3712,7 +3718,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaBase64ByName_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaBase64ByName('', 0, (err: BusinessError) => {
+      res.getMediaBase64ByName('', 0, (err: BusinessError) => {
         console.log('getMediaBase64ByName_test_0400 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3728,7 +3734,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaBase64ByName_test_0500', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaBase64ByName('').then(() => {
+      res.getMediaBase64ByName('').then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaBase64ByName_test_0500 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3745,7 +3751,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getMediaBase64ByName_test_0600', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getMediaBase64ByName('', 0).then(() => {
+      res.getMediaBase64ByName('', 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getMediaBase64ByName_test_0600 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3762,7 +3768,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringByName_test_0100', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringByName('', 0, (err: BusinessError) => {
+      res.getPluralStringByName('', 0, (err: BusinessError) => {
         console.log('getPluralStringByName_test_0100 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
         done();
@@ -3778,7 +3784,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringByName_test_0200', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringByName('plural_name_loop', 0, (err: BusinessError) => {
+      res.getPluralStringByName('plural_name_loop', 0, (err: BusinessError) => {
         console.log('getPluralStringByName_test_0200 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
         done();
@@ -3794,7 +3800,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringByName_test_0300', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringByName('', 0).then(() => {
+      res.getPluralStringByName('', 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getPluralStringByName_test_0300 error code:' + err.code);
         expect(err.code).assertEqual(9001003);
@@ -3811,7 +3817,7 @@ export default function globalStageTest() {
      * @tc.level    : Level 3
      */
     it('getPluralStringByName_test_0400', Level.LEVEL3, async (done: Function) => {
-      res.resourceManager.getPluralStringByName('plural_name_loop', 0).then(() => {
+      res.getPluralStringByName('plural_name_loop', 0).then(() => {
       }).catch((err: BusinessError) => {
         console.log('getPluralStringByName_test_0400 error code:' + err.code);
         expect(err.code).assertEqual(9001006);
@@ -3819,6 +3825,1640 @@ export default function globalStageTest() {
       })
     })
 
+    /**
+     * @tc.number   : getStringSync_test_0100
+     * @tc.name     : getStringSync_test_0100
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getStringSync($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getStringSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0200
+     * @tc.name     : getStringSync_test_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getStringSync($r('app.string.test_stringLoopA').id)
+      } catch (err) {
+        console.log('getStringSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0300
+     * @tc.name     : getStringSync_test_0300
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0300', Level.LEVEL3, () => {
+      try {
+        res.getStringSync($r('app.color.color_test1').id, 'test', 1)
+      } catch (err) {
+        console.log('getStringSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0400
+     * @tc.name     : getStringSync_test_0400
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0400', Level.LEVEL3, () => {
+      try {
+        res.getStringSync($r('app.string.test_stringLoopA').id, 'test', 1)
+      } catch (err) {
+        console.log('getStringSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0500
+     * @tc.name     : getStringSync_test_0500
+     * @tc.desc     : errcode 9001007
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0500', Level.LEVEL3, () => {
+      try {
+        res.getStringSync($r('app.string.test_stringTwentyThree').id, 'test', 1)
+      } catch (err) {
+        console.log('getStringSync_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001007');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0600
+     * @tc.name     : getStringSync_test_0600
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0600', Level.LEVEL3, () => {
+      try {
+        res.getStringSync(0x01234567)
+      } catch (err) {
+        console.log('getStringSync_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0700
+     * @tc.name     : getStringSync_test_0700
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0700', Level.LEVEL3, () => {
+      try {
+        res.getStringSync(0x01234567, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0800
+     * @tc.name     : getStringSync_test_0800
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0800', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        res.getStringSync(resource)
+      } catch (err) {
+        console.log('getStringSync_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_0900
+     * @tc.name     : getStringSync_test_0900
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_0900', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      };
+      try {
+        res.getStringSync(resource)
+      } catch (err) {
+        console.log('getStringSync_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1000
+     * @tc.name     : getStringSync_test_1000
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1000', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringLoopA').id
+      };
+      try {
+        res.getStringSync(resource)
+      } catch (err) {
+        console.log('getStringSync_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1100
+     * @tc.name     : getStringSync_test_1100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1100', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        res.getStringSync(resource, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1200
+     * @tc.name     : getStringSync_test_1200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1200', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      };
+      try {
+        res.getStringSync(resource, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1300
+     * @tc.name     : getStringSync_test_1300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringLoopA').id
+      };
+      try {
+        res.getStringSync(resource, 'aaa', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByNameSync_test_0100
+     * @tc.name     : getStringByNameSync_test_0100
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByNameSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getStringByNameSync('test_stringLoopB')
+      } catch (err) {
+        console.log('getStringByNameSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByNameSync_test_0300
+     * @tc.name     : getStringByNameSync_test_0300
+     * @tc.desc     : errcode 9001003
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByNameSync_test_0300', Level.LEVEL3, () => {
+      try {
+        res.getStringByNameSync('boolean_2', 'aaa', 1)
+      } catch (err) {
+        console.log('getStringByNameSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getStringByNameSync_test_0400
+     * @tc.name     : getStringByNameSync_test_0400
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringByNameSync_test_0400', Level.LEVEL3, () => {
+      try {
+        res.getStringByNameSync('test_stringLoopB', 'aaa', 1)
+      } catch (err) {
+        console.log('getStringByNameSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0100
+     * @tc.name     : getBoolean_test_0100
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getBoolean($r("app.boolean.boolean_4").id)
+      } catch (err) {
+        console.log('getBoolean_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0200
+     * @tc.name     : getBoolean_test_0200
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getBoolean(0x01234567)
+      } catch (err) {
+        console.log('getBoolean_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getBoolean_test_0300
+     * @tc.name     : getBoolean_test_0300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.boolean.boolean_4').id
+      };
+      try {
+        res.getBoolean(resource)
+      } catch (err) {
+        console.log('getBoolean_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0400
+     * @tc.name     : getBoolean_test_0400
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0400', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        res.getBoolean(resource)
+      } catch (err) {
+        console.log('getBoolean_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getBoolean_test_0500
+     * @tc.name     : getBoolean_test_0500
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0500', Level.LEVEL3, () => {
+      try {
+        res.getBoolean($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getBoolean_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_0600
+     * @tc.name     : getBoolean_test_0600
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_0600', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      };
+      try {
+        res.getBoolean(resource)
+      } catch (err) {
+        console.log('getBoolean_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getBooleanByName_test_0100
+     * @tc.name     : getBooleanByName_test_0100
+     * @tc.desc     : errcode 9001003
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBooleanByName_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getBooleanByName("")
+      } catch (err) {
+        console.log('getBooleanByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getBooleanByName_test_0200
+     * @tc.name     : getBooleanByName_test_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBooleanByName_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getBooleanByName("boolean_4")
+      } catch (err) {
+        console.log('getBooleanByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0100
+     * @tc.name     : getNumber_test_0100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getNumber(0x01234567)
+      } catch (err) {
+        console.log('getNumber_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0200
+     * @tc.name     : getNumber_test_0200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getNumber($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getNumber_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0300
+     * @tc.name     : getNumber_test_0300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0300', Level.LEVEL3, () => {
+      try {
+        res.getNumber($r('app.float.float_loopA').id)
+      } catch (err) {
+        console.log('getNumber_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0400
+     * @tc.name     : getNumber_test_0400
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0400', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.getNumber(resource)
+      } catch (err) {
+        console.log('getNumber_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0500
+     * @tc.name     : getNumber_test_0500
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0500', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.getNumber(resource)
+      } catch (err) {
+        console.log('getNumber_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumber_test_0600
+     * @tc.name     : getNumber_test_0600
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumber_test_0600', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.float.float_loopA').id
+      }
+      try {
+        res.getNumber(resource)
+      } catch (err) {
+        console.log('getNumber_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumberByName_test_0100
+     * @tc.name     : getNumberByName_test_0100
+     * @tc.desc     : errcode 9001003
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumberByName_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getNumberByName('')
+      } catch (err) {
+        console.log('getNumberByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getNumberByName_test_0200
+     * @tc.name     : getNumberByName_test_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumberByName_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getNumberByName('float_loopA')
+      } catch (err) {
+        console.log('getNumberByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFileContent_test_0100
+     * @tc.name     : getRawFileContent_test_0100
+     * @tc.desc     : errcode 9001005 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContent_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.getRawFileContent('plural_name_loop', (err: BusinessError) => {
+        console.log('getRawFileContent_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFileContent_test_0200
+     * @tc.name     : getRawFileContent_test_0200
+     * @tc.desc     : errcode 9001005 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContent_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.getRawFileContent('plural_name_loop').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getRawFileContent_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFd_test_0100
+     * @tc.name     : getRawFd_test_0100
+     * @tc.desc     : errcode 9001005 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFd_test_0100', Level.LEVEL3, async (done: Function) => {
+      res.getRawFd('plural_name_loop', (err: BusinessError) => {
+        console.log('getRawFd_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getRawFd_test_0200
+     * @tc.name     : getRawFd_test_0200
+     * @tc.desc     : errcode 9001005 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFd_test_0200', Level.LEVEL3, async (done: Function) => {
+      res.getRawFd('plural_name_loop').then(() => {
+      }).catch((err: BusinessError) => {
+        console.log('getRawFd_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual(9001005);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0200
+     * @tc.name     : getDrawableDescriptor_stage_test_0200
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptor(0x01234567)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0300
+     * @tc.name     : getDrawableDescriptor_stage_test_0300
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0300', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptor($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0400
+     * @tc.name     : getDrawableDescriptor_stage_test_0400
+     * @tc.desc     : errcode 9001001 debsity?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0400', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptor(0x01234567, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0500
+     * @tc.name     : getDrawableDescriptor_stage_test_0500
+     * @tc.desc     : errcode 9001002 density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0500', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptor($r('app.color.color_test1').id, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0600
+     * @tc.name     : getDrawableDescriptor_stage_test_0600
+     * @tc.desc     : errcode 9001001 density? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0600', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptor(0x01234567, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0700
+     * @tc.name     : getDrawableDescriptor_stage_test_0700
+     * @tc.desc     : errcode 9001002 density? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0700', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptor($r('app.color.color_test1').id, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0700 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0800
+     * @tc.name     : getDrawableDescriptor_stage_test_0800
+     * @tc.desc     : errcode 9001001 Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0800', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.getDrawableDescriptor(resource)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0800 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_0900
+     * @tc.name     : getDrawableDescriptor_stage_test_0900
+     * @tc.desc     : errcode 9001002 Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_0900', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.getDrawableDescriptor(resource)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_0900 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1000
+     * @tc.name     : getDrawableDescriptor_stage_test_1000
+     * @tc.desc     : errcode 9001001 Resource density?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1000', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.getDrawableDescriptor(resource, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1000 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1100
+     * @tc.name     : getDrawableDescriptor_stage_test_1100
+     * @tc.desc     : errcode 9001002 Resource  debsity?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1100', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.getDrawableDescriptor(resource, 0)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1100 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1200
+     * @tc.name     : getDrawableDescriptor_stage_test_1200
+     * @tc.desc     : errcode 9001001 Resource debsity? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1200', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.getDrawableDescriptor(resource, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptor_stage_test_1300
+     * @tc.name     : getDrawableDescriptor_stage_test_1300
+     * @tc.desc     : errcode 9001002 Resource
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptor_stage_test_1300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.getDrawableDescriptor(resource, 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptor_stage_test_1300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptorByName_test_0100
+     * @tc.name     : getDrawableDescriptorByName_test_0100
+     * @tc.desc     : errcode 9001003 debsity? type?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptorByName_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptorByName('test_stringLoopA', 0, 1)
+      } catch (err) {
+        console.log('getDrawableDescriptorByName_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getDrawableDescriptorByName_test_0200
+     * @tc.name     : getDrawableDescriptorByName_test_0200
+     * @tc.desc     : errcode 9001003 debsity?
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getDrawableDescriptorByName_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getDrawableDescriptorByName('', 0)
+      } catch (err) {
+        console.log('getDrawableDescriptorByName_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFdSync_test_0100
+     * @tc.name     : getRawFdSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFdSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getRawFdSync('notExist')
+      } catch (err) {
+        console.log('getRawFdSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : closeRawFdSync_test_0100
+     * @tc.name     : closeRawFdSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('closeRawFdSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.closeRawFdSync('notExist')
+      } catch (err) {
+        console.log('closeRawFdSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFileListSync_test_0100
+     * @tc.name     : getRawFileListSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileListSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getRawFileListSync('notExist')
+      } catch (err) {
+        console.log('getRawFileListSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : getRawFileContentSync_test_0100
+     * @tc.name     : getRawFileContentSync_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getRawFileContentSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getRawFileContentSync('notExist')
+      } catch (err) {
+        console.log('getRawFileContentSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0100
+     * @tc.name     : getMediaContentSync_test_0100
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0100', Level.LEVEL3, () => {
+      try {
+        res.getMediaContentSync(0x01234567)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0200
+     * @tc.name     : getMediaContentSync_test_0200
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0200', Level.LEVEL3, () => {
+      try {
+        res.getMediaContentSync($r('app.color.color_test1').id)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0300
+     * @tc.name     : getMediaContentSync_test_0300
+     * @tc.desc     : errcode 9001001 Resource density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0300', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      }
+      try {
+        res.getMediaContentSync(resource)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number   : getMediaContentSync_test_0400
+     * @tc.name     : getMediaContentSync_test_0400
+     * @tc.desc     : errcode 9001002 Resource density
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaContentSync_test_0400', Level.LEVEL3, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.color.color_test1').id
+      }
+      try {
+        res.getMediaContentSync(resource)
+      } catch (err) {
+        console.log('getMediaContentSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+
+    /**
+     * @tc.number    : getMediaContentSync_test_0500
+     * @tc.name      : getMediaContentSync_test_0500
+     * @tc.desc      : getMediaContentSync with res id density
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getMediaContentSync_test_0500', Level.LEVEL2, () => {
+      let value: Uint8Array = res.getMediaContentSync($r('app.media.icon').id, 0);
+      console.log('getMediaContentSync_test_0500 1' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaContentSync_test_0600
+     * @tc.name      : getMediaContentSync_test_0600
+     * @tc.desc      : getMediaContentSync with resource object density
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getMediaContentSync_test_0600', Level.LEVEL2, () => {
+      let value: Uint8Array = res.getMediaContentSync({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.media.icon').id
+      }, 0);
+      console.log('getMediaContentSync_test_0600 1' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaContentBase64Sync_test_0100
+     * @tc.name      : getMediaContentBase64Sync_test_0100
+     * @tc.desc      : getMediaContentBase64Sync with res id density
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getMediaContentBase64Sync_test_0100', Level.LEVEL2, () => {
+      let value: string = res.getMediaContentBase64Sync($r('app.media.icon').id, 0);
+      console.log('getMediaContentBase64Sync_test_0100:' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaContentBase64Sync_test_0200
+     * @tc.name      : getMediaContentBase64Sync_test_0200
+     * @tc.desc      : getMediaContentBase64Sync with resource object density
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getMediaContentBase64Sync_test_0200', Level.LEVEL2, () => {
+      let value: string = res.getMediaContentBase64Sync({
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.media.icon').id
+      }, 0);
+      console.log('getMediaContentBase64Sync_test_0200:' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaContentBase64Sync_test_0300
+     * @tc.name      : getMediaContentBase64Sync_test_0300
+     * @tc.desc      : error code 9001001 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContentBase64Sync_test_0300', Level.LEVEL3, () => {
+      try{
+        res.getMediaContentBase64Sync(0x01234567);
+      } catch (err) {
+        console.log('getMediaContentBase64Sync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number    : getMediaContentBase64Sync_test_0400
+     * @tc.name      : getMediaContentBase64Sync_test_0400
+     * @tc.desc      : error code 9001001 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContentBase64Sync_test_0400', Level.LEVEL3, () => {
+      try{
+        res.getMediaContentBase64Sync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: 0x01234567
+        });
+      } catch (err) {
+        console.log('getMediaContentBase64Sync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number    : getMediaContentBase64Sync_test_0500
+     * @tc.name      : getMediaContentBase64Sync_test_0500
+     * @tc.desc      : error code 9001002 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContentBase64Sync_test_0500', Level.LEVEL3, () => {
+      try{
+        res.getMediaContentBase64Sync($r('app.string.module_test_desc').id);
+      } catch (err) {
+        console.log('getMediaContentBase64Sync_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number    : getMediaContentBase64Sync_test_0600
+     * @tc.name      : getMediaContentBase64Sync_test_0600
+     * @tc.desc      : error code 9001002 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaContentBase64Sync_test_0600', Level.LEVEL3, () => {
+      try{
+        res.getMediaContentBase64Sync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: $r('app.string.module_test_desc').id
+        });
+      } catch (err) {
+        console.log('getMediaContentBase64Sync_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringValueSync_test_0100
+     * @tc.name      : getPluralStringValueSync_test_0100
+     * @tc.desc      : error code 9001001 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringValueSync_test_0100', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringValueSync(0x01234567, 1);
+      } catch (err) {
+        console.log('getPluralStringValueSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringValueSync_test_0200
+     * @tc.name      : getPluralStringValueSync_test_0200
+     * @tc.desc      : error code 9001001 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringValueSync_test_0200', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringValueSync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: 0x01234567
+        }, 1);
+      } catch (err) {
+        console.log('getPluralStringValueSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringValueSync_test_0300
+     * @tc.name      : getPluralStringValueSync_test_0300
+     * @tc.desc      : error code 9001002 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringValueSync_test_0300', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringValueSync($r('app.string.module_test_desc').id, 1);
+      } catch (err) {
+        console.log('getPluralStringValueSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringValueSync_test_0400
+     * @tc.name      : getPluralStringValueSync_test_0400
+     * @tc.desc      : error code 9001002 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringValueSync_test_0400', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringValueSync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: $r('app.string.module_test_desc').id
+        }, 1);
+      } catch (err) {
+        console.log('getPluralStringValueSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringValueSync_test_0500
+     * @tc.name      : getPluralStringValueSync_test_0500
+     * @tc.desc      : error code 9001006 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringValueSync_test_0500', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringValueSync($r('app.plural.plural_name_loop').id, 2);
+      } catch (err) {
+        console.log('getPluralStringValueSync_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringValueSync_test_0600
+     * @tc.name      : getPluralStringValueSync_test_0600
+     * @tc.desc      : error code 9001006 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringValueSync_test_0600', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringValueSync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: $r('app.plural.plural_name_loop').id
+        }, 2);
+      } catch (err) {
+        console.log('getPluralStringValueSync_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayValueSync_test_0100
+     * @tc.name      : getStringArrayValueSync_test_0100
+     * @tc.desc      : error code 9001001 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValueSync_test_0100', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayValueSync(0x01234567);
+      } catch (err) {
+        console.log('getStringArrayValueSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayValueSync_test_0200
+     * @tc.name      : getStringArrayValueSync_test_0200
+     * @tc.desc      : error code 9001001 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValueSync_test_0200', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayValueSync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: 0x01234567
+        });
+      } catch (err) {
+        console.log('getStringArrayValueSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001001');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayValueSync_test_0300
+     * @tc.name      : getStringArrayValueSync_test_0300
+     * @tc.desc      : error code 9001002 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValueSync_test_0300', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayValueSync($r('app.string.module_test_desc').id);
+      } catch (err) {
+        console.log('getStringArrayValueSync_test_0300 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayValueSync_test_0400
+     * @tc.name      : getStringArrayValueSync_test_0400
+     * @tc.desc      : error code 9001002 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValueSync_test_0400', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayValueSync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: $r('app.string.module_test_desc').id
+        });
+      } catch (err) {
+        console.log('getStringArrayValueSync_test_0400 error code:' + err.code);
+        expect(err.code).assertEqual('9001002');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayValueSync_test_0500
+     * @tc.name      : getStringArrayValueSync_test_0500
+     * @tc.desc      : error code 9001006 with id
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValueSync_test_0500', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayValueSync($r('app.strarray.sizeListThree').id);
+      } catch (err) {
+        console.log('getStringArrayValueSync_test_0500 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayValueSync_test_0600
+     * @tc.name      : getStringArrayValueSync_test_0600
+     * @tc.desc      : error code 9001006 with object
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayValueSync_test_0600', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayValueSync({
+          bundleName: "ohos.acts.globalstage",
+          moduleName: "entry_test",
+          id: $r('app.strarray.sizeListThree').id
+        });
+      } catch (err) {
+        console.log('getStringArrayValueSync_test_0600 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringByNameSync_test_0100
+     * @tc.name      : getPluralStringByNameSync_test_0100
+     * @tc.desc      : error code 9001003 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringByNameSync_test_0100', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringByNameSync('invalidName', 2);
+      } catch (err) {
+        console.log('getPluralStringByNameSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number    : getPluralStringByNameSync_test_0200
+     * @tc.name      : getPluralStringByNameSync_test_0200
+     * @tc.desc      : error code 9001006 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getPluralStringByNameSync_test_0200', Level.LEVEL3, () => {
+      try{
+        res.getPluralStringByNameSync('plural_name_loop', 2);
+      } catch (err) {
+        console.log('getPluralStringByNameSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number    : getMediaByNameSync_test_0100
+     * @tc.name      : getMediaByNameSync_test_0100
+     * @tc.desc      : with density by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getMediaByNameSync_test_0100', Level.LEVEL2, () => {
+      let value: Uint8Array = res.getMediaByNameSync('icon', 0);
+      console.log('getMediaByNameSync_test_0100:' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaByNameSync_test_0200
+     * @tc.name      : getMediaByNameSync_test_0200
+     * @tc.desc      : error code 9001003 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaByNameSync_test_0200', Level.LEVEL3, () => {
+      try{
+        res.getMediaByNameSync('invalidName', 0);
+      } catch (err) {
+        console.log('getMediaByNameSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number    : getMediaBase64ByNameSync_test_0100
+     * @tc.name      : getMediaBase64ByNameSync_test_0100
+     * @tc.desc      : with density by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getMediaBase64ByNameSync_test_0100', Level.LEVEL2, () => {
+      let value: string = res.getMediaBase64ByNameSync('icon', 0);
+      console.log('getMediaBase64ByNameSync_test_0100:' + value);
+      expect(value !== null).assertTrue();
+    })
+
+    /**
+     * @tc.number    : getMediaBase64ByNameSync_test_0200
+     * @tc.name      : getMediaBase64ByNameSync_test_0200
+     * @tc.desc      : error code 9001003 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaBase64ByNameSync_test_0200', Level.LEVEL3, () => {
+      try{
+        res.getMediaBase64ByNameSync('invalidName', 0);
+      } catch (err) {
+        console.log('getMediaBase64ByNameSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayByNameSync_test_0100
+     * @tc.name      : getStringArrayByNameSync_test_0100
+     * @tc.desc      : error code 9001003 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayByNameSync_test_0100', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayByNameSync('invalidName');
+      } catch (err) {
+        console.log('getStringArrayByNameSync_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001003');
+      }
+    })
+
+    /**
+     * @tc.number    : getStringArrayByNameSync_test_0200
+     * @tc.name      : getStringArrayByNameSync_test_0200
+     * @tc.desc      : error code 9001006 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getStringArrayByNameSync_test_0200', Level.LEVEL3, () => {
+      try{
+        res.getStringArrayByNameSync('sizeListThree');
+      } catch (err) {
+        console.log('getStringArrayByNameSync_test_0200 error code:' + err.code);
+        expect(err.code).assertEqual('9001006');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_GetLocales_0020
+     * @tc.name      : getLocales with parameter false
+     * @tc.desc      : getLocales
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_GLOBAL_GetLocales_0020', Level.LEVEL2, () => {
+      let value: string = res.getLocales(false).toString();
+      console.log('SUB_GLOBAL_GetLocales_0020:' + value);
+      expect(value == 'en-US,zh-CN').assertTrue();
+    })
+
+    /**
+     * @tc.number   : getStringSync_test_1400
+     * @tc.name     : getStringSync_test_1400
+     * @tc.desc     : errcode 9001007 with array
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringSync_test_1400', Level.LEVEL3, () => {
+      try {
+        res.getStringSync($r('app.string.test_stringTwentyThree').id, 'test', 0)
+      } catch (err) {
+        console.log('getStringSync_test_1400 error code:' + err.code);
+        expect(err.code).assertEqual('9001007');
+      }
+    })
+
+    /**
+     * @tc.number   : isRawDir_test_0100
+     * @tc.name     : isRawDir_test_0100
+     * @tc.desc     : errcode 9001005
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('isRawDir_test_0100', Level.LEVEL3, () => {
+      try {
+        res.isRawDir('invalidPath');
+      } catch (err) {
+        console.log('isRawDir_test_0100 error code:' + err.code);
+        expect(err.code).assertEqual('9001005');
+      }
+    })
     console.log('*************end globalStageTest*************');
   })
 }

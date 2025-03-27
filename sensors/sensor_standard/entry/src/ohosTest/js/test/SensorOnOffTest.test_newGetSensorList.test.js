@@ -63,11 +63,11 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.number:SUB_SensorsSystem_GetSensorLists_JSTest_0010
      * @tc.name: getSensorLists_SensorJsTest001
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("getSensorLists_SensorJsTest001",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("getSensorLists_SensorJsTest001",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'getSensorLists_SensorJsTest001';
         try{
             sensor.getSensorList().then((data) => {
@@ -195,7 +195,7 @@ it("getSensorLists_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level
         });
     } catch (error) {
         console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
-        expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE); 
+        expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
         done();
     }
 })

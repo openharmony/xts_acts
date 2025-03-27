@@ -892,7 +892,7 @@ export default function ActsNotificationWantAgentNewTest() {
               done()
             } else {
               console.info(`${TAG} trigger AsyncCallback success: ${JSON.stringify(data)}`)
-              expect(typeof(data.wantAgent)).assertEqual('object')
+              expect(typeof(data.info)).assertEqual('object')
               expect(data.finalCode).assertEqual(0)
               expect(data.finalData).assertEqual('')
               expect(typeof(data.extraInfo)).assertEqual('object')
@@ -987,7 +987,7 @@ export default function ActsNotificationWantAgentNewTest() {
               done()
             } else {
               console.info(`${TAG} trigger AsyncCallback success: ${JSON.stringify(data)}`)
-              expect(typeof(data.wantAgent)).assertEqual('object')
+              expect(typeof(data.info)).assertEqual('object')
               expect(data.finalCode).assertEqual(0)
               expect(data.finalData).assertEqual('')
               expect(typeof(data.extraInfo)).assertEqual('object')
@@ -1081,7 +1081,7 @@ export default function ActsNotificationWantAgentNewTest() {
               done()
             } else {
               console.info(`${TAG} trigger AsyncCallback success: ${JSON.stringify(data)}`)
-              expect(typeof(data.wantAgent)).assertEqual('object')
+              expect(typeof(data.info)).assertEqual('object')
               expect(data.finalCode).assertEqual(0)
               expect(data.finalData).assertEqual('')
               expect(typeof(data.extraInfo)).assertEqual('object')

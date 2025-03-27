@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { RenderNode, DrawContext } from "@ohos.arkui.node"
 import drawing from "@ohos.graphics.drawing"
 import common2D from "@ohos.graphics.common2D"
@@ -52,7 +52,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testDecoration', 1, async ()=> {
+    it('testDecoration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testDecoration"
       console.info(msg + 'begin');
       try {
@@ -77,7 +77,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextStyle', 2, async ()=> {
+    it('testTextStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextStyle"
       console.info(msg + 'begin');
       let decoration : text.Decoration = {
@@ -120,7 +120,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testParagraphStyle', 3, async ()=> {
+    it('testParagraphStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testParagraphStyle"
       console.info(msg + 'begin');
       let decoration : text.Decoration = {
@@ -176,7 +176,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPlaceholderSpan', 4, async ()=> {
+    it('testPlaceholderSpan', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testPlaceholderSpan"
       console.info(msg + 'begin');
       try {
@@ -202,7 +202,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testRange', 5, async ()=> {
+    it('testRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testRange"
       console.info(msg + 'begin');
       try {
@@ -225,7 +225,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextBox', 6, async ()=> {
+    it('testTextBox', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextBox"
       console.info(msg + 'begin');
       try {
@@ -250,7 +250,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPositionWithAffinity', 7, async ()=> {
+    it('testPositionWithAffinity', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testPositionWithAffinity"
       console.info(msg + 'begin');
       try {
@@ -271,7 +271,7 @@ export default function graphicTextInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextTab', 8, async ()=> {
+    it('testTextTab', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextTab"
       console.info(msg + 'begin');
       try {

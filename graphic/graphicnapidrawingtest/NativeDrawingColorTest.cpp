@@ -43,7 +43,7 @@ void NativeDrawingColorTest::TearDown() {}
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingColorTest, NativeDrawingColorTest_color001, TestSize.Level1)
+HWTEST_F(NativeDrawingColorTest, NativeDrawingColorTest_color001, Function | MediumTest | Level1)
 {
     OH_Drawing_Brush* brush1 = OH_Drawing_BrushCreate();
     OH_Drawing_BrushSetAntiAlias(brush1, false);

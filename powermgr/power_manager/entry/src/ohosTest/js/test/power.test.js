@@ -14,7 +14,7 @@
  */
 
 import power from '@ohos.power';
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 const ERROR_CODE = 202;
 
@@ -30,7 +30,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Power_Is_Screnn_On_Promise_Test', 0, async function (done) {
+    it('Power_Is_Screnn_On_Promise_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         let TAG = 'Power_Is_Screnn_On_Promise_Test';
         power.isScreenOn()
         .then(data => {
@@ -54,7 +54,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('Power_Is_Screnn_On_Callback_Test', 0, async function (done) {
+    it('Power_Is_Screnn_On_Callback_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         power.isScreenOn((error, screenOn) => {
             if (typeof error === "undefined") {
                 console.info('Power_Is_Screnn_On_Callback_Test screenOn is ' + screenOn);
@@ -78,7 +78,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-     it('Power_Is_Active_Test', 0, function () {
+     it('Power_Is_Active_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
             var isActive = power.isActive();
             console.info('power is active: ' + isActive);
@@ -96,7 +96,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-     it('Power_Get_Power_Mode_Test', 0, async function () {
+     it('Power_Get_Power_Mode_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         let currentMode = power.getPowerMode();
         console.info('Power_Get_Power_Mode_Test currentMode:' + currentMode);
         expect(currentMode >= power.DevicePowerMode.MODE_NORMAL &&
@@ -111,7 +111,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-     it('Power_Device_Power_Mode_MODENORMAL_Test', 0, function () {
+     it('Power_Device_Power_Mode_MODENORMAL_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_NORMAL;
         console.info('MODE_NORMAL = ' + devicePowerMode);
         expect(devicePowerMode === 600).assertTrue();
@@ -125,7 +125,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-     it('Power_Device_Power_Mode_MODEPOWERSAVE_Test', 0, function () {
+     it('Power_Device_Power_Mode_MODEPOWERSAVE_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_POWER_SAVE;
         console.info('MODE_POWER_SAVE = ' + devicePowerMode);
         expect(devicePowerMode === 601).assertTrue();
@@ -139,7 +139,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-     it('Power_Device_Power_Mode_MODEPERFORMANCE_Test', 0, function () {
+     it('Power_Device_Power_Mode_MODEPERFORMANCE_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_PERFORMANCE;
         console.info('MODE_PERFORMANCE = ' + devicePowerMode);
         expect(devicePowerMode === 602).assertTrue();
@@ -153,7 +153,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-     it('Power_Device_Power_Mode_MODE_EXTREME_POWER_SAVE_Test', 0, function () {
+     it('Power_Device_Power_Mode_MODE_EXTREME_POWER_SAVE_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_EXTREME_POWER_SAVE;
         console.info('MODE_EXTREME_POWER_SAVE = ' + devicePowerMode);
         expect(devicePowerMode === 603).assertTrue();
@@ -167,7 +167,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('power_Device_IsStandby_Test', 0, function () {
+    it('power_Device_IsStandby_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         let isStandby = power.isStandby();
         console.info('power_Device_IsStandby_Test ' + isStandby);
         expect(isStandby).assertFalse();
@@ -181,7 +181,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0100', 0, async function (done) {
+    it('System_API_Test_power_Manager_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0100';
         try {
             power.shutdown("System_API_Test_power_Manager_0100");
@@ -200,7 +200,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0200', 0, async function (done) {
+    it('System_API_Test_power_Manager_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0200';
         try {
             power.reboot("System_API_Test_power_Manager_0200");
@@ -219,7 +219,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0300', 0, async function (done) {
+    it('System_API_Test_power_Manager_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0300';
         try {
             power.wakeup("System_API_Test_power_Manager_0300");
@@ -238,7 +238,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0400', 0, async function (done) {
+    it('System_API_Test_power_Manager_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0400';
         try {
             power.suspend(true);
@@ -258,7 +258,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0500', 0, async function (done) {
+    it('System_API_Test_power_Manager_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0500';
         try {
             power.suspend(false);
@@ -278,7 +278,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0501', 0, async function (done) {
+    it('System_API_Test_power_Manager_0501', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0501';
         try {
             power.suspend();
@@ -298,7 +298,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0600', 0, async function (done) {
+    it('System_API_Test_power_Manager_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0600';
         try {
             power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (error) => {
@@ -326,7 +326,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0700', 0, async function (done) {
+    it('System_API_Test_power_Manager_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0700';
         try {
             power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
@@ -355,7 +355,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0800', 0, async function (done) {
+    it('System_API_Test_power_Manager_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0800';
         try {
             power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
@@ -384,7 +384,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_0900', 0, async function (done) {
+    it('System_API_Test_power_Manager_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_0900';
         try {
             power.setScreenOffTime(3000);
@@ -403,7 +403,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_1000', 0, async function (done) {
+    it('System_API_Test_power_Manager_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_1000';
         try {
             power.hibernate(true);
@@ -422,7 +422,7 @@ describe('PowerTest', function () {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('System_API_Test_power_Manager_1100', 0, async function (done) {
+    it('System_API_Test_power_Manager_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         let TAG = 'System_API_Test_power_Manager_1100';
         try {
             power.hibernate(false);

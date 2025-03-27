@@ -75,6 +75,9 @@ export default function observerScrollTest() {
       console.info("[observerScrollTest_0100] component obj1 is: " + JSON.stringify(obj1));
       expect(obj.$attrs.content).assertEqual('message1:SCROLL_START');
       expect(obj1.$attrs.content).assertEqual('message2:SCROLL_STOP');
+      let btn1: Component = await driver.findComponent(ON.id('scrollEvent_5'));
+      await btn1.click();
+      await CommonFunc.sleep(1500);
       console.info('[observerScrollTest_0100] END');
       done();
     });

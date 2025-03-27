@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -53,7 +53,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0001', 0, async () => {
+    it('testCollectionsConcatArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -72,6 +72,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0200
@@ -81,7 +82,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0002', 0, async () => {
+    it('testCollectionsConcatArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -100,6 +101,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0300
@@ -109,7 +111,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0003', 0, async () => {
+    it('testCollectionsConcatArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -128,6 +130,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0400
@@ -137,7 +140,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0004', 0, async () => {
+    it('testCollectionsConcatArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -156,6 +159,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0500
@@ -165,7 +169,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0005', 0, async () => {
+    it('testCollectionsConcatArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -184,6 +188,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0600
@@ -193,7 +198,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0006', 0, async () => {
+    it('testCollectionsConcatArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -212,6 +217,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0700
@@ -221,7 +227,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0007', 0, async () => {
+    it('testCollectionsConcatArray0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -240,6 +246,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0800
@@ -249,7 +256,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0008', 0, async () => {
+    it('testCollectionsConcatArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -268,6 +275,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_0900
@@ -277,7 +285,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0009', 0, async () => {
+    it('testCollectionsConcatArray0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -296,6 +304,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1000
@@ -305,7 +314,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0010', 0, async () => {
+    it('testCollectionsConcatArray0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0010';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -324,6 +333,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1100
@@ -333,7 +343,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0011', 0, async () => {
+    it('testCollectionsConcatArray0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0011';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -352,6 +362,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1200
@@ -361,7 +372,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0012', 0, async () => {
+    it('testCollectionsConcatArray0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0012';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -380,6 +391,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1300
@@ -389,7 +401,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0013', 0, async () => {
+    it('testCollectionsConcatArray0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0013';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -408,6 +420,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1400
@@ -417,7 +430,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0014', 0, async () => {
+    it('testCollectionsConcatArray0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0014';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -436,6 +449,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1500
@@ -445,7 +459,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0015', 0, async () => {
+    it('testCollectionsConcatArray0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0015';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -464,6 +478,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1600
@@ -473,7 +488,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0016', 0, async () => {
+    it('testCollectionsConcatArray0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0016';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -492,6 +507,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1700
@@ -501,7 +517,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0017', 0, async () => {
+    it('testCollectionsConcatArray0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0017';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -520,6 +536,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1800
@@ -529,7 +546,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0018', 0, async () => {
+    it('testCollectionsConcatArray0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0018';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -548,6 +565,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_1900
@@ -557,7 +575,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0019', 0, async () => {
+    it('testCollectionsConcatArray0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0019';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -576,6 +594,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2000
@@ -585,7 +604,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0020', 0, async () => {
+    it('testCollectionsConcatArray0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0020';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -604,6 +623,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2100
@@ -613,7 +633,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0021', 0, async () => {
+    it('testCollectionsConcatArray0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0021';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -632,6 +652,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2200
@@ -641,7 +662,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0022', 0, async () => {
+    it('testCollectionsConcatArray0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0022';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -660,6 +681,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2300
@@ -669,7 +691,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0023', 0, async () => {
+    it('testCollectionsConcatArray0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0023';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -688,6 +710,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2400
@@ -697,7 +720,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0024', 0, async () => {
+    it('testCollectionsConcatArray0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0024';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -716,6 +739,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_CONCATARRAY_2500
@@ -725,7 +749,7 @@ export default function ConcatArrayTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCollectionsConcatArray0025', 0, async () => {
+    it('testCollectionsConcatArray0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testCollectionsConcatArray0025';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -744,6 +768,7 @@ export default function ConcatArrayTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
   })
 }

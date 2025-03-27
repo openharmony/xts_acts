@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import sysmman from 'libsysmmanndk.so'
 
@@ -32,7 +32,7 @@ export default function muslSysMmanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSysMmanPosixMadvise001', 0, async (done: Function) => {
+    it('testMuslSysMmanPosixMadvise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(sysmman.posixMadvise()).assertEqual(1);
       done()
     });

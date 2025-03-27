@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import hilog from '@ohos.hilog';
@@ -36,7 +36,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
-    it('testWebResourceHandler_DidFailWithError', 0, async (done: Function) => {
+    it('testWebResourceHandler_DidFailWithError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceHandler_DidFailWithError PASS');
 

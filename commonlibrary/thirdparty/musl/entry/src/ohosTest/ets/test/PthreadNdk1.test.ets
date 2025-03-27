@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import pthread from 'libpthreadndk1.so'
 
@@ -32,7 +32,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAtFork001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAtFork001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAtFork()).assertEqual(0);
       done()
     });
@@ -45,7 +45,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrDestroy()).assertEqual(0);
       done()
     });
@@ -58,7 +58,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetDetachState001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetDetachState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetDetachState()).assertEqual(0);
       done()
     });
@@ -71,7 +71,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetGuardSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetGuardSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetGuardSize()).assertEqual(0);
       done()
     });
@@ -84,7 +84,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetInheritSched001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetInheritSched001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetInheritSched()).assertEqual(0);
       done()
     });
@@ -97,7 +97,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetSchedParam()).assertEqual(0);
       done()
     });
@@ -110,7 +110,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetSchedPolicy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetSchedPolicy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetSchedPolicy()).assertEqual(0);
       done()
     });
@@ -123,7 +123,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetScope001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetScope()).assertEqual(0);
       done()
     });
@@ -136,7 +136,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetStack001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetStack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetStack()).assertEqual(0);
       done()
     });
@@ -149,7 +149,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetStackSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetStackSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrGetStackSize()).assertEqual(0);
       done()
     });
@@ -162,7 +162,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrInit()).assertEqual(0);
       done()
     });
@@ -175,7 +175,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetDetachState001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetDetachState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetDetachState_One()).assertEqual(0);
       done()
     });
@@ -188,7 +188,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetDetachState002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetDetachState002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetDetachState_Two()).assertEqual(22);
       done()
     });
@@ -201,7 +201,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetGuardSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetGuardSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetGuardSize_One()).assertEqual(0);
       done()
     });
@@ -214,7 +214,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetGuardSize002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetGuardSize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetGuardSize_Two()).assertEqual(22);
       done()
     });
@@ -227,7 +227,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetInheritSched001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetInheritSched001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetInheritSched_One()).assertEqual(0);
       done()
     });
@@ -240,7 +240,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetInheritSched002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetInheritSched002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetInheritSched_Two()).assertEqual(22);
       done()
     });
@@ -253,7 +253,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetSchedParam()).assertEqual(0);
       done()
     });
@@ -266,7 +266,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetSchedPolicy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetSchedPolicy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetSchedPolicy()).assertEqual(0);
       done()
     });
@@ -279,7 +279,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetScope001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetScope_One()).assertEqual(0);
       done()
     });
@@ -292,7 +292,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetScope002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetScope002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetScope_Two()).assertEqual(22);
       done()
     });
@@ -305,7 +305,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStack001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetStack_One()).assertEqual(0);
       done()
     });
@@ -318,7 +318,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStack002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStack002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetStack_Two()).assertEqual(22);
       done()
     });
@@ -331,7 +331,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStack003', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStack003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetStack_Three()).assertEqual(22);
       done()
     });
@@ -344,7 +344,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStackSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStackSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetStackSize_One()).assertEqual(0);
       done()
     });
@@ -357,7 +357,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStackSize002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStackSize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadAttrSetStackSize_Two()).assertEqual(22);
       done()
     });
@@ -370,7 +370,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierDestroy()).assertEqual(0);
       done()
     });
@@ -383,7 +383,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierInit()).assertEqual(0);
       done()
     });
@@ -396,7 +396,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierWait001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierWait()).assertEqual(-1);
       done()
     });
@@ -409,7 +409,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierAttrDestroy()).assertEqual(0);
       done()
     });
@@ -422,7 +422,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierAttrInit()).assertEqual(0);
       done()
     });
@@ -435,7 +435,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierAttrGetPShared()).assertEqual(0);
       done()
     });
@@ -448,7 +448,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadBarrierAttrSetPShared()).assertEqual(0);
       done()
     });
@@ -461,7 +461,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondBroadcast001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondBroadcast001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondBroadcast()).assertEqual(0);
       done()
     });
@@ -474,7 +474,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondDestroy()).assertEqual(0);
       done()
     });
@@ -487,7 +487,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondInit()).assertEqual(0);
       done()
     });
@@ -500,7 +500,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondSignal001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondSignal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondSignal()).assertEqual(0);
       done()
     });
@@ -513,7 +513,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondWait001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondWait()).assertEqual(0);
       done()
     });
@@ -526,7 +526,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondAttrDestroy()).assertEqual(0);
       done()
     });
@@ -539,7 +539,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrGetClock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrGetClock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondAttrGetClock()).assertEqual(0);
       done()
     });
@@ -552,7 +552,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondAttrGetPShared()).assertEqual(0);
       done()
     });
@@ -565,7 +565,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondAttrInit()).assertEqual(0);
       done()
     });
@@ -578,7 +578,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrSetClock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrSetClock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondAttrSetClock()).assertEqual(0);
       done()
     });
@@ -591,7 +591,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCondAttrSetPShared()).assertEqual(0);
       done()
     });
@@ -604,7 +604,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCreate001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadCreate()).assertEqual(0);
       done()
     });
@@ -617,7 +617,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadDetach001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadDetach001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadDetach()).assertEqual(0);
       done()
     });
@@ -630,7 +630,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadEqual001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadEqual001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadEqual()).assertEqual(1);
       done()
     });
@@ -643,7 +643,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadExit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadExit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadExit()).assertEqual(0);
       done()
     });
@@ -656,7 +656,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadGetAttrNp001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetAttrNp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadGetAttrNp()).assertEqual(0);
       done()
     });
@@ -669,7 +669,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadGetCpuClockId001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetCpuClockId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadGetCpuClockId()).assertEqual(0);
       done()
     });
@@ -682,7 +682,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadGetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadGetSchedParam()).assertEqual(0);
       done()
     });
@@ -695,7 +695,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadGetSpecific001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetSpecific001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadGetSpecific()).assertEqual(0);
       done()
     });
@@ -708,7 +708,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadJoin001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadJoin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadJoin()).assertEqual(0);
       done()
     });
@@ -721,7 +721,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadKeyCreate001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadKeyCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadKeyCreate()).assertEqual(0);
       done()
     });
@@ -734,7 +734,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadKeyDelete001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadKeyDelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadKeyDelete()).assertEqual(0);
       done()
     });
@@ -747,7 +747,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexDestroy()).assertEqual(0);
       done()
     });
@@ -760,7 +760,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexInit()).assertEqual(0);
       done()
     });
@@ -773,7 +773,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexLock()).assertEqual(0);
       done()
     });
@@ -786,7 +786,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexTimedLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexTimedLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexTimedLock()).assertEqual(0);
       done()
     });
@@ -799,7 +799,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexTryLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexTryLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexTryLock()).assertEqual(0);
       done()
     });
@@ -812,7 +812,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexUnLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexUnLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexUnlock()).assertEqual(0);
       done()
     });
@@ -825,7 +825,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrDestroy()).assertEqual(0);
       done()
     });
@@ -838,7 +838,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrGetProtocol001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrGetProtocol001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrGetProtocol()).assertEqual(0);
       done()
     });
@@ -851,7 +851,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrGetPShared()).assertEqual(0);
       done()
     });
@@ -864,7 +864,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrGetType001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrGetType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrGetType()).assertEqual(0);
       done()
     });
@@ -877,7 +877,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrInit()).assertEqual(0);
       done()
     });
@@ -890,7 +890,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrSetProtocol001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrSetProtocol001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrSetProtocol()).assertEqual(0);
       done()
     });
@@ -903,7 +903,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrSetPShared()).assertEqual(0);
       done()
     });
@@ -916,7 +916,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrSetType001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrSetType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadMutexAttrSetType()).assertEqual(0);
       done()
     });
@@ -929,7 +929,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadOnce001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadOnce001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadOnce()).assertEqual(0);
       done()
     });
@@ -942,7 +942,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockDestroy()).assertEqual(0);
       done()
     });
@@ -955,7 +955,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockInit()).assertEqual(0);
       done()
     });
@@ -968,7 +968,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockRdLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockRdLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockRdLock()).assertEqual(0);
       done()
     });
@@ -981,7 +981,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTimedRdLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTimedRdLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockTimedRdLock()).assertEqual(0);
       done()
     });
@@ -994,7 +994,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTimedWrLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTimedWrLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockTimedWrLock()).assertEqual(0);
       done()
     });
@@ -1007,7 +1007,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTryRdLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTryRdLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockTryRdLock()).assertEqual(0);
       done()
     });
@@ -1020,7 +1020,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTryWrLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTryWrLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockTryWrLock()).assertEqual(0);
       done()
     });
@@ -1033,7 +1033,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockUnLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockUnLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockUnLock()).assertEqual(0);
       done()
     });
@@ -1046,7 +1046,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockWrLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockWrLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockWrLock()).assertEqual(0);
       done()
     });
@@ -1059,7 +1059,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockAttrDestroy()).assertEqual(0);
       done()
     });
@@ -1072,7 +1072,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockAttrGetPShared()).assertEqual(0);
       done()
     });
@@ -1085,7 +1085,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockAttrInit()).assertEqual(0);
       done()
     });
@@ -1098,7 +1098,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadRwLockAttrSetPShared()).assertEqual(0);
       done()
     });
@@ -1111,7 +1111,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSelf001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSelf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSelf()).assertEqual(1);
       done()
     });
@@ -1124,7 +1124,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSetNameNp001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetNameNp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSetNameNp()).assertEqual(0);
       done()
     });
@@ -1137,7 +1137,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSetSchedParam()).assertEqual(0);
       done()
     });
@@ -1150,7 +1150,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSetSpecific001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetSpecific001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSetSpecific()).assertEqual(0);
       done()
     });
@@ -1163,7 +1163,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSpinInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSpinInit()).assertEqual(0);
       done()
     });
@@ -1176,7 +1176,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSpinDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSpinDestroy()).assertEqual(0);
       done()
     });
@@ -1189,7 +1189,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSpinLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSpinLock()).assertEqual(0);
       done()
     });
@@ -1202,7 +1202,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSpinTryLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinTryLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSpinTryLock()).assertEqual(0);
       done()
     });
@@ -1215,7 +1215,7 @@ export default function muslPThreadNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSpinUnLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinUnLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pthread.pThreadSpinUnLock()).assertEqual(0);
       done()
     });

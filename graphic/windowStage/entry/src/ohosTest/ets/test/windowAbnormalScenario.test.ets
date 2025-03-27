@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import screen from '@ohos.screen';
 import display from '@ohos.display';
@@ -48,7 +48,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_NullValue_Promise', 0, async () => {
+    it('testSetAspectRatio_NullValue_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_NullValue_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -75,7 +75,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_NullValue_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_NullValue_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetAspectRatio_NullValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -108,7 +108,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_UndefinedValue_Promise', 0, async () => {
+    it('testSetAspectRatio_UndefinedValue_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_UndefinedValue_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -135,7 +135,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetAspectRatio_UndefinedValue_Callback', 0, async (done: Function) => {
+    it('testSetAspectRatio_UndefinedValue_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetAspectRatio_UndefinedValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -168,7 +168,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShowWindow_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testShowWindow_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testShowWindow_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -202,7 +202,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDestroyWindow_WindowStateAbnormal_Promise', 0, async () => {
+    it('testDestroyWindow_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testDestroyWindow_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -230,7 +230,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_WindowStateAbnormal_Promise', 0, async () => {
+    it('testMoveWindowTo_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testDestroyWindow_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -263,7 +263,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -303,7 +303,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowToAsync_WindowStateAbnormal', 0, async () => {
+    it('testMoveWindowToAsync_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowToAsync_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -336,7 +336,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_DecimalScene_ParamesOne_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_DecimalScene_ParamesOne_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -396,7 +396,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_DecimalScene_ParamesTwo_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_DecimalScene_ParamesTwo_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -456,7 +456,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_DecimalScene_ParamesThree_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_DecimalScene_ParamesThree_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -515,7 +515,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_DecimalScene_ParamesOne_Promise', 0, async () => {
+    it('testMoveWindowTo_DecimalScene_ParamesOne_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -564,7 +564,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_DecimalScene_ParamesTwo_Promise', 0, async () => {
+    it('testMoveWindowTo_DecimalScene_ParamesTwo_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -613,7 +613,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowTo_DecimalScene_ParamesThree_Promise', 0, async () => {
+    it('testMoveWindowTo_DecimalScene_ParamesThree_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowTo_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -662,7 +662,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowToAsync_DecimalScene_ParamesOne', 0, async () => {
+    it('testMoveWindowToAsync_DecimalScene_ParamesOne', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowToAsync_DecimalScene_ParamesOne';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -722,7 +722,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowToAsync_DecimalScene_ParamesTwo', 0, async () => {
+    it('testMoveWindowToAsync_DecimalScene_ParamesTwo', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowToAsync_DecimalScene_ParamesTwo';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -782,7 +782,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveWindowToAsync_DecimalScene_ParamesThree', 0, async () => {
+    it('testMoveWindowToAsync_DecimalScene_ParamesThree', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowToAsync_DecimalScene_ParamesThree';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -842,7 +842,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_WindowStateAbnormal_Promise', 0, async () => {
+    it('testResize_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -880,7 +880,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testResize_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -920,7 +920,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testresizeAsync_WindowStateAbnormal', 0, async () => {
+    it('testresizeAsync_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testresizeAsync_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -953,7 +953,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_DecimalScene_ParamesOne_Promise', 0, async () => {
+    it('testResize_DecimalScene_ParamesOne_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1002,7 +1002,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_DecimalScene_ParamesTwo_Promise', 0, async () => {
+    it('testResize_DecimalScene_ParamesTwo_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1051,7 +1051,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_DecimalScene_ParamesThree_Promise', 0, async () => {
+    it('testResize_DecimalScene_ParamesThree_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1101,7 +1101,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResizeAsync_DecimalScene_ParamesOne', 0, async () => {
+    it('testResizeAsync_DecimalScene_ParamesOne', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResizeAsync_DecimalScene_ParamesOne';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1161,7 +1161,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResizeAsync_DecimalScene_ParamesTwo', 0, async () => {
+    it('testResizeAsync_DecimalScene_ParamesTwo', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResizeAsync_DecimalScene_ParamesTwo';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1221,7 +1221,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResizeAsync_DecimalScene_ParamesThree', 0, async () => {
+    it('testResizeAsync_DecimalScene_ParamesThree', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResizeAsync_DecimalScene_ParamesThree';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1280,7 +1280,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_DecimalScene_ParamesOne_Callback', 0, async (done: Function) => {
+    it('testResize_DecimalScene_ParamesOne_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1339,7 +1339,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_DecimalScene_ParamesTwo_Callback', 0, async (done: Function) => {
+    it('testResize_DecimalScene_ParamesTwo_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1398,7 +1398,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_DecimalScene_ParamesThree_Callback', 0, async (done: Function) => {
+    it('testResize_DecimalScene_ParamesThree_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1456,7 +1456,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetWindowProperties_WindowStateAbnormal', 0, async () => {
+    it('testGetWindowProperties_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowProperties_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1483,7 +1483,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetWindowAvoidArea_WindowStateAbnormal', 0, async () => {
+    it('testGetWindowAvoidArea_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowAvoidArea_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1511,7 +1511,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowSystemBarProperties_WinAbnormal_Call', 0, async (done: Function) => {
+    it('testSetWindowSystemBarProperties_WinAbnormal_Call', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowSystemBarProperties_WinAbnormal_Call';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1557,7 +1557,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowSystemBarProperties_WinAbnormal_Promise', 0, async () => {
+    it('testSetWindowSystemBarProperties_WinAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowSystemBarProperties_WinAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1596,7 +1596,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetPreferredOrientation_WinAbnormal_Promise', 0, async () => {
+    it('testSetPreferredOrientation_WinAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetPreferredOrientation_WinAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1630,7 +1630,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetPreferredOrientation_WinAbnormal_Call', 0, async (done: Function) => {
+    it('testSetPreferredOrientation_WinAbnormal_Call', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetPreferredOrientation_WinAbnormal_Call';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1671,7 +1671,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetUIContext_WindowStateAbnormal', 0, async () => {
+    it('testGetUIContext_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetUIContext_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1701,7 +1701,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetUIContent_WindowStateAbnormal', 0, async () => {
+    it('testSetUIContent_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetUIContent_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1734,7 +1734,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLoadContent_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testLoadContent_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testLoadContent_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1776,7 +1776,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLoadContent_WindowStateAbnormal_Promise', 0, async () => {
+    it('testLoadContent_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testLoadContent_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1812,7 +1812,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsWindowSupportWideGamut_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testIsWindowSupportWideGamut_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testIsWindowSupportWideGamut_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1853,7 +1853,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsWindowSupportWideGamut_WindowStateAbnormal_Promise', 0, async () => {
+    it('testIsWindowSupportWideGamut_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testIsWindowSupportWideGamut_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1887,7 +1887,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetWindowColorSpace_WindowStateAbnormal', 0, async () => {
+    it('testGetWindowColorSpace_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowColorSpace_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1915,7 +1915,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowColorSpace_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetWindowColorSpace_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowColorSpace_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1955,7 +1955,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowColorSpace_WindowStateAbnormal_Promise', 0, async () => {
+    it('testSetWindowColorSpace_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowColorSpace_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1988,7 +1988,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBackgroundColor_WindowStateAbnormal', 0, async () => {
+    it('testSetWindowBackgroundColor_WindowStateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowBackgroundColor_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2017,7 +2017,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetWindowBrightness_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowBrightness_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2058,7 +2058,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowBrightness_WindowStateAbnormal_Promise', 0, async () => {
+    it('testSetWindowBrightness_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowBrightness_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2092,7 +2092,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowFocusable_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetWindowFocusable_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowFocusable_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2132,7 +2132,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowFocusable_WindowStateAbnormal_Promise', 0, async () => {
+    it('testSetWindowFocusable_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowFocusable_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2165,7 +2165,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowKeepScreenOn_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetWindowKeepScreenOn_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowKeepScreenOn_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2205,7 +2205,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowTouchable_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetWindowTouchable_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowTouchable_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2245,7 +2245,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSnapshot_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSnapshot_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSnapshot_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2286,7 +2286,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSnapshot_WindowStateAbnormal_Promise', 0, async () => {
+    it('testSnapshot_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSnapshot_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2320,7 +2320,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShow_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testShow_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testShow_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2360,7 +2360,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShow_WindowStateAbnormal_Promise', 0, async () => {
+    it('testShow_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShow_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2393,7 +2393,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDestroy_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testDestroy_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testDestroy_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2433,7 +2433,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDestroy_WindowStateAbnormal_Promise', 0, async () => {
+    it('testDestroy_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testDestroy_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2466,7 +2466,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_WindowStateAbnormal_Promise', 0, async () => {
+    it('testMoveTo_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveTo_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2499,7 +2499,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testMoveTo_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveTo_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2539,7 +2539,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_DecimalScene_ParamesOne_Callback', 0, async (done: Function) => {
+    it('testMoveTo_DecimalScene_ParamesOne_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveTo_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2598,7 +2598,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_DecimalScene_ParamesTwo_Callback', 0, async (done: Function) => {
+    it('testMoveTo_DecimalScene_ParamesTwo_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveTo_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2657,7 +2657,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_DecimalScene_ParamesThree_Callback', 0, async (done: Function) => {
+    it('testMoveTo_DecimalScene_ParamesThree_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveTo_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2716,7 +2716,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_DecimalScene_ParamesOne_Promise', 0, async () => {
+    it('testMoveTo_DecimalScene_ParamesOne_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveTo_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2765,7 +2765,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_DecimalScene_ParamesTwo_Promise', 0, async () => {
+    it('testMoveTo_DecimalScene_ParamesTwo_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveTo_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2814,7 +2814,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMoveTo_DecimalScene_ParamesThree_Promise', 0, async () => {
+    it('testMoveTo_DecimalScene_ParamesThree_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveTo_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2863,7 +2863,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_WindowStateAbnormal_Promise', 0, async () => {
+    it('testResetSize_WindowStateAbnormal_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetSize_WindowStateAbnormal_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2896,7 +2896,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testResetSize_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResetSize_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2936,7 +2936,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_DecimalScene_ParamesOne_Promise', 0, async () => {
+    it('testResetSize_DecimalScene_ParamesOne_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetSize_DecimalScene_ParamesOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -2986,7 +2986,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_DecimalScene_ParamesTwo_Promise', 0, async () => {
+    it('testResetSize_DecimalScene_ParamesTwo_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetSize_DecimalScene_ParamesTwo_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3036,7 +3036,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_DecimalScene_ParamesThree_Promise', 0, async () => {
+    it('testResetSize_DecimalScene_ParamesThree_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetSize_DecimalScene_ParamesThree_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3083,7 +3083,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_DecimalScene_ParamesOne_Callback', 0, async (done: Function) => {
+    it('testResetSize_DecimalScene_ParamesOne_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResetSize_DecimalScene_ParamesOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3143,7 +3143,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_DecimalScene_ParamesTwo_Callback', 0, async (done: Function) => {
+    it('testResetSize_DecimalScene_ParamesTwo_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResetSize_DecimalScene_ParamesTwo_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3203,7 +3203,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResetSize_DecimalScene_ParamesThree_Callback', 0, async (done: Function) => {
+    it('testResetSize_DecimalScene_ParamesThree_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResetSize_DecimalScene_ParamesThree_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3259,7 +3259,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetAvoidArea_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testGetAvoidArea_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetAvoidArea_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3300,7 +3300,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetFullScreen_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetFullScreen_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetFullScreen_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3340,7 +3340,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetLayoutFullScreen_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetLayoutFullScreen_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetLayoutFullScreen_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3380,7 +3380,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSystemBarEnable_WindowStateAbnormal_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarEnable_WindowStateAbnormal_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetSystemBarEnable_WindowStateAbnormal_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3420,7 +3420,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSystemBarProperties_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetSystemBarProperties_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetSystemBarProperties_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3466,7 +3466,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSystemBarProperties_WinStateAb_Promise', 0, async () => {
+    it('testSetSystemBarProperties_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetSystemBarProperties_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3505,7 +3505,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsShowing_WinStateAb_Promise', 0, async () => {
+    it('testIsShowing_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testIsShowing_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3538,7 +3538,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsShowing_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testIsShowing_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testIsShowing_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3578,7 +3578,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsSupportWideGamut_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testIsSupportWideGamut_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testIsSupportWideGamut_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3618,7 +3618,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsSupportWideGamut_WinStateAb_Promise', 0, async () => {
+    it('testIsSupportWideGamut_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testIsSupportWideGamut_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3651,7 +3651,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetColorSpace_WinStateAb_Promise', 0, async () => {
+    it('testSetColorSpace_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetColorSpace_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3684,7 +3684,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetColorSpace_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetColorSpace_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetColorSpace_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3724,7 +3724,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetColorSpace_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testGetColorSpace_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetColorSpace_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3764,7 +3764,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetColorSpace_WinStateAb_Promise', 0, async () => {
+    it('testGetColorSpace_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetColorSpace_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3797,7 +3797,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetFocusable_WinStateAb_Promise', 0, async () => {
+    it('testSetFocusable_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetFocusable_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3830,7 +3830,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetFocusable_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetFocusable_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetFocusable_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3870,7 +3870,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetKeepScreenOn_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetKeepScreenOn_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetKeepScreenOn_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3910,7 +3910,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetKeepScreenOn_WinStateAb_Promise', 0, async () => {
+    it('testSetKeepScreenOn_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetKeepScreenOn_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3943,7 +3943,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetOutsideTouchable_WinStateAb_Promise', 0, async () => {
+    it('testSetOutsideTouchable_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetOutsideTouchable_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3976,7 +3976,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetOutsideTouchable_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetOutsideTouchable_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetOutsideTouchable_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4016,7 +4016,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetPrivacyMode_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetPrivacyMode_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetPrivacyMode_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4056,7 +4056,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetPrivacyMode_WinStateAb_Promise', 0, async () => {
+    it('testSetPrivacyMode_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetPrivacyMode_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4089,7 +4089,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetTouchable_WinStateAb_Promise', 0, async () => {
+    it('testSetTouchable_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetTouchable_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4122,7 +4122,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetTouchable_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetTouchable_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetTouchable_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4162,7 +4162,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetDimBehind_WinStateAb_Callback', 0, async (done: Function) => {
+    it('testSetDimBehind_WinStateAb_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetDimBehind_WinStateAb_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4202,7 +4202,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetDimBehind_WinStateAb_Promise', 0, async () => {
+    it('testSetDimBehind_WinStateAb_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetDimBehind_WinStateAb_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4235,7 +4235,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetDimBehind_InvalidValue_Promise', 0, async () => {
+    it('testSetDimBehind_InvalidValue_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetDimBehind_InvalidValueOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4269,7 +4269,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetDimBehind_BoundaryValue_Promise', 0, async () => {
+    it('testSetDimBehind_BoundaryValue_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetDimBehind_BoundaryValue_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4303,7 +4303,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetDimBehind_InvalidValue_Callback', 0, async (done: Function) => {
+    it('testSetDimBehind_InvalidValue_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetDimBehind_InvalidValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4345,7 +4345,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetDimBehind_BoundaryValue_Callback', 0, async (done: Function) => {
+    it('testSetDimBehind_BoundaryValue_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetDimBehind_BoundaryValue_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4386,7 +4386,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowSizeChange_RepeatOff', 0, async () => {
+    it('testWindowOffWindowSizeChange_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffWindowSizeChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4428,7 +4428,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowSizeChange_UnregisteredOff', 0, async () => {
+    it('testWindowOffWindowSizeChange_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffWindowSizeChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4456,7 +4456,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffAvoidAreaChange_RepeatOff', 0, async () => {
+    it('testWindowOffAvoidAreaChange_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffAvoidAreaChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4499,7 +4499,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffAvoidAreaChange_UnregisteredOff', 0, async () => {
+    it('testWindowOffAvoidAreaChange_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffAvoidAreaChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4527,7 +4527,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffKeyboardHeightChange_RepeatOff', 0, async () => {
+    it('testWindowOffKeyboardHeightChange_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffKeyboardHeightChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4569,7 +4569,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffKeyboardHeightChange_UnregisteredOff', 0, async () => {
+    it('testWindowOffKeyboardHeightChange_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffKeyboardHeightChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4597,7 +4597,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffTouchOutside_RepeatOff', 0, async () => {
+    it('testWindowOffTouchOutside_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffTouchOutside_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4641,7 +4641,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffTouchOutside_UnregisteredOff', 0, async () => {
+    it('testWindowOffTouchOutside_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffTouchOutside_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4669,7 +4669,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffScreenshot_RepeatOff', 0, async () => {
+    it('testWindowOffScreenshot_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffScreenshot_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4713,7 +4713,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffScreenshot_UnregisteredOff', 0, async () => {
+    it('testWindowOffScreenshot_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffScreenshot_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4741,7 +4741,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffDialogTargetTouch_RepeatOff', 0, async () => {
+    it('testWindowOffDialogTargetTouch_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffDialogTargetTouch_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4785,7 +4785,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffDialogTargetTouch_UnregisteredOff', 0, async () => {
+    it('testWindowOffDialogTargetTouch_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffDialogTargetTouch_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4818,7 +4818,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowEvent_UnregisteredOff', 0, async () => {
+    it('testWindowOffWindowEvent_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffWindowEvent_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4846,7 +4846,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffSystemAvoidAreaChange_RepeatOff', 0, async () => {
+    it('testWindowOffSystemAvoidAreaChange_RepeatOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffSystemAvoidAreaChange_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4890,7 +4890,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffSystemAvoidAreaChange_UnregisteredOff', 0, async () => {
+    it('testWindowOffSystemAvoidAreaChange_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testWindowOffSystemAvoidAreaChange_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -4919,7 +4919,7 @@ export default function windowAbnormalScenarioTest(context: common.UIAbilityCont
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testOffWindowStageEvent_UnregisteredOff', 0, async () => {
+    it('testOffWindowStageEvent_UnregisteredOff', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testOffWindowStageEvent_UnregisteredOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

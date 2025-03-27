@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, TestType, Level, Size } from '@ohos/hypium'
 import { Driver, ON } from '@ohos.UiTest';
 import i18n from '@ohos.i18n';
 import common from '@ohos.app.ability.common';
@@ -42,7 +42,7 @@ export default function softwareTest() {
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('testBackToLastPage0100', 0, async (done: Function) => {
+    it('testBackToLastPage0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
       let driver = Driver.create()
       await driver.delayMs(1000)
@@ -68,7 +68,7 @@ export default function softwareTest() {
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('testResourceReferenceRulesNotChange0100', 0, async (done: Function) => {
+    it('testResourceReferenceRulesNotChange0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
       let driver = Driver.create()
       await driver.delayMs(1000)
@@ -109,7 +109,7 @@ export default function softwareTest() {
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('testCoreApplicationWants0100', 0, async (done: Function) => {
+    it('testCoreApplicationWants0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create()
       let filepickerWantInfo1: Want = {
         uri: 'http://assist.arkts.pcs.acts.com',
@@ -128,7 +128,7 @@ export default function softwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testForbidSilentInstall0100', 0, async (done: Function) => {
+    it('testForbidSilentInstall0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let hapFilePath = '/data/storage/el2/base/haps/entry/files/'
       try {
         let bundleInstaller = await installer.getBundleInstaller()
@@ -149,7 +149,7 @@ export default function softwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testForbidSilentUninstall0100', 0, async (done: Function) => {
+    it('testForbidSilentUninstall0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let bundleInstaller = await installer.getBundleInstaller()
         await bundleInstaller.uninstall('com.pcs.software.bundle.second')
@@ -170,7 +170,7 @@ export default function softwareTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCommonEventNotChanged0100', 0, async (done: Function) => {
+    it('testCommonEventNotChanged0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let currentCommonEventCounts = 214
       let commonEventValues: Array<CommonEventManager.Support> = Object.values(CommonEventManager.Support)
       expect(commonEventValues.length).assertLessOrEqual(currentCommonEventCounts)

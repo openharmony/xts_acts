@@ -14,7 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function LocaleInIntlTest() {
 describe('LocaleInIntlTest', function () {
@@ -62,7 +62,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the language in en-Latn-GB locale
     * @tc.desc    check the language
     */
-    it('locale_test_0100', 0, function () {
+    it('locale_test_0100', Level.LEVEL0, function () {
         let locale = new Intl.Locale('en-Latn-GB');
         console.log('locale_test_0100 ' + locale.language);
         expect(locale.language).assertEqual('en');
@@ -73,7 +73,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the language in en-Latn-GB locale
     * @tc.desc    check the language
     */
-    it('locale_test_0120', 0, function () {
+    it('locale_test_0120', Level.LEVEL2, function () {
         let locale = new Intl.Locale('en-Latn-GB', undefined);
         console.log('locale_test_0120 ' + locale.language);
         console.log('locale_test_0120 ' + locale.numeric);
@@ -86,7 +86,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the language in en-Latn-GB locale
     * @tc.desc    check the language
     */
-    it('locale_test_0130', 0, function () {
+    it('locale_test_0130', Level.LEVEL2, function () {
         let locale = new Intl.Locale('en-Latn-GB', null);
         console.log('locale_test_0130 ' + locale.language);
         console.log('locale_test_0130 ' + locale.numeric);
@@ -99,7 +99,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the language in locale
     * @tc.desc    check the language
     */
-    it('locale_test_0140', 0, function () {
+    it('locale_test_0140', Level.LEVEL2, function () {
         let locale = new Intl.Locale();
         console.log('locale_test_0140 ' + locale.language);
         console.log('locale_test_0140 ' + locale.numeric);
@@ -111,7 +111,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the language in ja-Jpan-JP-u-ca-japanese-hc-h12-co-emoji locale
     * @tc.desc    check the language
     */
-    it('locale_test_0200', 0, function () {
+    it('locale_test_0200', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP-u-ca-japanese-hc-h12-co-emoji');
         console.log('locale_test_0200 ' + locale.language);
         expect(locale.language).assertEqual('ja');
@@ -122,7 +122,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the script in locale
     * @tc.desc    check the script
     */
-    it('locale_test_0300', 0, function () {
+    it('locale_test_0300', Level.LEVEL2, function () {
         let locale = new Intl.Locale('en-Latn-GB');
         console.log('locale_test_0300 ' + locale.script);
         expect(locale.script).assertEqual('Latn');
@@ -133,7 +133,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the region in locale
     * @tc.desc    check the region
     */
-    it('locale_test_0400', 0, function () {
+    it('locale_test_0400', Level.LEVEL2, function () {
         let locale = new Intl.Locale('en-Latn-GB');
         console.log('locale_test_0400 ' + locale.region);
         expect(locale.region).assertEqual('GB');
@@ -144,7 +144,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the basename in locale
     * @tc.desc    check the basename
     */
-    it('locale_test_0500', 0, function () {
+    it('locale_test_0500', Level.LEVEL2, function () {
         let locale = new Intl.Locale('en-Latn-GB');
         console.log('locale_test_0500 ' + locale.baseName);
         expect(locale.baseName).assertEqual('en-Latn-GB');
@@ -155,7 +155,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the basename in ja-Jpan-JP-u-ca-japanese-hc-h12
     * @tc.desc    check the ja-Jpan-JP-u-ca-japanese-hc-h12 basename
     */
-    it('locale_test_0600', 0, function () {
+    it('locale_test_0600', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP-u-ca-japanese-hc-h12');
         console.log('locale_test_0600 ' + locale.baseName);
         expect(locale.baseName).assertEqual('ja-Jpan-JP');
@@ -166,7 +166,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the hourCycle
     * @tc.desc    check the hourCycle
     */
-    it('locale_test_0700', 0, function () {
+    it('locale_test_0700', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN', {hourCycle: 'h24', calendar: 'gregory'});
         console.log('locale_test_0700 ' + locale.hourCycle);
         expect(locale.hourCycle).assertEqual('h24');
@@ -177,7 +177,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the calendar
     * @tc.desc    check the calendar
     */
-    it('locale_test_0800', 0, function () {
+    it('locale_test_0800', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN', {hourCycle: 'h24', calendar: 'gregory'});
         console.log('locale_test_0800 ' + locale.calendar);
         expect(locale.calendar).assertEqual('gregory');
@@ -188,7 +188,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the japanese calendar
     * @tc.desc    check the japanese calendar
     */
-    it('locale_test_0900', 0, function () {
+    it('locale_test_0900', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP-u-ca-japanese-hc-h12');
         console.log('locale_test_0900 ' + locale.calendar);
         expect(locale.calendar).assertEqual('japanese');
@@ -199,7 +199,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the h12 hourCycle
     * @tc.desc    check the h12 hourCycle
     */
-    it('locale_test_1000', 0, function () {
+    it('locale_test_1000', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP-u-ca-japanese-hc-h12');
         console.log('locale_test_1000 ' + locale.hourCycle);
         expect(locale.hourCycle).assertEqual('h12');
@@ -210,7 +210,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the caseFirst with upper
     * @tc.desc    check the caseFirst
     */
-    it('locale_test_1100', 0, function () {
+    it('locale_test_1100', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: 'upper'});
         console.log('locale_test_1100 ' + locale.caseFirst);
         expect(locale.caseFirst).assertEqual('upper');
@@ -221,7 +221,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the caseFirst with lower
     * @tc.desc    check the caseFirst
     */
-    it('locale_test_1120', 0, function () {
+    it('locale_test_1120', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: 'lower'});
         console.log('locale_test_1120 ' + locale.caseFirst);
         expect(locale.caseFirst).assertEqual('lower');
@@ -232,7 +232,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the caseFirst with false
     * @tc.desc    check the caseFirst
     */
-    it('locale_test_1140', 0, function () {
+    it('locale_test_1140', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {caseFirst: 'false'});
         console.log('locale_test_1140 ' + locale.caseFirst);
         expect(locale.caseFirst).assertEqual('false');
@@ -243,7 +243,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the collation
     * @tc.desc    check the collation
     */
-    it('locale_test_1200', 0, function () {
+    it('locale_test_1200', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {collation: 'big5han'});
         console.log('locale_test_1200 ' + locale.collation);
         expect(locale.collation).assertEqual('big5han');
@@ -254,7 +254,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the numeric with true value
     * @tc.desc    check the numeric
     */
-    it('locale_test_1300', 0, function () {
+    it('locale_test_1300', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {numeric: true});
         console.log('locale_test_1300 ' + locale.numeric);
         expect(locale.numeric).assertTrue();
@@ -265,7 +265,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the numeric with false value
     * @tc.desc    check the numeric
     */
-    it('locale_test_1350', 0, function () {
+    it('locale_test_1350', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {numeric: false});
         console.log('locale_test_1350 ' + locale.numeric);
         expect(locale.numeric).assertFalse();
@@ -276,7 +276,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the numberingSystem
     * @tc.desc    check the numberingSystem
     */
-    it('locale_test_1400', 0, function () {
+    it('locale_test_1400', Level.LEVEL2, function () {
         let locale = new Intl.Locale('ja-Jpan-JP', {numberingSystem: 'arab'});
         console.log('locale_test_1400 ' + locale.numberingSystem);
         expect(locale.numberingSystem).assertEqual('arab');
@@ -287,7 +287,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the toString interface with zh
     * @tc.desc    check the toString method with zh
     */
-    it('locale_test_1500', 0, function () {
+    it('locale_test_1500', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh');
         console.log('locale_test_1500 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh');
@@ -298,7 +298,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the toString interface with zh-CN
     * @tc.desc    check the toString method with zh-CN
     */
-    it('locale_test_1600', 0, function () {
+    it('locale_test_1600', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN');
         console.log('locale_test_1600 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh-CN');
@@ -309,7 +309,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the toString interface with zh-Hans-CN
     * @tc.desc    check the toString method with zh-Hans-CN
     */
-    it('locale_test_1700', 0, function () {
+    it('locale_test_1700', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN');
         console.log('locale_test_1700 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh-Hans-CN');
@@ -320,7 +320,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the toString interface with zh-Hans-CN-u-hc-h12-ca-japanese
     * @tc.desc    check the toString method with zh-Hans-CN-u-hc-h12-ca-japanese
     */
-    it('locale_test_1800', 0, function () {
+    it('locale_test_1800', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN-u-ca-japanese-hc-h12');
         console.log('locale_test_1800 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh-Hans-CN-u-hc-h12-ca-japanese');
@@ -331,7 +331,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with zh-u-ca-gregory-co-compact param
     * @tc.desc    check the maximize method with zh-u-ca-gregory-co-compact param
     */
-    it('locale_test_1900', 0, function () {
+    it('locale_test_1900', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_1900 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh-u-ca-gregory-co-compact');
@@ -342,7 +342,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the toString interface with zh-CN-u-ca-gregory-co-compact param
     * @tc.desc    check the toString method with zh-CN-u-ca-gregory-co-compact param
     */
-    it('locale_test_2000', 0, function () {
+    it('locale_test_2000', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2000 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh-CN-u-ca-gregory-co-compact');
@@ -353,7 +353,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the toString interface with zh-hans-CN-u-ca-gregory-co-compact param
     * @tc.desc    check the toString method with zh-hans-CN-u-ca-gregory-co-compact param
     */
-    it('locale_test_2100', 0, function () {
+    it('locale_test_2100', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-hans-CN', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2100 ' + locale.toString());
         expect(locale.toString()).assertEqual('zh-hans-CN-u-ca-gregory-co-compact');
@@ -364,7 +364,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with one param zh
     * @tc.desc    check the minimize method with one param zh
     */
-    it('locale_test_2200', 0, function () {
+    it('locale_test_2200', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh');
         console.log('locale_test_2200 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
@@ -375,7 +375,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with one param zh-CN
     * @tc.desc    check the minimize method with one param zh-CN
     */
-    it('locale_test_2201', 0, function () {
+    it('locale_test_2201', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN');
         console.log('locale_test_2201 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
@@ -386,7 +386,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with one param zh-Hans-CN
     * @tc.desc    check the minimize method with one param zh-Hans-CN
     */
-    it('locale_test_2202', 0, function () {
+    it('locale_test_2202', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN');
         console.log('locale_test_2202 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh');
@@ -397,7 +397,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
     * @tc.desc    check the minimize method with one param zh-Hans-CN-u-ca-gregory-co-compact
     */
-    it('locale_test_2203', 0, function () {
+    it('locale_test_2203', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
         console.log('locale_test_2203 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
@@ -408,7 +408,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with zh lcoale
     * @tc.desc    check the minimize method with zh lcoale
     */
-    it('locale_test_2204', 0, function () {
+    it('locale_test_2204', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2204 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
@@ -419,7 +419,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with zh-CN lcoale
     * @tc.desc    check the minimize method with zh-CN lcoale
     */
-    it('locale_test_2205', 0, function () {
+    it('locale_test_2205', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2205 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
@@ -430,7 +430,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the minimize interface with zh-Hans-CN lcoale
     * @tc.desc    check the minimize method with zh-Hans-CN lcoale
     */
-    it('locale_test_2206', 0, function () {
+    it('locale_test_2206', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-hans-CN', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2206 ' + locale.minimize().toString());
         expect(locale.minimize().toString()).assertEqual('zh-u-ca-gregory-co-compact');
@@ -441,7 +441,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with one param zh
     * @tc.desc    check the maximize method with one param zh
     */
-    it('locale_test_2300', 0, function () {
+    it('locale_test_2300', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh');
         console.log('locale_test_2300 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN');
@@ -452,7 +452,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with one param zh-CN
     * @tc.desc    check the maximize method with one param zh-CN
     */
-    it('locale_test_2301', 0, function () {
+    it('locale_test_2301', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN');
         console.log('locale_test_2301 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN');
@@ -463,7 +463,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
     * @tc.desc    check the maximize method with one param zh-Hans-CN-u-ca-gregory-co-compact
     */
-    it('locale_test_2302', 0, function () {
+    it('locale_test_2302', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN');
         console.log('locale_test_2302 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN');
@@ -474,7 +474,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with zh-Hans-CN-u-ca-gregory-co-compact locale
     * @tc.desc    check the maximize method with zh-Hans-CN-u-ca-gregory-co-compact locale
     */
-    it('locale_test_2303', 0, function () {
+    it('locale_test_2303', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN-u-ca-gregory-co-compact');
         console.log('locale_test_2303 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN-u-ca-gregory-co-compact');
@@ -485,7 +485,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with zh locale
     * @tc.desc    check the maximize method with zh locale
     */
-    it('locale_test_2304', 0, function () {
+    it('locale_test_2304', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2304 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN-u-ca-gregory-co-compact');
@@ -496,7 +496,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with zh-CN locale
     * @tc.desc    check the maximize method with zh-CN locale
     */
-    it('locale_test_2305', 0, function () {
+    it('locale_test_2305', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-CN', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2305 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN-u-ca-gregory-co-compact');
@@ -507,7 +507,7 @@ describe('LocaleInIntlTest', function () {
     * @tc.name    test the maximize interface with zh-Hans-CN locale
     * @tc.desc    check the maximize method with zh-Hans-CN locale
     */
-    it('locale_test_2306', 0, function () {
+    it('locale_test_2306', Level.LEVEL2, function () {
         let locale = new Intl.Locale('zh-Hans-CN', {calendar: 'gregory', collation: 'compact'});
         console.log('locale_test_2306 ' + locale.maximize().toString());
         expect(locale.maximize().toString()).assertEqual('zh-Hans-CN-u-ca-gregory-co-compact');

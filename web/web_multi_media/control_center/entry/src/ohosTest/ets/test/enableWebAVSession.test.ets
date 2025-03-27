@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webenableSmoothDragResizeTestJsunit() {
      *tc.name enableSmoothDragResize01
      *tc.desic test enableSmoothDragResize01 interface when choose callback mode.
      */
-    it('enableWebAVSession01',0,async (done: Function) =>{
+    it('enableWebAVSession01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="enableWebAVSession01";
       Utils.registerEvent("enableWebAVSession01",'enableWebAVSession',20250207,done);
       sendEventByKey('enableWebAVSessionButton',10,'');

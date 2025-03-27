@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, JSON, lang } from '@kit.ArkTS';
 
 export default function demoEscapeUtilJsonTest() {
@@ -45,7 +45,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0001", 0, () => {
+    it("testParseEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0001";
       try {
         const escape = 'aaa\b';
@@ -67,7 +67,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0002", 0, () => {
+    it("testParseEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0002";
       try {
         const escape = 'aaa\f';
@@ -89,7 +89,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0003", 0, () => {
+    it("testParseEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0003";
       try {
         const escape = 'aaa\n';
@@ -111,7 +111,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0004", 0, () => {
+    it("testParseEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0004";
       try {
         const escape = 'aaa\r';
@@ -133,7 +133,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0005", 0, () => {
+    it("testParseEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0005";
       try {
         const escape = 'aaa\t';
@@ -155,7 +155,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0006", 0, () => {
+    it("testParseEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0006";
       try {
         const escape = 'aaa\v';
@@ -177,7 +177,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0007", 0, () => {
+    it("testParseEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -200,7 +200,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0008", 0, () => {
+    it("testParseEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0008";
       try {
         const escape = '\开';
@@ -222,7 +222,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0009", 0, () => {
+    it("testParseEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0009";
       try {
         const escape = '\😊';
@@ -244,7 +244,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0010", 0, () => {
+    it("testParseEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0010";
       try {
         const escape = '\0';
@@ -266,7 +266,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testParseEscape0011", 0, () => {
+    it("testParseEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testParseEscape0011";
       try {
         const escape = '\b';
@@ -288,7 +288,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0001", 0, () => {
+    it("testUtilJsonHasEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0001";
       try {
         const escape = encodeURI('\b')
@@ -309,7 +309,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0002", 0, () => {
+    it("testUtilJsonHasEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0002";
       try {
         const escape = encodeURI('\f')
@@ -330,7 +330,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEmoji0003", 0, () => {
+    it("testUtilJsonHasEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0003";
       try {
         const escape = encodeURI('\n')
@@ -351,7 +351,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0004", 0, () => {
+    it("testUtilJsonHasEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0004";
       try {
         const escape = encodeURI('\r')
@@ -372,7 +372,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0005", 0, () => {
+    it("testUtilJsonHasEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0005";
       try {
         const escape = encodeURI('\t')
@@ -393,7 +393,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0006", 0, () => {
+    it("testUtilJsonHasEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0006";
       try {
         const escape = encodeURI('\v')
@@ -414,7 +414,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0007", 0, () => {
+    it("testUtilJsonHasEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0007";
       try {
         const escape = encodeURI('\x24')
@@ -435,7 +435,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0008", 0, () => {
+    it("testUtilJsonHasEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0008";
       try {
         const escape = encodeURI('\开')
@@ -456,7 +456,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0009", 0, () => {
+    it("testUtilJsonHasEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0009";
       try {
         const escape = encodeURI('\😊')
@@ -477,7 +477,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0010", 0, () => {
+    it("testUtilJsonHasEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEmoji0010";
       try {
         const escape = encodeURI('\0')
@@ -498,7 +498,7 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonHasEscape0011", 0, () => {
+    it("testUtilJsonHasEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonHasEscape0011";
       try {
         const escape = encodeURI('\\b')
@@ -518,12 +518,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0001", 0, () => {
+    it("testUtilJsonRemoveEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0001";
       try {
         const escape = encodeURI('\b')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -540,12 +540,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0002", 0, () => {
+    it("testUtilJsonRemoveEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0002";
       try {
         const escape = encodeURI('\f')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -562,12 +562,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEmoji0003", 0, () => {
+    it("testUtilJsonRemoveEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0003";
       try {
         const escape = encodeURI('\n')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -584,12 +584,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0004", 0, () => {
+    it("testUtilJsonRemoveEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0004";
       try {
         const escape = encodeURI('\r')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -606,12 +606,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0005", 0, () => {
+    it("testUtilJsonRemoveEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0005";
       try {
         const escape = encodeURI('\t')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -628,12 +628,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0006", 0, () => {
+    it("testUtilJsonRemoveEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0006";
       try {
         const escape = encodeURI('\v')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -650,12 +650,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0007", 0, () => {
+    it("testUtilJsonRemoveEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0007";
       try {
         const escape = encodeURI('\x24')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -672,12 +672,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0008", 0, () => {
+    it("testUtilJsonRemoveEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0008";
       try {
         const escape = encodeURI('\开')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -694,12 +694,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0009", 0, () => {
+    it("testUtilJsonRemoveEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0009";
       try {
         const escape = encodeURI('\😊')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -716,12 +716,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0010", 0, () => {
+    it("testUtilJsonRemoveEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEmoji0010";
       try {
         const escape = encodeURI('\0')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {
@@ -738,12 +738,12 @@ export default function demoEscapeUtilJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testUtilJsonRemoveEscape0011", 0, () => {
+    it("testUtilJsonRemoveEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUtilJsonRemoveEscape0011";
       try {
         const escape = encodeURI('aaa\b')
         const escapeObj = JSON.parse(`{"${escape}":0}`)
-        JSON.remove(escapeObj,escape)
+        JSON.remove(escapeObj, escape)
         let result = JSON.has(escapeObj, escape)
         expect(result).assertFalse();
       } catch (error) {

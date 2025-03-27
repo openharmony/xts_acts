@@ -71,7 +71,7 @@ class DrawingRecordCmdUtilsFinishRecordingTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNormal, TestSize.Level0) {
+HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNormal, Function | SmallTest | Level0) {
     // 1. None of the OH_Drawing_RecordCmdUtilsFinishRecording parameters are empty
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     // add assert
@@ -94,7 +94,7 @@ HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecor
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNull, TestSize.Level3) {
+HWTEST_F(DrawingRecordCmdUtilsFinishRecordingTest, testRecordCmdUtilsFinishRecordingNull, Function | SmallTest | Level3) {
     // 1. OH-Drawing-RecordCmdUtelsFinishRecording, RecordCmd or RecordCmdUtils parameter is empty
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     // add assert

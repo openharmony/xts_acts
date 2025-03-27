@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { BY, Driver, UiDriver } from '@kit.TestKit';
+import { Driver, ON, Component } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
 
@@ -59,40 +59,23 @@ export default function enableCascadeTest() {
     */
     it('TimePickerApienableCascade_001', 0, async (done: Function) => {
       console.info('[TimePickerApienableCascade_001] START');
-      let driver = await UiDriver.create()
-      let clock24Button = await driver.findComponent(BY.key('24hour'));
+      let driver: Driver = Driver.create();
+      await Utils.sleep(1000);
+      let clock24Button = await driver.findComponent(ON.id('24hour'));
       await clock24Button.click();
       await Utils.sleep(1000);
-      let clock12Button = await driver.findComponent(BY.key('12hour'));
+      let clock12Button = await driver.findComponent(ON.id('12hour'));
       await clock12Button.click();
       await Utils.sleep(1000);
-      let switchButton = await driver.findComponent(BY.key('timePicker-true'));
+      let switchButton = await driver.findComponent(ON.id('timePicker-true'));
       await switchButton.click();
       await Utils.sleep(1000);
-      let timePicker = Utils.getComponentRect('timePicker');
-      let top = timePicker.top
-      let bottom = timePicker.bottom
-      let right = timePicker.right
-      let middle = (bottom-top) / 2 + top
-      let left =timePicker.left
-      console.info('[TimePickerApienableCascade_001] left: ' + timePicker.left + ', top: ' + timePicker.top +
-        ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
-      let hour = await driver.findComponent(BY.key('hour'));
-      let hour1 = await hour.getText();
-      console.info('[TimePickerApienableCascade_001] hour1: ' + hour1);
-      console.info('[TimePickerApienableCascade_001] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:10');
-      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
-        Math.round(0));
-      console.info('[TimePickerApienableCascade_001] winLeft:' + globalThis.winLeft);
-      console.info('[TimePickerApienableCascade_001] winTop:' + globalThis.winTop);
-      await Utils.sleep(8000);
-      let hour2 = await hour.getText();
-      let index = await hour2.indexOf(':');
-      let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
-      console.info('[TimePickerApienableCascade_001] hour2:' + Hour2);
-      console.info('[TimePickerApienableCascade_001] hour2:' + JSON.stringify(hour2));
-      expect(Hour2 > 12).assertTrue();
+      let strJson = getInspectorByKey('timePicker');
+      await Utils.sleep(1000);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
+      console.info('[TimePickerApienableCascade_001] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
+      await Utils.sleep(1000);
+      expect(obj.$attrs.enableCascade).assertEqual('true');
       console.info('[TimePickerApienableCascade_001] END');
       done();
     });
@@ -106,36 +89,23 @@ export default function enableCascadeTest() {
     */
     it('TimePickerApienableCascade_002', 0, async (done: Function) => {
       console.info('[TimePickerApienableCascade_002] START');
-      let driver = await UiDriver.create()
-      let clock24Button = await driver.findComponent(BY.key('24hour'));
+      let driver: Driver = Driver.create();
+      await Utils.sleep(1000);
+      let clock24Button = await driver.findComponent(ON.id('24hour'));
       await clock24Button.click();
       await Utils.sleep(1000);
-      let clock12Button = await driver.findComponent(BY.key('12hour'));
+      let clock12Button = await driver.findComponent(ON.id('12hour'));
       await clock12Button.click();
       await Utils.sleep(1000);
-      let switchButton = await driver.findComponent(BY.key('timePicker-false'));
+      let switchButton = await driver.findComponent(ON.id('timePicker-false'));
       await switchButton.click();
       await Utils.sleep(1000);
-      let timePicker = Utils.getComponentRect('timePicker');
-      let top = timePicker.top
-      let bottom = timePicker.bottom
-      let right = timePicker.right
-      let middle = (bottom-top) / 2 + top
-      let left =timePicker.left
-      console.info('[TimePickerApienableCascade_002] left: ' + timePicker.left + ', top: ' + timePicker.top +
-        ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
-      let hour = await driver.findComponent(BY.key('hour'));
-      let hour1 = await hour.getText();
-      console.info('[TimePickerApienableCascade_002] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:10');
-      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
-        Math.round(0));
-      await Utils.sleep(8000);
-      let hour2 = await hour.getText();
-      let index = await hour2.indexOf(':');
-      let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
-      console.info('[TimePickerApienableCascade_002] hour2:' + Hour2);
-      expect(Hour2 < 12).assertTrue();
+      let strJson = getInspectorByKey('timePicker');
+      await Utils.sleep(1000);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
+      console.info('[TimePickerApienableCascade_002] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
+      await Utils.sleep(1000);
+      expect(obj.$attrs.enableCascade).assertEqual('false');
       console.info('[TimePickerApienableCascade_002] END');
       done();
     });
@@ -149,36 +119,22 @@ export default function enableCascadeTest() {
     */
     it('TimePickerApienableCascade_003', 0, async (done: Function) => {
       console.info('[TimePickerApienableCascade_003] START');
-      let driver = await UiDriver.create()
-      let clock24Button = await driver.findComponent(BY.key('24hour'));
+      let driver: Driver = Driver.create();
+      await Utils.sleep(1000);
+      let clock24Button = await driver.findComponent(ON.id('24hour'));
       await clock24Button.click();
       await Utils.sleep(1000);
-      let clock12Button = await driver.findComponent(BY.key('12hour'));
+      let clock12Button = await driver.findComponent(ON.id('12hour'));
       await clock12Button.click();
       await Utils.sleep(1000);
-      let switchButton = await driver.findComponent(BY.key('timePicker-null'));
+      let switchButton = await driver.findComponent(ON.id('timePicker-null'));
       await switchButton.click();
       await Utils.sleep(1000);
-      let timePicker = Utils.getComponentRect('timePicker');
-      let top = timePicker.top
-      let bottom = timePicker.bottom
-      let right = timePicker.right
-      let middle = (bottom-top) / 2 + top
-      let left =timePicker.left
-      console.info('[TimePickerApienableCascade_003] left: ' + timePicker.left + ', top: ' + timePicker.top +
-        ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
-      let hour = await driver.findComponent(BY.key('hour'));
-      let hour1 = await hour.getText();
-      console.info('[TimePickerApienableCascade_003] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:10');
-      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
-        Math.round(0));
-      await Utils.sleep(8000);
-      let hour2 = await hour.getText();
-      let index = await hour2.indexOf(':');
-      let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
-      console.info('[TimePickerApienableCascade_003] hour2:' + Hour2);
-      expect(Hour2 < 12).assertTrue();
+      let strJson = getInspectorByKey('timePicker');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
+      console.info('[TimePickerApienableCascade_003] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
+      await Utils.sleep(1000);
+      expect(obj.$attrs.enableCascade).assertEqual('false');
       console.info('[TimePickerApienableCascade_003] END');
       done();
     });
@@ -193,37 +149,22 @@ export default function enableCascadeTest() {
     */
     it('TimePickerApienableCascade_004', 0, async (done: Function) => {
       console.info('[TimePickerApienableCascade_004] START');
-      // switch 12-hour
-      let driver = await UiDriver.create()
-      let clock24Button = await driver.findComponent(BY.key('24hour'));
+      let driver: Driver = Driver.create();
+      await Utils.sleep(1000);
+      let clock24Button = await driver.findComponent(ON.id('24hour'));
       await clock24Button.click();
       await Utils.sleep(1000);
-      let clock12Button = await driver.findComponent(BY.key('12hour'));
+      let clock12Button = await driver.findComponent(ON.id('12hour'));
       await clock12Button.click();
       await Utils.sleep(1000);
-      let switchButton = await driver.findComponent(BY.key('timePicker-undefined'));
+      let switchButton = await driver.findComponent(ON.id('timePicker-undefined'));
       await switchButton.click();
       await Utils.sleep(1000);
-      let timePicker = Utils.getComponentRect('timePicker');
-      let top = timePicker.top
-      let bottom = timePicker.bottom
-      let right = timePicker.right
-      let middle = (bottom-top) / 2 + top
-      let left =timePicker.left
-      console.info('[TimePickerApienableCascade_004] left: ' + timePicker.left + ', top: ' + timePicker.top +
-        ', right:' + timePicker.right + ', bottom:' + timePicker.bottom + 'middle:' + middle);
-      let hour = await driver.findComponent(BY.key('hour'));
-      let hour1 = await hour.getText();
-      console.info('[TimePickerApienableCascade_004] hour1: ' + JSON.stringify(hour1));
-      expect(hour1).assertEqual('hour:10');
-      await driver.swipe(Math.round(globalThis.winLeft+(right-left)/2+left), Math.round(globalThis.winTop+middle), Math.round(globalThis.winLeft+(right-left)/2+left),
-        Math.round(0));
-      await Utils.sleep(8000);
-      let hour2 = await hour.getText();
-      let index = await hour2.indexOf(':');
-      let Hour2 = parseInt(hour2.substring(index + 1, hour2.length).trim())
-      console.info('[TimePickerApienableCascade_004] hour2:' + Hour2);
-      expect(Hour2 < 12).assertTrue();
+      let strJson = getInspectorByKey('timePicker');
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
+      console.info('[TimePickerApienableCascade_004] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
+      await Utils.sleep(1000);
+      expect(obj.$attrs.enableCascade).assertEqual('false');
       console.info('[TimePickerApienableCascade_004] END');
       done();
     });

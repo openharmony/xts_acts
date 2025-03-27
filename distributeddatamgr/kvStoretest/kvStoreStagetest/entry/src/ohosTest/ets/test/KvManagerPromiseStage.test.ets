@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedKVStore';
 import common from "@ohos.app.ability.common";
 
@@ -94,7 +94,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore001', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore001');
       try {
         await kvManager.getKVStore(TEST_STORE_ID).then((store) => {
@@ -118,7 +118,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore002', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore002');
       try {
         await kvManager.getKVStore(options).then((store) => {
@@ -141,7 +141,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore003', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore003');
       const optionsInfo = {
         createIfMissing: true,
@@ -171,7 +171,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore004', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore004');
       const optionsInfo = {
         createIfMissing: false,
@@ -199,7 +199,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore005', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore005');
       const optionsInfo = {
         createIfMissing: true,
@@ -229,7 +229,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore006', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore006');
       const optionsInfo = {
         createIfMissing: true,
@@ -259,7 +259,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore007', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore006');
       const optionsInfo = {
         createIfMissing: true,
@@ -289,7 +289,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore008', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore008');
       const optionsInfo = {
         createIfMissing: true,
@@ -318,7 +318,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore009', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore009');
       const optionsInfo = {
         createIfMissing: true,
@@ -347,7 +347,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore010', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore010');
       const optionsInfo = {
         createIfMissing: true,
@@ -377,7 +377,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore011', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore011');
       const optionsInfo = {
         createIfMissing: true,
@@ -407,7 +407,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore012', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore012');
       const optionsInfo = {
         createIfMissing: true,
@@ -437,7 +437,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore013', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore013');
       const optionsInfo = {
         createIfMissing: true,
@@ -469,7 +469,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore014', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore014');
       const optionsInfo = {
         createIfMissing: true,
@@ -498,7 +498,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore015', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore015');
       const optionsInfo = {
         createIfMissing: true,
@@ -527,7 +527,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore016', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore016');
       const optionsInfo = {
         createIfMissing: true,
@@ -556,7 +556,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore017', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore017');
       const optionsInfo = {
         createIfMissing: true,
@@ -585,7 +585,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore018', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore018');
       const optionsInfo = {
         createIfMissing: true,
@@ -614,7 +614,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetKVStore019', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetKVStore019');
       const optionsInfo = {
         createIfMissing: true,
@@ -643,7 +643,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerCloseKVStore001', 0, async function (done) {
+    it('testEtsKVManagerCloseKVStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerCloseKVStore004');
       await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
         kvStore = store;
@@ -670,7 +670,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerDeleteKVStore001', 0, async function (done) {
+    it('testEtsKVManagerDeleteKVStore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerDeleteKVStore001');
       await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
         console.info('testKVManagerDeleteKVStore001 deleteKVStore success');
@@ -689,7 +689,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetAllKVStoreId001', 0, async function (done) {
+    it('testEtsKVManagerGetAllKVStoreId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetAllKVStoreId001');
       await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME).then((data: string[]) => {
         console.info('testKVManagerGetAllKVStoreId001 getAllKVStoreId success');
@@ -710,7 +710,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerGetAllKVStoreId002', 0, async function (done) {
+    it('testEtsKVManagerGetAllKVStoreId002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVManagerGetAllKVStoreId002');
       await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
         console.info('testKVManagerGetAllKVStoreId002 getKVStore success');
@@ -740,7 +740,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOn001', 0, function (done) {
+    it('testEtsKVManagerOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOn001');
       let deathCallback = function () {
         console.info('death callback call');
@@ -763,7 +763,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOn002', 0, function (done) {
+    it('testEtsKVManagerOn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOn002');
       let deathCallback1 = function () {
         console.info('death callback call');
@@ -791,7 +791,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOn003', 0, function (done) {
+    it('testEtsKVManagerOn003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOn003');
       let deathCallback = function () {
         console.info('death callback call');
@@ -815,7 +815,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOff001', 0, function (done) {
+    it('testEtsKVManagerOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOff001');
       let deathCallback = function () {
         console.info('death callback call');
@@ -837,7 +837,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOff002', 0, function (done) {
+    it('testEtsKVManagerOff002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOff002');
       let deathCallback = function () {
         console.info('death callback call');
@@ -860,7 +860,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOff003', 0, function (done) {
+    it('testEtsKVManagerOff003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOff003');
       let deathCallback1 = function () {
         console.info('death callback call');
@@ -888,7 +888,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOff004', 0, function (done) {
+    it('testEtsKVManagerOff004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOff004');
       let deathCallback = function () {
         console.info('death callback call');
@@ -912,7 +912,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVManagerOff005', 0, function (done) {
+    it('testEtsKVManagerOff005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info('testKVManagerOff001');
       let deathCallback = function () {
         console.info('death callback call');
@@ -935,7 +935,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVStorePut001', 0, async function (done) {
+    it('testEtsKVStorePut001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVStorePut001');
       try {
         await kvStoreNew.put(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
@@ -959,7 +959,7 @@ export default function kvManagerPromiseStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKVStoreDelete001', 0, async function (done) {
+    it('testEtsKVStoreDelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testKVStoreDelete001');
       try {
         kvStoreNew.put(STORE_KEY, STORE_VALUE).then((data) => {

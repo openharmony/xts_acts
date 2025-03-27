@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import router from '@ohos.router'
-import {describe, it} from "@ohos/hypium"
+import {describe, it, Level, Size, TestType} from "@ohos/hypium"
 import {Sleep} from './Util'
 
 export default function pageImport() {
   describe("PageImportTest", () => {
-    it('pageImportHar', 0, async () => {
+    it('pageImportHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportHar"})
@@ -26,7 +26,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportRelative', 0, async () => {
+    it('pageImportRelative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportRelative"})
@@ -34,7 +34,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportAppNapi', 0, async () => {
+    it('pageImportAppNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportNapi"})
@@ -42,7 +42,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportSystemNapi', 0, async () => {
+    it('pageImportSystemNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportSystem"})

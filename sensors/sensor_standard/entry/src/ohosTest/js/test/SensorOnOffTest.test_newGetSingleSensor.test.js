@@ -65,11 +65,11 @@ describe("SensorJsTest_sensor_36", function () {
     * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0010
     * @tc.name: GetSingleSensor_JSTest_001
     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('GetSingleSensor_JSTest_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it('GetSingleSensor_JSTest_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_001-------------------------");
         TAG = 'GetSingleSensor_JSTest_001'
         try{
@@ -423,7 +423,7 @@ describe("SensorJsTest_sensor_36", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("GetSingleSensor_JSTest_012", 0, async function (done) {
+    it("GetSingleSensor_JSTest_012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'GetSingleSensor_JSTest_012'
         try{
             sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, undefined).then((data) => {
@@ -449,7 +449,7 @@ describe("SensorJsTest_sensor_36", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("GetSingleSensor_JSTest_013", 0, async function (done) {
+    it("GetSingleSensor_JSTest_013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'GetSingleSensor_JSTest_013'
         try{
             sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, null).then((data) => {
@@ -475,7 +475,7 @@ describe("SensorJsTest_sensor_36", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("GetSingleSensor_JSTest_014", 0, async function (done) {
+    it("GetSingleSensor_JSTest_014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'GetSingleSensor_JSTest_014'
         try{
             sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, "abc").then((data) => {

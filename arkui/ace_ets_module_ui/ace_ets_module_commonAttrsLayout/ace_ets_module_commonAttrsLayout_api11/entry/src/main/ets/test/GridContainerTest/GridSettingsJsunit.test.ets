@@ -298,7 +298,7 @@ export default function gridSettingsJsunit() {
       let strJson: string = getInspectorByKey('gridOffset');
       console.info("[testGridSettings010] component strJson:" + strJson);
       console.info("[testGridSettings010] gridOffset: " + JSON.stringify(JSON.parse(strJson).$attrs.gridOffset));
-      expect(JSON.parse(strJson).$attrs.gridOffset).assertEqual(2147483647);
+      expect(JSON.parse(strJson).$attrs.gridOffset).assertEqual(0);
       done()
     });
 
@@ -408,7 +408,7 @@ export default function gridSettingsJsunit() {
       let strJson: string = getInspectorByKey('gridSpan');
       console.info("[testGridSettings015] component strJson:" + strJson);
       console.info("[testGridSettings015] gridSpan: " + JSON.stringify(JSON.parse(strJson).$attrs.gridSpan));
-      expect(JSON.parse(strJson).$attrs.gridSpan).assertEqual(2147483647);
+      expect(JSON.parse(strJson).$attrs.gridSpan).assertEqual(1);
       done()
     });
   });

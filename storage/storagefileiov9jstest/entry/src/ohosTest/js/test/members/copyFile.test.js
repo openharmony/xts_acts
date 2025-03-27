@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect, randomString
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOCopyfile() {
 describe('fileIO_fs_copyfile', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_copy_file_sync_000', 0, async function () {
+  it('fileIO_copy_file_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -58,7 +59,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_001', 0, async function () {
+  it('fileIO_copy_file_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_001');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -88,7 +89,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_002', 0, async function () {
+  it('fileIO_copy_file_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_002');
     let fpathTarget = fpath + 'tgt';
 
@@ -132,7 +133,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_004', 0, async function () {
+  it('fileIO_copy_file_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_004');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -157,7 +158,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_005', 0, async function () {
+  it('fileIO_copy_file_sync_005', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_005');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -189,7 +190,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_006', 0, async function () {
+  it('fileIO_copy_file_sync_006', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_006');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -219,7 +220,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_007', 0, async function (done) {
+  it('fileIO_copy_file_sync_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_sync_007');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -245,7 +246,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_008', 0, async function () {
+  it('fileIO_copy_file_sync_008', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_008');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -270,7 +271,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_009', 3, async function () {
+  it('fileIO_copy_file_sync_009', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_copy_file_sync_009');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -298,7 +299,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_000', 0, async function (done) {
+  it('fileIO_copy_file_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -327,7 +328,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_001', 0, async function (done) {
+  it('fileIO_copy_file_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_001');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -361,7 +362,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_002', 0, async function (done) {
+  it('fileIO_copy_file_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_002');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -392,7 +393,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_003', 0, async function (done) {
+  it('fileIO_copy_file_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_003');
     let fpathTarget = fpath + 'tgt';
 
@@ -416,7 +417,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_004', 0, async function (done) {
+  it('fileIO_copy_file_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_004');
     let fpathTarget = fpath + 'tgt';
 
@@ -444,7 +445,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_005', 0, async function (done) {
+  it('fileIO_copy_file_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_005');
     let fpathTarget = fpath + 'tgt';
 
@@ -472,7 +473,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_006', 0, async function (done) {
+  it('fileIO_copy_file_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_006');
 
     try {
@@ -495,7 +496,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_007', 0, async function (done) {
+  it('fileIO_copy_file_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_007');
 
     try {
@@ -519,7 +520,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_008', 0, async function (done) {
+  it('fileIO_copy_file_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_008');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -548,7 +549,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_009', 0, async function (done) {
+  it('fileIO_copy_file_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_009');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -582,7 +583,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_010', 0, async function (done) {
+  it('fileIO_copy_file_async_010', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_010');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -609,7 +610,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_011', 0, async function (done) {
+  it('fileIO_copy_file_async_011', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_011');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -635,7 +636,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_012', 0, async function (done) {
+  it('fileIO_copy_file_async_012', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_012');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -668,7 +669,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_013', 0, async function (done) {
+  it('fileIO_copy_file_async_013', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_012');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -706,7 +707,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_014', 0, async function (done) {
+  it('fileIO_copy_file_async_014', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_014');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -738,7 +739,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_015', 0, async function (done) {
+  it('fileIO_copy_file_async_015', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_014');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -774,7 +775,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_016', 0, async function (done) {
+  it('fileIO_copy_file_async_016', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_016');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -799,7 +800,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_017', 0, async function (done) {
+  it('fileIO_copy_file_async_017', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_017');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -829,7 +830,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_018', 3, async function (done) {
+  it('fileIO_copy_file_async_018', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_018');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -858,7 +859,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_async_019', 3, async function (done) {
+  it('fileIO_copy_file_async_019', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_file_async_019');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();

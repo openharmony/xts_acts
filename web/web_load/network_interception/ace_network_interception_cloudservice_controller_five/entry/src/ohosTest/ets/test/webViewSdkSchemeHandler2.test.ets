@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getHttpBodyStream', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getHttpBodyStream', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getHttpBodyStream"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getHttpBodyStream", true, 1507, done);
@@ -92,7 +92,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getSize', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getSize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getSize"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getSize", true, 1508, done);
@@ -106,7 +106,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getPosition', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getPosition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getPosition"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getPosition", true, 1509, done);
@@ -121,7 +121,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_isChunked', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isChunked', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isChunked"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isChunked", true, 1510, done);
@@ -137,7 +137,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_isEof', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isEof', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isEof"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isEof", true, 1511, done);
@@ -151,7 +151,7 @@ export default function ActsAceWebViewSdkSchemeHandler2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_isInMemory', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isInMemory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isInMemory"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isInMemory", true, 1512, done);

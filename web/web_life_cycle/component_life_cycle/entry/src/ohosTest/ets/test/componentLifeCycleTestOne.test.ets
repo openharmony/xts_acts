@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function componentLifeCycleTestOne() {
      *tc.name onRenderExited
      *tc.desic Triggered when the render process exits
     */
-    it('onRenderExited', 0, async (done: Function) => {
+    it('onRenderExited', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnRenderExited", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onRenderExited", 2, 106, done);
@@ -64,7 +64,7 @@ export default function componentLifeCycleTestOne() {
      *tc.name onInactive                                                                                                                                                                                                               
      *tc.desic make web component inactive
      */
-    it('onInactive', 0, async (done: Function) => {
+    it('onInactive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitonInactive", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInactive", "baidu", 7, done);
@@ -76,7 +76,7 @@ export default function componentLifeCycleTestOne() {
      *tc.name make web component active                                                                                                                                                                                                               
      *tc.desic return whether the third party cookie is allowed
      */
-    it('onActive', 0, async (done: Function) => {
+    it('onActive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitonActive", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onActive", "index", 8, done);
@@ -88,7 +88,7 @@ export default function componentLifeCycleTestOne() {
      *tc.name testOnActiveInitErr
      *tc.desc test interface of onActive with not been associated with specific Web Components
      */
-    it('testOnActiveInitErr', 0, async (done: Function) => {
+    it('testOnActiveInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnActiveInitErr", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnActiveInitErr", "17100001", 638, done);
@@ -101,7 +101,7 @@ export default function componentLifeCycleTestOne() {
      *tc.name testOnInactiveInitErr
      *tc.desc test interface of onInactive with not been associated with specific Web Components
      */
-    it('testOnInactiveInitErr', 0, async (done: Function) => {
+    it('testOnInactiveInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnInactiveInitErr", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnInactiveInitErr", "17100001", 640, done);
@@ -117,7 +117,7 @@ export default function componentLifeCycleTestOne() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnInactive001', 0, async (done: Function) => {
+    it('testOnInactive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testOnInactive001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnInactive001", true, 31000, done);
@@ -132,7 +132,7 @@ export default function componentLifeCycleTestOne() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnActive001', 0, async (done: Function) => {
+    it('testOnActive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testOnActive001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnActive001", "resource://rawfile/webPart1index.html", 31001, done);
@@ -147,7 +147,7 @@ export default function componentLifeCycleTestOne() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnInactive002', 0, async (done: Function) => {
+    it('testOnInactive002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testOnInactive002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnInactive002", "second", 100077, done);
@@ -162,7 +162,7 @@ export default function componentLifeCycleTestOne() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnActive002', 0, async (done: Function) => {
+    it('testOnActive002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testOnActive002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnActive002", "second", 100078, done);
@@ -177,7 +177,7 @@ export default function componentLifeCycleTestOne() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnControllerAttached001', 0, async (done: Function) => {
+    it('testOnControllerAttached001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnControllerAttached", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnControllerAttached001", true, 1221, done);
@@ -192,7 +192,7 @@ export default function componentLifeCycleTestOne() {
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
-    it('testWebViewSetRenderProcessMode', 0, async (done: Function) => {
+    it('testWebViewSetRenderProcessMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitSetRenderProcessMode", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitSetRenderProcessMode", true, 10005, done);
@@ -207,7 +207,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewGetAndSetRenderProcessMode01', 0, async (done: Function) => {
+    it('testWebViewGetAndSetRenderProcessMode01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode01", 10);
       Utils.registerEvent("testWebViewGetAndSetRenderProcessMode01", 'success', 8006, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
@@ -220,7 +220,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewGetAndSetRenderProcessMode02', 0, async (done: Function) => {
+    it('testWebViewGetAndSetRenderProcessMode02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitWebViewGetAndSetRenderProcessMode02", 10);
       Utils.registerEvent("testWebViewGetAndSetRenderProcessMode02", 'success', 8007, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
@@ -234,7 +234,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewOnRenderProcessResponding', 0, async (done: Function) => {
+    it('testWebViewOnRenderProcessResponding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitWebViewOnRenderProcessResponding", 10);
       Utils.registerEvent("testWebViewOnRenderProcessResponding", true, 1336, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');
@@ -248,7 +248,7 @@ export default function componentLifeCycleTestOne() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
+    it('testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", 10);
       Utils.registerEvent("testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT", true, 1338, done);
       sendEventByKey('HttpAuthHandlerButton', 10, '');

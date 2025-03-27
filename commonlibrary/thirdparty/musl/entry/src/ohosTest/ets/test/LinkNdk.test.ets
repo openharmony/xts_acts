@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import linkndk from 'liblinkndk.so'
 
@@ -32,7 +32,7 @@ export default function linkNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslLinkDlIteratePhdr001', 0, async (done: Function) => {
+    it('testMuslLinkDlIteratePhdr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(linkndk.dl_iterate_phdr()).assertEqual(0);
       done()
     });

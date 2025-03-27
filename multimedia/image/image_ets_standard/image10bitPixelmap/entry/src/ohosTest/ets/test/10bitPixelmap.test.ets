@@ -22,6 +22,8 @@ import { BusinessError } from '@ohos.base';
 import fs from '@ohos.file.fs';
 import hdrCapability from '@ohos.graphics.hdrCapability';
 import display from '@ohos.display';
+import resourceManager from '@ohos.resourceManager';
+import common from '@ohos.app.ability.common';
 
 let isSupportHdr: boolean;
 
@@ -120,9 +122,18 @@ export default function image10bitPixelMap() {
       pixel_map: image.PixelMap | undefined;
       constructor(pixelMap: image.PixelMap | undefined) {
         this.pixel_map = pixelMap;
-        createPixelMapByPixelFormat(image.PixelMapFormat.RGBA_8888).then((pixelMap: image.PixelMap) => {
-          this.pixelMap = pixelMap;
-        });
+        let color = new ArrayBuffer(calculateBufferSize(4, 6, image.PixelMapFormat.RGBA_8888));
+        let bufferArr = new Uint8Array(color);
+        for (let i = 0; i < bufferArr.length; i++) {
+          bufferArr[i] = i + 1;
+        }
+  
+        let opts: image.InitializationOptions = {
+          editable: true,
+          pixelFormat: image.PixelMapFormat.RGBA_8888,
+          size: { height: 4, width: 6 }
+        }
+        this.pixelMap = image.createPixelMapSync(color, opts);
       }
       marshalling(messageSequence: rpc.MessageSequence) {
         if (this.pixel_map != undefined) {
@@ -1267,6 +1278,428 @@ export default function image10bitPixelMap() {
     });
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800
+     * @tc.name      : test pixelmap.createAlphaPixelmap
+     * @tc.desc      : 1.create imagesource
+     *               : 2.create pixelmap
+     *               : 3.create AlphaPixelmap
+     *               : 4.call getImageInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800', 0, async (done: Function) => {
+      const surfaceId = null; 
+      const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+      try {
+        let pixelMap:image.PixelMap = await image.createPixelMapFromSurface(surfaceId, region);
+        console.info(`Successfully created the image source`); 
+        done(); 
+      }catch (error) {
+        console.error(`failed to pack the image: ${error.code},error is ${error}`);
+        expect(Number(error) == 62980178).assertTrue();
+        done();}
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000
+     * @tc.name      : test pixelmap.createAlphaPixelmap
+     * @tc.desc      : 1.create imagesource
+     *               : 2.create pixelmap
+     *               : 3.create AlphaPixelmap
+     *               : 4.call getImageInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000', 0, async (done: Function) => {
+      const surfaceId = null; 
+      try {
+        let pixelMap: image.PixelMap = await image.createPixelMapFromSurface(surfaceId);
+        console.error("Expected an ereeror but none was thrown");
+        done();
+      } catch (error) {
+        console.error(`Failed to create the image: ${error.code},error is ${error}`);
+        expect(Number(error) == 62980178).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200"
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap = image.createPixelMapSync(color, opts);
+      try {
+        let csm = await pixelMap.getColorSpace();
+        console.info(tag + ' Succeeded in getting ColorSpace. csm is ' + csm);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to get ColorSpace. error is ` + error + 'error code is ' + error.code);
+        expect(Number(error.code) == 62980103).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_Image_Receiver_Off_ImageArrival_0900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_Image_Receiver_Off_ImageArrival_0900
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_IMAGE_Image_Receiver_Off_ImageArrival_0900',0, async (done: Function) => {
+      let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8, image.ImageFormat.JPEG, 8);
+      let callbackFunc = ()=>{
+        console.info('Listening succeeded')
+    }
+    try {
+      receiver.on('imageArrival', callbackFunc)
+      receiver.off('imageArrival', callbackFunc)
+      expect(true).assertTrue()
+      done()
+    } catch (error) {
+      console.info(`Listening error. ${error.code},error is ${error}`);
+      expect(false).assertTrue();
+      done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_Image_Creator_Off_ImageRelease_1000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_Image_Creator_Off_ImageRelease_1000
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_Image_Creator_Off_ImageRelease_1000',0, async (done: Function) => {
+      let creator: image.ImageCreator = image.createImageCreator(8192, 8, image.ImageFormat.JPEG, 8);
+      let callbackFunc = ()=>{
+        console.info('Listen succeeded')
+    }
+    try {
+      creator.on('imageRelease', callbackFunc)
+      creator.off('imageRelease', callbackFunc)
+      expect(true).assertTrue()
+      done()
+    } catch (error) {
+      console.info(`Listen error. ${error.code},error is ${error}`);
+      expect(false).assertTrue();
+      done()
+      }
+    })  
+
+	/**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800
+     * @tc.name      : test pixelmap.createAlphaPixelmap
+     * @tc.desc      : 1.create imagesource
+     *               : 2.create pixelmap
+     *               : 3.create AlphaPixelmap
+     *               : 4.call getImageInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_8800', 0, async (done: Function) => {
+      const surfaceId = null; 
+      const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+      try {
+        let pixelMap: image.PixelMap = await image.createPixelMapFromSurface(surfaceId, region);
+        console.info(`Successfully created the image source`); 
+        done(); 
+      }catch (error) {
+        console.error(`failed to pack the image: ${error.code},error is ${error}`);
+        expect(Number(error) == 62980178).assertTrue();
+        done();}
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000
+     * @tc.name      : test pixelmap.createAlphaPixelmap
+     * @tc.desc      : 1.create imagesource
+     *               : 2.create pixelmap
+     *               : 3.create AlphaPixelmap
+     *               : 4.call getImageInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000', 0, async (done: Function) => {
+      const surfaceId = null; 
+      try {
+        let pixelMap: image.PixelMap = await image.createPixelMapFromSurface(surfaceId);
+        console.error("Expected an ereeror but none was thrown");
+        done();
+      } catch (error) {
+        console.error(`Failed to create the image: ${error.code},error is ${error}`);
+        expect(Number(error) == 62980178).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0800', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200"
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap = image.createPixelMapSync(color, opts);
+      try {
+        let csm = await pixelMap.getColorSpace();
+        console.info(tag + ' Succeeded in getting ColorSpace. csm is ' + csm);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to get ColorSpace. error is ` + error + 'error code is ' + error.code);
+        expect(Number(error.code) == 62980103).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0900
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0900
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_9000',0, async (done: Function) => {
+      let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8, image.ImageFormat.JPEG, 8);
+      let callbackFunc = ()=>{
+        console.info('Listening succeeded')
+    }
+    try {
+      receiver.on('imageArrival', callbackFunc)
+      receiver.off('imageArrival', callbackFunc)
+      expect(true).assertTrue()
+      done()
+    } catch (error) {
+      console.info(`Listening error. ${error.code},error is ${error}`);
+      expect(false).assertTrue();
+      done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_1000
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_1000
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_1000',0, async (done: Function) => {
+      let creator: image.ImageCreator = image.createImageCreator(8192, 8, image.ImageFormat.JPEG, 8);
+      let callbackFunc = ()=>{
+        console.info('Listen succeeded')
+    }
+    try {
+      creator.on('imageRelease', callbackFunc)
+      creator.off('imageRelease', callbackFunc)
+      expect(true).assertTrue()
+      done()
+    } catch (error) {
+      console.info(`Listen error. ${error.code},error is ${error}`);
+      expect(false).assertTrue();
+      done()
+      }
+    })  
+
+/**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5800
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5800", 0, async (done: Function) => {
+      let num =  image.AlphaType.UNPREMUL
+      console.info(`AlphaType.UNPREMUL ${num}`)
+      expect(num == 3).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5900
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5900", 0, async (done: Function) => {
+      console.info(`----------------SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5900--------------`)
+      let num =  image.AlphaType.PREMUL
+      console.info(`AlphaType.PREMUL ${num}`)
+      expect(num == 2).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6000
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6000", 0, async (done: Function) => {
+      console.info(`----------------SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6000--------------`)
+      let num =  image.AlphaType.UNKNOWN
+      console.info(`AlphaType.UNKNOWN ${num}`)
+      expect(num == 0).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6100
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6100", 0, async (done: Function) => {
+      console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6100  -------------`)
+      let num =  image.ScaleMode.FIT_TARGET_SIZE
+      console.info(`ScaleMode.FIT_TARGET_SIZE ${num}`)
+      expect(num == 0).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6200
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6200", 0, async (done: Function) => {
+      console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6200  -------------`)
+      let num =  image.ScaleMode.CENTER_CROP
+      console.info(`ScaleMode.CENTER_CROP ${num}`)
+      expect(num == 1).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6300
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6300", 0, async (done: Function) => {
+      console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6300  -------------`)
+      let num =  image.ComponentType.YUV_Y
+      console.info(`ComponentType.YUV_Y ${num}`)
+      expect(num == 1).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6400
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6400", 0, async (done: Function) => {
+      console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6400  -------------`)
+      let num =  image.ComponentType.YUV_U
+      console.info(`ComponentType.YUV_U ${num}`)
+      expect(num == 2).assertTrue()
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6500
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6500", 0, async (done: Function) => {
+      console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6500  -------------`)
+      let num =  image.ComponentType.YUV_V
+      console.info(`ComponentType.YUV_V ${num}`)
+      expect(num == 3).assertTrue()
+      done()
+    });
+  
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6600
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6600", 0, async (done: Function) => {
+      let low_quality = image.ResolutionQuality.LOW
+      expect(low_quality).assertEqual(1);
+      console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_xxxxx' + ' The quality of the picture is low quality.')
+      let medium_quality = image.ResolutionQuality.MEDIUM
+      expect(medium_quality).assertEqual(2);
+      console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_xxxxx' + ' The quality of the picture is medium quality.')
+      let high_quality = image.ResolutionQuality.HIGH
+      expect(high_quality).assertEqual(3);
+      console.info('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_xxxxx' + ' The quality of the picture is high quality.')
+      done()
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6900
+     * @tc.name      : 
+     * @tc.desc      : 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6900", 0, async (done: Function) => {
+      console.info(`-------------BEGIN   SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_6900  -------------`)
+      try {
+        image.createPremultipliedPixelMap(null, null)
+        done()
+      }catch (error) {
+        console.error(`failed to createPremultipliedPixelMap: ${error.code},error is ${error}`);
+        expect(Number(error) == 401).assertTrue();
+        done();}
+    });
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_1500
      * @tc.name      : test pixelmap.getBytesNumberPerRow
      * @tc.desc      : 1. create pixelmap
@@ -2148,7 +2581,7 @@ export default function image10bitPixelMap() {
         done();
       } else {
         let writeFile = getWriteFile("test_pack_to_file_promise.jpg");
-        let packOpt: image.PackingOption = { format: "image/jpeg", quality: 100 };
+        let packOpt: image.PackingOption = { format: "image/jpeg", quality: 100, desiredDynamicRange: image.PackingDynamicRange.AUTO };
         testPack10bitPixelMapToFile(done, logger, writeFile, packOpt, "promise", "CUVAHdrMulti.jpg", RGBA_1010102);
       }
     });
@@ -2168,13 +2601,13 @@ export default function image10bitPixelMap() {
         if (!isSupportHdr) {
           logger.log("device is not support hdr");
         } else {
-          logger.log("device is not support heif encode");
+          logger.log("device is not support heic encode");
         }
         expect(true).assertTrue();
         done();
       } else {
         let writeFile = getWriteFile("test_pack_to_file_callback.heic");
-        let packOpt: image.PackingOption = { format: "image/heic", quality: 100 };
+        let packOpt: image.PackingOption = { format: "image/heic", quality: 100, desiredDynamicRange: image.PackingDynamicRange.AUTO };
         testPack10bitPixelMapToFile(done, logger, writeFile, packOpt, "callback", "HDRVividSingleLayer.heic", RGBA_1010102);
       }
     });
@@ -2195,7 +2628,7 @@ export default function image10bitPixelMap() {
         expect(true).assertTrue();
         done();
       } else {
-        let packOpt: image.PackingOption = { format: "image/jpeg", quality: 100 };
+        let packOpt: image.PackingOption = { format: "image/jpeg", quality: 100, desiredDynamicRange: image.PackingDynamicRange.AUTO };
         testPack10bitPixelMapToData(done, logger, packOpt, "promise", "HDRVividSingleLayer.heic", RGBA_1010102);
       }
     });
@@ -2215,12 +2648,12 @@ export default function image10bitPixelMap() {
         if (!isSupportHdr) {
           logger.log("device is not support hdr");
         } else {
-          logger.log("device is not support heif encode");
+          logger.log("device is not support heic encode");
         }
         expect(true).assertTrue();
         done();
       } else {
-        let packOpt: image.PackingOption = { format: "image/heic", quality: 100 };
+        let packOpt: image.PackingOption = { format: "image/heic", quality: 100, desiredDynamicRange: image.PackingDynamicRange.AUTO };
         testPack10bitPixelMapToData(done, logger, packOpt, "callback", "CUVAHdrMulti.jpg", RGBA_1010102);
       }
     });

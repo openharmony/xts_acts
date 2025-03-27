@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import rdb from 'libentry.so';
 
 export default function relationalstoreTest() {
@@ -27,7 +27,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testQuery001', 0, async (done: Function) => {
+    it('testQuery001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.QueryOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -42,7 +42,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQuery002', 0, async (done: Function) => {
+    it('testQuery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.QueryTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -57,7 +57,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQuery003', 0, async (done: Function) => {
+    it('testQuery003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.QueryThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -72,7 +72,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testQuery004', 0, async (done: Function) => {
+    it('testQuery004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.QueryFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -87,7 +87,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testExecute001', 0, async (done: Function) => {
+    it('testExecute001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.ExecuteOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -102,7 +102,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testExecute002', 0, async (done: Function) => {
+    it('testExecute002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.ExecuteTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -117,7 +117,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testExecute003', 0, async (done: Function) => {
+    it('testExecute003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.ExecuteThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -132,7 +132,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testExecute004', 0, async (done: Function) => {
+    it('testExecute004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.ExecuteFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -147,7 +147,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testExecuteQuery001', 0, async (done: Function) => {
+    it('testExecuteQuery001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.ExecuteQueryOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -162,7 +162,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testExecuteQuery002', 0, async (done: Function) => {
+    it('testExecuteQuery002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.ExecuteQueryTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -177,7 +177,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testExecuteQuery003', 0, async (done: Function) => {
+    it('testExecuteQuery003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.ExecuteQueryThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -192,7 +192,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testExecuteQuery004', 0, async (done: Function) => {
+    it('testExecuteQuery004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.ExecuteQueryFour();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -207,7 +207,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBeginTransaction001', 0, async (done: Function) => {
+    it('testBeginTransaction001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.BeginTransactionOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -222,7 +222,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBeginTransaction002', 0, async (done: Function) => {
+    it('testBeginTransaction002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.BeginTransactionTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -237,7 +237,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRollBack001', 0, async (done: Function) => {
+    it('testRollBack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.RollBackOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -252,7 +252,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testRollBack002', 0, async (done: Function) => {
+    it('testRollBack002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.RollBackTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -267,7 +267,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommit001', 0, async (done: Function) => {
+    it('testCommit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.CommitOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -282,7 +282,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommit002', 0, async (done: Function) => {
+    it('testCommit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.CommitTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -297,7 +297,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBackup001', 0, async (done: Function) => {
+    it('testBackup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.BackupOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -312,7 +312,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBackup002', 0, async (done: Function) => {
+    it('testBackup002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.BackupTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -327,7 +327,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testBackup003', 0, async (done: Function) => {
+    it('testBackup003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.BackupThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -341,7 +341,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRestore001', 0, async (done: Function) => {
+    it('testRestore001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.RestoreOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -356,7 +356,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testRestore002', 0, async (done: Function) => {
+    it('testRestore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.RestoreTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -371,7 +371,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testRestore003', 0, async (done: Function) => {
+    it('testRestore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.RestoreThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -386,7 +386,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetVersion001', 0, async (done: Function) => {
+    it('testGetVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.GetVersionOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -401,7 +401,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetVersion002', 0, async (done: Function) => {
+    it('testGetVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.GetVersionTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -416,7 +416,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetVersion003', 0, async (done: Function) => {
+    it('testGetVersion003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.GetVersionThree();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -431,7 +431,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSetVersion001', 0, async (done: Function) => {
+    it('testSetVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data = rdb.SetVersionOne();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -446,7 +446,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSetVersion002', 0, async (done: Function) => {
+    it('testSetVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.SetVersionTwo();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
@@ -461,7 +461,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testLockRow001', 0, async (done: Function) => {
+     it('testLockRow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.LockRowOne();
       console.info("testLockRow001 Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(14800018);
@@ -476,7 +476,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testUnLockRow001', 0, async (done: Function) => {
+     it('testUnLockRow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.UnLockRowOne();
       console.info("testUnLockRow001 Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(14800018);
@@ -491,7 +491,7 @@ export default function relationalstoreTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it('testQueryLockRow001', 0, async (done: Function) => {
+     it('testQueryLockRow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = rdb.QueryLockRowOne();
       console.info("testUnLockRow001 Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);

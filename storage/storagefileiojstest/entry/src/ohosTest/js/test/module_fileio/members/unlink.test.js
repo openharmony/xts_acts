@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioUnlink() {
 describe('fileio_unlink', function () {
@@ -30,7 +31,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_sync_000', 0, function () {
+  it('fileio_test_unlink_sync_000', Level.LEVEL0, function () {
     try {
       fileio.unlinkSync();
       expect(null).assertFail();
@@ -48,7 +49,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_sync_001', 0, async function () {
+  it('fileio_test_unlink_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIOTest');
 
     try {
@@ -68,7 +69,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_sync_002', 0, async function () {
+  it('fileio_test_unlink_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_unlink_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -90,7 +91,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_async_000', 0, async function (done) {
+  it('fileio_test_unlink_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIOTest');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -112,7 +113,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_async_001', 0, async function (done) {
+  it('fileio_test_unlink_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIOTest');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -135,7 +136,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_async_002', 0, async function (done) {
+  it('fileio_test_unlink_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_unlink_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -158,7 +159,7 @@ describe('fileio_unlink', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_unlink_async_003', 0, async function (done) {
+  it('fileio_test_unlink_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_unlink_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

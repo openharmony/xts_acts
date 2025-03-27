@@ -14,8 +14,9 @@
  */
 
 import { describe, expect, it, beforeAll, Level } from '@ohos/hypium';
-import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY,
-  WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID, getPixelMap, PIXEL_MAP } from '../commom';
+import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, CURRENT_USER_ID,
+  WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID, getPixelMap, getCurrentUserId, PIXEL_MAP,
+  INVALID_BUNDLE_NAME } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import securityManager from '@ohos.enterprise.securityManager';
@@ -25,6 +26,7 @@ const PATCH = 'patch';
 const ENCRYPTION = 'encryption';
 const INT_VALID_ACCOUNTID = 100;
 const INT_INVALID_ACCOUNTID = 0xFFFFFFFF;
+const UNKNOWN = 99;
 
 const PASSWORD_POLICY: securityManager.PasswordPolicy = {
   complexityRegex: 'g',
@@ -135,7 +137,10 @@ export default function securityManagerTest() {
 
     testSetClipboardPolicy();
     testGetClipboardPolicy();
-
+    
+    testSetClipboardPolicyByBundleName();
+    testGetClipboardPolicyByBundleName();
+    
     testSetWatermarkImage();
     testCancelWatermarkImage();
   })
@@ -1307,6 +1312,390 @@ function testGetClipboardPolicy() {
       expect(error.code == 401).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testSetClipboardPolicyByBundleName() {
+  beforeAll((done: Function) => {
+    getCurrentUserId();
+    done();
+  })
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0100
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0100
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0100", Level.LEVEL2, async (done: Function) => {
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0200
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0200
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without permission
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0200", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0300
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0300
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0300", Level.LEVEL2, async (done: Function) => {
+    try {
+      securityManager.setAppClipboardPolicy(null, SELFHAPNAME, CURRENT_USER_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0400
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0400
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without  bundleName and userId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0400", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, null, null, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0500
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0500
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without userId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0500", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, null, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0600
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0600
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without bundleName
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0600", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, null, CURRENT_USER_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0700
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0700
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName without policy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0700", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID, null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0800
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0800
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName policy is IN_APP
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0800", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID, TEST_CLIPBOARD_POLICY);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID);
+      let policy: Array<string> = JSON.parse(data);
+      expect(policy[0]["userId"] == CURRENT_USER_ID).assertTrue();
+      expect(policy[0]["bundleName"] == SELFHAPNAME).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 1).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0900
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_0900
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName with invalid bundleName
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_0900", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, INVALID_BUNDLE_NAME, CURRENT_USER_ID, TEST_CLIPBOARD_POLICY);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_1000
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_1000
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName policy is DEFAULT
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_1000", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID,
+        securityManager.ClipboardPolicy.DEFAULT);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID);
+      let policy: Array<string> = JSON.parse(data);
+      expect(policy[0]["userId"] == CURRENT_USER_ID).assertTrue();
+      expect(policy[0]["bundleName"] == SELFHAPNAME).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 0).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_1100
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_1100
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName policy is LOCAL_DEVICE
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_1100", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID,
+        securityManager.ClipboardPolicy.LOCAL_DEVICE);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID);
+      let policy: Array<string> = JSON.parse(data);
+      expect(policy[0]["userId"] == CURRENT_USER_ID).assertTrue();
+      expect(policy[0]["bundleName"] == SELFHAPNAME).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 2).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_1200
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_1200
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName policy is CROSS_DEVICE
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_1200", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID,
+        securityManager.ClipboardPolicy.CROSS_DEVICE);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID);
+      let policy: Array<string> = JSON.parse(data);
+      expect(policy[0]["userId"] == CURRENT_USER_ID).assertTrue();
+      expect(policy[0]["bundleName"] == SELFHAPNAME).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 3).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_1300
+   * @tc.name      : test_set_clipboard_policy_by_bundle_name_1300
+   * @tc.desc      : test securityManager setAppClipboardPolicyByBundleName policy is UNKNOWN
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_by_bundle_name_1300", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID, UNKNOWN);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+
+function testGetClipboardPolicyByBundleName() {
+  beforeAll((done: Function) => {
+    getCurrentUserId();
+    done();
+  })
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0100
+   * @tc.name      : test_get_clipboard_policy_by_bundle_name_0100
+   * @tc.desc      : test securityManager getAppClipboardPolicyByBundleName without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_by_bundle_name_0100", Level.LEVEL2, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0200
+   * @tc.name      : test_get_clipboard_policy_by_bundle_name_0200
+   * @tc.desc      : test securityManager getAppClipboardPolicyByBundleName without permission
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_by_bundle_name_0200", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, CURRENT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0300
+   * @tc.name      : test_get_clipboard_policy_by_bundle_name_0300
+   * @tc.desc      : test securityManager getAppClipboolicyByBundleName without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_by_bundle_name_0300", Level.LEVEL2, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(null, SELFHAPNAME, CURRENT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0400
+   * @tc.name      : test_get_clipboard_policy_by_bundle_name_0400
+   * @tc.desc      : test securityManager getAppClipboolicyByBundleName without bundleName
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_by_bundle_name_0400", Level.LEVEL2, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT, null, CURRENT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_BY_BUNDLE_NAME_JS_0500
+   * @tc.name      : test_get_clipboard_policy_by_bundle_name_0500
+   * @tc.desc      : test securityManager getAppClipboolicyByBundleName without userId
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_clipboard_policy_by_bundle_name_0500", Level.LEVEL2, async (done: Function) => {
+    try {
+      securityManager.getAppClipboardPolicy(SELFWANT, SELFHAPNAME, null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     }
     done();
   });

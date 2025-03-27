@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webJsunit() {
      *tc.name Backward
      *tc.desic back to the old page
      */
-    it('Backward', 0, async (done: Function) => {
+    it('Backward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitForward";
       Utils.registerEvent("Backward", "index", 3, done);
       sendEventByKey('webcomponent', 10, '');
@@ -62,7 +62,7 @@ export default function webJsunit() {
      *tc.name Forward
      *tc.desic go to the new page
      */
-    it('Forward', 0, async (done: Function) => {
+    it('Forward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAccessBackward";
       Utils.registerEvent("Forward", "baidu", 4, done);
       sendEventByKey('webcomponent', 10, '');
@@ -72,7 +72,7 @@ export default function webJsunit() {
      *tc.name AccessBackward
      *tc.desic return whether there is a old page
      */
-    it('AccessBackward', 0, async (done: Function) => {
+    it('AccessBackward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAccessForward";
       Utils.registerEvent("AccessBackward", true, 5, done);
       sendEventByKey('webcomponent', 10, '');
@@ -82,7 +82,7 @@ export default function webJsunit() {
      *tc.name AccessForward
      *tc.desic return whether there is a new page
      */
-    it('AccessForward', 0, async (done: Function) => {
+    it('AccessForward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAccessStep";
       Utils.registerEvent("AccessForward", false, 6, done);
       sendEventByKey('webcomponent', 10, '');
@@ -93,7 +93,7 @@ export default function webJsunit() {
      *tc.name AccessStep
      *tc.desic return whether steps can be operated
      */
-    it('AccessStep', 0, async (done: Function) => {
+    it('AccessStep', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitClearHistory";
       Utils.registerEvent("AccessStep", true, 10, done);
       sendEventByKey('webcomponent', 10, '');
@@ -104,7 +104,7 @@ export default function webJsunit() {
      *tc.name ClearHistory
      *tc.desic clear the browsing history
      */
-    it('ClearHistory', 0, async (done: Function) => {
+    it('ClearHistory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnce";
       Utils.registerEvent("ClearHistory", false, 11, done);
       sendEventByKey('webcomponent', 10, '');
@@ -115,7 +115,7 @@ export default function webJsunit() {
      *tc.name Once
      *tc.desic Save current page
      */
-    it('Once', 0, async (done: Function) => {
+    it('Once', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetItemAtIndex";
       Utils.registerContainEvent("Once", "a=b", 31, done);
       sendEventByKey('webcomponent', 10, '');
@@ -125,7 +125,7 @@ export default function webJsunit() {
      *tc.name GetItemAtIndex
      *tc.desic Save current page
      */
-    it('GetItemAtIndex', 0, async (done: Function) => {
+    it('GetItemAtIndex', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitContextMenuMediaType";
       Utils.registerEvent("GetItemAtIndex", "index", 32, done);
       sendEventByKey('webcomponent', 10, '');

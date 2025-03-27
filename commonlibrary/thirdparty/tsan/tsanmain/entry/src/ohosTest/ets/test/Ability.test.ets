@@ -15,7 +15,7 @@
 
 import tsan from 'libentry.so'
 import Utils from './Utils'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from "@ohos/hypium";
 
 export default function abilityTest() {
 
@@ -40,7 +40,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanDataRace001', 0, () => {
+    it('testTsanDataRace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.dataRace();
       expect(result).assertEqual(1);
     });
@@ -53,7 +53,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanDataRaceOnVptr001', 0, () => {
+    it('testTsanDataRaceOnVptr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.dataRaceOnVptr();
       expect(result).assertEqual(1);
     });
@@ -66,7 +66,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanUseAfterFree001', 0, () => {
+    it('testTsanUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.heapUseAfterFree();
       expect(result).assertEqual(1);
     });
@@ -79,7 +79,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanUseAfterFree002', 0, () => {
+    it('testTsanUseAfterFree002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.virtualCallVSFree();
       expect(result).assertEqual(1);
     });
@@ -92,7 +92,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanSignalCheck001', 0, () => {
+    it('testTsanSignalCheck001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.signalHandlerUnsafe();
       expect(result).assertEqual(1);
     });
@@ -105,7 +105,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTsanSignalCheck002', 0, () => {
+    it('testTsanSignalCheck002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result: number = tsan.signalHandlerError();
       expect(result).assertEqual(1);
     });

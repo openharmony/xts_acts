@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import pwd from 'libpwdndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function pwdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPwdSetpwent001', 0, async (done: Function) => {
+    it('testMuslPwdSetpwent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pwd.setpwent();
       expect(result).assertEqual(0);
       done()
@@ -48,7 +48,7 @@ export default function pwdNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPwdEndPWent001', 0, async (done: Function) => {
+    it('testMuslPwdEndPWent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(pwd.endpwent()).assertEqual(0);
       done()
     });
@@ -60,7 +60,7 @@ export default function pwdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslPwdGetpwent001', 0, async (done: Function) => {
+    it('testMuslPwdGetpwent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pwd.getpwent();
       expect(result).assertEqual(0)
       done()
@@ -74,7 +74,7 @@ export default function pwdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslPwdGetpwnam001', 0, async (done: Function) => {
+    it('testMuslPwdGetpwnam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pwd.getpwnam();
       expect(result).assertEqual(0)
       done()
@@ -88,7 +88,7 @@ export default function pwdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslPwdGetpwnamR001', 0, async (done: Function) => {
+    it('testMuslPwdGetpwnamR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pwd.getpwnamR();
       expect(result).assertEqual(0)
       done()
@@ -103,7 +103,7 @@ export default function pwdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslPwdGetpwuid001', 0, async (done: Function) => {
+    it('testMuslPwdGetpwuid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pwd.getpwuid();
       expect(result).assertEqual(0)
       done()
@@ -117,7 +117,7 @@ export default function pwdNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslPwdGetpwuidR001', 0, async (done: Function) => {
+    it('testMuslPwdGetpwuidR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pwd.getpwuidR();
       expect(result).assertEqual(0)
       done()

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testEnableSafeBrowsingTrue', 0, async (done: Function) => {
+    it('testEnableSafeBrowsingTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitEnableSafeBrowsingTrue"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testEnableSafeBrowsingTrue", true, 2001, done);
@@ -93,7 +93,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testEnableSafeBrowsingFalse', 0, async (done: Function) => {
+    it('testEnableSafeBrowsingFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitEnableSafeBrowsingFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testEnableSafeBrowsingFalse", true, 2002, done);
@@ -108,7 +108,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testIsSafeBrowsingEnabledTrue', 0, async (done: Function) => {
+    it('testIsSafeBrowsingEnabledTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsSafeBrowsingEnabledTrue"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testIsSafeBrowsingEnabledTrue", true, 2003, done);
@@ -123,7 +123,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testIsSafeBrowsingEnabledFalse', 0, async (done: Function) => {
+    it('testIsSafeBrowsingEnabledFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsSafeBrowsingEnabledFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testIsSafeBrowsingEnabledFalse", true, 2004, done);

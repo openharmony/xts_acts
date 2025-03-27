@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function RegExpTest() {
   describe('regExpTest', () => {
@@ -43,7 +43,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0001', 0, () => {
+    it('testRegExpPrototypeExec0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0001";
       try {
         const regex1 = new RegExp('foo*', 'g');
@@ -76,7 +76,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0002', 0, () => {
+    it('testRegExpPrototypeExec0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0002";
       try {
         const regex1 = new RegExp('foo*', 'g');
@@ -119,7 +119,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0003', 0, () => {
+    it('testRegExpPrototypeExec0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0003";
       try {
         const re: RegExp = /quick\s(?<color>brown).+?(jumps)/gi;
@@ -139,7 +139,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0004', 0, () => {
+    it('testRegExpPrototypeExec0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0004";
       try {
         const re: RegExp = /quick\s(?<color>brown).+?(jumps)/gi;
@@ -159,7 +159,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0005', 0, () => {
+    it('testRegExpPrototypeExec0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0005";
       try {
         const re: RegExp = /quick\s(?<color>brown).+?(jumps)/gi;
@@ -179,7 +179,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0006', 0, () => {
+    it('testRegExpPrototypeExec0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0006";
       try {
         const re: RegExp = /quick\s(?<color>brown).+?(jumps)/gi;
@@ -199,7 +199,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0007', 0, () => {
+    it('testRegExpPrototypeExec0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0007";
       try {
         const re: RegExp = /quick\s(?<color>brown).+?(jumps)/gi;
@@ -219,7 +219,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0008', 0, () => {
+    it('testRegExpPrototypeExec0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0008";
       try {
         const myRe: RegExp = /ab*/g;
@@ -250,7 +250,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0009', 0, () => {
+    it('testRegExpPrototypeExec0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0009";
       try {
         const matches = /(hello \S+)/.exec("This is a hello world!");
@@ -273,7 +273,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0001', 0, () => {
+    it('testRegExpPrototypeTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0001";
       try {
         const str = 'table football';
@@ -294,7 +294,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0002', 0, () => {
+    it('testRegExpPrototypeTest0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0002";
       try {
         const str = 'table football';
@@ -316,7 +316,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0003', 0, () => {
+    it('testRegExpPrototypeTest0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0003";
       try {
         const str = 'table football';
@@ -339,7 +339,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0004', 0, () => {
+    it('testRegExpPrototypeTest0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0004";
       try {
         const str = 'table football';
@@ -364,7 +364,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0005', 0, () => {
+    it('testRegExpPrototypeTest0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0005";
       try {
         const str = 'table football';
@@ -389,7 +389,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0006', 0, () => {
+    it('testRegExpPrototypeTest0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0006";
       try {
         const str = "hello world!";
@@ -408,7 +408,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeTest0007', 0, () => {
+    it('testRegExpPrototypeTest0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeTest0007";
       try {
         const regex = /foo/g;
@@ -433,7 +433,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeToString0001', 0, () => {
+    it('testRegExpPrototypeToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeToString0001";
       try {
         console.log(`${TAG} result:` + new RegExp('a+b+c'));
@@ -452,7 +452,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeToString0002', 0, () => {
+    it('testRegExpPrototypeToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeToString0002";
       try {
         console.log(`${TAG} result:` + new RegExp('a+b+c').toString());
@@ -471,7 +471,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeToString0003', 0, () => {
+    it('testRegExpPrototypeToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeToString0003";
       try {
         console.log(`${TAG} result:` + new RegExp('bar', 'g').toString());
@@ -490,7 +490,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeToString0004', 0, () => {
+    it('testRegExpPrototypeToString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeToString0004";
       try {
         console.log(`${TAG} result:` + new RegExp('\n', 'g').toString());
@@ -509,7 +509,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeToString0005', 0, () => {
+    it('testRegExpPrototypeToString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeToString0005";
       try {
         console.log(`${TAG} result:` + new RegExp('\\n', 'g').toString());
@@ -527,7 +527,7 @@ export default function RegExpTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeToString0007', 0, () => {
+    it('testRegExpPrototypeToString0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeToString0007";
       try {
         console.log(`${TAG} result:` + new RegExp("\n").toString());

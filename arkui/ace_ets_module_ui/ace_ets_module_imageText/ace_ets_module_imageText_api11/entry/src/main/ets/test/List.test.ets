@@ -81,10 +81,8 @@ import textTwoJsunit from './textTest/textTwoJsunit.test';
 import textEnabledJsunit from './textTest/textEnabledJsunit.test';
 import textChangeEnabledJsunit from './textTest/textChangeEnabledJsunit.test';
 import marqueeUIJsunit from './marqueeTest/marqueeUIJsunit.test.ets';
-import RichTextJsunit from './RichEditorTest/RichTextJsunit.test.ets';
 import spanUIJsunit from './spanTest/spanUIJsunit.test.ets';
 import fontJsunit from './fontTest/fontJsunit.test.ets';
-import richTextJsunitFOUR from './RichEditorTest/RichTextJsunitFOUR.test';
 import textClockJsunit from './textTest/TextClockJsunit.test';
 import textTimerJsunit from './textTest/TextTimerJsunit.test';
 import unitsModuleNameJsunit from './textTest/units.test.ets';
@@ -107,6 +105,12 @@ import richEditorTest from './RichEditorTest/RichEditorJsunit.test';
 import textTextCaseTest from './textTest/textTextCase.test';
 import textTextDecorationTest from './textTest/textTextDecoration.test';
 import searchTest from './SearchTest/SearchJsunit1.test';
+import TextAreaTypeTest from "./TextAreaTest/TextAreaType.test";
+import SearchTypeTest from "./SearchTest/SearchType.test";
+import ImageSpanVisibilityTest from "./ImageSpanTest/ImageSpanVisibility.test";
+import showCounterTest from './TextInputTest/ShowCounter.test';
+import UIFontAliasInfo from './fontTest/UIFontAliasInfo.test'
+import measureOptionsTest from './textTest/measureOptionsTest.test';
 
 
 export default function testsuite() {
@@ -124,10 +128,10 @@ export default function testsuite() {
   marqueeJsunit();
   ImageTextTest();
   TextAreaCallbackTest();
-  TextAreaSelectTest();
   Image_QRCode_Api();
   RichEditorApi();
   APIgetUIFontConfigJsunit();
+  TextAreaSelectTest();
   APITextBackgroundStyleJsunit();
   SXrenderingStrategyJsunit();
   SXsymbolSpanStyleJsunit();
@@ -178,10 +182,8 @@ export default function testsuite() {
   textEnabledJsunit();
   textChangeEnabledJsunit();
   marqueeUIJsunit();
-  RichTextJsunit();
   spanUIJsunit();
   fontJsunit();
-  richTextJsunitFOUR()
   textClockJsunit()
   textTimerJsunit()
   appVersionCodeJsunit();
@@ -205,4 +207,10 @@ export default function testsuite() {
   textTextDecorationTest();
   searchTest();
   textInputTest()
+  TextAreaTypeTest();
+  SearchTypeTest();
+  ImageSpanVisibilityTest();
+  showCounterTest();
+  UIFontAliasInfo();
+  measureOptionsTest();
 }

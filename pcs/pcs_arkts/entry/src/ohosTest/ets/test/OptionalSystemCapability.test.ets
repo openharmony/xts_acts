@@ -1,4 +1,4 @@
-import { describe, it, expect} from "@ohos/hypium"
+import { describe, it, expect, TestType, Level, Size} from "@ohos/hypium"
 import { batteryInfo, BusinessError, systemDateTime } from "@kit.BasicServicesKit"
 import { systemTimer } from '@kit.BasicServicesKit';
 import { inputMethod } from '@kit.IMEKit';
@@ -31,7 +31,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testPowerManagerQuery', 0, () => {
+    it('testPowerManagerQuery', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.log(`${TAG}, testPowerManagerQuery start`);
       let powerManagerSupported = canIUse("SystemCapability.PowerManager.BatteryManager.Core");
       if (powerManagerSupported) {
@@ -58,7 +58,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCustomInputMethod', 0, () => {
+    it('testCustomInputMethod', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.log(`${TAG}, testCustomInputMethod start`);
       let isInputMethod = canIUse("SystemCapability.MiscServices.InputMethodFramework");
       console.log(`${TAG},The  inputMethod is : ${ isInputMethod }`);
@@ -88,7 +88,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testInputMethodEngine', 0, () => {
+    it('testInputMethodEngine', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.log(`${TAG}, testInputMethodEngine start`);
       let inputMethod = canIUse("SystemCapability.MiscServices.InputMethodFramework");
       console.log(`${TAG},The  inputMethod is : ${ inputMethod }`);
@@ -104,7 +104,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testDefaultInputMethod', 0, () => {
+    it('testDefaultInputMethod', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.log(`${TAG}, testDefaultInputMethod start`);
       let isInputMethod = canIUse("SystemCapability.MiscServices.InputMethodFramework");
       console.log(`${TAG},The  inputMethod is : ${ isInputMethod }`);
@@ -130,7 +130,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testJPEGDecoding', 0, async () => {
+    it('testJPEGDecoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testJPEGDecoding start`);
       let abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       const entryContext = await application.createModuleContext(abilityContext, 'entry');
@@ -164,7 +164,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testGIFDecoding', 0, async () => {
+    it('testGIFDecoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testGIFDecoding start`);
       let abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       const entryContext = await application.createModuleContext(abilityContext, 'entry');
@@ -198,7 +198,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testPNGDecoding', 0, async () => {
+    it('testPNGDecoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testPNGDecoding start`);
       let abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       const entryContext = await application.createModuleContext(abilityContext, 'entry');
@@ -231,7 +231,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testBMPDecoding', 0, async () => {
+    it('testBMPDecoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testBMPDecoding start`);
       let abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       const entryContext = await application.createModuleContext(abilityContext, 'entry');
@@ -265,7 +265,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testWEBPDecoding', 0, async () => {
+    it('testWEBPDecoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testWEBPDecoding start`);
       let abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       const entryContext = await application.createModuleContext(abilityContext, 'entry');
@@ -300,7 +300,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testJPEGPacker', 0, async () => {
+    it('testJPEGPacker', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testPNGPacker start`);
       try {
         let context = await abilityDelegatorRegistry.getAbilityDelegator().getCurrentTopAbility();
@@ -335,7 +335,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testPNGPacker', 0, async () => {
+    it('testPNGPacker', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testPNGPacker start`);
       try {
         let context = await abilityDelegatorRegistry.getAbilityDelegator().getCurrentTopAbility();
@@ -371,7 +371,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testWEBPPacker', 0, async () => {
+    it('testWEBPPacker', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testPNGPacker start`);
       try {
         let context = await abilityDelegatorRegistry.getAbilityDelegator().getCurrentTopAbility();
@@ -407,7 +407,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it("testSetTime", 0, async () => {
+    it("testSetTime", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testSetTime start`);
       let time = 1611081385000;
       try {
@@ -429,7 +429,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it("testSetTimeOut", 0, async () => {
+    it("testSetTimeOut", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testSetTimeOut start`);
       let options: systemTimer.TimerOptions = {
         type: systemTimer.TIMER_TYPE_REALTIME,
@@ -454,7 +454,7 @@ export default function optionalSystemCapability() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it("testHomeEvent", 0, async () => {
+    it("testHomeEvent", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(`${TAG}, testHomeEvent start`);
       let driver = Driver.create();
       let abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext;

@@ -14,7 +14,7 @@
  */
 import bundle from '@ohos.bundle'
 import pkg from '@system.package'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const NUM_TWO = 2;
 const NUM_FOUR = 4;
@@ -40,7 +40,7 @@ describe('ActsBmsJsTest', function () {
     * @tc.desc: 1.install a js hap which has an ability with full domain name
     *           2.check the ability name by the interface of getBundleInfo
     */
-    it('Sub_Bms_Framework_Query_AppInfo_0140', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0140', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(NUM_TWO);
         if (result.abilityInfos.length == NUM_TWO) {
@@ -86,7 +86,7 @@ describe('ActsBmsJsTest', function () {
      * @tc.desc: 1.install a js hap with two ability
      *           2.check the ability name by the interface of getBundleInfo
      */
-    it('Sub_Bms_Framework_Query_AppInfo_0160', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0160', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(NUM_FOUR);
         if (result.abilityInfos.length == NUM_FOUR) {
@@ -117,7 +117,7 @@ describe('ActsBmsJsTest', function () {
      * @tc.desc: 1.install a js hap which has an ability with short domain name
      *           2.check the ability name by the interface of getBundleInfo
      */
-    it('Sub_Bms_Framework_Query_AppInfo_0180', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0180', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(1);
         if (result.abilityInfos.length == 1) {
@@ -159,7 +159,7 @@ describe('ActsBmsJsTest', function () {
     * @tc.desc: 1.install a c++ hap which has an ability with short domain name
     *           2.check the ability name by the interface of getBundleInfo
     */
-    it('Sub_Bms_Framework_Query_AppInfo_0200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(1);
         if (result.abilityInfos.length == 1) {

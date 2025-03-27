@@ -14,7 +14,7 @@
  */
  
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -37,7 +37,7 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('assertContain',0, () => {
+    it('assertContain', TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let a = 'abc'

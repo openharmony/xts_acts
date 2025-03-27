@@ -16,7 +16,7 @@
 import notificationManager from '@ohos.notificationManager';
 import Base from '@ohos.base';
 import { Driver, ON } from '@ohos.UiTest';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level } from '@ohos/hypium';
 import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 
 import common from '@ohos.app.ability.common';
@@ -34,7 +34,7 @@ export default function ActsDenyTest() {
      * @tc.name      : function requestEnableNotification(context): Promise<void>
      * @tc.desc      : requestEnableNotification deny button is clicked
      */
-    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Deny_Test_0100', 0,
+    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Deny_Test_0100', Level.LEVEL2,
       async (done: () => void) => {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);

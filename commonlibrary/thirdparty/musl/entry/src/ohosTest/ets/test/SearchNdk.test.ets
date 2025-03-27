@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import search from 'libsearchndk.so'
 
@@ -32,7 +32,7 @@ export default function SearchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTdestroy001', 0, async (done: Function) => {
+    it('testMuslSearchTdestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tdestroy();
       expect(result).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function SearchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTdelete001', 0, async (done: Function) => {
+    it('testMuslSearchTdelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tdelete();
       expect(result).assertEqual(0);
       done()
@@ -60,7 +60,7 @@ export default function SearchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSearchTfind001', 0, async (done: Function) => {
+    it('testMuslSearchTfind001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tfind();
       expect(result).assertEqual(0);
       done()
@@ -73,7 +73,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHcreate001', 0, async (done: Function) => {
+    it('testMuslSearchHcreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hcreate();
       expect(result).assertEqual(0)
       done()
@@ -87,7 +87,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHcreateR001', 0, async (done: Function) => {
+    it('testMuslSearchHcreateR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hcreateR();
       expect(result).assertEqual(0)
       done()
@@ -101,7 +101,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHdestroy001', 0, async (done: Function) => {
+    it('testMuslSearchHdestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hdestroy();
       expect(result).assertEqual(0)
       done()
@@ -115,7 +115,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHdestroyR001', 0, async (done: Function) => {
+    it('testMuslSearchHdestroyR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hdestroyR();
       expect(result).assertEqual(0)
       done()
@@ -129,7 +129,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHsearch001', 0, async (done: Function) => {
+    it('testMuslSearchHsearch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hsearch();
       expect(result).assertEqual(0)
       done()
@@ -143,7 +143,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchHsearchR001', 0, async (done: Function) => {
+    it('testMuslSearchHsearchR001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.hsearchR();
       expect(result).assertEqual(0)
       done()
@@ -157,7 +157,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchInsque001', 0, async (done: Function) => {
+    it('testMuslSearchInsque001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.insque();
       expect(result).assertEqual(0)
       done()
@@ -170,7 +170,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : level 1
      */
-    it('testMuslSearchSearch001', 0, async (done: Function) => {
+    it('testMuslSearchSearch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number= search.lSearch();
       expect(result).assertEqual(0)
       done()
@@ -184,7 +184,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchRemque001', 0, async (done: Function) => {
+    it('testMuslSearchRemque001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.remque();
       expect(result).assertEqual(0)
       done()
@@ -198,7 +198,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchLfind001', 0, async (done: Function) => {
+    it('testMuslSearchLfind001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.lfind(25,14,29,14);
       expect(result).assertEqual(0)
       done()
@@ -212,7 +212,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('testMuslSearchLfind002', 0, async (done: Function) => {
+    it('testMuslSearchLfind002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.lfind(25,14,29,1);
       expect(result).assertEqual(-1)
       done()
@@ -226,7 +226,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchTsearch001', 0, async (done: Function) => {
+    it('testMuslSearchTsearch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.tsearch();
       expect(result).assertEqual(0)
       done()
@@ -240,7 +240,7 @@ export default function SearchNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslSearchTwalk001', 0, async (done: Function) => {
+    it('testMuslSearchTwalk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = search.twalk();
       expect(result).assertEqual(0)
       done()

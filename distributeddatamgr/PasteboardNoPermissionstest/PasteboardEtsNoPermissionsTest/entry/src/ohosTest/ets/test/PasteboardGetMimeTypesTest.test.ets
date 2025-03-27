@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -47,7 +47,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0100 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
       await systemPasteboard.setData(pasteData).then(() => {
@@ -75,7 +75,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0200 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_HTML, 'hello');
       await systemPasteboard.setData(pasteData).then(() => {
@@ -103,7 +103,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0300 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_URI, 'hello');
       await systemPasteboard.setData(pasteData).then(() => {
@@ -131,7 +131,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0400', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0400 start-----")
       let pasteData: pasteboard.PasteData;
       try {
@@ -166,7 +166,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0500 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_WANT, WANT);
       await systemPasteboard.setData(pasteData).then(() => {
@@ -194,7 +194,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0600 start-----")
       let pasteData: pasteboard.PasteData = pasteboard.createData("hello/test", new ArrayBuffer(256));
       await systemPasteboard.setData(pasteData).then(() => {
@@ -222,7 +222,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0700 start-----")
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
@@ -258,7 +258,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0800 start-----")
       let hyperLinkData = new unifiedDataChannel.UnifiedData();
       let hyperLink = new unifiedDataChannel.Hyperlink();
@@ -290,7 +290,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0900', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_0900 start-----")
       let htmlData = new unifiedDataChannel.UnifiedData();
       let html = new unifiedDataChannel.HTML();
@@ -322,7 +322,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1000', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1000 start-----")
       let fileData = new unifiedDataChannel.UnifiedData();
       let file = new unifiedDataChannel.File();
@@ -357,7 +357,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1100 start-----")
       let pixelMap:image.PixelMap = await image.createPixelMap(color, opts);
       let pixelMapRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP,pixelMap);
@@ -391,7 +391,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1200 start-----")
       let appItemData = new unifiedDataChannel.UnifiedData();
       let appItem = new unifiedDataChannel.SystemDefinedAppItem();
@@ -433,7 +433,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1300 start-----")
       let imageData = new unifiedDataChannel.UnifiedData();
       let image = new unifiedDataChannel.Image();
@@ -464,7 +464,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1400', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1400 start-----")
       let videoData = new unifiedDataChannel.UnifiedData();
       let video = new unifiedDataChannel.Video();
@@ -495,7 +495,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1500 start-----")
       let audioData = new unifiedDataChannel.UnifiedData();
       let audio = new unifiedDataChannel.Audio();
@@ -526,7 +526,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1600 start-----")
       let folderData = new unifiedDataChannel.UnifiedData();
       let folder = new unifiedDataChannel.Folder();
@@ -557,7 +557,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1700 start-----")
       let sysFormData = new unifiedDataChannel.UnifiedData();
       let form = new unifiedDataChannel.SystemDefinedForm();
@@ -598,7 +598,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1800 start-----")
       let appRecordData = new unifiedDataChannel.UnifiedData();
       let record = new unifiedDataChannel.ApplicationDefinedRecord();
@@ -631,7 +631,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1900', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_1900 start-----")
       let wantData = new unifiedDataChannel.UnifiedData();
       let object:Want = {
@@ -665,7 +665,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2000', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2000 start-----")
       let textData = new unifiedDataChannel.UnifiedData();
       let text = new unifiedDataChannel.Text();
@@ -699,7 +699,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2100 start-----")
       let arrayBufferData = new unifiedDataChannel.UnifiedData();
       let arrayBuffer = new unifiedDataChannel.ApplicationDefinedRecord;
@@ -731,7 +731,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2200 start-----")
       await systemPasteboard.getMimeTypes().then((data: Array<String>) => {
         expect(data[0]).assertEqual(undefined)
@@ -751,7 +751,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100 start-----")
       try {
         systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);
@@ -772,7 +772,7 @@ export default function PasteboardGetMimeTypesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100 start-----")
       try {
         systemPasteboard.removeAppShareOptions();

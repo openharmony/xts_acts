@@ -61,11 +61,11 @@ describe("SensorJsTest_sensor_29", function () {
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0010
      * @tc.name:subscribeGyroscope_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("subscribeGyroscope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest001---------------');
         try{
            sensor.getSingleSensor(GyroscopeId ,(error, data) => {
@@ -364,7 +364,7 @@ describe("SensorJsTest_sensor_29", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("subscribeGyroscope_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest008---------------');
         try{
            sensor.getSingleSensor(GyroscopeId ,(error, data) => {

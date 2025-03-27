@@ -16,7 +16,7 @@
 import fileShare from '@ohos.fileshare';
 import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
-import { describe, it, expect, } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function FileSahre_PersistPermission_test() {
     describe('PersistPermission_test', function () {
@@ -31,7 +31,7 @@ export default function FileSahre_PersistPermission_test() {
       * @tc.level Level 0
       * @tc.require
       */
-      it('FileShare_persistPermission_001', 0, async function (done) {
+      it('FileShare_persistPermission_001', Level.LEVEL0, async function (done) {
           try {
           let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_001.txt";
           let uriObject = new fileuri.FileUri(fileStr);
@@ -71,7 +71,7 @@ export default function FileSahre_PersistPermission_test() {
       * @tc.level Level 0
       * @tc.require
       */
-      it('FileShare_persistPermission_002', 0, async function (done) {
+      it('FileShare_persistPermission_002', Level.LEVEL0, async function (done) {
           try {
           let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_002.txt";
           let uriObject = new fileuri.FileUri(fileStr);
@@ -111,7 +111,7 @@ export default function FileSahre_PersistPermission_test() {
       * @tc.level Level 3
       * @tc.require
       */
-      it('FileShare_persistPermission_003', 3, async function (done) {
+      it('FileShare_persistPermission_003', Level.LEVEL3, async function (done) {
           try {
           let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_003.txt";
           let uriObject1 = new fileuri.FileUri(fileStr1);
@@ -141,7 +141,7 @@ export default function FileSahre_PersistPermission_test() {
               let errorCode = err.data[0].code + policyInfo1.operationMode;
               console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
               console.log("FileShare.PolicyErrorResult message : " + JSON.stringify(err.data[0].message));
-              expect(errorCode.code == 2).assertTrue();
+              expect(errorCode.code == fileShare.PolicyErrorCode.INVALID_MODE).assertTrue();
               done();
             }
           });
@@ -164,7 +164,7 @@ export default function FileSahre_PersistPermission_test() {
       * @tc.level Level 3
       * @tc.require
       */
-      it('FileShare_persistPermission_004', 3, async function (done) {
+      it('FileShare_persistPermission_004', Level.LEVEL3, async function (done) {
           try {
           let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_004.txt";
           let uriObject1 = new fileuri.FileUri(fileStr1);
@@ -195,6 +195,7 @@ export default function FileSahre_PersistPermission_test() {
               console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
               console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[0].message));
               expect(err.data[0].code == 3 && err.data[0].message == "Invalid path!").assertTrue();
+              expect(err.data[0].code == fileShare.PolicyErrorCode.INVALID_PATH).assertTrue();
               done();
             }
           });
@@ -217,7 +218,7 @@ export default function FileSahre_PersistPermission_test() {
       * @tc.level Level 3
       * @tc.require
       */
-      it('FileShare_persistPermission_005', 3, async function (done) {
+      it('FileShare_persistPermission_005', Level.LEVEL3, async function (done) {
         try {
           let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_005.txt";
           let uriObject1 = new fileuri.FileUri(fileStr1);
@@ -248,7 +249,7 @@ export default function FileSahre_PersistPermission_test() {
               console.log("FileShare.PolicyErrorResult PolicyErrorCode.PERSISTENCE_FORBIDDEN : " + errorCode);
               console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
               console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[0].message));
-              expect(err.data[i].code == 1).assertTrue();
+              expect(err.data[i].code == fileShare.PolicyErrorCode.PERSISTENCE_FORBIDDEN).assertTrue();
               done(); 
             }
           });

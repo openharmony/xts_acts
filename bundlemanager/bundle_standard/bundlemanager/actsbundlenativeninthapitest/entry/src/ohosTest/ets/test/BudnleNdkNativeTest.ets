@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium"
 import bundlendk from 'libbundlendk.so'
 
 const BUNDLE_NAME = "com.actsbundle.napitest"
@@ -29,7 +29,7 @@ export default function budnleNdkNativeTest() {
       * @tc.name      budnleNdkNativeTest002
       * @tc.desc      budnleNdkNativeTest
       */
-      it('BundleNdkTest002', 0 , () =>  {
+      it('BundleNdkTest002', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () =>  {
           console.info("Test NAPI data= " + JSON.stringify(bundlendk.getCurrentApplicationInfo()));
           expect(bundlendk.getCurrentApplicationInfo().bundleName).assertEqual(BUNDLE_NAME);
           expect(bundlendk.getCurrentApplicationInfo().fingerprint).assertEqual(FINGER_PRINT);

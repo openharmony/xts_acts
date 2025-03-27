@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -75,7 +75,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewGetAndSetHttpAuthUsernamePassword', 0, async (done: Function) => {
+    it('testWebviewGetAndSetHttpAuthUsernamePassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewGetAndSetHttpAuthUsernamePassword";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewGetAndSetHttpAuthUsernamePassword", "success", 25001, done);
@@ -90,7 +90,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewUpdateHttpAuthPassword', 0, async (done: Function) => {
+    it('testWebviewUpdateHttpAuthPassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewUpdateHttpAuthPassword";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewUpdateHttpAuthPassword", "success", 25002, done);
@@ -105,7 +105,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewUpdateHttpAuthUsername', 0, async (done: Function) => {
+    it('testWebviewUpdateHttpAuthUsername', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewUpdateHttpAuthUsername";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewUpdateHttpAuthUsername", "success", 25003, done);
@@ -120,7 +120,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewSetHttpAuthUsernameToNull', 0, async (done: Function) => {
+    it('testWebviewSetHttpAuthUsernameToNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewSetHttpAuthUsernameToNull";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewSetHttpAuthUsernameToNull", "success", 25004, done);
@@ -135,7 +135,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewSetHttpAuthPasswordToNull', 0, async (done: Function) => {
+    it('testWebviewSetHttpAuthPasswordToNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewSetHttpAuthPasswordToNull";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewSetHttpAuthPasswordToNull", "success", 25005, done);
@@ -150,7 +150,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewSetHttpAuthUsernamePasswordToNull', 0, async (done: Function) => {
+    it('testWebviewSetHttpAuthUsernamePasswordToNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewSetHttpAuthUsernamePasswordToNull";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewSetHttpAuthUsernamePasswordToNull", "success", 25006, done);
@@ -165,7 +165,7 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebviewDeleteHttpAuthUsernamePassword', 0, async (done: Function) => {
+    it('testWebviewDeleteHttpAuthUsernamePassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebviewDeleteHttpAuthUsernamePassword";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewDeleteHttpAuthUsernamePassword", "success", 25007, done);

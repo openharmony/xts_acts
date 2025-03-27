@@ -15,7 +15,7 @@
 
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, TestType, Size, Level  } from '@ohos/hypium'
 
 const BUNDLE_NAME1 = 'com.example.bmsaccesstoken1';
 const BUNDLE_NAME2 = 'com.example.bmsaccesstoken2';
@@ -41,7 +41,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getAccessTokenIdOfEntry
          * @tc.desc: get the accessTokenId
          */
-        it('getAccessTokenIdOfEntry', 0, async function (done) {
+        it('getAccessTokenIdOfEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId)
                 .then(applicationInfo => {
                     console.info('accessTokenId: ' + applicationInfo.accessTokenId);
@@ -59,7 +59,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getReqPermissionOfEntry
          * @tc.desc: get the reqPermissions and reqPermissionStates
          */
-        it('getReqPermissionOfEntry', 0, async function (done) {
+        it('getReqPermissionOfEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
                 .then(bundleInfo => {
                     expect(bundleInfo.name).assertEqual(BUNDLE_NAME3);
@@ -81,7 +81,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getReqPermissionUpdateEntry
          * @tc.desc: get the reqPermissions and reqPermissionStates
          */
-        it('getReqPermissionUpdateEntry', 0, async function (done) {
+        it('getReqPermissionUpdateEntry', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
                 .then(bundleInfo => {
                     expect(bundleInfo.name).assertEqual(BUNDLE_NAME2);
@@ -107,7 +107,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name: getReqPermissionUpdateEntryAndFeature
          * @tc.desc: get the reqPermissions and reqPermissionStates
          */
-        it('getReqPermissionUpdateEntryAndFeature', 0, async function (done) {
+        it('getReqPermissionUpdateEntryAndFeature', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
                 .then(bundleInfo => {
                     expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
@@ -135,7 +135,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name getAccessTokenIdWithDefault
          * @tc.desc Test getBundleInfos interfaces with with a flag
          */
-        it("getAccessTokenIdWithDefault", 0, async function (done) {
+        it("getAccessTokenIdWithDefault", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT)
                 .then((applicationInfo) => {
                     console.info("getAccessTokenIdWithDefault accessTokenId: " + applicationInfo.accessTokenId);
@@ -153,7 +153,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name getAccessTokenIdWithGetAbilities
          * @tc.desc Test getBundleInfos interfaces with a flag
          */
-        it("getAccessTokenIdWithGetAbilities", 0, async function (done) {
+        it("getAccessTokenIdWithGetAbilities", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
                 .then((applicationInfo) => {
                     console.info("getAccessTokenIdWithGetAbilities accessTokenId: " + applicationInfo.accessTokenId);
@@ -171,7 +171,7 @@ export default function ActsBmsAccessTokenTest() {
          * @tc.name getAccessTokenIdWithGetPermission
          * @tc.desc Test getBundleInfos interfaces with a flag
          */
-        it("getAccessTokenIdWithGetPermission", 0, async function (done) {
+        it("getAccessTokenIdWithGetPermission", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
                 .then((applicationInfo) => {
                     console.info("getAccessTokenIdWithGetPermission accessTokenId: " + applicationInfo.accessTokenId);

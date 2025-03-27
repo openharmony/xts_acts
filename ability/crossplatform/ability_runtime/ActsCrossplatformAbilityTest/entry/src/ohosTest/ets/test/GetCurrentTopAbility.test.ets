@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -39,7 +39,7 @@ export default function GetCurrentTopAbilityTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001", 0, async (done: Function) => {
+    it("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -81,7 +81,7 @@ export default function GetCurrentTopAbilityTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002", 0, async (done: Function) => {
+    it("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();

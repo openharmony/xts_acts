@@ -19,6 +19,7 @@ import {
 import fileUri from '@ohos.file.fileuri';
 import featureAbility from '@ohos.ability.featureAbility';
 import fs from '@ohos.file.fs';
+import { TestType, Size, Level } from '@ohos/hypium';
 const CONTENT = 'hello!!!';
 
 export function prepare2GFile(fpath) {
@@ -53,7 +54,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 0
    * @tc.require
    */  
-  it('fileIO_copy_async_001', 0, async function (done) {
+  it('fileIO_copy_async_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_001');
     let fpathTarget = await nextFileName('dst');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -92,7 +93,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 0
    * @tc.require
    */  
-  it('fileIO_copy_async_002', 0, async function (done) {
+  it('fileIO_copy_async_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_002');
     let fpathTarget = fpath + 'dst';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -124,7 +125,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('fileIO_copy_async_003', 3, async function (done) {
+  it('fileIO_copy_async_003', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_003');
     let fpathTarget = fpath + 'dst';
     let srcDirUriLocal = fileUri.getUriFromPath(fpath);
@@ -157,7 +158,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('fileIO_copy_async_004', 3, async function (done) {
+  it('fileIO_copy_async_004', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_004');
     let fpathTarget = fpath + 'dst';
     let srcDirUriLocal = fileUri.getUriFromPath(fpath);
@@ -183,7 +184,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-   it('fileIO_copy_async_005', 3, async function (done) {
+   it('fileIO_copy_async_005', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_005');
     let fpathTarget = fpath + 'dst';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -215,7 +216,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('fileIO_copy_async_006', 3, async function (done) {
+  it('fileIO_copy_async_006', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_006');
     let fpathTarget = fpath + 'dst';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -242,7 +243,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_copy_async_007', 0, async function (done) {
+  it('fileIO_copy_async_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_007');
     let destpath = fpath + 'dest';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -284,7 +285,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_copy_async_008', 0, async function (done) {
+  it('fileIO_copy_async_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_008');
     let destpath = fpath + 'dest';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -320,7 +321,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_009', 3, async function (done) {
+  it('fileIO_copy_async_009', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_009');
     let destpath = fpath + 'dest';
     let srcDirUri = fileUri.getUriFromPath(fpath);
@@ -356,7 +357,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_010', 3, async function (done) {
+  it('fileIO_copy_async_010', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_010');
     let destpath = fpath + 'dest';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -390,7 +391,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_011', 3, async function (done) {
+  it('fileIO_copy_async_011', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_011';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -435,7 +436,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_012', 3, async function (done) {
+  it('fileIO_copy_async_012', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_012';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -474,7 +475,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_copy_async_013', 3, async function (done) {
+   it('fileIO_copy_async_013', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_013';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -514,7 +515,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_014', 3, async function (done) {
+  it('fileIO_copy_async_014', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_014';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -547,7 +548,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_015', 3, async function (done) {
+  it('fileIO_copy_async_015', Level.LEVEL3, async function (done) {
    let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_015';
    let destpath = fpath + 'dest';
    expect(prepare2GFile(fpath)).assertTrue();
@@ -592,7 +593,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_016', 3, async function (done) {
+  it('fileIO_copy_async_016', Level.LEVEL3, async function (done) {
     let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_016';
     let destpath = fpath + 'dest';
     expect(prepare2GFile(fpath)).assertTrue();
@@ -626,6 +627,67 @@ describe('fileIO_fs_copy', function () {
       });
     } catch (e) {
       console.log('fileIO_copy_async_016 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIO_Copy_ASYNC_1700
+   * @tc.name fileIO_copy_async_017
+   * @tc.desc Test copy() interfaces.
+   * The input parameter is invalid.callback without options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_copy_async_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_copy_async_017');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let srcDirUri = fileUri.getUriFromPath(fpath);
+    let dstDirUri = 1;
+  
+    try {
+      fileIO.copy(srcDirUri, dstDirUri, (err) => {
+        if (err) {
+          console.log('fileIO_copy_async_017 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+      });
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_copy_async_017 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIO_Copy_ASYNC_1800
+   * @tc.name fileIO_copy_async_018
+   * @tc.desc Test copy() interfaces.
+   * Invalid argument.callback without options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_copy_async_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    let fpath = await nextFileName('fileIO_copy_async_018');
+    let destpath = fpath + 'dest';
+    let srcDirUri = fileUri.getUriFromPath(fpath);
+    let dstDirUri = fileUri.getUriFromPath(destpath);
+  
+    try {
+      fileIO.copy(srcDirUri, dstDirUri, (err) => {
+        if (err) {
+          console.log('fileIO_copy_async_018 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_copy_async_018 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

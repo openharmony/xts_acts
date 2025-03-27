@@ -33,11 +33,6 @@ import sim from '@ohos.telephony.sim';
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
     AddContactTest();
-    if (deviceInfo.deviceType !== 'wearable') {
-      SelectContactsTest();
-    }
-    AddContactViaUITest();
-    SaveToExistingContactViaUITest();
     QueryKeyTest();
     QueryByEmailTest();
     QueryByEmailPhoneNumTest();

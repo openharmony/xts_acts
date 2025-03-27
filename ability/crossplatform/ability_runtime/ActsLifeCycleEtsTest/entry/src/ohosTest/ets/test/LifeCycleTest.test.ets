@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
@@ -130,7 +130,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0100", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0100 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0100";
       let code: number;
@@ -185,7 +185,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0200", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0200 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0200";
       let code: number;
@@ -262,7 +262,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0300", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0300 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0300";
       let code: number;
@@ -345,7 +345,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0400", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0400 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0400";
       let code: number;
@@ -429,7 +429,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0500", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0500", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0500 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0500";
       let str: Want = {
@@ -514,7 +514,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0600", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0600", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0600 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0600";
       let str: Want = {
@@ -602,7 +602,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0700", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0700", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0700 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0700";
       let code1: number;
@@ -713,7 +713,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0800", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0800", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0800 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0800";
       globalThis.MainAbility1onForeground = false;
@@ -798,7 +798,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_0900", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_0900", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0900 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0900";
       globalThis.MainAbility1onForeground = false;
@@ -878,7 +878,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_1000", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_1000", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1200 START-------------");
       TAG = "Singlehap_LifeCycleTest_1200";
       let id1: number|undefined = undefined;
@@ -941,7 +941,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_1100", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_1100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_1100 start-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_1100";
       globalThis.MainAbility9onForeground = false;
@@ -1012,7 +1012,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   1
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_1200", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_1200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1600 START-------------");
       TAG = "Singlehap_LifeCycleTest_1600";
       let code: number;
@@ -1035,7 +1035,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   1
      */
-    it("Crossplatform_Singlehap_LifeCycleTest_1300", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_1300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1700 START-------------");
       TAG = "Singlehap_LifeCycleTest_1700";
       let code: number;
@@ -1059,7 +1059,7 @@ export default function lifecycleTest() {
     * @tc.type    Function
     * @tc.level   0
     */
-    it("Crossplatform_Singlehap_LifeCycleTest_1400", 0, async (done: Function) => {
+    it("Crossplatform_Singlehap_LifeCycleTest_1400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_1400 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_1400";
       let str: Want = {
@@ -1120,7 +1120,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_AbilityStage_onCreate_Test_0100", 0, async (done: Function) => {
+    it("Crossplatform_AbilityStage_onCreate_Test_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_AbilityStage_onCreate_Test_0100 START-------------");
       TAG = "Crossplatform_AbilityStage_onCreate_Test_0100";
       // abilitystage的onCreatre里注册了globalThis.applicationContext，globalThis.applicationContext不为null
@@ -1138,7 +1138,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_AbilityStage_Context_Test_0100", 0, async (done: Function) => {
+    it("Crossplatform_AbilityStage_Context_Test_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_AbilityStage_Context_Test_0100 START-------------");
       TAG = "Crossplatform_AbilityStage_Context_Test_0100";
       let str: Want = {
@@ -1174,7 +1174,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Multi_LifeCycleTest_0200", 0, async (done: Function) => {
+    it("Crossplatform_Multi_LifeCycleTest_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Multi_LifeCycleTest_0200 START-------------");
       TAG = "Crossplatform_Multi_LifeCycleTest_0200";
       let str: Want = {
@@ -1229,7 +1229,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_LifeCycleTest_on_0100", 0, async (done: Function) => {
+    it("Crossplatform_LifeCycleTest_on_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_LifeCycleTest_on_0100 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0100";
       let str: Want = {
@@ -1268,7 +1268,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_LifeCycleTest_on_0200", 0, async (done: Function) => {
+    it("Crossplatform_LifeCycleTest_on_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_LifeCycleTest_on_0200 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0200";
       let listKey14: string[] = [];
@@ -1382,7 +1382,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_LifeCycleTest_on_0300", 0, async (done: Function) => {
+    it("Crossplatform_LifeCycleTest_on_0300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_LifeCycleTest_on_0300 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0300";
 
@@ -1402,7 +1402,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_LifeCycleTest_on_0400", 0, async (done: Function) => {
+    it("Crossplatform_LifeCycleTest_on_0400", Level.LEVEL0, async (done: Function) => {
       console.log("------------LifeCycleTest_on_0400 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0400";
 
@@ -1443,7 +1443,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_LifeCycleTest_on_0500", 0, async (done: Function) => {
+    it("Crossplatform_LifeCycleTest_on_0500", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_LifeCycleTest_on_0500 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0500";
       console.info(TAG + "start");
@@ -1482,7 +1482,7 @@ export default function lifecycleTest() {
      * @tc.type    Function
      * @tc.level   0
      */
-    it("Crossplatform_Multi_LifeCycleTest_0100", 0, async (done: Function) => {
+    it("Crossplatform_Multi_LifeCycleTest_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Crossplatform_Multi_LifeCycleTest_0100 START-------------");
       TAG = "Crossplatform_Multi_LifeCycleTest_0100";
       globalThis.abilityContext

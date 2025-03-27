@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Driver } from '@ohos.UiTest'
 import Utils from './Util';
@@ -84,7 +84,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache0005", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 200, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -102,7 +102,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache0006", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 201, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -120,7 +120,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache0007", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 202, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -138,7 +138,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache0008", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 203, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -156,7 +156,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache0009", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 204, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -174,7 +174,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00010", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 205, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -192,7 +192,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00011", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 206, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -210,7 +210,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00012", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 207, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -228,7 +228,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00013", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 208, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -246,7 +246,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00014", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions", "true", 209, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -264,7 +264,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00016", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions",
         "17100001Init error. The WebviewController must be associated with a Web component", 210, done,
         (backData: events_emitter.EventData, expected: Object) => {

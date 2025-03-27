@@ -55,6 +55,8 @@ export default function TextPickerDialogJsunit() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[TextPickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("TextPickerDialog");
+      await driver.triggerKey(2070)
+      await CommonFunc.sleep(1000);
       console.info('[TextPickerDialogJsunit_0100] END');
       done();
     });

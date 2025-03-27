@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -165,7 +165,7 @@ export default function rdbstoreLockRowJsunitTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreLockRow0001', 0, async function () {
+    it('testRdbStoreLockRow0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0001 start *************");
         var u8 = new Uint8Array([1, 2, 3]);
         const assets = [asset1, asset2];
@@ -220,7 +220,7 @@ export default function rdbstoreLockRowJsunitTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreLockRow0002', 0, async function () {
+    it('testRdbStoreLockRow0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0002 start *************");
         try {
             let predicates = new data_relationalStore.RdbPredicates("");
@@ -241,7 +241,7 @@ export default function rdbstoreLockRowJsunitTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreLockRow0003', 0, async function () {
+    it('testRdbStoreLockRow0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
         console.log(TAG + "************* testRdbStoreLockRow0003 start *************");
         try {
             let predicates = new data_relationalStore.RdbPredicates("");

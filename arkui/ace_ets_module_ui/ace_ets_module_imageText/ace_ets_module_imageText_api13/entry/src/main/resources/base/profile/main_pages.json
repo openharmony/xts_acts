@@ -5,6 +5,9 @@
     "MainAbility/pages/Text/TextMenuType",
     "MainAbility/pages/RichEditor/RichEditorMenuType",
     "MainAbility/pages/Text/StyledString",
-    "MainAbility/pages/RichEditor/RichEditorStyledStringTest"
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest",
+    "MainAbility/pages/Text/enableHapticFeedback",
+    "MainAbility/pages/RichEditor/barState",
+    "MainAbility/pages/StyledString/unmarshalling"
   ]
 }

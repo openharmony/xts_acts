@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it , Level, Size, TestType} from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_DOMAIN_HTTPS: string = "https://httpbin.org/anything";
@@ -45,7 +45,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0100', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0100";
       console.info(`${caseName} test Start`);
       try {
@@ -90,7 +90,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0200', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0200";
       console.info(`${caseName} test Start`);
       try {
@@ -132,7 +132,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0300', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0300";
       console.info(`${caseName} test Start`);
       try {
@@ -177,7 +177,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0400', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0400";
       console.info(`${caseName} test Start`);
       try {
@@ -219,7 +219,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0500', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0500";
       console.info(`${caseName} test Start`);
       try {
@@ -264,7 +264,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0600', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0600";
       console.info(`${caseName} test Start`);
       try {
@@ -306,7 +306,7 @@ export default function HttpHttpProtocolTest() {
     * @tc.type  :  Function
     * @tc.level :  level 2
     */
-    it('testHttpProtocolHTTP0700', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0700";
       console.info(`${caseName} test Start`);
       try {
@@ -351,7 +351,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0800', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0800";
       console.info(`${caseName} test Start`);
       try {
@@ -393,7 +393,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP0900', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP0900";
       console.info(`${caseName} test Start`);
       try {
@@ -438,7 +438,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP1000', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP1000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP1000";
       console.info(`${caseName} test Start`);
       try {
@@ -480,7 +480,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP1100', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP1100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP1100";
       console.info(`${caseName} test Start`);
       try {
@@ -525,7 +525,7 @@ export default function HttpHttpProtocolTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpProtocolHTTP1200', 0, async (done: Function) => {
+    it('testHttpProtocolHTTP1200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
       const caseName: string = "testHttpProtocolHTTP1200";
       console.info(`${caseName} test Start`);
       try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync001', 0, async (done: Function) => {
+    it('testFetchCookieSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync001", 'a=b', 100101, done);
@@ -70,7 +70,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync002', 0, async (done: Function) => {
+    it('testFetchCookieSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync002", 'a=c', 100102, done);
@@ -85,7 +85,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync003', 0, async (done: Function) => {
+    it('testFetchCookieSync003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync003", 'a=d', 100103, done);
@@ -100,7 +100,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync004', 0, async (done: Function) => {
+    it('testFetchCookieSync004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync004", 'a=e', 100104, done);
@@ -115,7 +115,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync005', 0, async (done: Function) => {
+    it('testFetchCookieSync005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync005", '', 100105, done);
@@ -130,7 +130,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync006', 0, async (done: Function) => {
+    it('testFetchCookieSync006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync006", '', 100106, done);
@@ -145,7 +145,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync007', 0, async (done: Function) => {
+    it('testFetchCookieSync007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync007", '', 100107, done);
@@ -160,7 +160,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync008', 0, async (done: Function) => {
+    it('testFetchCookieSync008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync008", '', 100108, done);
@@ -175,7 +175,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync009', 0, async (done: Function) => {
+    it('testFetchCookieSync009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync009", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync009", '', 100109, done);
@@ -190,7 +190,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync010', 0, async (done: Function) => {
+    it('testFetchCookieSync010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync010", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync010", '', 100110, done);
@@ -205,7 +205,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync011', 0, async (done: Function) => {
+    it('testFetchCookieSync011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync011", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync011", '', 100111, done);
@@ -221,7 +221,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync012', 0, async (done: Function) => {
+    it('testFetchCookieSync012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync012", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync012", '', 100112, done);
@@ -236,7 +236,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync013', 0, async (done: Function) => {
+    it('testFetchCookieSync013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync013", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync013", '', 100113, done);
@@ -251,7 +251,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync014', 0, async (done: Function) => {
+    it('testFetchCookieSync014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync014", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync014", '', 100114, done);
@@ -266,7 +266,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync015', 0, async (done: Function) => {
+    it('testFetchCookieSync015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync015", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync015", '', 100115, done);
@@ -281,7 +281,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync016', 0, async (done: Function) => {
+    it('testFetchCookieSync016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync016", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync016", '', 100116, done);
@@ -296,7 +296,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync017', 0, async (done: Function) => {
+    it('testFetchCookieSync017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync017", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync017", '', 100117, done);
@@ -311,7 +311,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync018', 0, async (done: Function) => {
+    it('testFetchCookieSync018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync018", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync018", '', 100118, done);
@@ -326,7 +326,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync019', 0, async (done: Function) => {
+    it('testFetchCookieSync019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync019", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync019", '', 100119, done);
@@ -341,7 +341,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync020', 0, async (done: Function) => {
+    it('testFetchCookieSync020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync020", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync020", '', 100120, done);
@@ -356,7 +356,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync021', 0, async (done: Function) => {
+    it('testFetchCookieSync021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync021", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync021", '', 100121, done);
@@ -371,7 +371,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync022', 0, async (done: Function) => {
+    it('testFetchCookieSync022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync022", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync022", '', 100122, done);
@@ -386,7 +386,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync023', 0, async (done: Function) => {
+    it('testFetchCookieSync023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync023", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync023", '', 100123, done);
@@ -401,7 +401,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync024', 0, async (done: Function) => {
+    it('testFetchCookieSync024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync024", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync024", '', 100124, done);
@@ -416,7 +416,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync025', 0, async (done: Function) => {
+    it('testFetchCookieSync025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync025", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync025", '', 100125, done);
@@ -431,7 +431,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync026', 0, async (done: Function) => {
+    it('testFetchCookieSync026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync026", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync026", '', 100126, done);
@@ -446,7 +446,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync027', 0, async (done: Function) => {
+    it('testFetchCookieSync027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync027", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync027", '', 100127, done);
@@ -461,7 +461,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync028', 0, async (done: Function) => {
+    it('testFetchCookieSync028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync028", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync028", '', 100128, done);
@@ -476,7 +476,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync029', 0, async (done: Function) => {
+    it('testFetchCookieSync029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync029", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync029", '', 100129, done);
@@ -491,7 +491,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync030', 0, async (done: Function) => {
+    it('testFetchCookieSync030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync030", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync030", '', 100130, done);
@@ -506,7 +506,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync031', 0, async (done: Function) => {
+    it('testFetchCookieSync031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync031", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync031", '', 100131, done);
@@ -521,7 +521,7 @@ export default function webCookieManagerFetchCookieSync() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFetchCookieSync032', 0, async (done: Function) => {
+    it('testFetchCookieSync032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync032", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync032", '', 100132, done);

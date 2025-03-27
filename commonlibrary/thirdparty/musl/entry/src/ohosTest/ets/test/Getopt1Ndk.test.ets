@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import getopt from 'libgetopt1ndk.so'
 import fs from '@ohos.file.fs';
@@ -33,7 +33,7 @@ export default function muslGetopt1NdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslGetoptGetoptLong002', 0, async (done: Function) => {
+    it('testMuslGetoptGetoptLong002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = getopt.getoptLong(-1);
       expect(result).assertEqual(-1)
       done()
@@ -47,7 +47,7 @@ export default function muslGetopt1NdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslGetoptGetoptLongOnly002', 0, async (done: Function) => {
+    it('testMuslGetoptGetoptLongOnly002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = getopt.getoptLongOnly(-1);
       expect(result).assertEqual(-1)
       done()

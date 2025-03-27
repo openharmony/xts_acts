@@ -106,6 +106,8 @@ struct IndexPage {
     { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
     { title: 'Touchhand', uri: 'pages/ArkUI/Touchhand' },
     { title: 'HoverSpen', uri: 'pages/ArkUI/HoverSpen' },
+    { title: 'stopSwiper', uri: 'pages/ArkUI/stopSwiper' },
+    { title: 'AccessibilityRoleTypeTest', uri: 'pages/ArkUI/AccessibilityRoleTypeTest' }
     
     
   ]

@@ -149,6 +149,7 @@
     "MainAbility/pages/xts/TextAreaXts",
     "MainAbility/pages/xts/TextInputXts",
     "MainAbility/pages/span/spanPage",
+    "MainAbility/pages/Text/ContainerSpanModifierTest",
     
     "MainAbility/pages/RichEditorEmoji/RichEditor001",
     "MainAbility/pages/RichEditorEmoji/RichEditor002",
@@ -477,6 +478,10 @@
     "MainAbility/pages/RichEditorDoubleClick/RichEditorDoubleClick018",
     "MainAbility/pages/RichEditorDoubleClick/RichEditorDoubleClick019",
 
-    "MainAbility/pages/RichEditorScroll/RichEditorScroll001"
+    "MainAbility/pages/RichEditorScroll/RichEditorScroll001",
+    "MainAbility/pages/StyledString/getStyles",
+    "MainAbility/pages/StyledString/replaceString",
+    "MainAbility/pages/TextArea/TextAreaType",
+    "MainAbility/pages/TextInput/TextInputType"
   ]
 }

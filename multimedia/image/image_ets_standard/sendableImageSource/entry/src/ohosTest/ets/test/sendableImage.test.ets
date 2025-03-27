@@ -13,6 +13,7 @@
  * limitations under the License.
 */
 
+
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
@@ -26,6 +27,7 @@ import Want from '@ohos.app.ability.Want';
 import taskpool from '@ohos.taskpool';
 import worker, { MessageEvents } from '@ohos.worker';
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
+import rpc from '@ohos.rpc';
 
 let filesDir: string | undefined;
 let testContext: common.UIAbilityContext;
@@ -133,6 +135,27 @@ async function createPreview(cameraManager: camera.CameraManager,
   await photoSession.start();
 }
 
+class MySequence implements rpc.Parcelable {
+  pixel_map: sendableImage.PixelMap;
+  constructor(conPixelmap: sendableImage.PixelMap) {
+    this.pixel_map = conPixelmap;
+  }
+  marshalling(messageSequence: rpc.MessageSequence) {
+    this.pixel_map.marshalling(messageSequence);
+    return true;
+  }
+  unmarshalling(messageSequence: rpc.MessageSequence) {
+    try {
+      this.pixel_map = sendableImage.createPixelMapFromParcel(messageSequence);
+    } catch(e) {
+      let error = e as BusinessError;
+      console.error(`createPixelMapFromParcel error. code is ${error.code}, message is ${error.message}`);
+      return false;
+    }
+  return true;
+  }
+}
+
 @Concurrent
 async function getImgs(img: image.Image) {
   let component = await img.getComponent(4)
@@ -170,17 +193,24 @@ export default function sendableImageSource() {
     beforeAll(async () => {
       filesDir = AppStorage.get('pathDir')
       testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
-      cameraM = camera.getCameraManager(testContext)
+      if(!isSupportedCameras()){
+        console.info('Failed to obtain the default camera object.Not support usb camera');
+      } else {
+        cameraM = camera.getCameraManager(testContext)
+      }
       await ability()
       let driver = Driver.create()
       await sleep(500)
-      let button = await driver.findComponent(ON.text('允许', MatchPattern.EQUALS))
-      console.info('button is ' + JSON.stringify(button))
-      if (button != undefined) {
+      for (let i = 0; i < 2; i ++) {
+        await sleep(1000);
+        let button = await driver.findComponent(ON.text('允许', MatchPattern.EQUALS))
         console.info('button is ' + JSON.stringify(button))
-        await button?.click()
+        if (button != undefined) {
+            console.info('button is ' + JSON.stringify(button))
+            await button?.click()
+        }
       }
-      sleep(3000)
+      sleep(2000)
     })
 
     let ability = async () => {
@@ -1327,7 +1357,8 @@ export default function sendableImageSource() {
       })
       await createPreview(cameraM, receiver)
     })
-/**
+
+    /**
      * @tc.number    : testImageSourceCreatePixelMapSync0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0100
      * @tc.desc      : 1.create imageSource
@@ -1342,17 +1373,41 @@ export default function sendableImageSource() {
       let opts: image.InitializationOptions = {
         editable: true,
         pixelFormat: 3,
-        size: {height: 4,width: 6}
+        size: {height: 4, width: 6}
       };
-      await sendableImage.createPixelMap(color, opts).then(() => {
+      try {
+        let pixelMap = sendableImage.createPixelMapSync(color, opts);
         console.info(tag + " Succeeded in creating pixel map");
-        expect(true).assertTrue();
-        done();
-      }).catch((e: BusinessError) => {
-        console.error(tag + ' Failed to create the pixel map.' + e);
+        expect(pixelMap != undefined).assertTrue();
+      } catch (error) {
+        console.error(tag + ' Failed to create the pixel map.' + error);
         expect().assertFail();
         done();
-      })
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageSourceCreatePixelMapSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0200
+     * @tc.desc      : 1.create imageSource
+     *                 2.create PixelMapSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0200', 0, async (done: Function) => {
+      const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_Sync_0200';
+      try {
+        let pixelMap = sendableImage.createPixelMapSync(undefined!, undefined!);
+        console.info(tag + " Sync creating pixel map. " + pixelMap);
+        expect(pixelMap).assertEqual(undefined);
+        done();
+      } catch (error) {
+        console.error(tag + ' Failed to create the pixel map. ' + error);
+        expect().assertFail();
+        done();
+      }
       done();
     })
 
@@ -1373,17 +1428,43 @@ export default function sendableImageSource() {
       let sendablePixelMap : sendableImage.PixelMap = sendableImage.convertFromPixelMap(pixelMap)
       if (sendablePixelMap != undefined) {
         console.info(tag + " Succeeded in creating pixel map");
-        expect(true).assertTrue()
+        expect(true).assertTrue();
         done();
       } else {
-          console.error(tag + ' Failed to create the pixel map.');
-          expect().assertFail();
-          done();
-        }
+        console.error(tag + ' Failed to create the pixel map.');
+        expect().assertFail();
+        done();
+      }
     })
 
     /**
-     * @tc.number    : testImageSourcereadPixelsToBuffer0100
+     * @tc.number    : testImageSourceConvertFromPixelMap0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0200
+     * @tc.desc      : 1.create imageSource
+     *                 2.create PixelMapSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0200', 0, async (done: Function) => {
+      const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CONVERT_FROM_PIXEL_MAP_0200';
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      try {
+        let sendablePixelMap : sendableImage.PixelMap = sendableImage.convertFromPixelMap(undefined!);
+        console.info(tag + " Failed to convert from pixel map. " + sendablePixelMap);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.info(tag + " Failed to convert from pixel map. ");
+        expect(true).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : testImageSourceReadPixelsToBuffer0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0100
      * @tc.desc      : 1.
      * @tc.size      : MediumTest
@@ -1407,7 +1488,7 @@ export default function sendableImageSource() {
     })
 
     /**
-     * @tc.number    : testImageSourcereadPixelsToBuffer0200
+     * @tc.number    : testImageSourceReadPixelsToBuffer0200
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_TO_BUFFER_0200
      * @tc.desc      : 1.
      * @tc.size      : MediumTest
@@ -1434,12 +1515,12 @@ export default function sendableImageSource() {
       }).catch((error: BusinessError) => {
         console.error(`0x0000 ${tag} failed ${error}`);
         expect().assertFail();
-        done()
+        done();
       })
     })
 
     /**
-     * @tc.number    : testImageSourcereadPixels0100
+     * @tc.number    : testImageSourceReadPixels0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_PIXELS_0100
      * @tc.desc      : 1.
      * @tc.size      : MediumTest
@@ -1625,6 +1706,73 @@ export default function sendableImageSource() {
     })
 
     /**
+     * @tc.number    : testImageSourceCreatePixelMapFromParcel0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0100
+     * @tc.desc      : 1.create imageSource
+     *                 2.create PixelMapSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0100', 0, async (done: Function) => {
+      const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0100';
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let bufferArr: Uint8Array = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = 0x80;
+      }
+      let opts: image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 4,
+      size: { height: 4, width: 6 },
+      alphaType: 3
+      }
+      let pixelMap: sendableImage.PixelMap | undefined = undefined;
+      sendableImage.createPixelMap(color, opts).then((srcPixelMap: sendableImage.PixelMap) => {
+        pixelMap = srcPixelMap;
+        console.info(tag + " Successed in creating PixelMap. " + pixelMap);
+        try {
+          let parcelable: MySequence = new MySequence(pixelMap);
+          let data: rpc.MessageSequence = rpc.MessageSequence.create();
+          data.writeParcelable(parcelable);
+          let ret: MySequence = new MySequence(pixelMap);
+          data.readParcelable(ret);
+          let unmarshPixelmap = ret.pixel_map;
+          expect(unmarshPixelmap != undefined).assertTrue();
+          console.info(tag + " Successed in creating PixelMap from parcel. " + pixelMap);
+          done();
+        } catch (error) {
+          console.info(tag + " Failed to create PixelMap from parcel. " + pixelMap);
+          expect().assertFail();
+          done();
+        }
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageSourceCreatePixelMapFromParcel0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0200
+     * @tc.desc      : 1.create imageSource
+     *                 2.create PixelMapSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0200', 0, async (done: Function) => {
+      const tag: string = 'SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_PIXEL_MAP_FROM_PARCEL_0200';
+      try {
+        sendableImage.createPixelMapFromParcel(undefined!)
+        console.info(tag + " Successed in creating PixelMap from parcel. ");
+        done();
+      } catch (error) {
+        console.info(tag + ' Failed to create PixelMap from parcel. error is ' + error + ' error code is ' + error.code);
+        expect(error.code == 62980178).assertTrue();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : testImageSourceGetImageInfoSync0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_IMAGE_INFO_SYNC_0100
      * @tc.desc      : 1.
@@ -1695,7 +1843,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceGetPixelBytesNumber0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_PIXEL_BYTES_NUMBER_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1731,7 +1879,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceGetDensity0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_DENSITY_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1767,7 +1915,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceOpacity0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1797,7 +1945,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceOpacity0200
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0200
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1827,7 +1975,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceOpacity0300
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_OPACTIY_0300
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1857,7 +2005,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceCreateAlphaPixelMap0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CREATE_ALPHA_PIXEL_MAP_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1888,7 +2036,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceScaleSync0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1919,9 +2067,42 @@ export default function sendableImageSource() {
     })
 
     /**
+     * @tc.number    : testImageSourceScaleSync0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0200
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SCALE_SYNC_0200"
+      const color = new ArrayBuffer(96);
+      let scaleX: number = 99.9;
+      let scaleY: number = 0.1;
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4,width: 6},
+        scaleMode: 1
+      };
+      let pixelMap = await sendableImage.createPixelMap(color, opts);
+      try {
+        pixelMap.scaleSync(scaleX, scaleY);
+        console.info(tag + ' The image is zoomed in or out.');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to zoom in or out the image. error is ` + error);
+        expect().assertFail();
+        done();
+      }
+      done();
+    })
+
+    /**
      * @tc.number    : testImageSourceCrop0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1951,7 +2132,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceCropSync0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -1980,40 +2161,9 @@ export default function sendableImageSource() {
     })
 
     /**
-     * @tc.number    : testImageSourceCropSync0200
-     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0200
-     * @tc.desc      : 1.
-     * @tc.size      : MediumTest
-     * @tc.type      : Functional
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0200', 0, async (done: Function) => {
-      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_CROP_SYNC_0200"
-      let region: image.Region = { x: 0, y: 0, size: { height: 1, width: 1 } };
-      const color = new ArrayBuffer(96);
-      let opts: image.InitializationOptions = {
-        editable: true,
-        pixelFormat: 3,
-        size: { height: 4, width: 6 }
-      };
-      let pixelMap = await sendableImage.createPixelMap(color, opts);
-      try {
-        pixelMap.cropSync(region);
-        console.info(tag + ' Succeeded in cropping pixelmap.');
-        expect(true).assertTrue();
-        done();
-      } catch (error) {
-        console.error(tag + ` Failed to crop pixelmap. error is ` + error);
-        expect().assertFail();
-        done();
-      }
-      done();
-    })
-
-    /**
      * @tc.number    : testImageSourceGetColorSpace0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2038,9 +2188,39 @@ export default function sendableImageSource() {
     })
 
     /**
+     * @tc.number    : testImageSourceGetColorSpace0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_GET_COLOR_SPACE_0200"
+      const color = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {height: 4, width: 6}
+      };
+      let pixelMap = sendableImage.createPixelMapSync(color, opts);
+      try {
+        let csm = await pixelMap.getColorSpace();
+        console.info(tag + ' Succeeded in getting ColorSpace. csm is ' + csm);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to get ColorSpace. error is ` + error + 'error code is ' + error.code);
+        expect(error.code == 62980103).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
      * @tc.number    : testImageSourceSetColorSpace0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2067,9 +2247,67 @@ export default function sendableImageSource() {
     })
 
     /**
+     * @tc.number    : testImageSourceSetColorSpace0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0200
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0200', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0200"
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      const readBuffer: ArrayBuffer = new ArrayBuffer(96);
+      let fileName = 'test.webp'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      let pixelMap = await imageSourceApi.createPixelMap();
+      try {
+        await pixelMap.setColorSpace(undefined!); 
+        console.info(tag + ' Succeeded in Setting ColorSpace.');
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to set ColorSpace. error is ` + error);
+        expect(true).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : testImageSourceSetColorSpace0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0300
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0300', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SET_COLOR_SPACE_0300"
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      const readBuffer: ArrayBuffer = new ArrayBuffer(96);
+      let fileName = 'test.webp'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      let pixelMap = await imageSourceApi.createPixelMap();
+      try {
+        await pixelMap.setColorSpace(null!); 
+        console.info(tag + ' Succeeded in Setting ColorSpace. Expect fail.');
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to set ColorSpace. error is ` + error + 'error code is ' + error.code);
+        expect(error.code == 62980115).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
      * @tc.number    : testImageSourceApplyColorSpace0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2096,7 +2334,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceApplyColorSpace0200
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0200
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2123,7 +2361,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceSizeHeight0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2150,15 +2388,15 @@ export default function sendableImageSource() {
     })
     
     /**
-     * @tc.number    : testImageSourceSizeHeight0100
-     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_0100
-     * @tc.desc      : 1.
+     * @tc.number    : testImageSourceSizeWidth0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_WIDTH_0100
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_AND_WIDTH_0100', 0, async (done: Function) => {
-      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_HEIGHT_0100"
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_WIDTH_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_SIZE_WIDTH_0100"
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
         editable: true,
@@ -2181,7 +2419,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceRegionSIZE0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2217,7 +2455,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceRegionSIZE0200
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_REGION_SIZE_0200
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2253,7 +2491,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImageSourceIsStrideAlignment0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_IS_STRIDE_ALIGNMENT_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2287,7 +2525,7 @@ export default function sendableImageSource() {
     /**
      * @tc.number    : testImagePixelMapRelease0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXELMAP_RELEASE_0100
-     * @tc.desc      : 1.
+     * @tc.desc      : 
      * @tc.size      : MediumTest
      * @tc.type      : Functional
      * @tc.level     : Level 0
@@ -2309,6 +2547,75 @@ export default function sendableImageSource() {
       done();
     })
 
+    /**
+     * @tc.number    : testImageReceiverProperty0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_RECEIVER_SIZE_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_SIZE_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_RECEIVER_SIZE_0100"
+      let size: image.Size = { height: undefined!, width: undefined! } 
+      try {
+        let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+        console.info(tag + ' Succeeded in creating Receive Size. receiver is ' + receiver);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to create Receive. Due to Size. error is ` + error);
+        expect(true).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : testImageReceiverProperty0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_RECEIVER_FORMAT_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_FORMAT_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_RECEIVER_FORMAT_0100"
+      let size: image.Size = { height: 8192, width: 8 } 
+      try {
+        let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, undefined!, 8);
+        console.info(tag + ' Succeeded in creating Receive Format. receiver is ' + receiver);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to create Receive. Due to Format. error is ` + error);
+        expect(true).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : testImageReceiverProperty0300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_RECEIVER_CAPACITY_0100
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_CAPACITY_0100', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_RECEIVER_CAPACITY_0100"
+      let size: image.Size = { height: 8192, width: 8 } 
+      try {
+        let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, undefined!);
+        console.info(tag + ' Succeeded in creating Receive Capacity. receiver is ' + receiver);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(tag + ` Failed to create Receive. Due to Capacity. error is ` + error);
+        expect(true).assertTrue();
+        done();
+      }
+    })
+ 
     /**
      * @tc.number    : testImageSourceReadLatestImage0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_LATEST_IMAGE_0100
@@ -2335,7 +2642,7 @@ export default function sendableImageSource() {
       })
       done();
     })
-
+ 
     /**
      * @tc.number    : testImageSourceReadNextImage0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_READ_NEXT_IMAGE_0100
@@ -2363,6 +2670,39 @@ export default function sendableImageSource() {
       done();
     })
 
+    /**
+     * @tc.number    : testImageSourceApplyColorSpace0300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0300
+     * @tc.desc      : 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0300', 0, async (done: Function) => {
+      const tag: string = "SUB_MULTIMEDIA_IMAGE_SOURCE_APPLY_COLOR_SPACE_0300"
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      let fileName = 'dog.astc'
+      let imageSourceApi = await getImageSource(fileName, "uri")
+      let pixelMap = await imageSourceApi.createPixelMap();
+      pixelMap.applyColorSpace(targetColorSpace).then(() => {
+        console.info(tag + ' Succeeded in applying color space for pixelmap object.');
+        expect(true).assertTrue();
+        done();
+      }).catch((error: BusinessError) => {
+        console.error(tag + ` Failed to apply color space for pixelmap object. error is ${error}`); 
+        if (Number(error) == 62980108) {
+          expect(Number(error) == 62980108).assertTrue();
+          console.info('Failed to apply color space. Error is 62980108. Check your device.')
+          done();
+        } else {
+          console.info('Error is not 62980108. Error is ' + error)
+          expect().assertFail();
+          done();
+        }
+      })
+      done();
+    })
 
   })
 }

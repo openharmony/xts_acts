@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import fileio from 'libfileio.so';
 import fs from '@ohos.file.fs';
 import { fileUri } from '@kit.CoreFileKit';
@@ -30,7 +30,7 @@ export default function getFileLocationNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('getfilelocation_ndktest_001', 0, async (done: Function) => {
+    it('getfilelocation_ndktest_001', Level.LEVEL0, async (done: Function) => {
       let filepath = '/data/storage/el2/base/files/fileio_location.txt';
       fs.openSync(filepath,0o102);
       let uri = fileUri.getUriFromPath(filepath);
@@ -50,7 +50,7 @@ export default function getFileLocationNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('getfilelocation_ndktest_002', 0, async (done: Function) => {
+    it('getfilelocation_ndktest_002', Level.LEVEL0, async (done: Function) => {
       let data = fileio.GetFileLocation_noexist();
       console.info("getfilelocation_ndktest_002 Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(13900002);

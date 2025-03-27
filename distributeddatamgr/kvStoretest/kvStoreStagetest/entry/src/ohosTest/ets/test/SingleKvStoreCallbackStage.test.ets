@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedKVStore';
 import common from "@ohos.app.ability.common";
 
@@ -116,7 +116,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutString101', 0, async function (done) {
+    it('testEtsSingleKvStorePutString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutString101');
       try {
         await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, function (err,data) {
@@ -143,7 +143,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutString102', 0, async function (done) {
+    it('testEtsSingleKvStorePutString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutString102');
       try {
         let str = '';
@@ -174,7 +174,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetString101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetString101');
       try{
         await kvStore.get(KEY_TEST_STRING_ELEMENT + "notin", function (err,data) {
@@ -197,7 +197,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetString102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetString102');
       try{
         await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
@@ -224,7 +224,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutInt101', 0, async function (done) {
+    it('testEtsSingleKvStorePutInt101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutInt101');
       try {
         await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -251,7 +251,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutInt102', 0, async function (done) {
+    it('testEtsSingleKvStorePutInt102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutInt102');
       try {
         let intValue = 987654321;
@@ -279,7 +279,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutInt103', 0, async function (done) {
+    it('testEtsSingleKvStorePutInt103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutInt103');
       try {
         let intValue = Number.MIN_VALUE;
@@ -307,7 +307,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutInt104', 0, async function (done) {
+    it('testEtsSingleKvStorePutInt104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutInt104');
       try {
         let intValue = Number.MAX_VALUE;
@@ -335,7 +335,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetInt101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetInt101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetInt101');
       try {
         await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -362,7 +362,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetInt102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetInt102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetInt102');
       try {
         await kvStore.get(KEY_TEST_INT_ELEMENT, function (err,data) {
@@ -389,7 +389,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBool101', 0, async function (done) {
+    it('testEtsSingleKvStorePutBool101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBool101');
       try {
         await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -412,7 +412,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetBool101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetBool101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetBool101');
       try {
         await kvStore.get(KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -439,7 +439,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetBool102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetBool102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetBool102');
       try {
         await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, async function (err, data) {
@@ -466,7 +466,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutFloat101', 0, async function (done) {
+    it('testEtsSingleKvStorePutFloat101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutFloat101');
       try {
         await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -489,7 +489,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutFloat102', 0, async function (done) {
+    it('testEtsSingleKvStorePutFloat102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutFloat102');
       try {
         let floatValue = 123456.654321;
@@ -518,7 +518,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutFloat103', 0, async function (done) {
+    it('testEtsSingleKvStorePutFloat103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutFloat103');
       try {
         let floatValue = 123456.0;
@@ -547,7 +547,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutFloat104', 0, async function (done) {
+    it('testEtsSingleKvStorePutFloat104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutFloat104');
       try {
         let floatValue = 123456.00;
@@ -576,7 +576,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetFloat101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetFloat101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetFloat101');
       try {
         await kvStore.get(KEY_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -603,7 +603,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteString101', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteString101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteString101');
       try {
         await kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
@@ -630,7 +630,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteString102', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteString102');
       try {
         await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err, data) {
@@ -657,7 +657,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteInt101', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteInt101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteInt101');
       try{
         await kvStore.delete(KEY_TEST_INT_ELEMENT, function (err,data) {
@@ -684,7 +684,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteInt102', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteInt102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteInt102');
       try{
         await kvStore.put(KEY_TEST_INT_ELEMENT, VALUE_TEST_INT_ELEMENT, async function (err,data) {
@@ -711,7 +711,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteFloat101', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteFloat101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteFloat101');
       try{
         await kvStore.delete(KEY_TEST_FLOAT_ELEMENT, function (err,data) {
@@ -738,7 +738,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteFloat102', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteFloat102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteFloat102');
       try{
         await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT, async function (err, data) {
@@ -765,7 +765,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteBool101', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteBool101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteBool101');
       try{
         await kvStore.delete(KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
@@ -792,7 +792,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteBool102', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteBool102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteBool102');
       try{
         await kvStore.put(KEY_TEST_BOOLEAN_ELEMENT, VALUE_TEST_BOOLEAN_ELEMENT, async function (err, data) {
@@ -819,7 +819,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreOnChange101', 0, async function (done) {
+    it('testEtsSingleKvStoreOnChange101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreOnChange101');
       try {
         kvStore.on('dataChange', 0, function (data) {
@@ -846,7 +846,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreOnChange102', 0, async function (done) {
+    it('testEtsSingleKvStoreOnChange102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreOnChange102');
       try {
         kvStore.on('dataChange', factory.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
@@ -873,7 +873,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreOnChange103', 0, async function (done) {
+    it('testEtsSingleKvStoreOnChange103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreOnChange103');
       try {
         kvStore.on('dataChange', factory.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
@@ -900,7 +900,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreOnSyncComplete101', 0, async function (done) {
+    it('testEtsSingleKvStoreOnSyncComplete101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       try {
         kvStore.on('syncComplete', function (data) {
           console.info('testSingleKvStoreOnSyncComplete101 dataChange');
@@ -932,7 +932,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreOnSyncComplete102', 0, async function (done) {
+    it('testEtsSingleKvStoreOnSyncComplete102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       try {
         kvStore.on('syncComplete', function (data) {
           console.info('testSingleKvStoreOnSyncComplete102 dataChange');
@@ -964,7 +964,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreOnSyncComplete103', 0, async function (done) {
+    it('testEtsSingleKvStoreOnSyncComplete103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       try {
         kvStore.on('syncComplete', function (data) {
           console.info('testSingleKvStoreOnSyncComplete103 dataChange');
@@ -996,7 +996,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncRange101', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncRange101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncRange101');
       try {
         let localLabels = ['A', 'B'];
@@ -1023,7 +1023,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncRange102', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncRange102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncRange102');
       try {
         let localLabels = ['A', 'B'];
@@ -1048,7 +1048,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncRange103', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncRange103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncRange103');
       try {
         let localLabels = ['A', 'B'];
@@ -1073,7 +1073,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBatch101', 0, async function (done) {
+    it('testEtsSingleKvStorePutBatch101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBatch101');
       try {
         let entries = [];
@@ -1116,7 +1116,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBatch102', 0, async function (done) {
+    it('testEtsSingleKvStorePutBatch102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBatch102');
       try {
         let entries = [];
@@ -1159,7 +1159,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBatch103', 0, async function (done) {
+    it('testEtsSingleKvStorePutBatch103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBatch103');
       try {
         let entries = [];
@@ -1202,7 +1202,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBatch104', 0, async function (done) {
+    it('testEtsSingleKvStorePutBatch104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBatch104');
       try {
         let entries = [];
@@ -1245,7 +1245,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBatch105', 0, async function (done) {
+    it('testEtsSingleKvStorePutBatch105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBatch105');
       try {
         let bo = false;
@@ -1289,7 +1289,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorePutBatch106', 0, async function (done) {
+    it('testEtsSingleKvStorePutBatch106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorePutBatch106');
       try {
         let arr = new Uint8Array([21,31]);
@@ -1333,7 +1333,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteBatch101', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteBatch101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteBatch101');
       try {
         let entries = [];
@@ -1375,7 +1375,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteBatch102', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteBatch102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteBatch102');
       try {
         let keys = ['batch_test_string_key1', 'batch_test_string_key2'];
@@ -1399,7 +1399,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreDeleteBatch103', 0, async function (done) {
+    it('testEtsSingleKvStoreDeleteBatch103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreDeleteBatch103');
       try {
         let entries = [];
@@ -1440,7 +1440,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorestartTransaction101', 0, async function (done) {
+    it('testEtsSingleKvStorestartTransaction101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorestartTransaction101');
       try {
         let count = 0;
@@ -1485,7 +1485,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorestartTransaction102', 0, async function (done) {
+    it('testEtsSingleKvStorestartTransaction102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorestartTransaction102');
       try {
         let count = 0;
@@ -1530,7 +1530,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorestartTransaction103', 0, async function (done) {
+    it('testEtsSingleKvStorestartTransaction103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorestartTransaction103');
       try {
         await kvStore.startTransaction(1, function (err,data) {
@@ -1556,7 +1556,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorestartTransaction104', 0, async function (done) {
+    it('testEtsSingleKvStorestartTransaction104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorestartTransaction104');
       try {
         await kvStore.startTransaction('test_string', function (err,data) {
@@ -1582,7 +1582,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStorestartTransaction105', 0, async function (done) {
+    it('testEtsSingleKvStorestartTransaction105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStorestartTransaction105');
       try {
         await kvStore.startTransaction(2.000, function (err,data) {
@@ -1608,7 +1608,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCommit101', 0, async function (done) {
+    it('testEtsSingleKvStoreCommit101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreCommit101');
       try {
         await kvStore.commit(1, function (err,data) {
@@ -1634,7 +1634,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCommit102', 0, async function (done) {
+    it('testEtsSingleKvStoreCommit102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreCommit102');
       try {
         await kvStore.commit('test_string', function (err,data) {
@@ -1660,7 +1660,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCommit103', 0, async function (done) {
+    it('testEtsSingleKvStoreCommit103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreCommit103');
       try {
         await kvStore.commit(2.000, function (err,data) {
@@ -1686,7 +1686,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRollback101', 0, async function (done) {
+    it('testEtsSingleKvStoreRollback101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRollback101');
       try {
         await kvStore.rollback(1, function (err,data) {
@@ -1712,7 +1712,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRollback102', 0, async function (done) {
+    it('testEtsSingleKvStoreRollback102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRollback102');
       try {
         await kvStore.rollback('test_string', function (err,data) {
@@ -1738,7 +1738,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRollback103', 0, async function (done) {
+    it('testEtsSingleKvStoreRollback103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRollback103');
       try {
         await kvStore.rollback(2.000, function (err,data) {
@@ -1764,7 +1764,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreEnableSync101', 0, async function (done) {
+    it('testEtsSingleKvStoreEnableSync101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreEnableSync101');
       try {
         await kvStore.enableSync(true, function (err,data) {
@@ -1792,7 +1792,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreEnableSync102', 0, async function (done) {
+    it('testEtsSingleKvStoreEnableSync102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreEnableSync102');
       try {
         await kvStore.enableSync(false, function (err,data) {
@@ -1820,7 +1820,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreEnableSync103', 0, async function (done) {
+    it('testEtsSingleKvStoreEnableSync103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreEnableSync103');
       try {
         await kvStore.enableSync(function (err,data) {
@@ -1846,7 +1846,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreEnableSync104', 0, async function (done) {
+    it('testEtsSingleKvStoreEnableSync104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreEnableSync104');
       try {
         await kvStore.enableSync(null, function (err,data) {
@@ -1872,7 +1872,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRemoveDeviceData101', 0, async function (done) {
+    it('testEtsSingleKvStoreRemoveDeviceData101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData101');
       try {
         await kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async function (err,data) {
@@ -1909,7 +1909,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRemoveDeviceData102', 0, async function (done) {
+    it('testEtsSingleKvStoreRemoveDeviceData102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData102');
       try {
         await kvStore.removeDeviceData(function (err,data) {
@@ -1935,7 +1935,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRemoveDeviceData103', 0, async function (done) {
+    it('testEtsSingleKvStoreRemoveDeviceData103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData103');
       try {
         await kvStore.removeDeviceData('', function (err,data) {
@@ -1961,7 +1961,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreRemoveDeviceData104', 0, async function (done) {
+    it('testEtsSingleKvStoreRemoveDeviceData104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData104');
       try {
         await kvStore.removeDeviceData(null, function (err,data) {
@@ -1987,7 +1987,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncParam101', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncParam101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncParam101');
       try {
         let defaultAllowedDelayMs = 500;
@@ -2011,7 +2011,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncParam102', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncParam102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncParam102');
       try {
         await kvStore.setSyncParam(function (err,data) {
@@ -2037,7 +2037,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncParam103', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncParam103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncParam103');
       try {
         await kvStore.setSyncParam('', function (err,data) {
@@ -2063,7 +2063,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreSetSyncParam104', 0, async function (done) {
+    it('testEtsSingleKvStoreSetSyncParam104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreSetSyncParam104');
       try {
         await kvStore.setSyncParam(null, function (err,data) {
@@ -2089,7 +2089,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetSecurityLevel102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetSecurityLevel102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetSecurityLevel102');
       try {
         await kvStore.getSecurityLevel(1, function (err,data) {
@@ -2116,7 +2116,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetSecurityLevel103', 0, async function (done) {
+    it('testEtsSingleKvStoreGetSecurityLevel103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetSecurityLevel103');
       try {
         await kvStore.getSecurityLevel('test_string', function (err,data) {
@@ -2143,7 +2143,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetSecurityLevel104', 0, async function (done) {
+    it('testEtsSingleKvStoreGetSecurityLevel104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetSecurityLevel104');
       try {
         await kvStore.getSecurityLevel(2.00, function (err,data) {
@@ -2170,7 +2170,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSet101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSet101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSet101');
       try {
         let resultSet;
@@ -2215,7 +2215,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSet102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSet102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSet102');
       try {
         let resultSet;
@@ -2244,7 +2244,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSet103', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSet103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSet103');
       try {
         let resultSet;
@@ -2268,7 +2268,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSet104', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSet104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSet104');
       try {
         await kvStore.getResultSet('test_key_string', 123, function (err, result) {
@@ -2290,7 +2290,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSet105', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSet105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSet105');
       try {
         let resultSet;
@@ -2337,7 +2337,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSet106', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSet106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSet106');
       try {
         let resultSet;
@@ -2383,7 +2383,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCloseResultSet101', 0, async function (done) {
+    it('testEtsSingleKvStoreCloseResultSet101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreCloseResultSet101');
       try {
         console.info('testSingleKvStoreCloseResultSet101 success');
@@ -2411,7 +2411,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCloseResultSet102', 0, async function (done) {
+    it('testEtsSingleKvStoreCloseResultSet102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreCloseResultSet102');
       try {
         let resultSet = null;
@@ -2442,7 +2442,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCloseResultSet103', 0, async function (done) {
+    it('testEtsSingleKvStoreCloseResultSet103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreCloseResultSet103');
       try {
         console.info('testSingleKvStoreCloseResultSet103 success');
@@ -2469,7 +2469,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreCloseResultSet104', 0, async function (done) {
+    it('testEtsSingleKvStoreCloseResultSet104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('SingleKvStoreCloseResultSetCallbackTest004');
       try{
         kvStore.closeResultSet("",(err, data) => {
@@ -2492,7 +2492,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSize101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSize101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSize101');
       try {
         let entries = [];
@@ -2532,7 +2532,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetResultSize102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetResultSize102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetResultSize102');
       try {
         let entries = [];
@@ -2572,7 +2572,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetEntries101', 0, async function (done) {
+    it('testEtsSingleKvStoreGetEntries101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetEntries101');
       try {
         let arr = new Uint8Array([21,31]);
@@ -2618,7 +2618,7 @@ export default function singleKvStoreCallbackStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsSingleKvStoreGetEntries102', 0, async function (done) {
+    it('testEtsSingleKvStoreGetEntries102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info('testSingleKvStoreGetEntries102');
       try {
         let arr = new Uint8Array([21,31]);

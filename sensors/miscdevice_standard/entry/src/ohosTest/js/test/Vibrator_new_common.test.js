@@ -17,30 +17,30 @@ import deviceInfo from '@ohos.deviceInfo'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function VibratorJsTest_misc_2() {
-let isAvailable; 
-const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');   
+let isAvailable;
+const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');
 describe("VibratorJsTest_misc_2", function () {
     beforeAll(async function (done) {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll called')   
-        console.info('VibratorJsTest_misc_2 Device type = ' + deviceInfo.deviceType);    
-        console.info('VibratorJsTest_misc_2 isAvailable = ' + isAvailable);    
+        console.info('beforeAll called')
+        console.info('VibratorJsTest_misc_2 Device type = ' + deviceInfo.deviceType);
+        console.info('VibratorJsTest_misc_2 isAvailable = ' + isAvailable);
         try {
             if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_2 isAvailable ' + isAvailable);
-                done() 
+                done()
             }else {
                 isAvailable = true;
                 console.info('VibratorJsTest_misc_2 isAvailable ' + isAvailable);
-                done() 
+                done()
             }
         } catch(error) {
             console.error('VibratorJsTest_misc_2 exception :' + JSON.stringify(error))
-            done() 
-        }        
+            done()
+        }
     })
 
     afterAll(function () {
@@ -74,17 +74,17 @@ describe("VibratorJsTest_misc_2", function () {
     const DEVICE_OPERATION_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    let TAG = ""  
+    let TAG = ""
 
     /*
     * @tc.name:VibratorJsTest001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0010
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest001"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {

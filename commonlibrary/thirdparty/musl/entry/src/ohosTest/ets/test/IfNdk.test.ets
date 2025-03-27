@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import If from 'libifndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function muslIfNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslIf_If_Freenameindex001', 0, async (done: Function) => {
+    it('testMuslIf_If_Freenameindex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = If.ifFreeNameIndex();
       expect(result).assertEqual(0)
       done()
@@ -48,7 +48,7 @@ export default function muslIfNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslIf_If_Nameindex001', 0, async (done: Function) => {
+    it('testMuslIf_If_Nameindex001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = If.ifNameIndex();
       expect(result).assertEqual(0)
       done()

@@ -57,14 +57,15 @@ export default function onScrollIndexFlow2() {
       console.info('[onScrollIndexFlow2_0100] START');
       let waterRect = CommonFunc.getComponentRectOnScreen('water_onIndex');
       let driver = Driver.create();
-      await driver.fling({
-        x: Number.parseInt(`${(waterRect.right - waterRect.left) * 0.5 + waterRect.left}`),
-        y: Number.parseInt(`${(waterRect.bottom - waterRect.top) * 0.6 + waterRect.top}`)
-      },
-        {
-          x: Number.parseInt(`${(waterRect.right - waterRect.left) * 0.5 + waterRect.left}`),
-          y: Number.parseInt(`${(waterRect.bottom - waterRect.top) * 0.2 + waterRect.top}`)
-        }, 5, 1000);
+      let top = waterRect.top;
+      let right = waterRect.right;
+      let left = waterRect.left;
+      let bottom = waterRect.bottom;
+      console.info("onScrollIndexFlow2_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
+      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(left + width/2),Math.round(top + height*0.7),Math.round(left + width/2),Math.round(top + height*0.2));
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('onScrollIndex_flow');

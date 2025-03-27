@@ -17,6 +17,8 @@ import {
     fileio, FILE_CONTENT, prepareFile, nextFileName, randomString, isInclude,
     describe, it, expect
 } from '../../Common';
+import { Level } from '@ohos/hypium';
+
 export default function fileioDirListfile() {
 describe('fileio_dir_listfile', function () {
 
@@ -30,7 +32,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_sync_000', 0, async function () {
+    it('fileio_test_dir_listfile_sync_000', Level.LEVEL0, async function () {
         let dpath = await nextFileName('fileio_test_dir_listfile_sync_000') + 'd';
         let fpath = dpath + '/listfile_sync_000';
         let ffpath = dpath + '/listfile_async_000_1';
@@ -68,7 +70,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_sync_001', 0, async function () {
+    it('fileio_test_dir_listfile_sync_001', Level.LEVEL0, async function () {
         let dpath = await nextFileName('fileio_test_dir_listfile_sync_001') + 'd';
         fileio.mkdirSync(dpath);
         let spath = dpath;
@@ -112,7 +114,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_sync_002', 0, async function () {
+    it('fileio_test_dir_listfile_sync_002', Level.LEVEL0, async function () {
         let dpath = await nextFileName('fileio_test_dir_listfile_sync_002') + 'd';
         let fpath = dpath + '/listfile_sync_002';
         let ffpath = dpath + '/listfile_async_002_1';
@@ -150,7 +152,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_sync_003', 0, async function () {
+    it('fileio_test_dir_listfile_sync_003', Level.LEVEL0, async function () {
         let dpath = await nextFileName('fileio_test_dir_listfile_sync_003') + 'd';
         fileio.mkdirSync(dpath);
 
@@ -175,7 +177,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_sync_004', 0, async function () {
+    it('fileio_test_dir_listfile_sync_004', Level.LEVEL0, async function () {
         let dpath = await nextFileName('fileio_test_dir_listfile_sync_004') + 'd';
         fileio.mkdirSync(dpath);
 
@@ -198,7 +200,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_sync_005', 0, async function () {
+    it('fileio_test_dir_listfile_sync_005', Level.LEVEL0, async function () {
         let dpath = await nextFileName('fileio_test_dir_listfile_sync_005') + 'd';
         fileio.mkdirSync(dpath);
 
@@ -222,7 +224,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_async_000', 0, async function (done) {
+    it('fileio_test_dir_listfile_async_000', Level.LEVEL0, async function (done) {
         let dpath = await nextFileName('fileio_test_dir_listfile_async_000') + 'd';
         let fpath = dpath + '/listfile_async_000';
         let ffpath = dpath + '/listfile_async_000_1';
@@ -262,7 +264,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_async_001', 0, async function (done) {
+    it('fileio_test_dir_listfile_async_001', Level.LEVEL0, async function (done) {
         let dpath = await nextFileName('fileio_test_dir_listfile_async_001') + 'd';
         fileio.mkdirSync(dpath);
         let spath = dpath;
@@ -307,7 +309,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_async_002', 0, async function (done) {
+    it('fileio_test_dir_listfile_async_002', Level.LEVEL0, async function (done) {
         let dpath = await nextFileName('fileio_test_dir_listfile_async_002') + 'd';
         let fpath = dpath + '/listfile_async_002';
         let ffpath = dpath + '/listfile_async_002_1';
@@ -346,7 +348,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_async_003', 0, async function (done) {
+    it('fileio_test_dir_listfile_async_003', Level.LEVEL0, async function (done) {
         let dpath = await nextFileName('fileio_test_dir_listfile_async_003') + 'd';
         fileio.mkdirSync(dpath);
 
@@ -372,7 +374,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_async_004', 0, async function (done) {
+    it('fileio_test_dir_listfile_async_004', Level.LEVEL0, async function (done) {
         let dpath = await nextFileName('fileio_test_dir_listfile_async_004') + 'd';
         fileio.mkdirSync(dpath);
 
@@ -397,7 +399,7 @@ describe('fileio_dir_listfile', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_dir_listfile_async_005', 0, async function (done) {
+    it('fileio_test_dir_listfile_async_005', Level.LEVEL0, async function (done) {
         let dpath = await nextFileName('fileio_test_dir_listfile_async_005') + 'd';
         fileio.mkdirSync(dpath);
 

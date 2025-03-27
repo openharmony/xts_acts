@@ -16,6 +16,7 @@
 #include "commonevent_onareachange_test.h"
 #include "../manager/plugin_manager.h"
 #include <string>
+#include <cmath>
 
 namespace ArkUICapiTest {
 
@@ -24,6 +25,11 @@ namespace ArkUICapiTest {
 #define ON_AREA_CHANGE_OFFSET_EVENT_ID 8004
 
 static bool g_hasOnAreaChangeInit = false;
+
+static bool NearEqual(float l, float r)
+{
+    return fabs(l - r) < 0.001f;
+}
 
 static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, uint32_t initialColor, int32_t clickEventID)
 {
@@ -92,11 +98,11 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         PrintOnAreaChangeBackData(result);
         bool checkResult = false;
         checkResult = (result->data[PARAM_0].f32 < result->data[PARAM_6].f32) &&
-                      (result->data[PARAM_1].f32 == result->data[PARAM_7].f32) &&
-                      (result->data[PARAM_2].f32 == result->data[PARAM_8].f32) &&
-                      (result->data[PARAM_3].f32 == result->data[PARAM_9].f32) &&
+                      (NearEqual(result->data[PARAM_1].f32, result->data[PARAM_7].f32)) &&
+                      (NearEqual(result->data[PARAM_2].f32, result->data[PARAM_8].f32)) &&
+                      (NearEqual(result->data[PARAM_3].f32, result->data[PARAM_9].f32)) &&
                       (result->data[PARAM_4].f32 > result->data[PARAM_10].f32) &&
-                      (result->data[PARAM_5].f32 == result->data[PARAM_11].f32);
+                      (NearEqual(result->data[PARAM_5].f32, result->data[PARAM_11].f32));
         if (checkResult) {
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,
@@ -109,12 +115,12 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
         PrintOnAreaChangeBackData(result);
         bool checkResult = false;
-        checkResult = (result->data[PARAM_0].f32 == result->data[PARAM_6].f32) &&
-                      (result->data[PARAM_1].f32 == result->data[PARAM_7].f32) &&
-                      (result->data[PARAM_2].f32 == result->data[PARAM_8].f32) &&
-                      (result->data[PARAM_3].f32 == result->data[PARAM_9].f32) &&
+        checkResult = (NearEqual(result->data[PARAM_0].f32, result->data[PARAM_6].f32)) &&
+                      (NearEqual(result->data[PARAM_1].f32, result->data[PARAM_7].f32)) &&
+                      (NearEqual(result->data[PARAM_2].f32, result->data[PARAM_8].f32)) &&
+                      (NearEqual(result->data[PARAM_3].f32, result->data[PARAM_9].f32)) &&
                       (result->data[PARAM_4].f32 > result->data[PARAM_10].f32) &&
-                      (result->data[PARAM_5].f32 == result->data[PARAM_11].f32);
+                      (NearEqual(result->data[PARAM_5].f32, result->data[PARAM_11].f32));
         if (checkResult) {
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,

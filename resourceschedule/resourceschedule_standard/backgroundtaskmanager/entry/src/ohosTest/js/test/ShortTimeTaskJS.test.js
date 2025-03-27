@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function ShortTimeTasksJSTest() {
 describe("ShortTimeTasksJSTest", function () {
@@ -55,7 +55,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name: ShortTermTasksJSTest0100
      * @tc.desc: test request a suspend delay
      */
-    it("ShortTermTasksJSTest0100", 0, async function (done) {
+    it("ShortTermTasksJSTest0100", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0100---------------------------');
         try {
             function callback() {}
@@ -78,7 +78,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name: ShortTermTasksJSTest0200
      * @tc.desc: test getRemainingDelayTime Promise
      */
-    it("ShortTermTasksJSTest0200", 0, async function (done) {
+    it("ShortTermTasksJSTest0200", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0200---------------------------');
         try {
             function callback() {}
@@ -105,7 +105,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name: ShortTermTasksJSTest0300
      * @tc.desc: test getRemainingDelayTime Callback
      */
-    it("ShortTermTasksJSTest0300", 0, async function (done) {
+    it("ShortTermTasksJSTest0300", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0300---------------------------');
         try {
             function callback() { }
@@ -134,7 +134,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name: ShortTermTasksJSTest0400
      * @tc.desc: test DelaySuspendInfo actualDelayTime
      */
-    it("ShortTermTasksJSTest0400", 0, async function (done) {
+    it("ShortTermTasksJSTest0400", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0400---------------------------');
         try {
             function callback() { }
@@ -158,7 +158,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest0500
      * @tc.desc      test request a suspend daly reason is NumberType.
      */
-    it("ShortTermTasksJSTest0500", 0, async function (done) {
+    it("ShortTermTasksJSTest0500", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0500---------------------------');
         function callback() {}
         let reason = 123;
@@ -183,7 +183,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest0600
      * @tc.desc      test request a suspend daly reason is BooleanType.
      */
-    it("ShortTermTasksJSTest0600", 0, async function (done) {
+    it("ShortTermTasksJSTest0600", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0600---------------------------');
         function callback() { }
         let reason = true;
@@ -208,7 +208,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest0700
      * @tc.desc      test request a suspend daly reason is NullType.
      */
-    it("ShortTermTasksJSTest0700", 0, async function (done) {
+    it("ShortTermTasksJSTest0700", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0700---------------------------');
         function callback() { }
         let reason = null;
@@ -234,7 +234,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest0800
      * @tc.desc      test request a suspend daly reason is EmptyString.
      */
-    it("ShortTermTasksJSTest0800", 0, async function (done) {
+    it("ShortTermTasksJSTest0800", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0800---------------------------');
         function callback() {}
         let reason = "";
@@ -261,7 +261,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest0900
      * @tc.desc      test request a suspend daly reason Undefined.
      */
-    it("ShortTermTasksJSTest0900", 0, async function (done) {
+    it("ShortTermTasksJSTest0900", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest0900---------------------------');
         function callback() {}
         let reason;
@@ -287,7 +287,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest1000
      * @tc.desc      test getRemainingDelayTime Callback ,requestId non-existent.
      */
-    it("ShortTermTasksJSTest1000", 0, async function (done) {
+    it("ShortTermTasksJSTest1000", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest1000---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -317,7 +317,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest1100
      * @tc.desc      test getRemainingDelayTime Promise ,requestId non-existent.
      */
-    it("ShortTermTasksJSTest1100", 0, async function (done) {
+    it("ShortTermTasksJSTest1100", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest1100---------------------------');
         function callback() { }
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
@@ -345,7 +345,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest1200
      * @tc.desc      test getRemainingDelayTime Promise ,requestId is null.
      */
-    it("ShortTermTasksJSTest1200", 0, async function (done) {
+    it("ShortTermTasksJSTest1200", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest1200---------------------------');
         let requestId = null;
         try {
@@ -367,7 +367,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest1300
      * @tc.desc      test getRemainingDelayTime Callback ,requestId = -1.
      */
-    it("ShortTermTasksJSTest1300", 0, async function (done) {
+    it("ShortTermTasksJSTest1300", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest1300---------------------------');
         let requestId = -1;
         try {
@@ -391,7 +391,7 @@ describe("ShortTimeTasksJSTest", function () {
      * @tc.name      ShortTermTasksJSTest1400
      * @tc.desc      test getRemainingDelayTime Promise ,requestId = 0.
      */
-    it("ShortTermTasksJSTest1400", 0, async function (done) {
+    it("ShortTermTasksJSTest1400", Level.LEVEL0, async function (done) {
         console.info('----------------------ShortTermTasksJSTest1400---------------------------');
         let requestId = 0;
         try {

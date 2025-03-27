@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -54,7 +54,7 @@ export default function WebNetError() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('WebNetErrorList_06000', 0, async (done: Function) => {
+    it('WebNetErrorList_06000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("WebNetErrorList_06000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("WebNetErrorList_06000", -131, 6659, done);
@@ -74,7 +74,7 @@ export default function WebNetError() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('WebNetErrorList_07600', 0, async (done: Function) => {
+    it('WebNetErrorList_07600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("WebNetErrorList_07600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("WebNetErrorList_07600", -151, 6676, done);
@@ -94,7 +94,7 @@ export default function WebNetError() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('WebNetErrorList_013600', 0, async (done: Function) => {
+    it('WebNetErrorList_013600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("WebNetErrorList_013600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("WebNetErrorList_013600", -328, 6736, done);
@@ -114,7 +114,7 @@ export default function WebNetError() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('WebNetErrorList_014600', 0, async (done: Function) => {
+    it('WebNetErrorList_014600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("WebNetErrorList_014600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("WebNetErrorList_014600", -339, 6746, done);
@@ -135,7 +135,7 @@ export default function WebNetError() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('WebNetErrorList_020800', 0, async (done: Function) => {
+    it('WebNetErrorList_020800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("WebNetErrorList_020800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("WebNetErrorList_020800", -507, 6808, done);

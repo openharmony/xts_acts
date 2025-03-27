@@ -16,6 +16,7 @@
 import { 
   fileIO, nextFileName, describe, it, expect, prepareFile, FILE_CONTENT,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOMkdir() {
 describe('fileIO_fs_mkdir', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_mkdir_sync_000', 0, async function () {
+  it('fileIO_test_mkdir_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_mkdir_sync_000') + 'd';
 
     try {
@@ -53,7 +54,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_sync_001', 0, async function () {
+  it('fileIO_test_mkdir_sync_001', Level.LEVEL0, async function () {
 
     try {
       fileIO.mkdirSync('/');
@@ -74,7 +75,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_sync_002', 0, async function () {
+  it('fileIO_test_mkdir_sync_002', Level.LEVEL0, async function () {
 
     try {
       fileIO.mkdirSync('');
@@ -95,7 +96,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_sync_003', 0, async function () {
+  it('fileIO_test_mkdir_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_mkdir_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -118,7 +119,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_async_000', 0, async function (done) {
+  it('fileIO_test_mkdir_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_mkdir_async_000') + 'd';
 
     try {
@@ -142,7 +143,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_async_001', 0, async function (done) {
+  it('fileIO_test_mkdir_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_mkdir_async_001') + 'd';
 
     try {
@@ -171,7 +172,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_async_002', 0, async function (done) {
+  it('fileIO_test_mkdir_async_002', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.mkdir();
@@ -193,7 +194,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_async_003', 0, async function (done) {
+  it('fileIO_test_mkdir_async_003', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.mkdir('/', (err) => {
@@ -219,7 +220,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdir_async_004', 0, async function () {
+  it('fileIO_test_mkdir_async_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_mkdir_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

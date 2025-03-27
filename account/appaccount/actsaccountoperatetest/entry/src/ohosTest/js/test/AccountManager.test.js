@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function ActsAccountManager() {
     describe('ActsAccountManager', function () {
@@ -23,7 +23,7 @@ export default function ActsAccountManager() {
         * @tc.desc      : Create two application account module objects, one object adds an application account,
         *                 the other object deletes the application account
         */
-        it('ActsAccountManager_0100', 0, async function (done) {
+        it('ActsAccountManager_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info("====>ActsAccountManager_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var appAccountManagerTwo = account.createAppAccountManager();
@@ -47,7 +47,7 @@ export default function ActsAccountManager() {
         *                 sets additional information, and the other object can obtain additional information of
         *                 the application account
         */
-        it('ActsAccountManager_0200', 0, async function (done) {
+        it('ActsAccountManager_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("====>ActsAccountManager_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var appAccountManagerTwo = account.createAppAccountManager();

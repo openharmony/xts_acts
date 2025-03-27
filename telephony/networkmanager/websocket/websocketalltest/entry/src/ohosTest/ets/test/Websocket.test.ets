@@ -13,9 +13,18 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
+let activeUrl: string = 'wss://ws.welive.hu'+'awei.com/';
+
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
+  try {
+    expect(n).assertTrue();
+  } catch (err) {
+    console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
+  }
+};
 
 function expectTrue(exp: boolean, info: string = ''): void {
   try {
@@ -65,7 +74,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0100', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -99,7 +108,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0200', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -132,7 +141,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0300', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -166,7 +175,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0400', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -202,7 +211,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0500', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -238,7 +247,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0600', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectCallback0700';
       console.info(`${caseName} test start`);
       try {
@@ -273,7 +282,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0700', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let proxy: webSocket.ProxyConfiguration = 'no-proxy'
       let caseName: string = 'testWebSocketConnectCallback0800';
       console.info(`${caseName} test start`);
@@ -310,7 +319,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectCallback0800', 0, async (done: Function) => {
+    it('testWebSocketConnectCallback0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let proxy: webSocket.ProxyConfiguration = 'system'
       let caseName: string = 'testWebSocketConnectCallback0900';
       console.info(`${caseName} test start`);
@@ -348,7 +357,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0100', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectPromise0100';
       console.info(`${caseName} test start`);
       try {
@@ -379,7 +388,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0200', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectPromise0200';
       console.info(`${caseName} test start`);
       try {
@@ -410,7 +419,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0300', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectPromise0300';
       console.info(`${caseName} test start`);
       try {
@@ -441,7 +450,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0400', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectPromise0400';
       console.info(`${caseName} test start`);
       try {
@@ -474,7 +483,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0500', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectPromise0500';
       console.info(`${caseName} test start`);
       try {
@@ -507,7 +516,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0600', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketConnectPromise0600';
       console.info(`${caseName} test start`);
       try {
@@ -540,7 +549,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0700', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let proxy: webSocket.ProxyConfiguration = 'system'
       let caseName: string = 'testWebSocketConnectPromise0700';
       console.info(`${caseName} test start`);
@@ -574,7 +583,7 @@ export default function WebSocketTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testWebSocketConnectPromise0800', 0, async (done: Function) => {
+    it('testWebSocketConnectPromise0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let proxy: webSocket.ProxyConfiguration = 'no-proxy'
       let caseName: string = 'testWebSocketConnectPromise0800';
       console.info(`${caseName} test start`);
@@ -608,7 +617,7 @@ export default function WebSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testWebSocketOnHeaderReceiveCallback0100', 0, async (done: Function) => {
+    it('testWebSocketOnHeaderReceiveCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketOnHeaderReceiveCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -657,7 +666,7 @@ export default function WebSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testWebSocketOffHeaderReceiveCallback0100', 0, async (done: Function) => {
+    it('testWebSocketOffHeaderReceiveCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketOffHeaderReceiveCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -708,7 +717,7 @@ export default function WebSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testWebSocketOffHeaderReceiveCallback0200', 0, async (done: Function) => {
+    it('testWebSocketOffHeaderReceiveCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketOffHeaderReceiveCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -758,7 +767,7 @@ export default function WebSocketTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testWebSocketOffHeaderReceiveCallback0300', 0, async (done: Function) => {
+    it('testWebSocketOffHeaderReceiveCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testWebSocketOffHeaderReceiveCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -799,5 +808,97 @@ export default function WebSocketTest() {
         console.info(`${caseName} test end`);
       }
     });
+
+    /**
+     * @tc.number : SUB_NetworkMgr_WebSocket_CloseResult_0100
+     * @tc.name   : testNetworkMgrWebSocketCloseResult0100
+     * @tc.desc   : Closure result obtained by subscribing to the close event when the WebSocket connection is closed.
+     * @tc.level  : Level 3
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     */
+    it('testNetworkMgrWebSocketCloseResult0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketCloseResult0100';
+      console.info(`${caseName} test start`);
+      try {
+        const ws : webSocket.WebSocket = webSocket.createWebSocket();
+        ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
+          console.info(`${caseName} onclose err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          ExpectTrue(value.reason != undefined)
+          done();
+        })
+        ws.on('open', (err: BusinessError, value: Object) => {
+          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+          ws.close((err: BusinessError,value: boolean) => {
+            if (err) {
+              console.info(`${caseName} close fail ${JSON.stringify(err)}`);
+              ExpectTrue(false)
+              done();
+            } else {
+              console.info(`${caseName} close success and value is ${value}`);
+            }
+          })
+        });
+        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} test connect success and value is ${value}`);
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catch err is ${JSON.stringify(err)}`);
+        ExpectTrue(false)
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
+    /*
+      * @tc.number: SUB_NetworkMgr_WebSocket_Connect_0100
+      * @tc.name  : testNetworkMgrWebSocketConnect0100
+      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(connect twice)
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 3
+      */
+    it('testNetworkMgrWebSocketConnect0100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketConnect0100';
+      console.info(`${caseName} test start`);
+      try {
+        const ws : webSocket.WebSocket = webSocket.createWebSocket();
+        ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+          if (err) {
+            console.info(`${caseName} test connect1 fail ${JSON.stringify(err)}`);
+            ExpectTrue(false)
+            done();
+            console.info(`${caseName} test end`);
+          } else {
+            console.info(`${caseName} test connect1 success and value is ${value}`);
+            ws.connect(activeUrl, (err: BusinessError, value: boolean) => {
+              if (err) {
+                console.info(`${caseName} test connect2 fail ${JSON.stringify(err)}`);
+                ExpectTrue(err.code == 2302003);
+                done();
+                console.info(`${caseName} test end`);
+              } else {
+                console.info(`${caseName} test connect2 success and value is ${value}`);
+                ExpectTrue(false)
+                done();
+                console.info(`${caseName} test end`);
+              }
+            })
+          }
+        })
+      } catch (err) {
+        console.info(`${caseName} catchError ${JSON.stringify(err)}`);
+        ExpectTrue(false)
+        done();
+        console.info(`${caseName} test end`);
+      }
+    })
+
   });
 }

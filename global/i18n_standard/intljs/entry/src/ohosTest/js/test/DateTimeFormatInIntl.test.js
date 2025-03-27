@@ -15,7 +15,7 @@
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
 import deviceInfo from '@ohos.deviceInfo'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function DateTimeFormatInIntlTest() {
 describe('DateTimeFormatInIntlTest', function () {
@@ -63,7 +63,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the datetime with en-GB locale
     * @tc.desc    check the datetime is not null
     */
-    it('dateTimeFormat_test_0100', 0, function () {
+    it('dateTimeFormat_test_0100', Level.LEVEL0, function () {
         let datefmt = new Intl.DateTimeFormat('en-GB');
         expect(datefmt !== null).assertTrue();
     })
@@ -73,7 +73,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the datetime with en-GB locale
     * @tc.desc    check the datetime is not null
     */
-    it('dateTimeFormat_test_0120', 0, function () {
+    it('dateTimeFormat_test_0120', Level.LEVEL2, function () {
         let datefmt = new Intl.DateTimeFormat();
         expect(datefmt !== null).assertTrue();
     })
@@ -83,7 +83,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with zh locale
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0200', 0, function () {
+    it('dateTimeFormat_test_0200', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('zh');
         console.log('dateTimeFormat_test_0200 ' + datefmt.format(date));
@@ -95,7 +95,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with zh locale and undefined options
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0220', 0, function () {
+    it('dateTimeFormat_test_0220', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('zh', undefined);
         console.log('dateTimeFormat_test_0220 ' + datefmt.format(date));
@@ -107,7 +107,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with zh locale and null options
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0240', 0, function () {
+    it('dateTimeFormat_test_0240', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('zh', null);
         console.log('dateTimeFormat_test_0240 ' + datefmt.format(date));
@@ -119,7 +119,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with en locale
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0300', 0, function () {
+    it('dateTimeFormat_test_0300', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('en');
         console.log('dateTimeFormat_test_0300 ' + datefmt.format(date));
@@ -131,7 +131,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with en-US locale
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0310', 0, function () {
+    it('dateTimeFormat_test_0310', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('en-US');
         console.log('dateTimeFormat_test_0310 ' + datefmt.format(date));
@@ -143,7 +143,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with en-GB locale
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0320', 0, function () {
+    it('dateTimeFormat_test_0320', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('en-GB');
         console.log('dateTimeFormat_test_0320 ' + datefmt.format(date));
@@ -155,7 +155,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with aa locale
     * @tc.desc    check the date
     */
-    it('dateTimeFormat_test_0400', 0, function () {
+    it('dateTimeFormat_test_0400', Level.LEVEL2, function () {
         let date = new Date(2021, 11, 17, 3, 24, 0);
         let datefmt = new Intl.DateTimeFormat('aa');
         let value = datefmt.format(date);
@@ -168,7 +168,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour with ban and zh locale
     * @tc.desc    check the hour with ban and zh locale
     */
-    it('dateTimeFormat_test_0500', 0, function () {
+    it('dateTimeFormat_test_0500', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat(['ban', 'zh'], option);
@@ -181,7 +181,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour with en and zh locale
     * @tc.desc    check the hour with en and zh locale
     */
-    it('dateTimeFormat_test_0600', 0, function () {
+    it('dateTimeFormat_test_0600', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat(['en', 'zh'], option);
@@ -194,7 +194,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour with en and ban locale
     * @tc.desc    check the hour with en and ban locale
     */
-    it('dateTimeFormat_test_0700', 0, function () {
+    it('dateTimeFormat_test_0700', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat(['en', 'ban'], option);
@@ -207,7 +207,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour without correct locale
     * @tc.desc    check the hour without correct locale
     */
-    it('dateTimeFormat_test_0800', 0, function () {
+    it('dateTimeFormat_test_0800', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat(['abc', 'ban'], option);
@@ -220,7 +220,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with full datestyle and mediu timestyle
     * @tc.desc    check the date with full datestyle and mediu timestyle
     */
-    it('dateTimeFormat_test_0900', 0, function () {
+    it('dateTimeFormat_test_0900', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full', timeStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat('zh-Hans-CN', option);
@@ -233,7 +233,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date dateStyle with long style
     * @tc.desc    check the dateStyle with long style
     */
-    it('dateTimeFormat_test_1000', 0, function () {
+    it('dateTimeFormat_test_1000', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'long', timeStyle: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN', option);
@@ -247,7 +247,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date dateStyle with medium style
     * @tc.desc    check the dateStyle with medium style
     */
-    it('dateTimeFormat_test_1100', 0, function () {
+    it('dateTimeFormat_test_1100', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'medium', timeStyle: 'medium' };
         let datefmt = new Intl.DateTimeFormat('zh-CN', option);
@@ -261,7 +261,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date dateStyle with short style
     * @tc.desc    check the dateStyle with short style
     */
-    it('dateTimeFormat_test_1200', 0, function () {
+    it('dateTimeFormat_test_1200', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'short', timeStyle: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN', option);
@@ -275,7 +275,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with daterange
     * @tc.desc    check the daterange
     */
-    it('dateTimeFormat_test_1300', 0, function () {
+    it('dateTimeFormat_test_1300', Level.LEVEL2, function () {
         let startdate = new Date(2020, 11, 20, 14, 23, 16);
         let enddate = new Date(2020, 11, 21, 14, 23, 16);
         let datefmt = new Intl.DateTimeFormat('en-GB');
@@ -293,7 +293,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the date with daterange when the start and end date is equal
     * @tc.desc    check the daterange when the start and end date is equal
     */
-    it('dateTimeFormat_test_1400', 0, function () {
+    it('dateTimeFormat_test_1400', Level.LEVEL2, function () {
         let startdate = new Date(2020, 11, 20, 14, 23, 16);
         let enddate = new Date(2020, 11, 20, 14, 23, 16);
         let datefmt = new Intl.DateTimeFormat('en-GB');
@@ -311,7 +311,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the year、month、day、weekday
     * @tc.desc    check the year、month、day、weekday
     */
-    it('dateTimeFormat_test_1500', 0, function () {
+    it('dateTimeFormat_test_1500', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
         let datefmt = new Intl.DateTimeFormat('ja', option);
@@ -324,7 +324,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the timerange with year、month、day、weekday
     * @tc.desc    check the timerange with year、month、day、weekday
     */
-    it('dateTimeFormat_test_1600', 0, function () {
+    it('dateTimeFormat_test_1600', Level.LEVEL2, function () {
         let startdate = new Date(2020, 11, 20, 14, 23, 16);
         let enddate = new Date(2021, 4, 5, 10, 5, 3);
         let option = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
@@ -338,7 +338,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour&minute&second
     * @tc.desc    check the hour&minute&second
     */
-    it('dateTimeFormat_test_1700', 0, function () {
+    it('dateTimeFormat_test_1700', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
@@ -352,7 +352,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the timeZone
     * @tc.desc    check the timeZone
     */
-    it('dateTimeFormat_test_1800', 0, function () {
+    it('dateTimeFormat_test_1800', Level.LEVEL2, function () {
         let date = new Date(2020, 3, 14, 15, 5, 3);
         let option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -365,7 +365,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the America/Los_Angeles timeZone
     * @tc.desc    check the America/Los_Angeles timeZone
     */
-    it('dateTimeFormat_test_1900', 0, function () {
+    it('dateTimeFormat_test_1900', Level.LEVEL2, function () {
         let option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
         console.log('dateTimeFormat_test_1900 ' + datefmt.resolvedOptions().timeZone);
@@ -377,7 +377,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the America/Los_Angeles timeZoneName
     * @tc.desc    check the America/Los_Angeles timeZoneName
     */
-    it('dateTimeFormat_test_2000', 0, function () {
+    it('dateTimeFormat_test_2000', Level.LEVEL2, function () {
         let option = { timeZone: 'America/Los_Angeles', timeZoneName: 'long' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
         console.log('dateTimeFormat_test_2000 ' + datefmt.resolvedOptions().timeZoneName);
@@ -389,7 +389,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the year
     * @tc.desc    check the year
     */
-    it('dateTimeFormat_test_2100', 0, function () {
+    it('dateTimeFormat_test_2100', Level.LEVEL2, function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -402,7 +402,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the weekday
     * @tc.desc    check the weekday
     */
-    it('dateTimeFormat_test_2200', 0, function () {
+    it('dateTimeFormat_test_2200', Level.LEVEL2, function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -415,7 +415,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour in zh-CN-u-hc-h12
     * @tc.desc    check the hour in zh-CN-u-hc-h12
     */
-    it('dateTimeFormat_test_2300', 0, function () {
+    it('dateTimeFormat_test_2300', Level.LEVEL2, function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short' };
         let datefmt = new Intl.DateTimeFormat('zh-CN-u-hc-h12', option);
@@ -428,7 +428,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour in fr-Latn-FR-u-nu-mong
     * @tc.desc    check the hour in fr-Latn-FR-u-nu-mong
     */
-    it('dateTimeFormat_test_2400', 0, function () {
+    it('dateTimeFormat_test_2400', Level.LEVEL2, function () {
         let date = new Date(2020, 11, 20, 14, 23, 16);
         let option = { dateStyle: 'full' };
         let datefmt = new Intl.DateTimeFormat('fr-Latn-FR-u-nu-mong', option);
@@ -441,7 +441,7 @@ describe('DateTimeFormatInIntlTest', function () {
     * @tc.name    format the hour in zh-CN-u-hc-h12 with matcher
     * @tc.desc    check the hour in zh-CN-u-hc-h12 with matcher
     */
-    it('dateTimeFormat_test_2500', 0, function () {
+    it('dateTimeFormat_test_2500', Level.LEVEL2, function () {
         let option = { year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit', second: 'numeric', weekday: 'long', era: 'short',
             hourCycle: 'h24',numberingSystem: 'arab', hour12: true, dayPeriod: 'short',

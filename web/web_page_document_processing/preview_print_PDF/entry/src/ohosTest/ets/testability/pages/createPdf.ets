@@ -31,6 +31,7 @@ struct WebComponent {
     marginBottom: 0,
     marginRight: 0,
     marginLeft: 0,
+	scale: 1.0,
     shouldPrintBackground: true
   }
 

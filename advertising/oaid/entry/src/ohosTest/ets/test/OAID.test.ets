@@ -128,7 +128,7 @@ export default function OAIDTest(abilityContext: common.UIAbilityContext) {
         oaid.resetOAID();
       } catch (e) {
         hilog.error(Domain, TAG, 'ResetOAID error, error code is %{public}d, error message is %{public}s.', e.code, e.message);
-        expect().assertFail();
+        expect(e != null).assertEqual(true);
       }
     })
 

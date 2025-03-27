@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import { BusinessError } from '@ohos.base';
@@ -140,8 +140,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test PRIKeyType string
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0200
      * @tc.desc test PRIKeyType string
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStorePRIKeyType0010', 0, async (done: Function) => {
+    it('testRdbStorePRIKeyType0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStorePRIKeyType0010 start *************");
       try {
         let priKey1 : relationalStore.PRIKeyType = "test_key1";
@@ -167,8 +170,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test PRIKeyType number
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0100
      * @tc.desc test PRIKeyType number
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStorePRIKeyType0020', 0, async (done: Function) => {
+    it('testRdbStorePRIKeyType0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStorePRIKeyType0020 start *************");
       try {
         let priKey1 : relationalStore.PRIKeyType = 2;
@@ -192,8 +198,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test UTCTime type
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0300
      * @tc.desc test UTCTime type
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreUTCTime0010', 0, async (done: Function) => {
+    it('testRdbStoreUTCTime0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreUTCTime0010 start *************");
       try {
         let time = new Date();
@@ -212,8 +221,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test ModifyTime type
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0500
      * @tc.desc test ModifyTime type
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreModifyTime0010', 0, async (done: Function) => {
+    it('testRdbStoreModifyTime0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreModifyTime0010 start *************");
       try {
         let priKey1 : relationalStore.PRIKeyType = "test_key1";
@@ -235,8 +247,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test Progress type
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0800
      * @tc.desc test Progress type
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreProgress0010', 0, async (done: Function) => {
+    it('testRdbStoreProgress0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreProgress0010 start *************");
       try {
         expect(relationalStore.Progress.SYNC_BEGIN == 0).assertTrue();
@@ -254,8 +269,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test Statistic
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0900
      * @tc.desc test Statistic
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreStatistic0010', 0, async (done: Function) => {
+    it('testRdbStoreStatistic0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreStatistic0010 start *************");
       try {
         let statistic1 : relationalStore.Statistic = {"total":10, "successful":6, "failed":3, "remained":1};
@@ -276,8 +294,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test TableDetails
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_1000
      * @tc.desc test TableDetails
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreTableDetails0010', 0, async (done: Function) => {
+    it('testRdbStoreTableDetails0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreTableDetails0010 start *************");
       try {
         let statistic1 : relationalStore.Statistic = {"total":10, "successful":6, "failed":3, "remained":1};
@@ -299,8 +320,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test ProgressCode
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0600
      * @tc.desc test ProgressCode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreProgressCode0010', 0, async (done: Function) => {
+    it('testRdbStoreProgressCode0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreProgressCode0010 start *************");
       try {
         console.log(TAG + "SUCCESS=" + relationalStore.ProgressCode.SUCCESS);
@@ -325,8 +349,11 @@ export default function relationalStoreCloudSyncEtsTest() {
      * @tc.name test ProgressDetails
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0700
      * @tc.desc test ProgressDetails
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreProgressDetails0010', 0, async (done: Function) => {
+    it('testRdbStoreProgressDetails0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreProgressDetails0010 start *************");
       try {
         let statistic1 : relationalStore.Statistic = {"total":10, "successful":6, "failed":3, "remained":1};

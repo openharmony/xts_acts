@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webJsunit() {
      *tc.name StoreWebArchive                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('StoreWebArchive', 0, async (done: Function) => {
+    it('StoreWebArchive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchive";
       Utils.registerContainEvent("StoreWebArchive", "/data/storage/el2/base/", 29, done);
       sendEventByKey('webcomponent', 10, '');

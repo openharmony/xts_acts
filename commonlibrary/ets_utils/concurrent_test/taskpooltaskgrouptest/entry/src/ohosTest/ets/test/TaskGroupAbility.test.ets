@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, collections, lang, taskpool } from '@kit.ArkTS';
 import {
   printArgs1,
@@ -131,7 +131,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0100', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -165,7 +166,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
 
@@ -177,7 +178,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0200', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -216,7 +218,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -228,7 +230,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0300', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -254,7 +257,7 @@ export default function TaskGroupAbilityTest() {
       expect(20).assertEqual(Count2.count)
       Count1.count = 0
       Count2.count = 0
-      Done()
+      done()
     })
 
 
@@ -266,7 +269,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0400', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -303,7 +307,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count)
       Count3.count = 0
       Count4.count = 0
-      Done()
+      done()
     })
 
 
@@ -315,7 +319,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0500', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -339,7 +344,7 @@ export default function TaskGroupAbilityTest() {
       expect(true).assertEqual(CountBol2.count)
       CountBol1.count = false
       CountBol2.count = true
-      Done()
+      done()
     })
 
 
@@ -351,7 +356,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0600', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -388,7 +394,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -400,7 +406,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0700', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -424,7 +431,7 @@ export default function TaskGroupAbilityTest() {
       expect(20n).assertEqual(CountBigint2.count)
       CountBigint1.count = 0n
       CountBigint2.count = 0n
-      Done()
+      done()
     })
 
 
@@ -436,7 +443,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0800', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -473,7 +481,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -485,7 +493,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask0900', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -506,7 +515,7 @@ export default function TaskGroupAbilityTest() {
       expect().assertEqual(CountUndefined2.count)
       CountUndefined1.count
       CountUndefined1.count
-      Done()
+      done()
     })
 
     /**
@@ -517,7 +526,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1000', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -554,7 +564,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -566,7 +576,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1100', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -590,7 +601,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -601,7 +612,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1200', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -637,7 +649,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
     /**
@@ -648,7 +660,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1300', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -672,7 +685,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
 
@@ -684,7 +697,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1400', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -723,7 +737,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -735,7 +749,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1500', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -759,7 +774,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -770,7 +785,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1600', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -809,7 +825,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -821,7 +837,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1700', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -846,7 +863,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
 
@@ -858,7 +875,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1800', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -897,7 +915,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -909,7 +927,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask1900', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -934,7 +953,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -945,7 +964,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2000', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -984,7 +1004,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -996,7 +1016,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2100', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1021,7 +1042,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -1032,7 +1053,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2200', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1071,7 +1093,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -1083,7 +1105,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2300', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1108,7 +1131,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -1119,7 +1142,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2400', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1158,7 +1182,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -1170,7 +1194,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2500', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1195,7 +1220,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -1206,7 +1231,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2600', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1245,7 +1271,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -1257,7 +1283,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2700', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1282,7 +1309,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -1293,7 +1320,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2800', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1332,7 +1360,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
 
@@ -1344,7 +1372,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask2900', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1369,7 +1398,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(Count2.count)
       Count1.count = 0;
       Count2.count = 0;
-      Done()
+      done()
     })
 
     /**
@@ -1380,7 +1409,8 @@ export default function TaskGroupAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('taskPoolTaskGroupTask3000', 0, async (Done: Function) => {
+    it('taskPoolTaskGroupTask3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -1419,7 +1449,7 @@ export default function TaskGroupAbilityTest() {
       expect(10).assertEqual(count);
       Count3.count = 0;
       Count4.count = 0;
-      Done();
+      done();
     })
 
   })

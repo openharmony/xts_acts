@@ -2908,5 +2908,219 @@ export default function audioRendererChange() {
       expect(resultFlag).assertTrue();
       done();
     })
+    
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100
+     * @tc.name      : AudioRendererChange - ON_AUDIORENDERCHANGE 401
+     * @tc.desc      : AudioRendererChange - ON_AUDIORENDERCHANGE 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100', 2, async (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100------begin`)
+      let flag: boolean = false;
+      try {
+        audioStreamManager.on('audioRendererChange');
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioRendererChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0200
+     * @tc.name      : AudioRendererChange - ON_AUDIORENDERCHANGE 6800101
+     * @tc.desc      : AudioRendererChange - ON_AUDIORENDERCHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0200', 2, async (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0200------begin`)
+      let flag = false;
+      try {
+        audioStreamManager.on('', (return_para: Number) => {
+          console.info(`${Tag}: on_audioRendererChange and return_para is Number`);
+          return_para.toString();
+          return 0;
+        });
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioRendererChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0200------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100
+     * @tc.name      : AudioRendererChange
+     * @tc.desc      : OFF_AUDIORENDERCHANGE 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100', 2, (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100------begin`)
+      let flag = false;
+      let off_para: ESObject = 1;
+      audioStreamManager.on('audioRendererChange', (return_vaule: audio.AudioRendererChangeInfoArray) => {
+        console.info(`on_audioRendererChange SUCCESS`);
+      });
+      try {
+        audioStreamManager.off(off_para);
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioRendererChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0200
+     * @tc.name      : AudioRendererChange
+     * @tc.desc      : OFF_AUDIORENDERCHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0200', 2, (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0200------begin`)
+      let flag = false;
+      audioStreamManager.on('audioRendererChange', (return_vaule: audio.AudioRendererChangeInfoArray) => {
+        console.info(`on_audioRendererChange SUCCESS`);
+      });
+      try {
+        audioStreamManager.off('');
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioRendererChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0200------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURECHANGE_0100
+     * @tc.name      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
+     * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100', 2, (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100------begin`)
+      let flag: boolean = false;
+      try {
+        audioStreamManager.on('audioCapturerChange');
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioCapturerChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0200
+     * @tc.name      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 6800101
+     * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0200', 2, (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0200------begin`)
+      let flag = false;
+      try {
+        audioStreamManager.on('', (return_para: Number) => {
+          console.info(`${Tag}: on_audioRendererChange and return_para is Number`);
+          return_para.toString();
+          return 0;
+        });
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioCapturerChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0200------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURERCHANGE_0100
+     * @tc.name      : AudioCaptruerChange
+     * @tc.desc      : OFF_AUDIOCAPTURERCHANGE 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100', 2, (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100------begin`)
+      let flag = false;
+      let off_para: ESObject = 1;
+      audioStreamManager.on('audioCapturerChange', (return_vaule: audio.AudioCapturerChangeInfoArray) => {
+        console.info(`on_audioCapturerChange SUCCESS`);
+      });
+      try {
+        audioStreamManager.off(off_para);
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioCapturerChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURERCHANGE_0100------end`)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURERCHANGE_0200
+     * @tc.name      : AudioCapturerChange
+     * @tc.desc      : OFF_AUDIORENDERCHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURERCHANGE_0200', 2, (done: Function) => {
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURERCHANGE_0200------begin`)
+      let flag = false;
+      audioStreamManager.on('audioCapturerChange', (return_vaule: audio.AudioCapturerChangeInfoArray) => {
+        console.info(`on_audioCapturerChange SUCCESS`);
+      });
+      try {
+        audioStreamManager.off('');
+      }
+      catch(error) {
+        console.error(`${Tag}: on_audioCapturerChange ERROR: ${error.code}, ${error.message}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0200------end`)
+      done();
+    })
   })
 }

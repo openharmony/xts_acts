@@ -773,7 +773,7 @@ export default function aaImplicitStartTest() {
             'SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3100 err is: ' + JSON.stringify(err));
         });
       expect(res).assertContain('error: failed to start ability.');
-      expect(res).assertContain('error: ability visible false deny request.');
+      expect(res).assertContain('Failed to verify the visibility of the target ability.');
       done();
     })
   })

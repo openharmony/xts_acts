@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium"
 import deviceAttest from '@ohos.deviceAttest';
 import { window } from '@kit.ArkUI';
 import base from '@ohos.base';
@@ -40,7 +40,7 @@ export default function deviceAttestInfoTest(context: Context, windowStage:windo
      * @tc.name       Test function getAttestStatus() : Promise<AttestResultInfo>
      * @tc.desc       202 - Not System App. Interface caller is not a system app.
      */
-    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_001', 0, async (done:Function) => {
+    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('test the enum value of attestResultInfo begin');
       try {
         deviceAttest.getAttestStatus().then((attestResultInfo: deviceAttest.AttestResultInfo) => {
@@ -67,7 +67,7 @@ export default function deviceAttestInfoTest(context: Context, windowStage:windo
      * @tc.name       Test function getAttestStatus(callback: AsyncCallback<AttestResultInfo>) : void
      * @tc.desc       202 - Not System App. Interface caller is not a system app.
      */
-    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_002', 0, async (done:Function) => {
+    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('test the enum value of attestResultInfo begin');
       try{
         deviceAttest.getAttestStatus(async (err:base.BusinessError, attestResultInfo: deviceAttest.AttestResultInfo) => {
@@ -95,7 +95,7 @@ export default function deviceAttestInfoTest(context: Context, windowStage:windo
      * @tc.name       Test function getAttestStatusSync() : AttestResultInfo;
      * @tc.desc       202 - Not System App. Interface caller is not a system app.
      */
-    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_003', 0, async (done:Function) => {
+    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('test the enum value of attestResultInfo begin');
       try{
         let attestResultInfo: deviceAttest.AttestResultInfo = deviceAttest.getAttestStatusSync();

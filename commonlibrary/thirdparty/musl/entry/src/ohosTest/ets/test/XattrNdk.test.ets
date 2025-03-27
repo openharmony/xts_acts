@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import xattr from 'libxattrndk.so'
 
@@ -32,7 +32,7 @@ export default function xattrNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslXattrFsetxattr001', 0, async (done: Function) => {
+    it('testMuslXattrFsetxattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = xattr.fsetxattr();
       expect(result).assertEqual(resultTrue);
@@ -47,7 +47,7 @@ export default function xattrNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslXattrFremovexattr001', 0, async (done: Function) => {
+    it('testMuslXattrFremovexattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 0;
       let result: number = xattr.fremovexattr();
       expect(result).assertEqual(resultTrue);
@@ -61,7 +61,7 @@ export default function xattrNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslXattrLgetxattr001', 0, async (done: Function) => {
+    it('testMuslXattrLgetxattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.lgetxattr();
       expect(result).assertEqual(1)
       done()
@@ -74,7 +74,7 @@ export default function xattrNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslXattrLsetxattr001', 0, async (done: Function) => {
+    it('testMuslXattrLsetxattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.lsetxattr();
       expect(result).assertEqual(1)
       done()
@@ -87,7 +87,7 @@ export default function xattrNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslXattrGetxattr001', 0, async (done: Function) => {
+    it('testMuslXattrGetxattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.getxattr();
       expect(result).assertEqual(1)
       done()
@@ -101,7 +101,7 @@ export default function xattrNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslXattrllistxattr001', 0, async (done: Function) => {
+    it('testMuslXattrllistxattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.llistxattr();
       expect(result).assertEqual(1)
       done()
@@ -115,7 +115,7 @@ export default function xattrNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslXattrlistxattr001', 0, async (done: Function) => {
+    it('testMuslXattrlistxattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.listxattr();
       expect(result).assertEqual(1)
       done()
@@ -129,7 +129,7 @@ export default function xattrNdkTest() {
     * @tc.type     : Function
     * @tc.level    : Level 1
     */
-    it('testMuslXattrLremovexattr001', 0, async (done: Function) => {
+    it('testMuslXattrLremovexattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.lremovexattr();
       expect(result).assertEqual(0)
       done()
@@ -143,7 +143,7 @@ export default function xattrNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslXattrRemovexattr001', 0, async (done: Function) => {
+    it('testMuslXattrRemovexattr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = xattr.removexattr();
       expect(result).assertEqual(0)
       done()
@@ -157,7 +157,7 @@ export default function xattrNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslXAttrFListXAttr001', 0, async (done: Function) => {
+    it('testMuslXAttrFListXAttr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = false;
       if (xattr.flistxattr() >= 0) {
         result = true;

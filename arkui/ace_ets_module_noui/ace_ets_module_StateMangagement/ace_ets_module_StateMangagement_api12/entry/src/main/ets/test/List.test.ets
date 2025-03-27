@@ -191,6 +191,11 @@ import WatchLinkTest0050 from './watchTest/WatchLinkTest0050.test';
 import ProvideConsumeTest0010 from './provide_consume/ProvideConsumeTest0010.test';
 import ProviderTest0270 from './ProviderTest/ProviderTest0270.test';
 import StateUndefinedTest0010 from './state/StateUndefinedTest0010.test';
+import AbstractPropertyRefTest from './StorageTest/AbstractPropertyRefTest.test';
+import SubAbstractPropertyLinkTest from './StorageTest/SubAbstractPropertyLinkTest.test';
+import EnvironmentTest0040 from './StorageTest/EnvironmentTest0040.test';
+import LocalStorageDeleteTest0120 from './StorageTest/LocalStorageDeleteTest0120.test';
+import LazyForEachTest0120 from './LazyForEach/LazyForEachTest0120.test';
 
 export default function testsuite() {
     ExtendTrackTest();
@@ -371,4 +376,9 @@ export default function testsuite() {
     ProviderTest0270();
     StateUndefinedTest0010();
     BuilderParam001();
+    AbstractPropertyRefTest();
+    SubAbstractPropertyLinkTest();
+    EnvironmentTest0040();
+    LocalStorageDeleteTest0120();
+    LazyForEachTest0120();
 }

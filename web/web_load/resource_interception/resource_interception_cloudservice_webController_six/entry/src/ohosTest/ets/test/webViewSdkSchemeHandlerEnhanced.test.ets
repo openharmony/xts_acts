@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
      * @tc.type        : Function
      * @tc.level       : Level 0
      */
-    it('testWebViewSdkSchemeHandler_isChunked_false', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isChunked_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isChunked_false"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isChunked_false", true, 1536, done);
@@ -94,7 +94,7 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
      * @tc.type        : Function
      * @tc.level       : Level 0
      */
-    it('testWebViewSdkSchemeHandler_isEof_false', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isEof_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isEof_false"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isEof_false", true, 1537, done);
@@ -116,7 +116,7 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
      * @tc.type        : Function
      * @tc.level       : Level 0
      */
-    it('testWebViewSdkSchemeHandler_isInMemory_false', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isInMemory_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isInMemory_false"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isInMemory_false", true, 1538, done);
@@ -138,7 +138,7 @@ export default function ActsAceWebViewSdkSchemeHandlerEnhanced() {
      * @tc.type        : Function
      * @tc.level       : Level 0
      */
-    it('testWebViewSdkSchemeHandler_isMainFrame_false', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isMainFrame_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isMainFrame_false"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isMainFrame_false", true, 1541, done);

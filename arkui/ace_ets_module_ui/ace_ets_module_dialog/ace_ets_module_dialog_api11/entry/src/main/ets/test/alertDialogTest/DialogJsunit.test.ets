@@ -74,6 +74,8 @@ export default function DialogJsunit() {
       let obj2: ESObject = JSON.parse(strJson2);
       console.info('[DialogJsunit_0100] button2 component obj is: ' + obj2.$attrs.label);
       expect(obj2.$attrs.label).assertEqual('threeButtonAuto:succ');
+      await driver.pressBack();
+      await CommonFunc.sleep(500);
       console.info('[DialogJsunit_0100] END');
       done();
     });

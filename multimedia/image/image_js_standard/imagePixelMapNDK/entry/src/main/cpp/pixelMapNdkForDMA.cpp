@@ -15,6 +15,7 @@
 
 #include "napi/native_api.h"
 #include "pixelMapNdkForDMA.h"
+#include "pixelMapNdkForARGB.cpp"
 #include "common/log_common.h"
 #include <node_api.h>
 #include <bits/alltypes.h>
@@ -294,6 +295,7 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    InitARGB(env, exports);
     return exports;
 }
 EXTERN_C_END
@@ -303,9 +305,9 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "libPixelMapNdk",
+    .nm_modname = "PixelMapNdk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+extern "C" __attribute__((constructor)) void RegisterPixelMapNdkModule(void) { napi_module_register(&demoModule); }

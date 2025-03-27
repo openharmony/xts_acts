@@ -27,19 +27,28 @@ struct scrollEvent1 {
       Column({ space: 10 }) {
         Text('message1:' + this.message1).id('scrollEvent_1')
         Text('message2:' + this.message2).id('scrollEvent_2')
-        Button('UIObserver on')
-          .id('scrollEvent_3')
-          .onClick(() => {
-            observer.on('scrollEvent', (info) => {
-              console.info('scrollEventInfo', JSON.stringify(info));
-              if (observer.ScrollEventType.SCROLL_START == info.scrollEvent) {
-                this.message1 = 'SCROLL_START'
-              }
-              if (observer.ScrollEventType.SCROLL_STOP == info.scrollEvent) {
-                this.message2 = 'SCROLL_STOP'
-              }
-            });
-          })
+        Row() {
+          Button('UIObserver on')
+            .id('scrollEvent_3')
+            .onClick(() => {
+              observer.on('scrollEvent', (info) => {
+                console.info('scrollEventInfo', JSON.stringify(info));
+                if (observer.ScrollEventType.SCROLL_START == info.scrollEvent) {
+                  this.message1 = 'SCROLL_START'
+                }
+                if (observer.ScrollEventType.SCROLL_STOP == info.scrollEvent) {
+                  this.message2 = 'SCROLL_STOP'
+                }
+              });
+            })
+          Button('UIObserver off')
+            .id('scrollEvent_5')
+            .onClick(() => {
+              observer.off('scrollEvent', (info) => {
+                console.info('off scrollEvent', JSON.stringify(info));
+              })
+            })
+        }
         Scroll(this.scroller) {
           Column() {
             ForEach(this.arr, (item: number) => {

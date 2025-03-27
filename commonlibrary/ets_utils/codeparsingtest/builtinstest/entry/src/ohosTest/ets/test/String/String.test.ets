@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function StringTest() {
   describe('stringTest', () => {
@@ -24,7 +24,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0001', 0, () => {
+    it('testFromCharCode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0001";
       try {
         let result = String.fromCharCode();
@@ -42,7 +42,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0002', 0, () => {
+    it('testFromCharCode0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0002";
       try {
         let result = String.fromCharCode(189, 43, 190, 61);
@@ -60,7 +60,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0003', 0, () => {
+    it('testFromCharCode0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0003";
       try {
         let result = String.fromCharCode(65);
@@ -78,7 +78,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0004', 0, () => {
+    it('testFromCharCode0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0004";
       try {
         let result = String.fromCharCode(65, 66);
@@ -96,7 +96,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0005', 0, () => {
+    it('testFromCharCode0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0005";
       try {
         let result = String.fromCharCode(65, 66, 67);
@@ -114,7 +114,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0006', 0, () => {
+    it('testFromCharCode0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0006";
       try {
         let result = String.fromCharCode(0x2014);
@@ -132,7 +132,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0007', 0, () => {
+    it('testFromCharCode0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0007";
       try {
         let result = String.fromCharCode(0x12014);
@@ -150,7 +150,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0008', 0, () => {
+    it('testFromCharCode0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0008";
       try {
         let result = String.fromCharCode(8212);
@@ -168,7 +168,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCharCode0009', 0, () => {
+    it('testFromCharCode0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCharCode0009";
       try {
         let result = String.fromCharCode(-1);
@@ -188,7 +188,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0001', 0, () => {
+    it('testFromCodePoint0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0001";
       try {
         let result = String.fromCodePoint();
@@ -206,7 +206,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0002', 0, () => {
+    it('testFromCodePoint0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0002";
       try {
         let result = String.fromCodePoint(42);
@@ -224,7 +224,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0003', 0, () => {
+    it('testFromCodePoint0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0003";
       try {
         let result = String.fromCodePoint(65, 90);
@@ -242,7 +242,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0004', 0, () => {
+    it('testFromCodePoint0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0004";
       try {
         let result = String.fromCodePoint(0x404);
@@ -260,7 +260,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0005', 0, () => {
+    it('testFromCodePoint0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0005";
       try {
         let result = String.fromCodePoint(194564);
@@ -278,7 +278,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0006', 0, () => {
+    it('testFromCodePoint0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0006";
       try {
         let result = String.fromCodePoint(0x1d306, 0x61, 0x1d307);
@@ -296,7 +296,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0007', 0, () => {
+    it('testFromCodePoint0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0007";
       try {
         let result = String.fromCodePoint(Infinity);
@@ -314,7 +314,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0008', 0, () => {
+    it('testFromCodePoint0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0008";
       try {
         let result = String.fromCodePoint(-1);
@@ -332,7 +332,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0009', 0, () => {
+    it('testFromCodePoint0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0009";
       try {
         let result = String.fromCodePoint(3.14);
@@ -350,7 +350,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0010', 0, () => {
+    it('testFromCodePoint0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0010";
       try {
         let result = String.fromCodePoint(3e-2);
@@ -368,7 +368,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFromCodePoint0011', 0, () => {
+    it('testFromCodePoint0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFromCodePoint0011";
       try {
         let result = String.fromCodePoint(NaN);
@@ -386,7 +386,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRaw0001', 0, () => {
+    it('testRaw0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRaw0001";
       try {
         let result = String.raw`C:\Development\profile\aboutme.html`;
@@ -404,7 +404,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRaw0002', 0, () => {
+    it('testRaw0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRaw0002";
       try {
         let result = String.raw`Hi\n${2 + 3}!`;
@@ -422,7 +422,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRaw0003', 0, () => {
+    it('testRaw0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRaw0003";
       try {
         let result = String.raw`Hi\u000A!`;
@@ -440,7 +440,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharAt0001', 0, () => {
+    it('testCharAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharAt0001";
       try {
         const sentence = 'The quick brown fox jumps over the lazy dog.';
@@ -460,7 +460,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharAt0002', 0, () => {
+    it('testCharAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharAt0002";
       try {
         const sentence = 'The quick brown fox jumps over the lazy dog.';
@@ -480,7 +480,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharAt0003', 0, () => {
+    it('testCharAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharAt0003";
       try {
         const sentence = 'The quick brown fox jumps over the lazy dog.';
@@ -500,7 +500,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharAt0004', 0, () => {
+    it('testCharAt0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharAt0004";
       try {
         const sentence = 'The quick brown fox jumps over the lazy dog.';
@@ -520,7 +520,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharAt0005', 0, () => {
+    it('testCharAt0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharAt0005";
       try {
         const sentence = 'The quick brown fox jumps over the lazy dog.';
@@ -540,7 +540,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharAt0006', 0, () => {
+    it('testCharAt0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharAt0006";
       try {
         const sentence = '';
@@ -560,7 +560,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharCodeAt0001', 0, () => {
+    it('testCharCodeAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharCodeAt0001";
       try {
         const sentence = 'ABC';
@@ -579,7 +579,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharCodeAt0002', 0, () => {
+    it('testCharCodeAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharCodeAt0002";
       try {
         const sentence = 'ABC';
@@ -598,7 +598,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharCodeAt0003', 0, () => {
+    it('testCharCodeAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharCodeAt0003";
       try {
         const sentence = '测试';
@@ -617,7 +617,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCharCodeAt0004', 0, () => {
+    it('testCharCodeAt0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCharCodeAt0004";
       try {
         const sentence = '测试';
@@ -636,7 +636,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0001', 0, () => {
+    it('testCodePointAt0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0001";
       try {
         const sentence = 'ABC';
@@ -655,7 +655,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0002', 0, () => {
+    it('testCodePointAt0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0002";
       try {
         const sentence = 'ABC';
@@ -674,7 +674,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0003', 0, () => {
+    it('testCodePointAt0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0003";
       try {
         const sentence = '😍';
@@ -693,7 +693,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0004', 0, () => {
+    it('testCodePointAt0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0004";
       try {
         const sentence = '\ud83d\ude0d';
@@ -712,7 +712,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0005', 0, () => {
+    it('testCodePointAt0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0005";
       try {
         const sentence = '\ud83d\ude0d';
@@ -731,7 +731,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0006', 0, () => {
+    it('testCodePointAt0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0006";
       try {
         const sentence = '😍';
@@ -750,7 +750,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0007', 0, () => {
+    it('testCodePointAt0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0007";
       try {
         const sentence = '\ud83d\ude0d';
@@ -769,7 +769,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0008', 0, () => {
+    it('testCodePointAt0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0008";
       try {
         const sentence = '\ud83d\ude0d';
@@ -789,7 +789,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0009', 0, () => {
+    it('testCodePointAt0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0009";
       try {
         const sentence = 'ABC';
@@ -809,7 +809,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0010', 0, () => {
+    it('testCodePointAt0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0010";
       try {
         const sentence = 'ABC';
@@ -829,7 +829,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCodePointAt0011', 0, () => {
+    it('testCodePointAt0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testCodePointAt0011";
       try {
         const sentence = 'ABC';
@@ -849,7 +849,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConcat0001', 0, () => {
+    it('testConcat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConcat0001";
       try {
         const str1 = 'Hello';
@@ -871,7 +871,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConcat0002', 0, () => {
+    it('testConcat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConcat0002";
       try {
         const str1 = '';
@@ -895,7 +895,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConcat0003', 0, () => {
+    it('testConcat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConcat0003";
       try {
         const str1 = 'Hello';
@@ -919,7 +919,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testConcat0004', 0, () => {
+    it('testConcat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConcat0004";
       try {
         const str1 = 'Hello';
@@ -941,7 +941,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0001', 0, () => {
+    it('testEndsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0001";
       try {
         const str1 = 'my hello world';
@@ -960,7 +960,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0002', 0, () => {
+    it('testEndsWith0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0002";
       try {
         const str1 = 'my hello world';
@@ -979,7 +979,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0003', 0, () => {
+    it('testEndsWith0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0003";
       try {
         const str1 = 'my hello world';
@@ -998,7 +998,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0004', 0, () => {
+    it('testEndsWith0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0004";
       try {
         const str1 = 'my hello world';
@@ -1017,7 +1017,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0005', 0, () => {
+    it('testEndsWith0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0005";
       try {
         const str1 = 'my hello world';
@@ -1036,7 +1036,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0006', 0, () => {
+    it('testEndsWith0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0006";
       try {
         const str1 = 'my hello world';
@@ -1055,7 +1055,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0007', 0, () => {
+    it('testEndsWith0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0007";
       try {
         const str1 = 'my hello world';
@@ -1074,7 +1074,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0008', 0, () => {
+    it('testEndsWith0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0008";
       try {
         const str1 = 'my hello world';
@@ -1093,7 +1093,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0009', 0, () => {
+    it('testEndsWith0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0009";
       try {
         const str1 = 'my hello world';
@@ -1112,7 +1112,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEndsWith0010', 0, () => {
+    it('testEndsWith0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testEndsWith0010";
       try {
         const str1 = '';
@@ -1131,7 +1131,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0001', 0, () => {
+    it('testIncludes0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0001";
       try {
         const str1 = 'Hello world';
@@ -1150,7 +1150,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0002', 0, () => {
+    it('testIncludes0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0002";
       try {
         const str1 = 'Hello World';
@@ -1169,7 +1169,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0003', 0, () => {
+    it('testIncludes0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0003";
       try {
         const str1 = 'Hello World';
@@ -1188,7 +1188,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0004', 0, () => {
+    it('testIncludes0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0004";
       try {
         const str1 = 'Hello World';
@@ -1207,7 +1207,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0005', 0, () => {
+    it('testIncludes0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0005";
       try {
         const str1 = 'Hello World';
@@ -1226,7 +1226,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0006', 0, () => {
+    it('testIncludes0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0006";
       try {
         const str1 = 'Hello World';
@@ -1245,7 +1245,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0007', 0, () => {
+    it('testIncludes0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0007";
       try {
         const str1 = 'Hello World';
@@ -1264,7 +1264,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0008', 0, () => {
+    it('testIncludes0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0008";
       try {
         const str1 = 'Hello World';
@@ -1283,7 +1283,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0009', 0, () => {
+    it('testIncludes0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0009";
       try {
         const str1 = 'Hello World';
@@ -1302,7 +1302,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIncludes0010', 0, () => {
+    it('testIncludes0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIncludes0010";
       try {
         const str1 = 'Hello World';
@@ -1321,7 +1321,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIndexOf0001', 0, () => {
+    it('testIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIndexOf0001";
       try {
         const str1 = 'Hello World';
@@ -1340,7 +1340,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLastIndexOf0001', 0, () => {
+    it('testLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLastIndexOf0001";
       try {
         const str1 = 'HelloWorld';
@@ -1359,7 +1359,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLocaleCompare0001', 0, () => {
+    it('testLocaleCompare0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testLocaleCompare0001";
       try {
         const a = 'réservé';
@@ -1379,7 +1379,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMatchAll0001', 0, () => {
+    it('testMatchAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMatchAll0001";
       try {
         const regexp = /t(e)(st(\d?))/g;
@@ -1412,7 +1412,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNormalize0001', 0, () => {
+    it('testNormalize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNormalize0001";
       try {
         let string1 = "\u00F1";
@@ -1432,7 +1432,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPadEnd0001', 0, () => {
+    it('testPadEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPadEnd0001";
       try {
         const str1 = 'Breaded Mushrooms';
@@ -1451,7 +1451,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPadStart0001', 0, () => {
+    it('testPadStart0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testPadStart0001";
       try {
         const str1 = '5';
@@ -1470,7 +1470,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRepeat0001', 0, () => {
+    it('testRepeat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRepeat0001";
       try {
         const str = '1';
@@ -1489,7 +1489,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testReplace0001', 0, () => {
+    it('testReplace0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testReplace0001";
       try {
         const str = '1';
@@ -1508,7 +1508,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testReplaceAll0001', 0, () => {
+    it('testReplaceAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testReplaceAll0001";
       try {
         const str = "123321";
@@ -1527,7 +1527,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSearch0001', 0, () => {
+    it('testSearch0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSearch0001";
       try {
         const paragraph = "I think Ruth's dog is cuter than your dog!";
@@ -1547,7 +1547,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSlice0001', 0, () => {
+    it('testSlice0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSlice0001";
       try {
         const paragraph = "I think Ruth's dog is cuter than your dog.";
@@ -1566,7 +1566,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSplit0001', 0, () => {
+    it('testSplit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSplit0001";
       try {
         const str = "The quick brown fox jumps over the lazy dog.";
@@ -1586,7 +1586,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStartsWith0001', 0, () => {
+    it('testStartsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStartsWith0001";
       try {
         const str = 'Saturday night plans';
@@ -1605,7 +1605,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSubstring0001', 0, () => {
+    it('testSubstring0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSubstring0001";
       try {
         const str = 'Mozilla';
@@ -1624,7 +1624,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProtoTypeSymbol0001', 0, () => {
+    it('testProtoTypeSymbol0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProtoTypeSymbol0001";
       try {
         const str: string = "The quick red fox jumped over the lazy dog's back.";
@@ -1645,7 +1645,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToLocaleLowerCase0001', 0, () => {
+    it('testToLocaleLowerCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testToLocaleLowerCase0001";
       try {
         const str = 'İstanbul';
@@ -1664,7 +1664,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToLocaleUpperCase0001', 0, () => {
+    it('testToLocaleUpperCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testToLocaleUpperCase0001";
       try {
         const str = 'istanbul';
@@ -1683,7 +1683,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToLowerCase0001', 0, () => {
+    it('testToLowerCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testToLowerCase0001";
       try {
         const str = 'The quick brown fox jumps over the lazy dog.';
@@ -1702,7 +1702,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToString0001', 0, () => {
+    it('testToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testToString0001";
       try {
         const stringObj = new String('foo');
@@ -1721,7 +1721,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToUpperCase0001', 0, () => {
+    it('testToUpperCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testToUpperCase0001";
       try {
         const sentence = "abc";
@@ -1740,7 +1740,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTrim0001', 0, () => {
+    it('testTrim0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTrim0001";
       try {
         const sentence = "  abc  ";
@@ -1759,7 +1759,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTrimEnd0001', 0, () => {
+    it('testTrimEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTrimEnd0001";
       try {
         const sentence = "  abc  ";
@@ -1778,7 +1778,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTrimStart0001', 0, () => {
+    it('testTrimStart0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTrimStart0001";
       try {
         const sentence = "  abc  ";
@@ -1797,7 +1797,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testValueOf0001', 0, () => {
+    it('testValueOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testValueOf0001";
       try {
         const stringObj = new String('foo');
@@ -1817,7 +1817,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0001', 0, () => {
+    it('testPrototypeIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0001';
       try {
         const str = "hello world";
@@ -1836,7 +1836,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0002', 0, () => {
+    it('testPrototypeIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0002';
       try {
         const str = "hello world";
@@ -1855,7 +1855,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0003', 0, () => {
+    it('testPrototypeIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0003';
       try {
         const str = "hello world";
@@ -1874,7 +1874,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0004', 0, () => {
+    it('testPrototypeIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0004';
       try {
         const str = "hello world";
@@ -1893,7 +1893,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0005', 0, () => {
+    it('testPrototypeIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0005';
       try {
         const str = "hello world";
@@ -1912,7 +1912,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0006', 0, () => {
+    it('testPrototypeIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0006';
       try {
         const str = "hello world";
@@ -1931,7 +1931,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0007', 0, () => {
+    it('testPrototypeIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "hello world";
       const TAG = 'testPrototypeIndexOf0007';
       let str1 = str.indexOf("abc", undefined);
@@ -1950,7 +1950,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0008', 0, () => {
+    it('testPrototypeIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeIndexOf0008';
       try {
         const str = "hello world";
@@ -1969,7 +1969,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0009', 0, () => {
+    it('testPrototypeIndexOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Brave new world";
       const TAG = 'testPrototypeIndexOf0009';
       let str1 = str.indexOf("w");
@@ -1988,7 +1988,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0010', 0, () => {
+    it('testPrototypeIndexOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Brave new world";
       const TAG = 'testPrototypeIndexOf0010';
       let str1 = str.indexOf("new");
@@ -2007,7 +2007,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0011', 0, () => {
+    it('testPrototypeIndexOf0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "brie, pepper jack, cheddar";
       const TAG = 'testPrototypeIndexOf0011';
       let str1 = str.indexOf("cheddar");
@@ -2026,7 +2026,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0012', 0, () => {
+    it('testPrototypeIndexOf0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Brie, Pepper Jack, Cheddar";
       const TAG = 'testPrototypeIndexOf0012';
       let str1 = str.indexOf("cheddar");
@@ -2045,7 +2045,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0013', 0, () => {
+    it('testPrototypeIndexOf0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale";
       const TAG = 'testPrototypeIndexOf0013';
       let str1 = str.indexOf("Blue");
@@ -2064,7 +2064,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0014', 0, () => {
+    it('testPrototypeIndexOf0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale";
       const TAG = 'testPrototypeIndexOf0014';
       let str1 = str.indexOf("Blute");
@@ -2083,7 +2083,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0015', 0, () => {
+    it('testPrototypeIndexOf0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale";
       const TAG = 'testPrototypeIndexOf0015';
       let str1 = str.indexOf("Whale", 0);
@@ -2102,7 +2102,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0016', 0, () => {
+    it('testPrototypeIndexOf0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale";
       const TAG = 'testPrototypeIndexOf0016';
       let str1 = str.indexOf("Whale", 5);
@@ -2121,7 +2121,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0017', 0, () => {
+    it('testPrototypeIndexOf0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale";
       const TAG = 'testPrototypeIndexOf0017';
       let str1 = str.indexOf("Whale", 7);
@@ -2140,7 +2140,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeIndexOf0018', 0, () => {
+    it('testPrototypeIndexOf0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale";
       const TAG = 'testPrototypeIndexOf0018';
       let str1 = str.indexOf("biue");
@@ -2159,7 +2159,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0001', 0, () => {
+    it('testPrototypeLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0001';
       let str1 = str.lastIndexOf("a");
@@ -2178,7 +2178,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0002', 0, () => {
+    it('testPrototypeLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0002';
       let str1 = str.lastIndexOf("a", 2);
@@ -2197,7 +2197,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0003', 0, () => {
+    it('testPrototypeLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0003';
       let str1 = str.lastIndexOf("a", 0);
@@ -2216,7 +2216,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0004', 0, () => {
+    it('testPrototypeLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0004';
       let str1 = str.lastIndexOf("x");
@@ -2235,7 +2235,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0005', 0, () => {
+    it('testPrototypeLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0005';
       let str1 = str.lastIndexOf("c", -5);
@@ -2254,7 +2254,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0006', 0, () => {
+    it('testPrototypeLastIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0006';
       let str1 = str.lastIndexOf("c", 0);
@@ -2273,7 +2273,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0008', 0, () => {
+    it('testPrototypeLastIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0008';
       let str1 = str.lastIndexOf("", 2);
@@ -2292,7 +2292,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0009', 0, () => {
+    it('testPrototypeLastIndexOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeLastIndexOf0009';
       try {
         const str = "canal";
@@ -2311,7 +2311,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0010', 0, () => {
+    it('testPrototypeLastIndexOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0010';
       let str1 = str.lastIndexOf("", 2.5);
@@ -2330,7 +2330,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0011', 0, () => {
+    it('testPrototypeLastIndexOf0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0011';
       let str1 = str.lastIndexOf("A");
@@ -2349,7 +2349,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0012', 0, () => {
+    it('testPrototypeLastIndexOf0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0012';
       let str1 = str.lastIndexOf("A", 2);
@@ -2368,7 +2368,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0013', 0, () => {
+    it('testPrototypeLastIndexOf0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "canal";
       const TAG = 'testPrototypeLastIndexOf0013';
       let str1 = str.lastIndexOf("A", 0);
@@ -2387,7 +2387,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0014', 0, () => {
+    it('testPrototypeLastIndexOf0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0014';
       let str1 = str.lastIndexOf("Blue");
@@ -2406,7 +2406,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0015', 0, () => {
+    it('testPrototypeLastIndexOf0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0015';
       let str1 = str.lastIndexOf("Blue", 2);
@@ -2425,7 +2425,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0016', 0, () => {
+    it('testPrototypeLastIndexOf0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0016';
       let str1 = str.lastIndexOf("Blue", 0);
@@ -2444,7 +2444,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0017', 0, () => {
+    it('testPrototypeLastIndexOf0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0017';
       let str1 = str.lastIndexOf("blue");
@@ -2463,7 +2463,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0018', 0, () => {
+    it('testPrototypeLastIndexOf0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0018';
       let str1 = str.lastIndexOf("blue", 2);
@@ -2482,7 +2482,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0019', 0, () => {
+    it('testPrototypeLastIndexOf0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0019';
       let str1 = str.lastIndexOf("blue", 0);
@@ -2501,7 +2501,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0021', 0, () => {
+    it('testPrototypeLastIndexOf0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0021';
       let str1 = str.lastIndexOf("", 2);
@@ -2520,7 +2520,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0022', 0, () => {
+    it('testPrototypeLastIndexOf0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0022';
       let str1 = str.lastIndexOf("", 2.5);
@@ -2539,7 +2539,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLastIndexOf0023', 0, () => {
+    it('testPrototypeLastIndexOf0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Blue Whale, Killer Whale";
       const TAG = 'testPrototypeLastIndexOf0023';
       let str1 = str.lastIndexOf("Blue", undefined);
@@ -2558,7 +2558,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0001', 0, () => {
+    it('testPrototypeLocaleCompare0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Banana";
       const TAG = 'testPrototypeLocaleCompare0001';
       let str1 = str.localeCompare("Apple");
@@ -2577,7 +2577,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0002', 0, () => {
+    it('testPrototypeLocaleCompare0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Banana";
       const TAG = 'testPrototypeLocaleCompare0002';
       let str1 = str.localeCompare("Banana");
@@ -2596,7 +2596,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0003', 0, () => {
+    it('testPrototypeLocaleCompare0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Banana";
       const TAG = 'testPrototypeLocaleCompare0003';
       let str1 = str.localeCompare("Grape");
@@ -2615,7 +2615,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0004', 0, () => {
+    it('testPrototypeLocaleCompare0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "Banana";
       const TAG = 'testPrototypeLocaleCompare0004';
       let str1 = str.localeCompare("");
@@ -2634,7 +2634,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0005', 0, () => {
+    it('testPrototypeLocaleCompare0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "B";
       const TAG = 'testPrototypeLocaleCompare0005';
       let str1 = str.localeCompare("A");
@@ -2653,7 +2653,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0006', 0, () => {
+    it('testPrototypeLocaleCompare0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "B";
       const TAG = 'testPrototypeLocaleCompare0006';
       let str1 = str.localeCompare("B");
@@ -2672,7 +2672,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0007', 0, () => {
+    it('testPrototypeLocaleCompare0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "B";
       const TAG = 'testPrototypeLocaleCompare0007';
       let str1 = str.localeCompare("G");
@@ -2691,7 +2691,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0008', 0, () => {
+    it('testPrototypeLocaleCompare0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "B";
       const TAG = 'testPrototypeLocaleCompare0008';
       let str1 = str.localeCompare("");
@@ -2710,7 +2710,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0009', 0, () => {
+    it('testPrototypeLocaleCompare0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "B";
       const TAG = 'testPrototypeLocaleCompare0009';
       let str1 = str.localeCompare("undefinded");
@@ -2729,7 +2729,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0010', 0, () => {
+    it('testPrototypeLocaleCompare0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "ä";
       const TAG = 'testPrototypeLocaleCompare0010';
       let str1 = str.localeCompare("z", "de");
@@ -2748,7 +2748,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0011', 0, () => {
+    it('testPrototypeLocaleCompare0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "ä";
       const TAG = 'testPrototypeLocaleCompare0011';
       let str1 = str.localeCompare("z", "sv");
@@ -2767,7 +2767,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0012', 0, () => {
+    it('testPrototypeLocaleCompare0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "2";
       const TAG = 'testPrototypeLocaleCompare0012';
       let str1 = str.localeCompare("10");
@@ -2786,7 +2786,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0013', 0, () => {
+    it('testPrototypeLocaleCompare0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeLocaleCompare0013';
       try {
         const str = "2";
@@ -2805,7 +2805,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0014', 0, () => {
+    it('testPrototypeLocaleCompare0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "2";
       const TAG = 'testPrototypeLocaleCompare0014';
       let str1 = str.localeCompare("10", undefined, {
@@ -2826,7 +2826,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeLocaleCompare0015', 0, () => {
+    it('testPrototypeLocaleCompare0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "2";
       const TAG = 'testPrototypeLocaleCompare0015';
       let str1 = str.localeCompare("10", "en-u-kn-true");
@@ -2845,7 +2845,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatch0001', 0, () => {
+    it('testPrototypeMatch0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "For more information, see Chapter 3.4.5.1";
       const TAG = 'testPrototypeMatch0001';
       const re = /see (chapter \d+(\.\d)*)/i;
@@ -2866,7 +2866,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatch0002', 0, () => {
+    it('testPrototypeMatch0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "ABCDEFGHIJKLMNOPQRSTUVWHIZabcdefghijklmnopqrstuvwxyz";
       const TAG = 'testPrototypeMatch0002';
       const regexp = /[A-E]/gi;
@@ -2887,7 +2887,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatch0003', 0, () => {
+    it('testPrototypeMatch0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The quick brown fox jumps over the lazy dog. It barked.";
       const regexp = /(?<animal>fox|cat) jumps over/;
       const found = str.match(regexp);
@@ -2908,7 +2908,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatch0004', 0, () => {
+    it('testPrototypeMatch0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeMatch0004';
       try {
         const str = '123';
@@ -2927,7 +2927,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatch0005', 0, () => {
+    it('testPrototypeMatch0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeMatch0005';
       try {
         const str = "123";
@@ -2946,7 +2946,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatch0006', 0, () => {
+    it('testPrototypeMatch0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeMatch0006';
       try {
         const str = "北风卷地白草折";
@@ -2966,7 +2966,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatchAll0001', 0, () => {
+    it('testPrototypeMatchAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeMatchAll0001';
       try {
         const str = "abc";
@@ -2995,7 +2995,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatchAll0002', 0, () => {
+    it('testPrototypeMatchAll0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "table football, foosball";
       const regexp = /foo[a-z]*/g;
       const matches = str.matchAll(regexp);
@@ -3024,7 +3024,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeMatchAll0003', 0, () => {
+    it('testPrototypeMatchAll0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "abc";
       const regexp = /[a-c]/g;
       regexp.lastIndex = 1;
@@ -3046,7 +3046,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeNormalize0001', 0, () => {
+    it('testPrototypeNormalize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str1 = "\u00F1";
       let str2 = "\u006E\u0303";
       str1 = str1.normalize("NFD");
@@ -3068,7 +3068,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeNormalize0002', 0, () => {
+    it('testPrototypeNormalize0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str1 = "\u00F1";
       let str2 = "\u006E\u0303";
       str1 = str1.normalize("NFKD");
@@ -3090,7 +3090,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeNormalize0003', 0, () => {
+    it('testPrototypeNormalize0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "\uFB00";
       str = str.normalize(undefined);
       const TAG = 'testPrototypeNormalize0003';
@@ -3109,7 +3109,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeNormalize0004', 0, () => {
+    it('testPrototypeNormalize0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str1 = "\u1E9B\u0323";
       const str2 = "\u1E9B\u0323";
       const TAG = 'testPrototypeNormalize0004';
@@ -3130,7 +3130,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeNormalize0005', 0, () => {
+    it('testPrototypeNormalize0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "\u1E9B\u0323";
       const TAG = 'testPrototypeNormalize0005';
       str = str.normalize("NFKC");
@@ -3149,7 +3149,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadEnd0001', 0, () => {
+    it('testPrototypePadEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "test";
       const TAG = 'testPrototypePadEnd0001';
       str = str.padEnd(10);
@@ -3168,7 +3168,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadEnd0002', 0, () => {
+    it('testPrototypePadEnd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "test";
       const TAG = 'testPrototypePadEnd0002';
       str = str.padEnd(10, "foo");
@@ -3187,7 +3187,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadEnd0003', 0, () => {
+    it('testPrototypePadEnd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "test";
       const TAG = 'testPrototypePadEnd0003';
       str = str.padEnd(6, "123456");
@@ -3206,7 +3206,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadEnd0004', 0, () => {
+    it('testPrototypePadEnd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "test";
       const TAG = 'testPrototypePadEnd0004';
       str = str.padEnd(1);
@@ -3225,7 +3225,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadEnd0005', 0, () => {
+    it('testPrototypePadEnd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "test";
       const TAG = 'testPrototypePadEnd0005';
       str = str.padEnd(-1);
@@ -3244,7 +3244,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadStart0001', 0, () => {
+    it('testPrototypePadStart0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "red";
       const TAG = 'testPrototypePadStart0001';
       str = str.padStart(10);
@@ -3263,7 +3263,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadStart0002', 0, () => {
+    it('testPrototypePadStart0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "red";
       const TAG = 'testPrototypePadStart0002';
       str = str.padStart(10, "foo");
@@ -3282,7 +3282,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadStart0003', 0, () => {
+    it('testPrototypePadStart0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "red";
       const TAG = 'testPrototypePadStart0003';
       str = str.padStart(6, "123456");
@@ -3301,7 +3301,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadStart0004', 0, () => {
+    it('testPrototypePadStart0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "red";
       const TAG = 'testPrototypePadStart0004';
       str = str.padStart(8, "0");
@@ -3320,7 +3320,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadStart0005', 0, () => {
+    it('testPrototypePadStart0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "red";
       const TAG = 'testPrototypePadStart0005';
       str = str.padStart(1);
@@ -3339,7 +3339,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypePadStart0006', 0, () => {
+    it('testPrototypePadStart0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let str = "red";
       const TAG = 'testPrototypePadStart0006';
       str = str.padStart(-1);
@@ -3358,7 +3358,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeRepeat0001', 0, () => {
+    it('testPrototypeRepeat0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeRepeat0001';
       try {
         const str = "abc";
@@ -3377,7 +3377,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeRepeat0002', 0, () => {
+    it('testPrototypeRepeat0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "abc";
       const TAG = 'testPrototypeRepeat0002';
       let str1 = str.repeat(0);
@@ -3396,7 +3396,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeRepeat0003', 0, () => {
+    it('testPrototypeRepeat0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const string1 = 'abc';
       const TAG = 'testPrototypeRepeat0003';
       try {
@@ -3415,7 +3415,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeRepeat0004', 0, () => {
+    it('testPrototypeRepeat0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const string1 = 'abc';
       const TAG = 'testPrototypeRepeat0004';
       try {
@@ -3434,7 +3434,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeRepeat0005', 0, () => {
+    it('testPrototypeRepeat0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const string1 = 'abc';
       const TAG = 'testPrototypeRepeat0005';
       try {
@@ -3453,7 +3453,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeRepeat0006', 0, () => {
+    it('testPrototypeRepeat0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeRepeat0006';
       try {
         const string1 = 'abc';
@@ -3472,7 +3472,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeReplace0001', 0, () => {
+    it('testPrototypeReplace0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "foo";
       const TAG = 'testPrototypeReplace0001';
       let str1 = str.replace(/(f)/, "$2");
@@ -3491,7 +3491,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeReplace0002', 0, () => {
+    it('testPrototypeReplace0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "foo";
       const TAG = 'testPrototypeReplace0002';
       let str1 = str.replace("f", "$1");
@@ -3510,7 +3510,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeReplace0003', 0, () => {
+    it('testPrototypeReplace0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "foo";
       const TAG = 'testPrototypeReplace0003';
       let str1 = str.replace(/(f)|(g)/, "$2");
@@ -3529,7 +3529,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeReplaceAll0001', 0, () => {
+    it('testPrototypeReplaceAll0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "aabbcc";
       const TAG = 'testPrototypeReplaceAll0001';
       let str1 = str.replaceAll("b", ".");
@@ -3548,7 +3548,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeReplaceAll0002', 0, () => {
+    it('testPrototypeReplaceAll0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "aabbcc";
       const TAG = 'testPrototypeReplaceAll0002';
       let str1 = str.replaceAll(/b/g, ".");
@@ -3567,7 +3567,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeReplaceAll0003', 0, () => {
+    it('testPrototypeReplaceAll0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testPrototypeReplaceAll0003';
       try {
         const str = "aabbcc";
@@ -3586,7 +3586,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSearch0001', 0, () => {
+    it('testPrototypeSearch0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "hey JudE";
       const TAG = 'testPrototypeSearch0001';
       const re = /[A-Z]/;
@@ -3606,7 +3606,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSearch0002', 0, () => {
+    it('testPrototypeSearch0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "hey JudE";
       const TAG = 'testPrototypeSearch0002';
       const reDot = /[.]/;
@@ -3626,7 +3626,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0001', 0, () => {
+    it('testPrototypeSlice0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0001';
       let str1 = str.slice(1, 8);
@@ -3645,7 +3645,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0002', 0, () => {
+    it('testPrototypeSlice0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0002';
       let str1 = str.slice(4, -2);
@@ -3664,7 +3664,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0003', 0, () => {
+    it('testPrototypeSlice0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0003';
       let str1 = str.slice(12);
@@ -3683,7 +3683,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0004', 0, () => {
+    it('testPrototypeSlice0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0004';
       let str1 = str.slice(30);
@@ -3702,7 +3702,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0005', 0, () => {
+    it('testPrototypeSlice0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0005';
       let str1 = str.slice(-3);
@@ -3721,7 +3721,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0006', 0, () => {
+    it('testPrototypeSlice0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0006';
       let str1 = str.slice(-3, -1);
@@ -3740,7 +3740,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0007', 0, () => {
+    it('testPrototypeSlice0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0007';
       let str1 = str.slice(0, -1);
@@ -3759,7 +3759,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0008', 0, () => {
+    it('testPrototypeSlice0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0008';
       let str1 = str.slice(4, -1);
@@ -3778,7 +3778,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0009', 0, () => {
+    it('testPrototypeSlice0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0009';
       let str1 = str.slice(-11, 16);
@@ -3797,7 +3797,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0010', 0, () => {
+    it('testPrototypeSlice0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0010';
       let str1 = str.slice(-11, -7);
@@ -3816,7 +3816,7 @@ export default function StringTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPrototypeSlice0011', 0, () => {
+    it('testPrototypeSlice0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const str = "The morning is upon us.";
       const TAG = 'testPrototypeSlice0011';
       let str1 = str.slice(-5, -1);
@@ -3835,7 +3835,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringSplit0001", 0, () => {
+    it("testStringSplit0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0001';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3853,7 +3853,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0002', 0, () => {
+    it('testStringSplit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0002';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3871,7 +3871,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0003', 0, () => {
+    it('testStringSplit0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0003';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3889,7 +3889,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0004', 0, () => {
+    it('testStringSplit0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0004';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3907,7 +3907,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0005', 0, () => {
+    it('testStringSplit0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0005';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3925,7 +3925,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0006', 0, () => {
+    it('testStringSplit0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0006';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3943,7 +3943,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0007', 0, () => {
+    it('testStringSplit0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0007';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3963,7 +3963,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0008', 0, () => {
+    it('testStringSplit0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSplit0008';
       try {
         const str = 'Hello World. How are you doing?';
@@ -3986,7 +3986,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0010', 0, () => {
+    it('testStringSplit0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0010";
       try {
         const str = '';
@@ -4004,7 +4004,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0011', 0, () => {
+    it('testStringSplit0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0011";
       try {
         let str = '';
@@ -4022,7 +4022,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0012', 0, () => {
+    it('testStringSplit0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0012";
       try {
         const str = "";
@@ -4042,7 +4042,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0014', 0, () => {
+    it('testStringSplit0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0014";
       try {
         const str = '😄😄';
@@ -4062,7 +4062,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0015', 0, () => {
+    it('testStringSplit0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0015";
       try {
         const str = '😄😄';
@@ -4082,7 +4082,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0016', 0, () => {
+    it('testStringSplit0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0016";
       try {
         const names = "Harry Trump;Fred Barney;Helen Rigby;Bill Abel;Chris Hand ";
@@ -4102,7 +4102,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSplit0017', 0, () => {
+    it('testStringSplit0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringSplit0017";
       try {
         const myString = "Hello 1 word. Sentence number 2.";
@@ -4122,7 +4122,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0001', 0, () => {
+    it('testStringStartsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0001";
       try {
         const str1 = 'Saturday night plans';
@@ -4140,7 +4140,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0002', 0, () => {
+    it('testStringStartsWith0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0002";
       try {
         const str1 = 'Saturday night plans';
@@ -4158,7 +4158,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0003', 0, () => {
+    it('testStringStartsWith0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0003";
       try {
         const str1 = 'Saturday night plans';
@@ -4176,7 +4176,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0004', 0, () => {
+    it('testStringStartsWith0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0004";
       try {
         const str1 = 'Saturday night plans';
@@ -4194,7 +4194,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0005', 0, () => {
+    it('testStringStartsWith0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0005";
       try {
         const str1 = 'Saturday night plans';
@@ -4212,7 +4212,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0009', 0, () => {
+    it('testStringStartsWith0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0009";
       try {
         const str1 = 'Saturday night plans';
@@ -4230,7 +4230,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartWith0010', 0, () => {
+    it('testStringStartWith0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringWith0010";
       try {
         const str1 = 'undefined Saturday night plans';
@@ -4248,7 +4248,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartWith0012', 0, () => {
+    it('testStringStartWith0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringWith0012";
       try {
         const str1 = 'undefined Saturday night plans';
@@ -4266,7 +4266,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartWith0013', 0, () => {
+    it('testStringStartWith0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringWith00013";
       try {
         const str1 = 'undefined Saturday night plans';
@@ -4285,7 +4285,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0015', 0, () => {
+    it('testStringStartsWith0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0015";
       try {
         const str1 = "";
@@ -4303,7 +4303,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0016', 0, () => {
+    it('testStringStartsWith0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0016";
       try {
         const str1 = "";
@@ -4321,7 +4321,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0017', 0, () => {
+    it('testStringStartsWith0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0017";
       try {
         const str1 = "";
@@ -4339,7 +4339,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0018', 0, () => {
+    it('testStringStartsWith0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0018";
       try {
         const str1 = "";
@@ -4357,7 +4357,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringStartsWith0022', 0, () => {
+    it('testStringStartsWith0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringStartsWith0022";
       try {
         const str1 = '';
@@ -4375,7 +4375,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0001', 0, () => {
+    it('testStringSubstring0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0001';
       try {
         const str = 'Mozilla';
@@ -4393,7 +4393,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0002', 0, () => {
+    it('testStringSubstring0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0002';
       try {
         const str = 'Mozilla';
@@ -4411,7 +4411,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0003', 0, () => {
+    it('testStringSubstring0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0003';
       try {
         const str = 'Mozilla';
@@ -4429,7 +4429,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0004', 0, () => {
+    it('testStringSubstring0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0004';
       try {
         const str = 'Mozilla';
@@ -4447,7 +4447,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0005', 0, () => {
+    it('testStringSubstring0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0005';
       try {
         const str = 'Mozilla';
@@ -4465,7 +4465,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0006', 0, () => {
+    it('testStringSubstring0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0006';
       try {
         const str = 'Mozilla';
@@ -4483,7 +4483,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringSubstring0008', 0, () => {
+    it('testStringSubstring0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringSubstring0008';
       try {
         const str = 'Mozilla';
@@ -4501,7 +4501,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringToLocaleLowerCase0001', 0, () => {
+    it('testStringToLocaleLowerCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLocaleLowerCase0001";
       try {
         const dotted = "İSTANBUL";
@@ -4520,7 +4520,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringToLocaleLowerCase0002', 0, () => {
+    it('testStringToLocaleLowerCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringToLocaleLowerCase0002';
       try {
         const dotted = 'İstanbul';
@@ -4540,7 +4540,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringToLocaleLowerCase0003', 0, () => {
+    it('testStringToLocaleLowerCase0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringToLocaleLowerCase0003';
       try {
         const dotted = '';
@@ -4560,7 +4560,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0004', 0, () => {
+    it('testStringToLocaleLowerCase0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLocaleLowerCase0004";
       try {
         const dotted = '';
@@ -4578,7 +4578,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleUpperCase0001', 0, () => {
+    it('testStringToLocaleUpperCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLocaleUpperCase0001";
       try {
         const city = 'istanbul';
@@ -4596,7 +4596,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleUpperCase0002', 0, () => {
+    it('testStringToLocaleUpperCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLocaleUpperCase0002";
       try {
         const city = 'istanbul';
@@ -4614,7 +4614,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleUpperCase0003', 0, () => {
+    it('testStringToLocaleUpperCase0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLocaleUpperCase0003";
       try {
         const city = '';
@@ -4632,7 +4632,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleUpperCase0004', 0, () => {
+    it('testStringToLocaleUpperCase0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLocaleUpperCase0004";
       try {
         const city = '';
@@ -4650,7 +4650,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLowerCase0001', 0, () => {
+    it('testStringToLowerCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLowerCase0001";
       try {
         const sentence = 'The quick brown fox jumps over the lazy dog.';
@@ -4668,7 +4668,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLowerCase0002', 0, () => {
+    it('testStringToLowerCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToLowerCase0002";
       try {
         const sentence = '';
@@ -4687,7 +4687,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToString0001', 0, () => {
+    it('testStringToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToString0001";
       try {
         const stringObj = new String('foo');
@@ -4705,7 +4705,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToString0002', 0, () => {
+    it('testStringToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToString0002";
       try {
         const stringObj = new String('foo');
@@ -4724,7 +4724,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToString0003', 0, () => {
+    it('testStringToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToString0003";
       try {
         const stringObj = 123;
@@ -4742,7 +4742,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToString0004', 0, () => {
+    it('testStringToString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToString0004";
       try {
         const stringObj = 123;
@@ -4761,7 +4761,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToUpperCase0001', 0, () => {
+    it('testStringToUpperCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringToUpperCase0001";
       try {
         const city = 'istanbul';
@@ -4780,7 +4780,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringToUpperCase0002', 0, () => {
+    it('testStringToUpperCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringToUpperCase0002';
       try {
         const a = 'abcdef';
@@ -4800,7 +4800,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringToUpperCase0003', 0, () => {
+    it('testStringToUpperCase0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringToUpperCase0003';
       try {
         const city = '';
@@ -4818,7 +4818,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringTrim0001', 0, () => {
+    it('testStringTrim0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringTrim0001';
       try {
         const greeting = '   Hello world!   ';
@@ -4836,7 +4836,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringTrim0002', 0, () => {
+    it('testStringTrim0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringTrim0002';
       try {
         const greeting = '   Hello world!   ';
@@ -4854,7 +4854,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringTrim0003', 0, () => {
+    it('testStringTrim0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringTrim0003';
       try {
         const str = "   foo  ";
@@ -4872,7 +4872,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringtrim0004', 0, () => {
+    it('testStringtrim0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringtrim0004';
       try {
         const str = "   ";
@@ -4890,7 +4890,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringtrimEnd0001', 0, () => {
+    it('testStringtrimEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringtrimEnd0001';
       try {
         const greeting = ' Hello world! ';
@@ -4908,7 +4908,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringtrimEnd0002', 0, () => {
+    it('testStringtrimEnd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringtrimEnd0002';
       try {
         const greeting = ' Hello world! ';
@@ -4926,7 +4926,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringtrimEnd0003', 0, () => {
+    it('testStringtrimEnd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringtrimEnd0003';
       try {
         const greeting = '  ';
@@ -4944,7 +4944,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringtrimEnd0004', 0, () => {
+    it('testStringtrimEnd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringtrimEnd0004';
       try {
         const greeting = '  ';
@@ -4964,7 +4964,7 @@ export default function StringTest() {
      * @tc.type       :Function
      * @tc.level      :Level 1
      */
-    it('testStringtrimStart0001', 0, () => {
+    it('testStringtrimStart0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testStringtrimStart0001';
       try {
         const greeting = ' Hello world! ';
@@ -4982,7 +4982,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringTrimStart0002', 0, () => {
+    it('testStringTrimStart0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStart0002";
       try {
         const greeting = "Hello World!";
@@ -5000,7 +5000,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringTrimStart0003', 0, () => {
+    it('testStringTrimStart0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStart0003";
       try {
         const greeting = " ";
@@ -5018,7 +5018,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringTrimStart0004', 0, () => {
+    it('testStringTrimStart0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStart0004";
       try {
         const greeting = " ";
@@ -5036,7 +5036,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringValueOf0001', 0, () => {
+    it('testStringValueOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOf0001";
       try {
         const stringObject = new String("foo");
@@ -5055,7 +5055,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringValueOf0002', 0, () => {
+    it('testStringValueOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOf0002";
       try {
         const stringObject = new String("foo");
@@ -5073,7 +5073,7 @@ export default function StringTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringValueOf0003', 0, () => {
+    it('testStringValueOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOf0003";
       try {
         const stringObject = new String("");

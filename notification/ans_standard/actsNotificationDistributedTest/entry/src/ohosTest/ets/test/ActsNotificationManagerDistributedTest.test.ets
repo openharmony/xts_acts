@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import notificationManager from '@ohos.notificationManager'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base'
 
 export default function ActsNotificationManagerDistributedTest() {
@@ -26,7 +26,7 @@ export default function ActsNotificationManagerDistributedTest() {
     * @tc.name      : function isDistributedEnabled(callback: AsyncCallback<boolean>): void
     * @tc.desc      : Obtains whether the device supports distributed notification
     */
-    it('Sub_Notification_Ans_Distributed_Enable_4100', 0, async (done:Function) => {
+    it('Sub_Notification_Ans_Distributed_Enable_4100', Level.LEVEL2, async (done:Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4100 START`)
       try {
         notificationManager.isDistributedEnabled((err, data) => {
@@ -53,7 +53,7 @@ export default function ActsNotificationManagerDistributedTest() {
     * @tc.name      : function isDistributedEnabled(): Promise<boolean>
     * @tc.desc      : Obtains whether the device supports distributed notification
     */
-    it('Sub_Notification_Ans_Distributed_Enable_4200', 0, async (done:Function) => {
+    it('Sub_Notification_Ans_Distributed_Enable_4200', Level.LEVEL2, async (done:Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4200 START`)
       notificationManager.isDistributedEnabled().then((data) => {
         console.info(`${TAG} isDistributedEnabled Promise success: ${data}`)
@@ -75,7 +75,7 @@ export default function ActsNotificationManagerDistributedTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('Sub_Notification_Ans_Is_Notification_Enable_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Is_Notification_Enable_0100', Level.LEVEL2, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Is_Notification_Enable_0100 START`);
 
       notificationManager.isNotificationEnabledSync()

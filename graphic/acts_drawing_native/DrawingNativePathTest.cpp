@@ -60,7 +60,7 @@ class DrawingNativePathTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathCreateNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_PathCreate to create a path object
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
@@ -76,7 +76,7 @@ HWTEST_F(DrawingNativePathTest, testPathCreateNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathCopyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathCopyNormal, Function | SmallTest | Level0) {
     // 1. Create a path object 1 by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path1 = OH_Drawing_PathCreate();
     EXPECT_NE(path1, nullptr);
@@ -113,7 +113,7 @@ HWTEST_F(DrawingNativePathTest, testPathCopyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathCopyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathCopyNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -134,7 +134,7 @@ HWTEST_F(DrawingNativePathTest, testPathCopyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathCopyInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathCopyInputDestroyed, Function | SmallTest | Level3) {
     // 1. Create a path object 1 by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path1 = OH_Drawing_PathCreate();
     EXPECT_NE(path1, nullptr);
@@ -171,7 +171,7 @@ HWTEST_F(DrawingNativePathTest, testPathCopyInputDestroyed, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathDestroyNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_PathCreate to create a path object
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -188,7 +188,7 @@ HWTEST_F(DrawingNativePathTest, testPathDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathDestroyNull, Function | SmallTest | Level3) {
     OH_Drawing_PathDestroy(nullptr);
     EXPECT_TRUE(true);
 }
@@ -201,7 +201,7 @@ HWTEST_F(DrawingNativePathTest, testPathDestroyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathMoveToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathMoveToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -222,7 +222,7 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathMoveToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathMoveToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -247,7 +247,7 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathMoveToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathMoveToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -270,7 +270,7 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathMoveToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathMoveToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -293,7 +293,7 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathLineToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathLineToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -316,7 +316,7 @@ HWTEST_F(DrawingNativePathTest, testPathLineToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathLineToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathLineToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -341,7 +341,7 @@ HWTEST_F(DrawingNativePathTest, testPathLineToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathLineToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathLineToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -366,7 +366,7 @@ HWTEST_F(DrawingNativePathTest, testPathLineToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathLineToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathLineToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -391,7 +391,7 @@ HWTEST_F(DrawingNativePathTest, testPathLineToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathArcToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathArcToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -424,7 +424,7 @@ HWTEST_F(DrawingNativePathTest, testPathArcToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathArcToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathArcToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -457,7 +457,7 @@ HWTEST_F(DrawingNativePathTest, testPathArcToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathArcToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathArcToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -488,7 +488,7 @@ HWTEST_F(DrawingNativePathTest, testPathArcToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathArcToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathArcToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -535,7 +535,7 @@ HWTEST_F(DrawingNativePathTest, testPathArcToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathQuadToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathQuadToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -561,7 +561,7 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathQuadToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathQuadToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -590,7 +590,7 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathQuadToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathQuadToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -617,7 +617,7 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathQuadToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathQuadToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -644,7 +644,7 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathConicToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathConicToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -669,7 +669,7 @@ HWTEST_F(DrawingNativePathTest, testPathConicToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathConicToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathConicToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -700,7 +700,7 @@ HWTEST_F(DrawingNativePathTest, testPathConicToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathConicToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathConicToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -731,7 +731,7 @@ HWTEST_F(DrawingNativePathTest, testPathConicToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathConicToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathConicToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -762,7 +762,7 @@ HWTEST_F(DrawingNativePathTest, testPathConicToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathCubicToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathCubicToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -785,7 +785,7 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathCubicToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathCubicToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -818,7 +818,7 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathCubicToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathCubicToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -849,7 +849,7 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathCubicToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathCubicToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -880,7 +880,7 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathRMoveToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathRMoveToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -909,7 +909,7 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRMoveToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRMoveToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -935,7 +935,7 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRMoveToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRMoveToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -960,7 +960,7 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRMoveToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRMoveToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -985,7 +985,7 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathRLineToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathRLineToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1019,7 +1019,7 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRLineToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRLineToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1044,7 +1044,7 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRLineToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRLineToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1073,7 +1073,7 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRLineToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRLineToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1102,7 +1102,7 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathRQuadToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathRQuadToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1136,7 +1136,7 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRQuadToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRQuadToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1165,7 +1165,7 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRQuadToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRQuadToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1196,7 +1196,7 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRQuadToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRQuadToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1227,7 +1227,7 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathRConicToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathRConicToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1261,7 +1261,7 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRConicToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRConicToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1292,7 +1292,7 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRConicToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRConicToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1325,7 +1325,7 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRConicToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRConicToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1358,7 +1358,7 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathRCubicToNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathRCubicToNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1392,7 +1392,7 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRCubicToNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRCubicToNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1426,7 +1426,7 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRCubicToAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRCubicToAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1461,7 +1461,7 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathRCubicToMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathRCubicToMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1496,7 +1496,7 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1522,7 +1522,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1550,7 +1550,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1579,7 +1579,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1608,7 +1608,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectMaximal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1639,7 +1639,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1672,7 +1672,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1700,7 +1700,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerAbnormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1728,7 +1728,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerMaximal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1770,7 +1770,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1805,7 +1805,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNormal, Function | SmallTest | Level0) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1843,7 +1843,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNormal, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNull, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1876,7 +1876,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNull, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointAbnormal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert
@@ -1904,7 +1904,7 @@ HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointAbnormal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointMaximal, TestSize.Level3) {
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointMaximal, Function | SmallTest | Level3) {
     // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // add assert

@@ -80,12 +80,15 @@ export default function RichEditorApi() {
       let btn1 = await driver.findComponent(ON.id('RichEditorApi_btn_getParagraphs'));
       await btn1.click()
       await CommonFunc.sleep(2000);
-
-      let strJson = getInspectorByKey('RichEditorApi_text_spanParagraphs');
-      await CommonFunc.sleep(1000);
-      console.info("[RichEditorApi_002] obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content)
-        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":["5.00vp","0.00vp"]}},"range":[0,4]}]');
+      console.log('spanParagraphs'+AppStorage.get('getParagraphs_textAlign'))
+      console.log('spanParagraphs'+JSON.stringify(AppStorage.get('getParagraphs_size')))
+      console.log('spanParagraphs'+AppStorage.get('getParagraphs_range'))
+      expect(AppStorage.get('getParagraphs_textAlign')).assertEqual(0)
+      expect(JSON.stringify(AppStorage.get('getParagraphs_size'))).assertEqual('{"size":["5.00vp","0.00vp"]}')
+      expect(''+AppStorage.get('getParagraphs_range')).assertEqual('0,4')
+      AppStorage.delete('getParagraphs_textAlign')
+      AppStorage.delete('getParagraphs_size')
+      AppStorage.delete('getParagraphs_range')
       console.info('[RichEditorApi_002] END');
       done();
     });
@@ -111,12 +114,15 @@ export default function RichEditorApi() {
       await btn2.click()
       await CommonFunc.sleep(2000);
       console.info('[RichEditorApi_003] btn2');
-
-      let strJson = getInspectorByKey('RichEditorApi_text_spanParagraphs');
-      await CommonFunc.sleep(1000);
-      console.info("[RichEditorApi_003] obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content)
-        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":["10.00vp","0.00vp"]}},"range":[0,4]}]');
+      console.log('spanParagraphs'+AppStorage.get('getParagraphs_textAlign'))
+      console.log('spanParagraphs'+JSON.stringify(AppStorage.get('getParagraphs_size')))
+      console.log('spanParagraphs'+AppStorage.get('getParagraphs_range'))
+      expect(AppStorage.get('getParagraphs_textAlign')).assertEqual(0)
+      expect(JSON.stringify(AppStorage.get('getParagraphs_size'))).assertEqual('{"size":["10.00vp","0.00vp"]}')
+      expect(''+AppStorage.get('getParagraphs_range')).assertEqual('0,4')
+      AppStorage.delete('getParagraphs_textAlign')
+      AppStorage.delete('getParagraphs_size')
+      AppStorage.delete('getParagraphs_range')
       console.info('[RichEditorApi_003] END');
       done();
     });

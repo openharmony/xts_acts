@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function OnRequestSelected() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnRequestSelected001', 0, async (done: Function) => {
+    it('testOnRequestSelected001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnRequestSelected001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnRequestSelected001", true, 70015, done);

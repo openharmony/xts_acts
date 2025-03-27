@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import swapndk from 'libswapndk.so'
 
@@ -32,7 +32,7 @@ export default function swapNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSwapSwapOn001', 0, async (done: Function) => {
+    it('testMuslSwapSwapOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(swapndk.swapon()).assertEqual(0);
       done()
     });
@@ -45,7 +45,7 @@ export default function swapNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSwapSwapOff001', 0, async (done: Function) => {
+    it('testMuslSwapSwapOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(swapndk.swapoff()).assertEqual(0);
       done()
     });

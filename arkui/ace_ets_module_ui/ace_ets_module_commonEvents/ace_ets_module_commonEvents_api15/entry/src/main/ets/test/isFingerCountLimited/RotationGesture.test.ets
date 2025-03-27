@@ -61,19 +61,19 @@ export default function rotationGestureTest() {
       let areaHeight1 = areaObj1.bottom - areaObj1.top
       let areaWidth1 = areaObj1.right - areaObj1.left
       console.log('RotationGesture1_0100 areaObj1 start',areaObj1.left,areaObj1.top,areaObj1.right,areaObj1.bottom)
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[0] start',Math.round(areaObj1.left),Math.round(areaObj1.top))
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[0] end',Math.round(areaObj1.right),Math.round(areaObj1.top))
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[1] start',Math.round(areaObj1.right),Math.round(areaObj1.bottom))
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[1] end',Math.round(areaObj1.left),Math.round(areaObj1.bottom))
+      console.log('RotationGesture1_0100 areaObj1 clicked finger[0] start',Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('RotationGesture1_0100 areaObj1 clicked finger[0] end',Math.round(areaObj1.right - areaWidth1/2),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('RotationGesture1_0100 areaObj1 clicked finger[1] start',Math.round(areaObj1.right - areaWidth1/2),Math.round(areaObj1.bottom - areaHeight1/4))
+      console.log('RotationGesture1_0100 areaObj1 clicked finger[1] end',Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.bottom - areaHeight1/4))
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
       let pointers: PointerMatrix = PointerMatrix.create(2,2);
-      pointers.setPoint(0,0,{x: Math.round(areaObj1.left),y: Math.round(areaObj1.top) });
-      pointers.setPoint(0,1,{x: Math.round(areaObj1.right),y: Math.round(areaObj1.top) });
-      pointers.setPoint(1,0,{x: Math.round(areaObj1.right),y: Math.round(areaObj1.bottom) });
-      pointers.setPoint(1,1,{x: Math.round(areaObj1.left),y: Math.round(areaObj1.bottom) });
+      pointers.setPoint(0,0,{x: Math.round(areaObj1.left + areaWidth1/4),y: Math.round(areaObj1.top + areaHeight1/4) });
+      pointers.setPoint(0,1,{x: Math.round(areaObj1.right - areaWidth1/2),y: Math.round(areaObj1.top + areaHeight1/4) });
+      pointers.setPoint(1,0,{x: Math.round(areaObj1.right - areaWidth1/2),y: Math.round(areaObj1.bottom - areaHeight1/4) });
+      pointers.setPoint(1,1,{x: Math.round(areaObj1.left + areaWidth1/4),y: Math.round(areaObj1.bottom - areaHeight1/4) });
       await driver.injectMultiPointerAction(pointers);
-      await CommonFunc.sleep(4000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('RotationGesture');
       let obj: ESObject = JSON.parse(strJson);
       console.info('[RotationGesture1_0100] component obj is: ' + JSON.stringify(obj));
@@ -103,28 +103,24 @@ export default function rotationGestureTest() {
       let areaObj1 = CommonFunc.getComponentRectOnScreen('RotationGesture');
       let areaHeight1 = areaObj1.bottom - areaObj1.top
       let areaWidth1 = areaObj1.right - areaObj1.left
-      console.log('RotationGesture1_0100 areaObj1 start',areaObj1.left,areaObj1.top,areaObj1.right,areaObj1.bottom)
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[0] start',Math.round(areaObj1.left),Math.round(areaObj1.top))
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[0] end',Math.round(areaObj1.right),Math.round(areaObj1.top))
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[1] start',Math.round(areaObj1.right),Math.round(areaObj1.bottom))
-      console.log('RotationGesture1_0100 areaObj1 clicked finger[1] end',Math.round(areaObj1.left),Math.round(areaObj1.bottom))
-      console.log('RotationGesture1_0200 areaObj1 clicked finger[2] start',Math.round(areaObj1.right + areaWidth1 * 0.2),Math.round(areaObj1.bottom))
-      console.log('RotationGesture1_0200 areaObj1 clicked finger[2] end',Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.bottom))
-      console.log('RotationGesture1_0200 areaObj1 clicked finger[3] start',Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1 * 0.1))
-      console.log('RotationGesture1_0200 areaObj1 clicked finger[3] end',Math.round(areaObj1.right + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1 * 0.1))
+      console.log('RotationGesture1_0200 areaObj1 start',areaObj1.left,areaObj1.top,areaObj1.right,areaObj1.bottom)
+      console.log('RotationGesture1_0200 areaObj1 clicked finger[0] start',Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('RotationGesture1_0200 areaObj1 clicked finger[0] end',Math.round(areaObj1.right - areaWidth1/2),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('RotationGesture1_0200 areaObj1 clicked finger[1] start',Math.round(areaObj1.right - areaWidth1/2),Math.round(areaObj1.bottom - areaHeight1/4))
+      console.log('RotationGesture1_0200 areaObj1 clicked finger[1] end',Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.bottom - areaHeight1/4))
+      console.log('RotationGesture1_0200 areaObj1 clicked finger[2] start',Math.round(areaObj1.left + areaWidth1/3),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('RotationGesture1_0200 areaObj1 clicked finger[2] end',Math.round(areaObj1.right - areaWidth1/3),Math.round(areaObj1.top + areaHeight1/4))
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let pointers: PointerMatrix = PointerMatrix.create(4,2);
-      pointers.setPoint(0,0,{x: Math.round(areaObj1.left),y: Math.round(areaObj1.top) });
-      pointers.setPoint(0,1,{x: Math.round(areaObj1.right),y: Math.round(areaObj1.top) });
-      pointers.setPoint(1,0,{x: Math.round(areaObj1.right),y: Math.round(areaObj1.bottom) });
-      pointers.setPoint(1,1,{x: Math.round(areaObj1.left),y: Math.round(areaObj1.bottom) });
-      pointers.setPoint(2,0,{x: Math.round(areaObj1.right + areaWidth1 * 0.2),y: Math.round(areaObj1.bottom) });
-      pointers.setPoint(2,1,{x: Math.round(areaObj1.left + areaWidth1 * 0.2),y: Math.round(areaObj1.bottom) });
-      pointers.setPoint(3,0,{x: Math.round(areaObj1.left + areaWidth1 * 0.2),y: Math.round(areaObj1.top + areaHeight1 * 0.1) });
-      pointers.setPoint(3,1,{x: Math.round(areaObj1.right + areaWidth1 * 0.2),y: Math.round(areaObj1.top + areaHeight1 * 0.1) });
+      let pointers: PointerMatrix = PointerMatrix.create(3,2);
+      pointers.setPoint(0,0,{x: Math.round(areaObj1.left + areaWidth1/4),y: Math.round(areaObj1.top + areaHeight1/4) });
+      pointers.setPoint(0,1,{x: Math.round(areaObj1.right - areaWidth1/2),y: Math.round(areaObj1.top + areaHeight1/4) });
+      pointers.setPoint(1,0,{x: Math.round(areaObj1.right - areaWidth1/2),y: Math.round(areaObj1.bottom - areaHeight1/4) });
+      pointers.setPoint(1,1,{x: Math.round(areaObj1.left + areaWidth1/4),y: Math.round(areaObj1.bottom - areaHeight1/4) });
+      pointers.setPoint(2,0,{x: Math.round(areaObj1.left + areaWidth1/3),y: Math.round(areaObj1.top + areaHeight1/4) });
+      pointers.setPoint(2,1,{x: Math.round(areaObj1.right - areaWidth1/3),y: Math.round(areaObj1.top + areaHeight1/4) });
       await driver.injectMultiPointerAction(pointers);
-      await CommonFunc.sleep(4000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('RotationGesture');
       let obj: ESObject = JSON.parse(strJson);
       console.info('[RotationGesture1_0200] component obj is: ' + JSON.stringify(obj));

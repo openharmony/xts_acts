@@ -71,7 +71,7 @@ class DrawingNativePixelMapTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNormal, Function | SmallTest | Level0) {
     // todo: how to get NativePixelMap_?
     NativePixelMap_ *pixelMap = nullptr;
     // 1. Call OH_Drawing_PixelMapGetFromNativePixelMap
@@ -87,7 +87,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNull, Function | SmallTest | Level3) {
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
     EXPECT_EQ(drPixelMap, nullptr);
 }
@@ -100,7 +100,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNull, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapMultipleCalls, Function | SmallTest | Level3) {
     // todo: how to get NativePixelMap_?
     NativePixelMap_ *pixelMap = nullptr;
     // 1. Call OH_Drawing_PixelMapGetFromNativePixelMap 10 times
@@ -118,7 +118,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapMultipleCal
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapBoundary, Function | SmallTest | Level0) {
     // todo: how to get NativePixelMap_?
     NativePixelMap_ *pixelMap = nullptr;
     // 1. Call OH_Drawing_PixelMapGetFromNativePixelMap
@@ -134,7 +134,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapBoundary, T
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNormal, Function | SmallTest | Level0) {
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
@@ -153,7 +153,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNormal, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative with nullptr as parameter and check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(nullptr);
@@ -168,7 +168,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNull, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeMultipleCalls, Function | SmallTest | Level3) {
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative 10 times
     for (int i = 0; i < 10; i++) {
@@ -188,7 +188,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeMultipleC
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeBoundary, Function | SmallTest | Level0) {
     uint32_t width = 4096;
     uint32_t height = 2160;
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative(width, height);
@@ -212,7 +212,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeBoundary,
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNormal, Function | SmallTest | Level0) {
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     // add assert
     EXPECT_NE(pixelMap, nullptr);
@@ -233,7 +233,7 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNull, TestSize.Level3) {
+HWTEST_F(DrawingNativePixelMapTest, testPixelMapDissolveNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_PixelMapDissolve parameter is null
     OH_Drawing_PixelMapDissolve(nullptr);
     // add assert

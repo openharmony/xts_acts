@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import capability from 'libcapability1ndk.so'
 
@@ -32,7 +32,7 @@ export default function CapabilityNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCapabilityCapget001', 0, async (done: Function) => {
+    it('testMuslCapabilityCapget001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = capability.capget(0);
       expect(result).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function CapabilityNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslCapabilityCapget002', 0, async (done: Function) => {
+    it('testMuslCapabilityCapget002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = capability.capget(-1);
       expect(result).assertEqual(-1);
       done()

@@ -923,8 +923,8 @@ export default function textinputSec() {
         console.info('ArkUX_Stage_TextInput_PasswordIcon_1500 obj $attrs.passwordIcon :' + JSON.stringify(obj.$attrs.passwordIcon));
         let Icon: ESObject = JSON.parse(obj.$attrs.passwordIcon);
         console.info('ArkUX_Stage_TextInput_PasswordIcon_1500 obj Icon :' + JSON.stringify(Icon));
-        expect(Icon.onIconSrc).assertEqual("SYS_SHOW_PASSWORD_SVG");
-        expect(Icon.offIconSrc).assertEqual("SYS_HIDE_PASSWORD_SVG");
+        expect(Icon.onIconSrc).assertEqual(983328);
+        expect(Icon.offIconSrc).assertEqual(983327);
         expect(obj.$attrs.showErrorText).assertEqual(false)
         expect(obj.$attrs.errorText).assertEqual("")
         expect(obj.$attrs.showError).assertEqual("undefined")

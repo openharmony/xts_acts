@@ -15,7 +15,7 @@
 */
 import zlib from '@ohos.zlib'
 import fs, { ReadOptions } from '@ohos.file.fs';
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, TestType, Size, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base'
 
 export default function ActsZlibInterfaceTest() { 
@@ -55,7 +55,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest01', 0, async (done: Function) => {
+    it('ActsZlibInterfaceTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_01 start==================");
         let inFile = filesDir + '/test.txt';
         let outFile = filesDir + '/test.zip';
@@ -103,7 +103,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-     it('ActsZlibInterfaceTest02', 0, async (done: Function) => {
+     it('ActsZlibInterfaceTest02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
          console.info("==================ACTS_ZlibInterfaceTest_02 start==================");
          try {
              zlib.getOriginalSize(null).then((data: number) => {
@@ -143,7 +143,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest03', 0, async (done: Function) => {
+    it('ActsZlibInterfaceTest03', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_03 start==================");
         let compressedFile = filesDir + '/not_found.zip';
         try {
@@ -172,7 +172,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest04', 0, async (done: Function) => {
+    it('ActsZlibInterfaceTest04', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_04 start==================");
         let compressedFile = filesDir + '/test.txt';
         try {
@@ -201,7 +201,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest05', 0, async (done: Function) => {
+    it('ActsZlibInterfaceTest05', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_05 start==================");
         let inFile = filesDir + '/test.txt';
         let inFile2 = filesDir + '/test2.txt';
@@ -238,7 +238,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    // it('ActsZlibInterfaceTest06', 0, async (done: Function) => {
+    // it('ActsZlibInterfaceTest06', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
     //     console.info("==================ACTS_ZlibInterfaceTest_06 start==================");
     //     let options: zlib.Options = {
     //         level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
@@ -271,7 +271,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest07', 0, async (done: Function) => {
+    it('ActsZlibInterfaceTest07', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_07 start==================");
         let inFile = filesDir + '/not_found.txt';
         let inFile2 = filesDir + '/not_found2.txt';
@@ -308,7 +308,7 @@ export default function ActsZlibInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ActsZlibInterfaceTest08', 0, async (done: Function) => {
+    it('ActsZlibInterfaceTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
         console.info("==================ACTS_ZlibInterfaceTest_08 start==================");
         let inFile = filesDir + '/test.txt';
         let inFile2 = filesDir + '/test2.txt';

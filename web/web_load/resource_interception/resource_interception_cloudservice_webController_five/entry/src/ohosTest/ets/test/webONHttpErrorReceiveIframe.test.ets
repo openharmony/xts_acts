@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -70,7 +70,7 @@ export default function webONHttpErrorReceiveIframe() {
      *tc.name testOnHttpErrorReceiveByIframeHtmlWebc
      *tc.desc test interface of onHttpErrorReceive with parameter used by html file with iframe
      */
-    it('testOnHttpErrorReceiveByIframeHtmlWebc', 0, async (done: Function) => {
+    it('testOnHttpErrorReceiveByIframeHtmlWebc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnHttpErrorReceiveByIframeHtmlWebc";
       Utils.registerEvent("testOnHttpErrorReceiveByIframeHtmlWebc", false, 496, done);
       Utils.registerEvent("testOnHttpErrorReceiveByIframeHtmlWebc", "index", 498, done);

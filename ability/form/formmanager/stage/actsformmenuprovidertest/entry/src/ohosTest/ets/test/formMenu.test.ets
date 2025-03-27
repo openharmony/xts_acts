@@ -77,6 +77,9 @@ export default function abilityTest() {
       await sleep(200);
       await labelButton?.click();
       await sleep(1000);
+      const labelButton2 = await driver.findComponent(ON.id("SwiperLayout_AddToDesktopButton"));
+      await labelButton2?.click();
+      await sleep(1000);
       await abilityDelegator.executeShellCommand(cmd)
         .then((data) => {
           hilog.info(DOMAIN, TAG, JSON.stringify(data));

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -33,7 +33,7 @@ export default function webViewOnViewportFitChange() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewOnViewportFitChange', 0, async (done: Function) => {
+    it('testWebViewOnViewportFitChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         Utils.emitEvent("emitWebViewOnViewportFitChange", 10);
         Utils.registerEvent("testWebViewOnViewportFitChange", true, 1340, done);
         sendEventByKey('webViewOnViewportFitChange', 10, '');
@@ -47,7 +47,7 @@ export default function webViewOnViewportFitChange() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebView_ViewportFit_COVER', 0, async (done: Function) => {
+    it('testWebView_ViewportFit_COVER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         Utils.emitEvent("emitWebView_ViewportFit_COVER", 10);
         Utils.registerEvent("testWebView_ViewportFit_COVER", true, 1341, done);
         sendEventByKey('webViewOnViewportFitChange', 10, '');

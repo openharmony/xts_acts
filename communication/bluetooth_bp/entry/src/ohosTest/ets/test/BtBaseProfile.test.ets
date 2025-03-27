@@ -142,14 +142,19 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0100', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let devices : Array<string> = A2dpSourceProfile.getConnectedDevices();
             console.info("address of connected devices list:" + devices);
             expect(true).assertEqual(devices != null);
         } catch (err) {
             console.error("bluetooth getConnectedDevices errCode:" + err.code + ",errMessage:" + err.message);
-            expect(true).assertFalse();
+            if (err.code == 801 || err.code == 2900004) {
+                console.info('[bluetooth_js]getConnectedDevices is not support or profile not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -162,14 +167,19 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0200', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let state : bluetooth.ProfileConnectionState = A2dpSourceProfile.getConnectionState("11:22:33:AA:BB:FF");
             console.info("the connection state:" + state);
             expect(true).assertEqual(state == 0 || state == 1 || state == 2);
         } catch (err) {
             console.error("bluetooth getConnectionState errCode:" + err.code + ",errMessage:" + err.message);
-            expect(Number(err.code)).assertEqual(2900099);
+            if (err.code == 801 || err.code == 2900004) {
+                console.info('[bluetooth_js]getConnectionState is not support or profile not support');
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(2900099);
+            }
         }
         done();
     })
@@ -182,12 +192,17 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0300', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             A2dpSourceProfile.on('connectionStateChange', onReceiveEvent);
         } catch (err) {
             console.error("bluetooth connectionStateChange errCode:" + err.code + ",errMessage:" + err.message);
-            expect(true).assertFalse();
+            if (err.code == 801) {
+                console.info('[bluetooth_js]connectionStateChange is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
         }
         A2dpSourceProfile.off('connectionStateChange', onReceiveEvent);
         done();
@@ -201,13 +216,54 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0400', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         A2dpSourceProfile.on('connectionStateChange', onReceiveEvent);
         try {
             A2dpSourceProfile.off('connectionStateChange', onReceiveEvent);
         } catch (err) {
             console.error("bluetooth connectionStateChange errCode:" + err.code + ",errMessage:" + err.message);
-            expect(true).assertFalse();
+            if (err.code == 801) {
+                console.info('[bluetooth_js]connectionStateChange is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1800
+     * @tc.name testOnConnectionStateChange
+     * @tc.desc Test on type: 'connectionStateChange' api10.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+        try {
+            A2dpSourceProfile.on('connectionStateChange', null);
+        } catch (err) {
+            console.info("connectionStateChange errCode:" + err.code + ",errMessage:" + err.message);
+            expect(Number(err.code)).assertEqual(401);
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1900
+     * @tc.name testOnConnectionStateChange
+     * @tc.desc Test on type: 'connectionStateChange' api10.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 2
+     */
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
+        try {
+            A2dpSourceProfile.off('connectionStateChange', null);
+        } catch (err) {
+            console.info("connectionStateChange errCode:" + err.code + ",errMessage:" + err.message);
+            expect(Number(err.code)).assertEqual(401);
         }
         done();
     })
@@ -220,7 +276,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0500', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let devices : Array<string> = HandsFreeAudioGatewayProfile.getConnectedDevices();
             console.info("address of connected devices list:" + devices);
@@ -240,7 +296,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0600', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let state : bluetooth.ProfileConnectionState = HandsFreeAudioGatewayProfile.getConnectionState("11:22:33:AA:BB:FF");
             console.info("the connection state:" + state);
@@ -260,7 +316,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             HandsFreeAudioGatewayProfile.on('connectionStateChange', onReceiveEvent1);
         } catch (err) {
@@ -279,7 +335,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0800', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         HandsFreeAudioGatewayProfile.on('connectionStateChange', onReceiveEvent);
         try {
             HandsFreeAudioGatewayProfile.off('connectionStateChange', onReceiveEvent);
@@ -298,7 +354,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0900', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let devices : Array<string> = HidHostProfile.getConnectedDevices();
             console.info("address of connected devices list:" + devices);
@@ -318,7 +374,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1000', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let state : bluetooth.ProfileConnectionState = HidHostProfile.getConnectionState("11:22:33:AA:BB:FF");
             console.info("the connection state:" + state);
@@ -338,7 +394,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1100', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             HidHostProfile.on('connectionStateChange', onReceiveEvent);
         } catch (err) {
@@ -357,7 +413,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1200', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         HidHostProfile.on('connectionStateChange', onReceiveEvent);
         try {
             HidHostProfile.off('connectionStateChange', onReceiveEvent);
@@ -376,7 +432,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1300', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let devices : Array<string> = PanProfile.getConnectedDevices();
             console.info("address of connected devices list:" + devices);
@@ -396,7 +452,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1400', 0, async (done : Function) =>  {
+    it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let state : bluetooth.ProfileConnectionState= PanProfile.getConnectionState("11:22:33:AA:BB:FF");
             console.info("the connection state:" + state);
@@ -416,7 +472,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1500', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             PanProfile.on('connectionStateChange', onReceiveEvent);
         } catch (err) {
@@ -435,7 +491,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1600', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_BASEPROFILE_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         PanProfile.on('connectionStateChange', onReceiveEvent);
         try {
             PanProfile.off('connectionStateChange', onReceiveEvent);
@@ -454,19 +510,57 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_1700', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let asp = a2dp.createA2dpSrcProfile();
-            let hp = hfp.createHfpAgProfile();
-            let hhp = hid.createHidHostProfile();
-            let pp = pan.createPanProfile();
             expect(true).assertEqual(asp != null);
+        } catch  (err) {
+            console.error("bluetooth createA2dpSrcProfile errCode:" + err.code + ",errMessage:" + err.message);
+            if (err.code == 801) {
+                console.info('[bluetooth_js]createA2dpSrcProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
+        }
+
+        try {
+            let hp = hfp.createHfpAgProfile();
             expect(true).assertEqual(hp != null);
+        } catch  (err) {
+            console.error("bluetooth createHfpAgProfile errCode:" + err.code + ",errMessage:" + err.message);
+            if (err.code == 801) {
+                console.info('[bluetooth_js]createHfpAgProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
+        }
+
+        try {
+            let hhp = hid.createHidHostProfile();
             expect(true).assertEqual(hhp != null);
+        } catch  (err) {
+            console.error("bluetooth createHidHostProfile errCode:" + err.code + ",errMessage:" + err.message);
+            if (err.code == 801) {
+                console.info('[bluetooth_js]createHidHostProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
+        }
+
+        try {
+            let pp = pan.createPanProfile();
             expect(true).assertEqual(pp != null);
-        } catch (err) {
-            console.error("bluetooth createProfile errCode:" + err.code + ",errMessage:" + err.message);
-            expect(Number(err.code)).assertEqual(2900099);
+        } catch  (err) {
+            console.error("bluetooth createPanProfile errCode:" + err.code + ",errMessage:" + err.message);
+            if (err.code == 801) {
+                console.info('[bluetooth_js]createPanProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -479,14 +573,19 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_MAP_0100', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_MAP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let mapMseProfile = map.createMapMseProfile();
             console.info('MapMse success' + mapMseProfile);
             expect(true).assertEqual(mapMseProfile != null);
         } catch (err) {
             console.error("bluetooth map createMapMseProfile errCode:" + err.code + ",errMessage:" + err.message);
-            expect().assertFail();
+            if (err.code == 801) {
+                console.info('[bluetooth_js]createMapMseProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -499,14 +598,19 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTH_PBAP_0100', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTH_PBAP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let pbapServerProfile = pbap.createPbapServerProfile();
             console.info('pbapServer success' + pbapServerProfile);
             expect(true).assertEqual(pbapServerProfile != null);
         } catch (err) {
             console.error("bluetooth pbap pbapServerProfile errCode:" + err.code + ",errMessage:" + err.message);
-            expect().assertFail();
+            if (err.code == 801) {
+                console.info('[bluetooth_js]createPbapServerProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -519,7 +623,7 @@ describe('btBaseProfileTest', () => {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-     it('SUB_COMMUNICATION_BLUETOOTHPROFILE_CONSTANT_0100', 0, async (done : Function) =>  {
+     it('SUB_COMMUNICATION_BLUETOOTHPROFILE_CONSTANT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
         try {
             let userDisconnect = bluetooth.DisconnectCause.USER_DISCONNECT;
             let connectFromKeyboard = bluetooth.DisconnectCause.CONNECT_FROM_KEYBOARD;

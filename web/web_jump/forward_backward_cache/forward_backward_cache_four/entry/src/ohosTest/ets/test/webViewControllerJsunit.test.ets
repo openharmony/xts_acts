@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 let emitKey = "emitFetchCookieSync";
@@ -50,7 +50,7 @@ export default function webViewControllerJsunit() {
      *tc.name testFetchCookieSync
      *tc.desc test for FetchCookieSync
      */
-    it('testFetchCookieSync',0,async (done: Function) =>{
+    it('testFetchCookieSync',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitFetchCookieCallback";
       Utils.registerEvent("testFetchCookieSync","a=b",126,done);
       sendEventByKey('webcomponent',10,'');
@@ -60,7 +60,7 @@ export default function webViewControllerJsunit() {
      *tc.name testFetchCookieCallback
      *tc.desc test for FetchCookieCallback
      */
-    it('testFetchCookieCallback',0,async (done: Function) =>{
+    it('testFetchCookieCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitFetchCookiePromise";
       Utils.registerEvent("testFetchCookieSync","a=c",128,done);
       sendEventByKey('webcomponent',10,'');
@@ -70,7 +70,7 @@ export default function webViewControllerJsunit() {
      *tc.name testFetchCookiePromise
      *tc.desc test for FetchCookiePromise
      */
-    it('testFetchCookiePromise',0,async (done: Function) =>{
+    it('testFetchCookiePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitConfigCookieSync";
       Utils.registerEvent("testFetchCookiePromise","a=d",130,done);
       sendEventByKey('webcomponent',10,'');
@@ -80,7 +80,7 @@ export default function webViewControllerJsunit() {
      *tc.name testConfigCookieSync
      *tc.desc test for ConfigCookieSync
      */
-    it('testConfigCookieSync',0,async (done: Function) =>{
+    it('testConfigCookieSync',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitConfigCookieCallback";
       Utils.registerEvent("testConfigCookieSync","a=e",132,done);
       sendEventByKey('webcomponent',10,'');
@@ -90,7 +90,7 @@ export default function webViewControllerJsunit() {
      *tc.name testConfigCookieCallback
      *tc.desc test for ConfigCookieCallback
      */
-    it('testConfigCookieCallback',0,async (done: Function) =>{
+    it('testConfigCookieCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitConfigCookiePromise";
       Utils.registerEvent("testConfigCookieCallback","a=f",134,done);
       sendEventByKey('webcomponent',10,'');
@@ -100,7 +100,7 @@ export default function webViewControllerJsunit() {
      *tc.name testConfigCookiePromise
      *tc.desc test for ConfigCookiePromise
      */
-    it('testConfigCookiePromise',0,async (done: Function) =>{
+    it('testConfigCookiePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitClearAllCookiesSync";
       Utils.registerEvent("testConfigCookiePromise","a=g",136,done);
       sendEventByKey('webcomponent',10,'');
@@ -110,7 +110,7 @@ export default function webViewControllerJsunit() {
      *tc.name testClearAllCookiesSync
      *tc.desc test for ClearAllCookiesSync
      */
-    it('testClearAllCookiesSync',0,async (done: Function) =>{
+    it('testClearAllCookiesSync',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitClearAllCookiesCallback";
       Utils.registerEvent("testClearAllCookiesSync","",138,done);
       sendEventByKey('webcomponent',10,'');
@@ -120,7 +120,7 @@ export default function webViewControllerJsunit() {
      *tc.name testClearAllCookiesCallback
      *tc.desc test for ClearAllCookiesCallback
      */
-    it('testClearAllCookiesCallback',0,async (done: Function) =>{
+    it('testClearAllCookiesCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitClearAllCookiesPromise";
       Utils.registerEvent("testClearAllCookiesCallback","",140,done);
       sendEventByKey('webcomponent',10,'');
@@ -130,7 +130,7 @@ export default function webViewControllerJsunit() {
      *tc.name testClearAllCookiesPromise
      *tc.desc test for ClearAllCookiesPromise
      */
-    it('testClearAllCookiesPromise',0,async (done: Function) =>{
+    it('testClearAllCookiesPromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitClearSessionCookieSync";
       Utils.registerEvent("testClearAllCookiesPromise","",142,done);
       sendEventByKey('webcomponent',10,'');
@@ -140,7 +140,7 @@ export default function webViewControllerJsunit() {
      *tc.name testClearSessionCookieSync
      *tc.desc test for ClearSessionCookieSync
      */
-    it('testClearSessionCookieSync',0,async (done: Function) =>{
+    it('testClearSessionCookieSync',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitClearSessionCookieCallback";
       Utils.registerEvent("testClearSessionCookieSync","",144,done);
       sendEventByKey('webcomponent',10,'');
@@ -150,7 +150,7 @@ export default function webViewControllerJsunit() {
      *tc.name testClearSessionCookieCallback
      *tc.desc test for ClearSessionCookieCallback
      */
-    it('testClearSessionCookieCallback',0,async (done: Function) =>{
+    it('testClearSessionCookieCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitClearSessionCookiePromise";
       Utils.registerEvent("testClearSessionCookieCallback","",146,done);
       sendEventByKey('webcomponent',10,'');
@@ -160,7 +160,7 @@ export default function webViewControllerJsunit() {
      *tc.name testClearSessionCookiePromise
      *tc.desc test for ClearSessionCookiePromise
      */
-    it('testClearSessionCookiePromise',0,async (done: Function) =>{
+    it('testClearSessionCookiePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitPostUrl";
       Utils.registerEvent("testClearSessionCookiePromise","",148,done);
       sendEventByKey('webcomponent',10,'');

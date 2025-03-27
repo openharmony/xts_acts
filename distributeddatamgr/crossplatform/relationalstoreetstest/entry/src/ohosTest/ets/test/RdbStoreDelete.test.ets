@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import { ValuesBucket } from '@ohos.data.ValuesBucket';
 import { BusinessError } from '@ohos.base';
@@ -104,7 +104,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete001", 0, async (done: Function) => {
+    it("testRdbStoreDelete001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete001 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
@@ -136,7 +136,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete002", 0, async (done: Function) => {
+    it("testRdbStoreDelete002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete002 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("aaa id", 1);
@@ -166,7 +166,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete003", 0, async (done: Function) => {
+    it("testRdbStoreDelete003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete003 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 28);
@@ -196,7 +196,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete004", 0, async (done: Function) => {
+    it("testRdbStoreDelete004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete004 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
@@ -230,7 +230,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete005", 0, async (done: Function) => {
+    it("testRdbStoreDelete005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete005 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("aaa id", 1);
@@ -262,7 +262,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete006", 0, async (done: Function) => {
+    it("testRdbStoreDelete006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete006 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", "28");
@@ -293,7 +293,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete007", 0, async (done: Function) => {
+    it("testRdbStoreDelete007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete007 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
@@ -330,7 +330,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDelete008", 0, async (done: Function) => {
+    it("testRdbStoreDelete008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDelete008 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 88);
@@ -362,7 +362,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDeleteError001", 0, async (done: Function) => {
+    it("testRdbStoreDeleteError001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDeleteError001 start *************");
       try {
         rdbStore.delete(undefined, async (err, rows) => {
@@ -391,7 +391,7 @@ export default function rdbStoreDeleteTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreDeleteError005", 0, async (done: Function) => {
+    it("testRdbStoreDeleteError005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  async (done: Function) => {
       console.info(TAG + "************* testRdbStoreDeleteError005 start *************");
       try {
         rdbStore

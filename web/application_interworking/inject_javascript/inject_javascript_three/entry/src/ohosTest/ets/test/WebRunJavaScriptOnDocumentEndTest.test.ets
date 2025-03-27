@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach,afterEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach,afterEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function ActsWebRunJavaScriptOnDocumentEndTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebRunJavaScriptOnDocumentEnd001', 0, async (done: Function) => {
+    it('testWebRunJavaScriptOnDocumentEnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebRunJavaScriptOnDocumentEnd001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnDocumentEnd001", '"runJavaScriptOnDocumentEnd"', 2025022101, done);
@@ -77,7 +77,7 @@ export default function ActsWebRunJavaScriptOnDocumentEndTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebRunJavaScriptOnDocumentEnd002', 0, async (done: Function) => {
+    it('testWebRunJavaScriptOnDocumentEnd002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebRunJavaScriptOnDocumentEnd002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnDocumentEnd002", '"msg2"', 2025022102, done);

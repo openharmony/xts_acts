@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import ifAddrs from 'libifaddrsndk.so'
 
@@ -33,7 +33,7 @@ export default function muslIfaddrsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslIfAddrsGetIfAddrs001', 0, async (done: Function) => {
+    it('testMuslIfAddrsGetIfAddrs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: string = ifAddrs.getIfAddrs();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(0);
@@ -47,7 +47,7 @@ export default function muslIfaddrsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslIfAddrsFreeIfAddrs002', 0, async (done: Function) => {
+    it('testMuslIfAddrsFreeIfAddrs002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: string = ifAddrs.freeIfAddrs();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);

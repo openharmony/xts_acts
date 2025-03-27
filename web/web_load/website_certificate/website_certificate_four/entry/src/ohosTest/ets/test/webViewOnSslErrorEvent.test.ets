@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -54,7 +54,7 @@ export default function webViewOnSslErrorEvent() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('OnSslErrorEvent0100', 0, async (done: Function) => {
+    it('OnSslErrorEvent0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("OnSslErrorEvent0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnSslErrorEvent0100", 2, 400, done);
@@ -74,7 +74,7 @@ export default function webViewOnSslErrorEvent() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('OnSslErrorEvent0200', 0, async (done: Function) => {
+    it('OnSslErrorEvent0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("OnSslErrorEvent0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnSslErrorEvent0200", 3, 401, done);
@@ -94,7 +94,7 @@ export default function webViewOnSslErrorEvent() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('OnSslErrorEvent0300', 0, async (done: Function) => {
+    it('OnSslErrorEvent0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("OnSslErrorEvent0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnSslErrorEvent0300", false, 402, done);
@@ -114,7 +114,7 @@ export default function webViewOnSslErrorEvent() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('OnSslErrorEvent0400', 0, async (done: Function) => {
+    it('OnSslErrorEvent0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("OnSslErrorEvent0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnSslErrorEvent0400", 2

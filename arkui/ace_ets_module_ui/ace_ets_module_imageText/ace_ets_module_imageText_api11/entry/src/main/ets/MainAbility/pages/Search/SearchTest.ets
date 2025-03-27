@@ -269,17 +269,17 @@ struct SliderExample {
           color: $r('sys.color.ohos_id_color_text_primary_activated')
         })
         .searchIcon({
-          color: $r('sys.color.ohos_id_color_secondary'),
+          color: $r('sys.color.search_icon_color'),
         })
         .cancelButton({
           icon: {
-            color: $r('sys.color.ohos_id_color_secondary'),
+            color: $r('sys.color.search_icon_color'),
           }
         })
         .searchButton(
           'Search',
           {
-            fontSize: $r('sys.float.ohos_id_text_size_body1'),
+            fontSize: $r('sys.float.Body_M'),
             fontColor: $r('sys.color.ohos_id_color_text_primary_activated')
           }
         )

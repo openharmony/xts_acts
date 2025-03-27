@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
 
@@ -47,7 +47,7 @@ export default function latticeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testLatticeCreateImageLatticeNormal', DEFAULT, () => {
+    it('testLatticeCreateImageLatticeNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
       const msg = 'testLatticeCreateImageLatticeNormal';
 
       try {
@@ -178,7 +178,7 @@ export default function latticeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLatticeCreateImageLatticeAbnormal', DEFAULT, () => {
+    it('testLatticeCreateImageLatticeAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testLatticeCreateImageLatticeAbnormal';
 
       try {
@@ -342,7 +342,7 @@ export default function latticeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLatticeCreateImageLatticeNull', DEFAULT, () => {
+    it('testLatticeCreateImageLatticeNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testLatticeCreateImageLatticeNull';
       const fBounds: common2D.Rect = {
         left : 200, right : 200, top : 200, bottom : 200
@@ -395,7 +395,7 @@ export default function latticeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLatticeCreateImageLatticeCalls', DEFAULT, () => {
+    it('testLatticeCreateImageLatticeCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testLatticeCreateImageLatticeCalls';
 
       for ( let i = 0 ; i < 1000 ; i ++ ) {

@@ -47,7 +47,7 @@ export default function blank3Jsunit() {
     it('testBlank01', 0, async (done: Function) => {
       console.info('[testBlank01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('blank');
+      let strJson = getInspectorByKey('blank3Jsunit_blank');
       console.info("[testBlank01] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Blank');
       expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF0000FF');
@@ -74,7 +74,7 @@ export default function blank3Jsunit() {
         console.log("[testBlank02] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('blank');
+      let strJsonNew = getInspectorByKey('blank3Jsunit_blank');
       console.info("[testBlank02] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.color).assertEqual('#FFFF0000');
       expect(JSON.parse(strJsonNew).$type).assertEqual('Blank');

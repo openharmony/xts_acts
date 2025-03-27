@@ -43,7 +43,7 @@ void NativeImageLargeValueTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_BuildFromBitmap001, TestSize.Level1)
+HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_BuildFromBitmap001, Function | MediumTest | Level1)
 {
     OH_Drawing_Image* image = OH_Drawing_ImageCreate();
     EXPECT_NE(image, nullptr);
@@ -67,7 +67,7 @@ HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_BuildFromBitmap001
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetWidth001, TestSize.Level1)
+HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetWidth001, Function | MediumTest | Level1)
 {
     OH_Drawing_Image* image = OH_Drawing_ImageCreate();
     EXPECT_NE(image, nullptr);
@@ -91,7 +91,7 @@ HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetWidth001, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetHeight001, TestSize.Level1)
+HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetHeight001, Function | MediumTest | Level1)
 {
     OH_Drawing_Image* image = OH_Drawing_ImageCreate();
     EXPECT_NE(image, nullptr);
@@ -115,7 +115,7 @@ HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetHeight001, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetImageInfo001, TestSize.Level1)
+HWTEST_F(NativeImageLargeValueTest, NativeImageLargeValueTest_GetImageInfo001, Function | MediumTest | Level1)
 {
     OH_Drawing_ImageGetImageInfo(nullptr, nullptr);
     OH_Drawing_Image* image = OH_Drawing_ImageCreate();
