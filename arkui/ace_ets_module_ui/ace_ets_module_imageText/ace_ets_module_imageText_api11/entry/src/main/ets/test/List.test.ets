@@ -128,10 +128,10 @@ export default function testsuite() {
   marqueeJsunit();
   ImageTextTest();
   TextAreaCallbackTest();
-  TextAreaSelectTest();
   Image_QRCode_Api();
   RichEditorApi();
   APIgetUIFontConfigJsunit();
+  TextAreaSelectTest();
   APITextBackgroundStyleJsunit();
   SXrenderingStrategyJsunit();
   SXsymbolSpanStyleJsunit();
