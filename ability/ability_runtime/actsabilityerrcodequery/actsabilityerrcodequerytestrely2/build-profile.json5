@@ -14,25 +14,12 @@
  */
 {
   "app": {
-    "signingConfigs": [
-      {
-        "name": "default",
-        "material": {
-          "certpath": "C:/Users/JinZhao/.ohos/config/openharmony/default_actsabilityerrcodequerytestrely2_286YqAwQ336ckS91936osd6dkPiOUXu10P0_TISTZec=.cer",
-          "storePassword": "0000001B0D9D42763D4D1A88FDCAE9CD36B671ABF3E53B85AF4A7ACD67E48C9A4DB71FE9224CC19975A4AC",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001B06525ABDAF1FD35A59F42CFA03AB505D7A8F8E6FFBDA5C9B8C142D4D3B247A0B8709854699B987",
-          "profile": "C:/Users/JinZhao/.ohos/config/openharmony/default_actsabilityerrcodequerytestrely2_286YqAwQ336ckS91936osd6dkPiOUXu10P0_TISTZec=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/JinZhao/.ohos/config/openharmony/default_actsabilityerrcodequerytestrely2_286YqAwQ336ckS91936osd6dkPiOUXu10P0_TISTZec=.p12"
-        }
-      }
-    ],
+    "signingConfigs": [],
     "products": [
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": 16,
+        "compileSdkVersion": 18,
         "compatibleSdkVersion": 12,
       }
     ],
