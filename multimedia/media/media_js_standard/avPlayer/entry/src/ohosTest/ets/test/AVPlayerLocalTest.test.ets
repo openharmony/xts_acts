@@ -714,7 +714,7 @@ async function testSetPlaybackStrategyDASH(src: string | media.AVFileDescriptor,
 async function testSetPlaybackStrategyFlv(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
   done: Function, playbackStrategy: media.PlaybackStrategy) {
   console.info(`case media source: ${src}`)
-  await media.createAVPlayer((err, video) => {
+  media.createAVPlayer((err, video) => {
     console.info(`case media err: ${err}`)
     if (typeof (video) !== 'undefined') {
       console.info('case createAVPlayer success');
