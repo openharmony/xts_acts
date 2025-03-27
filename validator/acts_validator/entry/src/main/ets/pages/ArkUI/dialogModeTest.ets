@@ -21,6 +21,7 @@ import { BusinessError } from '@ohos.base';
 
 
 const TAG = '[dialogModeTest]';
+let dialogController1: CustomDialogController | null = null
 
 @CustomDialog
 struct CustomDialogExample {
@@ -37,9 +38,7 @@ struct CustomDialogExample {
       TextInput()
       Button('点我关闭弹窗')
         .onClick(() => {
-          if (this.controller != undefined) {
-            this.controller.close()
-          }
+          dialogController1?.close();
         })
     }
     .margin(10)
@@ -52,13 +51,12 @@ struct dialogModeTest {
   @State name: string = 'dialogModeTest';
   @State stepTips: string =
     '操作步骤:\n' +
-      '1、点击按钮切换immersiveMode的值，观察各类弹窗的蒙层效果\n' + 
+      '1、分别点击上方三个按钮切换immersiveMode的值，再分别点击下方橙色按钮弹出弹窗，并观察各类弹窗的蒙层效果\n' +
       '预期结果：\n' +
-      '1、非自由子窗口中，当immersiveMode的值为EXTEND时弹窗蒙层可扩展至覆盖状态栏和导航条，其余情况避开状态栏和导航条\n'+
+      '1、非自由子窗口中，当immersiveMode的值为EXTEND(1)时弹窗蒙层可扩展至覆盖状态栏和导航条，其余情况避开状态栏和导航条\n' +
       '2、自由窗口设备（PC端）直接按照失败处理走豁免'
   @State isVue: boolean = false;
   @State intervalNum: number = 0;
-  // 默认不支持
   @State immersiveMode: ImmersiveMode | undefined = 0
 
   @Builder
@@ -174,20 +172,26 @@ struct dialogModeTest {
             .fontSize(20)
             .fontColor(Color.Red)
 
-          Button('immersiveMode:DEFAULT').onClick((event: ClickEvent) => {
-            this.immersiveMode = ImmersiveMode.DEFAULT
-          })
+          Text('immersiveMode: ' + this.immersiveMode)
+          Button('immersiveMode:DEFAULT')
+            .backgroundColor(this.immersiveMode == 0 ? '#0957f5' : '#259cba')
+            .onClick((event: ClickEvent) => {
+              this.immersiveMode = ImmersiveMode.DEFAULT
+            })
 
 
-          Button('immersiveMode:EXTEND').onClick((event: ClickEvent) => {
-            this.immersiveMode = ImmersiveMode.EXTEND
-          })
+          Button('immersiveMode:EXTEND')
+            .backgroundColor(this.immersiveMode == 1 ? '#0957f5' : '#259cba')
+            .onClick((event: ClickEvent) => {
+              this.immersiveMode = ImmersiveMode.EXTEND
+            })
 
 
-          Button('immersiveMode:undefined').onClick((event: ClickEvent) => {
-            this.immersiveMode = undefined
-          })
-
+          Button('immersiveMode:undefined')
+            .backgroundColor(this.immersiveMode == undefined ? '#0957f5' : '#259cba')
+            .onClick((event: ClickEvent) => {
+              this.immersiveMode = undefined
+            })
         }
 
         Column({ space: 5 }) {
@@ -354,7 +358,7 @@ struct dialogModeTest {
             .padding(3)
             .borderWidth(1.0)
             .onClick(() => {
-              let dialogController1: CustomDialogController | null = new CustomDialogController({
+              dialogController1 = new CustomDialogController({
                 builder: CustomDialogExample({}),
                 levelMode: LevelMode.EMBEDDED,
                 immersiveMode: this.immersiveMode,
@@ -377,8 +381,6 @@ struct dialogModeTest {
                 dialogController1.open();
               }
             })
-
-
         }
       }
       .height('80%')
