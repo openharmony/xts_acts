@@ -16,7 +16,7 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { common, UIAbility, Want, dialogRequest, StartOptions, InsightIntentContext,
-  OpenLinkOptions } from '@kit.AbilityKit';
+  OpenLinkOptions, bundleManager } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError, commonEventManager, systemParameterEnhance } from '@kit.BasicServicesKit';
 
@@ -27,6 +27,7 @@ let insightIntentContext: InsightIntentContext;
 let testAbilityContext: common.UIAbilityContext;
 let sub : commonEventManager.CommonEventSubscriber;
 let mpEnable: string;
+let targetVersion: number = 12;
 
 function sleep(ms: number) {
   return new Promise<string>(resolve => setTimeout(resolve, ms));
@@ -45,6 +46,15 @@ export default function errCodeQueryTest() {
         console.error(`ACTS_NativeStartChildProcess Get system parameter error: ${JSON.stringify(err)}`);
         mpEnable = 'fail';
       }
+      bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT)
+        .then(data => {
+          console.log(`getBundleInfoForSelf data: ${JSON.stringify(data)}`);
+          targetVersion = data.targetVersion;
+          console.log(`getBundleInfoForSelf targetVersion: ${JSON.stringify(targetVersion)}`);
+        })
+        .catch((err: BusinessError) => {
+          console.error(`getBundleInfoForSelf error: ${JSON.stringify(err)}`);
+        })
     })
 
     beforeEach(() => {
@@ -167,7 +177,11 @@ export default function errCodeQueryTest() {
           console.info(`[${TAG}] startAbility callback`);
           if (err) {
             console.log(`[${TAG}] err: ${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(16000004);
+            if (targetVersion >= 20) {
+              expect(err.code).assertEqual(16000004);
+            } else {
+              expect(err.code).assertEqual(2097152);
+            }
             done();
           } else {
             console.log(`[${TAG}] startAbility data: ${JSON.stringify(data)}`);
@@ -202,7 +216,11 @@ export default function errCodeQueryTest() {
           console.info(`[${TAG}] startAbility callback`);
           if (err) {
             console.log(`[${TAG}] err: ${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(16000005);
+            if (targetVersion >= 20) {
+              expect(err.code).assertEqual(16000005);
+            } else {
+              expect(err.code).assertEqual(2097152);
+            }
             done();
           } else {
             console.log(`[${TAG}] startAbility data: ${JSON.stringify(data)}`);
@@ -243,7 +261,11 @@ export default function errCodeQueryTest() {
             console.error(`[${TAG}] err: ${JSON.stringify(err)}`);
             errObject = err;
           })
-        expect(errObject.code).assertEqual(16000004);
+        if (targetVersion >= 20) {
+          expect(errObject.code).assertEqual(16000004);
+        } else {
+          expect(errObject.code).assertEqual(2097152);
+        }
         done();
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
@@ -278,7 +300,11 @@ export default function errCodeQueryTest() {
             console.error(`[${TAG}] err: ${JSON.stringify(err)}`);
             errObject = err;
           })
-        expect(errObject.code).assertEqual(16000005);
+        if (targetVersion >= 20) {
+          expect(errObject.code).assertEqual(16000005);
+        } else {
+          expect(errObject.code).assertEqual(2097152);
+        }
         done();
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
