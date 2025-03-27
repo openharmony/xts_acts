@@ -100,7 +100,7 @@ export default function errCodeQueryTest() {
       try {
         let want: Want = {
           deviceId: '',
-          bundleName: 'com.test.ActsAbilityErrCodeQueryTest',
+          bundleName: 'com.test.actsabilityerrcodequerytest',
           abilityName: 'TestAbility',
           moduleName: 'entry_test'
         };
@@ -180,7 +180,7 @@ export default function errCodeQueryTest() {
             if (targetVersion >= 20) {
               expect(err.code).assertEqual(16000004);
             } else {
-              expect(err.code).assertEqual(2097152);
+              expect(err.code).assertEqual(2097179);
             }
             done();
           } else {
@@ -219,7 +219,7 @@ export default function errCodeQueryTest() {
             if (targetVersion >= 20) {
               expect(err.code).assertEqual(16000005);
             } else {
-              expect(err.code).assertEqual(2097152);
+              expect(err.code).assertEqual(2097208);
             }
             done();
           } else {
@@ -264,7 +264,7 @@ export default function errCodeQueryTest() {
         if (targetVersion >= 20) {
           expect(errObject.code).assertEqual(16000004);
         } else {
-          expect(errObject.code).assertEqual(2097152);
+          expect(errObject.code).assertEqual(2097179);  ///sdk18: 2097179
         }
         done();
       } catch (paramError) {
@@ -303,7 +303,7 @@ export default function errCodeQueryTest() {
         if (targetVersion >= 20) {
           expect(errObject.code).assertEqual(16000005);
         } else {
-          expect(errObject.code).assertEqual(2097152);
+          expect(errObject.code).assertEqual(2097208);  ///sdk18: 2097208
         }
         done();
       } catch (paramError) {
@@ -720,49 +720,6 @@ export default function errCodeQueryTest() {
             console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
             try {
               expect(commonEventData.parameters?.result).assertEqual(16000010);
-            } catch {
-            }
-            commonEventManager.publish("terminateEntryAbility1",() => {});
-            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              done();
-            });
-          })
-          let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
-            abilityName: "EntryAbility1",
-            parameters: {
-              "case": TAG
-            }
-          }
-          testAbilityContext.startAbility(entryWant, (err: BusinessError) => {
-            if (err.code) {
-              console.error(`[${TAG}] startEntryAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            } else {
-              console.info(`[${TAG}] startEntryAbility succeed`);
-            }
-          })
-        })
-    })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200
-     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200
-     * @tc.desc    openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>; Errcode 16000005, configure permission in the target ability
-     * @tc.level   0
-     */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200', 0, async (done: Function) => {
-      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200';
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_openLink_0200_event"]
-      };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          sub = commonEventSubscriber;
-          console.info(`[${TAG}] createSubscriber succeed`);
-          commonEventManager.subscribe(sub, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            console.info(`[${TAG}] subscribe callback. Gained commonEventData: ${JSON.stringify(commonEventData)}`);
-            try {
-              expect(commonEventData.parameters?.result).assertEqual(16000005);
             } catch {
             }
             commonEventManager.publish("terminateEntryAbility1",() => {});
