@@ -17,8 +17,8 @@ group("actsabilityerrcodequery") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsabilityerrcodequerytestrely:ActsAbilityErrCodeQueryTestRely",
       "actsabilityerrcodequerytest:ActsAbilityErrCodeQueryTest",
+      "actsabilityerrcodequerytestrely:ActsAbilityErrCodeQueryTestRely",
       "actsabilityerrcodequerytestrely2:ActsAbilityErrCodeQueryTestRely2",
       "actserrorcodeapplicationcontextassist:ActsErrorCodeApplicationContextAssist",
     ]
