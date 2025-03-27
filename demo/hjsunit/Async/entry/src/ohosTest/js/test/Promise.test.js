@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it} from 'deccjsunit/index'
+import {describe, it, Level, Size, TestType } from 'deccjsunit/index'
 
 describe('promise', function () {
-    it('promiseDemo', 0, async function (done) {
+    it('promiseDemo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         await new Promise(
             function (resolve, reject) {
                 // 一段耗时的异步操作
