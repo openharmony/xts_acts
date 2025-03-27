@@ -1,0 +1,7 @@
+[
+  "test/xts/acts/arkui/ace_ets_module_ui/ace_ets_module_marquee:ActsAceEtsModuleMarqueeTest",
+  "test/xts/acts/arkui/ace_ets_module_ui/ace_ets_module_marquee/ace_ets_module_marquee_api12:ActsAceEtsModuleMarqueeApi12Test",
+  "test/xts/acts/arkui/ace_ets_state_test:ActsAceStateTest",
+  "test/xts/acts/hiviewdfx/hisyseventtest/hisyseventsertest:ActsHiSysEventSerTest",
+  "test/xts/acts/hiviewdfx/crossplatform/hiviewdfxhilogetstest:ActsCrossplatformHilogTest"
+]
