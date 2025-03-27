@@ -427,14 +427,14 @@ function setPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStra
 
 async function setInvalidPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null,
   playbackStrategy: media.PlaybackStrategy) {
-  await avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
+  avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
     console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
      if (error.code == media.AVErrorCode.AVERR_INVALID_PARAMETER && invalidPlaybackStrategy) {
       checkPlaybackStrategySuccess = true;
     } else {
       expect().assertFail();
     }
-  })
+  });
 }
 
 async function setPlaybackStrategyDASH(avPlayer: media.AVPlayer | null, done: Function) {
@@ -566,7 +566,7 @@ async function setPlaybackStrategyFlv(avPlayer: media.AVPlayer | null, done: Fun
         done();
         break;
       case ERROR:
-        await avPlayer?.release().then(() => {
+        avPlayer?.release().then(() => {
         },
           mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         avPlayer = null;
