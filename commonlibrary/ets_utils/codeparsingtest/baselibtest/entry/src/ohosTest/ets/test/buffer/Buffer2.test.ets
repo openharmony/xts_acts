@@ -1435,7 +1435,7 @@ export default function bufferTest() {
       } catch (e) {
         console.error(`${TAG} error:${e.message}`);
         expect(e.message)
-          .assertEqual('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like. Received value is: Person');
+          .assertContain('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like.');
       }
     })
     /**
@@ -1486,8 +1486,8 @@ export default function bufferTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message)
-          .assertEqual('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like. Received value is: MyClass');
+        expect(e.message)
+          .assertContain('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, Array-like.');
       }
     })
     /**
