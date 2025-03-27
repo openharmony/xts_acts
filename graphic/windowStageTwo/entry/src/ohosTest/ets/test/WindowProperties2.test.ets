@@ -1390,7 +1390,7 @@ export default function windowPropertiesTest2() {
         done()
       }
       try {
-        await windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
+        windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
           console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
           let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
           let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
@@ -1452,7 +1452,7 @@ export default function windowPropertiesTest2() {
         done()
       }
       try {
-        await windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
+        windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
           console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
           let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
           let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
@@ -1508,7 +1508,7 @@ export default function windowPropertiesTest2() {
         done()
       }
       try {
-        await windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
+        windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
           console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
           let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
           let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
@@ -1561,7 +1561,7 @@ export default function windowPropertiesTest2() {
           // 6、销毁被拉起的主窗
           if (res === window.WindowStageEventType.INACTIVE || res === window.WindowStageEventType.HIDDEN) {
             try {
-              await windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
+              windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
                 console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
                 let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
                 let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
