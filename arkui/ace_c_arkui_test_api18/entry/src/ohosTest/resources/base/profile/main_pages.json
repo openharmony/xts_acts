@@ -4,6 +4,7 @@
     "MainAbility/pages/testgesture",
     "MainAbility/pages/datePicker/TestDatePickerMode",
     "MainAbility/pages/textPicker/textPickerEnableHapticFeedback",
-    "MainAbility/pages/datePicker/datePickerEnableHapticFeedback"
+    "MainAbility/pages/datePicker/datePickerEnableHapticFeedback",
+    "MainAbility/pages/visibleAreaEventOptions/visibleAreaEventOptions"
   ]
 }

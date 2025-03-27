@@ -18,6 +18,7 @@ add_library(nativerender SHARED
     datepicker/datepicker_test.cpp
     textpicker/textPicker_enableHapticFeedback_test.cpp
     datepicker/datePicker_enableHapticFeedback_test.cpp
+    visibleAreaEventOptions/visibleAreaEventOptions.cpp
 )
 
 add_library(nativefunc SHARED
