@@ -29,6 +29,7 @@ import openDialogTransitionTest from './promptActionTest/openDialogTransition.te
 import ActionSheetLifeTest from './dialogLifeTest/ActionSheetLife.test'
 import AlertDialogLifeTest from './dialogLifeTest/AlertDialogLife.test'
 import CustomDialogLifeTest from './dialogLifeTest/CustomDialogLife.test'
+import showInSubWindowBindSheet from './bindSheet/showInSubWindowBindSheet.test'
 export default function testsuite() {
     blurStyleOptions();
     effectOptions();
@@ -47,4 +48,5 @@ export default function testsuite() {
     ActionSheetLifeTest();
     AlertDialogLifeTest();
     CustomDialogLifeTest();
+	showInSubWindowBindSheet()
 }
