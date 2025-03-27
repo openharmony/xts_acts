@@ -131,7 +131,6 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
       expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(fourthText.left - flexContainer.left)) <= 1).assertTrue();
 
-      expect(Math.round()).assertEqual(Math.round());
       expect(Math.floor(Math.abs(fourthText.bottom - flexContainer.bottom - vp2px(50))) <= 1).assertTrue();
       console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] END');
 
