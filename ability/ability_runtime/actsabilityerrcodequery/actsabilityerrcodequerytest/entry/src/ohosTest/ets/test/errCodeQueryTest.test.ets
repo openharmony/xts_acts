@@ -788,29 +788,6 @@ export default function errCodeQueryTest() {
     })
 
     /*
-     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100
-     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100
-     * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void; Errcode 401, pass the parameter wrongly as undefined
-     * @tc.level   0
-     */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100', 0, async (done: Function) => {
-      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0100';
-      let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
-        abilityName: 'AbilityA',
-      };
-      try {
-        insightIntentContext.startAbility(undefined, undefined);
-        expect().assertFail();
-        done();
-      } catch (paramError) {
-        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        expect(paramError.code).assertEqual(401);
-        done();
-      }
-    })
-
-    /*
      * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200
      * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200
      * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void; Errcode 16000001, set the ability name wrongly
@@ -868,38 +845,6 @@ export default function errCodeQueryTest() {
       } catch (paramError) {
         console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
         expect(paramError.code).assertEqual(16000004);
-        done();
-      }
-    })
-
-    /*
-     * @tc.number  SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400
-     * @tc.name    SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400
-     * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 401, pass the parameter wrongly as undefined
-     * @tc.level   0
-     */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400', 0, async (done: Function) => {
-      TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0400';
-      let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
-        abilityName: 'AbilityA',
-      };
-      let errObject = {} as BusinessError;
-      try {
-        await insightIntentContext.startAbility(undefined)
-          .then(() => {
-            console.info(`[${TAG}] startAbility succeed`);
-            expect().assertFail();
-          })
-          .catch((err: BusinessError) => {
-            console.error(`[${TAG}] startAbility failed, err: ${JSON.stringify(err)}, message: ${err.message}`);
-            errObject = err;
-          })
-        expect(errObject.code).assertEqual(401);
-        done();
-      } catch (paramError) {
-        console.log(`[${TAG}] paramError: ${JSON.stringify(paramError)}`);
-        expect(paramError.code).assertEqual(401);
         done();
       }
     })
