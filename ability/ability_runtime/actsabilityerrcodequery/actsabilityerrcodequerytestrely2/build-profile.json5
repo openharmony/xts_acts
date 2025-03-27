@@ -1,0 +1,62 @@
+/**
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/JinZhao/.ohos/config/openharmony/default_actsabilityerrcodequerytestrely2_286YqAwQ336ckS91936osd6dkPiOUXu10P0_TISTZec=.cer",
+          "storePassword": "0000001B0D9D42763D4D1A88FDCAE9CD36B671ABF3E53B85AF4A7ACD67E48C9A4DB71FE9224CC19975A4AC",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B06525ABDAF1FD35A59F42CFA03AB505D7A8F8E6FFBDA5C9B8C142D4D3B247A0B8709854699B987",
+          "profile": "C:/Users/JinZhao/.ohos/config/openharmony/default_actsabilityerrcodequerytestrely2_286YqAwQ336ckS91936osd6dkPiOUXu10P0_TISTZec=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/JinZhao/.ohos/config/openharmony/default_actsabilityerrcodequerytestrely2_286YqAwQ336ckS91936osd6dkPiOUXu10P0_TISTZec=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 16,
+        "compatibleSdkVersion": 12,
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
