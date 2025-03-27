@@ -284,7 +284,7 @@ import { TestType, Size, Level } from '@ohos/hypium';
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_truncate_async_008', 3, async function (done) {
+  it('fileIO_truncate_async_008', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_truncate_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -313,7 +313,7 @@ import { TestType, Size, Level } from '@ohos/hypium';
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_truncate_async_009', 3, async function (done) {
+  it('fileIO_truncate_async_009', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_truncate_async_009');
     expect(prepareFile(fpath, 'truncate')).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -624,7 +624,7 @@ import { TestType, Size, Level } from '@ohos/hypium';
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_truncate_sync_005', 3, async function () {
+  it('fileIO_test_truncate_sync_005', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_truncate_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import environment from 'libenvironment.so';
 
 export default function getUserDirNdkTest(){
@@ -28,7 +28,7 @@ export default function getUserDirNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('environment_ndktest_getUserDownloadDir_001', 0, async (done: Function) => {
+    it('environment_ndktest_getUserDownloadDir_001', Level.LEVEL0, async (done: Function) => {
       let data = environment.getUserDownloadDir();
       console.info("environment_ndktest_getUserDownloadDir_001 Test NAPI data= " + JSON.stringify(data));
       if (data == 801) {
@@ -49,7 +49,7 @@ export default function getUserDirNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('environment_ndktest_getUserDesktopDir_001', 0, async (done: Function) => {
+    it('environment_ndktest_getUserDesktopDir_001', Level.LEVEL0, async (done: Function) => {
       let data = environment.getUserDesktopDir();
       console.info("environment_ndktest_getUserDesktopDir_001 Test NAPI data= " + JSON.stringify(data));
       if (data == 801) {
@@ -70,7 +70,7 @@ export default function getUserDirNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('environment_ndktest_getUserDocumentDir_001', 0, async (done: Function) => {
+    it('environment_ndktest_getUserDocumentDir_001', Level.LEVEL0, async (done: Function) => {
       let data = environment.getUserDocumentDir();
       console.info("environment_ndktest_getUserDocumentDir_001 Test NAPI data= " + JSON.stringify(data));
       if (data == 801) {

@@ -20,6 +20,7 @@ import cloudSync from '@ohos.file.cloudSync';
 import fileUri from '@ohos.file.fileuri';
 import featureAbility from '@ohos.ability.featureAbility';
 import fs from '@ohos.file.fs';
+import { Level } from '@ohos/hypium';
 
 export default function cloudSynctest() {
 describe('cloudSync_test', function () {
@@ -33,7 +34,7 @@ describe('cloudSync_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_ChangeData_IsDirectory_001', 3, async function () {
+  it('test_ChangeData_IsDirectory_001', Level.LEVEL3, async function () {
     let fpath = await featureAbility.getContext().getFilesDir() + '/test_ChangeData_IsDirectory_001';
     let uri = fileUri.getUriFromPath(fpath);
     try {
@@ -57,7 +58,7 @@ describe('cloudSync_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_ChangeData_IsDirectory_002', 3, async function () {
+  it('test_ChangeData_IsDirectory_002', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/test_ChangeData_IsDirectory_002';
     fs.mkdirSync(dpath);
     let uri = fileUri.getUriFromPath(dpath);
@@ -82,7 +83,7 @@ describe('cloudSync_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_ChangeData_Uris_003', 3, async function () {
+  it('test_ChangeData_Uris_003', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/test_ChangeData_Uris_003';
     fs.mkdirSync(dpath);
     let uri = fileUri.getUriFromPath(dpath);

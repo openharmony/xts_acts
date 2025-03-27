@@ -14,6 +14,7 @@
  */
 
 import { fileio, nextFileName, describe, it, expect } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioMkdirRmdir() {
 describe('fileio_mkdir_rmdir', function () {
@@ -27,7 +28,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_sync_rmdir_sync_000', 0, async function () {
+  it('fileio_mkdir_sync_rmdir_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_mkdir_sync_rmdir_sync_000') + 'd';
 
     try {
@@ -48,7 +49,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_sync_rmdir_sync_001', 0, function () {
+  it('fileio_mkdir_sync_rmdir_sync_001', Level.LEVEL0, function () {
     try {
       expect(fileio.mkdirSync('/') == null).assertTrue();
       expect(null).assertFail();
@@ -66,7 +67,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_sync_rmdir_sync_002', 0, function () {
+  it('fileio_mkdir_sync_rmdir_sync_002', Level.LEVEL0, function () {
     try {
       expect(fileio.mkdirSync(12) == null).assertTrue();
       expect(null).assertFail();
@@ -84,7 +85,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_sync_rmdir_sync_003', 0, async function () {
+  it('fileio_mkdir_sync_rmdir_sync_003', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_mkdir_sync_rmdir_sync_003');
 
     try {
@@ -105,7 +106,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_000', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_000') + 'd';
 
     try {
@@ -127,7 +128,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_001', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_001') + 'd';
 
     try {
@@ -150,7 +151,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_002', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_mkdir_async_rmdir_sync_002');
 
     try {
@@ -172,7 +173,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_003', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_mkdir_async_rmdir_sync_003');
 
     try {
@@ -194,7 +195,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_004', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_004', Level.LEVEL0, async function (done) {
     try {
       expect(await fileio.mkdir(12) == null).assertTrue();
       expect(null).assertFail();
@@ -214,7 +215,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_005', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_005', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_005');
 
     try {
@@ -237,7 +238,7 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_async_rmdir_sync_006', 0, async function (done) {
+  it('fileio_mkdir_async_rmdir_sync_006', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_006');
 
     try {

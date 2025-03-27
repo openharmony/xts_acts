@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isBoolean, isString,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioDirent() {
 describe('fileio_dirent', function () {
@@ -30,7 +31,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_name_001', 0, async function (done) {
+  it('fileio_test_dirent_name_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dirent_name_001') + 'd';
     let fpath = dpath + '/f2';
 
@@ -62,7 +63,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_name_000', 0, async function (done) {
+  it('fileio_test_dirent_name_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dirent_name_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -94,7 +95,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_name_002', 0, async function () {
+  it('fileio_test_dirent_name_002', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_name_002') + 'd';
     let fpath = dpath + '/f1';
 
@@ -124,7 +125,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_block_device_000', 0, async function () {
+  it('fileio_test_dirent_is_block_device_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_block_device_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -153,7 +154,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_block_device_001', 0, async function () {
+  it('fileio_test_dirent_is_block_device_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_block_device_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -183,7 +184,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_character_device_000', 0, async function () {
+  it('fileio_test_dirent_is_character_device_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_character_device_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -213,7 +214,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_character_device_001', 0, async function () {
+  it('fileio_test_dirent_is_character_device_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_character_device_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -243,7 +244,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_directory_000', 0, async function () {
+  it('fileio_test_dirent_is_directory_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_directory_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -273,7 +274,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_directory_001', 0, async function () {
+  it('fileio_test_dirent_is_directory_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_directory_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -303,7 +304,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_fifo_000', 0, async function () {
+  it('fileio_test_dirent_is_fifo_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_fifo_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -333,7 +334,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_fifo_001', 0, async function () {
+  it('fileio_test_dirent_is_fifo_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_fifo_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -363,7 +364,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_file_000', 0, async function () {
+  it('fileio_test_dirent_is_file_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_file_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -393,7 +394,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require 
    */
-  it('fileio_test_dirent_is_file_001', 0, async function () {
+  it('fileio_test_dirent_is_file_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_file_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -423,7 +424,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_socket_000', 0, async function () {
+  it('fileio_test_dirent_is_socket_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_socket_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -453,7 +454,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_socket_001', 0, async function () {
+  it('fileio_test_dirent_is_socket_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_socket_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -483,7 +484,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dirent_is_symbolic_link_000', 0, async function () {
+  it('fileio_test_dirent_is_symbolic_link_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_symbolic_link_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -513,7 +514,7 @@ describe('fileio_dirent', function () {
    * @tc.level Level 0
    * @tc.require 
    */
-  it('fileio_test_dirent_is_symbolic_link_001', 0, async function () {
+  it('fileio_test_dirent_is_symbolic_link_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_symbolic_link_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;

@@ -17,6 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import {
   fileIO, FILE_CONTENT, prepareFile, isIntNum, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOFileProperties() {
   describe('fileIO_file_properties', function () {
@@ -31,7 +32,7 @@ export default function fileIOFileProperties() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_open_file_000', 0, async function () {
+  it('fileIO_test_open_file_000', Level.LEVEL0, async function () {
     let filesDir = await featureAbility.getContext().getFilesDir();
     let fpath = filesDir + '/fileIO_test_open_file_000';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -59,7 +60,7 @@ export default function fileIOFileProperties() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_dup_file_001', 0, async function () {
+  it('fileIO_test_dup_file_001', Level.LEVEL0, async function () {
     let filesDir = await featureAbility.getContext().getFilesDir();
     let fpath = filesDir + '/fileIO_test_dup_file_001';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();

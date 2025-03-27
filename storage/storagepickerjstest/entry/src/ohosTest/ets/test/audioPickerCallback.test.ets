@@ -15,7 +15,7 @@
 import { AsyncCallback } from '@ohos.base'
 import { sleep, startAbility, stopAbility } from './Common'
 import picker from '@ohos.file.picker'
-import { afterEach, describe, expect, it } from '@ohos/hypium'
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium'
 
 async function select(testNum: string, done: Function, dirName: string, fileName: string) {
   try {
@@ -127,7 +127,7 @@ export default function audioPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Audiopicker_Select_Callback_000", 0, async (done: Function) => {
+    it("test_Audiopicker_Select_Callback_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Select_Callback_000";
       let option = new picker.AudioSelectOptions();
       let dirName = "Audios";
@@ -142,7 +142,7 @@ export default function audioPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Audiopicker_Select_Callback_001", 0, async (done: Function) => {
+    it("test_Audiopicker_Select_Callback_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Select_Callback_001";
       let dirName = "Audios";
       let fileName = "01.mp3";
@@ -156,7 +156,7 @@ export default function audioPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Audiopicker_Save_Callback_000", 0, async (done: Function) => {
+    it("test_Audiopicker_Save_Callback_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Save_Callback_000";
       let option = new picker.AudioSaveOptions();
       option.newFileNames = ["AudioViewPicker01.mp3"];
@@ -171,7 +171,7 @@ export default function audioPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Audiopicker_Save_Callback_001", 0, async (done: Function) => {
+    it("test_Audiopicker_Save_Callback_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Save_Callback_001";
       await saveWithoutSelect(testNum, done);
     });

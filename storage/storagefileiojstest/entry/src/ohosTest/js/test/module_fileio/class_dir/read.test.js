@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isString, isBoolean, forceRemoveDir,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioDirRead() {
 describe('fileio_dir_read', function () {
@@ -30,7 +31,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dir_read_async_000', 0, async function (done) {
+  it('fileio_test_dir_read_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_read_async_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -59,7 +60,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_dir_read_async_001', 0, async function (done) {
+  it('fileio_test_dir_read_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_read_async_001') + 'd';
     let fpath = dpath + '/f1';
 
@@ -88,7 +89,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileio_test_dir_read_async_002', 0, async function (done) {
+   it('fileio_test_dir_read_async_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_read_async_002') + 'd';
     let fpath = dpath + '/f1';
     let dd  = null
@@ -118,7 +119,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_000', 0, async function () {
+  it('fileio_dir_read_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_dir_read_sync_000') + 'd';
     let fpath = dpath + '/f1';
 
@@ -145,7 +146,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_001', 0, async function () {
+  it('fileio_dir_read_sync_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_dir_read_sync_001') + 'd';
     let fpath = dpath + '/f1';
     let dd = null;
@@ -172,7 +173,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_name_000', 0, async function (done) {
+  it('fileio_dir_read_sync_name_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -200,7 +201,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_name_001', 0, async function () {
+  it('fileio_dir_read_sync_name_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_dir_read_sync_name_001') + 'd';
     fileio.mkdirSync(dpath);
     let fdpath = dpath;
@@ -234,7 +235,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isBlockDevice_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isBlockDevice_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -262,7 +263,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isCharacterDevice_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isCharacterDevice_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -289,7 +290,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isDirectory_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isDirectory_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -317,7 +318,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isFIFO_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isFIFO_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -345,7 +346,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isFile_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isFile_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -373,7 +374,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isSocket_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isSocket_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -401,7 +402,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_sync_isSymbolicLink_000', 0, async function (done) {
+  it('fileio_dir_read_sync_isSymbolicLink_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -429,7 +430,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_name_000', 0, async function (done) {
+  it('fileio_dir_read_async_name_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -457,7 +458,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_name_001', 0, async function (done) {
+  it('fileio_dir_read_async_name_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_name_001') + 'd';
     fileio.mkdirSync(dpath);
     let fdpath = dpath;
@@ -492,7 +493,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_isBlockDevice_000', 0, async function (done) {
+  it('fileio_dir_read_async_isBlockDevice_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -521,7 +522,7 @@ describe('fileio_dir_read', function () {
    * @tc.require
    */
 
-  it('fileio_dir_read_async_isCharacterDevice_000', 0, async function (done) {
+  it('fileio_dir_read_async_isCharacterDevice_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -548,7 +549,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
+  it('fileio_dir_read_async_isDirectory_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -576,7 +577,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_isFIFO_000', 0, async function (done) {
+  it('fileio_dir_read_async_isFIFO_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -604,7 +605,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_isFile_000', 0, async function (done) {
+  it('fileio_dir_read_async_isFile_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -632,7 +633,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_isSocket_000', 0, async function (done) {
+  it('fileio_dir_read_async_isSocket_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -660,7 +661,7 @@ describe('fileio_dir_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_read_async_isSymbolicLink_000', 0, async function (done) {
+  it('fileio_dir_read_async_isSymbolicLink_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {

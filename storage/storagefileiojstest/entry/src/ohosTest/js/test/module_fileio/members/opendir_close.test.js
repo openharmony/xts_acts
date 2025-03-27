@@ -14,6 +14,7 @@
  */
 
 import { fileio, nextFileName, describe, it, expect } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioOpendirClose() {
 describe('fileio_opendir_close', function () {
@@ -27,7 +28,7 @@ describe('fileio_opendir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_open_close_sync_000', 0, async function () {
+  it('fileio_dir_open_close_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_dir_open_close_sync_000') + 'd';
 
     try {
@@ -51,7 +52,7 @@ describe('fileio_opendir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_open_close_sync_001', 0, async function () {
+  it('fileio_dir_open_close_sync_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_dir_open_close_sync_001') + 'd';
 
     try {
@@ -71,7 +72,7 @@ describe('fileio_opendir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_open_close_async_000', 0, async function (done) {
+  it('fileio_dir_open_close_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_open_close_async_000') + 'd';
 
     try {
@@ -96,7 +97,7 @@ describe('fileio_opendir_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_dir_open_close_async_001', 0, async function (done) {
+  it('fileio_dir_open_close_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_dir_open_close_async_001') + 'd';
 
     try {

@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOStreamClose() {
 describe('fileIO_fs_stream_close', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_stream_close_sync_000', 0, async function () {
+  it('fileIO_test_stream_close_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_close_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -55,7 +56,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_close_sync_001', 0, async function () {
+  it('fileIO_test_stream_close_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r');
@@ -82,7 +83,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_close_sync_002', 0, async function () {
+  it('fileIO_test_stream_close_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_close_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r');
@@ -109,7 +110,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_stream_close_async_000', 0, async function (done) {
+  it('fileIO_test_stream_close_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_close_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -135,7 +136,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_stream_close_async_001', 0, async function (done) {
+  it('fileIO_test_stream_close_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_close_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -166,7 +167,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_close_async_002', 0, async function (done) {
+  it('fileIO_test_stream_close_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_close_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -194,7 +195,7 @@ describe('fileIO_fs_stream_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_close_async_003', 0, async function (done) {
+  it('fileIO_test_stream_close_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_close_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioFchmod() {
 describe('fileio_fchmod', function () {
@@ -30,7 +31,7 @@ describe('fileio_fchmod', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fchmod_sync_000', 0, async function () {
+  it('fileio_test_fchmod_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_fchmod_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -55,7 +56,7 @@ describe('fileio_fchmod', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fchmod_async_000', 0, async function (done) {
+  it('fileio_test_fchmod_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_fchmod_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -85,7 +86,7 @@ describe('fileio_fchmod', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fchmod_async_001', 0, async function (done) {
+  it('fileio_test_fchmod_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_fchmod_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

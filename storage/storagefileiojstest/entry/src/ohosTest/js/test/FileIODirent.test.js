@@ -14,7 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import { describe,it,expect}from '@ohos/hypium'
+import { describe, it, expect, Level }from '@ohos/hypium'
 import {
   FILE_CONTENT,
   prepareFile,
@@ -29,7 +29,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_name_000
    * @tc.desc Function of API, Get file name.
    */
-  it('fileio_test_dirent_name_000', 0, async function () {
+  it('fileio_test_dirent_name_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -54,7 +54,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_block_device_000
    * @tc.desc Function of API, isBlockDevice. Determine whether it is a block device.
    */
-  it('fileio_test_dirent_is_block_device_000', 0, async function () {
+  it('fileio_test_dirent_is_block_device_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_block_device_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -81,7 +81,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_block_device_001
    * @tc.desc Function of API, isBlockDevice. The parameter is - 1.
    */
-  it('fileio_test_dirent_is_block_device_001', 0, async function () {
+  it('fileio_test_dirent_is_block_device_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_block_device_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -108,7 +108,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_character_device_000
    * @tc.desc Function of API, isCharacterDevice. Determine whether it is a character device.
    */
-  it('fileio_test_dirent_is_character_device_000', 0, async function () {
+  it('fileio_test_dirent_is_character_device_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_character_device_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -134,7 +134,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_character_device_001
    * @tc.desc Function of API, isCharacterDevice. The parameter is - 1.
    */
-  it('fileio_test_dirent_is_character_device_001', 0, async function () {
+  it('fileio_test_dirent_is_character_device_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_character_device_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -161,7 +161,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_directory_000
    * @tc.desc Function of API, isDirectory. Determine whether it is a directory.
    */
-  it('fileio_test_dirent_is_directory_000', 0, async function () {
+  it('fileio_test_dirent_is_directory_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_directory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -187,7 +187,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_directory_001
    * @tc.desc Function of API, isDirectory. The parameter is - 1
    */
-  it('fileio_test_dirent_is_directory_001', 0, async function () {
+  it('fileio_test_dirent_is_directory_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_directory_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -214,7 +214,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_fifo_000
    * @tc.desc Function of API, isFIFO. Determine whether it is a fifo.
    */
-  it('fileio_test_dirent_is_fifo_000', 0, async function () {
+  it('fileio_test_dirent_is_fifo_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_fifo_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -240,7 +240,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_fifo_001
    * @tc.desc Function of API, isFIFO. The parameter is - 1
    */
-  it('fileio_test_dirent_is_fifo_001', 0, async function () {
+  it('fileio_test_dirent_is_fifo_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_fifo_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -267,7 +267,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_file_000
    * @tc.desc Function of API, isFile. Determine whether it is a file.
    */
-  it('fileio_test_dirent_is_file_000', 0, async function () {
+  it('fileio_test_dirent_is_file_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_file_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -293,7 +293,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_file_001
    * @tc.desc Function of API, isFile. The parameter is - 1
    */
-  it('fileio_test_dirent_is_file_001', 0, async function () {
+  it('fileio_test_dirent_is_file_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_file_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -320,7 +320,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_socket_000
    * @tc.desc Function of API, isSocket. Determine whether it is a socket.
    */
-  it('fileio_test_dirent_is_socket_000', 0, async function () {
+  it('fileio_test_dirent_is_socket_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_socket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -346,7 +346,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_socket_001
    * @tc.desc Function of API, isSocket. The parameter is - 1
    */
-  it('fileio_test_dirent_is_socket_001', 0, async function () {
+  it('fileio_test_dirent_is_socket_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_socket_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;
@@ -373,7 +373,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_symbolic_link_000
    * @tc.desc Function of API, isSymbolicLink. Determine whether it is a symbolic link.
    */
-  it('fileio_test_dirent_is_symbolic_link_000', 0, async function () {
+  it('fileio_test_dirent_is_symbolic_link_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_symbolic_link_000') + 'd';
     let fpath = dpath + '/f1';
     try {
@@ -399,7 +399,7 @@ describe('fileIOTestDirent', function () {
    * @tc.name fileio_test_dirent_is_symbolic_link_001
    * @tc.desc Function of API, isSymbolicLink. The parameter is - 1
    */
-  it('fileio_test_dirent_is_symbolic_link_001', 0, async function () {
+  it('fileio_test_dirent_is_symbolic_link_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dirent_is_symbolic_link_001') + 'd';
     let fpath = dpath + '/f1';
     let dd;

@@ -15,6 +15,7 @@
 
 import {describe, it, expect, isIntNum, statfs} from './Common';
 import featureAbility from '@ohos.ability.featureAbility';
+import { Level } from '@ohos/hypium';
 
 export default function statfs_test() {
 describe('statfs_test', function () {
@@ -28,7 +29,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-  it('statfs_test_get_free_bytes_async_000', 0, async function (done) {
+  it('statfs_test_get_free_bytes_async_000', Level.LEVEL0, async function (done) {
     try {
       let context = featureAbility.getContext();
       let data = await context.getFilesDir();
@@ -51,7 +52,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-  it('statfs_test_get_free_bytes_async_001', 0, async function (done) {
+  it('statfs_test_get_free_bytes_async_001', Level.LEVEL0, async function (done) {
     try {
       statfs.getFreeBytes("/dev",(err,number)=>{
         console.info("getFreeBytesNumber dev===>:" + (number / 1024));
@@ -73,7 +74,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-  it('statfs_test_get_free_bytes_async_002', 0, async function (done) {
+  it('statfs_test_get_free_bytes_async_002', Level.LEVEL0, async function (done) {
     try {
       await statfs.getFreeBytes(1);
     } catch (err) {
@@ -92,7 +93,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-  it('statfs_test_get_free_bytes_async_003', 0, async function (done) {
+  it('statfs_test_get_free_bytes_async_003', Level.LEVEL0, async function (done) {
     try {
       await statfs.getFreeBytes();
     } catch (err) {
@@ -111,7 +112,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-  it('statfs_test_get_free_bytes_async_004', 0, async function (done) {
+  it('statfs_test_get_free_bytes_async_004', Level.LEVEL0, async function (done) {
     try {
       await statfs.getFreeBytes("");
     } catch (err) {
@@ -130,7 +131,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-     it('statfs_test_get_total_bytes_async_000', 0, async function (done) {
+     it('statfs_test_get_total_bytes_async_000', Level.LEVEL0, async function (done) {
       try {
         let context = featureAbility.getContext();
         let data = await context.getFilesDir();
@@ -153,7 +154,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-    it('statfs_test_get_total_bytes_async_001', 0, async function (done) {
+    it('statfs_test_get_total_bytes_async_001', Level.LEVEL0, async function (done) {
       try {
         statfs.getTotalBytes("/dev",(err,number)=>{
           console.info("getTotalBytesNumber dev===>:" + (number / 1024));
@@ -175,7 +176,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-    it('statfs_test_get_total_bytes_async_002', 0, async function (done) {
+    it('statfs_test_get_total_bytes_async_002', Level.LEVEL0, async function (done) {
       try {
         await statfs.getTotalBytes(1);
       } catch (err) {
@@ -194,7 +195,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-    it('statfs_test_get_total_bytes_async_003', 0, async function (done) {
+    it('statfs_test_get_total_bytes_async_003', Level.LEVEL0, async function (done) {
       try {
         await statfs.getTotalBytes();
       } catch (err) {
@@ -213,7 +214,7 @@ describe('statfs_test', function () {
      * @tc.level Level 0
      * @tc.require
     */
-    it('statfs_test_get_total_bytes_async_004', 0, async function (done) {
+    it('statfs_test_get_total_bytes_async_004', Level.LEVEL0, async function (done) {
       try {
         await statfs.getTotalBytes("");
       } catch (err) {

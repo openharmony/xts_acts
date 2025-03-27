@@ -16,6 +16,7 @@
 import {
   fileIO, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIODfsConnect() {
   describe('fileIO_test_DfsConnect', function () {
@@ -29,7 +30,7 @@ export default function fileIODfsConnect() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_connectDfs_001', 3, async function (done) {
+  it('fileIO_test_connectDfs_001', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_connectDfs_001';
     let networkId = '3dfgfh2yhytrg9rebgk4893fnio34fn4edrg';
     let DFSListener = {
@@ -61,7 +62,7 @@ export default function fileIODfsConnect() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_connectDfs_002', 3, async function (done) {
+  it('fileIO_test_connectDfs_002', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_connectDfs_002';
     let networkId = '3dfgfh2yhytrg9rebgk4893fnio34fn4edrg';
     try {
