@@ -95,7 +95,7 @@
         ],
         "permissions": [
           "ohos.permission.ACCESS_BBOX_DIR",
-          'ohos.permission.READ_HEALTH_DATA'
+          "ohos.permission.READ_HEALTH_DATA"
         ]
       },
       {

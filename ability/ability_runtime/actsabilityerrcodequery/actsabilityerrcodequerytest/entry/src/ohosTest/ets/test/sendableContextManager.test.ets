@@ -190,7 +190,7 @@ export default function sendableContextManagerTest() {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
               done();
-            }, 1000);
+            }, 600);
           }
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
