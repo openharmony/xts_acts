@@ -43,11 +43,13 @@ export default function requestImageNativeTest() {
       try {
         let files: string[] = fs.listFileSync(testContext.filesDir);
         for (let i = 0; i < files.length; i++) {
-          console.info(`requestVideoNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
-          fs.unlinkSync(`${testContext.filesDir}/${files[i]}`);
+          if (files[i].includes('test')) {
+            console.info(`requestImageNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
+            fs.unlinkSync(`${testContext.filesDir}/${files[i]}`);
+          }
         }
       } catch (error) {
-        console.error(`requestVideoNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
+        console.error(`requestImageNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
       }
     });
 
