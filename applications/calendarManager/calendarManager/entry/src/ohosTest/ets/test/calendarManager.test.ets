@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import calendarManager from '@ohos.calendarManager';
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import uitest from '@ohos.UiTest';
 import systemDateTime from '@ohos.systemDateTime';
