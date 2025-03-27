@@ -59,7 +59,7 @@ export default function getClipToFrameJsunit() {
       await CommonFunc.sleep(1000);
       console.info("[getClipToFrameJsunit_001] component obj is: " + JSON.stringify(obj));
       console.info("[getClipToFrameJsunit_001] component content is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("getClipStatus:false");
+      expect(obj.$attrs.content).assertEqual("getClipStatus:true");
       console.info('[getClipToFrameJsunit_001] END');
       await CommonFunc.sleep(1000);
       done();

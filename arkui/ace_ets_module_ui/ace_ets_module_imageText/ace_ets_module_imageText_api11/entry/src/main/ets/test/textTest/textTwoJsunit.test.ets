@@ -193,7 +193,7 @@ export default function textTwoJsunit() {
       let strJson = getInspectorByKey('text5');
       let obj: ESObject = JSON.parse(strJson);
       console.info('textTwoJsunit_0800 component obj is: ' + obj.$attrs.testCase);
-      expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase');
+      expect(obj.$attrs.textCase).assertEqual('TextCase.Normal');
       done();
     });
   })

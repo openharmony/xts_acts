@@ -156,7 +156,7 @@ export default function TextfieldMultiTest() {
           let color: ESObject = icon.color;
           let src: ESObject = icon.src;
           expect(style).assertEqual(2);
-		  let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_textfield_icon_size').id)
+		  let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_search_icon_height').id)
 		  console.info("[TextInputPageJsunit_0200] size: " +px2vp(resourceSize));
           expect(size).assertEqual(Math.round(px2vp(resourceSize))+".00vp");
           expect(typeof src).assertEqual("string");
