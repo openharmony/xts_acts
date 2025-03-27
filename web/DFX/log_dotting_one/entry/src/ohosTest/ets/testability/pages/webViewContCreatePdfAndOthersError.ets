@@ -19,13 +19,17 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import { webview } from '@kit.ArkWeb';
+class myInstance {
+	applyNormalAttribute(webInstance: WebAttribute): void {
+	webInstance.zoomAccess(false)
+	}
+}
 
 @Entry
 @Component
 struct webViewContCreatePdfAndOthersError {
   controller: webview.WebviewController = new webview.WebviewController();
   controllerNull: webview.WebviewController = new webview.WebviewController();
-  webInstance: WebAttribute = new WebAttribute()
   @State str: string = '';
   @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' +
     ' CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';
