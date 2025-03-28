@@ -75,6 +75,23 @@ struct WaterFlowFrictionPage {
 
   build() {
     Column({ space: 2 }) {
+      WaterFlow({ scroller: this.scroller }) {
+        LazyForEach(this.datasource, (item: number) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12)
+            }
+          }
+          .width('100%')
+          .height('5%')
+          .height(this.itemHeightArray[item])
+          .backgroundColor(this.colors[item % 5])
+        }, (item: number) => `${item}`)
+      }
+      .width('90%')
+      .height('10%')
+      .key('waterFlow_friction_default')
+
       WaterFlow({ footer: this.itemFoot, scroller: this.scroller }) {
         LazyForEach(this.datasource, (item: number) => {
           FlowItem() {
