@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../MainAbility/common/Common';
 import { EventType } from '../MainAbility/common/Common';
@@ -172,9 +172,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing route to PhotoPickerComponent
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker01', 0, async (done: Function) => {
+    it('testPicker01', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -218,9 +218,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent BackgroundColor
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker02', 0, async (done: Function) => {
+    it('testPicker02', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -264,9 +264,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's isRepeatSelectSupported property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker03', 0, async (done: Function) => {
+    it('testPicker03', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -310,9 +310,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's checkboxTextColor property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker04', 0, async (done: Function) => {
+    it('testPicker04', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -356,9 +356,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's photoBrowserBackgroundColorMode property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker05', 0, async (done: Function) => {
+    it('testPicker05', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -402,9 +402,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's photoBrowserBackgroundColorMode property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker06', 0, async (done: Function) => {
+    it('testPicker06', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -448,9 +448,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectedReminderMode property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('testPicker07', 0, async (done: Function) => {
+    it('testPicker07', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -494,9 +494,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectedReminderMode property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('testPicker08', 0, async (done: Function) => {
+    it('testPicker08', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -540,9 +540,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's selectMode property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('testPicker09', 0, async (done: Function) => {
+    it('testPicker09', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -586,9 +586,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxPhotoSelectNumber property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker10', 0, async (done: Function) => {
+    it('testPicker10', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -632,9 +632,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxVideoSelectNumber property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker11', 0, async (done: Function) => {
+    it('testPicker11', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -678,9 +678,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's maxSelectNumber property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker12', 0, async (done: Function) => {
+    it('testPicker12', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -724,9 +724,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's orientation property
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('testPicker13', 0, async (done: Function) => {
+    it('testPicker13', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -770,9 +770,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing ItemInfo's all properties
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker14', 0, async (done: Function) => {
+    it('testPicker14', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -829,9 +829,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing MaxSelected
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker15', 0, async (done: Function) => {
+    it('testPicker15', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -887,9 +887,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing Album
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker16', 0, async (done: Function) => {
+    it('testPicker16', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -938,9 +938,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing PhotoBrowerInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker17', 0, async (done: Function) => {
+    it('testPicker17', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -984,9 +984,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing PhotoBrowerInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker18', 0, async (done: Function) => {
+    it('testPicker18', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1034,9 +1034,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing RecentPhotoComponent(PhotoSource.ALL)
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker19', 0, async (done: Function) => {
+    it('testPicker19', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1091,9 +1091,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing RecentPhotoComponent(PhotoSource.CAMERA)
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker20', 0, async (done: Function) => {
+    it('testPicker20', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1148,9 +1148,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing RecentPhotoComponent(PhotoSource.SCREENSHOT)
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level1
+     * @tc.level     : Level 0
      */
-    it('testPicker21', 0, async (done: Function) => {
+    it('testPicker21', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1205,9 +1205,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing PhotoPickerComponent set browser back button and checkbox
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker22', 0, async (done: Function) => {
+    it('testPicker22', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1240,9 +1240,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing requestPhotoUrisReadPermission
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker23', 0, async (done: Function) => {
+    it('testPicker23', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1273,9 +1273,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing CompleteButtonText
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker24', 0, async (done: Function) => {
+    it('testPicker24', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1298,9 +1298,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing createAssetWithShortTermPermission
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker25', 0, async (done: Function) => {
+    it('testPicker25', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1336,9 +1336,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker26', 0, async (done: Function) => {
+    it('testPicker26', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1370,9 +1370,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing video play state changed callback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker27', 0, async (done: Function) => {
+    it('testPicker27', Level.LEVEL0, async (done: Function) => {
         if (!isExecutePicker) {
         done();
         return;
@@ -1421,9 +1421,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing PhotoPickerComponent replacePhotoPickerPreview and saveTrustedPhotoAssets
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker28', 0, async (done: Function) => {
+    it('testPicker28', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1475,9 +1475,9 @@ export default function TextPicker() {
      * @tc.desc      : Testing PhotoPickerComponent replacePhotoPickerPreview and saveTrustedPhotoAssets
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('testPicker29', 0, async (done: Function) => {
+    it('testPicker29', Level.LEVEL0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1529,9 +1529,9 @@ export default function TextPicker() {
     * @tc.desc      : Testing createAssetWithShortTermPermission
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level0
+    * @tc.level     : Level 0
     */
-    it('testPicker30', 0, async (done: Function) => {
+    it('testPicker30', Level.LEVEL0, async (done: Function) => {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
         let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
@@ -1547,6 +1547,34 @@ export default function TextPicker() {
         expect(error.code).assertEqual(401);
       }
       console.info("testPicker30 finish");
+      done();
+    });
+
+    /**
+    * @tc.number    : testPicker31
+    * @tc.name      : testPicker31
+    * @tc.desc      : Testing singleSelectionModeWithHybridMode
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testPicker31', Level.LEVEL0, async (done: Function) => {
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.maxSelectNumber = 1;
+      pickerOptions.singleSelectionMode = photoAccessHelper.SingleSelectionMode.BROWSER_AND_SELECT_MODE;
+
+      let photoPicker = new photoAccessHelper.PhotoViewPicker();
+      try {
+        photoPicker.select(pickerOptions).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker31 PhotoViewPicker.select success, PhotoPickerResult uri: ' +
+                JSON.stringify(photoSelectResult));
+          expect(true).assertTrue();
+        });
+      } catch(error) {
+        console.error("testPicker31 error: " + JSON.stringify(error) + error.code);
+        expect(false).assertTrue();
+      }
+      console.info("testPicker31 finish");
       done();
     });
   })
