@@ -713,7 +713,6 @@ export default function bufferTest() {
         buffer.concat([buf1, buf2], Infinity);
         expect().assertFail();
       } catch (err) {
-
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(err.message)
           .assertEqual('The value of "totalLength" is out of range. It must be >= 0 and <= 4294967296. Received value is: Infinity');
@@ -735,8 +734,8 @@ export default function bufferTest() {
         buffer.concat([buf1, buf2], -Infinity);
         expect().assertFail();
       } catch (err) {
-        expect(err.code).assertEqual(10200001);
         console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.code).assertEqual(10200001);
         expect(err.message)
           .assertEqual('The value of "totalLength" is out of range. It must be >= 0 and <= 4294967296. Received value is: -Infinity');
       }
@@ -859,8 +858,8 @@ export default function bufferTest() {
         const buf3 = buffer.from(ab1, undefined);
         expect(buf3.length).assertEqual(8);
       } catch (err) {
-        expect(err.code).assertEqual(10200001);
         console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.code).assertEqual(10200001);
       }
     })
     /**
@@ -878,8 +877,8 @@ export default function bufferTest() {
         const buf4 = buffer.from(ab1, 0);
         expect(buf4.length).assertEqual(8);
       } catch (err) {
-        expect(err.code).assertEqual(10200001);
         console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.code).assertEqual(10200001);
       }
     })
     /**
@@ -1185,8 +1184,8 @@ export default function bufferTest() {
         const emptyBuf = buffer.from(new Uint8Array(0));
         expect(emptyBuf.length).assertEqual(0);
       } catch (err) {
-        expect(err.code).assertEqual(10200001);
         console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.code).assertEqual(10200001);
       }
     })
     /**
@@ -1267,7 +1266,7 @@ export default function bufferTest() {
         expect(buf.length).assertEqual(14);
         expect(buf.toString()).assertEqual('this is a test');
       } catch (err) {
-        console.error(`${TAG} failed:${err.message}`);
+        console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
     })
@@ -1708,8 +1707,8 @@ export default function bufferTest() {
         expect(newBuf.toString()).assertEqual('hello world');
         expect(newBuf.length).assertEqual(11);
       } catch (err) {
-        console.error(`${TAG} failed,error:${err.message}`)
-
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
       }
     });
     /**
@@ -1907,7 +1906,6 @@ export default function bufferTest() {
         buf.fill('D', 0);
         expect(buf.toString()).assertEqual('DDDDDD');
       } catch (err) {
-        6
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
@@ -1929,8 +1927,7 @@ export default function bufferTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(err.message)
-          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 4294967296. Received value is: -1')
-
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 4294967296. Received value is: -1');
       }
     });
     /**
@@ -1950,8 +1947,7 @@ export default function bufferTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(err.message)
-          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 4294967296. Received value is: Infinity')
-
+          .assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 4294967296. Received value is: Infinity');
       }
     });
     /**
@@ -2010,7 +2006,7 @@ export default function bufferTest() {
         buf.fill('A', 0, 0);
         expect(buf.toString()).assertEqual('\x00\x00\x00');
       } catch (err) {
-        console.error(`${TAG}error:${err.message}`);
+        console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
       }
     });
@@ -2710,8 +2706,8 @@ export default function bufferTest() {
         buf1.copy(buf2, 0);
         expect(buf2.toString()).assertEqual('abcdefghijklmnopqrstuvwxyz');
       } catch (err) {
-        expect().assertFail();
         console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
       }
     })
     /**
@@ -12088,17 +12084,13 @@ export default function bufferTest() {
         let buf = buffer.allocUninitializedFromPool(4);
         let result = buf.writeUInt8(123.456, 0);
         let result1 = buf.writeUInt8(123.456, 1);
-        // let result2 = buf.writeUInt8(123.456, 5);
-        // expect().assertFail();
         console.log(`${TAG}reslut:${result}`)
         console.log(`${TAG}reslut1:${result1}`);
         expect(result).assertEqual(1);
         expect(result1).assertEqual(2);
-        // expect(result2).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
-        // expect(err.message).assertEqual('The value of "offset" is out of range. It must be >= 0 and <= 3. Received value is: 5');
       }
     })
     /**
