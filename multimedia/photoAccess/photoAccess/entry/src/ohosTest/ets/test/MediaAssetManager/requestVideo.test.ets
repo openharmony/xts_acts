@@ -18,6 +18,8 @@ import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium'
 import media from '@ohos.multimedia.media';
 import common from '@ohos.app.ability.common';
 import fs from "@ohos.file.fs"
+import hdrCapability from '@ohos.graphics.hdrCapability';
+import display from '@ohos.display';
 import {
   photoKeys,
   fetchOption,
@@ -35,6 +37,7 @@ export default function requestVideoTest() {
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
     let helper = photoAccessHelper.getPhotoAccessHelper(testContext);
     let hdrVideoUri = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_hdr_1.mp4";
+    let isSupportHdr: Boolean;
 
     beforeAll(async () => {
       console.info('beforeAll case');
@@ -42,6 +45,9 @@ export default function requestVideoTest() {
       await driveFn();
       await sleep(1000);
       await createVideoBySandBoxUri('createHdr001', testContext, hdrVideoUri);
+      isSupportHdr =
+        !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+          display.getDefaultDisplaySync().hdrFormats.length != 0;
     });
 
     afterAll(async () => {
@@ -139,8 +145,8 @@ export default function requestVideoTest() {
         expect(flag).assertEqual(0);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(false).assertTrue();
         }
@@ -193,8 +199,8 @@ export default function requestVideoTest() {
         expect(flag).assertEqual(0);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -339,8 +345,8 @@ export default function requestVideoTest() {
         expect(flag).assertEqual(0);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual(errCode);
         }
@@ -375,8 +381,8 @@ export default function requestVideoTest() {
         expect(flag).assertEqual(0);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual(errCode);
         }
@@ -1192,8 +1198,8 @@ export default function requestVideoTest() {
         await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1237,8 +1243,8 @@ export default function requestVideoTest() {
           requestOptions, destUri, handler);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1719,8 +1725,8 @@ export default function requestVideoTest() {
         await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1764,8 +1770,8 @@ export default function requestVideoTest() {
         await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1808,8 +1814,8 @@ export default function requestVideoTest() {
         await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1853,8 +1859,8 @@ export default function requestVideoTest() {
         await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1897,8 +1903,8 @@ export default function requestVideoTest() {
         await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
@@ -1942,8 +1948,8 @@ export default function requestVideoTest() {
         await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (error.code === '801') {
-          expect(true).assertTrue();
+        if (isSupportHdr) {
+          expect(error.code).assertEqual('801');
         } else {
           expect(error.code).assertEqual('401');
         }
