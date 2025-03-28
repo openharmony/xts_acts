@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,16 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import graphicSendableImageInterfaceTest from './graphicSendableImageInterface.test'
-import graphicImagePixelMapTest from './graphicImagePixelMap.test'
-import graphicImageInterfaceTest from './graphicImageInterface.test'
-import imagePixelMapTest from './pixelMap'
-import imagePixelMapTestErrorCode from './pixelMapErrorCode'
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
 
-export default function testsuite() {
-  imagePixelMapTest()
-  graphicSendableImageInterfaceTest()
-  graphicImagePixelMapTest()
-  graphicImageInterfaceTest()
-  imagePixelMapTestErrorCode()
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

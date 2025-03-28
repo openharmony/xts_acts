@@ -36,6 +36,7 @@ group("graphic") {
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGLES3v2:ActsGraphicGles3v2Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
+      "graphicHdr:ActsGraphicHdrTest",
       "graphicImage:ActsGraphicImageTest",
       "graphicText:ActsGraphicTextTest",
       "graphicUiEffect:ActsGraphicUiEffectTest",
