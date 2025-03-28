@@ -51,6 +51,21 @@ export default class MainAbility1 extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    try {
+      setTimeout(() => {
+        this.context.terminateSelf((err: BusinessError) => {
+          if (err.code) {
+            console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('terminateSelf succeed');
+        });
+      }, 500);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`terminateSelf failed, code is ${code}, message is ${message}`);
+    }
   }
 
   onBackground() {

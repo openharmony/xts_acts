@@ -33,7 +33,7 @@ const TAG: string = '[openLinkDemo]';
 let buffer = new ArrayBuffer(640 * 1024);
 
 const TWO_HUNDRED_KB = 200 * 1024;
-
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
 // 生成一个指定长度的字符串
 function generateLargeString(length: number): string {
   let result = '';
@@ -69,6 +69,8 @@ export default function UIAbilityContex() {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
+      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.executeShellCommand("aa start -b com.acts.moveabilitytobgtest -a TestAbility");
     })
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
@@ -436,7 +438,7 @@ export default function UIAbilityContex() {
      */
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', 0, async (done: Function) => {
       let startWant: Want = {
-        bundleName: 'com.test.actscommoncomponenttest',
+        bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1',
         flags: -1
       };
@@ -464,8 +466,8 @@ export default function UIAbilityContex() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0,
       async (done: Function) => {
         let startWant: Want = {
-          bundleName: 'com.test.actscommoncomponenttest',
-          abilityName: 'MainAbility2',
+          bundleName: 'com.test.actsabilityerrcodequerytest',
+          abilityName: 'MainAbility1',
           flags: -1
         };
         try {
@@ -485,14 +487,14 @@ export default function UIAbilityContex() {
       })
 
     /**
-     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
-     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0800
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0800
      * @tc.desc: startAbilityForResult set flags=-1   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0,
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0800', 0,
       async (done: Function) => {
         let startWant: Want = {
-          bundleName: 'com.test.actscommoncomponenttest',
+          bundleName: 'com.test.actsabilityerrcodequerytest',
           abilityName: 'MainAbility1',
           flags: -1
         };
@@ -517,40 +519,6 @@ export default function UIAbilityContex() {
       })
 
     /**
-     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
-     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
-     * @tc.desc: The premeters within the Want carry parameters with a size of more than 200k
-     */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500', 0, async (done: Function) => {
-      // 构造一个超过 200KB 的对象
-      const largeObject = generateLargeString(TWO_HUNDRED_KB + 100)
-      let startWant: Want = {
-        bundleName: 'com.test.actscommoncomponenttest',
-        abilityName: 'MainAbility1',
-        parameters: {
-          key: largeObject
-        }
-      };
-      try {
-        globalThis.context.startAbility(startWant, (err: BusinessError) => {
-          if (err.code) {
-            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(16000050)
-            done();
-          }
-          console.info('startAbility succeed');
-        });
-      } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        console.error(`startAbility failed, code is ${code}, message is ${message}`);
-      }
-    })
-
-
-    //新增用例
-
-    /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100
      * @tc.desc: The onBackground callback is called in the background   Promise
@@ -559,10 +527,10 @@ export default function UIAbilityContex() {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
-          console.log('StartupTest startupManager run then, startParams = ');
+          console.log('0100 StartupTest startupManager run then, startParams = ');
         }).catch((error: BusinessError) => {
-          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
-          console.info("StartupTest promise catch error, startParams = "
+          console.info("0100 StartupTest promise catch error, error = " + JSON.stringify(error));
+          console.info("0100 StartupTest promise catch error, startParams = "
           );
         })
         await sleep(2000);
@@ -572,11 +540,11 @@ export default function UIAbilityContex() {
         };
         TestAbilityContext.startAbility(startWant,(err: BusinessError) => {
           if (err.code) {
-            console.error(`startactsmissiontest failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`0100 startactsmissiontest failed, code is ${err.code}, message is ${err.message}`);
             expect(err.code).assertEqual(201);
             done();
           }
-          console.info('startactsmissiontest succeed');
+          console.info('0100 startactsmissiontest succeed');
         });
       }else if(mpEnable === 'false') {
         console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
@@ -619,48 +587,6 @@ export default function UIAbilityContex() {
           }
           console.info('startactsmissiontest succeed');
         });
-      }else if(mpEnable === 'false') {
-        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
-        done();
-      }else{
-        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
-     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
-     * @tc.desc: The onBackground callback is called in the background   Promise
-     */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800', 0, async (done: Function) => {
-      let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800`;
-      if (mpEnable === 'true') {
-        await TestAbilityContext.moveAbilityToBackground().then(() => {
-          console.log('StartupTest startupManager run then, startParams = ');
-        }).catch((error: BusinessError) => {
-          console.info("StartupTest promise catch error, error = " + JSON.stringify(error));
-          console.info("StartupTest promise catch error, startParams = "
-          );
-        })
-        await sleep(2000);
-        let startWant: Want = {
-          bundleName: 'com.test.actsabilityerrcodequerytest',
-          abilityName: 'MainAbility2',
-        };
-        let options: StartOptions = {
-          displayId: 0
-        };
-        TestAbilityContext.startAbility(startWant, options)
-          .then(() => {
-            console.info('startAbility succeed');
-          })
-          .catch((err: BusinessError) => {
-            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect(err.code).assertEqual(201);
-            done();
-          });
       }else if(mpEnable === 'false') {
         console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();
