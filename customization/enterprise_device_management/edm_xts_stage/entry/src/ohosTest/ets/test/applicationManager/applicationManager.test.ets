@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import {
   ENTINFO1,
   SELFWANT,
@@ -41,7 +41,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_001", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -59,7 +59,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_002", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -80,7 +80,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_003", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -101,7 +101,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_004", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -121,7 +121,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_005", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -139,7 +139,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_006", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1);
@@ -160,7 +160,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedRunningBundlesSync_007", 0, async (done: Function) => {
+    it("test_addDisallowedRunningBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addDisallowedRunningBundlesSync(null, APP_IDS_1);
@@ -181,7 +181,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_001", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -199,7 +199,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_002", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -220,7 +220,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_003", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -241,7 +241,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_004", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -261,7 +261,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_005", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -279,7 +279,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_006", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1);
@@ -300,7 +300,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedRunningBundlesSync_007", 0, async (done: Function) => {
+    it("test_removeDisallowedRunningBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.removeDisallowedRunningBundlesSync(null, APP_IDS_1);
@@ -321,7 +321,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_001", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -339,7 +339,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_002", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -360,7 +360,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_003", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT, INVALID_USER_ID);
@@ -381,7 +381,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_004", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -401,7 +401,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_005", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT);
         expect(false).assertTrue();
@@ -419,7 +419,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_006", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT);
@@ -440,7 +440,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedRunningBundlesSync_007", 0, async (done: Function) => {
+    it("test_getDisallowedRunningBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.getDisallowedRunningBundlesSync(null);
@@ -461,7 +461,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAutoStartApps_001", 0, async (done: Function) => {
+    it("test_addAutoStartApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [SELFWANT];
         applicationManager.addAutoStartApps(SELFWANT, autoStartApps);
@@ -480,7 +480,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAutoStartApps_002", 0, async (done: Function) => {
+    it("test_addAutoStartApps_002", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [SELFWANT];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -502,7 +502,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAutoStartApps_003", 0, async (done: Function) => {
+    it("test_addAutoStartApps_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addAutoStartApps(SELFWANT, null);
@@ -523,7 +523,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAutoStartApps_004", 0, async (done: Function) => {
+    it("test_addAutoStartApps_004", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [AUTOSTARTAPP1, AUTOSTARTAPP2];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
@@ -544,7 +544,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAutoStartApps_001", 0, async (done: Function) => {
+    it("test_removeAutoStartApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [SELFWANT];
         applicationManager.removeAutoStartApps(SELFWANT, autoStartApps);
@@ -563,7 +563,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAutoStartApps_002", 0, async (done: Function) => {
+    it("test_removeAutoStartApps_002", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [SELFWANT];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -585,7 +585,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAutoStartApps_003", 0, async (done: Function) => {
+    it("test_removeAutoStartApps_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.removeAutoStartApps(SELFWANT, null);
@@ -606,7 +606,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAutoStartApps_004", 0, async (done: Function) => {
+    it("test_removeAutoStartApps_004", Level.LEVEL2, async (done: Function) => {
       try {
         let autoStartApps: Array<Want> = [AUTOSTARTAPP1, AUTOSTARTAPP2];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
@@ -627,7 +627,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAutoStartApps_001", 0, async (done: Function) => {
+    it("test_getAutoStartApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         applicationManager.getAutoStartApps(SELFWANT);
         expect(false).assertTrue();
@@ -645,7 +645,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAutoStartApps_002", 0, async (done: Function) => {
+    it("test_getAutoStartApps_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         applicationManager.getAutoStartApps(SELFWANT);
@@ -666,7 +666,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAutoStartApps_003", 0, async (done: Function) => {
+    it("test_getAutoStartApps_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.getAutoStartApps(null);
@@ -687,7 +687,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAutoStartApps_004", 0, async (done: Function) => {
+    it("test_getAutoStartApps_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.getAutoStartApps(SELFWANT);
@@ -707,7 +707,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addKeepAliveApps_001", 0, async (done: Function) => {
+    it("test_addKeepAliveApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
@@ -726,7 +726,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addKeepAliveApps_002", 0, async (done: Function) => {
+    it("test_addKeepAliveApps_002", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -748,7 +748,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addKeepAliveApps_003", 0, async (done: Function) => {
+    it("test_addKeepAliveApps_003", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
@@ -770,7 +770,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addKeepAliveApps_004", 0, async (done: Function) => {
+    it("test_addKeepAliveApps_004", Level.LEVEL2, async (done: Function) => {
       if (sysDeviceInfo.deviceType != '2in1') {
         done();
         return;
@@ -796,7 +796,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addKeepAliveApps_005", 0, async (done: Function) => {
+    it("test_addKeepAliveApps_005", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
@@ -819,7 +819,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeKeepAliveApps_001", 0, async (done: Function) => {
+    it("test_removeKeepAliveApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         applicationManager.removeKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
@@ -838,7 +838,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeKeepAliveApps_002", 0, async (done: Function) => {
+    it("test_removeKeepAliveApps_002", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -860,7 +860,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeKeepAliveApps_003", 0, async (done: Function) => {
+    it("test_removeKeepAliveApps_003", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
@@ -882,7 +882,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getKeepAliveApps_001", 0, async (done: Function) => {
+    it("test_getKeepAliveApps_001", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [];
         keepAliveApps = applicationManager.getKeepAliveApps(SELFWANT, DEFAULT_USER_ID);
@@ -901,7 +901,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getKeepAliveApps_002", 0, async (done: Function) => {
+    it("test_getKeepAliveApps_002", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
@@ -923,7 +923,7 @@ export default function applicationManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getKeepAliveApps_003", 0, async (done: Function) => {
+    it("test_getKeepAliveApps_003", Level.LEVEL2, async (done: Function) => {
       try {
         let keepAliveApps: Array<string> = [];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);

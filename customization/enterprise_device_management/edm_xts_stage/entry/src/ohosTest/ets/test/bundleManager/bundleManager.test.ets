@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import {
   BUNDLENAME1,
   ENTINFO1,
@@ -40,7 +40,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -58,7 +58,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -79,7 +79,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -100,7 +100,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -120,7 +120,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -138,7 +138,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1);
@@ -159,7 +159,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addAllowedInstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_addAllowedInstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addAllowedInstallBundlesSync(null, APP_IDS_1);
@@ -180,7 +180,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -198,7 +198,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -219,7 +219,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -240,7 +240,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -260,7 +260,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -278,7 +278,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1);
@@ -299,7 +299,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeAllowedInstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_removeAllowedInstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeAllowedInstallBundlesSync(null, APP_IDS_1);
@@ -320,7 +320,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.getAllowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -338,7 +338,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.getAllowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -359,7 +359,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getAllowedInstallBundlesSync(SELFWANT, INVALID_USER_ID);
@@ -380,7 +380,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getAllowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -400,7 +400,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.getAllowedInstallBundlesSync(SELFWANT);
         expect(false).assertTrue();
@@ -418,7 +418,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.getAllowedInstallBundlesSync(SELFWANT);
@@ -439,7 +439,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAllowedInstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_getAllowedInstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getAllowedInstallBundlesSync(null);
@@ -460,7 +460,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -478,7 +478,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -499,7 +499,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -520,7 +520,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -540,7 +540,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -558,7 +558,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1);
@@ -579,7 +579,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedInstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_addDisallowedInstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedInstallBundlesSync(null, APP_IDS_1);
@@ -600,7 +600,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -618,7 +618,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -639,7 +639,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -660,7 +660,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -680,7 +680,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -698,7 +698,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1);
@@ -719,7 +719,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedInstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_removeDisallowedInstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedInstallBundlesSync(null, APP_IDS_1);
@@ -740,7 +740,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -758,7 +758,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -779,7 +779,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT, INVALID_USER_ID);
@@ -800,7 +800,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -820,7 +820,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT);
         expect(false).assertTrue();
@@ -838,7 +838,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT);
@@ -859,7 +859,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedInstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_getDisallowedInstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getDisallowedInstallBundlesSync(null);
@@ -880,7 +880,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -898,7 +898,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -919,7 +919,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -940,7 +940,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -960,7 +960,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -978,7 +978,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1);
@@ -999,7 +999,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_addDisallowedUninstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_addDisallowedUninstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.addDisallowedUninstallBundlesSync(null, APP_IDS_1);
@@ -1020,7 +1020,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -1038,7 +1038,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -1059,7 +1059,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, INVALID_USER_ID);
@@ -1080,7 +1080,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
@@ -1100,7 +1100,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1);
         expect(false).assertTrue();
@@ -1118,7 +1118,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1);
@@ -1139,7 +1139,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_removeDisallowedUninstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_removeDisallowedUninstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.removeDisallowedUninstallBundlesSync(null, APP_IDS_1);
@@ -1160,7 +1160,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_001", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
         expect(false).assertTrue();
@@ -1178,7 +1178,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_002", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -1199,7 +1199,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_003", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, INVALID_USER_ID);
@@ -1220,7 +1220,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_004", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
@@ -1240,7 +1240,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_005", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_005", Level.LEVEL2, async (done: Function) => {
       try {
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT);
         expect(false).assertTrue();
@@ -1258,7 +1258,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_006", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT);
@@ -1279,7 +1279,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDisallowedUninstallBundlesSync_007", 0, async (done: Function) => {
+    it("test_getDisallowedUninstallBundlesSync_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         bundleManager.getDisallowedUninstallBundlesSync(null);
@@ -1300,7 +1300,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_001", 0, async (done: Function) => {
+    it("test_uninstall_001", Level.LEVEL2, async (done: Function) => {
       try {
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID, true);
         console.info(' --- test_uninstall_001 error is expected, but it done.');
@@ -1321,7 +1321,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_002", 0, async (done: Function) => {
+    it("test_uninstall_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID, true);
@@ -1342,7 +1342,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_003", 0, async (done: Function) => {
+    it("test_uninstall_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, INVALID_USER_ID, true);
@@ -1363,7 +1363,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_004", 0, async (done: Function) => {
+    it("test_uninstall_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID, true);
@@ -1383,7 +1383,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_005", 0, async (done: Function) => {
+    it("test_uninstall_005", Level.LEVEL2, async (done: Function) => {
       try {
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID);
         console.info(' --- test_uninstall_005 error is expected, but it done.');
@@ -1404,7 +1404,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_006", 0, async (done: Function) => {
+    it("test_uninstall_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID);
@@ -1425,7 +1425,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_007", 0, async (done: Function) => {
+    it("test_uninstall_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, INVALID_USER_ID);
@@ -1446,7 +1446,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_008", 0, async (done: Function) => {
+    it("test_uninstall_008", Level.LEVEL2, async (done: Function) => {
       try {
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1);
         console.info(' --- test_uninstall_008 error is expected, but it done.');
@@ -1467,7 +1467,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_009", 0, async (done: Function) => {
+    it("test_uninstall_009", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1);
@@ -1488,7 +1488,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_uninstall_010", 0, async (done: Function) => {
+    it("test_uninstall_010", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.uninstall(null, BUNDLENAME1);
@@ -1509,7 +1509,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_001", 0, async (done: Function) => {
+    it("test_install_001", Level.LEVEL2, async (done: Function) => {
       try {
         await bundleManager.install(SELFWANT, HAP_FILE_PATH, EDM_INSTALL_PARAM);
         console.info(' --- test_install_001 error is expected, but it done.');
@@ -1530,7 +1530,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_002", 0, async (done: Function) => {
+    it("test_install_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         await bundleManager.install(SELFWANT, HAP_FILE_PATH, EDM_INSTALL_PARAM);
@@ -1551,7 +1551,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_003", 0, async (done: Function) => {
+    it("test_install_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.install(SELFWANT, null, null);
@@ -1572,7 +1572,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_004", 0, async (done: Function) => {
+    it("test_install_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.install(SELFWANT, HAP_FILE_PATH, EDM_INSTALL_PARAM);
@@ -1592,7 +1592,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_005", 0, async (done: Function) => {
+    it("test_install_005", Level.LEVEL2, async (done: Function) => {
       try {
         await bundleManager.install(SELFWANT, HAP_FILE_PATH);
         console.info(' --- test_install_005 error is expected, but it done.');
@@ -1613,7 +1613,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_006", 0, async (done: Function) => {
+    it("test_install_006", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         await bundleManager.install(SELFWANT, HAP_FILE_PATH);
@@ -1634,7 +1634,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_007", 0, async (done: Function) => {
+    it("test_install_007", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.install(SELFWANT, null);
@@ -1655,7 +1655,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_008", 0, async (done: Function) => {
+    it("test_install_008", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.install(SELFWANT, HAP_FILE_PATH_ERROR, EDM_INSTALL_PARAM);
@@ -1676,7 +1676,7 @@ export default function bundleManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_install_009", 0, async (done: Function) => {
+    it("test_install_009", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.install(SELFWANT, HAP_FILE_PATH_ERROR);

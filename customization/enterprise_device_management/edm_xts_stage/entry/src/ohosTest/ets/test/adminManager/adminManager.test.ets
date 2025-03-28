@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want'
 import { ENTINFO1, SELFWANT, SELFHAPNAME, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS,
   BUNDLENAME1, INVALID_WANT, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS, INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND
@@ -32,7 +32,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_subscribeManagedEventSync_001", 0, async (done: Function) => {
+    it("test_subscribeManagedEventSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.subscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
         expect(false).assertTrue();
@@ -50,7 +50,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_subscribeManagedEventSync_002", 0, async (done: Function) => {
+    it("test_subscribeManagedEventSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.subscribeManagedEventSync(SELFWANT, SUBSCRIBE_INVALID_EVENTS);
@@ -71,7 +71,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_subscribeManagedEventSync_003", 0, async (done: Function) => {
+    it("test_subscribeManagedEventSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.subscribeManagedEventSync(SELFWANT, null);
@@ -92,7 +92,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_subscribeManagedEventSync_004", 0, async (done: Function) => {
+    it("test_subscribeManagedEventSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.subscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
@@ -112,7 +112,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_unsubscribeManagedEventSync_001", 0, async (done: Function) => {
+    it("test_unsubscribeManagedEventSync_001", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.unsubscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
         expect(false).assertTrue();
@@ -130,7 +130,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_unsubscribeManagedEventSync_002", 0, async (done: Function) => {
+    it("test_unsubscribeManagedEventSync_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.unsubscribeManagedEventSync(SELFWANT, SUBSCRIBE_INVALID_EVENTS);
@@ -151,7 +151,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_unsubscribeManagedEventSync_003", 0, async (done: Function) => {
+    it("test_unsubscribeManagedEventSync_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.unsubscribeManagedEventSync(SELFWANT, null);
@@ -172,7 +172,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_unsubscribeManagedEventSync_004", 0, async (done: Function) => {
+    it("test_unsubscribeManagedEventSync_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.unsubscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
@@ -192,7 +192,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_setDelegatedPolicies_001", 0, async (done: Function) => {
+    it("test_setDelegatedPolicies_001", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.setDelegatedPolicies(SELFWANT, BUNDLENAME1, DELEGATED_POLICIES);
         expect(false).assertTrue();
@@ -210,7 +210,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_setDelegatedPolicies_002", 0, async (done: Function) => {
+    it("test_setDelegatedPolicies_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.setDelegatedPolicies(SELFWANT, BUNDLENAME1, DELEGATED_POLICIES);
@@ -231,7 +231,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_setDelegatedPolicies_003", 0, async (done: Function) => {
+    it("test_setDelegatedPolicies_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.setDelegatedPolicies(SELFWANT, "invalid", DELEGATED_POLICIES);
@@ -252,7 +252,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_setDelegatedPolicies_004", 0, async (done: Function) => {
+    it("test_setDelegatedPolicies_004", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         let invalidPolicy: Array<string> = ["invalid_policy"];
@@ -274,7 +274,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_setDelegatedPolicies_005", 0, async (done: Function) => {
+    it("test_setDelegatedPolicies_005", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.setDelegatedPolicies(SELFWANT, BUNDLENAME1, DELEGATED_POLICIES);
@@ -298,7 +298,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedPolicies_001", 0, async (done: Function) => {
+    it("test_getDelegatedPolicies_001", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.getDelegatedPolicies(SELFWANT, BUNDLENAME1);
         expect(false).assertTrue();
@@ -316,7 +316,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedPolicies_002", 0, async (done: Function) => {
+    it("test_getDelegatedPolicies_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.getDelegatedPolicies(SELFWANT, BUNDLENAME1);
@@ -337,7 +337,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedPolicies_003", 0, async (done: Function) => {
+    it("test_getDelegatedPolicies_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.getDelegatedPolicies(SELFWANT, "invalid");
@@ -358,7 +358,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedBundleNames_001", 0, async (done: Function) => {
+    it("test_getDelegatedBundleNames_001", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.getDelegatedBundleNames(SELFWANT, DELEGATED_POLICIES[0]);
         expect(false).assertTrue();
@@ -376,7 +376,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedBundleNames_002", 0, async (done: Function) => {
+    it("test_getDelegatedBundleNames_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
         adminManager.getDelegatedBundleNames(SELFWANT, DELEGATED_POLICIES[0]);
@@ -397,7 +397,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getDelegatedBundleNames_003", 0, async (done: Function) => {
+    it("test_getDelegatedBundleNames_003", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         adminManager.getDelegatedBundleNames(SELFWANT, "invalid");
@@ -418,7 +418,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_001", 0, async (done: Function) => {
+    it("test_startAdminProvision_001", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.startAdminProvision(INVALID_WANT, adminManager.AdminType.ADMIN_TYPE_BYOD, AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
         expect(false).assertTrue();
@@ -436,7 +436,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_002", 0, async (done: Function) => {
+    it("test_startAdminProvision_002", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_NORMAL, AppStorage.get("test"), PARAMETERS_LOWER_BOUND);
         expect(false).assertTrue();
@@ -454,7 +454,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_003", 0, async (done: Function) => {
+    it("test_startAdminProvision_003", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD, null, PARAMETERS_LOWER_BOUND);
         expect(false).assertTrue();
@@ -472,7 +472,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_004", 0, async (done: Function) => {
+    it("test_startAdminProvision_004", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD, AppStorage.get("test"), INVALID_PARAMETERS);
         expect(false).assertTrue();
@@ -490,7 +490,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_005", 0, async (done: Function) => {
+    it("test_startAdminProvision_005", Level.LEVEL2, async (done: Function) => {
       try {
         adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
             AppStorage.get("test"), INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND);
@@ -509,7 +509,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_006", 0, async (done: Function) => {
+    it("test_startAdminProvision_006", Level.LEVEL2, async (done: Function) => {
       let invalidActivateId: string = '';
       for (let i = 0; i < 257; i++) {
         invalidActivateId = invalidActivateId.concat('1');
@@ -535,7 +535,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_007", 0, async (done: Function) => {
+    it("test_startAdminProvision_007", Level.LEVEL2, async (done: Function) => {
       let invalidCustomizedInfo: string = '';
       for (let i = 0; i < 10241; i++) {
         invalidCustomizedInfo = invalidCustomizedInfo.concat('1');
@@ -562,7 +562,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_008", 0, async (done: Function) => {
+    it("test_startAdminProvision_008", Level.LEVEL2, async (done: Function) => {
       const otherWant: Want = {
         bundleName: "com.example.extensionzerotest",
         abilityName: "com.example.extensionzerotest.EnterpriseAdminAbility"
@@ -585,7 +585,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_009", 0, async (done: Function) => {
+    it("test_startAdminProvision_009", Level.LEVEL2, async (done: Function) => {
       let parameter: Record<string, string> = {
         "activateId" : "12345678901234567890123456789012",
         "activateId2" : "12345678901234567890123456789012",
@@ -617,7 +617,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_010", 0, async (done: Function) => {
+    it("test_startAdminProvision_010", Level.LEVEL2, async (done: Function) => {
       const otherWant: Want = {
         bundleName: "com.example.extensionzerotest",
         abilityName: "com.example.extensionzerotest.MainAbility"
@@ -640,7 +640,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_startAdminProvision_011", 0, async (done: Function) => {
+    it("test_startAdminProvision_011", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         adminManager.startAdminProvision(SELFWANT, adminManager.AdminType.ADMIN_TYPE_BYOD,
@@ -662,7 +662,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAdmins_001", 0, async (done: Function) => {
+    it("test_getAdmins_001", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         let res: Array<Want> = await adminManager.getAdmins();
@@ -686,7 +686,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAdmins_002", 0, async (done: Function) => {
+    it("test_getAdmins_002", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         let res: Array<Want> = await adminManager.getAdmins();
@@ -710,7 +710,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAdmins_003", 0, async (done: Function) => {
+    it("test_getAdmins_003", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_BYOD);
       try {
         let res: Array<Want> = await adminManager.getAdmins();
@@ -734,7 +734,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_getAdmins_004", 0, async (done: Function) => {
+    it("test_getAdmins_004", Level.LEVEL2, async (done: Function) => {
       try {
         let res: Array<Want> = await adminManager.getAdmins();
         expect(res.length == 0).assertTrue();
@@ -752,7 +752,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_disableAdmin_001", 0, async (done: Function) => {
+    it("test_disableAdmin_001", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.disableAdmin(SELFWANT);
         expect(false).assertTrue();
@@ -770,7 +770,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_disableAdmin_002", 0, async (done: Function) => {
+    it("test_disableAdmin_002", Level.LEVEL2, async (done: Function) => {
       try {
         await adminManager.disableAdmin(null);
         expect(false).assertTrue();
@@ -787,7 +787,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_disableAdmin_003", 0, async (done: Function) => {
+    it("test_disableAdmin_003", Level.LEVEL2, async (done: Function) => {
       try {
         let userId: number = 100;
         await adminManager.disableAdmin(SELFWANT, userId);
@@ -806,7 +806,7 @@ export default function adminManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_disableAdmin_004", 0, async (done: Function) => {
+    it("test_disableAdmin_004", Level.LEVEL2, async (done: Function) => {
       try {
         let userId: number = 100;
         await adminManager.disableAdmin(null, userId);
