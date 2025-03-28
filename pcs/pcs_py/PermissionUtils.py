@@ -30,7 +30,7 @@ class PermissionUtils:
         return permission in self.permissionList
 
     def getAllPermissions(self):
-        with open('./resource/pcs/module.json', 'r') as f:
+        with open('./module.json', 'r') as f:
             permissionData = json.load(f)['module']['definePermissions']
         for permissionInfo in permissionData:
             if 'grantMode' in permissionInfo and permissionInfo['grantMode'] == 'system_grant':
