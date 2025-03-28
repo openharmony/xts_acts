@@ -14,7 +14,7 @@
  */
 
 import cacheDownload from "@ohos.request.cacheDownload";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestCacheDownloadNormalUnitTest() {
@@ -29,7 +29,7 @@ export default function requestCacheDownloadNormalUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownloadNormal_0100', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownloadNormal_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownloadNormal_0100 is starting-----------------------");
       class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
         headers?: Record<string, string> | undefined = {'Accept': '*/*'}

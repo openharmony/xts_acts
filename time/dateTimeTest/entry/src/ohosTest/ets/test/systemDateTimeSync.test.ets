@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import systemDateTime from "@ohos.systemDateTime";
 
 export default function systemDateTimeSyncJsunit() {
@@ -28,7 +28,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0010", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getTime_sync_0010", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTime_sync_0010 start----------------");
       let currentTime = systemDateTime.getTime(true);
       console.info("====>SUB_systemDateTime_getTime_sync_0010 currentTime: " + JSON.stringify(currentTime));
@@ -45,7 +45,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0020", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getTime_sync_0020", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTime_sync_0020 start----------------");
       let currentTime = systemDateTime.getTime(false);
       console.info("====>SUB_systemDateTime_getTime_sync_0020 currentTime: " + JSON.stringify(currentTime));
@@ -62,7 +62,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getTime_sync_0030", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getTime_sync_0030", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTime_sync_0030 start----------------");
       let currentTime = systemDateTime.getTime();
       console.info("====>SUB_systemDateTime_getTime_sync_0030 currentTime: " + JSON.stringify(currentTime));
@@ -79,7 +79,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0050", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0050", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0050 start----------------");
       let realActiveTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, true);
       console.info("====>SUB_systemDateTime_getUptime_sync_0050 currentTime: " + JSON.stringify(realActiveTime));
@@ -96,7 +96,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0060", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0060", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0060 start----------------");
       let realActiveTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
       console.info("====>SUB_systemDateTime_getUptime_sync_0060 currentTime: " + JSON.stringify(realActiveTime));
@@ -113,7 +113,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0070", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0070", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0070 start----------------");
       let realActiveTime = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE);
       console.info("====>SUB_systemDateTime_getUptime_sync_0070 currentTime: " + JSON.stringify(realActiveTime));
@@ -130,7 +130,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0090", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0090", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0090 start----------------");
       let realTime = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP, true);
       console.info("====>SUB_systemDateTime_getUptime_sync_0090 currentTime: " + JSON.stringify(realTime));
@@ -147,7 +147,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0100", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0100", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0100 start----------------");
       let realTime = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP, false);
       console.info("====>SUB_systemDateTime_getUptime_sync_0100 currentTime: " + JSON.stringify(realTime));
@@ -164,7 +164,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0110", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0110", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0110 start----------------");
       let realTime = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP);
       console.info("====>SUB_systemDateTime_getUptime_sync_0110 currentTime: " + JSON.stringify(realTime));
@@ -181,7 +181,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemDateTime_getTimezoneSync_sync_0130', 0, async (done: Function) => {
+    it('SUB_systemDateTime_getTimezoneSync_sync_0130', Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getTimezoneSync_sync_0130 start----------------");
       let timeZone = systemDateTime.getTimezoneSync();
       console.info("====>SUB_systemDateTime_getTimezoneSync_sync_0130 currentTime: " + JSON.stringify(timeZone));
@@ -198,7 +198,7 @@ export default function systemDateTimeSyncJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemDateTime_getUptime_sync_0150", 0, async (done: Function) => {
+    it("SUB_systemDateTime_getUptime_sync_0150", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemDateTime_getUptime_sync_0150 start----------------");
       try{
         let errTimeType: systemDateTime.TimeType | undefined;
