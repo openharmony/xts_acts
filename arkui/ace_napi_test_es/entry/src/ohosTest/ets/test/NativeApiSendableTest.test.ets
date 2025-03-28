@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Test
 
 import napitest from 'libnapitest.so'
 import utils from '@arkts.utils';
+import worker from '@ohos.worker';
 import collections from '@arkts.collections';
 
 function createInt(): collections.Uint32Array {
@@ -185,6 +186,24 @@ export default function nativeApiSendableJsunit() {
         exchange(flag, 2, 0);
       }, utils.locks.AsyncLockMode.SHARED);
       await Promise.all([p]);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0012
+     * @tc.name napiSendableTest012
+     * @tc.desc callLockAsyncAfterRunCleanupTest
+     */
+    it('napiSendableTest012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let lock = utils.locks.AsyncLock.request('lock');
+      let p = lock.lockAsync(async () => {
+        await new Promise<void>(resolve => setTimeout(resolve, 1000));
+      });
+      let worker0 = new worker.ThreadWorker('../workers/worker');
+      worker0.postMessage('callLockAsyncAfterRunCleanupTest');
+      await new Promise<void>(resolve => setTimeout(resolve, 2000));
+      let p0 = lock.lockAsync(() => {});
+      await Promise.all([p, p0]);
       done();
     });
   })
