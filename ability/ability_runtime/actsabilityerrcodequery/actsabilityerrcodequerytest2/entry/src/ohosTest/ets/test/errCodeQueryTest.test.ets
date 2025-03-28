@@ -168,7 +168,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
           abilityName: 'AbilityE',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -207,7 +207,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
           abilityName: 'AbilityB',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -246,7 +246,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
           abilityName: 'AbilityE',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -285,7 +285,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
           abilityName: 'AbilityB',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -753,7 +753,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
         abilityName: 'AbilityAbility',
       };
       try {
@@ -784,7 +784,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
         abilityName: 'AbilityE',
       };
       try {
@@ -815,7 +815,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
         abilityName: 'AbilityAbility',
       };
       let errObject = {} as BusinessError;
@@ -847,7 +847,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
         abilityName: 'AbilityE',
       };
       let errObject = {} as BusinessError;
