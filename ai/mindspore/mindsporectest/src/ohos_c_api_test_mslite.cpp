@@ -432,7 +432,7 @@ void PrintTrainLossName(OH_AI_TrainCfgHandle trainCfg) {
 }
 
 // 正常场景：更新权重
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -475,8 +475,37 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0001, Function | MediumT
     OH_AI_ContextDestroy(&context);
     OH_AI_ModelDestroy(&model);
 }
+
+void ModelUpdateWeightsTest(OH_AI_ModelHandle model)
+{
+    OH_AI_TensorHandleArray get_update_weights = OH_AI_ModelGetWeights(model);
+    for (size_t i = 0; i < get_update_weights.handle_num; ++i) {
+        OH_AI_TensorHandle weights_tensor = get_update_weights.handle_list[i];
+        if (strcmp(OH_AI_TensorGetName(weights_tensor), "fc3.bias") == 0) {
+            float *input_data = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(weights_tensor));
+            std::cout << "fc3.bias:" << input_data[0] << std::endl;
+        }
+    }
+    auto genRandomData = [](size_t size, void *data) {
+        auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
+        std::mt19937 randomEngine;
+        size_t elementsNum = size / sizeof(float);
+        (void)std::generate_n(static_cast<float *>(data), elementsNum,
+            [&]() { return static_cast<float>(generator(randomEngine)); });
+    };
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t createShapeNum = 1;
+    int64_t createShape[createShapeNum] = {10};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("fc3.bias", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        createShapeNum, nullptr, 0);
+    genRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
+    vec_inputs.push_back(tensor);
+    OH_AI_TensorHandleArray update_weights = {1, vec_inputs.data()};
+    OH_AI_ModelUpdateWeights(model, update_weights);
+}
+
 // 正常场景：更新权重后导出训练图，再获取权重
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -488,33 +517,10 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0002, Function | MediumT
     OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
     ASSERT_NE(train_cfg, nullptr);
     printf("==========OH_AI_TrainModelBuildFromFile==========\n");
-    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR,
+        context, train_cfg);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    OH_AI_TensorHandleArray get_update_weights = OH_AI_ModelGetWeights(model);
-    for (size_t i = 0; i < get_update_weights.handle_num; ++i) {
-        OH_AI_TensorHandle weights_tensor = get_update_weights.handle_list[i];
-        if (strcmp(OH_AI_TensorGetName(weights_tensor), "fc3.bias") == 0){
-            float *input_data = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(weights_tensor));
-            std::cout << "fc3.bias:" << input_data[0] << std::endl;
-        }
-    }
-    auto GenRandomData = [](size_t size, void *data) {
-      auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
-      std::mt19937 random_engine_;
-      size_t elements_num = size / sizeof(float);
-      (void)std::generate_n(static_cast<float *>(data), elements_num,
-                            [&]() { return static_cast<float>(generator(random_engine_)); });
-    };
-    std::vector<OH_AI_TensorHandle> vec_inputs;
-    constexpr size_t create_shape_num = 1;
-    int64_t create_shape[create_shape_num] = {10};
-    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("fc3.bias", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape, create_shape_num, nullptr, 0);
-    ASSERT_NE(tensor, nullptr);
-    GenRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
-    vec_inputs.push_back(tensor);
-    OH_AI_TensorHandleArray update_weights = {1, vec_inputs.data()};
-    status = OH_AI_ModelUpdateWeights(model, update_weights);
-    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    ModelUpdateWeightsTest(model);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
@@ -525,7 +531,8 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0002, Function | MediumT
     status = OH_AI_RunStep(model, nullptr, nullptr);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
     printf("==========OH_AI_ExportModel==========\n");
-    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/lenet_train_infer.ms", OH_AI_NO_QUANT,
+        true, nullptr, 0);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
     OH_AI_TensorHandleArray export_update_weights = OH_AI_ModelGetWeights(model);
     for (size_t i = 0; i < export_update_weights.handle_num; ++i) {
@@ -539,7 +546,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0002, Function | MediumT
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：更新权重tensor name错误
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0003, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -566,7 +573,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0003, Function | MediumT
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：更新权重tensor type错误
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -592,8 +599,76 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0004, Function | MediumT
     OH_AI_ContextDestroy(&context);
     OH_AI_ModelDestroy(&model);
 }
+// 异常场景：更新权重tensor name全部错误
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0005, Function | MediumTest | Level0) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray get_weights = OH_AI_ModelGetWeights(model);
+    std::vector<OH_AI_TensorHandle>  feature_maps;
+    for (size_t i = 0; i < get_weights.handle_num; i++) {
+        auto name = OH_AI_TensorGetName(get_weights.handle_list[i]);
+        size_t shape_num;
+        auto shape = OH_AI_TensorGetShape(get_weights.handle_list[i], &shape_num);
+        OH_AI_DataType data_type = OH_AI_TensorGetDataType(get_weights.handle_list[i]);
+        auto data = OH_AI_TensorGetData(get_weights.handle_list[i]);
+        auto data_size = OH_AI_TensorGetDataSize(get_weights.handle_list[i]);
+        OH_AI_TensorHandle tensor = OH_AI_TensorCreate(name, data_type, shape, shape_num, data, data_size);
+        OH_AI_TensorSetName(tensor, "AAAA");
+        feature_maps.push_back(tensor);
+    }
+    printf("==========OH_AI_TrainModel updateWeights==========\n");
+    status = OH_AI_ModelUpdateWeights(model, {feature_maps.size(), feature_maps.data()});
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
+// 异常场景：更新权重tensor name错误一个
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_UpdateWeights_0006, Function | MediumTest | Level0) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========OH_AI_TrainCfgCreate==========\n");
+    OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
+    ASSERT_NE(train_cfg, nullptr);
+    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/lenet_train.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
+    OH_AI_TensorHandleArray get_weights = OH_AI_ModelGetWeights(model);
+    std::vector<OH_AI_TensorHandle>  feature_maps;
+    for (size_t i = 0; i < get_weights.handle_num; i++) {
+        auto name = OH_AI_TensorGetName(get_weights.handle_list[i]);
+        size_t shape_num;
+        auto shape = OH_AI_TensorGetShape(get_weights.handle_list[i], &shape_num);
+        OH_AI_DataType data_type = OH_AI_TensorGetDataType(get_weights.handle_list[i]);
+        auto data = OH_AI_TensorGetData(get_weights.handle_list[i]);
+        auto data_size = OH_AI_TensorGetDataSize(get_weights.handle_list[i]);
+        OH_AI_TensorHandle tensor = OH_AI_TensorCreate(name, data_type, shape, shape_num, data, data_size);
+        feature_maps.push_back(tensor);
+    }
+    printf("==========OH_AI_TrainModel updateWeights==========\n");
+    OH_AI_TensorSetName(feature_maps.at(1), "AAAA");
+    status = OH_AI_ModelUpdateWeights(model, {feature_maps.size(), feature_maps.data()});
+    ASSERT_NE(status, OH_AI_STATUS_SUCCESS);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+}
 // 正常场景：设置学习率为0.01
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -627,7 +702,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0001, Function | Mediu
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：设置学习率值为1000.0
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -661,7 +736,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetLearningRate_0002, Function | Mediu
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：设置虚拟batch_size为2
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetupVirtualBatch_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetupVirtualBatch_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -705,7 +780,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetupVirtualBatch_0001, Function | Med
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：设置优化等级
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetOptimizationLevel_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetOptimizationLevel_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -752,7 +827,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_SetOptimizationLevel_0001, Function | 
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：创建TrainCfg对象并销毁
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -769,7 +844,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0001, Function | MediumTest |
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：设置存在的损失函数名
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -817,7 +892,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0002, Function | MediumTest |
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：设置不存在的损失函数名
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0003, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -841,7 +916,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0003, Function | MediumTest |
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：设置损失函数名个数大于num
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -865,7 +940,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_TrainCfg_0004, Function | MediumTest |
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：通过buffer加载模型，执行1轮训练并对比精度
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -894,7 +969,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0001, Function | MediumTest
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：加载模型buffer为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -912,7 +987,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0002, Function | MediumTest
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：加载模型文件路径不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0003, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -929,7 +1004,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0003, Function | MediumTest
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：加载模型文件路径为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -946,7 +1021,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0004, Function | MediumTest
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：加载模型文件路径为错误文件
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0005, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -963,7 +1038,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ModelBuild_0005, Function | MediumTest
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：训练model导出推理图后对比精度
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -992,7 +1067,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0001, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：quantization_type为OH_AI_WEIGHT_QUANT
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1021,7 +1096,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0002, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：quantization_type为OH_AI_FULL_QUANT
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0003, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1050,7 +1125,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0003, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：quantization_type为OH_AI_UNKNOWN_QUANT_TYPE
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1079,7 +1154,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0004, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：export_inference_only为false
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0005, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1105,7 +1180,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0005, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：export_inference_only为false，再指定output_tensor_name
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0006, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1133,7 +1208,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0006, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：OH_AI_MODELTYPE_INVALID
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0007, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1150,7 +1225,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0007, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：指定导出不存在的output_tensor_name
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0008, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1169,7 +1244,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0008, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：output_tensor_name的个数与num不一致
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0009, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1188,7 +1263,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0009, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：model_file文件路径不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0010, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1205,7 +1280,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0010, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：model_file路径为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0011, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1222,7 +1297,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0011, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：model_file路径为文件夹
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0012, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1239,7 +1314,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0012, Function | MediumTes
     OH_AI_ModelDestroy(&model);
 }
 // 正常场景：OH_AI_ModelGetTrainMode
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0013, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1263,7 +1338,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0013, Function | MediumTes
     printf("=========OH_AI_ModelDestroy End===========\n");
 }
 // 正常场景：OH_AI_ExportModelBuffer
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0014, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1311,7 +1386,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportModel_0014, Function | MediumTes
     printf("=========model02 context and Model destroy End===========\n");
 }
 // 正常场景：训练model导出micro权重
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1335,64 +1410,77 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0001, Function | MediumT
     OH_AI_ContextDestroy(&context);
     OH_AI_ModelDestroy(&model);
 }
+
+void ModelExportWeightsTest(OH_AI_ModelHandle model)
+{
+    const std::vector<std::string> changebleWeightsName = {"app_usage_statistic_30_cell.embedding.embedding_table",
+        "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+        "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+        "data-57"};
+    char **setChangebleWeightsName = TransStrVectorToCharArrays(changebleWeightsName);
+    OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR,
+        "/data/test/xiaoyi_train_codegen_net1.bin", true, true,
+        setChangebleWeightsName, changebleWeightsName.size());
+    OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR,
+        "/data/test/xiaoyi_train_codegen_net1_fp32.bin", true, false,
+        setChangebleWeightsName, changebleWeightsName.size());
+    printf("==================== update weight ==================\n");
+    auto genRandomData = [](size_t size, void *data) {
+        auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
+        std::mt19937 randomEngine;
+        size_t elementsNum = size / sizeof(float);
+        (void)std::generate_n(static_cast<float *>(data), elementsNum,
+            [&]() { return static_cast<float>(generator(randomEngine)); });
+    };
+    std::vector<OH_AI_TensorHandle> vec_inputs;
+    constexpr size_t createShapeNum = 2;
+    int64_t createShape[createShapeNum] = {76, 8};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("app_usage_statistic_30_cell.embedding.embedding_table",
+        OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape, createShapeNum, nullptr, 0);
+    genRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
+    vec_inputs.push_back(tensor);
+    constexpr size_t createShapeNum2 = 2;
+    int64_t createShape2[createShapeNum2] = {76, 8};
+    OH_AI_TensorHandle tensor2 = OH_AI_TensorCreate("moment1.app_usage_statistic_30_cell.embedding.embedding_table",
+        OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape2, createShapeNum2, nullptr, 0);
+    genRandomData(OH_AI_TensorGetDataSize(tensor2), OH_AI_TensorGetMutableData(tensor2));
+    vec_inputs.push_back(tensor2);
+    constexpr size_t createShapeNum3 = 2;
+    int64_t createShape3[createShapeNum3] = {76, 8};
+    OH_AI_TensorHandle tensor3 = OH_AI_TensorCreate("moment2.app_usage_statistic_30_cell.embedding.embedding_table",
+        OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape3, createShapeNum3, nullptr, 0);
+    genRandomData(OH_AI_TensorGetDataSize(tensor3), OH_AI_TensorGetMutableData(tensor3));
+    vec_inputs.push_back(tensor3);
+    OH_AI_TensorHandleArray update_weights = {3, vec_inputs.data()};
+    OH_AI_ModelUpdateWeights(model, update_weights);
+}
+
 // 正常场景：训练model更新并导出micro权重
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0002, Function | MediumTest | Level1) {
-    printf("==========OH_AI_ContextCreate==========\n");
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0002, Function | MediumTest | Level0) {
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
     AddContextDeviceCPU(context);
-    printf("==========OH_AI_ModelCreate==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     ASSERT_NE(model, nullptr);
-    printf("==========OH_AI_TrainCfgCreate==========\n");
     OH_AI_TrainCfgHandle train_cfg = OH_AI_TrainCfgCreate();
     ASSERT_NE(train_cfg, nullptr);
-    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy", "BinaryCrossEntropy"};
+    std::vector<std::string> set_train_cfg_loss_name = {"loss_fct", "_loss_fn", "SigmoidCrossEntropy",
+        "BinaryCrossEntropy"};
     char **set_loss_name = TransStrVectorToCharArrays(set_train_cfg_loss_name);
     OH_AI_TrainCfgSetLossName(train_cfg, const_cast<const char **>(set_loss_name), set_train_cfg_loss_name.size());
-    printf("==========OH_AI_TrainModelBuildFromFile==========\n");
-    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR, context, train_cfg);
+    auto status = OH_AI_TrainModelBuildFromFile(model, "/data/test/xiaoyi_train_codegen.ms", OH_AI_MODELTYPE_MINDIR,
+        context, train_cfg);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
     printf("==========OH_AI_ExportModel==========\n");
-    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model1.ms",
+        OH_AI_NO_QUANT, true, nullptr, 0);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    const std::vector<std::string> changeble_weights_name = {"app_usage_statistic_30_cell.embedding.embedding_table",
+    const std::vector<std::string> changebleWeightsName2 = {"app_usage_statistic_30_cell.embedding.embedding_table",
                                                  "moment1.app_usage_statistic_30_cell.embedding.embedding_table",
                                                  "moment2.app_usage_statistic_30_cell.embedding.embedding_table",
                                                  "data-57"};
-    char **set_changeble_weights_name = TransStrVectorToCharArrays(changeble_weights_name);
-    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1.bin", true, true, set_changeble_weights_name, changeble_weights_name.size());
-    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net1_fp32.bin", true, false, set_changeble_weights_name, changeble_weights_name.size());
-    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    printf("==================== update weight ==================\n");
-    auto GenRandomData = [](size_t size, void *data) {
-      auto generator = std::uniform_real_distribution<float>(0.0f, 1.0f);
-      std::mt19937 random_engine_;
-      size_t elements_num = size / sizeof(float);
-      (void)std::generate_n(static_cast<float *>(data), elements_num,
-                            [&]() { return static_cast<float>(generator(random_engine_)); });
-    };
-    std::vector<OH_AI_TensorHandle> vec_inputs;
-    constexpr size_t create_shape_num = 2;
-    int64_t create_shape[create_shape_num] = {76, 8};
-    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("app_usage_statistic_30_cell.embedding.embedding_table", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape, create_shape_num, nullptr, 0);
-    GenRandomData(OH_AI_TensorGetDataSize(tensor), OH_AI_TensorGetMutableData(tensor));
-    vec_inputs.push_back(tensor);
-    constexpr size_t create_shape_num2 = 2;
-    int64_t create_shape2[create_shape_num2] = {76, 8};
-    OH_AI_TensorHandle tensor2 = OH_AI_TensorCreate("moment1.app_usage_statistic_30_cell.embedding.embedding_table", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape2, create_shape_num2, nullptr, 0);
-    GenRandomData(OH_AI_TensorGetDataSize(tensor2), OH_AI_TensorGetMutableData(tensor2));
-    vec_inputs.push_back(tensor2);
-    constexpr size_t create_shape_num3 = 2;
-    int64_t create_shape3[create_shape_num3] = {76, 8};
-    OH_AI_TensorHandle tensor3 = OH_AI_TensorCreate("moment2.app_usage_statistic_30_cell.embedding.embedding_table", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape3, create_shape_num3, nullptr, 0);
-    GenRandomData(OH_AI_TensorGetDataSize(tensor3), OH_AI_TensorGetMutableData(tensor3));
-    vec_inputs.push_back(tensor3);
-    OH_AI_TensorHandleArray update_weights = {3, vec_inputs.data()};
-    status = OH_AI_ModelUpdateWeights(model, update_weights);
-    ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    printf("==================== train ===================\n");
+    char **setChangebleWeightsName2 = TransStrVectorToCharArrays(changebleWeightsName2);
+    ModelExportWeightsTest(model);
     status = OH_AI_ModelSetTrainMode(model, true);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
     status = OH_AI_RunStep(model, nullptr, nullptr);
@@ -1402,17 +1490,22 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0002, Function | MediumT
     status = OH_AI_RunStep(model, nullptr, nullptr);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
     printf("==========OH_AI_ExportModel2==========\n");
-    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model2.ms", OH_AI_NO_QUANT, true, nullptr, 0);
+    status = OH_AI_ExportModel(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_gru_model2.ms",
+        OH_AI_NO_QUANT, true, nullptr, 0);
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net2.bin", true, true, set_changeble_weights_name, changeble_weights_name.size());
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR,
+        "/data/test/xiaoyi_train_codegen_net2.bin", true, true,
+        setChangebleWeightsName2, changebleWeightsName2.size());
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
-    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR, "/data/test/xiaoyi_train_codegen_net2_fp32.bin", true, false, set_changeble_weights_name, changeble_weights_name.size());
+    status = OH_AI_ExportWeightsCollaborateWithMicro(model, OH_AI_MODELTYPE_MINDIR,
+        "/data/test/xiaoyi_train_codegen_net2_fp32.bin", true, false,
+        setChangebleWeightsName2, changebleWeightsName2.size());
     ASSERT_EQ(status, OH_AI_STATUS_SUCCESS);
     OH_AI_ContextDestroy(&context);
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：weight_file文件路径不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0003, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1443,7 +1536,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0003, Function | MediumT
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：weight_file路径为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1474,7 +1567,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0004, Function | MediumT
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：weight_file路径为文件夹
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0005, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1505,7 +1598,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0005, Function | MediumT
     OH_AI_ModelDestroy(&model);
 }
 // 异常场景：is_inference为false
-HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_Train_ExportWeights_0006, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1566,7 +1659,7 @@ void Predict_NPU() {
 }
 
 // 正常场景：Context设置CPU，默认场景，不设置线程绑核
-HWTEST(MSLiteTest, OHOS_Context_CPU_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1578,7 +1671,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0001, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，4线程
-HWTEST(MSLiteTest, OHOS_Context_CPU_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1594,7 +1687,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，2线程
-HWTEST(MSLiteTest, OHOS_Context_CPU_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1610,7 +1703,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0003, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，1线程
-HWTEST(MSLiteTest, OHOS_Context_CPU_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0004, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1626,7 +1719,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0004, Function | MediumTest | Level1) {
 }
 
 // 异常场景：Context设置CPU，0线程
-HWTEST(MSLiteTest, OHOS_Context_CPU_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0005, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1647,7 +1740,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0005, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，不绑核
-HWTEST(MSLiteTest, OHOS_Context_CPU_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0006, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1667,7 +1760,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0006, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，绑大核
-HWTEST(MSLiteTest, OHOS_Context_CPU_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0007, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1687,7 +1780,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0007, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，绑中核
-HWTEST(MSLiteTest, OHOS_Context_CPU_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0008, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1707,7 +1800,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0008, Function | MediumTest | Level1) {
 }
 
 // 异常场景：Context设置CPU，绑核失败
-HWTEST(MSLiteTest, OHOS_Context_CPU_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0009, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1732,7 +1825,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0009, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，绑核列表{0,1,2,3}
-HWTEST(MSLiteTest, OHOS_Context_CPU_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0010, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1760,7 +1853,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0010, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，绑核列表和模式同时开启
-HWTEST(MSLiteTest, OHOS_Context_CPU_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0011, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1791,7 +1884,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0011, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，开启并行
-HWTEST(MSLiteTest, OHOS_Context_CPU_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0012, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1811,7 +1904,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0012, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，关闭并行
-HWTEST(MSLiteTest, OHOS_Context_CPU_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0013, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1831,7 +1924,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0013, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，开启fp16
-HWTEST(MSLiteTest, OHOS_Context_CPU_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0014, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1849,7 +1942,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0014, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，关闭fp16
-HWTEST(MSLiteTest, OHOS_Context_CPU_0015, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0015, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1867,7 +1960,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0015, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，设置厂商名称
-HWTEST(MSLiteTest, OHOS_Context_CPU_0016, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0016, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1885,7 +1978,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0016, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，设置厂商设备类型
-HWTEST(MSLiteTest, OHOS_Context_CPU_0017, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0017, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1903,7 +1996,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0017, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，销毁MSDeviceInfo
-HWTEST(MSLiteTest, OHOS_Context_CPU_0018, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0018, Function | MediumTest | Level0) {
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     ASSERT_NE(cpu_device_info, nullptr);
     OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(cpu_device_info);
@@ -1914,7 +2007,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0018, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置CPU，销毁OH_AI_Context
-HWTEST(MSLiteTest, OHOS_Context_CPU_0019, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0019, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1929,7 +2022,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0019, Function | MediumTest | Level1) {
 }
 
 // 异常场景：Context不设置device info
-HWTEST(MSLiteTest, OHOS_Context_CPU_0020, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_CPU_0020, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1945,7 +2038,7 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0020, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Context设置NPU,频率为1
-HWTEST(MSLiteTest, OHOS_Context_NPU_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Context_NPU_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1963,7 +2056,7 @@ HWTEST(MSLiteTest, OHOS_Context_NPU_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelBuild，调用指针方法
-HWTEST(MSLiteTest, OHOS_Model_Build_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -1975,7 +2068,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0001, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，model_data指向的不是模型数据
-HWTEST(MSLiteTest, OHOS_Model_Build_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0002, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -1999,7 +2092,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0002, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，model_data为空
-HWTEST(MSLiteTest, OHOS_Model_Build_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2016,7 +2109,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0003, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，data_size为0
-HWTEST(MSLiteTest, OHOS_Model_Build_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0004, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     size_t *ptr_size = &size;
@@ -2040,7 +2133,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0004, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，读取路径方法，且路径不是模型数据路径
-HWTEST(MSLiteTest, OHOS_Model_Build_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0005, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2057,7 +2150,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0005, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，读取路径方法，路径为空
-HWTEST(MSLiteTest, OHOS_Model_Build_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0006, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2074,7 +2167,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0006, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，model_type不支持
-HWTEST(MSLiteTest, OHOS_Model_Build_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0007, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2091,7 +2184,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0007, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelBuild，model_context为空
-HWTEST(MSLiteTest, OHOS_Model_Build_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0008, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2108,7 +2201,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0008, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelBuild，调用GetOutputs获取输出
-HWTEST(MSLiteTest, OHOS_Model_Build_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Build_0009, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2146,7 +2239,7 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0009, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelResize，shape与之前一致
-HWTEST(MSLiteTest, OHOS_Model_Resize_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Resize_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2158,7 +2251,7 @@ HWTEST(MSLiteTest, OHOS_Model_Resize_0001, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelResize，shape与之前不一致
-HWTEST(MSLiteTest, OHOS_Model_Resize_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Resize_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2188,7 +2281,7 @@ HWTEST(MSLiteTest, OHOS_Model_Resize_0002, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelResize，shape为三维
-HWTEST(MSLiteTest, OHOS_Model_Resize_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Resize_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2213,7 +2306,7 @@ HWTEST(MSLiteTest, OHOS_Model_Resize_0003, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelResize，shape值有负数
-HWTEST(MSLiteTest, OHOS_Model_Resize_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Resize_0004, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2238,7 +2331,7 @@ HWTEST(MSLiteTest, OHOS_Model_Resize_0004, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelResize，不支持resize的模型
-HWTEST(MSLiteTest, OHOS_Model_Resize_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Resize_0005, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2263,7 +2356,7 @@ HWTEST(MSLiteTest, OHOS_Model_Resize_0005, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelPredict
-HWTEST(MSLiteTest, OHOS_Model_Predict_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Predict_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2275,7 +2368,7 @@ HWTEST(MSLiteTest, OHOS_Model_Predict_0001, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelPredict，model被销毁
-HWTEST(MSLiteTest, OHOS_Model_Predict_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Predict_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2301,7 +2394,7 @@ HWTEST(MSLiteTest, OHOS_Model_Predict_0002, Function | MediumTest | Level1) {
 }
 
 // 异常场景：ModelPredict，input为空
-HWTEST(MSLiteTest, OHOS_Model_Predict_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Predict_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2324,7 +2417,7 @@ HWTEST(MSLiteTest, OHOS_Model_Predict_0003, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelPredict，传入回调函数
-HWTEST(MSLiteTest, OHOS_Model_Predict_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_Predict_0004, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2336,7 +2429,7 @@ HWTEST(MSLiteTest, OHOS_Model_Predict_0004, Function | MediumTest | Level1) {
 }
 
 // 正常场景：ModelGetInputByTensorName
-HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0001, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2385,7 +2478,7 @@ HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0001, Function | MediumTest |
 }
 
 // 异常场景：ModelGetInputByTensorName，名称不存在
-HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2405,7 +2498,7 @@ HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0002, Function | MediumTest |
 }
 
 // 正常场景：ModelGetOutputByTensorName
-HWTEST(MSLiteTest, OHOS_Model_GetOutputByTensorName_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_GetOutputByTensorName_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2444,7 +2537,7 @@ HWTEST(MSLiteTest, OHOS_Model_GetOutputByTensorName_0001, Function | MediumTest 
 }
 
 // 异常场景：ModelGetOutputByTensorName，名称不存在
-HWTEST(MSLiteTest, OHOS_Model_GetOutputByTensorName_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Model_GetOutputByTensorName_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2472,7 +2565,7 @@ HWTEST(MSLiteTest, OHOS_Model_GetOutputByTensorName_0002, Function | MediumTest 
 }
 
 // 正常场景：MSTensorCreate,创建tensor
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2503,7 +2596,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0001, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorDestroy,销毁tensor
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0002, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2522,7 +2615,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetName,获取tensor名称
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0003, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2542,7 +2635,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0003, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetName,设置tensor名称
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0004, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2563,7 +2656,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0004, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetDataType,获取tensor数据类型
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0005, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2583,7 +2676,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0005, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorSetDataType,设置tensor数据类型
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0006, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2604,7 +2697,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0006, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetShape,获取tensor维度
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0007, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2628,7 +2721,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0007, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorSetShape,设置tensor维度
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0008, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2661,7 +2754,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0008, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetFormat,获取tensor格式
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0009, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2681,7 +2774,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0009, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorSetFormat,设置tensor格式
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0010, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2702,7 +2795,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0010, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetData,获取tensor数据
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0011, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2727,7 +2820,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0011, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorSetData,设置tensor数据
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0012, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2756,7 +2849,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0012, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetElementNum,获取tensor元素
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0013, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2777,7 +2870,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0013, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetDataSize,获取tensor大小
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0014, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2798,7 +2891,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0014, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorGetMutableData,获取tensor可变数据指针
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0015, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0015, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2818,7 +2911,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0015, Function | MediumTest | Level1) {
 }
 
 // 正常场景：MSTensorClone,拷贝tensor
-HWTEST(MSLiteTest, OHOS_Tensor_Create_0016, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Tensor_Create_0016, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -2840,7 +2933,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0016, Function | MediumTest | Level1) {
 }
 
 // 正常场景：单输入模型
-HWTEST(MSLiteTest, OHOS_Input_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Input_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2852,7 +2945,7 @@ HWTEST(MSLiteTest, OHOS_Input_0001, Function | MediumTest | Level1) {
 }
 
 // 正常场景：多输入模型
-HWTEST(MSLiteTest, OHOS_Input_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Input_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2879,24 +2972,19 @@ HWTEST(MSLiteTest, OHOS_Input_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：输入为uint8模型
-HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level1) {
-    printf("==========ReadFile==========\n");
+HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level0) {
     size_t size1;
     size_t *ptr_size1 = &size1;
     const char *imagePath = "/data/test/aiy_vision_classifier_plants_V1_3.input";
     char *imageBuf = ReadFile(imagePath, ptr_size1);
-    ASSERT_NE(imageBuf, nullptr);
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
-    ASSERT_NE(context, nullptr);
     AddContextDeviceCPU(context);
-    printf("==========Create model==========\n");
+    printf("==========Create and Build model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     ASSERT_NE(model, nullptr);
-    printf("==========Build model==========\n");
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/aiy_vision_classifier_plants_V1_3.ms", OH_AI_MODELTYPE_MINDIR,
-                                   context);
-    printf("==========build model return code:%d\n", ret);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/aiy_vision_classifier_plants_V1_3.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
@@ -2923,8 +3011,7 @@ HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level1) {
         for (int j = 0; j < element_num && j <= 20; ++j) {
             printf("%d ", output_data[j]);
         }
-        printf("\n");
-        printf("==========compFp32WithTData==========\n");
+        printf("\n==========compFp32WithTData==========\n");
         string expectedDataFile = "/data/test/aiy_vision_classifier_plants_V1_3" + std::to_string(i) + ".output";
         bool result = compUint8WithTData(output_data, expectedDataFile, 0.01, 0.01, false);
         EXPECT_EQ(result, true);
@@ -2935,7 +3022,7 @@ HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level1) {
 }
 
 // 正常场景：量化模型
-HWTEST(MSLiteTest, OHOS_Input_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Input_0004, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2947,14 +3034,14 @@ HWTEST(MSLiteTest, OHOS_Input_0004, Function | MediumTest | Level1) {
 }
 
 // 正常场景：循环多次执行推理流程
-HWTEST(MSLiteTest, OHOS_Multiple_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Multiple_0001, Function | MediumTest | Level0) {
     for (size_t num = 0; num < 50; ++num) {
         Predict_CPU();
     }
 }
 
 // 异常场景：Model创建一次，Build多次
-HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2975,7 +3062,7 @@ HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：Model创建一次,Build一次，Predict多次
-HWTEST(MSLiteTest, OHOS_Multiple_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Multiple_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -3003,7 +3090,7 @@ HWTEST(MSLiteTest, OHOS_Multiple_0003, Function | MediumTest | Level1) {
 }
 
 // 正常场景：多次创建和销毁Model
-HWTEST(MSLiteTest, OHOS_Multiple_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Multiple_0004, Function | MediumTest | Level0) {
     for (size_t i = 0; i < 50; ++i) {
         printf("==========Init Context==========\n");
         OH_AI_ContextHandle context = OH_AI_ContextCreate();
@@ -3023,7 +3110,7 @@ HWTEST(MSLiteTest, OHOS_Multiple_0004, Function | MediumTest | Level1) {
 }
 
 // 正常场景：两个模型都在CPU上并行推理
-HWTEST(MSLiteTest, OHOS_Parallel_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Parallel_0001, Function | MediumTest | Level0) {
     std::cout << "run start" << std::endl;
     std::thread t1(Predict_CPU);
     std::cout << "1111111111111" << std::endl;
@@ -3034,7 +3121,7 @@ HWTEST(MSLiteTest, OHOS_Parallel_0001, Function | MediumTest | Level1) {
 }
 
 // 正常场景：两个模型都在NPU上并行推理
-HWTEST(MSLiteTest, OHOS_Parallel_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Parallel_0002, Function | MediumTest | Level0) {
     std::cout << "run start" << std::endl;
     std::thread t1(Predict_NPU);
     std::cout << "1111111111111" << std::endl;
@@ -3045,7 +3132,7 @@ HWTEST(MSLiteTest, OHOS_Parallel_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：两个模型在CPU NPU上并行推理
-HWTEST(MSLiteTest, OHOS_Parallel_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Parallel_0003, Function | MediumTest | Level0) {
     std::cout << "run start" << std::endl;
     std::thread t1(Predict_CPU);
     std::cout << "1111111111111" << std::endl;
@@ -3056,7 +3143,7 @@ HWTEST(MSLiteTest, OHOS_Parallel_0003, Function | MediumTest | Level1) {
 }
 
 // 正常场景：r1.3转换的模型在r1.5上推理
-HWTEST(MSLiteTest, OHOS_Compatible_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_Compatible_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -3084,7 +3171,7 @@ HWTEST(MSLiteTest, OHOS_Compatible_0001, Function | MediumTest | Level1) {
 
 
 // 正常场景：离线模型支持NNRT后端，单模型输入
-HWTEST(MSLiteTest, OHOS_OfflineModel_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0001, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3116,7 +3203,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0001, Function | MediumTest | Level1) {
 }
 
 // 正常场景：离线模型支持NNRT后端,多输入模型
-HWTEST(MSLiteTest, OHOS_OfflineModel_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0002, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3149,7 +3236,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0002, Function | MediumTest | Level1) {
 
 
 // 正常场景：离线模型支持NNRT后端,Model创建一次,Build一次，Predict多次
-HWTEST(MSLiteTest, OHOS_OfflineModel_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0004, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3182,7 +3269,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0004, Function | MediumTest | Level1) {
 }
 
 // 正常场景：离线模型支持NNRT后端,Model创建一次，Build多次
-HWTEST(MSLiteTest, OHOS_OfflineModel_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0005, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3208,7 +3295,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0005, Function | MediumTest | Level1) {
 }
 
 // 异常场景：离线模型支持NNRT后端,ModelPredict，input为空
-HWTEST(MSLiteTest, OHOS_OfflineModel_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0006, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3236,7 +3323,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0006, Function | MediumTest | Level1) {
 }
 
 // 异常场景：非离线模型支持NNRT后端,ms模型未转换为NNRT后端模型
-HWTEST(MSLiteTest, OHOS_OfflineModel_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0007, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3254,7 +3341,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0007, Function | MediumTest | Level1) {
 }
 
 // 正常场景：覆盖模型ml_ocr_cn
-HWTEST(MSLiteTest, OHOS_OfflineModel_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0008, Function | MediumTest | Level0) {
     if (!IsNNRTAvailable()) {
         printf("NNRt is not available, skip this test");
         return;
@@ -3286,7 +3373,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0008, Function | MediumTest | Level1) {
 }
 
 // 正常场景：离线模型覆盖NPU
-HWTEST(MSLiteTest, OHOS_OfflineModel_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_OfflineModel_0009, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3327,7 +3414,7 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0009, Function | MediumTest | Level1) {
 }
 
 // 正常场景：delegate异构，使用低级接口创建nnrt device info，选取第一个NNRT设备
-HWTEST(MSLiteTest, OHOS_NNRT_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_NNRT_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -3355,7 +3442,7 @@ HWTEST(MSLiteTest, OHOS_NNRT_0001, Function | MediumTest | Level1) {
 }
 
 //  正常场景：delegate异构，使用高级接口创建nnrt device info，根据类型确定NNRT设备
-HWTEST(MSLiteTest, OHOS_NNRT_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_NNRT_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -3383,7 +3470,7 @@ HWTEST(MSLiteTest, OHOS_NNRT_0002, Function | MediumTest | Level1) {
 }
 
 // 正常场景：delegate异构，使用高级接口创建nnrt device info，根据名称确定NNRT设备
-HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -3412,7 +3499,7 @@ HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level1) {
 
 
 // 正常场景：delegate异构，设置NNRT扩展选项，包括cache路径
-HWTEST(MSLiteTest, OHOS_NNRT_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_NNRT_0005, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -3445,7 +3532,7 @@ HWTEST(MSLiteTest, OHOS_NNRT_0005, Function | MediumTest | Level1) {
 
 
 // 正常场景：通过OH_AI_ModelGetInputs和OH_AI_ModelGetOutputs获取，实现数据免拷贝
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0001, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3569,7 +3656,7 @@ void CopyFreeSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in_t
 }
 
 // 正常场景：CPU免拷贝场景，并循环推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceCPU(context);
@@ -3644,7 +3731,7 @@ void CopyFreeNoSetAllocator(OH_AI_ModelHandle model, OH_AI_TensorHandleArray *in
 }
 
 // 正常场景：CPU免拷贝场景，不调用OH_AI_TensorSetAllocator
-HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0003, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceCPU(context);
@@ -3679,7 +3766,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0003, Function | MediumTest | 
 }
 
 // 正常场景：CPU免拷贝场景，不调用OH_AI_TensorSetAllocator，并循环推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0004, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceCPU(context);
@@ -3716,7 +3803,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0004, Function | MediumTest | 
 }
 
 // 正常场景：通过OH_AI_TensorCreate创建输入输出tensor，实现数据免拷贝
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3735,7 +3822,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest |
 }
 
 // 异常场景：OH_AI_TensorSetAllocator设置空指针
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3772,7 +3859,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest |
 }
 
 // 正常场景：通过OH_AI_TensorCreate创建输入输出tensor，实现数据免拷贝, CPU后端场景
-HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceCPU(context);
@@ -3788,7 +3875,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0001, Function | MediumTest | 
 
 
 // 正常场景：npu循环推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0004, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3816,7 +3903,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0004, Function | MediumTest |
 }
 
 // 正常场景：npu免拷贝场景循环推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3828,45 +3915,12 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
-    const size_t MAX_DIMS = 10;
-    int64_t shape[MAX_DIMS];
-    size_t shapeNum;
     OH_AI_TensorHandleArray in_tensor_array;
     OH_AI_TensorHandleArray out_tensor_array;
     printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
-    OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
-    in_tensor_array.handle_num = inputs_handle.handle_num;
-    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
-    for (size_t i = 0; i < inputs_handle.handle_num; i++) {
-        auto ori_tensor = inputs_handle.handle_list[i];
-        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
-        for (size_t j = 0; j < shapeNum; j++) {
-            shape[j] = shape_ptr[j];
-        }
-        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
-        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
-            OH_AI_TensorGetDataType(ori_tensor), shape, shapeNum, nullptr, 0);
-        OH_AI_TensorSetAllocator(in_tensor, in_allocator);
-        in_tensor_array.handle_list[i] = in_tensor;
-    }
+    CopyFreeSetAllocator(model, &in_tensor_array, &out_tensor_array);
     printf("==========FillInputsData==========\n");
     FillInputsData(in_tensor_array, "ml_face_isface", true);
-    printf("==========OH_AI_TensorSetAllocator out_tensor==========\n");
-    OH_AI_TensorHandleArray outputs_handle = OH_AI_ModelGetOutputs(model);
-    out_tensor_array.handle_num = outputs_handle.handle_num;
-    out_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * out_tensor_array.handle_num);
-    for (size_t i = 0; i < outputs_handle.handle_num; i++) {
-        auto ori_tensor = outputs_handle.handle_list[i];
-        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shapeNum);
-        for (size_t j = 0; j < shapeNum; j++) {
-            shape[j] = shape_ptr[j];
-        }
-        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
-        OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
-                                        shape, shapeNum, nullptr, 0);
-        OH_AI_TensorSetAllocator(out_tensor, in_allocator);
-        out_tensor_array.handle_list[i] = out_tensor;
-    }
     for (size_t i = 0; i < 50; ++i) {
         printf("==========OH_AI_ModelPredict==========\n");
         auto ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
@@ -3890,7 +3944,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest |
 }
 
 // 正常场景：npu免拷贝场景，不调用OH_AI_TensorSetAllocator
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0006, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3930,7 +3984,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0006, Function | MediumTest |
 }
 
 // 正常场景：npu免拷贝场景，不调用OH_AI_TensorSetAllocator，并循环推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0007, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -3973,7 +4027,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0007, Function | MediumTest |
 }
 
 // 正常场景：NPU权重量化模型
-HWTEST(MSLiteTest, OHOS_NNRT_QUANT_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, OHOS_NNRT_QUANT_0001, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4013,7 +4067,7 @@ void AddContextDeviceHIAI(OH_AI_ContextHandle context) {
 }
 
 // 异常场景：HIAI流程，离线模型支持NNRT后端,Model创建一次，Build多次
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0004, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4041,7 +4095,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0004, Function | MediumTes
 }
 
 // 异常场景：HIAI流程，离线模型支持NNRT后端,ModelPredict，input为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0005, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4071,7 +4125,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0005, Function | MediumTes
 }
 
 // 异常场景：HIAI流程，非离线模型支持NNRT后端,ms模型未转换为NNRT后端模型
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0006, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4096,7 +4150,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0006, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，离线模型配置量化参数
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0007, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4151,7 +4205,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0007, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，设置量化配置QuantConfigData为空指针时等于不量化
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0008, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4204,7 +4258,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0008, Function | MediumTes
 }
 
 // 异常场景：HIAI流程，设置量化配置QuantConfigData为错误配置文件
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0009, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4250,7 +4304,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0009, Function | MediumTes
 }
 
 // 异常场景：HIAI流程，设置量化q_size为异常值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4296,7 +4350,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_NORMAL
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0011, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4351,7 +4405,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0011, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_LOW
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0012, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4406,7 +4460,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0012, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_UNSET
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4461,7 +4515,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_HIGH
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0014, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4516,7 +4570,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0014, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，离线模型配置量化参数QuantBuffer
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0015, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0015, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4571,7 +4625,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0015, Function | MediumTes
 }
 
 // 正常场景：HIAI流程，设置量化配置QuantBuffer为空指针时等于不量化
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0016, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0016, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4624,7 +4678,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0016, Function | MediumTes
 }
 
 // 异常场景：HIAI流程，设置量化配置QuantBuffer为错误配置文件
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0017, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0017, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4670,7 +4724,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0017, Function | MediumTes
 }
 
 // 异常场景：HIAI流程，设置量化QuantBufferq_size为异常值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0018, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0018, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4731,7 +4785,7 @@ void PrintMem(const std::string &position) {
 
 
 // 正常场景：context配置cache信息，执行推理流程
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0001, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4777,7 +4831,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0001, Function | MediumTest | Lev
 }
 
 // 正常场景：context配置cache信息，量化模型执行推理流程
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0002, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4816,14 +4870,8 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0002, Function | MediumTest | Lev
     OH_AI_ModelDestroy(&model);
 }
 
-// 正常场景：多个不同模型在同一路径下缓存，执行推理流程
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0003, Function | MediumTest | Level1) {
-    if (!IsNPU()) {
-        printf("NNRt is not NPU, skip this test");
-        return;
-    }
-    printf("==========OH_AI_ContextCreate==========\n");
-    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+void AddContextCacheDiffPath(OH_AI_ContextHandle context, const char *modelName)
+{
     auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
     size_t num = 0;
     auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
@@ -4832,34 +4880,30 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0003, Function | MediumTest | Lev
     std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
     auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
     OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
-    const char *cache_path = "/data/local/tmp";
-    const char *cache_version = "1";
-    const char *model_name = "cache_a";
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    const char *cachePath = "/data/local/tmp";
+    const char *cacheVersion = "1";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cachePath, strlen(cachePath));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cacheVersion, strlen(cacheVersion));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", modelName, strlen(modelName));
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
+// 正常场景：多个不同模型在同一路径下缓存，执行推理流程
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0003, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextCacheDiffPath(context, "cache_a");
     printf("==========OH_AI_ModelCreate==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_ocr_cn.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========OH_AI_ContextCreate2==========\n");
     OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
-    auto nnrt_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
-    size_t num2 = 0;
-    auto descs2 = OH_AI_GetAllNNRTDeviceDescs(&num2);
-    auto desc2_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs2, 0);
-    auto name2 = OH_AI_GetNameFromNNRTDeviceDesc(desc2_0);
-    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name2 << std::endl;
-    auto id2_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc2_0);
-    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info2, id2_0);
-    const char *cache_path2 = "/data/local/tmp";
-    const char *cache_version2 = "1";
-    const char *model_name2 = "cache_b";
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CachePath", cache_path2, strlen(cache_path2));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CacheVersion", cache_version2, strlen(cache_version2));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "ModelName", model_name2, strlen(model_name2));
-    OH_AI_ContextAddDeviceInfo(context2, nnrt_device_info2);
+    AddContextCacheDiffPath(context2, "cache_b");
     printf("==========OH_AI_ModelCreate2==========\n");
     OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
     OH_AI_Status ret2 = OH_AI_ModelBuildFromFile(model2, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context2);
@@ -4889,7 +4933,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0003, Function | MediumTest | Lev
 }
 
 // 异常场景：CachePath路径非法值或不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0004, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4920,7 +4964,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0004, Function | MediumTest | Lev
 }
 
 // 异常场景：CacheVersion在取值范围外
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0005, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4950,8 +4994,28 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0005, Function | MediumTest | Lev
     OH_AI_ModelDestroy(&model);
 }
 
+// add cpu device info
+void AddContextCache(OH_AI_ContextHandle context)
+{
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cachePath = "/data/local/tmp";
+    const char *cacheVersion = "1";
+    const char *modelName = "cache_same";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cachePath, strlen(cachePath));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cacheVersion, strlen(cacheVersion));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", modelName, strlen(modelName));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
 // 异常场景：a模型生成缓存，b模型用相同的CachePath、CacheVersion、modelname
-HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Level0) {
     if (!IsNPU()) {
         printf("NNRt is not NPU, skip this test");
         return;
@@ -4966,42 +5030,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Lev
     }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
-    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
-    size_t num = 0;
-    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
-    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
-    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
-    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
-    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
-    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
-    const char *cache_path = "/data/local/tmp";
-    const char *cache_version = "1";
-    const char *model_name = "cache_same";
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
-    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    AddContextCache(context);
     printf("==========OH_AI_ModelCreate==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========OH_AI_ContextCreate2==========\n");
     OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
-    auto nnrt_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
-    size_t num2 = 0;
-    auto descs2 = OH_AI_GetAllNNRTDeviceDescs(&num2);
-    auto desc2_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs2, 0);
-    auto name2 = OH_AI_GetNameFromNNRTDeviceDesc(desc2_0);
-    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name2 << std::endl;
-    auto id2_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc2_0);
-    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info2, id2_0);
-    const char *cache_path2 = "/data/local/tmp";
-    const char *cache_version2 = "1";
-    const char *model_name2 = "cache_same";
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CachePath", cache_path2, strlen(cache_path2));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CacheVersion", cache_version2, strlen(cache_version2));
-    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "ModelName", model_name2, strlen(model_name2));
-    OH_AI_ContextAddDeviceInfo(context2, nnrt_device_info2);
+    AddContextCache(context2);
     printf("==========OH_AI_ModelCreate2==========\n");
     OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
     OH_AI_Status ret2 = OH_AI_ModelBuildFromFile(model2, "/data/test/ml_ocr_cn.ms", OH_AI_MODELTYPE_MINDIR, context2);
@@ -5030,7 +5066,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Lev
 }
 
 // 正常场景：多输入模型，测试ContextDestroy接口，Context在model释放之前释放
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0001, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -5057,7 +5093,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0001, Function | MediumTest |
 }
 
 // 异常场景：多输入模型，测试ContextDestroy接口，Context在model释放之后释放
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0002, Function | MediumTest | Level0) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -5084,7 +5120,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextDestroy_0002, Function | MediumTest |
 }
 
 // OH_AI_TensorCreate接口，name为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
@@ -5095,7 +5131,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0001, Function | MediumTest | L
 }
 
 // OH_AI_TensorCreate接口，type为异常类型
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
@@ -5105,8 +5141,20 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0002, Function | MediumTest | L
     OH_AI_TensorDestroy(&tensor);
 }
 
+// OH_AI_TensorCreate接口，tensor维度数组长度为33，超过最大值32
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0003, Function | MediumTest | Level0) {
+    printf("==========OH_AI_TensorCreate==========\n");
+    constexpr size_t createShapeNum = 33;
+    int64_t createShape[createShapeNum] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 48, 48, 3};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+        createShapeNum, nullptr, 0);
+    ASSERT_EQ(tensor, nullptr);
+    OH_AI_TensorDestroy(&tensor);
+}
+
 // OH_AI_TensorCreate接口，tensor维度数组长度为32，shapeNum为3
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t createShapeNum = 32;
     int64_t createShape[createShapeNum] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -5118,7 +5166,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0004, Function | MediumTest | L
 }
 
 // 正常调用接口创建Tensor，并传入input进行推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0005, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -5152,7 +5200,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0005, Function | MediumTest | L
 }
 
 // 正常调用接口创建Tensor，用不同的OH_AI_DataType，并传入input进行推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0006, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -5200,7 +5248,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0006, Function | MediumTest | L
 }
 
 // OH_AI_TensorCreate接口，OH_AI_DataType类型、shape数组长度，遍历设置
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0007, Function | MediumTest | Level0) {
 constexpr size_t datatypeNum = 12;
 OH_AI_DataType datatype[datatypeNum] = {
     OH_AI_DATATYPE_NUMBERTYPE_BOOL,
@@ -5263,7 +5311,7 @@ void CreateAndSetTensor(OH_AI_ModelHandle model, OH_AI_ContextHandle context,
 }
 
 // 正常调用接口创建多个Tensor，并传入input进行推理
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0008, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
@@ -5312,13 +5360,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0008, Function | MediumTest | L
 }
 
 // OH_AI_TensorDestroy接口，传入的tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0009, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorDestroy(nullptr);
 }
 
 // OH_AI_TensorDestroy接口，多次释放已创建的tensor
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0010, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5329,14 +5377,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0010, Function | MediumTest | L
 }
 
 // OH_AI_TensorClone接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0011, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorHandle clone = OH_AI_TensorClone(nullptr);
     ASSERT_EQ(clone, nullptr);
 }
 
 // OH_AI_TensorClone 接口（深拷贝tensor），拷贝完释放原始tensor
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0012, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -5358,7 +5406,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0012, Function | MediumTest | L
 }
 
 // OH_AI_TensorClone，克隆出多个tensor
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0013, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
@@ -5384,7 +5432,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0013, Function | MediumTest | L
 }
 
 // 正常设置name
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0014, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5398,7 +5446,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0014, Function | MediumTest | L
 }
 
 // 多次设置name
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0015, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0015, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5415,13 +5463,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0015, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetName接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0016, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0016, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorSetName(nullptr, "data");
 }
 
 // OH_AI_TensorSetName接口，name为空字符、含有非法字符
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0017, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0017, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5434,20 +5482,20 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0017, Function | MediumTest | L
 }
 
 // OH_AI_TensorGetName接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0018, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0018, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     const char *tensorName = OH_AI_TensorGetName(nullptr);
     ASSERT_EQ(tensorName, nullptr);
 }
 
 // OH_AI_TensorSetDataType接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0019, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0019, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorSetDataType(nullptr, OH_AI_DATATYPE_NUMBERTYPE_FLOAT32);
 }
 
 // OH_AI_TensorSetDataType接口，OH_AI_DataType设置无效值、非法值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0020, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0020, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5459,7 +5507,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0020, Function | MediumTest | L
 }
 
 // 正常设置datatype
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0021, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0021, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5472,7 +5520,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0021, Function | MediumTest | L
 }
 
 // 多次设置datatype
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0022, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0022, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5487,13 +5535,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0022, Function | MediumTest | L
 }
 
 // OH_AI_TensorGetDataType接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0023, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0023, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorGetDataType(nullptr);
 }
 
 // OH_AI_TensorSetShape接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0024, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0024, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5501,7 +5549,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0024, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetShape接口，shape数组长度为33
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0025, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0025, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5513,7 +5561,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0025, Function | MediumTest | L
 }
 
 // 正常设置shape
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0026, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0026, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5533,7 +5581,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0026, Function | MediumTest | L
 }
 
 // 多次设置shape
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0027, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0027, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5562,20 +5610,20 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0027, Function | MediumTest | L
 }
 
 // OH_AI_TensorGetShape接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0028, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0028, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     size_t shape_num;
     OH_AI_TensorGetShape(nullptr, &shape_num);
 }
 
 // OH_AI_TensorSetFormat接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0029, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0029, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorSetFormat(nullptr, OH_AI_FORMAT_NCHW);
 }
 
 // 正常设置format
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0030, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0030, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5588,7 +5636,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0030, Function | MediumTest | L
 }
 
 // 多次设置format
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0031, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0031, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5603,7 +5651,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0031, Function | MediumTest | L
 }
 
 // 循环设置所有的format类型
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0032, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0032, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5638,13 +5686,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0032, Function | MediumTest | L
 }
 
 // OH_AI_TensorGetFormat接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0033, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0033, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorGetFormat(nullptr);
 }
 
 // OH_AI_TensorSetData接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0034, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0034, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t data_len = 6;
     float data[data_len] = {1, 2, 3, 4, 5, 6};
@@ -5652,7 +5700,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0034, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetData接口，data为空指针nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0035, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0035, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5666,7 +5714,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0035, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetData接口，正常设置data
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0036, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0036, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5688,7 +5736,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0036, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetData接口，多次设置data
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0037, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0037, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5712,33 +5760,33 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0037, Function | MediumTest | L
 }
 
 // OH_AI_TensorGetData接口。tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0038, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0038, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorGetData(nullptr);
 }
 
 // OH_AI_TensorGetMutableData接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0039, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0039, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorGetMutableData(nullptr);
 }
 
 // OH_AI_TensorGetElementNum接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0040, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0040, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     int64_t element = OH_AI_TensorGetElementNum(nullptr);
     std::cout << element << std::endl;
 }
 
 // OH_AI_TensorGetDataSize接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0041, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0041, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     size_t datasize = OH_AI_TensorGetDataSize(nullptr);
     std::cout << datasize << std::endl;
 }
 
 // OH_AI_TensorGetDataSize接口，未填入数据
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0042, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0042, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
@@ -5751,7 +5799,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0042, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetUserData接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0043, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0043, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t data_len = 6;
     float data[data_len] = {1, 2, 3, 4, 5, 6};
@@ -5759,7 +5807,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0043, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetUserData接口，data为空指针nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0044, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0044, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5773,7 +5821,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0044, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetUserData接口，正常设置data
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0045, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0045, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5795,7 +5843,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0045, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetUserData接口，多次设置data
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0046, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0046, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5819,7 +5867,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0046, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetAllocator接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0047, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0047, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5834,7 +5882,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0047, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetAllocator接口，正常设置allocator
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0048, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0048, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5849,7 +5897,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0048, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetAllocator接口，多次设置allocator
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0049, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0049, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     constexpr size_t create_shape_num = 1;
     int64_t createShape[create_shape_num] = {6};
@@ -5865,13 +5913,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0049, Function | MediumTest | L
 }
 
 // OH_AI_TensorSetAllocator接口，tensor为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0050, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_TensorCreate_0050, Function | MediumTest | Level0) {
     printf("==========OH_AI_TensorCreate==========\n");
     OH_AI_TensorGetAllocator(nullptr);
 }
 
 // 创建多个context
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -5918,19 +5966,19 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0001, Function | MediumTest | 
 }
 
 // OH_AI_ContextDestroy接口context对象为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextDestroy(nullptr);
 }
 
 // OH_AI_ContextSetThreadNum接口，context设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0003, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextSetThreadNum(nullptr, 2);
 }
 
 // OH_AI_ContextSetThreadNum接口，threadNum设置为-100
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0004, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0004, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_ContextSetThreadNum(context, -100);
@@ -5947,7 +5995,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0004, Function | MediumTest | 
 }
 
 // OH_AI_ContextSetThreadNum接口，重复设置线程数，均可设置成功
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0005, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_ContextSetThreadNum(context, 2);
@@ -5960,7 +6008,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0005, Function | MediumTest | 
 }
 
 // OH_AI_ContextSetThreadNum接口，设置的context已被销毁，然后传入ThreadNum接口
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0006, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_ContextDestroy(&context);
@@ -5968,20 +6016,20 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0006, Function | MediumTest | 
 }
 
 // OH_AI_ContextGetThreadNum接口，context设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0007, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     int32_t threadNum = OH_AI_ContextGetThreadNum(nullptr);
     std::cout << threadNum << std::endl;
 }
 
 // OH_AI_ContextSetThreadAffinityMode接口，context设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0008, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextSetThreadAffinityMode(nullptr, 1);
 }
 
 // OH_AI_ContextSetThreadAffinityMode接口，mode设置为3
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0009, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_ContextSetThreadAffinityMode(context, -100);
@@ -6010,7 +6058,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0009, Function | MediumTest | 
 }
 
 // OH_AI_ContextSetThreadAffinityMode接口，重复设置各种绑核模式，均可设置成功
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0010, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_ContextSetThreadAffinityMode(context, 2);
@@ -6023,14 +6071,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0010, Function | MediumTest | 
 }
 
 // OH_AI_ContextGetThreadAffinityMode 接口，context设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0011, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     int threadAffinityMode = OH_AI_ContextGetThreadAffinityMode(nullptr);
     std::cout << threadAffinityMode << std::endl;
 }
 
 // OH_AI_ContextSetThreadAffinityCoreList接口，context设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0012, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     constexpr size_t core_num = 4;
     int32_t coreList[core_num] = {0, 1, 2, 3};
@@ -6038,7 +6086,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0012, Function | MediumTest | 
 }
 
 // OH_AI_ContextSetThreadAffinityCoreList接口，core_num非法（0）、与coreList个数不一致（大于、小于）
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0013, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     constexpr size_t core_num = 4;
@@ -6048,7 +6096,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0013, Function | MediumTest | 
 }
 
 // OH_AI_ContextSetThreadAffinityCoreList接口，coreList设置中存在非法编号（负数、极大值）
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0014, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     constexpr size_t core_num = 4;
@@ -6071,7 +6119,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0014, Function | MediumTest | 
 }
 
 // OH_AI_ContextSetThreadAffinityCoreList接口，每次设置不同的core_list，均可设置成功
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0015, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0015, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     constexpr size_t core_num = 4;
@@ -6093,7 +6141,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0015, Function | MediumTest | 
 }
 
 // OH_AI_ContextGetThreadAffinityCoreList接口，context为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0016, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0016, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     size_t ret_core_num;
     const int32_t *retCoreList = OH_AI_ContextGetThreadAffinityCoreList(nullptr, &ret_core_num);
@@ -6101,7 +6149,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0016, Function | MediumTest | 
 }
 
 // OH_AI_ContextGetThreadAffinityCoreList接口，core_num为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0017, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0017, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     const int32_t *retCoreList = OH_AI_ContextGetThreadAffinityCoreList(context, nullptr);
@@ -6110,26 +6158,34 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0017, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoCreate接口，传入无效值、非法值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0018, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0018, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_INVALID);
     ASSERT_EQ(cpu_device_info, nullptr);
 }
 
 // OH_AI_DeviceInfoSetProvide接口，device_info传入nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0019, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0019, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoSetProviderDevice(nullptr, "aaa");
 }
 
+// OH_AI_DeviceInfoSetProvide接口，provider传入nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0020, Function | MediumTest | Level0) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    ASSERT_NE(cpu_device_info, nullptr);
+    OH_AI_DeviceInfoSetProviderDevice(cpu_device_info, nullptr);
+}
+
 // OH_AI_DeviceInfoGetProvider，device设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0021, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0021, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoGetProvider(nullptr);
 }
 
 // OH_AI_DeviceInfoGetProvider接口，未设置provider，直接获取默认值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0022, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0022, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     ASSERT_NE(cpu_device_info, nullptr);
@@ -6138,19 +6194,27 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0022, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetProviderDevice接口， device_info设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0023, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0023, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoSetProviderDevice(nullptr, "aaa");
 }
 
+// OH_AI_DeviceInfoSetProviderDevice接口， device设置为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0024, Function | MediumTest | Level0) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    ASSERT_NE(cpu_device_info, nullptr);
+    OH_AI_DeviceInfoSetProviderDevice(cpu_device_info, nullptr);
+}
+
 // OH_AI_DeviceInfoGetProviderDevice接口， device设置为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0025, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0025, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoGetProviderDevice(nullptr);
 }
 
 // OH_AI_DeviceInfoGetProviderDevice接口，未设置device，直接获取默认值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0026, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0026, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     ASSERT_NE(cpu_device_info, nullptr);
@@ -6159,14 +6223,14 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0026, Function | MediumTest | 
 }
 
 // OH_AI_ContextAddDeviceInfo接口，context传入nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0027, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0027, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     OH_AI_ContextAddDeviceInfo(nullptr, cpu_device_info);
 }
 
 // OH_AI_ContextAddDeviceInfo接口，正常添加多次同一个设备信息
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0028, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0028, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -6175,7 +6239,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0028, Function | MediumTest | 
 }
 
 // OH_AI_ContextAddDeviceInfo接口，正常添加多次不同设备信息
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0029, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0029, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -6185,14 +6249,60 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0029, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoCreate接口，OH_AI_DEVICETYPE_INVALID
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0030, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0030, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_INVALID);
     ASSERT_EQ(cpu_device_info, nullptr);
 }
 
+// OH_AI_DeviceInfoSetEnableFP16接口，device_info设置为nnrt，然后调用此接口
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0031, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    NNRTDeviceDesc *desc_0 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetNameFromNNRTDeviceDesc " << name << std::endl;
+        auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+        std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id << std::endl;
+        const std::string npuNamePrefix = "NPU_";
+        if (strncmp(npuNamePrefix.c_str(), name, npuNamePrefix.size()) == 0) {
+            desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetDeviceIdFromNNRTDeviceDesc " << id_0 << std::endl;
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    OH_AI_DestroyAllNNRTDeviceDescs(&descs);
+    OH_AI_DeviceInfoSetEnableFP16(nnrt_device_info, false);
+    bool isFp16 = OH_AI_DeviceInfoGetEnableFP16(nnrt_device_info);
+    printf("==========isFp16:%d\n", isFp16);
+    ASSERT_EQ(isFp16, false);
+    OH_AI_DeviceInfoSetEnableFP16(nnrt_device_info, true);
+    isFp16 = OH_AI_DeviceInfoGetEnableFP16(nnrt_device_info);
+    printf("==========isFp16:%d\n", isFp16);
+    ASSERT_EQ(isFp16, true);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
 // OH_AI_CreateNNRTDeviceInfoByName
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0032, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0032, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     size_t num = 0;
@@ -6220,7 +6330,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0032, Function | MediumTest | 
 }
 
 // OH_AI_CreateNNRTDeviceInfoByName，创建多次
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0033, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0033, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     size_t num = 0;
@@ -6250,14 +6364,33 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0033, Function | MediumTest | 
 }
 
 // OH_AI_CreateNNRTDeviceInfoByName，name不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0034, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0034, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName("aaa");
     ASSERT_EQ(nnrt_device_info, nullptr);
 }
 
+// OH_AI_CreateNNRTDeviceInfoByName，name为nullptr
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0035, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName(nullptr);
+    ASSERT_EQ(nnrt_device_info, nullptr);
+}
+
 // OH_AI_CreateNNRTDeviceInfoByType
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0036, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0036, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     size_t num = 0;
@@ -6287,7 +6420,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0036, Function | MediumTest | 
 }
 
 // OH_AI_CreateNNRTDeviceInfoByType，多次调用
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0037, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0037, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     size_t num = 0;
@@ -6319,44 +6456,72 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0037, Function | MediumTest | 
 }
 
 // OH_AI_CreateNNRTDeviceInfoByType，OH_AI_NNRTDeviceType不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0038, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0038, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(OH_AI_NNRTDEVICE_OTHERS);
     ASSERT_EQ(nnrt_device_info, nullptr);
 }
 
 // OH_AI_GetAllNNRTDeviceDescs，num为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0039, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0039, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_GetAllNNRTDeviceDescs(nullptr);
 }
 
 // OH_AI_GetElementOfNNRTDeviceDescs，descs为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0040, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0040, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_GetElementOfNNRTDeviceDescs(nullptr, 0);
 }
 
 // OH_AI_GetNameFromNNRTDeviceDesc，desc为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0041, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0041, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_GetNameFromNNRTDeviceDesc(nullptr);
 }
 
 // OH_AI_GetTypeFromNNRTDeviceDesc，desc为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0042, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0042, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_GetTypeFromNNRTDeviceDesc(nullptr);
 }
 
 // OH_AI_GetDeviceIdFromNNRTDeviceDesc，desc为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0043, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0043, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_GetDeviceIdFromNNRTDeviceDesc(nullptr);
 }
 
 // OH_AI_DeviceInfoSetDeviceId，多次调用
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0044, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0044, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -6386,7 +6551,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0044, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetDeviceId，id不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0045, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0045, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -6402,7 +6571,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0045, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetDeviceId，device_info不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0046, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0046, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -6434,7 +6607,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0046, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetDeviceId，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0047, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0047, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     size_t num = 0;
     auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
@@ -6456,7 +6633,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0047, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetDeviceId，device_info不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0048, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0048, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     auto id = OH_AI_DeviceInfoGetDeviceType(cpu_device_info);
@@ -6464,14 +6645,22 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0048, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetDeviceId，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0049, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0049, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     auto id = OH_AI_DeviceInfoGetDeviceType(nullptr);
     std::cout << "OH_AI_DeviceInfoGetDeviceType " << id << std::endl;
 }
 
 // OH_AI_DeviceInfoSetPerformanceMode
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0050, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0050, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -6511,7 +6700,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0050, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetPerformanceMode，覆盖枚举值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0051, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0051, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -6555,33 +6748,53 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0051, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetPerformanceMode，device不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0052, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0052, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     OH_AI_DeviceInfoSetPerformanceMode(cpu_device_info, OH_AI_PERFORMANCE_MEDIUM);
 }
 
 // OH_AI_DeviceInfoSetPerformanceMode，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0053, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0053, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoSetPerformanceMode(nullptr, OH_AI_PERFORMANCE_MEDIUM);
 }
 
 // OH_AI_DeviceInfoGetPerformanceMode，device不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0054, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0054, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     OH_AI_DeviceInfoGetPerformanceMode(cpu_device_info);
 }
 
 // OH_AI_DeviceInfoGetPerformanceMode，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0055, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0055, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoGetPerformanceMode(nullptr);
 }
 
 // OH_AI_DeviceInfoSetPriority
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0056, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0056, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -6619,7 +6832,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0056, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetPriority，覆盖枚举值
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0057, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0057, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
@@ -6661,33 +6878,53 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0057, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoSetPriority，device不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0058, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0058, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     OH_AI_DeviceInfoSetPriority(cpu_device_info, OH_AI_PRIORITY_MEDIUM);
 }
 
 // OH_AI_DeviceInfoSetPriority，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0059, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0059, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoSetPriority(nullptr, OH_AI_PRIORITY_MEDIUM);
 }
 
 // OH_AI_DeviceInfoGetPriority，device不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0060, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0060, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     OH_AI_DeviceInfoGetPriority(cpu_device_info);
 }
 
 // OH_AI_DeviceInfoGetPriority，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0061, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0061, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoGetPriority(nullptr);
 }
 
 // OH_AI_DeviceInfoAddExtension，device不正确
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0062, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0062, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     const char *model_name = "cache_model";
@@ -6697,7 +6934,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0062, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoAddExtension，device为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0063, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0063, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     const char *model_name = "cache_model";
     OH_AI_Status extension_ret = OH_AI_DeviceInfoAddExtension(nullptr, "ModelName", model_name, strlen(model_name));
@@ -6705,7 +6946,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0063, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoAddExtension，name不在白名单内
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0064, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0064, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
     size_t num = 0;
@@ -6733,7 +6978,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0064, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoAddExtension，name为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0065, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0065, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
     size_t num = 0;
@@ -6762,7 +7011,11 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0065, Function | MediumTest | 
 }
 
 // OH_AI_DeviceInfoAddExtension，value为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0066, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0066, Function | MediumTest | Level0) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
     size_t num = 0;
@@ -6791,7 +7044,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ContextCreate_0066, Function | MediumTest | 
 }
 
 // 正常调用接口，创建model对象
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0001, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0001, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -6807,7 +7060,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0001, Function | MediumTest | Le
 }
 
 // 正常调用接口，创建多个model对象
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0002, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0002, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -6832,7 +7085,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0002, Function | MediumTest | Le
 }
 
 // 正常调用接口，循环创建model对象
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0003, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0003, Function | MediumTest | Level0) {
     for (size_t i = 0; i < 10; i++) {
         printf("==========OH_AI_ContextCreate==========\n");
         OH_AI_ContextHandle context = OH_AI_ContextCreate();
@@ -6850,7 +7103,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0003, Function | MediumTest | Le
 }
 
 // 正常调用接口，多次释放model对象
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0005, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0005, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -6867,7 +7120,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0005, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口，正常调用
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0006, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0006, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -6887,7 +7140,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0006, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口，model多次build
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0007, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0007, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -6918,7 +7171,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0007, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口model对象为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0008, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0008, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -6936,7 +7189,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0008, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口model data对象为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0009, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0009, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -6957,7 +7210,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0009, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口model type非法，传入OH_AI_MODELTYPE_INVALID
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0010, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0010, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -6978,7 +7231,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0010, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口context对象为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0011, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0011, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -6999,7 +7252,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0011, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuild接口data_size小于实际model_data
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0012, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0012, Function | MediumTest | Level0) {
     printf("==========ReadFile==========\n");
     size_t size;
     const char *modelPath = "/data/test/ml_face_isface.ms";
@@ -7020,7 +7273,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0012, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuildFromFile接口model为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0013, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0013, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7033,7 +7286,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0013, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuildFromFile接口modelPath有误
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0014, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0014, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7048,7 +7301,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0014, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuildFromFile接口model type非法，传入OH_AI_MODELTYPE_INVALID
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0015, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0015, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7064,7 +7317,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0015, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuildFromFile接口context对象为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0016, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0016, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7081,7 +7334,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0016, Function | MediumTest | Le
 
 
 // OH_AI_ModelBuildFromFile接口，正常调用
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0017, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0017, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7096,7 +7349,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0017, Function | MediumTest | Le
 }
 
 // OH_AI_ModelBuildFromFile接口，model多次build
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0018, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0018, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7118,7 +7371,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0018, Function | MediumTest | Le
 }
 
 // OH_AI_ModelPredict接口model为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0019, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0019, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7142,7 +7395,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0019, Function | MediumTest | Le
 }
 
 // OH_AI_ModelPredict接口input为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0020, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0020, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7163,8 +7416,42 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0020, Function | MediumTest | Le
     OH_AI_ModelDestroy(&model);
 }
 
+
+// OH_AI_ModelPredict接口input给非法数据（其他模型输入、非input数据）
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0021, Function | MediumTest | Level0) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    printf("==========FillModelInputs==========\n");
+    constexpr size_t create_shape_num = 1;
+    int64_t createShape[create_shape_num] = {6};
+    float data[6] = {1, 2, 3, 4, 5, 6};
+    OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, createShape,
+                                           create_shape_num, data, sizeof(data));
+    ASSERT_NE(tensor, nullptr);
+    OH_AI_TensorHandleArray in_tensor_array;
+    in_tensor_array.handle_num = 1;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
+    in_tensor_array.handle_list[0] = tensor;
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, in_tensor_array, &outputs, nullptr, nullptr);
+    std::cout << predict_ret << std::endl;
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_LITE_INPUT_TENSOR_ERROR);
+    OH_AI_ContextDestroy(&context);
+    OH_AI_TensorDestroy(&tensor);
+    OH_AI_ModelDestroy(&model);
+}
+
 // OH_AI_ModelPredict接口，callback功能
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0022, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0022, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7192,7 +7479,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0022, Function | MediumTest | Le
 }
 
 // OH_AI_ModelResize接口resize动态模型，shape_infos为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0027, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0027, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7213,7 +7500,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0027, Function | MediumTest | Le
 }
 
 // OH_AI_ModelResize接口resize静态模型
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0028, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0028, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7234,7 +7521,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0028, Function | MediumTest | Le
 }
 
 // 正常调用ModelGetInputs
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0029, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0029, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7260,7 +7547,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0029, Function | MediumTest | Le
 }
 
 // 多次调用ModelGetInputs
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0030, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0030, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7288,13 +7575,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0030, Function | MediumTest | Le
 }
 
 // OH_AI_ModelGetInputs,model为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0031, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0031, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ModelGetInputs(nullptr);
 }
 
 // 正常调用OH_AI_ModelGetOutputs
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0032, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0032, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7320,7 +7607,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0032, Function | MediumTest | Le
 }
 
 // 多次调用OH_AI_ModelGetOutputs
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0033, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0033, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7349,13 +7636,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0033, Function | MediumTest | Le
 }
 
 // OH_AI_ModelGetOutputs，model为nullptr
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0034, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0034, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ModelGetOutputs(nullptr);
 }
 
 // OH_AI_ModelGetInputByTensorName
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0035, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0035, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7385,13 +7672,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0035, Function | MediumTest | Le
 }
 
 // OH_AI_ModelGetInputByTensorName，model为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0036, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0036, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ModelGetInputByTensorName(nullptr, "data");
 }
 
 // OH_AI_ModelGetInputByTensorName，名字不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0037, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0037, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7410,7 +7697,7 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0037, Function | MediumTest | Le
 }
 
 // OH_AI_ModelGetOutputByTensorName
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0038, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0038, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7441,13 +7728,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0038, Function | MediumTest | Le
 }
 
 // OH_AI_ModelGetOutputByTensorName，model为空
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0039, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0039, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ModelGetOutputByTensorName(nullptr, "prob");
 }
 
 // OH_AI_ModelGetOutputByTensorName，名字不存在
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0040, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0040, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
@@ -7469,8 +7756,29 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0040, Function | MediumTest | Le
     OH_AI_ModelDestroy(&model);
 }
 
+// 两个model调用同一个context
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0041, Function | MediumTest | Level0) {
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    printf("==========OH_AI_ModelBuildFromFile==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    OH_AI_Status build_ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR,
+        context);
+    ASSERT_EQ(build_ret, OH_AI_STATUS_SUCCESS);
+    OH_AI_Status build_ret2 = OH_AI_ModelBuildFromFile(model2, "/data/test/aiy_vision_classifier_plants_V1_3.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(build_ret2, OH_AI_STATUS_LITE_PARAM_INVALID);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ContextDestroy(&context);
+    OH_AI_ModelDestroy(&model);
+    OH_AI_ModelDestroy(&model2);
+}
+
 // OH_AI_ModelCreate同时创建3个model
-HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0042, Function | MediumTest | Level1) {
+HWTEST(MSLiteTest, SUB_AI_MindSpore_ModelCreate_0042, Function | MediumTest | Level0) {
     printf("==========OH_AI_ContextCreate==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
