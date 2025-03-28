@@ -14,7 +14,7 @@
  */
  
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { AtomicServiceOptions,
   Caller,
   common, contextConstant,
@@ -82,7 +82,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100
      * @tc.desc: run parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100', Level.LEVEL0, async (done: Function) => {
       let startParams = ['StartupTask_001'];
       try {
         startupManager.run(undefined).then(() => {
@@ -107,7 +107,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100
      * @tc.desc: getStartupTaskResult parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100', Level.LEVEL0, async (done: Function) => {
       try {
         const data = startupManager.getStartupTaskResult(undefined)
       } catch (error) {
@@ -155,7 +155,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100
      * @tc.desc: startAbilityByType parameter error, pass undefined Async
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100', Level.LEVEL0, async (done: Function) => {
       let wantParam: Record<string, Object> = {
         'time': '2023-10-23 20:45'
       };
@@ -187,7 +187,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200
      * @tc.desc: startAbilityByType parameter error, pass undefined Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200', Level.LEVEL0, async (done: Function) => {
       let wantParam: Record<string, Object> = {
         'time': '2023-10-23 20:45'
       };
@@ -221,7 +221,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100
      * @tc.desc: openAtomicService parameter error, pass undefined Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', Level.LEVEL0, async (done: Function) => {
       let appId: string = '6918661953712445909';
       let options: AtomicServiceOptions = {
         displayId: 0
@@ -248,7 +248,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100
      * @tc.desc: Capability not support
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -295,7 +295,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200
      * @tc.desc: Start options check failed.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -342,7 +342,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100
      * @tc.desc: Capability not support.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -389,7 +389,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200
      * @tc.desc: Start options check failed.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -436,7 +436,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400
      * @tc.desc: startAbility set flags=-1
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1',
@@ -523,7 +523,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100
      * @tc.desc: The onBackground callback is called in the background   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -561,7 +561,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600
      * @tc.desc: The onBackground callback is called in the background
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0600`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -602,7 +602,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800
      * @tc.desc: The onBackground callback is called in the background   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0800`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -644,7 +644,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100
      * @tc.desc: The onBackground callback of openLink is called in the background   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openLink_0100`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -690,7 +690,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100
      * @tc.desc: The onBackground callback of startAbilityForResult is called in the background
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0100`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -731,7 +731,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400
      * @tc.desc: The onBackground callback of startAbilityForResult(option) is called in the background
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0400`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -772,7 +772,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600
      * @tc.desc: The onBackground callback of startAbilityForResult(option) is called in the background promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600', Level.LEVEL0, async (done: Function) => {
       let tag:string = `SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0600`;
       if (mpEnable === 'true') {
         await TestAbilityContext.moveAbilityToBackground().then(() => {
@@ -815,7 +815,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0200
      * @tc.desc: The exported value of the target ability is false
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0200', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.example.actsabilityerrcodequerytestrely',
         abilityName: 'EntryAbility',
@@ -842,7 +842,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0300
      * @tc.desc: Configure the Capability permission for the target
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0300', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.example.actsabilityerrcodequerytestrely',
         abilityName: 'EntryAbility2',
@@ -868,7 +868,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0700
      * @tc.desc: Configure the Capability permission for the target
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0700', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.example.actsabilityerrcodequerytestrely',
         abilityName: 'EntryAbility2',
@@ -898,7 +898,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0200
      * @tc.desc: Configure the Capability permission for the target startAbilityForResult
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0200', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.example.actsabilityerrcodequerytestrely',
         abilityName: 'EntryAbility2',
@@ -928,7 +928,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0500
      * @tc.desc: Configure the Capability permission for the target startAbilityForResult
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0500', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.example.actsabilityerrcodequerytestrely',
         abilityName: 'EntryAbility2',
@@ -957,7 +957,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0700
      * @tc.desc: Configure the Capability permission for the target startAbilityForResult
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0700', Level.LEVEL0, async (done: Function) => {
       let startWant: Want = {
         bundleName: 'com.example.actsabilityerrcodequerytestrely',
         abilityName: 'EntryAbility2',
