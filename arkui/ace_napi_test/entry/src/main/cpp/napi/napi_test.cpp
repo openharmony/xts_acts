@@ -14542,7 +14542,7 @@ static napi_value NapiQueueAsyncWorkWithQosTest(napi_env env, napi_callback_info
     status = napi_queue_async_work_with_qos(nullptr, nullptr, napi_qos_default);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_run_script_path failed.");
 
-    free(data);
+    free(addonData);
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
