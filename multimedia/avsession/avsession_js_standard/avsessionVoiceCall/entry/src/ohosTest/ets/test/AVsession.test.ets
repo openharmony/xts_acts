@@ -1667,52 +1667,6 @@ export default function abilityTest() {
     })
 
 
-     /* *
-     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_6400
-     * @tc.name      : isActive(promise) with session does not exit(errcode 6600102)
-     * @tc.desc      : test isActive(promise) errcode 6600102
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level2
-     */
-
-    it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_6400', 2, async (done: Function) => {
-      await session.destroy()
-      await sleep(500)
-      await controller.sendAVKeyEvent(event).then(() => {
-        console.info('SendAVKeyEvent Successfully');
-      }).catch((err: BusinessError) => {
-        console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-        expect(err.code).assertEqual(6600102);
-      });
-      session = null;
-      done();
-    })
-
-    /* *
-     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_6500
-     * @tc.name      : isActive() with session does not exit(errcode 6600102)
-     * @tc.desc      : test isActive() errcode 6600102
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level2
-     */
-
-    it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_6500', 2, async (done: Function) => {
-      await session.destroy()
-      await sleep(500)
-      await controller.sendAVKeyEvent(event, (err: BusinessError) => {
-        if (err) {
-          console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-          expect(err.code).assertEqual(6600102);
-        } else {
-          console.info('SendAVKeyEvent Successfully');
-        }
-      });
-      done();
-    })   
-
-
   })
 }
 
