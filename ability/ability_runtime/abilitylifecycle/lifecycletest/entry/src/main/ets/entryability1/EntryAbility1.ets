@@ -47,7 +47,7 @@ export default class EntryAbility1 extends UIAbility {
     windowStage.on('windowStageEvent', (data) => {
       if (data == window.WindowStageEventType.HIDDEN) {
         hilog.info(0x0000, 'testTag', 'Ability_test hidden event');
-          this.abilityLifeArr.push('hidden event')
+        this.abilityLifeArr.push('hidden event')
       } else if (data === window.WindowStageEventType.SHOWN) {
         hilog.info(0x0000, 'testTag', 'Ability_test show event');
       } else if (data === window.WindowStageEventType.RESUMED) {
@@ -62,61 +62,37 @@ export default class EntryAbility1 extends UIAbility {
 
   onWillBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onWillBackground');
-      this.abilityLifeArr.push('onWillBackground')
+    this.abilityLifeArr.push('onWillBackground')
   }
 
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onBackground');
-
-      this.abilityLifeArr.push('onBackground')
+    this.abilityLifeArr.push('onBackground')
   }
 
   onDidBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onDidBackground');
-      this.abilityLifeArr.push('onDidBackground')
-      console.info('wantParam=>11',this.wantParam.toString(), this.abilityLifeArr.toString())
-      let commonEventData: EventDataI = {
-        data: this.abilityLifeArr.toString()
-      };
-      commonEventManager.publish(this.wantParam.toString(), commonEventData, (err) => {
-        console.info('====> [onWillBackground_0100 result] publish: ' + JSON.stringify(err));
-      });
+    this.abilityLifeArr.push('onDidBackground')
+    console.info('wantParam=>', this.wantParam.toString(), this.abilityLifeArr.toString())
+    let commonEventData: EventDataI = {
+      data: this.abilityLifeArr.toString()
+    };
+    commonEventManager.publish(this.wantParam.toString(), commonEventData, (err) => {
+      console.info('====> [onWillBackground_0100 result] publish: ' + JSON.stringify(err));
+    });
   }
 
   onWindowStageWillDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onWindowStageWillDestroy');
-    if (this.wantParam == '0200' || this.wantParam == '0400' || this.wantParam == '1300' || this.wantParam == '1400') {
-      this.abilityLifeArr.push('onWindowStageWillDestroy')
-    }
   }
 
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onWindowStageDestroy');
-    if (this.wantParam == '0200' || this.wantParam == '0400' || this.wantParam == '1300' || this.wantParam == '1400') {
-      this.abilityLifeArr.push('onWindowStageDestroy')
-    }
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onDestroy1');
-    this.abilityLifeArr.push('onDestroy')
-    console.info('wantParam=>1',this.wantParam.toString(), this.abilityLifeArr.toString())
-    let commonEventData: EventDataI = {
-      data: this.abilityLifeArr.toString()
-    };
-    if(this.wantParam == '0200' || this.wantParam == '0400'){
-      commonEventManager.publish(this.wantParam.toString(), commonEventData, (err) => {
-        console.info('====> [onWillBackground_0200 result] publish: ' + JSON.stringify(err));
-      });
-    }
-
-    if (this.wantParam == '1300' || this.wantParam == '1400') {
-      commonEventManager.publish(this.wantParam.toString(), commonEventData, (err) => {
-        console.info('====> [onWillBackground_0200 result] publish: ' + JSON.stringify(err));
-        this.context.terminateSelf()
-      });
-    }
   }
 }

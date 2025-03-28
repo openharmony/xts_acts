@@ -149,7 +149,7 @@ export default class EntryAbility extends UIAbility {
 
   onDidBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onDidBackround');
-    console.info('this.wantParam=', this.wantParam, this.wantParam == "onDidForeground_0004")
+    console.info('this.wantParam=', this.wantParam, this.wantParam == 'onDidForeground_0004')
     if (this.wantParam === 'onDidForeground_0004') {
       let commonEventData: EventDataI = {
         data: 'onDidBackground'
