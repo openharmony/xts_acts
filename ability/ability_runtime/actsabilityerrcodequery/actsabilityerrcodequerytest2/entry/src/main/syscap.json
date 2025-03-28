@@ -2,8 +2,7 @@
     "devices": {
         "general": [
             "default",
-            "tablet",
-            "wearable"
+            "tablet"
         ],
         "custom": [
             {
