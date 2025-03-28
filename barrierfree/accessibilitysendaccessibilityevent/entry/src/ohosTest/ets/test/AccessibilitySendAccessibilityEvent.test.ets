@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import accessibility from '@ohos.accessibility'
 import { Driver } from '@ohos.UiTest';
 
@@ -49,7 +49,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
              */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100');
             let eventType : accessibility.EventType = 'accessibilityFocus';
 
@@ -78,7 +78,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200');
             let eventType : accessibility.EventType = 'accessibilityFocus';
 
@@ -106,7 +106,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0300');
             let eventType : accessibility.EventType = 'accessibilityFocusClear';
 
@@ -135,7 +135,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0400');
             let eventType : accessibility.EventType = 'accessibilityFocusClear';
 
@@ -163,7 +163,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0500');
             let eventType : accessibility.EventType = 'click';
 
@@ -192,7 +192,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0600');
             let eventType : accessibility.EventType = 'click';
 
@@ -220,7 +220,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0700');
             let eventType : accessibility.EventType = 'longClick';
 
@@ -249,7 +249,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0800');
             let eventType : accessibility.EventType = 'longClick';
 
@@ -277,7 +277,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0900');
             let eventType : accessibility.EventType = 'focus';
 
@@ -306,7 +306,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1000');
             let eventType : accessibility.EventType = 'focus';
 
@@ -334,7 +334,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1100');
             let eventType : accessibility.EventType = 'select';
 
@@ -363,7 +363,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1200');
             let eventType : accessibility.EventType = 'select';
 
@@ -391,7 +391,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1300');
             let eventType : accessibility.EventType = 'hoverEnter';
 
@@ -420,7 +420,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1400');
             let eventType : accessibility.EventType = 'hoverEnter';
 
@@ -448,7 +448,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1500');
             let eventType : accessibility.EventType = 'hoverExit';
 
@@ -477,7 +477,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1600');
             let eventType : accessibility.EventType = 'hoverExit';
 
@@ -505,7 +505,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1700');
             let eventType : accessibility.EventType = 'textUpdate';
 
@@ -534,7 +534,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1800');
             let eventType : accessibility.EventType = 'textUpdate';
 
@@ -562,7 +562,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_1900');
             let eventType : accessibility.EventType = 'textSelectionUpdate';
 
@@ -591,7 +591,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2000');
             let eventType : accessibility.EventType = 'textSelectionUpdate';
 
@@ -619,7 +619,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2100');
             let eventType : accessibility.EventType = 'scroll';
 
@@ -648,7 +648,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2200');
             let eventType : accessibility.EventType = 'scroll';
 
@@ -676,7 +676,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2300');
             let windowUpdateType : accessibility.WindowUpdateType = 'add';
 
@@ -707,7 +707,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2400');
             let windowUpdateType : accessibility.WindowUpdateType = 'add';
 
@@ -735,7 +735,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2500');
             let localBundleName = 'com.ixaa.testfora11y';
 
@@ -764,7 +764,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2600');
             let localBundleName = 'com.ixaa.testfora11y';
 
@@ -790,7 +790,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2700');
             let componentType = 'button';
 
@@ -820,7 +820,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2800');
             let componentType = 'button';
 
@@ -848,7 +848,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_2900');
             let pageId = 1;
 
@@ -877,7 +877,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3000');
             let pageId = 1;
 
@@ -904,7 +904,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3100');
             let description = 'test';
 
@@ -933,7 +933,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3200');
             let description = 'test';
 
@@ -961,7 +961,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3300');
             let triggerAction : accessibility.Action = 'accessibilityFocus';
 
@@ -990,7 +990,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3400');
             let triggerAction : accessibility.Action = 'accessibilityFocus';
 
@@ -1018,7 +1018,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3500');
             let triggerAction : accessibility.Action = 'clearAccessibilityFocus';
 
@@ -1047,7 +1047,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3600');
             let triggerAction : accessibility.Action = 'clearAccessibilityFocus';
 
@@ -1075,7 +1075,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3700');
             let triggerAction : accessibility.Action = 'focus';
 
@@ -1104,7 +1104,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3800');
             let triggerAction : accessibility.Action = 'focus';
 
@@ -1132,7 +1132,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_3900');
             let triggerAction : accessibility.Action = 'clearFocus';
 
@@ -1161,7 +1161,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4000');
             let triggerAction : accessibility.Action = 'clearFocus';
 
@@ -1189,7 +1189,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4100');
             let triggerAction : accessibility.Action = 'clearSelection';
 
@@ -1218,7 +1218,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4200');
             let triggerAction : accessibility.Action = 'clearSelection';
 
@@ -1246,7 +1246,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4300');
             let triggerAction : accessibility.Action = 'click';
 
@@ -1275,7 +1275,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4400');
             let triggerAction : accessibility.Action = 'click';
 
@@ -1303,7 +1303,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4500');
             let triggerAction : accessibility.Action = 'longClick';
 
@@ -1332,7 +1332,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4600');
             let triggerAction : accessibility.Action = 'longClick';
 
@@ -1360,7 +1360,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4700');
             let triggerAction : accessibility.Action = 'cut';
 
@@ -1389,7 +1389,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4800');
             let triggerAction : accessibility.Action = 'cut';
 
@@ -1417,7 +1417,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_4900');
             let triggerAction : accessibility.Action = 'copy';
 
@@ -1446,7 +1446,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5000');
             let triggerAction : accessibility.Action = 'copy';
 
@@ -1474,7 +1474,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5100');
             let triggerAction : accessibility.Action = 'paste';
 
@@ -1503,7 +1503,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5200');
             let triggerAction : accessibility.Action = 'paste';
 
@@ -1531,7 +1531,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5300');
             let triggerAction : accessibility.Action = 'select';
 
@@ -1560,7 +1560,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5400');
             let triggerAction : accessibility.Action = 'select';
 
@@ -1588,7 +1588,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5500');
             let triggerAction : accessibility.Action = 'setText';
 
@@ -1617,7 +1617,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5600');
             let triggerAction : accessibility.Action = 'setText';
 
@@ -1645,7 +1645,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5700');
             let triggerAction : accessibility.Action = 'delete';
 
@@ -1674,7 +1674,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5800');
             let triggerAction : accessibility.Action = 'delete';
 
@@ -1702,7 +1702,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_5900');
             let triggerAction : accessibility.Action = 'scrollForward';
 
@@ -1731,7 +1731,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6000');
             let triggerAction : accessibility.Action = 'scrollForward';
 
@@ -1759,7 +1759,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6100');
             let triggerAction : accessibility.Action = 'scrollBackward';
 
@@ -1788,7 +1788,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6200');
             let triggerAction : accessibility.Action = 'scrollBackward';
 
@@ -1816,7 +1816,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6300');
             let triggerAction : accessibility.Action = 'setSelection';
 
@@ -1845,7 +1845,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6400');
             let triggerAction : accessibility.Action = 'setSelection';
 
@@ -1873,7 +1873,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6500');
             let textMoveUnit : accessibility.TextMoveUnit = 'char';
 
@@ -1902,7 +1902,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6600');
             let textMoveUnit : accessibility.TextMoveUnit = 'char';
 
@@ -1931,7 +1931,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6700');
             let textMoveUnit : accessibility.TextMoveUnit = 'word';
 
@@ -1961,7 +1961,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6800');
             let textMoveUnit : accessibility.TextMoveUnit = 'word';
 
@@ -1990,7 +1990,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_6900');
             let textMoveUnit : accessibility.TextMoveUnit = 'line';
 
@@ -2020,7 +2020,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7000');
             let textMoveUnit : accessibility.TextMoveUnit = 'line';
 
@@ -2049,7 +2049,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7100');
             let textMoveUnit : accessibility.TextMoveUnit = 'page';
 
@@ -2078,7 +2078,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7200');
             let textMoveUnit : accessibility.TextMoveUnit = 'page';
 
@@ -2106,7 +2106,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7300');
             let textMoveUnit : accessibility.TextMoveUnit = 'paragraph';
 
@@ -2136,7 +2136,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7400');
             let textMoveUnit : accessibility.TextMoveUnit = 'paragraph';
 
@@ -2163,7 +2163,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7500');
             let contents = ['1'];
 
@@ -2193,7 +2193,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7600');
             let contents = ['1'];
 
@@ -2221,7 +2221,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7700');
             let lastContent = '1';
 
@@ -2250,7 +2250,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7800');
             let lastContent = '1';
 
@@ -2279,7 +2279,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_7900');
             let beginIndex = 1;
 
@@ -2308,7 +2308,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8000');
             let beginIndex = 1;
 
@@ -2336,7 +2336,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8100');
             let currentIndex = 1;
 
@@ -2364,7 +2364,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8200');
             let currentIndex = 1;
 
@@ -2392,7 +2392,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8300');
             let endIndex = 1;
 
@@ -2421,7 +2421,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8400');
             let endIndex = 1;
 
@@ -2450,7 +2450,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8500');
             let itemCount = 1;
 
@@ -2480,7 +2480,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8600');
             let itemCount = 1;
 
@@ -2508,7 +2508,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700');
             let typy = 'requestFocusForAccessibility';
             let ttriggerAction = 'click';
@@ -2545,7 +2545,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800');
             let typy = 'requestFocusForAccessibility';
             let ttriggerAction = 'click';
@@ -2581,7 +2581,7 @@ export default function abilityTest() {
        * @tc.type    User
        * @tc.level   Level 1
        */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900');
             let typy = 'announceForAccessibility';
             let ttriggerAction = 'click';
@@ -2616,7 +2616,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000');
             let typy = 'announceForAccessibility';
             let ttriggerAction = 'click';
@@ -2651,7 +2651,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9100', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9100');
             let textResourceAnnouncedForAccessibility = $r('app.string.module_desc');
             let jsonObj = {
@@ -2684,7 +2684,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9200', 0, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9200');
             let textResourceAnnouncedForAccessibility = $r('app.string.module_desc');
             let jsonObj = {

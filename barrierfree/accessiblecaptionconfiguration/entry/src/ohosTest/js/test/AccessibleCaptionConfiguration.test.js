@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
 import { Driver } from '@ohos.UiTest';
 
@@ -39,11 +39,12 @@ describe('AccessibleCaptionConfiguration', function () {
    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100
    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100
    * @tc.desc    The parameter input is 'enableChange', test the captionManager.on() function,
-   *             and return undefined 
+   *             and return undefined
    * @tc.size    SmallTest
    * @tc.type    User
+   * @tc.level   Level 1
    */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'enableChange';
@@ -58,11 +59,12 @@ describe('AccessibleCaptionConfiguration', function () {
    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200
    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200
    * @tc.desc    The parameter input is 'styleChange', test the captionManager.on() function,
-   *             and return undefined 
+   *             and return undefined
    * @tc.size    SmallTest
    * @tc.type    User
+   * @tc.level   Level 1
    */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'styleChange';
