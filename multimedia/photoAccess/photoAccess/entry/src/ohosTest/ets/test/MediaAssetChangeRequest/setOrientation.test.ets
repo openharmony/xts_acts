@@ -42,6 +42,7 @@ export default function setOrientationChangeRequestTest() {
         expect(photoAssetNew.get(orientationNew)).assertEqual(orientation);
       } catch (err) {
         console.error(`Do not isEqual !`);
+        expect(false).assertTrue();
       }
     }
 
@@ -95,37 +96,37 @@ export default function setOrientationChangeRequestTest() {
         let newOrientation = 90;
         assetChangeRequest.setOrientation(newOrientation);
         try {
-          isEqual(assetChangeRequest, photoAsset, 90);
+          await isEqual(assetChangeRequest, photoAsset, 90);
           console.info(`${testNum} successed`);
         } catch (error) {
-          isEqual(assetChangeRequest, photoAsset, 0);
+          await isEqual(assetChangeRequest, photoAsset, 0);
           console.error(`${testNum} applyChanges failed with error: ${error}`);
         }
         let newOrientation_0 = 0;
         assetChangeRequest.setOrientation(newOrientation_0);
         try {
-          isEqual(assetChangeRequest, photoAsset, 0);
+          await isEqual(assetChangeRequest, photoAsset, 0);
           console.info(`${testNum} successed`);
         } catch (error) {
-          isEqual(assetChangeRequest, photoAsset, 90);
+          await isEqual(assetChangeRequest, photoAsset, 90);
           console.error(`${testNum} applyChanges failed with error: ${error}`);
         }
         let newOrientation_180 = 180;
         assetChangeRequest.setOrientation(newOrientation_180);
         try {
-          isEqual(assetChangeRequest, photoAsset, 180);
+          await isEqual(assetChangeRequest, photoAsset, 180);
           console.info(`${testNum} successed`);
         } catch (error) {
-          isEqual(assetChangeRequest, photoAsset, 0);
+          await isEqual(assetChangeRequest, photoAsset, 0);
           console.error(`${testNum} applyChanges failed with error: ${error}`);
         }
         let newOrientation_270 = 270;
         assetChangeRequest.setOrientation(newOrientation_270);
         try {
-          isEqual(assetChangeRequest, photoAsset, 270);
+          await isEqual(assetChangeRequest, photoAsset, 270);
           console.info(`${testNum} successed`);
         } catch (error) {
-          isEqual(assetChangeRequest, photoAsset, 180);
+          await isEqual(assetChangeRequest, photoAsset, 180);
           console.error(`${testNum} applyChanges failed with error: ${error}`);
         }
         console.info(`${testNum} , new_photoAsset_orientation: ${photoAsset.get('orientation')}`);
