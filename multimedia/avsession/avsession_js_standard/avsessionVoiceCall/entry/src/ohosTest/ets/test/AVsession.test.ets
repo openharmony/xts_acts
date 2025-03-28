@@ -1574,7 +1574,143 @@ export default function abilityTest() {
     })
 
 
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETLAUNCHABILITY_6000
+     * @tc.name      : getLaunchAbility() with controller does not exit(errcode 6600103)
+     * @tc.desc      : test getLaunchAbility() errcode 6600103
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
 
+    it('SUB_MULTIMEDIA_AVSESSION_GETLAUNCHABILITY_6000', 2, async (done: Function) => {
+      await controller.destroy()
+      await sleep(500)
+      await controller.getLaunchAbility((err: BusinessError, agent: object) => {
+      if (err) {
+        console.error(`GetLaunchAbility14 BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(6600103);
+      } else {
+        console.info(`GetLaunchAbility14 : SUCCESS : wantAgent : ${agent}`);
+      }
+    });
+      controller = null;
+      done();
+    })
+
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETLAUNCHABILITY_PROMISE_6100
+     * @tc.name      : getLaunchAbility(promise) with controller does not exit(errcode 6600103)
+     * @tc.desc      : test getLaunchAbility(promise) errcode 6600103
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_GETLAUNCHABILITY_PROMISE_6100', 2, async (done: Function) => {
+      await controller.destroy()
+      await sleep(500)
+      await controller.getLaunchAbility().then((agent: object) => {
+        console.info(`GetLaunchAbility13 : SUCCESS : wantAgent : ${agent}`);
+      }).catch((err: BusinessError) => {
+        console.error(`GetLaunchAbility13 BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(6600103);
+      });
+      controller = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ISACTIVE_PROMISE6200
+     * @tc.name      : isActive(promise) with controller does not exit(errcode 6600103)
+     * @tc.desc      : test isActive(promise) errcode 6600103
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_ISACTIVE_PROMISE_6200', 2, async (done: Function) => {
+      await controller.destroy()
+      await sleep(500)
+      await controller.isActive().then((isActive: boolean) => {
+        console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
+      }).catch((err: BusinessError) => {
+        console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(6600103);
+      });
+      controller = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ISACTIVE_6300
+     * @tc.name      : isActive() with controller does not exit(errcode 6600103)
+     * @tc.desc      : test isActive() errcode 6600103
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_ISACTIVE_6300', 2, async (done: Function) => {
+      await controller.destroy()
+      await sleep(500)
+      await controller.isActive((err: BusinessError, isActive: boolean) => {
+      if (err) {
+        console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(6600103);
+      } else {
+        console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
+      }
+    });
+      done();
+    })
+
+
+     /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_6400
+     * @tc.name      : isActive(promise) with session does not exit(errcode 6600102)
+     * @tc.desc      : test isActive(promise) errcode 6600102
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_6400', 2, async (done: Function) => {
+      await session.destroy()
+      await sleep(500)
+      await controller.sendAVKeyEvent(event).then(() => {
+        console.info('SendAVKeyEvent Successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(6600102);
+      });
+      session = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_6500
+     * @tc.name      : isActive() with session does not exit(errcode 6600102)
+     * @tc.desc      : test isActive() errcode 6600102
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_6500', 2, async (done: Function) => {
+      await session.destroy()
+      await sleep(500)
+      await controller.sendAVKeyEvent(event, (err: BusinessError) => {
+        if (err) {
+          console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(6600102);
+        } else {
+          console.info('SendAVKeyEvent Successfully');
+        }
+      });
+      done();
+    })   
 
 
   })
