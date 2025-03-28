@@ -23,6 +23,7 @@ import webViewContJsMessageExtReturnError from './webViewContJsMessageExtReturnE
 import webViewContWebMessageExtReturnError from './webViewContWebMessageExtReturnError.test'
 import webViewContPageAndprepareForPageLoadErrorOne from './webViewContPageAndprepareForPageLoadErrorOne.test'
 import webViewContPageAndprepareForPageLoadErrorTwo from './webViewContPageAndprepareForPageLoadErrorTwo.test'
+import webViewContCreatePdfAndOthersError from './webViewContCreatePdfAndOthersError.test'
 
 export default function testsuite() {
   webViewContMessageError()
@@ -36,5 +37,6 @@ export default function testsuite() {
   webViewContWebMessageExtReturnError()
   //webViewContPageAndprepareForPageLoadErrorOne()
   //webViewContPageAndprepareForPageLoadErrorTwo()
+  webViewContCreatePdfAndOthersError()
 
 }

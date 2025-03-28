@@ -20,6 +20,7 @@ import webResourceResponseGet from './WebResourceResponseGet.test'
 import webNestedScrollOptionsScrollForwardTest from './WebNestedScrollOptionsScrollForwardTest.test'
 import NestedScrollMode from './NestedScrollMode.test'
 import scrollEvent from './scrollEvent.test'
+import scrollByTo from './scrollByTo.test'
 export default function testsuite() {
   webResourceResponseGet()
   webViewOnScroll()
@@ -28,4 +29,5 @@ export default function testsuite() {
   webNestedScrollOptionsScrollForwardTest()
   NestedScrollMode()
   scrollEvent()
+  scrollByTo()
 }
