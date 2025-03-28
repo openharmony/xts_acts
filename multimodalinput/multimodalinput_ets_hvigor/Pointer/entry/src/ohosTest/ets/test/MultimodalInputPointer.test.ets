@@ -44,7 +44,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setPointerVisible_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setPointerVisible_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisible_0100";
       try {
         let flag: number = 0;
@@ -75,7 +75,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setPointerVisible_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setPointerVisible_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisible_0200";
       try {
         let flag: number = 0;
@@ -104,7 +104,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerVisibleSync_0100";
       let ifSetPointerVisibleSyncSuccess = 0;
       try {
@@ -128,7 +128,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_isPointerVisible_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_isPointerVisible_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_isPointerVisible_0100";
       try {
         pointer.isPointerVisible((error: Error, visible: boolean) => {
@@ -157,7 +157,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_isPointerVisible_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_isPointerVisible_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_isPointerVisible_0200";
       try {
         pointer.isPointerVisible().then((visible: boolean) => {
@@ -180,7 +180,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_isPointerVisibleSync_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_isPointerVisibleSync_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_isPointerVisibleSync_0100";
       try {
         let visible: boolean = pointer.isPointerVisibleSync();
@@ -202,7 +202,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_getPointerStyle_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_getPointerStyle_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_getPointerStyle_0100";
       let context = getContext();
       window.getLastWindow(context, (error: BusinessError, win: window.Window) => {
@@ -239,7 +239,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_getPointerStyle_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_getPointerStyle_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_getPointerStyle_0200";
       let context = getContext();
       window.getLastWindow(context, (error: BusinessError, win: window.Window) => {
@@ -276,7 +276,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_getPointerStyleSync_0100";
       try {
         let style: pointer.PointerStyle = pointer.getPointerStyleSync(-1);
@@ -298,7 +298,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyle_0100";
       let ifSetPointerStyleSuccess = 0;
       window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
@@ -336,7 +336,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0200", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setPointerStyle_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyle_0200";
       let ifSetPointerStyleSuccess = 0;
       window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
@@ -374,7 +374,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setPointerStyleSync_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setPointerStyleSync_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setPointerStyleSync_0100";
       let ifSetPointerStyleSyncSuccess = 0;
       window.getLastWindow(getContext(), (error: BusinessError, win: window.Window) => {
@@ -411,7 +411,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursor_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursor_0100";
       let ifSetCustomCursorSuccess = 0;
       getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
@@ -446,7 +446,7 @@ export default function MultimodalInputPointerTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0100", 0, async (done:Function)=> {
+    it("SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_Pointer_setCustomCursorSync_0100";
       let ifSetCustomCursorSyncSuccess = 0;
       const svgFileData = getContext().resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
