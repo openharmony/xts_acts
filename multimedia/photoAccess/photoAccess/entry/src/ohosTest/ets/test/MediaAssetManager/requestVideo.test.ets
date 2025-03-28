@@ -199,11 +199,7 @@ export default function requestVideoTest() {
         expect(flag).assertEqual(0);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        if (!isSupportHdr) {
-          expect(error.code).assertEqual('801');
-        } else {
-          expect(error.code).assertEqual('401');
-        }
+        expect(error.code).assertEqual('401');
         done();
       }
     }
