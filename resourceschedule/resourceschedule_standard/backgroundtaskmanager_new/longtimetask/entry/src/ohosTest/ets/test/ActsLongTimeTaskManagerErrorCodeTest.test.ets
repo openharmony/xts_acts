@@ -50,20 +50,20 @@ export default function LongTimeTaskManagerErrorCodeTest() {
           delegator.getCurrentTopAbility().then((ability: UIAbility) => {
 
             backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
-              console.info("beforeAll stopBackgroundRunning promise run success");
+              console.info("ActsLongTimeTaskManagerErrorCodeTest beforeAll stopBackgroundRunning promise run success");
             }).catch((error: BusinessError) => {
-              console.error(`beforeAll Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+              console.error(`ActsLongTimeTaskManagerErrorCodeTest beforeAll Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
             });
 
           }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN, TAG, 'beforeAll getCurrentTopAbility error: %{public}s', JSON.stringify(error));
+            hilog.info(DOMAIN, TAG, 'ActsLongTimeTaskManagerErrorCodeTest beforeAll getCurrentTopAbility error: %{public}s', JSON.stringify(error));
           });
         }).catch((error: BusinessError) => {
-          hilog.info(DOMAIN, TAG, 'beforeAll getWantAgent error: %{public}s', JSON.stringify(error));
+          hilog.info(DOMAIN, TAG, 'ActsLongTimeTaskManagerErrorCodeTest beforeAll getWantAgent error: %{public}s', JSON.stringify(error));
         })
       } catch (error) {
         let e: BusinessError = error as BusinessError;
-        hilog.info(DOMAIN, TAG, 'beforeAll aa error: %{public}s', JSON.stringify(error));
+        hilog.info(DOMAIN, TAG, 'ActsLongTimeTaskManagerErrorCodeTest beforeAll aa error: %{public}s', JSON.stringify(error));
       }
     })
 
@@ -75,20 +75,20 @@ export default function LongTimeTaskManagerErrorCodeTest() {
           delegator.getCurrentTopAbility().then((ability: UIAbility) => {
 
             backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
-              console.info("afterAll stopBackgroundRunning promise run success");
+              console.info("ActsLongTimeTaskManagerErrorCodeTest afterAll stopBackgroundRunning promise run success");
             }).catch((error: BusinessError) => {
-              console.error(`afterAll Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+              console.error(`ActsLongTimeTaskManagerErrorCodeTest afterAll Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
             });
 
           }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN, TAG, 'afterAll getCurrentTopAbility error: %{public}s', JSON.stringify(error));
+            hilog.info(DOMAIN, TAG, 'ActsLongTimeTaskManagerErrorCodeTest afterAll getCurrentTopAbility error: %{public}s', JSON.stringify(error));
           });
         }).catch((error: BusinessError) => {
-          hilog.info(DOMAIN, TAG, 'afterAll getWantAgent error: %{public}s', JSON.stringify(error));
+          hilog.info(DOMAIN, TAG, 'ActsLongTimeTaskManagerErrorCodeTest afterAll getWantAgent error: %{public}s', JSON.stringify(error));
         })
       } catch (error) {
         let e: BusinessError = error as BusinessError;
-        hilog.info(DOMAIN, TAG, 'afterAll aa error: %{public}s', JSON.stringify(error));
+        hilog.info(DOMAIN, TAG, 'ActsLongTimeTaskManagerErrorCodeTest afterAll aa error: %{public}s', JSON.stringify(error));
       }
     })
 
@@ -279,25 +279,24 @@ export default function LongTimeTaskManagerErrorCodeTest() {
                 expect(slotType).assertLarger(-1);
                 expect(contentType).assertLarger(-1);
                 expect(notificationId).assertLarger(-1);
+
+                backgroundTaskManager.startBackgroundRunning(ability.context, bgModeList, want).then((res) => {
+                  hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning2 promise run success.');
+                  hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning2 promise res: %{public}s', JSON.stringify(res));
+                }).catch((error: BusinessError) => {
+                  hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning2 promise error: %{public}s', JSON.stringify(error));
+                  expect(error.code).assertEqual(9800005);
+                  backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
+                    console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 stopBackgroundRunning promise run success");
+                  }).catch((error: BusinessError) => {
+                    console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+                  });
+                  done();
+              })
                 done();
               }).catch((error: BusinessError) => {
                 hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning promise error: %{public}s', JSON.stringify(error));
               })
-
-              backgroundTaskManager.startBackgroundRunning(ability.context, bgModeList, want).then((res) => {
-                hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning2 promise run success.');
-                hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning2 promise res: %{public}s', JSON.stringify(res));
-              }).catch((error: BusinessError) => {
-                hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 startBackgroundRunning2 promise error: %{public}s', JSON.stringify(error));
-                expect(error.code).assertEqual(9800005);
-                done();
-              })
-
-              backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
-                console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 stopBackgroundRunning promise run success");
-              }).catch((error: BusinessError) => {
-                console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-              });
 
             }).catch((error: BusinessError) => {
               hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_004 getCurrentTopAbility error: %{public}s', JSON.stringify(error));
@@ -343,28 +342,26 @@ export default function LongTimeTaskManagerErrorCodeTest() {
                   } else {
                     hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning callback run success.');
                     hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning callback res: %{public}s', JSON.stringify(data));
+                    backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want,
+                    (error: BusinessError, data: void) => {
+                      if (error) {
+                        hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning2 callback error: %{public}s', JSON.stringify(error));
+                        expect(error.code).assertEqual(9800005);
+                        backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
+                          console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 stopBackgroundRunning promise run success");
+                        }).catch((error: BusinessError) => {
+                          console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+                        });
+                        done();
+                      } else {
+                        hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning2 callback run success.');
+                        hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning2 callback res: %{public}s', JSON.stringify(data));
+                      }
+                        done();
+                    })
                   }
                   done();
                 })
-
-                backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want,
-                (error: BusinessError, data: void) => {
-                  if (error) {
-                    hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning2 callback error: %{public}s', JSON.stringify(error));
-                    expect(error.code).assertEqual(9800005);
-                    done();
-                  } else {
-                    hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning2 callback run success.');
-                    hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 startBackgroundRunning2 callback res: %{public}s', JSON.stringify(data));
-                  }
-                  done();
-                })
-
-              backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
-                console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 stopBackgroundRunning promise run success");
-              }).catch((error: BusinessError) => {
-                console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-              });
             })
               .catch((error: BusinessError) => {
               hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_005 getCurrentTopAbility error: %{public}s', JSON.stringify(error));
@@ -419,9 +416,9 @@ export default function LongTimeTaskManagerErrorCodeTest() {
               })
 
               backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
-                console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_006 stopBackgroundRunning promise run success");
+                console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_006 stopBackgroundRunning2 promise run success");
               }).catch((error: BusinessError) => {
-                console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_006 Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+                console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_006 Operation stopBackgroundRunning2 failed. code is ${error.code} message is ${error.message}`);
               });
             }).catch((error: BusinessError) => {
               hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_006 getCurrentTopAbility error: %{public}s', JSON.stringify(error));
@@ -511,21 +508,27 @@ export default function LongTimeTaskManagerErrorCodeTest() {
               let bgMode = backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK;
               backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want).then(() => {
                 hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning promise run success.');
-              }).catch((error: BusinessError) => {
-                hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning promise error: %{public}s', JSON.stringify(error));
-                expect(false).assertTrue();
-                done();
-              })
 
-              backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want).then(() => {
-                hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning promise run success.');
-                expect(false).assertTrue();
-                done();
-              }).catch((error: BusinessError) => {
-                hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning2 promise error: %{public}s', JSON.stringify(error));
-                expect(error.code == 9800005).assertTrue();
-                done();
-              })
+                backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want).then(() => {
+                  hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning promise run success.');
+                  expect(false).assertTrue();
+                  done();
+                }).catch((error: BusinessError) => {
+                  hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning2 promise error: %{public}s', JSON.stringify(error));
+                  expect(error.code == 9800005).assertTrue();
+                  backgroundTaskManager.stopBackgroundRunning(ability.context).then(() => {
+                    console.info("SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_007 stopBackgroundRunning promise run success");
+                  }).catch((error: BusinessError) => {
+                    console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_007 Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+                    done();
+                  });
+                  done();
+                })
+                }).catch((error: BusinessError) => {
+                  hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 startBackgroundRunning promise error: %{public}s', JSON.stringify(error));
+                  expect(false).assertTrue();
+                  done();
+                })
             }).catch((error: BusinessError) => {
               hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_008 getCurrentTopAbility error: %{public}s', JSON.stringify(error));
               expect(false).assertTrue();
@@ -652,16 +655,16 @@ export default function LongTimeTaskManagerErrorCodeTest() {
       })
 
     /*
-     * @tc.number:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012
-     * @tc.name:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012
+     * @tc.number:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011
+     * @tc.name:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011
      * @tc.desc:Test that the getRemainingDelayTime callback function error call and errocode is 9900001
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
       async (done: Function) => {
-        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 begin---');
+        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011 begin---');
 
         try {
           let id = 100;
@@ -671,47 +674,47 @@ export default function LongTimeTaskManagerErrorCodeTest() {
               expect(Number(error.code)).assertEqual(9900001);
               done();
             } else {
-              console.log('SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+              console.log('SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011 Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
             }
           })
         } catch (error) {
           let e: BusinessError = error as BusinessError;
-          hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 aa error: %{public}s', JSON.stringify(error));
+          hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011 aa error: %{public}s', JSON.stringify(error));
           expect(false).assertTrue();
           done();
         }
 
-        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 end---');
+        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_011 end---');
       }) 
 
     /*
-     * @tc.number:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013
-     * @tc.name:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013
+     * @tc.number:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012
+     * @tc.name:SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012
      * @tc.desc:Test that the cancelSuspendDelay callback function error call and errocode is 9900001
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
       async (done: Function) => {
-        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013 begin---');
+        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 begin---');
 
         try {
           let id = 123;
           try {
             backgroundTaskManager.cancelSuspendDelay(id);
           } catch (error) {
-            console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013 cancelSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+            console.error(`SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 cancelSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
             expect(Number(error.code)).assertEqual(9900001);
             done();
           }
         } catch (error) {
           let e: BusinessError = error as BusinessError;
-          hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013 aa error: %{public}s', JSON.stringify(error));
+          hilog.info(DOMAIN, TAG, 'SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 aa error: %{public}s', JSON.stringify(error));
           expect(false).assertTrue();
         }
 
-        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_013 end---');
+        hilog.info(DOMAIN, TAG, '%{public}s', '---SUB_RESOURCESCHEDULE_LONGTIME_ERR_TASK_XTS_012 end---');
       })
 
   })
