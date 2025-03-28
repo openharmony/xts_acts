@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as syncSymEncAndDecUtils from './utils/syncSymEncAndDec/syncSymEncAndDecUtils';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 16;
@@ -92,7 +92,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0001", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 13;
@@ -136,7 +136,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0002", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 20;
@@ -180,7 +180,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0003", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 88;
@@ -224,7 +224,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0004", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 88;
@@ -268,7 +268,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0005", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 88;
@@ -312,7 +312,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0006", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let paramSpec: cryptoFramework.IvParamsSpec = syncSymEncAndDecUtils.genIvParamsSpec(dataIv);
       let dataLen: number = 88;
@@ -356,7 +356,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0007", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
       let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
@@ -403,7 +403,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_008", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0];
       let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
       let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -450,7 +450,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let dataLen: number = 127;
         let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
@@ -475,7 +475,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_CIPHER_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -506,7 +506,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
           let algName: string = "RSA512";
           let padding: string = "PKCS1_OAEP";
@@ -533,7 +533,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -567,7 +567,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0401", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA3072_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -601,7 +601,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0402", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0402", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA4096_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -635,7 +635,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0403", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0403", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA8192_MD5_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -669,7 +669,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0404", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0404", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA8192_SHA1_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -703,7 +703,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0405", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0405", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA8192_SHA224_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -737,7 +737,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0406", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0406", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA8192_SHA256_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -771,7 +771,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0407", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0407", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA8192_SHA384_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -805,7 +805,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0408", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0408", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let rsaSpec of syncSymEncAndDecUtils.ASY_RSA8192_SHA512_CIPHER_OAEP_SPEC) {
           let algName: string = rsaSpec[0][0] != "RSA" ? rsaSpec[0][0] : "RSA2048";
@@ -839,7 +839,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let dataLen: number = 128;
         let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
@@ -864,7 +864,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let symKey: cryptoFramework.SymKey = syncSymEncAndDecUtils.createSymKeySync(algName);
@@ -890,7 +890,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let keyPair: cryptoFramework.KeyPair = await syncSymEncAndDecUtils.createAsymKeySync(algName);
@@ -914,7 +914,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let dataLen: number = 117;
         let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
@@ -941,7 +941,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "AES128";
         let encAlgName: string = "AES128|GCM|PKCS7";
@@ -964,7 +964,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM2_256";
         let encAlgName: string = "SM2_256|SM3";
@@ -988,7 +988,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let encAlgName: string = "RSA2048|PKCS1";
@@ -1012,7 +1012,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let encAlgName: string = "RSA2048|PKCS1";
@@ -1084,7 +1084,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|CFB|PKCS7"
@@ -1140,7 +1140,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for(let sm2Spec of syncSymEncAndDecUtils.ASY_SM2_CIPHER_OAEP_SPEC) {
           let algName: string = sm2Spec[0][0] == "SM2" ? "SM2_256": sm2Spec[0][0];
@@ -1170,7 +1170,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM2_256";
         let mdName: string = "SM3";
@@ -1249,7 +1249,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1289,7 +1289,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1329,7 +1329,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1366,7 +1366,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1418,7 +1418,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "HMAC";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1452,7 +1452,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1490,7 +1490,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|PKCS7"
@@ -1528,7 +1528,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let encAlgName: string = "SM4_128|GCM|NoPadding"
         let dataLen: number = 128;
@@ -1559,7 +1559,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM|NoPadding"
@@ -1601,7 +1601,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|GCM"

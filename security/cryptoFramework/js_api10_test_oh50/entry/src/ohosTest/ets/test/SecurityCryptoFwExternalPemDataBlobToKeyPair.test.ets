@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import { DataBlobMap, externalPemData } from './utils/externalPemData/externalPemData';
 import * as commonUtils from './utils/common/commonUtils';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "";
       try {
         for(let data of externalPemData) {
@@ -83,7 +83,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "";
       try {
         for(let data of externalPemData) {
@@ -113,7 +113,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0201", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0201", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "ECC224";
       let priKey: string =
         '-----BEGIN PRIVATE KEY-----\n'                                        +
@@ -146,7 +146,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "DSA";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -178,7 +178,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "DSA";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -210,7 +210,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "X25519";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -239,7 +239,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "X25519";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -268,7 +268,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "Ed25519";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -297,7 +297,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "Ed25519";
       let keyPair: cryptoFramework.KeyPair = {} as cryptoFramework.KeyPair;
       try {
@@ -326,7 +326,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "SM2";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -358,7 +358,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "SM2";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -390,7 +390,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "DH";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -422,7 +422,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "DH";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -459,7 +459,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "ECC256";
       let generator: cryptoFramework.AsyKeyGenerator = {} as cryptoFramework.AsyKeyGenerator;
       try {
@@ -491,7 +491,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "ECC521";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -520,7 +520,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "DSA1024";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -553,7 +553,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "ECC521_FALSIFIED_HEAD";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -579,7 +579,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "X25519_FALSIFIED_TAIL";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -605,7 +605,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PUB_KEY_ERROR";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -631,7 +631,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_KEY_ERROR";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -657,7 +657,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "NOT_FOUND_PEM_HEAD";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -683,7 +683,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "NOT_FOUND_PEM_TAIL";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -709,7 +709,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_KEY_ENCRYPTED";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -735,7 +735,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_FALSIFIED_PRIME";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -761,7 +761,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_FALSIFIED_CURVE_NAME";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -787,7 +787,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "ECC_160R1";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -812,7 +812,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_DEL_PEM_DATA";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -838,7 +838,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_DSA_FALSIFIED_OBJECT";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -864,7 +864,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_FALSIFIED_DATA_TYPE";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -890,7 +890,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "SM2_FALSIFIED_OBJECT_ONE";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -916,7 +916,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "SM2_FALSIFIED_OBJECT_TWO";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -942,7 +942,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_PUB_FROM_DIFF_KEYPAIR";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -968,7 +968,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PRI_PUB_FROM_DIFF_ALGO";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -994,7 +994,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "FALSIFIED_PRI_ENC_BEGIN";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -1020,7 +1020,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "FALSIFIED_PRI_ENC_ALL";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -1046,7 +1046,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "GET_PRI_OF_PKCS12_FILE";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -1073,7 +1073,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PKCS12";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -1099,7 +1099,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PKCS7";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -1125,7 +1125,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PEM_WITH_DIRTY_DATA";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);
@@ -1150,7 +1150,7 @@ export default function SecurityCryptoFwDataBlobToPemTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_DataBlobToPem_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "PEM_WITH_PKCS8_NOT_PKCS8";
       try {
         let dataMap: DataBlobMap = new DataBlobMap(false);

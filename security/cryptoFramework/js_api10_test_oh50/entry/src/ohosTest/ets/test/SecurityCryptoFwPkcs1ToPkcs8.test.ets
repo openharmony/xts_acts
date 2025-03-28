@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as pkcs1topkcs8 from './utils/pkcs1Topkcs8/pkcs1topkcs8';
@@ -49,7 +49,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0001", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let priString  = "";
       try {
         priString  = await pkcs1topkcs8.doPrivatePkcs1ToPkcs8ByPromise('RSA512', pkcs1topkcs8.priKeyPkcs1Str512);
@@ -111,7 +111,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0002", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let priString  = "";
       try {
         priString  = pkcs1topkcs8.doPrivatePkcs1ToPkcs8BySync('RSA512', pkcs1topkcs8.priKeyPkcs1Str512);
@@ -173,7 +173,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0003", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let priString  = "";
       try {
         priString  = await pkcs1topkcs8.doPrivatePkcs8ToPkcs1ByPromise('RSA512', pkcs1topkcs8.priKeyPkcs8Str512);
@@ -235,7 +235,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0004", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let priString  = "";
       try {
         priString  = pkcs1topkcs8.doPrivatePkcs8ToPkcs1BySync('RSA512', pkcs1topkcs8.priKeyPkcs8Str512);
@@ -297,7 +297,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0005", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let pubString  = "";
       try {
         pubString  = await pkcs1topkcs8.doPublicPkcs1ToX509ByPromise('RSA512', pkcs1topkcs8.pubKeyPkcs1Str512);
@@ -359,7 +359,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0006", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let pubString  = "";
       try {
         pubString  = pkcs1topkcs8.doPublicPkcs1ToX509BySync('RSA512', pkcs1topkcs8.pubKeyPkcs1Str512);
@@ -421,7 +421,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0007", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let pubString  = "";
       try {
         pubString  = await pkcs1topkcs8.doPublicX509ToPkcs1ByPromise('RSA512', pkcs1topkcs8.pubKeyX509Str512);
@@ -483,7 +483,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0008", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let pubString  = "";
       try {
         pubString  = pkcs1topkcs8.doPublicX509ToPkcs1BySync('RSA512', pkcs1topkcs8.pubKeyX509Str512);
@@ -545,7 +545,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0009", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -630,7 +630,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0010", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -715,7 +715,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0011", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -800,7 +800,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0012", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -885,7 +885,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0013", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -970,7 +970,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0014", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -1055,7 +1055,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0015", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -1140,7 +1140,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0016", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let keyPair: cryptoFramework.KeyPair;
       let pubstring  = "";
       let pristring  = "";
@@ -1225,7 +1225,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1246,7 +1246,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1267,7 +1267,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1288,7 +1288,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1309,7 +1309,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1330,7 +1330,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1351,7 +1351,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1371,7 +1371,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1395,7 +1395,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1415,7 +1415,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1435,7 +1435,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1455,7 +1455,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1476,7 +1476,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1497,7 +1497,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1518,7 +1518,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1539,7 +1539,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1560,7 +1560,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1581,7 +1581,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1602,7 +1602,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1626,7 +1626,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1647,7 +1647,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1668,7 +1668,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1689,7 +1689,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1711,7 +1711,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1733,7 +1733,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1755,7 +1755,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1777,7 +1777,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA4096";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1799,7 +1799,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA8192";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1821,7 +1821,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1843,7 +1843,7 @@ export default function SecurityCryptoFwPkcs1ToPkcs8TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Pkcs1ToPkcs8_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);

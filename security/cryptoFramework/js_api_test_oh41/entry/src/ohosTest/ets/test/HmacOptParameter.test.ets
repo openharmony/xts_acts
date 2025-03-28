@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import * as digCallback from './utils/digestalgorithm/publicDigestCallback';
 import * as digPromise from './utils/digestalgorithm/publicDigestPromise';
 import * as common from './utils/common/publicDoString';
@@ -48,7 +48,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA1
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digCallback.HmacDigestProcess("SHA1", "HMAC|SHA1");
         let outputLength: number = retData.output.data.length;
@@ -67,7 +67,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA224
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digCallback.HmacDigestProcess("SHA224", "HMAC|SHA224");
         let outputLength: number = retData.output.data.length;
@@ -86,7 +86,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA256
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digCallback.HmacDigestProcess("SHA256", "HMAC|SHA256");
         let outputLength: number = retData.output.data.length;
@@ -105,7 +105,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA384
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digCallback.HmacDigestProcess("SHA384", "HMAC|SHA384");
         let outputLength: number = retData.output.data.length;
@@ -124,7 +124,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA512
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digCallback.HmacDigestProcess("SHA512", "HMAC|SHA512");
         let outputLength: number = retData.output.data.length;
@@ -143,7 +143,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SM3
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digCallback.HmacDigestProcess("SM3", "HMAC|SM3");
         let outputLength: number = retData.output.data.length;
@@ -161,7 +161,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 1. SymKeyGenerator with invalid  parameters or MAC with invalid  parameters
      * @tc.desc 2. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await digCallback.HmacDigestProcess("SM3", "hmac|SM3");
         expect(null).assertFail();
@@ -186,7 +186,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA512
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let keyBlob: cryptoFramework.DataBlob = {
         data: common.stringTouInt8Array("123ab")
       };
@@ -208,7 +208,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SM3
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_0900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let strLen: number = 4097;
       let srcStr: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz0123456789";
       let randomStr: string = "";
@@ -235,7 +235,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SM3
      * @tc.desc 3. Test interface with AsyncCallback style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let keyBlob: cryptoFramework.DataBlob = {
         data: common.stringTouInt8Array("")
       };
@@ -255,7 +255,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA1
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digPromise.HmacDigestProcess("SHA1", "HMAC|SHA1");
         let outputLength: number = retData.output.data.length;
@@ -274,7 +274,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA224
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digPromise.HmacDigestProcess("SHA224", "HMAC|SHA224");
         let outputLength: number = retData.output.data.length;
@@ -293,7 +293,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA256
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digPromise.HmacDigestProcess("SHA256", "HMAC|SHA256");
         let outputLength: number = retData.output.data.length;
@@ -312,7 +312,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA384
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digPromise.HmacDigestProcess("SHA384", "HMAC|SHA384");
         let outputLength: number = retData.output.data.length;
@@ -331,7 +331,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA512
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digPromise.HmacDigestProcess("SHA512", "HMAC|SHA512");
         let outputLength: number = retData.output.data.length;
@@ -350,7 +350,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SM3
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let retData = await digPromise.HmacDigestProcess("SM3", "HMAC|SM3");
         let outputLength: number = retData.output.data.length;
@@ -368,7 +368,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 1. SymKeyGenerator with invalid  parameters or MAC with invalid  parameters
      * @tc.desc 2. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await digPromise.HmacDigestProcess("SM3", "HMAC|Sha256");
         expect(null).assertFail();
@@ -393,7 +393,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA384
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let keyBlob: cryptoFramework.DataBlob = {
         data: common.stringTouInt8Array("123ab")
       };
@@ -415,7 +415,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA256
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_1900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let strLen: number = 4097;
       let srcStr: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz0123456789";
       let randomStr: string = "";
@@ -442,7 +442,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
      * @tc.desc 2. MAC with algName SHA1
      * @tc.desc 3. Test interface with Promise style
      */
-    it("Security_CryptoFramework_HmacOptPara_Func_2000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_HmacOptPara_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let keyBlob: cryptoFramework.DataBlob = {
         data: common.stringTouInt8Array("")
       };

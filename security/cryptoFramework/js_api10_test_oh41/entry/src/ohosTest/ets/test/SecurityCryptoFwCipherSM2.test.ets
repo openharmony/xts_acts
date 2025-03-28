@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as specUtil from './utils/common/keyGenSpecUtil';
@@ -52,7 +52,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0100: started.");
       let cipherAlg: string = "SM2_256|SHA256";
       try {
@@ -78,7 +78,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0200: started.");
       let cipherAlg: string = "SM2_256|SHA256";
       let curveName: string = "NID_sm2";
@@ -110,7 +110,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0300: started.");
       let cipherAlg: string = "SM2_256|MD5";
       try {
@@ -133,7 +133,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0400: started.");
       let cipherAlg: string = "SM2_256|SHA1";
       try {
@@ -156,7 +156,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0500: started.");
       let cipherAlg: string = "SM2|SHA224";
       try {
@@ -179,7 +179,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0600: started.");
       let cipherAlg: string = "SM2_256|SHA256";
       try {
@@ -202,7 +202,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0700: started.");
       let cipherAlg: string = "SM2_256|SHA384";
       try {
@@ -225,7 +225,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0800: started.");
       let cipherAlg: string = "SM2_256|SHA512";
       try {
@@ -248,7 +248,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_0900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_Cipher_SM2_Func_0900: started.");
       let cipherAlg: string = "SM2_256|SM3";
       try {
@@ -271,7 +271,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_Cipher_SM2_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_Cipher_SM2_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testNumber: string = "Security_CryptoFramework_Cipher_SM2_Func_1000";
       let preCipherSpec = specUtil.genSM2CipherTextFunc();
       let preAsn1Data = specUtil.genAsn1DataFunc();
@@ -300,7 +300,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1100";
       console.log(testNumber + ": started");
       let cipherAlg: string = "SM2_256|SM3";
@@ -323,7 +323,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1200";
       let preCipherSpec = specUtil.genSM2CipherTextFunc();
       try {
@@ -345,7 +345,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1300";
       let preCipherSpec: cryptoFramework.SM2CipherTextSpec = specUtil.genSM2CipherTextFunc();
       preCipherSpec.hashData = preCipherSpec.hashData.subarray(1);
@@ -368,7 +368,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1400";
       try {
         let keyPair: cryptoFramework.KeyPair = await cryptoFramework.createAsyKeyGenerator("SM2_256").generateKeyPair();
@@ -402,7 +402,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1500";
       let preAsn1Data = specUtil.genAsn1DataFunc();
       let preCipherSpec = specUtil.genSM2CipherTextFunc();
@@ -428,7 +428,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1600";
       let preAsn1Data = specUtil.genAsn1DataFunc();
       try {
@@ -450,7 +450,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1700";
       let preAsn1Data = specUtil.genAsn1DataFunc();
       preAsn1Data.data = preAsn1Data.data.subarray(1);
@@ -473,7 +473,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1800";
       let preCipherSpec = specUtil.genSM2CipherTextFunc();
       let preAsn1Data = specUtil.genAsn1DataFunc();
@@ -496,7 +496,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1900";
       try {
         let keyPair: cryptoFramework.KeyPair = await cryptoFramework.createAsyKeyGenerator("RSA1024").generateKeyPair();
@@ -524,7 +524,7 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_2000";
       try {
         let keyPair: cryptoFramework.KeyPair = await cryptoFramework.createAsyKeyGenerator("SM2_256").generateKeyPair();
