@@ -32,7 +32,7 @@ group("ability_runtime") {
       "actsaastartabilitytest:actsaastartabilitytest",
       "actsabilityamstest:ActsAbilityAmsTest",
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
-      "actsabilityerrcodequerytest:ActsAbilityErrCodeQueryTest",
+      "actsabilityerrcodequery:actsabilityerrcodequery",
       "actsabilityerrcodequerywithoutpertest:ActsAbilityErrCodeQueryWithoutPerTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilityrecoverytest:actsabilityrecoverytest",
