@@ -14,7 +14,7 @@
  */
 
 import bundlestate from '@ohos.bundleState';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 function onInit() {
 	let obj = {startTime: 0,endTime: 0};
@@ -65,7 +65,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('merge_024', 0, function(done) {
+	it('merge_024', Level.LEVEL0, function(done) {
 		console.info('bundle merge_024 start');
 		let toMerge02 = {
 			"abilityInFgTotalTime": 0,
@@ -99,7 +99,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('merge_025', 0, function(done) {
+	it('merge_025', Level.LEVEL0, function(done) {
 		console.info('bundle merge_025 start');
 		let toMerge03 = {
 			"abilityInFgTotalTime": 'text',
@@ -133,7 +133,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('merge_026', 0, function(done) {
+	it('merge_026', Level.LEVEL0, function(done) {
 		console.info('bundle merge_026 start');
 		try {
 			let ret = bundlestate.BundleStateInfo.merge(null);
@@ -155,7 +155,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('merge_027', 0, function(done) {
+	it('merge_027', Level.LEVEL0, function(done) {
 		console.info('bundle merge_027 start');
 		try {
 			let ret = bundlestate.BundleStateInfo.merge(true);
@@ -177,7 +177,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('merge_028', 0, function(done) {
+	it('merge_028', Level.LEVEL0, function(done) {
 		console.info('bundle merge_028 start');
 		try {
 			let ret = bundlestate.BundleStateInfo.merge(123);
@@ -199,7 +199,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_052', 0, async function(done) {
+	it('isIdleState_052', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_052 start');
 		bundlestate.isIdleState(bundleName, (err, res) => {
 			if(err) {
@@ -226,7 +226,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_053', 0, async function(done) {
+	it('isIdleState_053', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_053 start');
 		let bundleName02 = 'ohos.plrdtest.resourceschedule'
 		bundlestate.isIdleState(bundleName02, (err, res) => {
@@ -249,7 +249,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_054', 0, async function(done) {
+	it('isIdleState_054', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_054 start');
 		bundlestate.isIdleState(bundleNames).then((data) => {
 			console.info('isIdleState_054 promise success result = ' + JSON.stringify(data));
@@ -275,7 +275,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_055', 0, async function(done) {
+	it('isIdleState_055', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_055 start');
 		let bundleName31 = 'ohos.plrdtest.resourceschedule'
 		bundlestate.isIdleState(bundleName31).then((res) => {
@@ -297,7 +297,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_056', 0, async function(done) {
+	it('isIdleState_056', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_056 start');
 		bundlestate.isIdleState(123, (err, data) => {
 			if(err) {
@@ -320,7 +320,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_062', 0, async function(done) {
+	it('isIdleState_062', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_062 start');
 		bundlestate.isIdleState(123).then((res) => {
 			console.info('isIdleState_062 promise success result = ' + JSON.stringify(res));
@@ -341,7 +341,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_057', 0, async function(done) {
+	it('isIdleState_057', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_057 start');
 		bundlestate.isIdleState(null, (err, data) => {
 			if(err) {
@@ -364,7 +364,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_063', 0, async function(done) {
+	it('isIdleState_063', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_063 start');
 		bundlestate.isIdleState(null).then((res) => {
 			console.info('isIdleState_063 promise success result = ' + JSON.stringify(res));
@@ -385,7 +385,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_058', 0, async function(done) {
+	it('isIdleState_058', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_058 start');
 		bundlestate.isIdleState(true, (err, data) => {
 			if(err) {
@@ -408,7 +408,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_059', 0, async function(done) {
+	it('isIdleState_059', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_059 start');
 		bundlestate.isIdleState(false, (err, data) => {
 			if(err) {
@@ -431,7 +431,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_064', 0, async function(done) {
+	it('isIdleState_064', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_064 start');
 		bundlestate.isIdleState(false).then((res) => {
 			console.info('isIdleState_064 promise success result = ' + JSON.stringify(res));
@@ -452,7 +452,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_060', 0, async function(done) {
+	it('isIdleState_060', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_060 start');
 		bundlestate.isIdleState('', (err, data) => {
 			if(err) {
@@ -475,7 +475,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_061', 0, async function(done) {
+	it('isIdleState_061', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_061 start');
 		bundlestate.isIdleState('').then((res) => {
 			console.info('isIdleState_061 promise success result = ' + JSON.stringify(res));
@@ -496,7 +496,7 @@ describe('bundlestate_test', function() {
      * @tc.type: Function
      * @tc.level: level 0
      */
-	it('isIdleState_065', 0, async function(done) {
+	it('isIdleState_065', Level.LEVEL0, async function(done) {
 		console.info('isIdleState_065 start');
 		bundlestate.isIdleState(true).then((res) => {
 			console.info('isIdleState_065 promise success result = ' + JSON.stringify(res));
