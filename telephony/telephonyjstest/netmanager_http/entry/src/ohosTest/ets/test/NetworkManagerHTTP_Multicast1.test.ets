@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll}from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, Level, Size, TestType}from '@ohos/hypium';
 import http from '@ohos.net.http';
 import display from '@ohos.display';
 
@@ -98,7 +98,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0100", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Async_0100";
       try {
         httpRequest.request(url, httpRequestOptions_fileData, (err, data) => {
@@ -124,7 +124,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0200", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Async_0200";
       httpRequest.request(url, httpRequestOptions_form, (err, data) => {
         if (err) {
@@ -146,7 +146,7 @@ export default function NetworkManagerMulticastHTTP1Test() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0300", 0, async (done: Function) => {
+    it("SUB_Telephony_netstack_Http_Multipart_Xts_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Async_0300";
       httpRequest.request(url, httpRequestOptions, (err, data) => {
         if (err) {
