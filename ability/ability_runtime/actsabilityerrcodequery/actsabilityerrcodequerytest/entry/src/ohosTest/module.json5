@@ -280,23 +280,11 @@
         "name": "ohos.permission.INTERNET"
       },
       {
-        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-      },
-      {
-        "name": "ohos.permission.REQUIRE_FORM"
-      },
-      {
-        "name": "ohos.permission.UPDATE_CONFIGURATION"
-      },
-      {
-        "name": "ohos.permission.GET_RUNNING_INFO"
-      },
-      {
         "name":"ohos.permission.PRIVACY_WINDOW"
       },
       {
         "name":"ohos.permission.DISTRIBUTED_DATASYNC"
-      }
+      },
     ]
   }
 }
