@@ -20,14 +20,14 @@ export default function SensorJsTest_sensor_54() {
 describe("SensorJsTest_sensor_54", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-		expect(typeof (data.distance)).assertEqual("number");
+        expect(typeof (data.distance)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-		expect(typeof (data.distance)).assertEqual("number");
+        expect(typeof (data.distance)).assertEqual("number");
     }
-	
+
     beforeAll(function () {
 
         /*
@@ -61,22 +61,22 @@ describe("SensorJsTest_sensor_54", function () {
     })
 
     const PARAMETER_ERROR_CODE = 401
-	const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable',
-	'ReferenceError: xxx is not defined']
-	let errMessage
-	
+    let invalid  = -1;
+    let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable',
+    'ReferenceError: xxx is not defined']
+    let errMessage
+
      /*
      * @tc.number:SUB_SensorsSystem_Proxinity_JSTest_0120
      * @tc.name: newProxinity_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newProxinity_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newProxinity_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newProxinity_SensorJsTest012--------');
-		try {
+        try {
             sensor.on(sensor.SensorId.PROXIMITY, callback);
         } catch (error) {
             console.info("newProxinity_SensorJsTest012 error:" + error);
@@ -84,7 +84,7 @@ describe("SensorJsTest_sensor_54", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-		 setTimeout(() => {
+         setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -97,7 +97,7 @@ describe("SensorJsTest_sensor_54", function () {
      */
     it("newProxinity_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newProxinity_SensorJsTest013--------');
-		try {
+        try {
             sensor.on(sensor.SensorId.PROXIMITY ,callback, { 'interval': 100000000 });
         } catch (error) {
             console.info("newProxinity_SensorJsTest013 error:" + error);
@@ -119,8 +119,8 @@ describe("SensorJsTest_sensor_54", function () {
             expect(typeof (data.distance)).assertEqual("number");
         }
         try {
-            sensor.on(sensor.SensorId.PROXIMITY, 
-			onSensorCallback, { 'interval': 100000000 }, 5);
+            sensor.on(sensor.SensorId.PROXIMITY,
+            onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
             console.info("newProxinity_SensorJsTest014 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
@@ -137,12 +137,12 @@ describe("SensorJsTest_sensor_54", function () {
     it("newProxinity_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newProxinity_SensorJsTest015--------');
         try{
-		sensor.once(sensor.SensorId.PROXIMITY, callback);
-		} catch (error) {
+        sensor.once(sensor.SensorId.PROXIMITY, callback);
+        } catch (error) {
             console.info("newProxinity_SensorJsTest015 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-			done();
+            done();
         }
     })
 
@@ -177,10 +177,10 @@ describe("SensorJsTest_sensor_54", function () {
         try {
             sensor.off(string, "");
         } catch (error) {
-			errMessage 
+            errMessage
             console.info("newProxinity_SensorJsTest017 error:" + error);
-			errMessage = error.toString();
-			expect(errMessage).assertEqual(errMessages[0]);
+            errMessage = error.toString();
+            expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
@@ -197,7 +197,7 @@ describe("SensorJsTest_sensor_54", function () {
             expect(typeof (data.distance)).assertEqual("number");
         }
        try {
-		   sensor.on(sensor.SensorId.PROXIMITY, onSensorCallback);
+           sensor.on(sensor.SensorId.PROXIMITY, onSensorCallback);
            sensor.off(sensor.SensorId.PROXIMITY);
             } catch (error) {
             console.info("newProxinity_SensorJsTest018 error:" + error);
@@ -227,8 +227,8 @@ describe("SensorJsTest_sensor_54", function () {
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_Proxinity_JSTest_0200
      * @tc.name: newProxinity_SensorJsTest020
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -248,8 +248,8 @@ describe("SensorJsTest_sensor_54", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Proxinity_JSTest_0210
      * @tc.name: newProxinity_SensorJsTest021
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -269,8 +269,8 @@ describe("SensorJsTest_sensor_54", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Proxinity_JSTest_0220
      * @tc.name: newProxinity_SensorJsTest022
      * @tc.desc:Verification results of the incorrect parameters of the test interface

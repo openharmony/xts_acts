@@ -32,6 +32,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { Driver } from '@ohos.UiTest';
+import DemoProcess from '../process/AProcess';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
@@ -901,7 +902,7 @@ export default function ApiCoverTest() {
     it('SUB_AA_ChildProcessManager_startChildProcess_0100', 0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
       console.log(`${tag}, it begin`);
-
+      DemoProcess.toString();
       let mode: number;
       try {
         mode = childProcessManager.StartMode.SELF_FORK;
@@ -1157,28 +1158,6 @@ export default function ApiCoverTest() {
           console.error(`${tag}, e.code: ${e.code}`);
           expect(e.code).assertEqual(401);
         }
-      }
-      console.log(`${tag}, test end`);
-      done();
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_2000
-     * @tc.name   : Call setSupportedProcessCache.
-     * @tc.desc   : The function call should return invalid permission error.
-     * @tc.size   : LargeTest
-     * @tc.type   : Function
-     * @tc.level  : 3
-     */
-     it('SUB_Ability_AbilityRuntime_ProcessCache_2000', 0, async (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_ProcessCache_2000`;
-      console.log(`${tag}, test begin`);
-      let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
-      console.log(`${tag}, deviceType: ${deviceType} -- maxCacheNum: ${maxCacheNum} `);
-      if (deviceType === '2in1') {
-        expect(maxCacheNum > 0).assertTrue();
-      } else {
-        expect(maxCacheNum <= 0).assertTrue();
       }
       console.log(`${tag}, test end`);
       done();

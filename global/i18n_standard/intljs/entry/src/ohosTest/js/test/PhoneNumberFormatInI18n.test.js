@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function PhoneNumberFormatInI18nTest() {
 describe('PhoneNumberFormatInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 13510574676 param
     * @tc.desc    get the isValidNumber value
     */
-     it('i18n_phonenumberformat_test_0100', 0, function () {
+     it('i18n_phonenumberformat_test_0100', Level.LEVEL0, function () {
         console.log('i18n_phonenumberformat_test_0100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -76,7 +76,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 13510574676 and undefined param
     * @tc.desc    get the isValidNumber value
     */
-     it('i18n_phonenumberformat_test_0200', 0, function () {
+     it('i18n_phonenumberformat_test_0200', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', undefined);
         let ran = Math.ceil(Math.random(1) * 9);
@@ -91,7 +91,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 13510574676 and null param
     * @tc.desc    get the isValidNumber value
     */
-     it('i18n_phonenumberformat_test_0300', 0, function () {
+     it('i18n_phonenumberformat_test_0300', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', null);
         let ran = Math.ceil(Math.random(1) * 9);
@@ -106,7 +106,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 0755-6100088X param
     * @tc.desc    get the isValidNumber value
     */
-     it('i18n_phonenumberformat_test_0400', 0, function () {
+     it('i18n_phonenumberformat_test_0400', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -121,7 +121,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 110 param
     * @tc.desc    get the isValidNumber value
     */
-     it('i18n_phonenumberformat_test_0500', 0, function () {
+     it('i18n_phonenumberformat_test_0500', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let valid = phonenumber.isValidNumber('110');
@@ -134,7 +134,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 135 1057 4676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_0600', 0, function () {
+    it('i18n_phonenumberformat_test_0600', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -149,7 +149,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with +86 135 1057 4676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_0700', 0, function () {
+    it('i18n_phonenumberformat_test_0700', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -164,7 +164,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 135-1057-4676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_0800', 0, function () {
+    it('i18n_phonenumberformat_test_0800', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -179,7 +179,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with tel:+86-135-1057-4676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_0900', 0, function () {
+    it('i18n_phonenumberformat_test_0900', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_0900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -194,7 +194,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 86-135-1057-4676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1000', 0, function () {
+    it('i18n_phonenumberformat_test_1000', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -209,7 +209,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with +8613510574676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1100', 0, function () {
+    it('i18n_phonenumberformat_test_1100', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -224,7 +224,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 8613510574676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1200', 0, function () {
+    it('i18n_phonenumberformat_test_1200', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -239,7 +239,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 1351057467 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1300', 0, function () {
+    it('i18n_phonenumberformat_test_1300', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -254,7 +254,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 135105746761 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1400', 0, function () {
+    it('i18n_phonenumberformat_test_1400', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -269,7 +269,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 1351057467a param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1500', 0, function () {
+    it('i18n_phonenumberformat_test_1500', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -284,7 +284,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 6262023379 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1600', 0, function () {
+    it('i18n_phonenumberformat_test_1600', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -299,7 +299,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 626202337 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1700', 0, function () {
+    it('i18n_phonenumberformat_test_1700', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -314,7 +314,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 62620233791 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1800', 0, function () {
+    it('i18n_phonenumberformat_test_1800', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -329,7 +329,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test isValidNumber interface with 626202337a param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_1900', 0, function () {
+    it('i18n_phonenumberformat_test_1900', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_1900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -344,7 +344,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 13510574676 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2000', 0, function () {
+    it('i18n_phonenumberformat_test_2000', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -359,7 +359,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 6262023379 param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2100', 0, function () {
+    it('i18n_phonenumberformat_test_2100', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -374,7 +374,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 13510574676 and NATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2200', 0, function () {
+    it('i18n_phonenumberformat_test_2200', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -389,7 +389,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 1351057467 and NATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2300', 0, function () {
+    it('i18n_phonenumberformat_test_2300', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -404,7 +404,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 135105746761 and NATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2400', 0, function () {
+    it('i18n_phonenumberformat_test_2400', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -419,7 +419,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 135 1057 4676 and NATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2500', 0, function () {
+    it('i18n_phonenumberformat_test_2500', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -434,7 +434,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 13510574676 and INTERNATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2600', 0, function () {
+    it('i18n_phonenumberformat_test_2600', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'INTERNATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -449,7 +449,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 13510574676 and RFC3966 type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2700', 0, function () {
+    it('i18n_phonenumberformat_test_2700', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'RFC3966'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -464,7 +464,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 13510574676 and E164 type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2800', 0, function () {
+    it('i18n_phonenumberformat_test_2800', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'E164'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -479,7 +479,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 6262023379 and NATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_2900', 0, function () {
+    it('i18n_phonenumberformat_test_2900', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_2900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'NATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -494,7 +494,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 6262023379 and INTERNATIONAL type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_3000', 0, function () {
+    it('i18n_phonenumberformat_test_3000', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'INTERNATIONAL'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -509,7 +509,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 6262023379 and RFC3966 type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_3100', 0, function () {
+    it('i18n_phonenumberformat_test_3100', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'RFC3966'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -524,7 +524,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name    test format interface with 6262023379 and E164 type param
     * @tc.desc    get the isValidNumber value
     */
-    it('i18n_phonenumberformat_test_3200', 0, function () {
+    it('i18n_phonenumberformat_test_3200', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'E164'});
         let ran = Math.ceil(Math.random(1) * 9);
@@ -539,7 +539,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with 135... num in zh-CN locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3300', 0, function () {
+    it('i18n_phonenumberformat_test_3300', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -554,7 +554,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with 135... num in en-US locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3400', 0, function () {
+    it('i18n_phonenumberformat_test_3400', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -572,7 +572,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with 158... num in en-US locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3500', 0, function () {
+    it('i18n_phonenumberformat_test_3500', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -590,7 +590,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with 027... num in zh-CN locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3600', 0, function () {
+    it('i18n_phonenumberformat_test_3600', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -605,7 +605,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with 0728... num in zh-CN locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3700', 0, function () {
+    it('i18n_phonenumberformat_test_3700', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -620,7 +620,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with +34... num in en-US locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3800', 0, function () {
+    it('i18n_phonenumberformat_test_3800', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -638,7 +638,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with +39... num in en-US locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_3900', 0, function () {
+    it('i18n_phonenumberformat_test_3900', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_3900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -656,7 +656,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with +39... num in zh-CN locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_4000', 0, function () {
+    it('i18n_phonenumberformat_test_4000', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_4000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);
@@ -674,7 +674,7 @@ describe('PhoneNumberFormatInI18nTest', function () {
     * @tc.name test getLocationName method with +34... num in zh-CN locale
     * @tc.desc get the getLocationName value
     */
-    it('i18n_phonenumberformat_test_4100', 0, function () {
+    it('i18n_phonenumberformat_test_4100', Level.LEVEL2, function () {
         console.log('i18n_phonenumberformat_test_4100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let ran = Math.ceil(Math.random(1) * 9);

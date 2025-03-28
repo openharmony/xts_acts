@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 import workScheduler from '@ohos.resourceschedule.workScheduler'
 import WorkSchedulerExtensionAbility from '@ohos.WorkSchedulerExtensionAbility'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function WorkSchedulerJsTest() {
 describe("WorkSchedulerJsTest", function () {
@@ -84,7 +84,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest001
      * @tc.desc: test work scheduler work id < 0
      */
-    it("WorkSchedulerJsTest001", 0, async function (done) {
+    it("WorkSchedulerJsTest001", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest001---------------------------');
         let workInfo = {
             workId: -1,
@@ -105,7 +105,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest002
      * @tc.desc: test work scheduler work id = 0
      */
-    it("WorkSchedulerJsTest002", 0, async function (done) {
+    it("WorkSchedulerJsTest002", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest002---------------------------');
         let workInfo = {
             workId: 0,
@@ -126,7 +126,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest003
      * @tc.desc: test work scheduler without bundle name.
      */
-    it("WorkSchedulerJsTest003", 0, async function (done) {
+    it("WorkSchedulerJsTest003", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest003---------------------------');
         let workInfo = {
             workId: 3,
@@ -147,7 +147,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest004
      * @tc.desc: test work scheduler without ability name.
      */
-    it("WorkSchedulerJsTest004", 0, async function (done) {
+    it("WorkSchedulerJsTest004", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest004---------------------------');
         let workInfo = {
             workId: 4,
@@ -168,7 +168,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest005
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest005", 0, async function (done) {
+    it("WorkSchedulerJsTest005", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest005---------------------------');
         let workInfo = {
             workId: 5,
@@ -189,7 +189,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest006
      * @tc.desc: test work scheduler success.
      */
-    it("WorkSchedulerJsTest006", 0, async function (done) {
+    it("WorkSchedulerJsTest006", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest006---------------------------');
         let workInfo = {
             workId: 6,
@@ -210,7 +210,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest007
      * @tc.desc: test stopWork.
      */
-    it("WorkSchedulerJsTest007", 0, async function (done) {
+    it("WorkSchedulerJsTest007", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest007---------------------------');
         let workInfo = {
             workId: 7,
@@ -233,7 +233,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest008
      * @tc.desc: test stopWork.
      */
-    it("WorkSchedulerJsTest008", 0, async function (done) {
+    it("WorkSchedulerJsTest008", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest008---------------------------');
         let workInfo = {
             workId: 8,
@@ -255,7 +255,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest009
      * @tc.desc: test getWorkStatus callback.
      */
-    it("WorkSchedulerJsTest009", 0, async function (done) {
+    it("WorkSchedulerJsTest009", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest009---------------------------');
         let workInfo = {
             workId: 9,
@@ -289,7 +289,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest010
      * @tc.desc: test getWorkStatus promise.
      */
-    it("WorkSchedulerJsTest010", 0, async function (done) {
+    it("WorkSchedulerJsTest010", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest010---------------------------');
         let workInfo = {
             workId: 10,
@@ -323,7 +323,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest011
      * @tc.desc: test obtainAllWorks callback.
      */
-    it("WorkSchedulerJsTest011", 0, async function (done) {
+    it("WorkSchedulerJsTest011", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest011---------------------------');
         let workInfo = {
             workId: 11,
@@ -356,7 +356,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest012
      * @tc.desc: test obtainAllWorks promise.
      */
-    it("WorkSchedulerJsTest012", 0, async function (done) {
+    it("WorkSchedulerJsTest012", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest012---------------------------');
         let workInfo = {
             workId: 12,
@@ -389,7 +389,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest013
      * @tc.desc: test stopAndClearWorks.
      */
-    it("WorkSchedulerJsTest013", 0, async function (done) {
+    it("WorkSchedulerJsTest013", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest013---------------------------');
         let workInfo = {
             workId: 13,
@@ -412,7 +412,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest014
      * @tc.desc: test isLastWorkTimeOut callback.
      */
-    it("WorkSchedulerJsTest014", 0, async function (done) {
+    it("WorkSchedulerJsTest014", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest014---------------------------');
         workScheduler.isLastWorkTimeOut(14, (err, res) =>{
             if (err) {
@@ -430,7 +430,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest015
      * @tc.desc: test isLastWorkTimeOut promise.
      */
-    it("WorkSchedulerJsTest015", 0, async function (done) {
+    it("WorkSchedulerJsTest015", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest015---------------------------');
         workScheduler.isLastWorkTimeOut(15)
             .then(res => {
@@ -448,7 +448,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest016
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest016", 0, function (done) {
+    it("WorkSchedulerJsTest016", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest016---------------------------');
         let value1 = workScheduler.NetworkType.NETWORK_TYPE_ANY;
         expect(value1).assertEqual(0)
@@ -460,7 +460,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest017
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest017", 0, function (done) {
+    it("WorkSchedulerJsTest017", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest017---------------------------');
         let value1 = workScheduler.NetworkType.NETWORK_TYPE_MOBILE;
         expect(value1).assertEqual(1)
@@ -472,7 +472,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest018
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest018", 0, function (done) {
+    it("WorkSchedulerJsTest018", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest018---------------------------');
         let value1 = workScheduler.NetworkType.NETWORK_TYPE_WIFI;
         expect(value1).assertEqual(2)
@@ -484,7 +484,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest019
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest019", 0, function (done) {
+    it("WorkSchedulerJsTest019", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest019---------------------------');
         let value1 = workScheduler.NetworkType.NETWORK_TYPE_BLUETOOTH;
         expect(value1).assertEqual(3)
@@ -496,7 +496,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest020
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest020", 0, function (done) {
+    it("WorkSchedulerJsTest020", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest020---------------------------');
         let value1 = workScheduler.NetworkType.NETWORK_TYPE_WIFI_P2P;
         expect(value1).assertEqual(4)
@@ -508,7 +508,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest021
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest021", 0, function (done) {
+    it("WorkSchedulerJsTest021", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest021---------------------------');
         let value1 = workScheduler.NetworkType.NETWORK_TYPE_ETHERNET;
         expect(value1).assertEqual(5)
@@ -520,7 +520,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest022
      * @tc.desc: test work scheduler constant
      */
-   it("WorkSchedulerJsTest022", 0, function (done) {
+   it("WorkSchedulerJsTest022", Level.LEVEL0, function (done) {
     console.info('----------------------WorkSchedulerJsTest022---------------------------');
     let value1 = workScheduler.ChargingType.CHARGING_PLUGGED_ANY;
     expect(value1).assertEqual(0)
@@ -532,7 +532,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest023
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest023", 0, function (done) {
+    it("WorkSchedulerJsTest023", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest023---------------------------');
         let value1 = workScheduler.ChargingType.CHARGING_PLUGGED_AC;
         expect(value1).assertEqual(1)
@@ -544,7 +544,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest024
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest024", 0, function (done) {
+    it("WorkSchedulerJsTest024", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest024---------------------------');
         let value1 = workScheduler.ChargingType.CHARGING_PLUGGED_USB;
         expect(value1).assertEqual(2)
@@ -556,7 +556,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest025
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest025", 0, function (done) {
+    it("WorkSchedulerJsTest025", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest025---------------------------');
         let value1 = workScheduler.ChargingType.CHARGING_PLUGGED_WIRELESS;
         expect(value1).assertEqual(3)
@@ -568,7 +568,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest026
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest026", 0, function (done) {
+    it("WorkSchedulerJsTest026", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest026---------------------------');
         let value1 = workScheduler.BatteryStatus.BATTERY_STATUS_LOW;
         expect(value1).assertEqual(0)
@@ -580,7 +580,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest027
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest027", 0, function (done) {
+    it("WorkSchedulerJsTest027", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest027---------------------------');
         let value1 = workScheduler.BatteryStatus.BATTERY_STATUS_OKAY;
         expect(value1).assertEqual(1)
@@ -592,7 +592,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest028
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest028", 0, function (done) {
+    it("WorkSchedulerJsTest028", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest028---------------------------');
         let value1 = workScheduler.BatteryStatus.BATTERY_STATUS_LOW_OR_OKAY;
         expect(value1).assertEqual(2)
@@ -604,7 +604,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest029
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest029", 0, function (done) {
+    it("WorkSchedulerJsTest029", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest029---------------------------');
         let value1 = workScheduler.StorageRequest.STORAGE_LEVEL_LOW;
         expect(value1).assertEqual(0)
@@ -616,7 +616,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest030
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest030", 0, function (done) {
+    it("WorkSchedulerJsTest030", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest030---------------------------');
         let value1 = workScheduler.StorageRequest.STORAGE_LEVEL_OKAY;
         expect(value1).assertEqual(1)
@@ -628,7 +628,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest031
      * @tc.desc: test work scheduler constant
      */
-    it("WorkSchedulerJsTest031", 0, function (done) {
+    it("WorkSchedulerJsTest031", Level.LEVEL0, function (done) {
         console.info('----------------------WorkSchedulerJsTest031---------------------------');
         let value1 = workScheduler.StorageRequest.STORAGE_LEVEL_LOW_OR_OKAY;
         expect(value1).assertEqual(2)
@@ -640,7 +640,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest032
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest032", 0, async function (done) {
+    it("WorkSchedulerJsTest032", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest032---------------------------');
         let workInfo = {
             workId: 5,
@@ -662,7 +662,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest033
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest033", 0, async function (done) {
+    it("WorkSchedulerJsTest033", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest033---------------------------');
         let workInfo = {
             workId: 5,
@@ -684,7 +684,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest034
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest034", 0, async function (done) {
+    it("WorkSchedulerJsTest034", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest034---------------------------');
         let workInfo = {
             workId: 5,
@@ -705,7 +705,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest035
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest035", 0, async function (done) {
+    it("WorkSchedulerJsTest035", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest035---------------------------');
         let workInfo = {
             workId: 5,
@@ -727,7 +727,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest036
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest036", 0, async function (done) {
+    it("WorkSchedulerJsTest036", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest036---------------------------');
         let workInfo = {
             workId: 5,
@@ -749,7 +749,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest037
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest037", 0, async function (done) {
+    it("WorkSchedulerJsTest037", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest037---------------------------');
         let workInfo = {
             workId: 5,
@@ -771,7 +771,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest038
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest038", 0, async function (done) {
+    it("WorkSchedulerJsTest038", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest038---------------------------');
         let workInfo = {
             workId: 5,
@@ -793,7 +793,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest039
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest039", 0, async function (done) {
+    it("WorkSchedulerJsTest039", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest039---------------------------');
         let workInfo = {
             workId: 5,
@@ -815,7 +815,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest040
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest040", 0, async function (done) {
+    it("WorkSchedulerJsTest040", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest040---------------------------');
         let workInfo = {
             workId: 5,
@@ -837,7 +837,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest041
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest041", 0, async function (done) {
+    it("WorkSchedulerJsTest041", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest041---------------------------');
         let workInfo = {
             workId: 5,
@@ -859,7 +859,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest042
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest042", 0, async function (done) {
+    it("WorkSchedulerJsTest042", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest042---------------------------');
         let workInfo = {
             workId: 5,
@@ -881,7 +881,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest043
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest043", 0, async function (done) {
+    it("WorkSchedulerJsTest043", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest043---------------------------');
         let workInfo = {
             workId: 5,
@@ -905,7 +905,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest044
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest044", 0, async function (done) {
+    it("WorkSchedulerJsTest044", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest044---------------------------');
         let workInfo = {
             workId: 5,
@@ -929,7 +929,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest045
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest045", 0, async function (done) {
+    it("WorkSchedulerJsTest045", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest045---------------------------');
         let workInfo = {
             workId: 5,
@@ -951,7 +951,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest046
      * @tc.desc: test workScheduler workInfo networkType
      */
-    it("WorkSchedulerJsTest046", 0, async function (done) {
+    it("WorkSchedulerJsTest046", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest046---------------------------');
         let workInfo = {
             workId: 5,
@@ -973,7 +973,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest047
      * @tc.desc: test workScheduler workInfo ChargingType
      */
-    it("WorkSchedulerJsTest047", 0, async function (done) {
+    it("WorkSchedulerJsTest047", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest047---------------------------');
         let workInfo = {
             workId: 5,
@@ -995,7 +995,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest048
      * @tc.desc: test workScheduler workInfo BatteryStatus
      */
-    it("WorkSchedulerJsTest048", 0, async function (done) {
+    it("WorkSchedulerJsTest048", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest048---------------------------');
         let workInfo = {
             workId: 5,
@@ -1018,7 +1018,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.desc: test workScheduler bundleName
  
      */
-    it("  WorkSchedulerJsTest051", 0, async function (done) {
+    it("  WorkSchedulerJsTest051", Level.LEVEL0, async function (done) {
         console.info('----------------------  WorkSchedulerJsTest051---------------------------');
         let workInfo = {
             workId: 4,
@@ -1039,7 +1039,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest052
      * @tc.desc: test workScheduler workInfo abilityName
      */
-    it("WorkSchedulerJsTest052", 0, async function (done) {
+    it("WorkSchedulerJsTest052", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest052---------------------------');
         let workInfo = {
             workId: 8,
@@ -1060,7 +1060,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest053
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest053", 0, async function (done) {
+    it("WorkSchedulerJsTest053", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest053---------------------------');
         let workInfo = {
             workId: 5,
@@ -1082,7 +1082,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest054
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest054", 0, async function (done) {
+    it("WorkSchedulerJsTest054", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest054---------------------------');
         let workInfo = {
             workId: 5,
@@ -1104,7 +1104,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest055
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest055", 0, async function (done) {
+    it("WorkSchedulerJsTest055", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest055---------------------------');
         let workInfo = {
             workId: 5,
@@ -1126,7 +1126,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest056
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest056", 0, async function (done) {
+    it("WorkSchedulerJsTest056", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest056---------------------------');
         let workInfo = {
             workId: 5,
@@ -1148,7 +1148,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest057
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest057", 0, async function (done) {
+    it("WorkSchedulerJsTest057", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest057---------------------------');
         let workInfo = {
             workId: 5,
@@ -1170,7 +1170,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest058
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest058", 0, async function (done) {
+    it("WorkSchedulerJsTest058", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest058---------------------------');
         let workInfo = {
             workId: 5,
@@ -1192,7 +1192,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest059
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest059", 0, async function (done) {
+    it("WorkSchedulerJsTest059", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest059---------------------------');
         let workInfo = {
             workId: 5,
@@ -1214,7 +1214,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest060
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest060", 0, async function (done) {
+    it("WorkSchedulerJsTest060", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest060---------------------------');
         let workInfo = {
             workId: 5,
@@ -1237,7 +1237,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest061
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest061", 0, async function (done) {
+    it("WorkSchedulerJsTest061", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest061---------------------------');
         let workInfo = {
             workId: 5,
@@ -1260,7 +1260,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest062
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest062", 0, async function (done) {
+    it("WorkSchedulerJsTest062", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest062---------------------------');
         let workInfo = {
             workId: 5,
@@ -1283,7 +1283,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest063
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest063", 0, async function (done) {
+    it("WorkSchedulerJsTest063", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest063---------------------------');
         let workInfo = {
             workId: 5,
@@ -1306,7 +1306,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest064
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest064", 0, async function (done) {
+    it("WorkSchedulerJsTest064", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest064---------------------------');
         let workInfo = {
             workId: 5,
@@ -1329,7 +1329,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest065
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest065", 0, async function (done) {
+    it("WorkSchedulerJsTest065", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest065---------------------------');
         let workInfo = {
             workId: 5,
@@ -1352,7 +1352,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest066
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest066", 0, async function (done) {
+    it("WorkSchedulerJsTest066", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest066---------------------------');
         let workInfo = {
             workId: 5,
@@ -1375,7 +1375,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest067
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest067", 0, async function (done) {
+    it("WorkSchedulerJsTest067", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest067---------------------------');
         let workInfo = {
             workId: 5,
@@ -1398,7 +1398,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest068
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest068", 0, async function (done) {
+    it("WorkSchedulerJsTest068", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest068---------------------------');
         let workInfo = {
             workId: 5,
@@ -1420,7 +1420,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest069
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest069", 0, async function (done) {
+    it("WorkSchedulerJsTest069", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest069---------------------------');
         let workInfo = {
             workId: 5,
@@ -1443,7 +1443,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest070
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest070", 0, async function (done) {
+    it("WorkSchedulerJsTest070", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest070---------------------------');
         let workInfo = {
             workId: 5,
@@ -1466,7 +1466,7 @@ describe("WorkSchedulerJsTest", function () {
      * @tc.name: WorkSchedulerJsTest071
      * @tc.desc: test work scheduler without conditions.
      */
-    it("WorkSchedulerJsTest071", 0, async function (done) {
+    it("WorkSchedulerJsTest071", Level.LEVEL0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest071---------------------------');
         let workInfo = {
             workId: 5,

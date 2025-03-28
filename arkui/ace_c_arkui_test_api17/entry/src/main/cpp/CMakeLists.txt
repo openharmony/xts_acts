@@ -14,6 +14,7 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     button/button_onhoverevent_test.cpp
+    button/button_axisevent_test.cpp
 )
 
 add_library(nativefunc SHARED

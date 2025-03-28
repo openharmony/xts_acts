@@ -14,12 +14,14 @@
  */
 
 import { TipsDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
-import  promptAction from '@ohos.promptAction';
+import promptAction from '@ohos.promptAction';
+import { LengthUnit, ColorMetrics } from '@ohos.arkui.node';
 
 @Entry
 @ComponentV2
 struct Index {
   @Local checked: boolean = false;
+  @Local borderImageChecked: boolean = false;
 
   @Builder
   dialogBuilder(): void {
@@ -29,6 +31,37 @@ struct Index {
       title: 'TipsDialogV2',
       checkTips: '不再提示',
       checked: this.checked,
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          console.info('Callback when the first button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '删除',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+      onCheckedChange: (checked: boolean) => {
+        console.info('Callback when the checkbox is clicked');
+        this.checked = checked;
+      }
+    })
+  }
+
+  @Builder
+  borderImageDialogBuilder(): void {
+    TipsDialogV2({
+      imageRes: $r('sys.media.ohos_ic_public_voice'),
+      imageSize: { width: 64, height: 64 },
+      imageBorderColor: ColorMetrics.resourceColor(Color.Black),
+      imageBorderWidth: { value: 1, unit: LengthUnit.VP },
+      content: '带边框图片TipsDialog',
+      title: 'TipsDialogV2',
+      checkTips: '不再提示',
+      checked: this.borderImageChecked,
       primaryButton: new AdvancedDialogV2Button({
         content: '取消',
         action: () => {
@@ -60,6 +93,16 @@ struct Index {
               promptAction.openCustomDialog({
                 builder: () => {
                   this.dialogBuilder();
+                },
+              });
+            })
+          Button('SecTipsDialogV2')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              promptAction.openCustomDialog({
+                builder: () => {
+                  this.borderImageDialogBuilder();
                 },
               });
             })

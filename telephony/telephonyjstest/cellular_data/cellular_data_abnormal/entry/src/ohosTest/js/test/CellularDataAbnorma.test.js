@@ -14,7 +14,7 @@
  */
 
 import cellular from "@ohos.telephony.data";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 export default function ActsCellularDataAbnormalTest() {
 describe("ActsCellularDataAbnormalTest", function () {
     const ERR_SLOT_ID = 3;
@@ -25,7 +25,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              The result is true
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_isCellularDataEnabled_Async_0100", 0, async function (done) {
+    it("Telephony_CellularData_isCellularDataEnabled_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async function (done) {
         cellular.isCellularDataEnabled((err, data) => {
             if (err) {
                 expect().assertFail();
@@ -44,7 +44,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              and get the result 1 or 2
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_getCellularDataState_Async_0100", 0, async function (done) {
+    it("Telephony_CellularData_getCellularDataState_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         cellular.getCellularDataState((err, data) => {
             if (err) {
                 expect().assertFail();
@@ -63,7 +63,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              verify that the callback value is within the enumeration value range
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_getCellularDataFlowType_Async_0100", 0, async function (done) {
+    it("Telephony_CellularData_getCellularDataFlowType_Async_0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         cellular.getCellularDataFlowType((err, data) => {
             if (err) {
                 expect().assertFail();
@@ -82,7 +82,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              results
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_isCellularDataRoamingEnabled_Async_0200", 0, async function (done) {
+    it("Telephony_CellularData_isCellularDataRoamingEnabled_Async_0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         cellular.isCellularDataRoamingEnabled(ERR_SLOT_ID, (err) => {
             if (err) {
                 console.log("Telephony_CellularData_isCellularDataRoamingEnabled_Async_0200 finish");
@@ -100,7 +100,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      * @tc.name     Call getDefaultCellularDataSlotId() interface and verify whether the setting failed (Async)
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500", 0, async function (done) {
+    it("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         cellular.getDefaultCellularDataSlotId((err) => {
             if (!err) {
                 expect(true).assertTrue();
@@ -120,7 +120,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              The result is true
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_isCellularDataEnabled_Promise_0100", 0, async function (done) {
+    it("Telephony_CellularData_isCellularDataEnabled_Promise_0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await cellular.isCellularDataEnabled();
             console.log("Telephony_CellularData_isCellularDataEnabled_Promise_0100 finish");
@@ -138,7 +138,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              and get the result 1 or 2
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_getCellularDataState_Promise_0100", 0, async function (done) {
+    it("Telephony_CellularData_getCellularDataState_Promise_0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await cellular.getCellularDataState();
             console.log("Telephony_CellularData_getCellularDataState_Promise_0100 finish");
@@ -156,7 +156,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              verify that the callback value is within the enumeration value range
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_getCellularDataFlowType_Promise_0100", 0, async function (done) {
+    it("Telephony_CellularData_getCellularDataFlowType_Promise_0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await cellular.getCellularDataFlowType();
             console.log("Telephony_CellularData_getCellularDataFlowType_Promise_0100 finish");
@@ -174,7 +174,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      *              results
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_isCellularDataRoamingEnabled_Promise_0200", 0, async function (done) {
+    it("Telephony_CellularData_isCellularDataRoamingEnabled_Promise_0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await cellular.isCellularDataRoamingEnabled(ERR_SLOT_ID);
             expect().assertFail();
@@ -191,7 +191,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      * @tc.name     Call getDefaultCellularDataSlotId() interface and verify whether the setting failed (Async)
      * @tc.desc     Function test
      */
-    it("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500", 0, async function (done) {
+    it("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await cellular.getDefaultCellularDataSlotId();
             console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
@@ -203,7 +203,7 @@ describe("ActsCellularDataAbnormalTest", function () {
         }
     })
 
-    it("Telephony_CellularData_getDefaultCellularDataSlotIdSync_0100", 0, async function (done) {
+    it("Telephony_CellularData_getDefaultCellularDataSlotIdSync_0100",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let data = cellular.getDefaultCellularDataSlotIdSync();
         console.info("Telephony_CellularData_getDefaultCellularDataSlotIdSync_0100 " + JSON.stringify(data));
         expect(data == 0 || data == 1).assertTrue;

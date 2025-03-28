@@ -14,7 +14,7 @@
  */
 import workScheduler from '@ohos.resourceschedule.workScheduler'
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function WorkSchedulerMgrApiTest() {
     describe("WorkSchedulerMgrApiTest", function () {
@@ -55,7 +55,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun001
          * @tc.desc      test workScheduler workInfo networkType is MOBILE.
          */
-        it("testStartWorkFun001", 0, async function (done) {
+        it("testStartWorkFun001", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun001---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -77,7 +77,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun002
          * @tc.desc      test workScheduler workInfo networkType is WIFI.
          */
-        it("testStartWorkFun002", 0, async function (done) {
+        it("testStartWorkFun002", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun002---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -99,7 +99,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun003
          * @tc.desc      test workScheduler workInfo networkType is BLUETOOTH.
          */
-        it("testStartWorkFun003", 0, async function (done) {
+        it("testStartWorkFun003", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun003---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -121,7 +121,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun004
          * @tc.desc      test workScheduler workInfo networkType is WIFI_P2P.
          */
-        it("testStartWorkFun004", 0, async function (done) {
+        it("testStartWorkFun004", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun004---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -143,7 +143,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun005
          * @tc.desc      test workScheduler workInfo networkType is ETHERNET.
          */
-        it("testStartWorkFun005", 0, async function (done) {
+        it("testStartWorkFun005", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun005---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -165,7 +165,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun006
          * @tc.desc      test workScheduler workInfo chargerType is ANY.
          */
-        it("testStartWorkFun006", 0, async function (done) {
+        it("testStartWorkFun006", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun006---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -188,7 +188,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun007
          * @tc.desc      test workScheduler workInfo chargerType is USB.
          */
-        it("testStartWorkFun007", 0, async function (done) {
+        it("testStartWorkFun007", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun007---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -211,7 +211,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun008
          * @tc.desc      test workScheduler workInfo chargerType is WIRELESS.
          */
-        it("testStartWorkFun008", 0, async function (done) {
+        it("testStartWorkFun008", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun008---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -234,7 +234,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun009
          * @tc.desc      test workScheduler workInfo BatteryStatus OKAY.
          */
-        it("testStartWorkFun009", 0, async function (done) {
+        it("testStartWorkFun009", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun009---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -256,7 +256,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun010
          * @tc.desc      test workScheduler workInfo BatteryStatus LOW_OR_OKAY.
          */
-        it("testStartWorkFun010", 0, async function (done) {
+        it("testStartWorkFun010", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun010---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -278,7 +278,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun011
          * @tc.desc      test workScheduler workInfo storageRequest LOW.
          */
-        it("testStartWorkFun011", 0, async function (done) {
+        it("testStartWorkFun011", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun011---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -300,7 +300,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun012
          * @tc.desc      test workScheduler workInfo storageRequest OKAY.
          */
-        it("testStartWorkFun012", 0, async function (done) {
+        it("testStartWorkFun012", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun012---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -322,7 +322,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun013
          * @tc.desc      test workScheduler workInfo storageRequest LOW_OR_OKAY.
          */
-        it("testStartWorkFun013", 0, async function (done) {
+        it("testStartWorkFun013", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun013---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -344,7 +344,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun014
          * @tc.desc      test workScheduler workInfo select all parameter.
          */
-        it("testStartWorkFun014", 0, async function (done) {
+        it("testStartWorkFun014", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun014---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -377,7 +377,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun015
          * @tc.desc      test workScheduler workInfo select networkType,batteryLevel,batteryStatus,storageRequest.
          */
-        it("testStartWorkFun015", 0, async function (done) {
+        it("testStartWorkFun015", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun015---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -406,7 +406,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun016
          * @tc.desc      test start workScheduler workId is StringType. 
          */
-        it("testStartWorkFun016", 0, async function (done) {
+        it("testStartWorkFun016", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun016---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -429,7 +429,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun017
          * @tc.desc      test start workScheduler workId is NullType. 
          */
-        it("testStartWorkFun017", 0, async function (done) {
+        it("testStartWorkFun017", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun017---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -452,7 +452,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun018
          * @tc.desc      test start workScheduler without workId. 
          */
-        it("testStartWorkFun018", 0, async function (done) {
+        it("testStartWorkFun018", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun018---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -474,7 +474,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun019
          * @tc.desc      test start workScheduler bundleName is NumberType. 
          */
-        it("testStartWorkFun019", 0, async function (done) {
+        it("testStartWorkFun019", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun019---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -497,7 +497,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun020
          * @tc.desc      test start workScheduler bundleName error. 
          */
-        it("testStartWorkFun020", 0, async function (done) {
+        it("testStartWorkFun020", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun020---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -520,7 +520,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun021
          * @tc.desc      test start workScheduler bundleName is NullType. 
          */
-        it("testStartWorkFun021", 0, async function (done) {
+        it("testStartWorkFun021", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun021---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -543,7 +543,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun022
          * @tc.desc      test start workScheduler abilityName is NumberType. 
          */
-        it("testStartWorkFun022", 0, async function (done) {
+        it("testStartWorkFun022", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun022---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -566,7 +566,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun023
          * @tc.desc      test start workScheduler abilityName is EmptyString. 
          */
-        it("testStartWorkFun023", 0, async function (done) {
+        it("testStartWorkFun023", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun023---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -589,7 +589,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun024
          * @tc.desc      test start workScheduler abilityName is a space. 
          */
-        it("testStartWorkFun024", 0, async function (done) {
+        it("testStartWorkFun024", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun024---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -611,7 +611,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun025
          * @tc.desc      test start workScheduler abilityName is NullType. 
          */
-        it("testStartWorkFun025", 0, async function (done) {
+        it("testStartWorkFun025", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun025---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -634,7 +634,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun026
          * @tc.desc      test start workScheduler networkType < 0. 
          */
-        it("testStartWorkFun026", 0, async function (done) {
+        it("testStartWorkFun026", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun026---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -657,7 +657,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun027
          * @tc.desc      test start workScheduler networkType > 5. 
          */
-        it("testStartWorkFun027", 0, async function (done) {
+        it("testStartWorkFun027", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun027---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -680,7 +680,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun028
          * @tc.desc      test start workScheduler chargerType < 0. 
          */
-        it("testStartWorkFun028", 0, async function (done) {
+        it("testStartWorkFun028", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun028---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -703,7 +703,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun029
          * @tc.desc      test start workScheduler chargerType > 3. 
          */
-        it("testStartWorkFun029", 0, async function (done) {
+        it("testStartWorkFun029", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun029---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -726,7 +726,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun030
          * @tc.desc      test start workScheduler isCharging is NumberType. 
          */
-        it("testStartWorkFun030", 0, async function (done) {
+        it("testStartWorkFun030", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun030---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -750,7 +750,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun031
          * @tc.desc      test start workScheduler isCharging is StringType. 
          */
-        it("testStartWorkFun031", 0, async function (done) {
+        it("testStartWorkFun031", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun031---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -774,7 +774,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun032
          * @tc.desc      test start workScheduler without isCharging. 
          */
-        it("testStartWorkFun032", 0, async function (done) {
+        it("testStartWorkFun032", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun032---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -797,7 +797,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun033
          * @tc.desc      test start workScheduler batteryLevel < 0. 
          */
-        it("testStartWorkFun033", 0, async function (done) {
+        it("testStartWorkFun033", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun033---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -820,7 +820,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun034
          * @tc.desc      test start workScheduler batteryLevel = 0. 
          */
-        it("testStartWorkFun034", 0, async function (done) {
+        it("testStartWorkFun034", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun034---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -842,7 +842,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun035
          * @tc.desc      test start workScheduler batteryLevel = 100. 
          */
-        it("testStartWorkFun035", 0, async function (done) {
+        it("testStartWorkFun035", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun035---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -864,7 +864,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun036
          * @tc.desc      test start workScheduler batteryLevel > 100. 
          */
-        it("testStartWorkFun036", 0, async function (done) {
+        it("testStartWorkFun036", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun036---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -887,7 +887,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun037
          * @tc.desc      test start workScheduler batteryStatus < 0. 
          */
-        it("testStartWorkFun037", 0, async function (done) {
+        it("testStartWorkFun037", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun037---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -910,7 +910,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun038
          * @tc.desc      test start workScheduler batteryStatus > 2. 
          */
-        it("testStartWorkFun038", 0, async function (done) {
+        it("testStartWorkFun038", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun038---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -933,7 +933,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun039
          * @tc.desc      test start workScheduler storageRequest < 0. 
          */
-        it("testStartWorkFun039", 0, async function (done) {
+        it("testStartWorkFun039", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun039---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -956,7 +956,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun040
          * @tc.desc      test start workScheduler storageRequest > 2. 
          */
-        it("testStartWorkFun040", 0, async function (done) {
+        it("testStartWorkFun040", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun040---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -979,7 +979,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun041
          * @tc.desc      test start workScheduler repeatCycleTime < 0. 
          */
-        it("testStartWorkFun041", 0, async function (done) {
+        it("testStartWorkFun041", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun041---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1003,7 +1003,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun042
          * @tc.desc      test start workScheduler repeatCycleTime < 20min. 
          */
-        it("testStartWorkFun042", 0, async function (done) {
+        it("testStartWorkFun042", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun042---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1027,7 +1027,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun043
          * @tc.desc      test start workScheduler condition only repeatCycleTime. 
          */
-        it("testStartWorkFun043", 0, async function (done) {
+        it("testStartWorkFun043", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun043---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1050,7 +1050,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun044
          * @tc.desc      test start workScheduler without repeatCycleTime. 
          */
-        it("testStartWorkFun044", 0, async function (done) {
+        it("testStartWorkFun044", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun044---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1074,7 +1074,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun045
          * @tc.desc      test start workScheduler isRepeat is StringType. 
          */
-        it("testStartWorkFun045", 0, async function (done) {
+        it("testStartWorkFun045", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun045---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1098,7 +1098,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun046
          * @tc.desc      test start workScheduler repeatCount = 0. 
          */
-        it("testStartWorkFun046", 0, async function (done) {
+        it("testStartWorkFun046", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun046---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1121,7 +1121,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun047
          * @tc.desc      test start workScheduler repeatCount < 0. 
          */
-        it("testStartWorkFun047", 0, async function (done) {
+        it("testStartWorkFun047", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun047---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1145,7 +1145,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun048
          * @tc.desc      test start workScheduler isRepeat = false and repeatCount < 0. 
          */
-        it("testStartWorkFun048", 0, async function (done) {
+        it("testStartWorkFun048", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun048---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1170,7 +1170,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun049
          * @tc.desc      test start workScheduler condition only repeatCount. 
          */
-        it("testStartWorkFun049", 0, async function (done) {
+        it("testStartWorkFun049", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun049---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1193,7 +1193,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun050
          * @tc.desc      test start workScheduler isPersisted is StringType. 
          */
-        it("testStartWorkFun050", 0, async function (done) {
+        it("testStartWorkFun050", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun050---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1216,7 +1216,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun051
          * @tc.desc      test start workScheduler isPersisted is NumberType. 
          */
-        it("testStartWorkFun051", 0, async function (done) {
+        it("testStartWorkFun051", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun051---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1239,7 +1239,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun052
          * @tc.desc      test start workScheduler isDeepIdle is StringType. 
          */
-        it("testStartWorkFun052", 0, async function (done) {
+        it("testStartWorkFun052", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun052---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1262,7 +1262,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStartWorkFun053
          * @tc.desc      test start workScheduler isDeepIdle is NumberType. 
          */
-        it("testStartWorkFun053", 0, async function (done) {
+        it("testStartWorkFun053", Level.LEVEL0, async function (done) {
             console.info('----------------------testStartWorkFun053---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1285,7 +1285,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun001
          * @tc.desc      test stop workScheduler needCancel is StringType. 
          */
-        it("testStopWorkFun001", 0, async function (done) {
+        it("testStopWorkFun001", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun001---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1309,7 +1309,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun002
          * @tc.desc      test stop workScheduler needCancel is NumberType. 
          */
-        it("testStopWorkFun002", 0, async function (done) {
+        it("testStopWorkFun002", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun002---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1333,7 +1333,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun003
          * @tc.desc      test stop workScheduler needCancel is NullType. 
          */
-        it("testStopWorkFun003", 0, async function (done) {
+        it("testStopWorkFun003", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun003---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1357,7 +1357,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun004
          * @tc.desc      test stop workScheduler missing parameter needCancel. 
          */
-        it("testStopWorkFun004", 0, async function (done) {
+        it("testStopWorkFun004", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun004---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1381,7 +1381,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun005
          * @tc.desc      test stop workScheduler workId error ,needCancel true. 
          */
-        it("testStopWorkFun005", 0, async function (done) {
+        it("testStopWorkFun005", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun005---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1411,7 +1411,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun006
          * @tc.desc      test stop workScheduler workId error ,needCancel false. 
          */
-        it("testStopWorkFun006", 0, async function (done) {
+        it("testStopWorkFun006", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun006---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1441,7 +1441,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun007
          * @tc.desc      test stop workScheduler bundleName error,needCancel true. 
          */
-        it("testStopWorkFun007", 0, async function (done) {
+        it("testStopWorkFun007", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun007---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1471,7 +1471,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun008
          * @tc.desc      test stop workScheduler bundleName error,needCancel false. 
          */
-        it("testStopWorkFun008", 0, async function (done) {
+        it("testStopWorkFun008", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun008---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1501,7 +1501,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun009
          * @tc.desc      test stop workScheduler abilityName error,needCancel true. 
          */
-        it("testStopWorkFun009", 0, async function (done) {
+        it("testStopWorkFun009", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun009---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1530,7 +1530,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun010
          * @tc.desc      test stop workScheduler abilityName error,needCancel false. 
          */
-        it("testStopWorkFun010", 0, async function (done) {
+        it("testStopWorkFun010", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun010---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1559,7 +1559,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun011
          * @tc.desc      test stop workScheduler networkType different. 
          */
-        it("testStopWorkFun011", 0, async function (done) {
+        it("testStopWorkFun011", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun011---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1588,7 +1588,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun012
          * @tc.desc      test stop workScheduler chargerType different. 
          */
-        it("testStopWorkFun012", 0, async function (done) {
+        it("testStopWorkFun012", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun012---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1619,7 +1619,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      test stopWorkFun013
          * @tc.desc      test stop workScheduler batteryStatus different. 
          */
-        it("testStopWorkFun013", 0, async function (done) {
+        it("testStopWorkFun013", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun013---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1648,7 +1648,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      test stopWorkFun014
          * @tc.desc      test stop workScheduler storageRequest different. 
          */
-        it("testStopWorkFun014", 0, async function (done) {
+        it("testStopWorkFun014", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun014---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1677,7 +1677,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun015
          * @tc.desc      test stop workScheduler isPersisted different. 
          */
-        it("testStopWorkFun015", 0, async function (done) {
+        it("testStopWorkFun015", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun015---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1708,7 +1708,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopWorkFun016
          * @tc.desc      test stop workScheduler repeatCycleTime different. 
          */
-        it("testStopWorkFun016", 0, async function (done) {
+        it("testStopWorkFun016", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopWorkFun016---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo1 = {
@@ -1739,7 +1739,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testGetWorkStatusFun001
          * @tc.desc      test getWorkStatus Callback workId error. 
          */
-        it("testGetWorkStatusFun001", 0, async function (done) {
+        it("testGetWorkStatusFun001", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetWorkStatusFun001---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1776,7 +1776,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testGetWorkStatusFun002
          * @tc.desc      test getWorkStatus Promise workId error. 
          */
-        it("testGetWorkStatusFun002", 0, async function (done) {
+        it("testGetWorkStatusFun002", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetWorkStatusFun002---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1812,7 +1812,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testGetWorkStatusFun003
          * @tc.desc      test getWorkStatus Promise parameter undefined. 
          */
-        it("testGetWorkStatusFun003", 0, async function (done) {
+        it("testGetWorkStatusFun003", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetWorkStatusFun003---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1852,7 +1852,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testGetWorkStatusFun004
          * @tc.desc      test getWorkStatus Promise parameter StringType. 
          */
-       it("testGetWorkStatusFun004", 0, async function (done) {
+       it("testGetWorkStatusFun004", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetWorkStatusFun004---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1892,7 +1892,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testObtainAllWorksFun001
          * @tc.desc      test obtainAllWorks Callback. 
          */
-        it("testObtainAllWorksFun001", 0, async function (done) {
+        it("testObtainAllWorksFun001", Level.LEVEL0, async function (done) {
             console.info('----------------------testObtainAllWorksFun001---------------------------');
             workScheduler.stopAndClearWorks();
             let workInfo = {
@@ -1927,7 +1927,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testObtainAllWorksFun002
          * @tc.desc      test first stop work then obtainAllWorks Promise. 
          */
-        it("testObtainAllWorksFun002", 0, async function (done) {
+        it("testObtainAllWorksFun002", Level.LEVEL0, async function (done) {
             console.info('----------------------testObtainAllWorksFun002---------------------------');
             let workInfo = {
                 workId: 146,
@@ -1959,7 +1959,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testStopAndClearWorksFun001
          * @tc.desc      test repeat stopAndClearWorks. 
          */
-        it("testStopAndClearWorksFun001", 0, async function (done) {
+        it("testStopAndClearWorksFun001", Level.LEVEL0, async function (done) {
             console.info('----------------------testStopAndClearWorksFun001---------------------------');
             let workInfo = {
                 workId: 147,
@@ -1987,7 +1987,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testIsLastWorkTimeOutFun001
          * @tc.desc      test isLastWorkTimeOut callback parameter workId < 0. 
          */
-        it("testIsLastWorkTimeOutFun001", 0, async function (done) {
+        it("testIsLastWorkTimeOutFun001", Level.LEVEL0, async function (done) {
             console.info('----------------------testIsLastWorkTimeOutFun001---------------------------');
             workScheduler.isLastWorkTimeOut(-1, (error, res) =>{
                 if (error) {
@@ -2005,7 +2005,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testIsLastWorkTimeOutFun003
          * @tc.desc      test isLastWorkTimeOut promise parameter workId is StringType. 
          */
-        it("testIsLastWorkTimeOutFun003", 0, async function (done) {
+        it("testIsLastWorkTimeOutFun003", Level.LEVEL0, async function (done) {
             console.info('----------------------testIsLastWorkTimeOutFun003---------------------------');
             try{
                 workScheduler.isLastWorkTimeOut('1').then(res => {
@@ -2026,7 +2026,7 @@ export default function WorkSchedulerMgrApiTest() {
          * @tc.name      testIsLastWorkTimeOutFun004
          * @tc.desc      test isLastWorkTimeOut promise parameter workId is NullType. 
          */
-        it("testIsLastWorkTimeOutFun004", 0, async function (done) {
+        it("testIsLastWorkTimeOutFun004", Level.LEVEL0, async function (done) {
             console.info('----------------------testIsLastWorkTimeOutFun004---------------------------');
             try{
                 workScheduler.isLastWorkTimeOut(null).then(res => {
@@ -2039,6 +2039,84 @@ export default function WorkSchedulerMgrApiTest() {
                 console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise fail ,' + error);
                 expect(error.code).assertEqual('401');
                 done();
+            }
+        })
+
+        /*testStartWorkFun020
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_152
+         * @tc.name      testGetWorkStatusFun005
+         * @tc.desc      test getWorkStatus promise errorcode is 9700004. 
+         */
+        it("testGetWorkStatusFun005", Level.LEVEL0, async function (done) {
+            console.info('----------------------testGetWorkStatusFun006---------------------------');
+            try{
+                workScheduler.getWorkStatus(1234).then(res => {
+                    console.info('testGetWorkStatusFun005 isLastWorkTimeOut promise success, data is:' + res);
+                })
+                .catch(error => {
+                    console.info('testGetWorkStatusFun005 isLastWorkTimeOut promise fail, because:' + error.code);
+                    expect(error.code).assertEqual(9700004);
+                done();
+            });
+            }catch(error){
+                console.info('testGetWorkStatusFun005 isLastWorkTimeOut promise fail ,' + error.code);               
+            }
+        })
+
+        /*testStartWorkFun021
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_153
+         * @tc.name      testGetWorkStatusFun005
+         * @tc.desc      test getWorkStatus callback errorcode is 9700004. 
+         */
+         it("testGetWorkStatusFun006", Level.LEVEL0, async function (done) {
+            console.info('----------------------testGetWorkStatusFun006---------------------------');
+            try{
+                workScheduler.getWorkStatus(10, (error, res) => {
+                    if (error) {
+                        console.info('testGetWorkStatusFun006 getWorkStatuscallback fail because:' + error.code);
+                        expect(error.code).assertEqual(9700004);
+                        done();
+                    } else {
+                        console.info('testGetWorkStatusFun006 isLastWorkTimeOut promise success, data is:' + res);
+                    }
+                });
+            }catch(error){
+                console.info('testGetWorkStatusFun006 getWorkStatus promise fail ,' + error.code);                
+            }
+        })
+
+        /*
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_0154
+         * @tc.name      testStartWorkFun015
+         * @tc.desc      test workScheduler workInfo parameter.
+         */
+        it("testStartWorkFun054", Level.LEVEL0, async function (done) {
+            console.info('----------------------testStartWorkFun054---------------------------');
+            workScheduler.stopAndClearWorks();
+            let workInfo = {
+                workId: 1,
+                bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+                abilityName: "com.mytest.abilityName",
+                networkType: 0,
+                isCharging: false,
+                batteryLevel: 50,
+                batteryStatus: 1,
+                storageRequest: 1,
+                isRepeat: false,
+                isPersisted: false,
+                isDeepIdle: false,
+                parameters: {
+                    mykey0: 1,
+                    mykey1: "string value",
+                    mykey2: true,
+                    mykey3: 1.5
+                }
+            }
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("testStartWorkFun054----------------error: " + error.code);
             }
         })
     })

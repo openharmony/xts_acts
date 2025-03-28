@@ -45,7 +45,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0100', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0100', Level.LEVEL0, () => {
       let value = I18n.I18NUtil.getTimePeriodName(5, "en-US");
       console.log('SUB_GLOBAL_I18N_SR000IFGMS_0100:' + value);
       expect(value == "at night").assertTrue();
@@ -57,9 +57,9 @@ export default function i18nStageTest() {
      * @tc.desc     : hour=[6,11],local="en-US",in the morning
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0200', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0200', Level.LEVEL2, () => {
       let value = I18n.I18NUtil.getTimePeriodName(11, "en-US");
       console.log('SUB_GLOBAL_I18N_SR000IFGMS_0200:' + value);
       expect(value == "in the morning").assertTrue();
@@ -71,9 +71,9 @@ export default function i18nStageTest() {
      * @tc.desc     : hour=12,local="en-US",noon
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0300', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0300', Level.LEVEL2, () => {
       let value = I18n.I18NUtil.getTimePeriodName(12, "en-US");
       console.log('SUB_GLOBAL_I18N_SR000IFGMS_0300:' + value);
       expect(value == "noon").assertTrue();
@@ -85,9 +85,9 @@ export default function i18nStageTest() {
      * @tc.desc     : hour=[13,17],local="en-US",in the afternoon
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0400', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0400', Level.LEVEL2, () => {
       let value = I18n.I18NUtil.getTimePeriodName(41, "en-US"); //41%24=17
       console.log('SUB_GLOBAL_I18N_SR000IFGMS_0400:' + value);
       expect(value == "in the afternoon").assertTrue();
@@ -99,9 +99,9 @@ export default function i18nStageTest() {
      * @tc.desc     : hour=[18,20],local="en-US",in the evening
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0500', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0500', Level.LEVEL2, () => {
       let value = I18n.I18NUtil.getTimePeriodName(-4, "en-US"); //24+(-4)=20
       console.log('SUB_GLOBAL_I18N_SR000IFGMS_0500:' + value);
       expect(value == "in the evening").assertTrue();
@@ -113,9 +113,9 @@ export default function i18nStageTest() {
      * @tc.desc     : hour=12,local=""
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0600', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0600', Level.LEVEL2, () => {
       try {
         let value = I18n.I18NUtil.getTimePeriodName(12, "");
         console.log('SUB_GLOBAL_I18N_SR000IFGMS_0600:' + value);
@@ -131,9 +131,9 @@ export default function i18nStageTest() {
      * @tc.desc     : hour=12,local=invalid string
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGMS_0700', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0700', Level.LEVEL2, () => {
       try {
         let value = I18n.I18NUtil.getTimePeriodName(12, "abcd");
         console.log('SUB_GLOBAL_I18N_SR000IFGMS_0700:' + value);
@@ -151,7 +151,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', Level.LEVEL0, () => {
       try {
         let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
         console.log('SUB_GLOBAL_I18N_SR000IFGNH_0010:' + holidayManager);
@@ -167,9 +167,9 @@ export default function i18nStageTest() {
      * @tc.desc     : HolidayManager-input .xml file
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0020', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0020', Level.LEVEL3, () => {
       try {
         let holidayManager = new I18n.HolidayManager("A.xml");
         console.log('SUB_GLOBAL_I18N_SR000IFGNH_0020:' + holidayManager);
@@ -185,9 +185,9 @@ export default function i18nStageTest() {
      * @tc.desc     : isHoliday-input null(The current date is used by default)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0030', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0030', Level.LEVEL2, () => {
       let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
       let isHoliday = holidayManager.isHoliday();
       console.log('SUB_GLOBAL_I18N_SR000IFGNH_0030:' + isHoliday);
@@ -200,9 +200,9 @@ export default function i18nStageTest() {
      * @tc.desc     : isHoliday-input correct date (is not holiday) parameter
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0050', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0050', Level.LEVEL2, () => {
       let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
       let isHoliday = holidayManager.isHoliday(new Date(2020, 6, 25));
       console.log('SUB_GLOBAL_I18N_SR000IFGNH_0050:' + isHoliday);
@@ -215,9 +215,9 @@ export default function i18nStageTest() {
      * @tc.desc     : getHolidayInfoItemArray-input null(The current year is used by default)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0070', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0070', Level.LEVEL2, () => {
       let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
       let holidayInfoItemArray = holidayManager.getHolidayInfoItemArray();
       console.log('SUB_GLOBAL_I18N_SR000IFGNH_0070:' + holidayInfoItemArray);
@@ -230,9 +230,9 @@ export default function i18nStageTest() {
      * @tc.desc     : getHolidayInfoItemArray-input correct year parameter (contain holidays)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0080', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0080', Level.LEVEL2, () => {
       let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
       let holidayInfoItemArray = holidayManager.getHolidayInfoItemArray(2023);
       console.log('SUB_GLOBAL_I18N_SR000IFGNH_0080:' + holidayInfoItemArray);
@@ -245,9 +245,9 @@ export default function i18nStageTest() {
      * @tc.desc     : getHolidayInfoItemArray-input correct number parameter (don't contain holidays)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0090', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0090', Level.LEVEL2, () => {
       let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
       let holidayInfoItemArray = holidayManager.getHolidayInfoItemArray(2022);
       console.log('SUB_GLOBAL_I18N_SR000IFGNH_0090:' + holidayInfoItemArray);
@@ -262,7 +262,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_SR000IET4P_0100', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IET4P_0100', Level.LEVEL0, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.set(2023, 9, 22, 18, 0, 0); //set time to 2023.9.22 18:00:00
       calendar.add("year", 2); //2023+2
@@ -277,9 +277,9 @@ export default function i18nStageTest() {
      * @tc.desc     : add - amount parameter input 'week_of_year'
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IET4P_0200', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IET4P_0200', Level.LEVEL2, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.set(2023, 9, 22, 18, 0, 0); //set time to 2023.9.22 18:00:00
       calendar.add("week_of_year", 2); //add 2 weeks
@@ -296,9 +296,9 @@ export default function i18nStageTest() {
      * @tc.desc     : add - amount < 0
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IET4P_0300', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IET4P_0300', Level.LEVEL2, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.set(2023, 9, 22, 18, 0, 0); //set time to 2023.9.22 18:00:00
       calendar.add("year", -1); //2023-2
@@ -313,9 +313,9 @@ export default function i18nStageTest() {
      * @tc.desc     : add - filed parameter input invalid parameter
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IET4P_0600', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IET4P_0600', Level.LEVEL2, () => {
       try {
         let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
         calendar.set(2023, 9, 22, 18, 0, 0); //set time to 2023.9.22 18:00:00
@@ -334,9 +334,9 @@ export default function i18nStageTest() {
      * @tc.desc     : add - filed parameter input invalid parameter
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IET4P_0700', 0, () => {
+    it('SUB_GLOBAL_I18N_SR000IET4P_0700', Level.LEVEL2, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.setTime(5000);
       let millisecond: number = calendar.getTimeInMillis(); //millisecond = 5000
@@ -352,7 +352,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_CompareDays_0100', 0, () => {
+    it('SUB_GLOBAL_I18N_CompareDays_0100', Level.LEVEL0, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.set(2023, 9, 22, 18, 0, 0); //set time to 2023.9.22 18:00:00
       let date: Date = new Date(2023, 9, 23, 19, 0, 0);
@@ -367,9 +367,9 @@ export default function i18nStageTest() {
      * @tc.desc     : CompareDays - Compare the Date
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_CompareDays_0200', 0, () => {
+    it('SUB_GLOBAL_I18N_CompareDays_0200', Level.LEVEL2, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.set(2023, 9, 22, 18, 0, 0); //set time to 2023.9.22 18:00:00
       let date: Date = new Date(2023, 9, 20, 13, 0, 0);
@@ -386,7 +386,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_CompareDays_0300', 0, () => {
+    it('SUB_GLOBAL_I18N_CompareDays_0300', Level.LEVEL2, () => {
       let calendar: I18n.Calendar = I18n.getCalendar("zh-Hans");
       calendar.setTime(5000);
       let date: Date = new Date(6000);
@@ -403,7 +403,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_0100', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0100', Level.LEVEL0, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("zh-CN");
       let text: string = "如有疑问，请联系13801048417";
       let result = entityRecognizer.findEntityInfo(text);
@@ -421,9 +421,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - Identifying Entity Information in Text
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_0200', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0200', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("zh-CN");
       let text: string = "如有疑问，请联系010 1234 5678";
       let result = entityRecognizer.findEntityInfo(text);
@@ -441,9 +441,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - no recognizable entity information in Text
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_0400', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0400', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("zh-CN");
       let text: string = "如有疑问，请联系我";
       let result = entityRecognizer.findEntityInfo(text);
@@ -457,9 +457,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - Identifying Entity Information in Text
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_0600', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0600', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("en-GB");
       let text: string = "If you have any questions, Please call 13801048417";
       let result = entityRecognizer.findEntityInfo(text);
@@ -477,9 +477,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - Identifying Entity Date Information in Text(Chinese)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_0800', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0800', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("zh-CN");
       let text: string = "我们2023年12月1日下午8点一起吃饭吧。";
       let result = entityRecognizer.findEntityInfo(text);
@@ -497,9 +497,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - Identifying Entity Date Information in Text(Chinese)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_0900', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_0900', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("zh-CN");
       let text: string = "今天下午3点到5点有个会议。";
       let result = entityRecognizer.findEntityInfo(text);
@@ -517,9 +517,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - Identifying Entity Date Information in Text(English)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_1000', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_1000', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("en-GB");
       let text: string = "Let's have dinner in December 1, 2023.";
       let result = entityRecognizer.findEntityInfo(text);
@@ -535,9 +535,9 @@ export default function i18nStageTest() {
      * @tc.desc     : findEntityInfo - Identifying Entity Date Information in Text(English)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_EntityRecognizer_1100', 0, () => {
+    it('SUB_GLOBAL_I18N_EntityRecognizer_1100', Level.LEVEL2, () => {
       let entityRecognizer: I18n.EntityRecognizer = new I18n.EntityRecognizer("en-GB");
       let text: string = "The time is 11/10/2023-11/13/2023.";
       let result = entityRecognizer.findEntityInfo(text);
@@ -555,7 +555,7 @@ export default function i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0100', 0, () => {
+    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0100', Level.LEVEL0, () => {
       try {
         I18n.System.setAppPreferredLanguage('zh'); //设置应用偏好语言
       } catch (e) {
@@ -570,9 +570,9 @@ export default function i18nStageTest() {
      * @tc.desc     : setAppPreferredLanguage - Set App Preferred Language to invalid language
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 3
      */
-    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0200', 0, () => {
+    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0200', Level.LEVEL3, () => {
       try {
         I18n.System.setAppPreferredLanguage('1'); //设置应用偏好语言
       } catch (e) {
@@ -587,9 +587,9 @@ export default function i18nStageTest() {
      * @tc.desc     : setAppPreferredLanguage - Set App Preferred Language to zh-CN
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0400', 0, () => {
+    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0400', Level.LEVEL2, () => {
       I18n.System.setAppPreferredLanguage('zh-CN'); //设置应用偏好语言'zh-CN'
       let appPreferredLanguage: string = I18n.System.getAppPreferredLanguage();
       console.log('SUB_GLOBAL_I18N_AppPreferredLanguage_0400:' + appPreferredLanguage);
@@ -602,9 +602,9 @@ export default function i18nStageTest() {
      * @tc.desc     : check the dateStyle is adapt to auto
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 1
+     * @tc.level    : Level 0
      */
-    it('dateTimeFormatAdapt_test_0010', Level.LEVEL1, () => {
+    it('dateTimeFormatAdapt_test_0010', Level.LEVEL0, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         dateStyle: 'auto'
@@ -1132,6 +1132,20 @@ export default function i18nStageTest() {
         expect(list.length > 0).assertTrue();
       }
       console.log('SUB_GLOBAL_I18N_addPreferredLanguage_0100 ' + I18n.getPreferredLanguageList());
+    })
+
+    /**
+     * @tc.number   : SUB_GLOBAL_I18N_SR000IFGMS_0800
+     * @tc.name     : SUB_GLOBAL_I18N_SR000IFGMS_0800
+     * @tc.desc     : hour=[21,5],at night
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('SUB_GLOBAL_I18N_SR000IFGMS_0800', Level.LEVEL2, () => {
+      let value = I18n.I18NUtil.getTimePeriodName(5);
+      console.log('SUB_GLOBAL_I18N_SR000IFGMS_0800:' + value);
+      expect(value != null).assertTrue();
     })
 
     console.log('*************end i18nStageTest*************');

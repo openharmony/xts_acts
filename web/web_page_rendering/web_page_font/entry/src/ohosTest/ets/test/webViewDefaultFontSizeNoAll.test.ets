@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewDefaultFontSizeNoAll() {
      *tc.name testNoDefaultFontSizeAndNoMinFontSize
      *tc.desc test with no set defaultfontsize or minfontsize
      */
-    it('testNoDefaultFontSizeAndNoMinFontSize',0,async (done: Function) =>{
+    it('testNoDefaultFontSizeAndNoMinFontSize',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitdefaultFontSizeAndminFontSizeNoAll";
       Utils.registerEvent("testNoDefaultFontSizeAndNoMinFontSize","16px",340,done);
       sendEventByKey('webViewDefaultFontSizeNoAll',10,'');

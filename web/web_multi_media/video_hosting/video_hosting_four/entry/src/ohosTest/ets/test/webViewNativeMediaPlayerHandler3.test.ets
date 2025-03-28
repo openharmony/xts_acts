@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -77,7 +77,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_1', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerUpdateRect_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_1"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_1", true, 1821,
@@ -95,7 +95,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_2', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerUpdateRect_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_2"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_2", true, 1822,
@@ -113,7 +113,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRateNegative1', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRateNegative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRateNegative1"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRateNegative1", true, 1805,
@@ -132,7 +132,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate2', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2", true, 1801,
@@ -150,7 +150,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange", true, 1802,
@@ -168,7 +168,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate3', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3", true, 1803,
@@ -186,7 +186,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange", true, 1804,
@@ -204,7 +204,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate10', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate10"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate10", true, 1800,
@@ -221,7 +221,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2", true, 1806,
@@ -239,7 +239,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange", true, 1807,
@@ -257,7 +257,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerPreloadAuto02', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreloadAuto02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto02", true, 1812,
@@ -274,7 +274,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerTimeUpdate', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerTimeUpdate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerTimeUpdate"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerTimeUpdate", true, 1813,
@@ -292,7 +292,7 @@ export default function webViewNativeMediaPlayerHandler3() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebViewNativeMediaPlayerFormatError', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerFormatError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerFormatError"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerFormatError", true, 1815,
@@ -310,7 +310,7 @@ export default function webViewNativeMediaPlayerHandler3() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebViewNativeMediaPlayerNetError', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNetError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetError"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetError", true, 1816,
@@ -328,7 +328,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerDecodeError', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerDecodeError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerDecodeError"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerDecodeError", true, 1817,
@@ -346,7 +346,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerNetworkStateIdle', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNetworkStateIdle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateIdle"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateIdle", true, 1819,
@@ -364,7 +364,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerNetworkStateLoading', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNetworkStateLoading', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateLoading"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateLoading", true, 1818,
@@ -381,7 +381,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerNetworkStateError', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNetworkStateError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNetworkStateError"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateError", true, 1820,
@@ -401,7 +401,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerReadyState_2', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerReadyState_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_2"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_2", true, 1826,
@@ -419,7 +419,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerReadyState_3', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerReadyState_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_3"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_3", true, 1827,
@@ -437,7 +437,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_3', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerUpdateRect_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_3"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_3", true, 1823,
@@ -454,7 +454,7 @@ export default function webViewNativeMediaPlayerHandler3() {
       *@tc.type Function
       *@tc.level Level 2
       */
-    it('testWebViewNativeMediaPlayerReadyState_4', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerReadyState_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_4"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_4", true, 1828,
@@ -471,7 +471,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_4', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerUpdateRect_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_4"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_4", true, 1824,
@@ -488,7 +488,7 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerReadyState_1', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerReadyState_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerReadyState_1"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_1", true, 1825,

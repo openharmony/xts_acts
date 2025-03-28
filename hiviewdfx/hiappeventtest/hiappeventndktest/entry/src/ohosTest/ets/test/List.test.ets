@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import abilityTest from './Ability.test';
+import processorNDKTest from './processorNDK.test';
 
 export default function testsuite() {
   abilityTest();
+  processorNDKTest();
 }

@@ -77,11 +77,11 @@ describe("SensorJsTest_sensor_15", function () {
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0010
      * @tc.name:MagneticField_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("MagneticField_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------MagneticField_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {
@@ -538,7 +538,7 @@ describe("SensorJsTest_sensor_15", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("MagneticField_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("MagneticField_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------MagneticField_SensorJsTest014--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {

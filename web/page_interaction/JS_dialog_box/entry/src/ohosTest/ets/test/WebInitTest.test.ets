@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 export default function webInitTest() {
@@ -36,7 +36,7 @@ export default function webInitTest() {
      *tc.name onPrompt
      *tc.desic Triggered when the web page wants to display a JavaScript prompt() dialog
      */
-    it('onPrompt', 0, async (done: Function) => {
+    it('onPrompt', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnPrompt", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onPrompt", "age", 178, done);
@@ -47,7 +47,7 @@ export default function webInitTest() {
      *tc.name onAlert
      *tc.desic Triggered when the Web wants to display a JavaScript alert() dialog
      */
-    it('onAlert', 0, async (done: Function) => {
+    it('onAlert', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnAlert", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onAlert", "alert test", 63, done);
@@ -58,7 +58,7 @@ export default function webInitTest() {
      *tc.name onConfirm
      *tc.desic Triggered when the web page wants to display a JavaScript confirm() dialog
      */
-    it('onConfirm', 0, async (done: Function) => {
+    it('onConfirm', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnConfirm", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onConfirm", "confirm test", 64, done);

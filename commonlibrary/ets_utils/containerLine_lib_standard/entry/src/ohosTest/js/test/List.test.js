@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import List from "@ohos.util.List";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export default function ListTest() {
 describe("ListTest", function () {
 
@@ -21,7 +21,7 @@ describe("ListTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an List instance. For example: let list = new List().
    */
-  it("testConstructor001", 0, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let list = new List();
       expect(list != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("ListTest", function () {
    * @tc.name: testGet002
    * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(0).
    */
-  it("testGet002", 0, function () {
+  it("testGet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("四");
     let res = list.get(0);
@@ -51,7 +51,7 @@ describe("ListTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testGet003", 0, function () {
+  it("testGet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(0);
     list.add(1);
@@ -64,7 +64,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(8).
    */
-  it("testAdd003", 0, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(8);
     let res = list.get(0);
@@ -76,7 +76,7 @@ describe("ListTest", function () {
    * @tc.desc: Add a element to the end of the List instance. 
    * For example: let a = [1, 2, 3, 4]; list.add(a).
    */
-  it("testAdd004", 0, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let a = [1, 2, 3, 4];
     list.add(a);
@@ -89,7 +89,7 @@ describe("ListTest", function () {
    * @tc.desc: Add a element to the end of the List instance. 
    * For example: let a = {name: "lala", age: "13"}; list.add(a).
    */
-  it("testAdd005", 0, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let a = {name: "lala", age: "13"};
     list.add(a);
@@ -101,7 +101,7 @@ describe("ListTest", function () {
    * @tc.name: testHas006
    * @tc.desc: Check whether the List contains a specified element. For example: list.has("a").
    */
-  it("testHas006", 0, function () {
+  it("testHas006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -114,7 +114,7 @@ describe("ListTest", function () {
    * @tc.name: testHas007
    * @tc.desc: Check whether the List contains a specified element. For example: list.has("d").
    */
-  it("testHas007", 0, function () {
+  it("testHas007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -127,7 +127,7 @@ describe("ListTest", function () {
    * @tc.name: testEqual008
    * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
    */
-  it("testEqual008", 0, function () {
+  it("testEqual008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let list1 = new List();
     list.add("a");
@@ -144,7 +144,7 @@ describe("ListTest", function () {
    * @tc.name: testEqual009
    * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
    */
-  it("testEqual009", 0, function () {
+  it("testEqual009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let list1 = new List();
     list.add("a");
@@ -161,7 +161,7 @@ describe("ListTest", function () {
    * @tc.name: testEqual010
    * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
    */
-  it("testEqual010", 0, function () {
+  it("testEqual010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let list1 = new List();
     list.add("a");
@@ -177,7 +177,7 @@ describe("ListTest", function () {
    * @tc.name: testGet011
    * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(2).
    */
-  it("testGet010", 0, function () {
+  it("testGet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -194,7 +194,7 @@ describe("ListTest", function () {
    * @tc.desc:  In the List instance, find the index of a specified element from brack to front, 
    * and return the index found for the first time. If not found, return -1. For example: list.getLastIndexOf("a").
    */
-  it("testGetLastIndexOf012", 0, function () {
+  it("testGetLastIndexOf012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -211,7 +211,7 @@ describe("ListTest", function () {
    * @tc.desc:  In the List instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. For example: list.getIndexOf("b").
    */
-  it("testGetIndexOf013", 0, function () {
+  it("testGetIndexOf013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -227,7 +227,7 @@ describe("ListTest", function () {
    * @tc.name: testRemoveByIndex014
    * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex(2).
    */
-  it("testRemoveByIndex014", 0, function () {
+  it("testRemoveByIndex014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -249,7 +249,7 @@ describe("ListTest", function () {
    * @tc.name: testRemove015
    * @tc.desc: Delete the specified element. For example: list.remove("a").
    */
-  it("testRemove015", 0, function () {
+  it("testRemove015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -272,7 +272,7 @@ describe("ListTest", function () {
    * @tc.desc: Perform some operation on the elements in the List instance and return the List instance 
    * after the operation. For example: list.replaceAllElements((item, index) => {return (item = 2 * item);}).
    */
-  it("testReplaceAllElements016", 0, function () {
+  it("testReplaceAllElements016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(1);
     list.add(2);
@@ -295,7 +295,7 @@ describe("ListTest", function () {
    * @tc.name: testGetFirst017
    * @tc.desc: Get the header element of the List instance. For example: list.getFirst().
    */
-  it("testGetFirst017", 0, function () {
+  it("testGetFirst017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -310,7 +310,7 @@ describe("ListTest", function () {
    * @tc.name: testGetLast018
    * @tc.desc: Get the end element of the List instance. For example: list.getLast().
    */
-  it("testGetLast018", 0, function () {
+  it("testGetLast018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -325,7 +325,7 @@ describe("ListTest", function () {
    * @tc.name: testInsert019
    * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", 3).
    */
-  it("testInsert019", 0, function () {
+  it("testInsert019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -347,7 +347,7 @@ describe("ListTest", function () {
    * @tc.name: testSet020
    * @tc.desc: Modify the element corresponding to the specified index. For example: list.set(2, "d").
    */
-  it("testSet020", 0, function () {
+  it("testSet020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -362,7 +362,7 @@ describe("ListTest", function () {
    * @tc.name: testSort021
    * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort((a, b) => a - b).
    */
-  it("testSort021", 0, function () {
+  it("testSort021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -385,7 +385,7 @@ describe("ListTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: list.getSubList(2, 4).
    */
-  it("testGetSubList022", 0, function () {
+  it("testGetSubList022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -407,7 +407,7 @@ describe("ListTest", function () {
    * @tc.name: testConvertToArray023
    * @tc.desc: Convert an List instance to an array. For example: list.convertToArray().
    */
-  it("testConvertToArray023", 0, function () {
+  it("testConvertToArray023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -426,7 +426,7 @@ describe("ListTest", function () {
    * @tc.name: testLength024
    * @tc.desc: Get the number of elements contained in the List instance. For example: list.length.
    */
-  it("testLength024", 0, function () {
+  it("testLength024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -441,7 +441,7 @@ describe("ListTest", function () {
    * @tc.name: testIterator025
    * @tc.desc: Iterates over all elements in an List instance. For example: for (let item of list) {arr.push(item);}.
    */
-  it("testIterator025", 0, function () {
+  it("testIterator025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(8);
     list.add("一");
@@ -466,7 +466,7 @@ describe("ListTest", function () {
    * @tc.name: testForEach026
    * @tc.desc: Traversing elements in an List instance. For example: list.forEach((item, index) => {arr.push(item);}).
    */
-  it("testForEach026", 0, function () {
+  it("testForEach026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(8);
     list.add("一");
@@ -491,7 +491,7 @@ describe("ListTest", function () {
    * @tc.name: testIsEmpty027
    * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty().
    */
-  it("testIsEmpty027", 0, function () {
+  it("testIsEmpty027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(8);
     list.add("一");
@@ -510,7 +510,7 @@ describe("ListTest", function () {
    * @tc.name: testClear028
    * @tc.desc: Clear all elements in the List instance. For example: list.clear().
    */
-  it("testClear028", 0, function () {
+  it("testClear028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -525,7 +525,7 @@ describe("ListTest", function () {
    * @tc.name: testGet029
    * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(6).
    */
-  it("testGet029", 0, function () {
+  it("testGet029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -542,7 +542,7 @@ describe("ListTest", function () {
    * @tc.desc:  In the List instance, find the index of a specified element from brack to front, 
    * and return the index found for the first time. If not found, return -1. For example: list.getLastIndexOf("F").
    */
-  it("testGetLastIndexOf030", 0, function () {
+  it("testGetLastIndexOf030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -558,7 +558,7 @@ describe("ListTest", function () {
    * @tc.name: testRemoveByIndex031
    * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex(5).
    */
-  it("testRemoveByIndex031", 0, function () {
+  it("testRemoveByIndex031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -579,7 +579,7 @@ describe("ListTest", function () {
    * @tc.name: testRemove032
    * @tc.desc: Delete the specified element. For example: list.remove().
    */
-  it("testRemove032", 0, function () {
+  it("testRemove032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add();
     let res = list.remove();
@@ -590,7 +590,7 @@ describe("ListTest", function () {
    * @tc.name: testInsert033
    * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", 8).
    */
-  it("testInsert033", 0, function () {
+  it("testInsert033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -611,7 +611,7 @@ describe("ListTest", function () {
    * @tc.name: testSort034
    * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort((a, b) => a - b).
    */
-  it("testSort034", 0, function () {
+  it("testSort034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(";");
     list.add("一");
@@ -635,7 +635,7 @@ describe("ListTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: list.getSubList(2, 8).
    */
-  it("testGetSubList035", 0, function () {
+  it("testGetSubList035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -657,7 +657,7 @@ describe("ListTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: list.getSubList(6, 8).
    */
-  it("testGetSubList036", 0, function () {
+  it("testGetSubList036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -679,7 +679,7 @@ describe("ListTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: list.getSubList(6, 2).
    */
-  it("testGetSubList037", 0, function () {
+  it("testGetSubList037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -700,7 +700,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd038
    * @tc.desc: Add a element to the end of the List instance. For example: list.add("*").
    */
-  it("testAdd038", 0, function () {
+  it("testAdd038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(".");
     list.add("*");
@@ -713,7 +713,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd039
    * @tc.desc: Add a element to the end of the List instance. For example: list.add("*").
    */
-  it("testAdd039", 0, function () {
+  it("testAdd039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(".");
     list.add("*");
@@ -732,7 +732,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd040
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(" ").
    */
-  it("testAdd040", 0, function () {
+  it("testAdd040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(" ");
     let res = list.get(0);
@@ -743,7 +743,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd041
    * @tc.desc: Add a element to the end of the List instance. For example: list.add("a").
    */
-  it("testAdd041", 0, function () {
+  it("testAdd041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("a");
@@ -757,7 +757,7 @@ describe("ListTest", function () {
    * @tc.name: testListGet042
    * @tc.desc: Gets the element corresponding to the specified index. For example: list[0].
    */
-  it("testListGet042", 0, function () {
+  it("testListGet042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -769,7 +769,7 @@ describe("ListTest", function () {
    * @tc.name: testListSet043
    * @tc.desc: Modify the element corresponding to the specified index. For example: list[1] = "c".
    */
-  it("testListSet043", 0, function () {
+  it("testListSet043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -785,7 +785,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd044
    * @tc.desc: Add a element to the end of the List instance. For example: for (let i = 0; i < 100; i++) {list.add(i);}.
    */
-  it("testAdd044", 0, function () {
+  it("testAdd044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     for (let i = 0; i < 100; i++) {
       list.add(i);
@@ -800,7 +800,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd045
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(null).
    */
-  it("testAdd045", 0, function () {
+  it("testAdd045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(null);
     let res = list.get(0);
@@ -811,7 +811,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd046
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(0.1111).
    */
-  it("testAdd046", 0, function () {
+  it("testAdd046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(0.1111);
     let res = list.get(0);
@@ -822,7 +822,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd047
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(-1).
    */
-  it("testAdd047", 0, function () {
+  it("testAdd047", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(-1);
     let res = list.get(0);
@@ -833,7 +833,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd048
    * @tc.desc: Add a element to the end of the List instance. For example: const obj = {}; list.add(obj).
    */
-  it("testAdd048", 0, function () {
+  it("testAdd048", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     const obj = {};
     list.add(obj);
@@ -845,7 +845,7 @@ describe("ListTest", function () {
    * @tc.name: testSort049
    * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort((a, b) => a - b).
    */
-  it("testSort049", 0, function () {
+  it("testSort049", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.sort((a, b) => a - b);
     let res1 = list.length;
@@ -856,7 +856,7 @@ describe("ListTest", function () {
    * @tc.name: testRemoveByIndex050
    * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex(1).
    */
-  it("testRemoveByIndex050", 0, function () {
+  it("testRemoveByIndex050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     try {
       let res = list.removeByIndex(1);
@@ -872,7 +872,7 @@ describe("ListTest", function () {
    * @tc.name: testEqual051
    * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
    */
-  it("testEqual051", 0, function () {
+  it("testEqual051", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let list1 = new List();
     let res = list.equal(list1);
@@ -884,7 +884,7 @@ describe("ListTest", function () {
    * @tc.desc:  In the List instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. For example: list.getIndexOf("b").
    */
-  it("testGetIndexOf052", 0, function () {
+  it("testGetIndexOf052", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let res = list.getIndexOf(1);
     expect(res).assertEqual(-1);
@@ -894,7 +894,7 @@ describe("ListTest", function () {
    * @tc.name: testForEach053
    * @tc.desc: Traversing elements in an List instance. For example: list.forEach((item, index) => {num++;}).
    */
-  it("testForEach053", 0, function () {
+  it("testForEach053", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let num = 0;
     list.forEach((item, index) => {
@@ -907,7 +907,7 @@ describe("ListTest", function () {
    * @tc.name: testIsEmpty054
    * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty().
    */
-  it("testIsEmpty054", 0, function () {
+  it("testIsEmpty054", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let res = list.isEmpty();
     expect(res).assertEqual(true);
@@ -917,7 +917,7 @@ describe("ListTest", function () {
    * @tc.name: testHas055
    * @tc.desc: Check whether the List contains a specified element. For example: list.has(1).
    */
-  it("testHas055", 0, function () {
+  it("testHas055", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let res = list.has(1);
     expect(res).assertEqual(false);
@@ -927,7 +927,7 @@ describe("ListTest", function () {
    * @tc.name: testGet056
    * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(1).
    */
-  it("testGet056", 0, function () {
+  it("testGet056", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let res = list.get(1);
     expect(res).assertEqual(undefined);
@@ -937,7 +937,7 @@ describe("ListTest", function () {
    * @tc.name: testClear057
    * @tc.desc: Clear all elements in the List instance. For example: list.clear().
    */
-  it("testClear057", 0, function () {
+  it("testClear057", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.clear();
     let res1 = list.length;
@@ -948,7 +948,7 @@ describe("ListTest", function () {
    * @tc.name: testGetLast058
    * @tc.desc: Get the end element of the List instance. For example: list.getLast().
    */
-  it("testGetLast058", 0, function () {
+  it("testGetLast058", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let res = list.getLast();
     expect(res).assertEqual(undefined);
@@ -959,7 +959,7 @@ describe("ListTest", function () {
    * @tc.desc: Perform some operation on the elements in the List instance and return the List instance 
    * after the operation. For example: list.replaceAllElements((item, index) => {num++;}).
    */
-  it("testReplaceAllElements059", 0, function () {
+  it("testReplaceAllElements059", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let num = 0;
     list.replaceAllElements((item, index) => {
@@ -972,7 +972,7 @@ describe("ListTest", function () {
    * @tc.name: testConvertToArray060
    * @tc.desc: Convert an List instance to an array. For example: list.convertToArray().
    */
-  it("testConvertToArray060", 0, function () {
+  it("testConvertToArray060", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     const res = list.convertToArray();
     expect(res.length).assertEqual(0);
@@ -982,7 +982,7 @@ describe("ListTest", function () {
    * @tc.name: testConvertToArray061
    * @tc.desc: Convert an List instance to an array. For example: list.convertToArray().
    */
-  it("testConvertToArray061", 0, function () {
+  it("testConvertToArray061", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     const res = list.convertToArray();
     expect(res.length).assertEqual(0);
@@ -992,7 +992,7 @@ describe("ListTest", function () {
    * @tc.name: testlterator062
    * @tc.desc: Iterates over all elements in an List instance. For example: for (const iterator of list) { num++;}.
    */
-  it("testlterator062", 0, function () {
+  it("testlterator062", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     for (let index = 0; index < 10; index++) {
       list.add(index);
@@ -1008,7 +1008,7 @@ describe("ListTest", function () {
    * @tc.name: testlterator063
    * @tc.desc: Get the header element of the List instance. For example: list.getFirst().
    */
-  it("testGetFirst063", 0, function () {
+  it("testGetFirst063", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     let res = list.getFirst();
     expect(res).assertEqual(undefined);
@@ -1018,7 +1018,7 @@ describe("ListTest", function () {
    * @tc.name: testIterator064
    * @tc.desc: Iterates over all elements in an List instance. For example: List[Symbol.iterator]().
    */
-  it("testIterator064", 0, function () {
+  it("testIterator064", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -1043,7 +1043,7 @@ describe("ListTest", function () {
    * @tc.name: testGet065
    * @tc.desc: Gets the element corresponding to the specified index. For example: list.get.bind({}, 1)().
    */
-  it("testGet065 ", 0, function () {
+  it("testGet065 ", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     try {
       list.get.bind({}, 1)();
@@ -1059,7 +1059,7 @@ describe("ListTest", function () {
    * @tc.name: testInsert066
    * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", "a").
    */
-  it("testInsert066", 0, function () {
+  it("testInsert066", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -1082,7 +1082,7 @@ describe("ListTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testInsert067", 0, function () {
+  it("testInsert067", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(0);
     list.add(1);
@@ -1096,7 +1096,7 @@ describe("ListTest", function () {
    * @tc.name: testRemoveByIndex067
    * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex("a").
    */
-  it("testRemoveByIndex067", 0, function () {
+  it("testRemoveByIndex067", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     try {
       let res = list.removeByIndex("a");
@@ -1116,7 +1116,7 @@ describe("ListTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testRemoveByIndex068", 0, function () {
+  it("testRemoveByIndex068", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(0);
     list.add(1);
@@ -1130,7 +1130,7 @@ describe("ListTest", function () {
    * @tc.name: testSet068
    * @tc.desc: Modify the element corresponding to the specified index. For example: list.set(6, "d").
    */
-  it("testSet068", 0, function () {
+  it("testSet068", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -1149,7 +1149,7 @@ describe("ListTest", function () {
    * @tc.name: testSet069
    * @tc.desc: Modify the element corresponding to the specified index. For example: list.set("a", "d").
    */
-  it("testSet069", 0, function () {
+  it("testSet069", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -1172,7 +1172,7 @@ describe("ListTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testSet070", 0, function () {
+  it("testSet070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(0);
     list.add(1);
@@ -1186,7 +1186,7 @@ describe("ListTest", function () {
    * @tc.name: testSort070
    * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort(123).
    */
-  it("testSort070", 0, function () {
+  it("testSort070", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     try {
       list.sort(123);
@@ -1203,7 +1203,7 @@ describe("ListTest", function () {
    * @tc.desc: Intercepts an element within the specified range, including the element with the 
    * starting index but not the element with the ending index. For example: list.getSubList(6, 2).
    */
-  it("testGetSubList071", 0, function () {
+  it("testGetSubList071", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -1221,7 +1221,7 @@ describe("ListTest", function () {
    * @tc.name: testAdd072
    * @tc.desc: Add a element to the end of the List instance. For example: list.add.bind({}, "a")().
    */
-  it('testAdd072', 0, function () {
+  it('testAdd072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  list = new List();
     try {
       list.add.bind({}, "a")();
@@ -1237,7 +1237,7 @@ describe("ListTest", function () {
    * @tc.name: testForEach073
    * @tc.desc: Traversing elements in an List instance. For example: list.forEach(11).
    */
-  it('testForEach073', 0, function () {
+  it('testForEach073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  list = new List();
     try {
       list.forEach(11);
@@ -1253,7 +1253,7 @@ describe("ListTest", function () {
    * @tc.name: testForEach074
    * @tc.desc: Traversing elements in an List instance. For example: list.forEach.bind({}, "a")().
    */
-  it('testForEach074', 0, function () {
+  it('testForEach074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  list = new List();
     try {
       list.forEach.bind({}, "a")();
@@ -1269,7 +1269,7 @@ describe("ListTest", function () {
    * @tc.name: testIsEmpty075
    * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty.bind({}, "a")().
    */
-  it('testIsEmpty075', 0, function () {
+  it('testIsEmpty075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  list = new List();
     try {
       list.isEmpty.bind({}, "a")();
@@ -1285,7 +1285,7 @@ describe("ListTest", function () {
    * @tc.name: testGetSubList076
    * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty.bind({}, "a")().
    */
-  it("testGetSubList076", 0, function () {
+  it("testGetSubList076", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let list = new List();
     list.add(4);
     list.add(0);
@@ -1310,7 +1310,7 @@ describe("ListTest", function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it("testGetSubList077", 0, function () {
+    it("testGetSubList077", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       let list = new List();
       list.add(4);
       list.add(0);

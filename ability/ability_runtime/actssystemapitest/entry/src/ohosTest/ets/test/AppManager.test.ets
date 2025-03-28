@@ -564,5 +564,82 @@ export default function appManagerTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_0900
+     * @tc.name   : Verify isRamConstrainedDevice(callback).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_0900', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_0700`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isRamConstrainedDevice((err, data)=>{
+          try{expect(typeof data).assertEqual('boolean');}catch(e){}
+          done();
+        })
+      } catch (err) {
+        console.error(`${tag} off error, errorCode: ${err?.code}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_AppManager_1000
+     * @tc.name   : Verify isRamConstrainedDevice(promise).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityBase_AppManager_1000', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_AppManager_1000`;
+      console.log(`${tag}, it begin`);
+      try {
+        appManager.isRamConstrainedDevice().then((data)=>{
+          try{expect(typeof data).assertEqual('boolean');}catch(e){}
+          done();
+        }).catch((err:BusinessError)=>{
+          try{expect().assertFail();}catch(e){}
+          done();
+        })
+      } catch (err) {
+        console.error(`${tag} off error, errorCode: ${err?.code}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+     /**
+     * @tc.number: System_API_Test_App_Manager_1700
+     * @tc.name: promise form killProcessesByBundleName public interface interception test
+     * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
+     * @tc.level 3
+     */
+     it('System_API_Test_App_Manager_1700', 0, (done: Function) => {
+      let TAG = 'System_API_Test_App_Manager_1700';
+      let bundleName = "com.ohos.applicationsss";
+      try {
+        appManager.killProcessesByBundleName(bundleName, false).then((data) => {
+          console.log('System_API_Test_App_Manager_1700 killProcessesByBundleName success.');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`System_API_Test_App_Manager_1700 killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(16000050);
+          done();
+        });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`System_API_Test_App_Manager_1700 [appManager] error: ${code}, ${message}`);
+        expect(paramError.code).assertEqual(16000050);
+        done();
+      }
+    });
   })
 }

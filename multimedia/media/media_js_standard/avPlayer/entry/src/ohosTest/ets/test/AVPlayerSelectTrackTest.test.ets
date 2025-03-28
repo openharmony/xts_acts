@@ -195,6 +195,59 @@ async function testChangeTrack(fd: media.AVFileDescriptor, preparedOp: Function,
   setSource(avPlayer, fd);
 }
 
+async function changeTrackOn(avPlayer: media.AVPlayer, done: Function) {
+  let loopTime = 0;
+  avPlayer.on('trackInfoUpdate', (info: Array<media.MediaDescription>) => {
+    if (info) {
+      loopTime++;
+      for (let i = 0; i < info.length; i++) {
+        let propertyIndex: Object = info[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+        let propertyType: Object = info[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
+        console.info('track info: index=' + propertyIndex + ' tracktype=' + propertyType)
+        avPlayer.off('trackInfoUpdate');
+        expect(loopTime).assertEqual(1);
+        done();
+      }
+    } else {
+      console.info('track info is null');
+      expect(false).assertTrue();
+      done();
+    }
+  });
+}
+
+async function testChangeTrackListening(fd: media.AVFileDescriptor, preparedOp: Function, playedOp: Function,
+  stoppedOp: Function, extraOp: Function | undefined, changeTrackListening: Function, done: Function) {
+  console.info(`case media source: ${fd}`)
+  await media.createAVPlayer().then((video) => {
+    if (typeof (video) != 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+    } else {
+      console.error('case createAVPlayer failed');
+      expect().assertFail();
+      done();
+    }
+  }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+  changeTrackListening(avPlayer,done);
+  avPlayer.on('stateChange', async (state, reason) => {
+    console.info(`case stateChange called, state is ${state}, reason is ${reason}`);
+    await handleState(state, preparedOp, playedOp, stoppedOp);
+  });
+  avPlayer.on('trackChange', async (index, isSelection) => {
+    console.info(`case trackChange called, index is ${index}, isSelection is ${isSelection}`);
+  });
+  avPlayer.on('error', async (err) => {
+    console.error(`case error called, errMessage is ${err.message}`);
+  });
+  avPlayer.on('endOfStream', async () => {
+    if (extraOp) {
+      extraOp();
+    }
+  });
+  setSource(avPlayer, fd);
+}
+
 function openFileFailed() {
   console.info('case file fail');
 }
@@ -296,6 +349,43 @@ export default function AVPlayerSelectTrackTest() {
       }
 
       await testChangeTrack(avFd, preparedOperation, playedOperation, stoppedOperation, undefined, done);
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_ON_0000
+        * @tc.name      : 001.test change default audio track
+        * @tc.desc      : test change default audio track
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_ON_0000', 0, async (done: Function) => {
+      console.info('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_SELECTTRACK_FUNC_ON_0000 called');
+      let preparedOperation = async () => {
+        await getAudioTracks();
+        await getCurrentSelectedTrack();
+        await getCurrentAudioTrack();
+        avPlayer.selectTrack(currentTrack);
+        await mediaTestBase.msleepAsync(2000);
+        avPlayer.deselectTrack(currentTrack);
+        console.log("preparedOperation currentTrack is " + currentTrack + " ;selectedTrack is " + selectedTrack)
+        expect(currentTrack != selectedTrack).assertTrue();
+      }
+
+      let playedOperation = async () => {
+        await changeAudioTrack();
+        avPlayer.selectTrack(selectedTrack, media.SwitchMode.SEGMENT);
+        await mediaTestBase.msleepAsync(2000);
+        await getCurrentAudioTrack();
+        console.log("playedOperation currentTrack is " + currentTrack + " ;selectedTrack is " + selectedTrack)
+        expect(currentTrack).assertEqual(selectedTrack);
+      }
+
+      let stoppedOperation = async () => {
+        await resetAndCallbackOff();
+        done();
+      }
+
+      await testChangeTrackListening(avFd, preparedOperation, playedOperation, stoppedOperation, undefined,changeTrackOn, done);
     });
   })
 }

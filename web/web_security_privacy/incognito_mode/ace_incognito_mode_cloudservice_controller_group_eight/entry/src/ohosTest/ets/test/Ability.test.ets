@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Driver } from '@ohos.UiTest'
 import Utils from './Util';
@@ -85,7 +85,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_deleteAllGeolocation0002", 0, async (done: Function) => {
+    it("testWebView_deleteAllGeolocation0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("setRenderProcessMode", "true", 213, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -103,7 +103,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_getAccessibleGeolocation0001", 0, async (done: Function) => {
+    it("testWebView_getAccessibleGeolocation0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("deleteGeolocation", "17100011Invalid origin", 214, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -121,7 +121,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_getAccessibleGeolocation0002", 0, async (done: Function) => {
+    it("testWebView_getAccessibleGeolocation0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("deleteGeolocation", "17100011Invalid origin", 215, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_getStoredGeolocation0001", 0, async (done: Function) => {
+    it("testWebView_getStoredGeolocation0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("deleteGeolocation", "[]", 216, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -157,7 +157,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_getStoredGeolocation0002", 0, async (done: Function) => {
+    it("testWebView_getStoredGeolocation0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("deleteGeolocation", "[]", 217, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -176,7 +176,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_fetchCookieSync0001", 0, async (done: Function) => {
+    it("testWebView_fetchCookieSync0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("deleteGeolocation", "", 218, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -194,7 +194,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_fetchCookieSync0002", 0, async (done: Function) => {
+    it("testWebView_fetchCookieSync0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("deleteGeolocation", "", 219, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

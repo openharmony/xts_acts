@@ -14,7 +14,7 @@
  */
 
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { asyncGenerator } from './test2018_01'
 import { obj3 } from './test2018_02'
 import { remaining } from './test2018_03'
@@ -32,7 +32,7 @@ export default function es2018Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testAsynchronousIteration', 0, async () => {
+    it('testAsynchronousIteration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let es2018_01_ans: number[] = [];
       for await (const value of asyncGenerator()) {
         es2018_01_ans.push(value);
@@ -47,7 +47,7 @@ export default function es2018Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSpreadingIntoObjectLiterals', 0, () => {
+    it('testSpreadingIntoObjectLiterals', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(obj3).assertDeepEquals({
         one: 1, two: 2, three: 3, four: 4
       })
@@ -60,7 +60,7 @@ export default function es2018Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRestProperty', 0, () => {
+    it('testRestProperty', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(remaining).assertDeepEquals({
         b: 2, c: 3
       })
@@ -73,7 +73,7 @@ export default function es2018Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPromise.finally', 0, () => {
+    it('testPromise.finally', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       let test2018_04_ans: number = 0;
       let promise1 = new Promise((resolve: (value: string) => void, rejcet: (value: string) => void) => {
         resolve("resolved");
@@ -108,7 +108,7 @@ export default function es2018Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNewFeaturesOfRegExp', 0, () => {
+    it('testNewFeaturesOfRegExp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2018_05_ans).assertEqual("756abcbcdeffalsetruetruetruetrue");
     })
     /**
@@ -119,7 +119,7 @@ export default function es2018Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFixTemplateString', 0, () => {
+    it('testFixTemplateString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       expect(test2018_06_ans).assertEqual("ES2018undefined");
     })
   })

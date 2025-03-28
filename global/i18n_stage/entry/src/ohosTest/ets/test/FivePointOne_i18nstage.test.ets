@@ -44,7 +44,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_refinedFormat_0160', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0160', Level.LEVEL0, () => {
       let numFormat: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN");
       let formattedRange: string = numFormat.formatRange(0, 0);
       expect(formattedRange == "~0").assertTrue();
@@ -56,9 +56,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : normally (begin code & stop code)
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0170', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0170', Level.LEVEL2, () => {
       let numFormat: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN");
       let formattedRange: string = numFormat.formatRange(0, 9);
       expect(formattedRange == "0-9").assertTrue();
@@ -70,9 +70,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : begin code with negative ,stop code with decimal
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0180', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0180', Level.LEVEL2, () => {
       let numFormat: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN");
       let formattedRange: string = numFormat.formatRange(-9, 9.9);
       expect(formattedRange == "-9 - 9.9").assertTrue();
@@ -84,9 +84,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : begin code large than stop code
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 1
      */
-    it('SUB_GLOBAL_refinedFormat_0190', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0190', Level.LEVEL2, () => {
       let numFormat: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN");
       let formattedRange: string = numFormat.formatRange(9, 0);
       expect(formattedRange == "").assertTrue();
@@ -98,9 +98,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : i18n.TemperatureType.CELSIUS
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 2
+     * @tc.level    : Level 0
      */
-    it('I18N_test_getTemperatureName_0100', 0, () => {
+    it('I18N_test_getTemperatureName_0100', Level.LEVEL0, () => {
       let type = i18n.System.getTemperatureName(i18n.TemperatureType.CELSIUS);
       console.log('I18N_test_getTemperatureName_0100:' + type);
       expect(type).assertEqual('celsius');
@@ -114,7 +114,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('I18N_test_getTemperatureName_0200', 0, () => {
+    it('I18N_test_getTemperatureName_0200', Level.LEVEL2, () => {
       let type = i18n.System.getTemperatureName(i18n.TemperatureType.FAHRENHEIT);
       console.log('I18N_test_getTemperatureName_0200:' + type);
       expect(type).assertEqual('fahrenheit');
@@ -128,7 +128,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('I18N_test_getTemperatureName_0300', 0, () => {
+    it('I18N_test_getTemperatureName_0300', Level.LEVEL2, () => {
       let type = i18n.System.getTemperatureName(i18n.TemperatureType.KELVIN);
       console.log('I18N_test_getTemperatureName_0300:' + type);
       expect(type).assertEqual('kelvin');
@@ -142,7 +142,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('I18N_test_getTemperatureName_0400', 0, () => {
+    it('I18N_test_getTemperatureName_0400', Level.LEVEL3, () => {
       try {
         i18n.System.getTemperatureName(0);
       } catch (e) {
@@ -157,9 +157,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : en-GB & en-Latn-US
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 2
+     * @tc.level    : Level 0
      */
-    it('I18N_test_getSimplifiedLanguage_01_0100', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0100', Level.LEVEL0, () => {
       let type_one = i18n.System.getSimplifiedLanguage('en-GB');
       console.log('I18N_test_getSimplifiedLanguage_01_0100 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('en-Latn-US');
@@ -176,7 +176,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0200', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0200', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('zh-Hant-HK');
       console.log('I18N_test_getSimplifiedLanguage_01_0200 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('zh-Hant-TW');
@@ -193,7 +193,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0300', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0300', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('es-ES');
       console.log('I18N_test_getSimplifiedLanguage_01_0300 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('es-US');
@@ -210,7 +210,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0400', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0400', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('pt-PT');
       console.log('I18N_test_getSimplifiedLanguage_01_0400 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('pt-BR');
@@ -225,9 +225,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : en-CN & en-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0500', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0500', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('en-CN');
       console.log('I18N_test_getSimplifiedLanguage_01_0500 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('en-Test');
@@ -242,9 +242,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : zh-Hant-CN & zh-Hant-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0600', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0600', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('zh-Hant-CN');
       console.log('I18N_test_getSimplifiedLanguage_01_0600 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('zh-Hant-Test');
@@ -259,9 +259,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : es-CN & es-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0700', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0700', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('es-CN');
       console.log('I18N_test_getSimplifiedLanguage_01_0700 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('es-Test');
@@ -276,9 +276,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : pt-CN & pt-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0800', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0800', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('pt-CN');
       console.log('I18N_test_getSimplifiedLanguage_01_0800 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('pt-Test');
@@ -293,9 +293,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : bo-CN & bo-Test & bo-Test
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 2
      */
-    it('I18N_test_getSimplifiedLanguage_01_0900', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_0900', Level.LEVEL2, () => {
       let type_one = i18n.System.getSimplifiedLanguage('bo-CN');
       console.log('I18N_test_getSimplifiedLanguage_01_0900 type_one:' + type_one);
       let type_two = i18n.System.getSimplifiedLanguage('bo-US');
@@ -315,7 +315,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('I18N_test_getSimplifiedLanguage_01_1000', 0, () => {
+    it('I18N_test_getSimplifiedLanguage_01_1000', Level.LEVEL3, () => {
       try {
         i18n.System.getSimplifiedLanguage("0");
       } catch (e) {
@@ -330,9 +330,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     :fontColor &fontFamily & fontSize & fontWeight & fontStyle
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 2
+     * @tc.level    : Level 0
      */
-    it('SUB_GLOBAL_I18N_StyledNumberFormat_02_00100', 0, () => {
+    it('SUB_GLOBAL_I18N_StyledNumberFormat_02_00100', Level.LEVEL0, () => {
       let integer_textStyle = new TextStyle({
         fontColor: Color.Red,
         fontFamily: "Arial",
@@ -397,7 +397,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0310', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0310', Level.LEVEL2, () => {
       let numOptions: intl.NumberOptions = {
         maximumFractionDigits: 2, maximumSignificantDigits: 6, roundingPriority: "lessPrecision"
       };
@@ -414,7 +414,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0630', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0630', Level.LEVEL2, () => {
       let numOptions: intl.NumberOptions = {
         roundingMode: "halfExpand", maximumSignificantDigits: 5
       };
@@ -431,7 +431,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_FilePathMirroring_0100', 0, () => {
+    it('SUB_GLOBAL_FilePathMirroring_0100', Level.LEVEL2, () => {
       let path: string = "/data/out/tmp";
       let delimiter: string = "/";
       let locale: intl.Locale = new intl.Locale("ug");
@@ -448,7 +448,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0020', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0020', Level.LEVEL2, () => {
       let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
       let date: Date = new Date(2024, 11, 13, 6, 30, 25);
       let formatter: i18n.SimpleDateTimeFormat =
@@ -465,7 +465,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0790', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0790', Level.LEVEL2, () => {
       let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
       let skeletonFormat: i18n.SimpleNumberFormat =
         i18n.getSimpleNumberFormatBySkeleton("engineering/sign-always", locale);
@@ -481,7 +481,7 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0320', 0, () => {
+    it('SUB_GLOBAL_refinedFormat_0320', Level.LEVEL2, () => {
       let numOptions: intl.NumberOptions = {
         maximumFractionDigits: 2, roundingIncrement: 1
       };
@@ -504,6 +504,201 @@ export default function FivePointOne_i18nStageTest() {
       let skeletonFormatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton("yMdhms", locale);
       let dateFormatted: string = skeletonFormatter.format(date);
       expect(dateFormatted == "2024/12/13 上午6:30:25").assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimplifiedLanguage_01_1010
+     * @tc.name     : I18N_test_getSimplifiedLanguage_01_1010
+     * @tc.desc     : no param
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimplifiedLanguage_01_1010', Level.LEVEL2, () => {
+      let type_one = i18n.System.getSimplifiedLanguage();
+      console.log('I18N_test_getSimplifiedLanguage_01_1010 type_one:' + type_one);
+      expect(type_one != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getTemperatureType_0100
+     * @tc.name     : I18N_test_getTemperatureType_0100
+     * @tc.desc     : no param
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getTemperatureType_0100', Level.LEVEL2, () => {
+      let type: i18n.TemperatureType = i18n.System.getTemperatureType();
+      console.log('I18N_test_getTemperatureType_0100 type_one:' + type);
+      expect(type != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getFirstDayOfWeek_0100
+     * @tc.name     : I18N_test_getFirstDayOfWeek_0100
+     * @tc.desc     : no param
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getFirstDayOfWeek_0100', Level.LEVEL2, () => {
+      let type: i18n.WeekDay = i18n.System.getFirstDayOfWeek();
+      console.log('I18N_test_getFirstDayOfWeek_0100 type_one:' + type);
+      expect(type != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getUnicodeWrappedFilePath_0100
+     * @tc.name     : I18N_test_getUnicodeWrappedFilePath_0100
+     * @tc.desc     : 890001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getUnicodeWrappedFilePath_0100', Level.LEVEL3, () => {
+      try {
+        let path: string = "error";
+        let delimiter: string = "error";
+        let locale: intl.Locale = new intl.Locale("ug");
+        i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale);
+      } catch (e) {
+        console.log('I18N_test_getUnicodeWrappedFilePath_0100 type_one:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getUnicodeWrappedFilePath_0200
+     * @tc.name     : I18N_test_getUnicodeWrappedFilePath_0200
+     * @tc.desc     : path & delimiter
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getUnicodeWrappedFilePath_0200', Level.LEVEL2, () => {
+      let path: string = "/data/out/tmp";
+      let delimiter: string = "/";
+      let mirrorPath: string = i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter);
+      console.log('I18N_test_getUnicodeWrappedFilePath_0200:' + mirrorPath);
+      expect(mirrorPath != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getUnicodeWrappedFilePath_0300
+     * @tc.name     : I18N_test_getUnicodeWrappedFilePath_0300
+     * @tc.desc     : path
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getUnicodeWrappedFilePath_0300', Level.LEVEL2, () => {
+      let path: string = "/data/out/tmp";
+      let mirrorPath: string = i18n.I18NUtil.getUnicodeWrappedFilePath(path);
+      console.log('I18N_test_getUnicodeWrappedFilePath_0300:' + mirrorPath);
+      expect(mirrorPath != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatByPattern_0100
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatByPattern_0100
+     * @tc.desc     : 89001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getSimpleDateTimeFormatByPattern_0100', Level.LEVEL3, () => {
+      try {
+        let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+        i18n.getSimpleDateTimeFormatByPattern('error', locale);
+      } catch (e) {
+        console.log('I18N_test_getSimpleDateTimeFormatByPattern_0100 error code:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatByPattern_0200
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatByPattern_0200
+     * @tc.desc     : only date
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimpleDateTimeFormatByPattern_0200', Level.LEVEL2, () => {
+      let date: Date = new Date(2024, 11, 13, 6, 30, 25);
+      let formatter: i18n.SimpleDateTimeFormat =
+        i18n.getSimpleDateTimeFormatByPattern("'time('y'/'M'/'d'/'h':'m':'s')'");
+      let dateFormatted: string = formatter.format(date);
+      console.log('I18N_test_getSimpleDateTimeFormatByPattern_0200 dateFormatted:' + dateFormatted);
+      expect(dateFormatted != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatBySkeleton_0100
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatBySkeleton_0100
+     * @tc.desc     : 89001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getSimpleDateTimeFormatBySkeleton_0100', Level.LEVEL3, () => {
+      try {
+        let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+        i18n.getSimpleDateTimeFormatBySkeleton('error', locale);
+      } catch (e) {
+        console.log('I18N_test_getSimpleDateTimeFormatBySkeleton_0100 error code:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleDateTimeFormatBySkeleton_0200
+     * @tc.name     : I18N_test_getSimpleDateTimeFormatBySkeleton_0200
+     * @tc.desc     : only date
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimpleDateTimeFormatBySkeleton_0200', Level.LEVEL2, () => {
+      let date: Date = new Date(2024, 11, 13, 6, 30, 25);
+      let skeletonFormatter: i18n.SimpleDateTimeFormat =
+        i18n.getSimpleDateTimeFormatBySkeleton("yMdhms");
+      let dateFormatted: string = skeletonFormatter.format(date);
+      expect(dateFormatted != null).assertTrue();
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleNumberFormatBySkeleton_0100
+     * @tc.name     : I18N_test_getSimpleNumberFormatBySkeleton_0100
+     * @tc.desc     : 89001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('I18N_test_getSimpleNumberFormatBySkeleton_0100', Level.LEVEL3, () => {
+      try {
+        let locale: intl.Locale = new intl.Locale("zh-Hans-CN");
+        i18n.getSimpleNumberFormatBySkeleton('error', locale);
+      } catch (e) {
+        console.log('I18N_test_getSimpleNumberFormatBySkeleton_0100 error code:' + e.code);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : I18N_test_getSimpleNumberFormatBySkeleton_0200
+     * @tc.name     : I18N_test_getSimpleNumberFormatBySkeleton_0200
+     * @tc.desc     : only skeletonFormatter
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 2
+     */
+    it('I18N_test_getSimpleNumberFormatBySkeleton_0200', Level.LEVEL2, () => {
+      let skeletonFormatter: i18n.SimpleNumberFormat =
+        i18n.getSimpleNumberFormatBySkeleton("engineering/sign-always");
+      let numberFormatted: string = skeletonFormatter.format(1230000);
+      expect(numberFormatted == "1.23E+6").assertTrue();
     })
 
     console.log('*************end FivePointOne_i18nStageTest*************');

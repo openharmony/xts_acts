@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function webSecureDnsModeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebSecureDnsModeEnum001', 0, async (done: Function) => {
+    it('testWebSecureDnsModeEnum001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebSecureDnsModeEnum001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebSecureDnsModeEnum001", 0, 70300, done);
@@ -76,7 +76,7 @@ export default function webSecureDnsModeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebSecureDnsModeEnum002', 0, async (done: Function) => {
+    it('testWebSecureDnsModeEnum002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebSecureDnsModeEnum002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebSecureDnsModeEnum002", 1, 70301, done);
@@ -91,7 +91,7 @@ export default function webSecureDnsModeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebSecureDnsModeEnum003', 0, async (done: Function) => {
+    it('testWebSecureDnsModeEnum003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebSecureDnsModeEnum003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebSecureDnsModeEnum003", 2, 70302, done);

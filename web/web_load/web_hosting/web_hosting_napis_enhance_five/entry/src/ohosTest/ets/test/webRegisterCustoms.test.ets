@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, it } from '@ohos/hypium';
+import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 
@@ -37,7 +37,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testRegisterCustoms', 0, async (done: Function) => {
+    it('testRegisterCustoms', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testRegisterCustoms PASS');
         
@@ -55,7 +55,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testSetSchemeHandler', 0, async (done: Function) => {
+    it('testSetSchemeHandler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testSetSchemeHandler PASS');
         
@@ -73,7 +73,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testClearSchemeHandlers', 0, async (done: Function) => {
+    it('testClearSchemeHandlers', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testClearSchemeHandlers PASS');
         
@@ -91,7 +91,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testServiceWorkerClearSchemeHandlers', 0, async (done: Function) => {
+    it('testServiceWorkerClearSchemeHandlers', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testServiceWorkerClearSchemeHandlers PASS');
         
@@ -110,7 +110,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDestroySchemeHandler', 0, async (done: Function) => {
+    it('testDestroySchemeHandler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testDestroySchemeHandler PASS');
         
@@ -129,7 +129,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebResourceRequest_GetFrameUrl', 0, async (done: Function) => {
+    it('testWebResourceRequest_GetFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetFrameUrl PASS');
 

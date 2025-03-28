@@ -30,6 +30,7 @@ import commitModifyTest from './PhotoAsset/commitModify.test'
 import convertToPhotoAssetTest from './PhotoAsset/convertToPhotoAsset.test'
 import getTest from './PhotoAsset/get.test'
 import getThumbnailTest from './PhotoAsset/getThumbnail.test'
+import photoAccessHelperEnumTest from './PhotoAccessHelper/photoAccessHelperEnum.test'
 
 export default function testsuite () {
   getPhotoAccessHelperTest()
@@ -49,4 +50,5 @@ export default function testsuite () {
   convertToPhotoAssetTest()
   getTest()
   getThumbnailTest()
+  photoAccessHelperEnumTest()
 }

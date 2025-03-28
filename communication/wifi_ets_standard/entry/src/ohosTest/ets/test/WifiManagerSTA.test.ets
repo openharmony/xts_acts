@@ -92,7 +92,12 @@ export default function wifiSta() {
                 }
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
-                expect().assertFail();
+                if (error.code == 801) {
+                    console.info('[wifi_js]enableWifi is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
 	        }
 	        done();
         })
@@ -111,6 +116,10 @@ export default function wifiSta() {
 		        console.info("isMeteredHotspot:" + isMeteredHotspot);
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
 	        }
 	        done();
         })
@@ -129,7 +138,12 @@ export default function wifiSta() {
 		        console.info("isHotspotActive:" + isHotspotActive);
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
 	        }
 	        done();
         })
@@ -187,7 +201,12 @@ export default function wifiSta() {
                 }
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
-                expect().assertFail();
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
 	        }
 	        done();
         })
@@ -207,7 +226,12 @@ export default function wifiSta() {
                 expect(true).assertEqual(address != null);
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
-                expect().assertFail();
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
 	        }
 	        done();
         })
@@ -249,6 +273,7 @@ export default function wifiSta() {
 		        let wifiLinkedInfo: wifiMg.WifiLinkedInfo = wifiMg.getLinkedInfoSync();
                 console.info("[wifi_test]getLinkedInfoSync result : " + JSON.stringify(wifiLinkedInfo));
                 console.info("[wifi_test]getLinkedInfoSync result wifiLinkType : " + JSON.stringify(wifiLinkedInfo.wifiLinkType));
+                console.info("[wifi_test]getLinkedInfoSync result channelWidth : " + JSON.stringify(wifiLinkedInfo.channelWidth));
                 expect(true).assertEqual(wifiLinkedInfo != null);
 	        }catch(error){
 		        console.error("failed:" + JSON.stringify(error));
@@ -294,6 +319,96 @@ export default function wifiSta() {
 	        }catch(error){
 		        console.error("WifiLinkType failed:" + JSON.stringify(error));
                 expect().assertFail();
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0042
+         * @tc.name testAddDeviceConfig
+         * @tc.desc Test addDeviceConfig Sync API functionality.
+         * @tc.type Function
+         * @tc.size:MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+            try {
+            await wifiMg.addDeviceConfig(null)
+                .then(netWorkId => {
+                    console.info("[wifi_test]add OPEN DeviceConfig promise result : " + JSON.stringify(netWorkId));
+                });
+                expect().assertFail();
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                expect(Number(error.code)).assertEqual(401);
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0043
+         * @tc.name testAddDeviceConfig
+         * @tc.desc Test addDeviceConfig Sync API functionality.
+         * @tc.type Function
+         * @tc.size:MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+            let functionAddDeviceConfig= async ()=>{
+                return new Promise<void>((resolve,reject)=>{
+                    wifiMg.addDeviceConfig(null, error => {
+                        if (error) {
+                        reject(error)
+                        } else {
+                        resolve();
+                        }
+                    });
+                })
+            }
+            try {
+                await functionAddDeviceConfig();
+                expect().assertFail();
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                expect(Number(error.code)).assertEqual(401);
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0044
+         * @tc.name testConnectToNetwork
+         * @tc.desc Test connectToNetwork Sync API functionality.
+         * @tc.type Function
+         * @tc.size:MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+            try {
+                wifiMg.connectToNetwork(null);
+                expect().assertFail();
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                expect(Number(error.code)).assertEqual(401);
+	        }
+	        done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0045
+         * @tc.name testRemoveDevice
+         * @tc.desc Test removeDevice Sync API functionality.
+         * @tc.type Function
+         * @tc.size:MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+            try {
+                wifiMg.removeDevice(null);
+                expect().assertFail();
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                expect(Number(error.code)).assertEqual(401);
 	        }
 	        done();
         })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
@@ -78,7 +78,7 @@ export default function webViewApiOne() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrlGroup', 0, async (done: Function) => {
+    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrlGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let emitKey = "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl";
       Utils.emitEvent(emitKey, 10)
       Utils.registerBaseEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277,

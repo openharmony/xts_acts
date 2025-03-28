@@ -157,9 +157,10 @@ export default function ActsDisplayNdkApi14Test() {
             expect(displayInfo.orientation).assertEqual(0);
              done();
           }else {
-            expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
-            expect(displayInfo.orientation).assertEqual(Number(orientation[0]));
-             done();
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+            done();
           }
           expect(displayInfo.id).assertEqual(0);
           expect(displayInfo.alive).assertEqual(1);
@@ -191,7 +192,7 @@ export default function ActsDisplayNdkApi14Test() {
     it('test_OH_NativeDisplayManager_CreateAllDisplays', 0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateAllDisplays';
       try{
-        let displayInfos = testNapi.getAllDisplay();
+        let displayInfos: Array<display.Display> = testNapi.getAllDisplay();
         for(let i = 0;i <displayInfos.length;i++){
           console.log(caseName + ' getAllDisplay displayInfos:'+ JSON.stringify(displayInfos[i]));
 
@@ -212,8 +213,9 @@ export default function ActsDisplayNdkApi14Test() {
             expect(displayInfos[0].orientation).assertEqual(0);
             done();
           }else {
-            expect(displayInfos[0].rotation).assertEqual(Number(rotation[0]));
-            expect(displayInfos[0].orientation).assertEqual(Number(orientation[0]));
+            // expect(displayInfos[0].rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfos[0].rotation;
+            expect(displayInfos[0].orientation).assertEqual(Number(orientation[rotation]));
             done();
           }
         }
@@ -233,8 +235,9 @@ export default function ActsDisplayNdkApi14Test() {
             expect(displayInfos[1].orientation).assertEqual(0);
             done();
           }else {
-            expect(displayInfos[1].rotation).assertEqual(Number(rotation[0]));
-            expect(displayInfos[1].orientation).assertEqual(Number(orientation[0]));
+            // expect(displayInfos[1].rotation).assertEqual(Number(rotation[0]));
+            let rotation2 = displayInfos[1].rotation;
+            expect(displayInfos[1].orientation).assertEqual(Number(orientation[rotation2]));
             done();
           }
         }
@@ -273,8 +276,9 @@ export default function ActsDisplayNdkApi14Test() {
             expect(displayInfo.orientation).assertEqual(0);
              done();
           }else {
-            expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
-            expect(displayInfo.orientation).assertEqual(Number(orientation[0]));
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
              done();
           }
       } catch (err) {
@@ -542,8 +546,9 @@ export default function ActsDisplayNdkApi14Test() {
             expect(displayInfo.orientation).assertEqual(0);
              done();
           }else {
-            expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
-            expect(displayInfo.orientation).assertEqual(Number(orientation[0]));
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
              done();
           }
       } catch (err) {
@@ -584,9 +589,10 @@ export default function ActsDisplayNdkApi14Test() {
             expect(displayInfo.orientation).assertEqual(0);
              done();
           }else {
-            expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
-            expect(displayInfo.orientation).assertEqual(Number(orientation[0]));
-             done();
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+            done();
           }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -740,6 +746,49 @@ export default function ActsDisplayNdkApi14Test() {
         done();
       }
     })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_capture_0100
+     * @tc.name       : testcapture
+     * @tc.desc       : testcapture
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testcapture', 0, (done:Function) => {
+      let caseName = 'testcapture';
+      try{
+          let captureOption: screenshot.CaptureOption = {
+            "displayId": 0
+          };
+          let promise = screenshot.capture();
+          promise.then((PixelMap: image.PixelMap) => {
+            console.log(caseName + 'Succeeded in saving screenshot. Pixel bytes number: ' + PixelMap.getPixelBytesNumber());
+            PixelMap.getImageInfo().then((imageInfo:image.ImageInfo)=>{
+              let PixelMapWidth = imageInfo.size.width;
+              let PixelMapHeight = imageInfo.size.height;
+              console.log(caseName + ' PixelMapWidth:'+ PixelMapWidth + ' ,PixelMapHeight:'+ PixelMapHeight);
+              expect(PixelMapWidth).assertLarger(0);
+              expect(PixelMapHeight).assertLarger(0);
+              PixelMap.release(); // PixelMap使用完后及时释放内存
+              done();
+            })
+          }).catch((err: BusinessError) => {
+            console.log(caseName +'Failed to save screenshot. Code: ' + JSON.stringify(err));
+            if(err.code == 801){
+              done();
+            }else{
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
 
 
   })

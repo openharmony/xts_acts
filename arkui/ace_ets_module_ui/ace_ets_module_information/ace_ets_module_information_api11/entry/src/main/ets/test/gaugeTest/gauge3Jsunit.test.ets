@@ -187,7 +187,7 @@ export default function gauge3Jsunit() {
       let strJson = getInspectorByKey('guage');
       let obj: ESObject = JSON.parse(strJson);
       console.info('gauge3Jsunit_0700 component obj is: ' + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('0.00vp')
+      expect(obj.$attrs.width).assertEqual('200.00vp')
       done();  
     }); 
     

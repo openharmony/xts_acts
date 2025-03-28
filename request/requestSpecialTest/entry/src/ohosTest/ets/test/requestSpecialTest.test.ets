@@ -17,7 +17,7 @@ import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestSpecialUnitTest() {
@@ -83,7 +83,7 @@ export default function requestSpecialUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Download_broadcastEvent_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Download_broadcastEvent_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Download_broadcastEvent_0200 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -157,7 +157,7 @@ export default function requestSpecialUnitTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_ErrorDetailed_0500', 0, async (done: Function) => {
+    it('SUB_Request_Agent_ErrorDetailed_0500', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_Request_Agent_ErrorDetailed_0500 is starting-----------------------');
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -198,7 +198,7 @@ export default function requestSpecialUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('Download_Test_0300', 0, async (done: Function) => {
+    it('Download_Test_0300', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------Download_Test_0300 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/Download_Test_0300.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/Download_Test_0300.txt`);
@@ -253,7 +253,7 @@ export default function requestSpecialUnitTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_CreateTaskErrorCode_Callback_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_CreateTaskErrorCode_Callback_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0400 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -298,7 +298,7 @@ export default function requestSpecialUnitTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('SUB_Request_Agent_CreateTaskErrorCode_promise_0100', 0, async (done: Function) => {
+    it('SUB_Request_Agent_CreateTaskErrorCode_promise_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_0400 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,

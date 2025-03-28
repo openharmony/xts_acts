@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
+import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import usbManager from "@ohos.usbManager"
 import deviceManager from '@ohos.driver.deviceManager'
 
@@ -64,7 +64,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSystemApiQueryDeviceInfoNormal001', 0, (done: Function) => {
+    it('testSystemApiQueryDeviceInfoNormal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info('----------------------testSystemApiQueryDeviceInfoNormal001---------------------------');
       if (!isDeviceConnected(done)) {
         return;
@@ -89,7 +89,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSystemApiQueryDriverInfoNormal001', 0, (done: Function) => {
+    it('testSystemApiQueryDriverInfoNormal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info('----------------------testSystemApiQueryDriverInfoNormal001---------------------------');
       if (!isDeviceConnected(done)) {
         return;

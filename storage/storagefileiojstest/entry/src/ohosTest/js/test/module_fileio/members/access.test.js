@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioAccess() {
 describe('fileio_access', function () {
@@ -31,7 +32,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_sync_000', 0, async function () {
+  it('fileio_test_access_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -54,7 +55,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_sync_001', 0, async function () {
+  it('fileio_test_access_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -77,7 +78,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_sync_002', 0, async function () {
+  it('fileio_test_access_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -100,7 +101,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_sync_003', 0, async function () {
+  it('fileio_test_access_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -123,7 +124,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_sync_004', 0, async function () {
+  it('fileio_test_access_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_004');
     fileio.openSync(fpath, 0o102, 0o777);
 
@@ -146,7 +147,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_sync_005', 0, async function () {
+  it('fileio_test_access_sync_005', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_005');
 
     try {
@@ -167,7 +168,7 @@ describe('fileio_access', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_access_sync_006', 3, async function () {
+  it('fileio_test_access_sync_006', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -190,7 +191,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_000', 0, async function (done) {
+  it('fileio_test_access_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -214,7 +215,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_001', 0, async function (done) {
+  it('fileio_test_access_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -242,7 +243,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_002', 0, async function (done) {
+  it('fileio_test_access_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -267,7 +268,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_003', 0, async function (done) {
+  it('fileio_test_access_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -296,7 +297,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_004', 0, async function (done) {
+  it('fileio_test_access_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_004');
     fileio.openSync(fpath, 0o102, 0o777);
 
@@ -320,7 +321,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_005', 0, async function (done) {
+  it('fileio_test_access_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -345,7 +346,7 @@ describe('fileio_access', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_access_async_006', 0, async function (done) {
+  it('fileio_test_access_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_006');
 
     try {
@@ -367,7 +368,7 @@ describe('fileio_access', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_access_async_007', 3, async function (done) {
+  it('fileio_test_access_async_007', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -396,7 +397,7 @@ describe('fileio_access', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_access_async_008', 3, async function (done) {
+  it('fileio_test_access_async_008', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_access_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

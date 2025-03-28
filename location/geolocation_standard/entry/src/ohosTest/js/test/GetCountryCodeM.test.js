@@ -113,7 +113,11 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] getCountryCode promise try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -138,7 +142,11 @@ export default function geolocationTest_6() {
             })
         } catch (error) {
             console.info("[lbs_js] getCountryCode callback try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         await sleep(1500);
         done();
@@ -159,7 +167,11 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             await geolocationm.getCountryCode().then((result) => {
@@ -171,7 +183,11 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] getCountryCode promise try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             geolocationm.off('countryCodeChange', function (data) {
@@ -179,7 +195,11 @@ export default function geolocationTest_6() {
             })
         } catch (error) {
             console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })

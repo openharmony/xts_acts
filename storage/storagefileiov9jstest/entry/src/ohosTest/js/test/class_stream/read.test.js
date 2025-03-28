@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOStreamRead() {
 describe('fileIO_fs_stream_read', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_000', 0, async function () {
+  it('fileIO_test_stream_read_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -59,7 +60,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_001', 0, async function () {
+  it('fileIO_test_stream_read_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -86,7 +87,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_002', 0, async function () {
+  it('fileIO_test_stream_read_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -113,7 +114,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_003', 0, async function () {
+  it('fileIO_test_stream_read_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -143,7 +144,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_004', 0, async function () {
+  it('fileIO_test_stream_read_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -170,7 +171,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_005', 0, async function () {
+  it('fileIO_test_stream_read_sync_005', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -198,7 +199,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_006', 0, async function () {
+  it('fileIO_test_stream_read_sync_006', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -226,7 +227,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_007', 3, async function () {
+  it('fileIO_test_stream_read_sync_007', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -255,7 +256,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_sync_008', 3, async function () {
+  it('fileIO_test_stream_read_sync_008', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_stream_read_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -290,7 +291,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_000', 0, async function (done) {
+  it('fileIO_test_stream_read_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -320,7 +321,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_001', 0, async function (done) {
+  it('fileIO_test_stream_read_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -360,7 +361,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_stream_read_async_002', 0, async function (done) {
+   it('fileIO_test_stream_read_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -390,7 +391,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_003', 0, async function (done) {
+  it('fileIO_test_stream_read_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -425,7 +426,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_stream_read_async_004', 0, async function (done) {
+   it('fileIO_test_stream_read_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -455,7 +456,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_005', 0, async function (done) {
+  it('fileIO_test_stream_read_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -490,7 +491,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_stream_read_async_006', 0, async function (done) {
+   it('fileIO_test_stream_read_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -519,7 +520,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_stream_read_async_007', 0, async function (done) {
+   it('fileIO_test_stream_read_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -551,7 +552,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_008', 0, async function (done) {
+  it('fileIO_test_stream_read_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -582,7 +583,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_009', 0, async function (done) {
+  it('fileIO_test_stream_read_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -618,7 +619,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_010', 0, async function (done) {
+  it('fileIO_test_stream_read_async_010', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -646,7 +647,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_011', 0, async function (done) {
+  it('fileIO_test_stream_read_async_011', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -679,7 +680,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_012', 0, async function (done) {
+  it('fileIO_test_stream_read_async_012', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -707,7 +708,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_013', 0, async function (done) {
+  it('fileIO_test_stream_read_async_013', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -735,7 +736,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_014', 0, async function (done) {
+  it('fileIO_test_stream_read_async_014', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
@@ -764,7 +765,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_015', 3, async function (done) {
+  it('fileIO_test_stream_read_async_015', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -794,7 +795,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_016', 3, async function (done) {
+  it('fileIO_test_stream_read_async_016', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -834,7 +835,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_017', 3, async function (done) {
+  it('fileIO_test_stream_read_async_017', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_017');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -870,7 +871,7 @@ describe('fileIO_fs_stream_read', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_stream_read_async_018', 3, async function (done) {
+  it('fileIO_test_stream_read_async_018', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_stream_read_async_018');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

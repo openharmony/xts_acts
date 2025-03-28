@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioOpenClose() {
 describe('fileio_open_close', function () {
@@ -30,7 +31,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_open_close_sync_000', 0, async function () {
+  it('fileio_open_close_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_open_close_sync_000');
 
     try {
@@ -53,7 +54,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_open_close_sync_001', 0, async function () {
+  it('fileio_open_close_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_open_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -77,7 +78,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_open_sync_000', 0, function () {
+  it('fileio_open_sync_000', Level.LEVEL0, function () {
     try {
       fileio.openSync('/', 0o102, 0o666);
       expect(null).assertFail();
@@ -95,7 +96,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_open_sync_001', 0, async function () {
+  it('fileio_open_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_open_sync_001');
 
     try {
@@ -116,7 +117,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_open_sync_002', 3, async function () {
+  it('fileio_open_sync_002', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileio_open_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd;
@@ -145,7 +146,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_close_sync_000', 0, function () {
+  it('fileio_close_sync_000', Level.LEVEL0, function () {
     try {
       fileio.closeSync();
       expect(null).assertFail();
@@ -163,7 +164,7 @@ describe('fileio_open_close', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_close_sync_001', 0, function () {
+  it('fileio_close_sync_001', Level.LEVEL0, function () {
     try {
       fileio.closeSync(-1);
       expect(null).assertFail();

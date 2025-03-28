@@ -21,7 +21,6 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   module_out_path = module_output_path
   subsystem_name = "graphic"
   part_name = "graphic_2d"
-  comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
     "DrawingCanvasDrawRecordCmdTest.cpp",
@@ -76,15 +75,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "-Dprotected=public",
   ]
 
-  include_dirs = [
-    "$comPath/rosen/modules/2d_engine",
-    "//third_party/googletest/googletest/include",
-  ]
-  enable_text_gine = true
-  if (enable_text_gine) {
-    include_dirs += [ "$comPath/rosen/modules/2d_engine/rosen_text/export" ]
-    defines = [ "USE_GRAPHIC_TEXT_GINE" ]
-  }
+  include_dirs = [ "//third_party/googletest/googletest/include" ]
 
   external_deps = [
     "graphic_2d:2d_graphics",

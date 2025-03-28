@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -210,14 +210,14 @@ export default function vibrator_nop_Test() {
 
     /*
      * @tc.number:SUB_SensorsSystem_Vibrator_Sensor_nop_Test06
-     * @tc.name: Vibrator_Sensor_nop_Test01
+     * @tc.name: Vibrator_Sensor_nop_Test06
      * @tc.desc:Using the stopVibration (callback) method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
     it("Vibrator_Sensor_nop_Test06", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info('--------Vibrator_Sensor_nop_Test01--------');
+      console.info('--------Vibrator_Sensor_nop_Test06--------');
       try {
         // 停止所有模式的马达振动
         vibrator.stopVibration((error: BusinessError) => {
@@ -234,6 +234,33 @@ export default function vibrator_nop_Test() {
           }
           console.info('Succeed in stopping vibration');
         })
+      } catch (error) {
+        let e: BusinessError = error as BusinessError;
+        console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+      }
+    })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_Vibrator_Sensor_nop_Test07
+     * @tc.name: Vibrator_Sensor_nop_Test07
+     * @tc.desc:Using the stopVibration (callback) method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("Vibrator_Sensor_nop_Test07", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------Vibrator_Sensor_nop_Test07--------');
+      try {
+        try {
+          vibrator.stopVibrationSync();
+          console.info("Vibrator_Sensor_nop_Test07 stopVibrationSync success");
+          expect(false).assertTrue();
+          done();
+        } catch (error) {
+          console.info("Vibrator_Sensor_nop_Test07 stopVibrationSync error:" + JSON.stringify(error));
+          expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+          done()
+        }
       } catch (error) {
         let e: BusinessError = error as BusinessError;
         console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);

@@ -1331,5 +1331,231 @@ export default function HttpErrorCodeTest() {
       }
       console.info(`${caseName}---End `);
     });
+    
+    /* *
+     * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_3500
+     * @tc.name  :  testHttpRequestMethodErrorCode3500
+     * @tc.desc  :  test http request(url, options, callback) with request error code 2300060
+     * @tc.size  :  smallTest
+     * @tc.type  :  Function
+     * @tc.level :  level 3
+     */
+    it('testHttpRequestMethodErrorCode3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = "testHttpRequestMethodErrorCode3500";
+      console.info(`${caseName} test Start`);
+      try {
+        connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+          if (data.netId == 0) {
+            console.info(`${caseName} Please connect to the network`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} Network connected`);
+            let httpRequest: http.HttpRequest = http.createHttp();
+            httpRequest.request('https://hao123.com', {method: http.RequestMethod.POST}, (err: BusinessError, data: http.HttpResponse) => {
+              console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+              ExpectTrue(err.code == 2300060);
+              httpRequest.destroy();
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+        ExpectTrue(false);
+        done();
+      }
+      console.info(`${caseName} test End`);
+    });
+
+    /* *
+     * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_3600
+     * @tc.name  :  testHttpRequestMethodErrorCode3600
+     * @tc.desc  :  test http request(url, options, Promise) with request error code 2300060
+     * @tc.size  :  smallTest
+     * @tc.type  :  Function
+     * @tc.level :  level 3
+     */
+    it('testHttpRequestMethodErrorCode3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = "testHttpRequestMethodErrorCode3600";
+      console.info(`${caseName} test Start`);
+      try {
+        connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+          if (data.netId == 0) {
+            console.info(`${caseName} Please connect to the network`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} Network connected`);
+            let httpRequest: http.HttpRequest = http.createHttp();
+            let promise = httpRequest.request('https://hao123.com', {
+              method: http.RequestMethod.GET,
+            });
+            promise.then((data:http.HttpResponse) => {
+              console.info('Result:' + data.result);
+            }).catch((err: BusinessError) => {
+              console.info('error:' + JSON.stringify(err));
+              ExpectTrue(err.code == 2300060);
+              httpRequest.destroy();
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+        ExpectTrue(false);
+        done();
+      }
+      console.info(`${caseName} test End`);
+    });
+
+    /* *
+     * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_3700
+     * @tc.name  :  testHttpRequestMethodErrorCode3700
+     * @tc.desc  :  test http requestInStream(url, callback) with request error code 2300060
+     * @tc.size  :  smallTest
+     * @tc.type  :  Function
+     * @tc.level :  level 3
+     */
+    it('testHttpRequestMethodErrorCode3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = "testHttpRequestMethodErrorCode3700";
+      console.info(`${caseName} test Start`);
+      try {
+        connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+          if (data.netId == 0) {
+            console.info(`${caseName} Please connect to the network`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} Network connected`);
+            let httpRequest: http.HttpRequest = http.createHttp();
+            httpRequest.requestInStream('https://hao123.com', (err: BusinessError, data: number) => {
+              console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+              ExpectTrue(err.code == 2300060);
+              httpRequest.destroy();
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+        ExpectTrue(false);
+        done();
+      }
+      console.info(`${caseName} test End`);
+    });
+
+    /* *
+     * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_3800
+     * @tc.name  :  testHttpRequestMethodErrorCode3800
+     * @tc.desc  :  test http requestInStream(url, options, callback) with request error code 2300060
+     * @tc.size  :  smallTest
+     * @tc.type  :  Function
+     * @tc.level :  level 3
+     */
+    it('testHttpRequestMethodErrorCode3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = "testHttpRequestMethodErrorCode3800";
+      console.info(`${caseName} test Start`);
+      try {
+        connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+          if (data.netId == 0) {
+            console.info(`${caseName} Please connect to the network`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} Network connected`);
+            let httpRequest: http.HttpRequest = http.createHttp();
+            httpRequest.requestInStream('https://hao123.com', {method: http.RequestMethod.POST}, (err: BusinessError, data: number) => {
+              console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+              ExpectTrue(err.code == 2300060);
+              httpRequest.destroy();
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+        ExpectTrue(false);
+        done();
+      }
+      console.info(`${caseName} test End`);
+    });
+
+    /* *
+     * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_3900
+     * @tc.name  :  testHttpRequestMethodErrorCode3900
+     * @tc.desc  :  test http requestInStream(url, options, Promise) with request error code 2300060
+     * @tc.size  :  smallTest
+     * @tc.type  :  Function
+     * @tc.level :  level 3
+     */
+    it('testHttpRequestMethodErrorCode3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = "testHttpRequestMethodErrorCode3900";
+      console.info(`${caseName} test Start`);
+      try {
+        connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+          if (data.netId == 0) {
+            console.info(`${caseName} Please connect to the network`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} Network connected`);
+            let httpRequest: http.HttpRequest = http.createHttp();
+            let promise = httpRequest.requestInStream('https://hao123.com', {
+              method: http.RequestMethod.GET,
+            });
+            promise.then((data) => {
+              console.info('Result:' + data);
+            }).catch((err: BusinessError) => {
+              console.info('error:' + JSON.stringify(err));
+              ExpectTrue(err.code == 2300060);
+              httpRequest.destroy();
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+        ExpectTrue(false);
+        done();
+      }
+      console.info(`${caseName} test End`);
+    });
+
+    /* *
+    * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_4000
+    * @tc.name  :  testHttpRequestMethodErrorCode4000
+    * @tc.desc  :  test http request(url, callback) with request error code 2300060
+    * @tc.size  :  smallTest
+    * @tc.type  :  Function
+    * @tc.level :  level 3
+    */
+    it('testHttpRequestMethodErrorCode4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName: string = "testHttpRequestMethodErrorCode4000";
+      console.info(`${caseName} test Start`);
+      try {
+        connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+          if (data.netId == 0) {
+            console.info(`${caseName} Please connect to the network`);
+            ExpectTrue(false);
+            done();
+          } else {
+            console.info(`${caseName} Network connected`);
+            let httpRequest: http.HttpRequest = http.createHttp();
+            httpRequest.request('https://hao123.com', (err: BusinessError, data: http.HttpResponse) => {
+              console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+              ExpectTrue(err.code == 2300060);
+              httpRequest.destroy();
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} trycatch err: ${JSON.stringify(err)}`);
+        ExpectTrue(false);
+        done();
+      }
+      console.info(`${caseName} test End`);
+    });
 })
 }

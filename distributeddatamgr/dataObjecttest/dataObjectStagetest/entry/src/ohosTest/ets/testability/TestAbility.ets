@@ -18,6 +18,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
+import common from "@ohos.app.ability.common";
 
 export default class TestAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -29,7 +30,8 @@ export default class TestAbility extends UIAbility {
         let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
         abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
         hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
+		AppStorage.SetOrCreate<common.UIAbilityContext>("context",this.context)
     }
 
     onDestroy() {

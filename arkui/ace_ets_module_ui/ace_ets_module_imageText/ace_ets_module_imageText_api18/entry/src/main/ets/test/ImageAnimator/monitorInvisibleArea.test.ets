@@ -61,16 +61,12 @@ export default function monitorInvisibleAreaTest() {
       let left = rect.left;
       let right = rect.right;
       let bottom = rect.bottom;
-      console.info("ScrollDistance value is" + left + " --" + right + "--" + top + "--" + bottom);
-      let middle = (top + bottom) / 2
-      console.info("ScrollDistance value is" + middle);
-      let height = bottom - top;
-      let width = right - left;
+
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25)
       );
       await CommonFunc.sleep(6000);
 
@@ -104,14 +100,12 @@ export default function monitorInvisibleAreaTest() {
       let left = rect.left;
       let right = rect.right;
       let bottom = rect.bottom;
-      let middle = (top + bottom) / 2
-      let height = bottom - top;
-      let width = right - left;
+     
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75)
       );
       await CommonFunc.sleep(6000);
 
@@ -119,10 +113,10 @@ export default function monitorInvisibleAreaTest() {
       await btnFalse.click()
       await CommonFunc.sleep(2000);
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25)
       );
       await CommonFunc.sleep(6000);
 
@@ -154,14 +148,12 @@ export default function monitorInvisibleAreaTest() {
       let left = rect.left;
       let right = rect.right;
       let bottom = rect.bottom;
-      let middle = (top + bottom) / 2
-      let height = bottom - top;
-      let width = right - left;
+      
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75)
       );
       await CommonFunc.sleep(6000);
 
@@ -169,10 +161,10 @@ export default function monitorInvisibleAreaTest() {
       await btnUndefined.click()
       await CommonFunc.sleep(2000);
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25)
       );
       await CommonFunc.sleep(6000);
       let strJson = getInspectorByKey('ImageAnimatorFlag');
@@ -204,13 +196,12 @@ export default function monitorInvisibleAreaTest() {
       let right = rect.right;
       let bottom = rect.bottom;
       let middle = (top + bottom) / 2
-      let height = bottom - top;
-      let width = right - left;
+
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75)
       );
       await CommonFunc.sleep(6000);
 
@@ -218,10 +209,10 @@ export default function monitorInvisibleAreaTest() {
       await btnNull.click()
       await CommonFunc.sleep(2000);
       await driver.swipe(
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.75),
-        Math.round(left + width * 0.2),
-        Math.round(top + height * 0.25)
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.75),
+        Math.round(left + (right - left) * 0.5),
+        Math.round(top + (bottom - top) * 0.25)
       );
       await CommonFunc.sleep(6000);
       let strJson = getInspectorByKey('ImageAnimatorFlag');

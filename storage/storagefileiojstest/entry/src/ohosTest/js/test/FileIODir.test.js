@@ -14,7 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import { describe,it,expect}from '@ohos/hypium'
+import { describe, it, expect, Level }from '@ohos/hypium'
 import {
   FILE_CONTENT,
   prepareFile,
@@ -32,7 +32,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_000
    * @tc.desc Function of API, opendirSync.
    */
-  it('fileio_test_dir_open_sync_000', 0, async function () {
+  it('fileio_test_dir_open_sync_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_sync_000') + 'd'
     try {
       fileio.mkdirSync(dpath);
@@ -52,7 +52,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_001
    * @tc.desc Function of API, not set parameter.
    */
-  it('fileio_test_dir_open_sync_001', 0, function () {
+  it('fileio_test_dir_open_sync_001', Level.LEVEL1, function () {
     try {
       fileio.opendirSync();
       throw new Error('No Parameter');
@@ -67,7 +67,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_002
    * @tc.desc Function of API, dpath value is not exist.
    */
-  it('fileio_test_dir_open_sync_002', 0, async function () {
+  it('fileio_test_dir_open_sync_002', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_sync_002') + 'd'
     try {
       fileio.opendirSync(dpath);
@@ -84,7 +84,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_003
    * @tc.desc Function of API, dpath too long.
    */
-  it('fileio_test_dir_open_sync_003', 0, async function () {
+  it('fileio_test_dir_open_sync_003', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_sync_003');
     fileio.mkdirSync(dpath);
     try {
@@ -106,7 +106,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_004
    * @tc.desc Function of API, filename too long.
    */
-  it('fileio_test_dir_open_sync_004', 0, async function () {
+  it('fileio_test_dir_open_sync_004', Level.LEVEL1, async function () {
     let dpath = await nextFileName(randomString(256));
     try {
       fileio.mkdirSync(dpath);
@@ -122,7 +122,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_005
    * @tc.desc Function of API, uri dir too many layers.
    */
-  it('fileio_test_dir_open_sync_005', 0, async function () {
+  it('fileio_test_dir_open_sync_005', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_sync_005');
     fileio.mkdirSync(dpath);
     try {
@@ -144,7 +144,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_sync_006
    * @tc.desc Function of API, file name contain special character.
    */
-  it('fileio_test_dir_open_sync_006', 0, async function () {
+  it('fileio_test_dir_open_sync_006', Level.LEVEL1, async function () {
     let dpath = await nextFileName('?*:<>/|');
     try {
       fileio.mkdirSync(dpath);
@@ -161,7 +161,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_async_001
    * @tc.desc Function of API, file name contain special character.
    */
-  it('fileio_test_dir_open_async_001', 0, async function () {
+  it('fileio_test_dir_open_async_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_async_001') + 'd'
     fileio.mkdirSync(dpath);
     fileio.opendir(dpath, function (err, dir) {
@@ -176,7 +176,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_async_001
    * @tc.desc Function of API, file name contain special character.
    */
-  it('fileio_test_dir_open_async_002', 0, async function () {
+  it('fileio_test_dir_open_async_002', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_async_002') + 'd'
     fileio.mkdirSync(dpath);
     fileio.opendir(dpath).then((dir)=> {
@@ -194,7 +194,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_000
    * @tc.desc Function of API, readSync. The dir contains 1 file.
    */
-  it('fileio_test_dir_read_sync_000', 0, async function () {
+  it('fileio_test_dir_read_sync_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_read_sync_000') + 'd'
     let fpath = dpath + '/f0'
     try {
@@ -218,7 +218,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_001
    * @tc.desc Function of API, readSync. The dir contains more than 1 files.
    */
-  it('fileio_test_dir_read_sync_001', 0, async function () {
+  it('fileio_test_dir_read_sync_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_read_sync_001') + 'd'
     let fpathArray = new Array(dpath + '/f1', dpath + '/f2', dpath + '/d3');
     try {
@@ -258,7 +258,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_002
    * @tc.desc Function of API, repeat read. The dir contains more than 1 files.
    */
-  it('fileio_test_dir_read_sync_002', 0, async function () {
+  it('fileio_test_dir_read_sync_002', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_read_sync_002') + 'd'
     let fpathArray = new Array(dpath + '/f1', dpath + '/f2', dpath + '/d3');
     try {
@@ -297,7 +297,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_003
    * @tc.desc Function of API, readSync. The dir no any files.
    */
-  it('fileio_test_dir_read_sync_003', 0, async function () {
+  it('fileio_test_dir_read_sync_003', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_read_sync_003') + 'd'
     let dd;
     try {
@@ -319,7 +319,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_004
    * @tc.desc Function of API, error parameter.
    */
-  it('fileio_test_dir_read_sync_004', 0, async function () {
+  it('fileio_test_dir_read_sync_004', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_read_sync_004') + 'd'
     let fpath = dpath + '/f1'
     let dd
@@ -345,7 +345,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_read_sync_005
    * @tc.desc Function of API, excess files.
    */
-  it('fileio_test_dir_read_sync_005', 0, async function () {
+  it('fileio_test_dir_read_sync_005', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_read_sync_005') + 'd'
     let fpath = dpath + '/f'
     try {
@@ -373,7 +373,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_close_sync_000
    * @tc.desc Function of API, closeSync.
    */
-  it('fileio_test_dir_close_sync_000', 0, async function () {
+  it('fileio_test_dir_close_sync_000', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_close_sync_000') + 'd'
     try {
       fileio.mkdirSync(dpath);
@@ -393,7 +393,7 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_close_sync_001
    * @tc.desc Function of API, closeSync. error parameter.
    */
-  it('fileio_test_dir_close_sync_001', 0, async function () {
+  it('fileio_test_dir_close_sync_001', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_dir_close_sync_001') + 'd'
     try {
       fileio.mkdirSync(dpath);

@@ -14,7 +14,7 @@
  */
 import { Vec4, Aabb, SceneResourceType, SceneResource, Shader, MaterialType, Material, ShaderMaterial, SubMesh, Mesh,
   Animation, EnvironmentBackgroundType, Environment, Node, Geometry, SceneResourceFactory, Scene } from '@ohos.graphics.scene'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
 
 export default function sceneResourcesTest() {
@@ -43,7 +43,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationStarted', 0, async (done:Function)=> {
+    it('testAnimationStarted', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationStarted";
       console.info(msg + ' begin ');
       try {
@@ -78,7 +78,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationPause', 0, async (done:Function)=> {
+    it('testAnimationPause', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationPause";
       console.info(msg + ' begin ');
       try {
@@ -100,7 +100,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationSeek', 0, async (done:Function)=> {
+    it('testAnimationSeek', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationSeek";
       console.info(msg + ' begin ');
       try {
@@ -121,7 +121,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationRestart', 0, async (done:Function)=> {
+    it('testAnimationRestart', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationRestart";
       console.info(msg + ' begin ');
       try {
@@ -143,7 +143,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationStop', 0, async (done:Function)=> {
+    it('testAnimationStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationStop";
       console.info(msg + ' begin ');
       try {
@@ -168,7 +168,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationFinished', 0, async (done:Function)=> {
+    it('testAnimationFinished', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationFinished";
       console.info(msg + ' begin ');
       try {
@@ -201,7 +201,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationDuration', 0, async (done:Function)=> {
+    it('testAnimationDuration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationDuration";
       console.info(msg + ' begin ');
       try {
@@ -223,7 +223,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationEnabled', 0, async (done:Function)=> {
+    it('testAnimationEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testAnimationEnabled";
       console.info(msg + ' begin ');
       try {
@@ -247,7 +247,8 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEnvironmentIndirectDiffuseFactor', 0, async (done:Function)=> {
+    it('testEnvironmentIndirectDiffuseFactor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done:Function)=> {
       let msg = "============================testEnvironmentIndirectDiffuseFactor";
       console.info(msg + ' begin ');
       try {
@@ -278,7 +279,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEnvironmentIndirectSpecularFactor', 0, (done:Function)=> {
+    it('testEnvironmentIndirectSpecularFactor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testEnvironmentIndirectSpecularFactor";
       console.info(msg + ' begin ');
       try {
@@ -301,7 +302,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEnvironmentMapFactor', 0, (done:Function)=> {
+    it('testEnvironmentMapFactor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testEnvironmentMapFactor";
       console.info(msg + ' begin ');
       try {
@@ -324,7 +325,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEnvironmentImage', 0, async (done:Function)=> {
+    it('testEnvironmentImage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testEnvironmentImage";
       console.info(msg + ' begin ');
       try {
@@ -367,7 +368,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRadianceImage', 0, async (done:Function)=> {
+    it('testRadianceImage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testRadianceImage";
       console.info(msg + ' begin ');
       try {
@@ -396,7 +397,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEnvironmentIrradianceCoefficients', 0, (done:Function)=> {
+    it('testEnvironmentIrradianceCoefficients', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testEnvironmentIrradianceCoefficients";
       console.info(msg + ' begin ');
       try {
@@ -426,7 +427,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMesh', 0, async (done:Function)=> {
+    it('testMesh', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testMesh";
       console.info(msg + ' begin ');
       try {
@@ -482,7 +483,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneResourceType', 0, async (done:Function)=> {
+    it('testSceneResourceType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testSceneResourceType";
       console.info(msg + ' begin ');
       try {
@@ -517,7 +518,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneResource', 0, (done:Function)=> {
+    it('testSceneResource', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testSceneResource";
       console.info(msg + ' begin ');
       try {
@@ -546,7 +547,7 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMaterialType', 0, (done:Function)=> {
+    it('testMaterialType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testMaterialType";
       console.info(msg + ' begin ');
       try {

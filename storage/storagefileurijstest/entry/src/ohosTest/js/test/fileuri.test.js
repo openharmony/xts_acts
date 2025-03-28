@@ -18,7 +18,8 @@ import fs from '@ohos.file.fs';
 import {
   describe,
   it,
-  expect
+  expect,
+  Level
 }
 from '@ohos/hypium'
 
@@ -34,7 +35,7 @@ describe('file_uri_test', function () {
    * @tc.type Function
    * @tc.level Level 0
    */
-  it('test_FileUri_GetUriFromPath_000', 0, async function () {
+  it('test_FileUri_GetUriFromPath_000', Level.LEVEL0, async function () {
     try {
       let path = "/data/storage/el2/base/haps/entry/files/sync.jpg";
       let uri = fileUri.getUriFromPath(path);
@@ -57,7 +58,7 @@ describe('file_uri_test', function () {
    * @tc.type Function
    * @tc.level Level 0
    */
-  it('test_FileUri_GetUriFromPath_001', 0, async function () {
+  it('test_FileUri_GetUriFromPath_001', Level.LEVEL0, async function () {
     try {
       let uri = fileUri.getUriFromPath("");
       let result = "file://ohos.acts.storage.fileuri"
@@ -79,7 +80,7 @@ describe('file_uri_test', function () {
    * @tc.type Function
    * @tc.level Level 0
    */
-  it('test_FileUri_GetUriFromPath_002', 0, async function () {
+  it('test_FileUri_GetUriFromPath_002', Level.LEVEL0, async function () {
     try {
       fileUri.getUriFromPath();
       expect(false).assertTrue();
@@ -97,7 +98,7 @@ describe('file_uri_test', function () {
    * @tc.type Function
    * @tc.level Level 0
    */
-  it('test_FileUri_GetUriFromPath_003', 0, async function () {
+  it('test_FileUri_GetUriFromPath_003', Level.LEVEL0, async function () {
     try {
       fileUri.getUriFromPath(5);
       expect(false).assertTrue();
@@ -116,7 +117,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('test_FileUri_Parameter_Name_000', 0, async function () {
+  it('test_FileUri_Parameter_Name_000', Level.LEVEL0, async function () {
     try {
       let name = 'sync_000.txt';
       let path = '/data/storage/el2/base/haps/sync_000.txt';
@@ -148,7 +149,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('test_FileUri_Parameter_Name_001', 0, async function () {
+  it('test_FileUri_Parameter_Name_001', Level.LEVEL0, async function () {
     try {
       let name = 'sync_001.txt';
       let path = '/data/storage/el2/base/haps/sync_001.txt';
@@ -182,7 +183,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_Parameter_Name_002', 3, async function () {
+  it('test_FileUri_Parameter_Name_002', Level.LEVEL3, async function () {
     try {
       let uri = fileUri.getUriFromPath('');
       let fileUriObject01 = new fileUri.FileUri(uri);
@@ -208,7 +209,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_Parameter_Name_003', 3, async function () {
+  it('test_FileUri_Parameter_Name_003', Level.LEVEL3, async function () {
     try {
       new fileUri.FileUri(0);
       expect(false).assertTrue();
@@ -227,7 +228,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('test_FileUri_Other_Function_000', 0, async function () {
+  it('test_FileUri_Other_Function_000', Level.LEVEL0, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let exceptPath = '/storage/Users/currentUser/appdata/el2/distributedfiles/com.demo.b/test1.txt';
@@ -271,7 +272,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_EqualsTo_000', 3, async function () {
+  it('test_FileUri_EqualsTo_000', Level.LEVEL3, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let uri = new fileUri.FileUri(testUri);
@@ -292,7 +293,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_EqualsTo_001', 3, async function () {
+  it('test_FileUri_EqualsTo_001', Level.LEVEL3, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let uri = new fileUri.FileUri(testUri);
@@ -313,7 +314,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_Equals_000', 3, async function () {
+  it('test_FileUri_Equals_000', Level.LEVEL3, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let uri = new fileUri.FileUri(testUri);
@@ -334,7 +335,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_Equals_001', 3, async function () {
+  it('test_FileUri_Equals_001', Level.LEVEL3, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let uri = new fileUri.FileUri(testUri);
@@ -355,7 +356,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_CheckIsAbsolute_000', 3, async function () {
+  it('test_FileUri_CheckIsAbsolute_000', Level.LEVEL3, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let uri = new fileUri.FileUri(testUri);
@@ -376,7 +377,7 @@ describe('file_uri_test', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_FileUri_Normalize_000', 3, async function () {
+  it('test_FileUri_Normalize_000', Level.LEVEL3, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
       let uri = new fileUri.FileUri(testUri);

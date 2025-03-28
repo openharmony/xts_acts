@@ -17,6 +17,7 @@ import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, 
   describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
   
 export default function fileIOLseek() {
 describe('fileIO_fs_lseek', function () {
@@ -31,7 +32,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_lseek_001', 0, async function () {
+  it('fileIO_test_lseek_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -57,7 +58,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_lseek_002', 0, async function () {
+  it('fileIO_test_lseek_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -85,7 +86,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_lseek_003', 0, async function () {
+  it('fileIO_test_lseek_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -113,7 +114,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_004', 3, async function () {
+  it('fileIO_test_lseek_004', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -141,7 +142,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_005', 3, async function () {
+  it('fileIO_test_lseek_005', Level.LEVEL3, async function () {
     try {
       fileIO.lseek();
       expect(false).assertTrue();
@@ -161,7 +162,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_006', 3, async function () {
+  it('fileIO_test_lseek_006', Level.LEVEL3, async function () {
     try {
       fileIO.lseek(-1);
       expect(false).assertTrue();
@@ -181,7 +182,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_007', 3, async function () {
+  it('fileIO_test_lseek_007', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_007');
 
     try {
@@ -208,7 +209,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_008', 3, async function () {
+  it('fileIO_test_lseek_008', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -238,7 +239,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_009', 3, async function () {
+  it('fileIO_test_lseek_009', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -264,7 +265,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_010', 3, async function () {
+  it('fileIO_test_lseek_010', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -290,7 +291,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_011', 3, async function () {
+  it('fileIO_test_lseek_011', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -320,7 +321,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_012', 3, async function () {
+  it('fileIO_test_lseek_012', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -348,7 +349,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_013', 3, async function () {
+  it('fileIO_test_lseek_013', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     
@@ -375,7 +376,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_014', 3, async function () {
+  it('fileIO_test_lseek_014', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -401,7 +402,7 @@ describe('fileIO_fs_lseek', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lseek_015', 3, async function () {
+  it('fileIO_test_lseek_015', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_lseek_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);

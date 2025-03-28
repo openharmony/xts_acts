@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
@@ -57,7 +57,7 @@ export default function tipsDialogTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('tipsDialogTest_0100', 0, async (done: Function) => {
+    it('tipsDialogTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[tipsDialogTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
@@ -76,6 +76,36 @@ export default function tipsDialogTest() {
       await cancelButton.click();
       await driver.delayMs(1000);
       console.info('[tipsDialogTest_0100] END');
+      done();
+    });
+
+    /**
+     * @tc.number tipsDialogTest
+     * @tc.name   tipsDialogTest
+     * @tc.desc   Test tipsDialog
+     * @tc.size   MediumTest
+     * @tc.type   Function
+     * @tc.level  0
+     */
+    it('tipsDialogTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('[tipsDialogTest_0200] START');
+      let driver = await Driver.create();
+      await driver.delayMs(2000);
+      // 点击打开TipsDialog
+      let openAlertDialog = await driver.findComponent(ON.type('Button').text('SecTipsDialogV2'))
+      await openAlertDialog.click();
+      await driver.delayMs(1000);
+      // 点击打开TipsDialog是否存在以下入口。
+      let content = await driver.findComponent(ON.text('带边框图片TipsDialog'));
+      let cancelButton = await driver.findComponent(ON.type('Button').text('取消'));
+      let confirmButton = await driver.findComponent(ON.type('Button').text('删除'));
+      expect(content !== null).assertTrue();
+      expect(cancelButton !== null).assertTrue();
+      expect(confirmButton !== null).assertTrue();
+      // 关闭TipsDialog
+      await cancelButton.click();
+      await driver.delayMs(1000);
+      console.info('[tipsDialogTest_0200] END');
       done();
     });
   })

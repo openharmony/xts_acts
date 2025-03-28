@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOCreateStream() {
 describe('fileIO_fs_createStream', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_000', 0, async function () {
+  it('fileIO_test_create_stream_sync_000', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r');
@@ -58,7 +59,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_001', 0, async function () {
+  it('fileIO_test_create_stream_sync_001', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_001');
 
     try {
@@ -80,7 +81,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_002', 0, async function () {
+  it('fileIO_test_create_stream_sync_002', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -107,7 +108,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_003', 0, async function () {
+  it('fileIO_test_create_stream_sync_003', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_003');
 
     try {
@@ -129,7 +130,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_004', 0, async function () {
+  it('fileIO_test_create_stream_sync_004', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -153,7 +154,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_005', 0, async function () {
+  it('fileIO_test_create_stream_sync_005', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_005');
 
     try {
@@ -175,7 +176,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_006', 0, async function () {
+  it('fileIO_test_create_stream_sync_006', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sw = fileIO.createStreamSync(fpath, 'w');
@@ -203,7 +204,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_007', 0, async function () {
+  it('fileIO_test_create_stream_sync_007', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -233,7 +234,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_008', 0, async function () {
+  it('fileIO_test_create_stream_sync_008', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_008');
 
     try {
@@ -258,7 +259,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_009', 0, async function () {
+  it('fileIO_test_create_stream_sync_009', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -285,7 +286,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_010', 0, async function () {
+  it('fileIO_test_create_stream_sync_010', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_010');
 
     try {
@@ -311,7 +312,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_011', 0, async function () {
+  it('fileIO_test_create_stream_sync_011', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -341,7 +342,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_012', 0, async function () {
+  it('fileIO_test_create_stream_sync_012', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_012');
 
     try {
@@ -366,7 +367,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_013', 0, async function () {
+  it('fileIO_test_create_stream_sync_013', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sa = fileIO.createStreamSync(fpath, 'a');
@@ -394,7 +395,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_014', 0, async function () {
+  it('fileIO_test_create_stream_sync_014', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -421,7 +422,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_sync_015', 0, async function () {
+  it('fileIO_test_create_stream_sync_015', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_015');
 
     try {
@@ -447,7 +448,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_000', 0, async function (done) {
+  it('fileIO_test_create_stream_async_000', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = await fileIO.createStream(fpath, 'r');
@@ -476,7 +477,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_001', 0, async function (done) {
+  it('fileIO_test_create_stream_async_001', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -518,7 +519,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_002', 0, async function (done) {
+  it('fileIO_test_create_stream_async_002', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_002');
 
     try {
@@ -541,7 +542,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_003', 0, async function (done) {
+  it('fileIO_test_create_stream_async_003', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_003');
 
     try {
@@ -568,7 +569,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_004', 0, async function (done) {
+  it('fileIO_test_create_stream_async_004', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -596,7 +597,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 1
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_005', 0, async function (done) {
+  it('fileIO_test_create_stream_async_005', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -629,7 +630,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_006', 0, async function (done) {
+  it('fileIO_test_create_stream_async_006', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_006');
 
     try {
@@ -652,7 +653,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_007', 0, async function (done) {
+  it('fileIO_test_create_stream_async_007', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_007');
 
     try {
@@ -677,7 +678,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_008', 0, async function (done) {
+  it('fileIO_test_create_stream_async_008', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_008');
 
     try {
@@ -700,7 +701,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_009', 0, async function (done) {
+  it('fileIO_test_create_stream_async_009', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_009');
 
     try {
@@ -724,7 +725,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_010', 0, async function (done) {
+  it('fileIO_test_create_stream_async_010', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -755,7 +756,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_011', 0, async function (done) {
+  it('fileIO_test_create_stream_async_011', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_011');
     let sw = await fileIO.createStream(fpath, 'w');
 
@@ -783,7 +784,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_012', 0, async function (done) {
+  it('fileIO_test_create_stream_async_012', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_012');
 
     try {
@@ -824,7 +825,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_013', 0, async function (done) {
+  it('fileIO_test_create_stream_async_013', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -852,7 +853,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_014', 0, async function (done) {
+  it('fileIO_test_create_stream_async_014', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_014');
 
     try {
@@ -879,7 +880,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_015', 0, async function (done) {
+  it('fileIO_test_create_stream_async_015', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -912,7 +913,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_016', 0, async function (done) {
+  it('fileIO_test_create_stream_async_016', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -943,7 +944,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_017', 0, async function (done) {
+  it('fileIO_test_create_stream_async_017', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_017');
     let sa = await fileIO.createStream(fpath, 'a');
 
@@ -971,7 +972,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_018', 0, async function (done) {
+  it('fileIO_test_create_stream_async_018', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_018');
     
     try {
@@ -1012,7 +1013,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_019', 0, async function (done) {
+  it('fileIO_test_create_stream_async_019', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_019');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1040,7 +1041,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_020', 0, async function (done) {
+  it('fileIO_test_create_stream_async_020', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_019');
 
     try {
@@ -1067,7 +1068,7 @@ describe('fileIO_fs_createStream', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_create_stream_async_021', 0, async function (done) {
+  it('fileIO_test_create_stream_async_021', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_021');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

@@ -64,7 +64,7 @@ export default function KeyboardAvoidModeTest() {
       let strJson = getInspectorByKey('Text');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[KeyboardAvoidModeTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('KeyBoardAvoidMode.OFFSET_WITH_CARET');
+      expect(obj.$attrs.content).assertEqual('2');
       console.info('[KeyboardAvoidModeTest_0100] END');
       done();
     });
@@ -90,7 +90,7 @@ export default function KeyboardAvoidModeTest() {
       let strJson = getInspectorByKey('Text');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[KeyboardAvoidModeTest_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('KeyBoardAvoidMode.RESIZE_WITH_CARET');
+      expect(obj.$attrs.content).assertEqual('3');
       console.info('[KeyboardAvoidModeTest_0200] END');
       done();
     });

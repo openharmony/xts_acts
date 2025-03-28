@@ -133,7 +133,13 @@ async function applyPermission() {
         console.info('[permission] case accessTokenID is ' + tokenID);
         let permissionName1 = 'ohos.permission.LOCATION';
         let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
+        let permissionName3 = 'ohos.permission.APPROXIMATELY_LOCATION';
         await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
             console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
         }).catch((err) => {
             console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
@@ -412,6 +418,70 @@ export default function geolocationTest_LocErr(){
 
             expect(true).assertEqual(coordinate_WGS84 == 1)
             expect(true).assertEqual(coordinate_GCJ02 == 2)
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0500
+         * @tc.name      : testAddGnssGeofence04
+         * @tc.desc      : Test the function of locating the validity period of the fence.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it('testAddGnssGeofence05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+            let geofence = {
+                "latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": 100000, "coordinateSystemType": 1
+            }
+            let transitionStatusList = [
+                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
+                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
+                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_DWELL
+            ];
+            let gnssGeofenceRequest = {
+                geofence: geofence,
+                monitorTransitionEvents: transitionStatusList,
+                geofenceTransitionCallback: (err, transition) => {}
+            }
+            for (let i = 0; i < 1000; i++) {
+                try {
+                    await geolocationm.addGnssGeofence(gnssGeofenceRequest);
+                } catch(error) {
+                    console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+                }
+            }
+
+            try {
+                await geolocationm.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+                }).catch((error) => {
+                    console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+                    expect(error.code).assertEqual(3301601);
+                });
+            } catch(error) {
+                console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+            }
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0600
+         * @tc.name      : testAddGnssGeofence06
+         * @tc.desc      : Test the function of locating the validity period of the fence.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it('testRemoveGnssGeofence06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+            let fenceId = -1
+            try {
+                await geolocationm.removeGnssGeofence(fenceId).then(() => {
+                }).catch((error) => {
+                    console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0400 remove error=" + JSON.stringify(error));
+                    expect(error.code).assertEqual(3301602);
+                });
+            } catch(error) {
+                console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+            }
             done();
         })
     })

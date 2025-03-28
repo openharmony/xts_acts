@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'deccjsunit/index'
+import {describe, it, expect, Level, Size, TestType } from 'deccjsunit/index'
 
 describe('assertInstanceOf', function () {
-    it('assertInstanceOfSuccessOnNumber', 0, function () {
+    it('assertInstanceOfSuccessOnNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = 12;
         expect(a).assertInstanceOf('Number')
     })
-    it('assertInstanceOfFailOnNumber', 0, function () {
+    it('assertInstanceOfFailOnNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = "abc";
         expect(a).assertInstanceOf('String');
         expect(a).assertInstanceOf('Number');

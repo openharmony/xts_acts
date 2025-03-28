@@ -21,6 +21,7 @@ group("abilitybase") {
       "actsbaseerrorappclonerely:ActsBaseErrorAppcloneRely",
       "actsbaseerrorrely:ActsBaseErrorRely",
       "actsmultiinstaceerrcodetest:ActsMultiInstancEerrCodeTest",
+      "uiextensioncontext:ActsUIExtensionErrocodeTest",
     ]
   }
 }

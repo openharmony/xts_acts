@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -84,7 +84,7 @@ export default function ActsWebViewTest3() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_THREAT_0800', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_THREAT_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_enableSafeBrowsing_default', 'policy=0', 5009, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));

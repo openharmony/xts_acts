@@ -24,6 +24,7 @@ group("ActsAceEtsModuleNavigationTest") {
       "ace_ets_module_navigation_api15:ActsAceEtsModuleNavigationApi15Test",
       "ace_ets_module_navigation_api16:ActsAceEtsModuleNavigationApi16Test",
       "ace_ets_module_navigation_api18:ActsAceEtsModuleNavigationApi18Test",
+      "ace_ets_module_navigation_wear_api18:ActsAceEtsModuleNavigationWearApi18Test",
     ]
   } else {
     deps = [

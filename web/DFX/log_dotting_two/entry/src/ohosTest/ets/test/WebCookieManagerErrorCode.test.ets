@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function webCookieManagerErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetCookieError001', 0, async (done: Function) => {
+    it('testGetCookieError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetCookieError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCookieError001", '17100002', 20070, done);
@@ -76,7 +76,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetCookieError002', 0, async (done: Function) => {
+    it('testGetCookieError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetCookieError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCookieError002", '17100002', 20071, done);
@@ -91,7 +91,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetCookieError003', 0, async (done: Function) => {
+    it('testGetCookieError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetCookieError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCookieError003", '17100002', 20072, done);
@@ -106,7 +106,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetCookieError004', 0, async (done: Function) => {
+    it('testGetCookieError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetCookieError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCookieError004", '17100002', 20073, done);
@@ -121,7 +121,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetCookieError001', 0, async (done: Function) => {
+    it('testSetCookieError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetCookieError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCookieError001", '17100002', 20080, done);
@@ -136,7 +136,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetCookieError002', 0, async (done: Function) => {
+    it('testSetCookieError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetCookieError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCookieError002", '17100002', 20081, done);
@@ -151,7 +151,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetCookieError003', 0, async (done: Function) => {
+    it('testSetCookieError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetCookieError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCookieError003", '17100002', 20082, done);
@@ -166,7 +166,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetCookieError004', 0, async (done: Function) => {
+    it('testSetCookieError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetCookieError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCookieError004", '17100005', 20083, done);
@@ -181,7 +181,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetCookieError005', 0, async (done: Function) => {
+    it('testSetCookieError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetCookieError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCookieError005", '17100005', 20084, done);
@@ -196,7 +196,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookieSync001', 0, async (done: Function) => {
+    it('testFetchCookieSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync001", '17100002', 5000, done);
@@ -211,7 +211,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookieSync002', 0, async (done: Function) => {
+    it('testFetchCookieSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync002", '17100002', 5001, done);
@@ -226,7 +226,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookieSync003', 0, async (done: Function) => {
+    it('testFetchCookieSync003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync003", '17100002', 5002, done);
@@ -241,7 +241,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookieSync004', 0, async (done: Function) => {
+    it('testFetchCookieSync004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookieSync004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookieSync004", '17100002', 5003, done);
@@ -256,7 +256,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie001', 0, async (done: Function) => {
+    it('testFetchCookie001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie001", '17100002', 5004, done);
@@ -271,7 +271,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie002', 0, async (done: Function) => {
+    it('testFetchCookie002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie002", '17100002', 5005, done);
@@ -286,7 +286,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie003', 0, async (done: Function) => {
+    it('testFetchCookie003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie003", '17100002', 5006, done);
@@ -301,7 +301,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie004', 0, async (done: Function) => {
+    it('testFetchCookie004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie004", '17100002', 5007, done);
@@ -316,7 +316,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie005', 0, async (done: Function) => {
+    it('testFetchCookie005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie005", '17100002', 5008, done);
@@ -331,7 +331,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie006', 0, async (done: Function) => {
+    it('testFetchCookie006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie006", '17100002', 5009, done);
@@ -346,7 +346,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie007', 0, async (done: Function) => {
+    it('testFetchCookie007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie007", '17100002', 5010, done);
@@ -361,7 +361,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testFetchCookie008', 0, async (done: Function) => {
+    it('testFetchCookie008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testFetchCookie008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFetchCookie008", '17100002', 5011, done);
@@ -376,7 +376,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookieSync001', 0, async (done: Function) => {
+    it('testConfigCookieSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookieSync001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookieSync001", '17100002', 5012, done);
@@ -391,7 +391,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookieSync002', 0, async (done: Function) => {
+    it('testConfigCookieSync002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookieSync002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookieSync002", '17100002', 5013, done);
@@ -406,7 +406,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookieSync003', 0, async (done: Function) => {
+    it('testConfigCookieSync003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookieSync003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookieSync003", '17100002', 5014, done);
@@ -421,7 +421,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookieSync004', 0, async (done: Function) => {
+    it('testConfigCookieSync004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookieSync004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookieSync004", '17100002', 5015, done);
@@ -436,7 +436,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookieSync005', 0, async (done: Function) => {
+    it('testConfigCookieSync005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookieSync005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookieSync005", '17100005', 5016, done);
@@ -451,7 +451,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie001', 0, async (done: Function) => {
+    it('testConfigCookie001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie001", '17100002', 5017, done);
@@ -466,7 +466,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie002', 0, async (done: Function) => {
+    it('testConfigCookie002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie002", '17100002', 5018, done);
@@ -481,7 +481,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie003', 0, async (done: Function) => {
+    it('testConfigCookie003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie003", '17100002', 5019, done);
@@ -496,7 +496,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie004', 0, async (done: Function) => {
+    it('testConfigCookie004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie004", '17100002', 5020, done);
@@ -511,7 +511,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie005', 0, async (done: Function) => {
+    it('testConfigCookie005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie005", '17100005', 5021, done);
@@ -526,7 +526,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie006', 0, async (done: Function) => {
+    it('testConfigCookie006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie006", '17100002', 5022, done);
@@ -541,7 +541,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie007', 0, async (done: Function) => {
+    it('testConfigCookie007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie007", '17100002', 5023, done);
@@ -556,7 +556,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie008', 0, async (done: Function) => {
+    it('testConfigCookie008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie008", '17100002', 5024, done);
@@ -571,7 +571,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie009', 0, async (done: Function) => {
+    it('testConfigCookie009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie009", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie009", '17100002', 5025, done);
@@ -586,7 +586,7 @@ export default function webCookieManagerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testConfigCookie010', 0, async (done: Function) => {
+    it('testConfigCookie010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testConfigCookie010", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testConfigCookie010", '17100005', 5026, done);

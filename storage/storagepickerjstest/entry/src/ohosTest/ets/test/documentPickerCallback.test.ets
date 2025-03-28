@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
 
@@ -36,7 +36,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_000", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_000", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_000";
       let option = new picker.DocumentSelectOptions();
       await selectWithOption(testNum, done, option);
@@ -49,7 +49,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_001", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_001", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_001";
       await select(testNum, done);
     });
@@ -61,7 +61,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_002", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_002", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_002";
       let option = new picker.DocumentSelectOptions();
       option.maxSelectNumber = 3;
@@ -75,7 +75,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_003", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_003", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_003";
       let option = new picker.DocumentSelectOptions();
       option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
@@ -89,7 +89,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_004", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_004", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_004";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.png', '.jpg'];
@@ -103,7 +103,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_005", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_005", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_005";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.pptx', '.docx', '.xlsx', '.txt'];
@@ -117,7 +117,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_006", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_006", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_006";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.mp4'];
@@ -131,7 +131,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_007", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_007", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_007";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.mp3'];
@@ -145,7 +145,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_008", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_008", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_008";
       let option: picker.DocumentSelectOptions = new picker.DocumentSelectOptions();
       console.log('test_Documentpicker_Select_Callback_008::::::');
@@ -161,7 +161,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_009", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_009", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_009";
       let option = new picker.DocumentSelectOptions();
       option.selectMode = picker.DocumentSelectMode.FOLDER;
@@ -175,7 +175,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_010", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_010", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_010";
       let option = new picker.DocumentSelectOptions();
       option.selectMode = picker.DocumentSelectMode.MIXED;
@@ -190,7 +190,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_011", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_011", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_011";
       let option = new picker.DocumentSelectOptions();
       option.authMode = false;
@@ -205,7 +205,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_012", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_012", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_012";
       let option = new picker.DocumentSelectOptions();
       await selectWithOption(testNum, done, option);
@@ -219,7 +219,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_013", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_013", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_013";
       let option1 = new picker.DocumentSelectOptions();
       option1.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
@@ -235,7 +235,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_014", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_014", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_014";
       let option = new picker.DocumentSelectOptions();
       option.multiAuthMode = true;
@@ -251,7 +251,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_015", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_015", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_015";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.DEFAULT;
@@ -266,7 +266,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_016", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_016", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_016";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.AUDIO;
@@ -281,7 +281,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_017", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_017", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_017";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.VIDEO;
@@ -296,7 +296,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_018", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_018", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_018";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.DOCUMENT;
@@ -311,10 +311,40 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Callback_019", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Callback_019", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Callback_019";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.PICTURE;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_2000
+     * @tc.name   : test_Documentpicker_Select_Callback_020
+     * @tc.desc   : select with option multiAuthMode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_020", Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_020";
+      let option = new picker.DocumentSelectOptions();
+      option.isEncryptionSupported = true;
+      await selectWithOption(testNum, done, option);
+    });
+
+    /**
+     * @tc.number   : SUB_STORAGE_DOCUMENTPICKER_SELECT_CALLBACK_2100
+     * @tc.name   : test_Documentpicker_Select_Callback_021
+     * @tc.desc   : select with option multiAuthMode
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 1
+     */
+    it("test_Documentpicker_Select_Callback_021", Level.LEVEL1, async (done: Function) => {
+      let testNum = "test_Documentpicker_Select_Callback_021";
+      let option = new picker.DocumentSelectOptions();
+      option.isEncryptionSupported = false;
       await selectWithOption(testNum, done, option);
     });
 
@@ -326,7 +356,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Documentpicker_Save_Callback_000", 0, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_000";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.jpg"];
@@ -340,7 +370,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_001", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_001", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_001";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.dat"];
@@ -354,7 +384,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Documentpicker_Save_Callback_002", 3, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_002", Level.LEVEL3, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_002";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.mp4"];
@@ -368,7 +398,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Documentpicker_Save_Callback_003", 3, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_003", Level.LEVEL3, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_003";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.mp3"];
@@ -382,7 +412,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Documentpicker_Save_Callback_004", 3, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_004", Level.LEVEL3, async (done: Function) => {
       let testNum = "documentpicker_save_callback_004";
       await saveWithoutSelect(testNum, done);
     });
@@ -394,7 +424,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_005", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_005", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_005";
       let option = new picker.DocumentSaveOptions();
       option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1/202308171505.png";
@@ -408,7 +438,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_006", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_006", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_006";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.png', '.jpg'];
@@ -422,7 +452,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_007", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_007", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_007";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.pptx', '.docx', '.xlsx', '.txt'];
@@ -436,7 +466,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_008", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_008", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_008";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.mp4'];
@@ -450,7 +480,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_009", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_009", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_009";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.mp3'];
@@ -464,7 +494,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_010", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_010", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_010";
       let option = new picker.DocumentSaveOptions();
       option.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
@@ -478,7 +508,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_011", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_011", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Callback_011";
       let option = new picker.DocumentSaveOptions();
       option.pickerMode = picker.DocumentPickerMode.DEFAULT;
@@ -493,7 +523,7 @@ export default function documentPickerCallback(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Callback_012", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Callback_012", Level.LEVEL1, async (done: Function) => {
       try {
         let documentPicker = new picker.DocumentViewPicker();
         let option = new picker.DocumentSaveOptions();

@@ -214,6 +214,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -241,6 +242,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -268,6 +270,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -295,6 +298,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -322,6 +326,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -349,6 +354,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -376,6 +382,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -403,6 +410,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -430,6 +438,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -457,6 +466,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -484,6 +494,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -511,6 +522,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -538,6 +550,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -565,6 +578,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -592,6 +606,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -619,6 +634,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -646,6 +662,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -673,6 +690,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -693,6 +711,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -713,6 +732,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -733,6 +753,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -753,6 +774,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -773,6 +795,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -800,6 +823,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -827,6 +851,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -854,6 +879,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -881,6 +907,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -908,6 +935,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -935,6 +963,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -962,6 +991,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -989,6 +1019,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1016,6 +1047,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1043,6 +1075,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1070,6 +1103,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1097,6 +1131,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1124,6 +1159,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1151,6 +1187,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1178,6 +1215,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1205,6 +1243,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1232,6 +1271,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1259,6 +1299,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1279,6 +1320,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1299,6 +1341,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1319,6 +1362,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1339,6 +1383,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1359,6 +1404,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1392,6 +1438,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1426,6 +1473,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1460,6 +1508,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1494,6 +1543,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1528,6 +1578,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1562,6 +1613,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1588,6 +1640,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1614,6 +1667,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1648,6 +1702,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1682,6 +1737,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1716,6 +1772,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1750,6 +1807,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1784,6 +1842,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1818,6 +1877,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1844,6 +1904,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1870,6 +1931,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -1897,6 +1959,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1923,6 +1986,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1949,6 +2013,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -1975,6 +2040,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2001,6 +2067,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2027,6 +2094,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2053,6 +2121,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2079,6 +2148,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2105,6 +2175,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2131,6 +2202,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2157,6 +2229,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2183,6 +2256,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2215,6 +2289,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2247,6 +2322,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2279,6 +2355,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2306,6 +2383,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2332,6 +2410,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2358,6 +2437,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2389,6 +2469,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2421,6 +2502,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2453,6 +2535,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2480,6 +2563,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2506,6 +2590,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2532,6 +2617,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2558,6 +2644,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2584,6 +2671,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2610,6 +2698,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2636,6 +2725,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2662,6 +2752,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2688,6 +2779,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2714,6 +2806,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2740,6 +2833,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2766,6 +2860,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2792,6 +2887,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2818,6 +2914,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2844,6 +2941,7 @@ export default function imagePixelmap() {
       let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
       logger.log("checkPixelmap result is: " + ret);
       expect(ret).assertTrue();
+      await pixelMap?.release();
       done();
     })
 
@@ -2875,6 +2973,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2907,6 +3006,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2939,6 +3039,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -2971,6 +3072,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, SHARE_MEMORY);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -3003,6 +3105,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, DMA);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -3035,6 +3138,7 @@ export default function imagePixelmap() {
         let ret = await checkPixelmap(done, logger, pixelMap, imageInfo, AUTO);
         logger.log("checkPixelmap result is: " + ret);
         expect(ret).assertTrue();
+        await pixelMap?.release();
         done();
       }
     })
@@ -3057,6 +3161,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3084,6 +3189,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3111,6 +3217,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3138,6 +3245,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3165,6 +3273,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3192,6 +3301,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3232,6 +3342,7 @@ export default function imagePixelmap() {
           if(pixelMap != undefined) {
             logger.log("pixelmap is not undefined");
             expect(false).assertTrue();
+            await pixelMap?.release();
             done();
           }
         } catch (error) {
@@ -3273,6 +3384,7 @@ export default function imagePixelmap() {
           if(pixelMap != undefined) {
             logger.log("pixelmap is not undefined");
             expect(false).assertTrue();
+            await pixelMap?.release();
             done();
           }
         } catch (error) {
@@ -3300,6 +3412,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {
@@ -3326,6 +3439,7 @@ export default function imagePixelmap() {
         if(pixelMap != undefined) {
           logger.log("pixelmap is not undefined");
           expect(false).assertTrue();
+          await pixelMap?.release();
           done();
         }
       } catch (error) {

@@ -15,7 +15,7 @@
 
 import connectedTag from '@ohos.connectedTag';
 import parameter from '@ohos.systemparameter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -47,9 +47,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Initializes the active label chip.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0100', 0, function ()  {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0100', Level.LEVEL0, function ()  {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -68,9 +68,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0200', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0200', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -97,9 +97,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0300', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0300', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -126,9 +126,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0400', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0400', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -155,9 +155,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0500', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0500', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -185,9 +185,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Registers and cancels the NFC field strength status event.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0600', 0, function () {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0600', Level.LEVEL0, function () {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -209,9 +209,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Unloads active label chip resources.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0700', 0, function () {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0700', Level.LEVEL0, function () {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -230,9 +230,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Initializes the active label chip.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-         it('SUB_Communication_NFC_nfcConnectedTag_js_0800', 0, function ()  {
+         it('SUB_Communication_NFC_nfcConnectedTag_js_0800', Level.LEVEL0, function ()  {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -252,9 +252,9 @@ export default function ConnectedTagTest() {
          * @tc.desc uninitialize active label chip resources.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_0900', 0, function () {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0900', Level.LEVEL0, function () {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -274,9 +274,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_1000', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1000', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -304,9 +304,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_1100', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1100', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -335,9 +335,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_1200', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1200', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -365,9 +365,9 @@ export default function ConnectedTagTest() {
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_1300', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1300', Level.LEVEL0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {

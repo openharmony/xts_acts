@@ -52,7 +52,7 @@ constexpr int32_t MINUS_ONE = -1;
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos001, TestSize.Level1)
+HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos001, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
     OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 200, 200);
@@ -89,7 +89,7 @@ HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos001, TestSize.Leve
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos002, TestSize.Level1)
+HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos002, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
     OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 200, 200);
@@ -115,7 +115,7 @@ HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos002, TestSize.Leve
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos003, TestSize.Level1)
+HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos003, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
     OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 200, 200);
@@ -141,7 +141,7 @@ HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos003, TestSize.Leve
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos004, TestSize.Level1)
+HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos004, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 200, 200);
     OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 200, 200);
@@ -167,7 +167,7 @@ HWTEST_F(NativeDrawingRoundRectTest, CCornerPosCastToCornerPos004, TestSize.Leve
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingRoundRectTest, OH_Drawing_RoundRectGetCorner005, TestSize.Level1)
+HWTEST_F(NativeDrawingRoundRectTest, OH_Drawing_RoundRectGetCorner005, Function | MediumTest | Level1)
 {
     OH_Drawing_RoundRect* nullRoundRect = nullptr;
 
@@ -184,7 +184,7 @@ HWTEST_F(NativeDrawingRoundRectTest, OH_Drawing_RoundRectGetCorner005, TestSize.
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingRoundRectTest, NativeDrawingRoundRectTest_RoundRectOffset006, TestSize.Level1)
+HWTEST_F(NativeDrawingRoundRectTest, NativeDrawingRoundRectTest_RoundRectOffset006, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(10, 100, 200, 300);
     OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 25, 25); // 25: xRad, 25: yRad

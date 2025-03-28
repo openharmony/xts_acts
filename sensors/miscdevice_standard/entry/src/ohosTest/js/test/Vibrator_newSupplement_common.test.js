@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,30 +17,30 @@ import deviceInfo from '@ohos.deviceInfo'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function VibratorJsTest_misc_3() {
-let isAvailable; 
-const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');   
+let isAvailable;
+const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');
 describe("VibratorJsTest_misc_3", function () {
     beforeAll(async function (done) {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll called')   
-        console.info('VibratorJsTest_misc_3 Device type = ' + deviceInfo.deviceType);    
-        console.info('VibratorJsTest_misc_3 isAvailable = ' + isAvailable);    
+        console.info('beforeAll called')
+        console.info('VibratorJsTest_misc_3 Device type = ' + deviceInfo.deviceType);
+        console.info('VibratorJsTest_misc_3 isAvailable = ' + isAvailable);
         try {
             if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_3 isAvailable ' + isAvailable);
-                done() 
+                done()
             }else {
                 isAvailable = true;
                 console.info('VibratorJsTest_misc_3 isAvailable ' + isAvailable);
-                done() 
+                done()
             }
         } catch(error) {
             console.error('VibratorJsTest_misc_3 exception :' + JSON.stringify(error))
-            done() 
-        }        
+            done()
+        }
     })
 
     afterAll(function () {
@@ -80,11 +80,11 @@ describe("VibratorJsTest_misc_3", function () {
     * @tc.name:VibratorJsTest015
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0290
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest015"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {
@@ -422,7 +422,7 @@ describe("VibratorJsTest_misc_3", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest024"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {
@@ -1052,7 +1052,7 @@ describe("VibratorJsTest_misc_3", function () {
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.soft');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
@@ -1069,7 +1069,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest040'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.hard");
             if (ret) {
                 vibrator.startVibration({
@@ -1093,7 +1093,7 @@ describe("VibratorJsTest_misc_3", function () {
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.hard');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
@@ -1110,7 +1110,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest041'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
             if (ret) {
                 vibrator.startVibration({
@@ -1134,7 +1134,7 @@ describe("VibratorJsTest_misc_3", function () {
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
@@ -1151,7 +1151,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest042'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.soft");
             if (ret) {
                 vibrator.startVibration({
@@ -1170,12 +1170,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }
                     setTimeout(() => {
                         done();
-                    }, 500);                    
-                });            
+                    }, 500);
+                });
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.soft');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
@@ -1192,7 +1192,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest043'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.hard");
             if (ret) {
                 vibrator.startVibration({
@@ -1216,7 +1216,7 @@ describe("VibratorJsTest_misc_3", function () {
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.hard');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
@@ -1233,7 +1233,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest044'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
             if (ret) {
                 vibrator.startVibration({
@@ -1253,17 +1253,17 @@ describe("VibratorJsTest_misc_3", function () {
                     setTimeout(() => {
                         done();
                     }, 500);
-                });                          
+                });
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
         }
     })
-    
+
     /*
     * @tc.name:VibratorJsTest045
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1274,7 +1274,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest045'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
             if (ret) {
                 try {
@@ -1294,23 +1294,23 @@ describe("VibratorJsTest_misc_3", function () {
                         }
                         setTimeout(() => {
                             done();
-                        }, 500);                        
+                        }, 500);
                     });
                 } catch (error) {
                     console.info(TAG + " intensity error: " + JSON.stringify(error));
                     expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                     done()
-                }                      
+                }
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
         }
-    }) 
-    
+    })
+
     /*
     * @tc.name:VibratorJsTest046
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1321,7 +1321,7 @@ describe("VibratorJsTest_misc_3", function () {
     */
     it("VibratorJsTest046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'VibratorJsTest046'
-        if(isAvailable){        
+        if(isAvailable){
             let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
             if (ret) {
                 try {
@@ -1341,20 +1341,20 @@ describe("VibratorJsTest_misc_3", function () {
                         }
                         setTimeout(() => {
                             done();
-                        }, 500);                           
+                        }, 500);
                     });
                 } catch (error) {
                     console.info(TAG + " intensity error: " + JSON.stringify(error));
                     expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                     done()
-                }                      
+                }
             } else {
                 console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 done();
-            }            
+            }
         } else {
             console.info(TAG + ' This device is not supportEffect');
             done();
         }
-    })    
+    })
     })}

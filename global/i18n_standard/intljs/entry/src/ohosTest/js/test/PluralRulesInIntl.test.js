@@ -14,7 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function PluralRulesInIntlTest() {
 describe('PluralRulesInIntlTest', function () {
@@ -62,7 +62,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_2600', 0, function () {
+    it('pluralrules_test_2600', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules();
         let value = pl.select(0);
         console.log('pluralrules_test_2600 ' + value);
@@ -74,7 +74,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_2700', 0, function () {
+    it('pluralrules_test_2700', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh');
         let value = pl.select(0);
         console.log('pluralrules_test_2700 ' + value);
@@ -86,7 +86,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and undefined options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_2720', 0, function () {
+    it('pluralrules_test_2720', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', undefined);
         let value = pl.select(0);
         console.log('pluralrules_test_2720 ' + value);
@@ -98,7 +98,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and null options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_2740', 0, function () {
+    it('pluralrules_test_2740', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', null);
         let value = pl.select(0);
         console.log('pluralrules_test_2740 ' + value);
@@ -110,7 +110,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and ordinal type
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_2800', 0, function () {
+    it('pluralrules_test_2800', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'type': 'ordinal'});
         let value = pl.select(0);
         console.log('pluralrules_test_2800 ' + value);
@@ -122,7 +122,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and loolup localeMatcher
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_2900', 0, function () {
+    it('pluralrules_test_2900', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'localeMatcher': 'lookup'});
         let value = pl.select(0);
         console.log('pluralrules_test_2900 ' + value);
@@ -134,7 +134,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and minimumIntegerDigits options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_3000', 0, function () {
+    it('pluralrules_test_3000', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'minimumIntegerDigits': 10});
         let value = pl.select(0);
         console.log('pluralrules_test_3000 ' + value);
@@ -146,7 +146,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and minimumFractionDigits options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_3100', 0, function () {
+    it('pluralrules_test_3100', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'minimumFractionDigits': 11});
         let value = pl.select(0);
         console.log('pluralrules_test_3100 ' + value);
@@ -158,7 +158,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and maximumFractionDigits options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_3200', 0, function () {
+    it('pluralrules_test_3200', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'maximumFractionDigits': 'lookup'});
         let value = pl.select(0);
         console.log('pluralrules_test_3200 ' + value);
@@ -170,7 +170,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and minimumSignificantDigits options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_3300', 0, function () {
+    it('pluralrules_test_3300', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'minimumSignificantDigits': 10});
         let value = pl.select(0);
         console.log('pluralrules_test_3300 ' + value);
@@ -182,7 +182,7 @@ describe('PluralRulesInIntlTest', function () {
     * @tc.name    get PluralRules with zh locale and maximumSignificantDigits options
     * @tc.desc    check the select result
     */
-    it('pluralrules_test_3400', 0, function () {
+    it('pluralrules_test_3400', Level.LEVEL2, function () {
         let pl = new Intl.PluralRules('zh', {'maximumSignificantDigits': 11});
         let value = pl.select(0);
         console.log('pluralrules_test_3400 ' + value);

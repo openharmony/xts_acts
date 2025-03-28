@@ -55,19 +55,19 @@ describe("SensorJsTest_sensor_28", function () {
      * @tc.name: subscribeCompass_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeCompass_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest001---------------------------');
         sensor.subscribeCompass({
             interval: 'game',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest001 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
+                expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest001 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
         setTimeout(() => {
@@ -87,13 +87,13 @@ describe("SensorJsTest_sensor_28", function () {
             interval: 'ui',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest002 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
+                expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest002 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })
@@ -109,13 +109,13 @@ describe("SensorJsTest_sensor_28", function () {
             interval: 'normal',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest003 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
+                expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest003 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })
@@ -131,7 +131,7 @@ describe("SensorJsTest_sensor_28", function () {
             interval: 'normal',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest004 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
+                expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest004 is failed, data: " + data + ", code: " + code);
@@ -144,14 +144,14 @@ describe("SensorJsTest_sensor_28", function () {
             interval: 'normal',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest004_1 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
-				done()
+                expect(typeof (data.direction)).assertEqual("number");
+                done()
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })
@@ -167,13 +167,13 @@ describe("SensorJsTest_sensor_28", function () {
             interval: 'xxx',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest005 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
+                expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest005 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })
@@ -189,14 +189,14 @@ describe("SensorJsTest_sensor_28", function () {
             interval: 'normal',
             success: function (data) {
                 console.info("subscribeCompass_SensorJsTest006 success" + JSON.stringify(data));
-				expect(typeof (data.direction)).assertEqual("number");
+                expect(typeof (data.direction)).assertEqual("number");
                 done();
             },
             fail: function (data, code) {
                 console.log("subscribeCompass_SensorJsTest006 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })

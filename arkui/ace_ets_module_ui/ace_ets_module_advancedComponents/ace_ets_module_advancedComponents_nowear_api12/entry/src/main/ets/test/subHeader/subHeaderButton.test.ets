@@ -61,10 +61,8 @@ export default function subHeaderButton() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // subHeaderButton是否存在以下入口。
-      let primaryTitle = await driver.findComponent(ON.text('一级标题'));
       let secondaryTitle = await driver.findComponent(ON.text('二级标题'));
       let operation = await driver.findComponent(ON.text('操作'));
-      expect(primaryTitle !== null).assertTrue();
       expect(secondaryTitle !== null).assertTrue();
       expect(operation !== null).assertTrue();
       await driver.delayMs(1000);

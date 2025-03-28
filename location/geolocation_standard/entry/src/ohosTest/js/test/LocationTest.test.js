@@ -1823,7 +1823,7 @@ export default function geolocationTest_geo3() {
     it('SUB_HSS_LocationSystem_GeoFence_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         await changedLocationMode();
         let geofence = {"latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": ""};
-        let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence};
+        let geofenceRequest = {"scenario":request_scenario_navigation, "geofence": geofence, "priority": request_priority_accuracy};
         let want = (wantAgent) => {
             console.log('wantAgent: ' + JSON.stringify(wantAgent));
         };

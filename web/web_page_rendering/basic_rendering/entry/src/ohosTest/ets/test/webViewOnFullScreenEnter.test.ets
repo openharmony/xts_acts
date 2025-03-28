@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewOnFullScreenEnter() {
      *tc.name testOnFullScreenEnter
      *tc.desc test interface of onfullscreenenter with runjavascript handleFullScreen
      */
-    it('testOnFullScreenEnter',0,async (done: Function) => {
+    it('testOnFullScreenEnter',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
       sendEventByKey('TestwebViewOnFullScreenEnter',10,'');
       emitKey="emitOnfullscreenenter";
       Utils.registerEvent("testOnFullScreenEnter","2\"true\"",342,done);

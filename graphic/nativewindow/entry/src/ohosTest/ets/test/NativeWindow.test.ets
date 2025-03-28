@@ -1564,5 +1564,103 @@ export default function nativeWindowTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2000
+     * @tc.name       : testNativeWindowCleanCacheBeforeBufferRequested
+     * @tc.desc       : testNativeWindowCleanCacheBeforeBufferRequested
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheBeforeBufferRequested', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheBeforeBufferRequested();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2001
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferRequested
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferRequested
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferRequested', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferRequested();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2002
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferFlushed
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferFlushed
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferFlushed', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferFlushed();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2003
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferAcquired', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferAcquired();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2004
+     * @tc.name       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.desc       : testNativeWindowCleanCacheWhenBufferAcquired
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheWhenBufferReleased', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferReleased();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2006
+     * @tc.name       : testNativeWindowCleanCacheLoopWhenBufferRequested
+     * @tc.desc       : testNativeWindowCleanCacheLoopWhenBufferRequested
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheLoopWhenBufferRequested', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferRequested();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_2007
+     * @tc.name       : testNativeWindowCleanCacheLoopWhenBufferFlushed
+     * @tc.desc       : testNativeWindowCleanCacheLoopWhenBufferFlushed
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowCleanCacheLoopWhenBufferFlushed', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferFlushed();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }

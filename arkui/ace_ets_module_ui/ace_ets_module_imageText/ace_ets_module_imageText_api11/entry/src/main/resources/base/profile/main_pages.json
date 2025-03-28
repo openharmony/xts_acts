@@ -95,6 +95,10 @@
         "MainAbility/pages/text/textDecoration",
         "MainAbility/pages/Search/searchPage1",
         "MainAbility/pages/TextArea/TextAreaType",
-        "MainAbility/pages/Search/SearchType"
+        "MainAbility/pages/Search/SearchType",
+        "MainAbility/pages/ImageSpan/ImageSpanVisibility",
+        "MainAbility/pages/TextInput/ShowCounter",
+        "MainAbility/pages/font/UIFontAliasInfo",
+        "MainAbility/pages/text/measureOptionsTest"
     ]
 }

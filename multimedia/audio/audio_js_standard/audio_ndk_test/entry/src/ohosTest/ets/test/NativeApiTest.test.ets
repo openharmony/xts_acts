@@ -2407,6 +2407,102 @@ export default function audioNDK() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK
+     * @tc.name      : set rendererInterruptCallback with INVALID result after create a
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererInterruptCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK', 0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetRendererInterruptCallback();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK`,
+        `audioStreamBuilderSetRendererInterruptCallback: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK
+     * @tc.name      : set rendererErrorCallback with INVALID result after create a
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererErrorCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK', 0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetRendererErrorCallback();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK`,
+        `audioStreamBuilderSetRendererErrorCallback: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK
+     * @tc.name      : set captureCallback after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerReadDataCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK', 0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerReadDataCallback();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK`,
+        `aSetCapturerReadDataCallback: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK
+     * @tc.name      : set captureDeviceChangeCallback after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK', 0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerDeviceChangeCallback();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK`,
+        `aSetCapturerCallback: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK
+     * @tc.name      : set captureInterruptCallback after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+   */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK', 0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerInterruptCallback();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK`,
+        `aSetCapturerInterruptCallback: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK
+     * @tc.name      : set captureErrorCallback after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerErrorCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK', 0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerErrorCallback();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK`,
+        `aSetCapturerErrorCallback: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
+
+    /**
      * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
      * @tc.name      : set  create audioStreamBuilder
      * @tc.desc      : test OH_AudioCapturer_GetOverflowCount

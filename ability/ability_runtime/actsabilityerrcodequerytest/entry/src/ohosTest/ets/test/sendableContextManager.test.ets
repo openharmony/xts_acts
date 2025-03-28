@@ -1,0 +1,191 @@
+/**
+ * Copyright (c) 2024 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError } from '@ohos.base';
+import { commonEventManager } from '@kit.BasicServicesKit';
+import base from '@ohos.base';
+import { common, sendableContextManager } from '@kit.AbilityKit';
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { router } from '@kit.ArkUI';
+
+let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['ACTS_TEST_OPENLINK', 'ACTS_TEST_DESTROY']
+};
+let subscriber: commonEventManager.CommonEventSubscriber;
+let context = getContext(this) as common.UIAbilityContext;
+let wantAgentData: WantAgent;
+
+function publishCB(err: BusinessError) {
+  if (err) {
+    console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('====>publish ACTS_TEST_OPENLINK');
+    console.info(`Succeeded in publishing common event.`);
+  }
+}
+
+export default function sendableContextManagerTest() {
+  describe('sendableContextManagerTest', () => {
+
+    beforeAll(() => {
+      context = globalThis.context
+    })
+    beforeEach(() => {
+    })
+    afterEach(() => {
+    })
+    afterAll(() => {
+    })
+
+    /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0200
+     * @tc.name   : call startChildProcess to create a child process
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 3
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0200', 0, (done:Function) => {
+      let tag = `SUB_ChildProcessManager_sendableContextManager_0200`;
+      let moduleContext: common.Context;
+      try {
+        moduleContext = context.createModuleContext(undefined);
+      } catch (error) {
+        console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+        expect(error.code).assertEqual(401)
+        done();
+      }
+    })
+
+    /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0300
+     * @tc.name   : getGroupDir callback
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 0
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0300', 0, (done:Function) => {
+      let tag = `SUB_ChildProcessManager_sendableContextManager_0300`;
+      try {
+        context.getGroupDir(undefined, (err, data) => {
+          if (err) {
+            console.error(`${tag} getGroupDir faile, err: ${JSON.stringify(err)}`);
+            expect(err.code).assertEqual(401)
+            done();
+          } else {
+            console.log(`${tag} getGroupDir result is: ${JSON.stringify(data)}`);
+          }
+        })
+      } catch (error) {
+        console.error(`${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+        expect(error.code).assertEqual(401)
+        done();
+      }
+    })
+
+    /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0400
+     * @tc.name   : getGroupDir promise with undefined
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 0
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0400', 0, (done:Function) => {
+      let tag = `SUB_ChildProcessManager_sendableContextManager_0400`;
+      try {
+        context.getGroupDir(undefined).then(data => {
+          console.log(`${tag} getGroupDir result:` + data);
+        })
+          .catch((error : BusinessError)=>{
+            console.error(`${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+            expect(error.code).assertEqual(401)
+            done();
+          })
+      } catch (error) {
+        console.error(`${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+        expect(error.code).assertEqual(401)
+        done();
+      }
+    })
+
+    /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0500
+     * @tc.name   : createAreaModeContext with undefined
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 0
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0500', 0, (done:Function) => {
+      let tag = `SUB_ChildProcessManager_sendableContextManager_0500`;
+      let moduleContext: common.Context;
+      try {
+        moduleContext = context.createAreaModeContext(undefined)
+      } catch (error) {
+        console.error(`${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+        expect(error.code).assertEqual(401)
+        done();
+      }
+    })
+
+    /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0700
+     * @tc.name   : restartApp with undefined
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 0
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0700', 0, (done:Function) => {
+      let tag:string = `SUB_ChildProcessManager_sendableContextManager_0700`;
+      let applicationContext = context.getApplicationContext();
+      try {
+        applicationContext.restartApp(undefined);
+      } catch (error) {
+        console.error(`${tag} restartApp fail, error: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number : SUB_ChildProcessManager_sendableContextManager_0900
+     * @tc.name   : restartApp with other want
+     * @tc.desc   : Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level  : 0
+     */
+    it('SUB_ChildProcessManager_sendableContextManager_0900', 0, (done:Function) => {
+      let tag:string = `SUB_ChildProcessManager_sendableContextManager_0900`;
+      let applicationContext = context.getApplicationContext();
+      let want: Want = {
+        bundleName: 'ohos.example.myapplication',
+        abilityName: 'entry'
+      };
+      try {
+        applicationContext.restartApp(want);
+      } catch (error) {
+        console.error(`${tag} restartApp fail, error: ${JSON.stringify(error)}`);
+        expect(error.code).assertEqual(16000063);
+        done();
+      }
+    })
+  })
+}

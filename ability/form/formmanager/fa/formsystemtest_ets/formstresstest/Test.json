@@ -14,7 +14,6 @@
             "run-command": [
                 "param set persist.sys.suspend_manager_enabled false",
                 "param set persist.ace.testmode.enabled true",
-                "reboot",
                 "wait 5",
                 "power-shell wakeup",
                 "wait 5",
@@ -36,8 +35,7 @@
         {
             "type": "ShellKit",
             "teardown-command": [
-                "param set persist.sys.suspend_manager_enabled true",
-                "reboot"
+                "param set persist.sys.suspend_manager_enabled true"
             ]
         }
     ]

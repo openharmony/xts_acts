@@ -41,6 +41,25 @@ export default function HidEmitEventTest() {
   describe('HidEmitEventTest', () => {
 
     beforeAll(async () => {
+      try {
+        console.info(`before queryDevices`)
+        let devices: Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
+        console.info(`after queryDevices`)
+        for (let item of devices) {
+          console.info(`enter for`)
+          let device: deviceManager.USBDevice = item as deviceManager.USBDevice;
+          if ((device.vendorId == 0x2109 && device.productId == 0x888b) ||
+            (device.vendorId == 0xbda && device.productId == 0x8153) ||
+            (!hidEmitEvent.isHidDevice(device.deviceId))) {
+            console.info(`Device vid = ${device.vendorId} pid = ${device.productId}, is not hid device`);
+            continue;
+          }
+          deviceId = device.deviceId;
+          console.info(`Hid device id is ${device.deviceId}`);
+        }
+      } catch (error) {
+        console.error(`Failed to query device. Code is ${error.code}, message is ${error.message}`);
+      }
       console.log(TAG, '*************hid Unit HidEmitEventTest start*************');
     })
 

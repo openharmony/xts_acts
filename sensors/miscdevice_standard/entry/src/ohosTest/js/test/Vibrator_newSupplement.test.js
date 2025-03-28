@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 import vibrator from '@ohos.vibrator'
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-
 export default function VibratorJsTest_misc_5() {
 describe("VibratorJsTest_misc_5", function () {
      beforeAll(function () {
@@ -50,20 +48,20 @@ describe("VibratorJsTest_misc_5", function () {
         console.info('afterEach called')
     })
 
-    const OPERATION_FAIL_CODE = 14600101; 
+    const OPERATION_FAIL_CODE = 14600101;
     const PERMISSION_ERROR_CODE = 201;
     const PARAMETER_ERROR_CODE = 401;
-    
+
     const OPERATION_FAIL_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-	
+
     /*
      * @tc.name:VibratorJsTest019
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0290
      */
-    it("VibratorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         vibrator.startVibration({
             type: "time",
             duration: 1000
@@ -170,7 +168,7 @@ describe("VibratorJsTest_misc_5", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-        
+
     })
 
     /*
@@ -202,7 +200,7 @@ describe("VibratorJsTest_misc_5", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-        
+
     })
 
     /*
@@ -842,17 +840,17 @@ describe("VibratorJsTest_misc_5", function () {
         await vibrator.stopVibration();
         done();
     })
-	    /*
+        /*
      * @tc.name:VibratorJsTest040
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0500
      */
-    it("VibratorJsTest040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         vibrator.startVibration({
             type: "time",
             duration: 1000
         }, {
-			id:0,
+            id:0,
             usage: "unknown"
         }, (error)=>{
             if (error) {
@@ -911,7 +909,7 @@ describe("VibratorJsTest_misc_5", function () {
             effectId: "haptic.clock.timer",
             count: 1,
         }, {
-			id:"xxx",
+            id:"xxx",
             usage: "unknown"
         }, (error)=>{
             if (error) {
@@ -958,9 +956,9 @@ describe("VibratorJsTest_misc_5", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-        
+
     })
-	  /*
+      /*
     * @tc.name:VibratorJsTest044
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0540
@@ -1129,10 +1127,10 @@ describe("VibratorJsTest_misc_5", function () {
         }, {
             usage: "unknown"
         }).then(()=>{
-			console.info("VibratorJsTest050 success");
+            console.info("VibratorJsTest050 success");
             expect(true).assertTrue();
         }).catch((error)=>{
-			console.info("VibratorJsTest050 error :" + error);
+            console.info("VibratorJsTest050 error :" + error);
             expect(false).assertTrue();
         });
         await vibrator.stopVibration();
@@ -1152,10 +1150,10 @@ describe("VibratorJsTest_misc_5", function () {
             }, {
                 usage: "unknown"
             }).then(()=>{
-				console.info("VibratorJsTest051 success");
+                console.info("VibratorJsTest051 success");
                 expect(false).assertTrue();
             }).catch((error)=>{
-				console.info("VibratorJsTest051 error :" + error);
+                console.info("VibratorJsTest051 error :" + error);
                 expect(true).assertTrue();
             });
             done();
@@ -1180,10 +1178,10 @@ describe("VibratorJsTest_misc_5", function () {
         }, {
             usage: "unknown"
         }).then(()=>{
-			console.info("VibratorJsTest052 success");
+            console.info("VibratorJsTest052 success");
             expect(true).assertTrue();
         }).catch((error)=>{
-			console.info("VibratorJsTest052 error :" + error);
+            console.info("VibratorJsTest052 error :" + error);
             expect(false).assertTrue();
         });
         await vibrator.stopVibration();
@@ -1204,11 +1202,11 @@ describe("VibratorJsTest_misc_5", function () {
             }, {
                 usage: "unknown"
             }).then(()=>{
-				console.info("VibratorJsTest051 success");
+                console.info("VibratorJsTest051 success");
                 expect(false).assertTrue();
                 done();
             }).catch((error)=>{
-				console.info("VibratorJsTest053 error :" + error);
+                console.info("VibratorJsTest053 error :" + error);
                 expect(true).assertTrue();
                 done();
             });
@@ -1234,11 +1232,11 @@ describe("VibratorJsTest_misc_5", function () {
             }, {
                 usage: ""
             }).then(()=>{
-				console.info("VibratorJsTest054 success");
+                console.info("VibratorJsTest054 success");
                 expect(false).assertTrue();
                 done();
             }).catch((error)=>{
-				console.info("VibratorJsTest054 error :" + error);
+                console.info("VibratorJsTest054 error :" + error);
                 expect(true).assertTrue();
                 done();
             });
@@ -1286,10 +1284,10 @@ describe("VibratorJsTest_misc_5", function () {
                     usage: "unknown"
                 }, (error)=>{
                     if (error) {
-						console.info("VibratorJsTest056_1 error :" + error);
+                        console.info("VibratorJsTest056_1 error :" + error);
                         expect(false).assertTrue();
                     } else {
-						console.info("VibratorJsTest056 success");
+                        console.info("VibratorJsTest056 success");
                         expect(true).assertTrue();
                     }
                     setTimeout(()=>{
@@ -1307,11 +1305,11 @@ describe("VibratorJsTest_misc_5", function () {
                 usage: "unknown"
             }, (error)=>{
                 if (error) {
-					console.info("VibratorJsTest056 error :" + error);
+                    console.info("VibratorJsTest056 error :" + error);
                     expect(false).assertTrue();
                     reject();
                 } else {
-					console.info("VibratorJsTest056 success");
+                    console.info("VibratorJsTest056 success");
                     expect(true).assertTrue();
                     resolve();
                 }
@@ -1343,7 +1341,7 @@ describe("VibratorJsTest_misc_5", function () {
                     usage: "unknown"
                 }, (error)=>{
                     if (error) {
-						console.info("VibratorJsTest057_1 error :" + error);
+                        console.info("VibratorJsTest057_1 error :" + error);
                         expect(error.code).assertEqual(OPERATION_FAIL_CODE);
                         expect(error.message).assertEqual(OPERATION_FAIL_MSG);
                     } else {
@@ -1364,11 +1362,11 @@ describe("VibratorJsTest_misc_5", function () {
                 usage: "alarm"
             }, (error)=>{
                 if (error) {
-					console.info("VibratorJsTest057_2 error :" + error);
+                    console.info("VibratorJsTest057_2 error :" + error);
                     expect(false).assertTrue();
                     reject();
                 } else {
-					console.info("VibratorJsTest057_2 success");
+                    console.info("VibratorJsTest057_2 success");
                     expect(true).assertTrue();
                     resolve();
                 }
@@ -1400,10 +1398,10 @@ describe("VibratorJsTest_misc_5", function () {
                     usage: "unknown",
                 }, (error)=>{
                     if (error) {
-						console.info("VibratorJsTest058_1 error :" + error);
+                        console.info("VibratorJsTest058_1 error :" + error);
                         expect(false).assertTrue();
                     } else {
-						console.info("VibratorJsTest058_1 success");
+                        console.info("VibratorJsTest058_1 success");
                         expect(true).assertTrue();
                     }
                     setTimeout(()=>{
@@ -1421,11 +1419,11 @@ describe("VibratorJsTest_misc_5", function () {
                 usage: "alarm"
             }, (error)=>{
                 if (error) {
-					console.info("VibratorJsTest058 error :" + error);
+                    console.info("VibratorJsTest058 error :" + error);
                     expect(false).assertTrue();
                     reject();
                 } else {
-					console.info("VibratorJsTest058 success");
+                    console.info("VibratorJsTest058 success");
                     expect(true).assertTrue();
                     resolve();
                 }

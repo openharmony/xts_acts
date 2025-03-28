@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -59,7 +59,7 @@ export default function WebViewEnumAndSetWebController() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFileSelectorMode002', 0, async (done: Function) => {
+    it('testFileSelectorMode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitFileSelectorModeFileOpenMultipleMode", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorMode002", 1, 862, done);
@@ -73,7 +73,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileSelectorMode003', 0, async (done: Function) => {
+    it('testFileSelectorMode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitFileSelectorModeFileOpenFolderMode", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorMode003", 2, 863, done);
@@ -87,7 +87,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testContextMenuMediaType002', 0, async (done: Function) => {
+    it('testContextMenuMediaType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuMediaTypeImage", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testContextMenuMediaType002", 1, 882, done);
@@ -102,7 +102,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testContextMenuSourceTypeMouse001', 0, async (done: Function) => {
+    it('testContextMenuSourceTypeMouse001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuSourceTypeMouse", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testContextMenuSourceTypeMouse001", 1, 1981, done);

@@ -72,14 +72,25 @@ function printNumNoConcurrent(args: number): number {
 
 @Concurrent
 function sendDataParameters(num: number): number {
-  taskpool.Task.sendData(num);
+  try {
+    taskpool.Task.sendData(num);
+  } catch (e) {
+    console.log(`sendDataParameters catch error: code => ${e.code} message => ${e.message}`)
+    return e.code;
+  }
+
   return num;
 }
 
 @Concurrent
 function sendDataNoSerialize(num: number): number {
-  taskpool.Task.sendData(() => {
-  });
+  try {
+    taskpool.Task.sendData(() => {
+    });
+  } catch (e) {
+    console.log(`sendDataNoSerialize catch error: code => ${e.code} message => ${e.message}`)
+    return e.code;
+  }
   return num;
 }
 
@@ -1823,8 +1834,9 @@ export default function TaskPoolErrorCodeTest() {
       let task: taskpool.Task = new taskpool.Task(sendDataNoSerialize, 100);
       task.onReceiveData(() => {
       });
-      await taskpool.execute(task).then(() => {
-        console.info("Taskpool: sendData 10200006 code");
+      await taskpool.execute(task).then((data) => {
+        console.info(`${caseName} Taskpool: sendData code ${data}`);
+        expect(data).assertEqual(10200006);
       }).catch((error: BusinessError) => {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200006);
@@ -1845,8 +1857,9 @@ export default function TaskPoolErrorCodeTest() {
       console.info(`${caseName} test start`);
       let task: taskpool.Task = new taskpool.Task(sendDataParameters, 100);
 
-      await taskpool.execute(task).then(() => {
-        console.info("Taskpool: sendData 10200024 code");
+      await taskpool.execute(task).then((data) => {
+        console.info(`${caseName} Taskpool: sendData code ${data}`);
+        expect(data).assertEqual(10200024);
       }).catch((error: BusinessError) => {
         console.info(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200024);

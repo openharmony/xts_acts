@@ -232,6 +232,28 @@ export default function ActsContextTest() {
     })
 
 
+     //  @tc.number: ACTS_VerifyPermission_0600
+    //  @tc.name: verifySelfPermission : Query whether the application of the specified PID and
+    //  UID has been granted a certain permission
+    //  @tc.desc: Query whether the application of the specified PID and UID has been granted
+    //  a certain permission (by Promise)
+    it('ACTS_VerifyPermission_0600', 0, async function (done) {
+      var ret = false;
+      var context = await featureAbility.getContext();
+      console.log('ACTS_VerifyPermission_0600 context is:' + JSON.stringify(context));
+      var datainfo = await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+      var promise = await context.verifyPermission("ohos.permission.INSTALL_BUNDLE");
+      console.log('ACTS_VerifyPermission_0600 promise is:' + JSON.stringify(promise));
+      expect(promise).assertEqual(0);
+      ret = true
+      done();
+      setTimeout(function () {
+        expect(ret).assertEqual(true);
+      }, 1000)
+    })
+
+
+    
     //  @tc.number: ACTS_RequestPermissionForUser_0100
     //  @tc.name: requestPermissionsFromUser : Requests certain permissions from the system.
     //  permission: The list of permissions to be requested.

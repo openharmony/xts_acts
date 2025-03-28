@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webJsunit() {
      *tc.name GetCertificateCallback
      *tc.desic Save current page
      */
-    it('GetCertificateCallback', 0, async (done: Function) => {
+    it('GetCertificateCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetStoredGeolocationPromise";
       Utils.registerEvent("GetCertificateCallback", 31, 520, done);
       sendEventByKey('webcomponent', 10, '');

@@ -46,6 +46,8 @@ let avPlayer: media.AVPlayer | null = null;
 let fdPath = '';
 let fdNumber = 0;
 let subtitleFdSrc: media.AVFileDescriptor;
+let invalidPlaybackStrategy = false;
+let checkPlaybackStrategySuccess = false;
 let mediaTestBase = new MediaTestBase()
 
 function setAVPlayerTrackCb(avPlayer: media.AVPlayer | null, descriptionKey: Array<Array<string>>,
@@ -422,6 +424,19 @@ function setPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStra
     expect().assertFail();
   })
 }
+
+async function setInvalidPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null,
+  playbackStrategy: media.PlaybackStrategy) {
+  avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
+    console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
+     if (error.code == media.AVErrorCode.AVERR_INVALID_PARAMETER && invalidPlaybackStrategy) {
+      checkPlaybackStrategySuccess = true;
+    } else {
+      expect().assertFail();
+    }
+  });
+}
+
 async function setPlaybackStrategyDASH(avPlayer: media.AVPlayer | null, done: Function) {
   let surfaceID: string = globalThis.value;
   let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD,preferredAudioLanguage:"und", preferredSubtitleLanguage:"eng" }
@@ -500,6 +515,54 @@ async function setPlaybackStrategy(avPlayer: media.AVPlayer | null, done: Functi
         break;
       case RELEASED:
         avPlayer = null;
+        done();
+        break;
+      case ERROR:
+        avPlayer?.release().then(() => {
+        },
+          mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        avPlayer = null;
+        expect().assertFail();
+        break;
+      default:
+        break;
+    }
+  }
+  avPlayer?.on('stateChange', stateChangeCallback)
+}
+
+async function setPlaybackStrategyFlv(avPlayer: media.AVPlayer | null, done: Function,
+  playbackStrategy: media.PlaybackStrategy) {
+  let surfaceID: string = globalThis.value;
+  let pauseCount = 0
+  let stateChangeCallback = async (state: media.AVPlayerState) => {
+    switch (state) {
+      case INITIALIZED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer.surfaceId = surfaceID;
+        await setInvalidPlayerPlaybackStrategy(avPlayer, playbackStrategy);
+        avPlayer.prepare()
+        break;
+      case PREPARED:
+        avPlayer?.play()
+        break;
+      case PLAYING:
+        if (pauseCount++ == 0) {
+          avPlayer?.pause()
+        }
+        break;
+      case PAUSED:
+        avPlayer?.play()
+        break;
+      case COMPLETED:
+        avPlayer?.release()
+        break;
+      case RELEASED:
+        avPlayer = null;
+        expect(checkPlaybackStrategySuccess == invalidPlaybackStrategy).assertTrue();
         done();
         break;
       case ERROR:
@@ -638,6 +701,25 @@ async function testSetPlaybackStrategyDASH(src: string | media.AVFileDescriptor,
       console.info('case createAVPlayer success');
       avPlayer = video;
       setPlaybackStrategyDASH(avPlayer, done)
+      setSource(avPlayer, src);
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
+}
+
+async function testSetPlaybackStrategyFlv(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
+  done: Function, playbackStrategy: media.PlaybackStrategy) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+      setPlaybackStrategyFlv(avPlayer, done, playbackStrategy)
       setSource(avPlayer, src);
     }
     if (err != null) {
@@ -834,6 +916,46 @@ async function testAVPlayerSeekContinuous(src: string | media.AVFileDescriptor, 
 
 function openFileFailed() {
   console.info('case file fail');
+}
+
+async function subtitleUpdateON(avPlayer: media.AVPlayer, done: Function) {
+  let loopTime = 0;
+  avPlayer.on('subtitleUpdate', async (info: media.SubtitleInfo) => {
+    if (info) {
+      loopTime++;
+      let text = (!info.text) ? '' : info.text;
+      let startTime = (!info.startTime) ? 0 : info.startTime;
+      let duration = (!info.duration) ? 0 : info.duration;
+      console.info('subtitleUpdateON info: text=' + text + ' startTime=' + startTime +' duration=' + duration);
+      avPlayer.off('subtitleUpdate');
+      expect(loopTime).assertEqual(1);
+      done();
+    } else {
+      console.info('subtitleUpdate info is null');
+      expect(false).assertTrue();
+      done();
+    }
+  })
+}
+async function testsubtitleUpdateListening(src: string | media.AVFileDescriptor, subtitleSrc: string | media.AVFileDescriptor,
+  avPlayer: media.AVPlayer | null, subtitleUpdateListening:Function, done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+      subtitleUpdateListening(avPlayer,done);
+      setOnCallback(avPlayer, done);
+      setSource(avPlayer, src);
+      setSubtitle(avPlayer, subtitleSrc);
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
 }
 
 export default function AVPlayerLocalTest() {
@@ -1085,6 +1207,49 @@ export default function AVPlayerLocalTest() {
       }
     });
     /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0100
+        * @tc.name      : 001.test setPlaybackStrategy Function
+        * @tc.desc      : flv live set thresholdForAutoQuickPlay to valid value
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0100', 0, async (done: Function) => {
+      if (fileDescriptor) {
+        let playbackStrategy: media.PlaybackStrategy = { thresholdForAutoQuickPlay: 5 }
+        testSetPlaybackStrategyFlv(fileDescriptor, avPlayer, done, playbackStrategy);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0200
+        * @tc.name      : 001.test setPlaybackStrategy Function
+        * @tc.desc      : flv live set thresholdForAutoQuickPlay to invalid value
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0200', 0, async (done: Function) => {
+      if (fileDescriptor) {
+        let playbackStrategy: media.PlaybackStrategy = { thresholdForAutoQuickPlay: 1 }
+        invalidPlaybackStrategy = true;
+        testSetPlaybackStrategyFlv(fileDescriptor, avPlayer, done, playbackStrategy);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0300
+        * @tc.name      : 001.test setPlaybackStrategy Function
+        * @tc.desc      : flv live set thresholdForAutoQuickPlay to default value
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0300', 0, async (done: Function) => {
+      if (fileDescriptor) {
+        let playbackStrategy: media.PlaybackStrategy = {}
+        testSetPlaybackStrategyFlv(fileDescriptor, avPlayer, done, playbackStrategy);
+      }
+    });
+    /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0100
         * @tc.name      : 001.test seek continuous Function
         * @tc.desc      : test local video seek continuous
@@ -1122,6 +1287,32 @@ export default function AVPlayerLocalTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_GET_PLAYBACK_POSITION_0100', 0, async (done: Function) => {
       if (fileDescriptor) {
         testGetPlaybackPosition(fileDescriptor, avPlayer, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0000
+        * @tc.name      : 001.test subtitle Function
+        * @tc.desc      : Local Video subtitle control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0000', 0, async (done: Function) => {
+      if (fileDescriptor && subtitleFdSrc) {
+        testsubtitleUpdateListening(fileDescriptor, subtitleFdSrc, avPlayer, subtitleUpdateON, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0100
+        * @tc.name      : 002.test subtitle Function
+        * @tc.desc      : Local Video subtitle control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0100', 0, async (done: Function) => {
+      if (fileDescriptor && subtitleFdSrc) {
+        testsubtitleUpdateListening(fileDescriptor, `fd://${subtitleFdSrc.fd}`, avPlayer, subtitleUpdateON, done);
       }
     });
   })

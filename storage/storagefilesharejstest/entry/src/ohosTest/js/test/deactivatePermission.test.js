@@ -16,7 +16,7 @@
 import fileShare from '@ohos.fileshare';
 import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
-import { describe, it, expect, } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 
 export default function FileSahre_DeactivatePermission_test() {
     describe('DeactivatePermission_test', function () {
@@ -31,7 +31,7 @@ export default function FileSahre_DeactivatePermission_test() {
       * @tc.level Level 0
       * @tc.require
       */
-      it('FileShare_deactivatePermission_001', 0, async function (done) {
+      it('FileShare_deactivatePermission_001', Level.LEVEL0, async function (done) {
           try {
           let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_deactivatePermission_001.txt";
           let uriObject = new fileuri.FileUri(fileStr);
@@ -71,7 +71,7 @@ export default function FileSahre_DeactivatePermission_test() {
       * @tc.level Level 0
       * @tc.require
       */
-      it('FileShare_deactivatePermission_002', 0, async function (done) {
+      it('FileShare_deactivatePermission_002', Level.LEVEL0, async function (done) {
           try {
           let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_deactivatePermission_002.txt";
           let uriObject = new fileuri.FileUri(fileStr);
@@ -111,7 +111,7 @@ export default function FileSahre_DeactivatePermission_test() {
       * @tc.level Level 3
       * @tc.require
       */
-      it('FileShare_deactivatePermission_003', 3, async function (done) {
+      it('FileShare_deactivatePermission_003', Level.LEVEL3, async function (done) {
           try {
           let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_deactivatePermission_003.txt";
           let uriObject1 = new fileuri.FileUri(fileStr1);

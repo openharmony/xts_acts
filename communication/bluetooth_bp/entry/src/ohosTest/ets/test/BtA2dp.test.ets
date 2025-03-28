@@ -129,7 +129,12 @@ describe('btA2dpTest', () => {
             expect(true).assertEqual(state == bluetooth.PlayingState.STATE_NOT_PLAYING || state == bluetooth.PlayingState.STATE_PLAYING);
         } catch (err) {
             console.info("bluetooth a2dp getPlayingState errCode:" + err.code + ",bluetooth a2dp getPlayingState errMessage:" + err.message);
-            expect(Number(err.code)).assertEqual(2900099);
+            if (err.code == 801 || err.code == 2900004) {
+                console.info('[bluetooth_js]getPlayingState is not support or profile not support');
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(2900099);
+            }
         }
         done();
     })
@@ -153,6 +158,31 @@ describe('btA2dpTest', () => {
         } catch (err) {
             console.info("bluetooth a2dp PlayingState errCode:" + err.code + ",bluetooth a2dp PlayingState errMessage:" + err.message);
             expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_0300
+     * @tc.name testCreateA2dpSrcProfile
+     * @tc.desc Test createA2dpSrcProfile
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHA2DP_STATE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done : Function) => {
+        try {
+            let a2dpProfile = bluetooth.createA2dpSrcProfile();
+            console.info("[bluetooth_js]createA2dpSrcProfile: " + JSON.stringify(a2dpProfile));
+            expect(true).assertEqual(a2dpProfile != null);
+        } catch (error) {
+            console.info("[bluetooth_js]createA2dpSrcProfile errCode:" + error.code + ",errMessage:" + error.message);
+            if (error.code == 801) {
+                console.info('[bluetooth_js]createA2dpSrcProfile is not support');
+                expect(true).assertTrue();
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })

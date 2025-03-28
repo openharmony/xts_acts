@@ -18,7 +18,7 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from
 import { common, sendableContextManager, WantAgent, wantAgent } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import ohosWantAgent from '@ohos.wantAgent'
 export default function openLinkTest() {
   describe('ActsWantAgentTest', () => {
 
@@ -865,7 +865,75 @@ export default function openLinkTest() {
       }
     })
 
+   /*
+     * @tc.number : SUB_Ability_AbilityBase_WantAgentError_3300
+     * @tc.name   : To verify that the input parameter of trigger is undefined(promise).
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+   it('SUB_Ability_AbilityBase_WantAgentError_3300', 0, async (done: Function) => {
+    hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3300 start');
+    let triggerInfo: wantAgent.TriggerInfo = {
+      code: 0,
+      want: {
+        deviceId: "deviceId",
+        bundleName: "com.acts.actswantagentmethodtest",
+        abilityName: "EntryAbility",
+        action: "action1",
+        entities: ["entity1"],
+        type: "MIMETYPE",
+        uri: "key={true,true,false}",
+      },
+      permission: '',
+      extraInfos: {
+        test: 'this is a test value'
+      }
+    }
+    try {
+      wantAgent.trigger(undefined, triggerInfo)
+    } catch (err) {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_WantAgentError_3300 ${err?.code}`);
+      try { expect(err?.code).assertEqual(401); } catch (e) { }
+      done();
+    }
+  })
 
+  /*
+  * @tc.number : SUB_Ability_AbilityBase_WantAgentError_3400
+  * @tc.name   : To verify that the input parameter of trigger is undefined(promise).
+  * @tc.desc   : Expect: call failed
+  * @tc.type   : Function
+  * @tc.size   : MediumTest
+  * @tc.level  : 3
+  */
+  it('SUB_Ability_AbilityBase_WantAgentError_3400', 0, async (done: Function) => {
+    hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_WantAgentError_3400 start');
+    let triggerInfo: wantAgent.TriggerInfo = {
+      code: 0,
+      want: {
+        deviceId: "deviceId",
+        bundleName: "com.acts.actswantagentmethodtest",
+        abilityName: "EntryAbility",
+        action: "action1",
+        entities: ["entity1"],
+        type: "MIMETYPE",
+        uri: "key={true,true,false}",
+      },
+      permission: '',
+      extraInfos: {
+        test: 'this is a test value'
+      }
+    }
+    try {
+      ohosWantAgent.trigger(undefined, triggerInfo)
+    } catch (err) {
+      hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_WantAgentError_3400 ${err?.code}`);
+      try { expect(err?.code).assertEqual(401); } catch (e) { }
+      done();
+    }
+  })
   })
 }
 

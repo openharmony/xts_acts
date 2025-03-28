@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest001', 0, async (done: Function) => {
+    it('testGetHitTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest001", HitTestType.EditText, 70170, done);
@@ -76,7 +76,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest002', 0, async (done: Function) => {
+    it('testGetHitTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest002", HitTestType.Email, 70172, done);
@@ -91,7 +91,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest003', 0, async (done: Function) => {
+    it('testGetHitTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest003", HitTestType.HttpAnchor, 70174, done);
@@ -106,7 +106,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest004', 0, async (done: Function) => {
+    it('testGetHitTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest004", HitTestType.HttpAnchorImg, 70176, done);
@@ -121,7 +121,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest005', 0, async (done: Function) => {
+    it('testGetHitTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest005", HitTestType.Img, 70178, done);
@@ -136,7 +136,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest007', 0, async (done: Function) => {
+    it('testGetHitTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest007", HitTestType.Phone, 70182, done);
@@ -151,7 +151,7 @@ export default function webControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest008', 0, async (done: Function) => {
+    it('testGetHitTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest008", HitTestType.Unknown, 70184, done);

@@ -17,6 +17,8 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
+
 export default function fileioRename() {
 describe('fileio_rename', function () {
 
@@ -29,7 +31,7 @@ describe('fileio_rename', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_rename_async_000', 0, async function (done) {
+  it('fileio_test_rename_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_rename_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -59,7 +61,7 @@ describe('fileio_rename', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_rename_async_001', 0, async function (done) {
+  it('fileio_test_rename_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_rename_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -84,7 +86,7 @@ describe('fileio_rename', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_rename_async_002', 0, async function (done) {
+  it('fileio_test_rename_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_rename_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

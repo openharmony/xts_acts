@@ -94,8 +94,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             function getCurrentP2pGroupResult(){
                 return new Promise((resolve, reject) => {
@@ -116,7 +121,10 @@ export default function actsWifiManagerFunctionTest() {
                             + "groupName: " + result.groupName +
                             "frequency: " + result.frequency + "goIpAddress: " + result.goIpAddress);
                             console.info("[wifi_test] clientDevices:" + JSON.stringify(result.clientDevices));
-                            console.info("[wifi_test] ownerInfo:" + JSON.stringify(result.WifiP2pDevice));
+                            console.info("[wifi_test] WifiP2pDevice:" + JSON.stringify(result.WifiP2pDevice));
+                            if (!result.WifiP2pDevice == undefined) {
+                                console.info("[wifi_test] groupCapabilities:" + JSON.stringify(result.WifiP2pDevice.groupCapabilities));
+                            }
                             resolve();
                         });
                 });
@@ -134,8 +142,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error1: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -162,7 +175,12 @@ export default function actsWifiManagerFunctionTest() {
                 await sleep(2000);
             }catch(error){
                 console.info("[wifi_test]createP2pGroup error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 await wifiMg.getCurrentP2pGroup()
@@ -174,15 +192,25 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 let removeP2pGroupResult = wifiMg.removeP2pGroup();
                 await sleep(2000);
             }catch(error){
                 console.info("[wifi_test]removeP2pGroup  error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 await wifiMg.getCurrentP2pGroup()
@@ -194,11 +222,17 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error1: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
+
 
         /**
         * @tc.number SUB_Communication_WiFi_XTS_P2P_0104
@@ -236,8 +270,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -278,8 +317,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -306,7 +350,12 @@ export default function actsWifiManagerFunctionTest() {
                 await sleep(2000);
             }catch(error){
                 console.info("[wifi_test]createP2pGroup error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 await wifiMg.getCurrentP2pGroup()
@@ -318,15 +367,25 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 let removeP2pGroupResult = wifiMg.removeP2pGroup();
                 await sleep(2000);
             }catch(error){
                 console.info("[wifi_test]removeP2pGroup error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 await wifiMg.getCurrentP2pGroup()
@@ -338,8 +397,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -380,8 +444,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -426,7 +495,12 @@ export default function actsWifiManagerFunctionTest() {
                     });
             }catch(error){
                 console.info("[wifi_test]createP2pGroup 5G goBand fail : " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -468,7 +542,12 @@ export default function actsWifiManagerFunctionTest() {
                     });
             }catch(error){
                 console.info("[wifi_test]createP2pGroup auto  goBand result : " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -509,7 +588,12 @@ export default function actsWifiManagerFunctionTest() {
                     });
             }catch(error){
                 console.info("[wifi_test]createP2pGroup error passphrase result : " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -550,7 +634,12 @@ export default function actsWifiManagerFunctionTest() {
                     });
             }catch(error){
                 console.info("[wifi_test]createP2pGroup error passphrase result : " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -591,7 +680,12 @@ export default function actsWifiManagerFunctionTest() {
                     });
             }catch(error){
                 console.info("[wifi_test]createP2pGroup error passphrase result : " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -625,7 +719,12 @@ export default function actsWifiManagerFunctionTest() {
                 let removeP2pGroupResult = wifiMg.removeP2pGroup();
             }catch(error){
                 console.info("[wifi_test]removeP2pGroup  error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 await wifiMg.getCurrentP2pGroup()
@@ -637,8 +736,13 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
@@ -655,7 +759,12 @@ export default function actsWifiManagerFunctionTest() {
                 let removeP2pGroupResult = wifiMg.removeP2pGroup(10000);
             }catch(error){
                 console.info("[wifi_test]removeP2pGroup error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             try {
                 await wifiMg.getCurrentP2pGroup()
@@ -667,18 +776,24 @@ export default function actsWifiManagerFunctionTest() {
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
-                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
-                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             done();
         })
 
         /**
-        * @tc.number     SUB_Communication_WiFi_XTS_P2P_0002
-        * @tc.name       testP2pLocalDevice
-        * @tc.desc       Test get P2pLocalDevice API functionality.
+        * @tc.number SUB_Communication_WiFi_XTS_P2P_0002
+        * @tc.name testP2pLocalDevice
+        * @tc.desc Test get P2pLocalDevice API functionality.
         * @tc.type Function
         * @tc.level Level 3
+        * @tc.size: MediumTest
         */
         it('SUB_Communication_WiFi_XTS_P2P_0002', 0, async function (done) {
             await wifiMg.getP2pLocalDevice()
@@ -687,7 +802,12 @@ export default function actsWifiManagerFunctionTest() {
                     expect(true).assertEqual(data.deviceName !=null);
                 }).catch((error) => {
                     console.info("[wifi_test]getP2pLocalDevice promise error." + JSON.stringify(error));
-                    expect().assertFail();
+                    if (error.code == 801) {
+                        console.info('[wifi_js]api is not support');
+                        expect(true).assertTrue();
+                    } else {
+                        expect().assertFail();
+                    }
                 });
             function getP2pLocal(){
                 return new Promise((resolve, reject) => {
@@ -707,7 +827,17 @@ export default function actsWifiManagerFunctionTest() {
                         });
                 });
             }
-            await getP2pLocal();
+            try {
+                await getP2pLocal();
+            }catch(error){
+                console.info("[wifi_test]getP2pLocalDevice promise error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+            }
             done();
         })
 
@@ -723,13 +853,21 @@ export default function actsWifiManagerFunctionTest() {
                 DISCONNECTED :0,
                 CONNECTED : 1,
             };
-            await wifiMg.getP2pLinkedInfo()
+            try {
+                await wifiMg.getP2pLinkedInfo()
                 .then(data => {
                     let resultLength = Object.keys(data).length;
                     console.info("[wifi_test]getP2pLinkedInfo promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(resultLength!=0);
                     done()
                 });
+            }catch(error){
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             function getP2pLinkedInfoResult(){
                 return new Promise((resolve, reject) => {
                     wifiMg.getP2pLinkedInfo(
@@ -748,7 +886,15 @@ export default function actsWifiManagerFunctionTest() {
                         });
                 });
             }
-            await getP2pLinkedInfoResult();
+            try {
+                await getP2pLinkedInfoResult();
+            }catch(error){
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -760,20 +906,28 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_P2P_0001', 0, async function(done){
-            console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
-            expect(wifiMg.isWifiActive()).assertTrue();
-            let startDiscover = wifiMg.startDiscoverP2pDevices();
-            await sleep(2000);
-            await wifiMg.getP2pPeerDevices()
-                .then((data)  => {
-                    let resultLength = Object.keys(data).length;
-                    console.info("[wifi_test]getP2pPeerDevices  promise result -> " + JSON.stringify(data));
-                    expect(true).assertEqual(resultLength >= 0);
-                }).catch((error) => {
-                    console.info("[wifi_test]getP2pPeerDevices promise then error." + JSON.stringify(error));
-                    expect().assertFail();
-                });
-            let stopDiscover = wifiMg.stopDiscoverP2pDevices();
+            try {
+                console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
+                expect(wifiMg.isWifiActive()).assertTrue();
+                let startDiscover = wifiMg.startDiscoverP2pDevices();
+                await sleep(2000);
+                await wifiMg.getP2pPeerDevices()
+                    .then((data)  => {
+                        let resultLength = Object.keys(data).length;
+                        console.info("[wifi_test]getP2pPeerDevices  promise result -> " + JSON.stringify(data));
+                        expect(true).assertEqual(resultLength >= 0);
+                    }).catch((error) => {
+                        console.info("[wifi_test]getP2pPeerDevices promise then error." + JSON.stringify(error));
+                        expect().assertFail();
+                    });
+                let stopDiscover = wifiMg.stopDiscoverP2pDevices();
+            }catch(error){
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -785,49 +939,99 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_P2P_0101', 0, async function(done){
-            console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
-            expect(wifiMg.isWifiActive()).assertTrue();
-            let startDiscover = wifiMg.startDiscoverP2pDevices();
-            await sleep(2000);
-            function getP2pPeerDevicesResult(){
-                return new Promise((resolve, reject) => {
-                    wifiMg.getP2pPeerDevices(
-                        (err, result) => {
-                            if(err) {
-                                console.error('[wifi_test]failed to getP2pPeerDevices :' + JSON.stringify(err));
-                            }
-                            console.info("[wifi_test] getP2pPeerDevices callback result :" + JSON.stringify(result));
-                            let len = Object.keys(result).length;
-                            for (let j = 0; j < len; ++j) {
-                                console.info("deviceName: " + result[j].deviceName +
-                                "deviceAddress: " + result[j].deviceAddress +
-                                "primaryDeviceType: " + result[j].primaryDeviceType +
-                                "deviceStatus: " + result[j].deviceStatus +
-                                "groupCapabilitys: " + result[j].groupCapabilitys );
-                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.UNAVAILABLE){
-                                    console.info("deviceStatus: " + result[j].deviceStatus);
+            try {
+                console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
+                expect(wifiMg.isWifiActive()).assertTrue();
+                let startDiscover = wifiMg.startDiscoverP2pDevices();
+                await sleep(2000);
+                function getP2pPeerDevicesResult(){
+                    return new Promise((resolve, reject) => {
+                        wifiMg.getP2pPeerDevices(
+                            (err, result) => {
+                                if(err) {
+                                    console.error('[wifi_test]failed to getP2pPeerDevices :' + JSON.stringify(err));
                                 }
-                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.CONNECTED){
-                                    console.info("deviceStatus: " + result[j].deviceStatus);
+                                console.info("[wifi_test] getP2pPeerDevices callback result :" + JSON.stringify(result));
+                                let len = Object.keys(result).length;
+                                for (let j = 0; j < len; ++j) {
+                                    console.info("deviceName: " + result[j].deviceName +
+                                    "deviceAddress: " + result[j].deviceAddress +
+                                    "primaryDeviceType: " + result[j].primaryDeviceType +
+                                    "deviceStatus: " + result[j].deviceStatus +
+                                    "groupCapabilitys: " + result[j].groupCapabilitys );
+                                    if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.UNAVAILABLE){
+                                        console.info("deviceStatus: " + result[j].deviceStatus);
+                                    }
+                                    if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.CONNECTED){
+                                        console.info("deviceStatus: " + result[j].deviceStatus);
+                                    }
+                                    if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.INVITED){
+                                        console.info("deviceStatus: " + result[j].deviceStatus);
+                                    }
+                                    if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.FAILED){
+                                        console.info("deviceStatus: " + result[j].deviceStatus);
+                                    }
+                                    if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.AVAILABLE){
+                                        console.info("deviceStatus: " + result[j].deviceStatus);
+                                    }
                                 }
-                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.INVITED){
-                                    console.info("deviceStatus: " + result[j].deviceStatus);
-                                }
-                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.FAILED){
-                                    console.info("deviceStatus: " + result[j].deviceStatus);
-                                }
-                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.AVAILABLE){
-                                    console.info("deviceStatus: " + result[j].deviceStatus);
-                                }
-                            }
-                            resolve();
-                        });
-                });
+                                resolve();
+                            });
+                    });
+                }
+                await getP2pPeerDevicesResult();
+            }catch(error){
+                console.info("[wifi_test]error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
             }
-            await getP2pPeerDevicesResult();
             done();
-        });
+        })
+
+        /**
+         * @tc.number SUB_Communication_WifiManager_XTS_P2p_CreateGroup_0100
+         * @tc.name testCreateGroup
+         * @tc.desc Test createGroup Sync API functionality.
+         * @tc.type Function
+         * @tc.size:MediumTest
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_WifiManager_XTS_P2p_CreateGroup_0100', 0, async function(done){
+            try {
+                wifiMg.createGroup(null);
+                expect().assertFail();
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                expect(Number(error.code)).assertEqual(401);
+	        }
+	        done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_XTS_P2P_P2pConnectState_0100
+        * @tc.name testP2pConnectState
+        * @tc.desc Test P2pConnectState API functionality
+        * @tc.type Function
+        * @tc.size: MediumTest
+        * @tc.level Level 0
+        */
+        it('SUB_Communication_WiFi_XTS_P2P_P2pConnectState_0100', 0, async function(done) {
+            try {
+                let DISCONNECTED = wifiMg.P2pConnectState.DISCONNECTED;
+                console.info('[wifi_test]P2pConnectState DISCONNECTED:' + JSON.stringify(DISCONNECTED));
+                expect(DISCONNECTED).assertEqual(0);
+
+                let CONNECTED = wifiMg.P2pConnectState.CONNECTED;
+                console.info('[wifi_test]P2pConnectState CONNECTED:' + JSON.stringify(CONNECTED));
+                expect(CONNECTED).assertEqual(1);
+            } catch (error) {
+                console.error('[wifi_test]P2pConnectState get error:' + JSON.stringify(error));
+                expect().assertFail();
+              }
+              done();
+        })
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-

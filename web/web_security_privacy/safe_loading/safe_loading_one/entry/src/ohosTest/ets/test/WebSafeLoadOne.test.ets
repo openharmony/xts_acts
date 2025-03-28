@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach,beforeAll, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach,beforeAll, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -76,7 +76,7 @@ export default function WebSafeLoadOneTest() {
      *tc.name SetHttpDnsSuccessAuto                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('SetHttpDnsSuccessAuto', 0, async (done: Function) => {
+    it('SetHttpDnsSuccessAuto', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetHttpDnsSuccessOff";
       Utils.registerEvent("SetHttpDnsSuccessAuto", "Example Domain", 518, done);
       sendEventByKey('webcomponent', 10, '');
@@ -86,7 +86,7 @@ export default function WebSafeLoadOneTest() {
      *tc.name SetHttpDnsSuccessOff                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('SetHttpDnsSuccessOff', 0, async (done: Function) => {
+    it('SetHttpDnsSuccessOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetCustomUserAgent";
       Utils.registerEvent("SetHttpDnsSuccessOff", "Example Domain", 519, done);
       sendEventByKey('webcomponent', 10, '');
@@ -96,7 +96,7 @@ export default function WebSafeLoadOneTest() {
       *tc.name getCustomUserAgent                                                                                                                                                                                                                
       *tc.desic Save current page
       */
-    it('GetCustomUserAgent', 0, async (done: Function) => {
+    it('GetCustomUserAgent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetCustomUserAgent";
       Utils.registerEvent("GetCustomUserAgent", "userAgent", 522, done);
       sendEventByKey('webcomponent', 10, '');

@@ -14,6 +14,7 @@
  */
 
 import { fileio, nextFileName, describe, it, expect } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioMkdtemp() {
 describe('fileio_mkdtemp', function () {
@@ -27,7 +28,7 @@ describe('fileio_mkdtemp', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_mkdtemp_sync_000', 0, async function () {
+  it('fileio_test_mkdtemp_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_mkdtemp_sync_000');
     dpath = dpath + 'XXXX';
 
@@ -48,7 +49,7 @@ describe('fileio_mkdtemp', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_mkdtemp_sync_001', 0, async function () {
+  it('fileio_test_mkdtemp_sync_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileio_test_mkdtemp_sync_001');
     dpath = dpath + 'XXXXXX';
 
@@ -70,7 +71,7 @@ describe('fileio_mkdtemp', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_mkdtemp_async_000', 0, async function (done) {
+  it('fileio_test_mkdtemp_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_mkdtemp_async_000');
     dpath = dpath + 'XXXXXX';
     try {
@@ -92,7 +93,7 @@ describe('fileio_mkdtemp', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_mkdtemp_async_001', 0, async function (done) {
+  it('fileio_test_mkdtemp_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileio_test_mkdtemp_async_001');
     dpath = dpath + 'XXXXXX';
 

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import print from '@ohos.print';
 import { BusinessError } from '@ohos.base';
 
@@ -70,7 +70,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0100', 0, async (done: Function) => {
+    it('print_function_0100', Level.LEVEL2, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       // Permissions required: ohos.permission.PRINT
       await print.print(file).then((printTask: print.PrintTask) => {
@@ -93,7 +93,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0200', 0, (done: Function) => {
+    it('print_function_0200', Level.LEVEL2, (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       // Permissions required: ohos.permission.PRINT
       print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
@@ -122,7 +122,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0300', 0, (done: Function) => {
+    it('print_function_0300', Level.LEVEL2, (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
@@ -150,9 +150,9 @@ export default function printTest() {
      * @tc.desc check the print function
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('print_function_0400', 0, async (done: Function) => {
+    it('print_function_0400', Level.LEVEL0, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
@@ -175,7 +175,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0401', 0, async (done: Function) => {
+    it('print_function_0401', Level.LEVEL2, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
@@ -198,7 +198,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0402', 0, async (done: Function) => {
+    it('print_function_0402', Level.LEVEL2, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
@@ -264,9 +264,9 @@ export default function printTest() {
      * @tc.desc check the print function
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
-    it('print_function_0500', 0, async (done: Function) => {
+    it('print_function_0500', Level.LEVEL1, async (done: Function) => {
       let jobName: string = 'jobName';
       let printAdapter: print.PrintDocumentAdapter = new MyPrintDocumentAdapter();
       let printAttributes: print.PrintAttributes = new MyPrintAttributes();
@@ -342,9 +342,9 @@ export default function printTest() {
      * @tc.desc check the addPrinterToDiscovery function
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
-    it('print_function_0600', 0, async (done: Function) => {
+    it('print_function_0600', Level.LEVEL1, async (done: Function) => {
       let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = 'testPrinterId';
       printerInformation.printerName = 'testPrinterName';
@@ -405,7 +405,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0601', 0, async (done: Function) => {
+    it('print_function_0601', Level.LEVEL2, async (done: Function) => {
       let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = '';
       printerInformation.printerName = '';
@@ -440,9 +440,9 @@ export default function printTest() {
      * @tc.desc check the updatePrinterInDiscovery function
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
-    it('print_function_0700', 0, async (done: Function) => {
+    it('print_function_0700', Level.LEVEL1, async (done: Function) => {
       let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = 'testPrinterId';
       printerInformation.printerName = 'testPrinterName';
@@ -493,7 +493,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0701', 0, async (done: Function) => {
+    it('print_function_0701', Level.LEVEL2, async (done: Function) => {
       let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = '';
       printerInformation.printerName = '';
@@ -528,9 +528,9 @@ export default function printTest() {
      * @tc.desc check the removePrinterFromDiscovery function
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
-    it('print_function_0800', 0, async (done: Function) => {
+    it('print_function_0800', Level.LEVEL1, async (done: Function) => {
       let printerId : string = 'testPrinterId';
 
       // Permissions required: ohos.permission.PRINT
@@ -553,7 +553,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0801', 0, async (done: Function) => {
+    it('print_function_0801', Level.LEVEL2, async (done: Function) => {
       let printerId : string = '';
 
       // Permissions required: ohos.permission.PRINT
@@ -576,9 +576,9 @@ export default function printTest() {
      * @tc.desc check the getPrinterInformationById function
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
-    it('print_function_0900', 0, async(done: Function) => {
+    it('print_function_0900', Level.LEVEL1, async(done: Function) => {
       let printerInformation: print.PrinterInformation = new MyPrinterInformation();
       printerInformation.printerId = 'testPrinterId';
       printerInformation.printerName = 'testPrinterName';
@@ -640,7 +640,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_0901', 0, async (done: Function) => {
+    it('print_function_0901', Level.LEVEL2, async (done: Function) => {
       let printerId : string = '';
 
       // Permissions required: ohos.permission.PRINT
@@ -665,7 +665,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('print_function_1000', 0, () => {
+    it('print_function_1000', Level.LEVEL2, () => {
       let printerStates: print.PrinterState[] = [
         print.PrinterState.PRINTER_ADDED,
         print.PrinterState.PRINTER_REMOVED,

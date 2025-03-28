@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import webView from '@ohos.web.webview';
@@ -62,7 +62,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue001', 0, async (done: Function) => {
+    it('testGetHitTestValue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue001", webView.WebHitTestType.EditText, 70101, done);
@@ -77,7 +77,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue002', 0, async (done: Function) => {
+    it('testGetHitTestValue002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue002", webView.WebHitTestType.Email, 70103, done);
@@ -92,7 +92,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue003', 0, async (done: Function) => {
+    it('testGetHitTestValue003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue003", webView.WebHitTestType.HttpAnchor, 70105, done);
@@ -107,7 +107,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue004', 0, async (done: Function) => {
+    it('testGetHitTestValue004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue004", webView.WebHitTestType.HttpAnchorImg, 70107, done);
@@ -122,7 +122,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue005', 0, async (done: Function) => {
+    it('testGetHitTestValue005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue005", webView.WebHitTestType.Img, 70109, done);
@@ -137,7 +137,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue007', 0, async (done: Function) => {
+    it('testGetHitTestValue007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue007", webView.WebHitTestType.Phone, 70113, done);
@@ -152,7 +152,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue008', 0, async (done: Function) => {
+    it('testGetHitTestValue008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue008", webView.WebHitTestType.Unknown, 70115, done);
@@ -167,7 +167,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue009', 0, async (done: Function) => {
+    it('testGetHitTestValue009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue009", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue009", '123@123.com', 70117, done);
@@ -182,7 +182,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue010', 0, async (done: Function) => {
+    it('testGetHitTestValue010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue010", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue010", 'https://openharmony.cn/', 70119, done);
@@ -197,7 +197,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue011', 0, async (done: Function) => {
+    it('testGetHitTestValue011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue011", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue011", 'resource://rawfile/icon.png', 70121, done);
@@ -212,7 +212,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue012', 0, async (done: Function) => {
+    it('testGetHitTestValue012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue012", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue012", 'resource://rawfile/icon.png', 70123, done);
@@ -227,7 +227,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTestValue013', 0, async (done: Function) => {
+    it('testGetHitTestValue013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTestValue013", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTestValue013", '123456789', 70125, done);
@@ -242,7 +242,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest001', 0, async (done: Function) => {
+    it('testGetHitTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest001", webView.WebHitTestType.EditText, 70127, done);
@@ -257,7 +257,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest002', 0, async (done: Function) => {
+    it('testGetHitTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest002", webView.WebHitTestType.Email, 70129, done);
@@ -272,7 +272,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest003', 0, async (done: Function) => {
+    it('testGetHitTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest003", webView.WebHitTestType.HttpAnchor, 70131, done);
@@ -287,7 +287,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest004', 0, async (done: Function) => {
+    it('testGetHitTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest004", webView.WebHitTestType.HttpAnchorImg, 70133, done);
@@ -302,7 +302,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest005', 0, async (done: Function) => {
+    it('testGetHitTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest005", webView.WebHitTestType.Img, 70135, done);
@@ -317,7 +317,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest007', 0, async (done: Function) => {
+    it('testGetHitTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest007", webView.WebHitTestType.Phone, 70139, done);
@@ -332,7 +332,7 @@ export default function webViewControllerHitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetHitTest008', 0, async (done: Function) => {
+    it('testGetHitTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetHitTest008", webView.WebHitTestType.Unknown, 70141, done);

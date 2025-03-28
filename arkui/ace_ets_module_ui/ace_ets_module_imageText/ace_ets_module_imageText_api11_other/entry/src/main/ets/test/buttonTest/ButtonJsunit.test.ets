@@ -81,7 +81,7 @@ export default function buttonJsunit() {
        let strJson = getInspectorByKey('btok');
        let obj: ESObject = JSON.parse(strJson);
        console.info("[buttonJsunit_0300'] component obj is: " + obj.$attrs.type);
-       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+       expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
        done();
     });
 

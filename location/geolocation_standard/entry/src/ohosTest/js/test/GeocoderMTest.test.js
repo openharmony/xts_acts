@@ -147,7 +147,11 @@ export default function geolocationTest_geo5() {
                  });
             } catch (error) {
                 console.info("[lbs_js] getAddressesFromLocation4 callback try error:"+ error);
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             await sleep(2000);
         } else {
@@ -197,7 +201,11 @@ export default function geolocationTest_geo5() {
                 }).catch(error => {
                     console.info("[lbs_js] getAddressesFromLocation21 promise then error." + JSON.stringify(error));
                     console.info('[lbs_js] not support now');
-                    expect(error.code).assertEqual(3301300);
+                    if (error.code == "801") {
+                        expect(error.code).assertEqual("801")
+                    } else {
+                        expect(error.code).assertEqual(3301300);
+                    }
                 });
             } catch (error) {
                 console.info("[lbs_js] getAddressesFromLocation21 try err." + JSON.stringify(error));
@@ -448,7 +456,11 @@ export default function geolocationTest_geo5() {
                 });
             } catch (error) {
                 console.info("[lbs_js] getAddressesFromLocationName08 message." + JSON.stringify(error.message));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             await sleep(1000);
         } else {
@@ -480,7 +492,11 @@ export default function geolocationTest_geo5() {
                 });
             } catch (error) {
                 console.info("[lbs_js] getAddressesFromLocationName26 try err." + JSON.stringify(error));
-                expect(true).assertFalse();
+                if (error.code == "801") {
+                    expect(error.code).assertEqual("801")
+                } else {
+                    expect(true).assertFalse();
+                }
             }
             await sleep(1000);
         } else {
@@ -528,7 +544,6 @@ export default function geolocationTest_geo5() {
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
-     需要实测！！！！
      */
     it('SUB_HSS_LocationSystem_Geo_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         let geocoder1 = geolocationm.isGeocoderAvailable();

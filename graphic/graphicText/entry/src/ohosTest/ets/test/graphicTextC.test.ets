@@ -33,7 +33,8 @@ export default function graphicTextCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSystemFontFullNamesByType', 2, async (done:Function)=> {
+    it('testGetSystemFontFullNamesByType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "====testGetSystemFontFullNamesByType===="
       console.info(msg + ' begin ');
       try{
@@ -66,7 +67,7 @@ export default function graphicTextCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetFontDescriptorByFullName', 2, async (done:Function)=> {
+    it('testGetFontDescriptorByFullName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testGetFontDescriptorByFullName===="
       console.info(msg + ' begin ');
       try{
@@ -99,7 +100,7 @@ export default function graphicTextCTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMatchFontDescriptors', 2, async (done:Function)=> {
+    it('testMatchFontDescriptors', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testMatchFontDescriptors===="
       console.info(msg + ' begin ');
       try{

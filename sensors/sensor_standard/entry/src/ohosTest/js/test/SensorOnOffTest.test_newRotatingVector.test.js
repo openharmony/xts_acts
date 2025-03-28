@@ -95,11 +95,11 @@ describe("SensorJsTest_sensor_49", function () {
      * @tc.number:SUB_SensorsSystem_NEWROTATION_VECTOR_JSTest_0010
      * @tc.name: newRotatingVector_SensorJsTest001
      * @tc.desc: Functional Use Cases
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newRotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newRotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newRotatingVector_SensorJsTest001--------------');
         TAG = 'newRotatingVector_SensorJsTest001';
         try{
@@ -930,7 +930,7 @@ describe("SensorJsTest_sensor_49", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newRotatingVector_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newRotatingVector_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newRotatingVector_SensorJsTest020--------------');
         TAG = 'newRotatingVector_SensorJsTest020';
         try{

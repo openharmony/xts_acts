@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, TestType, Level, Size } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import hidebug from '@ohos.hidebug';
 import common from '@ohos.app.ability.common';
@@ -49,7 +49,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportDebuggingConsole0100', 0, async (done: Function) => {
+    it('testSupportDebuggingConsole0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const number = 0;
         console.debug("number: %d", number)
@@ -90,7 +90,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportDebuggingCommand0100', 0, async (done: Function) => {
+    it('testSupportDebuggingCommand0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
         let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
@@ -119,7 +119,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportDebuggingPermission0100', 0, async (done: Function) => {
+    it('testSupportDebuggingPermission0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let filesDir: string = applicationContext!.filesDir;
       let path: string = filesDir + "/serviceInfo.txt";
       let file = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -144,7 +144,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testDebuggingNodesIntegrity0100', 0, async (done: Function) => {
+    it('testDebuggingNodesIntegrity0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let hilogSupported = canIUse("SystemCapability.HiviewDFX.HiLog")
       expect(hilogSupported).assertTrue()
       let hitraceSupported = canIUse("SystemCapability.HiviewDFX.HiTrace")
@@ -166,7 +166,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testLogInputOutputRequirements0100', 0, async (done: Function) => {
+    it('testLogInputOutputRequirements0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         if (hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.DEBUG)) {
           hilog.debug(0x0001, "testTag", "%{public}s %{private}d", "hello World", 3);
@@ -199,7 +199,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testTuningSystemDataAcquire0100', 0, async (done: Function) => {
+    it('testTuningSystemDataAcquire0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
         let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
@@ -225,7 +225,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testToolChainsNotChange0100', 0, async (done: Function) => {
+    it('testToolChainsNotChange0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let hilogSupported = canIUse("SystemCapability.HiviewDFX.HiLog")
       expect(hilogSupported).assertTrue()
       let hitraceSupported = canIUse("SystemCapability.HiviewDFX.HiTrace")
@@ -247,7 +247,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCommandAa0100', 0, async (done: Function) => {
+    it('testCommandAa0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if(canIUse("SystemCapability.Ability.AbilityRuntime.Core")) {
         let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
         let result = await abilityDelegator.executeShellCommand("aa help", 1000)
@@ -266,7 +266,7 @@ export default function developerModeTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testCommandBm0100', 0, async (done: Function) => {
+    it('testCommandBm0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if(canIUse("SystemCapability.BundleManager.BundleFramework.Core")) {
         let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
         let result = await abilityDelegator.executeShellCommand("bm help", 1000)

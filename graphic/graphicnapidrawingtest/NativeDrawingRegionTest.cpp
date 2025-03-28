@@ -44,7 +44,7 @@ void NativeDrawingRegionTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRegionTest, NativeDrawingRegionTest_region001, TestSize.Level1)
+HWTEST_F(NativeDrawingRegionTest, NativeDrawingRegionTest_region001, Function | MediumTest | Level1)
 {
     OH_Drawing_Region* region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
@@ -58,7 +58,7 @@ HWTEST_F(NativeDrawingRegionTest, NativeDrawingRegionTest_region001, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRegionTest, NativeDrawingRegionSetRectTest_region002, TestSize.Level1)
+HWTEST_F(NativeDrawingRegionTest, NativeDrawingRegionSetRectTest_region002, Function | MediumTest | Level1)
 {
     OH_Drawing_Region* region = OH_Drawing_RegionCreate();
     OH_Drawing_Rect* rect=OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);

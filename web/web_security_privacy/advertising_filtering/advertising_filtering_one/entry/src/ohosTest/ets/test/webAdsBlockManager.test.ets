@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testEnableAdsBlock', 0, async (done: Function) => {
+    it('testEnableAdsBlock', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitEnableAdsBlock"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testEnableAdsBlock", true, 1001, done);
@@ -93,7 +93,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testIsAdsBlockEnabled', 0, async (done: Function) => {
+    it('testIsAdsBlockEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsAdsBlockEnabled"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testIsAdsBlockEnabled", true, 1002, done);
@@ -108,7 +108,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testIsAdsBlockEnabledForCurPage', 0, async (done: Function) => {
+    it('testIsAdsBlockEnabledForCurPage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsAdsBlockEnabledForCurPage"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testIsAdsBlockEnabledForCurPage", true, 1003, done);
@@ -123,7 +123,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testSetAdsBlockRules', 0, async (done: Function) => {
+    it('testSetAdsBlockRules', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetAdsBlockRules"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testSetAdsBlockRules", true, 1004, done);
@@ -138,7 +138,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testSetAdsBlockRulesFalse', 0, async (done: Function) => {
+    it('testSetAdsBlockRulesFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetAdsBlockRulesFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testSetAdsBlockRulesFalse", true, 1005, done);
@@ -153,7 +153,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testAddAdsBlockDisallowedList', 0, async (done: Function) => {
+    it('testAddAdsBlockDisallowedList', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAddAdsBlockDisallowedList"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testAddAdsBlockDisallowedList", true, 1006, done);
@@ -168,7 +168,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testRemoveAdsBlockDisallowedList', 0, async (done: Function) => {
+    it('testRemoveAdsBlockDisallowedList', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRemoveAdsBlockDisallowedList"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testRemoveAdsBlockDisallowedList", true, 1007, done);
@@ -183,7 +183,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testClearAdsBlockDisallowedList', 0, async (done: Function) => {
+    it('testClearAdsBlockDisallowedList', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitClearAdsBlockDisallowedList"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testClearAdsBlockDisallowedList", true, 1008, done);
@@ -198,7 +198,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testAddAdsBlockAllowedList', 0, async (done: Function) => {
+    it('testAddAdsBlockAllowedList', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAddAdsBlockAllowedList"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testAddAdsBlockAllowedList", true, 1009, done);
@@ -213,7 +213,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testRemoveAdsBlockAllowedList', 0, async (done: Function) => {
+    it('testRemoveAdsBlockAllowedList', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRemoveAdsBlockAllowedList"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testRemoveAdsBlockAllowedList", true, 1010, done);
@@ -228,7 +228,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testClearAdsBlockAllowedList', 0, async (done: Function) => {
+    it('testClearAdsBlockAllowedList', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitClearAdsBlockAllowedList"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testClearAdsBlockAllowedList", true, 1011, done);
@@ -243,7 +243,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testOnAdsBlocked', 0, async (done: Function) => {
+    it('testOnAdsBlocked', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnAdsBlocked"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testOnAdsBlocked", true, 1012, done);
@@ -258,7 +258,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testEnableAdsBlockFalse', 0, async (done: Function) => {
+    it('testEnableAdsBlockFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitEnableAdsBlockFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testEnableAdsBlockFalse", true, 1013, done);
@@ -273,7 +273,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testIsAdsBlockEnabledCheck', 0, async (done: Function) => {
+    it('testIsAdsBlockEnabledCheck', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitIsAdsBlockEnabledCheck"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testIsAdsBlockEnabledCheck", true, 1014, done);
@@ -288,7 +288,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testOnAdsBlockedTest', 0, async (done: Function) => {
+    it('testOnAdsBlockedTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnAdsBlockedTest"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testOnAdsBlockedTest", true, 1015, done);

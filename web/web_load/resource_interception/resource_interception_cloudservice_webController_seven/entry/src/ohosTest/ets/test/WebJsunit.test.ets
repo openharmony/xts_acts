@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -51,7 +51,7 @@ export default function webJsunit() {
      *tc.name imageAccessFalse
      *tc.desic Sets Web can not automatically load image resources
      */
-    it('imageAccessFalse', 0, async (done: Function) => {
+    it('imageAccessFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitImageAccessTrue";
       Utils.registerEvent("imageAccessFalse", "null", 148, done);
       sendEventByKey('webcomponent', 10, '');
@@ -61,7 +61,7 @@ export default function webJsunit() {
      *tc.name imageAccessTrue
      *tc.desic Sets Web can  automatically load image resources
      */
-    it('imageAccessTrue', 0, async (done: Function) => {
+    it('imageAccessTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnlineImageAccessFalse";
       Utils.registerContainEvent("imageAccessTrue", "load complete", 150, done);
       sendEventByKey('webcomponent', 10, '');
@@ -71,7 +71,7 @@ export default function webJsunit() {
      *tc.name onlineImageAccessFalse
      *tc.desic Sets not to allow image resources to be loaded from the network
      */
-    it('onlineImageAccessFalse', 0, async (done: Function) => {
+    it('onlineImageAccessFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnlineImageAccessTrue";
       Utils.registerEvent("onlineImageAccessFalse", "null", 156, done);
       sendEventByKey('webcomponent', 10, '');
@@ -81,7 +81,7 @@ export default function webJsunit() {
      *tc.name onlineImageAccessTrue
      *tc.desic Sets  allow image resources to be loaded from the network
      */
-    it('onlineImageAccessTrue', 0, async (done: Function) => {
+    it('onlineImageAccessTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitCacheModeOnly";
       Utils.registerContainEvent("onlineImageAccessTrue", "load image complete", 158, done);
       sendEventByKey('webcomponent', 10, '');
@@ -92,7 +92,7 @@ export default function webJsunit() {
      *tc.name cacheModeOnly
      *tc.desic load cache and not online
      */
-    it('cacheModeOnly', 0, async (done: Function) => {
+    it('cacheModeOnly', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitCacheModeDefault";
       Utils.registerEvent("cacheModeOnly", "cacheError", 182, done);
       sendEventByKey('webcomponent', 10, '');
@@ -102,7 +102,7 @@ export default function webJsunit() {
      *tc.name cacheModeDefault
      *tc.desic load cache when they are available and not expired, otherwise load online
      */
-    it('cacheModeDefault', 0, async (done: Function) => {
+    it('cacheModeDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitMixedModeNone";
       Utils.registerContainEvent("cacheModeDefault", "index", 184, done);
       sendEventByKey('webcomponent', 10, '');
@@ -112,7 +112,7 @@ export default function webJsunit() {
      *tc.name mixedModeNone
      *tc.desic Sets Don't allow unsecure sources from a secure origin
      */
-    it('mixedModeNone', 0, async (done: Function) => {
+    it('mixedModeNone', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitMixedModeAll";
       Utils.registerContainEvent("mixedModeNone", "insecure", 186, done);
       sendEventByKey('webcomponent', 10, '');
@@ -122,7 +122,7 @@ export default function webJsunit() {
      *tc.name mixedModeAll
      *tc.desic Sets Allows  all HTTP and HTTPS content can be loaded
      */
-    it('mixedModeAll', 0, async (done: Function) => {
+    it('mixedModeAll', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitFileAccessTrue";
       Utils.registerEvent("mixedModeAll", 3, 188, done);
       sendEventByKey('webcomponent', 10, '');

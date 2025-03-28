@@ -12,24 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-
 export default function windowErrCode1300002_1() {
   describe('windowErrCode1300002_1', () => {
     console.log('describe windowErrCode1300002_1 start!!!')
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:ohosWindow.WindowStage;
-
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
     })
-
     /**
      * @tc.number     : testMoveWindowToAsyncPromiseErrCode1300002_0100
      * @tc.name       : testMoveWindowToAsyncPromiseErrCode1300002_0100
@@ -38,7 +35,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMoveWindowToAsyncPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testMoveWindowToAsyncPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMoveWindowToAsyncPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -54,7 +51,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).moveWindowToAsync(0, 0).then(async () => {
@@ -71,7 +67,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testMoveWindowToGlobalPromiseErrCode1300002_0100
      * @tc.name       : testMoveWindowToGlobalPromiseErrCode1300002_0100
@@ -80,7 +75,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMoveWindowToGlobalPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testMoveWindowToGlobalPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMoveWindowToGlobalPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -96,7 +91,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).moveWindowToGlobal(0, 0).then(async () => {
@@ -113,7 +107,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testMoveWindowToGlobalPromiseErrCode1300002_0200
      * @tc.name       : testMoveWindowToGlobalPromiseErrCode1300002_0200
@@ -122,11 +115,10 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMoveWindowToGlobalPromiseErrCode1300002_0200', 0, async (done: Function) => {
+    it('testMoveWindowToGlobalPromiseErrCode1300002_0200', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMoveWindowToGlobalPromiseErrCode1300002_0200";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let subWin: ohosWindow.Window | undefined = undefined;
       await windowStage.createSubWindow('testMoveWindowToGlobalPromiseErrCode1300002_SubWindow_Promise')
         .then((data) => {
@@ -139,7 +131,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         let param: ohosWindow.MoveConfiguration = {
@@ -159,7 +150,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testGetGlobalRectErrCode1300002_0100
      * @tc.name       : testGetGlobalRectErrCode1300002_0100
@@ -168,7 +158,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetGlobalRectErrCode1300002_0100', 0, async (done: Function) => {
+    it('testGetGlobalRectErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testGetGlobalRectErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -185,7 +175,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.getGlobalRect();
         console.error(msgStr + 'Succeeded in calling getGlobalRect.');
@@ -197,7 +186,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testGetWindowDensityInfoErrCode1300002_0100
      * @tc.name       : testGetWindowDensityInfoErrCode1300002_0100
@@ -206,7 +194,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetWindowDensityInfoErrCode1300002_0100', 0, async (done: Function) => {
+    it('testGetWindowDensityInfoErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testGetWindowDensityInfoErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -234,7 +222,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetSpecificSystemBarEnabledPromiseErrCode1300002_0100
      * @tc.name       : testSetSpecificSystemBarEnabledPromiseErrCode1300002_0100
@@ -243,11 +230,10 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetSpecificSystemBarEnabledPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetSpecificSystemBarEnabledPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetSpecificSystemBarEnabledPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let subWin: ohosWindow.Window | undefined = undefined;
       await windowStage.createSubWindow('testSetSpecificSystemBarEnabledPromiseErrCode1300002_SubWindow_Promise')
         .then((data) => {
@@ -260,7 +246,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         let param: ohosWindow.MoveConfiguration = {
@@ -281,7 +266,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testGetWindowSystemBarPropertiesErrCode1300002_0100
      * @tc.name       : testGetWindowSystemBarPropertiesErrCode1300002_0100
@@ -290,7 +274,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetWindowSystemBarPropertiesErrCode1300002_0100', 0, async (done: Function) => {
+    it('testGetWindowSystemBarPropertiesErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testGetWindowSystemBarPropertiesErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -318,7 +302,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testIsGestureBackEnabledErrCode1300002_0100
      * @tc.name       : testIsGestureBackEnabledErrCode1300002_0100
@@ -327,7 +310,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testIsGestureBackEnabledErrCode1300002_0100', 0, async (done: Function) => {
+    it('testIsGestureBackEnabledErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testIsGestureBackEnabledErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -344,7 +327,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.isGestureBackEnabled();
         console.error(msgStr + 'Succeeded in calling isGestureBackEnabled.');
@@ -356,7 +338,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testLoadContentByNameCallbackErrCode1300002_0100
      * @tc.name       : testLoadContentByNameCallbackErrCode1300002_0100
@@ -365,11 +346,10 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testLoadContentByNameCallbackErrCode1300002_0100', 0, async (done: Function) => {
+    it('testLoadContentByNameCallbackErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testLoadContentByNameCallbackErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let subWin: ohosWindow.Window | undefined = undefined;
       await windowStage.createSubWindow('testLoadContentByNameCallbackErrCode1300002_SubWindow_Promise')
         .then((data) => {
@@ -403,7 +383,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testLoadContentByNamePromiseErrCode1300002_0100
      * @tc.name       : testLoadContentByNamePromiseErrCode1300002_0100
@@ -412,11 +391,10 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testLoadContentByNamePromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testLoadContentByNamePromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testLoadContentByNamePromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
-
       let subWin: ohosWindow.Window | undefined = undefined;
       await windowStage.createSubWindow('testLoadContentByNamePromiseErrCode1300002_SubWindow_Promise')
         .then((data) => {
@@ -429,7 +407,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         let storage: LocalStorage = new LocalStorage();
@@ -447,7 +424,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnDisplayIdChangeErrCode1300002_0100
      * @tc.name       : testOnDisplayIdChangeErrCode1300002_0100
@@ -456,7 +432,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnDisplayIdChangeErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOnDisplayIdChangeErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnDisplayIdChangeErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -485,7 +461,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffDisplayIdChangeErrCode1300002_0100
      * @tc.name       : testOffDisplayIdChangeErrCode1300002_0100
@@ -494,7 +469,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffDisplayIdChangeErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOffDisplayIdChangeErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffDisplayIdChangeErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -511,7 +486,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.off("displayIdChange", (res: number) => {
         });
@@ -524,7 +498,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnWindowVisibilityChangeErrCode1300002_0100
      * @tc.name       : testOnWindowVisibilityChangeErrCode1300002_0100
@@ -533,7 +506,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnWindowVisibilityChangeErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOnWindowVisibilityChangeErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnWindowVisibilityChangeErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -550,7 +523,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.on("windowVisibilityChange", (res: boolean) => {
         });
@@ -563,7 +535,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnSystemDensityChangeErrCode1300002_0100
      * @tc.name       : testOnSystemDensityChangeErrCode1300002_0100
@@ -572,7 +543,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnSystemDensityChangeErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOnSystemDensityChangeErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnSystemDensityChangeErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -589,7 +560,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.on("systemDensityChange", (res: number) => {
         });
@@ -602,7 +572,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffSystemDensityChangeErrCode1300002_0100
      * @tc.name       : testOffSystemDensityChangeErrCode1300002_0100
@@ -611,7 +580,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffSystemDensityChangeErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOffSystemDensityChangeErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffSystemDensityChangeErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -628,7 +597,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.off("systemDensityChange", (res: number) => {
         });
@@ -641,7 +609,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnNoInteractionDetectedErrCode1300002_0100
      * @tc.name       : testOnNoInteractionDetectedErrCode1300002_0100
@@ -650,7 +617,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnNoInteractionDetectedErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOnNoInteractionDetectedErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnNoInteractionDetectedErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -667,7 +634,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.on("noInteractionDetected", 1, () => {
         });
@@ -680,7 +646,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOffNoInteractionDetectedErrCode1300002_0100
      * @tc.name       : testOffNoInteractionDetectedErrCode1300002_0100
@@ -689,7 +654,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffNoInteractionDetectedErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOffNoInteractionDetectedErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffNoInteractionDetectedErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -706,7 +671,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.off("noInteractionDetected", () => {
         });
@@ -719,7 +683,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testOnSubWindowCloseErrCode1300002_0100
      * @tc.name       : testOnSubWindowCloseErrCode1300002_0100
@@ -728,7 +691,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnSubWindowCloseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOnSubWindowCloseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOnSubWindowCloseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -745,21 +708,18 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.on("subWindowClose", () => {
         });
         console.error(msgStr + 'Succeeded in calling on subWindowClose.');
         expect().assertFail();
         done()
-
       } catch (e) {
         console.log(msgStr + 'Failed to call on subWindowClose. Cause:' + JSON.stringify(e));
         expect(e.code).assertEqual(1300002);
         done()
       }
     })
-
     /**
      * @tc.number     : testOffSubWindowCloseErrCode1300002_0100
      * @tc.name       : testOffSubWindowCloseErrCode1300002_0100
@@ -768,7 +728,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffSubWindowCloseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testOffSubWindowCloseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testOffSubWindowCloseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -785,21 +745,18 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.off("subWindowClose", () => {
         });
         console.error(msgStr + 'Succeeded in calling off subWindowClose.');
         expect().assertFail();
         done()
-
       } catch (e) {
         console.log(msgStr + 'Failed to call off subWindowClose. Cause:' + JSON.stringify(e));
         expect(e.code).assertEqual(1300002);
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowTopmostPromiseErrCode1300002_0100
      * @tc.name       : testSetWindowTopmostPromiseErrCode1300002_0100
@@ -808,7 +765,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowTopmostPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetWindowTopmostPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowTopmostPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -824,7 +781,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).setWindowTopmost(true).then(async () => {
@@ -841,7 +797,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetAspectRatioCallbackErrCode1300002_0100
      * @tc.name       : testSetAspectRatioCallbackErrCode1300002_0100
@@ -850,7 +805,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetAspectRatioCallbackErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetAspectRatioCallbackErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetAspectRatioCallbackErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -867,7 +822,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.setAspectRatio(1, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -887,7 +841,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetAspectRatioPromiseErrCode1300002_0100
      * @tc.name       : testSetAspectRatioPromiseErrCode1300002_0100
@@ -896,7 +849,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetAspectRatioPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetAspectRatioPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetAspectRatioPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -912,7 +865,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).setAspectRatio(1).then(async () => {
@@ -929,7 +881,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testResetAspectRatioCallbackErrCode1300002_0100
      * @tc.name       : testResetAspectRatioCallbackErrCode1300002_0100
@@ -938,7 +889,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testResetAspectRatioCallbackErrCode1300002_0100', 0, async (done: Function) => {
+    it('testResetAspectRatioCallbackErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testResetAspectRatioCallbackErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -955,7 +906,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.resetAspectRatio(async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -975,7 +925,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testResetAspectRatioPromiseErrCode1300002_0100
      * @tc.name       : testResetAspectRatioPromiseErrCode1300002_0100
@@ -984,7 +933,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testResetAspectRatioPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testResetAspectRatioPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testResetAspectRatioPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1000,7 +949,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).resetAspectRatio().then(async () => {
@@ -1017,7 +965,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testMinimizeCallbackErrCode1300002_0100
      * @tc.name       : testMinimizeCallbackErrCode1300002_0100
@@ -1026,7 +973,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMinimizeCallbackErrCode1300002_0100', 0, async (done: Function) => {
+    it('testMinimizeCallbackErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMinimizeCallbackErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1043,7 +990,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.minimize(async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -1063,7 +1009,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testMinimizePromiseErrCode1300002_0100
      * @tc.name       : testMinimizePromiseErrCode1300002_0100
@@ -1072,7 +1017,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMinimizePromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testMinimizePromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMinimizePromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1088,7 +1033,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).minimize().then(async () => {
@@ -1105,7 +1049,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testMaximizePromiseErrCode1300002_0100
      * @tc.name       : testMaximizePromiseErrCode1300002_0100
@@ -1114,7 +1057,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testMaximizePromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testMaximizePromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testMaximizePromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1130,7 +1073,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).maximize(ohosWindow.MaximizePresentation.EXIT_IMMERSIVE).then(async () => {
@@ -1147,7 +1089,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetResizeByDragEnabledCallbackErrCode1300002_0100
      * @tc.name       : testSetResizeByDragEnabledCallbackErrCode1300002_0100
@@ -1156,7 +1097,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetResizeByDragEnabledCallbackErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledCallbackErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetResizeByDragEnabledCallbackErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1173,7 +1114,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.setResizeByDragEnabled(true, async (err: BusinessError) => {
           const errCode: number = err.code;
@@ -1193,7 +1133,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetResizeByDragEnabledPromiseErrCode1300002_0100
      * @tc.name       : testSetResizeByDragEnabledPromiseErrCode1300002_0100
@@ -1202,7 +1141,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetResizeByDragEnabledPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetResizeByDragEnabledPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1218,7 +1157,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         await (subWin! as ohosWindow.Window).setResizeByDragEnabled(true).then(async () => {
@@ -1235,7 +1173,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testGetWindowLimitsErrCode1300002_0100
      * @tc.name       : testGetWindowLimitsErrCode1300002_0100
@@ -1244,7 +1181,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetWindowLimitsErrCode1300002_0100', 0, async (done: Function) => {
+    it('testGetWindowLimitsErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testGetWindowLimitsErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1261,7 +1198,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.getWindowLimits();
         console.error(msgStr + 'Succeeded in calling getWindowLimits.');
@@ -1273,7 +1209,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testSetWindowLimitsPromiseErrCode1300002_0100
      * @tc.name       : testSetWindowLimitsPromiseErrCode1300002_0100
@@ -1282,7 +1217,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetWindowLimitsPromiseErrCode1300002_0100', 0, async (done: Function) => {
+    it('testSetWindowLimitsPromiseErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testSetWindowLimitsPromiseErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1298,7 +1233,6 @@ export default function windowErrCode1300002_1() {
           expect().assertFail();
           done()
         });
-
       await (subWin! as ohosWindow.Window).destroyWindow();
       try {
         let param: ohosWindow.WindowLimits = {
@@ -1321,7 +1255,6 @@ export default function windowErrCode1300002_1() {
         done()
       }
     })
-
     /**
      * @tc.number     : testKeepKeyboardOnFocusErrCode1300002_0100
      * @tc.name       : testKeepKeyboardOnFocusErrCode1300002_0100
@@ -1330,7 +1263,7 @@ export default function windowErrCode1300002_1() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testKeepKeyboardOnFocusErrCode1300002_0100', 0, async (done: Function) => {
+    it('testKeepKeyboardOnFocusErrCode1300002_0100', Level.LEVEL3, async (done: Function) => {
       let caseName = "testKeepKeyboardOnFocusErrCode1300002_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1347,7 +1280,6 @@ export default function windowErrCode1300002_1() {
           done()
         });
       await (subWin! as ohosWindow.Window).destroyWindow();
-
       try {
         subWin!.keepKeyboardOnFocus(true);
         console.error(msgStr + 'Succeeded in calling keepKeyboardOnFocus.');

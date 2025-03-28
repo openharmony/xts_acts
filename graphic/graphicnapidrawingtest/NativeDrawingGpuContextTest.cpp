@@ -94,7 +94,7 @@ void NativeDrawingGpuContextTest::TearDown()
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingGpuContextTest, NativeDrawingGpuContextTest_CreateFromGL, TestSize.Level1)
+HWTEST_F(NativeDrawingGpuContextTest, NativeDrawingGpuContextTest_CreateFromGL, Function | MediumTest | Level1)
 {
     OH_Drawing_GpuContextOptions options;
     options.allowPathMaskCaching = true;

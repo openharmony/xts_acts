@@ -15,12 +15,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
-import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
+import { UiDriver, BY, ON, PointerMatrix, Driver, Point } from '@ohos.UiTest'
 import pipWindow from '@ohos.PiPWindow';
 import { typeNode } from '@ohos.arkui.node';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import { TextNodeController } from './CustomNode.test';
+import settings from '@ohos.settings';
 
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
@@ -29,7 +30,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
     let tag = 'pipWindowTest'
-
+    let isAutoWindow: string =
+      settings.getValueSync(globalThis.abilityContext, 'window_pcmode_switch_status', '',
+        settings.domainName.DEVICE_SHARED);
     let sleep = async (time:number):Promise<void> => {
       let timeoutId:number | null = null;
       await new Promise((resolve: (value: string) => void) => {
@@ -2589,6 +2592,1043 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         done();
       }
     })
+
+    /**
+     * @tc.number     : testUpdateContentSizeErrCode401_0100
+     * @tc.name       : testUpdateContentSizeErrCode401_0100
+     * @tc.desc       : testUpdateContentSizeErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testUpdateContentSizeErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testUpdateContentSizeErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          pipController.updateContentSize(null, null);
+          console.error(message + 'Succeeded in calling updateContentSize.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call updateContentSize. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持updateContentSize能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call updateContentSize. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持updateContentSize能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testUpdatePiPControlStatusErrCode401_0100
+     * @tc.name       : testUpdatePiPControlStatusErrCode401_0100
+     * @tc.desc       : testUpdatePiPControlStatusErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testUpdatePiPControlStatusErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testUpdatePiPControlStatusErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          pipController.updatePiPControlStatus(null, null);
+          console.error(message + 'Succeeded in calling updatePiPControlStatus.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call updatePiPControlStatus. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持updatePiPControlStatus能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call updatePiPControlStatus. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持updatePiPControlStatus能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testSetPiPControlEnabledErrCode401_0100
+     * @tc.name       : testSetPiPControlEnabledErrCode401_0100
+     * @tc.desc       : testSetPiPControlEnabledErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testSetPiPControlEnabledErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testSetPiPControlEnabledErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          pipController.setPiPControlEnabled(null, null);
+          console.error(message + 'Succeeded in calling setPiPControlEnabled.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call setPiPControlEnabled. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持setPiPControlEnabled能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call setPiPControlEnabled. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持setPiPControlEnabled能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testOnPipWindowSizeChangeErrCode401_0100
+     * @tc.name       : testOnPipWindowSizeChangeErrCode401_0100
+     * @tc.desc       : testOnPipWindowSizeChangeErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testOnPipWindowSizeChangeErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          const callback = (res: pipWindow.PiPWindowSize) => {}
+          pipController.on(null, callback);
+          console.error(message + 'Succeeded in calling on_pipWindowSizeChange.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call on_pipWindowSizeChange. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持on_pipWindowSizeChange能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call on_pipWindowSizeChange. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持on_pipWindowSizeChange能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testOffPipWindowSizeChangeErrCode401_0100
+     * @tc.name       : testOffPipWindowSizeChangeErrCode401_0100
+     * @tc.desc       : testOffPipWindowSizeChangeErrCode401_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOffPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
+      const message = 'testOffPipWindowSizeChangeErrCode401_0100';
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let contentWidth = 400;
+      let contentHeight = 600;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: contentWidth,
+        contentHeight: contentHeight,
+      };
+      try {
+        pipController = await pipWindow.create(config)
+        try {
+          const callback = (res: pipWindow.PiPWindowSize) => {}
+          pipController.off(null, callback);
+          console.error(message + 'Succeeded in calling off_pipWindowSizeChange.');
+          expect().assertFail();
+          done()
+        } catch (e) {
+          console.log(message + 'Failed to call off_pipWindowSizeChange. Cause:' + JSON.stringify(e));
+          if (e.code == 801) {
+            console.info(message + '此设备不支持off_pipWindowSizeChange能力.');
+          } else {
+            expect(e.code).assertEqual(401);
+          }
+          done()
+        }
+      } catch (error) {
+        console.log(message + 'Failed2 to call off_pipWindowSizeChange. Cause:' + JSON.stringify(error));
+        if (error.code == 801) {
+          console.info(message + '此设备不支持off_pipWindowSizeChange能力.');
+        } else {
+          expect().assertFail();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : testGetPiPWindowInfoErrCode1300014_0100
+     * @tc.name       : testGetPiPWindowInfoErrCode1300014_0100
+     * @tc.desc       : testGetPiPWindowInfoErrCode1300014_0100
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testGetPiPWindowInfoErrCode1300014_0100', 2, async (done: Function) => {
+      const message = 'testGetPiPWindowInfoErrCode1300014_0100';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
+      let pipController: pipWindow.PiPController | null = null;
+      try {
+        pipController = await pipWindow.create(config)
+        pipController!.getPiPWindowInfo().then(async () => {
+          console.error(`${message} Succeeded to getPiPWindowInfo.`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          if (err.code == 801) {
+            console.info(`${message} The current device type does not support to getPiPWindowInfo`);
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.error(`${message} Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
+            expect(err.code).assertEqual(1300014);
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code == 801) {
+          console.info(`${message} The current device type does not support to getPiPWindowInfo`);
+          expect(true).assertTrue();
+          done();
+        } else {
+          console.info(`${message} Failed2 to getPiPWindowInfo. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_PIP_WINDOW_SIZE_CHANGE_0100
+     * @tc.name       : test_pipWindowSizeChange
+     * @tc.desc       : 验证updateContentSize后获取pipWindow宽高正确
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pipWindowSizeChange', 3, async (done: Function) => {
+      const message = 'test_pipWindowSizeChange!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let pipSize: pipWindow.PiPWindowSize;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let callback = (size: pipWindow.PiPWindowSize) => {
+        console.info(`${message} success in callback, size: ${size}`)
+        pipSize = size
+      }
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+          await pipController.startPiP();
+          await sleep(1000);
+          pipController.on('pipWindowSizeChange', callback);
+          pipController.updateContentSize(800, 600);
+          await sleep(1000);
+          let pipWindowInfo = await pipController.getPiPWindowInfo();
+          let pipInfoSize = pipWindowInfo.size
+          console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo height is ${pipInfoSize.scale}`)
+          console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
+          expect(pipSize.width).assertEqual(pipInfoSize.width);
+          expect(pipSize.height).assertEqual(pipInfoSize.height);
+          expect(Math.abs(pipSize.scale - pipInfoSize.scale)).assertLessOrEqual(0.01)
+          pipController.off('pipWindowSizeChange', callback);
+          await pipController.stopPiP();
+          await sleep(1000);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}Cause:${JSON.stringify(err.message)}`);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_TEMPLATE_0100
+     * @tc.name       : test_videoCallControlGroup_MUTE_SWITCH
+     * @tc.desc       : 验证VIDEO_CALL仅有一个VideoCallControlGroup.MUTE_SWITCH
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_videoCallControlGroup_MUTE_SWITCH', 3, async (done: Function) => {
+      const message = 'test_videoCallControlGroup_MUTE_SWITCH!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_CALL,
+        contentWidth: 500,
+        contentHeight: 500,
+        controlGroups: [pipWindow.VideoCallControlGroup.MUTE_SWITCH]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+          let promise = pipController.startPiP();
+          promise.then(() => {
+            console.log(`${message} Succeeded in starting pip`)
+            expect(true).assertTrue();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+            expect().assertFail();
+          });
+          await sleep(1000);
+          await pipController.stopPiP();
+          await sleep(1000);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_TEMPLATE_0200
+     * @tc.name       : test_VideoMeetingControlGroup_MICROPHONE_SWITCH
+     * @tc.desc       : 验证VIDEO_CALL仅有一个VideoCallControlGroup.MUTE_SWITCH
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_VideoMeetingControlGroup_MICROPHONE_SWITCH', 3, async (done: Function) => {
+      const message = 'test_VideoMeetingControlGroup_MICROPHONE_SWITCH!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_MEETING,
+        contentWidth: 500,
+        contentHeight: 500,
+        controlGroups: [pipWindow.VideoMeetingControlGroup.MICROPHONE_SWITCH]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+          let promise = pipController.startPiP();
+          promise.then(() => {
+            console.log(`${message} Succeeded in starting pip`)
+            expect(true).assertTrue();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+            expect().assertFail();
+          });
+          await sleep(1000);
+          await pipController.stopPiP();
+          await sleep(1000);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_TEMPLATE_0300
+     * @tc.name       : test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE
+     * @tc.desc       : 验证VIDEO_CALL仅有一个VideoLiveControlGroup.VIDEO_PLAY_PAUSE
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE', 3, async (done: Function) => {
+      const message = 'test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        controlGroups: [pipWindow.VideoLiveControlGroup.VIDEO_PLAY_PAUSE]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+          let promise = pipController.startPiP();
+          promise.then(() => {
+            console.log(`${message} Succeeded in starting pip`)
+            expect(true).assertTrue();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+            expect().assertFail();
+          });
+          await sleep(1000);
+          await pipController.stopPiP();
+          await sleep(1000);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_TEMPLATE_0400
+     * @tc.name       : test_VideoLiveControlGroup_MUTE_SWITCH
+     * @tc.desc       : 验证VIDEO_CALL仅有一个VideoLiveControlGroup.VIDEO_PLAY_PAUSE
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_VideoLiveControlGroup_MUTE_SWITCH', 3, async (done: Function) => {
+      const message = 'test_VideoLiveControlGroup_MUTE_SWITCH!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        controlGroups: [pipWindow.VideoLiveControlGroup.MUTE_SWITCH]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+          let promise = pipController.startPiP();
+          promise.then(() => {
+            console.log(`${message} Succeeded in starting pip`)
+            expect(true).assertTrue();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+            expect().assertFail();
+          });
+          await sleep(1000);
+          await pipController.stopPiP();
+          await sleep(1000);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_TEMPLATE_0500
+     * @tc.name       : test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE
+     * @tc.desc       : 验证VIDEO_CALL仅有一个VideoLiveControlGroup.VIDEO_PLAY_PAUSE
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE', 3, async (done: Function) => {
+      const message = 'test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        controlGroups: [pipWindow.VideoLiveControlGroup.MUTE_SWITCH, pipWindow.VideoLiveControlGroup.VIDEO_PLAY_PAUSE]
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller. Data:${data}`);
+          let promise = pipController.startPiP();
+          promise.then(() => {
+            console.log(`${message} Succeeded in starting pip`);
+            expect(true).assertTrue();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+            expect().assertFail();
+          });
+          await sleep(1000);
+          await pipController.stopPiP();
+          await sleep(1000);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_ON_CONTROLEVENT_0100
+     * @tc.name       : test_on_controlEvent
+     * @tc.desc       : 验证on_controlEvent
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_on_controlEvent', 3, async (done: Function) => {
+      const message = 'test_on_controlEvent!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let controlParam: pipWindow.ControlEventParam;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let callback = (control: pipWindow.ControlEventParam) => {
+        console.info(`${message} success in callback, control: ${control}`)
+        controlParam = control
+      }
+      let driver: Driver =
+        Driver.create();
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          await pipController.startPiP();
+          pipController.on('controlEvent', callback);
+          let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+          let BoundsCenter = await button1.getBoundsCenter();
+          let x = BoundsCenter.x;
+          let y = BoundsCenter.y;
+          console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+          await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
+            await component.click();
+            await sleep(1000);
+            await driver.click(x, y + 182);
+          })
+          await sleep(1000);
+          expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
+          expect(controlParam.status).assertEqual(pipWindow.PiPControlStatus.PAUSE);
+          await pipController.stopPiP();
+          await sleep(10000)
+          pipController.off('controlEvent', callback);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          pipController?.off('controlEvent', callback);
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+
+
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_WINDOW_ON_CONTROLEVENT_0200
+     * @tc.name       : test_off_controlEvent
+     * @tc.desc       : 验证on_controlEvent
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_off_controlEvent', 3, async (done: Function) => {
+      const message = 'test_off_controlEvent!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let controlParam: pipWindow.ControlEventParam;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let callback = (control: pipWindow.ControlEventParam) => {
+        console.error(`${message} success in callback, control: ${control}`)
+        controlParam = control
+      }
+      let driver: Driver =
+        Driver.create();
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          await pipController.startPiP();
+          pipController.on('controlEvent', callback);
+          pipController.off('controlEvent');
+          let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+          let BoundsCenter = await button1.getBoundsCenter();
+          let x = BoundsCenter.x;
+          let y = BoundsCenter.y;
+          console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+          await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
+            await component.click();
+            await sleep(1000);
+            await driver.click(x, y + 182);
+          })
+          await sleep(1000);
+          expect(controlParam).assertEqual(undefined);
+          await pipController.stopPiP();
+          await sleep(1000)
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+          pipController?.off('controlEvent');
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.log(`${message} Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_ErrorCode_0100
+     * @tc.name       : test_updateContentNode_ErrorCode_401
+     * @tc.desc       : updateContentNode验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode_ErrorCode_401', 3, async (done: Function) => {
+      const message = 'test_updateContentNode_ErrorCode_401!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            await pipController.updateContentNode(null);
+            console.log(`${message} Succeeded updateContentNode`);
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code == 401).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_ErrorCode_0200
+     * @tc.name       : test_updateContentNode_ErrorCode_801
+     * @tc.desc       : 验证updateContentNode接口801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode_ErrorCode_801', 3, async (done: Function) => {
+      const message = 'test_updateContentNode_ErrorCode_801!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let windowClass = windowStage.getMainWindowSync();
+      let uiContext = windowClass.getUIContext();
+      let contentNode = typeNode.createNode(uiContext, 'XComponent')
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            await pipController.startPiP();
+            console.log(`${message} Succeeded startPiP`);
+            await sleep(1000);
+            await pipController.updateContentNode(contentNode);
+            console.log(`${message} Succeeded updateContentNode`);
+            expect(true).assertTrue();
+            await pipController.stopPiP();
+            await sleep(1000)
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_0200
+     * @tc.name       : test_updateContentNode2
+     * @tc.desc       : 验证先startPIP后updateContentNode
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode2', 3, async (done: Function) => {
+      const message = 'test_updateContentNode2!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let windowClass = windowStage.getMainWindowSync();
+      let uiContext = windowClass.getUIContext();
+      let contentNode = typeNode.createNode(uiContext, 'XComponent');
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            await pipController.startPiP();
+            await sleep(1000);
+            console.log(`${message} Succeeded startPiP`);
+            await pipController.updateContentNode(contentNode);
+            console.log(`${message} Succeeded updateContentNode`);
+            expect(true).assertTrue();
+            await pipController.stopPiP();
+            await sleep(1000)
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentSize_0100
+     * @tc.name       : test_updateContentSize_401
+     * @tc.desc       : 验证updateContentSize接口401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentSize_401', 3, async (done: Function) => {
+      const message = 'test_updateContentSize_401!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let controlParam: pipWindow.ControlEventParam;
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          }
+          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+          try {
+            pipController.updateContentSize(null, null);
+            console.log(`${message} Succeeded updateContentSize`);
+            expect().assertFail();
+            done();
+          } catch (err) {
+            console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code == 401).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
 

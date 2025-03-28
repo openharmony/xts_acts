@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewGetAccessibleGeolocation() {
      *tc.name testGetAccessibleGeolocationFalse
      *tc.desc test interface of getaccessiblegeolocation with allow and retain all False
      */
-    it('testGetAccessibleGeolocationFalse',0,async (done: Function) =>{
+    it('testGetAccessibleGeolocationFalse',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitGetAccessAllowAndRetainAllTrue";
       Utils.registerEvent("testGetAccessibleGeolocationFalse",false,409,done);
       sendEventByKey('webViewGetAccessibleGeolocation',10,'');
@@ -80,7 +80,7 @@ export default function webViewGetAccessibleGeolocation() {
      *tc.name testGetAccessibleGeolocationTrue
      *tc.desc test interface of getaccessiblegeolocation with allow and retain all true
      */
-    it('testGetAccessibleGeolocationTrue',0,async (done: Function) =>{
+    it('testGetAccessibleGeolocationTrue',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitGetAccessAllowAndRetainAllTrue";
       Utils.registerEvent("testGetAccessibleGeolocationTrue",true,410,done);
       sendEventByKey('webViewGetAccessibleGeolocation',10,'');

@@ -80,7 +80,7 @@ describe("SensorJsTest_sensor_6", function () {
      * @tc.name: Accelerometer_Uncalibrated_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Accelerometer_Uncalibrated_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("Accelerometer_Uncalibrated_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Accelerometer_Uncalibrated_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
         setTimeout(() => {
@@ -120,7 +120,7 @@ describe("SensorJsTest_sensor_6", function () {
             expect(typeof (data.biasX)).assertEqual("number");
             expect(typeof (data.biasY)).assertEqual("number");
             expect(typeof (data.biasZ)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try {
@@ -161,7 +161,7 @@ describe("SensorJsTest_sensor_6", function () {
             expect(typeof (data.biasX)).assertEqual("number");
             expect(typeof (data.biasY)).assertEqual("number");
             expect(typeof (data.biasZ)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
+            expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
         try {
@@ -170,7 +170,7 @@ describe("SensorJsTest_sensor_6", function () {
             console.info("Accelerometer_Uncalibrated_SensorJsTest005 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-		    done();
+            done();
         }
     })
 
@@ -261,10 +261,10 @@ describe("SensorJsTest_sensor_6", function () {
         setTimeout(() => {
             console.info('----------------------Accelerometer_Uncalibrated_SensorJsTest010 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
+            } catch (error) {
             console.info("Accelerometer_Uncalibrated_SensorJsTest010 error:" + error);
-			}
+            }
             console.info('----------------------Accelerometer_Uncalibrated_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -304,10 +304,10 @@ describe("SensorJsTest_sensor_6", function () {
         setTimeout(() => {
             console.info('----------------------Accelerometer_Uncalibrated_SensorJsTest012 off in---------------------------');
             try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
-			} catch (error) {
+            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
+            } catch (error) {
             console.info("Accelerometer_Uncalibrated_SensorJsTest012 error:" + error);
-			}
+            }
             console
             console.info('----------------------Accelerometer_Uncalibrated_SensorJsTest012 off end---------------------------');
         }, 500);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, Level } from '@ohos/hypium'
 import entry from 'libentry.so'
 
 export default function oHScannerServicesInterfaceTest() {
@@ -26,7 +26,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan001', 0, async () => {
+    it('testOHScan001', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanInit();
       expect(result).assertEqual(0);
     });
@@ -39,7 +39,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan002', 0, async () => {
+    it('testOHScan002', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanStartScannerDiscovery();
       expect(result).assertEqual(0);
     });
@@ -52,7 +52,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan003', 0, async () => {
+    it('testOHScan003', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanOpenScanner();
       expect(result).assertEqual(0);
     });
@@ -65,7 +65,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan004', 0, async () => {
+    it('testOHScan004', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanCloseScanner();
       expect(result).assertEqual(0);
     });
@@ -78,7 +78,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan005', 0, async () => {
+    it('testOHScan005', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanGetScannerParameter();
       expect(result).assertEqual(0);
     });
@@ -91,7 +91,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan006', 0, async () => {
+    it('testOHScan006', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanSetScannerParameter();
       expect(result).assertEqual(0);
     });
@@ -104,7 +104,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan007', 0, async () => {
+    it('testOHScan007', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanStartScan();
       expect(result).assertEqual(0);
     });
@@ -117,7 +117,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan008', 0, async () => {
+    it('testOHScan008', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanCancelScan();
       expect(result).assertEqual(0);
     });
@@ -130,7 +130,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan009', 0, async () => {
+    it('testOHScan009', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanGetPictureScanProgress();
       expect(result).assertEqual(0);
     });
@@ -143,7 +143,7 @@ export default function oHScannerServicesInterfaceTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHScan010', 0, async () => {
+    it('testOHScan010', Level.LEVEL1, async () => {
       let result: number = await entry.oHScanExit();
       expect(result).assertEqual(0);
     });

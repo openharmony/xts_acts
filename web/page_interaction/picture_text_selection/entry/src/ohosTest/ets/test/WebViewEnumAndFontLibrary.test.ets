@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamX001', 0, async (done: Function) => {
+    it('testWebContextMenuParamX001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamX", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamX001", true, 801, done);
@@ -77,7 +77,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamY001', 0, async (done: Function) => {
+    it('testWebContextMenuParamY001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamY", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamY001", true, 802, done);
@@ -92,7 +92,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetLinkUrl001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetLinkUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetLinkUrl", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetLinkUrl001", "http://www.baidu.com/", 803, done);
@@ -107,7 +107,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetUnfilteredLinkUrl001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetUnfilteredLinkUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetUnfilteredLinkUrl", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetUnfilteredLinkUrl001", "http://www.baidu.com/", 804, done);
@@ -122,7 +122,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetSourceUrl001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetSourceUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetSourceUrl", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetSourceUrl001", "", 805, done);
@@ -137,7 +137,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamExistsImageContents001', 0, async (done: Function) => {
+    it('testWebContextMenuParamExistsImageContents001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamExistsImageContents", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamExistsImageContents001", false, 806, done);
@@ -152,7 +152,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetMediaType001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetMediaType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetMediaType", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetMediaType001", 0, 807, done);
@@ -167,7 +167,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetSelectionText001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetSelectionText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetSelectionText", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetSelectionText001", "", 808, done);
@@ -182,7 +182,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetSourceType001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetSourceType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetSourceType", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetSourceType001", 2, 809, done);
@@ -197,7 +197,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetInputFieldType001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetInputFieldType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetInputFieldType", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetInputFieldType001", 0, 810, done);
@@ -212,7 +212,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamIsEditable001', 0, async (done: Function) => {
+    it('testWebContextMenuParamIsEditable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamIsEditable", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamIsEditable001", false, 811, done);
@@ -227,7 +227,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebContextMenuParamGetEditStateFlags001', 0, async (done: Function) => {
+    it('testWebContextMenuParamGetEditStateFlags001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetEditStateFlags", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebContextMenuParamGetEditStateFlags", 8, 812, done);
@@ -242,7 +242,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testContextMenuInputFieldTypeNone001', 0, async (done: Function) => {
+    it('testContextMenuInputFieldTypeNone001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuInputFieldTypeNone", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testContextMenuInputFieldTypeNone001", 0, 831, done);
@@ -257,7 +257,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testContextMenuSourceTypeLongPress001', 0, async (done: Function) => {
+    it('testContextMenuSourceTypeLongPress001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuSourceTypeLongPress", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testContextMenuSourceTypeLongPress001", 2, 841, done);
@@ -272,7 +272,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testContextMenuEditStateFlags001', 0, async (done: Function) => {
+    it('testContextMenuEditStateFlags001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuEditStateFlags", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testContextMenuEditStateFlags001", 8, 851, done);
@@ -287,7 +287,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testContextMenuMediaType001', 0, async (done: Function) => {
+    it('testContextMenuMediaType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuMediaTypeNone", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testContextMenuMediaType001", 0, 881, done);
@@ -303,7 +303,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnContextMenuShow001', 0, async (done: Function) => {
+    it('testOnContextMenuShow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onContextMenuShow", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnContextMenuShow001", true, 1252, done);

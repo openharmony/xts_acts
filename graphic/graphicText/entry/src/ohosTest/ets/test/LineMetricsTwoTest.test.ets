@@ -42,7 +42,7 @@ export default function LineMetricsTwoTest() {
      * @tc.level     : Level0
      */
 
-    it('testLineMetricsTest_0100', 0, async (done: Function) => {
+    it('testLineMetricsTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = "====testLineMetricsTest_2===="
       console.info('testLineMetricsTest_2 START');
       let driver = await Driver.create()

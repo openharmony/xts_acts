@@ -21,6 +21,11 @@ import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let emitKey = "emitUserAgent";
+function spliceColor(sysColor: Resource) {
+  let resourceColor = getContext().resourceManager.getColorSync(sysColor.id)
+  let newArgb: string = '#' + resourceColor.toString(16).toUpperCase()
+  return newArgb;
+}
 
 export default function search() {
   describe('ActsAceSearchTest', () => {
@@ -1513,7 +1518,7 @@ export default function search() {
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Search_SearchIcon_1300]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_1300]: " + JSON.stringify(obj.$attrs.searchIcon.color));
-      expect(obj.$attrs.searchIcon.color).assertEqual(objDefault.$attrs.searchIcon.color);
+      expect(''+obj.$attrs.searchIcon.color).assertContain(spliceColor($r('sys.color.search_symbol_icon_color')));
       console.info("[ArkUI_Stage_Search_SearchIcon_1300] end");
       done();
     });
@@ -1839,7 +1844,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_2200]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_2200]: " + JSON.stringify(obj.$attrs.searchIcon.src));
-      expect(obj.$attrs.searchIcon.src).assertEqual('resource:///ohos_search.svg');
+      expect(obj.$attrs.searchIcon.src).assertEqual(983081);
       console.info("[ArkUI_Stage_Search_SearchIcon_2200] end");
       done();
     });
@@ -2782,7 +2787,7 @@ export default function search() {
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Search_CancelButton_1800]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1800]: " + JSON.stringify(obj.$attrs.cancelButton.icon.color));
-      expect(obj.$attrs.cancelButton.icon.color).assertEqual(objDefault.$attrs.cancelButton.icon.color);
+      expect(''+obj.$attrs.cancelButton.icon.color).assertContain(spliceColor($r('sys.color.search_symbol_icon_color')));
       console.info("[ArkUI_Stage_Search_CancelButton_1800] end");
       done();
     });
@@ -3108,7 +3113,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Search_CancelButton_2700]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_2700]: " + JSON.stringify(obj.$attrs.cancelButton.icon.src));
-      expect(obj.$attrs.cancelButton.icon.src).assertEqual('resource:///ohos_close.svg');
+      expect(obj.$attrs.cancelButton.icon.src).assertEqual(983126);
       console.info("[ArkUI_Stage_Search_CancelButton_2700] end");
       done();
     });
@@ -3750,9 +3755,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.Body_M').id)
 	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' +Math.round(px2fp(resourceSize))+ '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1000] end");
       done();
     });
@@ -3790,9 +3795,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.Body_M').id)
 	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + Math.round(px2fp(resourceSize)) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1100] end");
       done();
     });
@@ -3830,9 +3835,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.Body_M').id)
 	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + Math.round(px2fp(resourceSize)) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1200] end");
       done();
     });

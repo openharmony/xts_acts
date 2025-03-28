@@ -19,7 +19,7 @@ struct DatePickerExample {
 
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
-      Button('DatePickerDialog1')
+      Button('1')
         .margin(20)
         .id('DatePickerDialog1')
         .onClick(() => {
@@ -30,7 +30,7 @@ struct DatePickerExample {
             enableHapticFeedback: true,
           })
         })
-      Button('DatePickerDialog2')
+      Button('2')
         .margin(20)
         .id('DatePickerDialog2')
         .onClick(() => {
@@ -41,7 +41,7 @@ struct DatePickerExample {
             enableHapticFeedback: false,
           })
         })
-      Button('DatePickerDialog3')
+      Button('3')
         .margin(20)
         .id('DatePickerDialog3')
         .onClick(() => {
@@ -52,7 +52,7 @@ struct DatePickerExample {
             enableHapticFeedback: undefined,
           })
         })
-      Button('DatePickerDialog4')
+      Button('4')
         .margin(20)
         .id('DatePickerDialog4')
         .onClick(() => {

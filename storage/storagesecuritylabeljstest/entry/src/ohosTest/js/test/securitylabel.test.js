@@ -16,6 +16,7 @@
 import {
     describe, it, expect, securityLabel, nextFileName, fileio, fileIO
 } from './Common';
+import { Level } from '@ohos/hypium';
 
 export default function security_label() {
 describe('security_label', function () {
@@ -29,7 +30,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_sync_000', 0, async function () {
+  it('securitylabel_test_set_security_label_sync_000', Level.LEVEL0, async function () {
 
     try {
       let dataLevel = ["s0","s1","s2","s3","s4"];
@@ -56,7 +57,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_sync_001', 0, async function () {
+  it('securitylabel_test_set_security_label_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName("test.txt");
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -79,7 +80,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_sync_002', 0, async function () {
+  it('securitylabel_test_set_security_label_sync_002', Level.LEVEL0, async function () {
 
     try {
       securityLabel.setSecurityLabelSync("/data/aaa.txt", "s0");
@@ -99,7 +100,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_sync_003', 0, async function () {
+  it('securitylabel_test_set_security_label_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName("test.txt");
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -122,7 +123,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_sync_004', 0, async function () {
+  it('securitylabel_test_set_security_label_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName("test.txt");
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -145,7 +146,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-    it('securitylabel_test_set_security_label_sync_005', 0, async function () {
+    it('securitylabel_test_set_security_label_sync_005', Level.LEVEL0, async function () {
       let fpath = await nextFileName("test5.txt");
       fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -170,7 +171,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_000', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -206,7 +207,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_001', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test1.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -242,7 +243,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_002', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test2.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -273,7 +274,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_003', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test3.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -299,7 +300,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_004', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test4.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -324,7 +325,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_005', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_005', Level.LEVEL0, async function (done) {
 
     try {
       await securityLabel.setSecurityLabel(123, 's0');
@@ -345,7 +346,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_006', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_006', Level.LEVEL0, async function (done) {
 
     try {
       await securityLabel.setSecurityLabel('/data/test.txt', 's0');
@@ -366,7 +367,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_007', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_007', Level.LEVEL0, async function (done) {
 
     try {
       await securityLabel.setSecurityLabel('s0');
@@ -387,7 +388,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_008', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test5.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -411,7 +412,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_009', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test6.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -435,7 +436,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_010', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_010', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test7.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -459,7 +460,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_011', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_011', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test8.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -484,7 +485,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_set_security_label_async_012', 0, async function (done) {
+  it('securitylabel_test_set_security_label_async_012', Level.LEVEL0, async function (done) {
 
     try {
       securityLabel.setSecurityLabel('/data/test.txt', 's0', (err) => {
@@ -511,7 +512,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-    it('securitylabel_test_set_security_label_async_013', 0, async function (done) {
+    it('securitylabel_test_set_security_label_async_013', Level.LEVEL0, async function (done) {
       let fpath = await nextFileName('test13.txt');
       fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -538,7 +539,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_sync_000', 0, function () {
+  it('securitylabel_test_get_security_label_sync_000', Level.LEVEL0, function () {
 
     try {
       let dataLevel = securityLabel.getSecurityLabelSync('');
@@ -558,7 +559,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_sync_001', 0, function () {
+  it('securitylabel_test_get_security_label_sync_001', Level.LEVEL0, function () {
 
     try {
       let dataLevel = securityLabel.getSecurityLabelSync('/data/test.txt');
@@ -578,7 +579,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_sync_002', 0, function () {
+  it('securitylabel_test_get_security_label_sync_002', Level.LEVEL0, function () {
 
     try {
       securityLabel.getSecurityLabelSync();
@@ -598,7 +599,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_sync_003', 0, function () {
+  it('securitylabel_test_get_security_label_sync_003', Level.LEVEL0, function () {
 
     try {
       securityLabel.getSecurityLabelSync(123);
@@ -618,7 +619,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_async_000', 0, async function (done) {
+  it('securitylabel_test_get_security_label_async_000', Level.LEVEL0, async function (done) {
 
     try {
       await securityLabel.getSecurityLabel(123);
@@ -639,7 +640,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_async_001', 0, async function (done) {
+  it('securitylabel_test_get_security_label_async_001', Level.LEVEL0, async function (done) {
 
     try {
       let dataLevel = await securityLabel.getSecurityLabel('/data/test.txt');
@@ -661,7 +662,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_async_002', 0, async function (done) {
+  it('securitylabel_test_get_security_label_async_002', Level.LEVEL0, async function (done) {
 
     try {
       await securityLabel.getSecurityLabel();
@@ -682,7 +683,7 @@ describe('security_label', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('securitylabel_test_get_security_label_async_003', 0, async function (done) {
+  it('securitylabel_test_get_security_label_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('test9.txt');
     fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 

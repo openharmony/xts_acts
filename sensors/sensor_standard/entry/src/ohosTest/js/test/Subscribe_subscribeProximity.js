@@ -49,13 +49,13 @@ describe("SensorJsTest_sensor_33", function () {
          */
         console.info('afterEach caled')
     })
-	
+
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeProximity_JSTest_0010
      * @tc.name:subscribeProximity_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeProximity_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeProximity_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeProximity_SensorJsTest001---------------------------');
         sensor.subscribeProximity({
             success: function (data) {
@@ -123,7 +123,7 @@ describe("SensorJsTest_sensor_33", function () {
                 expect(code).assertEqual(1001);
             },
         });
-		setTimeout(() => {
+        setTimeout(() => {
             sensor.unsubscribeProximity();
             done();
         }, 500);

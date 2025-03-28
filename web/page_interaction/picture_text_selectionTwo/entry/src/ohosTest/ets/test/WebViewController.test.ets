@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -56,7 +56,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnShowFileSelector001', 0, async (done: Function) => {
+    it('testOnShowFileSelector001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnShowFileSelector001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnShowFileSelector001", true, 31029, done);
@@ -71,7 +71,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileSelectorParamGetTitle001', 0, async (done: Function) => {
+    it('testFileSelectorParamGetTitle001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileSelectorParamGetTitle001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorParamGetTitle001", 'open file', 31030, done);
@@ -86,7 +86,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileSelectorParamGetMode001', 0, async (done: Function) => {
+    it('testFileSelectorParamGetMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileSelectorParamGetMode001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorParamGetMode001", 0, 31031, done);
@@ -101,7 +101,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileSelectorParamGetAcceptType001', 0, async (done: Function) => {
+    it('testFileSelectorParamGetAcceptType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileSelectorParamGetAcceptType001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorParamGetAcceptType001", '.json', 31032, done);
@@ -116,7 +116,7 @@ export default function webViewController() {
    * @tc.type       : Function
    * @tc.level      : Level 1
    */
-    it('testFileSelectorParamIsCapture001', 0, async (done: Function) => {
+    it('testFileSelectorParamIsCapture001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileSelectorParamIsCapture001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorParamIsCapture001", false, 31033, done);
@@ -131,7 +131,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileSelectorResultHandleFileList001', 0, async (done: Function) => {
+    it('testFileSelectorResultHandleFileList001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileSelectorResultHandleFileList001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileSelectorResultHandleFileList001", "\"1.json\"", 31034, done);

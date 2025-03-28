@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function BreakIteratorInI18nTest() {
 describe('BreakIteratorInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test current interface
     * @tc.desc    check the current result
     */
-    it('i18n_test_iterator_0100', 0, function () {
+    it('i18n_test_iterator_0100', Level.LEVEL0, function () {
         console.log('i18n_test_iterator_0100 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -75,7 +75,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test first interface
     * @tc.desc    check the first
     */
-    it('i18n_test_iterator_0200', 0, function () {
+    it('i18n_test_iterator_0200', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0200 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -89,7 +89,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test last interface
     * @tc.desc    check the last interface
     */
-    it('i18n_test_iterator_0300', 0, function () {
+    it('i18n_test_iterator_0300', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0300 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -103,7 +103,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test next interface
     * @tc.desc    check the next interface
     */
-    it('i18n_test_iterator_0400', 0, function () {
+    it('i18n_test_iterator_0400', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0400 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -117,7 +117,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test next interface with param
     * @tc.desc    check the next interface with param
     */
-    it('i18n_test_iterator_0500', 0, function () {
+    it('i18n_test_iterator_0500', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0500 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -131,7 +131,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test previous interface
     * @tc.desc    check the previous interface
     */
-    it('i18n_test_iterator_0600', 0, function () {
+    it('i18n_test_iterator_0600', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0600 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -145,7 +145,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test following interface
     * @tc.desc    check the following interface
     */
-    it('i18n_test_iterator_0700', 0, function () {
+    it('i18n_test_iterator_0700', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0700 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -159,7 +159,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test getLineBreakText interface
     * @tc.desc    check the getLineBreakText interface
     */
-    it('i18n_test_iterator_0800', 0, function () {
+    it('i18n_test_iterator_0800', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0800 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -173,7 +173,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test isBoundary interface
     * @tc.desc    check the isBoundary interface
     */
-    it('i18n_test_iterator_0900', 0, function () {
+    it('i18n_test_iterator_0900', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_0900 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
@@ -191,7 +191,7 @@ describe('BreakIteratorInI18nTest', function () {
     * @tc.name    test iterator interface
     * @tc.desc    check the iterator interface
     */
-    it('i18n_test_iterator_1000', 0, function () {
+    it('i18n_test_iterator_1000', Level.LEVEL2, function () {
         console.log('i18n_test_iterator_1000 ' + 'start');
         let iterator =I18n.getLineInstance('en');
         iterator.setLineBreakText('My name is Tom.Welcome to the sky world.');
