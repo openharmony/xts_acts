@@ -476,5 +476,26 @@ export default function printTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number print_function_1000
+     * @tc.name Test print
+     * @tc.desc check the 201 error code of getAddedPrinters function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1000', Level.LEVEL2, async (done: Function) => {
+      // Permissions required: ohos.permission.PRINT
+      try {
+        await print.getAddedPrinters(printerId);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log('print_function_1000 expect failed, err: ' + JSON.stringify(error));
+        expect(error.code).assertEqual(201);
+        done();
+      }
+    })
   })
 }
