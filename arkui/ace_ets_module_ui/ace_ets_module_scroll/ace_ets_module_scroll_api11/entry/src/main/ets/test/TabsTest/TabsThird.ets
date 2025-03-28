@@ -4647,7 +4647,7 @@ export default function tabsThird() {
      * @tc.name      Tests the BottomTabBarStyleLabelStyle property of the Tabs component.
      * @tc.desc      Gets the default values of bottomTabBarStyleLabelStyle.
      */
-    it('[ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100]', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100', 0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100] start");
       let strJson = getInspectorByKey('bottomTabBarDefaultTest');
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100]: " + JSON.stringify(strJson));
@@ -4675,9 +4675,9 @@ export default function tabsThird() {
       expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100 sizeInfo]: " + sizeInfo);
-      if (sizeInfo == '10.00vp') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
-      }else{
+      if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+      }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
         expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
       }
       expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Medium');
@@ -5864,9 +5864,9 @@ export default function tabsThird() {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font.size));
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500 sizeInfo]: " + sizeInfo);
-      if (sizeInfo == '10.00vp') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
-      }else{
+      if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+      }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
         expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
       }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500] end");
@@ -5946,9 +5946,9 @@ export default function tabsThird() {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font.size));
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700 sizeInfo]: " + sizeInfo);
-      if (sizeInfo == '10.00vp') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
-      }else{
+      if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+      }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
         expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
       }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700] end");
@@ -5991,9 +5991,9 @@ export default function tabsThird() {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font.size));
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800 sizeInfo]: " + sizeInfo);
-      if (sizeInfo == '10.00vp') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
-      }else{
+      if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+      }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
         expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
       }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800] end");
