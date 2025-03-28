@@ -154,13 +154,13 @@ export default function nativeApiSendableJsunit() {
       let flag = createInt()
       let lock = new utils.locks.AsyncLock;
       let p = lock.lockAsync(async () => {
-        exchange(flag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 1);
+        exchange(flag, 0, 1);
         await Promise.resolve();
         exchange(flag, 1, 0);
 
       })
       let p0 = lock.lockAsync(async () => {
-        exchange(flag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 2);
+        exchange(flag, 0, 2);
         await Promise.resolve();
         exchange(flag, 2, 0);
       })
@@ -178,7 +178,7 @@ export default function nativeApiSendableJsunit() {
       let flag = createInt()
       let lock = new utils.locks.AsyncLock;
       let p = lock.lockAsync(async () => {
-        exchange(flag, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 1);
+        exchange(flag, 0, 1);
         lock.lockAsync(async () => {
           exchange(flag, 1, 2);
         }, utils.locks.AsyncLockMode.SHARED);
