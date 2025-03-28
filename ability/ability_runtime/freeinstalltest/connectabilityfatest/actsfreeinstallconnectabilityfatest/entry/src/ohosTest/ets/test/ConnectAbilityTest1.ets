@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium'
 import rpc from '@ohos.rpc';
 import featureAbility from '@ohos.ability.featureAbility';
 import wantConstant from '@ohos.ability.wantConstant'
@@ -70,7 +70,7 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1500", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_1500", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1500-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1500";
       let cmddif = "bm install -p data/test/ConnectDifferentApplication.hap";
@@ -113,7 +113,7 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1600", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_1600", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1600";
       let cmdmyapp4 = "bm install -p data/test/ConnectFaMyApplication4.hap";
@@ -156,7 +156,7 @@ export default function ConnectAbilityTest1() {
     * @tc.desc    Function test
     * @tc.level   1
     */
-    it("FreeInstall_FA_ConnectAbility_1400", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_1400", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1400-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1400";
       featureAbility.startAbility({
@@ -194,7 +194,7 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_1700", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_1700", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1700";
       let cmddif = "bm install -p data/test/ConnectDifferentApplication.hap";
@@ -224,7 +224,7 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1800", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_1800", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1800";
 
@@ -252,7 +252,7 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_1900", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_1900", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_1900-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1900";
       let cmdmyapp5 = "cp data/test/ConnectFaMyApplication5.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
@@ -284,7 +284,7 @@ export default function ConnectAbilityTest1() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_2000", 0, async (done: Function) => {
+    it("FreeInstall_FA_ConnectAbility_2000", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_2000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_2000";
       let cmdmyapp5 = "cp data/test/ConnectFaMyApplication5.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +

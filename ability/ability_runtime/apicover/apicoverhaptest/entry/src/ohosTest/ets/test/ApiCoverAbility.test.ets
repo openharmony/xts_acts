@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, afterEach, it, expect, beforeAll, Level } from '@ohos/hypium';
 import appManagerNew from '@ohos.app.ability.appManager';
 import commonEvent from '@ohos.commonEvent';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -78,7 +78,7 @@ export default function ApiCoverTest() {
      * @tc.type      : Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_001', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_001', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest",
@@ -104,7 +104,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_002', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_002', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest1",
@@ -130,7 +130,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_003', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_003', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest",
@@ -161,7 +161,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_004', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_004', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest",
@@ -192,7 +192,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_005', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_005', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest",
@@ -218,7 +218,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_006', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_006', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest1",
@@ -245,7 +245,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_007', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_007', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest",
@@ -276,7 +276,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_008', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_008', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let want: Want = {
         bundleName: "com.example.extensionapitest",
@@ -307,7 +307,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_009', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_009', Level.LEVEL0, async (done: Function) => {
       console.log(`SUB_AA_ABILITY_Extension_API_009 start`);
       let want: Want = {
         bundleName: "com.example.extensionapitest1",
@@ -343,7 +343,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_010', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_010', Level.LEVEL0, async (done: Function) => {
       console.log(`SUB_AA_ABILITY_Extension_API_010 start`);
       try {
         AppStorage.get<common.UIAbilityContext>("abilityContext")!.disconnectServiceExtensionAbility(undefined, (err, data) => {
@@ -366,7 +366,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_011', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_011', Level.LEVEL0, async (done: Function) => {
       console.log(`SUB_AA_ABILITY_Extension_API_011 start`);
       try {
         AppStorage.get<common.UIAbilityContext>("abilityContext")!.disconnectServiceExtensionAbility(undefined)
@@ -389,7 +389,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ABILITY_Extension_API_012', 0, async (done: Function) => {
+    it('SUB_AA_ABILITY_Extension_API_012', Level.LEVEL0, async (done: Function) => {
       try {
         let info: appManagerNew.ProcessInformation;
         let stageContext: common.AbilityStageContext = AppStorage.get<common.AbilityStageContext>("stageContext")!;
@@ -446,7 +446,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_0100', 0, async (done: Function) => {
+    it('SUB_AA_AMS_Context_0100', Level.LEVEL0, async (done: Function) => {
       expect("/data/storage/el2/base/haps/entry_test/cache")
         .assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.cacheDir);
       expect("/data/storage/el2/base/haps/entry_test/temp")
@@ -515,7 +515,7 @@ export default function ApiCoverTest() {
        * @tc.type:   Function
        * @tc.level   3
        */
-    it('SUB_AA_AMS_Context_0200', 0, async (done: Function) => {
+    it('SUB_AA_AMS_Context_0200', Level.LEVEL0, async (done: Function) => {
       await AppStorage.get<common.UIAbilityContext>("abilityContext")!.eventHub.on("contextEvent", func1);
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.eventHub.emit("contextEvent", "aa", "bb");
       await sleep(500);
@@ -539,7 +539,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_Test_InsightIntent_0100', 0, async (done: Function) => {
+    it('SUB_AA_Test_InsightIntent_0100', Level.LEVEL0, async (done: Function) => {
       let startOp: startOptions = {
         withAnimation: false,
         displayId: 0,
@@ -578,7 +578,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_Test_StartOptions_0100', 0, async (done: Function) => {
+    it('SUB_AA_Test_StartOptions_0100', Level.LEVEL0, async (done: Function) => {
       let startOp: startOptions = {
         withAnimation: false,
         displayId: 0,
@@ -618,7 +618,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_FMS_AbilityStage_0100', 0, async (done: Function) => {
+    it('SUB_AA_FMS_AbilityStage_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_FMS_AbilityStage_0100===AbilityStage===" + JSON.stringify(AppStorage.get<common.AbilityStageContext>("stageContext")!));
       console.info("SUB_AA_FMS_AbilityStage_0100===AbilityStage===" + JSON.stringify(AppStorage.get<common.AbilityStageContext>("stageContext")!.config));
       let directions = AppStorage.get<common.AbilityStageContext>("stageContext")!.config.direction;
@@ -667,7 +667,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_FMS_AcquireForm_0100', 0, async (done: Function) => {
+    it('SUB_AA_FMS_AcquireForm_0100', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEventManager.CommonEventSubscriber;
       let formExtensionContext: common.FormExtensionContext
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -713,7 +713,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_AbilityAppManager_0100', 0, async (done: Function) => {
+    it('SUB_AA_AbilityAppManager_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       TAG = 'SUB_AA_AbilityAppManager_0100';
       await appManagerNew.getRunningProcessInformation()
@@ -747,7 +747,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_AbilityAppManager_0200', 0, async (done: Function) => {
+    it('SUB_AA_AbilityAppManager_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_AbilityAppManager_0200';
       appManagerNew.getRunningProcessInformation((err, data) => {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)} err: ${JSON.stringify(err)}`);
@@ -777,7 +777,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ApplicationContext_0100', 0, async (done: Function) => {
+    it('SUB_AA_ApplicationContext_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_ApplicationContext_0100';
       await AppStorage.get<common.ApplicationContext>("applicationContext")!.getRunningProcessInformation()
         .then((data) => {
@@ -810,7 +810,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_ApplicationContext_0200', 0, async (done: Function) => {
+    it('SUB_AA_ApplicationContext_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_ApplicationContext_0200';
       AppStorage.get<common.ApplicationContext>("applicationContext")!.getRunningProcessInformation((err, data) => {
         console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)} err: ${JSON.stringify(err)}`);
@@ -836,7 +836,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_Form_formBindingData_0100', 0, async (done: Function) => {
+    it('SUB_AA_Form_formBindingData_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_Form_formBindingData_0100';
       let formData: ESObject = {};
       let proxies: Array<formBindingData.ProxyData> = [
@@ -859,7 +859,7 @@ export default function ApiCoverTest() {
     * @tc.type:   Function
     * @tc.level   3
     */
-    it('SUB_AA_UIAbilityContext_setMissionContinueState_0100', 0, async (done: Function) => {
+    it('SUB_AA_UIAbilityContext_setMissionContinueState_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_UIAbilityContext_setMissionContinueState_0100';
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.setMissionContinueState(0, (err, data) => {
         console.log(`${TAG} setMissionContinueState data  ${JSON.stringify(err)}`);
@@ -876,7 +876,7 @@ export default function ApiCoverTest() {
    * @tc.type:   Function
    * @tc.level   3
    */
-    it('SUB_AA_UIAbilityContext_setMissionContinueState_0200', 0, async (done: Function) => {
+    it('SUB_AA_UIAbilityContext_setMissionContinueState_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_UIAbilityContext_setMissionContinueState_0200';
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.setMissionContinueState(0)
         .then((data) => {
@@ -899,7 +899,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('SUB_AA_ChildProcessManager_startChildProcess_0100', 0, async (done: Function) => {
+    it('SUB_AA_ChildProcessManager_startChildProcess_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
       console.log(`${tag}, it begin`);
       DemoProcess.toString();
@@ -932,7 +932,7 @@ export default function ApiCoverTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100', 0, async (done: Function) => {
+    it('SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_AA_ChildProcessManager_startChildProcess_AppSpawn_0100`;
       console.log(`${tag}, it begin`);
 
@@ -963,7 +963,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 1
      */
-    it('SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100', Level.LEVEL0, async (done: Function) => {
       expect(wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION).assertEqual(0x00000040);
       done();
     });
@@ -975,7 +975,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 1
      */
-    it('SUB_Ability_AbilityRuntime_ApplicationContext_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ApplicationContext_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ApplicationContext_0100`;
       console.log(`${tag}, it begin`);
       let lifeCallback:AbilityLifecycleCallback = {
@@ -1084,7 +1084,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 1
      */
-    it('SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100`;
       let capablity = canIUse("SystemCapability.Ability.AbilityRuntime.Core")
       if(capablity){
@@ -1116,7 +1116,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_ProcessCache_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ProcessCache_0400', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ProcessCache_0400`;
       console.log(`${tag}, test begin`);
       let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
@@ -1144,7 +1144,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 3
      */
-     it('SUB_Ability_AbilityRuntime_ProcessCache_0700', 0, async (done: Function) => {
+     it('SUB_Ability_AbilityRuntime_ProcessCache_0700', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ProcessCache_0700`;
       console.log(`${tag}, test begin`);
       let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
@@ -1171,7 +1171,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 3
      */
-     it('SUB_Ability_AbilityRuntime_ProcessCache_3000', 0, async (done: Function) => {
+     it('SUB_Ability_AbilityRuntime_ProcessCache_3000', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ProcessCache_3000`;
       console.log(`${tag}, test begin`);
       await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(
@@ -1210,7 +1210,7 @@ export default function ApiCoverTest() {
      * @tc.type   : Function
      * @tc.level  : 3
      */
-     it('SUB_Ability_AbilityRuntime_ProcessCache_3100', 0, async (done: Function) => {
+     it('SUB_Ability_AbilityRuntime_ProcessCache_3100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ProcessCache_3100`;
       console.log(`${tag}, test begin`);
       await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(
@@ -1249,7 +1249,7 @@ export default function ApiCoverTest() {
      * @tc.type:   Function
      * @tc.level   3
      */
-    it('SUB_AA_Test_SetStartUpPage_0100', 0, async (done: Function) => {
+    it('SUB_AA_Test_SetStartUpPage_0100', Level.LEVEL0, async (done: Function) => {
       let startOp: startOptions = {
         startWindowIcon: undefined,
         startWindowBackgroundColor: undefined,

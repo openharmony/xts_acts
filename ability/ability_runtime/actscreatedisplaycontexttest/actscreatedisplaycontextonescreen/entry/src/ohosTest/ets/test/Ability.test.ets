@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {
   application,
   common,
@@ -104,7 +104,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_0900', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_0900', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_0900]: start');
       try {
         console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_0900]: try');
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000', Level.LEVEL0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1000]: start');
       try {
         let displayContext: Context | undefined = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -169,7 +169,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1200', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1200', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1200]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -195,7 +195,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1300]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -222,7 +222,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1400', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1400', Level.LEVEL0, async () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1400]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -251,7 +251,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600', Level.LEVEL0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1600]: start');
       try {
         let groupId = '1';
@@ -289,7 +289,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1700', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1700', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1700]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -316,7 +316,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800', Level.LEVEL0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1800]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -347,7 +347,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_1900]: start');
       let errCode: number = -1;
       try {
@@ -373,7 +373,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2000', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2000', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2000]: start');
       try {
         console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2000]: try');
@@ -408,7 +408,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100', Level.LEVEL0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2100]: start');
       let resultTag = -1;
       let environmentId: number = -1;
@@ -452,7 +452,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2400]: start');
       try {
         let displayContext = uiAbilityContext?.createDisplayContext(disPlayId);
@@ -501,7 +501,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500', Level.LEVEL0, async () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2500]: start');
       try {
         let displayContext: common.Context;
@@ -537,7 +537,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600', Level.LEVEL0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2600]: start');
       try {
         let displayContext: common.Context;
@@ -570,7 +570,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2700', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2700', Level.LEVEL0, async () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2700]: start');
       try {
         let displayContext: common.Context;
@@ -598,7 +598,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800', Level.LEVEL0, async () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2800]: start');
       try {
         let displayContext: common.Context;
@@ -633,7 +633,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900', Level.LEVEL0, async () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_2900]: start');
       try {
         let context = await application.createModuleContext(uiAbilityContext, 'entry_test');
@@ -661,7 +661,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000', Level.LEVEL0, async (done: Function) => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_3000]: start');
       try {
         let context = await application.createModuleContext(uiAbilityContext, 'entry_test');
@@ -688,7 +688,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000', 0, () => {
+    it('SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000', Level.LEVEL0, () => {
       console.log('[SUB_Ability_AbilityRuntime_CreateDisplayContextByDisplayId_5000]: start');
       let errCode: number = -1;
       try {

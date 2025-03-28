@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
 
@@ -27,7 +27,7 @@ export default function abilityTest() {
      * @tc.desc: UriPermission on demand start and stop
      * @tc.level:1
      */
-    it('Acts_UriPermisssion_0100', 0, async (done: Function) => {
+    it('Acts_UriPermisssion_0100', Level.LEVEL0, async (done: Function) => {
       console.log('Acts_UriPermisssion_0100 start.');
       await abilityDelegator.executeShellCommand("hilog -x | grep UriPermissionManagerService")
         .then((data) => {

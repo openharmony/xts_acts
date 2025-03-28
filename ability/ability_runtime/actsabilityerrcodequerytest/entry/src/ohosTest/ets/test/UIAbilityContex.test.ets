@@ -14,7 +14,7 @@
  */
  
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { AtomicServiceOptions, common, contextConstant,
   OpenLinkOptions,
   StartOptions, startupManager,
@@ -66,7 +66,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100
      * @tc.desc: run parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_run_0100', Level.LEVEL0, async (done:Function) => {
       let startParams = ['StartupTask_001'];
       try {
         startupManager.run(undefined).then(() => {
@@ -91,7 +91,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100
      * @tc.desc: getStartupTaskResult parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_getStartupTaskResult_0100', Level.LEVEL0, async (done:Function) => {
       try {
         const data = startupManager.getStartupTaskResult(undefined)
       } catch (error) {
@@ -107,7 +107,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100
      * @tc.desc: isStartupTaskInitialized parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100', Level.LEVEL0, async (done:Function) => {
       try {
         const data = startupManager.isStartupTaskInitialized(undefined)
       } catch (error) {
@@ -122,7 +122,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100
      * @tc.desc: removeStartupTaskResult parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100', Level.LEVEL0, async (done:Function) => {
       try {
         const data = startupManager.removeStartupTaskResult(undefined)
       } catch (error) {
@@ -137,7 +137,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0100
      * @tc.desc: startAbilityByType parameter error, pass undefined Async
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_5', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_5', Level.LEVEL0, async (done:Function) => {
       let wantParam: Record<string, Object> = {
         'time': '2023-10-23 20:45'
       };
@@ -169,7 +169,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200
      * @tc.desc: startAbilityByType parameter error, pass undefined Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityByType_0200', Level.LEVEL0, async (done:Function) => {
       let wantParam: Record<string, Object> = {
         'time': '2023-10-23 20:45'
       };
@@ -203,7 +203,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100
      * @tc.desc: openAtomicService parameter error, pass undefined Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', Level.LEVEL0, async (done:Function) => {
       let appId: string = '6918661953712445909';
       let options: AtomicServiceOptions = {
         displayId: 0
@@ -230,7 +230,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100
      * @tc.desc: Capability not support
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0100', Level.LEVEL0, async (done:Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -278,7 +278,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200
      * @tc.desc: Start options check failed.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_showAbility_0200', Level.LEVEL0, async (done:Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -326,7 +326,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100
      * @tc.desc: Capability not support.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0100', Level.LEVEL0, async (done:Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -374,7 +374,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200
      * @tc.desc: Start options check failed.
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_hideAbility_0200', Level.LEVEL0, async (done:Function) => {
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
         abilityName: 'MainAbility1'
@@ -422,7 +422,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400
      * @tc.desc: startAbility set flags=-1
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0400', Level.LEVEL0, async (done:Function) => {
       let startWant: Want = {
         bundleName: 'com.test.actscommoncomponenttest',
         abilityName: 'MainAbility1',
@@ -449,7 +449,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
      * @tc.desc: startAbilityForResult set flags=-1   Async
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', Level.LEVEL0, async (done:Function) => {
       let startWant: Want = {
         bundleName: 'com.test.actscommoncomponenttest',
         abilityName: 'MainAbility2',
@@ -476,7 +476,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
      * @tc.desc: startAbilityForResult set flags=-1   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', Level.LEVEL0, async (done:Function) => {
       let startWant: Want = {
         bundleName: 'com.test.actscommoncomponenttest',
         abilityName: 'MainAbility1',
@@ -507,7 +507,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
      * @tc.desc: The premeters within the Want carry parameters with a size of more than 200k
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500', Level.LEVEL0, async (done:Function) => {
       // 构造一个超过 200KB 的对象
       const largeObject = generateLargeString(TWO_HUNDRED_KB + 100)
       let startWant: Want = {

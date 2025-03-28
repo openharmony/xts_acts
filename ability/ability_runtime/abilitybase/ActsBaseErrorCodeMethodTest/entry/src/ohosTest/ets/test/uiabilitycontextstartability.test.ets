@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import { common, contextConstant, sendableContextManager, WantAgent, wantAgent, wantConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError, systemParameterEnhance } from '@kit.BasicServicesKit';
@@ -47,7 +47,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0100 start');
       if(mpEnable == 'true'){
         try {
@@ -81,7 +81,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
       if(mpEnable == 'true'){
         try {
@@ -115,7 +115,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0500 start');
       if(mpEnable == 'true'){
         try {
@@ -149,7 +149,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0600 start');
       if(mpEnable == 'true'){
         try {
@@ -186,7 +186,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0800 start');
       if(mpEnable == 'true'){
         try {
@@ -223,7 +223,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1000 start');
       if(mpEnable == 'true'){
         try {
@@ -261,7 +261,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1100 start');
       try {
         context.startAbility({
@@ -291,7 +291,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1200 start');
       try {
         context.startAbility({
@@ -324,7 +324,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1300 start');
       if(npEnable == 'true'){
         try {
@@ -358,7 +358,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1500 start');
       if(mpEnable == 'true'){
         try {
@@ -392,7 +392,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1600 start');
       if(mpEnable == 'true'){
         try {
@@ -429,7 +429,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1700 start');
       if(mpEnable == 'true'){
         try {

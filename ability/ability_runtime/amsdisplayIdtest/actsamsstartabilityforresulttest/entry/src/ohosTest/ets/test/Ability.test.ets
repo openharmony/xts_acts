@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager';
 import display from '@ohos.display';
 import base from '@ohos.base';
@@ -47,7 +47,7 @@ export default function abilityTest() {
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify Get displayId to startAbilityForResult Ability
     */
-    it('ACTS_startAbilityForResult_0800', 0, async (done: Function) => {
+    it('ACTS_startAbilityForResult_0800', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_startAbilityForResult_0800====<begin');
       let id: number = -1;
 
@@ -91,7 +91,7 @@ export default function abilityTest() {
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify that the ability to startAbilityForResult when displayId is a string
     */
-    it('ACTS_startAbilityForResult_0900', 0, async (done: Function) => {
+    it('ACTS_startAbilityForResult_0900', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_startAbilityForResult_0900====<begin');
       let id: number = -1;
 
@@ -138,7 +138,7 @@ export default function abilityTest() {
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Validation parameters want to filter the DISPLAY_ID of parameters
     */
-    it('ACTS_startAbilityForResult_1000', 0, async (done: Function) => {
+    it('ACTS_startAbilityForResult_1000', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_startAbilityForResult_1000====<begin');
       let id: number = -1;
 

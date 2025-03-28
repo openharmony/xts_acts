@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const TAG = 'AbilityDelegatorFATest';
@@ -44,7 +44,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0900', 3, async (done) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0900', Level.LEVEL3, async (done) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0900';
       try {
         let delegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -109,7 +109,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0700', 1, (done) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0700', Level.LEVEL1, (done) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0700';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();

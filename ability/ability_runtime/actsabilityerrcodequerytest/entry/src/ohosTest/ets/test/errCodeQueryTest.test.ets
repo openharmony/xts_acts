@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { common, UIAbility, Want, dialogRequest, StartOptions, InsightIntentContext,
   OpenLinkOptions } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -65,7 +65,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    Pass the parameter wrongly as undefined
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_setColorMode_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_setColorMode_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_setColorMode_0100';
       try {
         let applicationContext = uiAbilityContext.getApplicationContext();
@@ -84,7 +84,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    Pass the parameter wrongly as undefined
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_RequestCallback_setRequestResult_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_RequestCallback_setRequestResult_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_RequestCallback_setRequestResult_0100';
       try {
         let want: Want = {
@@ -112,7 +112,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    Pass the parameter wrongly as undefined
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_dialogRequest_getRequestInfo_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_dialogRequest_getRequestInfo_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_dialogRequest_getRequestInfo_0100';
       try {
         let requestInfo = dialogRequest.getRequestInfo(undefined);
@@ -132,7 +132,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    Pass the parameter wrongly as undefined
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_dialogRequest_getRequestCallback_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_dialogRequest_getRequestCallback_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_dialogRequest_getRequestCallback_0100';
       try {
         let requestCallback = dialogRequest.getRequestCallback(undefined);
@@ -152,7 +152,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void. Errcode 16000010, set flags to -1
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0300';
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
@@ -184,7 +184,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    startAbility(want: Want, options?: StartOptions): Promise<void>; Errcode 16000010, set flags to -1
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbility_0800';
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
@@ -220,7 +220,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void. Errcode 16000010, set flags to -1
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0300';
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
@@ -252,7 +252,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>; Errcode 16000010, set flags to -1
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_UIExtensionContext_startAbilityForResult_0800';
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
@@ -288,7 +288,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    startAbility(want: Want, callback: AsyncCallback<void>): void; Errcode 16000001, set the ability name wrongly
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200';
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',
@@ -319,7 +319,7 @@ export default function errCodeQueryTest() {
      * @tc.desc    startAbility(want: Want): Promise<void>; Errcode 16000001, set the ability name wrongly
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500';
       let want: Want = {
         bundleName: 'com.test.actsabilityerrcodequerytest',

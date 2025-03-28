@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level } from '@ohos/hypium';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import base, { BusinessError } from '@ohos.base';
 import { abilityAccessCtrl, common } from '@kit.AbilityKit';
@@ -57,7 +57,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0100', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0100', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0100`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -100,7 +100,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0200', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0200', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0200`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -143,7 +143,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0300', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0300', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0300`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -186,7 +186,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0400', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0400', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0400`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -229,7 +229,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0500', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0500', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0500`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -272,7 +272,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0600', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0600', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0600`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -315,7 +315,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0700', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0700', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0700`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -358,7 +358,7 @@ export default function UIExtensionContentSessionTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('Sub_UIExtensionContentSession_errorCode_0800', 0, (done:Function) => {
+    it('Sub_UIExtensionContentSession_errorCode_0800', Level.LEVEL0, (done: Function) => {
       let tag:string = `Sub_UIExtensionContentSession_errorCode_0800`;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {

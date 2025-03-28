@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import featureAbility from '@ohos.ability.featureAbility'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import abilityDelegatorRegistryNew from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -44,7 +44,7 @@ export default function actsStServiceAbilityTest() {
          * @tc.name: Execute a shell command without arguments (AsyncCallback).
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_AExecuteShellCommand_Callback_0100', 0, async function (done) {
+        it('ACTS_AExecuteShellCommand_Callback_0100', Level.LEVEL0, async function (done) {
             console.log("ACTS_AExecuteShellCommand_Callback_0100 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -84,7 +84,7 @@ export default function actsStServiceAbilityTest() {
          * @tc.name: Execute a shell command without arguments (Promise).
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_AExecuteShellCommand_Promise_0100', 0, async function (done) {
+        it('ACTS_AExecuteShellCommand_Promise_0100', Level.LEVEL0, async function (done) {
             console.log("ACTS_AExecuteShellCommand_Promise_0100 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -120,7 +120,7 @@ export default function actsStServiceAbilityTest() {
           * @tc.name: GetDisplayOrientation
           * @tc.desc: Check the return value of the interface (by AsyncCallback)
           */
-        it('ACTS_AGetDisplayOrientation_0100', 0, async function (done) {
+        it('ACTS_AGetDisplayOrientation_0100', Level.LEVEL0, async function (done) {
             console.log("ACTS_AGetDisplayOrientation_0100 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -156,7 +156,7 @@ export default function actsStServiceAbilityTest() {
          * @tc.name: GetDisplayOrientation
          * @tc.desc: Check the return type of the interface (by promise)
          */
-        it('ACTS_AGetDisplayOrientation_0200', 0, async function (done) {
+        it('ACTS_AGetDisplayOrientation_0200', Level.LEVEL0, async function (done) {
             console.log("ACTS_AGetDisplayOrientation_0200 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -191,7 +191,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name: SetDisplayOrientation
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_ASetDisplayOrientation_0100', 0, async function (done) {
+        it('ACTS_ASetDisplayOrientation_0100', Level.LEVEL0, async function (done) {
             console.log("ACTS_ASetDisplayOrientation_0100 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -222,7 +222,7 @@ export default function actsStServiceAbilityTest() {
          * @tc.name: SetDisplayOrientation
          * @tc.desc: Check the return type of the interface (by promise)
          */
-        it('ACTS_ASetDisplayOrientation_0200', 0, async function (done) {
+        it('ACTS_ASetDisplayOrientation_0200', Level.LEVEL0, async function (done) {
             console.log("ACTS_ASetDisplayOrientation_0200 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -250,7 +250,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name: SetShowOnLockScreen
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_ASetShowOnLockScreen_0100', 0, async function (done) {
+        it('ACTS_ASetShowOnLockScreen_0100', Level.LEVEL0, async function (done) {
             console.log("ACTS_ASetShowOnLockScreen_0100 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -281,7 +281,7 @@ export default function actsStServiceAbilityTest() {
          * @tc.name: SetShowOnLockScreen
          * @tc.desc: Check the return type of the interface (by promise)
          */
-        it('ACTS_ASetShowOnLockScreen_0200', 0, async function (done) {
+        it('ACTS_ASetShowOnLockScreen_0200', Level.LEVEL0, async function (done) {
             console.log("ACTS_ASetShowOnLockScreen_0200 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -310,7 +310,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name: SetWakeUpScreen
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_ASetWakeUpScreen_0100', 0, async function (done) {
+        it('ACTS_ASetWakeUpScreen_0100', Level.LEVEL0, async function (done) {
             console.log("ACTS_ASetWakeUpScreen_0100 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -341,7 +341,7 @@ export default function actsStServiceAbilityTest() {
          * @tc.name: SetWakeUpScreen
          * @tc.desc: Check the return type of the interface (by promise)
          */
-        it('ACTS_ASetWakeUpScreen_0200', 0, async function (done) {
+        it('ACTS_ASetWakeUpScreen_0200', Level.LEVEL0, async function (done) {
             console.log("ACTS_ASetWakeUpScreen_0200 --- start")
             var currentAlertTimeout = 0;
             try {
@@ -370,7 +370,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : start new ability
         * @tc.desc      : Starting mainability2 with startability succeeded.(callback)
         */
-        it('ACTS_ATestRunner_0200', 0, async function (done) {
+        it('ACTS_ATestRunner_0200', Level.LEVEL0, async function (done) {
             console.debug('ACTS_ATestRunner_0200====<begin');
             let sa = '-b';
             try {
@@ -398,7 +398,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with undefined
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0100', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0100', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0100====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
@@ -417,7 +417,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with null
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0200', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0200', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0200====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
@@ -436,7 +436,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with no param
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0300', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0300', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0300====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
@@ -455,7 +455,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with two param
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0400', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0400', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0400====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
@@ -474,7 +474,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with wrong type
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0500', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0500', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0500====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
@@ -494,7 +494,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with mixed data
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0600', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0600', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0600====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
@@ -512,7 +512,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with empty param
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0700', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0700', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0700====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {};
@@ -525,7 +525,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with valid param
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0800', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0800', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0800====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
@@ -544,7 +544,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with negative number
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0900', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0900', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0900====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
@@ -560,7 +560,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with letter
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1000', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1000', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1000====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
@@ -576,7 +576,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with no param
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1100', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1100', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1100====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
@@ -592,7 +592,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with Special characters
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1200', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1200', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1200====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
@@ -608,7 +608,7 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with number
         */
-        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1300', 0, async function (done) {
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1300', Level.LEVEL0, async function (done) {
             console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1300====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {

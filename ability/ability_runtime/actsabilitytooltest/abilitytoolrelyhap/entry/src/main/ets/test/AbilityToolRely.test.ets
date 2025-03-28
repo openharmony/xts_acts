@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const TEST_SUITE_NAME: string = 'AbilityToolRelyTest';
@@ -31,7 +31,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20600', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20600', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20600';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -56,7 +56,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20700', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20700', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20700';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -82,7 +82,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20800', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20800', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20800';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -107,7 +107,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20900', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20900', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_20900';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -132,7 +132,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21000', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21000', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21000';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -155,7 +155,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21300', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21300', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21300';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -179,7 +179,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21400', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21400', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21400';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -205,7 +205,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21500', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21500', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21500';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -231,7 +231,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21600', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21600', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21600';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -257,7 +257,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21700', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21700', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21700';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
@@ -285,7 +285,7 @@ export default function AbilityToolRelyTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21800', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21800', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_01_21800';
       try {
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect, beforeEach, beforeAll } from '@ohos/hypium'
+import { describe, afterEach, it, expect, beforeEach, beforeAll, Level } from '@ohos/hypium'
 import hilog from '@ohos.hilog';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -61,7 +61,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1000', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let want: Want = {
@@ -101,7 +101,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
@@ -154,7 +154,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_1600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
@@ -207,7 +207,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 1.1234567890123457;
@@ -283,7 +283,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 123456789101112;
@@ -359,7 +359,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = true;
@@ -435,7 +435,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 99.0123456789;
@@ -511,7 +511,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 1.1212;
@@ -587,7 +587,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = [100, 200, 300, 400];
@@ -663,7 +663,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3100', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
@@ -750,7 +750,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 
@@ -840,7 +840,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 'a';
@@ -916,7 +916,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3400', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 'str';
@@ -992,7 +992,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = ['str1', 'str2', 'str3'];
@@ -1068,7 +1068,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParam = 100;
@@ -1144,7 +1144,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_3800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let testParamInt = 100;
@@ -1225,7 +1225,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -1298,7 +1298,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4100', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_4100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
 

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import { BusinessError, commonEventManager, systemParameterEnhance } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { Driver, MatchPattern, ON } from '@kit.TestKit';
@@ -34,7 +34,7 @@ export default function codeError2() {
       }
 
     })
-    it('UIExtension_startUIServiceExtensionAbility_801', 0, (done: Function) => {
+    it('UIExtension_startUIServiceExtensionAbility_801', Level.LEVEL0, (done: Function) => {
       let tag = 'UIExtension_startUIServiceExtensionAbility_801';
       console.info(`${tag}-is begin`)
       if(mpEnable != 'true' || isServiceEnable != 'false'){
@@ -94,7 +94,7 @@ export default function codeError2() {
       };
     })
 
-    it('UIExtension_startUIServiceExtensionAbility_16000001', 0, (done: Function) => {
+    it('UIExtension_startUIServiceExtensionAbility_16000001', Level.LEVEL0, (done: Function) => {
       let tag = 'UIExtension_startUIServiceExtensionAbility_16000001';
       console.info(`${tag}-is begin`)
       if(mpEnable != 'true' || isServiceEnable !='true'){
@@ -155,7 +155,7 @@ export default function codeError2() {
       };
     })
 
-    it('UIExtension_startUIServiceExtensionAbility_16000002', 0, (done: Function) => {
+    it('UIExtension_startUIServiceExtensionAbility_16000002', Level.LEVEL0, (done: Function) => {
       let tag = 'UIExtension_startUIServiceExtensionAbility_16000002';
       console.info(`${tag}-is begin`)
       if(mpEnable != 'true' || isServiceEnable !='true'){
@@ -214,7 +214,7 @@ export default function codeError2() {
       };
     })
 
-    it('UIExtension_connectUIServiceExtensionAbility_16000001', 0, (done: Function) => {
+    it('UIExtension_connectUIServiceExtensionAbility_16000001', Level.LEVEL0, (done: Function) => {
       let tag = 'UIExtension_connectUIServiceExtensionAbility_16000001';
       console.info(`${tag}-is begin`)
       if(mpEnable != 'true' || isServiceEnable !='true'){
@@ -271,7 +271,7 @@ export default function codeError2() {
       };
     })
 
-    it('UIExtension_connectServiceExtensionAbility_16000002', 0, (done: Function) => {
+    it('UIExtension_connectServiceExtensionAbility_16000002', Level.LEVEL0, (done: Function) => {
       let tag = 'UIExtension_connectUIServiceExtensionAbility_16000002';
       console.info(`${tag}-is begin`)
       if(mpEnable != 'true' || isServiceEnable !='true'){

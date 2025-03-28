@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import { AbilityConstant, wantConstant } from '@kit.AbilityKit';
 
 export default function abilityTest() {
@@ -27,7 +27,7 @@ export default function abilityTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('SUB_Ability_Ability_Runtime_onCollaborate_2900', 0, async (done: Function) => {
+    it('SUB_Ability_Ability_Runtime_onCollaborate_2900', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_Ability_Runtime_onCollaborate_2900';
       console.info(`${caseName} Begin`);
       try {
@@ -49,7 +49,7 @@ export default function abilityTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('SUB_Ability_Ability_Runtime_onCollaborate_3000', 0, async (done: Function) => {
+    it('SUB_Ability_Ability_Runtime_onCollaborate_3000', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_Ability_Runtime_onCollaborate_3000';
       console.info(`${caseName} Begin`);
       try {
@@ -71,7 +71,7 @@ export default function abilityTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('SUB_Ability_Ability_Runtime_onCollaborate_3100', 0, async (done: Function) => {
+    it('SUB_Ability_Ability_Runtime_onCollaborate_3100', Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'SUB_Ability_Ability_Runtime_onCollaborate_3100';
       console.info(`${caseName} Begin`);
       try {
