@@ -12,11 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import UIExtensionContentSessionTest from './UIExtensionContentSession.test'
-import sendableContextManagerTest from './sendableContextManager.test'
-import UIAbilityContex from './UIAbilityContex.test';
-export default function testsuite() {
-  UIExtensionContentSessionTest();
-  sendableContextManagerTest();
-  UIAbilityContex();
+
+import hilog from '@ohos.hilog';
+
+const TAG: string = 'actsAbilityRunTimeTest-Page ';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear() {
+    hilog.info(0x0000, TAG, '%{public}s', 'EntryAbility index aboutToAppear');
+  }
+
+  onPageShow(): void {
+    hilog.info(0x0000, TAG, '%{public}s', 'EntryAbility index onPageShow');
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text("Hello")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

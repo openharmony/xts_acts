@@ -100,7 +100,7 @@ export default function errCodeQueryTest() {
       try {
         let want: Want = {
           deviceId: '',
-          bundleName: 'com.test.actsabilityerrcodequerytest',
+          bundleName: 'com.test.actsabilityerrcodequerysecondtest',
           abilityName: 'TestAbility',
           moduleName: 'entry_test'
         };
@@ -168,7 +168,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
           abilityName: 'AbilityE',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -207,7 +207,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
           abilityName: 'AbilityB',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -246,7 +246,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
           abilityName: 'AbilityE',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -285,7 +285,7 @@ export default function errCodeQueryTest() {
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let want: Want = {
-          bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+          bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
           abilityName: 'AbilityB',
         };
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -341,7 +341,7 @@ export default function errCodeQueryTest() {
           })
           // 启动测试用的入口ability
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -384,7 +384,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -427,7 +427,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -470,7 +470,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -513,7 +513,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -556,7 +556,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -599,7 +599,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -642,7 +642,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -685,7 +685,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -728,7 +728,7 @@ export default function errCodeQueryTest() {
             });
           })
           let entryWant: Want = {
-            bundleName: "com.test.actsabilityerrcodequerytest",
+            bundleName: "com.test.actsabilityerrcodequerysecondtest",
             abilityName: "EntryAbility1",
             parameters: {
               "case": TAG
@@ -753,7 +753,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0200';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
         abilityName: 'AbilityAbility',
       };
       try {
@@ -784,7 +784,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0300';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
         abilityName: 'AbilityE',
       };
       try {
@@ -815,7 +815,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0500';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
         abilityName: 'AbilityAbility',
       };
       let errObject = {} as BusinessError;
@@ -847,7 +847,7 @@ export default function errCodeQueryTest() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_ErrorCode_InsightIntentContext_startAbility_0600';
       let want: Want = {
-        bundleName: 'com.rely.actsabilityerrcodequerytestrely2',
+        bundleName: 'com.rely.actsabilityerrcodequerysecondtestrely2',
         abilityName: 'AbilityE',
       };
       let errObject = {} as BusinessError;
