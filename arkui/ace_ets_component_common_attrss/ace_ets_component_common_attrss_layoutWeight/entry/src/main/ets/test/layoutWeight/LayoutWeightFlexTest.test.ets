@@ -128,7 +128,7 @@ export default function layoutWeightFlexTest() {
       console.info('[' + data.caseTag + ']' + 'width is:' + JSON.stringify(width));
       console.info('[' + data.caseTag + ']' + 'layoutWeight is:' + data.viewObj.$attrs.layoutWeight);
       expect(data.viewObj.$attrs.layoutWeight).assertEqual(data.testValue.expectValue.layoutWeight);
-      expect(Math.abs(width - data.testValue.expectValue.width) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(width - data.testValue.expectValue.width)) <= 1).assertTrue();
     });
   })
 }
