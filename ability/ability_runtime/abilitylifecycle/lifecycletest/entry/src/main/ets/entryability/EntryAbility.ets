@@ -15,8 +15,8 @@ async function sleep(time: number) {
 }
 
 export default class EntryAbility extends UIAbility {
-  wantParam: Object = new Object()
-  abilityLifeArr: Array<string> = []
+  private wantParam: Object = new Object()
+  private abilityLifeArr: Array<string> = []
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onCreate');
@@ -140,7 +140,7 @@ export default class EntryAbility extends UIAbility {
   onWillBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onWillBackground');
     let commonEventData: EventDataI = {
-      data: "onWillBackground"
+      data: 'onWillBackground'
     };
     commonEventManager.publish('onWillBackground', commonEventData, (err) => {
       console.info('====> [onWillBackground_0003 result] publish: ' + JSON.stringify(err));
@@ -150,7 +150,7 @@ export default class EntryAbility extends UIAbility {
   onDidBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onDidBackround');
     console.info('this.wantParam=', this.wantParam, this.wantParam == "onDidForeground_0004")
-    if (this.wantParam === "onDidForeground_0004") {
+    if (this.wantParam === 'onDidForeground_0004') {
       let commonEventData: EventDataI = {
         data: 'onDidBackground'
       };
