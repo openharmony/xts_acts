@@ -69,7 +69,7 @@ export default function staticImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRelativePathRes', 0, () => {
+    it('testRelativePathRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let relativePathRes: String = '';
       let a = testAdd(2, 3);
       if (a == 5) {

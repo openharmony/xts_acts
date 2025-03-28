@@ -308,7 +308,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0014', 0, async () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0014', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async () => {
       await testNapiTaskPool()
     })
 
@@ -320,7 +320,7 @@ export default function HapNapiLoadTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0015', 0, async () => {
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0015', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async () => {
       await testReNapiTaskPool()
     })
 
