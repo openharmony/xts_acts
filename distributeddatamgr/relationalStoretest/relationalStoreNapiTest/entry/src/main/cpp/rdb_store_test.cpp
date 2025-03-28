@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -36,8 +36,8 @@
 napi_env g_env = 0;
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_test.db";
-char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
-char MODULE_NAME[] =  "com.acts.rdb.napitest";
+char BUNDLE_NAME[] =  "com.acts.relationalstorenapiTest";
+char MODULE_NAME[] =  "com.acts.relationalstorenapiTest";
 OH_Rdb_Store *storeTestRdbStore_ = NULL;
 OH_Rdb_Store *storeTestRdbStore1_ = NULL;
 OH_Rdb_Store *storeTestRdbStore2_ = NULL;
