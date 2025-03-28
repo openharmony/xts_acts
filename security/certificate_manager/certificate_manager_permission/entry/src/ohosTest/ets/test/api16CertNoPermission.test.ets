@@ -15,7 +15,7 @@
 
 import certManager from '@ohos.security.certManager';
 import { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { GlobalContext } from '../../../../src/main/ets/pages/HomePage';
 import certManagerDialog from '@ohos.security.certManagerDialog';
 import deviceInfo from '@ohos.deviceInfo';
@@ -121,7 +121,7 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010 start');
       try {
         let scope: certManager.CertScope = certManager.CertScope.CURRENT_USER;
@@ -143,7 +143,7 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_InstallUserTrustedCertificates_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_InstallUserTrustedCertificates_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info('SUB_Security_CertManager_InstallUserTrustedCertificates_0010 start');
       try {
         let result: certManager.CMResult = certManager.installUserTrustedCertificateSync(caCert, certManager.CertScope.CURRENT_USER);
@@ -164,7 +164,7 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_UninstallUserTrustedCertificate_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_UninstallUserTrustedCertificate_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('SUB_Security_CertManager_UninstallUserTrustedCertificate_0010 start');
       let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
       try {
@@ -186,7 +186,7 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenUninstallCertificateDialog_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenUninstallCertificateDialog_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0010: started ");
       let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
       const context :common.Context = GlobalContext.getContext();
@@ -211,7 +211,7 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenCertificateDialog_0011', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenCertificateDialog_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenCertificateDialog_0011: started ");
       const context :common.Context = GlobalContext.getContext();
       let property: certManagerDialog.CertificateDialogProperty = {

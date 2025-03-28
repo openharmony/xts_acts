@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import deviceInfo from '@ohos.deviceInfo';
 
 export default function ActsDlpNDKTest() {
@@ -47,7 +47,7 @@ export default function ActsDlpNDKTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('getDlpPermissionInfoTest', 0, async (done: Function) => {
+    it('getDlpPermissionInfoTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> getDlpPermissionInfoTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{
@@ -72,7 +72,7 @@ export default function ActsDlpNDKTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('getOriginalFileNameTest', 0, async (done: Function) => {
+    it('getOriginalFileNameTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> getOriginalFileNameTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{
@@ -98,7 +98,7 @@ export default function ActsDlpNDKTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('isInSandboxTest', 0, async (done: Function) => {
+    it('isInSandboxTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> isInSandboxTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{
@@ -124,7 +124,7 @@ export default function ActsDlpNDKTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('setSandboxAppConfigTest', 0, async (done: Function) => {
+    it('setSandboxAppConfigTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> setSandboxAppConfigTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{
@@ -150,7 +150,7 @@ export default function ActsDlpNDKTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('getSandboxAppConfigTest', 0, async (done: Function) => {
+    it('getSandboxAppConfigTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> getSandboxAppConfigTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{
@@ -176,7 +176,7 @@ export default function ActsDlpNDKTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('cleanSandboxAppConfigTest', 0, async (done: Function) => {
+    it('cleanSandboxAppConfigTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("=======> cleanSandboxAppConfigTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{

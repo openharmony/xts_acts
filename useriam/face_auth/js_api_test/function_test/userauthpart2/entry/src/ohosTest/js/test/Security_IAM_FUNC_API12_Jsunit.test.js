@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level, TestType, Size  } from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
 import { checkSupportOrNot } from './utils/commonFunc';
 
@@ -28,7 +28,7 @@ export default function userauthTest_API12() {
             * @tc.type      : Function
             * @tc.level     : Level 1
         */
-        it('SUB_Security_IAM_Func_API12_0100', 1, async function (done) {
+        it('SUB_Security_IAM_Func_API12_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info('testFace SUB_Security_IAM_Func_API12_0100 start');
             let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
             let authTypeOne = [-1, 0, 3, 5]
