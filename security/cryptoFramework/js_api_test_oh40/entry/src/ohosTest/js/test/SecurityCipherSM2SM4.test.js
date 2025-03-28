@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, afterAll, } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, expect, afterAll, TestType, Size, Level, } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import * as symPromise from "./utils/symmetric/publicSymmetricPromise";
@@ -49,7 +49,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -76,7 +76,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symCallback
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|CTR|PKCS5")
@@ -100,7 +100,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|CTR|PKCS7")
@@ -124,7 +124,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -151,7 +151,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symCallback
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|ECB|PKCS5")
@@ -175,7 +175,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|ECB|PKCS7")
@@ -199,7 +199,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -226,7 +226,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0800",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symCallback
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|CBC|PKCS5")
@@ -250,7 +250,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_0900",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|CBC|PKCS7")
@@ -274,7 +274,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1000",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -301,7 +301,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symCallback
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|OFB|PKCS5")
@@ -325,7 +325,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|OFB|PKCS7")
@@ -349,7 +349,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -376,7 +376,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symCallback
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|CFB|PKCS5")
@@ -400,7 +400,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4_128|CFB|PKCS7")
@@ -424,7 +424,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -451,7 +451,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symCallback
           .encryptAndDecryptNormalSM4Process(
@@ -478,7 +478,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1800",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(
@@ -505,7 +505,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_1900",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await symPromise
           .encryptAndDecryptNormalSM4Process(symKeyPairSM4, "SM4|ECB|PKCS7")
@@ -529,7 +529,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2000",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyCallback
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|C1C3C2|MD5")
@@ -553,7 +553,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|SM3")
@@ -577,7 +577,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyCallback
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|C1C3C2|SHA1")
@@ -601,7 +601,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|SHA224")
@@ -625,7 +625,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyCallback
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|C1C3C2|SHA256")
@@ -649,7 +649,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|SHA384")
@@ -673,7 +673,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyCallback
           .encryptAndDecryptNormalProcess("SM2_256", "SM2_256|C1C3C2|SHA512")
@@ -702,7 +702,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           await cryptoFramework.createCipher(null);
@@ -759,7 +759,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2800",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           await cryptoFramework.createSymKeyGenerator(null);
@@ -795,7 +795,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_2900",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let cipherGeneratorEncrypt =
           cryptoFramework.createCipher("SM4_128|CTR|PKCS7");
@@ -851,7 +851,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_3000",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let cipherGenerator = cryptoFramework.createCipher(
           "SM4_128|CTR|NoPadding"
@@ -919,7 +919,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_3100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let cipherGenerator = cryptoFramework.createCipher(
           "SM4_128|CTR|NoPadding"
@@ -973,7 +973,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_3200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           await cryptoFramework.createSymKeyGenerator("SM4_257|SHA256");
@@ -993,7 +993,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
      */
     it(
       "Security_CryptoFramework_CipherSMX_Func_3300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let cipherGenerator = cryptoFramework.createCipher("SM2_256|SM3");

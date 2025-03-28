@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as rsaTest from './utils/rsa/rsaSignRecoverUtils'
 import * as commonUtil from './utils/common/commonUtils';
@@ -50,7 +50,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA2048";
       let paddingName: string = "NoPadding";
       let isOnlySign: boolean = true;
@@ -76,7 +76,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA8192";
       let paddingName: string = "NoPadding";
       let isOnlySign: boolean = true;
@@ -102,7 +102,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let paddingName = "PKCS1";
@@ -129,7 +129,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let paddingName = "PKCS1";
@@ -156,7 +156,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let paddingName = "PKCS1";
@@ -182,7 +182,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA512";
         let paddingName = "PKCS1";
@@ -208,7 +208,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let paddingName = "PKCS1";
@@ -234,7 +234,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let paddingName = "PKCS1";
@@ -260,7 +260,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA4096";
         let paddingName = "PKCS1";
@@ -286,7 +286,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA4096";
         let paddingName = "PKCS1";
@@ -312,7 +312,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA8192";
         let paddingName = "PKCS1";
@@ -338,7 +338,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let paddingName = "PKCS1";
@@ -364,7 +364,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let paddingName = "PKCS1";
@@ -390,7 +390,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let paddingName = "PKCS1";
@@ -416,7 +416,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let paddingName = "PSS";
@@ -442,7 +442,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 32;
       let algName: string = "SM2_256";
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -467,7 +467,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "RSA1024"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -494,7 +494,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "RSA1024";
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -519,7 +519,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "DSA2048";
         let paddingName: string = "";
@@ -545,7 +545,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "ECC_BrainPoolP256t1"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -572,7 +572,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "ECC_BrainPoolP256t1"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -599,7 +599,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "ECC_BrainPoolP256t1"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -626,7 +626,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "RSA4096"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -653,7 +653,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048"
         let data: string = "";
@@ -689,7 +689,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "ECC_BrainPoolP256t1"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -716,7 +716,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "ECC_BrainPoolP256t1"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);
@@ -741,7 +741,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSASignRecover_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let dataLen: number = 128;
       let algName: string = "Ed25519"
       let rawData: cryptoFramework.DataBlob = await commonUtil.createData(dataLen);

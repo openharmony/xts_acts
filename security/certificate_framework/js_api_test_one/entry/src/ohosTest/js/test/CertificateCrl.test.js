@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as certPromise from "./utils/certificate/publicCertificatePromise";
 import * as certCallback from "./utils/certificate/publicCertificateCallback";
 
@@ -28,7 +28,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name The X509 certificate list can be revoked for encryption and decryption.
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
      */
-    it("Security_crypto_framework_X509CRL_0100", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CrlInstancePromise("der")
         .then((data) => {
@@ -54,7 +54,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name The X509 certificate list can be revoked for encryption and decryption.
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0200", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CrlInstancePromise("pem")
         .then((data) => {
@@ -80,7 +80,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check isRevoked success for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0300", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CrlInstancePromise("pem")
         .then((crlInstance) => {
@@ -119,7 +119,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check isRevoked failed for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0400", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CrlInstancePromise("pem")
         .then((crlInstance) => {
@@ -140,7 +140,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check isRevoked failed with invalid param for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0500", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CrlInstancePromise("pem")
         .then((crlInstance) => {
@@ -173,7 +173,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check getEncoded for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0600", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getType")
         .then((data) => {
@@ -190,7 +190,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check getEncoded for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0700", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .checkGetEncodedX509CrlPromise("pem")
         .then((data) => {
@@ -216,7 +216,7 @@ export default function CertificateCrlJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509CRL_1200", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getVersion")
         .then((data) => {
@@ -234,7 +234,7 @@ export default function CertificateCrlJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509CRL_1300", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getIssuerName")
         .then((data) => {
@@ -252,7 +252,7 @@ export default function CertificateCrlJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509CRL_1400", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getLastUpdate")
         .then((data) => {
@@ -270,7 +270,7 @@ export default function CertificateCrlJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509CRL_1500", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getNextUpdate")
         .then((data) => {
@@ -287,7 +287,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getRevokedCert for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_1600", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkGetRevokedCertX509CrlCallback("pem")
         .then((data) => {
@@ -313,7 +313,7 @@ export default function CertificateCrlJsunit() {
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      * @tc.desc Use the Promise Style of Interface
      */
-    it("Security_crypto_framework_X509CRL_1700", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .createX509CrlInstancePromise("pem")
         .then((crlInstance) => {
@@ -358,7 +358,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getRevokedCerts for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_1800", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkGetRevokedCertsX509CrlCallback("pem")
         .then((data) => {
@@ -383,7 +383,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getTbsInfo for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_1900", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getTbsInfo")
         .then((data) => {
@@ -408,7 +408,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getSignature for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2000", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getSignature")
         .then((data) => {
@@ -425,7 +425,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getSignatureAlgName for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2100", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getSignatureAlgName")
         .then((data) => {
@@ -442,7 +442,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getSignatureAlgOid for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2200", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getSignatureAlgOid")
         .then((data) => {
@@ -459,7 +459,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getSignatureAlgOid for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2300", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .getX509CrlInfoPromise("pem", "getSignatureAlgParams")
         .then((data) => {
@@ -476,7 +476,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getRevokedCerts for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2400", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkGetRevokedCertX509CrlCallback("pem")
         .then((data) => {
@@ -501,7 +501,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getRevokedCerts for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2500", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkGetRevokedCertX509CrlCallback("pem")
         .then((data) => {
@@ -526,7 +526,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getRevokedCerts for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2600", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkGetRevokedCertX509CrlCallback("pem")
         .then((data) => {
@@ -551,7 +551,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name check getRevokedCerts for X509 Crl
      * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_2700", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certCallback
         .checkGetRevokedCertX509CrlCallback("pem")
         .then((data) => {
@@ -576,7 +576,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check verify for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_0800", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CrlPromise("pem")
         .then((data) => {
@@ -602,7 +602,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check verify for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_DER
      */
-    it("Security_crypto_framework_X509CRL_0900", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CrlPromise("der")
         .then((data) => {
@@ -628,7 +628,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check verify for X509 Crl with invalid PublicKey
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_1000", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CrlPromise("der", "NULL")
         .then((data) => {
@@ -654,7 +654,7 @@ export default function CertificateCrlJsunit() {
      * @tc.name Check verify for X509 Crl with wrong PublicKey and right PublicKey
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
-    it("Security_crypto_framework_X509CRL_1100", 0, async function (done) {
+    it("Security_crypto_framework_X509CRL_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await certPromise
         .verifyX509CrlPromise("pem", "error")
         .then((data) => {

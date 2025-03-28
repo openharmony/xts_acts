@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCommon from "./utils/common/publicDoSpec";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
@@ -38,7 +38,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_1900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -67,7 +67,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -96,7 +96,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyBySpecProcess(
@@ -125,7 +125,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyBySpecProcess(
@@ -154,7 +154,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("DSA1024", "DSA1024|SHA1")
@@ -180,7 +180,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("DSA2048", "DSA2048|SHA256")
@@ -206,7 +206,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyPromise
                     .signAndVerifyNormalProcess("DSA3072", "DSA3072|SHA384")
@@ -233,7 +233,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createSign("RSA10000|PKCS1|SHA224");
@@ -286,7 +286,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     await asyPromise.updateAbnormalParameterProcess(asyCommon.genRsa2048KeyPairSpec(), "RSA1024|PKCS1|SHA224", 1);
@@ -328,7 +328,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_2900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     await asyCallback.signAbnormalParameterProcess(asyCommon.genRsa2048KeyPairSpec(), "RSA1024|PKCS1|SHA224", 1);
@@ -363,7 +363,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let signGenerator = cryptoFramework.createSign(
                     "RSA1024|PSS|SHA224|MGF1_SHA224"
@@ -417,7 +417,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let signGenerator = cryptoFramework.createSign(
                     "RSA1024|PSS|SHA224|MGF1_SHA224"
@@ -459,7 +459,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createVerify("RSA10000|SHA224");
@@ -520,7 +520,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let specGenerator = cryptoFramework.createAsyKeyGeneratorBySpec(
                     asyCommon.genRsa2048KeyPairSpec()
@@ -595,7 +595,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     await asyPromise.verifyUpdateAbnormalParameterProcess(asyCommon.genRsa2048KeyPairSpec(), "RSA1024|PKCS1|SHA224", 1);
@@ -638,7 +638,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let status = await asyCallback.verifyAbnormalParameterProcess(asyCommon.genRsa2048KeyPairSpec(), "RSA1024|PKCS1|SHA224", 1);
@@ -683,7 +683,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let verifyGenerator = cryptoFramework.createVerify(
                     "RSA1024|PKCS1|SHA224"
@@ -744,7 +744,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let verifyGenerator = cryptoFramework.createVerify(
                     "RSA1024|PKCS1|SHA224"
@@ -795,7 +795,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerification_Func_3800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let signGenerator = cryptoFramework.createSign(

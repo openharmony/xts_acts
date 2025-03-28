@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import {
   cert1,
@@ -91,7 +91,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -142,7 +142,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -187,7 +187,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -224,7 +224,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -271,7 +271,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -318,7 +318,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -366,7 +366,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -414,7 +414,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -461,7 +461,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -509,7 +509,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -557,7 +557,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -606,7 +606,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -654,7 +654,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -701,7 +701,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -748,7 +748,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -796,7 +796,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -844,7 +844,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1601", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1601", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -881,7 +881,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -925,7 +925,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -970,7 +970,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1014,7 +1014,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1058,7 +1058,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1105,7 +1105,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1156,7 +1156,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1214,7 +1214,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1265,7 +1265,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1310,7 +1310,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1355,7 +1355,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1398,7 +1398,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1443,7 +1443,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1488,7 +1488,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1531,7 +1531,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1566,7 +1566,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1601,7 +1601,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1635,7 +1635,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = 1;
         cert.createCmsGenerator(cmsContentType);
@@ -1655,7 +1655,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1690,7 +1690,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1724,7 +1724,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1759,7 +1759,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let addCert: boolean = true;
         let addAttr: boolean = true;
@@ -1786,7 +1786,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1816,7 +1816,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1846,7 +1846,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let addCert: boolean = true;
         let addAttr: boolean = true;
@@ -1872,7 +1872,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let addCert: boolean = false;
         let addAttr: boolean = true;
@@ -1898,7 +1898,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let addCert: boolean = true;
         let addAttr: boolean = true;
@@ -1924,7 +1924,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let addCert: boolean = true;
         let addAttr: boolean = true;
@@ -1950,7 +1950,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1993,7 +1993,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2028,7 +2028,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2065,7 +2065,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_4900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2107,7 +2107,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2132,7 +2132,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2157,7 +2157,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2189,7 +2189,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2229,7 +2229,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2269,7 +2269,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2309,7 +2309,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -2354,7 +2354,7 @@ export default function certFrameworkCertPkcs7ExtCMSFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertP7ExtCms_Func_5700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let cmsContentType: cert.CmsContentType = cert.CmsContentType.SIGNED_DATA;
         let generator: cert.CmsGenerator = cert.createCmsGenerator(cmsContentType);
