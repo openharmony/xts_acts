@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect, beforeEach, afterEach } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, beforeEach, afterEach, Level } from '@ohos/hypium';
 import { BusinessError, commonEventManager, systemParameterEnhance } from '@kit.BasicServicesKit';
 import { appManager, common } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry, Driver, ON, MatchPattern } from '@kit.TestKit';
@@ -58,7 +58,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('appManager01', 0, async (done: Function) => {
+    it('appManager01', Level.LEVEL0, async (done: Function) => {
 
       let observerId = 0;
 
@@ -121,7 +121,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('appManager02', 0, async (done: Function) => {
+    it('appManager02', Level.LEVEL0, async (done: Function) => {
 
       let observerId = 0;
 
@@ -182,7 +182,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000001', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000001', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000001-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -246,7 +246,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000004', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000004', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000004-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -310,7 +310,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000019', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000019', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000019-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -382,7 +382,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000050', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000050', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000050-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -445,7 +445,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000073', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000073', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000073-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -508,7 +508,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('openLink_16000004', 0, async (done: Function) => {
+    it('openLink_16000004', Level.LEVEL0, async (done: Function) => {
       console.info(`openLink_16000004-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -570,7 +570,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('openLink_16000019', 0, async (done: Function) => {
+    it('openLink_16000019', Level.LEVEL0, async (done: Function) => {
       console.info(`openLink_16000019-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -641,7 +641,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000001', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000001', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000001-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -704,7 +704,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000004', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000004', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000004-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -767,7 +767,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000019', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000019', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000019-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -838,7 +838,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000050', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000050', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000050-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -901,7 +901,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000073', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000073', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000073-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -965,7 +965,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000001', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000001', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000001-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1030,7 +1030,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000004', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000004', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000004-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1095,7 +1095,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000019', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000019', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000019-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1169,7 +1169,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000050', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000050', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000050-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1235,7 +1235,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000073', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000073', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000073-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1302,7 +1302,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000001', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000001', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000001-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1367,7 +1367,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000004', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000004', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000004-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1432,7 +1432,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000019', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000019', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000019-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1506,7 +1506,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000050', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000050', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000050-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1572,7 +1572,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000073', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000073', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000073-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1639,7 +1639,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('connectServiceExtensionAbilityOptions_16000001', 0, async (done: Function) => {
+    it('connectServiceExtensionAbilityOptions_16000001', Level.LEVEL0, async (done: Function) => {
       console.info(`connectServiceExtensionAbilityOptions_16000001-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1706,7 +1706,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('disconnectServiceExtensionAbilityCallback_16000050', 0, async (done: Function) => {
+    it('disconnectServiceExtensionAbilityCallback_16000050', Level.LEVEL0, async (done: Function) => {
       console.info(`disconnectServiceExtensionAbilityCallback_16000050-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1773,7 +1773,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('disconnectServiceExtensionAbilityPromise_16000050', 0, async (done: Function) => {
+    it('disconnectServiceExtensionAbilityPromise_16000050', Level.LEVEL0, async (done: Function) => {
       console.info(`disconnectServiceExtensionAbilityPromise_16000050-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1841,7 +1841,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000072', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000072', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000072-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1908,7 +1908,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000076', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000076', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000076-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -1974,7 +1974,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000077', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000077', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000077-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2048,7 +2048,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000078', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000078', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000078-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2115,7 +2115,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000079', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000079', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000079-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2181,7 +2181,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityStartOptions_16000080', 0, async (done: Function) => {
+    it('startAbilityStartOptions_16000080', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityStartOptions_16000080-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2248,7 +2248,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000072', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000072', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000072-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2315,7 +2315,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000076', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000076', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000076-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2381,7 +2381,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000077', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000077', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000077-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2455,7 +2455,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000078', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000078', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000078-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2522,7 +2522,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000079', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000079', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000079-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2588,7 +2588,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultCallback_16000080', 0, async (done: Function) => {
+    it('startAbilityForResultCallback_16000080', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultCallback_16000080-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2655,7 +2655,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000072', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000072', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000072-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2722,7 +2722,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000076', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000076', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000076-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2788,7 +2788,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000077', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000077', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000077-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2862,7 +2862,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000078', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000078', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000078-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2929,7 +2929,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000079', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000079', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000079-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -2995,7 +2995,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultOptions_16000080', 0, async (done: Function) => {
+    it('startAbilityForResultOptions_16000080', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultOptions_16000080-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -3064,7 +3064,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000072', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000072', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000072-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -3131,7 +3131,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000076', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000076', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000076-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -3197,7 +3197,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000077', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000077', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000077-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -3271,7 +3271,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000078', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000078', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000078-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -3338,7 +3338,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000079', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000079', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000079-is begin`)
       if (mpEnable != 'true') {
         done();
@@ -3404,7 +3404,7 @@ export default function startAbilityOptions() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startAbilityForResultPromise_16000080', 0, async (done: Function) => {
+    it('startAbilityForResultPromise_16000080', Level.LEVEL0, async (done: Function) => {
       console.info(`startAbilityForResultPromise_16000080-is begin`)
       if (mpEnable != 'true') {
         done();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import formHost from '@ohos.app.form.formHost'
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';

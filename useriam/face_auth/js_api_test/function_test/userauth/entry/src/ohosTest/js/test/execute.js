@@ -16,7 +16,7 @@
 import userAuth from '@ohos.userIAM.userAuth'
 var index = require('../../../main/js/MainAbility/pages/index/index.js');
 var waitFlag = false;
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import { checkSupportOrNot } from './utils/commonFunc'
 
 /**
@@ -44,7 +44,7 @@ describe('userAuthTestExecute', async function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Execute_1700', 0, function (done) {
+    it('Security_IAM_Face_JSAPI_Function_Execute_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.log("Security_IAM_Face_JSAPI_Function_Execute_1700 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("ALL", "S2", function(data) {
@@ -66,7 +66,7 @@ describe('userAuthTestExecute', async function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Execute_2000', 0, function (done) {
+    it('Security_IAM_Face_JSAPI_Function_Execute_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.log("Security_IAM_Face_JSAPI_Function_Execute_2000 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("ALL", "S2").catch(function(data) {
@@ -87,7 +87,7 @@ describe('userAuthTestExecute', async function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Execute_1800', 0, function (done) {
+    it('Security_IAM_Face_JSAPI_Function_Execute_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.log("Security_IAM_Face_JSAPI_Function_Execute_1800 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("", "S2", function(data) {
@@ -109,7 +109,7 @@ describe('userAuthTestExecute', async function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Execute_2100', 0, function (done) {
+    it('Security_IAM_Face_JSAPI_Function_Execute_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.log("Security_IAM_Face_JSAPI_Function_Execute_2100 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("", "S2").catch(function(data) {
@@ -130,7 +130,7 @@ describe('userAuthTestExecute', async function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-        it('JSAPI_Function_Execute_3100', 0, function (done) {
+        it('JSAPI_Function_Execute_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("JSAPI_Function_Execute_3100 start");
             const auth = userAuth.getAuthenticator();
             if (checkFace == 0) {
@@ -244,7 +244,7 @@ describe('userAuthTestExecute', async function () {
         * @tc.type      FUNC
         * @tc.level     Level2
         */
-        it('JSAPI_Function_Execute_3101', 0, function (done) {
+        it('JSAPI_Function_Execute_3101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.log("JSAPI_Function_Execute_3101 start");
             const auth = userAuth.getAuthenticator();
             if (checkFace == 0) {

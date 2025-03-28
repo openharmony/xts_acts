@@ -15,7 +15,7 @@
 import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
 import wantConstantNew from '@ohos.app.ability.wantConstant'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
@@ -118,7 +118,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: wantConstant : Check specific enum
      * @tc.desc: Check the return type of the interface (by Promise)
      */
-    it('ACTS_wantConstant_0100', 0, async function (done) {
+    it('ACTS_wantConstant_0100', Level.LEVEL0, async function (done) {
         expect(wantconstant.Action.ACTION_HOME).assertEqual("ohos.want.action.home");
         expect(wantconstant.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
         expect(wantconstant.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
@@ -159,7 +159,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: wantConstant : Check specific enum
      * @tc.desc: Check the return type of the interface (by Promise)
      */
-    it('ACTS_wantConstant_0200', 0, async function (done) {
+    it('ACTS_wantConstant_0200', Level.LEVEL0, async function (done) {
         expect(wantConstantNew.Action.ACTION_HOME).assertEqual("ohos.want.action.home");
         expect(wantConstantNew.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
         expect(wantConstantNew.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
@@ -200,7 +200,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetContext : Obtains the Context object
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_GetContext_0100', 0, async function (done) {
+    it('ACTS_GetContext_0100', Level.LEVEL0, async function (done) {
         let promise = await featureAbility.getContext()
         expect(typeof (promise)).assertEqual("object");
         done();
@@ -211,7 +211,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: HasWindowFocus : Checks whether the main window of this ability has window focus
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_HasWindowFocus_0100', 0, async function (done) {
+    it('ACTS_HasWindowFocus_0100', Level.LEVEL0, async function (done) {
         let info = await featureAbility.hasWindowFocus();
         expect(info).assertEqual(true);
         console.info('====> ACTS_HasWindowFocus_0100 end=====>')
@@ -223,7 +223,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: HasWindowFocus : Checks whether the main window of this ability has window focus
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_HasWindowFocus_0300', 0, async function (done) {
+    it('ACTS_HasWindowFocus_0300', Level.LEVEL0, async function (done) {
         let result = featureAbility.hasWindowFocus(
             (err, data) => {
                 console.info("hasWindowFocus asyncCallback code data: " + data);
@@ -240,7 +240,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1000",0, async function(done){
+    it("ACTS_StartAbility_1000", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1000-------------------");
         try{
             let Subscriber;
@@ -297,7 +297,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Check the return value of the interface (by Promise)
      */
-    it('ACTS_StartAbility_0100', 0, async function (done) {
+    it('ACTS_StartAbility_0100', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
 
@@ -379,7 +379,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Pass the parameters, Check the return value of the interface (by Promise)
      */
-    it('ACTS_StartAbility_0201', 0, async function (done) {
+    it('ACTS_StartAbility_0201', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
 
@@ -472,7 +472,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Passing null, Check the return value of the interface (by Promise)
      */
-    it('ACTS_StartAbility_0301', 0, async function (done) {
+    it('ACTS_StartAbility_0301', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
 
@@ -554,7 +554,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_StartAbility_0401', 0, async function (done) {
+    it('ACTS_StartAbility_0401', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
 
@@ -639,7 +639,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Pass the parameters, Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_StartAbility_0501', 0, async function (done) {
+    it('ACTS_StartAbility_0501', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
 
@@ -735,7 +735,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Passing null, Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_StartAbility_0601', 0, async function (done) {
+    it('ACTS_StartAbility_0601', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
 
@@ -819,7 +819,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: TerminateAbility : Destroys ability
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_TerminateAbility_0200', 0, async function (done) {
+    it('ACTS_TerminateAbility_0200', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
         let events = new Map();
@@ -911,7 +911,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetApplicationInfo : Obtains information about the current application.
      * @tc.desc: Check the return type of the interface (by Promise)
      */
-    it('ACTS_GetApplicationInfo_0100', 0, async function (done) {
+    it('ACTS_GetApplicationInfo_0100', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext();
         await context.getApplicationInfo().then((data)=>{
             checkApplicationInfo(data);
@@ -930,7 +930,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetApplicationInfo : Obtains information about the current application.
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_GetApplicationInfo_0200', 0, async function (done) {
+    it('ACTS_GetApplicationInfo_0200', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext()
         context.getApplicationInfo(
             (err, data) => {
@@ -962,7 +962,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetProcessInfo : Called when getting the ProcessInfo
      * @tc.desc: Check the return type of the interface (by promise)
      */
-    it('ACTS_GetProcessInfo_0100', 0, async function (done) {
+    it('ACTS_GetProcessInfo_0100', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext()
         await context.getProcessInfo().then((data)=>{
             checkProcessInfo(data);
@@ -981,7 +981,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetProcessInfo : Called when getting the ProcessInfo
      * @tc.desc: Check the return type of the interface (by AsyncCallback)
      */
-    it('ACTS_GetProcessInfo_0200', 0, async function (done) {
+    it('ACTS_GetProcessInfo_0200', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext()
         context.getProcessInfo(
             (err, data) => {
@@ -1022,7 +1022,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetElementName : Obtains the ohos.bundle.ElementName object of the current ability.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_GetElementName_0100', 0, async function (done) {
+    it('ACTS_GetElementName_0100', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext()
         await context.getElementName().then((data)=>{
             checkElementName(data);
@@ -1041,7 +1041,7 @@ describe('ActsFeatureAbilityTest', function () {
     * @tc.name: GetElementName : Obtains the ohos.bundle.ElementName object of the current ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetElementName_0200', 0, async function (done) {
+    it('ACTS_GetElementName_0200', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext()
         context.getElementName(
             (err, data) => {
@@ -1070,7 +1070,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetAppType : Obtains the type of this application.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_GetAppType_0100', 0, async function (done) {
+    it('ACTS_GetAppType_0100', Level.LEVEL0, async function (done) {
         await featureAbility.getContext().getAppType().then((data)=>{
             console.info("ACTS_GetAppType_0100 getAppType info :" + JSON.stringify(data))
             checkAppType(data);
@@ -1088,7 +1088,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetAppType : Obtains the type of this application.
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_GetAppType_0200', 0, async function (done) {
+    it('ACTS_GetAppType_0200', Level.LEVEL0, async function (done) {
         featureAbility.getContext().getAppType((err, data) => {
             if(err.code != 0){
                 console.info("ACTS_GetAppType_0200 getAppType callback err :" + JSON.stringify(err))
@@ -1176,7 +1176,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetAbilityInfo : Obtains the HapModuleInfo object of the application.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_GetAbilityInfo_0100', 0, async function (done) {
+    it('ACTS_GetAbilityInfo_0100', Level.LEVEL0, async function (done) {
         await featureAbility.getContext().getAbilityInfo().then((data)=>{
             checkAbilityInfo(data);
             console.info('====> ACTS_GetAbilityInfo_0100 data=====>' + JSON.stringify(data))
@@ -1193,7 +1193,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetAbilityInfo : Obtains the HapModuleInfo object of the application.
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_GetAbilityInfo_0200', 0, async function (done) {
+    it('ACTS_GetAbilityInfo_0200', Level.LEVEL0, async function (done) {
         featureAbility.getContext().getAbilityInfo(
             (err, data) => {
                 if(err.code != 0){
@@ -1251,7 +1251,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetHapModuleInfo : Obtains the HapModuleInfo object of the application.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_GetHapModuleInfo_0100', 0, async function (done) {
+    it('ACTS_GetHapModuleInfo_0100', Level.LEVEL0, async function (done) {
         await featureAbility.getContext().getHapModuleInfo().then((data)=>{
             checkHapModuleInfo(data);
             console.info('====> ACTS_GetHapModuleInfo_0100 data=====>' + JSON.stringify(data))
@@ -1269,7 +1269,7 @@ describe('ActsFeatureAbilityTest', function () {
     * @tc.name: GetHapModuleInfo : Obtains the HapModuleInfo object of the application.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_GetHapModuleInfo_0200', 0, async function (done) {
+    it('ACTS_GetHapModuleInfo_0200', Level.LEVEL0, async function (done) {
         let tempInfo
         featureAbility.getContext().getHapModuleInfo(
             (err, data) => {
@@ -1299,7 +1299,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetProcessName : Obtains the name of the current process.
      * @tc.desc: Check the return value of the interface (by promise)
      */
-    it('ACTS_GetProcessName_0100', 0, async function (done) {
+    it('ACTS_GetProcessName_0100', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext();
         await context.getProcessName().then((data)=>{
             console.info('====> ACTS_GetProcessName_0100 data=====>' + JSON.stringify(data))
@@ -1317,7 +1317,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetProcessName : Obtains the name of the current process.
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_GetProcessName_0200', 0, async function (done) {
+    it('ACTS_GetProcessName_0200', Level.LEVEL0, async function (done) {
         let tempInfo
         let context = featureAbility.getContext();
         context.getProcessName(
@@ -1341,7 +1341,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.name: GetCallingBundle : Obtains the bundle name of the ability that called the current ability.
      * @tc.desc: Check the return type of the interface (by AsyncCallback)
      */
-     it('ACTS_GetCallingBundle_0100', 0, async function (done) {
+     it('ACTS_GetCallingBundle_0100', Level.LEVEL0, async function (done) {
         let Subscriber;
         let id;
         let events = new Map();
@@ -1404,7 +1404,7 @@ describe('ActsFeatureAbilityTest', function () {
     // @tc.number: ACTS_GetOrCreateLocalDir_0100
     // @tc.name: GetProcessName : Obtains the name of the current process.
     // @tc.desc: Check the return value of the interface (by promise)
-    it('ACTS_GetOrCreateLocalDir_0100', 0, async function (done) {
+    it('ACTS_GetOrCreateLocalDir_0100', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext();
         await context.getOrCreateLocalDir().then((data)=>{
             checkGetOrCreateLocalDir(data);
@@ -1420,7 +1420,7 @@ describe('ActsFeatureAbilityTest', function () {
     // @tc.number: ACTS_GetOrCreateLocalDir_0200
     // @tc.name: GetProcessName : Obtains the name of the current process.
     // @tc.desc: Check the return value of the interface (by AsyncCallback)
-    it('ACTS_GetOrCreateLocalDir_0200', 0, async function (done) {
+    it('ACTS_GetOrCreateLocalDir_0200', Level.LEVEL0, async function (done) {
         let context = featureAbility.getContext();
         context.getOrCreateLocalDir(
             (err, data) => {
@@ -1443,7 +1443,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_0700",0, async function(done){
+    it("ACTS_StartAbility_0700", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_0700-------------------");
         try{
             let Want = {
@@ -1477,7 +1477,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_0800",0, async function(done){
+    it("ACTS_StartAbility_0800", Level.LEVEL0, async function(done){
         console.info("------------------logMessage startAbilityTest_0300-------------------");
         try{
             let Want = {
@@ -1511,7 +1511,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_0900",0, async function(done){
+    it("ACTS_StartAbility_0900", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_0900-------------------");
         try{
             let Want = {
@@ -1545,7 +1545,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1100",0, async function(done){
+    it("ACTS_StartAbility_1100", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1100-------------------");
         try{
             let Want = {
@@ -1577,7 +1577,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1200",0, async function(done){
+    it("ACTS_StartAbility_1200", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1200-------------------");
         try{
             let Want = {
@@ -1610,7 +1610,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1300",0, async function(done){
+    it("ACTS_StartAbility_1300", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1300-------------------");
         try{
             let Subscriber;
@@ -1669,7 +1669,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1600",0, async function(done){
+    it("ACTS_StartAbility_1600", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1600-------------------");
         let Want = {}
         let StartAbilityParameter = {
@@ -1698,7 +1698,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1700",0, async function(done){
+    it("ACTS_StartAbility_1700", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1700-------------------");
         let StartAbilityParameter = {}
         let promise = featureAbility.startAbility(StartAbilityParameter)
@@ -1723,7 +1723,7 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_StartAbility_1800",0, async function(done){
+    it("ACTS_StartAbility_1800", Level.LEVEL0, async function(done){
         console.info("------------------logMessage ACTS_StartAbility_1800-------------------");
         let promise = featureAbility.startAbility(undefined);
         if (promise) {

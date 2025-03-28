@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import base from '@ohos.base';
 import commonEvent from '@ohos.commonEventManager';
@@ -127,7 +127,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0100", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0100 START-------------");
       TAG = "Singlehap_LifeCycleTest_0100";
       let str: Want = {
@@ -183,7 +183,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0200", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0200 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -259,7 +259,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_LifeCycleTest_0300", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0300 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -343,7 +343,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0400", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0400 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -434,7 +434,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0500", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0500", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0500 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -527,7 +527,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0600", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0600", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0600 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -615,7 +615,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0700", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0700", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0700 START-------------");
       TAG = "Singlehap_LifeCycleTest_0700";
       let id1 = -1;
@@ -725,7 +725,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0800", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0800", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0800 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -805,7 +805,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_0900", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_0900", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0900 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -881,7 +881,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_1000", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1000", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1000 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -957,7 +957,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_1100", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1100 START-------------");
       TAG = "Singlehap_LifeCycleTest_1100";
       let id1 = -1;
@@ -1017,7 +1017,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_1200", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1200 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -1076,7 +1076,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_LifeCycleTest_1300", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1300 start-------------");
       if (deviceType === '2in1') {
         done();
@@ -1154,7 +1154,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_1400", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1400 start-------------");
       if (deviceType === '2in1') {
         done();
@@ -1231,7 +1231,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_1500", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1500", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1500 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -1327,7 +1327,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("Singlehap_LifeCycleTest_1600", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1600", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1600 START-------------");
       TAG = "Singlehap_LifeCycleTest_1600";
       let code = -1;
@@ -1348,7 +1348,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("Singlehap_LifeCycleTest_1700", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1700", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1700 START-------------");
       TAG = "Singlehap_LifeCycleTest_1700";
       let code = -1;
@@ -1369,7 +1369,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("Singlehap_LifeCycleTest_1800", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1800", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1800 START-------------");
       TAG = "Singlehap_LifeCycleTest_1800";
       let code = -1;
@@ -1390,7 +1390,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("Singlehap_LifeCycleTest_1900", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_1900", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1900 START-------------");
       TAG = "Singlehap_LifeCycleTest_1900";
       let code = -1;
@@ -1411,7 +1411,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_LifeCycleTest_2000", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_2000", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_2000 START-------------");
       if (deviceType === '2in1') {
         done();
@@ -1508,7 +1508,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_LifeCycleTest_2100", 0, async (done: Function) => {
+    it("Singlehap_LifeCycleTest_2100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_2100 START-------------");
       if (deviceType === '2in1') {
         done();

@@ -15,7 +15,7 @@
 
 import call from '@ohos.telephony.call';
 import radio from '@ohos.telephony.radio';
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level, TestType, Size } from '@ohos/hypium';
 const AUTO_ACCEPT_NUMBER = '10010';
 const CALL_STATUS_DIALING = 2;
 const DEFAULT_SLOT_ID = 0;
@@ -100,7 +100,7 @@ export default function CallManageImsCall() {
          *             call.CALL_STATE_IDLE is returned
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_getCallState_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_getCallState_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.getCallState((err, data) => {
                 if (err) {
                     console.log("Telephony_CallManager_getCallState_Async_0100 : err =" + JSON.stringify(err));
@@ -124,7 +124,7 @@ export default function CallManageImsCall() {
          *             call.CALL_STATE_IDLE is returned
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_getCallState_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_getCallState_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let promise = call.getCallState();
             promise.then(data => {
                 console.log("Telephony_CallManager_getCallState_Promise_0100 : data =" + JSON.stringify(data));
@@ -141,7 +141,7 @@ export default function CallManageImsCall() {
          * @tc.name When idle, hasCall() is called to confirm that there is no current call,returning false
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_hasCall_Async_0400', 0, async function (done) {
+        it('Telephony_CallManager_hasCall_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.hasCall((err, data) => {
                 if (err) {
                     console.log('Telephony_CallManager_hasCall_Async_0400 fail');
@@ -159,7 +159,7 @@ export default function CallManageImsCall() {
          * @tc.name When idle, hasCall() is called to confirm that there is no current call, returning false
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_hasCall_Promise_0400', 0, async function (done) {
+        it('Telephony_CallManager_hasCall_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.hasCall();
                 console.log(`Telephony_CallManager_hasCall_Promise_0400 finish data = ${data}`);
@@ -178,7 +178,7 @@ export default function CallManageImsCall() {
          *             The return value is 10 000 000 0000
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.formatPhoneNumber('100000000000', (err, data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumber_Async_0100 err = ${err.message}`);
@@ -199,7 +199,7 @@ export default function CallManageImsCall() {
          *             The return value is 200 0000
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 var data = await call.formatPhoneNumber('2000000');
                 expect(data === '200 0000').assertTrue();
@@ -219,7 +219,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber is 13900000000, options: CN, test formatPhoneNumber() api by callback.
          *             The return value is 139 0000 0000
          */
-        it('Telephony_CallManager_formatPhoneNumber_Async_0200', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let numberFormatOptions = new NumberFormatOptions('CN');
             call.formatPhoneNumber('13900000000', numberFormatOptions, (err, data) => {
                 if (err) {
@@ -241,7 +241,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber is 13900000000, options: US, test formatPhoneNumber() api by promise.
          *             The return value is '1 390-000-0000'
          */
-        it('Telephony_CallManager_formatPhoneNumber_Promise_0200', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumber_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let numberFormatOptions = new NumberFormatOptions('US');
             try {
                 var data = await call.formatPhoneNumber('13900000000', numberFormatOptions);
@@ -261,7 +261,7 @@ export default function CallManageImsCall() {
          *             and return +861000000000
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let numberFormatOptions = new NumberFormatOptions('CN');
             call.formatPhoneNumberToE164('010-0000-0000', numberFormatOptions.countryCode, (err, data) => {
                 if (err) {
@@ -282,7 +282,7 @@ export default function CallManageImsCall() {
          *             return +8652300000000
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_formatPhoneNumberToE164_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let numberFormatOptions = new NumberFormatOptions('CN');
             try {
                 var data = await call.formatPhoneNumberToE164('52300000000', numberFormatOptions.countryCode);
@@ -303,7 +303,7 @@ export default function CallManageImsCall() {
          *             number. The return value is false
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1300', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let emergencyNumberOptions = new EmergencyNumberOptions(ERR_SLOT_ID);
             call.isEmergencyPhoneNumber('110', emergencyNumberOptions, (err) => {
                 if (err) {
@@ -323,7 +323,7 @@ export default function CallManageImsCall() {
          *             number. The return value is false
          * @tc.desc Function test
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let emergencyNumberOptions = new EmergencyNumberOptions(ERR_SLOT_ID);
             try {
                 await call.isEmergencyPhoneNumber('120', emergencyNumberOptions);
@@ -342,7 +342,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber: 110, no options. Call isEmergencyPhoneNumber() api by callback.
          *             The return value is true
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             call.isEmergencyPhoneNumber('110', (err) => {
                 if (err) {
                     console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Async_1400 finish err = ${err}`);
@@ -362,7 +362,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber: 120, no options. Call isEmergencyPhoneNumber() api by promise.
          *             The return value is true
          */
-        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400', 0, async function (done) {
+        it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await call.isEmergencyPhoneNumber('120');
                 expect(true).assertTrue();
@@ -381,7 +381,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber: 10086, no options. Call dial api by callback.
          *             The return value is true
          */
-        it('Telephony_CallManager_Dial_Async_0100', 0, async function (done) {
+        it('Telephony_CallManager_Dial_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let CaseName = 'Telephony_CallManager_Dial_Async_0100';
             try {
                 call.dial("", (err, data) => {
@@ -402,7 +402,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber: 10086, has options. Call dial api by callback.
          *             The return value is true
          */
-        it('Telephony_CallManager_Dial_Async_0200', 0, async function (done) {
+        it('Telephony_CallManager_Dial_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let CaseName = 'Telephony_CallManager_Dial_Async_0200';
             try {
                 call.dial("", {
@@ -425,7 +425,7 @@ export default function CallManageImsCall() {
          * @tc.desc PhoneNumber: 10086, has options. Call dila api by permise
          *             The return value is true
          */
-        it('Telephony_CallManager_Dial_Promise_0100', 0, async function (done) {
+        it('Telephony_CallManager_Dial_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let CaseName = 'Telephony_CallManager_Dial_Promise_0100';
             call.dial(CALL_NUMBER, {
                 extras: false

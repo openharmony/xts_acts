@@ -14,7 +14,7 @@
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { describe, beforeAll, it, expect, afterEach, beforeEach, } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import commonEvent from '@ohos.commonEventManager';
@@ -119,7 +119,7 @@ export default function actsStartAppCloneAppTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppcloneChose_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppcloneChose_0100', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AppcloneChose_0100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -189,7 +189,7 @@ export default function actsStartAppCloneAppTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppcloneChose_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppcloneChose_0200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AppcloneChose_0200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -257,7 +257,7 @@ export default function actsStartAppCloneAppTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppcloneChose_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppcloneChose_0300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AppcloneChose_0300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let want: Want = {
@@ -302,7 +302,7 @@ export default function actsStartAppCloneAppTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppcloneChose_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppcloneChose_0500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AppcloneChose_0500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -372,7 +372,7 @@ export default function actsStartAppCloneAppTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppcloneChose_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppcloneChose_0400', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AppcloneChose_0400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);

@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import wantConstant from '@ohos.app.ability.wantConstant'
 
 let TAG: string;
@@ -46,7 +46,7 @@ export default function abilityTest() {
      * @tc.level   3
      */
 
-    it('SUB_AA_OpenHarmony_WantConstantCover_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_WantConstantCover_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0100 ==>';
       expect(wantConstant.Params.PAGE_PATH)
         .assertEqual('ohos.param.atomicservice.pagePath');
@@ -59,7 +59,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_WantConstantCover_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0200 ==>';
       expect(wantConstant.Params.ROUTER_NAME)
         .assertEqual('ohos.param.atomicservice.routerName');
@@ -72,7 +72,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0300', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_WantConstantCover_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0300 ==>';
       expect(wantConstant.Params.PAGE_SOURCE_FILE)
         .assertEqual('ohos.param.atomicservice.pageSourceFile');
@@ -85,7 +85,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0400', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_WantConstantCover_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0400 ==>';
       expect(wantConstant.Params.BUILD_FUNCTION)
         .assertEqual('ohos.param.atomicservice.buildFunction');
@@ -98,7 +98,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0500', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_WantConstantCover_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0500 ==>';
       expect(wantConstant.Params.SUB_PACKAGE_NAME)
         .assertEqual('ohos.param.atomicservice.subpackageName');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityManager from '@ohos.app.ability.abilityManager';
 import errorManager from '@ohos.app.ability.errorManager';
 import { BusinessError } from '@ohos.base';
@@ -56,7 +56,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_ReisterLoopObserver_0100', 0, async (done: Function) => {
+    it('SUB_AA_ReisterLoopObserver_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_ReisterLoopObserver_0100 start");
       try {
         let observer: errorManager.LoopObserver = {
@@ -83,7 +83,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_ReisterErrorObserver_New_0100', 0, async (done: Function) => {
+    it('SUB_AA_ReisterErrorObserver_New_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_ReisterErrorObserver_New_0100 start");
       let errorObserver: errorManager.ErrorObserver;
       errorObserver = {
@@ -119,7 +119,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_ReisterErrorObserver_New_0200', 0, async (done: Function) => {
+    it('SUB_AA_ReisterErrorObserver_New_0200', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_ReisterErrorObserver_New_0200 start");
       try {
         errorManager.off("error", -1)
@@ -146,7 +146,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_GetExtensionRunningInfos_0100', 0, async (done: Function) => {
+    it('SUB_AA_GetExtensionRunningInfos_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_GetExtensionRunningInfos_0100 start");
       try {
         let upperLimit = 1;
@@ -174,7 +174,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_UpdateConfiguration_0100', 0, async (done: Function) => {
+    it('SUB_AA_UpdateConfiguration_0100', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_UpdateConfiguration_0100 start");
       try {
         // init for repeat test
@@ -212,7 +212,7 @@ export default function NewApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_UpdateConfiguration_0200', 0, async (done: Function) => {
+    it('SUB_AA_UpdateConfiguration_0200', Level.LEVEL0, async (done: Function) => {
       console.info("SUB_AA_UpdateConfiguration_0200 start");
       let want: Want = {
         bundleName: "com.example.apicoverhaptest",

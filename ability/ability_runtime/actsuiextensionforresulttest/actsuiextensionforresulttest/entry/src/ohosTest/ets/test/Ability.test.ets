@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import commonEventManager from '@ohos.commonEventManager';
@@ -67,7 +67,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0100', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0100', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
         .then(async (data) => {
@@ -105,7 +105,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0200', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -154,7 +154,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0300', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -225,7 +225,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0400', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -276,7 +276,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0500', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -317,7 +317,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0600', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -367,7 +367,7 @@ export default function abilityTest() {
  * @tc.type: Function
  * @tc.level Level 1
  */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0100', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -406,7 +406,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0200', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0200', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
         .then(async (data) => {
@@ -448,7 +448,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0300', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       await commonEvent.createSubscriber(ACTS_CallFunction)
@@ -520,7 +520,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0400', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -571,7 +571,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0500', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)
@@ -612,7 +612,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0600', 0, async (done: Function) => {
+    it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let subscriber: commonEventManager.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction)

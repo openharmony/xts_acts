@@ -15,7 +15,7 @@
 
 import hilog from '@ohos.hilog';
 import base from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
 
@@ -69,7 +69,7 @@ export default function actsDebuggableAaStartTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Debuggable_0300',1, async (done:Function) => {
+    it('SUB_AA_AMS_Debuggable_0300', Level.LEVEL1, async (done: Function) => {
       let res = '';
       await abilityDelegator.executeShellCommand('aa start -b com.example.timeout -a EntryAbility').then(data => {
         res = data.stdResult;
@@ -87,7 +87,7 @@ export default function actsDebuggableAaStartTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Debuggable_0400',1, async (done:Function) => {
+    it('SUB_AA_AMS_Debuggable_0400', Level.LEVEL1, async (done: Function) => {
       let res = '';
       await abilityDelegator.executeShellCommand('aa start -b com.example.timeout -a EntryAbility -S -p')
         .then(data => {
@@ -109,7 +109,7 @@ export default function actsDebuggableAaStartTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Debuggable_2600',1, async (done:Function) => {
+    it('SUB_AA_AMS_Debuggable_2600', Level.LEVEL1, async (done: Function) => {
       let res = '';
       await abilityDelegator.executeShellCommand('aa start -h').then(data => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',

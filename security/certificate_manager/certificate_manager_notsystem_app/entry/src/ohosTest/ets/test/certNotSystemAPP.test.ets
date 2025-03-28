@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 
 export default function certManagerNotSystemAPPTestUnit() {
@@ -46,7 +46,7 @@ export default function certManagerNotSystemAPPTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_NotSystemApp_Func_0100', 0, async (done: Function) => {
+    it('Security_CertManager_NotSystemApp_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await certManager.getAllAppPrivateCertificates();
         expect(null).assertFail();
@@ -65,7 +65,7 @@ export default function certManagerNotSystemAPPTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('Security_CertManager_NotSystemApp_Func_0200', 0, async (done: Function) => {
+    it('Security_CertManager_NotSystemApp_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let result: certManager.CMResult = await new Promise((resolve, reject) => {
           certManager.getAllAppPrivateCertificates((err, cmResult) => {
@@ -92,7 +92,7 @@ export default function certManagerNotSystemAPPTestUnit() {
      * @tc.level Level3
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_SysCertJsApi_NotSystemApp_Func_0200', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_SysCertJsApi_NotSystemApp_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         await certManager.getAllSystemAppCertificates();
         expect(null).assertFail();

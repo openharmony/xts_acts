@@ -15,7 +15,7 @@
 
 import commonEvent from '@ohos.commonEventManager';
 import delegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import { getContext } from '../common/getContext';
 import common from '@ohos.app.ability.common';
 
@@ -42,7 +42,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0100', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('Acts_CleanTempFiles_0100 start');
 
@@ -128,7 +128,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0200', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('Acts_CleanTempFiles_0200 start');
 
@@ -215,7 +215,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0300', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('Acts_CleanTempFiles_0300 start');
 
@@ -282,7 +282,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0400', Level.LEVEL0, async (done: Function) => {
       console.info('Acts_CleanTempFiles_0400 start');
       let subscriber: commonEvent.CommonEventSubscriber;
       let connectionId: number;

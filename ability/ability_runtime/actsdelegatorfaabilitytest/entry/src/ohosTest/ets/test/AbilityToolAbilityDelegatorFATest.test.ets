@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const TAG = 'AbilityDelegatorFATest';
@@ -44,7 +44,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0900', 3, async (done:Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0900', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0900';
       try {
         let delegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -78,7 +78,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0700', 1, (done:Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0700', Level.LEVEL1, (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0700';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -99,7 +99,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0800', 3, (done:Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0800', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0800';
       try {
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -120,7 +120,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0300', 3, (done:Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0300', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0300';
       try {
         let cmd = 'aa help';
@@ -147,7 +147,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0400', 3, (done:Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0400', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0400';
       try {
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -181,7 +181,7 @@ export default function abilityToolAbilityDelegatorFATest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0500', 3, (done:Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_FA_0500', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityTools_AbilityDelegator_FA_0500';
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start-----`);

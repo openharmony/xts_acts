@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium'
+import { describe, it, expect, afterEach, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { BusinessError } from '@ohos.base';
 import commonEventManager from '@ohos.commonEventManager';
@@ -64,7 +64,7 @@ export default function abilityStageMonitorTest() {
          * @tc.desc: Verify that the callback form of waitAbilityStageMonitor can get the abilityStage instance
          * @tc.level: 1
          */
-    it('SUB_AA_AbilityStageMonitor_0100', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0100', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStage_0100 begin")
 
       try {
@@ -110,7 +110,7 @@ export default function abilityStageMonitorTest() {
          * @tc.desc: Verify that the promise form of waitAbilityStageMonitor can get the abilityStage instance
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0200', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0200', Level.LEVEL0, async (done:Function) => {
       console.log("SUB_AA_AbilityStage_0200 begin")
 
       console.log("SUB_AA_AbilityStageMonitor_0200 wait abilityStage");
@@ -155,7 +155,7 @@ export default function abilityStageMonitorTest() {
          * @tc.desc: Verify that the callback form of waitAbilityStageMonitor can get the abilityStage instance
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0300', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0300', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0300 begin")
 
       try {
@@ -201,7 +201,7 @@ export default function abilityStageMonitorTest() {
          * @tc.desc: Verify that the promise form of waitAbilityStageMonitor can get the abilityStage instance
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0400', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0400', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0400 begin")
 
       console.info("SUB_AA_AbilityStageMonitor_0400 wait abilityStage");
@@ -249,7 +249,7 @@ export default function abilityStageMonitorTest() {
          * does not exist and throw an exception
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0500', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0500', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0500 begin")
 
       console.info("SUB_AA_AbilityStageMonitor_0500 wait abilityStage");
@@ -294,7 +294,7 @@ export default function abilityStageMonitorTest() {
          * does not exist and throw an exception
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0600', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0600', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0600 begin")
 
       console.info("SUB_AA_AbilityStageMonitor_0600 wait abilityStage");
@@ -337,7 +337,7 @@ export default function abilityStageMonitorTest() {
          * verify that removeAbilityStageMonitor can cancel monitoring
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0700', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0700', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0700 begin")
 
       addMonitor = false;
@@ -393,7 +393,7 @@ export default function abilityStageMonitorTest() {
          * verify that removeAbilityStageMonitor can cancel monitoring
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0800', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0800', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0800 begin")
 
       addMonitor = false;
@@ -457,7 +457,7 @@ export default function abilityStageMonitorTest() {
          * created after listening for less than 3 seconds
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_0900', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_0900', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_0900 begin")
 
       console.info("SUB_AA_AbilityStageMonitor_0900 wait abilityStage");
@@ -506,7 +506,7 @@ export default function abilityStageMonitorTest() {
          * verify that removeAbilityStageMonitor can cancel monitoring
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitor_1000', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitor_1000', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_1000 begin")
 
       addMonitor = false;
@@ -552,7 +552,7 @@ export default function abilityStageMonitorTest() {
          * verify that removeAbilityStageMonitorSync can cancel monitoring
          * @tc.level: 3
          */
-    it('SUB_AA_AbilityStageMonitorSync_0100', 0, async (done:Function) => {
+    it('SUB_AA_AbilityStageMonitorSync_0100', Level.LEVEL0, async (done:Function) => {
       console.info("SUB_AA_AbilityStageMonitor_1000 begin")
       console.info("SUB_AA_AbilityStageMonitorSync_0100 wait abilityStage");
       globalThis.delegator = abilityDelegator

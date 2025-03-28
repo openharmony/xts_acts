@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterAll, Level, Size, TestType } from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -28,7 +28,7 @@ export default function dataManagerEmptyTest() {
         * @tc.type  : Function
         * @tc.level : Level 3
         */
-    it('telephonyDataManagerEmptyTest0100', 0, async (done: Function) => {
+    it('telephonyDataManagerEmptyTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let a: number = 1;
       let b: number = 2;
       expect(a+b).assertEqual(3);
