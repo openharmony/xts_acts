@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,12 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import RdbNdkStoreBackupTest from './RdbNdkStoreBackupTest'
-import RdbNdkStoreLevelTest from './RdbNdkStoreLevelTest'
-import RdbNdkStorePredicatesTest from './RdbNdkStorePredicatesTest'
-
-export default function testsuite() {
-    RdbNdkStoreLevelTest()
-    RdbNdkStorePredicatesTest()
-    RdbNdkStoreBackupTest()
+{
+  "name": "libentry.so",
+  "types": "./index.d.ts",
+  "version": "",
+  "description": "Please describe the basic information."
 }

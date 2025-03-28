@@ -37,8 +37,8 @@ OH_Rdb_Store *cursorTestRdbStore_ = NULL;
 
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_cursor_test.db";
-char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
-char MODULE_NAME[] =  "com.acts.rdb.napitest";
+char BUNDLE_NAME[] =  "com.acts.relationalstorenapiTest";
+char MODULE_NAME[] =  "com.acts.relationalstorenapiTest";
 
 static OH_Rdb_Config config_;
 static void InitRdbConfig()

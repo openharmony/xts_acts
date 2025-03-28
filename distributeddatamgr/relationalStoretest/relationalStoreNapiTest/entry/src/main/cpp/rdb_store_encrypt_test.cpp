@@ -35,8 +35,8 @@
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_encrypt_test.db";
 char RDB_STORE_NAME2[] =  "Encrypt.db";
-char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
-char MODULE_NAME[] =  "com.acts.rdb.napitest";
+char BUNDLE_NAME[] =  "com.acts.relationalstorenapiTest";
+char MODULE_NAME[] =  "com.acts.relationalstorenapiTest";
 
 
 OH_Rdb_Store *storeEncryptTestRdbStore_ = NULL;
