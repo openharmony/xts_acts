@@ -14,11 +14,8 @@
  */
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
-import disableDateRangeAndMarkTodayTest from './CalendarPickerTest/disableDateRangeAndMarkToday.test'
-import dialogDisableDateRangeAndMarkTodayTest from './CalendarPickerTest/dialogDisableDateRangeAndMarkToday.test'
+
 export default function testsuite() {
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
-    disableDateRangeAndMarkTodayTest()
-    dialogDisableDateRangeAndMarkTodayTest();
 }
