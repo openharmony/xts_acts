@@ -18,6 +18,7 @@ group("actsabilityerrcodequery") {
   if (is_standard_system) {
     deps = [
       "actsabilityerrcodequerytest:ActsAbilityErrCodeQueryTest",
+      "actsabilityerrcodequerytest2:ActsAbilityErrCodeQuerySecondTest",
       "actsabilityerrcodequerytestrely:ActsAbilityErrCodeQueryTestRely",
       "actsabilityerrcodequerytestrely2:ActsAbilityErrCodeQueryTestRely2",
       "actserrorcodeapplicationcontextassist:ActsErrorCodeApplicationContextAssist",
