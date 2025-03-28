@@ -14,9 +14,9 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
-import { getPermission,driveFn ,sleep} from '../common';
+import { getPermission,driveFn ,sleep, fetchOption } from '../common';
 
 export default function getAssetChangeRequestTest() {
   describe('getAssetChangeRequestTest', () => {
@@ -87,5 +87,56 @@ export default function getAssetChangeRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : Sub_MediaLibrary_getAsset_By_MediaSuffix_001
+     * @tc.name      : get_asset_by_mediaSuffix_jpg_001
+     * @tc.desc      : get asset by jpg suffix
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("get_asset_by_mediaSuffix_jpg_001", Level.LEVEL2, async (done: Function) => {
+      const testNum: string = "get_asset_by_mediaSuffix_jpg_001";
+      try {
+        const ops: photoAccessHelper.FetchOptions = fetchOption(testNum, photoAccessHelper.PhotoKeys.MEDIA_SUFFIX, "jpg");
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(ops);
+        console.log(`${testNum} :: fetchResult is undefined ? ${fetchResult === undefined}`);
+        expect(fetchResult !== undefined).assertTrue();
+        console.log(`${testNum} :: fetchResult count = ${fetchResult.getCount()}`);
+        expect(fetchResult.getCount()).assertLarger(0);
+        done();
+      } catch (error) {
+        console.error(`${testNum} :: getAsset By jpg failed ! error = ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : Sub_MediaLibrary_getAsset_By_MediaSuffix_002
+     * @tc.name      : get_asset_by_mediaSuffix_mp4_001
+     * @tc.desc      : get asset by mp4 suffix
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("get_asset_by_mediaSuffix_mp4_001", Level.LEVEL2, async (done: Function) => {
+      const testNum: string = "get_asset_by_mediaSuffix_mp4_001";
+      try {
+        const ops: photoAccessHelper.FetchOptions = fetchOption(testNum, photoAccessHelper.PhotoKeys.MEDIA_SUFFIX, "mp4");
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(ops);
+        console.log(`${testNum} :: fetchResult is undefined ? ${fetchResult === undefined}`);
+        expect(fetchResult !== undefined).assertTrue();
+        console.log(`${testNum} :: fetchResult count = ${fetchResult.getCount()}`);
+        expect(fetchResult.getCount()).assertLarger(0);
+        done();
+      } catch (error) {
+        console.error(`${testNum} :: getAsset By jpg failed ! error = ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
   })
 }

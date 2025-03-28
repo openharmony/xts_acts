@@ -116,6 +116,7 @@ export function photoFetchOption(testNum: string, key: string, value: string | n
       photoKeys.THM_SIZE,
       photoKeys.DETAIL_TIME,
       photoKeys.DATE_TAKEN_MS,
+      photoKeys.MEDIA_SUFFIX,
       'all_exif',
     ],
     predicates: predicates
