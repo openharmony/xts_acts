@@ -488,7 +488,7 @@ export default function printTest() {
     it('print_function_1000', Level.LEVEL2, async (done: Function) => {
       // Permissions required: ohos.permission.PRINT
       try {
-        await print.getAddedPrinters(printerId);
+        await print.getAddedPrinters();
         expect(false).assertTrue();
         done();
       } catch (error) {
