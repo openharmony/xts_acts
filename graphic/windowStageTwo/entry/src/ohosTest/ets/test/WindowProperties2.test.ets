@@ -29,7 +29,7 @@ let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resol
 async function startAbility(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
   let want: Want = {
     bundleName: AppStorage.get('bundleName'),
-    abilityName: 'StartAbility'
+    abilityName: 'StartTestAbility'
   };
   if (options) {
     await context.startAbility(want, options).then(() => {
@@ -45,12 +45,12 @@ async function startAbility(caseName: string, context: common.UIAbilityContext, 
     });
   }
   await sleep(1000)
-  let windowStageStart = AppStorage.get('windowStageStart') as ohosWindow.WindowStage;
+  let windowStageStart = AppStorage.get('windowStageStartTest') as ohosWindow.WindowStage;
   return windowStageStart
 }
 
 async function terminateAbility(caseName: string) {
-  let pageContext = AppStorage.get('pageContext') as common.UIAbilityContext
+  let pageContext = AppStorage.get('contextTest') as common.UIAbilityContext
   await pageContext.terminateSelf().then(() => {
     console.log(`${caseName} terminateSelf success`);
   }).catch((err: BusinessError) => {
