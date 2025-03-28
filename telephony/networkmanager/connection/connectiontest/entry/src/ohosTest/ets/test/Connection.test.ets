@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
 import network from '@system.network';
@@ -47,7 +47,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0100', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0100';
       console.info(`${caseName}---Start`);
       try {
@@ -85,7 +85,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0200', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0200';
       console.info(`${caseName}---Start`);
 
@@ -124,7 +124,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0300', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0300';
       console.info(`${caseName}---Start`);
       try {
@@ -153,7 +153,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0400', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0400';
       console.info(`${caseName}---Start`);
       try {
@@ -191,7 +191,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0500', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0500';
       console.info(`${caseName}---Start`);
       try {
@@ -229,7 +229,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0600', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0600';
       console.info(`${caseName}---Start`);
       try {
@@ -258,7 +258,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0700', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0700';
       console.info(`${caseName}---Start`);
       try {
@@ -288,7 +288,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0800', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0800';
       console.info(`${caseName}---Start`);
       try {
@@ -327,7 +327,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0900', 0, async (done: Function) => {
+    it('testConnectionSetHttpProxyCallback0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionSetHttpProxyCallback0900';
       console.info(`${caseName}---Start`);
       try {
@@ -366,7 +366,7 @@ export default function ConnectionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testConnectionNetCapabilities0200', 0, async (done: Function) => {
+    it('testConnectionNetCapabilities0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionNetCapabilities0200';
       console.info(`${caseName}---Start`);
       try {
@@ -409,7 +409,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionsetPacUrl0100', 0, async (done: Function) => {
+    it('testConnectionsetPacUrl0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionsetPacUrl0100';
       console.info(`${caseName}---Start`);
       try{
@@ -433,7 +433,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectiongetPacUrl0100', 0, async (done: Function) => {
+    it('testConnectiongetPacUrl0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectiongetPacUrl0100';
       console.info(`${caseName}---Start`);
       try{
@@ -463,7 +463,7 @@ export default function ConnectionTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionsetPacUrl0200', 0, async (done: Function) => {
+    it('testConnectionsetPacUrl0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testConnectionsetPacUrl0200';
       console.info(`${caseName}---Start`);
       try{
