@@ -1,8 +1,21 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 {
-    "description": "Config for ActsKhrglesextSuite0005Test test cases",
+    "description": "Config for ActsDeqpgles31Suite0037dTest test cases",
     "driver": {
-        "module-name": "ActsKhrglesextSuite0005Test",
-        "native-test-timeout": "500000",
+        "module-name": "ActsDeqpgles31Suite0037dTest",
+        "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
         "type": "CppTest"
@@ -23,7 +36,7 @@
                 "cp /data/local/tmp/librosen_context* /system/lib"
             ],
             "push": [
-                "ActsKhrglesextSuite0005Test->/data/local/tmp/ActsKhrglesextSuite0005Test",
+                "ActsDeqpgles31Suite0037dTest->/data/local/tmp/ActsDeqpgles31Suite0037dTest",
                 "vkgldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vkgldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "vkgldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
