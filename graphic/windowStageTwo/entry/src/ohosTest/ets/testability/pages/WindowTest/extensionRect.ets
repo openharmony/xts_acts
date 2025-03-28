@@ -82,7 +82,7 @@ struct Extension {
           }
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb)
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb2)
-          extensionWindow?.on('rectChange', cb)
+          extensionWindow?.off('rectChange', cb)
         })
       Button('取消所有函数监听')
         .id('off_all')
@@ -105,7 +105,7 @@ struct Extension {
           }
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb)
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb2)
-          extensionWindow?.on('rectChange')
+          extensionWindow?.off('rectChange')
         })
     }.width('100%').height('100%')
   }
