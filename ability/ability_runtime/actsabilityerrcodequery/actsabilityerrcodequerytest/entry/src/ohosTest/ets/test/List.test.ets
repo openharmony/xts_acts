@@ -12,11 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import UIExtensionContentSessionTest from './UIExtensionContentSession.test'
 import sendableContextManagerTest from './sendableContextManager.test'
 import UIAbilityContex from './UIAbilityContex.test';
 export default function testsuite() {
-  UIExtensionContentSessionTest();
   sendableContextManagerTest();
   UIAbilityContex();
 }

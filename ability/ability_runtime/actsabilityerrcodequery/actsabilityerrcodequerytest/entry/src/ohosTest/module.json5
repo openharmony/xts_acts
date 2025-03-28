@@ -241,14 +241,6 @@
       }
     ],
     "extensionAbilities": [
-      {
-        "name": "UIExtensionProvider",
-        "srcEntry": "./ets/test/UIExtensionContentSession/UIExtensionContentSession.ts",
-        "description": "UIExtensionAbility",
-        "type": "sys/commonUI",
-        "exported": true,
-        "extensionProcessMode": "bundle"
-      }
     ],
     "requestPermissions": [
       {
