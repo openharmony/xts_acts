@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -53,7 +53,7 @@ export default function webFontTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebStandardFont001', 0, async (done: Function) => {
+    it('testWebStandardFont001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStandardFont001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStandardFont001", '"serif"', 75001, done);
@@ -68,7 +68,7 @@ export default function webFontTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebStandardFont002', 0, async (done: Function) => {
+    it('testWebStandardFont002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStandardFont002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStandardFont002", '"monospace"', 75003, done);
@@ -83,7 +83,7 @@ export default function webFontTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebStandardFont003', 0, async (done: Function) => {
+    it('testWebStandardFont003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStandardFont003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStandardFont003", '"Helvetica"', 75005, done);
@@ -98,7 +98,7 @@ export default function webFontTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebStandardFont004', 0, async (done: Function) => {
+    it('testWebStandardFont004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStandardFont004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStandardFont004", '"Arial"', 75007, done);
@@ -113,7 +113,7 @@ export default function webFontTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebStandardFont005', 0, async (done: Function) => {
+    it('testWebStandardFont005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStandardFont005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStandardFont005", '"\\"sans serif\\""', 75009, done);

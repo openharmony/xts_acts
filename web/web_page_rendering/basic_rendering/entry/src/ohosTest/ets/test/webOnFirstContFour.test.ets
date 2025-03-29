@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -70,7 +70,7 @@ export default function webOnFirstContFour() {
      *tc.name testOnfirstcontentfulpaintrefreshWebc
      *tc.desc onfirstcontentfulpaint with web refresh
      */
-    it('testOnfirstcontentfulpaintrefreshWebc', 0, async (done: Function) => {
+    it('testOnfirstcontentfulpaintrefreshWebc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRefreshOnfirstcontentfulpaintWebc";
       Utils.registerEvent("testOnfirstcontentfulpaintrefreshWebc", true, 428, done);
       sendEventByKey('webOnFirstContFour', 10, '');
