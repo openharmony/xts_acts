@@ -146,7 +146,7 @@ export default function extensionWindowPropertiesTest() {
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_OFFRECTCHANGE_JS_API_0100
      * @tc.name      : testUIExtensionHostOffRectChange01
-     * @tc.desc      : Register
+     * @tc.desc      : testUIExtensionHostOffRectChange01 Register twice and unregister one
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -211,7 +211,7 @@ export default function extensionWindowPropertiesTest() {
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_OFFRECTCHANGE_JS_API_0200
      * @tc.name      : testUIExtensionHostOffRectChange02
-     * @tc.desc      : Listen the change of rect
+     * @tc.desc      : testUIExtensionHostOffRectChange02 register twice and unregister all of them
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
@@ -252,7 +252,7 @@ export default function extensionWindowPropertiesTest() {
             let testNum = await hw.getText()
             console.log(caseName + 'testNum : ' + testNum)
             // 没有回调函数被响应
-            expect(testNum == '2').assertTrue()
+            expect(testNum == '0').assertTrue()
             await subWindowClass.destroyWindow()
           }
         }).catch((error: BusinessError) => {
