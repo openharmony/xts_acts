@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webViewControllerLoadUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl005', 0, async (done: Function) => {
+    it('testLoadUrl005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl005", 'second', 77004, done);
@@ -70,7 +70,7 @@ export default function webViewControllerLoadUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl006', 0, async (done: Function) => {
+    it('testLoadUrl006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl006", 'OpenAtom OpenHarmony', 77006, done);
@@ -85,7 +85,7 @@ export default function webViewControllerLoadUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl007', 0, async (done: Function) => {
+    it('testLoadUrl007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl007", 'second', 77008, done);
@@ -100,7 +100,7 @@ export default function webViewControllerLoadUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl008', 0, async (done: Function) => {
+    it('testLoadUrl008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl008", 'second', 77010, done);

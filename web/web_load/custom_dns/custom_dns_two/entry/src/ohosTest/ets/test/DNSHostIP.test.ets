@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it, expect, afterEach } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it, expect, afterEach , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -61,7 +61,7 @@ export default function DNSHostIP() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('setHostIP0100', 0, async (done: Function) => {
+    it('setHostIP0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("setHostIP0100", 10)
       await Utils.sleep(5000);
       Utils.registerEvent("setHostIP0100", true, 8770, done);
@@ -80,7 +80,7 @@ export default function DNSHostIP() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('setHostIP1200', 0, async (done: Function) => {
+    it('setHostIP1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("setHostIP1200", 10)
       await Utils.sleep(5000);
       Utils.registerEvent("setHostIP1200", true, 8771, done);
@@ -100,7 +100,7 @@ export default function DNSHostIP() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('setHostIP1300', 0, async (done: Function) => {
+    it('setHostIP1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("setHostIP1300", 10)
       await Utils.sleep(5000);
       Utils.registerEvent("setHostIP1300", true, 8772, done);
@@ -118,7 +118,7 @@ export default function DNSHostIP() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('setHostIP1500', 0, async (done: Function) => {
+    it('setHostIP1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("setHostIP1500", 10)
       await Utils.sleep(5000);
       Utils.registerEvent("setHostIP1500", true, 8773, done);

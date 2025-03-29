@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSecureDnsModeOFF001', 0, async (done: Function) => {
+    it('testSecureDnsModeOFF001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSecureDnsModeOFF001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSecureDnsModeOFF001", "Example Domain", 31035, done);
@@ -70,7 +70,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSecureDnsModeAUTO001', 0, async (done: Function) => {
+    it('testSecureDnsModeAUTO001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSecureDnsModeAUTO001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSecureDnsModeAUTO001", "Example Domain", 31036, done);
@@ -85,7 +85,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSecureDnsModeSECURE_ONLY001', 0, async (done: Function) => {
+    it('testSecureDnsModeSECURE_ONLY001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSecureDnsModeSECURE_ONLY001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSecureDnsModeSECURE_ONLY001", true, 31037, done);

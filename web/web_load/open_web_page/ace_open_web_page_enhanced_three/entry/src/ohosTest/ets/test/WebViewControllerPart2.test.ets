@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -54,7 +54,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetTitle001', 0, async (done: Function) => {
+    it('testGetTitle001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetTitle001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetTitle001", "index", 37011, done);
@@ -69,7 +69,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStop001', 0, async (done: Function) => {
+    it('testStop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testStop001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStop001", "index", 37017, done);
@@ -84,7 +84,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRefresh001', 0, async (done: Function) => {
+    it('testRefresh001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRefresh001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRefresh001", "index", 37001, done);
@@ -99,7 +99,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadData001', 0, async (done: Function) => {
+    it('testLoadData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadData001", "LoadData", 37002, done);
@@ -114,7 +114,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl001', 0, async (done: Function) => {
+    it('testLoadUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl001", "OpenAtom OpenHarmony", 37003, done);
@@ -129,7 +129,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl002', 0, async (done: Function) => {
+    it('testLoadUrl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl002", "second", 37004, done);
@@ -144,7 +144,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl003', 0, async (done: Function) => {
+    it('testLoadUrl003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl003", "second", 77000, done);
@@ -159,7 +159,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl004', 0, async (done: Function) => {
+    it('testLoadUrl004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl004", "second", 77002, done);
@@ -175,7 +175,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetUserAgent001', 0, async (done: Function) => {
+    it('testGetUserAgent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetUserAgent001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetUserAgent001", true, 37009, done);
@@ -190,7 +190,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetWebId001', 0, async (done: Function) => {
+    it('testGetWebId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetWebId001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetWebId001", true, 37010, done);
@@ -206,7 +206,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetCustomUserAgent001', 0, async (done: Function) => {
+    it('testGetCustomUserAgent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetCustomUserAgent001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetCustomUserAgent001", true, 37018, done);
@@ -221,7 +221,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetCustomUserAgent001', 0, async (done: Function) => {
+    it('testSetCustomUserAgent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetCustomUserAgent001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetCustomUserAgent001", "userAgent", 37019, done);
@@ -236,7 +236,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testProtectedResourceType001', 0, async (done: Function) => {
+    it('testProtectedResourceType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testProtectedResourceType001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testProtectedResourceType001", 'TYPE_SENSOR', 37020, done);

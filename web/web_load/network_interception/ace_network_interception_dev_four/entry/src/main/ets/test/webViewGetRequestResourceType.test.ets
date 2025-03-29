@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -53,7 +53,7 @@ export default function webViewGetRequestResourceType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('getRequestResourceType0100', 0, async (done: Function) => {
+    it('getRequestResourceType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("getRequestResourceType0100", 10)
       await Utils.sleep(4000);
       Utils.registerEvent("getRequestResourceType0100", 0, 4900, done);
