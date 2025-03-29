@@ -9,8 +9,8 @@ interface EventDataI {
 
 
 export default class EntryAbility3 extends UIAbility {
-  private wantParam: Object = new Object()
   private abilityLifeArr: Array<string> = []
+  private wantParam: ESObject = {};
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability_test onCreate1');

@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "LifeCycleMain.hap",
+                "LifeCycleMainTest.hap",
                 "LifeCycleTest.hap"
             ],
             "type": "AppInstallKit",
