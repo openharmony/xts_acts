@@ -807,7 +807,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       await print.getAddedPrinters().then((printers : Array<string>) => {
         console.log('getAddedPrinters expect succeed, data: ' + JSON.stringify(printers));
-        expect(printers).assertTrue();
+        expect(!!printers).assertTrue();
         done();
       }).catch((error: BusinessError) => {
         console.log('getAddedPrinters failed, error: ' + JSON.stringify(error));
