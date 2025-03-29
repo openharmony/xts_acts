@@ -24,11 +24,13 @@ import {
   INVALID_USER_ID,
   HAP_FILE_PATH,
   EDM_INSTALL_PARAM,
+  EDM_INSTALL_PARAM_FOR_ALL_USER,
   HAP_FILE_PATH_ERROR
 } from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import bundleManager from '@ohos.enterprise.bundleManager';
+import systemparameter from '@ohos.systemparameter';
 
 export default function bundleManagerTest() {
   describe('bundleManager_test', () => {
@@ -1576,6 +1578,7 @@ export default function bundleManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         await bundleManager.install(SELFWANT, HAP_FILE_PATH, EDM_INSTALL_PARAM);
+        await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID, true);
       } catch (error) {
         expect(false).assertTrue();
       } finally {
@@ -1683,6 +1686,33 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9201002).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_INSTALL_010
+     * @tc.name      : test_install_010
+     * @tc.desc      : test install method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_install_010", Level.LEVEL2, async (done: Function) => {
+      let isEnterprise: string = systemparameter.getSync('const.edm.is_enterprise_device');
+      if (isEnterprise != 'true') {
+        console.log('the device is not enterprise');
+        done();
+        return;
+      }
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        await bundleManager.install(SELFWANT, HAP_FILE_PATH, EDM_INSTALL_PARAM_FOR_ALL_USER);
+        await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID, true);
+      } catch (error) {
+        expect(false).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
