@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebviewBFCacheResumeAndSuspendPlayer() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */  
-    it('testWebviewBFCacheResumePlayer', 0, async (done: Function) => {
+    it('testWebviewBFCacheResumePlayer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebviewBFCacheResumePlayer"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheResumePlayer", "success", 24082, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -95,7 +95,7 @@ export default function ActsAceWebviewBFCacheResumeAndSuspendPlayer() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */  
-    it('testWebviewBFCacheSuspendPlayer', 0, async (done: Function) => {
+    it('testWebviewBFCacheSuspendPlayer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       emitKey = "emitWebviewBFCacheSuspendPlayer"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheSuspendPlayer", "success", 24083, done, (backData: events_emitter.EventData, expected: Object) => {

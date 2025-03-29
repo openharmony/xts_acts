@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from './Utils';
@@ -51,7 +51,7 @@ export default function webTwoJsunit() {
      *tc.name RegisterJavaScriptProxy                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('RegisterJavaScriptProxy', 0, async (done: Function) => {
+    it('RegisterJavaScriptProxy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRegisterJavaScriptProxyTwo";
       Utils.registerEvent("RegisterJavaScriptProxy", '\"okok\"', 37, done);
       sendEventByKey('webcomponenttwo', 10, '');

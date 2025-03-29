@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebviewEnableBackForwardCache() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */  
-    it('testWebviewEnableBackForwardCache', 0, async (done: Function) => {
+    it('testWebviewEnableBackForwardCache', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebviewEnableBackForwardCache"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewEnableBackForwardCache", "success", 24084, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -96,7 +96,7 @@ export default function ActsAceWebviewEnableBackForwardCache() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */  
-    it('testWebviewBFCacheNativeEmbed', 0, async (done: Function) => {
+    it('testWebviewBFCacheNativeEmbed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebviewBFCacheNativeEmbed"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheNativeEmbed", "success", 24085, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -114,7 +114,7 @@ export default function ActsAceWebviewEnableBackForwardCache() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */  
-    it('testWebviewBFCacheMediaTakeOver', 0, async (done: Function) => {
+    it('testWebviewBFCacheMediaTakeOver', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebviewBFCacheMediaTakeOver"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewBFCacheMediaTakeOver", "success", 24086, done, (backData: events_emitter.EventData, expected: Object) => {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -61,7 +61,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetCertificate001', 0, async (done: Function) => {
+    it('testGetCertificate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetCertificate001", 10)
       await Utils.sleep(2000);
       Utils.registerContainEvent("testGetCertificate001", "getCertificate success: len = 1", 60423, done);
@@ -76,7 +76,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetCertificate002', 0, async (done: Function) => {
+    it('testGetCertificate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitGetCertificate002", 10)
       await Utils.sleep(2000);
       Utils.registerContainEvent("testGetCertificate002", "getCertificate success: len = 1", 60424, done);

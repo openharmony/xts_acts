@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -70,7 +70,7 @@ export default function webDefaultFontSize() {
      *tc.name testDefaultFontSize73AndMinFontSize1WebC
      *tc.desc test with defaultfontsize 73 and minfontsize 1
      */
-    it('testDefaultFontSize73AndMinFontSize1WebC', 0, async (done: Function) => {
+    it('testDefaultFontSize73AndMinFontSize1WebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitdefaultFontSize73AndminFontSize73WebC";
       Utils.registerEvent("testDefaultFontSize73AndMinFontSize1WebC", "72px", 432, done);
       sendEventByKey('webDefaultFontSize', 10, '');
@@ -80,7 +80,7 @@ export default function webDefaultFontSize() {
      *tc.name testDefaultFontSize73AndMinFontSize73WebC
      *tc.desc test with defaultfontsize 73 and minfontsize 73
      */
-    it('testDefaultFontSize73AndMinFontSize73WebC', 0, async (done: Function) => {
+    it('testDefaultFontSize73AndMinFontSize73WebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitdefaultFontSize73AndminFontSize73WebC";
       Utils.registerEvent("testDefaultFontSize73AndMinFontSize73WebC", "72px", 434, done);
       sendEventByKey('webDefaultFontSize', 10, '');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testNativeEmbedStatus001', 0, async (done: Function) => {
+    it('testNativeEmbedStatus001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNativeEmbedStatus001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNativeEmbedStatus001", 3, 37021, done);
@@ -70,7 +70,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testNativeEmbedStatus002', 0, async (done: Function) => {
+    it('testNativeEmbedStatus002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNativeEmbedStatus002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNativeEmbedStatus002", 4, 37022, done);

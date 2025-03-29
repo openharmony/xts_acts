@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -61,7 +61,7 @@ export default function ActsWebNapiLoadDataTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebNapiLoadData001', 0 , async (done:Function)=>{
+    it('testWebNapiLoadData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1 , async (done:Function)=>{
       Utils.emitEvent("emitWebNapiLoadData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebNapiLoadData001",0,2025022401,done);

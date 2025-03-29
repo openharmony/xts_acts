@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewOnFirstContThree() {
      *tc.name testOnfirstcontentfulpaintloadurl
      *tc.desc onfirstcontentfulpaint with web load url
      */
-    it('testOnfirstcontentfulpaintloadurl',0, async (done: Function) =>{
+    it('testOnfirstcontentfulpaintloadurl',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
       emitKey="emitLoadUrlOnfirstcontentfulpaint";
       Utils.registerEvent("testOnfirstcontentfulpaintloadurl",true,326,done);
       sendEventByKey('webViewOnFirstContThree',10,'');

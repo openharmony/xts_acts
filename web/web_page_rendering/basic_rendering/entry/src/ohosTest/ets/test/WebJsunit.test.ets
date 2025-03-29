@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -50,7 +50,7 @@ export default function webJsunit() {
      *tc.name getWebId
      *tc.desic Gets the id for the current Web
      */
-    it('getWebId', 0, async (done: Function) => {
+    it('getWebId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnTitleReceive";
       Utils.registerEvent("getWebId", "webId", 120, done);
       sendEventByKey('webcomponent', 10, '');
@@ -60,7 +60,7 @@ export default function webJsunit() {
      *tc.name onTitleReceive
      *tc.desic Triggered when the title of the main application document changes
      */
-    it('onTitleReceive', 0, async (done: Function) => {
+    it('onTitleReceive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebVisibility";
       Utils.registerEvent("onTitleReceive", "index", 67, done);
       sendEventByKey('webcomponent', 10, '');
@@ -70,7 +70,7 @@ export default function webJsunit() {
      *tc.name webVisibility
      *tc.desic Web Visibility test
      */
-    it('webVisibility', 0, async (done: Function) => {
+    it('webVisibility', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetWebIdTwo";
       Utils.registerEvent("webVisibility", 0, 90, done);
       sendEventByKey('webcomponent', 10, '');

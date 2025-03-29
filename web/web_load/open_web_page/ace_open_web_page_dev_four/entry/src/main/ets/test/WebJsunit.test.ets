@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function webJsunit() {
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_0010
      *tc.name OnLoadIntercept                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
      */
-    it('OnLoadIntercept', 0, async (done: Function) => {
+    it('OnLoadIntercept', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnLoadIntercept";
       Utils.registerEvent("OnLoadIntercept", "https://www.baidu.com/", 2, done);
       sendEventByKey('webcomponent', 10, '');
