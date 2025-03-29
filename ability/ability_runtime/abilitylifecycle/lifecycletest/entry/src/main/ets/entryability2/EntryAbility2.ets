@@ -9,7 +9,7 @@ interface EventDataI {
 
 
 export default class EntryAbility2 extends UIAbility {
-  private wantParam: Object =  {}
+  private wantParam: Object = new Object()
   private abilityLifeArr: Array<string> = []
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
