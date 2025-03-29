@@ -118,7 +118,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0100',0, () => {
+    it('testOHNetStackCertVerification_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_1, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -131,7 +131,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0200',0, () => {
+    it('testOHNetStackCertVerification_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_2, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -144,7 +144,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0300',0, () => {
+    it('testOHNetStackCertVerification_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_3, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
@@ -157,7 +157,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0400',0, () => {
+    it('testOHNetStackCertVerification_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_4, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
@@ -170,7 +170,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0500',0, () => {
+    it('testOHNetStackCertVerification_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_5, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
@@ -183,7 +183,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0600',0, () => {
+    it('testOHNetStackCertVerification_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_6, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -196,7 +196,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0700',0, () => {
+    it('testOHNetStackCertVerification_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_7, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -209,7 +209,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0800',0, () => {
+    it('testOHNetStackCertVerification_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_8, pemPath, derPath);
       expect(result).assertEqual(ERROR_CODE_69);
     });
@@ -222,7 +222,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_0900',0, () => {
+    it('testOHNetStackCertVerification_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_9, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -235,7 +235,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_1000',0, () => {
+    it('testOHNetStackCertVerification_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_10, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -248,7 +248,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackCertVerification_1100',0, () => {
+    it('testOHNetStackCertVerification_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_11, pemPath, derPath);
       expect(result === ERROR_CODE_2305001 || result === ERROR_CODE_2305069 ).assertTrue();
     });
@@ -261,7 +261,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0100',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_1, "www.example.com".toString());
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -274,7 +274,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0200',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_2, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -287,7 +287,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0300',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_3, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -300,7 +300,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0400',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_4, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -313,7 +313,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0500',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : string = wsAPI.OHNetStackGetPinSetForHostName2("notexit.com".toString());
       expect(result).assertEqual(undefined);
     });
@@ -326,7 +326,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0600',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : string = wsAPI.OHNetStackGetPinSetForHostName2("getonepin.com".toString());
       expect(result).assertEqual("sha256//FEDCBA987654321");
     });
@@ -339,7 +339,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0700',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : string = wsAPI.OHNetStackGetPinSetForHostName2("getmultipin.com".toString());
       expect(result).assertEqual("sha256//FEDCBA987654321;sha256//ABCDEF987654321;sha256//FEDCBA123456789");
     });
@@ -352,7 +352,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetPinSetForHostName_0800',0, () => {
+    it('testOHNetStackGetPinSetForHostName_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : string = wsAPI.OHNetStackGetPinSetForHostName2("getoverduepin.com".toString());
       expect(result).assertEqual(undefined);
     });
@@ -365,7 +365,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0100',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_1, "www.example.com".toString());
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -378,7 +378,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0200',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_2, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -391,7 +391,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0300',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_3, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -404,7 +404,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0400',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_4, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -417,7 +417,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0500',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("notexit.com".toString());
       expect(result).assertEqual(undefined);
     });
@@ -430,7 +430,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0600',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("getonecert.com".toString());
       expect(result.length).assertEqual(1);
     });
@@ -443,7 +443,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackGetCertificatesForHostName_0700',0, () => {
+    it('testOHNetStackGetCertificatesForHostName_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("getmulticert.com".toString());
       expect(result.length).assertEqual(3);
     });
@@ -456,7 +456,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetStackDestroyCertificatesContent_0100',0, () => {
+    it('testOHNetStackDestroyCertificatesContent_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       wsAPI.OHNetStackDestroyCertificatesContent();
     });
 
@@ -468,7 +468,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConstruct_0100',0, () => {
+    it('testOHWebSocketClientConstruct_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -481,7 +481,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConstruct_0200',0, () => {
+    it('testOHWebSocketClientConstruct_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -494,7 +494,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConstruct_0300',0, () => {
+    it('testOHWebSocketClientConstruct_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_3);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -507,7 +507,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConstruct_0400',0, () => {
+    it('testOHWebSocketClientConstruct_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_4);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -520,7 +520,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConstruct_0500',0, () => {
+    it('testOHWebSocketClientConstruct_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConstruct(CASE_INDEX_5);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -534,7 +534,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientAddHeader_0100',0, () => {
+    it('testOHWebSocketClientAddHeader_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number  = wsAPI.OHWebSocketClientAddHeader(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -547,7 +547,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientAddHeader_0200',0, () => {
+    it('testOHWebSocketClientAddHeader_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number  = wsAPI.OHWebSocketClientAddHeader(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -560,7 +560,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientAddHeader_0300',0, () => {
+    it('testOHWebSocketClientAddHeader_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number  = wsAPI.OHWebSocketClientAddHeader(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1001);
     });
@@ -574,7 +574,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConnect_0100',0, () => {
+    it('testOHWebSocketClientConnect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -587,7 +587,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConnect_0200',0, () => {
+    it('testOHWebSocketClientConnect_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -600,7 +600,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConnect_0300',0, () => {
+    it('testOHWebSocketClientConnect_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1001);
     });
@@ -613,7 +613,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientConnect_0400',0, () => {
+    it('testOHWebSocketClientConnect_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientConnect(CASE_INDEX_4);
       expect(result).assertEqual(ERROR_CODE_1006);
     });
@@ -627,7 +627,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientSend_0100',0, () => {
+    it('testOHWebSocketClientSend_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -640,7 +640,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientSend_0200',0, () => {
+    it('testOHWebSocketClientSend_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -653,7 +653,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientSend_0300',0, () => {
+    it('testOHWebSocketClientSend_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1011);
     });
@@ -666,7 +666,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientSend_0400',0, () => {
+    it('testOHWebSocketClientSend_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientSend(CASE_INDEX_4);
       expect(result).assertEqual(ERROR_CODE_1012);
     });
@@ -680,7 +680,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientClose_0100',0, () => {
+    it('testOHWebSocketClientClose_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -693,7 +693,7 @@ export default function NetStackNDKTest() {
      * @tc.level  : Level 1
      */
 
-    it('testOHWebSocketClientClose_0200',0, () => {
+    it('testOHWebSocketClientClose_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_2);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -706,7 +706,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientClose_0300',0, () => {
+    it('testOHWebSocketClientClose_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
@@ -719,7 +719,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientClose_0400',0, () => {
+    it('testOHWebSocketClientClose_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_4);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
@@ -732,7 +732,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientClose_0500',0, () => {
+    it('testOHWebSocketClientClose_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_5);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
@@ -746,7 +746,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientDestroy_0100',0, () => {
+    it('testOHWebSocketClientDestroy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_1);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -759,7 +759,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientDestroy_0200',0, () => {
+    it('testOHWebSocketClientDestroy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_2);
       expect(result).assertEqual(ERROR_CODE_1018);
     });
@@ -772,7 +772,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientDestroy_0300',0, () => {
+    it('testOHWebSocketClientDestroy_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_3);
       expect(result).assertEqual(ERROR_CODE_1018);
     });
@@ -785,7 +785,7 @@ export default function NetStackNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHWebSocketClientDestroy_0400',0, () => {
+    it('testOHWebSocketClientDestroy_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let result : number = wsAPI.OHWebSocketClientDestroy(CASE_INDEX_4);
       expect(result).assertEqual(WEBSOCKET_OK);
     });

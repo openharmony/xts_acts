@@ -15,7 +15,7 @@
 
 import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 let client_key = `-----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC18uHdYs6dTxvr
@@ -198,7 +198,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testSTARTTLSWith163Com', 0, async (done: Function) => {
+    it('testSTARTTLSWith163Com', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testSTARTTLSWith163Com '
       const printLog = (msg: string) => {
         console.info("testSTARTTLSWith163Com " + msg)
@@ -295,7 +295,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testOneWayTLSWithBaidu', 0, async (done: Function) => {
+    it('testOneWayTLSWithBaidu', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testOneWayTLSWithBaidu '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -342,7 +342,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testUpgradeWithNotConnectedTCPSocket', 0, async (done: Function) => {
+    it('testUpgradeWithNotConnectedTCPSocket', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testUpgradeWithNotConnectedTCPSocket '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -376,7 +376,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testUpgradeWithClosedTCPSocket', 0, async (done: Function) => {
+    it('testUpgradeWithClosedTCPSocket', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testUpgradeWithClosedTCPSocket '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -418,7 +418,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testUpgradeWithUDPSocket', 0, async (done: Function) => {
+    it('testUpgradeWithUDPSocket', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testUpgradeWithUDPSocket '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -455,7 +455,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testUpgradeWithNumber', 0, async (done: Function) => {
+    it('testUpgradeWithNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testUpgradeWithNumber '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -484,7 +484,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testUpgradeWithString', 0, async (done: Function) => {
+    it('testUpgradeWithString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testUpgradeWithString '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -513,7 +513,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testUpgradeWithInvalidObject', 0, async (done: Function) => {
+    it('testUpgradeWithInvalidObject', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testUpgradeWithInvalidObject '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -542,7 +542,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testConnectToNoSSLServer', 0, async (done: Function) => {
+    it('testConnectToNoSSLServer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testConnectToNoSSLServer '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -587,7 +587,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testConcurrentUpgradeAndCloseTCPSocket', 0, async (done: Function) => {
+    it('testConcurrentUpgradeAndCloseTCPSocket', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testConcurrentUpgradeAndCloseTCPSocket '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -628,7 +628,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testConcurrentUpgradeAndSendTCPSocket', 0, async (done: Function) => {
+    it('testConcurrentUpgradeAndSendTCPSocket', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testConcurrentUpgradeAndSendTCPSocket '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -689,7 +689,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testConcurrentUpgrade10TCPSocket', 0, async (done: Function) => {
+    it('testConcurrentUpgrade10TCPSocket', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testConcurrentUpgrade10TCPSocket '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -741,7 +741,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testTCPSocketSendAfterUpgrade', 0, async (done: Function) => {
+    it('testTCPSocketSendAfterUpgrade', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testTCPSocketSendAfterUpgrade '
       const printLog = (msg: string) => {
         console.info(testName + msg)
@@ -800,7 +800,7 @@ export default function TLSSocketUpgradeTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testTLSSocketSendAfterUpgradeNotConnect', 0, async (done: Function) => {
+    it('testTLSSocketSendAfterUpgradeNotConnect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const testName = 'testTLSSocketSendAfterUpgradeNotConnect '
       const printLog = (msg: string) => {
         console.info(testName + msg)

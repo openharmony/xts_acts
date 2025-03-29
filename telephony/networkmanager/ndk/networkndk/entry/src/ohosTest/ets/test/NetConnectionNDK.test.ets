@@ -52,7 +52,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAddrInfo_0100', 0, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let host = 'www.baidu.com';
       let serv = 'https';
       let netid = 0;
@@ -69,7 +69,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAddrInfo_0200', 0, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let host = 'www.baidu.com';
       let serv = '';
       let netid = 0;
@@ -86,7 +86,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAddrInfo_0300', 0, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let host = '';
       let serv = 'https';
       let netid = 0;
@@ -103,7 +103,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAddrInfo_0400', 0, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let host = 'www.baidu.com';
       let serv = 'https';
       let netid = 1;
@@ -120,7 +120,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAddrInfo_0500', 0, async (done: Function) => {
+    it('testOHNetConnGetAddrInfo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let host = '';
       let serv = '';
       let netid = 0;
@@ -138,7 +138,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnFreeDnsResult_0100', 0, async (done: Function) => {
+    it('testOHNetConnFreeDnsResult_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnFreeDnsResult(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -152,7 +152,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnFreeDnsResult_0200', 0, async (done: Function) => {
+    it('testOHNetConnFreeDnsResult_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnFreeDnsResult(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -166,7 +166,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnFreeDnsResult_0300', 0, async (done: Function) => {
+    it('testOHNetConnFreeDnsResult_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnFreeDnsResult(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -181,7 +181,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAllNets_0100', 0, async (done: Function) => {
+    it('testOHNetConnGetAllNets_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetAllNets(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -195,7 +195,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetAllNets_0200', 0, async (done: Function) => {
+    it('testOHNetConnGetAllNets_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetAllNets(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -210,7 +210,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnHasDefaultNet_0100', 0, async (done: Function) => {
+    it('testOHNetConnHasDefaultNet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnHasDefaultNet(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -224,7 +224,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnHasDefaultNet_0200', 0, async (done: Function) => {
+    it('testOHNetConnHasDefaultNet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnHasDefaultNet(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -239,7 +239,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnIsDefaultNetMetered_0100', 0, async (done: Function) => {
+    it('testOHNetConnIsDefaultNetMetered_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnIsDefaultNetMetered(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -253,7 +253,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnIsDefaultNetMetered_0200', 0, async (done: Function) => {
+    it('testOHNetConnIsDefaultNetMetered_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnIsDefaultNetMetered(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -268,7 +268,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetDefaultNet_0100', 0, async (done: Function) => {
+    it('testOHNetConnGetDefaultNet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetDefaultNet(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -282,7 +282,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetDefaultNet_0200', 0, async (done: Function) => {
+    it('testOHNetConnGetDefaultNet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetDefaultNet(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -297,7 +297,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetConnectionProperties_0100', 0, async (done: Function) => {
+    it('testOHNetConnGetConnectionProperties_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -311,7 +311,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetConnectionProperties_0200', 0, async (done: Function) => {
+    it('testOHNetConnGetConnectionProperties_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -325,7 +325,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetConnectionProperties_0300', 0, async (done: Function) => {
+    it('testOHNetConnGetConnectionProperties_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -339,7 +339,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetConnectionProperties_0400', 0, async (done: Function) => {
+    it('testOHNetConnGetConnectionProperties_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetConnectionProperties(CASE_INDEX_4);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -354,7 +354,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetNetCapabilities_0100', 0, async (done: Function) => {
+    it('testOHNetConnGetNetCapabilities_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -368,7 +368,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetNetCapabilities_0200', 0, async (done: Function) => {
+    it('testOHNetConnGetNetCapabilities_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -382,7 +382,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetNetCapabilities_0300', 0, async (done: Function) => {
+    it('testOHNetConnGetNetCapabilities_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -396,7 +396,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetNetCapabilities_0400', 0, async (done: Function) => {
+    it('testOHNetConnGetNetCapabilities_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetNetCapabilities(CASE_INDEX_4);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -411,7 +411,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetDefaultHttpProxy_0100', 0, async (done: Function) => {
+    it('testOHNetConnGetDefaultHttpProxy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetDefaultHttpProxy(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -425,7 +425,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnGetDefaultHttpProxy_0200', 0, async (done: Function) => {
+    it('testOHNetConnGetDefaultHttpProxy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnGetDefaultHttpProxy(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -440,7 +440,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHOSNetConnRegisterDnsResolver_0100', 0, async (done: Function) => {
+    it('testOHOSNetConnRegisterDnsResolver_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnRegisterDnsResolver(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -454,7 +454,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHOSNetConnRegisterDnsResolver_0200', 0, async (done: Function) => {
+    it('testOHOSNetConnRegisterDnsResolver_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnRegisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -468,7 +468,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHOSNetConnUnregisterDnsResolver_0100', 0, async (done: Function) => {
+    it('testOHOSNetConnUnregisterDnsResolver_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -482,7 +482,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHOSNetConnUnregisterDnsResolver_0200', 0, async (done: Function) => {
+    it('testOHOSNetConnUnregisterDnsResolver_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -496,7 +496,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHOSNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
+    it('testOHOSNetConnUnregisterDnsResolver_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -510,7 +510,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnBindSocket_0100', 0, async (done: Function) => {
+    it('testOHNetConnBindSocket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -524,7 +524,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnBindSocket_0200', 0, async (done: Function) => {
+    it('testOHNetConnBindSocket_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -538,7 +538,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnBindSocket_0300', 0, async (done: Function) => {
+    it('testOHNetConnBindSocket_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -552,7 +552,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnBindSocket_0400', 0, async (done: Function) => {
+    it('testOHNetConnBindSocket_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_4);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -566,7 +566,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0100', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_1);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -580,7 +580,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0200', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -594,7 +594,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0300', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -608,7 +608,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0400', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_4);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -622,7 +622,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0500', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallback(CASE_INDEX_5);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -636,7 +636,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0600', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -650,7 +650,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0700', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_2);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -664,7 +664,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0800', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -678,7 +678,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_0900', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_4);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -692,7 +692,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_1000', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_5);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -706,7 +706,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterNetConnCallback_1100', 0, async (done: Function) => {
+    it('testOHNetConnRegisterNetConnCallback_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterNetConnCallbackTimeout(CASE_INDEX_6);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -720,7 +720,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterDefaultNetConnCallback_0100', 0, async (done: Function) => {
+    it('testOHNetConnRegisterDefaultNetConnCallback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterDefaultNetConnCallback(CASE_INDEX_1);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -734,7 +734,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterDefaultNetConnCallback_0200', 0, async (done: Function) => {
+    it('testOHNetConnRegisterDefaultNetConnCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterDefaultNetConnCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -748,7 +748,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterDefaultNetConnCallback_0300', 0, async (done: Function) => {
+    it('testOHNetConnRegisterDefaultNetConnCallback_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterDefaultNetConnCallback(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -762,7 +762,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterNetConnCallback_0100', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterNetConnCallback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_1);
       expect(re).assertEqual(ERROR_CODE_2101007);
       done();
@@ -776,7 +776,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterNetConnCallback_0200', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterNetConnCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_2);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -790,7 +790,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterNetConnCallback_0300', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterNetConnCallback_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_2101007);
       done();
@@ -804,7 +804,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterNetConnCallback_0400', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterNetConnCallback_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_4);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -818,7 +818,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterNetConnCallback_0500', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterNetConnCallback_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_5);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -832,7 +832,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterNetConnCallback_0600', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterNetConnCallback_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterNetConnCallback(CASE_INDEX_6);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -846,7 +846,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnSetAppHttpProxy_0100', 0, async (done: Function) => {
+    it('testOHNetConnSetAppHttpProxy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -860,7 +860,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnSetAppHttpProxy_0200', 0, async (done: Function) => {
+    it('testOHNetConnSetAppHttpProxy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -874,7 +874,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnSetAppHttpProxy_0300', 0, async (done: Function) => {
+    it('testOHNetConnSetAppHttpProxy_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnSetAppHttpProxy(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -888,7 +888,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterAppHttpProxyCallback_0100', 0, async (done: Function) => {
+    it('testOHNetConnRegisterAppHttpProxyCallback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterAppHttpProxyCallback(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -902,7 +902,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterAppHttpProxyCallback_0200', 0, async (done: Function) => {
+    it('testOHNetConnRegisterAppHttpProxyCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterAppHttpProxyCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -916,7 +916,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterAppHttpProxyCallback_0300', 0, async (done: Function) => {
+    it('testOHNetConnRegisterAppHttpProxyCallback_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterAppHttpProxyCallback(CASE_INDEX_3);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -930,7 +930,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterAppHttpProxyCallback_0400', 0, async (done: Function) => {
+    it('testOHNetConnRegisterAppHttpProxyCallback_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterAppHttpProxyCallback(CASE_INDEX_4);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -944,7 +944,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterAppHttpProxyCallback_0500', 0, async (done: Function) => {
+    it('testOHNetConnRegisterAppHttpProxyCallback_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterAppHttpProxyCallback(CASE_INDEX_5);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -958,7 +958,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterAppHttpProxyCallback_0100', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterAppHttpProxyCallback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -972,7 +972,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterAppHttpProxyCallback_0200', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterAppHttpProxyCallback_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -986,7 +986,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterAppHttpProxyCallback_0300', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterAppHttpProxyCallback_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -1000,7 +1000,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterAppHttpProxyCallback_0400', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterAppHttpProxyCallback_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_4);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -1014,7 +1014,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterAppHttpProxyCallback_0500', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterAppHttpProxyCallback_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterAppHttpProxyCallback(CASE_INDEX_5);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -1028,7 +1028,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterDnsResolver_0100', 0, async (done: Function) => {
+    it('testOHNetConnRegisterDnsResolver_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterDnsResolver(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -1042,7 +1042,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnRegisterDnsResolver_0200', 0, async (done: Function) => {
+    it('testOHNetConnRegisterDnsResolver_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnRegisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
@@ -1056,7 +1056,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterDnsResolver_0100', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterDnsResolver_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_1);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -1070,7 +1070,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterDnsResolver_0200', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterDnsResolver_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
@@ -1085,7 +1085,7 @@ export default function NetConnectionNDKTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
+    it('testOHNetConnUnregisterDnsResolver_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
