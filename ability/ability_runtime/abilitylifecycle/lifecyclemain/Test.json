@@ -11,8 +11,8 @@
     "kits": [
         {
             "test-file-name": [
-                "LifeCycleMainTest.hap",
-                "LifeCycleTest.hap"
+                "ActsLifeCycleMainTest.hap",
+                "ActsLifeCycleTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
