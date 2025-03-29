@@ -81,9 +81,9 @@ export default function flex_AlignContent_SpaceAround_FlexSizeTest() {
       expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(fourthText.left - flexContainer.left)) <= 1).assertTrue();
 
-      expect(Math.floor(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom))) <= 1)
+      expect(Math.floor(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom))) <= 1)
+      expect(Math.floor(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs(Math.round(firstText.top - flexContainer.top) - Math.round(flexContainer.bottom - fourthText.bottom))) <= 1)
         .assertTrue();

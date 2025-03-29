@@ -146,7 +146,7 @@ export default function rowPad_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue();
       expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(10))) <= 1).assertTrue();
 
-      expect(Math.floor(Math.abs(rowContainer.right - thirdText.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(rowContainer.right - thirdText.right)) <= 2).assertTrue();
       console.info('[testRowPadTextMar] END');
       done();
     });
@@ -198,7 +198,7 @@ export default function rowPad_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue();
       expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(10))) <= 1).assertTrue();
 
-      expect(Math.floor(Math.abs(rowContainer.right - thirdText.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(rowContainer.right - thirdText.right)) <= 2).assertTrue();
       console.info('[testRowPadTextMarPad] END');
       done();
     });

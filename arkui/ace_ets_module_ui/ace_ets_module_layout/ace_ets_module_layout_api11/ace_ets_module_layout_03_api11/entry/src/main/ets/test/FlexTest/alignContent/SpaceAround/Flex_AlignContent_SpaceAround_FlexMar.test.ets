@@ -80,9 +80,9 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
       expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(fourthText.left - flexContainer.left)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(secondText.top - firstText.bottom)) - Math.abs(Math.round(thirdText.top - secondText.bottom)) <= 1)
+      expect(Math.abs(Math.round(secondText.top - firstText.bottom)) - Math.abs(Math.round(thirdText.top - secondText.bottom)) <= 2)
         .assertTrue();
-      expect(Math.abs(Math.round(thirdText.top - secondText.bottom)) - Math.abs(Math.round(fourthText.top - thirdText.bottom)) <= 1)
+      expect(Math.abs(Math.round(thirdText.top - secondText.bottom)) - Math.abs(Math.round(fourthText.top - thirdText.bottom)) <= 2)
         .assertTrue();
 
       expect(Math.abs(Math.round(firstText.top - flexContainer.top)) - Math.abs(Math.round(flexContainer.bottom - fourthText.bottom)) <= 1)

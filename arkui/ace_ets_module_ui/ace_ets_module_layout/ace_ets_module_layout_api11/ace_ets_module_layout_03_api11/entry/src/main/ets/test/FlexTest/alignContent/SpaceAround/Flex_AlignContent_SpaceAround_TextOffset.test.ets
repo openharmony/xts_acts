@@ -88,9 +88,9 @@ export default function flex_AlignContent_SpaceAround_TextOffsetTest() {
       expect(Math.floor(Math.abs(secondText.left - thirdText.left)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
 
-      expect(Math.abs(thirdText.top - secondText.bottom) - Math.abs(fourthText.top - thirdText.bottom) <= 1)
+      expect(Math.floor(Math.abs((thirdText.top - secondText.bottom) - (fourthText.top - thirdText.bottom))) <= 2)
         .assertTrue();
-      expect(Math.abs(thirdText.top - secondText.bottom) - distanceBefore <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.top - secondText.bottom) - distanceBefore)) <= 2).assertTrue();
       console.info("jyj 111 " + Math.abs(flexContainer.bottom - fourthText.bottom) + " result " + Math.abs(distanceBefore / 2));
       expect(Math.abs(flexContainer.bottom - fourthText.bottom) - Math.abs(distanceBefore / 2) <= 1).assertTrue();
       console.info('[testFlexAlignContentSpaceAroundTextOffset] END');

@@ -79,8 +79,8 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       expect(Math.floor(Math.abs(secondText.left - thirdText.left)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(thirdText.left - fourthText.left)) <= 1).assertTrue();
 
-      expect(Math.floor(Math.abs(firstText.bottom - thirdText.top)) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(secondText.bottom - secondText.left)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(firstText.bottom - secondText.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(secondText.bottom - thirdText.top)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(thirdText.bottom - fourthText.top)) <= 1).assertTrue();
       expect(Math.floor(Math.abs((fourthText.bottom - flexContainer.bottom) - vp2px(10))) <= 1).assertTrue();
       console.info('[testAlignContentSpaceAroundFlexPadOverflow] END');

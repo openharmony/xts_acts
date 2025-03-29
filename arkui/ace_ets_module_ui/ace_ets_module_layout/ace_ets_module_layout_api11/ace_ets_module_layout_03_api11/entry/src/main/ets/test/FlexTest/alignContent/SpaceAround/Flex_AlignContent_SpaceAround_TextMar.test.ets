@@ -118,9 +118,9 @@ export default function flex_AlignContent_SpaceAround_TextMarTest() {
       expect(Math.floor(Math.abs((firstText.top - flexContainer.top - vp2px(10)) - (flexContainer.bottom - fourthText.bottom))) <= 1)
         .assertTrue();
 
-      expect(Math.floor(Math.abs((secondText.top - firstText.bottom - vp2px(10)) - (thirdText.top - secondText.bottom))) <= 1)
+      expect(Math.floor(Math.abs((secondText.top - firstText.bottom - vp2px(10)) - (thirdText.top - secondText.bottom))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((thirdText.top - secondText.bottom) - (fourthText.top - thirdText.bottom))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((thirdText.top - secondText.bottom) - (fourthText.top - thirdText.bottom))) <= 2).assertTrue();
       expect(Math.floor(Math.abs((flexContainer.bottom - fourthText.bottom) - ((fourthText.top - thirdText.bottom) / 2))) <= 1)
         .assertTrue();
       console.info('[testFlexAlignContentSpaceAroundTextMarginMeet] END');

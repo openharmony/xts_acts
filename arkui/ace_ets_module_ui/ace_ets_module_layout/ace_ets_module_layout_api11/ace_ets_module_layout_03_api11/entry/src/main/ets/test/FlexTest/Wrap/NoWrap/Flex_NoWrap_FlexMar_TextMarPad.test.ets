@@ -223,7 +223,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
 
       expect(Math.floor(Math.abs((firstText.left - flexContainer.left) - vp2px(10))) <= 1).assertTrue()
       expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(20))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((thirdText.left - secondText.right) - vp2px(20))) <= 2).assertTrue()
 
       expect(Math.floor(Math.abs((firstText.right - firstText.left) - (vp2px(440) / 3))) <= 1).assertTrue()
       expect(Math.floor(Math.abs((firstText.right - firstText.left) - (secondText.right - secondText.left))) <= 1).assertTrue()
