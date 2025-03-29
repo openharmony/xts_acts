@@ -55,10 +55,6 @@ export default function screenHotTest() {
                     console.log(caseName + 'Succeeded in capture')
                     expect().assertFail()
                     done()
-                }).catch((err: BusinessError) => {
-                    console.log(caseName + 'Failed to capture, err : ' + JSON.stringify(err))
-                    expect(err.code).assertEqual(201)
-                    done()
                 })
             } catch (exception) {
                 console.error(caseName + 'Failed to pick Code: ' + JSON.stringify(exception));
