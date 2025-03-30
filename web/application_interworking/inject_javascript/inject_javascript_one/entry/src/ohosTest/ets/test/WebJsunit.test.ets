@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -50,7 +50,7 @@ export default function webJsunit() {
      *tc.name registerJavaScriptProxy
      *tc.desic Registers the JavaScript object and method list
      */
-    it('registerJavaScriptProxy', 0, async (done: Function) => {
+    it('registerJavaScriptProxy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteJavaScriptRegister";
       Utils.registerEvent("registerJavaScriptProxy", "backToEts", 86, done);
       sendEventByKey('webcomponent', 10, '');
@@ -60,7 +60,7 @@ export default function webJsunit() {
      *tc.name deleteJavaScriptRegister
      *tc.desic Deletes a registered JavaScript object with given name
      */
-    it('deleteJavaScriptRegister', 0, async (done: Function) => {
+    it('deleteJavaScriptRegister', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteJavaScriptRegister";
       Utils.registerEvent("deleteJavaScriptRegister", true, 87, done);
       sendEventByKey('webcomponent', 10, '');

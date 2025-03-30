@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import router from '@ohos.router';
@@ -73,7 +73,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0100', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0100 START');
       let result:ResultData | undefined = AppStorage.get('getCookie10114')
       if(result != undefined){
@@ -92,7 +92,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0200', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0200 START');
       let result:ResultData | undefined = AppStorage.get('fetchCookieSync10115')
       if(result != undefined){
@@ -111,7 +111,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0300', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0300 START');
       let result:ResultData | undefined = AppStorage.get('fetchCookieCallback10116')
       if(result != undefined){
@@ -130,7 +130,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0400', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0400 START');
       let result:ResultData | undefined = AppStorage.get('fetchCookiePromise10117')
       if(result != undefined){
@@ -149,7 +149,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0500', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0500 START');
       let result:ResultData | undefined = AppStorage.get('configCookieSync10118')
       if(result != undefined){
@@ -168,7 +168,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0600', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0600 START');
       let result:ResultData | undefined = AppStorage.get('configCookieCallback10119')
       if(result != undefined){
@@ -187,7 +187,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager0700', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager0700 START');
       let result:ResultData | undefined = AppStorage.get('configCookiePromise10120')
       if(result != undefined){
@@ -206,7 +206,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager1000', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager1000 START');
       let result:ResultData | undefined = AppStorage.get('putAcceptCookieEnabled10123')
       if(result != undefined){
@@ -225,7 +225,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager1100', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager1100 START');
       let result:ResultData | undefined = AppStorage.get('putAcceptThirdPartyCookieEnabled10124')
       if(result != undefined){
@@ -244,7 +244,7 @@ export default function ActsAceCookieTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOnCreatWebCookieManager1200', 0, (done: Function) => {
+    it('testOnCreatWebCookieManager1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testOnCreatWebCookieManager1200 START');
       let result:ResultData | undefined = AppStorage.get('existCookie10125')
       if(result != undefined){

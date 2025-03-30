@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -66,7 +66,7 @@ export default function webJsunitTwo() {
      *tc.name getLineNumber                                                                                                                                                                                                              
      *tc.desic return the number of console message lines
      */
-    it('getLineNumber', 0, async (done: Function) => {
+    it('getLineNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnConsoleTwo";
       Utils.registerEvent("getLineNumber", "44", 420, done);
       sendEventByKey('webcomponent', 10, '');
@@ -76,7 +76,7 @@ export default function webJsunitTwo() {
      *tc.name getSourceId                                                                                                                                                                                                              
      *tc.desic return the source url
      */
-    it('getSourceId', 0, async (done: Function) => {
+    it('getSourceId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnConsoleTwo";
       Utils.registerEvent("getSourceId", "resource://rawfile/index.html", 422, done);
       sendEventByKey('webcomponent', 10, '');

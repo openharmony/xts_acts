@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
        *@tc.type Function
        *@tc.level Level 2
        */
-      it('testWebView_webResourceType_SUB_RESOURCE', 0, async (done: Function) => {
+      it('testWebView_webResourceType_SUB_RESOURCE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_SUB_RESOURCE"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebView_webResourceType_SUB_RESOURCE", true, 1550, done);
@@ -92,7 +92,7 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
        *@tc.type Function
        *@tc.level Level 1
        */
-      it('testWebView_webResourceType_SERVICE_WORKER', 0, async (done: Function) => {
+      it('testWebView_webResourceType_SERVICE_WORKER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_SERVICE_WORKER"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebView_webResourceType_SERVICE_WORKER", true, 1551, done);
@@ -107,7 +107,7 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
        *@tc.type Function
        *@tc.level Level 1
        */
-      it('testWebView_webResourceType_PLUGIN_RESOURCE', 0, async (done: Function) => {
+      it('testWebView_webResourceType_PLUGIN_RESOURCE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_PLUGIN_RESOURCE"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebView_webResourceType_PLUGIN_RESOURCE", true, 1552, done);
@@ -122,7 +122,7 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-      it('testWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME', 0, async (done: Function) => {
+      it('testWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebView_webResourceType_NAVIGATION_PRELOAD_MAIN_FRAME", true, 1553, done);
@@ -138,7 +138,7 @@ export default function ActsAceWebViewWebResourceTypeProps2() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME', 0, async (done: Function) => {
+    it('testWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_NAVIGATION_PRELOAD_SUB_FRAME", true, 1554, done);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -56,7 +56,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetNetworkAvailable001', 0, async (done: Function) => {
+    it('testSetNetworkAvailable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailable001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailable001", 'false', 100055, done);
@@ -71,7 +71,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetNetworkAvailable002', 0, async (done: Function) => {
+    it('testSetNetworkAvailable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailable002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailable002", 'true', 100056, done);
