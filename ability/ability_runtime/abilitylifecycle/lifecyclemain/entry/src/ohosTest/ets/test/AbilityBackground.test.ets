@@ -17,8 +17,8 @@ export default function ActsLifeCycleMainBackgroundTest() {
 
     /*
     * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_0100
-    * @tc.name   : OnWillForeground_0100
-    * @tc.desc   : Expect: LifeCycleTest
+    * @tc.name   : To Verify whether the OnWillBackground lifecycle is callback
+    * @tc.desc   : Expect: call success
     * @tc.type   : Function
     * @tc.size   : MediumTest
     * @tc.level  : 3
@@ -66,8 +66,8 @@ export default function ActsLifeCycleMainBackgroundTest() {
     })
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_0200
-     * @tc.name   : OnWillForeground_0200
-     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.name   : To Verify whether the OnWillBackground lifecycle is callback
+     * @tc.desc   : Expect: call success
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 3
@@ -117,8 +117,8 @@ export default function ActsLifeCycleMainBackgroundTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_1300
-     * @tc.name   : OnWillForeground_1300
-     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.name   : To Verify whether the OnWillBackground lifecycle is callback
+     * @tc.desc   : Expect: call success
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 3
@@ -171,8 +171,8 @@ export default function ActsLifeCycleMainBackgroundTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_1400
-     * @tc.name   : OnWillForeground_1400
-     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.name   : To Verify whether the OnWillBackground lifecycle is callback
+     * @tc.desc   : Expect: call success
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 3
