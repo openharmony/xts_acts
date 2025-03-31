@@ -15,8 +15,6 @@ import("//build/ohos_var.gni")
 import("//drivers/external_device_manager/extdevmgr.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ext_mgr_path = "//drivers/external_device_manager"
-utils_path = "//drivers/external_device_manager/utils"
 module_output_path = "acts/ActsDeviceManagerTest"
 ohos_moduletest_suite("ActsDeviceManagerTest") {
   module_out_path = module_output_path
