@@ -112,7 +112,7 @@ describe('fileIO_fs_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_file_sync_003', 0, function () {
+  it('fileIO_copy_file_sync_003', Level.LEVEL3, function () {
 
     try {
       fileIO.copyFileSync();
