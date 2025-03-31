@@ -322,8 +322,11 @@ export default function GeneralLayoutPositionTest() {
       let strJson2 = getInspectorByKey('top');
       let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[1];
       let left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[0];
-      expect(original_rect_left - left).assertEqual(0);
-      expect(mirror_rect_left - left).assertEqual(0);
+      let strJson3 = getInspectorByKey('bottom');
+      let bottom_rect_left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson3).$rect + ']')[0] + ']')[0];
+      // position is invalid, Button is center display.
+      expect(original_rect_left - mirror_rect_left).assertEqual(0);
+      expect(mirror_rect_left - left).assertEqual(bottom_rect_left - mirror_rect_right);
       expect(original_rect_top - top).assertEqual(0);
       expect(mirror_rect_top - top).assertEqual(0);
       console.info('ArkUIHDS_General_Layout_0700 END');
@@ -355,8 +358,11 @@ export default function GeneralLayoutPositionTest() {
       let strJson2 = getInspectorByKey('top');
       let top: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[1];
       let left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[0];
-      expect(original_rect_left - left).assertEqual(0);
-      expect(mirror_rect_left - left).assertEqual(0);
+      let strJson3 = getInspectorByKey('bottom');
+      let bottom_rect_left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson3).$rect + ']')[0] + ']')[0];
+      // position is invalid, Button is center display.
+      expect(original_rect_left - mirror_rect_left).assertEqual(0);
+      expect(mirror_rect_left - left).assertEqual(bottom_rect_left - mirror_rect_right);
       expect(original_rect_top - top).assertEqual(0);
       expect(mirror_rect_top - top).assertEqual(0);
       console.info('ArkUIHDS_General_Layout_0800 END');
