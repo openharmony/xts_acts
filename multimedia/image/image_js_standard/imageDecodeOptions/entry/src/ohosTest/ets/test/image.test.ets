@@ -3213,7 +3213,7 @@ export default function imageDecodeOptions() {
                             );
                             expect(pixelmap != undefined).assertTrue();
                             let imageInfo = pixelmap.getImageInfoSync()
-                            expect(imageInfo.size.width == desiredRegionSize.width && imageInfo.size.height == desiredRegionSize.height).assertTrue();
+                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
                             done();
                         }
                     });
@@ -3269,7 +3269,7 @@ export default function imageDecodeOptions() {
                             );
                             expect(pixelmap != undefined).assertTrue();
                             let imageInfo = pixelmap.getImageInfoSync()
-                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
+                            expect(imageInfo.size.width == desiredRegionSize.width && imageInfo.size.height == desiredRegionSize.height).assertTrue();
                             done();
                         }
                     });
