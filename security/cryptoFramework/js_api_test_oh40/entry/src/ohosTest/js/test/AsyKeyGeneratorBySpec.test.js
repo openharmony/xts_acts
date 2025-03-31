@@ -14,7 +14,7 @@
  */
 
 import cryptoFramework from "@ohos.security.cryptoFramework";
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyCallback from "./utils/asysmmetricspec/publicAsymmetricSpecCallback";
 import * as asyPromise from "./utils/asysmmetricspec/publicAsymmetricSpecPromise";
 import * as common from "./utils/common/publicDoSpec";
@@ -50,7 +50,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyCallback
                     .generateByCommonSpec(genDsa2048CommonSpec(), "DSA")
@@ -75,7 +75,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyPromise
                     .generateByPubKeySpec(genDsa2048PubKeySpec(), "DSA")
@@ -100,7 +100,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyPromise
                     .generateByKeyPairSpec(genDsa2048KeyPairSpec(), "DSA")
@@ -125,7 +125,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let asyKeyPairSpec = cryptoFramework.createAsyKeyGeneratorBySpec(
                     genDsa2048PubKeySpec()
@@ -155,7 +155,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyCallback
                     .generateByCommonSpec(
@@ -185,7 +185,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyCallback
                     .generateByPriKeySpec(
@@ -213,7 +213,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyPromise
                     .generateByPubKeySpec(
@@ -241,7 +241,7 @@ export default function AsyKeyGeneratorBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyPromise
                     .generateByKeyPairSpec(

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, afterAll, } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, expect, afterAll, TestType, Size, Level, } from "@ohos/hypium";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import * as asyCommon from "./utils/asymmetric/publicAsymmetricCommon";
 import cryptoFramework from "@ohos.security.cryptoFramework";
@@ -48,7 +48,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 await asyCallback
                     .signAndVerifyNormalProcess("SM2_256", "SM2_256|SM3")
@@ -75,7 +75,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     await cryptoFramework.createSign("RSA|SM3");
@@ -117,7 +117,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createSign("SM2_256|NoHash");
@@ -178,7 +178,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createVerify("SM2_256|NoHash");
@@ -234,7 +234,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createAsyKeyGenerator("SM2_2567");
@@ -265,7 +265,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createSign("SM2_256|SHA257");
@@ -311,7 +311,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let specGenerator = cryptoFramework.createAsyKeyGenerator("SM2_256");
                 let signGenerator = cryptoFramework.createSign("SM2_256|SM3");
@@ -363,7 +363,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let globalText = "This is a sign test";
                 let input = {
@@ -406,7 +406,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let globalText = "This is a sign test";
                 let input = {
@@ -449,7 +449,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_1000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createVerify("SM2_2567|SHA256");
@@ -495,7 +495,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_1100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let specGenerator = cryptoFramework.createAsyKeyGenerator("SM2_256");
                 let verifyGenerator = cryptoFramework.createVerify("SM2_256|SM3");
@@ -547,7 +547,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_1400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 var globalSignBlob;
                 var globalText;
@@ -585,7 +585,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_1500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     cryptoFramework.createAsyKeyGenerator("SM2_256");
@@ -607,7 +607,7 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
          */
         it(
             "Security_CryptoFramework_SignatureVerificationSM2_Func_1600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 try {
                     let signGenerator = cryptoFramework.createSign("SM2_256|SM3");

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as asyKeyGenCallbackFunc from './utils/keyGenerate/asyKeyGenCallbackFunc';
@@ -50,7 +50,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0100: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC);
@@ -74,7 +74,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0200: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.SM2CommonSpec();
@@ -99,7 +99,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0300: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.PRIVATE_KEY_SPEC);
@@ -122,7 +122,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0400: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.PRIVATE_KEY_SPEC);
@@ -145,7 +145,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0500: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC);
@@ -168,7 +168,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0600: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC);
@@ -191,7 +191,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0700: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC);
@@ -215,7 +215,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_0800: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC);
@@ -239,7 +239,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1000: started.");
       try {
         let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC);
@@ -271,7 +271,7 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1200";
       console.log(testNumber + ": started");
       try {

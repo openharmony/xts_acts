@@ -14,7 +14,7 @@
  */
 
 import cryptoFramework from "@ohos.security.cryptoFramework";
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyCallback from "./utils/asysmmetricspec/publicAsymmetricSpecCallback";
 import * as asyPromise from "./utils/asysmmetricspec/publicAsymmetricSpecPromise";
 import * as common from "./utils/common/publicDoSpec";
@@ -121,7 +121,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_0900",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let asyKeyPairSpec = cryptoFramework.createAsyKeyGeneratorBySpec(
           genEccKeyTypeSpec(cryptoFramework.AsyKeySpecType.PRIVATE_KEY_SPEC)
@@ -151,7 +151,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1000",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let asyKeyPairSpec = cryptoFramework.createAsyKeyGeneratorBySpec(
           genEccKeyTypeSpec(cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC)
@@ -181,7 +181,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
          */
         it(
             "Security_CryptoFramework_GeneratorBySpec_Func_1100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyCallback
                     .generateByCommonSpec(genRsa2048CommonSpec(), "RSA")
@@ -207,7 +207,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         asyPromise
           .generateByPubKeySpec(genRsa2048PubKetSpec(), "RSA")
@@ -232,7 +232,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         asyPromise
           .generateByKeyPairSpec(genRsa2048KeyPairSpec(), "RSA")
@@ -257,7 +257,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let asyKeyPairSpec = cryptoFramework.createAsyKeyGeneratorBySpec(
           genRsa2048PubKetSpec()
@@ -288,7 +288,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           cryptoFramework.createAsyKeyGeneratorBySpec(genEccCommonSpecErr());
@@ -333,7 +333,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         promise
           .keyGenerationBySpecProcess(genDsa2048KeyPairSpec())
@@ -358,7 +358,7 @@ export default function AsyKeyGeneratorBySpecTwoJsunit() {
      */
     it(
       "Security_CryptoFramework_GeneratorBySpec_Func_1700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         callback
           .keyGenerationBySpecProcess("DSA2048")

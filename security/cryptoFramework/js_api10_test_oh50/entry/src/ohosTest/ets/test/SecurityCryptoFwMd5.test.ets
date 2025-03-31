@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils'
 import * as md5Utils from './utils/md5/md5Utils'
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwMd5TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Md5_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Md5_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let symKeyAlgName: string = "AES128";
         let msgLen: number = 1024;
@@ -71,7 +71,7 @@ export default function SecurityCryptoFwMd5TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Md5_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Md5_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let symKeyAlgName: string = "AES128";
         let msgLen: number = 64;
@@ -98,7 +98,7 @@ export default function SecurityCryptoFwMd5TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Md5_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Md5_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let symKeyAlgName: string = "AES128";
         let macAlgName:string = "MD5";
@@ -119,7 +119,7 @@ export default function SecurityCryptoFwMd5TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Md5_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Md5_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let symKeyAlgName: string = "AES128";
         let macAlgName:string = "MD5";
@@ -141,7 +141,7 @@ export default function SecurityCryptoFwMd5TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Md5_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Md5_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let symKeyAlgName: string = "AES256";
         let msgLen: number = 1024;
@@ -164,7 +164,7 @@ export default function SecurityCryptoFwMd5TestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Md5_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Md5_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 1024;
         let macAlgName:string = "MD5";
