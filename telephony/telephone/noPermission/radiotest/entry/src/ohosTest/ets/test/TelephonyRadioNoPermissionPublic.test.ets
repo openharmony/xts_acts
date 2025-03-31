@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect, Level, TestType, Size , Level, TestType, Size} from '@ohos/hypium'
+import { describe, beforeAll, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import radio from '@ohos.telephony.radio';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
