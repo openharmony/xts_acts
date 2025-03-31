@@ -33,7 +33,7 @@
                 "./resource/image/test.tiff ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry_test/files",
                 "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry_test/files",
                 "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry_test/files",
-                "./resource/image/jpeg_test_1440×1920jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry_test/files"
+                "./resource/image/jpeg_test_1440×1920.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry_test/files"
             ]
         },
         {
