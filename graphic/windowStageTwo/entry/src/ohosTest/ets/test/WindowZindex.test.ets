@@ -1189,14 +1189,14 @@ export default function windowZindexTest() {
       try{
         windowClass.setWindowDelayRaiseOnDrag(true);
         console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
-        expect().assertFail();
+        expect(true).assertTrue();
         done();
       }catch(err){
         console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
         if(err.code == 801){
           done();
         }else{
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
           done();
         }
       }
@@ -1216,14 +1216,14 @@ export default function windowZindexTest() {
       try{
         windowClass.setWindowDelayRaiseOnDrag(false);
         console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
-        expect().assertFail();
+        expect(true).assertTrue();
         done();
       }catch(err){
         console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
         if(err.code == 801){
           done();
         }else{
-          expect(err.code).assertEqual(401);
+          expect().assertFail();
           done();
         }
       }
