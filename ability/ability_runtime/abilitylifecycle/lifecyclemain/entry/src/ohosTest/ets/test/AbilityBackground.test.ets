@@ -11,9 +11,18 @@ async function sleep(time: number) {
 }
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-export default function LifeCycleTest() {
-  describe('LifeCycleBackgroundTest', () => {
 
+export default function ActsLifeCycleBackgroundTest() {
+  describe('ActsLifeCycleBackgroundTest', () => {
+
+    /*
+    * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_0100
+    * @tc.name   : OnWillForeground_0100
+    * @tc.desc   : Expect: LifeCycleTest
+    * @tc.type   : Function
+    * @tc.size   : MediumTest
+    * @tc.level  : 3
+    */
     it('SUB_Ability_AbilityRuntime_OnWillBackground_0100', 0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillBackground_0100';
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -55,7 +64,14 @@ export default function LifeCycleTest() {
         done()
       };
     })
-
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_0200
+     * @tc.name   : OnWillForeground_0200
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillBackground_0200', 0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillBackground_0200';
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -99,6 +115,14 @@ export default function LifeCycleTest() {
       };
     })
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_1300
+     * @tc.name   : OnWillForeground_1300
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillBackground_1300', 0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillBackground_1300';
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -145,6 +169,14 @@ export default function LifeCycleTest() {
       };
     })
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillBackground_1400
+     * @tc.name   : OnWillForeground_1400
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillBackground_1400', 0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillBackground_1400';
       let subscriber: commonEventManager.CommonEventSubscriber;

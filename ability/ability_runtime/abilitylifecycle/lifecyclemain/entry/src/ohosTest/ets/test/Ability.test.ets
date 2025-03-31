@@ -14,9 +14,17 @@ async function sleep(time: number) {
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let delegator = abilityDelegatorRegistry.getAbilityDelegator();
 
-export default function LifeCycleTest() {
-  describe('LifeCycleTest', () => {
+export default function ActsLifeCycleTest() {
+  describe('ActsLifeCycleTest', () => {
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillForeground_0100
+     * @tc.name   : OnWillForeground_0100
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillForeground_0100', 0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillForeground_0100';
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -56,6 +64,14 @@ export default function LifeCycleTest() {
       };
     })
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillForeground_0200
+     * @tc.name   : OnWillForeground_0200
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillForeground_0200', 0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillForeground_0200';
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -99,7 +115,7 @@ export default function LifeCycleTest() {
           expect().assertFail();
           done();
         });
-      let subscribeCallBack =async (err: BusinessError, data: commonEventManager.CommonEventData) => {
+      let subscribeCallBack = async (err: BusinessError, data: commonEventManager.CommonEventData) => {
         console.info(`${tag}-subscribeCallBack success1- ${data.data}`);
         expect(data.data).assertEqual("onWillForeground,onForeground,show event,onDidForeground");
         commonEventManager.unsubscribe(subscriber);
@@ -111,6 +127,15 @@ export default function LifeCycleTest() {
       };
     })
 
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillForeground_0900
+     * @tc.name   : OnWillForeground_0900
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillForeground_0900', 0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillForeground_0900';
       let subscriber: commonEventManager.CommonEventSubscriber;
@@ -150,6 +175,14 @@ export default function LifeCycleTest() {
       };
     })
 
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_OnWillForeground_1000
+     * @tc.name   : OnWillForeground_1000
+     * @tc.desc   : Expect: LifeCycleTest
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
     it('SUB_Ability_AbilityRuntime_OnWillForeground_1000', 0, (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_OnWillForeground_1000';
       let subscriber: commonEventManager.CommonEventSubscriber;
