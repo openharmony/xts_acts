@@ -14,8 +14,8 @@ async function sleep(time: number) {
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let delegator = abilityDelegatorRegistry.getAbilityDelegator();
 
-export default function ActsLifeCycleTest() {
-  describe('ActsLifeCycleTest', () => {
+export default function ActsLifeCycleMainTest() {
+  describe('ActsLifeCycleMainTest', () => {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_OnWillForeground_0100
