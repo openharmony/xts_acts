@@ -497,5 +497,25 @@ export default function printTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number print_function_1100
+     * @tc.name Test print
+     * @tc.desc check the 201 error code of the register and unregister functions of the printerChange event
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1100', Level.LEVEL2, async (done: Function) => {
+      // Permissions required: ohos.permission.PRINT
+      let onPrinterChange =
+        (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+          console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        };
+      // Permissions required: ohos.permission.PRINT
+      print.on('printerChange', onPrinterChange);
+      print.off('printerChange');
+      done();
+    })
   })
 }

@@ -803,7 +803,7 @@ export default function printTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('print_function_1100', Level.LEVEL1, async (done: Function) => {
+    it('print_function_1100', Level.LEVEL2, async (done: Function) => {
       // Permissions required: ohos.permission.PRINT
       await print.getAddedPrinters().then((printers : Array<string>) => {
         console.log('getAddedPrinters expect succeed, data: ' + JSON.stringify(printers));
@@ -814,6 +814,25 @@ export default function printTest() {
         expect().assertFalse();
         done();
       })
+    })
+
+    /**
+     * @tc.number print_function_1200
+     * @tc.name Test print
+     * @tc.desc check the register and unregister functions of the printerChange event
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('print_function_1200', Level.LEVEL2, async (done: Function) => {
+      let onPrinterChange =
+        (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+      };
+      // Permissions required: ohos.permission.PRINT
+      print.on('printerChange', onPrinterChange);
+      print.off('printerChange');
+      done();
     })
   })
 }
