@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -71,7 +71,7 @@ export default function wholeWebPageDrawing() {
      *tc.name testWholeWebPageDrawing
      *tc.desc wholeWebPageDrawing
      */
-    it('wholeWebPageDrawing0100', 0, async (done: Function) => {
+    it('wholeWebPageDrawing0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "wholeWebPageDrawing0200";
       Utils.registerEvent("wholeWebPageDrawing0100", "hello", 2793, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');
@@ -82,7 +82,7 @@ export default function wholeWebPageDrawing() {
      *tc.name testWholeWebPageDrawing
      *tc.desc wholeWebPageDrawing
      */
-    it('wholeWebPageDrawing0200', 0, async (done: Function) => {
+    it('wholeWebPageDrawing0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "wholeWebPageDrawing0300";
       Utils.registerEvent("wholeWebPageDrawing0200", true, 2794, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');
@@ -93,7 +93,7 @@ export default function wholeWebPageDrawing() {
      *tc.name testWholeWebPageDrawing
      *tc.desc wholeWebPageDrawing
      */
-    it('wholeWebPageDrawing0300', 0, async (done: Function) => {
+    it('wholeWebPageDrawing0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "wholeWebPageDrawing0400";
       Utils.registerEvent("wholeWebPageDrawing0300", 100, 2795, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');
@@ -104,7 +104,7 @@ export default function wholeWebPageDrawing() {
      *tc.name testWholeWebPageDrawing
      *tc.desc wholeWebPageDrawing
      */
-    it('wholeWebPageDrawing0400', 0, async (done: Function) => {
+    it('wholeWebPageDrawing0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "wholeWebPageDrawing0500";
       Utils.registerEvent("wholeWebPageDrawing0400", 100, 2796, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');
@@ -115,7 +115,7 @@ export default function wholeWebPageDrawing() {
      *tc.name testWholeWebPageDrawing
      *tc.desc wholeWebPageDrawing
      */
-    it('wholeWebPageDrawing0500', 0, async (done: Function) => {
+    it('wholeWebPageDrawing0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "wholeWebPageDrawing0600";
       Utils.registerEvent("wholeWebPageDrawing0500", true, 2797, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');
@@ -126,7 +126,7 @@ export default function wholeWebPageDrawing() {
      *tc.name testWholeWebPageDrawing
      *tc.desc wholeWebPageDrawing
      */
-    it('wholeWebPageDrawing0600', 0, async (done: Function) => {
+    it('wholeWebPageDrawing0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "wholeWebPageDrawing0600";
       Utils.registerEvent("wholeWebPageDrawing0600", false, 2798, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');

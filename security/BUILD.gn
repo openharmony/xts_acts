@@ -28,6 +28,7 @@ group("security") {
       "cryptoFramework",
       "crypto_framework_napi_BasicTest:ActsCryptoFrameworkNAPITest",
       "dlpNDKTest:ActsDlpNDKTest",
+      "dlp_errorcode_func:ActsDlpErrorCodeTest",
       "dlp_permission_service:DlpTest",
       "huks",
       "security_component/security_component_locationbutton:ActsSecLocationButtonTest",

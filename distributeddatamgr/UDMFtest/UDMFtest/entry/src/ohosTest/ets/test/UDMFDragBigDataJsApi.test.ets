@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import { BusinessError } from '@ohos.base';
 
@@ -60,9 +60,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text -- one data is Over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0100', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0100:';
       console.info(TAG, 'start');
       try {
@@ -119,9 +119,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text -- one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0150', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0150:';
       console.info(TAG, 'start');
       try {
@@ -179,9 +179,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text -- one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0200', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0200:';
       console.info(TAG, 'start');
       try {
@@ -239,9 +239,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text --one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0250', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0250:';
       console.info(TAG, 'start');
       try {
@@ -299,9 +299,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text --one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0300', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0300:';
       console.info(TAG, 'start');
       try {
@@ -359,9 +359,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text --one data is  in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0350', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0350:';
       console.info(TAG, 'start');
       try {
@@ -420,9 +420,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : text --one data is  is  100M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0400', 0, (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0400:';
       console.info(TAG, 'start');
       try {
@@ -485,9 +485,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : PlainText --one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0450', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0450:';
       console.info(TAG, 'start');
       try {
@@ -538,9 +538,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : PlainText one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0500', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0500:';
       console.info(TAG, 'start');
       try {
@@ -591,9 +591,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : PlainText --one data in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0550', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0550:';
       console.info(TAG, 'start');
       try {
@@ -644,9 +644,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : PlainText -- one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0600', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0600:';
       console.info(TAG, 'start');
       try {
@@ -697,9 +697,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : PlainText one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0650', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0650:';
       console.info(TAG, 'start');
       try {
@@ -750,9 +750,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : PlainText one  data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0700', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0700:';
       console.info(TAG, 'start');
       try {
@@ -803,9 +803,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Hyperlink one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0750', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0750:';
       console.info(TAG, 'start');
       try {
@@ -856,9 +856,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Hyperlink one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0800', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0800:';
       console.info(TAG, 'start');
       try {
@@ -909,9 +909,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Hyperlink one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0850', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0850:';
       console.info(TAG, 'start');
       try {
@@ -962,9 +962,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Hyperlink one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0900', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0900:';
       console.info(TAG, 'start');
       try {
@@ -1015,9 +1015,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Hyperlink one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0950', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_0950:';
       console.info(TAG, 'start');
       try {
@@ -1068,9 +1068,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Hyperlink one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1000', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1000:';
       console.info(TAG, 'start');
       try {
@@ -1121,9 +1121,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : HTML one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1050', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1050:';
       console.info(TAG, 'start');
       try {
@@ -1174,9 +1174,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : HTML  one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1100', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1100:';
       console.info(TAG, 'start');
       try {
@@ -1227,9 +1227,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : HTML one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1150', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1150:';
       console.info(TAG, 'start');
       try {
@@ -1280,9 +1280,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : HTML one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1200', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1200:';
       console.info(TAG, 'start');
       try {
@@ -1333,9 +1333,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : HTML one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1250', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1250:';
       console.info(TAG, 'start');
       try {
@@ -1386,9 +1386,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : HTML one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1300', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1300:';
       console.info(TAG, 'start');
       try {
@@ -1439,9 +1439,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedRecord one data is  2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1350', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1350:';
       console.info(TAG, 'start');
       try {
@@ -1499,9 +1499,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedRecord one data is  over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1400', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1400:';
       console.info(TAG, 'start');
       try {
@@ -1559,9 +1559,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedRecord one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1450', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1450:';
       console.info(TAG, 'start');
       try {
@@ -1619,9 +1619,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedRecord one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1500', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1500:';
       console.info(TAG, 'start');
       try {
@@ -1679,9 +1679,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedRecord one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1550', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1550:';
       console.info(TAG, 'start');
       try {
@@ -1739,9 +1739,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedRecord one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1600', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1600:';
       console.info(TAG, 'start');
       try {
@@ -1799,9 +1799,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedForm one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1650', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1650:';
       console.info(TAG, 'start');
       try {
@@ -1852,9 +1852,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedForm one data over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1700', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1700:';
       console.info(TAG, 'start');
       try {
@@ -1905,9 +1905,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedForm one data in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1750', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1750:';
       console.info(TAG, 'start');
       try {
@@ -1958,9 +1958,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedForm one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1800', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1800:';
       console.info(TAG, 'start');
       try {
@@ -2011,9 +2011,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedForm one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1850', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1850:';
       console.info(TAG, 'start');
       try {
@@ -2064,9 +2064,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedForm one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1900', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1900:';
       console.info(TAG, 'start');
       try {
@@ -2117,9 +2117,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedAppItem one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1950', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_1950:';
       console.info(TAG, 'start');
       try {
@@ -2170,9 +2170,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedAppItem one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2000', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2000:';
       console.info(TAG, 'start');
       try {
@@ -2223,9 +2223,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedAppItem one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2050', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2050:';
       console.info(TAG, 'start');
       try {
@@ -2276,9 +2276,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedAppItem one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2100', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2100:';
       console.info(TAG, 'start');
       try {
@@ -2329,9 +2329,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedAppItem one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2150', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2150:';
       console.info(TAG, 'start');
       try {
@@ -2382,9 +2382,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedAppItem one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2200', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2200:';
       console.info(TAG, 'start');
       try {
@@ -2436,9 +2436,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Folder one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2250', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2250:';
       console.info(TAG, 'start');
       try {
@@ -2489,9 +2489,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Folder one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2300', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2300:';
       console.info(TAG, 'start');
       try {
@@ -2542,9 +2542,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Folder one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2350', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2350:';
       console.info(TAG, 'start');
       try {
@@ -2595,9 +2595,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Folder one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2400', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2400:';
       console.info(TAG, 'start');
       try {
@@ -2648,9 +2648,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Folder one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2450', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2450:';
       console.info(TAG, 'start');
       try {
@@ -2701,9 +2701,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Folder one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2500', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2500:';
       console.info(TAG, 'start');
       try {
@@ -2754,9 +2754,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : File one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2550', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2550:';
       console.info(TAG, 'start');
       try {
@@ -2807,9 +2807,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : File one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2600', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2600:';
       console.info(TAG, 'start');
       try {
@@ -2860,9 +2860,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : File one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2650', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2650:';
       console.info(TAG, 'start');
       try {
@@ -2913,9 +2913,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : File one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2700', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2700:';
       console.info(TAG, 'start');
       try {
@@ -2966,9 +2966,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : File one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2750', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2750:';
       console.info(TAG, 'start');
       try {
@@ -3019,9 +3019,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : File one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2800', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2800:';
       console.info(TAG, 'start');
       try {
@@ -3073,9 +3073,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Image one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2850', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2850:';
       console.info(TAG, 'start');
       try {
@@ -3126,9 +3126,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Image one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2900', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2900:';
       console.info(TAG, 'start');
       try {
@@ -3179,9 +3179,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Image one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2950', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_2950:';
       console.info(TAG, 'start');
       try {
@@ -3232,9 +3232,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Image one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3000', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3000:';
       console.info(TAG, 'start');
       try {
@@ -3285,9 +3285,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Image one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3050', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3050:';
       console.info(TAG, 'start');
       try {
@@ -3338,9 +3338,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Image one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3100', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3100:';
       console.info(TAG, 'start');
       try {
@@ -3391,9 +3391,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Video one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3150', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3150:';
       console.info(TAG, 'start');
       try {
@@ -3444,9 +3444,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Video one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3200', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3200:';
       console.info(TAG, 'start');
       try {
@@ -3497,9 +3497,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Video one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3250', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3250:';
       console.info(TAG, 'start');
       try {
@@ -3550,9 +3550,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Video one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3300', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3300:';
       console.info(TAG, 'start');
       try {
@@ -3603,9 +3603,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Video one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3350', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3350:';
       console.info(TAG, 'start');
       try {
@@ -3656,9 +3656,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Video one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3400', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3400:';
       console.info(TAG, 'start');
       try {
@@ -3709,9 +3709,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Audio one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3450', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3450', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3450:';
       console.info(TAG, 'start');
       try {
@@ -3762,9 +3762,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Audio one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3500', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3500:';
       console.info(TAG, 'start');
       try {
@@ -3815,9 +3815,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Audio one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3550', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3550', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3550:';
       console.info(TAG, 'start');
       try {
@@ -3868,9 +3868,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Audio one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3600', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3600:';
       console.info(TAG, 'start');
       try {
@@ -3921,9 +3921,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Audio one data is  over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3650', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3650', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3650:';
       console.info(TAG, 'start');
       try {
@@ -3974,9 +3974,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : Audio one data is  in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3700', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3700:';
       console.info(TAG, 'start');
       try {
@@ -4027,9 +4027,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedPixelMap one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3750', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3750', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3750:';
       console.info(TAG, 'start');
       try {
@@ -4090,9 +4090,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedPixelMap one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3800', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3800:';
       console.info(TAG, 'start');
       try {
@@ -4153,9 +4153,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedPixelMap one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3850', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3850', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3850:';
       console.info(TAG, 'start');
       try {
@@ -4208,9 +4208,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedPixelMap one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3900', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3900:';
       console.info(TAG, 'start');
       try {
@@ -4273,9 +4273,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedPixelMap one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3950', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3950', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_3950:';
       console.info(TAG, 'start');
       try {
@@ -4336,9 +4336,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : SystemDefinedPixelMap one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4000', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4000:';
       console.info(TAG, 'start');
       try {
@@ -4391,9 +4391,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : ApplicationDefinedRecord one data is 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4050', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4050:';
       console.info(TAG, 'start');
       try {
@@ -4448,9 +4448,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : ApplicationDefinedRecord one data is over 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4150', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4150:';
       console.info(TAG, 'start');
       try {
@@ -4505,9 +4505,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : ApplicationDefinedRecord one data is in 2M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4200', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4200:';
       console.info(TAG, 'start');
       try {
@@ -4560,9 +4560,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : ApplicationDefinedRecord one data is 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4250', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4250:';
       console.info(TAG, 'start');
       try {
@@ -4617,9 +4617,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : ApplicationDefinedRecord one data is over 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4300', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4300:';
       console.info(TAG, 'start');
       try {
@@ -4674,9 +4674,9 @@ export default function UDMFDragBigDataJsApiTest() {
      * @tc.desc      : pplicationDefinedRecord one data is in 4M
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4350', 0, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_DragBigDataJsApiTest_4350:';
       console.info(TAG, 'start');
       try {

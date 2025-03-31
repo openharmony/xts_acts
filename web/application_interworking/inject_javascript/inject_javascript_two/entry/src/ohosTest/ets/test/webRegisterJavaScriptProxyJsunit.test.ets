@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
@@ -58,7 +58,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('RegisterJavaScriptProxy', 0 , async (done:Function)=>{
+    it('RegisterJavaScriptProxy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function)=>{
       emitKey="emitRunJavaScript";
       Utils.registerEvent("RegisterJavaScriptProxy","RunSuccess",23,done);
       sendEventByKey('webcomponent',10,'');
@@ -72,7 +72,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('RunJavaScript',0,async (done:Function)=>{
+    it('RunJavaScript',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function)=>{
       emitKey="emitUnregisterJavaScriptProxy";
       Utils.registerEvent("RunJavaScript","RunSuccess",24,done);
       sendEventByKey('webcomponent',10,'');
@@ -86,7 +86,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('UnregisterJavaScriptProxy',0,async (done:Function)=>{
+    it('UnregisterJavaScriptProxy',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function)=>{
       emitKey="emitSetJavaScriptProxyValidCallback";
       Utils.registerEvent("UnregisterJavaScriptProxy","RunSuccess",25,done);
       sendEventByKey('webcomponent',10,'');
@@ -100,7 +100,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('SetJavaScriptProxyValidCallback',0,async (done:Function)=>{
+    it('SetJavaScriptProxyValidCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function)=>{
       emitKey="emitGetJavaScriptProxyValidCallback";
       Utils.registerEvent("SetJavaScriptProxyValidCallback","RunSuccess",26,done);
       sendEventByKey('webcomponent',10,'');
@@ -115,7 +115,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('GetJavaScriptProxyValidCallback',0,async (done:Function)=>{
+    it('GetJavaScriptProxyValidCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function)=>{
       emitKey="emitSetDestroyCallback";
       Utils.registerEvent("GetJavaScriptProxyValidCallback","RunSuccess",27,done);
       sendEventByKey('webcomponent',10,'');
@@ -129,7 +129,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('SetDestroyCallback',0,async (done:Function)=>{
+    it('SetDestroyCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function)=>{
       emitKey="emitGetDestroyCallback";
       Utils.registerEvent("SetDestroyCallback","RunSuccess",28,done);
       sendEventByKey('webcomponent',10,'');
@@ -143,7 +143,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('GetDestroyCallback',0,async (done:Function)=>{
+    it('GetDestroyCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function)=>{
       emitKey="emitGetDestroyCallback";
       Utils.registerEvent("GetDestroyCallback","RunSuccess",29,done);
       sendEventByKey('webcomponent',10,'');

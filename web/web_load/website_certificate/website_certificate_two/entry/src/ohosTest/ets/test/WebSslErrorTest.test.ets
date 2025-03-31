@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -53,7 +53,7 @@ export default function webSslErrorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSslErrorDateInvalid001', 0, async (done: Function) => {
+    it('testSslErrorDateInvalid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitSslErrorDateInvalid", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSslErrorDateInvalid001", SslError.DateInvalid, 70892, done);
@@ -68,7 +68,7 @@ export default function webSslErrorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSslErrorUntrusted001', 0, async (done: Function) => {
+    it('testSslErrorUntrusted001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitSslErrorUntrusted", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSslErrorUntrusted001", SslError.Untrusted, 70893, done);

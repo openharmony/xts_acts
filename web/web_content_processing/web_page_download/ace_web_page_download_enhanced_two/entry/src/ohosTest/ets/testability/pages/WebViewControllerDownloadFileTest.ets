@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -17,6 +17,7 @@ import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
 import business_error from '@ohos.base'
 import Utils from '../../test/Utils';
+import {waitForAssert, waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
@@ -51,9 +52,9 @@ struct WebViewControllerDownloadFileTest {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
         this.lastErrorCode = -1
@@ -67,32 +68,40 @@ struct WebViewControllerDownloadFileTest {
       Row() {
         Button('WebViewControllerDownloadFileTestButton')
           .key('WebViewControllerDownloadFileTestButton').onClick(async () => {
-          console.info("key==>" + this.str)
+          console.info('key==>' + this.str)
           switch (this.str) {
-            case "testDownloadFile001": {
+            case 'testDownloadFile001': {
               try {
                 this.savePath = 'data/'
-                await Utils.sleep(18000)
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(18000)
-                Utils.emitEvent(this.lastErrorCode, 79300)
+
+                let check = (v1: number, v2: number):boolean => {
+                  return v1 ? true:false;
+                };
+                await waitForAssert(() => this.lastErrorCode, check, webView.WebDownloadErrorCode.FILE_ACCESS_DENIED,
+                  79300, this.str)
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
               break;
             }
-            case "testDownloadFile002": {
+            case 'testDownloadFile002': {
               try {
                 this.savePath = Utils.getSandboxFileDir() + 'testDownloadFileFile.exe'
-                await Utils.sleep(18000)
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(18000)
+                waitForExist(()=>this.cancelDownloadItem, this.str)
                 if (this.cancelDownloadItem) {
                   this.cancelDownloadItem.cancel()
                 }
-                await Utils.sleep(18000)
-                Utils.emitEvent(this.lastErrorCode, 79302)
+
+                let check = (v1: number, v2: number): boolean => {
+                  return v1 ? true: false;
+                }
+                await waitForAssert(() => this.lastErrorCode, check, webView.WebDownloadErrorCode.USER_CANCELED,
+                  79302, this.str)
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -114,30 +123,30 @@ struct WebViewControllerDownloadFileTest {
           if (!this.hasSetDownloadDelegate) {
             try {
               this.delegate.onBeforeDownload((webDownloadItem: webView.WebDownloadItem) => {
-                console.log("will start a download.");
-                console.log("will start a download， method:" + webDownloadItem.getMethod());
-                console.log("will start a download， mime type:" + webDownloadItem.getMimeType());
-                console.log("will start a download, url:" + webDownloadItem.getUrl());
-                console.log("will start a download, suggest name:" + webDownloadItem.getSuggestedFileName());
+                console.log('will start a download.');
+                console.log('will start a download， method:' + webDownloadItem.getMethod());
+                console.log('will start a download， mime type:' + webDownloadItem.getMimeType());
+                console.log('will start a download, url:' + webDownloadItem.getUrl());
+                console.log('will start a download, suggest name:' + webDownloadItem.getSuggestedFileName());
                 webDownloadItem.start(this.savePath);
               })
               this.delegate.onDownloadUpdated((webDownloadItem: webView.WebDownloadItem) => {
-                console.log("download update download state: " + webDownloadItem.getState());
-                console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
-                console.log("download update full path: " + webDownloadItem.getFullPath());
-                console.log("download update current speed: " + webDownloadItem.getCurrentSpeed());
-                console.log("download update total bytes: " + webDownloadItem.getTotalBytes());
-                console.log("download update received bytes: " + webDownloadItem.getReceivedBytes());
+                console.log('download update download state: ' + webDownloadItem.getState());
+                console.log('download update percent complete: ' + webDownloadItem.getPercentComplete());
+                console.log('download update full path: ' + webDownloadItem.getFullPath());
+                console.log('download update current speed: ' + webDownloadItem.getCurrentSpeed());
+                console.log('download update total bytes: ' + webDownloadItem.getTotalBytes());
+                console.log('download update received bytes: ' + webDownloadItem.getReceivedBytes());
                 this.cancelDownloadItem = webDownloadItem;
               })
               this.delegate.onDownloadFailed((webDownloadItem: webView.WebDownloadItem) => {
-                console.log("download failed guid: " + webDownloadItem.getGuid());
-                console.log("download failed lastErrorCode: " + webDownloadItem.getLastErrorCode());
+                console.log('download failed guid: ' + webDownloadItem.getGuid());
+                console.log('download failed lastErrorCode: ' + webDownloadItem.getLastErrorCode());
                 this.lastErrorCode = webDownloadItem.getLastErrorCode()
                 webDownloadItem.cancel();
               })
               this.delegate.onDownloadFinish((webDownloadItem: webView.WebDownloadItem) => {
-                console.log("download finish guid: " + webDownloadItem.getGuid());
+                console.log('download finish guid: ' + webDownloadItem.getGuid());
               })
               this.controller.setDownloadDelegate(this.delegate);
               this.hasSetDownloadDelegate = true

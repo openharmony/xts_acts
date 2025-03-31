@@ -1,4 +1,18 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+/*
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import pasteboard from '@ohos.pasteboard';
 import { abilityAccessCtrl, common, PermissionRequestResult} from '@kit.AbilityKit';
@@ -83,7 +97,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0100 start ************')
       let fileFullName = filePath + '/test1.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -126,7 +140,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0200 start ************')
       let fileFullName = filePath + '/test2.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -172,7 +186,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0300 start ************')
       let fileFullName = filePath + '/test3.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -208,7 +222,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0500 start ************')
       let fileFullName = filePath + '/test5.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -254,7 +268,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0600 start ************')
       let fileFullName = filePath + '/test6.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -293,7 +307,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0700 start ************')
       let fileFullName = filePath + '/test7.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -339,7 +353,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0800 start ************')
       let fileFullName = filePath + '/test8.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -383,7 +397,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_0900', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_0900 start ************')
       let fileFullName = filePath + '/test9.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -427,7 +441,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1000', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1000 start ************')
       let fileFullName = filePath + '/test10.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -471,7 +485,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1100 start ************')
       let fileFullName = filePath + '/test11.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -514,7 +528,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1200 start ************')
       let fileFullName = filePath + '/test12.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -557,7 +571,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1300', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1300 start ************')
       let fileFullName = filePath + '/test13.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -600,7 +614,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1400', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1400 start ************')
       let fileFullName = filePath + '/test14.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -643,7 +657,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1500 start ************')
       let fileFullName = filePath + '/test15.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -690,7 +704,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1600 start ************')
       let fileFullName = filePath + '/test16.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -734,7 +748,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1700 start ************')
       let fileFullName = filePath + '/test17.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);
@@ -783,7 +797,7 @@ export default function PasteboardProgressTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_ProgressTest_1800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_ProgressTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_ProgressTest_1800 start ************')
       let fileFullName = filePath + '/test18.txt';
       console.info(TAG + 'The fileFullName of str is:' + fileFullName);

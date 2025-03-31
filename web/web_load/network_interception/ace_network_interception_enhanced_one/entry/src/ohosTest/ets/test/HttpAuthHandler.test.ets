@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function httpAuthHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHttpAuthHandlerCancel001', 0, async (done: Function) => {
+    it('testHttpAuthHandlerCancel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHttpAuthHandlerCancel001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHttpAuthHandlerCancel001", 401, 32041, done);
@@ -70,7 +70,7 @@ export default function httpAuthHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHttpAuthHandlerConfirm001', 0, async (done: Function) => {
+    it('testHttpAuthHandlerConfirm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHttpAuthHandlerConfirm001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHttpAuthHandlerConfirm001", true, 32040, done);
@@ -85,7 +85,7 @@ export default function httpAuthHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testHttpAuthHandlerIsHttpAuthInfoSaved001', 0, async (done: Function) => {
+    it('testHttpAuthHandlerIsHttpAuthInfoSaved001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testHttpAuthHandlerIsHttpAuthInfoSaved001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHttpAuthHandlerIsHttpAuthInfoSaved001", false, 32042, done);

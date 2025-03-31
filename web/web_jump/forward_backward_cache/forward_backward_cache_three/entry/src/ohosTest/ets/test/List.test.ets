@@ -16,10 +16,14 @@
 import webCookieManagerFetchCookieSync from './WebCookieManagerFetchCookieSync.test'
 import webCookieManagerFetchCookie from './WebCookieManagerFetchCookie.test'
 import webCookieManagerExistCookie from './WebCookieManagerExistCookie.test'
+import webCookieManagerFetchCookieIncognito from './WebCookieManagerFetchCookieIncognito.test'
+import webCookieManagerConfigCookie from './WebCookieManagerConfigCookie.test'
 
 
 export default function testsuite() {
   webCookieManagerFetchCookieSync()
   webCookieManagerFetchCookie()
   webCookieManagerExistCookie()
+  webCookieManagerFetchCookieIncognito()
+  webCookieManagerConfigCookie()
 }

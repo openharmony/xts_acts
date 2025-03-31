@@ -12,16 +12,16 @@ const mWorkerInstance = new worker.ThreadWorker('./postMessage/WorkerPostMessage
  */
 workerPort.onmessage = async (e: MessageEvents) => {
   let data = e.data as string;
-  let workerInstance: worker.ThreadWorker | undefined = undefined;
   let value = 0;
   let state: boolean = false;
   try {
     if (data == 'testComposite0001') {
-      workerInstance = new worker.ThreadWorker('./postMessage/WorkerPostMessage.ets');
+      let workerInstance = new worker.ThreadWorker('./postMessage/WorkerPostMessage.ets');
       workerInstance.onmessage = async (e) => {
         console.log(`testComposite0001 worker onmessage: ` + JSON.stringify(e));
         value = e.data as number;
         state = true;
+        workerInstance.terminate();
       }
       workerInstance.postMessage(1);
     } else if (data == 'testComposite0002') {
@@ -38,7 +38,6 @@ workerPort.onmessage = async (e: MessageEvents) => {
     while (!state) {
       await Sleep(100);
     }
-    workerInstance?.terminate();
   } catch (error) {
     console.error(`error CompositeWorker`);
   }

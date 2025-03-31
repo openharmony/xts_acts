@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -56,7 +56,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward001', 0, async (done: Function) => {
+    it('testBackOrForward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward001", "second", 37005, done);
@@ -71,7 +71,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward002', 0, async (done: Function) => {
+    it('testBackOrForward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward002", "index", 37006, done);
@@ -86,7 +86,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward003', 0, async (done: Function) => {
+    it('testBackOrForward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward003", "index", 37007, done);
@@ -101,7 +101,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward004', 0, async (done: Function) => {
+    it('testBackOrForward004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward004", "index", 37008, done);

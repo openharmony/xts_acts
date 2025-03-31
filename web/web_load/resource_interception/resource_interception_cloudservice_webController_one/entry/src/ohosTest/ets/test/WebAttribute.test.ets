@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGeolocationAccess001', 0, async (done: Function) => {
+    it('testGeolocationAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGeolocationAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGeolocationAccess001", "\"位置服务被拒绝\"", 31020, done);
@@ -70,7 +70,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnResourceLoad001', 0, async (done: Function) => {
+    it('testOnResourceLoad001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnResourceLoad001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnResourceLoad001", "resource://rawfile/geolocation.html", 31021, done);
@@ -85,7 +85,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnWindowNew001', 0, async (done: Function) => {
+    it('testOnWindowNew001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnWindowNew001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnWindowNew001", true, 30071, done);
@@ -100,7 +100,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnWindowNew002', 0, async (done: Function) => {
+    it('testOnWindowNew002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnWindowNew002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnWindowNew002", false, 30072, done);
@@ -115,7 +115,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnWindowNew003', 0, async (done: Function) => {
+    it('testOnWindowNew003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnWindowNew003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnWindowNew003", false, 30073, done);
@@ -130,7 +130,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultiWindowAccess001', 0, async (done: Function) => {
+    it('testMultiWindowAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testMultiWindowAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMultiWindowAccess001", false, 30074, done);
@@ -145,7 +145,7 @@ export default function webAttribute() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testJavaScriptAccess001', 0, async (done: Function) => {
+    it('testJavaScriptAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testJavaScriptAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJavaScriptAccess001", true, 32019, done);

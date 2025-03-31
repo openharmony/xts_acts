@@ -42,65 +42,69 @@ let on_connect_callback = (client: socket.TCPSocketConnection) => {
 }
 
 let on_message_callback = (value: SocketInfo) => {
-  const dataView = new DataView(value.message);
-  let subInfo: string = '';
-  for (let i=0; i<dataView.byteLength; i++){
-    let info = String.fromCharCode(dataView.getUint8(i));
-    subInfo += info;
-  }
-  subInfo = subInfo.replace(/[\n\f\b\f\n\r\t]/g, ' ');
-  subInfo = subInfo.replace(/[\']/g, "'");
-  subInfo = subInfo.replace(/[\"]/g, "'");
-  subInfo = subInfo.replace(/[\\]/g, '\\');
-  if(subInfo.indexOf('content-length')>0){
-    let nextSpaceIndex = subInfo.substring(subInfo.indexOf('content-length'), subInfo.length-1).indexOf(' ');
-    contentLength = parseInt(subInfo.slice(subInfo.indexOf('content-length') + 'content-length:'.length, subInfo.indexOf('content-length') + nextSpaceIndex))
-    console.info(TAG + '====>contentLength:' + contentLength)
-  }
-  if(subInfo.indexOf('boundary=') >0 ){
-    validationCode = subInfo.substr(subInfo.indexOf('boundary=') + 9, 67);
-    console.info(TAG + '====>validationCode:' + validationCode);
-  }
-  if(subInfo.indexOf(`--${validationCode}`) != subInfo.indexOf(`--${validationCode}--`)){
-    if(subInfo.indexOf(`--${validationCode}`) != -1){
-      contentInfo += subInfo.substring(subInfo.indexOf(`--${validationCode}`), subInfo.length);
-      console.info(TAG + '====>contentInfo one')
-    }else{
-      contentInfo += subInfo;
-      console.info(TAG + '====>contentInfo two')
+  try {
+    const dataView = new DataView(value.message);
+    let subInfo: string = '';
+    for (let i=0; i<dataView.byteLength; i++){
+      let info = String.fromCharCode(dataView.getUint8(i));
+      subInfo += info;
     }
-  }else{
-    if(subInfo.indexOf('content-length') === -1){
-      contentInfo += subInfo;
-      console.info(TAG + '====>contentInfo three')
+    subInfo = subInfo.replace(/[\n\f\b\f\n\r\t]/g, ' ');
+    subInfo = subInfo.replace(/[\']/g, "'");
+    subInfo = subInfo.replace(/[\"]/g, "'");
+    subInfo = subInfo.replace(/[\\]/g, '\\');
+    if(subInfo.indexOf('content-length')>0){
+      let nextSpaceIndex = subInfo.substring(subInfo.indexOf('content-length'), subInfo.length-1).indexOf(' ');
+      contentLength = parseInt(subInfo.slice(subInfo.indexOf('content-length') + 'content-length:'.length, subInfo.indexOf('content-length') + nextSpaceIndex))
+      console.info(TAG + '====>contentLength:' + contentLength)
     }
-  }
-  if(subInfo.indexOf(`--${validationCode}--`) != -1){
-    console.info(TAG + `====>contentLength: ${contentLength}`)
-    console.info(TAG + `====>contentInfo_Length: ${contentInfo.length}`)
-    console.info(TAG + `====>contentInfo: ${contentInfo}`)
-    if(contentLength === contentInfo.length){
-      if(subInfo.includes('666')){
-        let subInfo = ''.padEnd(1 * 1024 *  1024, '666');
-        messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
-      } else if (subInfo.includes('888')) {
-        let subInfo = ''.padEnd(10 * 1024 *  1024, '888');
-        messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
-      } else {
-        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\nheadertest:headerreceivetest\r\n\r\nupload successful!'
+    if(subInfo.indexOf('boundary=') >0 ){
+      validationCode = subInfo.substr(subInfo.indexOf('boundary=') + 9, 67);
+      console.info(TAG + '====>validationCode:' + validationCode);
+    }
+    if(subInfo.indexOf(`--${validationCode}`) != subInfo.indexOf(`--${validationCode}--`)){
+      if(subInfo.indexOf(`--${validationCode}`) != -1){
+        contentInfo += subInfo.substring(subInfo.indexOf(`--${validationCode}`), subInfo.length);
+        console.info(TAG + '====>contentInfo one')
+      }else{
+        contentInfo += subInfo;
+        console.info(TAG + '====>contentInfo two')
       }
     }else{
-      messageView = 'HTTP/1.1 200 OK\r\ncontent-length:14\r\n\r\nupload failed!'
+      if(subInfo.indexOf('content-length') === -1){
+        contentInfo += subInfo;
+        console.info(TAG + '====>contentInfo three')
+      }
     }
-    contentInfo = '';
-    let tcpSendOption: socket.TCPSendOptions ={
-      data: messageView
+    if(subInfo.indexOf(`--${validationCode}--`) != -1){
+      console.info(TAG + `====>contentLength: ${contentLength}`)
+      console.info(TAG + `====>contentInfo_Length: ${contentInfo.length}`)
+      console.info(TAG + `====>contentInfo: ${contentInfo}`)
+      if(contentLength === contentInfo.length){
+        if(subInfo.includes('666')){
+          let subInfo = ''.padEnd(1 * 1024 *  1024, '666');
+          messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
+        } else if (subInfo.includes('888')) {
+          let subInfo = ''.padEnd(10 * 1024 *  1024, '888');
+          messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
+        } else {
+          messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\nheadertest:headerreceivetest\r\n\r\nupload successful!'
+        }
+      }else{
+        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:14\r\n\r\nupload failed!'
+      }
+      contentInfo = '';
+      let tcpSendOption: socket.TCPSendOptions ={
+        data: messageView
+      }
+      clientInfo.send(tcpSendOption, ()=>{
+        console.info(TAG + '====>send success!');
+      })
+    }else{
+      console.info(TAG + '====>subInfo.indexOf:' + subInfo.indexOf(`--${validationCode}--`))
     }
-    clientInfo.send(tcpSendOption, ()=>{
-      console.info(TAG + '====>send success!');
-    })
-  }else{
-    console.info(TAG + '====>subInfo.indexOf:' + subInfo.indexOf(`--${validationCode}--`))
+  }catch (err) {
+    console.info(TAG + '====>catch err: ' + JSON.stringify(err));
   }
 }
 

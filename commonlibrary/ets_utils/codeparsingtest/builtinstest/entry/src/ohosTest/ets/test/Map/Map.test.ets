@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function MapTest() {
   describe('mapTest', () => {
@@ -43,7 +43,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeClear0001', 0, () => {
+    it('testMapPrototypeClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeClear0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -66,7 +66,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeClear0002', 0, () => {
+    it('testMapPrototypeClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeClear0002";
       try {
         const map1: Map<string, string> = new Map();
@@ -90,7 +90,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeClear0003', 0, () => {
+    it('testMapPrototypeClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeClear0003";
       try {
         const map1: Map<string, string> = new Map();
@@ -112,7 +112,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeDelete0001', 0, () => {
+    it('testMapPrototypeDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeDelete0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -135,7 +135,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeDelete0002', 0, () => {
+    it('testMapPrototypeDelete0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeDelete0002";
       try {
         const map1: Map<string, string> = new Map();
@@ -157,7 +157,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeDelete0003', 0, () => {
+    it('testMapPrototypeDelete0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeDelete0003";
       try {
         const map1: Map<string, string> = new Map();
@@ -179,7 +179,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeEntries0001', 0, () => {
+    it('testMapPrototypeEntries0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeEntries0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -203,7 +203,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeForEach0001', 0, () => {
+    it('testMapPrototypeForEach0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeForEach0001";
       try {
         type MapValueType = number | ObjectType | undefined;
@@ -240,7 +240,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeGet0001', 0, () => {
+    it('testMapPrototypeGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeGet0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -262,7 +262,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeGet0002', 0, () => {
+    it('testMapPrototypeGet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeGet0002";
       try {
         const map1: Map<string, string> = new Map();
@@ -284,7 +284,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeGet0003', 0, () => {
+    it('testMapPrototypeGet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeGet0003";
       try {
         const arr: [] = [];
@@ -308,7 +308,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeGet0004', 0, () => {
+    it('testMapPrototypeGet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeGet0004";
       try {
         const arr: [] = [];
@@ -332,7 +332,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeHas0001', 0, () => {
+    it('testMapPrototypeHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeHas0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -354,7 +354,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeHas0002', 0, () => {
+    it('testMapPrototypeHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeHas0002";
       try {
         const map1: Map<string, string> = new Map();
@@ -376,7 +376,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeKeys0001', 0, () => {
+    it('testMapPrototypeKeys0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeKeys0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -400,7 +400,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0001', 0, () => {
+    it('testMapPrototypeSet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -422,7 +422,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0002', 0, () => {
+    it('testMapPrototypeSet0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0002";
       try {
         const map1: Map<string, string> = new Map();
@@ -444,7 +444,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0003', 0, () => {
+    it('testMapPrototypeSet0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0003";
       try {
         const myMap: Map<string, string> = new Map();
@@ -468,7 +468,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0004', 0, () => {
+    it('testMapPrototypeSet0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0004";
       try {
         const myMap: Map<string, string> = new Map();
@@ -492,7 +492,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0005', 0, () => {
+    it('testMapPrototypeSet0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0005";
       try {
         const myMap: Map<string, string> = new Map();
@@ -516,7 +516,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0006', 0, () => {
+    it('testMapPrototypeSet0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0006";
       try {
         const myMap: Map<string, string> = new Map();
@@ -538,7 +538,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0007', 0, () => {
+    it('testMapPrototypeSet0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0007";
       try {
         const myMap: Map<string, string> = new Map();
@@ -560,7 +560,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0008', 0, () => {
+    it('testMapPrototypeSet0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0008";
       try {
         const myMap: Map<string, string> = new Map();
@@ -582,7 +582,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeSet0009', 0, () => {
+    it('testMapPrototypeSet0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeSet0009";
       try {
         const myMap: Map<string, string> = new Map();
@@ -604,7 +604,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototype[Symbol.iterator]0001', 0, () => {
+    it('testMapPrototype[Symbol.iterator]0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototype[Symbol.iterator]0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -633,7 +633,7 @@ export default function MapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMapPrototypeValues0001', 0, () => {
+    it('testMapPrototypeValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeValues0001";
       try {
         const map1: Map<string, string> = new Map();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -62,7 +62,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetOrigins001', 0, async (done: Function) => {
+    it('testGetOrigins001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetOrigins001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOrigins001", "resource://rawfile/", 20340, done);
@@ -77,7 +77,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetOrigins002', 0, async (done: Function) => {
+    it('testGetOrigins002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetOrigins002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOrigins002", "resource://rawfile/", 20341, done);
@@ -92,7 +92,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginOrigin001', 0, async (done: Function) => {
+    it('testWebStorageOriginOrigin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginOrigin001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginOrigin001", "resource://rawfile/", 20342, done);
@@ -107,7 +107,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginUsage001', 0, async (done: Function) => {
+    it('testWebStorageOriginUsage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginUsage001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginUsage001", true, 20343, done);
@@ -122,7 +122,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginQuota001', 0, async (done: Function) => {
+    it('testWebStorageOriginQuota001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginQuota001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginQuota001", true, 20344, done);
@@ -137,7 +137,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginGetOrigins001', 0, async (done: Function) => {
+    it('testWebStorageOriginGetOrigins001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOrigins001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginGetOrigins001", true, 100037, done);
@@ -152,7 +152,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginGetOriginQuota001', 0, async (done: Function) => {
+    it('testWebStorageOriginGetOriginQuota001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOriginQuota001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginGetOriginQuota001", true, 100038, done);
@@ -167,7 +167,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginGetOriginQuota002', 0, async (done: Function) => {
+    it('testWebStorageOriginGetOriginQuota002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOriginQuota002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginGetOriginQuota002", true, 100039, done);
@@ -182,7 +182,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginGetOriginUsage001', 0, async (done: Function) => {
+    it('testWebStorageOriginGetOriginUsage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOriginUsage001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginGetOriginUsage001", true, 100040, done);
@@ -197,7 +197,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebStorageOriginGetOriginUsage002', 0, async (done: Function) => {
+    it('testWebStorageOriginGetOriginUsage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebStorageOriginGetOriginUsage002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebStorageOriginGetOriginUsage002", true, 100041, done);
@@ -212,7 +212,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDeleteAllData001', 0, async (done: Function) => {
+    it('testDeleteAllData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDeleteAllData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteAllData001", 0, 20345, done);
@@ -227,7 +227,7 @@ export default function webStorage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDeleteOrigin001', 0, async (done: Function) => {
+    it('testDeleteOrigin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDeleteOrigin001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteOrigin001", 0, 100067, done);

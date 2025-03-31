@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -54,7 +54,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testJavaScriptProxy001', 0, async (done: Function) => {
+    it('testJavaScriptProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("javaScriptProxy", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJavaScriptProxy001", true, 1271, done);
@@ -69,7 +69,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRegisterJavaScriptProxy001', 0, async (done: Function) => {
+    it('testRegisterJavaScriptProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRegisterJavaScriptProxy001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRegisterJavaScriptProxy001", "backToEts", 100075, done);
@@ -84,7 +84,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDeleteJavaScriptRegister001', 0, async (done: Function) => {
+    it('testDeleteJavaScriptRegister001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDeleteJavaScriptRegister001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteJavaScriptRegister001", true, 100076, done);

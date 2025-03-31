@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { taskpool } from '@kit.ArkTS';
 import {
   sleep,
@@ -110,7 +110,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0001', 0, async () => {
+    it('testBitVectorConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorConstructor0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -129,6 +129,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0200
@@ -138,7 +139,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0002', 0, async () => {
+    it('testBitVectorConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorConstructor0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -157,6 +158,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0300
@@ -166,7 +168,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0003', 0, async () => {
+    it('testBitVectorConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorConstructor0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -185,6 +187,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0400
@@ -194,7 +197,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorConstructor0004', 0, async () => {
+    it('testBitVectorConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorConstructor0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -213,6 +216,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0500
@@ -222,7 +226,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0001', 0, async () => {
+    it('testBitVectorPush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -241,6 +245,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0600
@@ -250,7 +255,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0002', 0, async () => {
+    it('testBitVectorPush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -269,6 +274,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0700
@@ -278,7 +284,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0003', 0, async () => {
+    it('testBitVectorPush0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -297,6 +303,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0800
@@ -306,7 +313,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0004', 0, async () => {
+    it('testBitVectorPush0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -325,6 +332,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_0900
@@ -334,7 +342,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0005', 0, async () => {
+    it('testBitVectorPush0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -353,6 +361,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1000
@@ -362,7 +371,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0006', 0, async () => {
+    it('testBitVectorPush0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -381,6 +390,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1100
@@ -390,7 +400,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0007', 0, async () => {
+    it('testBitVectorPush0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -409,6 +419,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1200
@@ -418,7 +429,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPush0008', 0, async () => {
+    it('testBitVectorPush0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPush0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -437,6 +448,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1300
@@ -446,7 +458,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0001', 0, async () => {
+    it('testBitVectorPop0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPop0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -465,6 +477,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1400
@@ -474,7 +487,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0002', 0, async () => {
+    it('testBitVectorPop0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPop0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -493,6 +506,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1500
@@ -502,7 +516,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0003', 0, async () => {
+    it('testBitVectorPop0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPop0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -521,6 +535,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1600
@@ -530,7 +545,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0004', 0, async () => {
+    it('testBitVectorPop0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPop0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -549,6 +564,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1700
@@ -558,7 +574,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorPop0005', 0, async () => {
+    it('testBitVectorPop0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorPop0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -577,6 +593,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1800
@@ -586,7 +603,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0001', 0, async () => {
+    it('testBitVectorHas0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -605,6 +622,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_1900
@@ -614,7 +632,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0002', 0, async () => {
+    it('testBitVectorHas0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -633,6 +651,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2000
@@ -642,7 +661,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0003', 0, async () => {
+    it('testBitVectorHas0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -661,6 +680,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2100
@@ -670,7 +690,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0004', 0, async () => {
+    it('testBitVectorHas0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -689,6 +709,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2200
@@ -698,7 +719,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0005', 0, async () => {
+    it('testBitVectorHas0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -717,6 +738,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2300
@@ -726,7 +748,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0006', 0, async () => {
+    it('testBitVectorHas0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -745,6 +767,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2400
@@ -754,7 +777,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0007', 0, async () => {
+    it('testBitVectorHas0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -773,6 +796,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2500
@@ -782,7 +806,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorHas0008', 0, async () => {
+    it('testBitVectorHas0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorHas0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -801,6 +825,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2600
@@ -810,7 +835,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0001', 0, async () => {
+    it('testBitVectorSetBitsByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -829,6 +854,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2700
@@ -838,7 +864,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0002', 0, async () => {
+    it('testBitVectorSetBitsByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -857,6 +883,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2800
@@ -866,7 +893,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0003', 0, async () => {
+    it('testBitVectorSetBitsByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -885,6 +912,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_2900
@@ -894,7 +922,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0004', 0, async () => {
+    it('testBitVectorSetBitsByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -913,6 +941,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3000
@@ -922,7 +951,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0005', 0, async () => {
+    it('testBitVectorSetBitsByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -941,6 +970,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3100
@@ -950,7 +980,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0006', 0, async () => {
+    it('testBitVectorSetBitsByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -969,6 +999,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3200
@@ -978,7 +1009,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0007', 0, async () => {
+    it('testBitVectorSetBitsByRange0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -997,6 +1028,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3300
@@ -1006,7 +1038,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0008', 0, async () => {
+    it('testBitVectorSetBitsByRange0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1025,6 +1057,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3400
@@ -1034,7 +1067,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetBitsByRange0009', 0, async () => {
+    it('testBitVectorSetBitsByRange0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetBitsByRange0009';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1053,6 +1086,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3500
@@ -1062,7 +1096,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0001', 0, async () => {
+    it('testBitVectorSetAllBits0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetAllBits0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1081,6 +1115,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3600
@@ -1090,7 +1125,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0002', 0, async () => {
+    it('testBitVectorSetAllBits0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetAllBits0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1109,6 +1144,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3700
@@ -1118,7 +1154,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0003', 0, async () => {
+    it('testBitVectorSetAllBits0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetAllBits0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1137,6 +1173,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3800
@@ -1146,7 +1183,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0004', 0, async () => {
+    it('testBitVectorSetAllBits0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetAllBits0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1165,6 +1202,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_3900
@@ -1174,7 +1212,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorSetAllBits0005', 0, async () => {
+    it('testBitVectorSetAllBits0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorSetAllBits0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1193,6 +1231,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4000
@@ -1202,7 +1241,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0001', 0, async () => {
+    it('testBitVectorGetBitsByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitsByRange0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1221,6 +1260,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4100
@@ -1230,7 +1270,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0002', 0, async () => {
+    it('testBitVectorGetBitsByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitsByRange0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1249,6 +1289,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4200
@@ -1258,7 +1299,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0003', 0, async () => {
+    it('testBitVectorGetBitsByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitsByRange0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1277,6 +1318,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4300
@@ -1286,7 +1328,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0004', 0, async () => {
+    it('testBitVectorGetBitsByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitsByRange0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1305,6 +1347,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4400
@@ -1314,7 +1357,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0005', 0, async () => {
+    it('testBitVectorGetBitsByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitsByRange0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1333,6 +1376,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4500
@@ -1342,7 +1386,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitsByRange0006', 0, async () => {
+    it('testBitVectorGetBitsByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitsByRange0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1361,6 +1405,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4600
@@ -1370,7 +1415,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorResize0001', 0, async () => {
+    it('testBitVectorResize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorResize0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1389,6 +1434,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4700
@@ -1398,7 +1444,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorResize0002', 0, async () => {
+    it('testBitVectorResize0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorResize0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1417,6 +1463,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4800
@@ -1426,7 +1473,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorResize0003', 0, async () => {
+    it('testBitVectorResize0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorResize0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1445,6 +1492,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_4900
@@ -1454,7 +1502,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0001', 0, async () => {
+    it('testBitVectorGetBitCountByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitCountByRange0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1473,6 +1521,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5000
@@ -1482,7 +1531,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0002', 0, async () => {
+    it('testBitVectorGetBitCountByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitCountByRange0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1501,6 +1550,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5100
@@ -1510,7 +1560,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0003', 0, async () => {
+    it('testBitVectorGetBitCountByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitCountByRange0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1529,6 +1579,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5200
@@ -1538,7 +1589,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0004', 0, async () => {
+    it('testBitVectorGetBitCountByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitCountByRange0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1558,6 +1609,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5300
@@ -1567,7 +1619,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0005', 0, async () => {
+    it('testBitVectorGetBitCountByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitCountByRange0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1587,6 +1639,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5400
@@ -1596,7 +1649,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetBitCountByRange0006', 0, async () => {
+    it('testBitVectorGetBitCountByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetBitCountByRange0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1616,6 +1669,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5500
@@ -1625,7 +1679,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0001', 0, async () => {
+    it('testBitVectorGetIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1644,6 +1698,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5600
@@ -1653,7 +1708,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0002', 0, async () => {
+    it('testBitVectorGetIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1672,6 +1727,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5700
@@ -1681,7 +1737,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0003', 0, async () => {
+    it('testBitVectorGetIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1700,6 +1756,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5800
@@ -1709,7 +1766,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0004', 0, async () => {
+    it('testBitVectorGetIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1728,6 +1785,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_5900
@@ -1737,7 +1795,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0005', 0, async () => {
+    it('testBitVectorGetIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1757,6 +1815,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6000
@@ -1766,7 +1825,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0006', 0, async () => {
+    it('testBitVectorGetIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1786,6 +1845,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6100
@@ -1795,7 +1855,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0007', 0, async () => {
+    it('testBitVectorGetIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1815,6 +1875,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6200
@@ -1824,7 +1885,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetIndexOf0008', 0, async () => {
+    it('testBitVectorGetIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetIndexOf0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1844,6 +1905,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6300
@@ -1853,7 +1915,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0001', 0, async () => {
+    it('testBitVectorGetLastIndexOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1872,6 +1934,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6400
@@ -1881,7 +1944,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0002', 0, async () => {
+    it('testBitVectorGetLastIndexOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1900,6 +1963,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6500
@@ -1909,7 +1973,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0003', 0, async () => {
+    it('testBitVectorGetLastIndexOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1928,6 +1992,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6600
@@ -1937,7 +2002,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0004', 0, async () => {
+    it('testBitVectorGetLastIndexOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1956,6 +2021,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6700
@@ -1965,7 +2031,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0005', 0, async () => {
+    it('testBitVectorGetLastIndexOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -1985,6 +2051,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6800
@@ -1994,7 +2061,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0006', 0, async () => {
+    it('testBitVectorGetLastIndexOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2014,6 +2081,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_6900
@@ -2023,7 +2091,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0007', 0, async () => {
+    it('testBitVectorGetLastIndexOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0007';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2043,6 +2111,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7000
@@ -2052,7 +2121,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorGetLastIndexOf0008', 0, async () => {
+    it('testBitVectorGetLastIndexOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorGetLastIndexOf0008';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2072,6 +2141,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7100
@@ -2081,7 +2151,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitByIndex0001', 0, async () => {
+    it('testBitVectorFlipBitByIndex0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitByIndex0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2100,6 +2170,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7200
@@ -2109,7 +2180,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitByIndex0002', 0, async () => {
+    it('testBitVectorFlipBitByIndex0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitByIndex0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2129,6 +2200,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7300
@@ -2138,7 +2210,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitByIndex0003', 0, async () => {
+    it('testBitVectorFlipBitByIndex0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitByIndex0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2158,6 +2230,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7400
@@ -2167,7 +2240,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0001', 0, async () => {
+    it('testBitVectorFlipBitsByRange0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitsByRange0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2186,6 +2259,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7500
@@ -2195,7 +2269,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0002', 0, async () => {
+    it('testBitVectorFlipBitsByRange0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitsByRange0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2214,6 +2288,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7600
@@ -2223,7 +2298,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0003', 0, async () => {
+    it('testBitVectorFlipBitsByRange0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitsByRange0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2243,6 +2318,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7700
@@ -2252,7 +2328,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0004', 0, async () => {
+    it('testBitVectorFlipBitsByRange0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitsByRange0004';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2272,6 +2348,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7800
@@ -2281,7 +2358,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0005', 0, async () => {
+    it('testBitVectorFlipBitsByRange0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitsByRange0005';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2301,6 +2378,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_7900
@@ -2310,7 +2388,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorFlipBitsByRange0006', 0, async () => {
+    it('testBitVectorFlipBitsByRange0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorFlipBitsByRange0006';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2330,6 +2408,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8000
@@ -2339,7 +2418,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorValues0001', 0, async () => {
+    it('testBitVectorValues0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorValues0001';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2358,6 +2437,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8100
@@ -2367,7 +2447,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorValues0002', 0, async () => {
+    it('testBitVectorValues0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorValues0002';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2386,6 +2466,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BITVECTOR_8200
@@ -2395,7 +2476,7 @@ export default function BitVectorTaskPoolTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBitVectorValues0003', 0, async () => {
+    it('testBitVectorValues0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'testBitVectorValues0003';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -2414,6 +2495,7 @@ export default function BitVectorTaskPoolTest() {
         expect().assertFail();
       }
       console.info(`${caseName} test end`);
+      done()
     })
   })
 }
