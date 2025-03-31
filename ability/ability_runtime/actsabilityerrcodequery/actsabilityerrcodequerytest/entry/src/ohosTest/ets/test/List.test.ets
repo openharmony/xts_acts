@@ -14,7 +14,10 @@
  */
 import sendableContextManagerTest from './sendableContextManager.test'
 import UIAbilityContex from './UIAbilityContex.test';
+import UIExtensionContentSessionTest from './UIExtensionContentSession.test'
+
 export default function testsuite() {
   sendableContextManagerTest();
   UIAbilityContex();
+  UIExtensionContentSessionTest()
 }

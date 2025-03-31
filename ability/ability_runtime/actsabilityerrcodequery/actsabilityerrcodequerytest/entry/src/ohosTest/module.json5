@@ -241,6 +241,13 @@
       }
     ],
     "extensionAbilities": [
+      {
+        "name": "UIExtensionProvider",
+        "srcEntry": "./ets/test/UIExtensionContentSession/UIExtensionContentSession.ts",
+        "description": "UIExtensionAbility",
+        "type": "embeddedUI",
+        "exported": true
+      }
     ],
     "requestPermissions": [
       {
