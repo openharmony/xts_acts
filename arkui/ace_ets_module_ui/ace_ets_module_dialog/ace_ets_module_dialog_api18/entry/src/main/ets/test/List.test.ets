@@ -12,22 +12,62 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import alertDialogBackgroundEffectTest from './alertDialogTest/alertDialogBackgroundEffect.test'
+import alertDialogBlurStyleOptionsTest from './alertDialogTest/alertDialogBlurStyleOptions.test'
 import buttonType from './buttonType/buttonTypeApi.test';
+import customDialogBackgroundEffectTest from './customDialogTest/customDialogBackgroundEffect.test'
+import customDialogBlurStyleOptionsTest from './customDialogTest/customDialogBlurStyleOptions.test'
+import openCustomDialogBackgroundEffectTest from './promptActionTest/openCustomDialogBackgroundEffect.test'
+import openCustomDialogBlurStyleOptionsTest from './promptActionTest/openCustomDialogBlurStyleOptions.test'
 import overlayManagerTest from './overlayManager/overlayManagerTest.test'
 import customDialogLevelOrder from './dialog/customDialogLevelOrder.test'
+import showAlertDialogBackgroundEffectTest from './UIContextTest/showAlertDialogBackgroundEffect.test'
+import showAlertDialogBlurStyleOptionsTest from './UIContextTest/showAlertDialogBlurStyleOptions.test'
+import showDialogBackgroundEffectTest from './promptActionTest/showDialogBackgroundEffect1.test'
+import showDialogBlurStyleOptionsTest from './promptActionTest/showDialogBlurStyleOptions1.test'
+import showDialogCallbackBackgroundEffectTest from './promptActionTest/showDialogBackgroundEffect2.test'
+import showDialogCallbackBlurStyleOptionsTest from './promptActionTest/showDialogBlurStyleOptions2.test'
 import showDialogLevelOrder from './dialog/showDialogLevelOrder.test'
 import openCustomDialogLevelOrder from './dialog/openCustomDialogLevelOrder.test'
 import openCustomDialogWithConOrder from './dialog/openCustomDialogWithConOrder.test'
 import presentCustomDialogOrder from './dialog/presentCustomDialogOrder.test'
 import alertDialogLevelOrder from './dialog/alertDialogLevelOrder.test'
+import UIOpenCustomDialogBackgroundEffectTest from './UIContextTest/openCustomDialogBackgroundEffect.test'
+import UIOpenCustomDialogBlurStyleOptionsTest from './UIContextTest/openCustomDialogBlurStyleOptions.test'
+import UIPresentCustomDialogBackgroundEffectTest from './UIContextTest/presentCustomDialogBackgroundEffect.test'
+import UIPresentCustomDialogBlurStyleOptionsTest from './UIContextTest/presentCustomDialogBlurStyleOptions.test'
+import UIShowDialogBackgroundEffectTest from './UIContextTest/showDialogBackgroundEffect1.test'
+import UIShowDialogBlurStyleOptionsTest from './UIContextTest/showDialogBlurStyleOptions1.test'
+import UIShowDialogCallbackBackgroundEffectTest from './UIContextTest/showDialogBackgroundEffect2.test'
+import UIShowDialogCallbackBlurStyleOptionsTest from './UIContextTest/showDialogBlurStyleOptions2.test'
 
 export default function testsuite() {
+    alertDialogBackgroundEffectTest()
+    alertDialogBlurStyleOptionsTest()
     buttonType()
+    customDialogBackgroundEffectTest()
+    customDialogBlurStyleOptionsTest()
+    openCustomDialogBackgroundEffectTest()
+    openCustomDialogBlurStyleOptionsTest()
     overlayManagerTest()
     customDialogLevelOrder()
+    showAlertDialogBackgroundEffectTest()
+    showAlertDialogBlurStyleOptionsTest()
+    showDialogBackgroundEffectTest()
+    showDialogBlurStyleOptionsTest()
+    showDialogCallbackBackgroundEffectTest()
+    showDialogCallbackBlurStyleOptionsTest()
     showDialogLevelOrder()
     openCustomDialogLevelOrder()
     openCustomDialogWithConOrder()
     presentCustomDialogOrder()
     alertDialogLevelOrder()
+    UIOpenCustomDialogBackgroundEffectTest()
+    UIOpenCustomDialogBlurStyleOptionsTest()
+    UIPresentCustomDialogBackgroundEffectTest()
+    UIPresentCustomDialogBlurStyleOptionsTest()
+    UIShowDialogBackgroundEffectTest()
+    UIShowDialogBlurStyleOptionsTest()
+    UIShowDialogCallbackBackgroundEffectTest()
+    UIShowDialogCallbackBlurStyleOptionsTest()
 }
