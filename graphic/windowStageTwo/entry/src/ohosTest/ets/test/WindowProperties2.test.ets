@@ -1494,6 +1494,14 @@ export default function windowPropertiesTest2() {
       let windowClass: window.Window | undefined;
       try {
         windowClass = await windowStage.createSubWindow('testSnapshotIgnorePrivacyWithPrivacySubWindow');
+        console.info(`${caseName} Succeeded in creating the sub window.`);
+        await sleep(500);
+        await windowClass.setUIContent('testability/pages/First/index2');
+        console.info(`${caseName} Succeeded in loading the sub window content.`);
+        await sleep(500);
+        await windowClass.showWindow();
+        console.info(`${caseName} Succeeded in showing the sub window.`);
+        await sleep(500);
       } catch (err) {
         console.error(msgStr + 'createSubWindow ' + 'caught, err: ' + JSON.stringify(err));
         expect().assertFail();
