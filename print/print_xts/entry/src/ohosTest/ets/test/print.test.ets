@@ -406,6 +406,7 @@ export default function printTest() {
       printerInformation.preferences.borderless = false;
       printerInformation.preferences.options = 'testOptions';
 
+      printerInformation.alias = 'testAlias';
       printerInformation.options = 'testOptions';
 
       // Permissions required: ohos.permission.PRINT
@@ -819,7 +820,7 @@ export default function printTest() {
     /**
      * @tc.number print_function_1200
      * @tc.name Test print
-     * @tc.desc check the register and unregister functions of the printerChange event
+     * @tc.desc check the printerChange event registration and unregistration functions
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 1

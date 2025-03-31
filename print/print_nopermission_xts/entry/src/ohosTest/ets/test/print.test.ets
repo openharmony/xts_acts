@@ -501,21 +501,45 @@ export default function printTest() {
     /**
      * @tc.number print_function_1100
      * @tc.name Test print
-     * @tc.desc check the 201 error code of the register and unregister functions of the printerChange event
+     * @tc.desc check the 201 error code of the printerChange event registration function
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
     it('print_function_1100', Level.LEVEL2, async (done: Function) => {
       // Permissions required: ohos.permission.PRINT
-      let onPrinterChange =
-        (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-          console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
-        };
+      try {
+        let onPrinterChange =
+          (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+            console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+          };
+        print.on('printerChange', onPrinterChange);
+        done();
+      } catch (error) {
+        console.log('print_function_1100 expect failed, err: ' + JSON.stringify(error));
+        expect(error.code).assertEqual(201);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number print_function_1200
+     * @tc.name Test print
+     * @tc.desc check the 201 error code of the printerChange event unregistration function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1200', Level.LEVEL2, async (done: Function) => {
       // Permissions required: ohos.permission.PRINT
-      print.on('printerChange', onPrinterChange);
-      print.off('printerChange');
-      done();
+      try {
+        print.off('printerChange');
+        done();
+      } catch (error) {
+        console.log('print_function_1200 expect failed, err: ' + JSON.stringify(error));
+        expect(error.code).assertEqual(201);
+        done();
+      }
     })
   })
 }
