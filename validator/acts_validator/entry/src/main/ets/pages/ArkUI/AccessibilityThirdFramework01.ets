@@ -19,10 +19,10 @@ struct AccessibilityThirdFramework {
   @State name: string = 'AccessibilityThirdFramework01';
   @State StepTips: string = '测试目的：验证ArkUI无障碍支持多实例\n' +
     '\n' +
-    '操作步骤：开启屏幕朗读，点击SubWind按钮，单指下滑到end按钮结束。\n' +
+    '操作步骤：开启屏幕朗读，点击SubWind按钮，单指连续下滑到end按钮结束。\n' +
     '\n' +
     '预期结果：\n' +
-    '若支持屏幕朗读，则绿框均会绘制在两个灰色区域。若不支持屏幕朗读，则绿框不会在灰色区域绘制。';
+    '若支持屏幕朗读，则下滑期间绿框会在两个灰色区域中绘制。若不支持屏幕朗读，直接按照失败处理走豁免。';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
