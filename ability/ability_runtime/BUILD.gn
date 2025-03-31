@@ -22,6 +22,7 @@ group("ability_runtime") {
       "abilitybaseerrorcode:abilitybaseerrorcode",
       "abilitycapitest:abilitycapitest",
       "abilitygetstartparameterstest:abilitygetstartparameterstest",
+      "abilitylifecycle:abilitylifecycletest",
       "abilitymanager:actsabilitymanagertest",
       "abilitymontior:ActsAbilityMonitorTest",
       "abilitymultiinstance:abilitymultiinstance",
