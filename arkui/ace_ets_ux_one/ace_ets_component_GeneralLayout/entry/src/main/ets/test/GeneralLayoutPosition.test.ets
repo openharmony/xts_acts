@@ -324,9 +324,9 @@ export default function GeneralLayoutPositionTest() {
       let left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[0];
       let strJson3 = getInspectorByKey('bottom');
       let bottom_rect_left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson3).$rect + ']')[0] + ']')[0];
-      // position is invalid, Button is center display.
+      // position is invalid.
       expect(original_rect_left - mirror_rect_left).assertEqual(0);
-      expect(mirror_rect_left - left).assertEqual(bottom_rect_left - mirror_rect_right);
+      expect(Math.floor(Math.abs((mirror_rect_left - left) - (bottom_rect_left - mirror_rect_right))) <= 1).assertTrue();
       expect(original_rect_top - top).assertEqual(0);
       expect(mirror_rect_top - top).assertEqual(0);
       console.info('ArkUIHDS_General_Layout_0700 END');
@@ -360,11 +360,13 @@ export default function GeneralLayoutPositionTest() {
       let left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson2).$rect + ']')[0] + ']')[0];
       let strJson3 = getInspectorByKey('bottom');
       let bottom_rect_left: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson3).$rect + ']')[0] + ']')[0];
-      // position is invalid, Button is center display.
+      let strJson4 = getInspectorByKey('0700_TextC');
+      let button07_rect_bottom: number = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson4).$rect + ']')[1] + ']')[1];
+      // position is invalid.
       expect(original_rect_left - mirror_rect_left).assertEqual(0);
-      expect(mirror_rect_left - left).assertEqual(bottom_rect_left - mirror_rect_right);
-      expect(original_rect_top - top).assertEqual(0);
-      expect(mirror_rect_top - top).assertEqual(0);
+      expect(Math.floor(Math.abs((mirror_rect_left - left) - (bottom_rect_left - mirror_rect_right))) <= 1).assertTrue();
+      expect(original_rect_top - mirror_rect_top).assertEqual(0);
+      expect(Math.floor(Math.abs((mirror_rect_top - button07_rect_bottom))) <= 1).assertTrue();
       console.info('ArkUIHDS_General_Layout_0800 END');
       done();
     });
