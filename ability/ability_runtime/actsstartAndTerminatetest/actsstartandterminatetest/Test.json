@@ -4,13 +4,13 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "180000",
-        "bundle-name": "com.test.actsstartandterminateapi7",
+        "bundle-name": "com.test.actsstartandterminatetest",
         "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsStartAndTerminateApi7Test.hap"
+                "ActsStartAndTerminateTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
