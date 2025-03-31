@@ -1573,7 +1573,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheBeforeBufferRequested', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheBeforeBufferRequested', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheBeforeBufferRequested();
       expect(result).assertEqual(0);
       done();
@@ -1587,7 +1588,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheWhenBufferRequested', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheWhenBufferRequested', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferRequested();
       expect(result).assertEqual(0);
       done();
@@ -1601,7 +1603,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheWhenBufferFlushed', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheWhenBufferFlushed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferFlushed();
       expect(result).assertEqual(0);
       done();
@@ -1615,7 +1618,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheWhenBufferAcquired', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheWhenBufferAcquired', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferAcquired();
       expect(result).assertEqual(0);
       done();
@@ -1629,7 +1633,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheWhenBufferReleased', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheWhenBufferReleased', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheWhenBufferReleased();
       expect(result).assertEqual(0);
       done();
@@ -1643,7 +1648,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheLoopWhenBufferRequested', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheLoopWhenBufferRequested', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferRequested();
       expect(result).assertEqual(0);
       done();
@@ -1657,7 +1663,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCleanCacheLoopWhenBufferFlushed', 3, async (done: Function) => {
+    it('testNativeWindowCleanCacheLoopWhenBufferFlushed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCleanCacheLoopWhenBufferFlushed();
       expect(result).assertEqual(0);
       done();
