@@ -8,6 +8,8 @@
     "MainAbility/pages/dialog/openCustomDialogLevelOrder",
     "MainAbility/pages/dialog/openCustomDialogWithConOrder",
     "MainAbility/pages/dialog/presentCustomDialogOrder",
-    "MainAbility/pages/dialog/alertDialogLevelOrder"
+    "MainAbility/pages/dialog/alertDialogLevelOrder",
+    "MainAbility/pages/bindMenu/bindMenuHapticFeedbackMode",
+    "MainAbility/pages/bindContextMenu/bindContextMenuHapticFeedback"
   ]
 }
