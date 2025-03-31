@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium'
 import radio from '@ohos.telephony.radio';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -55,7 +55,7 @@ export default function telephonyRadioNoPermissionEmptyTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('telephonyRadioNoPermissionEmptyTest0150', 0, async (done: Function) => {
+    it('telephonyRadioNoPermissionEmptyTest0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = 1;
       let b: number = 2;
       expect(a+b).assertEqual(3);
