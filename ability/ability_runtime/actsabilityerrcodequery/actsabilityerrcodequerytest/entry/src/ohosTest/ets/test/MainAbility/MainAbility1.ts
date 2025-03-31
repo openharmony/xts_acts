@@ -31,7 +31,7 @@ export default class MainAbility1 extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('MainAbility/MainAbility1_pages', (err, data) => {
+    windowStage.loadContent('testability/pages/MainAbility/MainAbility1_pages', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
