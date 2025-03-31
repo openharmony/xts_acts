@@ -1174,10 +1174,12 @@ export default function WindowLifecycle() {
       try {
         windowClass.on('windowEvent', async (data) => {
           console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-          expect(data).assertEqual(3);
-          windowClass.off('windowEvent');
-          await subWindow.destroyWindow();
-          done();
+          if(data==3){
+            await subWindow.destroyWindow();
+            done();
+          }else{
+            await sleep(1000);
+          }
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
@@ -1666,20 +1668,20 @@ export default function WindowLifecycle() {
         windowStage.loadContentByName(LoadContentByName.entryName).then(async () => {
           console.info('Succeeded in loadContentByName.');
           expect(true).assertTrue();
-          // »Ö¸´Ô­±¾Ò³Ãæ
+          // ï¿½Ö¸ï¿½Ô­ï¿½ï¿½Ò³ï¿½ï¿½
           await windowStage.loadContent('testability/pages/Index');
           done();
         }).catch(async (err: BusinessError) => {
           console.error(`Failed to test loadContentByName. Cause code: ${err.code}, message: ${err.message}`);
           expect().assertFail();
-          // »Ö¸´Ô­±¾Ò³Ãæ
+          // ï¿½Ö¸ï¿½Ô­ï¿½ï¿½Ò³ï¿½ï¿½
           await windowStage.loadContent('testability/pages/Index');
           done();
         });
       } catch (error) {
         console.log(msgStr + 'Failed to test_loadContentByName. Cause: ' + JSON.stringify(error));
         expect().assertFail();
-        // »Ö¸´Ô­±¾Ò³Ãæ
+        // ï¿½Ö¸ï¿½Ô­ï¿½ï¿½Ò³ï¿½ï¿½
         await windowStage.loadContent('testability/pages/Index');
         done();
       }

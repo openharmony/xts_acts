@@ -599,11 +599,11 @@ static napi_value getAllWIndowLayOutInfo(napi_env env, napi_callback_info info){
         for(size_t i = 0;i < *windowLayoutInfoSize;i++){
             OH_LOG_INFO(LOG_APP,"*windowLayoutInfoSize : %{public}d",*windowLayoutInfoSize);
             napi_set_element(env,arrayValue,i,CreateJsWindowLayoutInfoObject(env,*(windowLayoutInfo[0]+i)));
-            OH_WindowManager_ReleaseAllWindowLayoutInfoList(*windowLayoutInfo);
-            *windowLayoutInfo = NULL;
-            windowLayoutInfo = NULL;
-            return arrayValue;
         }
+        OH_WindowManager_ReleaseAllWindowLayoutInfoList(*windowLayoutInfo);
+        *windowLayoutInfo = NULL;
+        windowLayoutInfo = NULL;
+        return arrayValue;
     }
     
 }

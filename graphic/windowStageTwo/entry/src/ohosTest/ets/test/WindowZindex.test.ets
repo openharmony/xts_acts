@@ -1082,7 +1082,397 @@ export default function windowZindexTest() {
       }
       
     });
+     /**
+     * @tc.number    : SUB_BASIC_WMS_SetWindowDelayRaiseOnDrag_0100
+     * @tc.name      : test_SetWindowDelayRaiseOnDrag_401
+     * @tc.desc      : test_SetWindowDelayRaiseOnDrag_401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_SetWindowDelayRaiseOnDrag_401', 0, async (done: Function) => {
+      let caseName: string = 'test_SetWindowDelayRaiseOnDrag_401';
+      console.log(caseName + 'begin');
+      let windowClass = windowStage.getMainWindowSync();
+      try{
+        windowClass.setWindowDelayRaiseOnDrag(null);
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(401);
+          done();
+        }
+      }
+    });
+/**
+     * @tc.number    : SUB_BASIC_WMS_SetWindowDelayRaiseOnDrag_0200
+     * @tc.name      : test_SetWindowDelayRaiseOnDrag_1300002
+     * @tc.desc      : test_SetWindowDelayRaiseOnDrag_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_SetWindowDelayRaiseOnDrag_1300002', 0, async (done: Function) => {
+      let caseName: string = 'test_SetWindowDelayRaiseOnDrag_1300002';
+      console.log(caseName + 'begin');
+      let windowClass = await windowStage.createSubWindow('test_SetWindowDelayRaiseOnDrag_1300002');
+      try{
+        await windowClass.destroyWindow();
+        windowClass.setWindowDelayRaiseOnDrag(true);
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(1300002);
+          done();
+        }
+        
+      }
+    });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SetWindowDelayRaiseOnDrag_0300
+     * @tc.name      : test_SetWindowDelayRaiseOnDrag_dialog
+     * @tc.desc      : test_SetWindowDelayRaiseOnDrag_dialog
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_SetWindowDelayRaiseOnDrag_dialog', 0, async (done: Function) => {
+      let caseName: string = 'test_SetWindowDelayRaiseOnDrag_dialog';
+      console.log(caseName + 'begin');
+      let config: window.Configuration = {
+        name: "test_SetWindowDelayRaiseOnDrag_dialog",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+    };
+      let windowClass = await window.createWindow(config);
+      try{
+        windowClass.setWindowDelayRaiseOnDrag(true);
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
+        await windowClass.destroyWindow();
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
+        await windowClass.destroyWindow();
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(1300002);
+          done();
+        }
+        
+      }
+    });
+/**
+     * @tc.number    : SUB_BASIC_WMS_SetWindowDelayRaiseOnDrag_0400
+     * @tc.name      : test_SetWindowDelayRaiseOnDrag_true
+     * @tc.desc      : test_SetWindowDelayRaiseOnDrag_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_SetWindowDelayRaiseOnDrag_true', 0, async (done: Function) => {
+      let caseName: string = 'test_SetWindowDelayRaiseOnDrag_true';
+      console.log(caseName + 'begin');
+      let windowClass = windowStage.getMainWindowSync();
+      try{
+        windowClass.setWindowDelayRaiseOnDrag(true);
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(401);
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SetWindowDelayRaiseOnDrag_0500
+     * @tc.name      : test_SetWindowDelayRaiseOnDrag_false
+     * @tc.desc      : test_SetWindowDelayRaiseOnDrag_false
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_SetWindowDelayRaiseOnDrag_false', 0, async (done: Function) => {
+      let caseName: string = 'test_SetWindowDelayRaiseOnDrag_false';
+      console.log(caseName + 'begin');
+      let windowClass = windowStage.getMainWindowSync();
+      try{
+        windowClass.setWindowDelayRaiseOnDrag(false);
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag success`);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.log(`${caseName} :setWindowDelayRaiseOnDrag fail:`+err.code);
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(401);
+          done();
+        }
+      }
+    });
+
+        /**
+     * @tc.number     : SUB_BASIC_WMS_SetFollowParentMultiScreenPolicy_0100
+     * @tc.name       : test_setFollowParentMultiScreenPolicy_401
+     * @tc.desc       : test_setFollowParentMultiScreenPolicy_401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setFollowParentMultiScreenPolicy_401', 3, async (done: Function) => {
+      let caseName = "test_setFollowParentMultiScreenPolicy_401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let subWindow = await windowStage.createSubWindow('test_setFollowParentMultiScreenPolicy_401');
+      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.showWindow();
+      try {
+        let promise = subWindow.setFollowParentMultiScreenPolicy(null);
+        promise.then(() => {
+          console.info(msgStr +'Succeeded  setFollowParentMultiScreenPolicy.');
+          expect(true).assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr +`Failed to setFollowParentMultiScreenPolicy . Cause code: ${err.code}, message: ${err.message}`);
+          await subWindow.destroyWindow();
+          if(err.code == 801){
+            done()
+          }else{
+            expect(true).assertFail();
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await subWindow.destroyWindow();
+        expect(e.code).assertEqual(401);
+        done()
+
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetFollowParentMultiScreenPolicy_0200
+     * @tc.name       : test_setFollowParentMultiScreenPolicy_1300002
+     * @tc.desc       : test_setFollowParentMultiScreenPolicy_1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setFollowParentMultiScreenPolicy_1300002', 3, async (done: Function) => {
+      let caseName = "test_setFollowParentMultiScreenPolicy_1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let subWindow = await windowStage.createSubWindow('test_setFollowParentMultiScreenPolicy_1300002');
+      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.showWindow();
+      try {
+        await subWindow.destroyWindow();
+        let promise = subWindow.setFollowParentMultiScreenPolicy(true);
+        promise.then(() => {
+          console.info(msgStr +'Succeeded  setFollowParentMultiScreenPolicy.');
+          expect(true).assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr +`Failed to setFollowParentMultiScreenPolicy . Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done()
+          }else{
+            expect(err.code).assertEqual(1300002);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await subWindow.destroyWindow();
+        expect(true).assertFail();
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetFollowParentMultiScreenPolicy_0300
+     * @tc.name       : test_setFollowParentMultiScreenPolicy_mainWindow_1300004
+     * @tc.desc       : test_setFollowParentMultiScreenPolicy_mainWindow_1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setFollowParentMultiScreenPolicy_mainWindow_1300004', 3, async (done: Function) => {
+      let caseName = "test_setFollowParentMultiScreenPolicy_mainWindow_1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      try {
+        let promise = mainWindow.setFollowParentMultiScreenPolicy(true);
+        promise.then(() => {
+          console.info(msgStr +'Succeeded  setFollowParentMultiScreenPolicy.');
+          expect(true).assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr +`Failed to setFollowParentMultiScreenPolicy . Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done()
+          }else{
+            expect(err.code).assertEqual(1300004);
+            done()
+          }
+          
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(true).assertFail();
+        done()
+
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetFollowParentMultiScreenPolicy_0400
+     * @tc.name       : test_setFollowParentMultiScreenPolicy_dialogWindow_1300004
+     * @tc.desc       : test_setFollowParentMultiScreenPolicy_dialogWindow_1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setFollowParentMultiScreenPolicy_dialogWindow_1300004', 3, async (done: Function) => {
+      let caseName = "test_setFollowParentMultiScreenPolicy_dialogWindow_1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let config: window.Configuration = {
+        name: "test_setFollowParentMultiScreenPolicy_dialogWindow_1300004",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await window.createWindow(config);
+      try {
+        let promise = windowClass.setFollowParentMultiScreenPolicy(true);
+        promise.then(() => {
+          console.info(msgStr +'Succeeded  setFollowParentMultiScreenPolicy.');
+          expect(true).assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr +`Failed to setFollowParentMultiScreenPolicy . Cause code: ${err.code}, message: ${err.message}`);
+          await windowClass.destroyWindow();
+          if(err.code == 801){
+            done()
+          }else{
+            expect(err.code).assertEqual(1300004);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await windowClass.destroyWindow();
+        expect(true).assertFail();
+        done()
+
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetFollowParentMultiScreenPolicy_0500
+     * @tc.name       : test_subWindow_setFollowParentMultiScreenPolicy_true
+     * @tc.desc       : test_subWindow_setFollowParentMultiScreenPolicy_true
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('test_subWindow_setFollowParentMultiScreenPolicy_true', 3, async (done: Function) => {
+      let caseName = "test_subWindow_setFollowParentMultiScreenPolicy_true";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let subWindow = await windowStage.createSubWindow('test_subWindow_setFollowParentMultiScreenPolicy_true');
+      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.showWindow();
+      try {
+        let promise = subWindow.setFollowParentMultiScreenPolicy(true);
+        promise.then(async () => {
+          console.info(msgStr +'Succeeded  setFollowParentMultiScreenPolicy.');
+          await subWindow.destroyWindow();
+          expect(true).assertTrue();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr +`Failed to setFollowParentMultiScreenPolicy . Cause code: ${err.code}, message: ${err.message}`);
+          await subWindow.destroyWindow();
+          if(err.code == 801){
+            done()
+          }else{
+            expect(true).assertFail();
+            done()
+          }
+          
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await subWindow.destroyWindow();
+          expect(true).assertFail();
+          done()
+
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetFollowParentMultiScreenPolicy_0600
+     * @tc.name       : test_subWindow_setFollowParentMultiScreenPolicy_false
+     * @tc.desc       : test_subWindow_setFollowParentMultiScreenPolicy_false
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('test_subWindow_setFollowParentMultiScreenPolicy_false', 3, async (done: Function) => {
+      let caseName = "test_subWindow_setFollowParentMultiScreenPolicy_false";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let subWindow = await windowStage.createSubWindow('test_subWindow_setFollowParentMultiScreenPolicy_false');
+      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.showWindow();
+      try {
+        let promise = subWindow.setFollowParentMultiScreenPolicy(false);
+        promise.then(async () => {
+          console.info(msgStr +'Succeeded  setFollowParentMultiScreenPolicy.');
+          await subWindow.destroyWindow();
+          expect(true).assertTrue();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr +`Failed to setFollowParentMultiScreenPolicy . Cause code: ${err.code}, message: ${err.message}`);
+          await subWindow.destroyWindow();
+          if(err.code == 801){
+            done()
+          }else{
+            expect(true).assertFail();
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await subWindow.destroyWindow();
+        expect(true).assertFail();
+        done()
+
+      }
+
+    })
 
 
   })
