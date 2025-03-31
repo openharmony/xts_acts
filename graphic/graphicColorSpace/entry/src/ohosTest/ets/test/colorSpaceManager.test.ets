@@ -252,7 +252,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
     it('SUB_GRAPHIC_CREATE_JSAPI_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
-        expect(12).assertEqual(colorSpaceManager.ColorSpace.H_LOG);
+        expect(26).assertEqual(colorSpaceManager.ColorSpace.H_LOG);
         let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.H_LOG);
         expect(colorSpace != null).assertTrue();
         let colorSpaceName = colorSpace.getColorSpaceName();
