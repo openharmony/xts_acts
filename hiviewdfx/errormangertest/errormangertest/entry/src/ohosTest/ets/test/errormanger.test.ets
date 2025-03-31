@@ -13,11 +13,20 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium"
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function errorFunc(observer: errorManager.GlobalError) {
+  console.log("result name :" + observer.name);
+  console.log("result message :" + observer.message);
+  console.log("result stack :" + observer.stack);
+  console.log("result instanceName :" + observer.instanceName);
+  console.log("result instaceType :" + observer.instanceType);
+}
+
+function errorFunc1(observer: errorManager.GlobalError) {
+  console.log("result instaceType")
   console.log("result name :" + observer.name);
   console.log("result message :" + observer.message);
   console.log("result stack :" + observer.stack);
@@ -31,6 +40,22 @@ function promiseFunc(observer: errorManager.GlobalError) {
   console.log("result stack :" + observer.stack);
   console.log("result instanceName :" + observer.instanceName);
   console.log("result instaceType :" + observer.instanceType);
+}
+
+function promiseFunc1(observer: errorManager.GlobalError) {
+  console.log("result name :" + observer.name);
+  console.log("result message :" + observer.message);
+  console.log("result stack :" + observer.stack);
+  console.log("result instanceName :" + observer.instanceName);
+  console.log("result instaceType :" + observer.instanceType);
+}
+
+function freezeCallback() {
+  console.log("freezecallback");
+}
+
+function freezeCallback1() {
+  console.log("freezecallback1");
 }
 
 function unregisterErrorObserverCallback(err: BusinessError) {
@@ -67,9 +92,9 @@ export default function ErrormangerTest() {
      * @tc.desc 验证在进程中的任一线程注册errormanager.on接口，支持捕获其他子线程
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level3
+     * @tc.level Level0
      */
-    it('testErrorManger_0100',0, async (done:Function) => {
+    it('testErrorManger_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info("====> testErrorManger_0100 globalErrorOccurred start");
       // promiseFunc
       errorManager.on("globalErrorOccurred", errorFunc);
@@ -92,9 +117,9 @@ export default function ErrormangerTest() {
      * @tc.desc 验证在进程中任一线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level3
+     * @tc.level Level0
      */
-    it('testErrorManger_0200',0, async (done:Function) => {
+    it('testErrorManger_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info("====> testErrorManger_0200 globalUnhandledRejectionDetected start");
       // promiseFunc
       errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
@@ -119,7 +144,7 @@ export default function ErrormangerTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testErrorManger_0300',0, async (done:Function) => {
+    it('testErrorManger_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let observer: errorManager.LoopObserver = {
         onLoopTimeOut(timeout: number) {
           console.log('Duration timeout: ' + timeout);
@@ -146,9 +171,9 @@ export default function ErrormangerTest() {
      * @tc.desc 验证注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间,传入异常值 -1
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level3
      */
-    it('testErrorManger_0400',0, async (done:Function) => {
+    it('testErrorManger_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let observer: errorManager.LoopObserver = {
         onLoopTimeOut(timeout: number) {
           console.log('Duration timeout: ' + timeout);
@@ -173,9 +198,9 @@ export default function ErrormangerTest() {
      * @tc.desc 验证注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间,on传入异常值 undefined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level3
      */
-    it('testErrorManger_0500',0, async (done:Function) => {
+    it('testErrorManger_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let observer: errorManager.LoopObserver = {
         onLoopTimeOut(timeout: number) {
           console.log('Duration timeout: ' + timeout);
@@ -200,9 +225,9 @@ export default function ErrormangerTest() {
      * @tc.desc 验证注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间,off传入异常值 undefined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level3
      */
-    it('testErrorManger_0600',0, async (done:Function) => {
+    it('testErrorManger_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let observer: errorManager.LoopObserver = {
         onLoopTimeOut(timeout: number) {
           console.log('Duration timeout: ' + timeout);
@@ -227,9 +252,9 @@ export default function ErrormangerTest() {
      * @tc.desc 注册被拒绝promise监听器,注册后可以捕获到当前线程中未被捕获到的promise rejection。
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level3
      */
-    it('testErrorManger_0700',0, async (done:Function) => {
+    it('testErrorManger_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
         if (promise === promise1) {
           console.log("promise1 is rejected");
@@ -265,9 +290,9 @@ export default function ErrormangerTest() {
      * @tc.desc 在主线程注册errormanager.on接口,不支持捕获其他线程
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level0
      */
-    it('testErrorManger_0800',0, async (done:Function) => {
+    it('testErrorManger_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let observer: errorManager.ErrorObserver = {
         onUnhandledException(errorMsg) {
           console.log('onUnhandledException, errorMsg: ', errorMsg);
@@ -302,9 +327,9 @@ export default function ErrormangerTest() {
      * @tc.desc 注销错误观测器。使用callback异步返回
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level0
      */
-    it('testErrorManger_0900',0, async (done:Function) => {
+    it('testErrorManger_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let observerId = 100;
       try {
         console.info("====>testErrorManger_0900 offcallback start");
@@ -325,9 +350,9 @@ export default function ErrormangerTest() {
      * @tc.desc 注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间。校验错误码 16200001
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level1
+     * @tc.level Level0
      */
-    it('testErrorManger_1000',0, async (done:Function) => {
+    it('testErrorManger_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info("====>testErrorManger_1000 start");
       try {
         let observer: errorManager.LoopObserver = {
@@ -346,7 +371,104 @@ export default function ErrormangerTest() {
         expect(error.code == 16200001).assertTrue();
         done();
       }
-    });
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1100
+     * @tc.name testErrorManger_1100
+     * @tc.desc 验证errorManager.on('globalErrorOccurred', errorFunc),返回错误码16300004
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testErrorManger_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      console.info("====> testErrorManger_1100 globalErrorOccurred start");
+      // promiseFunc
+      errorManager.on('globalErrorOccurred', errorFunc)
+      try {
+        errorManager.off('globalErrorOccurred', errorFunc1);
+        console.info(" ====> testErrorManger_1100 globalErrorOccurred end 01");
+        expect(false).assertTrue();
+        done();
+      } catch (err) {
+        console.info("====> testErrorManger_1100 globalErrorOccurred catch: " + JSON.stringify(err));
+        expect(err.code == 16300004).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1200
+     * @tc.name testErrorManger_1200
+     * @tc.desc 验证errorManager.on("globalUnhandledRejectionDetected", promiseFunc),返回错误码16300004
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testErrorManger_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      console.info("====> testErrorManger_1200 globalUnhandledRejectionDetected start");
+      // promiseFunc
+      errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
+      try {
+        console.info("====> testErrorManger_1200 globalUnhandledRejectionDetected end 01");
+        errorManager.off('globalUnhandledRejectionDetected', promiseFunc1);
+        console.info("====> testErrorManger_1200 globalUnhandledRejectionDetected end 02");
+        expect(false).assertTrue();
+        done();
+      } catch (err) {
+        console.info("====> testErrorManger_1200 globalUnhandledRejectionDetected catch: " + JSON.stringify(err));
+        expect(err.code == 16300004).assertTrue();
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1300
+     * @tc.name testErrorManger_1300
+     * @tc.desc 验证errorManager.on("freeze", freezeCallback),返回错误码16300004
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level0
+     */
+    it('testErrorManger_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      console.info("====> testErrorManger_1300 freeze start");
+      errorManager.on("freeze", freezeCallback);
+      try {
+        console.info("====> if appfreeze consolelog freezecallback");
+        errorManager.off("freeze", freezeCallback);
+        console.info("====> testErrorManger_1300 freeze end 01");
+        done();
+      } catch (err) {
+        console.info("====> testErrorManger_1300 freeze catch: " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1400
+     * @tc.name testErrorManger_1400
+     * @tc.desc 验证errorManager.on("freeze", freezeCallback),返回错误码16300004
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testErrorManger_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      console.info("====> testErrorManger_1400 freeze start");
+      errorManager.on("freeze", freezeCallback);
+      try {
+        errorManager.off("freeze", freezeCallback1);
+        console.info("====> testErrorManger_1400 freeze end");
+        expect(false).assertTrue();
+        done();
+      } catch (err) {
+        console.info("====> testErrorManger_0100 freeze catch: " + JSON.stringify(err));
+        expect(err.code == 16300004).assertTrue();
+        done();
+      }
+    })
 
   })
 }
