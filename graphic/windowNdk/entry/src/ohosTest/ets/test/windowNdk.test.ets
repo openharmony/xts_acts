@@ -1528,5 +1528,30 @@ export default function windowNdk() {
         }
     })
 
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6200
+         * @tc.name      : test_getAllWIndowLayOutInfo
+         * @tc.desc      : test_getAllWIndowLayOutInfo
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_getAllWIndowLayOutInfo', 0, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo";
+      console.log(caseName + '  start');
+      let mainWindow = windowStage.getMainWindowSync();
+      let diaplayId = mainWindow.getWindowProperties().displayId;
+      console.log(caseName + '  diaplayId:'+diaplayId);
+      let result = windowNdkTest.getAllWIndowLayOutInfo(diaplayId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        if(Number(result)==801){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          done();
+        }else{
+          expect(result.length).assertLargerOrEqual(1);
+          done();
+        }
+    })
+
   })
 }
