@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 import resourceManager from '@ohos.resourceManager';
@@ -3372,7 +3372,8 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GET_AUDIO_TIMESTAMP_INFO_SYNC', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GET_AUDIO_TIMESTAMP_INFO_SYNC',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -3411,7 +3412,8 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GET_AUDIO_TIMESTAMP_INFO', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GET_AUDIO_TIMESTAMP_INFO',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
