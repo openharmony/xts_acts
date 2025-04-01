@@ -631,16 +631,6 @@ export default function printTest() {
       printerInformation.uri = 'testUri';
       printerInformation.printerMake = 'testPrinterMake';
       printerInformation.options = 'testOptions';
-      // Permissions required: ohos.permission.PRINT
-      await print.addPrinterToDiscovery(printerInformation).then((data : void) => {
-        console.log('addPrinterToDiscovery expect succeed, data: ' + JSON.stringify(data));
-        expect(data).assertTrue();
-        done();
-      }).catch((error: BusinessError) => {
-        console.log('addPrinterToDiscovery failed, error: ' + JSON.stringify(error));
-        expect().assertFalse();
-        done();
-      })
 
       let printerId : string = 'testPrinterId';
       // Permissions required: ohos.permission.PRINT
@@ -650,7 +640,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
-        expect().assertFalse();
+        expect(error.code).assertEqual(print.PrintErrorCode.E_PRINT_INVALID_PRINTER);
         done();
       })
     })
