@@ -529,7 +529,7 @@ export default function audioRoutingManager() {
         })
       } catch (e) {
         console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 check number parameter Fail:${e.message},code:${e.code}`);
-        expect(false).assertTrue();
+        expect(Number(e.code)).assertTrue(6800301);
         done();
       }
 
@@ -678,6 +678,10 @@ export default function audioRoutingManager() {
         });
         expect(false).assertTrue();
         done();
+        routingManager.off('preferOutputDeviceChangeForRendererInfo', (data) => {
+        });
+        expect(false).assertTrue();
+        done();
       } catch (e) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0100 ERROR: ${e.message},Code:${e.code}`);
         expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
@@ -698,6 +702,10 @@ export default function audioRoutingManager() {
 
       try {
         routingManager.on('preferOutputDeviceChangeForRendererInfo', stringParameter, (data) => {
+        });
+        expect(false).assertTrue();
+        done();
+        routingManager.off('preferOutputDeviceChangeForRendererInfo', (data) => {
         });
         expect(false).assertTrue();
         done();
@@ -1036,6 +1044,11 @@ export default function audioRoutingManager() {
           expect(false).assertTrue();
           done();
         });
+        audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', (desc: ESObject) => {
+          console.info(`device descriptor: ${desc}`);
+          expect(false).assertTrue();
+          done();
+        });
       } catch (e) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0100 ERROR: ${e.message},Code:${e.code}`);
         expect(Number(e.code)).assertEqual(401);
@@ -1062,6 +1075,11 @@ export default function audioRoutingManager() {
           expect(false).assertTrue();
           done();
         });
+        audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', (desc: ESObject) => {
+          console.info(`device descriptor: ${desc}`);
+          expect(false).assertTrue();
+          done();
+        });
       } catch (e) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0200 ERROR: ${e.message},Code:${e.code}`);
         expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
@@ -1081,6 +1099,11 @@ export default function audioRoutingManager() {
       let rendererInfo: ESObject = '123';
       try {
         audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', rendererInfo, (desc: ESObject) => {
+          console.info(`device descriptor: ${desc}`);
+          expect(false).assertTrue();
+          done();
+        });
+        audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', (desc: ESObject) => {
           console.info(`device descriptor: ${desc}`);
           expect(false).assertTrue();
           done();

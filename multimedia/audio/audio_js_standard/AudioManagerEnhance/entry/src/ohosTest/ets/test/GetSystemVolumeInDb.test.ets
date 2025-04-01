@@ -106,18 +106,18 @@ export default function audioManagerTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    //it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', 0, async (done: Function) => {
-    //  try {
-    //    let data = audioVolumeGroupManager.getSystemVolumeInDbSync();
-    //    console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
-    //    expect(false).assertTrue();
-    //    done();
-    //  } catch (error) {
-    //    console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
-    //    expect(Number(error.code)).assertEqual(401);
-    //    done();
-    //  }
-    //})
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', 0, async (done: Function) => {
+      try {
+       let data = audioVolumeGroupManager.getSystemVolumeInDbSync(123,null,audio.DeviceType.SPEAKER);
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
     /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0300
          * @tc.name      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 6800101

@@ -92,9 +92,11 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[0].deviceType > 0).assertTrue();
         expect(devices[0].id != null).assertTrue();
+        expect(devices[0].spatializationSupported === false).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
         expect(devices[0].displayName != "").assertTrue();
+
         expect(devices[0].sampleRates[0] > 0).assertTrue();
         expect(devices[0].channelCounts[0] > 0).assertTrue();
         expect(devices[0].channelMasks[0]).assertEqual(0);
@@ -335,6 +337,11 @@ export default function AudioRoutingManagerTest() {
         });
         expect(false).assertTrue();
         done();
+        audioRoutingManager.off('availableDeviceChange', (data: ESObject) => {
+          console.info(`${Tag}:on_availableDeviceChange -1: SUCCESS`);
+        });
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         console.error(`${Tag}: on_availableDeviceChange -1 ERROR: ${error.message}, ${error.code}`);
         expect(Number(error.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
@@ -356,6 +363,11 @@ export default function AudioRoutingManagerTest() {
         });
         expect(false).assertTrue();
         done();
+        audioRoutingManager.off('availableDeviceChange', (data: ESObject) => {
+          console.info(`${Tag}:off_availableDeviceChange 9: SUCCESS`);
+        });
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         console.error(`${Tag}: on_availableDeviceChange 9 ERROR: ${error.message}, ${error.code}`);
         expect(Number(error.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
@@ -374,6 +386,11 @@ export default function AudioRoutingManagerTest() {
       try {
         audioRoutingManager.on('availableDeviceChange', '123', (data: ESObject) => {
           console.info(`${Tag}: on_availableDeviceChange '123': SUCCESS`);
+        });
+        expect(false).assertTrue();
+        done();
+        audioRoutingManager.off('availableDeviceChange', (data: ESObject) => {
+          console.info(`${Tag}:off_availableDeviceChange 123: SUCCESS`);
         });
         expect(false).assertTrue();
         done();

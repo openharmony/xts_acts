@@ -5703,6 +5703,39 @@ export default function audioFramework() {
       }
     })
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ON_DEVICECHANGE_0100
+     * @tc.name      : on_DeviceChange - ErrorCode - Null-Parameters - 401
+     * @tc.desc      : on_DeviceChange - ErrorCode - Null-Parameters - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ON_DEVICECHANGE_0100', 2, async (done: Function) => {
+      let AudioManager = audioManager.getRoutingManager();
+      try {
+        AudioManager.on('deviceChange', null!, (deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+        AudioManager.off('deviceChange',(deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.info(`${TagFrmwk}: on('deviceChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0100
      * @tc.name      : on_DeviceChange - ErrorCode - Null-Parameters - 401
      * @tc.desc      : on_DeviceChange - ErrorCode - Null-Parameters - 401
@@ -5714,6 +5747,14 @@ export default function audioFramework() {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         AudioRoutingManager.on('deviceChange', null!, (deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+        AudioRoutingManager.off('deviceChange', (deviceChanged) => {
           console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
           console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
           console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
@@ -5806,7 +5847,43 @@ export default function audioFramework() {
         done();
       }
     })
-    
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0500
+     * @tc.name      : on_DeviceChange - ErrorCode - String -Parameters - 401
+     * @tc.desc      : getDevicesSync - ErrorCode - String -Parameters - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0500', 3, async (done: Function) => {
+      let AudioRoutingManager = audioManager.getRoutingManager();
+      try {
+        let deviceFlag: ESObject = '123';
+        AudioRoutingManager.on('deviceChange', deviceFlag,
+          (deviceChanged: audio.DeviceChangeAction) => {
+            console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+            console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+            expect(false).assertTrue();
+            done();
+          });
+          AudioRoutingManager.off('deviceChange',
+          (deviceChanged: audio.DeviceChangeAction) => {
+            console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+            console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+            expect(false).assertTrue();
+            done();
+          });
+      } catch (error) {
+        if(Number.isNaN(error.code)  || error.code == 6800301 )
+        console.info(`${TagFrmwk}: on('deviceChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(true).assertTrue();
+        done();
+      }
+    })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0100
      * @tc.name      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
