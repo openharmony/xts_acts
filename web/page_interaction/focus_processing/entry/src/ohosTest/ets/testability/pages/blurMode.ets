@@ -63,16 +63,14 @@ struct WebComponent {
                 let buttonOne = await driver.findComponent(ON.text('input'));
                 await buttonOne.click()
                 await Utils.sleep(2000);
-                if ((this.userAgentPC).includes("Wearable")) {
-                  this.inputMethodController.hideTextInput()
-                } else {
+
                   let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
                   if (buttonTwo) {
                     await buttonTwo.click()
                   } else {
-                    await driver.click(671, 701);
+                    this.inputMethodController.hideTextInput()
                   }
-                }
+
                 await Utils.sleep(1000);
                 if (this.text == 'focus') {
                   Utils.emitEvent(true, 20241133)
@@ -93,17 +91,14 @@ struct WebComponent {
                 let buttonOne = await driver.findComponent(ON.text('input'));
                 await buttonOne.click()
                 await Utils.sleep(2000);
-              if ((this.userAgentPC).includes("Wearable")) {
-                this.inputMethodController.hideTextInput()
-                this.controller.onInactive();
-              } else {
+
                 let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
                 if (buttonTwo) {
                   await buttonTwo.click()
                 } else {
-                  await driver.click(671, 701);
+                  this.inputMethodController.hideTextInput()
+                    this.controller.onInactive();
                 }
-              }
                 await Utils.sleep(1000);
                 if (this.text == 'blur') {
                   Utils.emitEvent(true, 20241134)
