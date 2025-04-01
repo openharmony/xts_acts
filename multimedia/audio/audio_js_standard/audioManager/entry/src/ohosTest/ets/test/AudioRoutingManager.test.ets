@@ -529,7 +529,7 @@ export default function audioRoutingManager() {
         })
       } catch (e) {
         console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 check number parameter Fail:${e.message},code:${e.code}`);
-        expect(Number(e.code)).assertTrue(6800301);
+        expect(Number(e.code)).assertEqual(6800301);
         done();
       }
 
