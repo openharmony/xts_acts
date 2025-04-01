@@ -42,7 +42,7 @@ export default function screenHotTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('tesScreenShot_Capture_ErrorCode201', 0, async (done:Function) => {
+        it('tesScreenShot_Capture_ErrorCode201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
             let caseName = 'tesScreenShot_Capture_ErrorCode201';
             let msgStr = 'jsunittest ' + caseName + ' ';
             console.log(msgStr + 'begin');

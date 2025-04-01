@@ -149,9 +149,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOffRectChange01 Register twice and unregister one
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it('testUIExtensionHostOffRectChange01', 0, async (done: Function) => {
+    it('testUIExtensionHostOffRectChange01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'testUIExtensionHostOffRectChange01 ';
       console.log(caseName + 'start run');
       try {
@@ -214,9 +214,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOffRectChange02 register twice and unregister all of them
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it('testUIExtensionHostOffRectChange02', 0, async (done: Function) => {
+    it('testUIExtensionHostOffRectChange02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName = 'testUIExtensionHostOffRectChange02 ';
       console.log(caseName + 'start run');
       try {
@@ -281,7 +281,7 @@ export default function extensionWindowPropertiesTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testUIExtensionHostRectChangeErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostRectChangeErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostRectChangeErrorCode401 ';
       console.log(caseName + 'start run');
       try {
