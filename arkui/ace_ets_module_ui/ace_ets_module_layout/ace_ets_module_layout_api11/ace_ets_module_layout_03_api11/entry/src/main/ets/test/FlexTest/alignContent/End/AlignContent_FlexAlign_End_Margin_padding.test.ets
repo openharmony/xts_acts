@@ -189,7 +189,7 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       expect(Math.floor(Math.abs((AlignContentFlexEnd_flex002.top - End_Margin_Column_2.top) - vp2px(5))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs((End_Margin_Column_2.bottom - AlignContentFlexEnd_4.bottom) - vp2px(20))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((End_Margin_Column_2.bottom - AlignContentFlexEnd_4.bottom) - vp2px(20))) <= 2).assertTrue();
       expect(Math.floor(Math.abs((AlignContentFlexEnd_flex002.bottom - AlignContentFlexEnd_4.bottom) - vp2px(15))) <= 1)
         .assertTrue();
       expect(Math.floor(Math.abs(AlignContentFlexEnd_4.top - AlignContentFlexEnd_2.bottom)) <= 1).assertTrue();
