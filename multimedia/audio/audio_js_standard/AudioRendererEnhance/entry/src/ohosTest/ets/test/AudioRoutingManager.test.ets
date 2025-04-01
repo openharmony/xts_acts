@@ -96,7 +96,6 @@ export default function AudioRoutingManagerTest() {
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
         expect(devices[0].displayName != "").assertTrue();
-
         expect(devices[0].sampleRates[0] > 0).assertTrue();
         expect(devices[0].channelCounts[0] > 0).assertTrue();
         expect(devices[0].channelMasks[0]).assertEqual(0);
