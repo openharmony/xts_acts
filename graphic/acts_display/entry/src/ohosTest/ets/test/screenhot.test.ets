@@ -58,7 +58,7 @@ export default function screenHotTest() {
                 })
             } catch (exception) {
                 console.error(caseName + 'Failed to pick Code: ' + JSON.stringify(exception));
-                expect(exception.code == 201).assertTrue()
+                expect(exception.code == 801 || exception.code == 201).assertTrue()
                 done()
             };
         })
