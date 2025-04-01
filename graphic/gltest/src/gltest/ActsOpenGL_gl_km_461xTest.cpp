@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
+#include "ActsOpenGL_gl_km_461xTest.h"
 #include <gtest/gtest.h>
 #include <cstdlib>
-#include "ActsOpenGLTest.h"
-#include "ActsOpenGL_gl_km_461xTest.h"
+#include "common.h"
+
 
 namespace OHOS {
     using namespace std;

@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
+#include "ActsOpenGL_Egl_am_masterTest.h"
 #include <gtest/gtest.h>
 #include <cstdlib>
-#include "ActsOpenGLTest.h"
-#include "ActsOpenGL_Egl_am_masterTest.h"
+#include "common.h"
 
 namespace OHOS {
     using namespace std;

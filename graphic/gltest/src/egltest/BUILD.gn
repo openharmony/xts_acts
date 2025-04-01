@@ -27,6 +27,7 @@ ohos_moduletest_suite("ActsOpenGLEglTest") {
   ]
 
   include_dirs = [
+    ".",
     "../../src",
     "../../../../../../../base/startup/init/interfaces/kits/syscap/include",
   ]

@@ -17,6 +17,7 @@
 #define OPENGL_TESTCASE_H
 
 #include <gtest/gtest.h>
+
 namespace OHOS {
     class ActsOpenGLEglam323xTest : public testing::Test {
     public:

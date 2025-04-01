@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
+#include "ActsOpenGL_gles_am_322xTest.h"
 #include <gtest/gtest.h>
 #include <cstdlib>
-#include "ActsOpenGLTest.h"
-#include "ActsOpenGL_gles_am_322xTest.h"
+#include "common.h"
 
 namespace OHOS {
     using namespace std;

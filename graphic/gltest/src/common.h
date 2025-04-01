@@ -12,25 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#ifndef OPENGL_TESTCASE_H
-#define OPENGL_TESTCASE_H
-
-#include <gtest/gtest.h>
-
-namespace OHOS {
-    class ActsOpenGLTest : public testing::Test {
-    public:
-    protected:
-        // Preset action of the test suite, which is executed before the first test case
-        static void SetUpTestCase(void);
-        // Test suite cleanup action, which is executed after the last test case
-        static void TearDownTestCase(void);
-        // Preset action of the test case
-        virtual void SetUp();
-        // Cleanup action of the test case
-        virtual void TearDown();
-    };
-} // namespace OHOS
-
-#endif // OPENGL_TESTCASE_H
+ 
+#include "syscap_ndk.h"
