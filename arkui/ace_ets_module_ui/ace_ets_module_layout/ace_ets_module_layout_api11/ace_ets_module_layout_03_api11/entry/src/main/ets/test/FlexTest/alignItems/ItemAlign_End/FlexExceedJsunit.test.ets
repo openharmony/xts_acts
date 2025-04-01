@@ -66,17 +66,17 @@ export default function flexExceed_EndJsunit() {
       let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
       let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
       let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
-      expect(Math.floor(Math.abs(textExceed01.bottom - textExceed02.bottom)) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed02.bottom - textExceed03.bottom)) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(flexExceed01.bottom - textExceed01.bottom - vp2px(10))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed01.left - flexExceed01.left - vp2px(10))) <= 1).assertTrue()
+      expect(Math.abs(textExceed01.bottom - textExceed02.bottom) <= 1).assertTrue()
+      expect(Math.abs(textExceed02.bottom - textExceed03.bottom) <= 1).assertTrue()
+      expect(Math.abs(flexExceed01.bottom - textExceed01.bottom - Math.round(vp2px(10))) <= 1).assertTrue()
+      expect(Math.abs(textExceed01.left - flexExceed01.left - Math.round(vp2px(10))) <= 1).assertTrue()
 
-      expect(Math.floor(Math.abs(textExceed01.bottom - textExceed01.top - vp2px(50))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed02.bottom - textExceed02.top - vp2px(100))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed03.bottom - textExceed03.top - vp2px(150))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed01.right - textExceed01.left - vp2px(150))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed02.right - textExceed02.left - vp2px(150))) <= 1).assertTrue()
-      expect(Math.floor(Math.abs(textExceed03.right - textExceed03.left - vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textExceed01.bottom - textExceed01.top - Math.round(vp2px(50))) <= 1).assertTrue()
+      expect(Math.abs(textExceed02.bottom - textExceed02.top - Math.round(vp2px(100))) <= 1).assertTrue()
+      expect(Math.abs(textExceed03.bottom - textExceed03.top - Math.round(vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textExceed01.right - textExceed01.left - Math.round(vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textExceed02.right - textExceed02.left - Math.round(vp2px(150))) <= 1).assertTrue()
+      expect(Math.abs(textExceed03.right - textExceed03.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndSetMarPad END');
