@@ -12,13 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "app": {
-    "bundleName": "com.acts.actsstartandterminateassisttest",
-    "vendor": "example",
-    "versionCode": 1000000,
-    "versionName": "1.0.0",
-    "icon": "$media:app_icon",
-    "label": "$string:app_name"
-  }
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';
