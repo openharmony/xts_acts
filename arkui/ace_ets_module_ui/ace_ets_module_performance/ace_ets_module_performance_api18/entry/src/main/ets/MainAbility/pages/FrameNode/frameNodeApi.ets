@@ -15,16 +15,13 @@
 import { NodeController, BuilderNode, Size, FrameNode, UIContext} from '@kit.ArkUI'
 
 class Params {
-  private text: string = 'this is a text'
-  public getText(): string {
-    return this.text
-  }
+  public text: string = 'this is a text'
 }
 
 @Builder
 function buttonBuilder(params: Params) {
   Column() {
-    Button(params.getText())
+    Button(params.text)
       .fontSize(20)
       .borderRadius(8)
   }
