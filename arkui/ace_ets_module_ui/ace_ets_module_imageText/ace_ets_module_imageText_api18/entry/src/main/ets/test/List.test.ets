@@ -22,6 +22,7 @@ import textBackgroundStyleTest from './RichEditorTest/textBackgroundStyleTest.te
 import SearchGetTextTest from './SearchTest/SearchGetText.test';
 import TextAreaGetTextTest from './TextAreaTest/TextAreaGetText.test';
 import TextInputGetTextTest from './TextInputTest/TextInputGetText.test';
+import ParagraphSpacingTest from './StyledStringTest/ParagraphSpacing.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -33,4 +34,5 @@ export default function testsuite() {
   SearchGetTextTest();
   TextAreaGetTextTest();
   TextInputGetTextTest();
+  ParagraphSpacingTest();
 }
