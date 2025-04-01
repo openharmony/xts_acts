@@ -62,6 +62,8 @@ export default function RichEditor5() {
 
       let RichEditor_change = await driver.findComponent(ON.id("RichEditor_change"));
       await RichEditor_change.inputText("A")
+      await driver.triggerKey(2047)
+      await driver.delayMs(1000)
       let RichEditor_onWillChange = await driver.findComponent(ON.id("RichEditor_onWillChange"));
       let RichEditor_onDidChange = await driver.findComponent(ON.id("RichEditor_onDidChange"));
       let RichEditor_onWillChange_text = await RichEditor_onWillChange.getText()

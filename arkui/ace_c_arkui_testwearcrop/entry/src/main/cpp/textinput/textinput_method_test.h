@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,17 +13,18 @@
  * limitations under the License.
  */
 
+#ifndef ARKUI_CAPI_XTS_TEXTINPUT_METHOD_TEST_H
+#define ARKUI_CAPI_XTS_TEXTINPUT_METHOD_TEST_H
 
+#include "../common/common.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 
-export const calendarPickerEnabledTest: (a: string) => void;
+namespace ArkUICapiTest {
 
-
-export const calendarPickerOnChangeTest: (a: string) => void;
-
-export const textAreaOnPasteTest: (a: string) => void;
-
-export const textInputOnCutTest: (a: string) => void;
-
-export const textInputOnPasteTest: (a: string) => void;
-
-export const InputMethodTest001: (a: string) => void;
+class TextInputMethodTest {
+public:
+    ~TextInputMethodTest();
+    static napi_value InputMethodTest001(napi_env env, napi_callback_info info);
+};
+} // namespace ArkUICapiTest
+#endif // ARKUI_CAPI_XTS_TEXTINPUT_METHOD_TEST_H
