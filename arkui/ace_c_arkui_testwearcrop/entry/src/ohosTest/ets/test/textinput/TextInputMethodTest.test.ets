@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON} from '@ohos.UiTest';
 
@@ -35,7 +35,7 @@ export default function textInputMethodTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('textInputMethodTest001', 0, async (done: Function) => {
+    it('textInputMethodTest001', Level.LEVEL1, async (done: Function) => {
       let driver = await Driver.create();
       await Utils.sleep(500);
       let textinput = await driver.findComponent(ON.id('MethodTestTextInput'));
