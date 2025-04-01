@@ -17,23 +17,12 @@ let params = LocalStorage.getShared();
 struct AccessibilityThirdFramework {
   @State FillColor: string = '#FF000000';
   @State name: string = 'AccessibilityThirdFramework00';
-  @State StepTips: string = '设备安装且开启辅助应用时（1、从compatibility仓对应acts-validator目录下载setting.zip，' +
-    '解压后运行send_hap.bat；2、从compatibility仓对应acts-validator目录下载MyApplication.hap并安装；' +
-    '3、开启手机，点击设置-辅助功能-扩展服务-已安装的服务-打开label）'+
-    '操作步骤：\n'+
-    '1、点击findNextFocusAccessibilityNode\n'+
-    '2、点击findElementById1\n'+
-    '3、点击findFocusedAccessibilityNode\n'+
-    '4、点击getPosition\n'+
-    '5、点击executeAccessibilityActionClick\n'+
-    '6、点击findElementByText\n'+
-    '预期结果：\n'+
-    '1、日志输出 FindNextFocusAccessibilityNode elementId\n'+
-    '2、日志输出 FindAccessibilityNodeInfosById start,elementId\n'+
-    '3、日志输出 FindFocusedAccessibilityNode start,elementId\n'+
-    '4、日志输出 GetAccessibilityNodeCursorPosition\n'+
-    '5、日志输出 ExecuteAccessibilityAction elementId\n'+
-    '6、日志输出 FindAccessibilityNodeInfosByText start,elementId'
+  @State StepTips: string = '测试目的：验证ArkUI对接三方框架 支持配置PREV和NEXT action， 用于屏幕朗读的focusMove操作\n' +
+    '\n' +
+    '操作步骤：开启屏幕朗读，点击start按钮，单指连续下滑到end按钮结束。\n' +
+    '\n' +
+    '预期结果：\n' +
+    '若支持屏幕朗读，则下滑期间绿框会在黑色区域中绘制。若不支持屏幕朗读，直接按照失败处理走豁免。';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -165,35 +154,10 @@ struct AccessibilityThirdFramework {
       .justifyContent(FlexAlign.SpaceBetween)
 
       Column({ space: 12 }) {
-        Row() {
-          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp').margin({ top: 20 })
-        }
-
-        Row() {
-          Column() {
-            Button(`不支持`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('30%')
-              .enabled(!this.yesEnable)
-              .opacity(!this.yesEnable ? 1 : 0.4)
-              .onClick(async () => {
-                this.Vue = true
-              })
-          }
-
-          Column() {
-            Button(`支持`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('30%')
-              .onClick(async () => {
-                this.yesEnable = true
-                this.onAccessibilityHoverEnable = true
-                this.Vue = true
-              })
-          }
-        }
+        Button(`start`)
+          .borderRadius(8)
+          .backgroundColor(0x317aff)
+          .width('30%')
 
         // 业务代码
         Column() {
@@ -215,52 +179,14 @@ struct AccessibilityThirdFramework {
             .width('100%')
             .height('30%')
 
-          Row() {
-            Button("findElementById1").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("findElementById1");
-            })
-            Button("findElementById2").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("findElementById2");
-            })
-          }
-          .width('100%')
-          .alignItems(VerticalAlign.Bottom)
-
-          Row() {
-            Button("findElementByText").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("findElementByText");
-            })
-            Button("findFocusedAccessibilityNode ").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("findFocusElement");
-            })
-          }
-          .width('100%')
-          .alignItems(VerticalAlign.Bottom)
-
-          Row() {
-            Button("findNextFocusAccessibilityNode ").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("findFocusDirectionElement");
-            })
-            Button("executeAccessibilityActionClick").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("executeAccessibilityActionClick");
-            })
-          }
-          .width('100%')
-          .alignItems(VerticalAlign.Bottom)
-
-          Row() {
-            Button("ClearFocus").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("executeAccessibilityActionClear");
-            })
-            Button("getPosition").onClick(() => {
-              DemoActionManager.getInstance().sendEvent("getCursorPosition");
-            })
-          }
-          .width('100%')
-          .alignItems(VerticalAlign.Bottom)
         }
         .focusable(true)
         .defaultFocus(true)
+
+        Button(`end`)
+          .borderRadius(8)
+          .backgroundColor(0x317aff)
+          .width('30%')
       }.height('80%')
       .width('100%')
       .backgroundColor(Color.White)
