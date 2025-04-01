@@ -17,6 +17,7 @@ import Utils from '../../test/Utils';
 import { BusinessError } from '@ohos.base';
 import { Driver, ON, UiDirection, BY, UiDriver } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
+import {inputMethod} from '@kit.IMEKit';
 
 @Entry
 @Component
@@ -26,6 +27,7 @@ struct WebComponent {
   @State blurMode:BlurOnKeyboardHideMode = BlurOnKeyboardHideMode.SILENT;
   @State text:string = ''
   @State userAgentPC:string = "";
+  inputMethodController = inputMethod.getController()
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
@@ -61,15 +63,20 @@ struct WebComponent {
                 let buttonOne = await driver.findComponent(ON.text('input'));
                 await buttonOne.click()
                 await Utils.sleep(2000);
-                let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
-                if (buttonTwo) {
-                  await buttonTwo.click()
+                if ((this.userAgentPC).includes("Wearable")) {
+                  this.inputMethodController.hideTextInput()
                 } else {
-                  await driver.click(671, 701);
+                  let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
+                  if (buttonTwo) {
+                    await buttonTwo.click()
+                  } else {
+                    await driver.click(671, 701);
+                  }
                 }
                 await Utils.sleep(1000);
                 if (this.text == 'focus') {
                   Utils.emitEvent(true, 20241133)
+
                 }
                 break;
             }
@@ -83,17 +90,20 @@ struct WebComponent {
                 let driver = Driver.create();
                 await Utils.sleep(1000);
                 this.blurMode = BlurOnKeyboardHideMode.BLUR;
-
-
                 let buttonOne = await driver.findComponent(ON.text('input'));
                 await buttonOne.click()
                 await Utils.sleep(2000);
+              if ((this.userAgentPC).includes("Wearable")) {
+                this.inputMethodController.hideTextInput()
+                this.controller.onInactive();
+              } else {
                 let buttonTwo = await driver.findComponent(ON.id('KeyHideKbd'));
                 if (buttonTwo) {
                   await buttonTwo.click()
                 } else {
                   await driver.click(671, 701);
                 }
+              }
                 await Utils.sleep(1000);
                 if (this.text == 'blur') {
                   Utils.emitEvent(true, 20241134)
