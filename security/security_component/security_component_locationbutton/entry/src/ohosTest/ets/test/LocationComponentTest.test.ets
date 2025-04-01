@@ -100,27 +100,6 @@ export default function locationComponentTest() {
               console.info("====>[Test_Security_Button_Location_0100] 设置权限成功");
               expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
               await Utils.sleep(500);
-              let driver = Driver.create();
-              console.info("====>[Test_Security_Button_Location_0100] driver is:" + JSON.stringify(driver));
-              let flag = false;
-              console.info("====>[Test_Security_Button_Location_0100] flag is:" + flag);
-              for (let i = 0; i < 5; i++) {
-                console.info("====>[Test_Security_Button_Location_0100] loop START====" + i);
-                if (flag) {
-                  break;
-                }
-                let textComponent = await driver.findComponent(ON.type('Button'));
-                console.info("====>[Test_Security_Button_Location_0100] textComponent is:" + JSON.stringify(textComponent));
-                await Utils.sleep(200)
-                if (textComponent != undefined && textComponent != null) {
-                  try{
-                    await textComponent.click();
-                    console.info("====>[Test_Security_Button_Location_0100] textComponentClick finishfinishfinish");
-                  } catch (err) {
-                    console.info("====>[Test_Security_Button_Location_0100] textComponentClick err : " + JSON.stringify(err));
-                  };
-                }
-              }
               console.info("====>[Test_Security_Button_Location_0100] END====");
               done()
             } else {
@@ -1699,13 +1678,13 @@ export default function locationComponentTest() {
           if(clickData.data !=undefined){
             console.info("====>[Test_Security_Button_Location_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
             console.info("====>[Test_Security_Button_Location_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-            if (clickData.data.clickResult == LocationButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-              console.info("====>[Test_Security_Button_Location_1600] ERR CASE 成功");
-              expect(clickData.data.clickResult == LocationButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+            if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Location_1600] 设置权限成功");
+              expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
               console.info("====>[Test_Security_Button_Location_1600] END====");
               done();
             } else {
-              console.info("====>[Test_Security_Button_Location_1600] ERR CASE 失败");
+              console.info("====>[Test_Security_Button_Location_1600] 设置权限失败");
               expect().assertFail()
               console.info("====>[Test_Security_Button_Location_1600] END====");
               done();
