@@ -29,10 +29,10 @@ let subscriber: commonEventManager.CommonEventSubscriber;
 
 function publishCB(err: BusinessError) {
   if (err) {
-    console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+    hilog.error(0x0000, 'testTag', `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info('====>publish ACTS_TEST_OPENLINK');
-    console.info(`Succeeded in publishing common event.`);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'publish ACTS_TEST_OPENLINK');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Succeeded in publishing common event.');
   }
 }
 
@@ -59,13 +59,13 @@ export default function startAndTerminateTest() {
      */
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100`;
-      console.log(`${tag}, it begin`);
+      hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
             setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
               done();
             }, 1000);
           }

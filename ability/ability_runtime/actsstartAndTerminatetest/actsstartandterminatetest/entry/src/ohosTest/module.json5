@@ -73,23 +73,14 @@
         "label": "$string:TestAbility_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
-        "launchType": "multiton",
         "skills": [
           {
             "actions": [
               "action.system.home",
-              "ohos.want.action.viewData"
             ],
             "entities": [
               "entity.system.home",
-              "entity.system.browsable"
             ],
-            "uris": [
-              {
-                "scheme": "https",
-                "host": "www.startAndTerminateUi02.com"
-              }
-            ]
           }
         ]
       },
