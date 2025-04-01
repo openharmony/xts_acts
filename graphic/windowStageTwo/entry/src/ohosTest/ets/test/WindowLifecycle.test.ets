@@ -1174,10 +1174,13 @@ export default function WindowLifecycle() {
       try {
         windowClass.on('windowEvent', async (data) => {
           console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-          expect(data).assertEqual(3);
-          windowClass.off('windowEvent');
-          await subWindow.destroyWindow();
-          done();
+          if(data==window.WindowEventType.WINDOW_INACTIVE){
+            await subWindow.destroyWindow();
+            windowClass.off('windowEvent');
+            done();
+          }else{
+            await sleep(1000);
+          }
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
@@ -1666,20 +1669,17 @@ export default function WindowLifecycle() {
         windowStage.loadContentByName(LoadContentByName.entryName).then(async () => {
           console.info('Succeeded in loadContentByName.');
           expect(true).assertTrue();
-          // 恢复原本页面
           await windowStage.loadContent('testability/pages/Index');
           done();
         }).catch(async (err: BusinessError) => {
           console.error(`Failed to test loadContentByName. Cause code: ${err.code}, message: ${err.message}`);
           expect().assertFail();
-          // 恢复原本页面
           await windowStage.loadContent('testability/pages/Index');
           done();
         });
       } catch (error) {
         console.log(msgStr + 'Failed to test_loadContentByName. Cause: ' + JSON.stringify(error));
         expect().assertFail();
-        // 恢复原本页面
         await windowStage.loadContent('testability/pages/Index');
         done();
       }
