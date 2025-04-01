@@ -5278,8 +5278,16 @@ export default function audioFramework() {
       console.info("audio.DeviceType.USB_HEADSET:" + audio.DeviceType.USB_HEADSET);
       expect(audio.DeviceType.DISPLAY_PORT).assertEqual(23);
       console.info("audio.DeviceType.DISPLAY_PORT:" + audio.DeviceType.DISPLAY_PORT);
+      expect(audio.DeviceType.DISPLAY_PORT).assertEqual(24);
+      console.info("audio.DeviceType.DISPLAY_PORT:" + audio.DeviceType.DISPLAY_PORT);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
+      expect(audio.DeviceType.HDMI).assertEqual(27);
+      console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
+      expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
+      console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
+      expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
+      console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
       expect(audio.DeviceType.DEFAULT).assertEqual(1000);
       console.info("audio.DeviceType.DEFAULT:" + audio.DeviceType.DEFAULT);
       await sleep(50);
