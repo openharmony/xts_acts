@@ -48,6 +48,9 @@
     ],
     "requestPermissions": [
       {
+        "name": "ohos.permission.POWER_MANAGER"
+      },
+      {
         "name": "ohos.permission.CAPTURE_SCREEN"
       },
       {
