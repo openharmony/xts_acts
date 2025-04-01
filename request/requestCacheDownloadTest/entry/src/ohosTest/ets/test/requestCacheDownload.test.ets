@@ -14,7 +14,7 @@
  */
 
 import cacheDownload from "@ohos.request.cacheDownload";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestCacheDownloadUnitTest() {
@@ -28,7 +28,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0100', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0100 is starting-----------------------");
       class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
         headers?: Record<string, string> | undefined = {'Accept': '*/*'}
@@ -62,7 +62,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0200', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0200 is starting-----------------------");
       class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
         headers?: Record<string, string> | undefined = {'Accept': '*/*'}
@@ -90,7 +90,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0300', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0300', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0300 is starting-----------------------");
       class cacheDownloadOptions implements cacheDownload.CacheDownloadOptions {
         headers?: Record<string, string> | undefined = {'Accept': '*/*'}
@@ -118,7 +118,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0400', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0400', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0400 is starting-----------------------");
       let text: string = ''.padEnd(8175, 'cacheDownload')
       let url: string = 'https://gitee' + text + '.com';
@@ -142,7 +142,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0500', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0500', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0500 is starting-----------------------");
       let text: string = ''.padEnd(8176, 'cacheDownload')
       let url: string = 'https://gitee' + text + '.com';
@@ -166,7 +166,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0600', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0600', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0600 is starting-----------------------");
       let num: number = 1 * 1024 * 1024 * 1024
       try {
@@ -189,7 +189,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0700', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0700', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0700 is starting-----------------------");
       let num: number = 1 * 1024 * 1024 * 1024 + 1
       try {
@@ -212,7 +212,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0800', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0800', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0800 is starting-----------------------");
       let num: number = 4 * 1024 * 1024 * 1024
       try {
@@ -235,7 +235,7 @@ export default function requestCacheDownloadUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Request_cacheDownload_0900', 0, async (done: Function) => {
+    it('SUB_Request_cacheDownload_0900', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Request_cacheDownload_0700 is starting-----------------------");
       let num: number = 4 * 1024 * 1024 * 1024 + 1
       try {

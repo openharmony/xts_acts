@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commoneventmanager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import subtype from '@ohos.InputMethodSubtype';
@@ -78,9 +78,9 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level1
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0010', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0010', Level.LEVEL1, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 unSubscriberCallback start");
@@ -159,7 +159,7 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0020', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0020', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 unSubscriberCallback start");
@@ -238,7 +238,7 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0030', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0030', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 unSubscriberCallback start");
@@ -317,7 +317,7 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0040', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0040', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 unSubscriberCallback start");
@@ -396,7 +396,7 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0050', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0050', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 unSubscriberCallback start");
@@ -476,7 +476,7 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0060', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0060', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 unSubscriberCallback start");
@@ -555,7 +555,7 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0070', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0070', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 unSubscriberCallback start");

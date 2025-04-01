@@ -16,7 +16,7 @@
 import request from "@ohos.request";
 import featureAbility from '@ohos.ability.featureAbility'
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function requestDownloadNormalJSUnit() {
   describe('requestDownloadNormalJSUnit', () => {
@@ -78,7 +78,7 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_0002', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0002 is starting---------------------");
       downloadConfig.filePath += 'SUB_Misc_Request_DownloadManagement_0002.txt';
       let flag = false;
@@ -104,7 +104,7 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_Callback_0002', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_Callback_0002', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0002 is starting---------------------");
       downloadConfig.filePath += 'SUB_Misc_Request_DownloadManagement_Callback_0002.txt';
       let flag = false;

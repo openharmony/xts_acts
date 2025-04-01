@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import screenLock from '@ohos.screenLock';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 
 export default function ScreenLockPromiseTest(){
@@ -34,7 +34,7 @@ export default function ScreenLockPromiseTest(){
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_001", 0, async (done: Function) => {
+    it("SUB_MISC_THEME_screenLock_API_Promise_001", Level.LEVEL2, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_001-------------------");
       try {
         let data = await screenLock.isScreenLocked();
@@ -58,7 +58,7 @@ export default function ScreenLockPromiseTest(){
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_002", 0, async (done: Function) => {
+    it("SUB_MISC_THEME_screenLock_API_Promise_002", Level.LEVEL2, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_002-------------------");
       try {
         let data = await screenLock.isScreenLocked();
@@ -82,7 +82,7 @@ export default function ScreenLockPromiseTest(){
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_003", 0, async (done: Function) => {
+    it("SUB_MISC_THEME_screenLock_API_Promise_003", Level.LEVEL2, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_003-------------------");
       try {
         let data = await screenLock.isSecureMode();
@@ -105,7 +105,7 @@ export default function ScreenLockPromiseTest(){
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MISC_THEME_screenLock_API_Promise_004", 0, async (done: Function) => {
+    it("SUB_MISC_THEME_screenLock_API_Promise_004", Level.LEVEL2, async (done: Function) => {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
       try {
         await screenLock.unlockScreen();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commoneventmanager from '@ohos.commonEventManager';
 import inputMethod from '@ohos.inputMethod';
 import { Driver, ON, MatchPattern, Component, UiWindow, Rect } from '@ohos.UiTest'
@@ -102,7 +102,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_getInputMethodEngine_001', 0, async (done: Function) => {
+    it('inputMethodEngine_test_getInputMethodEngine_001', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_getInputMethodEngine_001 unSubscriberCallback start");
@@ -173,7 +173,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_getKeyboardDelegate_001', 0, async (done: Function) => {
+    it('inputMethodEngine_test_getKeyboardDelegate_001', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_getKeyboardDelegate_001 unSubscriberCallback start");
@@ -243,7 +243,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_028', 0, async (done: Function) => {
+    it('inputMethodEngine_test_028', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_028 unSubscriberCallback start");
@@ -314,7 +314,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_029', 0, async (done: Function) => {
+    it('inputMethodEngine_test_029', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_029 unSubscriberCallback start");
@@ -385,7 +385,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_030', 0, async (done: Function) => {
+    it('inputMethodEngine_test_030', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_030 unSubscriberCallback start");
@@ -456,7 +456,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_031', 0, async (done: Function) => {
+    it('inputMethodEngine_test_031', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_031 unSubscriberCallback start");
@@ -527,7 +527,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_032', 0, async (done: Function) => {
+    it('inputMethodEngine_test_032', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_032 unSubscriberCallback start");
@@ -598,7 +598,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_033', 0, async (done: Function) => {
+    it('inputMethodEngine_test_033', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_033 unSubscriberCallback start");
@@ -669,7 +669,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_034', 0, async (done: Function) => {
+    it('inputMethodEngine_test_034', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_034 unSubscriberCallback start");
@@ -740,7 +740,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_035', 0, async (done: Function) => {
+    it('inputMethodEngine_test_035', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_035 unSubscriberCallback start");
@@ -811,7 +811,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_036', 0, async (done: Function) => {
+    it('inputMethodEngine_test_036', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_036 unSubscriberCallback start");
@@ -882,7 +882,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_037', 0, async (done: Function) => {
+    it('inputMethodEngine_test_037', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_037 unSubscriberCallback start");
@@ -953,7 +953,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_038', 0, async (done: Function) => {
+    it('inputMethodEngine_test_038', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_038 unSubscriberCallback start");
@@ -1024,7 +1024,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_039', 0, async (done: Function) => {
+    it('inputMethodEngine_test_039', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_039 unSubscriberCallback start");
@@ -1095,7 +1095,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_040', 0, async (done: Function) => {
+    it('inputMethodEngine_test_040', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_040 unSubscriberCallback start");
@@ -1166,7 +1166,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_041', 0, async (done: Function) => {
+    it('inputMethodEngine_test_041', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_041 unSubscriberCallback start");
@@ -1237,7 +1237,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_042', 0, async (done: Function) => {
+    it('inputMethodEngine_test_042', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_042 unSubscriberCallback start");
@@ -1308,7 +1308,7 @@ export default function inputMethodEngineJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('inputMethodEngine_test_043', 0, async (done: Function) => {
+    it('inputMethodEngine_test_043', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_043 unSubscriberCallback start");
@@ -1379,7 +1379,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_049', 0, async (done: Function) => {
+    it('inputMethodEngine_test_049', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_049 unSubscriberCallback start");
@@ -1450,7 +1450,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_050', 0, async (done: Function) => {
+    it('inputMethodEngine_test_050', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_050 unSubscriberCallback start");
@@ -1521,7 +1521,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_071', 0, async (done: Function) => {
+    it('inputMethodEngine_test_071', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_071 unSubscriberCallback start");
@@ -1592,7 +1592,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_072', 0, async (done: Function) => {
+    it('inputMethodEngine_test_072', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_072 unSubscriberCallback start");
@@ -1668,7 +1668,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_073', 0, async (done: Function) => {
+    it('inputMethodEngine_test_073', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_073 unSubscriberCallback start");
@@ -1749,7 +1749,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_074', 0, async (done: Function) => {
+    it('inputMethodEngine_test_074', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_074 unSubscriberCallback start");
@@ -1822,7 +1822,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_076', 0, async (done: Function) => {
+    it('inputMethodEngine_test_076', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_076 unSubscriberCallback start");
@@ -1898,7 +1898,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('inputMethodEngine_test_077', 0, async (done: Function) => {
+    it('inputMethodEngine_test_077', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_077 unSubscriberCallback start");
@@ -1969,7 +1969,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_InputMethod_IME_VisualInput_0500', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_VisualInput_0500', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_VisualInput_0500 unSubscriberCallback start");
@@ -2041,7 +2041,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_InputMethod_IME_VisualInput_0600', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_VisualInput_0600', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_VisualInput_0600 unSubscriberCallback start");
@@ -2112,7 +2112,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0100 unSubscriberCallback start");
@@ -2183,7 +2183,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendKeyFunction_0200 unSubscriberCallback start");
@@ -2254,7 +2254,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0100 unSubscriberCallback start");
@@ -2325,7 +2325,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteForward_0200 unSubscriberCallback start");
@@ -2396,7 +2396,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_insertText_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_insertText_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_insertText_0100 unSubscriberCallback start");
@@ -2467,7 +2467,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_insertText_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_insertText_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_insertText_0200 unSubscriberCallback start");
@@ -2538,7 +2538,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getForward_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getForward_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_getForward_0100 unSubscriberCallback start");
@@ -2609,7 +2609,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getForward_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getForward_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_getForward_0200 unSubscriberCallback start");
@@ -2680,7 +2680,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getBackward_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getBackward_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0100 unSubscriberCallback start");
@@ -2751,7 +2751,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getBackward_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getBackward_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_getBackward_0200 unSubscriberCallback start");
@@ -2822,7 +2822,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0100 unSubscriberCallback start");
@@ -2893,7 +2893,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_moveCursor_0200 unSubscriberCallback start");
@@ -2964,7 +2964,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0100 unSubscriberCallback start");
@@ -3035,7 +3035,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_selectByRange_0200 unSubscriberCallback start");
@@ -3106,7 +3106,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0100 unSubscriberCallback start");
@@ -3177,7 +3177,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_selectByMovement_0200 unSubscriberCallback start");
@@ -3248,7 +3248,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendPrivateCommand_0200 unSubscriberCallback start");
@@ -3319,7 +3319,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0601', 0, async (done: Function) => {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0601', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IMF_SecurityKeyboard_0601 unSubscriberCallback start");
@@ -3372,6 +3372,361 @@ export default function inputMethodEngineJSUnit() {
 
         let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 99
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('inputMethodEngineTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100
+    * @tc.name    Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 publishCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100"]
+      }
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 subscriber data:" + JSON.stringify(data))
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0100 subscriber finish");
+        } catch (err) {
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+          code: 100
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('inputMethodEngineTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200
+    * @tc.name    Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 publishCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200"]
+      }
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 subscriber data:" + JSON.stringify(data))
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 subscriber finish");
+        } catch (err) {
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+          code: 101
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('inputMethodEngineTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+    * @tc.number  SUB_InputMethod_IME_PrivateDateTransferred_1101
+    * @tc.name    SUB_InputMethod_IME_PrivateDateTransferred_1101
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_InputMethod_IME_PrivateDateTransferred_1101', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IME_PrivateDateTransferred_1101"]
+      }
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 subscriber data:" + JSON.stringify(data))
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 subscriber finish");
+        } catch (err) {
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+          code: 102
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('inputMethodEngineTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100
+    * @tc.name    Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 publishCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100"]
+      }
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 subscriber data:" + JSON.stringify(data))
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0100 subscriber finish");
+        } catch (err) {
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+          code: 96
+        }
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          commoneventmanager.publish('inputMethodEngineTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200
+    * @tc.name    Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 subscriberCallback data:"
+          + JSON.stringify(data));
+        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 publishCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200"]
+      }
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 subscriber data:" + JSON.stringify(data))
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethodEngine_InputClient_sendExtendAction_0200 subscriber finish");
+        } catch (err) {
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+          code: 97
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
