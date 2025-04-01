@@ -89,5 +89,33 @@ export default function injectOfflineResourcesTest() {
       Utils.registerEvent("testInjectOfflineResources003", '401', 20003, done);
       sendEventByKey('injectOfflineResourcesTestButton', 10, '');
     })
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_INJECTOFFLINERESOURCES_0400
+    * @tc.name       : testInjectOfflineResources004
+    * @tc.desc       : test injectOfflineResources
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testInjectOfflineResources004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      Utils.emitEvent("testInjectOfflineResources004", 10)
+      await Utils.sleep(500);
+      Utils.registerEvent("testInjectOfflineResources004", '17100002', 20004, done);
+      sendEventByKey('injectOfflineResourcesTestButton', 10, '');
+    })
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_INJECTOFFLINERESOURCES_0500
+    * @tc.name       : testInjectOfflineResources005
+    * @tc.desc       : test injectOfflineResources
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testInjectOfflineResources005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      Utils.emitEvent("testInjectOfflineResources005", 10)
+      await Utils.sleep(500);
+      Utils.registerEvent("testInjectOfflineResources005", '17100001', 20005, done);
+      sendEventByKey('injectOfflineResourcesTestButton', 10, '');
+    })
   })
 }
