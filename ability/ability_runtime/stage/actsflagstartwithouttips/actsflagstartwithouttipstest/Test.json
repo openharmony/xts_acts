@@ -21,12 +21,12 @@
     {
       "type": "ShellKit",
       "run-command": [
-          "setenforce 0",
-          "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
+          "param set persist.sys.abilityms.support.ecologicalrulemgrservice false",
+          "setenforce 0"
       ],
       "teardown-command": [
-          "setenforce 1",
-          "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
+          "param set persist.sys.abilityms.support.ecologicalrulemgrservice true",
+          "setenforce 1"
       ]
     }
   ]
