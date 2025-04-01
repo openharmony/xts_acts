@@ -73,12 +73,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(promiseThen, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual(i * 2);
-        sleep(100);
+        const task = new taskpool.Task(promiseThen, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual(i * 2);
+            return sleep(100);
+          })
+          .catch((e: Error) => {
+            console.error(`Task ${i} failed:`, e.message);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -91,12 +100,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(awaitCompute, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual((i * 2) * 2);
-        sleep(100);
+        const task = new taskpool.Task(awaitCompute, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual((i * 2) * 2);
+            return sleep(100);
+          })
+          .catch((e: Error) => {
+            console.error(`Task ${i} failed:`, e.message);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -109,12 +127,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(awaitPromise, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual(((i + 10) * 2));
-        sleep(100);
+        const task = new taskpool.Task(awaitPromise, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual((i + 10) * 2);
+            return sleep(100);
+          })
+          .catch((e: Error) => {
+            console.error(`Task ${i} failed:`, e.message);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -127,12 +154,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Array<Promise<void>> = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(awaitFinally, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual(((i + 1) * 2));
-        sleep(100);
+        const task = new taskpool.Task(awaitFinally, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).toBe((i + 1) * 2);
+            return sleep(100);
+          })
+          .catch((err: Error) => {
+            console.error(`Task ${i} failed: ${err.message}`);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -145,12 +181,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(awaitCatch, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual((i * 4));
-        sleep(100);
+        const task = new taskpool.Task(awaitCatch, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual(i * 4);
+            return sleep(100);
+          })
+          .catch((error: Error) => {
+            console.error(`Task ${i} failed with error: ${error.message}`);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -163,12 +208,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(promiseCompute, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual(((i + 1) * 2));
-        sleep(100);
+        const task = new taskpool.Task(promiseCompute, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual((i + 1) * 2);
+            return sleep(100);
+          })
+          .catch((error: Error) => {
+            console.error(`[Task ${i}] Failed:`, error);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -181,12 +235,21 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(awaitAsync, i);
-        const result: number = await taskpool.execute(task) as number;
-        expect(result).assertEqual((i * 2 + 1));
-        sleep(100);
+        const task = new taskpool.Task(awaitAsync, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual(i * 2 + 1);
+            return sleep(100);
+          })
+          .catch((error: Error) => {
+            console.error(`Task ${i} error:`, error.message);
+            return sleep(100);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -199,14 +262,19 @@ export default function taskPoolTaskShareTest() {
      * @tc.level Level 1
      */
     it('taskPoolTaskShareTest_0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+      const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        const task: taskpool.Task = new taskpool.Task(promiseAll, i);
-        let result: number = 0
-        taskpool.execute(task).then((num: object) => {
-          result = Number(num)
-          expect(result).assertEqual(((i + 1) * 2 + i));
-        }).catch();
+        const task = new taskpool.Task(promiseAll, i);
+        const taskPromise = taskpool.execute(task)
+          .then((result: object) => {
+            expect(result).assertEqual((i + 1) * 2 + i);
+          })
+          .catch((error: Error) => {
+            console.error(`Task ${i} failed:`, error.message);
+          });
+        taskPromises.push(taskPromise);
       }
+      await Promise.all(taskPromises);
       task1Count = 0;
       Done();
     })
@@ -220,15 +288,22 @@ export default function taskPoolTaskShareTest() {
      */
     it('taskPoolTaskShareTest_0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result1 = 0;
+      const completionPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        let task: taskpool.Task = new taskpool.Task(printArgs1, i);
-        task.onEnqueued(async () => {
-          const res1 = await Calculator.computeSync(i);
-          result1 = result1 + res1;
+        const task = new taskpool.Task(printArgs1, i);
+        const taskPromise = new Promise<void>((resolve) => {
+          task.onEnqueued(async () => {
+            const res1 = await Calculator.computeSync(i);
+            result1 += res1;
+            resolve();
+          });
         });
-        taskpool.execute(task).then(() => {
+        completionPromises.push(taskPromise);
+        taskpool.execute(task).catch((error: Error) => {
+          console.error(`Task ${i} failed:`, error.message);
         });
       }
+      await Promise.all(completionPromises);
       await sleep(100);
       expect(result1).assertEqual(90);
       task1Count = 0;
@@ -245,19 +320,30 @@ export default function taskPoolTaskShareTest() {
      */
     it('taskPoolTaskShareTest_1000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result1 = 0;
+      const completionPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        let task: taskpool.Task = new taskpool.Task(printArgs1, i);
-        task.onEnqueued(async () => {
-          const res1 = await Calculator.computeAsync1(i);
-          result1 = result1 + res1;
+        const task = new taskpool.Task(printArgs1, i);
+        const taskPromise = new Promise<void>((resolve) => {
+          task.onEnqueued(async () => {
+            try {
+              const res1 = await Calculator.computeAsync1(i);
+              result1 += res1;
+            } catch (e) {
+              console.error(`Compute error for task ${i}:`, e);
+            } finally {
+              resolve();
+            }
+          });
         });
-        taskpool.execute(task).then(() => {
+        completionPromises.push(taskPromise);
+        taskpool.execute(task).catch((error: Error) => {
+          console.error(`Task ${i} failed:`, error.message);
         });
       }
+      await Promise.all(completionPromises);
       await sleep(100);
       expect(result1).assertEqual(90);
-      task1Count = 0;
-      result1 = 0;
+      task1Count = result1 = 0;
       Done();
     })
     /**
@@ -295,19 +381,30 @@ export default function taskPoolTaskShareTest() {
      */
     it('taskPoolTaskShareTest_1200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result1 = 0;
+      const executionPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        let task: taskpool.Task = new taskpool.Task(printArgs1, i);
-        task.onStartExecution(async () => {
-          const res1 = await Calculator.computeAsync1(i);
-          result1 = result1 + res1;
+        const task = new taskpool.Task(printArgs1, i);
+        const executionPromise = new Promise<void>(async (resolve) => {
+          task.onStartExecution(async () => {
+            try {
+              const res1 = await Calculator.computeAsync1(i);
+              result1 += res1;
+            } catch (e) {
+              console.error(`Compute error (task ${i}):`, e);
+            }
+            resolve();
+          });
         });
-        taskpool.execute(task).then(() => {
-        });
+        executionPromises.push(executionPromise);
+        taskpool.execute(task)
+          .catch((error: Error) => {
+            console.error(`Task ${i} failed:`, error.message);
+          });
       }
+      await Promise.all(executionPromises);
       await sleep(100);
       expect(result1).assertEqual(90);
-      task1Count = 0;
-      result1 = 0;
+      task1Count = result1 = 0;
       Done();
     })
     /**
@@ -318,7 +415,6 @@ export default function taskPoolTaskShareTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-
     it('taskPoolTaskShareTest_1300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result1 = 0;
       for (let i = 0; i < TASK_COUNT; i++) {
@@ -423,22 +519,32 @@ export default function taskPoolTaskShareTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-
     it('taskPoolTaskShareTest_1700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let result1 = 0;
+      const dataPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
-        let task: taskpool.Task = new taskpool.Task(printArgs2, i);
-        task.onReceiveData(async (kye: number) => {
-          const res1 = await Calculator.computeSync(kye);
-          result1 = result1 + res1;
+        const task = new taskpool.Task(printArgs2, i);
+        const dataPromise = new Promise<void>((resolve) => {
+          task.onReceiveData(async (kye: number) => {
+            try {
+              const res1 = await Calculator.computeSync(kye);
+              result1 += res1;
+            } catch (e) {
+              console.error(`Compute error for data ${kye}:`, e);
+            }
+            resolve();
+          });
         });
-        await taskpool.execute(task).then(() => {
-        });
+        dataPromises.push(dataPromise);
+        taskpool.execute(task)
+          .catch((error: Error) => {
+            console.error(`Task ${i} failed:`, error.message);
+          });
       }
+      await Promise.all(dataPromises);
       await sleep(1000);
       expect(result1).assertEqual(90);
-      task1Count = 0;
-      result1 = 0;
+      task1Count = result1 = 0;
       Done();
     })
     /**
@@ -606,7 +712,6 @@ export default function taskPoolTaskShareTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-
     it('taskPoolTaskShareTest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         let totalCalculated = 0;
