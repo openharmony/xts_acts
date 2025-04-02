@@ -122,7 +122,7 @@ struct PreferredOrientation {
   private stack: NavPathStack = new NavPathStack();
 
   aboutToAppear(): void {
-    this.stack.pushPath({name: "portrait"})
+    this.stack.pushPath({name: 'portrait'})
   }
 
   @Builder
