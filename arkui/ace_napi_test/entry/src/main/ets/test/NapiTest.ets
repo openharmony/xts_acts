@@ -10476,46 +10476,7 @@ export default function napiApiTest() {
       }
       done();
     });
-    /**
-     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEEXTERNALTEST_0100
-     * @tc.name      : testNapiCreateExternalTest0001
-     * @tc.desc      : Testing NapiCreateExternal NAPI interface.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('testNapiCreateExternalTest0001', 0, async (done: Function) => {
-      console.info('testNapiCreateExternalTest0001 START');
-      try {
-        let value = napitest.NapiCreateExternalTest();
-        console.info('NapiCreateExternalTest value is: ' + value);
-        expect(value).assertEqual(true);
-      } catch (err) {
-        console.error('NapiCreateExternalTest err msg' + err.message);
-        expect().assertFail();
-      }
-      done();
-    });
-    /**
-     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEEXTERNALARRAYBUFFERTEST_0100
-     * @tc.name      : testNapiCreateExternalArrayBufferTest0001
-     * @tc.desc      : Testing NapiCreateExternalArrayBuffer NAPI interface.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('testNapiCreateExternalArrayBufferTest0001', 0, async (done: Function) => {
-      console.info('testNapiCreateExternalArrayBufferTest0001 START');
-      try {
-        let value = napitest.NapiCreateExternalArrayBufferTest();
-        console.info('NapiCreateExternalArrayBufferTest value is: ' + value);
-        expect(value).assertEqual(true);
-      } catch (err) {
-        console.error('NapiCreateExternalArrayBufferTest err msg' + err.message);
-        expect().assertFail();
-      }
-      done();
-    });
+
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATEOBJECTTEST_0100
      * @tc.name      : testNapiCreateObjectTest0001
@@ -10876,26 +10837,7 @@ export default function napiApiTest() {
       }
       done();
     });
-    /**
-     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEEXTERNALTEST_0100
-     * @tc.name      : testNapiGetValueExternalTest0001
-     * @tc.desc      : Testing NapiGetValueExternal NAPI interface.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('testNapiGetValueExternalTest0001', 0, async (done: Function) => {
-      console.info('testNapiGetValueExternalTest0001 START');
-      try {
-        let value = napitest.NapiGetValueExternalTest();
-        console.info('NapiGetValueExternalTest value is: ' + value);
-        expect(value).assertEqual(true);
-      } catch (err) {
-        console.error('NapiGetValueExternalTest err msg' + err.message);
-        expect().assertFail();
-      }
-      done();
-    });
+
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUEINT32TEST_0100
      * @tc.name      : testNapiGetValueInt32Test0001

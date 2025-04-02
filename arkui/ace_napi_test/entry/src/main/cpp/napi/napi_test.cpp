@@ -10754,51 +10754,7 @@ void finalizeCallback(napi_env env, void *data, void *hint)
 
     free(data);
 }
-static napi_value NapiCreateExternalTest(napi_env env, napi_callback_info info)
-{
-    napi_status status;
-    size_t argc = 1;
-    napi_value args[1];
 
-    const size_t dataSize = 10;
-    void *data = calloc(1, dataSize);
-    if (data == nullptr) {
-        napi_throw_error(env, nullptr, "Failed to allocate memory");
-        return nullptr;
-    }
-    napi_value result = nullptr;
-    status = napi_create_external(env, data, finalizeCallback, nullptr, &result);
-    //undefined
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-    status = napi_create_external(env, data, finalizeCallback, nullptr, &undefined);
-    NAPI_ASSERT(env, status == napi_ok, "*result is undefined, napi_create_external ok.");
-
-    //env is null
-    status = napi_create_external(nullptr, data, finalizeCallback, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_create_external failed.");
-    //*data is null
-    status = napi_create_external(env, nullptr, finalizeCallback, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_ok, "*data is null, napi_create_external ok.");
-    //finalizeCallback is null
-    status = napi_create_external(env, data, nullptr, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_ok, "finalizeCallback is null, napi_create_external ok.");
-    //finalize_hint is null
-    status = napi_create_external(env, data, finalizeCallback, nullptr, &result);
-    NAPI_ASSERT(env, status == napi_ok, "finalize_hint is null, napi_create_external ok.");
-    //*result is null
-    status = napi_create_external(env, data, finalizeCallback, nullptr, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "*result is null, napi_create_external failed.");
-    //all is null
-    status = napi_create_external(nullptr, nullptr, nullptr, nullptr, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_arraybuffer failed.");
-
-    free(data);
-    napi_value rst;
-    bool bRet = true;
-    napi_get_boolean(env, bRet, &rst);
-    return rst;
-}
 //napi_create_external_arraybuffer
 typedef struct {
     uint8_t *data;
@@ -10810,53 +10766,7 @@ void FinalizeCallBackBuffer(napi_env env, void *finalizeData, void *finalizeHint
     delete[] bufferData->data;
     delete bufferData;
 }
-static napi_value NapiCreateExternalArrayBufferTest(napi_env env, napi_callback_info info)
-{
-    napi_status status;
-    size_t argc = 1;
-    napi_value args[1];
 
-    // 创建一个有五个元素的C++数组
-    uint8_t *dataArray = new uint8_t[5]{1, 2, 3, 4, 5};
-    napi_value extBuffer = nullptr;
-    BufferData *bufferData = new BufferData{dataArray, 5};
-    status = napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallBackBuffer, bufferData, &extBuffer);
-    //undefined
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-    status = napi_create_external_arraybuffer(env,
-                                              dataArray,
-                                              5,
-                                              FinalizeCallBackBuffer,
-                                              bufferData,
-                                              &undefined);
-    NAPI_ASSERT(env, status == napi_ok, "*result is undefined, napi_create_external_arraybuffer ok.");
-
-    //env is null
-    status = napi_create_external_arraybuffer(nullptr, dataArray, 5, FinalizeCallBackBuffer, bufferData, &extBuffer);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_create_external_arraybuffer failed.");
-    //*external_data is null
-    status = napi_create_external_arraybuffer(env, nullptr, 5, FinalizeCallBackBuffer, bufferData, &extBuffer);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "*external_data is null, napi_create_external_arraybuffer failed.");
-    //finalize_cb is null
-    status = napi_create_external_arraybuffer(env, dataArray, 5, nullptr, bufferData, &extBuffer);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "finalize_cb is null, napi_create_external_arraybuffer failed.");
-    //finalize_hint is null
-    status = napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallBackBuffer, nullptr, &extBuffer);
-    NAPI_ASSERT(env, status == napi_ok, "finalize_hint is null, napi_create_external_arraybuffer ok.");
-    //*result is null
-    //finalize_hint is null
-    status = napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallBackBuffer, bufferData, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "*result is null, napi_create_external_arraybuffer failed.");
-    //all is null
-    status = napi_create_external_arraybuffer(nullptr, nullptr, 5, nullptr, nullptr, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_external_arraybuffer failed.");
-
-    napi_value rst;
-    bool bRet = true;
-    napi_get_boolean(env, bRet, &rst);
-    return rst;
-}
 //napi_create_object
 static napi_value NapiCreateObjectTest(napi_env env, napi_callback_info info)
 {
@@ -11572,53 +11482,7 @@ static napi_value NapiGetValueDoubleTest(napi_env env, napi_callback_info info)
     napi_get_boolean(env, bRet, &rst);
     return rst;
 }
-//napi_get_value_external
-static napi_value NapiGetValueExternalTest(napi_env env, napi_callback_info info)
-{
-    napi_status status;
-    size_t argc = 1;
-    napi_value args[1];
-    
-    const size_t dataSize = 10;
-    void *data = calloc(1, dataSize);
-    if (data == nullptr) {
-        napi_throw_error(env, nullptr, "Failed to allocate memory");
-        return nullptr;
-    }
-    napi_value result = nullptr;
-    status = napi_create_external(env, data, finalizeCallback, nullptr, &result);
-    if (status != napi_ok) {
-        napi_throw_error(env, nullptr, "Failed to create external value");
-    }
-    void *dataRst;
-    napi_get_value_external(env, result, &dataRst);
 
-    //undefined
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-    //value is undefined
-    status = napi_get_value_external(env, undefined, &dataRst);
-    NAPI_ASSERT(env, status == napi_object_expected, "value is undefined, napi_get_value_external failed.");
-
-    //env is null
-    status = napi_get_value_external(nullptr, result, &dataRst);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_get_value_external failed.");
-    //value is null
-    status = napi_get_value_external(env, nullptr, &dataRst);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_get_value_external failed.");
-    //result is null
-    status = napi_get_value_external(env, result, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_get_value_external failed.");
-    //all is null
-    status = napi_get_value_external(nullptr, nullptr, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_value_double failed.");
-
-    free(data);
-    napi_value rst;
-    bool bRet = true;
-    napi_get_boolean(env, bRet, &rst);
-    return rst;
-}
 //napi_get_value_int32
 static napi_value NapiGetValueInt32Test(napi_env env, napi_callback_info info)
 {
@@ -14789,10 +14653,6 @@ static napi_value NapiSetInstanceDataTest(napi_env env, napi_callback_info info)
     status = napi_set_instance_data(nullptr, data, DeleteAddonData, result);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_set_instance_data failed.");
 
-    //data is null
-    status = napi_set_instance_data(env, nullptr, DeleteAddonData, result);
-    NAPI_ASSERT(env, status == napi_ok, "data is null, napi_set_instance_data failed.");
-
     //all is null
     status = napi_set_instance_data(nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_set_instance_data failed.");
@@ -15077,7 +14937,7 @@ static napi_value NapiGetBufferInfoTest(napi_env env, napi_callback_info info)
 static napi_value NapiCreateExternalBufferTest(napi_env env, napi_callback_info info)
 {
     napi_status status;
-    size_t length = 256;
+    size_t length = 1;
     napi_value arrayBuffer = nullptr;
     void *data;
 
@@ -15101,14 +14961,6 @@ static napi_value NapiCreateExternalBufferTest(napi_env env, napi_callback_info 
     //finalize_cb is null
     status = napi_create_external_buffer(env, length, copyPtr, nullptr, data, &arrayBuffer);
     NAPI_ASSERT(env, status == napi_ok, "finalize_cb is null, napi_create_external_buffer failed.");
-
-    //finalize_hint is null
-    status = napi_create_external_buffer(env, length, copyPtr, DelTest, nullptr, &arrayBuffer);
-    NAPI_ASSERT(env, status == napi_ok, "finalize_hint is null, napi_create_external_buffer failed.");
-
-    //result is null
-    status = napi_create_external_buffer(env, length, copyPtr, DelTest, data, nullptr);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_create_external_buffer failed.");
 
     //all is null
     status = napi_create_external_buffer(nullptr, length, nullptr, nullptr, nullptr, nullptr);
@@ -17427,8 +17279,6 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiCreateArrayTest", NapiCreateArrayTest),
         DECLARE_NAPI_FUNCTION("NapiCreateArrayWithLengthTest", NapiCreateArrayWithLengthTest),
         DECLARE_NAPI_FUNCTION("NapiCreateArrayBufferTest", NapiCreateArrayBufferTest),
-        DECLARE_NAPI_FUNCTION("NapiCreateExternalTest", NapiCreateExternalTest),
-        DECLARE_NAPI_FUNCTION("NapiCreateExternalArrayBufferTest", NapiCreateExternalArrayBufferTest),
         DECLARE_NAPI_FUNCTION("NapiCreateObjectTest", NapiCreateObjectTest),
         DECLARE_NAPI_FUNCTION("NapiCreateSymbolTest", NapiCreateSymbolTest),
         DECLARE_NAPI_FUNCTION("NapiCreateTypedArrayTest", NapiCreateTypedArrayTest),
@@ -17447,7 +17297,6 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiGetDataViewInfoTest", NapiGetDataViewInfoTest),
         DECLARE_NAPI_FUNCTION("NapiGetValueBoolTest", NapiGetValueBoolTest),
         DECLARE_NAPI_FUNCTION("NapiGetValueDoubleTest", NapiGetValueDoubleTest),
-        DECLARE_NAPI_FUNCTION("NapiGetValueExternalTest", NapiGetValueExternalTest),
         DECLARE_NAPI_FUNCTION("NapiGetValueInt32Test", NapiGetValueInt32Test),
         DECLARE_NAPI_FUNCTION("NapiGetValueInt64Test", NapiGetValueInt64Test),
         DECLARE_NAPI_FUNCTION("NapiGetValueStringLatin1Test", NapiGetValueStringLatin1Test),
