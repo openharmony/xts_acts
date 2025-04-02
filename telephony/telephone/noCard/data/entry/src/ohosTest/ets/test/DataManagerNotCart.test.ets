@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -37,7 +37,7 @@ export default function dataManagerNotCartTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataGetCellularDataFlowType0500', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0500';
       console.info(`${caseName} test start `);
       // There is no SIM card inserted.
@@ -71,7 +71,7 @@ export default function dataManagerNotCartTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataGetCellularDataFlowType0900', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0900';
       console.info(`${caseName} test start `);
       // There is no SIM card inserted.
@@ -103,7 +103,7 @@ export default function dataManagerNotCartTest() {
       * @tc.type  : Function
       * @tc.level : level 3
      */
-    it('testTelephonyDataGetCellularDataState0400', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0400';
       console.info(`${caseName} test start `);
       try {
@@ -135,7 +135,7 @@ export default function dataManagerNotCartTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testTelephonyDataGetCellularDataState0800', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0800';
       console.info(`${caseName} test start `);
       try {
@@ -166,7 +166,7 @@ export default function dataManagerNotCartTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testTelephonyDataIsCellularDataRoamingEnabled0600', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled0600';
       console.info(`${caseName} test start `);
       try {
@@ -199,7 +199,7 @@ export default function dataManagerNotCartTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testTelephonyDataIsCellularDataRoamingEnabled1200', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled1200';
       console.info(`${caseName} test start `);
       try {
