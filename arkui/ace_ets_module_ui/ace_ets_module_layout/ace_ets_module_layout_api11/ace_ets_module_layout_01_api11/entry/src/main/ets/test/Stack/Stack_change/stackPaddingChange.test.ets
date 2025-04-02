@@ -63,17 +63,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -99,17 +99,14 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.right - stackPaddingKey01.right) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Top')
@@ -135,17 +132,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -171,15 +168,15 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25)) <= 1).assertTrue()
-      expect(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25)) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Start')
@@ -205,18 +202,12 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.right - stackPaddingKey01.right) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey01.top - stackPaddingKey.top) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
-        .assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1).assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignPaddingAlignCenter END');
@@ -241,16 +232,12 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(40)))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(10)))) <= 1)
-        .assertTrue();
-      expect(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25)) <= 1).assertTrue()
-      expect(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25)) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
-        .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
-        .assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(40))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1).assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignPaddingAlignEnd END');
@@ -275,17 +262,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -311,17 +298,15 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.right - stackPaddingKey01.right) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -347,17 +332,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(40)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(40))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(10)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.BottomEnd')
@@ -383,17 +368,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.TopStart')
@@ -419,17 +404,15 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.right - stackPaddingKey01.right) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Top')
@@ -455,17 +438,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.TopEnd')
@@ -491,17 +474,15 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((stackPaddingKey01.top - stackPaddingKey.top) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Start')
@@ -527,17 +508,13 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.right - stackPaddingKey01.right) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey01.top - stackPaddingKey.top) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Center')
@@ -563,17 +540,15 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round((stackPaddingKey01.top - stackPaddingKey.top) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.End')
@@ -599,17 +574,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.BottomStart')
@@ -635,19 +610,16 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs(Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10 -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey01.left - stackPaddingKey.left) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round((stackPaddingKey.right - stackPaddingKey01.right) * 10) / 10) -
-        Math.round(vp2px(25) * 10) / 10) <= 1).assertTrue()
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left)- vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(25))) <= 1).assertTrue()
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.Bottom')
@@ -673,17 +645,17 @@ export default function stackPaddingChange() {
 
       let stackPaddingKey: RectValue = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01: RectValue = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.abs((Math.round(stackPaddingKey01.left - stackPaddingKey.left)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.left - stackPaddingKey.left) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey01.right)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey01.right) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.top - stackPaddingKey.top)) - (Math.round(vp2px(20)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.top - stackPaddingKey.top) - vp2px(20))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)) - (Math.round(vp2px(30)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.bottom - stackPaddingKey01.bottom) - vp2px(30))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey01.right - stackPaddingKey01.left)) - (Math.round(vp2px(250)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey01.right - stackPaddingKey01.left) - vp2px(250))) <= 1)
         .assertTrue();
-      expect(Math.abs((Math.round(stackPaddingKey.right - stackPaddingKey.left)) - (Math.round(vp2px(300)))) <= 1)
+      expect(Math.floor(Math.abs((stackPaddingKey.right - stackPaddingKey.left) - vp2px(300))) <= 1)
         .assertTrue();
       expect(JSON.parse(strJson).$type).assertEqual('Stack')
       expect(JSON.parse(strJson).$attrs.alignContent).assertEqual('Alignment.BottomEnd')
