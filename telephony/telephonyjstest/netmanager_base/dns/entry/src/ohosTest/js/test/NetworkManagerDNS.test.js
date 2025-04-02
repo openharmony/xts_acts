@@ -15,13 +15,13 @@
 
  import netConnection from '@ohos.net.connection';
  
- import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium'
 export default function Telephony_NETMANAGER_TestDNSTest() {
 
  describe('Telephony_NETMANAGER_TestDNSTest',function(){
  
  
-     it('Telephony_NETMANAGER_TestDNS_Test0100', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressesByName("www.baidu.com").then(function(addresses){
@@ -37,7 +37,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
          })
      });
  
-     it('Telephony_NETMANAGER_TestDNS_Test0200', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressesByName("www.baidu.com", function(err, addresses){
@@ -54,7 +54,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
      });
  
  
-     it('Telephony_NETMANAGER_TestDNS_Test0300', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressByName("www.baidu.com").then(function(address){
@@ -70,7 +70,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
          })
      });
  
-     it('Telephony_NETMANAGER_TestDNS_Test0400', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressByName("www.baidu.com", function(err, address){
@@ -86,7 +86,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
          })
      });
  
-     it('Telephony_NETMANAGER_TestDNS_Test0500', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressesByName("www.askjdbaksjnhd.com").then(function (data) {
@@ -105,7 +105,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
          })
      });
  
-     it('Telephony_NETMANAGER_TestDNS_Test0600', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressesByName("www.askjdbaksjnhd.com", function(err, addresses){
@@ -122,7 +122,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
      });
  
  
-     it('Telephony_NETMANAGER_TestDNS_Test0700', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressByName("www.askjdbaksjnhd.com").then(function(data) {
@@ -142,7 +142,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
          })
      });
  
-     it('Telephony_NETMANAGER_TestDNS_Test0800', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
  
          netConnection.getDefaultNet().then(function(netHandle){
              netHandle.getAddressByName("www.askjdbaksjnhd.com", function(err, address){
@@ -158,7 +158,7 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
          })
      });
 
-     it('Telephony_NETMANAGER_TestDNS_Test0900', 0, function(done){
+     it('Telephony_NETMANAGER_TestDNS_Test0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function(done){
          let netHandle =  netConnection.getDefaultNetSync();
          console.info("Telephony_NETMANAGER_TestDNS_Test0900 " + JSON.stringify(netHandle));
          expect(netHandle.netId >= 100).assertTrue();

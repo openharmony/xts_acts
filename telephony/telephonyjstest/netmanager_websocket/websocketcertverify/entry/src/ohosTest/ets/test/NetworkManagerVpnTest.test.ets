@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll, afterAll, afterEach } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterAll, afterEach, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
 import vpnExtension from '@ohos.net.vpnExtension';
@@ -143,7 +143,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0100';
       let want: Want = {};
       try {
@@ -166,7 +166,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0200', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0200';
       try {
         vpnExtension.startVpnExtensionAbility(null);
@@ -189,7 +189,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_createVpnConnection_Async_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_createVpnConnection_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_createVpnConnection_Async_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context2);
@@ -211,7 +211,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_createVpnConnection_Async_0200', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_createVpnConnection_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_createVpnConnection_Async_0200';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(null);
@@ -233,7 +233,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_setAlwaysOnVpnEnabled_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_setAlwaysOnVpnEnabled_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_setAlwaysOnVpnEnabled_Promise_0100';
       try {
         vpnExtension.setAlwaysOnVpnEnabled(true, 'com.example.vpn_xts');
@@ -255,7 +255,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_isAlwaysOnVpnEnabled_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_isAlwaysOnVpnEnabled_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_isAlwaysOnVpnEnabled_Promise_0100';
       try {
         vpnExtension.isAlwaysOnVpnEnabled('com.example.vpn_xts');
@@ -276,7 +276,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_create_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_create_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_create_Promise_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context2);
@@ -304,7 +304,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_create_Promise_0200', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_create_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_create_Promise_0200';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context2);
@@ -332,7 +332,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_protect_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_protect_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_protect_Promise_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context2);
@@ -360,7 +360,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_protect_Promise_0200', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_protect_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_protect_Promise_0200';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context2);
@@ -388,7 +388,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_destroy_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_destroy_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_destroy_Promise_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context2);
@@ -416,7 +416,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0100', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0100';
       let want: Want = {};
       try {
@@ -439,7 +439,7 @@ export default function NetworkManagerVpnTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0200', 0, (done: Function) => {
+    it('SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0200';
       try {
         vpnExtension.stopVpnExtensionAbility(null);

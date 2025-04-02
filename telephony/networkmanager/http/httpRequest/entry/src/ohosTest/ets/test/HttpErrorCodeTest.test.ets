@@ -1242,7 +1242,7 @@ export default function HttpErrorCodeTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3300';
       console.info(`${caseName}---Start`);
       try {
@@ -1291,7 +1291,7 @@ export default function HttpErrorCodeTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3400';
       console.info(`${caseName}---Start`);
       try {
