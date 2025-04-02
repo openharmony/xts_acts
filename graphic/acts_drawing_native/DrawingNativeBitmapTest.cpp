@@ -958,6 +958,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMaximum, Function | SmallTest |
     OH_Drawing_Rect *dstRect = OH_Drawing_RectCreate(100, 100, 500, 500);
     OH_Drawing_SamplingOptions *samplingOptions = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
         OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
+    EXPECT_NE(samplingOptions, nullptr);
     OH_Drawing_CanvasDrawImageRect(canvas, image, dstRect, samplingOptions);
 
     // Destroy all objects
