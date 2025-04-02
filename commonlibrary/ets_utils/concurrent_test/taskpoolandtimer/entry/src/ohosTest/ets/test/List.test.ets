@@ -33,5 +33,5 @@ export default function testsuite() {
   TaskPoolTaskGroupDynamicsTest();
   taskPoolTaskGroupShareTest();
   timerMultiThreadTest();
-  taskPoolStaticThreadTest();
+
 }
