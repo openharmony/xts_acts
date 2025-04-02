@@ -14,3 +14,10 @@ target_link_libraries(entry PUBLIC
      libhilog_ndk.z.so
      libnative_rdb_ndk.z.so
 )
+
+add_library(rdbvalue SHARED rdb_store_value.cpp)
+target_link_libraries(rdbvalue PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libnative_rdb_ndk.z.so
+)
