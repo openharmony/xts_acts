@@ -18,6 +18,10 @@ add_library(nativerender SHARED
     datepicker/datepicker_test.cpp
     textpicker/textPicker_enableHapticFeedback_test.cpp
     datepicker/datePicker_enableHapticFeedback_test.cpp
+    swiper/swiper_indicator_test.cpp
+    component/swiper_component.cpp
+    component/text_component.cpp
+    component/button_component.cpp
 )
 
 add_library(nativefunc SHARED
