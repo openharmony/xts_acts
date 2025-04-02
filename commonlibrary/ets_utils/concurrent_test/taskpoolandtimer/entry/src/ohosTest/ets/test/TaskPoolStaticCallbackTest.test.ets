@@ -76,9 +76,9 @@ export default function taskPoolStaticCallbackTest() {
           task.onEnqueued(async () => {
             const res1 = await callbackAll(i);
             result1 = result1 + res1;
-            taskPromises.push(taskPromise);
           })
           const taskPromise = taskpool.execute(task);
+          taskPromises.push(taskPromise);
           const res2 = Calculator.computeSync(i + 1) + 1;
           result2 = result2 + res2;
         }
@@ -100,26 +100,19 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<object>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
           const task: taskpool.Task = new taskpool.Task(printArgs1, i);
-          let resolveCompletion: Function;
-          const completionPromise = new Promise<void>((resolve) => {
-            resolveCompletion = resolve;
-          });
-          completionPromises.push(completionPromise);
           task.onEnqueued(async () => {
-            try {
-              const res1 = await callbackAllAsync(i);
-              result1 += res1;
-            } finally {
-              resolveCompletion();
-            }
+            const res1 = await callbackAllAsync(i);
+            result1 = result1 + res1;
           });
-          taskpool.execute(task);
-          result2 += Calculator.computeSync(i + 1) + 1;
+          const taskPromise = taskpool.execute(task);
+          taskPromises.push(taskPromise);
+          const res2 = Calculator.computeSync(i + 1) + 1;
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -137,24 +130,19 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<object>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
           const task: taskpool.Task = new taskpool.Task(printArgs1, i);
-          const completionPromise = new Promise<void>((resolve) => {
-            task.onStartExecution(async () => {
-              try {
-                const res1 = await callbackCompute(i);
-                result1 += res1;
-              } finally {
-                resolve();
-              }
-            });
+          task.onStartExecution(async () => {
+            const res1 = await callbackCompute(i);
+            result1 = result1 + res1;
           });
-          completionPromises.push(completionPromise);
-          taskpool.execute(task);
-          result2 += Calculator.computeSync(i) + 1;
+          const taskPromise = taskpool.execute(task);
+          taskPromises.push(taskPromise);
+          const res2 = Calculator.computeSync(i) + 1;
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -172,28 +160,19 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const taskCompletionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<object>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
           const task: taskpool.Task = new taskpool.Task(printArgs1, i);
-          let resolveTask: Function;
-          const taskDone = new Promise<void>((resolve) => {
-            resolveTask = resolve;
-          });
-          taskCompletionPromises.push(taskDone);
           task.onStartExecution(async () => {
-            try {
-              const res1 = await callbackAsync(i);
-              result1 += res1;
-            } catch (err) {
-              console.error(`Task ${i} failed:`, err);
-            } finally {
-              resolveTask();
-            }
+            const res1 = await callbackAsync(i);
+            result1 = result1 + res1;
           });
-          taskpool.execute(task);
-          result2 += Calculator.computeSync(i) + 1;
+          const taskPromise = taskpool.execute(task);
+          taskPromises.push(taskPromise);
+          const res2 = Calculator.computeSync(i) + 1;
+          result2 = result2 + res2;
         }
-        await Promise.all(taskCompletionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -211,26 +190,23 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<void>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
-          const task = new taskpool.Task(failTask, i);
-          const completionPromise = new Promise<void>((resolve) => {
-            task.onExecutionFailed(async () => {
-              const res1 = await callbackPromiseSync(i);
-              result1 += res1;
-              resolve();
-            });
+          const task: taskpool.Task = new taskpool.Task(failTask, i);
+          task.onExecutionFailed(async () => {
+            const res1 = await callbackPromiseSync(i);
+            result1 = result1 + res1;
           });
-          completionPromises.push(completionPromise);
-          taskpool.execute(task)
-            .then(() => console.info("taskpool: execute task success"))
-            .catch((e: BusinessError) => {
-              console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
-            });
-
-          result2 += Calculator.computeSync(i);
+          const taskPromise = taskpool.execute(task).then(() => {
+            console.info("taskpool: execute task success");
+          }).catch((e: BusinessError) => {
+            console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
+          });
+          taskPromises.push(taskPromise);
+          const res2 = Calculator.computeSync(i);
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -246,27 +222,25 @@ export default function taskPoolStaticCallbackTest() {
      */
     it('taskPoolStaticCallbackTest1006', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       async (done: Function) => {
-        let result1=0;
-        let result2=0;
-        const completionPromises:Promise<void>[]=[];
-        for(let i=0;i<TASK_COUNT;i++){
-          const task=new taskpool.Task(failTask,i);
-          const completionPromise=new Promise<void>((resolve)=>{
-            task.onExecutionFailed(async()=>{
-              const res1=await callbackPromiseSync(i);
-              result1+=res1;
-              resolve();
-            });
+        let result1 = 0;
+        let result2 = 0;
+        const taskPromises: Promise<void>[] = [];
+        for (let i = 0; i < TASK_COUNT; i++) {
+          const task: taskpool.Task = new taskpool.Task(failTask, i);
+          task.onExecutionFailed(async () => {
+            const res1 = await callbackPromiseSync(i);
+            result1 = result1 + res1;
           });
-          completionPromises.push(completionPromise);
-          taskpool.execute(task)
-            .then(()=>console.info("taskpool: execute task success"))
-            .catch((e:BusinessError)=>{
-              console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
-            });
-          result2+=Calculator.computeSync(i);
+          const taskPromise = taskpool.execute(task).then(() => {
+            console.info("taskpool: execute task success");
+          }).catch((e: BusinessError) => {
+            console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
+          });
+          taskPromises.push(taskPromise);
+          const res2 = Calculator.computeSync(i);
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -284,25 +258,23 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<void>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
-          const task = new taskpool.Task(printArgs1, i);
-          const completionPromise = new Promise<void>((resolve) => {
-            task.onExecutionSucceeded(async () => {
-              const res1 = await callbackCatchSync(i);
-              result1 += res1;
-              resolve();
-            });
+          const task: taskpool.Task = new taskpool.Task(printArgs1, i);
+          task.onExecutionSucceeded(async () => {
+            const res1 = await callbackCatchSync(i);
+            result1 = result1 + res1;
           });
-          completionPromises.push(completionPromise);
-          taskpool.execute(task)
-            .then(() => console.info("taskpool: execute task success"))
-            .catch((e: BusinessError) => {
-              console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
-            });
-          result2 += Calculator.computeSync(i * 2);
+          const taskPromise = taskpool.execute(task).then(() => {
+            console.info("taskpool: execute task success");
+          }).catch((e: BusinessError) => {
+            console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
+          });
+          taskPromises.push(taskPromise);
+          const res2 = Calculator.computeSync(i * 2);
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -320,20 +292,23 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
+        const taskPromises: Promise<void>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
           const task: taskpool.Task = new taskpool.Task(printArgs1, i);
           task.onExecutionSucceeded(async () => {
             const res1 = await callbackCatchAsync(i);
             result1 = result1 + res1;
-          })
-          await taskpool.execute(task).then(() => {
+          });
+          const taskPromise = taskpool.execute(task).then(() => {
             console.info("taskpool: execute task success");
           }).catch((e: BusinessError) => {
             console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
-          })
+          });
+          taskPromises.push(taskPromise);
           const res2 = Calculator.computeSync(i * 2);
           result2 = result2 + res2;
         }
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -351,28 +326,23 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<void>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
-          const task = new taskpool.Task(sendTaskData, i);
-          const dataPromise = new Promise<void>((resolve) => {
-            task.onReceiveData(async (num: number) => {
-              const res1 = await callbackFinallyAsync(num);
-              result1 += res1;
-              resolve();
-            });
+          const task: taskpool.Task = new taskpool.Task(sendTaskData, i);
+          task.onReceiveData(async (num: number) => {
+            const res1 = await callbackFinallyAsync(num);
+            result1 = result1 + res1;
           });
-          const executionPromise = taskpool.execute(task)
-            .then(() => {
-              console.info("taskpool: execute task success");
-            })
-            .catch((e: BusinessError) => {
-              console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
-            });
-          completionPromises.push(dataPromise, executionPromise);
+          const taskPromise = taskpool.execute(task).then(() => {
+            console.info("taskpool: execute task success");
+          }).catch((e: BusinessError) => {
+            console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
+          });
+          taskPromises.push(taskPromise);
           const res2 = Calculator.computeSync(i * 10) + i * 10;
-          result2 += res2;
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -390,22 +360,18 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<void>[] = [];
+        const taskPromises: Promise<void>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
-          const task = new taskpool.Task(printArgs1, i);
-          const taskPromise = taskpool.execute(task)
-            .then(async (num) => {
-              const res1 = await callbackThen(num as number);
-              result1 += res1;
-            })
-            .catch((e:BusinessError) => {
-              console.error(`Task execution error: ${e.message}`);
-            });
-          completionPromises.push(taskPromise);
+          const task: taskpool.Task = new taskpool.Task(printArgs1, i);
+          const taskPromise = taskpool.execute(task).then(async (num) => {
+            const res1 = await callbackThen(num as number);
+            result1 = result1 + res1;
+          });
+          taskPromises.push(taskPromise);
           const res2 = Calculator.computeSync(Calculator.computeSync(i));
-          result2 += res2;
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -431,7 +397,7 @@ export default function taskPoolStaticCallbackTest() {
               const res1 = await callbackThenFinally(num as number);
               result1 += res1;
             })
-            .catch((e:BusinessError) => {
+            .catch((e: BusinessError) => {
               console.error(`Task error: ${e.message}`);
             });
           taskPromises.push(taskPromise);
@@ -456,24 +422,21 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const errorHandlingPromises: Promise<void>[] = [];
+        const taskPromises: Promise<void>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
-          const task = new taskpool.Task(failTask, i);
-          const taskPromise = taskpool.execute(task)
-            .then(() => {
-              console.info("taskpool: execute task success");
-            })
-            .catch(async (e: BusinessError) => {
-              console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
-              const res1 = await callbackAsyncPromise(i);
-              result1 += res1;
-            });
-
-          errorHandlingPromises.push(taskPromise);
+          const task: taskpool.Task = new taskpool.Task(failTask, i);
+          const taskPromise = taskpool.execute(task).then(() => {
+            console.info("taskpool: execute task success");
+          }).catch(async (e: BusinessError) => {
+            console.error(`taskpool: error code: ${e.code}, error info: ${e.message}`);
+            const res1 = await callbackAsyncPromise(i);
+            result1 = result1 + res1;
+          });
+          taskPromises.push(taskPromise);
           const res2 = i * 2;
-          result2 += res2;
+          result2 = result2 + res2;
         }
-        await Promise.all(errorHandlingPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
@@ -491,23 +454,18 @@ export default function taskPoolStaticCallbackTest() {
       async (done: Function) => {
         let result1 = 0;
         let result2 = 0;
-        const completionPromises: Promise<object|void>[] = [];
+        const taskPromises: Promise<object>[] = [];
         for (let i = 0; i < TASK_COUNT; i++) {
-          const task = new taskpool.Task(printArgs1, 1);
-          const taskPromise = taskpool.execute(task)
-            .finally(async () => {
-              const res1 = await callbackAllAsync(i);
-              result1 += res1;
-            })
-            .catch((e: Error) => {
-              console.error("Task execution error:", e);
-              return Promise.resolve();
-            });
-          completionPromises.push(taskPromise);
+          const task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+          const taskPromise = taskpool.execute(task).finally(async () => {
+            const res1 = await callbackAllAsync(i);
+            result1 = result1 + res1;
+          });
+          taskPromises.push(taskPromise);
           const res2 = Calculator.computeSync(i + 1) + 1;
-          result2 += res2;
+          result2 = result2 + res2;
         }
-        await Promise.all(completionPromises);
+        await Promise.all(taskPromises);
         await sleep(200);
         expect(result1).assertEqual(result2);
         done();
