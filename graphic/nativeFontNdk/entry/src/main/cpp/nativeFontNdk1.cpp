@@ -1015,7 +1015,7 @@ napi_value OHDrawingTextLineGetTypographicBounds001(napi_env env, napi_callback_
     for (size_t index = 0; index < size; index++) {
         OH_Drawing_TextLine *textLine = OH_Drawing_GetTextLineByIndex(textLines, index);
         double width = OH_Drawing_TextLineGetTypographicBounds(textLine, &ascent, &descent, &leading);
-        if ((ascent > 0) && (descent > 0) && (leading == 0) && (width == 0)) {
+        if ((ascent < 0) && (descent > 0) && (leading == 0) && (width == 0)) {
             napi_create_int32(env, SUCCESS, &result);
         } else {
             napi_create_int32(env, FAIL, &result);
