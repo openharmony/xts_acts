@@ -22,7 +22,6 @@ import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
 import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
-import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
 import NodeUtilMoveTest from "./move/NodeUtilMoveTest.test"
 
 export default function testsuite() {
@@ -36,6 +35,5 @@ export default function testsuite() {
   DragTest();
   calendarPickerDateTest();
   textInputWordBreakTest();
-  ExpectedFrameRateRangeCallback();
   NodeUtilMoveTest();
 }

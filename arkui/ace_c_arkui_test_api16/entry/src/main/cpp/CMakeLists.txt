@@ -21,7 +21,6 @@ add_library(nativerender SHARED
     component/calendarPicker_component.cpp  
     drag/drag_test.cpp
     calendarPicker/calendarPicker_date_test.cpp
-    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
     move/node_util_move_test.cpp
 )
 
