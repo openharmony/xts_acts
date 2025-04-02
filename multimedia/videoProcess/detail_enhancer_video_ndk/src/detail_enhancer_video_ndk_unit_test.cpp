@@ -216,7 +216,8 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_02, TestSize.Level1)
 HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_02_1, TestSize.Level1)
 {
     OH_VideoProcessing* instance = nullptr;
-    VideoProcessing_ErrorCode ret = OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
+    VideoProcessing_ErrorCode ret = OH_VideoProcessing::Create(&instance, CREATE_TYPE,
+        VideoProcessingCapiCapability::GetOpenGLContext());
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     ret = OH_VideoProcessing::Destroy(instance);
 }

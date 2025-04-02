@@ -153,7 +153,8 @@ int32_t VideoSample::InitVideoSample(VideoProcessParam param)
 int32_t VideoSample::InitVideoSampleImpl(VideoProcessParam param)
 {
     param_ = param;
-    OH_VideoProcessing::Create(&videoProcessorImpl_, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER, VideoProcessingCapiCapability::GetOpenGLContext());
+    OH_VideoProcessing::Create(&videoProcessorImpl_, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER,
+        VideoProcessingCapiCapability::GetOpenGLContext());
     cs_ = Surface::CreateSurfaceAsConsumer();
     sptr<IBufferConsumerListener> listener = new TestConsumerListener(this);
     cs_->RegisterConsumerListener(listener);
@@ -251,7 +252,8 @@ int32_t VideoSample::WaitAndStopSampleImpl()
 int32_t VideoSample::SetSurfaceOnRunningImpl()
 {
     OH_VideoProcessing* videoProcessing2 = nullptr;
-    OH_VideoProcessing::Create(&videoProcessing2, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER, VideoProcessingCapiCapability::GetOpenGLContext());
+    OH_VideoProcessing::Create(&videoProcessing2, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER,
+        VideoProcessingCapiCapability::GetOpenGLContext());
     OHNativeWindow* window2 = nullptr;
     videoProcessing2->GetVideoProcessing()->GetSurface(&window2);
     int32_t ret = videoProcessorImpl_->GetVideoProcessing()->SetSurface(window2);
