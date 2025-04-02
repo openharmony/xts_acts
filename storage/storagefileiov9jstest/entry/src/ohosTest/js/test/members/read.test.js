@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect, util, buffer
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIORead() {
   describe('fileIO_fs_read', function () {
@@ -30,7 +31,7 @@ export default function fileIORead() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_read_sync_000', 0, async function () {
+  it('fileIO_test_read_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -59,7 +60,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_001', 0, async function () {
+  it('fileIO_test_read_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -88,7 +89,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_002', 0, async function () {
+  it('fileIO_test_read_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -118,7 +119,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_003', 0, async function () {
+  it('fileIO_test_read_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -147,7 +148,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_004', 0, async function () {
+  it('fileIO_test_read_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -176,7 +177,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_005', 0, async function () {
+  it('fileIO_test_read_sync_005', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -205,7 +206,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_006', 0, async function () {
+  it('fileIO_test_read_sync_006', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -235,7 +236,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_007', 0, async function () {
+  it('fileIO_test_read_sync_007', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -264,7 +265,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_008', 0, async function () {
+  it('fileIO_test_read_sync_008', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -294,7 +295,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_009', 0, async function () {
+  it('fileIO_test_read_sync_009', Level.LEVEL0, async function () {
 
     try {
       fileIO.readSync(-1, new ArrayBuffer(4096));
@@ -315,7 +316,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_010', 0, async function () {
+  it('fileIO_test_read_sync_010', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_010');
     let CONTENT = "<?xml 你好， 世界 hello world>"
     expect(prepareFile(fpath, CONTENT)).assertTrue();
@@ -345,7 +346,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_011', 3, async function () {
+  it('fileIO_test_read_sync_011', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -374,7 +375,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_sync_012', 3, async function () {
+  it('fileIO_test_read_sync_012', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -409,7 +410,7 @@ export default function fileIORead() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_read_async_000', 0, async function (done) {
+  it('fileIO_test_read_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -439,7 +440,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_001', 0, async function (done) {
+  it('fileIO_test_read_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -479,7 +480,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_002', 0, async function (done) {
+  it('fileIO_test_read_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -507,7 +508,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_003', 0, async function (done) {
+  it('fileIO_test_read_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file;
@@ -540,7 +541,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_004', 0, async function (done) {
+  it('fileIO_test_read_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -570,7 +571,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_005', 0, async function (done) {
+  it('fileIO_test_read_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -605,7 +606,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_006', 0, async function (done) {
+  it('fileIO_test_read_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -635,7 +636,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_007', 0, async function (done) {
+  it('fileIO_test_read_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -670,7 +671,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_008', 0, async function (done) {
+  it('fileIO_test_read_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -700,7 +701,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_009', 0, async function (done) {
+  it('fileIO_test_read_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -735,7 +736,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_010', 0, async function (done) {
+  it('fileIO_test_read_async_010', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -766,7 +767,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_011', 0, async function (done) {
+  it('fileIO_test_read_async_011', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -802,7 +803,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_012', 0, async function (done) {
+  it('fileIO_test_read_async_012', Level.LEVEL0, async function (done) {
     try {
       await fileIO.read(-1, new ArrayBuffer(4096));
       expect(false).assertTrue();
@@ -823,7 +824,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_013', 0, async function (done) {
+  it('fileIO_test_read_async_013', Level.LEVEL0, async function (done) {
     try {
       fileIO.read(-1, new ArrayBuffer(4096), (err) => {
         if(err) {
@@ -847,7 +848,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_014', 0, async function (done) {
+  it('fileIO_test_read_async_014', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -879,7 +880,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_015', 0, async function (done) {
+  it('fileIO_test_read_async_015', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -911,7 +912,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_016', 0, async function (done) {
+  it('fileIO_test_read_async_016', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -939,7 +940,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_017', 0, async function (done) {
+  it('fileIO_test_read_async_017', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_017');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -973,7 +974,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_018', 0, async function (done) {
+  it('fileIO_test_read_async_018', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_018');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -1004,7 +1005,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_019', 0, async function (done) {
+  it('fileIO_test_read_async_019', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_019');
     let CONTENT = "<?xml 你好， 世界 hello world>"
     expect(prepareFile(fpath, CONTENT)).assertTrue();
@@ -1035,7 +1036,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_020', 3, async function (done) {
+  it('fileIO_test_read_async_020', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_020');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1065,7 +1066,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_021', 3, async function (done) {
+  it('fileIO_test_read_async_021', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_021');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1105,7 +1106,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_022', 3, async function (done) {
+  it('fileIO_test_read_async_022', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_022');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1141,7 +1142,7 @@ export default function fileIORead() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_023', 3, async function (done) {
+  it('fileIO_test_read_async_023', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_023');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

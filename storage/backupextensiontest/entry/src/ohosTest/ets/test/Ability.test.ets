@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import BackupExtensionAbility, { BundleVersion } from '@ohos.application.BackupExtensionAbility';
 
 export class BackupExt extends BackupExtensionAbility {
@@ -34,9 +34,9 @@ export default function abilityTest() {
      * @tc.desc      : select with option
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it("backup_extension_test_call_000", 0, () => {
+    it("backup_extension_test_call_000", Level.LEVEL3, () => {
       try {
         let backupExt = new BackupExt()
         backupExt.onBackup()

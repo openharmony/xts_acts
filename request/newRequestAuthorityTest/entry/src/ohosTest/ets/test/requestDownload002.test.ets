@@ -16,7 +16,7 @@
 import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestDownloadTwoUnitTest() {
@@ -60,7 +60,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Download_Progress_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Download_Progress_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Progress_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -120,7 +120,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Progress_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Download_Progress_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Progress_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -185,7 +185,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Progress_0020', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Download_Progress_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Progress_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -251,7 +251,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Download_Completed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Download_Completed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Completed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -312,7 +312,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Completed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Download_Completed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Completed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -377,7 +377,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Completed_0020', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Download_Completed_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Completed_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -443,7 +443,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Download_Failed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Download_Failed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Failed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -506,7 +506,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Failed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Download_Failed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Failed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -571,7 +571,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Download_Failed_0020', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Download_Failed_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Failed_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -637,7 +637,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0070', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0070', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0070 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -686,7 +686,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0071', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0071', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0071 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -732,7 +732,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0080', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0080', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0080 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -786,7 +786,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0080', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0080', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0080 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -834,7 +834,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0090', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0090', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0090 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -889,7 +889,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0090', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0090', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0090 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -936,9 +936,9 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.desc      show the download task.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Show_Callback_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Show_Callback_0010', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Show_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1011,9 +1011,9 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.desc      show the download task.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Show_Promise_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Show_Promise_0010', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Show_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1076,7 +1076,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_ShowErrorCode_Callback_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_ShowErrorCode_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Callback_0010 is starting-----------------------");
       try {
         request.agent.show(undefined, (err, taskInfo)=>{
@@ -1105,7 +1105,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_ShowErrorCode_Promise_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_ShowErrorCode_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Promise_0010 is starting-----------------------");
       try {
         await request.agent.show(undefined);
@@ -1126,7 +1126,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_ShowErrorCode_Callback_0020',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_ShowErrorCode_Callback_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Callback_0020 is starting-----------------------");
       try {
         request.agent.show("undefined", (err, taskInfo)=>{
@@ -1159,7 +1159,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_ShowErrorCode_Promise_0020',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_ShowErrorCode_Promise_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_ShowErrorCode_Promise_0020 is starting-----------------------");
       try {
         await request.agent.show("undefined");
@@ -1180,7 +1180,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1232,7 +1232,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0011', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0011', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0011 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1283,7 +1283,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0020', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1335,7 +1335,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1389,7 +1389,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0060 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1444,7 +1444,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0060 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1500,7 +1500,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0070', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0070', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0070 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1554,7 +1554,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0100', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0100 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1612,7 +1612,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Promise_0110', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Promise_0110', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0110 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1664,7 +1664,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Search_Callback_0110', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Search_Callback_0110', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0110 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1718,9 +1718,9 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.desc      search the download task.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Touch_Callback_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Touch_Callback_0010', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Touch_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1773,9 +1773,9 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.desc      search the download task.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Touch_Promise_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Touch_Promise_0010', Level.LEVEL1, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Touch_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1830,7 +1830,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Touch_Callback_0040',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Touch_Callback_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Touch_Callback_0040 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -1878,7 +1878,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_TouchErrorCode_Callback_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_TouchErrorCode_Callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Callback_0010 is starting-----------------------");
       try {
         request.agent.touch(undefined, '', (err, taskInfo)=>{
@@ -1907,7 +1907,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_TouchErrorCode_Promise_0010',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_TouchErrorCode_Promise_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Promise_0010 is starting-----------------------");
       try {
         await request.agent.touch(undefined, '');
@@ -1928,7 +1928,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_TouchErrorCode_Callback_0020',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_TouchErrorCode_Callback_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Callback_0020 is starting-----------------------");
       try {
         request.agent.touch('123', 'downloadTest', async (err, taskInfo)=>{
@@ -1960,7 +1960,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_TouchErrorCode_Promise_0020',0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_TouchErrorCode_Promise_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_TouchErrorCode_Promise_0020 is starting-----------------------");
       try {
         await request.agent.touch('123', 'downloadTest');
@@ -1981,7 +1981,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_On_Download_Progress_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_On_Download_Progress_0500', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Progress_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2036,7 +2036,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Download_Progress_0600', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Download_Progress_0600', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Progress_0600 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2108,7 +2108,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Download_Progress_0700', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Download_Progress_0700', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Progress_0700 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2178,7 +2178,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_On_Download_Completed_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_On_Download_Completed_0500', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Completed_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2232,7 +2232,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Download_Completed_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Download_Completed_0500', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Completed_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2303,7 +2303,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Download_Completed_0600', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Download_Completed_0600', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Download_backgroundOnCompleted_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2367,7 +2367,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_On_Download_Resume_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_On_Download_Resume_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Resume_0100 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2433,7 +2433,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Download_Resume_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Download_Resume_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Resume_0100 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2516,7 +2516,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Download_Resume_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Download_Resume_0200', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Download_backgroundOnPause_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -2597,7 +2597,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Download_broadcastEvent_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Download_broadcastEvent_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Download_broadcastEvent_0100 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,

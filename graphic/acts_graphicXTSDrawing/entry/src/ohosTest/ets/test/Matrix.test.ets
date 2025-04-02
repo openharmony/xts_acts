@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 const loop_times = 20;
 
@@ -48,7 +48,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixConstructorNormal', DEFAULT, () => {
+    it('testMatrixConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixConstructorNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -67,7 +67,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixConstructorMultipleCalls', DEFAULT, () => {
+    it('testMatrixConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixConstructorMultipleCalls';
       try {
         for (let i = 0; i < loop_times; i++) {
@@ -88,7 +88,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixSetRotationNormal', DEFAULT, () => {
+    it('testMatrixSetRotationNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixSetRotationNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -172,7 +172,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetRotationNull', DEFAULT, () => {
+    it('testMatrixSetRotationNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetRotationNull';
       try {
         let matrix = new drawing.Matrix();
@@ -237,7 +237,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetRotationMultipleCalls', DEFAULT, () => {
+    it('testMatrixSetRotationMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetRotationMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -259,7 +259,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixSetScaleNormal', DEFAULT, () => {
+    it('testMatrixSetScaleNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixSetScaleNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -330,7 +330,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetScaleNull', DEFAULT, () => {
+    it('testMatrixSetScaleNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetScaleNull';
       try {
         let matrix = new drawing.Matrix();
@@ -413,7 +413,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetScaleMultipleCalls', DEFAULT, () => {
+    it('testMatrixSetScaleMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetScaleMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -435,7 +435,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixSetTranslationNormal', DEFAULT, () => {
+    it('testMatrixSetTranslationNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixSetTranslationNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -506,7 +506,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetTranslationNull', DEFAULT, () => {
+    it('testMatrixSetTranslationNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetTranslationNull';
       try {
         let matrix = new drawing.Matrix();
@@ -553,7 +553,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetTranslationMultipleCalls', DEFAULT, () => {
+    it('testMatrixSetTranslationMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetTranslationMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -575,7 +575,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixSetAndGetMatrixNormal', DEFAULT, () => {
+    it('testMatrixSetAndGetMatrixNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixSetAndGetMatrixNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -650,7 +650,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetAndGetMatrixNull', DEFAULT, () => {
+    it('testMatrixSetAndGetMatrixNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetAndGetMatrixNull';
       try {
         let matrix = new drawing.Matrix();
@@ -706,7 +706,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetAndGetMatrixMultipleCalls', DEFAULT, () => {
+    it('testMatrixSetAndGetMatrixMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetAndGetMatrixMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -759,7 +759,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixSetAndGetMatrixAbnormal', DEFAULT, () => {
+    it('testMatrixSetAndGetMatrixAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetAndGetMatrixAbnormal';
       try {
         let matrix = new drawing.Matrix();
@@ -807,7 +807,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixPreConcatNormal', DEFAULT, () => {
+    it('testMatrixPreConcatNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixPreConcatNormal';
       try {
         let matrix1 = new drawing.Matrix();
@@ -831,7 +831,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixPreConcatNull', DEFAULT, () => {
+    it('testMatrixPreConcatNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixPreConcatNull';
       try {
         let matrix1 = new drawing.Matrix();
@@ -861,7 +861,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixPreConcatMultipleCalls', DEFAULT, () => {
+    it('testMatrixPreConcatMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixPreConcatMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -883,7 +883,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixIsEqualNormal', DEFAULT, () => {
+    it('testMatrixIsEqualNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixIsEqualNormal';
       try {
         let matrix1 = new drawing.Matrix();
@@ -918,7 +918,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixIsEqualNull', DEFAULT, () => {
+    it('testMatrixIsEqualNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixIsEqualNull';
       try {
         let matrix1 = new drawing.Matrix();
@@ -947,7 +947,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixIsEqualMultipleCalls', DEFAULT, () => {
+    it('testMatrixIsEqualMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixIsEqualMultipleCalls';
       try {
         let matrix1 = new drawing.Matrix();
@@ -983,7 +983,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixInvertNormal', DEFAULT, () => {
+    it('testMatrixInvertNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixInvertNormal';
       try {
         let matrix1 = new drawing.Matrix();
@@ -1016,7 +1016,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixInvertNull', DEFAULT, () => {
+    it('testMatrixInvertNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixInvertNull';
       try {
         let matrix1 = new drawing.Matrix();
@@ -1045,7 +1045,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixInvertMultipleCalls', DEFAULT, () => {
+    it('testMatrixInvertMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixInvertMultipleCalls';
       try {
         let matrix1 = new drawing.Matrix();
@@ -1081,7 +1081,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixIsIdentityNormal', DEFAULT, () => {
+    it('testMatrixIsIdentityNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixIsIdentityNormal';
       try {
         let matrix1 = new drawing.Matrix();
@@ -1111,7 +1111,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixIsIdentityMultipleCalls', DEFAULT, () => {
+    it('testMatrixIsIdentityMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixIsIdentityMultipleCalls';
       try {
         let matrix1 = new drawing.Matrix();
@@ -1133,7 +1133,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixPostRotateNormal', DEFAULT, () => {
+    it('testMatrixPostRotateNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixPostRotateNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -1216,7 +1216,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixPostRotateNull', DEFAULT, () => {
+    it('testMatrixPostRotateNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixPostRotateNull';
       try {
         let matrix = new drawing.Matrix();
@@ -1281,7 +1281,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixPostRotateMultipleCalls', DEFAULT, () => {
+    it('testMatrixPostRotateMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixPostRotateMultipleCalls';
       try {
         let matrix = new drawing.Matrix();
@@ -1304,7 +1304,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixPostScaleNormal', DEFAULT, () => {
+    it('testMatrixPostScaleNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testMatrixPostScaleNormal';
       try {
         let matrix = new drawing.Matrix();
@@ -1375,7 +1375,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixPostScaleNull', DEFAULT, () => {
+    it('testMatrixPostScaleNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixPostScaleNull';
       try {
         let matrix = new drawing.Matrix();
@@ -1458,7 +1458,7 @@ export default function drawingTsMatrixTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixPostScaleMultipleCalls', DEFAULT, () => {
+    it('testMatrixPostScaleMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixPostScaleMultipleCalls';
       try {
         let matrix = new drawing.Matrix();

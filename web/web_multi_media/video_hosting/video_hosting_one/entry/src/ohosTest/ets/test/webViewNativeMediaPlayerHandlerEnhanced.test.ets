@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -80,7 +80,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerVideoMultiSource', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerVideoMultiSource', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerVideoMultiSource"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewNativeMediaPlayerShouldOverlayFalse", true, 1540, done);
@@ -95,7 +95,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerEnterFullScreen', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerEnterFullScreen', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         emitKey = "emitWebViewNativeMediaPlayerEnterFullScreen"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewNativeMediaPlayerEnterFullScreen", true, 1541, done);
@@ -110,7 +110,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerExitFullScreen', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerExitFullScreen', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerExitFullScreen"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewNativeMediaPlayerExitFullScreen", true, 1542, done);
@@ -124,7 +124,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerHandleErrorRelease', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandleErrorRelease', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaHandleErrorRelease"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewNativeMediaPlayerHandleErrorRelease", true, 1543, done);
@@ -139,7 +139,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerShouldOverlayFalse', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerShouldOverlayFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerShouldOverlayFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewNativeMediaPlayerShouldOverlayFalse", true, 1544, done);
@@ -154,7 +154,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerHandleNetworkStateChangedIDLE', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandleNetworkStateChangedIDLE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaHandleNetworkStateChangedIDLE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewNativeMediaPlayerHandleNetworkStateChangedIDLE", true, 1545, done);

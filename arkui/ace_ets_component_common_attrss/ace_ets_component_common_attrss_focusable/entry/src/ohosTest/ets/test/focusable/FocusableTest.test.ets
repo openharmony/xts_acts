@@ -13,123 +13,153 @@
  * limitations under the License.
  */
 
-import Utils from '../../MainAbility/common/Utils';
-import CommonTest from '../common/CommonTest';
-import { describe, expect } from '@ohos/hypium'
+import Utils from "../../MainAbility/common/Utils"
+import CommonTest from "../common/CommonTest"
+import { describe, expect } from "@ohos/hypium"
 
 class TestValue {
-  describe: string = '';
-  setValue: boolean = false;
+    describe: string = ""
+    setValue: boolean = false
 }
 
 class PageConfig {
-  testName: string = '';
-  pageName: string = '';
-  pageUrl: string = '';
-  referenceComponentKey: string = '';
+    testName: string = ""
+    pageName: string = ""
+    pageUrl: string = ""
+    referenceComponentKey: string = ""
 }
 
 export default function FocusableTest() {
+    //A list of components that support the position attribute, which is required.
+    let supportView = [
+        "Button",
+        "TextInput",
+        "TextArea",
+        "Search",
+        "Text",
+        "Image",
+        "Grid",
+        "List",
+        "Checkbox",
+        "CheckboxGroup",
+        "DatePicker",
+        "Menu",
+        "MenuItem",
+        "Radio",
+        "Rating",
+        "Slider",
+        "Toggle",
+        "AlphabetIndexer",
+        "Column",
+        "Flex",
+        "GridItem",
+        "ListItem",
+        "Row",
+        "Scroll",
+        "Stack",
+        "Swiper",
+    ]
 
-  //A list of components that support the position attribute, which is required.
-  let supportView = [
-    'Button',
-    'TextInput',
-    'TextArea',
-    'Search',
-    'Text',
-    'Image',
-    'Grid',
-    'List',
-    'Checkbox',
-    'CheckboxGroup',
-     'DatePicker',
-    //    'ImageAnimator',
-    'Menu',
-     'MenuItem',
-    //    'MenuItemGroup',
-    'Radio',
-    'Rating',
-    // 'Select',
-    'Slider',
-    //'Stepper',
-    //'StepperItem',
-    //'TextPicker',
-    // 'TimePicker',
-    'Toggle',
-    // 'Web',
-    'AlphabetIndexer',
-    'Column',
-    //    'ColumnSplit',
-    //    'Counter',
-    'Flex',
-    //    'GridCol',
-    //    'GridRow',
-    'GridItem',
-    'ListItem',
-    //    'ListItemGroup',
-    'Row',
-    //    'RowSplit',
-    'Scroll',
-    //'SideBarContainer',
-    'Stack',
-    'Swiper',
-  //    'Tabs',
-  //    'TabContent'
-  ]
+    //Page config, this param is required.
+    let pageConfig: PageConfig = {
+        testName: "testFocusable",
+        pageName: "FocusablePage",
+        pageUrl: "MainAbility/pages/focusable/FocusablePage",
+        referenceComponentKey: "referenceComponentKey",
+    }
+    //Test values, looped to create cases, this param is required.
+    let testValues: TestValue[] = [
+        {
+            describe: "SetTrue",
+            setValue: true,
+        },
+        {
+            describe: "SetFalse",
+            setValue: false,
+        },
+    ]
 
-  //Page config, this param is required.
-  let pageConfig: PageConfig = {
-    testName: 'testFocusable',
-    pageName: 'FocusablePage',
-    pageUrl: 'MainAbility/pages/focusable/FocusablePage',
-    referenceComponentKey: 'referenceComponentKey'
-  }
-  //Test values, looped to create cases, this param is required.
-  let testValues: TestValue[] = [{
-    describe: 'SetTrue',
-    setValue: true
-  }, {
-    describe: 'SetFalse',
-    setValue: false
-  }]
+    /**
+     * Create test suite.
+     */
 
-  /**
-   * Create test suite.
-   */
+    describe("FocusableTest", () => {
+        //Generate test cases (it) through a loop based on the support view * test values.
+        CommonTest.initTest(
+            pageConfig,
+            supportView,
+            testValues,
+            async (data: ESObject) => {
+                //Focus the target component
+                let res = focusControl.requestFocus(
+                    data.pageConfig.componentKey
+                )
+                if (
+                    data.pageConfig.targetView == "TextInput" ||
+                    data.pageConfig.targetView == "TextArea"
+                ) {
+                    await Utils.sleep(4000)
+                } else {
+                    await Utils.sleep(1000)
+                }
+                console.info(
+                    "[" + data.caseTag + "] FocusControlCallback is " + res
+                )
 
-  describe('FocusableTest', () => {
-    //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
-
-      //Focus the target component
-      let res = focusControl.requestFocus(data.pageConfig.componentKey);
-      await Utils.sleep(1000);
-      console.info('[' + data.caseTag + '] FocusControlCallback is ' + res);
-
-      if ('SetTrue' == data.testValue.describe) {
-        //Confirm focus shift
-        expect(res).assertEqual(true);
-        //Confirm reference component text
-        let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
-        console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
-        expect(referenceComponent.$attrs.label).assertContain('onFocus');
-        //Confirm target component properties
-        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
-        console.info('[' + data.caseTag + '] Focusable is ' + viewObj.$attrs.focusable);
-        expect(viewObj.$attrs.focusable).assertEqual(true);
-      } else if ('SetFalse' == data.testValue.describe) {
-        //Confirm focus shift
-        expect(res).assertEqual(false);
-        //Confirm reference component text
-        let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
-        console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
-        expect(referenceComponent.$attrs.label).assertEqual('');
-        //Confirm target component properties
-        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
-        console.info('[' + data.caseTag + '] Focusable is ' + viewObj.$attrs.focusable);
-        expect(viewObj.$attrs.focusable).assertEqual(false);
-      }
+                if ("SetTrue" == data.testValue.describe) {
+                    //Confirm focus shift
+                    expect(res).assertEqual(true)
+                    //Confirm reference component text
+                    let referenceComponent: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.referenceComponentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] referenceComponent.$attrs.label: " +
+                            referenceComponent.$attrs.label
+                    )
+                    expect(referenceComponent.$attrs.label).assertContain(
+                        "onFocus"
+                    )
+                    //Confirm target component properties
+                    let viewObj: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.componentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] Focusable is " +
+                            viewObj.$attrs.focusable
+                    )
+                    expect(viewObj.$attrs.focusable).assertEqual(true)
+                } else if ("SetFalse" == data.testValue.describe) {
+                    //Confirm focus shift
+                    expect(res).assertEqual(false)
+                    //Confirm reference component text
+                    let referenceComponent: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.referenceComponentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] referenceComponent.$attrs.label: " +
+                            referenceComponent.$attrs.label
+                    )
+                    expect(referenceComponent.$attrs.label).assertEqual("")
+                    //Confirm target component properties
+                    let viewObj: ESObject = Utils.getComponentByKey(
+                        data.pageConfig.componentKey
+                    )
+                    console.info(
+                        "[" +
+                            data.caseTag +
+                            "] Focusable is " +
+                            viewObj.$attrs.focusable
+                    )
+                    expect(viewObj.$attrs.focusable).assertEqual(false)
+                }
+            }
+        )
     })
-  })
 }

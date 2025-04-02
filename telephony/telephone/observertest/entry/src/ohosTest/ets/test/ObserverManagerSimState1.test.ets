@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect } from '@ohos/hypium';
+import { describe, afterEach, it, expect, Level, TestType, Size } from '@ohos/hypium';
 import observer from '@ohos.telephony.observer';
 import sim from '@ohos.telephony.sim';
 
@@ -55,9 +55,9 @@ export default function observerManagerSimStateTest1() {
     * @tc.desc  : Subscribe to sim state change events.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 1
     */
-    it('testTelephonyObserverSimStateChangeOn0900', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOn0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOn0900';
       console.info(`${caseName} test start`);
       try {
@@ -80,9 +80,9 @@ export default function observerManagerSimStateTest1() {
       * @tc.desc  : Subscribe to sim state change events with options.
       * @tc.size  : MediumTest
       * @tc.type  : Function
-      * @tc.level : level 3
+      * @tc.level : level 1
       */
-    it('testTelephonyObserverSimStateChangeOnOptions1700', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOnOptions1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOnOptions1700';
       console.info(`${caseName} test start`);
       try {
@@ -107,9 +107,9 @@ export default function observerManagerSimStateTest1() {
     * @tc.desc  : Subscribe to sim state change events with options.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 1
     */
-    it('testTelephonyObserverSimStateChangeOnOptions1800', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOnOptions1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOnOptions1800';
       console.info(`${caseName} test start`);
       try {
@@ -134,9 +134,9 @@ export default function observerManagerSimStateTest1() {
     * @tc.desc  : Subscribe to sim state change events with options.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 1
     */
-    it('testTelephonyObserverSimStateChangeOnOptions2000', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOnOptions2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOnOptions2000';
       console.info(`${caseName} test start`);
       try {
@@ -161,9 +161,9 @@ export default function observerManagerSimStateTest1() {
     * @tc.desc  : Unsubscribe to sim state change events.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 1
     */
-    it('testTelephonyObserverSimStateChangeOff0300', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOff0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOff0300';
       console.info(`${caseName} test start`);
       try {
@@ -192,9 +192,9 @@ export default function observerManagerSimStateTest1() {
     * @tc.desc  : Unsubscribe to sim state change events.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 1
     */
-    it('testTelephonyObserverSimStateChangeOff0400', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOff0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOff0400';
       console.info(`${caseName} test start`);
       try {
@@ -221,9 +221,9 @@ export default function observerManagerSimStateTest1() {
     * @tc.desc  : Unsubscribe to sim state change events.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 1
     */
-    it('testTelephonyObserverSimStateChangeOff0500', 0, async (done: Function) => {
+    it('testTelephonyObserverSimStateChangeOff0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSimStateChangeOff0500';
       console.info(`${caseName} test start`);
       try {

@@ -14,67 +14,88 @@
  */
 
 import brightness from '@ohos.brightness';
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
-const ERROR_CODE = 202;
+export default function BrightnessTest() {
+  describe('BrightnessTest', function () {
+    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    beforeAll(() => {
+      // Presets an action, which is performed only once before all test cases of the test suite start.
+      // This API supports only one parameter: preset action function.
+    })
+    beforeEach(() => {
+      // Presets an action, which is performed before each unit test case starts.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: preset action function.
+    })
+    afterEach(() => {
+      // Presets a clear action, which is performed after each unit test case ends.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: clear action function.
+    })
+    afterAll(() => {
+      // Presets a clear action, which is performed after all test cases of the test suite end.
+      // This API supports only one parameter: clear action function.
+    })
 
-export default function brightnessTest() {
-describe('brightnessTest', function () {
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0050
      * @tc.name testSystem_API_Test_brightness_Manager_0100
      * @tc.desc Test the third-party application call setValue will be blocked
      * @tc.level: Level 3
-     * @tc.type: Functiontion
+     * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('System_API_Test_brightness_Manager_0100', 0, async function (done) {
+    it('System_API_Test_brightness_Manager_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async function (done) {
         let TAG = 'System_API_Test_brightness_Manager_0100';
         try {
-            brightness.setValue(128);
+          brightness.setValue(128);
         } catch (error) {
-            console.info(TAG + ` setValue err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+          console.error(`${TAG} error: ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(202);
+          done();
         }
-    })
+      })
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0050
      * @tc.name testSystem_API_Test_brightness_Manager_0200
      * @tc.desc Test the third-party application call setValue will be blocked
      * @tc.level: Level 3
-     * @tc.type: Functiontion
+     * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('System_API_Test_brightness_Manager_0200', 0, async function (done) {
+    it('System_API_Test_brightness_Manager_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async function (done) {
         let TAG = 'System_API_Test_brightness_Manager_0200';
         try {
-            brightness.setValue(128, true);
+          brightness.setValue(128, true);
         } catch (error) {
-            console.info(TAG + ` setValue err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+          console.error(`${TAG} error: ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(202);
+          done();
         }
-    })
+      })
 
     /**
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0060
      * @tc.name testSystem_API_Test_brightness_Manager_0300
      * @tc.desc Test the third-party application call setValue will be blocked
      * @tc.level: Level 3
-     * @tc.type: Functiontion
+     * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('System_API_Test_brightness_Manager_0300', 0, async function (done) {
+    it('System_API_Test_brightness_Manager_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async function (done) {
         let TAG = 'System_API_Test_brightness_Manager_0300';
         try {
-            brightness.setValue(255, false);
+          brightness.setValue(255, false);
         } catch (error) {
-            console.info(TAG + ` setValue err: ${error.code}  ${error.message}`);
-            expect(error.code).assertEqual(ERROR_CODE);
-            done();
+          console.error(`${TAG} error: ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(202);
+          done();
         }
-    })
-})
+      })
+  })
 }

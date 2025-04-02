@@ -16,7 +16,7 @@ import hilog from '@ohos.hilog';
 import testndk from 'libentry.so';
 import pasteboard from "libpasteboard.so"
 import udmf from "libudmf.so"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import batteryInfo from '@ohos.batteryInfo';
 
 let TAG = '[testLog-ets]';
@@ -35,7 +35,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_PasteboardSubscriber_Create0100', 0, async (done: Function) => {
+    it('OH_PasteboardSubscriber_Create0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = testndk.OH_PasteboardSubscriber_Create0100();
       console.info(TAG + "OH_PasteboardSubscriber_Create0100 data = " + data );
       expect(data).assertEqual(1);
@@ -55,7 +55,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PasteboardObserver_SetData0100',0, async function () {
+    it('OH_PasteboardObserver_SetData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_PasteboardObserver_SetData0100' );
       let data = testndk.OH_PasteboardObserver_SetData0100();
       console.info( TAG + 'OH_PasteboardObserver_SetData0100 data= ' + JSON.stringify(data));
@@ -72,7 +72,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PasteboardObserver_SetData0200',0, async function () {
+    it('OH_PasteboardObserver_SetData0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_PasteboardObserver_SetData0200' );
       let data = testndk.OH_PasteboardObserver_SetData0200();
       console.info( TAG + 'OH_PasteboardObserver_SetData0200 data= ' + JSON.stringify(data));
@@ -89,7 +89,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PasteboardObserver_SetData0300',0, async function () {
+    it('OH_PasteboardObserver_SetData0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_PasteboardObserver_SetData0300' );
       let data = testndk.OH_PasteboardObserver_SetData0300();
       console.info( TAG + 'OH_PasteboardObserver_SetData0300 data= ' + JSON.stringify(data));
@@ -106,7 +106,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PasteboardObserver_SetData0400',0, async function () {
+    it('OH_PasteboardObserver_SetData0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_PasteboardObserver_SetData0400' );
       let data = testndk.OH_PasteboardObserver_SetData0400();
       console.info( TAG + 'OH_PasteboardObserver_SetData0400 data= ' + JSON.stringify(data));
@@ -123,7 +123,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Create0100',0, async function () {
+    it('OH_Pasteboard_Create0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Create0100' );
       let data = testndk.OH_Pasteboard_Create0100();
       console.info( TAG + 'OH_Pasteboard_Create0100 data= ' + JSON.stringify(data));
@@ -141,7 +141,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Subscribe0100',0, async function () {
+    it('OH_Pasteboard_Subscribe0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Subscribe0100' );
       let data = testndk.OH_Pasteboard_Subscribe0100();
       console.info( TAG + 'OH_Pasteboard_Subscribe0100 data= ' + JSON.stringify(data));
@@ -159,7 +159,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Subscribe0200',0, async function () {
+    it('OH_Pasteboard_Subscribe0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Subscribe0200' );
       let data = testndk.OH_Pasteboard_Subscribe0200();
       console.info( TAG + 'OH_Pasteboard_Subscribe0200 data= ' + JSON.stringify(data));
@@ -178,7 +178,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Subscribe0300',0, async function () {
+    it('OH_Pasteboard_Subscribe0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Subscribe0300' );
       let data = testndk.OH_Pasteboard_Subscribe0300();
       console.info( TAG + 'OH_Pasteboard_Subscribe0300 data= ' + JSON.stringify(data));
@@ -196,7 +196,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Subscribe0400',0, async function () {
+    it('OH_Pasteboard_Subscribe0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Subscribe0400' );
       let data = testndk.OH_Pasteboard_Subscribe0400();
       console.info( TAG + 'OH_Pasteboard_Subscribe0400 data= ' + JSON.stringify(data));
@@ -214,7 +214,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Subscribe0500',0, async function () {
+    it('OH_Pasteboard_Subscribe0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Subscribe0500' );
       let data = testndk.OH_Pasteboard_Subscribe0500();
       console.info( TAG + 'OH_Pasteboard_Subscribe0500 data= ' + JSON.stringify(data));
@@ -232,7 +232,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Subscribe0600',0, async function () {
+    it('OH_Pasteboard_Subscribe0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Subscribe0600' );
       let data = testndk.OH_Pasteboard_Subscribe0600();
       console.info( TAG + 'OH_Pasteboard_Subscribe0600 data= ' + JSON.stringify(data));
@@ -250,7 +250,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Unsubcribe0100',0, async function () {
+    it('OH_Pasteboard_Unsubcribe0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0100' );
       let data = testndk.OH_Pasteboard_Unsubcribe0100();
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0100 data= ' + JSON.stringify(data));
@@ -268,7 +268,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Unsubcribe0200',0, async function () {
+    it('OH_Pasteboard_Unsubcribe0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0200' );
       let data = testndk.OH_Pasteboard_Unsubcribe0200();
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0200 data= ' + JSON.stringify(data));
@@ -286,7 +286,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Unsubcribe0300',0, async function () {
+    it('OH_Pasteboard_Unsubcribe0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0300' );
       let data = testndk.OH_Pasteboard_Unsubcribe0300();
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0300 data= ' + JSON.stringify(data));
@@ -303,7 +303,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Unsubcribe0400',0, async function () {
+    it('OH_Pasteboard_Unsubcribe0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0400' );
       let data = testndk.OH_Pasteboard_Unsubcribe0400();
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0400 data= ' + JSON.stringify(data));
@@ -321,7 +321,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Unsubcribe0500',0, async function () {
+    it('OH_Pasteboard_Unsubcribe0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0500' );
       let data = testndk.OH_Pasteboard_Unsubcribe0500();
       console.info( TAG + 'OH_Pasteboard_Unsubcribe0500 data= ' + JSON.stringify(data));
@@ -339,7 +339,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_IsRemoteData0100',0, async function () {
+    it('OH_Pasteboard_IsRemoteData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_IsRemoteData0100' );
       let data = testndk.OH_Pasteboard_IsRemoteData0100();
       console.info( TAG + 'OH_Pasteboard_IsRemoteData0100 data= ' + JSON.stringify(data));
@@ -357,7 +357,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_GetDataSrouce0100',0, async function () {
+    it('OH_Pasteboard_GetDataSrouce0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_GetDataSrouce0100' );
       let data = testndk.OH_Pasteboard_GetDataSrouce0100();
       console.info( TAG + 'OH_Pasteboard_GetDataSrouce0100 data= ' + JSON.stringify(data));
@@ -375,7 +375,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_HasType0100',0, async function () {
+    it('OH_Pasteboard_HasType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_HasType0100' );
       let data = testndk.OH_Pasteboard_HasType0100();
       console.info( TAG + 'OH_Pasteboard_HasType0100 data= ' + JSON.stringify(data));
@@ -394,7 +394,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_HasData0100',0, async function () {
+    it('OH_Pasteboard_HasData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_HasData0100' );
       let data = testndk.OH_Pasteboard_HasData0100();
       console.info( TAG + 'OH_Pasteboard_HasData0100 data= ' + JSON.stringify(data));
@@ -413,7 +413,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_ClearData0100',0, async function () {
+    it('OH_Pasteboard_ClearData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_ClearData0100' );
       let data = testndk.OH_Pasteboard_ClearData0100();
       console.info( TAG + 'OH_Pasteboard_ClearData0100 data= ' + JSON.stringify(data));
@@ -432,7 +432,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_SetData0100',0, async function () {
+    it('OH_Pasteboard_SetData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_SetData0100' );
       let data = testndk.OH_Pasteboard_SetData0100();
       console.info( TAG + 'OH_Pasteboard_SetData0100 data= ' + JSON.stringify(data));
@@ -451,7 +451,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_GetData0100',0, async function () {
+    it('OH_Pasteboard_GetData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_GetData0100' );
       let data = testndk.OH_Pasteboard_GetData0100();
       console.info( TAG + 'OH_Pasteboard_GetData0100 data= ' + JSON.stringify(data));
@@ -469,7 +469,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_GetData0200',0, async function () {
+    it('OH_Pasteboard_GetData0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_GetData0200' );
       let data = testndk.OH_Pasteboard_GetData0200();
       console.info( TAG + 'OH_Pasteboard_GetData0200 data= ' + JSON.stringify(data));
@@ -488,7 +488,7 @@ export default function pasteboardTestNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_GetData0300',0, async function () {
+    it('OH_Pasteboard_GetData0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info( TAG + 'OH_Pasteboard_GetData0300' );
       let data = testndk.OH_Pasteboard_GetData0300();
       console.info( TAG + 'OH_Pasteboard_GetData0300 data= ' + JSON.stringify(data));

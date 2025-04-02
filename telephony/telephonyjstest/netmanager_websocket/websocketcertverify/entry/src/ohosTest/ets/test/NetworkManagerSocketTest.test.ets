@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, Level, Size, TestType } from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError } from '@ohos.base';
 
@@ -43,7 +43,7 @@ export default function NetworkManagerSocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_UNIX_Socket_Xts_0100", 0, async (done:Function)=> {
+    it("SUB_Telephony_Netstack_UNIX_Socket_Xts_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       let caseName = "SUB_Telephony_Netstack_UNIX_Socket_Xts_0100";
       let client = socket.constructLocalSocketInstance();
       client.getExtraOptions().then((data) => {
@@ -64,7 +64,7 @@ export default function NetworkManagerSocketTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_UNIX_Socket_Xts_0200", 0, async (done:Function)=> {
+    it("SUB_Telephony_Netstack_UNIX_Socket_Xts_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       let caseName = "SUB_Telephony_Netstack_UNIX_Socket_Xts_0200";
       let server = socket.constructLocalSocketServerInstance();
       server.getExtraOptions().then((data) => {

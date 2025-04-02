@@ -44,7 +44,10 @@
         ],
         "backgroundModes": [
           "audioPlayback",
-          "location"
+          "location",
+          "bluetoothInteraction",
+          "audioRecording",
+          "dataTransfer"
         ]
       }
     ],

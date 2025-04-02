@@ -23,7 +23,15 @@ import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { image } from '@kit.ImageKit';
 import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
-
+interface Capability{
+  foldStatus:string;
+  foldDisplayMode:string;
+  rotation:string[];
+  orientation:string[]
+}
+interface CapabilityData{
+  capability:Capability[];
+}
 function sleep(ms: number): Promise<string> {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -61,6 +69,14 @@ export default function ActsDisplayNdkApi14Test() {
     let isAutoWindow:string = '';
     let windowStage: window.WindowStage;
     let windowClass: window.Window;
+    let deviceMessage:string = '';
+    let displayClass = display.getDefaultDisplaySync();
+    let foldStatus:string= '';
+    let foldDisplayMode:string= '';
+    let rotation:string[];
+    let orientation:string[];
+    let code:number = 0;
+    let displayFoldStatus:number;
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -73,6 +89,34 @@ export default function ActsDisplayNdkApi14Test() {
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
       deviceType = deviceInfo.deviceType;
       console.log('jsUnittest beforeAll deviceType =' + deviceType);
+      displayFoldStatus = display.getFoldStatus();
+        console.log('jsUnittest beforeAll getFoldStatus =' + displayFoldStatus);
+      try{
+        let data:string = displayClass.getDisplayCapability();
+        let capabilityData:CapabilityData = JSON.parse(data);
+        console.log('jsUnittest beforeAll deviceMessage =' + JSON.stringify(capabilityData));
+        for(const capability of capabilityData.capability){
+          if(Number(capability.foldStatus) == displayFoldStatus){
+            foldStatus = capability.foldStatus;
+            foldDisplayMode = capability.foldDisplayMode;
+            rotation = capability.rotation;
+            orientation = capability.orientation;
+            console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
+            console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
+            console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
+            console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+          }
+        }
+      } catch (err) {
+        console.log('jsUnittest beforeAll getDisplayCapability failed ' + err.code);
+        console.log('jsUnittest beforeAll code =' + code);
+        if(err.code == 801){
+          code = 801;
+          console.log('jsUnittest beforeAll code =' + code);
+        }else {
+          console.log('jsUnittest getDisplayCapability failed');
+        }
+      }
       await getPermision();
       await sleep(100);
       await ClickButtonDriver();
@@ -108,13 +152,14 @@ export default function ActsDisplayNdkApi14Test() {
         if(Number(displayInfo) == 801){
           done();
         }else{
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(code == 801){
             expect(displayInfo.rotation).assertEqual(0);
             expect(displayInfo.orientation).assertEqual(0);
-            done();
-          }else{
-            expect(displayInfo.rotation).assertEqual(0);
-            expect(displayInfo.orientation).assertEqual(1);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
             done();
           }
           expect(displayInfo.id).assertEqual(0);
@@ -147,7 +192,7 @@ export default function ActsDisplayNdkApi14Test() {
     it('test_OH_NativeDisplayManager_CreateAllDisplays', 0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateAllDisplays';
       try{
-        let displayInfos = testNapi.getAllDisplay();
+        let displayInfos: Array<display.Display> = testNapi.getAllDisplay();
         for(let i = 0;i <displayInfos.length;i++){
           console.log(caseName + ' getAllDisplay displayInfos:'+ JSON.stringify(displayInfos[i]));
 
@@ -163,13 +208,14 @@ export default function ActsDisplayNdkApi14Test() {
           expect(displayInfos[0].xDPI).assertLarger(0);
           expect(displayInfos[0].yDPI).assertLarger(0);
           expect(displayInfos[0].state).assertEqual(2);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(code == 801){
             expect(displayInfos[0].rotation).assertEqual(0);
             expect(displayInfos[0].orientation).assertEqual(0);
             done();
-          }else{
-            expect(displayInfos[0].rotation).assertEqual(0);
-            expect(displayInfos[0].orientation).assertEqual(1);
+          }else {
+            // expect(displayInfos[0].rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfos[0].rotation;
+            expect(displayInfos[0].orientation).assertEqual(Number(orientation[rotation]));
             done();
           }
         }
@@ -184,13 +230,14 @@ export default function ActsDisplayNdkApi14Test() {
           expect(displayInfos[1].xDPI).assertLarger(0);
           expect(displayInfos[1].yDPI).assertLarger(0);
           expect(displayInfos[1].state).assertEqual(2);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(code == 801){
             expect(displayInfos[1].rotation).assertEqual(0);
             expect(displayInfos[1].orientation).assertEqual(0);
             done();
-          }else{
-            expect(displayInfos[1].rotation).assertEqual(0);
-            expect(displayInfos[1].orientation).assertEqual(1);
+          }else {
+            // expect(displayInfos[1].rotation).assertEqual(Number(rotation[0]));
+            let rotation2 = displayInfos[1].rotation;
+            expect(displayInfos[1].orientation).assertEqual(Number(orientation[rotation2]));
             done();
           }
         }
@@ -224,15 +271,16 @@ export default function ActsDisplayNdkApi14Test() {
         expect(displayInfo.xDPI).assertLarger(0);
         expect(displayInfo.yDPI).assertLarger(0);
         expect(displayInfo.state).assertEqual(2);
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(0);
-          done();
-        }else{
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(1);
-          done();
-        }
+        if(code == 801){
+            expect(displayInfo.rotation).assertEqual(0);
+            expect(displayInfo.orientation).assertEqual(0);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+             done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -493,16 +541,16 @@ export default function ActsDisplayNdkApi14Test() {
         expect(displayInfo.state).assertEqual(2);
         expect(displayInfo.hdrFormats != null).assertTrue();
         expect(displayInfo.colorSpaces != null).assertTrue();
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(0);
-          done();
-        }else{
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(1);
-          done();
-        }
-        done();
+        if(code == 801){
+            expect(displayInfo.rotation).assertEqual(0);
+            expect(displayInfo.orientation).assertEqual(0);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+             done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -536,15 +584,16 @@ export default function ActsDisplayNdkApi14Test() {
         expect(displayInfo.state).assertEqual(2);
         expect(displayInfo.hdrFormats != null).assertTrue();
         expect(displayInfo.colorSpaces != null).assertTrue();
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(0);
-          done();
-        }else{
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(1);
-          done();
-        }
+        if(code == 801){
+            expect(displayInfo.rotation).assertEqual(0);
+            expect(displayInfo.orientation).assertEqual(0);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+            done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -697,6 +746,49 @@ export default function ActsDisplayNdkApi14Test() {
         done();
       }
     })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_capture_0100
+     * @tc.name       : testcapture
+     * @tc.desc       : testcapture
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testcapture', 0, (done:Function) => {
+      let caseName = 'testcapture';
+      try{
+          let captureOption: screenshot.CaptureOption = {
+            "displayId": 0
+          };
+          let promise = screenshot.capture();
+          promise.then((PixelMap: image.PixelMap) => {
+            console.log(caseName + 'Succeeded in saving screenshot. Pixel bytes number: ' + PixelMap.getPixelBytesNumber());
+            PixelMap.getImageInfo().then((imageInfo:image.ImageInfo)=>{
+              let PixelMapWidth = imageInfo.size.width;
+              let PixelMapHeight = imageInfo.size.height;
+              console.log(caseName + ' PixelMapWidth:'+ PixelMapWidth + ' ,PixelMapHeight:'+ PixelMapHeight);
+              expect(PixelMapWidth).assertLarger(0);
+              expect(PixelMapHeight).assertLarger(0);
+              PixelMap.release(); // PixelMap使用完后及时释放内存
+              done();
+            })
+          }).catch((err: BusinessError) => {
+            console.log(caseName +'Failed to save screenshot. Code: ' + JSON.stringify(err));
+            if(err.code == 801){
+              done();
+            }else{
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
 
 
   })

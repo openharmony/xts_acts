@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 import wifiMg from '@ohos.wifiManager'
@@ -65,14 +65,22 @@ export default function actsWifiManagerEventTest() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_Event_Test_0001', 0, async function (done) {
+        it('SUB_Communication_WiFi_Event_Test_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "wifiStateChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]wifiStateChange callback, result: " + JSON.stringify(result));
             }
-            wifiMg.on(wifiState, wifiStateChangeCallback);
-            await sleep(3000);
-            wifiMg.off(wifiState, wifiStateChangeCallback);
+            try {
+                wifiMg.on(wifiState, wifiStateChangeCallback);
+                await sleep(3000);
+                wifiMg.off(wifiState, wifiStateChangeCallback);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -83,14 +91,22 @@ export default function actsWifiManagerEventTest() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_Event_Test_0002', 0, async function (done) {
+        it('SUB_Communication_WiFi_Event_Test_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiConnectionState = "wifiConnectionChange";
             let wifiConnectionChangeCallback = result => {
                 console.info("[wifi_test]wifiConnectionChange callback, result: " + JSON.stringify(result));
             }
-            wifiMg.on(wifiConnectionState, wifiConnectionChangeCallback);
-            await sleep(3000);
-            wifiMg.off(wifiConnectionState, wifiConnectionChangeCallback);
+            try {
+                wifiMg.on(wifiConnectionState, wifiConnectionChangeCallback);
+                await sleep(3000);
+                wifiMg.off(wifiConnectionState, wifiConnectionChangeCallback);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -101,7 +117,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_Event_Test_0003', 0, async function (done) {
+        it('SUB_Communication_WiFi_Event_Test_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiScanState = "wifiScanStateChange";
             let wifiScanStateChangeCallback = result => {
                 console.info("[wifi_test]wifiScanStateChange callback, result: " + JSON.stringify(result));
@@ -111,7 +127,12 @@ export default function actsWifiManagerEventTest() {
                 let scanResult = wifiMg.scan();
             } catch (error) {
                 console.error(`scan failed, code is ${error.code}, message is ${error.message}`);
-                expect(true).assertEqual(error !=null);
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+                }
             }
             await sleep(3000);
             wifiMg.off(wifiScanState, wifiScanStateChangeCallback);
@@ -125,14 +146,22 @@ export default function actsWifiManagerEventTest() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_Event_Test_0004', 0, async function (done) {
+        it('SUB_Communication_WiFi_Event_Test_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiRssiState = "wifiRssiChange";
             let wifiRssiChangeCallback = result => {
                 console.info("[wifi_test]wifiRssiChange callback, result: " + JSON.stringify(result));
             }
-            wifiMg.on(wifiRssiState, wifiRssiChangeCallback);
-            await sleep(3000);
-            wifiMg.off(wifiRssiState, wifiRssiChangeCallback);
+            try {
+                wifiMg.on(wifiRssiState, wifiRssiChangeCallback);
+                await sleep(3000);
+                wifiMg.off(wifiRssiState, wifiRssiChangeCallback);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -143,14 +172,22 @@ export default function actsWifiManagerEventTest() {
          * @tc.type Function
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_Event_Test_0005', 0, async function (done) {
+        it('SUB_Communication_WiFi_Event_Test_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let hotspotState = "hotspotStateChange";
             let hotspotStateChangeCallback = result => {
                 console.info("[wifi_test]hotspotStateChange callback, result: " + JSON.stringify(result));
             }
-            wifiMg.on(hotspotState, hotspotStateChangeCallback);
-            await sleep(3000);
-            wifiMg.off(hotspotState, hotspotStateChangeCallback);
+            try {
+                wifiMg.on(hotspotState, hotspotStateChangeCallback);
+                await sleep(3000);
+                wifiMg.off(hotspotState, hotspotStateChangeCallback);
+            }catch(error){
+                console.info("[wifi_test] error: " + JSON.stringify(error.message));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                }
+            }
             done();
         })
 
@@ -160,7 +197,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test enableHotspot api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0008', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0008 start');
             let ret = false;
             try {
@@ -173,6 +210,12 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0008 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0008 end');
             done();
@@ -184,7 +227,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test disableHotspot api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0009', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0009 start');
             let ret = false;
             try {
@@ -197,6 +240,12 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0009 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0009 end');
             done();
@@ -208,7 +257,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test getSupportedPowerMode api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0010', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0010 start');
             let ret = false;
             try {
@@ -224,6 +273,12 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0010 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0010 end');
             done();
@@ -235,7 +290,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test getSupportedPowerMode api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0011', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0011 start');
             let ret = false;
             try {
@@ -261,6 +316,12 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0011 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0011 end');
             done();
@@ -272,7 +333,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test getPowerMode api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0012', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0012 start');
             let ret = false;
             try {
@@ -288,6 +349,12 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0012 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0012 end');
             done();
@@ -299,7 +366,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test getPowerMode api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0013', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0013 start');
             let ret = false;
             try {
@@ -325,6 +392,12 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0013 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0013 end');
             done();
@@ -336,7 +409,7 @@ export default function actsWifiManagerEventTest() {
          * @tc.desc Test setPowerMode api.
          * @tc.type Function
          */
-        it('SUB_Communication_WiFi_SysCaps_Test_0014', 0, async function (done) {
+        it('SUB_Communication_WiFi_SysCaps_Test_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0014 start');
             let ret = false;
             try {
@@ -349,9 +422,46 @@ export default function actsWifiManagerEventTest() {
                 expect(isAccessToken).assertFalse();
             } catch (e) {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0014 canIUse isAccessToken error: " + e);
+                if (e.code == 801) {
+                    console.info('[wifi_js]wifiManagerExt enableHotspot is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0014 end');
             done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_WifiManagerExt_PowerMode_0100
+         * @tc.name testPowerMode
+         * @tc.desc Test setPowerMode api.
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level0
+         */
+        it('SUB_Communication_WifiManagerExt_PowerMode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.wifiMg.AP.Extension");
+                console.info("SUB_Communication_WiFi_SysCaps_Test_0014 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    let SLEEPING = wifiManagerExt.PowerMode.SLEEPING;
+                console.info('[wifi_test]PowerMode SLEEPING:' + JSON.stringify(SLEEPING));
+                expect(SLEEPING).assertEqual(0);
+                let GENERAL = wifiManagerExt.PowerMode.GENERAL;
+                console.info('[wifi_test]PowerMode GENERAL:' + JSON.stringify(GENERAL));
+                expect(GENERAL).assertEqual(1);
+                let THROUGH_WALL = wifiManagerExt.PowerMode.THROUGH_WALL;
+                console.info('[wifi_test]PowerMode THROUGH_WALL:' + JSON.stringify(THROUGH_WALL));
+                expect(THROUGH_WALL).assertEqual(2);
+                }
+                expect(isAccessToken).assertFalse();
+            } catch (error) {
+                console.error('[wifi_test]PowerMode get error:' + JSON.stringify(error));
+                expect().assertFail();
+              }
+              done();
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })

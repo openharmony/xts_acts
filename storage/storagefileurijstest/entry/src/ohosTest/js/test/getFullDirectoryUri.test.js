@@ -18,7 +18,8 @@ import fs from "@ohos.file.fs";
 import {
   describe,
   it,
-  expect
+  expect,
+  Level
 }
 from '@ohos/hypium'
   
@@ -36,7 +37,7 @@ from '@ohos/hypium'
    * @tc.level Level 0
    * @tc.require
    */
-  it('test_Fileuri_GetFullDirectoryUri_Async_001', 0, async function () {
+  it('test_Fileuri_GetFullDirectoryUri_Async_001', Level.LEVEL0, async function () {
     let fpath = '/data/storage/el2/base/haps/test_Fileuri_GetFullDirectoryUri_Async_001';
     fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WRITE);
   
@@ -60,7 +61,7 @@ from '@ohos/hypium'
    * @tc.level Level 0
    * @tc.require
    */
-  it('test_Fileuri_GetFullDirectoryUri_Async_002', 0, async function () {
+  it('test_Fileuri_GetFullDirectoryUri_Async_002', Level.LEVEL0, async function () {
     let dpath = '/data/storage/el2/base/haps/test_Fileuri_GetFullDirectoryUri_Async_002';
     fs.mkdirSync(dpath);
   
@@ -84,7 +85,7 @@ from '@ohos/hypium'
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_Fileuri_GetFullDirectoryUri_Async_003', 3, async function () {
+  it('test_Fileuri_GetFullDirectoryUri_Async_003', Level.LEVEL3, async function () {
     let fpath = '/data/storage/el2/base/haps/entry/files/test_Fileuri_GetFullDirectoryUri_Async_003.txt';
 
     try {
@@ -106,7 +107,7 @@ from '@ohos/hypium'
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_Fileuri_GetFullDirectoryUri_Async_004', 3, async function () {
+  it('test_Fileuri_GetFullDirectoryUri_Async_004', Level.LEVEL3, async function () {
     let fpath = '/data/storage/el2/base/haps/test_Fileuri_GetFullDirectoryUri_Async_004';
     fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WRITE);
   
@@ -129,7 +130,7 @@ from '@ohos/hypium'
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_Fileuri_GetFullDirectoryUri_Async_005', 3, async function () {
+  it('test_Fileuri_GetFullDirectoryUri_Async_005', Level.LEVEL3, async function () {
     let fpath = '/data/storage/el2/base/haps/fileuri_test_getFullDirectoryUri_async_005';
     fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WRITE);
   

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import nameser from 'libnameserndk.so'
 
@@ -32,7 +32,7 @@ export default function muslNameserNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslNameserNsGet16001', 0, async (done: Function) => {
+    it('testMuslNameserNsGet16001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = nameser.nsGet16();
       expect(a).assertEqual(0);
       done()
@@ -46,7 +46,7 @@ export default function muslNameserNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslNameserNsGet32001', 0, async (done: Function) => {
+    it('testMuslNameserNsGet32001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = nameser.nsGet32();
       expect(a).assertEqual(0);
       done()
@@ -60,7 +60,7 @@ export default function muslNameserNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslNameserNsPut16001', 0, async (done: Function) => {
+    it('testMuslNameserNsPut16001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = nameser.nsPut16();
       expect(a).assertEqual(0);
       done()
@@ -74,7 +74,7 @@ export default function muslNameserNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslNameserNsInitParse001', 0, async (done: Function) => {
+    it('testMuslNameserNsInitParse001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = nameser.nsInitParse();
       expect(a).assertEqual(0);
       done()
@@ -88,7 +88,7 @@ export default function muslNameserNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslNameserNsNameUnCompress001', 0, async (done: Function) => {
+    it('testMuslNameserNsNameUnCompress001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = nameser.nsNameUnCompress();
       expect(a).assertEqual(0);
       done()

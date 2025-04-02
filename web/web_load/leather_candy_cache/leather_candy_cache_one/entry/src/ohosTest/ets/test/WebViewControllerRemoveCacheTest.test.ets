@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webViewControllerRemoveCacheTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRemoveCache001', 0, async (done: Function) => {
+    it('testRemoveCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRemoveCache001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRemoveCache001", true, 77200, done);
@@ -70,7 +70,7 @@ export default function webViewControllerRemoveCacheTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRemoveCache002', 0, async (done: Function) => {
+    it('testRemoveCache002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRemoveCache002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRemoveCache002", true, 77202, done);

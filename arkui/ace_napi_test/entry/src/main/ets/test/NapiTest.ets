@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import napitest from 'libnapitest.so'
 import worker from '@ohos.worker';
 
@@ -50,7 +50,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetLastErrorInfo0001', 0, async (done: Function) => {
+    it('testGetLastErrorInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetLastErrorInfo0001 START');
       try {
         let value = napitest.getLastErrorInfo();
@@ -71,7 +71,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetLastErrorInfo0002', 0, async (done: Function) => {
+    it('testGetLastErrorInfo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetLastErrorInfo0002 START');
       try {
         let value = napitest.getLastErrorInfoNull();
@@ -92,7 +92,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testThrow0001', 0, async (done: Function) => {
+    it('testThrow0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testThrow0001 START');
       try {
         let value = napitest.throwFunc();
@@ -113,7 +113,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testThrow0002', 0, async (done: Function) => {
+    it('testThrow0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testThrow0002 START');
       try {
         let value = napitest.throwFuncNull();
@@ -134,7 +134,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testThrowError0001', 0, async (done: Function) => {
+    it('testThrowError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testThrowError0001 START');
       try {
         let value = napitest.throwError();
@@ -155,7 +155,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testThrowTypeError0001', 0, async (done: Function) => {
+    it('testThrowTypeError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testThrowTypeError0001 START');
       try {
         let value = napitest.throwTypeError();
@@ -176,7 +176,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testThrowRangeError0001', 0, async (done: Function) => {
+    it('testThrowRangeError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testThrowRangeError0001 START');
       try {
         let ret = napitest.throwRangeError();
@@ -197,7 +197,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsError0001', 0, async (done: Function) => {
+    it('testIsError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsError0001 START');
       try {
         let ret = napitest.isError(true);
@@ -218,7 +218,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testIsError0002', 0, async (done: Function) => {
+    it('testIsError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsError0002 START');
       try {
         let ret = napitest.isError(null);
@@ -239,7 +239,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsError0003', 0, async (done: Function) => {
+    it('testIsError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsError0003 START');
       try {
         let ret = napitest.isErrorValueNull(null);
@@ -260,7 +260,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsError0004', 0, async (done: Function) => {
+    it('testIsError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsError0004 START');
       try {
         let ret = napitest.isErrorRstNull(null);
@@ -281,7 +281,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringUtf80001', 0, async (done: Function) => {
+    it('testCreateStringUtf80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf80001 START');
       try {
         let ret = napitest.createStringUtf8('abc');
@@ -302,7 +302,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testCreateStringUtf80002', 0, async (done: Function) => {
+    it('testCreateStringUtf80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf80002 START');
       try {
         let ret = napitest.createStringUtf8(null);
@@ -323,7 +323,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateError0001', 0, async (done: Function) => {
+    it('testCreateError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateError0001 START');
       try {
         let ret = napitest.createError();
@@ -344,7 +344,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateError0002', 0, async (done: Function) => {
+    it('testCreateError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateError0002 START');
       try {
         let ret = napitest.createErrorMsgNull();
@@ -365,7 +365,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateError0003', 0, async (done: Function) => {
+    it('testCreateError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateError0003 START');
       try {
         let ret = napitest.createErrorRstNull();
@@ -386,7 +386,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateTypeError0001', 0, async (done: Function) => {
+    it('testCreateTypeError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeError0001 START');
       try {
         let ret = napitest.createTypeError();
@@ -407,7 +407,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateTypeError0002', 0, async (done: Function) => {
+    it('testCreateTypeError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeError0002 START');
       try {
         let ret = napitest.createTypeErrorMsgNull();
@@ -428,7 +428,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateTypeError0003', 0, async (done: Function) => {
+    it('testCreateTypeError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeError0003 START');
       try {
         let ret = napitest.createTypeErrorRstNull();
@@ -449,7 +449,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateRangeError0001', 0, async (done: Function) => {
+    it('testCreateRangeError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateRangeError0001 START');
       try {
         let ret = napitest.createRangeError();
@@ -470,7 +470,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateRangeError0002', 0, async (done: Function) => {
+    it('testCreateRangeError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateRangeError0002 START');
       try {
         let ret = napitest.createRangeErrorRstNull();
@@ -491,7 +491,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetAndClearLastException0001', 0, async (done: Function) => {
+    it('testGetAndClearLastException0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetAndClearLastException0001 START');
       try {
         let ret = napitest.getAndClearLastException();
@@ -512,7 +512,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetAndClearLastException0002', 0, async (done: Function) => {
+    it('testGetAndClearLastException0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetAndClearLastException0002 START');
       try {
         let ret = napitest.getAndClearLastExceptionNull();
@@ -533,7 +533,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsExceptionPending0001', 0, async (done: Function) => {
+    it('testIsExceptionPending0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsExceptionPending0001 START');
       try {
         let value = napitest.isExceptionPending();
@@ -554,7 +554,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsExceptionPending0002', 0, async (done: Function) => {
+    it('testIsExceptionPending0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsExceptionPending0002 START');
       try {
         let value = napitest.isExceptionPendingNull();
@@ -575,7 +575,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOpenAndCloseHandleScope0001', 0, async (done: Function) => {
+    it('testOpenAndCloseHandleScope0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testOpenAndCloseHandleScope0001 START');
       try {
         let value = napitest.openAndCloseHandleScope();
@@ -596,7 +596,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testOpenAndCloseHandleScope0002', 0, async (done: Function) => {
+    it('testOpenAndCloseHandleScope0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testOpenAndCloseHandleScope0002 START');
       try {
         let value = napitest.openAndCloseHandleScopeNull();
@@ -617,7 +617,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testOpenAndCloseEscapableHandleScope0001', 0, async (done: Function) => {
+    it('testOpenAndCloseEscapableHandleScope0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testOpenAndCloseEscapableHandleScope0001 START');
       try {
         let value = napitest.openAndCloseEscapableHandleScope();
@@ -638,7 +638,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testOpenAndCloseEscapableHandleScope0002', 0, async (done: Function) => {
+    it('testOpenAndCloseEscapableHandleScope0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testOpenAndCloseEscapableHandleScope0002 START');
       try {
         let value = napitest.openAndCloseEscapableHandleScopeNull();
@@ -659,7 +659,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testEscapeHandle0001', 0, async (done: Function) => {
+    it('testEscapeHandle0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testEscapeHandle0001 START');
       try {
         let value = napitest.escapeHandle();
@@ -680,7 +680,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEscapeHandle0002', 0, async (done: Function) => {
+    it('testEscapeHandle0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testEscapeHandle0002 START');
       try {
         let value = napitest.escapeHandleScopeNull();
@@ -701,7 +701,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEscapeHandle0003', 0, async (done: Function) => {
+    it('testEscapeHandle0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testEscapeHandle0003 START');
       try {
         let value = napitest.escapeHandleOutputNull();
@@ -722,7 +722,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEscapeHandle0004', 0, async (done: Function) => {
+    it('testEscapeHandle0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testEscapeHandle0004 START');
       try {
         let value = napitest.escapeHandleRstNull();
@@ -743,7 +743,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateReference0001', 0, async (done: Function) => {
+    it('testCreateReference0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateReference0001 START');
       try {
         let value = napitest.createReference();
@@ -764,7 +764,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateReference0002', 0, async (done: Function) => {
+    it('testCreateReference0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateReference0002 START');
       try {
         let value = napitest.createReferenceValueNull();
@@ -785,7 +785,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetReferenceValue0001', 0, async (done: Function) => {
+    it('testGetReferenceValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetReferenceValue0001 START');
       try {
         let value = napitest.getReferenceValue();
@@ -806,7 +806,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetReferenceValue0002', 0, async (done: Function) => {
+    it('testGetReferenceValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetReferenceValue0002 START');
       try {
         let value = napitest.getReferenceValueRefNull();
@@ -827,7 +827,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetReferenceValue0003', 0, async (done: Function) => {
+    it('testGetReferenceValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetReferenceValue0003 START');
       try {
         let value = napitest.getReferenceValueRstNull();
@@ -848,7 +848,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteReference0001', 0, async (done: Function) => {
+    it('testDeleteReference0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteReference0001 START');
       try {
         let value = napitest.getAndDeleteReference();
@@ -869,7 +869,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDeleteReference0002', 0, async (done: Function) => {
+    it('testDeleteReference0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteReference0002 START');
       try {
         let value = napitest.deleteReferenceNull();
@@ -890,7 +890,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testReferenceRef0001', 0, async (done: Function) => {
+    it('testReferenceRef0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testReferenceRef0001 START');
       try {
         let value = napitest.referenceRef();
@@ -911,7 +911,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testReferenceRef0002', 0, async (done: Function) => {
+    it('testReferenceRef0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testReferenceRef0002 START');
       try {
         let value = napitest.referenceRefNull();
@@ -932,7 +932,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testReferenceUnRef0001', 0, async (done: Function) => {
+    it('testReferenceUnRef0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testReferenceUnRef0001 START');
       try {
         let value = napitest.referenceRefAndUnref();
@@ -953,7 +953,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testReferenceUnRef0002', 0, async (done: Function) => {
+    it('testReferenceUnRef0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testReferenceUnRef0002 START');
       try {
         let value = napitest.referenceRefAndUnrefNull();
@@ -974,7 +974,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateArray0001', 0, async (done: Function) => {
+    it('testCreateArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateArray0001 START');
       try {
         let array = [1, 2];
@@ -997,7 +997,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateArray0002', 0, async (done: Function) => {
+    it('testCreateArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateArray0002 START');
       try {
         let value = napitest.createArrayNull(null);
@@ -1018,7 +1018,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateArrayBuffer0001', 0, async (done: Function) => {
+    it('testCreateArrayBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateArrayBuffer0001 START');
       try {
         let value = napitest.napCreateArrayBuffer();
@@ -1039,7 +1039,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateArrayBuffer0002', 0, async (done: Function) => {
+    it('testCreateArrayBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateArrayBuffer0002 START');
       try {
         let value = napitest.napCreateArrayBufferNull();
@@ -1060,7 +1060,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateExternal0001', 0, async (done: Function) => {
+    it('testCreateExternal0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateExternal0001 START');
       try {
         let value = napitest.createExternal();
@@ -1081,7 +1081,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateExternal0002', 0, async (done: Function) => {
+    it('testCreateExternal0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateExternal0002 START');
       try {
         let value = napitest.createExternalNull();
@@ -1102,7 +1102,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateExternalArraybuffer0001', 0, async (done: Function) => {
+    it('testCreateExternalArraybuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateExternalArraybuffer0001 START');
       try {
         let value = napitest.createExternalArraybuffer();
@@ -1125,7 +1125,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateExternalArraybuffer0002', 0, async (done: Function) => {
+    it('testCreateExternalArraybuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateExternalArraybuffer0002 START');
       try {
         let value = napitest.createExternalArraybufferDataNull();
@@ -1146,7 +1146,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateObject0001', 0, async (done: Function) => {
+    it('testCreateObject0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateObject0001 START');
       try {
         let value = napitest.createObject();
@@ -1167,7 +1167,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateObject0002', 0, async (done: Function) => {
+    it('testCreateObject0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateObject0002 START');
       try {
         let value = napitest.createObjectNull();
@@ -1188,7 +1188,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSymbol0001', 0, async (done: Function) => {
+    it('testCreateSymbol0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSymbol0001 START');
       try {
         let value = napitest.createSymbol('symbol');
@@ -1209,7 +1209,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSymbol0002', 0, async (done: Function) => {
+    it('testCreateSymbol0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSymbol0002 START');
       try {
         let value = napitest.createSymbolNull(null);
@@ -1230,7 +1230,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSymbol0003', 0, async (done: Function) => {
+    it('testCreateSymbol0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSymbol0003 START');
       try {
         let value = napitest.createSymbolDescriptionNull(null);
@@ -1251,7 +1251,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 4
      */
-    it('testCreateSymbol0004', 0, async (done: Function) => {
+    it('testCreateSymbol0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSymbol0004 START');
       try {
         let value = napitest.createSymbolDescriptionNotString('symbol');
@@ -1272,7 +1272,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateTypeArray0001', 0, async (done: Function) => {
+    it('testCreateTypeArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeArray0001 START');
       try {
         let value = napitest.createTypeArray();
@@ -1294,7 +1294,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateTypeArray0002', 0, async (done: Function) => {
+    it('testCreateTypeArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeArray0002 START');
       try {
         let value = napitest.createTypeArrayBufferNull();
@@ -1315,7 +1315,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateTypeArray0003', 0, async (done: Function) => {
+    it('testCreateTypeArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeArray0003 START');
       try {
         let value = napitest.createTypeArrayResultNull();
@@ -1336,7 +1336,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 4
      */
-    it('testCreateTypeArray0004', 0, async (done: Function) => {
+    it('testCreateTypeArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeArray0004 START');
       try {
         let value = napitest.createTypeArrayNotBufferObj();
@@ -1357,7 +1357,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateTypeArray0005', 0, async (done: Function) => {
+    it('testCreateTypeArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateTypeArray0005 START');
       try {
         let value = napitest.createTypeArrayNotEnumValue();
@@ -1378,7 +1378,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateDataView0001', 0, async (done: Function) => {
+    it('testCreateDataView0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateDataView0001 START');
       try {
         let value = napitest.createDataView();
@@ -1401,7 +1401,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateDataView0002', 0, async (done: Function) => {
+    it('testCreateDataView0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateDataView0002 START');
       try {
         let value = napitest.createDataViewBufferNull();
@@ -1422,7 +1422,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateDataView0003', 0, async (done: Function) => {
+    it('testCreateDataView0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateDataView0003 START');
       try {
         let value = napitest.createDataViewResultNull();
@@ -1443,7 +1443,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 4
      */
-    it('testCreateDataView0004', 0, async (done: Function) => {
+    it('testCreateDataView0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateDataView0004 START');
       try {
         let value = napitest.createDataViewBufferNotObj();
@@ -1464,7 +1464,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateInt320001', 0, async (done: Function) => {
+    it('testCreateInt320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateInt320001 START');
       try {
         let value = napitest.createAndGetInt32(32);
@@ -1485,7 +1485,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateInt320002', 0, async (done: Function) => {
+    it('testCreateInt320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateInt320002 START');
       try {
         let value = napitest.createInt32Null(null);
@@ -1506,7 +1506,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueInt320001', 0, async (done: Function) => {
+    it('testGetValueInt320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueInt320001 START');
       try {
         let value = napitest.getValueInt32(32);
@@ -1527,7 +1527,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueInt320002', 0, async (done: Function) => {
+    it('testGetValueInt320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueInt320002 START');
       try {
         let value = napitest.getValueInt32ValueNull(null);
@@ -1548,7 +1548,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueInt320003', 0, async (done: Function) => {
+    it('testGetValueInt320003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueInt320003 START');
       try {
         let value = napitest.getValueInt32RstNull(null);
@@ -1569,7 +1569,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueInt640001', 0, async (done: Function) => {
+    it('testGetValueInt640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueInt640001 START');
       try {
         let value = napitest.getValueInt64(23);
@@ -1590,7 +1590,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueInt640002', 0, async (done: Function) => {
+    it('testGetValueInt640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueInt640002 START');
       try {
         let value = napitest.getValueInt64ValueNull(null);
@@ -1611,7 +1611,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueInt640003', 0, async (done: Function) => {
+    it('testGetValueInt640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueInt640003 START');
       try {
         let value = napitest.getValueInt64RstNull(null);
@@ -1632,7 +1632,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateUInt320001', 0, async (done: Function) => {
+    it('testCreateUInt320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateUInt320001 START');
       try {
         let value = napitest.createAndGetUInt32(32);
@@ -1653,7 +1653,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateUInt320002', 0, async (done: Function) => {
+    it('testCreateUInt320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateUInt320002 START');
       try {
         let value = napitest.createUInt32Null(null);
@@ -1674,7 +1674,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateInt640001', 0, async (done: Function) => {
+    it('testCreateInt640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateInt640001 START');
       try {
         let value = napitest.createAndGetInt64(23);
@@ -1695,7 +1695,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateInt640002', 0, async (done: Function) => {
+    it('testCreateInt640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateInt640002 START');
       try {
         let value = napitest.createInt64Null(null);
@@ -1716,7 +1716,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateDouble0001', 0, async (done: Function) => {
+    it('testCreateDouble0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateDouble0001 START');
       try {
         let value = napitest.createDouble(24.67);
@@ -1737,7 +1737,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateDouble0002', 0, async (done: Function) => {
+    it('testCreateDouble0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateDouble0002 START');
       try {
         let value = napitest.createDoubleNull(null);
@@ -1758,7 +1758,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringLatin10001', 0, async (done: Function) => {
+    it('testCreateStringLatin10001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringLatin10001 START');
       try {
         let value = napitest.createAndGetStringLatin1("tst");
@@ -1779,7 +1779,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringLatin10002', 0, async (done: Function) => {
+    it('testCreateStringLatin10002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringLatin10002 START');
       try {
         let value = napitest.createAndGetStringLatin1BufferNull(null);
@@ -1800,7 +1800,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringLatin10003', 0, async (done: Function) => {
+    it('testCreateStringLatin10003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringLatin10003 START');
       try {
         let value = napitest.createAndGetStringLatin1ResultNull(null);
@@ -1821,7 +1821,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringUtf160001', 0, async (done: Function) => {
+    it('testCreateStringUtf160001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf160001 START');
       try {
         let value = napitest.createAndGetStringUtf16('he');
@@ -1843,7 +1843,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringUtf160002', 0, async (done: Function) => {
+    it('testCreateStringUtf160002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf160002 START');
       try {
         console.info('testCreateStringUtf160002 START');
@@ -1866,7 +1866,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringUtf160003', 0, async (done: Function) => {
+    it('testCreateStringUtf160003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf160003 START');
       try {
         console.info('testCreateStringUtf160003 START');
@@ -1888,7 +1888,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringUtf160004', 0, async (done: Function) => {
+    it('testCreateStringUtf160004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf160004 START');
       try {
         console.info('testCreateStringUtf160004 START');
@@ -1910,7 +1910,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateStringUtf160005', 0, async (done: Function) => {
+    it('testCreateStringUtf160005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateStringUtf160005 START');
       try {
         console.info('testCreateStringUtf160005 START');
@@ -1932,7 +1932,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayLength0001', 0, async (done: Function) => {
+    it('testGetArrayLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayLength0001 START');
       try {
         let array = [1, 2];
@@ -1955,7 +1955,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayLength0002', 0, async (done: Function) => {
+    it('testGetArrayLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayLength0002 START');
       try {
         let value = napitest.getArrayLengthResultNull(null);
@@ -1976,7 +1976,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayLength0003', 0, async (done: Function) => {
+    it('testGetArrayLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayLength0003 START');
       try {
         let array = [1, 2];
@@ -1998,7 +1998,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayBufferInfo0001', 0, async (done: Function) => {
+    it('testGetArrayBufferInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayBufferInfo0001 START');
       try {
         let value = napitest.naiGetArrayBufferInfo();
@@ -2019,7 +2019,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayBufferInfo0002', 0, async (done: Function) => {
+    it('testGetArrayBufferInfo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayBufferInfo0002 START');
       try {
         let value = napitest.getArrayBufferInfoBufferNull();
@@ -2040,7 +2040,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayBufferInfo0003', 0, async (done: Function) => {
+    it('testGetArrayBufferInfo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayBufferInfo0003 START');
       try {
         let value = napitest.getArrayBufferInfoLengthNull();
@@ -2061,7 +2061,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetArrayBufferInfo0004', 0, async (done: Function) => {
+    it('testGetArrayBufferInfo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetArrayBufferInfo0004 START');
       try {
         let value = napitest.getArrayBufferInfoNotObj();
@@ -2082,7 +2082,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPrototype0001', 0, async (done: Function) => {
+    it('testGetPrototype0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPrototype0001 START');
       try {
         let value = napitest.getPrototype();
@@ -2104,7 +2104,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPrototype0002', 0, async (done: Function) => {
+    it('testGetPrototype0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPrototype0002 START');
       try {
         let value = napitest.getPrototypeObjectNull();
@@ -2125,7 +2125,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPrototype0003', 0, async (done: Function) => {
+    it('testGetPrototype0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPrototype0003 START');
       try {
         let value = napitest.getPrototypeResultNull();
@@ -2146,7 +2146,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPrototype0004', 0, async (done: Function) => {
+    it('testGetPrototype0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPrototype0004 START');
       try {
         let value = napitest.getPrototypeNotObj();
@@ -2167,7 +2167,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetTypedArrayInfo0001', 0, async (done: Function) => {
+    it('testGetTypedArrayInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetTypedArrayInfo0001 START');
       try {
         let value = napitest.getTypedArrayInfo();
@@ -2188,7 +2188,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetTypedArrayInfo0002', 0, async (done: Function) => {
+    it('testGetTypedArrayInfo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetTypedArrayInfo0002 START');
       try {
         let value = napitest.getTypedArrayInfoNull();
@@ -2209,7 +2209,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetDataViewInfo0001', 0, async (done: Function) => {
+    it('testGetDataViewInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetDataViewInfo0001 START');
       try {
         let buffer = new ArrayBuffer(2);
@@ -2232,7 +2232,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetDataViewInfo0002', 0, async (done: Function) => {
+    it('testGetDataViewInfo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetDataViewInfo0002 START');
       try {
         let value = napitest.getDataViewInfoNull();
@@ -2253,7 +2253,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetDataViewInfo0003', 0, async (done: Function) => {
+    it('testGetDataViewInfo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetDataViewInfo0003 START');
       try {
         let value = napitest.getDataViewInfoNotObj();
@@ -2274,7 +2274,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueBool0001', 0, async (done: Function) => {
+    it('testGetValueBool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueBool0001 START');
       try {
         let value = napitest.getValueBool(false);
@@ -2295,7 +2295,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueBool0002', 0, async (done: Function) => {
+    it('testGetValueBool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueBool0002 START');
       try {
         let value = napitest.getValueBool(true);
@@ -2316,7 +2316,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueBool0003', 0, async (done: Function) => {
+    it('testGetValueBool0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueBool0003 START');
       try {
         let value = napitest.getValueBoolValueNull(null);
@@ -2337,7 +2337,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueBool0004', 0, async (done: Function) => {
+    it('testGetValueBool0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueBool0004 START');
       try {
         let value = napitest.getValueBoolResultNull(null);
@@ -2358,7 +2358,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetBoolean0001', 0, async (done: Function) => {
+    it('testGetBoolean0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetBoolean0001 START');
       try {
         let value = napitest.getBoolean(false);
@@ -2379,7 +2379,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetBoolean0002', 0, async (done: Function) => {
+    it('testGetBoolean0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetBoolean0002 START');
       try {
         let value = napitest.getBoolean(true);
@@ -2400,7 +2400,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetBoolean0003', 0, async (done: Function) => {
+    it('testGetBoolean0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetBoolean0003 START');
       try {
         let value = napitest.getBooleanNull(null);
@@ -2421,7 +2421,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueDouble0001', 0, async (done: Function) => {
+    it('testGetValueDouble0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueDouble0001 START');
       try {
         let value = napitest.getValueDouble(24.5);
@@ -2442,7 +2442,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueDouble0002', 0, async (done: Function) => {
+    it('testGetValueDouble0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueDouble0002 START');
       try {
         let value = napitest.getValueDoubleValueNull(null);
@@ -2463,7 +2463,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueDouble0003', 0, async (done: Function) => {
+    it('testGetValueDouble0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueDouble0003 START');
       try {
         let value = napitest.getValueDoubleResultNull(null);
@@ -2484,7 +2484,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueExternal0001', 0, async (done: Function) => {
+    it('testGetValueExternal0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueExternal0001 START');
       try {
         let value = napitest.getValueExternal();
@@ -2505,7 +2505,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueExternal0002', 0, async (done: Function) => {
+    it('testGetValueExternal0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueExternal0002 START');
       try {
         let value = napitest.getValueExternalValueNull();
@@ -2526,7 +2526,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueExternal0003', 0, async (done: Function) => {
+    it('testGetValueExternal0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueExternal0003 START');
       try {
         let value = napitest.getValueExternalResultNull();
@@ -2547,7 +2547,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueExternal0004', 0, async (done: Function) => {
+    it('testGetValueExternal0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueExternal0004 START');
       try {
         let value = napitest.getValueExternalNotPtr();
@@ -2568,7 +2568,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringLatin10001', 0, async (done: Function) => {
+    it('testGetValueStringLatin10001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringLatin10001 START');
       try {
         let value = napitest.getValueStringLatin1("tst");
@@ -2589,7 +2589,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringLatin10002', 0, async (done: Function) => {
+    it('testGetValueStringLatin10002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringLatin10002 START');
       try {
         let value = napitest.getValueStringLatin1Null(null);
@@ -2610,7 +2610,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringUtf80001', 0, async (done: Function) => {
+    it('testGetValueStringUtf80001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringUtf80001 START');
       try {
         let value = napitest.getValueStringUtf8("he");
@@ -2631,7 +2631,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringUtf80002', 0, async (done: Function) => {
+    it('testGetValueStringUtf80002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringUtf80002 START');
       try {
         let value = napitest.getValueStringUtf8Null(null);
@@ -2652,7 +2652,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringUtf80003', 0, async (done: Function) => {
+    it('testGetValueStringUtf80003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringUtf80003 START');
       try {
         let value = napitest.getValueStringUtf8NotStr(123);
@@ -2673,7 +2673,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringUtf160001', 0, async (done: Function) => {
+    it('testGetValueStringUtf160001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringUtf160001 START');
       try {
         let value = napitest.getValueStringUtf16("he");
@@ -2694,7 +2694,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringUtf160002', 0, async (done: Function) => {
+    it('testGetValueStringUtf160002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringUtf160002 START');
       try {
         let value = napitest.getValueStringUtf16Null(null);
@@ -2715,7 +2715,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueStringUtf160003', 0, async (done: Function) => {
+    it('testGetValueStringUtf160003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueStringUtf160003 START');
       try {
         let value = napitest.getValueStringUtf16NotStr(123);
@@ -2736,7 +2736,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueUint320001', 0, async (done: Function) => {
+    it('testGetValueUint320001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueUint320001 START');
       try {
         let value = napitest.getValueUint32(12);
@@ -2757,7 +2757,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetValueUint320002', 0, async (done: Function) => {
+    it('testGetValueUint320002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetValueUint320002 START');
       try {
         let value = napitest.getValueUint32Null(null);
@@ -2778,7 +2778,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetGlobal0001', 0, async (done: Function) => {
+    it('testGetGlobal0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetGlobal0001 START');
       try {
         let value = napitest.getGlobal();
@@ -2799,7 +2799,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNull0001', 0, async (done: Function) => {
+    it('testGetNull0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNull0001 START');
       try {
         let value = napitest.getNull();
@@ -2820,7 +2820,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetUndefined0001', 0, async (done: Function) => {
+    it('testGetUndefined0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetUndefined0001 START');
       try {
         let value = napitest.getUndefined();
@@ -2841,7 +2841,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToBool0001', 0, async (done: Function) => {
+    it('testCoerceToBool0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToBool0001 START');
       try {
         let value = napitest.coerceToBool(0);
@@ -2862,7 +2862,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToBool0002', 0, async (done: Function) => {
+    it('testCoerceToBool0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToBool0002 START');
       try {
         let value = napitest.coerceToBool(1);
@@ -2883,7 +2883,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToBool0005', 0, async (done: Function) => {
+    it('testCoerceToBool0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToBool0005 START');
       try {
         let value = napitest.coerceToBoolValueNull(null);
@@ -2904,7 +2904,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToBool0006', 0, async (done: Function) => {
+    it('testCoerceToBool0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToBool0006 START');
       try {
         let value = napitest.coerceToBoolResultNull(null);
@@ -2925,7 +2925,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToNumber0002', 0, async (done: Function) => {
+    it('testCoerceToNumber0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToNumber0002 START');
       try {
         let value = napitest.coerceToNumber('12');
@@ -2946,7 +2946,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToNumber0005', 0, async (done: Function) => {
+    it('testCoerceToNumber0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToNumber0005 START');
       try {
         let value = napitest.coerceToNumberValueNull(null);
@@ -2967,7 +2967,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToNumber0006', 0, async (done: Function) => {
+    it('testCoerceToNumber0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToNumber0006 START');
       try {
         let value = napitest.coerceToNumberRstNull(null);
@@ -2988,7 +2988,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToObject0001', 0, async (done: Function) => {
+    it('testCoerceToObject0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToObject0001 START');
       try {
         let value = napitest.coerceToObject([2, 3]);
@@ -3010,7 +3010,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToObject0004', 0, async (done: Function) => {
+    it('testCoerceToObject0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToObject0004 START');
       try {
         let value = napitest.coerceToObject(undefined);
@@ -3031,7 +3031,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToObject0007', 0, async (done: Function) => {
+    it('testCoerceToObject0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToObject0007 START');
       try {
         let value = napitest.coerceToObject(null);
@@ -3052,7 +3052,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToString0001', 0, async (done: Function) => {
+    it('testCoerceToString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToString0001 START');
       try {
         let value = napitest.coerceToString(123);
@@ -3074,7 +3074,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToString0002', 0, async (done: Function) => {
+    it('testCoerceToString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToString0002 START');
       try {
         let value = napitest.coerceToString(undefined);
@@ -3096,7 +3096,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToString0003', 0, async (done: Function) => {
+    it('testCoerceToString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToString0003 START');
       try {
         let value = napitest.coerceToString(null);
@@ -3118,7 +3118,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToString0004', 0, async (done: Function) => {
+    it('testCoerceToString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToString0004 START');
       try {
         let value = napitest.coerceToString(true);
@@ -3140,7 +3140,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToString0005', 0, async (done: Function) => {
+    it('testCoerceToString0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToString0005 START');
       try {
         let value = napitest.coerceToString(false);
@@ -3162,7 +3162,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCoerceToString0006', 0, async (done: Function) => {
+    it('testCoerceToString0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCoerceToString0006 START');
       try {
         let value = napitest.coerceToString('123');
@@ -3184,7 +3184,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTypeOf0001', 0, async (done: Function) => {
+    it('testTypeOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testTypeOf0001 START');
       try {
         let value = napitest.typeOf('test');
@@ -3205,7 +3205,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTypeOf0002', 0, async (done: Function) => {
+    it('testTypeOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testTypeOf0002 START');
       try {
         let value = napitest.typeOfValueNull(null);
@@ -3226,7 +3226,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTypeOf0003', 0, async (done: Function) => {
+    it('testTypeOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testTypeOf0003 START');
       try {
         let value = napitest.typeOfRstNull(null);
@@ -3247,7 +3247,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testInstanceOf0001', 0, async (done: Function) => {
+    it('testInstanceOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testInstanceOf0001 START');
       try {
         let value = napitest.instanceOf();
@@ -3268,7 +3268,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testInstanceOf0003', 0, async (done: Function) => {
+    it('testInstanceOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testInstanceOf0003 START');
       try {
         let value = napitest.instanceOfObjectNull();
@@ -3289,7 +3289,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testInstanceOf0004', 0, async (done: Function) => {
+    it('testInstanceOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testInstanceOf0004 START');
       try {
         let value = napitest.instanceOfConstructorNull();
@@ -3310,7 +3310,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testInstanceOf0005', 0, async (done: Function) => {
+    it('testInstanceOf0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testInstanceOf0005 START');
       try {
         let value = napitest.instanceOfResultNull();
@@ -3331,7 +3331,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsArray0001', 0, async (done: Function) => {
+    it('testIsArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsArray0001 START');
       try {
         let value = napitest.isArray();
@@ -3352,7 +3352,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsArray0003', 0, async (done: Function) => {
+    it('testIsArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsArray0003 START');
       try {
         let value = napitest.isArrayValueNull(null);
@@ -3373,7 +3373,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsArray0004', 0, async (done: Function) => {
+    it('testIsArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsArray0004 START');
       try {
         let value = napitest.isArrayResultNull(null);
@@ -3394,7 +3394,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDataView0001', 0, async (done: Function) => {
+    it('testIsDataView0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDataView0001 START');
       try {
         let value = napitest.isDataView();
@@ -3417,7 +3417,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDataView0002', 0, async (done: Function) => {
+    it('testIsDataView0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDataView0002 START');
       try {
         let value = napitest.isDataViewValueNull();
@@ -3438,7 +3438,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDataView0003', 0, async (done: Function) => {
+    it('testIsDataView0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDataView0003 START');
       try {
         let value = napitest.isDataViewRstNull();
@@ -3459,7 +3459,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsArrayBuffer0001', 0, async (done: Function) => {
+    it('testIsArrayBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsArrayBuffer0001 START');
       try {
         let value = napitest.isArrayBuffer();
@@ -3480,7 +3480,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsArrayBuffer0002', 0, async (done: Function) => {
+    it('testIsArrayBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsArrayBuffer0002 START');
       try {
         let value = napitest.isArrayBufferValueNull();
@@ -3501,7 +3501,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsArrayBuffer0003', 0, async (done: Function) => {
+    it('testIsArrayBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsArrayBuffer0003 START');
       try {
         let value = napitest.isArrayBufferRstNull();
@@ -3522,7 +3522,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsTypedArray0001', 0, async (done: Function) => {
+    it('testIsTypedArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsTypedArray0001 START');
       try {
         let value = napitest.isTypedArray([123,456]);
@@ -3544,7 +3544,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsTypedArray0002', 0, async (done: Function) => {
+    it('testIsTypedArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsTypedArray0002 START');
       try {
         let value = napitest.isTypedArrayValueNull(null);
@@ -3565,7 +3565,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsTypedArray0003', 0, async (done: Function) => {
+    it('testIsTypedArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsTypedArray0003 START');
       try {
         let value = napitest.isTypedArrayRstNull(null);
@@ -3586,7 +3586,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDate0001', 0, async (done: Function) => {
+    it('testIsDate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDate0001 START');
       try {
         const date1 = new Date('December 17, 1995 03:24:00');
@@ -3608,7 +3608,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDate0002', 0, async (done: Function) => {
+    it('testIsDate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDate0002 START');
       try {
         const date1 = new Date('abc');
@@ -3630,7 +3630,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDate0003', 0, async (done: Function) => {
+    it('testIsDate0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDate0003 START');
       try {
         let value = napitest.isDateValueNull();
@@ -3651,7 +3651,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsDate0004', 0, async (done: Function) => {
+    it('testIsDate0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testIsDate0004 START');
       try {
         let value = napitest.isDateResultNull();
@@ -3672,7 +3672,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStrictEquals0001', 0, async (done: Function) => {
+    it('testStrictEquals0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testStrictEquals0001 START');
       try {
         let value = napitest.strictEquals();
@@ -3693,7 +3693,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStrictEquals0002', 0, async (done: Function) => {
+    it('testStrictEquals0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testStrictEquals0002 START');
       try {
         let value = napitest.strictEqualsFirstValueNull();
@@ -3714,7 +3714,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStrictEquals0003', 0, async (done: Function) => {
+    it('testStrictEquals0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testStrictEquals0003 START');
       try {
         let value = napitest.strictEqualsSecondValueNull();
@@ -3735,7 +3735,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStrictEquals0004', 0, async (done: Function) => {
+    it('testStrictEquals0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testStrictEquals0004 START');
       try {
         let value = napitest.strictEqualsNaN();
@@ -3756,7 +3756,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStrictEquals0004', 0, async (done: Function) => {
+    it('testStrictEquals0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testStrictEquals0004 START');
       try {
         let value = napitest.strictEqualsResultNull();
@@ -3777,7 +3777,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPropertyNames0001', 0, async (done: Function) => {
+    it('testGetPropertyNames0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPropertyNames0001 START');
       try {
         let value = napitest.getPropertyNames();
@@ -3798,7 +3798,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPropertyNames0002', 0, async (done: Function) => {
+    it('testGetPropertyNames0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPropertyNames0002 START');
       try {
         let value = napitest.getPropertyNamesObjectNull();
@@ -3819,7 +3819,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPropertyNames0003', 0, async (done: Function) => {
+    it('testGetPropertyNames0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPropertyNames0003 START');
       try {
         let value = napitest.getPropertyNamesResultNull();
@@ -3840,7 +3840,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetPropertyNames0004', 0, async (done: Function) => {
+    it('testGetPropertyNames0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetPropertyNames0004 START');
       try {
         let value = napitest.getPropertyNamesNotObject();
@@ -3861,7 +3861,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetProperty0001', 0, async (done: Function) => {
+    it('testSetProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetProperty0001 START');
       try {
         let value = napitest.setProperty();
@@ -3882,7 +3882,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetProperty0002', 0, async (done: Function) => {
+    it('testSetProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetProperty0002 START');
       try {
         let value = napitest.setPropertyValueNull();
@@ -3903,7 +3903,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetProperty0003', 0, async (done: Function) => {
+    it('testSetProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetProperty0003 START');
       try {
         let value = napitest.setPropertyResultNull();
@@ -3924,7 +3924,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetProperty0004', 0, async (done: Function) => {
+    it('testSetProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetProperty0004 START');
       try {
         let value = napitest.setPropertyNoObject();
@@ -3945,7 +3945,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetProperty0001', 0, async (done: Function) => {
+    it('testGetProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetProperty0001 START');
       try {
         let value = napitest.getProperty();
@@ -3966,7 +3966,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetProperty0002', 0, async (done: Function) => {
+    it('testGetProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetProperty0002 START');
       try {
         let value = napitest.getPropertyObjectNull();
@@ -3987,7 +3987,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetProperty0003', 0, async (done: Function) => {
+    it('testGetProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetProperty0003 START');
       try {
         let value = napitest.getPropertyKeyNull();
@@ -4008,7 +4008,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetProperty0004', 0, async (done: Function) => {
+    it('testGetProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetProperty0004 START');
       try {
         let value = napitest.getPropertyResultNull();
@@ -4029,7 +4029,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetProperty0005', 0, async (done: Function) => {
+    it('testGetProperty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetProperty0005 START');
       try {
         let value = napitest.getPropertyNotObject();
@@ -4050,7 +4050,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasProperty0001', 0, async (done: Function) => {
+    it('testHasProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasProperty0001 START');
       try {
         let value = napitest.hasProperty();
@@ -4073,7 +4073,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasProperty0003', 0, async (done: Function) => {
+    it('testHasProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasProperty0003 START');
       try {
         let value = napitest.hasPropertyKeyNull();
@@ -4094,7 +4094,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasProperty0004', 0, async (done: Function) => {
+    it('testHasProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasProperty0004 START');
       try {
         let value = napitest.hasPropertyResultNull();
@@ -4115,7 +4115,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteProperty0001', 0, async (done: Function) => {
+    it('testDeleteProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteProperty0001 START');
       try {
         let peop:Person = {
@@ -4140,7 +4140,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteProperty0002', 0, async (done: Function) => {
+    it('testDeleteProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteProperty0002 START');
       try {
         let peop:Person = {
@@ -4164,7 +4164,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteProperty0003', 0, async (done: Function) => {
+    it('testDeleteProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteProperty0003 START');
       try {
         let peop:Person = {
@@ -4189,7 +4189,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteProperty0004', 0, async (done: Function) => {
+    it('testDeleteProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteProperty0004 START');
       try {
         let peop:Person = {
@@ -4214,7 +4214,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasOwnProperty0001', 0, async (done: Function) => {
+    it('testHasOwnProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasOwnProperty0001 START');
       try {
         let peop:Person = {
@@ -4239,7 +4239,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasOwnProperty0002', 0, async (done: Function) => {
+    it('testHasOwnProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasOwnProperty0002 START');
       try {
         let peop:Person = {
@@ -4264,7 +4264,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasOwnProperty0003', 0, async (done: Function) => {
+    it('testHasOwnProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasOwnProperty0003 START');
       try {
         let peop:Person = {
@@ -4289,7 +4289,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasOwnProperty0004', 0, async (done: Function) => {
+    it('testHasOwnProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasOwnProperty0004 START');
       try {
         let peop:Person = {
@@ -4314,7 +4314,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasOwnProperty0005', 0, async (done: Function) => {
+    it('testHasOwnProperty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasOwnProperty0005 START');
       try {
         let peop:Person = {
@@ -4339,7 +4339,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetNamedProperty0001', 0, async (done: Function) => {
+    it('testSetNamedProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetNamedProperty0001 START');
       try {
         let value = napitest.setNamedProperty([1, 2], "e", false);
@@ -4360,7 +4360,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetNamedProperty0002', 0, async (done: Function) => {
+    it('testSetNamedProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetNamedProperty0002 START');
       try {
         let value = napitest.setNamedPropertyObjectNull([1, 2], "e", false);
@@ -4381,7 +4381,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetNamedProperty0003', 0, async (done: Function) => {
+    it('testSetNamedProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetNamedProperty0003 START');
       try {
         let value = napitest.setNamedPropertyKeyNull([1, 2], "e", false);
@@ -4402,7 +4402,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetNamedProperty0004', 0, async (done: Function) => {
+    it('testSetNamedProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetNamedProperty0004 START');
       try {
         let value = napitest.setNamedPropertyResultNull([1, 2], "e", false);
@@ -4423,7 +4423,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNamedProperty0001', 0, async (done: Function) => {
+    it('testGetNamedProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNamedProperty0001 START');
       try {
         let peop:Person = {
@@ -4448,7 +4448,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNamedProperty0002', 0, async (done: Function) => {
+    it('testGetNamedProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNamedProperty0002 START');
       try {
         let peop:Person = {
@@ -4473,7 +4473,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNamedProperty0004', 0, async (done: Function) => {
+    it('testGetNamedProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNamedProperty0004 START');
       try {
         let peop:Person = {
@@ -4498,7 +4498,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNamedProperty0005', 0, async (done: Function) => {
+    it('testGetNamedProperty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNamedProperty0005 START');
       try {
         let peop:Person = {
@@ -4523,7 +4523,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasNamedProperty0001', 0, async (done: Function) => {
+    it('testHasNamedProperty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasNamedProperty0001 START');
       try {
         let peop:Person = {
@@ -4548,7 +4548,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasNamedProperty0002', 0, async (done: Function) => {
+    it('testHasNamedProperty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasNamedProperty0002 START');
       try {
         let peop:Person = {
@@ -4573,7 +4573,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasNamedProperty0003', 0, async (done: Function) => {
+    it('testHasNamedProperty0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasNamedProperty0003 START');
       try {
         let peop:Person = {
@@ -4598,7 +4598,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasNamedProperty0004', 0, async (done: Function) => {
+    it('testHasNamedProperty0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasNamedProperty0004 START');
       try {
         let peop:Person = {
@@ -4623,7 +4623,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasNamedProperty0005', 0, async (done: Function) => {
+    it('testHasNamedProperty0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasNamedProperty0005 START');
       try {
         let peop:Person = {
@@ -4648,7 +4648,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetElement0001', 0, async (done: Function) => {
+    it('testSetElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetElement0001 START');
       try {
         let value = napitest.setElement();
@@ -4669,7 +4669,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetElement0002', 0, async (done: Function) => {
+    it('testSetElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetElement0002 START');
       try {
         let value = napitest.setElementObjectNull();
@@ -4690,7 +4690,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetElement0003', 0, async (done: Function) => {
+    it('testSetElement0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetElement0003 START');
       try {
         let value = napitest.setElementRstNull();
@@ -4711,7 +4711,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testSetElement0004', 0, async (done: Function) => {
+    it('testSetElement0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testSetElement0004 START');
       try {
         let value = napitest.setElementNotObj();
@@ -4731,7 +4731,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetElement0001', 0, async (done: Function) => {
+    it('testGetElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetElement0001 START');
       try {
         let value = napitest.getElement();
@@ -4752,7 +4752,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetElement0002', 0, async (done: Function) => {
+    it('testGetElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetElement0002 START');
       try {
         let value = napitest.getElementObjNull();
@@ -4773,7 +4773,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetElement0003', 0, async (done: Function) => {
+    it('testGetElement0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetElement0003 START');
       try {
         let value = napitest.getElementRstNull();
@@ -4794,7 +4794,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetElement0004', 0, async (done: Function) => {
+    it('testGetElement0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetElement0004 START');
       try {
         let value = napitest.getElementNotObj();
@@ -4815,7 +4815,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasElement0001', 0, async (done: Function) => {
+    it('testHasElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasElement0001 START');
       try {
         let value = napitest.hasElement();
@@ -4836,7 +4836,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasElement0002', 0, async (done: Function) => {
+    it('testHasElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasElement0002 START');
       try {
         let value = napitest.hasElementObjNull();
@@ -4857,7 +4857,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testHasElement0003', 0, async (done: Function) => {
+    it('testHasElement0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testHasElement0003 START');
       try {
         let value = napitest.hasElementRstNull();
@@ -4878,7 +4878,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteElement0001', 0, async (done: Function) => {
+    it('testDeleteElement0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteElement0001 START');
       try {
         let value = napitest.deleteElement();
@@ -4899,7 +4899,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteElement0002', 0, async (done: Function) => {
+    it('testDeleteElement0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteElement0002 START');
       try {
         let value = napitest.deleteElementObjNull();
@@ -4920,7 +4920,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteElement0003', 0, async (done: Function) => {
+    it('testDeleteElement0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteElement0003 START');
       try {
         let value = napitest.deleteElementRstNull();
@@ -4941,7 +4941,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineProperties0001', 0, async (done: Function) => {
+    it('testDefineProperties0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineProperties0001 START');
       try {
         let value = napitest.defineProperties();
@@ -4962,7 +4962,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineProperties0002', 0, async (done: Function) => {
+    it('testDefineProperties0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineProperties0002 START');
       try {
         let value = napitest.definePropertiesObjNull();
@@ -4983,7 +4983,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTypeTag0001', 0, async (done: Function) => {
+    it('testTypeTag0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testTypeTag0001 START');
       try {
         let obj1 = napitest.typeTaggedInstance(0);
@@ -5013,7 +5013,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTypeTag0002', 0, async (done: Function) => {
+    it('testTypeTag0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testTypeTag0002 START');
       try {
         let value = napitest.typeTaggedObjNull();
@@ -5034,7 +5034,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTypeTag0003', 0, async (done: Function) => {
+    it('testTypeTag0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testTypeTag0003 START');
       try {
         let value = napitest.typeTaggedTagNull('null');
@@ -5055,7 +5055,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCheckTypeTag0001', 0, async (done: Function) => {
+    it('testCheckTypeTag0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCheckTypeTag0001 START');
       try {
         let obj1 = napitest.typeTaggedInstance(0);
@@ -5081,7 +5081,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCheckTypeTag0002', 0, async (done: Function) => {
+    it('testCheckTypeTag0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCheckTypeTag0002 START');
       try {
         let value = napitest.CheckTypeTagObjNull(1,null);
@@ -5102,7 +5102,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCheckTypeTag0003', 0, async (done: Function) => {
+    it('testCheckTypeTag0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCheckTypeTag0003 START');
       try {
         let value = napitest.CheckTypeTagTagNull(1,null);
@@ -5123,7 +5123,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCheckTypeTag0004', 0, async (done: Function) => {
+    it('testCheckTypeTag0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCheckTypeTag0004 START');
       try {
         let value = napitest.CheckTypeTagRstNull(1,null);
@@ -5144,7 +5144,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCallFunction0001', 0, async (done: Function) => {
+    it('testCallFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCallFunction0001 START');
       try {
         let value = napitest.callFunctionNull(null);
@@ -5165,7 +5165,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateFunction0001', 0, async (done: Function) => {
+    it('testCreateFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateFunction0001 START');
       try {
         let value = napitest.napiCreateFunctionFuncNull();
@@ -5186,7 +5186,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateFunction0002', 0, async (done: Function) => {
+    it('testCreateFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateFunction0002 START');
       try {
         let value = napitest.napiCreateFunctionRstNull();
@@ -5207,7 +5207,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetCbInfo0001', 0, async (done: Function) => {
+    it('testGetCbInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetCbInfo0001 START');
       try {
         let value = napitest.napiGetCbInfo(12.06);
@@ -5228,7 +5228,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetCbInfo0002', 0, async (done: Function) => {
+    it('testGetCbInfo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetCbInfo0002 START');
       try {
         let value = napitest.napiGetCbInfoNull('null');
@@ -5249,7 +5249,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNewInstance0001', 0, async (done: Function) => {
+    it('testGetNewInstance0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNewInstance0001 START');
       try {
         let value = napitest.napiNewInstance();
@@ -5270,7 +5270,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNewInstance0002', 0, async (done: Function) => {
+    it('testGetNewInstance0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNewInstance0002 START');
       try {
         let value = napitest.newInstanceNull();
@@ -5291,7 +5291,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineClass0001', 0, async (done: Function) => {
+    it('testDefineClass0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineClass0001 START');
       try {
         let value = napitest.napiDefineClass();
@@ -5312,7 +5312,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineClass0002', 0, async (done: Function) => {
+    it('testDefineClass0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineClass0002 START');
       try {
         let value = napitest.defineClassUTFNull();
@@ -5333,7 +5333,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineClass0003', 0, async (done: Function) => {
+    it('testDefineClass0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineClass0003 START');
       try {
         let value = napitest.defineClassConstructorNull();
@@ -5354,7 +5354,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineClass0004', 0, async (done: Function) => {
+    it('testDefineClass0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineClass0004 START');
       try {
         let value = napitest.defineClassRstNull();
@@ -5375,7 +5375,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineClass0005', 0, async (done: Function) => {
+    it('testDefineClass0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineClass0005 START');
       try {
         let value = napitest.defineClassLengthExceed();
@@ -5396,7 +5396,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnwrap0001', 0, async (done: Function) => {
+    it('testUnwrap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testUnwrap0001 START');
       try {
         let value = napitest.unwrap();
@@ -5417,7 +5417,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnwrap0002', 0, async (done: Function) => {
+    it('testUnwrap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testUnwrap0002 START');
       try {
         let value = napitest.unwrapObjNull();
@@ -5438,7 +5438,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testUnwrap0003', 0, async (done: Function) => {
+    it('testUnwrap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testUnwrap0003 START');
       try {
         let value = napitest.unwrapRstNull();
@@ -5459,7 +5459,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrap0001', 0, async (done: Function) => {
+    it('testRemoveWrap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrap0001 START');
       try {
         let value = napitest.removeWrap();
@@ -5480,7 +5480,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrap0002', 0, async (done: Function) => {
+    it('testRemoveWrap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrap0002 START');
       try {
         let value = napitest.removeWrapObjNull(null);
@@ -5501,7 +5501,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrap0003', 0, async (done: Function) => {
+    it('testRemoveWrap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrap0003 START');
       try {
         let value = napitest.removeWrapRstNull(null);
@@ -5522,7 +5522,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCancelAsyncWork0001', 0, async (done: Function) => {
+    it('testCancelAsyncWork0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCancelAsyncWork0001 START');
       try {
         let value = napitest.napiCancelAsyncWork();
@@ -5543,7 +5543,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCancelAsyncWork0002', 0, async (done: Function) => {
+    it('testCancelAsyncWork0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCancelAsyncWork0002 START');
       try {
         let value = napitest.cancelAsyncWorkNull();
@@ -5564,7 +5564,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testQueueAsyncWork0001', 0, async (done: Function) => {
+    it('testQueueAsyncWork0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testQueueAsyncWork0001 START');
       try {
         let value = napitest.queueAsyncWork();
@@ -5585,7 +5585,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testQueueAsyncWork0002', 0, async (done: Function) => {
+    it('testQueueAsyncWork0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testQueueAsyncWork0002 START');
       try {
         let value = napitest.queueAsyncWorkNull();
@@ -5606,7 +5606,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteAsyncWork0001', 0, async (done: Function) => {
+    it('testDeleteAsyncWork0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteAsyncWork0001 START');
       try {
         let value = napitest.deleteAsyncWork();
@@ -5627,7 +5627,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDeleteAsyncWork0002', 0, async (done: Function) => {
+    it('testDeleteAsyncWork0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDeleteAsyncWork0002 START');
       try {
         let value = napitest.deleteAsyncWorkNull();
@@ -5648,7 +5648,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineSendableClass0002', 0, async (done: Function) => {
+    it('testDefineSendableClass0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineSendableClass0002 START');
       try {
         let value = napitest.defineSendableClassEnvNull();
@@ -5669,7 +5669,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineSendableClass0003', 0, async (done: Function) => {
+    it('testDefineSendableClass0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineSendableClass0003 START');
       try {
         let value = napitest.defineSendableClassNameNull();
@@ -5690,7 +5690,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineSendableClass0004', 0, async (done: Function) => {
+    it('testDefineSendableClass0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineSendableClass0004 START');
       try {
         let value = napitest.defineSendableClassConstructorNull();
@@ -5711,7 +5711,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDefineSendableClass0005', 0, async (done: Function) => {
+    it('testDefineSendableClass0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testDefineSendableClass0005 START');
       try {
         let value = napitest.defineSendableClassRstNull();
@@ -5732,7 +5732,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableObjectWithProperties0001', 0, async (done: Function) => {
+    it('testCreateSendableObjectWithProperties0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableObjectWithProperties0001 START');
       try {
         let value = napitest.createSendableObjectWithProperties();
@@ -5753,7 +5753,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableObjectWithProperties0002', 0, async (done: Function) => {
+    it('testCreateSendableObjectWithProperties0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableObjectWithProperties0002 START');
       try {
         let value = napitest.createSendableObjectWithPropertiesEnvNull();
@@ -5774,7 +5774,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableObjectWithProperties0003', 0, async (done: Function) => {
+    it('testCreateSendableObjectWithProperties0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableObjectWithProperties0003 START');
       try {
         let value = napitest.createSendableObjectWithPropertiesRstNull();
@@ -5795,7 +5795,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreateSendableArray0001', 0, async (done: Function) => {
+    it('testNapiCreateSendableArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testNapiCreateSendableArray0001 START');
       try {
         let value = napitest.NapiCreateSendableArray();
@@ -5817,7 +5817,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreateSendableArray0002', 0, async (done: Function) => {
+    it('testNapiCreateSendableArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testNapiCreateSendableArray0002 START');
       try {
         let value = napitest.createSendableArrayEnvNull();
@@ -5838,7 +5838,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreateSendableArray0003', 0, async (done: Function) => {
+    it('testNapiCreateSendableArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testNapiCreateSendableArray0003 START');
       try {
         let value = napitest.createSendableArrayRstNull();
@@ -5859,7 +5859,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableArrayWithLength0001', 0, async (done: Function) => {
+    it('testCreateSendableArrayWithLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableArrayWithLength0001 START');
       try {
         let value = napitest.NapiCreateSendableArrayWithLength();
@@ -5881,7 +5881,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableArrayWithLength0002', 0, async (done: Function) => {
+    it('testCreateSendableArrayWithLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableArrayWithLength0002 START');
       try {
         let value = napitest.createSendableArrayWithLengthEnvNull();
@@ -5902,7 +5902,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableArrayWithLength0003', 0, async (done: Function) => {
+    it('testCreateSendableArrayWithLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableArrayWithLength0003 START');
       try {
         let value = napitest.createSendableArrayWithLengthRstNull();
@@ -5923,7 +5923,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableArrayBuffer0001', 0, async (done: Function) => {
+    it('testCreateSendableArrayBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableArrayBuffer0001 START');
       try {
         let value = napitest.createSendableArrayBufferEnvNull();
@@ -5944,7 +5944,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableArrayBuffer0002', 0, async (done: Function) => {
+    it('testCreateSendableArrayBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableArrayBuffer0002 START');
       try {
         let value = napitest.createSendableArrayBufferDataNull();
@@ -5965,7 +5965,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableArrayBuffer0003', 0, async (done: Function) => {
+    it('testCreateSendableArrayBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableArrayBuffer0003 START');
       try {
         let value = napitest.createSendableArrayBufferRstNull();
@@ -5986,7 +5986,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0001', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0001 START');
       try {
         let value = napitest.NapiCreateSendableTypedArray();
@@ -6008,7 +6008,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0002', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0002 START');
       try {
         let value = napitest.createSendableTypedArrayEnvNull();
@@ -6029,7 +6029,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0003', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0003 START');
       try {
         let value = napitest.createSendableTypedArraRstNull();
@@ -6050,7 +6050,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0004', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0004 START');
       try {
         let value = napitest.createSendableTypedArraBufferNull();
@@ -6071,7 +6071,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0005', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0005 START');
       try {
         let value = napitest.createSendableTypedArrayNotBuffer();
@@ -6092,7 +6092,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0006', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0006 START');
       try {
         let value = napitest.createSendableFloat64ArrayTest();
@@ -6113,7 +6113,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0007', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0007 START');
       try {
         let value = napitest.createSendableBigInt64ArrayTest();
@@ -6134,7 +6134,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateSendableTypedArray0008', 0, async (done: Function) => {
+    it('testCreateSendableTypedArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateSendableTypedArray0008 START');
       try {
         let value = napitest.createSendableBigUint64ArrayTest();
@@ -6155,7 +6155,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendable0001', 0, async (done: Function) => {
+    it('testWrapSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendable0001 START');
       try {
         let value = napitest.napiWrapSendableTest();
@@ -6176,7 +6176,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendable0002', 0, async (done: Function) => {
+    it('testWrapSendable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendable0002 START');
       try {
         let peop:Person = {
@@ -6201,7 +6201,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendable0003', 0, async (done: Function) => {
+    it('testWrapSendable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendable0003 START');
       try {
         let peop:Person = {
@@ -6226,7 +6226,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendable0004', 0, async (done: Function) => {
+    it('testWrapSendable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendable0004 START');
       try {
         let peop:Person = {
@@ -6251,7 +6251,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendableWithSize0001', 0, async (done: Function) => {
+    it('testWrapSendableWithSize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendableWithSize0001 START');
       try {
         let value = napitest.napiWrapSendableWithSizeTest();
@@ -6272,7 +6272,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendableWithSize0002', 0, async (done: Function) => {
+    it('testWrapSendableWithSize0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendableWithSize0002 START');
       try {
         let peop:Person = {
@@ -6297,7 +6297,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendableWithSize0003', 0, async (done: Function) => {
+    it('testWrapSendableWithSize0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendableWithSize0003 START');
       try {
         let peop:Person = {
@@ -6322,7 +6322,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testWrapSendableWithSize0004', 0, async (done: Function) => {
+    it('testWrapSendableWithSize0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testWrapSendableWithSize0004 START');
       try {
         let peop:Person = {
@@ -6347,7 +6347,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrapSendable0001', 0, async (done: Function) => {
+    it('testRemoveWrapSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrapSendable0001 START');
       try {
         let peop:Person = {
@@ -6372,7 +6372,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrapSendable0002', 0, async (done: Function) => {
+    it('testRemoveWrapSendable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrapSendable0002 START');
       try {
         let peop:Person = {
@@ -6397,7 +6397,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrapSendable0003', 0, async (done: Function) => {
+    it('testRemoveWrapSendable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrapSendable0003 START');
       try {
         let peop:Person = {
@@ -6422,7 +6422,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testRemoveWrapSendable0004', 0, async (done: Function) => {
+    it('testRemoveWrapSendable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testRemoveWrapSendable0004 START');
       try {
         let peop:Person = {
@@ -6447,7 +6447,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNodeVersion0002', 0, async (done: Function) => {
+    it('testGetNodeVersion0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNodeVersion0002 START');
       try {
         let value = napitest.getNodeVersionEnvNull();
@@ -6468,7 +6468,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetNodeVersion0003', 0, async (done: Function) => {
+    it('testGetNodeVersion0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testGetNodeVersion0003 START');
       try {
         let value = napitest.getNodeVersionRstNull();
@@ -6489,7 +6489,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testReleaseThreadsafeFunction0001', 0, async (done: Function) => {
+    it('testReleaseThreadsafeFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testReleaseThreadsafeFunction0001 START');
       try {
         let value = napitest.releaseThreadsafeFunction();
@@ -6510,7 +6510,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testReleaseThreadsafeFunction0002', 0, async (done: Function) => {
+    it('testReleaseThreadsafeFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testReleaseThreadsafeFunction0002 START');
       try {
         let value = napitest.releaseThreadsafeFunctionNull();
@@ -6531,7 +6531,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateThreadsafeFunction0001', 0, async (done: Function) => {
+    it('testCreateThreadsafeFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateThreadsafeFunction0001 START');
       try {
         let value = napitest.createThreadsafeFunctionMaxQueueSizeNegative();
@@ -6552,7 +6552,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCreateThreadsafeFunction0002', 0, async (done: Function) => {
+    it('testCreateThreadsafeFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testCreateThreadsafeFunction0002 START');
       try {
         let value = napitest.createThreadsafeFunctionInitialThreadCountNegative();
@@ -6573,7 +6573,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiGetVersion0001', 0, async (done: Function) => {
+    it('testNapiGetVersion0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiGetVersion0001";
       console.info(`${TAG} START`);
       try {
@@ -6595,7 +6595,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiGetVersion0002', 0, async (done: Function) => {
+    it('testNapiGetVersion0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiGetVersion0002";
       console.info(`${TAG} START`);
       try {
@@ -6616,7 +6616,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiGetVersion0003', 0, async (done: Function) => {
+    it('testNapiGetVersion0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiGetVersion0003";
       console.info(`${TAG} START`);
       try {
@@ -6638,7 +6638,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreatePromise0001', 0, async (done: Function) => {
+    it('testNapiCreatePromise0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiCreatePromise0001";
       console.info(`${TAG} START`);
       try {
@@ -6660,7 +6660,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreatePromise0002', 0, async (done: Function) => {
+    it('testNapiCreatePromise0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiCreatePromise0002";
       console.info(`${TAG} START`);
       try {
@@ -6682,7 +6682,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreatePromise0003', 0, async (done: Function) => {
+    it('testNapiCreatePromise0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiCreatePromise0003";
       console.info(`${TAG} START`);
       try {
@@ -6704,7 +6704,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testNapiCreatePromise0004', 0, async (done: Function) => {
+    it('testNapiCreatePromise0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testNapiCreatePromise0004";
       console.info(`${TAG} START`);
       try {
@@ -6726,7 +6726,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResolveAndRejectDeferred0001', 0, async (done: Function) => {
+    it('testResolveAndRejectDeferred0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testResolveAndRejectDeferred0001";
       console.info(`${TAG} START`);
       try {
@@ -6748,7 +6748,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResolveDeferred0001', 0, async (done: Function) => {
+    it('testResolveDeferred0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testResolveDeferred0001";
       console.info(`${TAG} START`);
       try {
@@ -6770,7 +6770,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResolveDeferred0002', 0, async (done: Function) => {
+    it('testResolveDeferred0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testResolveDeferred0002";
       console.info(`${TAG} START`);
       try {
@@ -6792,7 +6792,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsPromise0001', 0, async (done: Function) => {
+    it('testIsPromise0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testIsPromise0001";
       console.info(`${TAG} START`);
       try {
@@ -6814,7 +6814,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsPromise0002', 0, async (done: Function) => {
+    it('testIsPromise0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testIsPromise0002";
       console.info(`${TAG} START`);
       try {
@@ -6836,7 +6836,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsPromise0003', 0, async (done: Function) => {
+    it('testIsPromise0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testIsPromise0003";
       console.info(`${TAG} START`);
       try {
@@ -6858,7 +6858,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testIsPromise0004', 0, async (done: Function) => {
+    it('testIsPromise0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testIsPromise0004";
       console.info(`${TAG} START`);
       try {
@@ -6880,7 +6880,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetUvEventLoop0001', 0, async (done: Function) => {
+    it('testGetUvEventLoop0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testGetUvEventLoop0001";
       console.info(`${TAG} START`);
       try {
@@ -6902,7 +6902,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetUvEventLoop0002', 0, async (done: Function) => {
+    it('testGetUvEventLoop0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testGetUvEventLoop0002";
       console.info(`${TAG} START`);
       try {
@@ -6924,7 +6924,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testGetUvEventLoop0003', 0, async (done: Function) => {
+    it('testGetUvEventLoop0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let TAG = "testGetUvEventLoop0003";
       console.info(`${TAG} START`);
       try {
@@ -6947,7 +6947,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateThreadsafeFunction0001', 0, async (done: Function) => {
+      it('testNapiCreateThreadsafeFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateThreadsafeFunction0001";
         console.info(`${TAG} START`);
         try {
@@ -6969,7 +6969,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateThreadsafeFunction0002', 0, async (done: Function) => {
+      it('testNapiCreateThreadsafeFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateThreadsafeFunction0002";
         console.info(`${TAG} START`);
         try {
@@ -6992,7 +6992,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateThreadsafeFunction0003', 0, async (done: Function) => {
+      it('testNapiCreateThreadsafeFunction0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateThreadsafeFunction0003";
         console.info(`${TAG} START`);
         try {
@@ -7014,7 +7014,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetThreadsafeFunctionContext0001', 0, async (done: Function) => {
+      it('testNapiGetThreadsafeFunctionContext0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetThreadsafeFunctionContext0001";
         console.info(`${TAG} START`);
         try {
@@ -7037,7 +7037,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetThreadsafeFunctionContext0002', 0, async (done: Function) => {
+      it('testNapiGetThreadsafeFunctionContext0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetThreadsafeFunctionContext0002";
         console.info(`${TAG} START`);
         try {
@@ -7061,7 +7061,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCallThreadsafeFunction0001', 0, async (done: Function) => {
+      it('testNapiCallThreadsafeFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCallThreadsafeFunction0001";
         console.info(`${TAG} START`);
         try {
@@ -7082,7 +7082,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCallThreadsafeFunction0002', 0, async (done: Function) => {
+      it('testNapiCallThreadsafeFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCallThreadsafeFunction0002";
         console.info(`${TAG} START`);
         try {
@@ -7104,7 +7104,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRefThreadsafeFunction0001', 0, async (done: Function) => {
+      it('testNapiRefThreadsafeFunction0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRefThreadsafeFunction0001";
         console.info(`${TAG} START`);
         try {
@@ -7125,7 +7125,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRefThreadsafeFunction0002', 0, async (done: Function) => {
+      it('testNapiRefThreadsafeFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRefThreadsafeFunction0002";
         console.info(`${TAG} START`);
         try {
@@ -7147,7 +7147,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRefThreadsafeFunction0003', 0, async (done: Function) => {
+      it('testNapiRefThreadsafeFunction0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRefThreadsafeFunction0003";
         console.info(`${TAG} START`);
         try {
@@ -7169,7 +7169,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateDate0001', 0, async (done: Function) => {
+      it('testNapiCreateDate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateDate0001";
         console.info(`${TAG} START`);
         try {
@@ -7190,7 +7190,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRefThreadsafeFunction0002', 0, async (done: Function) => {
+      it('testNapiRefThreadsafeFunction0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRefThreadsafeFunction0002";
         console.info(`${TAG} START`);
         try {
@@ -7212,7 +7212,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRefThreadsafeFunction0003', 0, async (done: Function) => {
+      it('testNapiRefThreadsafeFunction0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRefThreadsafeFunction0003";
         console.info(`${TAG} START`);
         try {
@@ -7234,7 +7234,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintUint640001', 0, async (done: Function) => {
+      it('testGetValueBigintUint640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintUint640001";
         console.info(`${TAG} START`);
         try {
@@ -7255,7 +7255,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintUint640002', 0, async (done: Function) => {
+      it('testGetValueBigintUint640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintUint640002";
         console.info(`${TAG} START`);
         try {
@@ -7277,7 +7277,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintUint640003', 0, async (done: Function) => {
+      it('testGetValueBigintUint640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintUint640003";
         console.info(`${TAG} START`);
         try {
@@ -7299,7 +7299,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintUint640004', 0, async (done: Function) => {
+      it('testGetValueBigintUint640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintUint640004";
         console.info(`${TAG} START`);
         try {
@@ -7321,7 +7321,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintUint640005', 0, async (done: Function) => {
+      it('testGetValueBigintUint640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintUint640005";
         console.info(`${TAG} START`);
         try {
@@ -7343,7 +7343,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintInt640001', 0, async (done: Function) => {
+      it('testGetValueBigintInt640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintInt640001";
         console.info(`${TAG} START`);
         try {
@@ -7364,7 +7364,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintInt640002', 0, async (done: Function) => {
+      it('testGetValueBigintInt640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintInt640002";
         console.info(`${TAG} START`);
         try {
@@ -7386,7 +7386,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintInt640003', 0, async (done: Function) => {
+      it('testGetValueBigintInt640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintInt640003";
         console.info(`${TAG} START`);
         try {
@@ -7408,7 +7408,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintInt640004', 0, async (done: Function) => {
+      it('testGetValueBigintInt640004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintInt640004";
         console.info(`${TAG} START`);
         try {
@@ -7430,7 +7430,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintInt640005', 0, async (done: Function) => {
+      it('testGetValueBigintInt640005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintInt640005";
         console.info(`${TAG} START`);
         try {
@@ -7452,7 +7452,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintWords0001', 0, async (done: Function) => {
+      it('testGetValueBigintWords0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintWords0001";
         console.info(`${TAG} START`);
         try {
@@ -7473,7 +7473,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintWords0002', 0, async (done: Function) => {
+      it('testGetValueBigintWords0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintWords0002";
         console.info(`${TAG} START`);
         try {
@@ -7495,7 +7495,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintWords0003', 0, async (done: Function) => {
+      it('testGetValueBigintWords0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintWords0003";
         console.info(`${TAG} START`);
         try {
@@ -7517,7 +7517,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintWords0004', 0, async (done: Function) => {
+      it('testGetValueBigintWords0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintWords0004";
         console.info(`${TAG} START`);
         try {
@@ -7539,7 +7539,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintWords0005', 0, async (done: Function) => {
+      it('testGetValueBigintWords0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintWords0005";
         console.info(`${TAG} START`);
         try {
@@ -7561,7 +7561,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBigintWords0006', 0, async (done: Function) => {
+      it('testGetValueBigintWords0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testGetValueBigintWords0006";
         console.info(`${TAG} START`);
         try {
@@ -7583,7 +7583,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintInt640001', 0, async (done: Function) => {
+      it('testNapiCreateBigintInt640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintInt640001";
         console.info(`${TAG} START`);
         try {
@@ -7604,7 +7604,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintInt640002', 0, async (done: Function) => {
+      it('testNapiCreateBigintInt640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintInt640002";
         console.info(`${TAG} START`);
         try {
@@ -7626,7 +7626,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintInt640003', 0, async (done: Function) => {
+      it('testNapiCreateBigintInt640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintInt640003";
         console.info(`${TAG} START`);
         try {
@@ -7648,7 +7648,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintUint640001', 0, async (done: Function) => {
+      it('testNapiCreateBigintUint640001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintUint640001";
         console.info(`${TAG} START`);
         try {
@@ -7670,7 +7670,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintUint640002', 0, async (done: Function) => {
+      it('testNapiCreateBigintUint640002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintUint640002";
         console.info(`${TAG} START`);
         try {
@@ -7692,7 +7692,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintUint640003', 0, async (done: Function) => {
+      it('testNapiCreateBigintUint640003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintUint640003";
         console.info(`${TAG} START`);
         try {
@@ -7714,7 +7714,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintWords0001', 0, async (done: Function) => {
+      it('testNapiCreateBigintWords0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintWords0001";
         console.info(`${TAG} START`);
         try {
@@ -7736,7 +7736,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintWords0002', 0, async (done: Function) => {
+      it('testNapiCreateBigintWords0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintWords0002";
         console.info(`${TAG} START`);
         try {
@@ -7758,7 +7758,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintWords0003', 0, async (done: Function) => {
+      it('testNapiCreateBigintWords0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintWords0003";
         console.info(`${TAG} START`);
         try {
@@ -7780,7 +7780,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBigintWords0004', 0, async (done: Function) => {
+      it('testNapiCreateBigintWords0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBigintWords0004";
         console.info(`${TAG} START`);
         try {
@@ -7802,7 +7802,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBuffer0001', 0, async (done: Function) => {
+      it('testNapiCreateBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBuffer0001";
         console.info(`${TAG} START`);
         try {
@@ -7824,7 +7824,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBuffer0002', 0, async (done: Function) => {
+      it('testNapiCreateBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBuffer0002";
         console.info(`${TAG} START`);
         try {
@@ -7846,7 +7846,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBuffer0003', 0, async (done: Function) => {
+      it('testNapiCreateBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBuffer0003";
         console.info(`${TAG} START`);
         try {
@@ -7868,7 +7868,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBuffer0004', 0, async (done: Function) => {
+      it('testNapiCreateBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBuffer0004";
         console.info(`${TAG} START`);
         try {
@@ -7890,7 +7890,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBufferCopy0001', 0, async (done: Function) => {
+      it('testNapiCreateBufferCopy0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBufferCopy0001";
         console.info(`${TAG} START`);
         try {
@@ -7910,7 +7910,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBufferCopy0002', 0, async (done: Function) => {
+      it('testNapiCreateBufferCopy0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBufferCopy0002";
         console.info(`${TAG} START`);
         try {
@@ -7932,7 +7932,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBufferCopy0003', 0, async (done: Function) => {
+      it('testNapiCreateBufferCopy0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBufferCopy0003";
         console.info(`${TAG} START`);
         try {
@@ -7954,7 +7954,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBufferCopy0004', 0, async (done: Function) => {
+      it('testNapiCreateBufferCopy0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBufferCopy0004";
         console.info(`${TAG} START`);
         try {
@@ -7976,7 +7976,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateBufferCopy0005', 0, async (done: Function) => {
+      it('testNapiCreateBufferCopy0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateBufferCopy0005";
         console.info(`${TAG} START`);
         try {
@@ -7999,7 +7999,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateExternalBuffer0001', 0, async (done: Function) => {
+      it('testNapiCreateExternalBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateExternalBuffer0001";
         console.info(`${TAG} START`);
         try {
@@ -8019,7 +8019,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateExternalBuffer0002', 0, async (done: Function) => {
+      it('testNapiCreateExternalBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateExternalBuffer0002";
         console.info(`${TAG} START`);
         try {
@@ -8041,7 +8041,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateExternalBuffer0003', 0, async (done: Function) => {
+      it('testNapiCreateExternalBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateExternalBuffer0003";
         console.info(`${TAG} START`);
         try {
@@ -8063,7 +8063,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetBufferInfo0001', 0, async (done: Function) => {
+      it('testNapiGetBufferInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetBufferInfo0001";
         console.info(`${TAG} START`);
         try {
@@ -8084,7 +8084,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetBufferInfo0002', 0, async (done: Function) => {
+      it('testNapiGetBufferInfo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetBufferInfo0002";
         console.info(`${TAG} START`);
         try {
@@ -8106,7 +8106,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetBufferInfo0003', 0, async (done: Function) => {
+      it('testNapiGetBufferInfo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetBufferInfo0003";
         console.info(`${TAG} START`);
         try {
@@ -8128,7 +8128,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsBuffer0001', 0, async (done: Function) => {
+      it('testNapiIsBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsBuffer0001";
         console.info(`${TAG} START`);
         try {
@@ -8149,7 +8149,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsBuffer0002', 0, async (done: Function) => {
+      it('testNapiIsBuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsBuffer0002";
         console.info(`${TAG} START`);
         try {
@@ -8171,7 +8171,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsBuffer0003', 0, async (done: Function) => {
+      it('testNapiIsBuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsBuffer0003";
         console.info(`${TAG} START`);
         try {
@@ -8193,7 +8193,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsBuffer0004', 0, async (done: Function) => {
+      it('testNapiIsBuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsBuffer0004";
         console.info(`${TAG} START`);
         try {
@@ -8215,7 +8215,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiObjectFreeze0001', 0, async (done: Function) => {
+      it('testNapiObjectFreeze0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiObjectFreeze0001";
         console.info(`${TAG} START`);
         try {
@@ -8237,7 +8237,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiObjectFreeze0002', 0, async (done: Function) => {
+      it('testNapiObjectFreeze0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiObjectFreeze0002";
         console.info(`${TAG} START`);
         try {
@@ -8259,7 +8259,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiObjectSeal0001', 0, async (done: Function) => {
+      it('testNapiObjectSeal0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiObjectSeal0001";
         console.info(`${TAG} START`);
         try {
@@ -8281,7 +8281,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiObjectSeal0002', 0, async (done: Function) => {
+      it('testNapiObjectSeal0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiObjectSeal0002";
         console.info(`${TAG} START`);
         try {
@@ -8303,7 +8303,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetAllPropertyNames0001', 0, async (done: Function) => {
+      it('testNapiGetAllPropertyNames0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetAllPropertyNames0001";
         console.info(`${TAG} START`);
         try {
@@ -8325,7 +8325,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetAllPropertyNames0002', 0, async (done: Function) => {
+      it('testNapiGetAllPropertyNames0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetAllPropertyNames0002";
         console.info(`${TAG} START`);
         try {
@@ -8347,7 +8347,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetAllPropertyNames0003', 0, async (done: Function) => {
+      it('testNapiGetAllPropertyNames0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetAllPropertyNames0003";
         console.info(`${TAG} START`);
         try {
@@ -8369,7 +8369,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDetachArraybuffer0001', 0, async (done: Function) => {
+      it('testNapiDetachArraybuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiDetachArraybuffer0001";
         console.info(`${TAG} START`);
         try {
@@ -8392,7 +8392,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDetachArraybuffer0002', 0, async (done: Function) => {
+      it('testNapiDetachArraybuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiDetachArraybuffer0002";
         console.info(`${TAG} START`);
         try {
@@ -8414,7 +8414,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDetachArraybuffer0003', 0, async (done: Function) => {
+      it('testNapiDetachArraybuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiDetachArraybuffer0003";
         console.info(`${TAG} START`);
         try {
@@ -8436,7 +8436,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsDetachedArraybuffer0001', 0, async (done: Function) => {
+      it('testNapiIsDetachedArraybuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsDetachedArraybuffer0001";
         console.info(`${TAG} START`);
         try {
@@ -8461,7 +8461,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsDetachedArraybuffer0002', 0, async (done: Function) => {
+      it('testNapiIsDetachedArraybuffer0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsDetachedArraybuffer0002";
         console.info(`${TAG} START`);
         try {
@@ -8484,7 +8484,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsDetachedArraybuffer0003', 0, async (done: Function) => {
+      it('testNapiIsDetachedArraybuffer0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsDetachedArraybuffer0003";
         console.info(`${TAG} START`);
         try {
@@ -8507,7 +8507,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiIsDetachedArraybuffer0004', 0, async (done: Function) => {
+      it('testNapiIsDetachedArraybuffer0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiIsDetachedArraybuffer0004";
         console.info(`${TAG} START`);
         try {
@@ -8530,7 +8530,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiSetInstanceData0001', 0, async (done: Function) => {
+      it('testNapiSetInstanceData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiSetInstanceData0001";
         console.info(`${TAG} START`);
         try {
@@ -8552,7 +8552,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiSetInstanceData0002', 0, async (done: Function) => {
+      it('testNapiSetInstanceData0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiSetInstanceData0002";
         console.info(`${TAG} START`);
         try {
@@ -8574,7 +8574,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiGetInstanceData0001', 0, async (done: Function) => {
+      it('testNapiGetInstanceData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiGetInstanceData0001";
         console.info(`${TAG} START`);
         try {
@@ -8596,7 +8596,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiAddEnvCleanupHook0001', 0, async (done: Function) => {
+      it('testNapiAddEnvCleanupHook0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiAddEnvCleanupHook0001";
         console.info(`${TAG} START`);
         try {
@@ -8617,7 +8617,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiAddEnvCleanupHook0002', 0, async (done: Function) => {
+      it('testNapiAddEnvCleanupHook0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiAddEnvCleanupHook0002";
         console.info(`${TAG} START`);
         try {
@@ -8639,7 +8639,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiAddEnvCleanupHook0003', 0, async (done: Function) => {
+      it('testNapiAddEnvCleanupHook0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiAddEnvCleanupHook0003";
         console.info(`${TAG} START`);
         try {
@@ -8661,7 +8661,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRemoveEnvCleanupHook0001', 0, async (done: Function) => {
+      it('testNapiRemoveEnvCleanupHook0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRemoveEnvCleanupHook0001";
         console.info(`${TAG} START`);
         try {
@@ -8683,7 +8683,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRemoveEnvCleanupHook0002', 0, async (done: Function) => {
+      it('testNapiRemoveEnvCleanupHook0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRemoveEnvCleanupHook0002";
         console.info(`${TAG} START`);
         try {
@@ -8705,7 +8705,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiApiGetModuleFileName0001', 0, async (done: Function) => {
+      it('testNapiApiGetModuleFileName0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiApiGetModuleFileName0001";
         console.info(`${TAG} START`);
         try {
@@ -8727,7 +8727,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiApiGetModuleFileName0002', 0, async (done: Function) => {
+      it('testNapiApiGetModuleFileName0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiApiGetModuleFileName0002";
         console.info(`${TAG} START`);
         try {
@@ -8749,7 +8749,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiApiGetModuleFileName0003', 0, async (done: Function) => {
+      it('testNapiApiGetModuleFileName0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiApiGetModuleFileName0003";
         console.info(`${TAG} START`);
         try {
@@ -8771,7 +8771,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiAddFinalizer0001', 0, async (done: Function) => {
+      it('testNapiAddFinalizer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiAddFinalizer0001";
         console.info(`${TAG} START`);
         try {
@@ -8794,7 +8794,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiQueueAsyncWorkWithQos0001', 0, async (done: Function) => {
+      it('testNapiQueueAsyncWorkWithQos0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiQueueAsyncWorkWithQos0001";
         console.info(`${TAG} START`);
         try {
@@ -8818,7 +8818,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiQueueAsyncWorkWithQos0002', 0, async (done: Function) => {
+      it('testNapiQueueAsyncWorkWithQos0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiQueueAsyncWorkWithQos0002";
         console.info(`${TAG} START`);
         try {
@@ -8840,7 +8840,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiQueueAsyncWorkWithQos0003', 0, async (done: Function) => {
+      it('testNapiQueueAsyncWorkWithQos0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiQueueAsyncWorkWithQos0003";
         console.info(`${TAG} START`);
         try {
@@ -8862,7 +8862,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRunScriptPath0001', 0, async (done: Function) => {
+      it('testNapiRunScriptPath0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRunScriptPath0001";
         console.info(`${TAG} START`);
         try {
@@ -8884,7 +8884,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiRunScriptPath0002', 0, async (done: Function) => {
+      it('testNapiRunScriptPath0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiRunScriptPath0002";
         console.info(`${TAG} START`);
         try {
@@ -8906,7 +8906,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiLoadModule0001', 0, async (done: Function) => {
+      it('testNapiLoadModule0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiLoadModule0001";
         console.info(`${TAG} START`);
         try {
@@ -8927,7 +8927,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiLoadModule0002', 0, async (done: Function) => {
+      it('testNapiLoadModule0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiLoadModule0002";
         console.info(`${TAG} START`);
         try {
@@ -8949,7 +8949,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiLoadModule0003', 0, async (done: Function) => {
+      it('testNapiLoadModule0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiLoadModule0003";
         console.info(`${TAG} START`);
         try {
@@ -8971,7 +8971,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateObjectWithProperties0001', 0, async (done: Function) => {
+      it('testNapiCreateObjectWithProperties0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateObjectWithProperties0001";
         console.info(`${TAG} START`);
         try {
@@ -8992,7 +8992,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiCreateObjectWithProperties0002', 0, async (done: Function) => {
+      it('testNapiCreateObjectWithProperties0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         let TAG = "testNapiCreateObjectWithProperties0002";
         console.info(`${TAG} START`);
         try {
@@ -9014,7 +9014,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetDateValue0001', 0, async (done: Function) => {
+      it('testGetDateValue0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetDateValue0001 START');
         try {
           let value = napitest.getDateValue();
@@ -9035,7 +9035,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetDateValue0002', 0, async (done: Function) => {
+      it('testGetDateValue0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetDateValue0002 START');
         try {
           let value = napitest.getDateValueNotDateObj();
@@ -9056,7 +9056,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetDateValue0003', 0, async (done: Function) => {
+      it('testGetDateValue0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetDateValue0003 START');
         try {
           let value = napitest.getDateValueEnvNull();
@@ -9077,7 +9077,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetDateValue0004', 0, async (done: Function) => {
+      it('testGetDateValue0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetDateValue0004 START');
         try {
           let value = napitest.getDateValueNull();
@@ -9098,7 +9098,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetDateValue0005', 0, async (done: Function) => {
+      it('testGetDateValue0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetDateValue0005 START');
         try {
           let value = napitest.getDateValueRstNull();
@@ -9119,7 +9119,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateBigintWords0001', 0, async (done: Function) => {
+      it('testCreateBigintWords0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateBigintWords0001 START');
         try {
           let value = napitest.createBigintWordsCountIntMax();
@@ -9140,7 +9140,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateBigintInt64ValueNotJS0001', 0, async (done: Function) => {
+      it('testCreateBigintInt64ValueNotJS0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateBigintInt64ValueNotJS0001 START');
         try {
           let value = napitest.createBigintInt64ValueNotJS();
@@ -9161,7 +9161,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateBigintUint64ValueNotJS0001', 0, async (done: Function) => {
+      it('testCreateBigintUint64ValueNotJS0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateBigintUint64ValueNotJS0001 START');
         try {
           let value = napitest.createBigintUint64ValueNotJS();
@@ -9182,7 +9182,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetValueBiginWords0001', 0, async (done: Function) => {
+      it('testGetValueBiginWords0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetValueBiginWords0001 START');
         try {
           let value = napitest.getValueBiginWordsNotBigInt();
@@ -9203,7 +9203,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateBufferSizeZero0001', 0, async (done: Function) => {
+      it('testCreateBufferSizeZero0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateBufferSizeZero0001 START');
         try {
           let value = napitest.createBufferSizeZero();
@@ -9225,7 +9225,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateBufferCopyLengthMax0001', 0, async (done: Function) => {
+      it('testCreateBufferCopyLengthMax0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateBufferCopyLengthMax0001 START');
         try {
           let value = napitest.createBufferSizeZero();
@@ -9246,7 +9246,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateBufferCopyLengthZero0001', 0, async (done: Function) => {
+      it('testCreateBufferCopyLengthZero0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateBufferCopyLengthZero0001 START');
         try {
           let value = napitest.createBufferCopyLengthZero();
@@ -9267,7 +9267,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateExternalBufferLengthZero0001', 0, async (done: Function) => {
+      it('testCreateExternalBufferLengthZero0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateExternalBufferLengthZero0001 START');
         try {
           let value = napitest.createExternalBufferLengthZero();
@@ -9288,7 +9288,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateExternalBufferLengthMax0001', 0, async (done: Function) => {
+      it('testCreateExternalBufferLengthMax0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateExternalBufferLengthMax0001 START');
         try {
           let value = napitest.createExternalBufferLengthMax();
@@ -9310,7 +9310,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testGetBufferInfoValueNotBuffer0001', 0, async (done: Function) => {
+      it('testGetBufferInfoValueNotBuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testGetBufferInfoValueNotBuffer0001 START');
         try {
           let value = napitest.getBufferInfoValueNotBuffer('test');
@@ -9331,7 +9331,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testObjectSeal0001', 0, async (done: Function) => {
+      it('testObjectSeal0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testObjectSeal0001 START');
         try {
           let value = napitest.objectSealNotObj();
@@ -9352,7 +9352,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testObjectFreeze0001', 0, async (done: Function) => {
+      it('testObjectFreeze0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testObjectFreeze0001 START');
         try {
           let value = napitest.objectFreezeNotObj();
@@ -9373,7 +9373,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testDetachArraybuffer0001', 0, async (done: Function) => {
+      it('testDetachArraybuffer0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testDetachArraybuffer0001 START');
         try {
           let value = napitest.detachArraybufferNotObj(null);
@@ -9394,7 +9394,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testIsSendable0001', 0, async (done: Function) => {
+      it('testIsSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testIsSendable0001 START');
         try {
           let test = [1,2];
@@ -9416,7 +9416,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testIsSendable0002', 0, async (done: Function) => {
+      it('testIsSendable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testIsSendable0002 START');
         try {
           let test = [1,2];
@@ -9438,7 +9438,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testIsSendable0003', 0, async (done: Function) => {
+      it('testIsSendable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testIsSendable0003 START');
         try {
           let test = [1,2];
@@ -9460,7 +9460,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testIsSendable0004', 0, async (done: Function) => {
+      it('testIsSendable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testIsSendable0004 START');
         try {
           let peop:Person = {
@@ -9485,7 +9485,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDeserialize0001', 0, async (done: Function) => {
+      it('testNapiDeserialize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiDeserialize0001 START');
         try {
           let value = napitest.napiDeSerialize();
@@ -9506,7 +9506,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDeserialize0002', 0, async (done: Function) => {
+      it('testNapiDeserialize0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiDeserialize0002 START');
         try {
           let value = napitest.deserializeEnvNull();
@@ -9527,7 +9527,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDeserialize0003', 0, async (done: Function) => {
+      it('testNapiDeserialize0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiDeserialize0003 START');
         try {
           let value = napitest.deserializeDataNull();
@@ -9548,7 +9548,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiDeserialize0004', 0, async (done: Function) => {
+      it('testNapiDeserialize0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiDeserialize0004 START');
         try {
           let value = napitest.deserializeRstNull();
@@ -9569,7 +9569,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiSerialize0001', 0, async (done: Function) => {
+      it('testNapiSerialize0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiSerialize0001 START');
         try {
           let value = napitest.napiSerialize();
@@ -9590,7 +9590,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiSerialize0002', 0, async (done: Function) => {
+      it('testNapiSerialize0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiSerialize0002 START');
         try {
           let value = napitest.serializeEnvNull();
@@ -9611,7 +9611,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiSerialize0003', 0, async (done: Function) => {
+      it('testNapiSerialize0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiSerialize0003 START');
         try {
           let value = napitest.serializeObjNull();
@@ -9632,7 +9632,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testNapiSerialize0004', 0, async (done: Function) => {
+      it('testNapiSerialize0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testNapiSerialize0004 START');
         try {
           let value = napitest.serializeDataNull();
@@ -9653,7 +9653,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateObjectWithNamedProperties0001', 0, async (done: Function) => {
+      it('testCreateObjectWithNamedProperties0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateObjectWithNamedProperties0001 START');
         try {
           let value = napitest.createObjectWithNamedProperties();
@@ -9674,7 +9674,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCreateObjectWithNamedProperties0002', 0, async (done: Function) => {
+      it('testCreateObjectWithNamedProperties0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCreateObjectWithNamedProperties0002 START');
         try {
           let value = napitest.createObjectWithNamePropertiesEnvNull();
@@ -9695,7 +9695,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCoerceToNativeBindingObject0001', 0, async (done: Function) => {
+      it('testCoerceToNativeBindingObject0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCoerceToNativeBindingObject0001 START');
         try {
           let value = napitest.coerceToNativeBindingObjectEnvNull(null);
@@ -9716,7 +9716,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCoerceToNativeBindingObject0002', 0, async (done: Function) => {
+      it('testCoerceToNativeBindingObject0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCoerceToNativeBindingObject0002 START');
         try {
           let test = [1,2];
@@ -9738,7 +9738,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCoerceToNativeBindingObject0003', 0, async (done: Function) => {
+      it('testCoerceToNativeBindingObject0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCoerceToNativeBindingObject0003 START');
         try {
           let test = [1,2];
@@ -9760,7 +9760,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCoerceToNativeBindingObject0004', 0, async (done: Function) => {
+      it('testCoerceToNativeBindingObject0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCoerceToNativeBindingObject0004 START');
         try {
           let test = [1,2];
@@ -9782,7 +9782,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testCoerceToNativeBindingObject0005', 0, async (done: Function) => {
+      it('testCoerceToNativeBindingObject0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testCoerceToNativeBindingObject0005 START');
         try {
           let test = [1,2];
@@ -9804,7 +9804,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testDeleteSerializationData0001', 0, async (done: Function) => {
+      it('testDeleteSerializationData0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testDeleteSerializationData0001 START');
         try {
           let value = napitest.napiDeleteSerializationData();
@@ -9825,7 +9825,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testDeleteSerializationData0002', 0, async (done: Function) => {
+      it('testDeleteSerializationData0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testDeleteSerializationData0002 START');
         try {
           let value = napitest.deleteSerializationEnvNull();
@@ -9846,7 +9846,7 @@ export default function napiApiTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-      it('testDeleteSerializationData0003', 0, async (done: Function) => {
+      it('testDeleteSerializationData0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
         console.info('testDeleteSerializationData0003 START');
         try {
           let value = napitest.deleteSerializationDataNull();
@@ -9867,7 +9867,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testhasOwnPropertyCheckpro0100', 0, async (done: Function) => {
+    it('testhasOwnPropertyCheckpro0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testhasOwnPropertyCheckpro0100 START');
       try {
         let value = napitest.hasOwnPropertyCheckpro();
@@ -9888,7 +9888,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testhasOwnPropertyCheckOwnpro0200', 0, async (done: Function) => {
+    it('testhasOwnPropertyCheckOwnpro0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testhasOwnPropertyCheckOwnpro0200 START');
       try {
         let value = napitest.hasOwnPropertyCheckOwnpro();
@@ -9909,7 +9909,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testcreateTypeErrorRes0100', 0, async (done: Function) => {
+    it('testcreateTypeErrorRes0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testcreateTypeErrorRes0100 START');
       try {
         throw napitest.createTypeErrorRes();
@@ -9928,7 +9928,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testcreateTypeErrorRes0200', 0, async (done: Function) => {
+    it('testcreateTypeErrorRes0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testcreateTypeErrorRes0200 START');
       try {
         throw napitest.createTypeErrorRes();
@@ -9947,7 +9947,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testcreateRangeErrorRes0100', 0, async (done: Function) => {
+    it('testcreateRangeErrorRes0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testcreateRangeErrorRes0100 START');
       try {
         throw napitest.createRangeErrorRes();
@@ -9966,7 +9966,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testcreateRangeErrorRes0200', 0, async (done: Function) => {
+    it('testcreateRangeErrorRes0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('testcreateRangeErrorRes0200 START');
       try {
         throw napitest.createRangeErrorRes();

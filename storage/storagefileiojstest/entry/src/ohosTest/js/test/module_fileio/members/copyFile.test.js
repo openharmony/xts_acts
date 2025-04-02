@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioCopyfile() {
 describe('fileio_copyfile', function () {
@@ -30,7 +31,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_sync_000', 0, async function () {
+  it('fileio_copy_file_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_copy_file_sync_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -55,7 +56,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_sync_001', 0, async function () {
+  it('fileio_copy_file_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_copy_file_sync_001');
     let fpathTarget = fpath + 'tgt';
     let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -81,7 +82,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_sync_002', 0, async function () {
+  it('fileio_copy_file_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_copy_file_sync_002');
     let fpathTarget = fpath + 'tgt';
 
@@ -102,7 +103,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_sync_003', 0, function () {
+  it('fileio_copy_file_sync_003', Level.LEVEL0, function () {
     try {
       fileio.copyFileSync();
     } catch (e) {
@@ -120,7 +121,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_copy_file_sync_004', 3, async function () {
+  it('fileio_copy_file_sync_004', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileio_copy_file_sync_004');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -147,7 +148,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_000', 0, async function (done) {
+  it('fileio_copy_file_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_000');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -173,7 +174,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_001', 0, async function (done) {
+  it('fileio_copy_file_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_001');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -200,7 +201,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_002', 0, async function (done) {
+  it('fileio_copy_file_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_002');
     let fpathTarget = fpath + 'tgt';
     let fd = fileio.openSync(fpath, 0o102, 0o666);
@@ -227,7 +228,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_003', 0, async function (done) {
+  it('fileio_copy_file_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_003');
     let fpathTarget = fpath + 'tgt';
     try {
@@ -248,7 +249,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_004', 0, async function (done) {
+  it('fileio_copy_file_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_004');
     try {
       await fileio.copyFile(-1, fpath);
@@ -268,7 +269,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_005', 0, async function (done) {
+  it('fileio_copy_file_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_005');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -293,7 +294,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_copy_file_async_006', 0, async function (done) {
+  it('fileio_copy_file_async_006', Level.LEVEL0, async function (done) {
     try {
       await fileio.copyFile();
     } catch (e) {
@@ -313,7 +314,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_copy_file_async_007', 3, async function (done) {
+  it('fileio_copy_file_async_007', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_007');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -342,7 +343,7 @@ describe('fileio_copyfile', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_copy_file_async_008', 3, async function (done) {
+  it('fileio_copy_file_async_008', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_008');
     let fpathTarget = fpath + 'tgt';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();

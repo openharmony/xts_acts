@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect, beforeEach, afterEach } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect, beforeEach, afterEach , Level, Size, TestType} from '@ohos/hypium';
 import netSocket from '@ohos.net.socket';
 import socket from '@ohos.net.socket';
 import { BusinessError, Callback, ErrorCallback } from '@ohos.base';
@@ -198,7 +198,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAdrressTest0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAdrressTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0100';
       console.info(`${caseName}---Start`);
       let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
@@ -237,7 +237,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0200';
       console.info(`${caseName} test start`);
       let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
@@ -276,7 +276,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0300';
       console.info(`${caseName} test start`);
       try {
@@ -329,7 +329,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0400';
       console.info(`${caseName} test start`);
       try {
@@ -376,7 +376,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0500';
       console.info(`${caseName} test start`);
       try {
@@ -437,7 +437,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0600';
       console.info(`${caseName} test start`);
       try {
@@ -475,7 +475,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0700';
       console.info(`${caseName} test start`);
       try {
@@ -512,7 +512,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0800';
       console.info(`${caseName} test start`);
       try {
@@ -548,7 +548,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest0900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0900';
       console.info(`${caseName} test start`);
       try {
@@ -584,7 +584,7 @@ export default function SocketGetLocalSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketGetLocalAddressTest1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketGetLocalAddressTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest1000';
       console.info(`${caseName} test start`);
       try {

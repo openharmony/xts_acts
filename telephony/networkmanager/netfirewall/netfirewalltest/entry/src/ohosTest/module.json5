@@ -24,9 +24,12 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
-    "requestPermissions": [
+   "requestPermissions": [
       {
         "name": "ohos.permission.GET_NET_FIREWALL"
+      },
+      {
+        "name": "ohos.permission.MANAGE_NET_FIREWALL"
       }
     ],
     "abilities": [
@@ -54,3 +57,4 @@
     ]
   }
 }
+

@@ -11,12 +11,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
+ */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
@@ -102,7 +99,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0002', 0, async function (done) {
+    it('testRdbStoreDistributed0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed002 start *************");
         try {
             await rdbStore.setDistributedTables([])
@@ -124,7 +121,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0003', 0, async function (done) {
+    it('testRdbStoreDistributed0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed003 start *************");
         try {
             await rdbStore.setDistributedTables(['employee'])
@@ -146,7 +143,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0004', 0, async function (done) {
+    it('testRdbStoreDistributed0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed004 start *************");
         try {
             await rdbStore.setDistributedTables(['employee', 'product'])
@@ -168,7 +165,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0005', 0, async function (done) {
+    it('testRdbStoreDistributed0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed005 start *************");
         const record = {
             "name": "Jim",
@@ -194,7 +191,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0006', 0, async function (done) {
+    it('testRdbStoreDistributed0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed006 start *************");
         const record = {
             "name": "Jim",
@@ -227,7 +224,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0007', 0, async function (done) {
+    it('testRdbStoreDistributed0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0007 start *************");
         try {
             let predicates = new dataRdb.RdbPredicates("employee")
@@ -264,7 +261,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0008', 0, async function (done) {
+    it('testRdbStoreDistributed0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0008 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
@@ -287,7 +284,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0009', 0, async function (done) {
+    it('testRdbStoreDistributed0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0009 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
@@ -311,7 +308,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0010', 0, async function (done) {
+    it('testRdbStoreDistributed0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0010 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
@@ -334,7 +331,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0011', 0, async function (done) {
+    it('testRdbStoreDistributed0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0011 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         let pr = predicates.inDevices(['12345678abcd']);
@@ -363,7 +360,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributedCallback0011', 0, async function (done) {
+    it('testRdbStoreDistributedCallback0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributedCallback0011 start *************");
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -397,7 +394,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('testRdbStoreDistributed0012', 0, async function (done) {
+     it('testRdbStoreDistributed0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0012 start *************");
         try{
             rdbStore.on("dataChange", dataRdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
@@ -418,7 +415,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('testRdbStoreDistributed0013', 0, function (done) {
+     it('testRdbStoreDistributed0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0013 start *************");
         try{
             rdbStore.off("dataChange", dataRdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
@@ -439,7 +436,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreDistributed0014', 0, async function (done){
+    it('testRdbStoreDistributed0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
         let errInfo = undefined;
         try{
             rdbStore.obtainDistributedTableName(["deviceId"], "EMPLOYEE", function (err, tableName) {
@@ -461,7 +458,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('testRdbStoreDistributed0015',0,async function (done){
+     it('testRdbStoreDistributed0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done){
         await dataRdb.deleteRdbStore(STORE_NAME);
         const config = {
             "name": STORE_NAME,

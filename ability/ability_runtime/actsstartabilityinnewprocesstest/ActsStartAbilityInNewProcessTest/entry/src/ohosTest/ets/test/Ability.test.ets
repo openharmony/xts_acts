@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import Want from '@ohos.app.ability.Want';
@@ -207,7 +207,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0400',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0400', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0400]';
       expect(contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT).assertEqual(1);
       expect(contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM).assertEqual(2);
@@ -241,7 +241,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0500',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0500', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0500]';
       if (functionEnable === 'true') {
         expectErrorCode = 401;
@@ -270,7 +270,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0700',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0700', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0700]';
       if (functionEnable === 'true') {
         expectErrorCode = 16300003;
@@ -300,7 +300,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0900',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0900', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_0900]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -338,7 +338,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1000',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1000', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1000]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -374,7 +374,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1800',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1800', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1800]';
       if (functionEnable !== 'true') {
         expectErrorCode = 801;
@@ -399,7 +399,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1900',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1900', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_1900]';
       if (functionEnable !== 'true') {
         expectErrorCode = 0;
@@ -430,7 +430,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2000',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2000', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2000]';
       if (functionEnable !== 'true') {
         expectErrorCode = 0;
@@ -461,7 +461,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2100',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2100', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2100]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -524,7 +524,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2200',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2200', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2200]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -587,7 +587,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2400',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2400', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2400]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -651,7 +651,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2500',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2500', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2500]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -714,7 +714,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2600',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2600', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2600]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -756,7 +756,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2700',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2700', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2700]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -790,7 +790,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2800',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2800', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2800]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -830,7 +830,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2900',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2900', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2900]';
       if (functionEnable === 'true') {
         expectErrorCode = 16300003;
@@ -860,7 +860,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3000',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3000', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3000]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -925,7 +925,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3100',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3100', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3100]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -972,7 +972,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3200',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3200', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3200]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -1012,7 +1012,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3300',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3300', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3300]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -1052,7 +1052,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3400',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3400', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3400]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -1117,7 +1117,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3500',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3500', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3500]';
       if (functionEnable !== 'true') {
         expectErrorCode = 801;
@@ -1142,7 +1142,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3600',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3600', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3600]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;
@@ -1180,7 +1180,7 @@ export default function abilityTest() {
      * @tc.size MediumTest
      * @tc.type Function
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3700',0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3700', Level.LEVEL0, async (done: Function) => {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3700]';
       if (functionEnable === 'true') {
         expectErrorCode = 0;

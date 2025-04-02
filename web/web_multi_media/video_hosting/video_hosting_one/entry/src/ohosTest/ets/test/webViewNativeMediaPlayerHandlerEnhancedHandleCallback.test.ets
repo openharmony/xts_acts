@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerPostUrl', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPostUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPostUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerPostUrl", true, 1573,
@@ -96,7 +96,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerMediaListSource', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerMediaListSource', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMediaListSource"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerMediaListSource", true, 1574,
@@ -115,7 +115,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerMediaListFormat', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerMediaListFormat', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMediaListFormat"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerMediaListFormat", true, 1575,
@@ -133,7 +133,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerSurfaceInfoId', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSurfaceInfoId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSurfaceInfoId"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSurfaceInfoId", true, 1576,
@@ -151,7 +151,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerSurfaceInfoRect', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSurfaceInfoRect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSurfaceInfoRect"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSurfaceInfoRect", true, 1577,
@@ -169,7 +169,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayer_controlShownTrue', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayer_controlShownTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlShownTrue"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlShownTrue", true, 1578,
@@ -187,7 +187,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerControlShownFalse', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerControlShownFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlShownFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlShownFalse", true, 1579,
@@ -205,7 +205,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerControlListNodownload', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerControlListNodownload', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlListNodownload"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlListNodownload", true, 1580,
@@ -223,7 +223,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerControlListNofullscreen', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerControlListNofullscreen', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerControlListNofullscreen"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerControlListNofullscreen", true, 1581,
@@ -241,7 +241,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerNoremoteplayback', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNoremoteplayback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNoremoteplayback"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerNoremoteplayback", true, 1582,
@@ -259,7 +259,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerNodownloadNoremoteplaybackNoremoteplayback", true, 1583,
@@ -277,7 +277,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerMutedTrue', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerMutedTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMutedTrue"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerMutedTrue", true, 1584,
@@ -295,7 +295,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerMutedFalse', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerMutedFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMutedFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerMutedFalse", true, 1585,
@@ -313,7 +313,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerHeaders', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHeaders', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerHeaders"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerHeaders", true, 1586,
@@ -332,7 +332,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerAttributes', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerAttributes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerAttributes"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerAttributes", true, 1587,
@@ -351,7 +351,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerPreloadNone', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreloadNone', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadNone"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadNone", true, 1588,
@@ -370,7 +370,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerPreloadMetadata', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreloadMetadata', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadMetadata"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadMetadata", true, 1589,
@@ -389,7 +389,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleCallback() 
      *@tc.level Level 1
      */
 
-    it('testWebViewNativeMediaPlayerPreloadAuto', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreloadAuto', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto", true, 1590,

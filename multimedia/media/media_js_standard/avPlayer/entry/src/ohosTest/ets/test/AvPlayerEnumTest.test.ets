@@ -187,6 +187,20 @@ export default function AvPlayerEnumTest() {
       done();
     });
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0911
+     * @tc.name      : AVPlayer
+     * @tc.desc      : AVPlayer Enumeration test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0911', 0, async (done: Function) => {
+      expect(media.SeekMode.SEEK_CONTINUOUS).assertEqual(3);
+      expect(media.AVErrorCode.AVERR_SEEK_CONTINUOUS_UNSUPPORTED).assertEqual(5410002);
+      done();
+    });
+
   })
 }
 

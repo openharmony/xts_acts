@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -79,7 +79,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */ 
-    it('testWebSetResponseStatus', 0, async (done: Function) => {
+    it('testWebSetResponseStatus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetResponseStatus"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseStatus", true, 1001, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -97,7 +97,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */ 
-    it('testWebSetResponseStatusText', 0, async (done: Function) => {
+    it('testWebSetResponseStatusText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetResponseStatusText"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseStatusText", true, 1002, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -116,7 +116,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */ 
-    it('testWebSetResponseMimeType', 0, async (done: Function) => {
+    it('testWebSetResponseMimeType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetResponseMimeType"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseMimeType", true, 1003, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -134,7 +134,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */   
-    it('testWebSetResponseEncoding', 0, async (done: Function) => {
+    it('testWebSetResponseEncoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetResponseEncoding"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseEncoding", true, 1004, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -153,7 +153,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */  
-    it('testWebSetResponseHeaderNameNull', 0, async (done: Function) => {
+    it('testWebSetResponseHeaderNameNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetResponseHeaderNameNull"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseHeaderNameNull", true, 1005, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -171,7 +171,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */ 
-    it('testWebSetResponseHeaderValueNull', 0, async (done: Function) => {
+    it('testWebSetResponseHeaderValueNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetResponseHeaderValueNull"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseHeaderValueNull", true, 1006, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -189,7 +189,7 @@ export default function ActsAceWebSetResponse() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */ 
-    it('testWebSetResponseHeaderOverwriteNull', 0, async (done: Function) => {
+    it('testWebSetResponseHeaderOverwriteNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetResponseHeaderOverwriteNull"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebSetResponseHeaderOverwriteNull", true, 1007, done, (backData: events_emitter.EventData, expected: Object) => {

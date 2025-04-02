@@ -2,6 +2,7 @@
   "src": [
     "testability/pages/WebViewControllerPart3",
     "testability/pages/WebOnInterceptKeyEvent",
-    "testability/pages/WebHitTestTypeEnumTest"
+    "testability/pages/WebHitTestTypeEnumTest",
+	"testability/pages/webKeyboardController"
   ]
 }

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function BooleanTest() {
   describe('booleanTest', () => {
@@ -24,7 +24,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0001', 0, () => {
+    it('testBooleanConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0001";
       try {
         let result = new Boolean(0);
@@ -42,7 +42,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0002', 0, () => {
+    it('testBooleanConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0002";
       try {
         let result = new Boolean(null);
@@ -60,7 +60,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0003', 0, () => {
+    it('testBooleanConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0003";
       try {
         let result = new Boolean(undefined);
@@ -78,7 +78,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0004', 0, () => {
+    it('testBooleanConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0004";
       try {
         let result = new Boolean("");
@@ -97,7 +97,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0005', 0, () => {
+    it('testBooleanConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0005";
       try {
         let bfalse = new Boolean(false);
@@ -116,7 +116,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBoolean0006', 0, () => {
+    it('testBoolean0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBoolean0006";
       try {
         let value = true;
@@ -135,7 +135,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBoolean0007', 0, () => {
+    it('testBoolean0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBoolean0007";
       try {
         let value = "true";
@@ -154,7 +154,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBoolean0008', 0, () => {
+    it('testBoolean0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBoolean0008";
       try {
         let value = "false";
@@ -173,7 +173,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNewBoolean0009', 0, () => {
+    it('testNewBoolean0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNewBoolean0009";
       try {
         let bArray = new Boolean([]);
@@ -192,7 +192,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNewBoolean0010', 0, () => {
+    it('testNewBoolean0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNewBoolean0010";
       try {
         let bObject = new Boolean({});
@@ -211,7 +211,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanprototypetoString0001', 0, () => {
+    it('testBooleanprototypetoString0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanprototypetoString0001';
       try {
         let boolean = new Boolean(0);
@@ -230,7 +230,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanprototypetoString0002', 0, () => {
+    it('testBooleanprototypetoString0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanprototypetoString0002';
       try {
         let boolean = new Boolean(null);
@@ -249,7 +249,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanprototypetoString0003', 0, () => {
+    it('testBooleanprototypetoString0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanprototypetoString0003';
       try {
         let boolean = new Boolean(undefined);
@@ -268,7 +268,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanprototypetoString0004', 0, () => {
+    it('testBooleanprototypetoString0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanprototypetoString0004';
       try {
         let boolean = new Boolean("");
@@ -287,7 +287,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBoolean0015', 0, () => {
+    it('testBoolean0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBoolean0015';
       try {
         let boolean = new Boolean(false);
@@ -306,7 +306,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textBoolean.prototype.toString0006', 0, () => {
+    it('textBoolean.prototype.toString0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textBoolean.prototype.toString0006';
       try {
         expect(Boolean(true).toString()).assertEqual('true');
@@ -323,7 +323,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textBoolean.prototype.toString0007', 0, () => {
+    it('textBoolean.prototype.toString0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textBoolean.prototype.toString0007';
       try {
         expect(Boolean("true").toString()).assertEqual('true');
@@ -340,7 +340,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textBoolean.prototype.toString0008', 0, () => {
+    it('textBoolean.prototype.toString0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textBoolean.prototype.toString0008';
       try {
         expect(Boolean("false").toString()).assertEqual('true');
@@ -357,7 +357,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textBoolean.prototype.toString0009', 0, () => {
+    it('textBoolean.prototype.toString0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textBoolean.prototype.toString0009';
       try {
         expect(Boolean([]).toString()).assertEqual('true');
@@ -374,7 +374,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('textBoolean.prototype.toString0010', 0, () => {
+    it('textBoolean.prototype.toString0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'textBoolean.prototype.toString0010';
       try {
         const result = new Boolean({});
@@ -392,7 +392,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0001', 0, () => {
+    it('testBooleanPrototypeValueOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0001';
       try {
         let flag1 = new Boolean(0);
@@ -410,7 +410,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0002', 0, () => {
+    it('testBooleanPrototypeValueOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0002';
       try {
         let flag1 = new Boolean(null);
@@ -428,7 +428,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0003', 0, () => {
+    it('testBooleanPrototypeValueOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0003';
       try {
         let flag1 = new Boolean(undefined);
@@ -446,7 +446,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0004', 0, () => {
+    it('testBooleanPrototypeValueOf0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0004';
       try {
         let flag1 = new Boolean("");
@@ -464,7 +464,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0006', 0, () => {
+    it('testBooleanPrototypeValueOf0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0006';
       try {
         let flag = Boolean(true);
@@ -482,7 +482,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0007', 0, () => {
+    it('testBooleanPrototypeValueOf0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0007';
       try {
         let flag = new Boolean("true");
@@ -500,7 +500,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0008', 0, () => {
+    it('testBooleanPrototypeValueOf0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0008';
       try {
         let flag = new Boolean("false");
@@ -518,7 +518,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0009', 0, () => {
+    it('testBooleanPrototypeValueOf0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0009';
       try {
         let flag = new Boolean([]);
@@ -536,7 +536,7 @@ export default function BooleanTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBooleanPrototypeValueOf0010', 0, () => {
+    it('testBooleanPrototypeValueOf0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testBooleanPrototypeValueOf0010';
       try {
         let flag = new Boolean({});

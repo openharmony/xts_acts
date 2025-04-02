@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 import zlib from '@ohos.zlib'
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import base from '@ohos.base'
 
 export default function ActsChecksumTest() { 
@@ -27,7 +27,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest01', 0, async (done : Function) =>{
+    it('actsChecksumTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_01 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -60,7 +60,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest02', 0, async (done : Function) =>{
+    it('actsChecksumTest02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_02 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -101,7 +101,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest03', 0, async (done : Function) =>{
+    it('actsChecksumTest03', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_03 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -131,7 +131,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest04', 0, async (done : Function) =>{
+    it('actsChecksumTest04', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_04 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -172,7 +172,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest05', 0, async (done : Function) =>{
+    it('actsChecksumTest05', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_05 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -203,7 +203,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest06', 0, async (done : Function) =>{
+    it('actsChecksumTest06', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_06 start==================");
         let checksum = zlib.createChecksumSync()
         let result = ""
@@ -228,7 +228,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('actsChecksumTest07', 0, async (done : Function) =>{
+    it('actsChecksumTest07', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done : Function) =>{
         console.info("==================ACTS_ChecksumTest_07 start==================");
         let checksum = zlib.createChecksumSync()
         let result = ""
@@ -253,7 +253,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest08', 0, async (done : Function) =>{
+    it('actsChecksumTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done : Function) =>{
         console.info("==================actsChecksumTest08 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -283,7 +283,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest09', 0, async (done : Function) =>{
+    it('actsChecksumTest09', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done : Function) =>{
         console.info("==================actsChecksumTest09 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -314,7 +314,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest10', 0, async (done : Function) =>{
+    it('actsChecksumTest10', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done : Function) =>{
         console.info("==================actsChecksumTest10 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -345,7 +345,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest11', 0, async (done : Function) =>{
+    it('actsChecksumTest11', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done : Function) =>{
         console.info("==================actsChecksumTest11 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);
@@ -375,7 +375,7 @@ export default function ActsChecksumTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('actsChecksumTest12', 0, async (done: Function) =>{
+    it('actsChecksumTest12', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>{
         console.info("==================actsChecksumTest12 start==================");
         let str = 'hello world!';
         let arrayBufferIn = new ArrayBuffer(12);

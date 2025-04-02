@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -60,7 +60,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_DialogWindow_SourceWinFocus', 0, async () => {
+    it('testShiftAppWindowFocus_DialogWindow_SourceWinFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShiftAppWindowFocus_DialogWindow_SourceWinFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -117,7 +117,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_DialogWindow_SourceWinNotFocus', 0, async () => {
+    it('testShiftAppWindowFocus_DialogWindow_SourceWinNotFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShiftAppWindowFocus_DialogWindow_SourceWinNotFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -174,7 +174,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_SubWindow_SourceWinFocus', 0, async () => {
+    it('testShiftAppWindowFocus_SubWindow_SourceWinFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShiftAppWindowFocus_SubWindow_SourceWinFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -226,7 +226,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_SubWindow_SourceWinNotFocus', 0, async () => {
+    it('testShiftAppWindowFocus_SubWindow_SourceWinNotFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShiftAppWindowFocus_SubWindow_SourceWinNotFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -280,7 +280,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_DialogWindow_Callback', 0, async (done: Function) => {
+    it('testSetWindowFocusable_DialogWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowFocusable_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -325,7 +325,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_DialogWindow_Promise', 0, async () => {
+    it('testSetWindowFocusable_DialogWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowFocusable_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -361,7 +361,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_MainWindow_Promise', 0, async () => {
+    it('testSetWindowFocusable_MainWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowFocusable_MainWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -388,7 +388,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_MainWindow_Callback', 0, async (done: Function) => {
+    it('testSetWindowFocusable_MainWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowFocusable_MainWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -421,7 +421,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_SubWindow_Callback', 0, async (done: Function) => {
+    it('testSetWindowFocusable_SubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowFocusable_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -461,7 +461,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_SubWindow_Promise', 0, async () => {
+    it('testSetWindowFocusable_SubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowFocusable_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -493,7 +493,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus', 0, async () => {
+    it('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -558,7 +558,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus', 0, async () => {
+    it('testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -625,7 +625,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_SubWindowWithOps_Callback', 0, async (done: Function) => {
+    it('testSetWindowFocusable_SubWindowWithOps_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowFocusable_SubWindowWithOps_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -680,7 +680,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowFocusable_SubWindowWithOps_Promise', 0, async () => {
+    it('testSetWindowFocusable_SubWindowWithOps_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowFocusable_SubWindowWithOps_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

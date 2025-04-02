@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './UtilsTwo';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewSrollableJsunit() {
      *tc.name bindSelectionMenuType01
      *tc.desic test bindSelectionMenuType01 interface when choose callback mode.
      */
-    it('bindSelectionMenuType01',0,async (done: Function) =>{
+    it('bindSelectionMenuType01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="bindSelectionMenuType02";
       Utils.registerEvent("bindSelectionMenuType01",true,8301,done);
       sendEventByKey('webcomponentSelectionMenu',10,'');
@@ -80,7 +80,7 @@ export default function webViewSrollableJsunit() {
      *tc.name bindSelectionMenuType02
      *tc.desic test bindSelectionMenuType02 interface when choose callback mode.
      */
-    it('bindSelectionMenuType02',0,async  (done: Function) =>{
+    it('bindSelectionMenuType02',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="bindSelectionMenuType02";
       Utils.registerEvent("bindSelectionMenuType02",1,8302,done);
       sendEventByKey('webcomponentSelectionMenu',10,'');

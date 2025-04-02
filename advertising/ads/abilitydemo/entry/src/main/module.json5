@@ -55,6 +55,14 @@
         "srcEntry": "./ets/ability/AdsUIExtensionAbility.ts",
         "description": "AdsUIExtensionAbility",
         "exported": true
+      },
+      {
+        "name": "AdsApiService",
+        "type": "service",
+        "srcEntry": "./ets/ability/AdsApiService.ts",
+        "description": "AdsApiService",
+        "exported": true,
+        "skills": []
       }
     ]
   }

@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
@@ -29,7 +29,7 @@ export default function SetConnectionTimeOut() {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       webview.WebviewController.initializeWebEngine()
-      webview.WebviewController.setConnectionTimeout(5)
+      webview.WebviewController.setConnectionTimeout(60)
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
@@ -61,7 +61,7 @@ export default function SetConnectionTimeOut() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_pause0700', 0, async () => {
+    it('testWebView_pause0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0700 start')
       console.info('SUB_ACE_WEB_pause_0700 start')
@@ -92,7 +92,7 @@ export default function SetConnectionTimeOut() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_pause0800', 0, async (done: Function) => {
+    it('testWebView_pause0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0800 start')
       console.info('SUB_ACE_WEB_pause_0800 start')
@@ -122,7 +122,7 @@ export default function SetConnectionTimeOut() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_resume0600', 0, async () => {
+    it('testWebView_resume0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0600 start')
       console.info('SUB_ACE_WEB_resume_0600 start')
@@ -154,7 +154,7 @@ export default function SetConnectionTimeOut() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_resume0700', 0, async () => {
+    it('testWebView_resume0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0700 start')
       console.info('SUB_ACE_WEB_resume_0700 start')
@@ -169,9 +169,9 @@ export default function SetConnectionTimeOut() {
       router.pushUrl({
         url: "testability/pages/SetConnectionTimeOut4"
       })
-      await driver.delayMs(2000)
+      await driver.delayMs(18000)
       sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
+      await driver.delayMs(18000)
       sendEventByKey('002', 10, '')
       await driver.delayMs(10000)
       expect(flg).assertTrue()

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeEach, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
 
@@ -106,7 +106,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 1
      */
-    it('testNetworkMgrWebSocketConnectCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -132,7 +132,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -158,7 +158,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -184,7 +184,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -210,7 +210,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -247,7 +247,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0600';
       console.info(`${caseName} test start`);
       try {
@@ -281,7 +281,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0700', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0700';
       console.info(`${caseName} test start`);
       try {
@@ -314,7 +314,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0800', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0800';
       console.info(`${caseName} test start`);
       try {
@@ -347,7 +347,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback0900', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0900';
       console.info(`${caseName} test start`);
       try {
@@ -380,7 +380,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1000', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1000';
       console.info(`${caseName} test start`);
       try {
@@ -413,7 +413,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1100';
       console.info(`${caseName} test start`);
       try {
@@ -449,7 +449,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1200';
       console.info(`${caseName} test start`);
       try {
@@ -482,7 +482,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1300';
       console.info(`${caseName} test start`);
       try {
@@ -515,7 +515,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1400';
       console.info(`${caseName} test start`);
       try {
@@ -548,7 +548,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1500';
       console.info(`${caseName} test start`);
       try {
@@ -584,7 +584,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCallback1600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1600';
       console.info(`${caseName} test start`);
       try {
@@ -627,7 +627,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0100';
       console.info(`${caseName} test start`);
       try {
@@ -658,7 +658,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0200';
       console.info(`${caseName} test start`);
       try {
@@ -689,7 +689,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0300';
       console.info(`${caseName} test start`);
       try {
@@ -720,7 +720,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0400';
       console.info(`${caseName} test start`);
       try {
@@ -751,7 +751,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0500';
       console.info(`${caseName} test start`);
       try {
@@ -782,7 +782,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0600';
       console.info(`${caseName} test start`);
       try {
@@ -813,7 +813,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0700', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0700';
       console.info(`${caseName} test start`);
       try {
@@ -844,7 +844,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0800', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0800';
       console.info(`${caseName} test start`);
       try {
@@ -875,7 +875,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise0900', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0900';
       console.info(`${caseName} test start`);
       try {
@@ -906,7 +906,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectPromise1000', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise1000';
       console.info(`${caseName} test start`);
       try {
@@ -945,7 +945,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -1000,7 +1000,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -1055,7 +1055,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -1110,7 +1110,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -1166,7 +1166,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -1222,7 +1222,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0600';
       console.info(`${caseName} test start`);
       try {
@@ -1255,7 +1255,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0700', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0700';
       console.info(`${caseName} test start`);
       try {
@@ -1320,7 +1320,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCallback0800', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCallback0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCallback0800';
       console.info(`${caseName} test start`);
       try {
@@ -1375,7 +1375,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0100';
       console.info(`${caseName} test start`);
       try {
@@ -1428,7 +1428,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0200';
       console.info(`${caseName} test start`);
       try {
@@ -1481,7 +1481,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0300';
       console.info(`${caseName} test start`);
       try {
@@ -1534,7 +1534,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0400';
       console.info(`${caseName} test start`);
       try {
@@ -1588,7 +1588,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0500';
       console.info(`${caseName} test start`);
       try {
@@ -1642,7 +1642,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0600';
       console.info(`${caseName} test start`);
       try {
@@ -1673,7 +1673,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0700', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0700';
       console.info(`${caseName} test start`);
       try {
@@ -1734,7 +1734,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendPromise0800', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendPromise0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendPromise0800';
       console.info(`${caseName} test start`);
       try {
@@ -1787,7 +1787,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -1842,7 +1842,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -1909,7 +1909,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -1942,7 +1942,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -1997,7 +1997,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -2052,7 +2052,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0600';
       console.info(`${caseName} test start`);
       try {
@@ -2107,7 +2107,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0700', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0700';
       console.info(`${caseName} test start`);
       try {
@@ -2162,7 +2162,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0800', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0800';
       console.info(`${caseName} test start`);
       try {
@@ -2217,7 +2217,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback0900', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback0900';
       console.info(`${caseName} test start`);
       try {
@@ -2272,7 +2272,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback1000', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback1000';
       console.info(`${caseName} test start`);
       try {
@@ -2327,7 +2327,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback1100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback1100';
       console.info(`${caseName} test start`);
       try {
@@ -2382,7 +2382,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseCallback1200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCallback1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCallback1200';
       console.info(`${caseName} test start`);
       try {
@@ -2415,7 +2415,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketClosePromise0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketClosePromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketClosePromise0100';
       console.info(`${caseName} test start`);
       try {
@@ -2468,7 +2468,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketClosePromise0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketClosePromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketClosePromise0200';
       console.info(`${caseName} test start`);
       try {
@@ -2521,7 +2521,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketClosePromise0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketClosePromise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketClosePromise0300';
       console.info(`${caseName} test start`);
       try {
@@ -2574,7 +2574,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketClosePromise0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketClosePromise0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketClosePromise0400';
       console.info(`${caseName} test start`);
       try {
@@ -2627,7 +2627,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketClosePromise0500', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketClosePromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketClosePromise0500';
       console.info(`${caseName} test start`);
       try {
@@ -2680,7 +2680,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketClosePromise0600', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketClosePromise0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketClosePromise0600';
       console.info(`${caseName} test start`);
       try {
@@ -2711,7 +2711,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnOpenCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnOpenCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnOpenCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -2750,7 +2750,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnOpenCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnOpenCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnOpenCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -2809,7 +2809,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnOpenCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnOpenCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnOpenCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -2835,7 +2835,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnOpenCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnOpenCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnOpenCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -2871,7 +2871,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffOpenCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffOpenCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffOpenCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -2908,7 +2908,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffOpenCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffOpenCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffOpenCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -2946,7 +2946,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffOpenCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffOpenCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffOpenCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -2983,7 +2983,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffOpenCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffOpenCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffOpenCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -3020,7 +3020,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnMessageCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnMessageCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnMessageCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -3079,7 +3079,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnMessageCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnMessageCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnMessageCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -3105,7 +3105,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnMessageCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnMessageCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnMessageCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -3165,7 +3165,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffMessageCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffMessageCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffMessageCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -3227,7 +3227,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffMessageCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffMessageCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffMessageCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -3288,7 +3288,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffMessageCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffMessageCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffMessageCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -3349,7 +3349,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnCloseCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnCloseCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnCloseCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -3408,7 +3408,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnCloseCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnCloseCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnCloseCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -3434,7 +3434,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnCloseCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnCloseCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnCloseCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -3494,7 +3494,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnCloseCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnCloseCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnCloseCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -3554,7 +3554,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffCloseCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffCloseCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffCloseCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -3614,7 +3614,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffCloseCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffCloseCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffCloseCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -3675,7 +3675,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffCloseCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffCloseCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffCloseCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -3736,7 +3736,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffCloseCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffCloseCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffCloseCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -3797,7 +3797,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnErrorCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnErrorCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnErrorCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -3827,7 +3827,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnErrorCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnErrorCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnErrorCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -3858,7 +3858,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffErrorCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffErrorCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffErrorCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -3889,7 +3889,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffErrorCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffErrorCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffErrorCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -3921,7 +3921,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffErrorCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffErrorCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffErrorCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -3953,7 +3953,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffErrorCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffErrorCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffErrorCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -3984,7 +3984,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnDataEndCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnDataEndCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnDataEndCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -4048,7 +4048,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnDataEndCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnDataEndCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnDataEndCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -4112,7 +4112,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffDataEndCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffDataEndCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -4177,7 +4177,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffDataEndCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffDataEndCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -4243,7 +4243,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffDataEndCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffDataEndCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -4308,7 +4308,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffDataEndCallback0400', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffDataEndCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffDataEndCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -4373,7 +4373,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOnHeaderReceiveCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOnHeaderReceiveCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOnHeaderReceiveCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -4416,7 +4416,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffHeaderReceiveCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -4461,7 +4461,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffHeaderReceiveCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -4505,7 +4505,7 @@ export default function WebSocketApiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketOffHeaderReceiveCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketOffHeaderReceiveCallback0300';
       console.info(`${caseName} test start`);
       try {

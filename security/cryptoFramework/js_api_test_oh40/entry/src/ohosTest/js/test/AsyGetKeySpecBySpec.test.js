@@ -14,7 +14,7 @@
  */
 
 import cryptoFramework from "@ohos.security.cryptoFramework";
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asysmmetricspec/publicAsymmetricSpecPromise";
 import * as asyCommon from "./utils/common/publicDoSpec";
 
@@ -47,7 +47,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0100",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaKeyPairSpec = genRsa2048KeyPairSpec();
                 let asyKeyGeneratorSpec =
@@ -84,7 +84,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0200",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let dsaKeyPairSpec = genDsa2048KeyPairSpec();
                 let asyKeyPairSpec =
@@ -129,7 +129,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0300",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let eccKeyPairSpec = genEccKeyTypeSpec(
                     cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC
@@ -206,7 +206,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0400",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaKeyPairSpec = genRsa2048KeyPairSpec();
                 let asyKeyPairSpec =
@@ -241,7 +241,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0500",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let dsaKeyPairSpec = genDsa2048KeyPairSpec();
                 let asyKeyGeneratorSpec =
@@ -284,7 +284,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0600",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let eccKeyPairSpec = genEccKeyTypeSpec(
                     cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC
@@ -358,7 +358,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0700",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaKeyPairSpec = genRsa2048KeyPairSpec();
                 let rsaKeyGeneratorSpec =
@@ -402,7 +402,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0800",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let rsaKeyPairSpec = genRsa2048KeyPairSpec();
                 let rsaKeyGeneratorSpec =
@@ -451,7 +451,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_0900",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 let dsaKeyGeneratorSpec =
                 cryptoFramework.createAsyKeyGenerator("DSA1024");
@@ -476,7 +476,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
          */
         it(
             "Security_CryptoFramework_AsyKeySpec_Func_1000",
-            0,
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
             async function (done) {
                 asyPromise
                     .clearMemGetAsyKeySpec(

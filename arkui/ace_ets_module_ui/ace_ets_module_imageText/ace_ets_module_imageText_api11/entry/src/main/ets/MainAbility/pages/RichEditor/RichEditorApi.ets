@@ -84,6 +84,13 @@ struct RichEditorApi {
         Button("getParagraphs")
           .id('RichEditorApi_btn_getParagraphs')
           .onClick(() => {
+            let getParagraphs = this.controller2.getParagraphs({ start: -1, end: -1 })
+            let textAlign = getParagraphs[0].style.textAlign
+            let size = getParagraphs[0].style.leadingMargin
+            let range = getParagraphs[0].range
+            AppStorage.setOrCreate('getParagraphs_textAlign',textAlign)
+            AppStorage.setOrCreate('getParagraphs_size',size)
+            AppStorage.setOrCreate('getParagraphs_range',range)
             this.spanParagraphs = JSON.stringify(this.controller2.getParagraphs({ start: -1, end: -1 })
 
             )

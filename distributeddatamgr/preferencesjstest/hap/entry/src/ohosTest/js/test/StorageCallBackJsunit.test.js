@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import storage from '@ohos.data.storage'
 
 const PATH = '/data/storage/el2/database/test_storage';
@@ -50,7 +50,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testClear0012', 0, async function (done) {
+        it('testClear0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             mPref.flushSync();
             await mPref.clear(function (err, ret) {
@@ -67,7 +67,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0032', 0, async function (done) {
+        it('testHasKey0032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             await mPref.has(KEY_TEST_STRING_ELEMENT, function (err, ret) {
                 expect(true).assertEqual(ret);
@@ -83,7 +83,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0033', 0, async function (done) {
+        it('testHasKey0033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
             await mPref.has(KEY_TEST_INT_ELEMENT, function (err, ret) {
                 expect(true).assertEqual(ret);
@@ -99,7 +99,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0034', 0, async function (done) {
+        it('testHasKey0034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 1.1);
             await mPref.has(KEY_TEST_FLOAT_ELEMENT, function (err, ret) {
                 expect(true).assertEqual(ret);
@@ -115,7 +115,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0035', 0, async function (done) {
+        it('testHasKey0035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
             await mPref.has(KEY_TEST_LONG_ELEMENT, function (err, ret) {
                 expect(true).assertEqual(ret);
@@ -131,7 +131,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testHasKey0036', 0, async function (done) {
+        it('testHasKey0036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
             await mPref.has(KEY_TEST_BOOLEAN_ELEMENT, function (err, ret) {
                 expect(true).assertEqual(ret);
@@ -147,7 +147,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetDefValue0062', 0, async function (done) {
+        it('testGetDefValue0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             await mPref.get(KEY_TEST_STRING_ELEMENT, "defaultValue", function (err, ret) {
                 expect('defaultValue').assertEqual(ret);
@@ -163,7 +163,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetFloat0072', 0, async function (done) {
+        it('testGetFloat0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
             await mPref.get(KEY_TEST_FLOAT_ELEMENT, 0.0, function (err, ret) {
@@ -180,7 +180,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetInt0082', 0, async function (done) {
+        it('testGetInt0082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
             await mPref.get(KEY_TEST_INT_ELEMENT, 0.0, function (err, ret) {
@@ -197,7 +197,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetLong0092', 0, async function (done) {
+        it('testGetLong0092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 3);
             expect(3).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
@@ -215,7 +215,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetString102', 0, async function (done) {
+        it('testGetString102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             mPref.flushSync();
@@ -233,7 +233,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutBoolean0122', 0, async function (done) {
+        it('testPutBoolean0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             await mPref.put(KEY_TEST_BOOLEAN_ELEMENT, true, function (err, ret) {
                 expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
@@ -251,7 +251,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutFloat0132', 0, async function (done) {
+        it('testPutFloat0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             await mPref.put(KEY_TEST_FLOAT_ELEMENT, 4.0, function (err, ret) {
                 expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
@@ -269,7 +269,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutInt0142', 0, async function (done) {
+        it('testPutInt0142', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             await mPref.put(KEY_TEST_INT_ELEMENT, 4, function (err, ret) {
                 expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
@@ -287,7 +287,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutLong0152', 0, async function (done) {
+        it('testPutLong0152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             mPref.putSync(KEY_TEST_LONG_ELEMENT, 4);
             await mPref.put(KEY_TEST_LONG_ELEMENT, 4, function (err, ret) {
@@ -306,7 +306,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPutString0162', 0, async function (done) {
+        it('testPutString0162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.clearSync();
             await mPref.put(KEY_TEST_STRING_ELEMENT, '', function (err, ret) {
                 expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
@@ -324,7 +324,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testFluesh00172', 0, async function (done) {
+        it('testFluesh00172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
             await mPref.flush(function (err, ret) {
                 expect("test").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
@@ -341,7 +341,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testCallback0172', 0, function (done) {
+        it('testCallback0172', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             console.info("*******************testCallback0172 begin.");
             mPref.clear(function (err, val) {
                 if(err){
@@ -389,7 +389,7 @@ export default function storageCallBackTest() {
          * @tc.level Level 2
          */
 
-        it('testDelete0182', 0, async function (done) {
+        it('testDelete0182', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
             expect("abc").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
             mPref.delete(KEY_TEST_STRING_ELEMENT,(err,ret)=>{
@@ -406,7 +406,7 @@ export default function storageCallBackTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetDefValue0192', 0, async function (done) {
+        it('testGetDefValue0192', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPref.clear();
             await mPref.get(KEY_TEST_BOOLEAN_ELEMENT, true, function (err, ret) {
                 expect(true).assertEqual(ret);

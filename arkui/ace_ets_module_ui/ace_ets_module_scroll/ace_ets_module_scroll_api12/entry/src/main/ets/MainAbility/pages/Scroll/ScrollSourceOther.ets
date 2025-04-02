@@ -39,6 +39,7 @@ struct ScrollSourceOtherExample {
           }, (item: string) => item)
         }.width('100%')
       }
+      .id('scrollSourceOther')
       .edgeEffect(EdgeEffect.Spring)
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.On)

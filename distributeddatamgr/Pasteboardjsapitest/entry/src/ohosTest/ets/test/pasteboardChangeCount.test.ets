@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import  { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { pasteboard } from '@kit.BasicServicesKit';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { Want } from '@kit.AbilityKit';
@@ -46,7 +46,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0100 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -75,7 +75,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0200 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -111,7 +111,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0300', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0200 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -152,7 +152,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0400', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0200 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -188,7 +188,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0500', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0500 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -222,7 +222,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0600', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0600 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -258,7 +258,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0700', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0700 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -294,7 +294,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0800', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0800 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -329,7 +329,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTestTest_0900', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTestTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_0900 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -364,7 +364,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1000', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1000 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -399,7 +399,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1100', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1100 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -434,7 +434,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1200', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1200 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -469,7 +469,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1300', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1300 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -509,7 +509,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1400', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1400 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -550,7 +550,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1500', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1500 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -583,7 +583,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1600', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1600 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -617,7 +617,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1700', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1700 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -657,7 +657,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1800', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1800 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -686,7 +686,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1900', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_1900 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -715,7 +715,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2000', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2000 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -754,7 +754,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2100', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2100 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -787,7 +787,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2200', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2200 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -817,7 +817,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2300', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2300 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -973,7 +973,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2400', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2400 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1013,7 +1013,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2500', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2500 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1054,7 +1054,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2600', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2600 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1095,7 +1095,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2700', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2700 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1135,7 +1135,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2800', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2800 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1175,7 +1175,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2900', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_2900 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1215,7 +1215,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3000', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3000 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1255,7 +1255,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3100', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3100 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1295,7 +1295,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3200', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3200 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1340,7 +1340,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3300', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3300 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1386,7 +1386,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3400', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3400 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1424,7 +1424,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3500', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3500 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1463,7 +1463,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3600', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3600 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1508,7 +1508,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3700', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3700 start ************')
       try {
         let  result1: number = systemPasteboard.getChangeCount();
@@ -1535,7 +1535,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3800', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3800 start ************')
       try {
         let pasteData1: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'content1');
@@ -1567,7 +1567,7 @@ export default function PasteboardChangeCountTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3900', 0, async () => {
+    it('SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_Local_SDK_PasteboardChangeCountTest_3900 start ************')
       try {
         let pasteData1: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'content1');

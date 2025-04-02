@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import appManager from '@ohos.application.appManager'
 import osaccount from '@ohos.account.osAccount'
@@ -87,7 +87,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
      */
-    it('ACTS_startAbility_2000', 0, async (done: Function) => {
+    it('ACTS_startAbility_2000', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_startAbility_2000'
       let Subscriber: commonEventManager.CommonEventSubscriber
       let flag = true
@@ -144,7 +144,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(promise)
      */
-    it('ACTS_startAbility_2200', 0, async (done: Function) => {
+    it('ACTS_startAbility_2200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_startAbility_2200';
       await globalThis.abilityContext.startAbility(
         {
@@ -166,7 +166,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(callback)
      */
-    it('ACTS_startAbility_2400', 0, async (done: Function) => {
+    it('ACTS_startAbility_2400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_startAbility_2400'
       let Subscriber: commonEventManager.CommonEventSubscriber
       let flag = true
@@ -223,7 +223,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(callback)
      */
-    it('ACTS_startAbility_2600', 0, async (done: Function) => {
+    it('ACTS_startAbility_2600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_startAbility_2600';
       console.debug(TAG + "====>start startAbility====>");
       try {
@@ -248,7 +248,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(promise)
      */
-    it('ACTS_startAbility_2800', 0, async (done: Function) => {
+    it('ACTS_startAbility_2800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_startAbility_2800'
       let Subscriber: commonEventManager.CommonEventSubscriber
       let flag = true
@@ -303,7 +303,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(callback)
      */
-    it('ACTS_startAbility_2900', 0, async (done: Function) => {
+    it('ACTS_startAbility_2900', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_startAbility_2900'
       let Subscriber: commonEventManager.CommonEventSubscriber
       let flag = true
@@ -358,7 +358,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
-    it('ACTS_StartAbilityForResult_0100', 0, async (done: Function) => {
+    it('ACTS_StartAbilityForResult_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_StartAbilityForResult_0100'
       let flag = true
       let timeout = (): void => {
@@ -391,7 +391,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(promise)
      */
-    it('ACTS_StartAbilityForResult_0200', 0, async (done: Function) => {
+    it('ACTS_StartAbilityForResult_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_StartAbilityForResult_0200';
       console.debug(TAG + "====>start startAbilityForResult====>");
       await globalThis.abilityContext.startAbilityForResult(
@@ -414,7 +414,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(callback)
      */
-    it('ACTS_StartAbilityForResult_0300', 0, async (done: Function) => {
+    it('ACTS_StartAbilityForResult_0300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_StartAbilityForResult_0300'
       let flag = true
       let timeout = (): void => {
@@ -446,7 +446,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(callback)
      */
-    it('ACTS_StartAbilityForResult_0400', 0, async (done: Function) => {
+    it('ACTS_StartAbilityForResult_0400', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_StartAbilityForResult_0400';
       console.debug(TAG + "====>start startAbilityForResult====>");
       try {
@@ -471,7 +471,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
-    it('ACTS_StartAbilityForResult_0500', 0, async (done: Function) => {
+    it('ACTS_StartAbilityForResult_0500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_StartAbilityForResult_0500'
       let flag = true
       let timeout = (): void => {
@@ -502,7 +502,7 @@ export default function abilityTest() {
      * @tc.name    : start new ability for result
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(callback)
      */
-    it('ACTS_StartAbilityForResult_0700', 0, async (done: Function) => {
+    it('ACTS_StartAbilityForResult_0700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_StartAbilityForResult_0700'
       let flag = true
       let timeout = (): void => {
@@ -532,7 +532,7 @@ export default function abilityTest() {
      * @tc.name    : Use terminateself to terminate ability
      * @tc.desc    : Starting mainability2 with startAbility then terminateself ability succeeded.(promise)
      */
-    it('ACTS_TerminateSelf_0100', 0, async (done: Function) => {
+    it('ACTS_TerminateSelf_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_TerminateSelf_0100'
       let Subscriber: commonEventManager.CommonEventSubscriber
       let flag = true
@@ -588,7 +588,7 @@ export default function abilityTest() {
      * @tc.name    : Use terminateself to terminate ability
      * @tc.desc    : Starting mainability2 with startAbility then terminateself ability succeeded.(callback)
      */
-    it('ACTS_TerminateSelf_0300', 0, async (done: Function) => {
+    it('ACTS_TerminateSelf_0300', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_TerminateSelf_0300'
       let Subscriber: commonEventManager.CommonEventSubscriber
       let flag = true
@@ -644,7 +644,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result succeeded.(promise)
      */
-    it('ACTS_TerminateSelfWithResult_0100', 0, async (done: Function) => {
+    it('ACTS_TerminateSelfWithResult_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_TerminateSelfWithResult_0100'
       let flag = true
       let timeout = (): void => {
@@ -676,7 +676,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result succeeded.(callback)
      */
-    it('ACTS_TerminateSelfWithResult_0300', 0, async (done: Function) => {
+    it('ACTS_TerminateSelfWithResult_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(2000);
       let TAG = 'ACTS_TerminateSelfWithResult_0300'
       let flag = true
@@ -708,7 +708,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result failed.(promise)
      */
-    it('ACTS_ThirdPartyKillProcess_0100', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyKillProcess_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_ThirdPartyKillProcess_0100'
       console.debug(TAG + "====>start startAbility====>");
       await globalThis.abilityContext.startAbility(
@@ -758,7 +758,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityforresult
      *               then terminateself ability and return result failed.(callback)
      */
-    it('ACTS_ThirdPartyKillProcess_0200', 0, async (done: Function) => {
+    it('ACTS_ThirdPartyKillProcess_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'ACTS_ThirdPartyKillProcess_0200'
       console.debug(TAG + "====>start startAbility====>");
       await globalThis.abilityContext.startAbility(

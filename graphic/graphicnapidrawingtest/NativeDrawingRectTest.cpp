@@ -47,7 +47,7 @@ void NativeDrawingRectTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_CreateAndDestroy001, TestSize.Level1)
+HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_CreateAndDestroy001, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 300);
     EXPECT_NE(nullptr, rect);
@@ -61,7 +61,7 @@ HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_CreateAndDestroy001, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_Intersect002, TestSize.Level1)
+HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_Intersect002, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 300);
     EXPECT_NE(nullptr, rect);
@@ -89,7 +89,7 @@ HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_Intersect002, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_GetHeight003, TestSize.Level1)
+HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_GetHeight003, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 400, 800);
     float height = OH_Drawing_RectGetHeight(rect);
@@ -104,7 +104,7 @@ HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_GetHeight003, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_GetWidth004, TestSize.Level1)
+HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_GetWidth004, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 400, 800);
     float width = OH_Drawing_RectGetWidth(rect);
@@ -119,7 +119,7 @@ HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_GetWidth004, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_SetAndGet005, TestSize.Level1)
+HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_SetAndGet005, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 400, 800);
     OH_Drawing_RectSetLeft(rect, 10);
@@ -144,7 +144,7 @@ HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_SetAndGet005, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_Copy006, TestSize.Level1)
+HWTEST_F(NativeDrawingRectTest, NativeDrawingRectTest_Copy006, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rectSrc = OH_Drawing_RectCreate(0, 0, 400, 800);
     OH_Drawing_Rect* rectDst = OH_Drawing_RectCreate(11, 22, 333, 444);

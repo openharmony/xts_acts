@@ -17,7 +17,7 @@ import fs from '@ohos.file.fs';
 import account from '@ohos.account.distributedAccount'
 import account_osAccount from '@ohos.account.osAccount';
 import type Want from '@ohos.app.ability.Want';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base'
 
@@ -278,7 +278,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPSupportedFileTypes001', 0, async () => {
+    it('testGetDLPSupportedFileTypes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPSupportedFileTypes_001";
       console.info(curTag, "start");
 
@@ -305,7 +305,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPSupportedFileTypes002', 0, async () => {
+    it('testGetDLPSupportedFileTypes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_generateDLPFile_002";
       console.info(curTag, "start");
 
@@ -325,7 +325,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetRetentionState001', 0, async () => {
+    it('testSetRetentionState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_setRetentionState_001";
       console.info(curTag, "start");
 
@@ -349,7 +349,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetRetentionState002', 0, async () => {
+    it('testSetRetentionState002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_setRetentionState_002";
       console.info(curTag, "start");
 
@@ -368,7 +368,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetRetentionState003', 0, async () => {
+    it('testSetRetentionState003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_setRetentionState_003";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -409,7 +409,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetRetentionState004', 0, async () => {
+    it('testSetRetentionState004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_setRetentionState_004";
       console.info(curTag, "start", bundleName);
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -450,7 +450,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetRetentionState005', 0, async () => {
+    it('testSetRetentionState005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_setRetentionState_005";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -489,7 +489,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetRetentionState006', 0, async () => {
+    it('testSetRetentionState006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_setRetentionState_006";
       console.info(curTag, "start", bundleName);
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -528,7 +528,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCancelRetentionState001', 0, async () => {
+    it('testCancelRetentionState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_cancelRetentionState_001";
       console.info(curTag, "start");
 
@@ -553,7 +553,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCancelRetentionState002', 0, async () => {
+    it('testCancelRetentionState002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_cancelRetentionState_002";
       console.info(curTag, "start");
 
@@ -572,7 +572,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCancelRetentionState003', 0, async () => {
+    it('testCancelRetentionState003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_cancelRetentionState_003";
       console.info(curTag, "start");
 
@@ -596,7 +596,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCancelRetentionState004', 0, async () => {
+    it('testCancelRetentionState004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_cancelRetentionState_004";
       console.info(curTag, "start");
 
@@ -616,7 +616,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList001', 0, async () => {
+    it('testGetRetentionSandboxList001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_001";
       console.info(curTag, "start");
       let uri = 'uri';
@@ -676,7 +676,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList002', 0, async () => {
+    it('testGetRetentionSandboxList002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_002";
       console.info(curTag, "start");
 
@@ -729,7 +729,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList003', 0, async () => {
+    it('testGetRetentionSandboxList003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_003";
       console.info(curTag, "start");
       let uri = 'uri';
@@ -786,7 +786,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList004', 0, async () => {
+    it('testGetRetentionSandboxList004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_004";
       console.info(curTag, "start");
       let uri = 'uri';
@@ -841,7 +841,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList005', 0, async () => {
+    it('testGetRetentionSandboxList005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_005";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -879,7 +879,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList006', 0, async () => {
+    it('testGetRetentionSandboxList006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_006";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -917,7 +917,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList007', 0, async () => {
+    it('testGetRetentionSandboxList007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_007";
       console.info(curTag, "start");
       try {
@@ -943,7 +943,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetRetentionSandboxList008', 0, async () => {
+    it('testGetRetentionSandboxList008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_008";
       console.info(curTag, "start");
       try {
@@ -968,7 +968,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPFileAccessRecords001', 0, async () => {
+    it('testGetDLPFileAccessRecords001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPFileAccessRecords_001";
       console.info(curTag, "start");
       try {
@@ -1005,7 +1005,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPFileAccessRecords002', 0, async () => {
+    it('testGetDLPFileAccessRecords002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getRetentionSandboxList_002";
       console.info(curTag, "start");
       try {
@@ -1037,7 +1037,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPFileAccessRecords003', 0, async () => {
+    it('testGetDLPFileAccessRecords003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPFileAccessRecords_003";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1075,7 +1075,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPFileAccessRecords004', 0, async () => {
+    it('testGetDLPFileAccessRecords004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPFileAccessRecords_004";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1113,7 +1113,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsDLPFile001', 0, async () => {
+    it('testIsDLPFile001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_isDLPFile_001";
       console.info(curTag, "start");
       let dlpInfo: TestDlpFileInfo;
@@ -1144,7 +1144,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsDLPFile002', 0, async () => {
+    it('testIsDLPFile002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_isDLPFile_002";
       console.info(curTag, "start");
       let dlpInfo: TestDlpFileInfo;
@@ -1170,7 +1170,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsDLPFile003', 0, async () => {
+    it('testIsDLPFile003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_isDLPFile_003";
       console.info(curTag, "start");
 
@@ -1194,7 +1194,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsDLPFile004', 0, async () => {
+    it('testIsDLPFile004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_isDLPFile_004";
       console.info(curTag, "start");
       try {
@@ -1214,7 +1214,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPPermissionInfo001', 0, async () => {
+    it('testGetDLPPermissionInfo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPPermissionInfo_001";
       console.info(curTag, "start");
 
@@ -1254,7 +1254,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPPermissionInfo002', 0, async () => {
+    it('testGetDLPPermissionInfo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPPermissionInfo_002";
       console.info(curTag, "start");
 
@@ -1294,7 +1294,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPPermissionInfo003', 0, async () => {
+    it('testGetDLPPermissionInfo003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPPermissionInfo_003";
       console.info(curTag, "start");
 
@@ -1316,7 +1316,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPPermissionInfo004', 0, async () => {
+    it('testGetDLPPermissionInfo004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPPermissionInfo_004";
       console.info(curTag, "start");
 
@@ -1335,7 +1335,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo005", 0, async () => {
+    it("testGetDLPPermissionInfo005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo005---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_VIEW;
       console.log("testGetDLPPermissionInfo005 value is:" + value);
@@ -1351,7 +1351,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo006", 0, async () => {
+    it("testGetDLPPermissionInfo006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo006---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_SAVE;
       console.log("testGetDLPPermissionInfo006 value is:" + value);
@@ -1367,7 +1367,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo007", 0, async () => {
+    it("testGetDLPPermissionInfo007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo007---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_SAVE_AS;
       console.log("testGetDLPPermissionInfo007 value is:" + value);
@@ -1383,7 +1383,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo008", 0, async () => {
+    it("testGetDLPPermissionInfo008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo008---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_EDIT;
       console.log("testGetDLPPermissionInfo008 value is:" + value);
@@ -1399,7 +1399,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo009", 0, async () => {
+    it("testGetDLPPermissionInfo009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo009---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_SCREEN_CAPTURE;
       console.log("testGetDLPPermissionInfo009 value is:" + value);
@@ -1415,7 +1415,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo010", 0, async () => {
+    it("testGetDLPPermissionInfo010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo010---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_SCREEN_SHARE;
       console.log("testGetDLPPermissionInfo010 value is:" + value);
@@ -1431,7 +1431,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo011", 0, async () => {
+    it("testGetDLPPermissionInfo011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo011---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_SCREEN_RECORD;
       console.log("testGetDLPPermissionInfo011 value is:" + value);
@@ -1447,7 +1447,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo012", 0, async () => {
+    it("testGetDLPPermissionInfo012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo012---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_COPY;
       console.log("testGetDLPPermissionInfo012 value is:" + value);
@@ -1463,7 +1463,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo013", 0, async () => {
+    it("testGetDLPPermissionInfo013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo013---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_PRINT;
       console.log("testGetDLPPermissionInfo013 value is:" + value);
@@ -1479,7 +1479,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo014", 0, async () => {
+    it("testGetDLPPermissionInfo014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo014---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_EXPORT;
       console.log("testGetDLPPermissionInfo014 value is:" + value);
@@ -1495,7 +1495,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo015", 0, async () => {
+    it("testGetDLPPermissionInfo015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo015---------------------------');
       let value:number = dlpPermission.ActionFlagType.ACTION_PERMISSION_CHANGE;
       console.log("testGetDLPPermissionInfo015 value is:" + value);
@@ -1511,7 +1511,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo016", 0, async () => {
+    it("testGetDLPPermissionInfo016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo016---------------------------');
       let value:number = dlpPermission.DLPFileAccess.NO_PERMISSION;
       console.log("testGetDLPPermissionInfo016 value is:" + value);
@@ -1527,7 +1527,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo017", 0, async () => {
+    it("testGetDLPPermissionInfo017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo017---------------------------');
       let value:number = dlpPermission.DLPFileAccess.READ_ONLY;
       console.log("testGetDLPPermissionInfo017 value is:" + value);
@@ -1543,7 +1543,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo018", 0, async () => {
+    it("testGetDLPPermissionInfo018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo018---------------------------');
       let value:number = dlpPermission.DLPFileAccess.CONTENT_EDIT;
       console.log("testGetDLPPermissionInfo018 value is:" + value);
@@ -1559,7 +1559,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testGetDLPPermissionInfo019", 0, async () => {
+    it("testGetDLPPermissionInfo019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info('----------------------testGetDLPPermissionInfo019---------------------------');
       let value:number = dlpPermission.DLPFileAccess.FULL_CONTROL;
       console.log("testGetDLPPermissionInfo019 value is:" + value);
@@ -1575,7 +1575,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetOriginalFileName001', 0, async () => {
+    it('testGetOriginalFileName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getOriginalFileName_001";
       console.info(curTag, "start");
 
@@ -1598,7 +1598,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetOriginalFileName002', 0, async () => {
+    it('testGetOriginalFileName002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getOriginalFileName_002";
       console.info(curTag, "start");
 
@@ -1621,7 +1621,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetDLPSuffix001', 0, async () => {
+    it('testGetDLPSuffix001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_getDLPSuffix_001";
       console.info(curTag, "start");
 
@@ -1644,7 +1644,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOnOpenDLPFile001', 0, async () => {
+    it('testOnOpenDLPFile001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_on_openDLPFile_001";
       console.info(curTag, "start");
 
@@ -1682,7 +1682,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOnOpenDLPFile002', 0, async () => {
+    it('testOnOpenDLPFile002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_on_openDLPFile_002";
       console.info(curTag, "start");
 
@@ -1722,7 +1722,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOnOpenDLPFile003', 0, async () => {
+    it('testOnOpenDLPFile003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_on_openDLPFile_003";
       console.info(curTag, "start");
 
@@ -1746,7 +1746,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffOpenDLPFile001', 0, async () => {
+    it('testOffOpenDLPFile001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_off_openDLPFile_001";
       console.info(curTag, "start");
 
@@ -1815,7 +1815,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffOpenDLPFile002', 0, async () => {
+    it('testOffOpenDLPFile002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_off_openDLPFile_002";
       console.info(curTag, "start");
 
@@ -1883,7 +1883,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffOpenDLPFile003', 0, async () => {
+    it('testOffOpenDLPFile003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "Test_off_openDLPFile_003";
       console.info(curTag, "start");
 
@@ -1906,7 +1906,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetSandboxAppConfig0100', 0, async () => {
+    it('testSetSandboxAppConfig0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0100";
       console.info(curTag, "start");
 
@@ -1927,7 +1927,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetSandboxAppConfig0200', 0, async () => {
+    it('testSetSandboxAppConfig0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0200";
       console.info(curTag, "start");
 
@@ -1948,7 +1948,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSetSandboxAppConfig0300', 0, async () => {
+    it('testSetSandboxAppConfig0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_setSandboxAppConfig_0300";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -1984,7 +1984,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGetSandboxAppConfig0100', 0, async () => {
+    it('testGetSandboxAppConfig0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_getSandboxAppConfig_0100";
       console.info(curTag, "start");
 
@@ -2005,7 +2005,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCleanSandboxAppConfig0100', 0, async () => {
+    it('testCleanSandboxAppConfig0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_cleanSandboxAppConfig_0100";
       console.info(curTag, "start");
 
@@ -2027,7 +2027,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCleanSandboxAppConfig0200', 0, async () => {
+    it('testCleanSandboxAppConfig0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_cleanSandboxAppConfig_0200";
       console.info(curTag, "start");
       let sandboxInfo = await dlpPermission.installDLPSandbox(bundleName, dlpPermission.DLPFileAccess.READ_ONLY, userId, 'uri');
@@ -2063,7 +2063,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsDLPFeatureProvided', 0, async () => {
+    it('testIsDLPFeatureProvided', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_isDLPFeatureProvided_0100";
       console.info(curTag, "start");
       await dlpPermission.isDLPFeatureProvided().then((res) => {
@@ -2086,7 +2086,7 @@ export default function dlpTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testStartDLPManagerForResult0100', 0, async () => {
+    it('testStartDLPManagerForResult0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let curTag = TAG + "SUB_SECURITY_DLP_startDLPManagerForResult_0100";
       console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 start");
       try {
@@ -2108,6 +2108,37 @@ export default function dlpTest() {
       }
       console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 end");
       return;
+    })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100
+     * @tc.name test startDLPManagerForResult
+     * @tc.desc test 调用startDLPManagerForResult接口，不传入uri参数，返回19100016错误码
+     * @tc.size LargeTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info("SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100: started.");
+      try {
+        let context: common.UIAbilityContext = globalThis.context; // 获取当前UIAbilityContext
+        let want: Want = {
+          "uri": "",
+          "parameters": {
+            "displayName": ""
+          }
+        }; // 请求参数
+        dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+          console.info('SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 res.resultCode', res.resultCode);
+          console.info('SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 res.want', JSON.stringify(res.want));
+        })
+        expect(null).assertFail();
+      } catch (err) {
+        console.info("SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 startDLPManagerForResult failed", err.code, err.message);
+        expect(err.code).assertEqual(19100016);
+      }
+      console.info("SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 end");
+      done();
     })
 
   })

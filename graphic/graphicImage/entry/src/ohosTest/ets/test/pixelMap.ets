@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
@@ -35,7 +35,7 @@ export default function imagePixelMapTest() {
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapTest_0100", 0, async (done:Function)=> {
+    it("ImagePixelMapTest_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let curSceneMode: camera.SceneMode = camera?.SceneMode?.NORMAL_PHOTO
       if(curSceneMode == undefined) {
         expect(true).assertTrue();

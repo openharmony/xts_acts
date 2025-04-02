@@ -17,7 +17,7 @@ import Server from '../common/Server'
 import request from "@ohos.request";
 import fileio from '@ohos.fileio'
 import commonEvent from '@ohos.commonEventManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
 
@@ -101,7 +101,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_On_Upload_Pause_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_On_Upload_Pause_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_On_Upload_Pause_0100 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -164,7 +164,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Pause_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Pause_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Upload_Pause_0100 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -247,7 +247,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Pause_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Pause_0200', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Upload_backgroundOnPause_0500 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -328,7 +328,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0050', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0050', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0050 is starting-----------------------");
       try {
         request.agent.remove('abc', (err) => {
@@ -362,7 +362,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0050', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0050', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0050 is starting-----------------------");
       try {
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Promise_0050 remove");
@@ -387,7 +387,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Upload_Callback_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0060 is starting-----------------------");
       let task = await request.agent.create(baseContext, config);
       request.agent.remove(task.tid, (err) => {
@@ -428,7 +428,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Remove_Upload_Promise_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0060 is starting-----------------------");
       try {
         let task = await request.agent.create(baseContext, config);
@@ -453,7 +453,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Progress_0020', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Progress_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Progress_0020 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -512,7 +512,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Upload_Progress_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Upload_Progress_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Upload_Progress_0030 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -569,7 +569,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Progress_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Progress_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Progress_0030 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -623,7 +623,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Upload_Progress_0040', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Upload_Progress_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Upload_Progress_0040 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -663,7 +663,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Progress_0040', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Progress_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Progress_0040 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -715,7 +715,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Completed_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Completed_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Off_Upload_Completed_0200 is starting-----------------------");
       let flag = true;
       let on_offCompletedCallback1 =async (pro1: request.agent.Progress) => {
@@ -763,7 +763,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Upload_Completed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Upload_Completed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Upload_Completed_0030 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -820,7 +820,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Completed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Completed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Completed_0030 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -874,7 +874,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Upload_Completed_0040', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Upload_Completed_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Upload_Completed_0040 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -914,7 +914,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Completed_0040', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Completed_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Completed_0040 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -964,7 +964,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Failed_0020', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Failed_0020', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Failed_0020 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.url = 'http://127.0.0.1';
@@ -1025,7 +1025,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Upload_Failed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Upload_Failed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Upload_Failed_0030 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.url = 'http://127.0.0.1';
@@ -1082,7 +1082,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Failed_0030', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Failed_0030', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Failed_0030 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -1129,7 +1129,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_On_Upload_Failed_0040', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_On_Upload_Failed_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Upload_Failed_0040 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.url = 'http://127.0.0.1';
@@ -1169,7 +1169,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Off_Upload_Failed_0040', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Off_Upload_Failed_0040', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Failed_0040 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -1219,7 +1219,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Upload_Callback_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Upload_Callback_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0060 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -1264,7 +1264,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_REQUEST_Create_Upload_Promise_0060', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Upload_Promise_0060', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0060 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
@@ -1293,7 +1293,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_On_Upload_Failed_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_On_Upload_Failed_0500', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_On_Upload_Failed_0500 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1343,7 +1343,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Failed_0500', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Failed_0500', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Upload_Failed_0500 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1410,7 +1410,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Failed_0600', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Failed_0600', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Upload_backgroundOnFailed_0500 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1475,7 +1475,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_On_Upload_Remove_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_On_Upload_Remove_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_On_Upload_Remove_0100 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1530,7 +1530,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Remove_0100', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Remove_0100', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Upload_Remove_0100 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1597,7 +1597,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Off_Upload_Remove_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Off_Upload_Remove_0200', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------------------SUB_REQUEST_Off_Upload_Remove_0200 is starting-----------------------');
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,
@@ -1662,7 +1662,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_Upload_broadcastEvent_0200', 0, async (done: Function) => {
+    it('SUB_REQUEST_Upload_broadcastEvent_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_Upload_broadcastEvent_0200 is starting-----------------------");
       let config_: request.agent.Config = {
         action: request.agent.Action.UPLOAD,

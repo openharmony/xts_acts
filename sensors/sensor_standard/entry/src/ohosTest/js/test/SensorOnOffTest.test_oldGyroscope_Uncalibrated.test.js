@@ -80,7 +80,7 @@ describe("SensorJsTest_sensor_10", function () {
      * @tc.name: Gyroscope_Uncalibrated_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Gyroscope_Uncalibrated_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("Gyroscope_Uncalibrated_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Gyroscope_Uncalibrated_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback);
         setTimeout(() => {

@@ -27,7 +27,7 @@ describe("SensorJsTest_sensor_11", function () {
         console.info("callback2" + JSON.stringify(data));
         expect(typeof (data.heartRate)).assertEqual("number");
     }
-	
+
     beforeAll(function () {
 
         /*
@@ -61,21 +61,21 @@ describe("SensorJsTest_sensor_11", function () {
     })
 
     const PARAMETER_ERROR_CODE = 401
-	const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_CODE = 14500101
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
-	let invalid  = -1;
-	let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable','ReferenceError: xxx is not defined']
-	let errMessage
-	
+    let invalid  = -1;
+    let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable','ReferenceError: xxx is not defined']
+    let errMessage
+
      /*
      * @tc.number:SUB_SensorsSystem_Heart_Rate_JSTest_0010
      * @tc.name: HeartRate_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("HeartRate_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("HeartRate_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------HeartRate_SensorJsTest001--------');
-		try {
+        try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
         } catch (error) {
             console.info("HeartRate_SensorJsTest001 error:" + error);
@@ -83,7 +83,7 @@ describe("SensorJsTest_sensor_11", function () {
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-		 setTimeout(() => {
+         setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -96,7 +96,7 @@ describe("SensorJsTest_sensor_11", function () {
      */
     it("HeartRate_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------HeartRate_SensorJsTest002--------');
-		try {
+        try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE ,callback, { 'interval': 100000000 });
         } catch (error) {
             console.info("HeartRate_SensorJsTest002 error:" + error);
@@ -115,11 +115,11 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest003--------');
         function onSensorCallback(data) {
             console.info('HeartRate_SensorJsTest003  on error');
-			expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, 
-			onSensorCallback, { 'interval': 100000000 }, 5);
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE,
+            onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
             console.info("HeartRate_SensorJsTest003 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
@@ -136,12 +136,12 @@ describe("SensorJsTest_sensor_11", function () {
     it("HeartRate_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------HeartRate_SensorJsTest004--------');
         try{
-		sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
-		} catch (error) {
+        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
+        } catch (error) {
             console.info("HeartRate_SensorJsTest004 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-			done();
+            done();
         }
     })
 
@@ -154,7 +154,7 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest005--------');
         function onceSensorCallback(data) {
             console.info('HeartRate_SensorJsTest005 on error');
-			expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, onceSensorCallback, 5);
@@ -176,10 +176,10 @@ describe("SensorJsTest_sensor_11", function () {
         try {
             sensor.off(string, "");
         } catch (error) {
-			errMessage 
+            errMessage
             console.info("HeartRate_SensorJsTest006 error:" + error);
-			errMessage = error.toString();
-			expect(errMessage).assertEqual(errMessages[0]);
+            errMessage = error.toString();
+            expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
@@ -193,10 +193,10 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest007--------');
         function onSensorCallback(data) {
             console.info('HeartRate_SensorJsTest007  on error');
-			expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
        try {
-		   sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, onSensorCallback);
+           sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, onSensorCallback);
            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE);
             } catch (error) {
             console.info("HeartRate_SensorJsTest007 error:" + error);
@@ -215,7 +215,7 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest008--------');
         function onSensorCallback(data) {
             console.info('HeartRate_SensorJsTest008  on error');
-			expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
             sensor.off(1000000, onSensorCallback);
@@ -226,8 +226,8 @@ describe("SensorJsTest_sensor_11", function () {
             done();
         }
     })
-	
-	 /*
+
+     /*
      * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0090
      * @tc.name: HeartRate_SensorJsTest009
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -236,7 +236,7 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest009--------');
         function onSensorCallback(data) {
             console.info('HeartRate_SensorJsTest009  on error');
-			expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
             sensor.off(invalid, onSensorCallback);
@@ -247,8 +247,8 @@ describe("SensorJsTest_sensor_11", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0100
      * @tc.name: HeartRate_SensorJsTest010
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -257,7 +257,7 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest010--------');
         function onSensorCallback(data) {
             console.info('HeartRate_SensorJsTest010  on error');
-			expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
             sensor.xxx(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, onSensorCallback);
@@ -268,8 +268,8 @@ describe("SensorJsTest_sensor_11", function () {
             done();
         }
     })
-	
-	/*
+
+    /*
      * @tc.number: SUB_SensorsSystem_Heart_Rate_JSTest_0110
      * @tc.name: HeartRate_SensorJsTest011
      * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -278,7 +278,7 @@ describe("SensorJsTest_sensor_11", function () {
         console.info('--------HeartRate_SensorJsTest011--------');
         function onSensorCallback(data) {
             console.info('HeartRate_SensorJsTest011 on error');
-	        expect(typeof (data.heartRate)).assertEqual("number");
+            expect(typeof (data.heartRate)).assertEqual("number");
         }
         try {
             xxx.on(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, onSensorCallback);

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterEach, Level } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import wantConstant from '@ohos.app.ability.wantConstant';
 import Want from '@ohos.app.ability.Want';
@@ -119,7 +119,7 @@ export default function flagstartwithouttipstest() {
      * @tc.type: Function
      * @tc.level 0
      */
-    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0100';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       let wantInfo: Want = {
@@ -154,7 +154,7 @@ export default function flagstartwithouttipstest() {
      * @tc.type: Function
      * @tc.level 0
      */
-    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0200';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       let wantInfo: Want = {
@@ -180,7 +180,7 @@ export default function flagstartwithouttipstest() {
      * @tc.type: Function
      * @tc.level 3
     */
-    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0500', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0500';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       let wantInfo: Want = {
@@ -211,7 +211,7 @@ export default function flagstartwithouttipstest() {
      * @tc.type: Function
      * @tc.level 3
      */
-    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0600', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0600';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       let wantInfo: Want = {
@@ -243,7 +243,7 @@ export default function flagstartwithouttipstest() {
      * @tc.type: Function
      * @tc.level 3
      */
-    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0700', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0700';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');
@@ -284,7 +284,7 @@ export default function flagstartwithouttipstest() {
      * @tc.type: Function
      * @tc.level 3
      */
-    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_startAbility_FLAG_0800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_startAbility_FLAG_0800';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       await abilityDelegator.executeShellCommand('aa start -b com.acts.flagstartwithouttipstest -a TestAbility');

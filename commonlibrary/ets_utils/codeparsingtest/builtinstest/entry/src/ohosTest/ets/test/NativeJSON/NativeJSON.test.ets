@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function NativeJsonTest() {
   describe('NativeJsonTest', () => {
@@ -111,7 +111,7 @@ export default function NativeJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNativeJsonParse0001', 0, () => {
+    it('testNativeJsonParse0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNativeJsonParse0001";
       try {
         let obj1 = JSON.parse(jsonText1, undefined) as text1;
@@ -155,7 +155,7 @@ export default function NativeJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNativeJsonBigIntMode0001', 0, () => {
+    it('testNativeJsonBigIntMode0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNativeJsonBigIntMode0001";
       try {
         let jsonText2 =
@@ -185,7 +185,7 @@ export default function NativeJsonTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testNativeJsonStringify0001", 0, () => {
+    it("testNativeJsonStringify0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNativeJsonStringify0001";
       try {
         let jsonText1 =

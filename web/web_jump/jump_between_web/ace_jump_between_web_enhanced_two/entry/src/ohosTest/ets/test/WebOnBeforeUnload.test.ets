@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -59,7 +59,7 @@ export default function webOnBeforeUnload() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnBeforeUnload001', 0, async (done: Function) => {
+    it('testOnBeforeUnload001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnBeforeUnload001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnBeforeUnload001", "resource://rawfile/onBeforeUnloadTest.html", 60402, done);
@@ -75,7 +75,7 @@ export default function webOnBeforeUnload() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnBeforeUnload002', 0, async (done: Function) => {
+    it('testOnBeforeUnload002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnBeforeUnload002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnBeforeUnload002", "resource://rawfile/onBeforeUnloadTest.html", 60404, done);

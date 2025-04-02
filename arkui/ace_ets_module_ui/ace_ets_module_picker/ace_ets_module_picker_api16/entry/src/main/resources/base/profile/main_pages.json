@@ -3,7 +3,6 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/checkbox/checkboxNode",
         "MainAbility/pages/checkboxGroup/checkboxGroupNode",
-        "MainAbility/pages/datePicker/DatePickerMode",
         "MainAbility/pages/radio/radioNode",
         "MainAbility/pages/rating/ratingNode",
         "MainAbility/pages/slider/sliderNode",

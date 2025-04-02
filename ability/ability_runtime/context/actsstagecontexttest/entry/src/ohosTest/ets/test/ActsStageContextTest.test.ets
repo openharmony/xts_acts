@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import bundle from '@ohos.bundle';
 import bundleManager from '@ohos.bundle.bundleManager';
 import application from '@ohos.app.ability.application';
@@ -53,7 +53,7 @@ export default function actsStageContextTest() {
     * @tc.name      : get resource by $r
     * @tc.desc      : get resource by $r
     */
-    it('ACTS_StageContext_0100',0, async (done:Function) => {
+    it('ACTS_StageContext_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ACTS_StageContext_0100 str: " + JSON.stringify(context))
       await context.createModuleContext("entry_test").resourceManager.getString($r("app.string.TestAbility_label").id).then(str => {
         console.info("ACTS_StageContext_0100 str: " + str)
@@ -71,7 +71,7 @@ export default function actsStageContextTest() {
    * @tc.name      : get resource by labelId in applicationInfo
    * @tc.desc      : get resource by labelId in applicationInfo
    */
-    it('ACTS_StageContext_0200',0, async (done:Function) => {
+    it('ACTS_StageContext_0200', Level.LEVEL0, async (done: Function) => {
       await bundleManager.getApplicationInfo("com.example.stage_app", 0).then(appInfo => {
         return context.resourceManager.getString(Number(appInfo.labelId))
       }).then(str => {
@@ -90,7 +90,7 @@ export default function actsStageContextTest() {
     * @tc.name      : get resource by labelId in abilityInfo
     * @tc.desc      : get resource by labelId in abilityInfo
     */
-    it('ACTS_StageContext_0300',0, async (done:Function) => {
+    it('ACTS_StageContext_0300', Level.LEVEL0, async (done: Function) => {
       await bundle.getAbilityInfo("com.example.stage_app", "MainAbility").then(abilityInfo => {
         context.resourceManager.getString(Number(abilityInfo.labelId)).then(str => {
           console.info("ACTS_StageContext_0300 labelId: " + str)
@@ -109,7 +109,7 @@ export default function actsStageContextTest() {
     * @tc.name      : get resource by labelId in applicationInfo from applicationContext
     * @tc.desc      : get resource by labelId in applicationInfo from applicationContext
     */
-    it('ACTS_StageContext_0400',0, async (done:Function) => {
+    it('ACTS_StageContext_0400', Level.LEVEL0, async (done: Function) => {
       await bundleManager.getApplicationInfo("com.example.stage_app", 0).then(appInfo => {
         context.getApplicationContext().resourceManager.getString(Number(appInfo.labelId)).then(str => {
           console.info("ACTS_StageContext_0400 labelId: " + str)
@@ -128,7 +128,7 @@ export default function actsStageContextTest() {
     * @tc.name      : get resource by labelId in abilityInfo from applicationContext
     * @tc.desc      : get resource by labelId in abilityInfo from applicationContext
     */
-    it('ACTS_StageContext_0500',0, async (done:Function) => {
+    it('ACTS_StageContext_0500', Level.LEVEL0, async (done: Function) => {
       await bundle.getAbilityInfo("com.example.stage_app", "MainAbility").then(abilityInfo => {
         context.getApplicationContext().resourceManager.getString(Number(abilityInfo.labelId)).then(str => {
           console.info("ACTS_StageContext_0500 labelId: " + str)
@@ -147,7 +147,7 @@ export default function actsStageContextTest() {
     * @tc.name      : get resource by Resource in applicationInfo
     * @tc.desc      : get resource by Resource in applicationInfo
     */
-    it('ACTS_StageContext_0600',0, async (done:Function) => {
+    it('ACTS_StageContext_0600', Level.LEVEL0, async (done: Function) => {
       await bundleManager.getApplicationInfo("com.example.stage_app", 0).then(appInfo => {
         context.resourceManager.getStringValue(appInfo.labelResource).then(str => {
           console.info("ACTS_StageContext_0600 labelId: " + str)
@@ -166,7 +166,7 @@ export default function actsStageContextTest() {
     * @tc.name      : get resource by Resource in applicationInfo
     * @tc.desc      : get resource by Resource in applicationInfo
     */
-    it('ACTS_StageContext_0700',0, async (done:Function) => {
+    it('ACTS_StageContext_0700', Level.LEVEL0, async (done: Function) => {
       await bundleManager.getApplicationInfo("com.example.stage_app", 0).then(appInfo => {
         context.getApplicationContext().resourceManager.getStringValue(appInfo.labelResource).then(str => {
           console.info("ACTS_StageContext_0700 labelId: " + str)
@@ -185,7 +185,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test basic on/off/emit
     */
-    it('ACTS_StageContext_0800',0, async (done:Function) => {
+    it('ACTS_StageContext_0800', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       eventHub.on("event1", callback1);
       eventHub.emit("event1");
@@ -201,7 +201,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test multiple callbacks
     */
-    it('ACTS_StageContext_0900',0, async (done:Function) => {
+    it('ACTS_StageContext_0900', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       eventHub.on("event1", callback1);
       eventHub.on("event1", callback2);
@@ -228,7 +228,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test different events
     */
-    it('ACTS_StageContext_1000',0, async (done:Function) => {
+    it('ACTS_StageContext_1000', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       eventHub.on("event1", callback1);
       eventHub.on("event2", callback2);
@@ -256,7 +256,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test repeat on/off
     */
-    it('ACTS_StageContext_1100',0, async (done:Function) => {
+    it('ACTS_StageContext_1100', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       eventHub.on("event1", callback1);
       eventHub.on("event1", callback1);
@@ -276,7 +276,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test call off() in callback
     */
-    it('ACTS_StageContext_1200',0, async (done:Function) => {
+    it('ACTS_StageContext_1200', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       let count = 0;
       let func = ()=>{
@@ -302,7 +302,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test call off() in callback
     */
-    it('ACTS_StageContext_1300',0, async (done:Function) => {
+    it('ACTS_StageContext_1300', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       let count = 0;
       let func = ()=>{
@@ -328,7 +328,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test EventHub
     * @tc.desc      : test call on/off in callback
     */
-    it('ACTS_StageContext_1400',0, async (done:Function) => {
+    it('ACTS_StageContext_1400', Level.LEVEL0, async (done: Function) => {
       const eventHub = context.eventHub;
       let count = 0;
       let func = ()=>{
@@ -352,13 +352,12 @@ export default function actsStageContextTest() {
       done();
     })
 
-
     /*
     * @tc.number    : ACTS_StageContext_1500
     * @tc.name      : test CreateModuleContext
     * @tc.desc      : test CreateModuleContext
     */
-    it("ACTS_StageContext_1500", 0, async (done:Function) => {
+    it("ACTS_StageContext_1500", Level.LEVEL0, async (done:Function) => {
       console.info("ACTS_StageContext_1500 begin");
 
       moduleContext = null;
@@ -385,7 +384,7 @@ export default function actsStageContextTest() {
     * @tc.name      : test CreateModuleContext
     * @tc.desc      : test CreateModuleContext
     */
-    it("ACTS_StageContext_1600", 0, async (done:Function) => {
+    it("ACTS_StageContext_1600", Level.LEVEL0, async (done:Function) => {
       console.info("ACTS_StageContext_1600 begin");
       moduleContext = null;
       try {

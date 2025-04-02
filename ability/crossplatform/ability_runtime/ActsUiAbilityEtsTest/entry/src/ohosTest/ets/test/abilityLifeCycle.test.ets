@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import aConstant from '@ohos.app.ability.AbilityConstant'
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -66,7 +66,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Context_Test_0001", 0, async (done: Function) => {
+    it("UI_Ability_Context_Test_0001", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_CONTEXT_TEST_0001 START-------------");
       TAG = "UI_ABILITY_CONTEXT_TEST_0001";
       expect(globalThis.abilityContext != null).assertTrue();
@@ -81,7 +81,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Context_Test_0002", 0, async (done: Function) => {
+    it("UI_Ability_Context_Test_0002", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_CONTEXT_TEST_0002 START-------------");
       TAG = "UI_ABILITY_CONTEXT_TEST_0002";
       expect(globalThis.abilityContext != null).assertTrue();
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UIAbilityContextTest_0003", 0, async (done: Function) => {
+    it("UIAbilityContextTest_0003", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_CONTEXT_TEST_0003 START-------------");
       TAG = "UI_ABILITY_CONTEXT_TEST_0003";
       expect(globalThis.abilityContext != null).assertTrue();
@@ -113,7 +113,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Life_Cycle_Test_0001", 0, async (done: Function) => {
+    it("UI_Ability_Life_Cycle_Test_0001", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0001 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0001";
 
@@ -154,7 +154,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Life_Cycle_Test_0002", 0, async (done: Function) => {
+    it("UI_Ability_Life_Cycle_Test_0002", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0002 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0002";
 
@@ -197,7 +197,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Life_Cycle_Test_0003", 0, async (done: Function) => {
+    it("UI_Ability_Life_Cycle_Test_0003", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0003 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0003";
 
@@ -265,7 +265,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Life_Cycle_Test_0004", 0, async (done: Function) => {
+    it("UI_Ability_Life_Cycle_Test_0004", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0004 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0004";
 
@@ -350,7 +350,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Life_Cycle_Test_0005", 0, async (done: Function) => {
+    it("UI_Ability_Life_Cycle_Test_0005", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0005 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0005";
 
@@ -406,7 +406,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Life_Cycle_Test_0006", 0, async (done: Function) => {
+    it("UI_Ability_Life_Cycle_Test_0006", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0006 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0006";
 
@@ -462,7 +462,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('UI_ABILITY_LIFE_CYCLE_TEST_0007', 0, async (done: Function) => {
+    it('UI_ABILITY_LIFE_CYCLE_TEST_0007', Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0007 START-------------");
       TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0007";
 
@@ -505,7 +505,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("UI_Ability_Constant_Test_0100", 0, async (done: Function) => {
+    it("UI_Ability_Constant_Test_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------UI_Ability_Constant_Test_0100 START-------------");
       TAG = "UI_Ability_Constant_Test_0100";
 

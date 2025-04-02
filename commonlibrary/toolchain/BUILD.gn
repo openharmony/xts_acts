@@ -105,6 +105,22 @@ action("tar_dllib") {
       "--temp_path",
       "./libc-test-lib",
     ]
+  } else if (target_cpu == "x86_64") {
+    _outputs = [ "$target_out_dir/libc-test-lib.tar" ]
+    outputs = _outputs
+
+    input_path = rebase_path("$dllib_path/musl/libc-test-lib")
+    output_path =
+        rebase_path("$dllib_path/suites/acts/acts/testcases/libc-test-lib.tar")
+    print("root_build_dir-49", root_build_dir)
+    args = [
+      "--input_path",
+      input_path,
+      "--output_path",
+      output_path,
+      "--temp_path",
+      "./libc-test-lib",
+    ]
   } else {
     _outputs = [ "" ]
     outputs = _outputs

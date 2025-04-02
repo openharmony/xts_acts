@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -69,7 +69,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_DialogWindow', 0, async () => {
+    it('testSetAspectRatio_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -106,7 +106,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_SubWindow', 0, async () => {
+    it('testSetAspectRatio_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -139,7 +139,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_MainWindow_WinStatusType_Floating', 0, async () => {
+    it('testSetAspectRatio_MainWindow_WinStatusType_Floating', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_MainWindow_WinStatusType_Floating';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -167,7 +167,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResetAspectRatio_DialogWindow', 0, async () => {
+    it('testResetAspectRatio_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetAspectRatio_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -203,7 +203,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResetAspectRatio_SubWindow', 0, async () => {
+    it('testResetAspectRatio_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetAspectRatio_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -235,7 +235,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResetAspectRatio_MainWindow_WinStatusType_Floating', 0, async () => {
+    it('testResetAspectRatio_MainWindow_WinStatusType_Floating', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetAspectRatio_MainWindow_WinStatusType_Floating';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -256,7 +256,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_MainWindow_FullScreen_Promise', 0, async () => {
+    it('testResize_MainWindow_FullScreen_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResize_MainWindow_FullScreen_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -322,7 +322,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testResize_MainWindow_FullScreen_Callback', 0, async (done: Function) => {
+    it('testResize_MainWindow_FullScreen_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_MainWindow_FullScreen_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -404,7 +404,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowLimits_DialogWindow', 0, async () => {
+    it('testGetWindowLimits_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowLimits_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -442,7 +442,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowLimits_SubWindow', 0, async () => {
+    it('testGetWindowLimits_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowLimits_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -477,7 +477,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowLimits_MainWindow', 0, async () => {
+    it('testGetWindowLimits_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowLimits_MainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -506,7 +506,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_DialogWindow', 0, async () => {
+    it('testSetWindowLimits_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -567,7 +567,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_SubWindow', 0, async () => {
+    it('testSetWindowLimits_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -623,7 +623,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_MainWindow', 0, async () => {
+    it('testSetWindowLimits_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_MainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -675,7 +675,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_InvalidParameter', 0, async () => {
+    it('testSetWindowLimits_InvalidParameter', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_InvalidParameter';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -732,7 +732,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_MoreThenMaxInitGetValue', 0, async () => {
+    it('testSetWindowLimits_MoreThenMaxInitGetValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_MoreThenInitGetValue';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -794,7 +794,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_LessThenMinInitGetValue', 0, async () => {
+    it('testSetWindowLimits_LessThenMinInitGetValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_LessThenMinInitGetValue';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -856,7 +856,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnOffWindowStatusChange_OnSubWindow', 0, async () => {
+    it('testOnOffWindowStatusChange_OnSubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testOnOffWindowStatusChange_OnSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -918,7 +918,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnOffWindowStatusChange_OnMainWindow', 0, async () => {
+    it('testOnOffWindowStatusChange_OnMainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testOnOffWindowStatusChange_OnMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -976,7 +976,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetAspectRatio_SubWindowWithOptions', 0, async () => {
+    it('testSetAspectRatio_SubWindowWithOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetAspectRatio_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1023,7 +1023,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResetAspectRatio_SubWindowWithOptions', 0, async () => {
+    it('testResetAspectRatio_SubWindowWithOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testResetAspectRatio_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1068,7 +1068,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowLimits_SubWindowWithOptions', 0, async () => {
+    it('testGetWindowLimits_SubWindowWithOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetWindowLimits_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1116,7 +1116,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLimits_SubWindowWithOptions', 0, async () => {
+    it('testSetWindowLimits_SubWindowWithOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowLimits_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1186,7 +1186,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnOffWindowStatusChange_OnSubWindowWithOptions', 0, async () => {
+    it('testOnOffWindowStatusChange_OnSubWindowWithOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testOnOffWindowStatusChange_OnSubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

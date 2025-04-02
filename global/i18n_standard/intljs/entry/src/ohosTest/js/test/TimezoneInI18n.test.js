@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function TimezoneInI18nTest() {
 describe('TimezoneInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getTimeZone method
     * @tc.desc    get the getTimeZone value
     */
-    it('timezone_test_0100', 0, function () {
+    it('timezone_test_0100', Level.LEVEL0, function () {
         console.log('timezone_test_0100 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getID();
@@ -74,7 +74,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName method
     * @tc.desc    get the getDisplayName value
     */
-    it('timezone_test_0200', 0, function () {
+    it('timezone_test_0200', Level.LEVEL2, function () {
         console.log('timezone_test_0200 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName();
@@ -87,7 +87,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName method with zh-CN param
     * @tc.desc    get the getDisplayName value
     */
-    it('timezone_test_0300', 0, function () {
+    it('timezone_test_0300', Level.LEVEL2, function () {
         console.log('timezone_test_0300 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName('zh-CN');
@@ -100,7 +100,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName method with true param
     * @tc.desc    get the getDisplayName value
     */
-    it('timezone_test_0400', 0, function () {
+    it('timezone_test_0400', Level.LEVEL2, function () {
         console.log('timezone_test_0400 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName(true);
@@ -113,7 +113,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName method with false param
     * @tc.desc    get the getDisplayName value
     */
-    it('timezone_test_0500', 0, function () {
+    it('timezone_test_0500', Level.LEVEL2, function () {
         console.log('timezone_test_0500 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName(false);
@@ -126,7 +126,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getRawOffset method
     * @tc.desc    get the getRawOffset value
     */
-    it('timezone_test_0600', 0, function () {
+    it('timezone_test_0600', Level.LEVEL2, function () {
         console.log('timezone_test_0600 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getRawOffset();
@@ -139,7 +139,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getOffset method
     * @tc.desc    get the getOffset value
     */
-    it('timezone_test_0700', 0, function () {
+    it('timezone_test_0700', Level.LEVEL2, function () {
         console.log('timezone_test_0700 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getOffset();
@@ -152,7 +152,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getOffset method with date param
     * @tc.desc    get the getOffset value
     */
-    it('timezone_test_0800', 0, function () {
+    it('timezone_test_0800', Level.LEVEL2, function () {
         console.log('timezone_test_0800 ' + 'start');
         let timezone = I18n.getTimeZone();
         let value = timezone.getOffset(10540800000);
@@ -165,7 +165,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getID
     * @tc.desc    get the getID value
     */
-    it('timezone_test_0900', 0, function () {
+    it('timezone_test_0900', Level.LEVEL2, function () {
         console.log('timezone_test_0900 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = timezone.getID();
@@ -178,7 +178,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName with timezone id
     * @tc.desc    get the getID value
     */
-    it('timezone_test_1000', 0, function () {
+    it('timezone_test_1000', Level.LEVEL2, function () {
         console.log('timezone_test_1000 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = timezone.getDisplayName();
@@ -191,7 +191,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName with locale
     * @tc.desc    get the getID value
     */
-    it('timezone_test_1100', 0, function () {
+    it('timezone_test_1100', Level.LEVEL2, function () {
         console.log('timezone_test_1100 ' + 'start');
         let timezone = I18n.getTimeZone('Asia/Shanghai');
         let value = timezone.getDisplayName('zh-CN');
@@ -204,7 +204,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName with locale
     * @tc.desc    get the getID value
     */
-    it('timezone_test_1200', 0, function () {
+    it('timezone_test_1200', Level.LEVEL2, function () {
         console.log('timezone_test_1200 ' + 'start');
         let timezone = I18n.getTimeZone('Asia/Shanghai');
         let value = timezone.getDisplayName('zh-CN', true);
@@ -217,7 +217,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName with en-US and true param
     * @tc.desc    get the getID value
     */
-    it('timezone_test_1300', 0, function () {
+    it('timezone_test_1300', Level.LEVEL2, function () {
         console.log('timezone_test_1300 ' + 'start');
         let timezone = I18n.getTimeZone('Asia/Shanghai');
         let value = timezone.getDisplayName('en-US', true);
@@ -230,7 +230,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getDisplayName with zh-CN and false param
     * @tc.desc    get the getID value
     */
-    it('timezone_test_1400', 0, function () {
+    it('timezone_test_1400', Level.LEVEL2, function () {
         console.log('timezone_test_1400 ' + 'start');
         let timezone = I18n.getTimeZone('Asia/Shanghai');
         let value = timezone.getDisplayName('zh-CN', false);
@@ -243,7 +243,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getRawOffset method with timezone id
     * @tc.desc    get the getRawOffset value
     */
-    it('timezone_test_1500', 0, function () {
+    it('timezone_test_1500', Level.LEVEL2, function () {
         console.log('timezone_test_1500 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = timezone.getRawOffset();
@@ -256,7 +256,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getOffset method with timezone id
     * @tc.desc    get the getOffset value
     */
-    it('timezone_test_1600', 0, function () {
+    it('timezone_test_1600', Level.LEVEL2, function () {
         console.log('timezone_test_1600 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = timezone.getOffset();
@@ -269,7 +269,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name    test getOffset method with date and timezone id param
     * @tc.desc    get the getOffset value
     */
-    it('timezone_test_1700', 0, function () {
+    it('timezone_test_1700', Level.LEVEL2, function () {
         console.log('timezone_test_1700 ' + 'start');
         let timezone = I18n.getTimeZone('ACT');
         let value = timezone.getOffset(10540800000);
@@ -282,7 +282,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getAvailableIDs method
     * @tc.desc get the getAvailableIDs value
     */
-    it('timezone_test_1800', 0, function () {
+    it('timezone_test_1800', Level.LEVEL0, function () {
         console.log('timezone_test_1800 ' + 'start');
         let value = I18n.TimeZone.getAvailableIDs();
         console.log('timezone_test_1800 ' + value);
@@ -294,7 +294,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getAvailableZoneCityIDs method
     * @tc.desc get the getAvailableZoneCityIDs value
     */
-    it('timezone_test_1900', 0, function () {
+    it('timezone_test_1900', Level.LEVEL0, function () {
         console.log('timezone_test_1900 ' + 'start');
         let value = I18n.TimeZone.getAvailableZoneCityIDs();
         console.log('timezone_test_1900 ' + value);
@@ -306,7 +306,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getCityDisplayName method with zh locale
     * @tc.desc get the getCityDisplayName value
     */
-    it('timezone_test_2000', 0, function () {
+    it('timezone_test_2000', Level.LEVEL0, function () {
         console.log('timezone_test_2000 ' + 'start');
         let value = I18n.TimeZone.getCityDisplayName('Auckland', 'zh');
         console.log('timezone_test_2000 ' + value);
@@ -318,7 +318,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getCityDisplayName method with en loacle
     * @tc.desc get the getCityDisplayName value
     */
-    it('timezone_test_2020', 0, function () {
+    it('timezone_test_2020', Level.LEVEL2, function () {
         console.log('timezone_test_2020 ' + 'start');
         let value = I18n.TimeZone.getCityDisplayName('Auckland', 'en');
         console.log('timezone_test_2020 ' + value);
@@ -330,7 +330,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getCityDisplayName method with not exist cityid
     * @tc.desc get the getCityDisplayName value
     */
-    it('timezone_test_2040', 0, function () {
+    it('timezone_test_2040', Level.LEVEL2, function () {
         console.log('timezone_test_2040 ' + 'start');
         let value = I18n.TimeZone.getCityDisplayName('abcd', 'en');
         console.log('timezone_test_2040 ' + value);
@@ -342,7 +342,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getCityDisplayName method with not exist locale
     * @tc.desc get the getCityDisplayName value
     */
-    it('timezone_test_2060', 0, function () {
+    it('timezone_test_2060', Level.LEVEL2, function () {
         console.log('timezone_test_2060 ' + 'start');
         let value = I18n.TimeZone.getCityDisplayName('Auckland', 'abc');
         console.log('timezone_test_2060 ' + value);
@@ -354,7 +354,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezoneFromCity method
     * @tc.desc get the getTimezoneFromCity value
     */
-    it('timezone_test_2100', 0, function () {
+    it('timezone_test_2100', Level.LEVEL0, function () {
         console.log('timezone_test_2100 ' + 'start');
         let value = I18n.TimeZone.getTimezoneFromCity('Auckland');
         console.log('timezone_test_2100 ' + value);
@@ -366,7 +366,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezoneFromCity method with not exist cityid
     * @tc.desc get the getTimezoneFromCity value
     */
-    it('timezone_test_2120', 0, function () {
+    it('timezone_test_2120', Level.LEVEL2, function () {
         console.log('timezone_test_2120 ' + 'start');
         let value = I18n.TimeZone.getTimezoneFromCity('abc');
         console.log('timezone_test_2120 ' + value);
@@ -378,7 +378,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2200', 0, function () {
+    it('timezone_test_2200', Level.LEVEL0, function () {
         console.log('timezone_test_2200 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(116,39);
@@ -397,7 +397,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2300', 0, function () {
+    it('timezone_test_2300', Level.LEVEL2, function () {
         console.log('timezone_test_2300 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(87,43);
@@ -418,7 +418,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2400', 0, function () {
+    it('timezone_test_2400', Level.LEVEL2, function () {
         console.log('timezone_test_2400 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(-74,40);
@@ -437,7 +437,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2500', 0, function () {
+    it('timezone_test_2500', Level.LEVEL2, function () {
         console.log('timezone_test_2500 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(2,49);
@@ -456,7 +456,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2600', 0, function () {
+    it('timezone_test_2600', Level.LEVEL2, function () {
         console.log('timezone_test_2600 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(18,-33);
@@ -475,7 +475,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2700', 0, function () {
+    it('timezone_test_2700', Level.LEVEL2, function () {
         console.log('timezone_test_2700 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(100,90);
@@ -494,7 +494,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2800', 0, function () {
+    it('timezone_test_2800', Level.LEVEL2, function () {
         console.log('timezone_test_2800 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(100,-90.1);
@@ -513,7 +513,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_2900', 0, function () {
+    it('timezone_test_2900', Level.LEVEL2, function () {
         console.log('timezone_test_2900 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(180.0,50);
@@ -532,7 +532,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_3000', 0, function () {
+    it('timezone_test_3000', Level.LEVEL2, function () {
         console.log('timezone_test_3000 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(-180.1,50);
@@ -551,7 +551,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_3100', 0, function () {
+    it('timezone_test_3100', Level.LEVEL2, function () {
         console.log('timezone_test_3100 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(18);
@@ -570,7 +570,7 @@ describe('TimezoneInI18nTest', function () {
     * @tc.name test getTimezonesByLocation method
     * @tc.desc get the getTimezonesByLocation value
     */
-    it('timezone_test_3200', 0, function () {
+    it('timezone_test_3200', Level.LEVEL2, function () {
         console.log('timezone_test_3200 ' + 'start');
         try{
             let value = I18n.TimeZone.getTimezonesByLocation(18, '33');

@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import { IsNotificationEnabled } from "libenable.so"
 import common from '@ohos.app.ability.common';
 import notificationManager from '@ohos.notificationManager';
@@ -22,7 +22,7 @@ export default function ActsNotificationNDKEnableTest() {
      * @tc.type      : Function test
      * @tc.level     : Level 0
      */
-    it('ACTS_Notification_Ans_enableVerification_0010', 0,async (done: Function) => {
+    it('ACTS_Notification_Ans_enableVerification_0010', Level.LEVEL2,async (done: Function) => {
       try {
         let result = IsNotificationEnabled();
         hilog.info(0x0000, 'testTag',`IsNotificationEnabled value is : ${result}`);

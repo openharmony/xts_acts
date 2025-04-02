@@ -61,11 +61,11 @@ describe("SensorJsTest_sensor_27", function () {
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0010
      * @tc.name:subscribeDeviceOrientation_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("subscribeDeviceOrientation_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {

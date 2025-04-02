@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import device from '@system.device';
 import deviceInfo from '@ohos.deviceInfo';
 
@@ -97,7 +97,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceBrand01
      * @tc.desc      Get the device brand represented by a string and the return value is not null.
      */
-    it('testDeviceBrand01', 0, async function (done) {
+    it('testDeviceBrand01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceBrand01 start');
         let ret = false;
 
@@ -121,7 +121,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceManufacture01
      * @tc.desc      Get the manufacture name represented by a string and the return value is not null.
      */
-    it('testDeviceManufacture01', 0, async function (done) {
+    it('testDeviceManufacture01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceManufacture01 start');
         let ret = false;
 
@@ -145,7 +145,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceModel01
      * @tc.desc      Get the internal software sub-model represented by a string and the return value is not null.
      */
-    it('testDeviceModel01', 0, async function (done) {
+    it('testDeviceModel01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceModel01 start');
         let ret = false;
 
@@ -169,7 +169,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceProduct01
      * @tc.desc      Get the product represented by a string and the return value is not null.
      */
-    it('testDeviceProduct01', 0, async function (done) {
+    it('testDeviceProduct01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceProduct01 start');
         let ret = false;
 
@@ -193,7 +193,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name     testDeviceApiVersion01
      * @tc.desc    Get the API version number, which return value type is number.
      */
-    it('testDeviceApiVersion01', 0, async function (done) {
+    it('testDeviceApiVersion01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceApiVersion01 start');
         let ret = false;
 
@@ -217,7 +217,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceType01
      * @tc.desc      Get a string representing the device type and the return value is not null.
      */
-    it('testDeviceType01', 0, async function (done) {
+    it('testDeviceType01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceType01 start');
         let ret = false;
 
@@ -241,7 +241,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceLanguage01
      * @tc.desc      Get a string representing the device language and the return value is not null.
      */
-    it('testDeviceLanguage01', 0, async function (done) {
+    it('testDeviceLanguage01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceLanguage01 start');
         let ret = false;
 
@@ -265,7 +265,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceRegion01
      * @tc.desc      Get a string representing the device region and the return value is not null.
      */
-    it('testDeviceRegion01', 0, async function (done) {
+    it('testDeviceRegion01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceRegion01 start');
         let ret = false;
 
@@ -289,7 +289,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceWindowWidth01
      * @tc.desc      Get a number representing the device window width and return value is greater than 0.
      */
-    it('testDeviceWindowWidth01', 0, async function (done) {
+    it('testDeviceWindowWidth01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceWindowWidth01 start');
         let ret = false;
 
@@ -313,7 +313,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceWindowHeight01
      * @tc.desc      Get a number representing the device window height and return value is greater than 0.
      */
-    it('testDeviceWindowHeight01', 0, async function (done) {
+    it('testDeviceWindowHeight01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceWindowHeight01 start');
         let ret = false;
 
@@ -337,7 +337,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceScreenDensity01
      * @tc.desc      Get a number representing the screen density and return value is greater than 0.
      */
-    it('testDeviceScreenDensity01', 0, async function (done) {
+    it('testDeviceScreenDensity01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceScreenDensity01 start');
         let ret = false;
 
@@ -361,7 +361,7 @@ describe('SystemDeviceTest', function () {
      * @tc.name      testDeviceScreenShape01
      * @tc.desc      Get a string representing the device screen shape and the return value is not null.
      */
-    it('testDeviceScreenShape01', 0, async function (done) {
+    it('testDeviceScreenShape01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testDeviceScreenShape01 start');
         let ret = false;
 

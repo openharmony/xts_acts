@@ -17,6 +17,7 @@ import {
   fileio,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function constants() {
 describe('constants', function () {
@@ -30,7 +31,7 @@ describe('constants', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_constants', 0, function () {
+  it('fileio_test_constants', Level.LEVEL0, function () {
     try {
       expect(fileio.constants.F_OK == 0).assertTrue();
       expect(fileio.constants.X_OK == 1).assertTrue();

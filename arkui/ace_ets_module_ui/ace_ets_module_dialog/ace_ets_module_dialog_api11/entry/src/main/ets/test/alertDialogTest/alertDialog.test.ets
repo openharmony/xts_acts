@@ -18,6 +18,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from '../../MainAbility/common/Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 import measure, { MeasureOptions } from '@ohos.measure'
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+
 
 export default function alertDialogCenterStartJsunit() {
   describe('alertDialogCenterStartTest', () => {
@@ -54,6 +56,7 @@ export default function alertDialogCenterStartJsunit() {
      */
     it('testalertDialogCenterStart0001', 0, async (done: Function) => {
       console.info('alertDialogCenterStart testalertDialogCenterStart0011 START');
+      let driver = await Driver.create()
       await Utils.sleep(2000);
       try {
         let event: events_emitter.InnerEvent = {
@@ -71,6 +74,9 @@ export default function alertDialogCenterStartJsunit() {
       } catch (err) {
         console.info("testalertDialogCenterStart0001 on events_emitter err : " + JSON.stringify(err));
       }
+      let button = await driver.findComponent(ON.text('button'));
+      await button?.click();
+      await Utils.sleep(1000);
     });
 
     /*
@@ -80,6 +86,7 @@ export default function alertDialogCenterStartJsunit() {
      */
     it('testMeasureText0001', 0, async (done: Function) => {
       console.info('testMeasureText0001 start');
+      let driver = await Driver.create()
       await Utils.sleep(2000);
       try {
         let measureOptions: MeasureOptions = {
@@ -94,6 +101,9 @@ export default function alertDialogCenterStartJsunit() {
         expect().assertFail();
         done();
       }
+      let button = await driver.findComponent(ON.text('button'));
+      await button?.click();
+      await Utils.sleep(1000);
     });
 
   })

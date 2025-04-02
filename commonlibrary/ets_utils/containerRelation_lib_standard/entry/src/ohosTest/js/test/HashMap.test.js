@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import HashMap from "@ohos.util.HashMap";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export default function HashMapTest() {
 describe("HashMapTest", function () {
           
@@ -21,7 +21,7 @@ describe("HashMapTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an HashMap instance. For example: let hashMap = new HashMap().
    */
-  it("testConstructor001", 0, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
       let hashMap = new HashMap();
       expect(hashMap != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, "A").
    */
-  it("testSet002", 0, function () {
+  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     let res = hashMap.get(1);
@@ -47,7 +47,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet003
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, 2).
    */
-  it("testSet003", 0, function () {
+  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 2);
     let res = hashMap.get(1);
@@ -58,7 +58,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet004
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: let c = [1, 2, 3]; hashMap.set(1, c).
    */
-  it("testSet004", 0, function () {
+  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let c = [1, 2, 3];
     hashMap.set(1, c);
@@ -71,7 +71,7 @@ describe("HashMapTest", function () {
    * @tc.desc: Add a pair of key value pairs to the HashMap. 
    * For example: let c = {name: "lili", age: "13"}; hashMap.set(1, c).
    */
-  it("testSet005", 0, function () {
+  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let c = {name: "lili", age: "13"};
     hashMap.set(1, c);
@@ -83,7 +83,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet006
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set("a", "A").
    */
-  it("testSet006", 0, function () {
+  it("testSet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set("a", "A");
     let res = hashMap.get("a");
@@ -94,7 +94,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet007
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set("", "A").
    */
-  it("testSet007", 0, function () {
+  it("testSet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set("", "A");
     let res = hashMap.get("");
@@ -105,7 +105,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet008
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set("$", "A").
    */
-  it("testSet008", 0, function () {
+  it("testSet008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set("$", "A");
     let res = hashMap.get("$");
@@ -116,7 +116,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet009
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(3.14, "A").
    */
-  it("testSet009", 0, function () {
+  it("testSet009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(3.14, "A");
     let res = hashMap.get(3.14);
@@ -127,7 +127,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet010
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(0.3, "A").
    */
-  it("testSet010", 0, function () {
+  it("testSet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(0.3, "A");
     let res = hashMap.get(0.3);
@@ -138,7 +138,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet011
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(-1, "A").
    */
-  it("testSet011", 0, function () {
+  it("testSet011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(-1, "A");
     let res = hashMap.get(-1);
@@ -149,7 +149,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet012
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: let a = {}; hashMap.set(a, "A").
    */
-  it("testSet012", 0, function () {
+  it("testSet012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let a = {};
     hashMap.set(a, "A");
@@ -161,7 +161,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet013
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, null).
    */
-  it("testSet013", 0, function () {
+  it("testSet013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, null);
     let res = hashMap.get(1);
@@ -172,7 +172,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet014
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, "$").
    */
-  it("testSet014", 0, function () {
+  it("testSet014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "$");
     let res = hashMap.get(1);
@@ -183,7 +183,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet015
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, "3.14").
    */
-  it("testSet015", 0, function () {
+  it("testSet015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 3.14);
     let res = hashMap.get(1);
@@ -194,7 +194,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet016
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, -1).
    */
-  it("testSet016", 0, function () {
+  it("testSet016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, -1);
     let res = hashMap.get(1);
@@ -205,7 +205,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet017
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: let a = {}; hashMap.set(1, a).
    */
-  it("testSet017", 0, function () {
+  it("testSet017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let a = {};
     hashMap.set(1, a);
@@ -218,7 +218,7 @@ describe("HashMapTest", function () {
    * @tc.desc: Add a pair of key value pairs to the HashMap. 
    * For example: for (let i = 0; i < 100; i++) {hashMap.set(1, i);}.
    */
-  it("testSet018", 0, function () {
+  it("testSet018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 100; i++) {
       hashMap.set(1, i);
@@ -233,7 +233,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet019
    * @tc.desc: Add a pair of key value pairs to the HashMap.
    */
-  it("testSet019", 0, function () {
+  it("testSet019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 100; i++) {
       hashMap.set(i, 1);
@@ -248,7 +248,7 @@ describe("HashMapTest", function () {
    * @tc.name: testLength020
    * @tc.desc: Get the number of key value pairs in the HashMap instance. For example: hashMap.length.
    */
-  it("testLength020", 0, function () {
+  it("testLength020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -263,7 +263,7 @@ describe("HashMapTest", function () {
    * @tc.name: testHasKey021
    * @tc.desc: Determine whether the HashMap contains the specified key. For example: hashMap.hasKey(3).
    */
-  it("testHasKey021", 0, function () {
+  it("testHasKey021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -280,7 +280,7 @@ describe("HashMapTest", function () {
    * @tc.name: testHasKey022
    * @tc.desc: Determine whether the HashMap contains the specified key. For example: hashMap.hasKey(8).
    */
-  it("testHasKey022", 0, function () {
+  it("testHasKey022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.hasKey(8);
     expect(res).assertEqual(false);
@@ -290,7 +290,7 @@ describe("HashMapTest", function () {
    * @tc.name: testHasValue023
    * @tc.desc: Determine whether the HashMap contains the specified value. For example: hashMap.hasValue("C").
    */
-  it("testHasValue023", 0, function () {
+  it("testHasValue023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -307,7 +307,7 @@ describe("HashMapTest", function () {
    * @tc.name: testHasKey023
    * @tc.desc: Determine whether the HashMap contains the specified key. For example: hashMap.hasKey(8).
    */
-  it("testHasKey023", 0, function () {
+  it("testHasKey023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 10; i++) {
       hashMap.set(i, i)
@@ -321,7 +321,7 @@ describe("HashMapTest", function () {
    * @tc.name: testHasValue024
    * @tc.desc: Determine whether the HashMap contains the specified value. For example: hashMap.hasValue(8).
    */
-  it("testHasValue024", 0, function () {
+  it("testHasValue024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.hasValue(8);
     expect(res).assertEqual(false);
@@ -331,7 +331,7 @@ describe("HashMapTest", function () {
    * @tc.name: testGet025
    * @tc.desc: Get the corresponding value through the key. For example: hashMap.get(3).
    */
-  it("testGet025", 0, function () {
+  it("testGet025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -346,7 +346,7 @@ describe("HashMapTest", function () {
    * @tc.name: testGet026
    * @tc.desc: Get the corresponding value through the key. For example: hashMap.get(3).
    */
-  it("testGet026", 0, function () {
+  it("testGet026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.get(3);
     expect(res).assertEqual(undefined);
@@ -356,7 +356,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSetAll027
    * @tc.desc: Copy key value pairs from one HashMap to another.
    */
-  it("testSetAll027", 0, function () {
+  it("testSetAll027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -385,7 +385,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSetAll028
    * @tc.desc: Copy key value pairs from one HashMap to another.
    */
-  it("testSetAll028", 0, function () {
+  it("testSetAll028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let hashMap1 = new HashMap();
     hashMap1.set(1, 1);
@@ -409,7 +409,7 @@ describe("HashMapTest", function () {
    * @tc.name: testRemove029
    * @tc.desc: Delete key value pairs according to key. For example: hashMap.remove(3).
    */
-  it("testRemove029", 0, function () {
+  it("testRemove029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -426,7 +426,7 @@ describe("HashMapTest", function () {
    * @tc.name: testRemove030
    * @tc.desc: Delete key value pairs according to key. For example: hashMap.remove(3).
    */
-  it("testRemove030", 0, function () {
+  it("testRemove030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.remove(3);
     expect(res).assertEqual(undefined);
@@ -436,7 +436,7 @@ describe("HashMapTest", function () {
    * @tc.name: testClear031
    * @tc.desc: Clear all key value pairs in HashMap. For example: hashMap.clear().
    */
-  it("testClear031", 0, function () {
+  it("testClear031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -454,7 +454,7 @@ describe("HashMapTest", function () {
    * @tc.name: testClear032
    * @tc.desc: Clear all key value pairs in HashMap. For example: hashMap.clear().
    */
-  it("testClear032", 0, function () {
+  it("testClear032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.clear();
     let res = hashMap.length;
@@ -465,7 +465,7 @@ describe("HashMapTest", function () {
    * @tc.name: testKeys033
    * @tc.desc: Get a collection of all the keys in the HashMap. For example: hashMap.keys().
    */
-  it("testKeys033", 0, function () {
+  it("testKeys033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -483,7 +483,7 @@ describe("HashMapTest", function () {
    * @tc.name: testValues034
    * @tc.desc: Get a collection of all the values in the HashMap. For example: hashMap.values().
    */
-  it("testValues034", 0, function () {
+  it("testValues034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -501,7 +501,7 @@ describe("HashMapTest", function () {
    * @tc.name: testReplace035
    * @tc.desc: Modify the corresponding value according to the specified key. For example: hashMap.replace(2, "G").
    */
-  it("testReplace035", 0, function () {
+  it("testReplace035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -517,7 +517,7 @@ describe("HashMapTest", function () {
    * @tc.name: testReplace036
    * @tc.desc: Modify the corresponding value according to the specified key. For example: hashMap.replace(2, "G").
    */
-  it("testReplace036", 0, function () {
+  it("testReplace036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.replace(2, "G");
     expect(res).assertEqual(false);
@@ -527,7 +527,7 @@ describe("HashMapTest", function () {
    * @tc.name: testForEach037
    * @tc.desc: Traverse all key value pairs in the HashMap instance.
    */
-  it("testForEach037", 0, function () {
+  it("testForEach037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -554,7 +554,7 @@ describe("HashMapTest", function () {
    * @tc.name: testForEach038
    * @tc.desc: Traverse all key value pairs in the HashMap instance.
    */
-  it("testForEach038", 0, function () {
+  it("testForEach038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let arr = [];
     hashMap.forEach((item, index) => {
@@ -567,7 +567,7 @@ describe("HashMapTest", function () {
    * @tc.name: testIterator039
    * @tc.desc: Iterate over all key value pairs in the HashMap. 
    */
-  it("testIterator039", 0, function () {
+  it("testIterator039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -591,7 +591,7 @@ describe("HashMapTest", function () {
    * @tc.name: testIterator040
    * @tc.desc: Traverse all key value pairs in the HashMap instance. 
    */
-  it("testIterator040", 0, function () {
+  it("testIterator040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let arr = [];
     for (let item of hashMap) {
@@ -604,7 +604,7 @@ describe("HashMapTest", function () {
    * @tc.name: testEntries041
    * @tc.desc: Get all key value pairs collection in HashMap.
    */
-  it("testEntries041", 0, function () {
+  it("testEntries041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -630,7 +630,7 @@ describe("HashMapTest", function () {
    * @tc.name: testEntries042
    * @tc.desc: Get all key value pairs collection in HashMap.
    */
-  it("testEntries042", 0, function () {
+  it("testEntries042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.entries();
     expect(undefined).assertEqual(res.next().value);
@@ -640,7 +640,7 @@ describe("HashMapTest", function () {
    * @tc.name: testIsEmpty043   
    * @tc.desc: Determine whether the HashMap instance is empty. For example: hashMap.isEmpty().
    */
-  it("testIsEmpty043", 0, function () {
+  it("testIsEmpty043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -657,7 +657,7 @@ describe("HashMapTest", function () {
    * @tc.name: testIsEmpty044
    * @tc.desc: Determine whether the HashMap instance is empty. For example: hashMap.isEmpty().
    */
-  it("testIsEmpty044", 0, function () {
+  it("testIsEmpty044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -675,7 +675,7 @@ describe("HashMapTest", function () {
    * @tc.name: testEntries045
    * @tc.desc: Get all key value pairs collection in HashMap.For example: hashMap.entries().
    */
-  it("testEntries045", 0, function () {
+  it("testEntries045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     let res = hashMap.entries();
     expect(undefined).assertEqual(res.next().value);
@@ -685,7 +685,7 @@ describe("HashMapTest", function () {
    * @tc.name: testIterator046
    * @tc.desc: Iterate over all key value pairs in the HashMap. For example: hashMap[Symbol.iterator]().
    */
-  it("testIterator046", 0, function () {
+  it("testIterator046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -710,7 +710,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet047
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set.bind({}, 1, "A")().
    */
-  it("testSet047", 0, function () {
+  it("testSet047", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     try {
       hashMap.set.bind({}, 1, "A")();
@@ -726,7 +726,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSetAll048
    * @tc.desc: Copy key value pairs from one HashMap to another.
    */
-  it("testSetAll048", 0, function () {
+  it("testSetAll048", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");
@@ -748,7 +748,7 @@ describe("HashMapTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testSetAll049", 0, function () {
+  it("testSetAll049", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 1);
     hashMap.set(2, 2);
@@ -775,7 +775,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet049
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set.bind({}, "a", "b")().
    */
-  it("testSet049", 0, function () {
+  it("testSet049", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let hashMap = new HashMap();
     try {
       hashMap.set.bind({}, "a", "b")();
@@ -791,7 +791,7 @@ describe("HashMapTest", function () {
    * @tc.name: testIsEmpty050   
    * @tc.desc: Determine whether the HashMap instance is empty. For example: hashMap.isEmpty.bind({}, "a")().
    */
-  it('testIsEmpty050', 0, function () {
+  it('testIsEmpty050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.isEmpty.bind({}, "a")();
@@ -807,7 +807,7 @@ describe("HashMapTest", function () {
    * @tc.name: testHasKey051
    * @tc.desc: Determine whether the HashMap contains the specified key. For example: hashMap.hasKey.bind({}, "a")().
    */
-  it('testHasKey051', 0, function () {
+  it('testHasKey051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.hasKey.bind({}, "a")();
@@ -823,7 +823,7 @@ describe("HashMapTest", function () {
    * @tc.name: testGet052
    * @tc.desc: Get the corresponding value through the key. For example: hashMap.get.bind({}, "a")().
    */
-  it('testGet052', 0, function () {
+  it('testGet052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.get.bind({}, "a")();
@@ -839,7 +839,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet053
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(undefined, 11).
    */
-  it('testSet053', 0, function () {
+  it('testSet053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.set(undefined, 11);
@@ -855,7 +855,7 @@ describe("HashMapTest", function () {
    * @tc.name: testRemove054
    * @tc.desc: Delete key value pairs according to key. For example: hashMap.remove.bind({}, "a")().
    */
-  it('testRemove054', 0, function () {
+  it('testRemove054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.remove.bind({}, "a")();
@@ -871,7 +871,7 @@ describe("HashMapTest", function () {
    * @tc.name: testForEach055
    * @tc.desc: Traverse all key value pairs in the HashMap instance.For example: hashMap.forEach.bind({}, "a")().
    */
-  it('testForEach055', 0, function () {
+  it('testForEach055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.forEach.bind({}, "a")();
@@ -887,7 +887,7 @@ describe("HashMapTest", function () {
    * @tc.name: testForEach056
    * @tc.desc: Traverse all key value pairs in the HashMap instance.For example: hashMap.forEach(11).
    */
-  it('testForEach056', 0, function () {
+  it('testForEach056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let  hashMap = new HashMap();
     try {
       hashMap.forEach(11);

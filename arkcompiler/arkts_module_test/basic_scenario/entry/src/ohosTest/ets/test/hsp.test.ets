@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { add, addtest, getDescFromLibrary2 } from 'library';
 import { getModuleDescription as getDescFromLib2 ,nativeAdd  } from 'library2';
 import { getModuleDescription as getDescFromLib3 } from 'library3';
@@ -29,7 +29,7 @@ export default function hspImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNormalHspImport', 0, () => {
+    it('testNormalHspImport', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let normalImport: string = '';
       let a = add(2, 3);
       if (a == 5) {
@@ -47,7 +47,7 @@ export default function hspImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMultiHsp', 0, () => {
+    it('testMultiHsp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let multiHsp: string = '';
       let a = getDescFromLib2();
       let b = getDescFromLib3();
@@ -66,7 +66,7 @@ export default function hspImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testMultiLevelHsp', 0, () => {
+    it('testMultiLevelHsp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let multiLevelHsp: string = '';
       let a: string = getDescFromLibrary2();
       if (a == 'This is library2') {
@@ -84,7 +84,7 @@ export default function hspImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testHarImportLibrary', 0, () => {
+    it('testHarImportLibrary', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let harImportLibrary: string = "";
       let a: string = getDecoratorDesc();
       if (a == '<From har>This is library') {
@@ -102,7 +102,7 @@ export default function hspImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeso', 0, () => {
+    it('testNativeso', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let nativeso: string = "";
       let a: number = addtest(3, 5);
       if (a == 8) {
@@ -120,7 +120,7 @@ export default function hspImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNativeIsolationSo', 0, () => {
+    it('testNativeIsolationSo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let nativeIsolationSo: string = "";
       let a: number = nativeAdd(3, 5);
       if (a == 8) {

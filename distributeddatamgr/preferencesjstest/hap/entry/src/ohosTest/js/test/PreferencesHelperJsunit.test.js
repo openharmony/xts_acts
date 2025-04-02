@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from '@ohos.data.preferences'
 import featureAbility from '@ohos.ability.featureAbility';
 
@@ -48,7 +48,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetPreferencesHelper001', 0, async function () {
+        it('testGetPreferencesHelper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             mPreferences = await dataPreferences.getPreferences(context, NAME);
             await mPreferences.put('test', 2);
             await mPreferences.flush();
@@ -64,7 +64,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetPreferencesHelper002', 0, async function (done) {
+        it('testGetPreferencesHelper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const promise = dataPreferences.getPreferences(context, NAME);
             await promise.then(async (pref) => {
                 await pref.put('test', 2);
@@ -85,7 +85,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRemovePreferencesFromCache001', 0, async function (done) {
+        it('testRemovePreferencesFromCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let perf = await dataPreferences.getPreferences(context, NAME);
             perf = null;
             const promise = dataPreferences.removePreferencesFromCache(context, NAME);
@@ -104,7 +104,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDeletePreferencesHelper002', 0, async function (done) {
+        it('testDeletePreferencesHelper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let perf = await dataPreferences.getPreferences(context, NAME);
             perf = null;
             const promise = dataPreferences.deletePreferences(context, NAME);
@@ -123,7 +123,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesRegisterObserver001', 0, async function (done) {
+        it('testPreferencesRegisterObserver001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             var observer = function (key) {
                 console.info('testPreferencesRegisterObserver001 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
@@ -144,7 +144,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesRegisterObserver002', 0, async function (done) {
+        it('testPreferencesRegisterObserver002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await mPreferences.clear();
             var observer = function (key) {
                 console.info('testPreferencesRegisterObserver002 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
@@ -166,7 +166,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testPreferencesUnRegisterObserver001', 0, async function (done) {
+        it('testPreferencesUnRegisterObserver001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             var observer = function (key) {
                 console.info('testPreferencesUnRegisterObserver001 keyValue' + mPreferences.getSync(KEY_TEST_STRING_ELEMENT,"aaa"));
                 done();
@@ -186,7 +186,7 @@ export default function preferencesHelperTest(){
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetPreferencesSyncinterface001', 0, async function () {
+        it('testGetPreferencesSyncinterface001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
             mPreferences = dataPreferences.getPreferencesSync(context, { name: 'test_preferences' });
             mPreferences.putSync("test", 2);
             mPreferences.flushSync();

@@ -15,8 +15,10 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit'
+import { BusinessError } from '@ohos.base';
 import {
   driveFn,
   photoKeys,
@@ -31,6 +33,7 @@ export default function getAssetsTest() {
 
     let globalContext: common.UIAbilityContext = AppStorage.get('globalContext') as common.UIAbilityContext;
     let sendablePhAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(globalContext);
+    let helper = photoAccessHelper.getPhotoAccessHelper(globalContext);
     let fileNameList: Array<string> = ['01.jpg', '01.mp4'];
 
     beforeAll(async () => {
@@ -99,6 +102,117 @@ export default function getAssetsTest() {
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;
       await getAssetsPromiseTest(done, testNum, fetchOps, expectCount);
+    });
+
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_GET_ASSETS_ERROR_0000
+     * @tc.name      : sendable_get_assets_error_000
+     * @tc.desc      : get assets with invalid fetchColumns
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_get_assets_error_000', 0, async (done: Function) => {
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: ["ssss"],
+          predicates: predicates
+        };
+        await sendablePhAccessHelper.getAssets(fetchOptions);
+        console.info("getAssets successfully");
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`sendable_get_assets_error_000 failed, error: ${error}, ${error.code}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_GET_ASSETS_ERROR_0100
+     * @tc.name      : sendable_get_assets_error_001
+     * @tc.desc      : get assets with undefined
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_get_assets_error_001', 0, async (done: Function) => {
+      try {
+        await sendablePhAccessHelper.getAssets(undefined as ESObject);
+        console.info("getAssets successfully");
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`sendable_get_assets_error_001 failed, error: ${error}, ${error.code}`);
+        expect(error.code).assertEqual('14000011');
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_GET_ALBUMS_ERROR_0000
+     * @tc.name      : sendable_get_albums_error_fetchOptions_undefined
+     * @tc.desc      : use undefined get albums
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_get_albums_error_000', 0, async (done: Function) => {
+      try {
+        await sendablePhAccessHelper.getAlbums(undefined as ESObject, undefined as ESObject, undefined as ESObject);
+        console.info("getAlbums successfully");
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`sendable_get_albums_error_000 failed, error: ${error}, ${error.code}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_GET_ALBUMS_ERROR_0100
+     * @tc.name      : sendable_get_albums_error_fetchOptions_undefined
+     * @tc.desc      : use undefined get albums
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_get_albums_error_001', 0, async (done: Function) => {
+      try {
+        await sendablePhAccessHelper.getAlbums(undefined as ESObject);
+        console.info("getAlbums successfully");
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`sendable_get_albums_error_001 failed, error: ${error}, ${error.code}`);
+        expect(error.code).assertEqual('14000011');
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_GET_ALBUMS_ERROR_0200
+     * @tc.name      : sendable_get_albums_error_invalid_fetchColumns
+     * @tc.desc      : useless fetchColumns get albums
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_get_albums_error_002', 0, async (done: Function) => {
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['afdadfasfa'],
+          predicates: predicates
+        };
+        await sendablePhAccessHelper.getAlbums(fetchOptions);
+        console.info("getAlbums successfully");
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`sendable_get_albums_error_002 failed, error: ${error}, ${error.code}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
     });
   })
 }

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -59,7 +59,7 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewOnNavigationEntryCommitted01', 0, async (done: Function) => {
+    it('testWebViewOnNavigationEntryCommitted01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewOnNavigationEntryCommitted01"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewOnNavigationEntryCommitted01", 'success', 8009, done);
@@ -74,7 +74,7 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewOnNavigationEntryCommitted02', 0, async (done: Function) => {
+    it('testWebViewOnNavigationEntryCommitted02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted02"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewOnNavigationEntryCommitted02", 'success', 8010, done);
@@ -89,7 +89,7 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewOnNavigationEntryCommitted03', 0, async (done: Function) => {
+    it('testWebViewOnNavigationEntryCommitted03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted03"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewOnNavigationEntryCommitted03", 'success', 8011, done);
@@ -104,7 +104,7 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewOnNavigationEntryCommitted04', 0, async (done: Function) => {
+    it('testWebViewOnNavigationEntryCommitted04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted04"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewOnNavigationEntryCommitted04", 'success', 8012, done);
@@ -119,7 +119,7 @@ export default function ActsAceWebViewOnNavigationEntryCommitted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewOnNavigationEntryCommitted05', 0, async (done: Function) => {
+    it('testWebViewOnNavigationEntryCommitted05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewOnNavigationEntryCommitted05"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewOnNavigationEntryCommitted05", 'success', 8013, done);

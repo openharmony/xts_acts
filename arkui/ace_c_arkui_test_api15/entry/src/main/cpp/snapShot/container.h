@@ -33,8 +33,6 @@ namespace NativeXComponentSample {
         ~Container() = default;
         static Container *GetInstance(const std::string &id);
         static void Release(const std::string &id);
-        // static napi_value NapiDrawPattern(napi_env env, napi_callback_info info);
-        // static napi_value TestGetXComponentStatus(napi_env env, napi_callback_info info);
         void Export(napi_env env, napi_value exports);
         void OnSurfaceChanged(OH_NativeXComponent *component, void *window);
         void OnTouchEvent(OH_NativeXComponent *component, void *window);

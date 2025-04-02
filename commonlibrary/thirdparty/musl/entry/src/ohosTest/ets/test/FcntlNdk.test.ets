@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import fcntl from 'libfcntlndk.so'
 
@@ -33,7 +33,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlSplice001', 0, async (done: Function) => {
+    it('testMuslFcntlSplice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 1
       let c: number = fcntl.splice(a);
       expect((c != -1)).assertTrue();
@@ -48,7 +48,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlSplice002', 0, async (done: Function) => {
+    it('testMuslFcntlSplice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 2
       let c: number = fcntl.splice(a);
       expect((c != -1)).assertTrue();
@@ -63,7 +63,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlSplice003', 0, async (done: Function) => {
+    it('testMuslFcntlSplice003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a = 3
       let c: number = fcntl.splice(a);
       expect((c != -1)).assertTrue();
@@ -78,7 +78,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlTee001', 0, async (done: Function) => {
+    it('testMuslFcntlTee001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let c: number = fcntl.tee();
       expect(c).assertEqual(5);
       done()
@@ -92,7 +92,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlReadahead001', 0, async (done: Function) => {
+    it('testMuslFcntlReadahead001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = fcntl.readahead();
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(-1);
@@ -107,7 +107,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlPosixFallocate001', 0, async (done: Function) => {
+    it('testMuslFcntlPosixFallocate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.posixfallocate()).assertEqual(0);
       done()
     });
@@ -120,7 +120,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlPosixFallocate64001', 0, async (done: Function) => {
+    it('testMuslFcntlPosixFallocate64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.posixfallocate64()).assertEqual(0);
       done()
     });
@@ -133,7 +133,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlPosixFadvise001', 0, async (done: Function) => {
+    it('testMuslFcntlPosixFadvise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.posixfadvise()).assertEqual(0);
       done()
     });
@@ -146,7 +146,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlPosixFadvise64001', 0, async (done: Function) => {
+    it('testMuslFcntlPosixFadvise64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.posixfadvise64()).assertEqual(0);
       done()
     });
@@ -159,7 +159,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlFcnTl001', 0, async (done: Function) => {
+    it('testMuslFcntlFcnTl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.fcntl()).assertEqual(0);
       done()
     });
@@ -172,7 +172,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlFalLocate001', 0, async (done: Function) => {
+    it('testMuslFcntlFalLocate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.fallocate()).assertEqual(0);
       done()
     });
@@ -185,7 +185,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFcntlFalLocate64001', 0, async (done: Function) => {
+    it('testMuslFcntlFalLocate64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fcntl.fallocate64()).assertEqual(0);
       done()
     });
@@ -197,7 +197,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlNameToHandleAt001', 0, async (done: Function) => {
+    it('testMuslFcntlNameToHandleAt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a: number = fcntl.nameToHandleAt();
       expect(a).assertEqual(0);
       done()
@@ -211,7 +211,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpen001', 0, async (done: Function) => {
+    it('testMuslFcntlOpen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.open();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
@@ -225,7 +225,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpen64001', 0, async (done: Function) => {
+    it('testMuslFcntlOpen64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.open64();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
@@ -239,7 +239,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpenByHandleAt001', 0, async (done: Function) => {
+    it('testMuslFcntlOpenByHandleAt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.openByHandleAt();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
@@ -254,7 +254,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpenat001', 0, async (done: Function) => {
+    it('testMuslFcntlOpenat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.openat();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
@@ -268,7 +268,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpenat64001', 0, async (done: Function) => {
+    it('testMuslFcntlOpenat64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.openat64();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
@@ -282,7 +282,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpenChk001', 0, async (done: Function) => {
+    it('testMuslFcntlOpenChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.openChk();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -296,7 +296,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpen64Chk001', 0, async (done: Function) => {
+    it('testMuslFcntlOpen64Chk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.open64Chk();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -310,7 +310,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpenatChk001', 0, async (done: Function) => {
+    it('testMuslFcntlOpenatChk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.openatChk();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);
@@ -324,7 +324,7 @@ export default function fcntlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslFcntlOpenat64Chk001', 0, async (done: Function) => {
+    it('testMuslFcntlOpenat64Chk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = fcntl.openat64Chk();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(0);

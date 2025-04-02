@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium';
 import wantConstant from '@ohos.ability.wantConstant';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import base from '@ohos.base';
@@ -101,7 +101,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0100", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0100", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0100-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0100";
       let flag = 0;
@@ -130,7 +130,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0200", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0200", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0200-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0200";
       let flag = 0;
@@ -161,7 +161,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0300", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0300", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0300-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0300";
       let cmd300 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationStageEntry.hap";
@@ -195,7 +195,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0400", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0400", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0400-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0400";
       let flag = 0;
@@ -231,7 +231,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0500", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0500", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0500-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0500";
       let flag = 0;
@@ -261,7 +261,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0600", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0600", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0600-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0600";
       let flag = 0;
@@ -298,7 +298,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0700", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0700", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0700-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0700";
       let flag = 0;
@@ -335,7 +335,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_0800", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_0800", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_0800-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_0800";
       let flag = 0;
@@ -375,7 +375,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_1200", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_1200", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_1200-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_1200";
       let flag = 0;
@@ -410,7 +410,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_1700", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_1700", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_1700-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_1700";
       abilityForeground(TAG);
@@ -437,7 +437,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_1800", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_1800", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_1800-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_1800";
       let flag = 0;
@@ -471,7 +471,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_2100", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_2100", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_2100-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_2100";
       let flag = 0;
@@ -508,7 +508,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_2200", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_2200", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_2200-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_2200";
       let flag = 0;
@@ -544,7 +544,7 @@ export default function startAbilityTest() {
  * @tc.desc    Function test
  * @tc.level   0
  */
-    it("FreeInstall_Stage_Local_StartAbility_2300", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_2300", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_2300-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_2300";
       abilityDelegator.getCurrentTopAbility((err : base.BusinessError, data : ESObject) => {
@@ -579,7 +579,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_2400", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_2400", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_2400-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_2400";
       let cmd2400 = "bm install -p data/test/AtomizationStageEntry.hap";
@@ -614,7 +614,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_2500", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_2500", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_2500-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_2500";
       let installFACmd = "bm install -p data/test/MockServiceTimeout.hap";
@@ -663,7 +663,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_3000", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_3000", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_3000-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_3000";
       let flag = 0;
@@ -719,7 +719,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_3100", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_3100", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_3100-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_3100";
       let cmd3100 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationStageHm4.hap";
@@ -758,7 +758,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_3200", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_3200", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_3200-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_3200";
       let cmd3200 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationStageHm2.hap";
@@ -798,7 +798,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_3300", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_3300", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_3300-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_3300";
       abilityForeground(TAG);
@@ -825,7 +825,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_3400", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_3400", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_3400-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_3400";
       let flag = 0;
@@ -861,7 +861,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_1900", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_1900", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_1900-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_1900";
       abilityForeground(TAG);
@@ -903,7 +903,7 @@ export default function startAbilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_Local_StartAbility_2000", 0, async (done:Function) => {
+    it("FreeInstall_Stage_Local_StartAbility_2000", Level.LEVEL0, async (done:Function) => {
       console.info("------------start FreeInstall_Stage_Local_StartAbility_2000-------------");
       TAG = "FreeInstall_Stage_Local_StartAbility_2000";
       let cmd2000 = "bm install -p data/test/AtomizationStageEntry.hap";

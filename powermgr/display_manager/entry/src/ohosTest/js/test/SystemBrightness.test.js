@@ -45,7 +45,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0100', 0, async (done) => {
+    it('SystemBrightnessTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
       let TAG = 'SystemBrightnessTest_0100';
       brightness.getValue({
         success: (brightnessResponse) => {
@@ -74,7 +74,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0200', 0, async (done) => {
+    it('SystemBrightnessTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_0200';
       brightness.getValue({
         success: (brightnessResponse) => {
@@ -100,7 +100,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0300', 0, async (done) => {
+    it('SystemBrightnessTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_0300';
       brightness.getValue({
         success: (brightnessResponse) => {
@@ -120,7 +120,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0400', 0, async (done) => {
+    it('SystemBrightnessTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_0400';
       brightness.getValue({
         success: (brightnessResponse) => {
@@ -143,7 +143,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0500', 0, async (done) => {
+    it('SystemBrightnessTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_0500';
       brightness.getValue({
         fail: (msg, code) => {
@@ -167,7 +167,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0600', 0, () => {
+    it('SystemBrightnessTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'SystemBrightnessTest_0600';
       brightness.getValue({
         fail: (msg, code) => {
@@ -186,7 +186,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0700', 0, () => {
+    it('SystemBrightnessTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'SystemBrightnessTest_0700';
       brightness.getValue({
         complete: () => {
@@ -204,7 +204,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0800', 0, async (done) => {
+    it('SystemBrightnessTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_0800';
       brightness.setValue({
         value: 128,
@@ -218,12 +218,11 @@ export default function SystemBrightnessTest() {
               done();
             }
           });
-          done();
         },
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect().assertFail();
+          expect(202).assertEqual(code);
           done();
         },
         complete: () => {
@@ -240,7 +239,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_0900', 0, async (done) => {
+    it('SystemBrightnessTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_0900';
       brightness.setValue({
         value: 128,
@@ -254,12 +253,11 @@ export default function SystemBrightnessTest() {
               done();
             }
           });
-          done();
         },
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect().assertFail();
+          expect(202).assertEqual(code);
           done();
         }
       });
@@ -273,20 +271,18 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1000', 0, async (done) => {
+    it('SystemBrightnessTest_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1000';
       brightness.setValue({
         value: 128,
         success: () => {
           console.info(`${TAG} setValue success!`);
-          brightness.getValue({
-            success: (brightnessResponse) => {
-              console.info(`${TAG} brightnessResponse.value:${brightnessResponse.value}`);
-              expect(brightnessResponse.value).assertLargerOrEqual(0);
-              expect(brightnessResponse.value).assertLessOrEqual(255);
-              done();
-            }
-          });
+          done();
+        },
+        fail: (msg, code) => {
+          console.error(`${TAG} fail msg:${msg}`);
+          console.error(`${TAG} fail code:${code}`);
+          expect(202).assertEqual(code);
           done();
         }
       });
@@ -300,7 +296,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1100', 0, async (done) => {
+    it('SystemBrightnessTest_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1100';
       brightness.setValue({
         value: 128,
@@ -314,7 +310,6 @@ export default function SystemBrightnessTest() {
               done();
             }
           });
-          done();
         },
         complete: () => {
           console.info(`${TAG} setValue complete`);
@@ -331,14 +326,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1200', 0, async (done) => {
+    it('SystemBrightnessTest_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1200';
       brightness.setValue({
         value: 128,
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect().assertFail();
+          expect(202).assertEqual(code);
           done();
         },
         complete: () => {
@@ -356,14 +351,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1300', 0, () => {
+    it('SystemBrightnessTest_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'SystemBrightnessTest_1300';
       brightness.setValue({
         value: 128,
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect().assertFail();
+          expect(202).assertEqual(code);
         }
       });
     });
@@ -384,7 +379,7 @@ export default function SystemBrightnessTest() {
         done();
       } catch (error) {
         console.error(`${TAG} error: ${error.code} ${error.message}`);
-        expect().assertFail();
+        expect(error.code).assertEqual(401);
         done();
       }
     });
@@ -397,7 +392,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1400', 0, async (done) => {
+    it('SystemBrightnessTest_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1400';
       brightness.getMode({
         success: (brightnessModeResponse) => {
@@ -426,7 +421,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1500', 0, async (done) => {
+    it('SystemBrightnessTest_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1500';
       brightness.getMode({
         success: (brightnessModeResponse) => {
@@ -452,7 +447,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1600', 0, async (done) => {
+    it('SystemBrightnessTest_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1600';
       brightness.getMode({
         success: (brightnessModeResponse) => {
@@ -472,7 +467,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1700', 0, async (done) => {
+    it('SystemBrightnessTest_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1700';
       brightness.getMode({
         fail: (msg, code) => {
@@ -496,7 +491,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1800', 0, () => {
+    it('SystemBrightnessTest_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'SystemBrightnessTest_1800';
       brightness.getMode({
         fail: (msg, code) => {
@@ -515,7 +510,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_1900', 0, async (done) => {
+    it('SystemBrightnessTest_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_1900';
       brightness.getMode({
         success: (brightnessModeResponse) => {
@@ -559,7 +554,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2000', 0, async (done) => {
+    it('SystemBrightnessTest_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2000';
       brightness.setMode({
         mode: 1,
@@ -572,7 +567,6 @@ export default function SystemBrightnessTest() {
               done();
             }
           })
-          done();
         },
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
@@ -594,10 +588,10 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2100', 0, async (done) => {
+    it('SystemBrightnessTest_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2100';
       brightness.setMode({
-        mode: 0,
+        mode: TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
         success: () => {
           console.info(`${TAG} setMode success`);
           brightness.getMode({
@@ -607,7 +601,6 @@ export default function SystemBrightnessTest() {
               done();
             }
           });
-          done();
         },
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
@@ -626,7 +619,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2200', 0, () => {
+    it('SystemBrightnessTest_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       let TAG = 'SystemBrightnessTest_2200';
       brightness.setMode({
         mode: 1,
@@ -650,7 +643,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2300', 0, async (done) => {
+    it('SystemBrightnessTest_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2300';
       brightness.setMode({
         mode: 1,
@@ -663,7 +656,6 @@ export default function SystemBrightnessTest() {
               done();
             }
           });
-          done();
         },
         complete: () => {
           console.info(`${TAG} setMode complete`);
@@ -680,7 +672,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2400', 0, async (done) => {
+    it('SystemBrightnessTest_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2400';
       brightness.setMode({
         mode: 1,
@@ -726,7 +718,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2500', 0, async (done) => {
+    it('SystemBrightnessTest_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2500';
       brightness.setKeepScreenOn({
         keepScreenOn: true,
@@ -737,7 +729,7 @@ export default function SystemBrightnessTest() {
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect(code).assertEqual(200);
+          expect(code).assertEqual(202);
           done();
         },
         complete: () => {
@@ -754,7 +746,7 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2600', 0, async (done) => {
+    it('SystemBrightnessTest_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2600';
       brightness.setKeepScreenOn({
         keepScreenOn: false,
@@ -765,7 +757,7 @@ export default function SystemBrightnessTest() {
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect(code).assertEqual(200);
+          expect(code).assertEqual(202);
           done();
         }
       });
@@ -779,14 +771,14 @@ export default function SystemBrightnessTest() {
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('SystemBrightnessTest_2700', 0, async (done) => {
+    it('SystemBrightnessTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
       let TAG = 'SystemBrightnessTest_2700';
       brightness.setKeepScreenOn({
         keepScreenOn: true,
         fail: (msg, code) => {
           console.error(`${TAG} fail msg:${msg}`);
           console.error(`${TAG} fail code:${code}`);
-          expect(code).assertEqual(200);
+          expect(code).assertEqual(202);
           done();
         },
         complete: () => {

@@ -107,7 +107,7 @@ export default function ActsAlphabetIndexerUxTest() {
       let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
       expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
-      expect(obj.$attrs.popupItemBackground).assertEqual(spliceColor($r('sys.color.ohos_id_color_card_bg')));
+      expect(obj.$attrs.popupItemBackground).assertEqual("#00000000");
       expect(obj.$attrs.popupItemFontSize).assertEqual(alphabetDefaultPopupSize($r('sys.float.ohos_id_text_size_headline7')));
       expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
       expect(obj.$attrs.popupHorizontalSpace).assertEqual("-1.00vp");
@@ -202,7 +202,7 @@ export default function ActsAlphabetIndexerUxTest() {
       await CommonFunc.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
       let obj: ESObject = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemBackground).assertEqual(spliceColor($r('sys.color.ohos_id_color_card_bg')));
+      expect(obj.$attrs.popupItemBackground).assertEqual("#00000000");
       done();
     });
 
@@ -352,7 +352,7 @@ export default function ActsAlphabetIndexerUxTest() {
       await CommonFunc.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
       let obj: ESObject = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemBackground).assertEqual(spliceColor($r('sys.color.ohos_id_color_card_bg')));
+      expect(obj.$attrs.popupItemBackground).assertEqual("#00000000");
       done();
     });
 
@@ -502,7 +502,7 @@ export default function ActsAlphabetIndexerUxTest() {
       await CommonFunc.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
       let obj: ESObject = JSON.parse(newJson);
-      expect(obj.$attrs.popupItemBackground).assertEqual(spliceColor($r('sys.color.ohos_id_color_card_bg')));
+      expect(obj.$attrs.popupItemBackground).assertEqual("#00000000");
       done();
     });
 

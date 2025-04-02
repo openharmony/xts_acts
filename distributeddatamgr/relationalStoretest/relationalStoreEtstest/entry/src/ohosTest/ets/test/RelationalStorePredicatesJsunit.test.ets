@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -132,7 +132,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0001', 0, async function (done) {
+    it('testEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       {
@@ -153,7 +153,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0002', 0, async function (done) {
+    it('testEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -174,7 +174,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0003', 0, async function (done) {
+    it('testEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -195,7 +195,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0004', 0, async function (done) {
+    it('testEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -216,7 +216,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0005', 0, async function (done) {
+    it('testEqualTo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -237,7 +237,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0006', 0, async function (done) {
+    it('testEqualTo0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0006 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -259,7 +259,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0007', 0, async function (done) {
+    it('testEqualTo0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0007 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -281,7 +281,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEqualTo0008', 0, async function (done) {
+    it('testEqualTo0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEqualTo0008 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -303,7 +303,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0001', 0, async function (done) {
+    it('testNotEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -324,7 +324,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0002', 0, async function (done) {
+    it('testNotEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -346,7 +346,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0003', 0, async function (done) {
+    it('testNotEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -367,7 +367,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0004', 0, async function (done) {
+    it('testNotEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -388,7 +388,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0005', 0, async function (done) {
+    it('testNotEqualTo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -409,7 +409,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0006', 0, async function (done) {
+    it('testNotEqualTo0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0006 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -430,7 +430,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0007', 0, async function (done) {
+    it('testNotEqualTo0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0007 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -451,7 +451,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotEqualTo0008', 0, async function (done) {
+    it('testNotEqualTo0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotEqualTo0008 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -472,7 +472,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNull0001', 0, async function (done) {
+    it('testIsNull0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNull001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNull("primLongValue");
@@ -491,7 +491,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNull0002', 0, async function (done) {
+    it('testIsNull0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNull0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNull("longValue");
@@ -510,7 +510,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNull0003', 0, async function (done) {
+    it('testIsNull0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNull0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNull("stringValue");
@@ -529,7 +529,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNull0004', 0, async function (done) {
+    it('testIsNull0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNull0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNull("stringValueX");
@@ -548,7 +548,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNotNull0001', 0, async function (done) {
+    it('testIsNotNull0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNotNull0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNotNull("primLongValue");
@@ -567,7 +567,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNotNull0002', 0, async function (done) {
+    it('testIsNotNull0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNotNull0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNotNull("longValue");
@@ -586,7 +586,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNotNull0003', 0, async function (done) {
+    it('testIsNotNull0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNotNull0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNotNull("stringValue");
@@ -605,7 +605,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIsNotNull0004', 0, async function (done) {
+    it('testIsNotNull0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testIsNotNull0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.isNotNull("stringValueX");
@@ -624,7 +624,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0001', 0, async function (done) {
+    it('testGreaterThan0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -645,7 +645,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0002', 0, async function (done) {
+    it('testGreaterThan0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -666,7 +666,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0003', 0, async function (done) {
+    it('testGreaterThan0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -687,7 +687,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0004', 0, async function (done) {
+    it('testGreaterThan0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -708,7 +708,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0005', 0, async function (done) {
+    it('testGreaterThan0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -729,7 +729,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0006', 0, async function (done) {
+    it('testGreaterThan0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0006 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -750,7 +750,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0007', 0, async function (done) {
+    it('testGreaterThan0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0007 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -771,7 +771,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThan0008', 0, async function (done) {
+    it('testGreaterThan0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThan0008 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -792,7 +792,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThanOrEqualTo0001', 0, async function (done) {
+    it('testGreaterThanOrEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThanOrEqualTo0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -813,7 +813,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThanOrEqualTo0002', 0, async function (done) {
+    it('testGreaterThanOrEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThanOrEqualTo0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -834,7 +834,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThanOrEqualTo0003', 0, async function (done) {
+    it('testGreaterThanOrEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThanOrEqualTo0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -855,7 +855,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGreaterThanOrEqualTo0004', 0, async function (done) {
+    it('testGreaterThanOrEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGreaterThanOrEqualTo0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -876,7 +876,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0001', 0, async function (done) {
+    it('testLessThan0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -897,7 +897,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0002', 0, async function (done) {
+    it('testLessThan0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -918,7 +918,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0003', 0, async function (done) {
+    it('testLessThan0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -939,7 +939,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0004', 0, async function (done) {
+    it('testLessThan0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -960,7 +960,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0005', 0, async function (done) {
+    it('testLessThan0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -981,7 +981,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0006', 0, async function (done) {
+    it('testLessThan0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0006 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1002,7 +1002,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0007', 0, async function (done) {
+    it('testLessThan0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0007 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1023,7 +1023,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThan0008', 0, async function (done) {
+    it('testLessThan0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThan0008 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1044,7 +1044,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThanOrEqualTo0001', 0, async function (done) {
+    it('testLessThanOrEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThanOrEqualTo0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1065,7 +1065,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThanOrEqualTo0002', 0, async function (done) {
+    it('testLessThanOrEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThanOrEqualTo0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1086,7 +1086,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThanOrEqualTo0003', 0, async function (done) {
+    it('testLessThanOrEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThanOrEqualTo0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1107,7 +1107,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLessThanOrEqualTo0004', 0, async function (done) {
+    it('testLessThanOrEqualTo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLessThanOrEqualTo0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1128,7 +1128,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0001', 0, async function (done) {
+    it('testBetween0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1149,7 +1149,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0002', 0, async function (done) {
+    it('testBetween0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1170,7 +1170,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0003', 0, async function (done) {
+    it('testBetween0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1191,7 +1191,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0004', 0, async function (done) {
+    it('testBetween0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1212,7 +1212,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0005', 0, async function (done) {
+    it('testBetween0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1233,7 +1233,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0006', 0, async function (done) {
+    it('testBetween0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0006 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1254,7 +1254,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0007', 0, async function (done) {
+    it('testBetween0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0007 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1275,7 +1275,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBetween0008', 0, async function (done) {
+    it('testBetween0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBetween0008 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1296,7 +1296,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotBetween0001', 0, async function (done) {
+    it('testNotBetween0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotBetween0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1317,7 +1317,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotBetween0002', 0, async function (done) {
+    it('testNotBetween0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotBetween0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1338,7 +1338,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotBetween0003', 0, async function (done) {
+    it('testNotBetween0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotBetween0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1359,7 +1359,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotBetween0004', 0, async function (done) {
+    it('testNotBetween0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testNotBetween0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1380,7 +1380,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGlob0001', 0, async function (done) {
+    it('testGlob0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGlob0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1401,7 +1401,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGlob0002', 0, async function (done) {
+    it('testGlob0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGlob0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1422,7 +1422,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGlob0003', 0, async function (done) {
+    it('testGlob0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGlob0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1443,7 +1443,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGlob0004', 0, async function (done) {
+    it('testGlob0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGlob0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1464,7 +1464,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGlob0005', 0, async function (done) {
+    it('testGlob0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGlob0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1485,7 +1485,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGlob0006', 0, async function (done) {
+    it('testGlob0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testGlob0006 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1506,7 +1506,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testContains0001', 0, async function (done) {
+    it('testContains0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testContains0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.contains("stringValue", "DEF");
@@ -1525,7 +1525,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testContains0002', 0, async function (done) {
+    it('testContains0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testContains0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.contains("stringValue", "DEFX");
@@ -1544,7 +1544,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testContains0003', 0, async function (done) {
+    it('testContains0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testContains0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.contains("characterValue", "中");
@@ -1563,7 +1563,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testContains0004', 0, async function (done) {
+    it('testContains0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testContains0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.contains("characterValue", "#");
@@ -1582,7 +1582,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginsWith0001', 0, async function (done) {
+    it('testBeginsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginsWith0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.beginsWith("stringValue", "ABC");
@@ -1601,7 +1601,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginsWith0002', 0, async function (done) {
+    it('testBeginsWith0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginsWith0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.beginsWith("stringValue", "ABCX");
@@ -1620,7 +1620,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginsWith0003', 0, async function (done) {
+    it('testBeginsWith0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginsWith0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.beginsWith("characterValue", "中");
@@ -1639,7 +1639,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginsWith0004', 0, async function (done) {
+    it('testBeginsWith0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginsWith0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.beginsWith("characterValue", "#");
@@ -1658,7 +1658,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEndsWith0001', 0, async function (done) {
+    it('testEndsWith0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEndsWith0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.endsWith("stringValue", "LMN");
@@ -1677,7 +1677,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEndsWith0002', 0, async function (done) {
+    it('testEndsWith0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEndsWith0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.endsWith("stringValue", "LMNX");
@@ -1696,7 +1696,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEndsWith0003', 0, async function (done) {
+    it('testEndsWith0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEndsWith0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.endsWith("characterValue", "中");
@@ -1715,7 +1715,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testEndsWith0004', 0, async function (done) {
+    it('testEndsWith0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testEndsWith0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.endsWith("characterValue", "#");
@@ -1734,7 +1734,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLike0001', 0, async function (done) {
+    it('testLike0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLike0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "%LMN%");
@@ -1753,7 +1753,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLike0002', 0, async function (done) {
+    it('testLike0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLike0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "%LMNX%");
@@ -1772,7 +1772,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLike0003', 0, async function (done) {
+    it('testLike0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLike0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("characterValue", "%中%");
@@ -1791,7 +1791,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLike0004', 0, async function (done) {
+    it('testLike0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testLike0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("characterValue", "%#%");
@@ -1810,7 +1810,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginWrap0001', 0, async function (done) {
+    it('testBeginWrap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginWrap0001 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1836,7 +1836,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginWrap0002', 0, async function (done) {
+    it('testBeginWrap0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginWrap0002 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1860,7 +1860,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginWrap0003', 0, async function (done) {
+    it('testBeginWrap0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginWrap0003 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1884,7 +1884,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginWrap0004', 0, async function (done) {
+    it('testBeginWrap0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginWrap0004 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1907,7 +1907,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testBeginWrap0005', 0, async function (done) {
+    it('testBeginWrap0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testBeginWrap0005 start *************");
       {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1930,7 +1930,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testAnd0001', 0, async function () {
+    it('testAnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testAnd0001 start *************");
 
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1952,7 +1952,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testAnd0002', 0, async function () {
+    it('testAnd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testAnd0002 start *************");
 
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1977,7 +1977,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testAnd0003', 0, async function () {
+    it('testAnd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testAnd0003 start *************");
 
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -1997,7 +1997,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testAnd0004', 0, async function () {
+    it('testAnd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testAnd0004 start *************");
 
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2018,7 +2018,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOrder0001', 0, async function () {
+    it('testOrder0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOrder0001 start *************");
 
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2044,7 +2044,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOrder0002', 0, async function () {
+    it('testOrder0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOrder0002 start *************");
 
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2070,7 +2070,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOrder0003', 0, async function () {
+    it('testOrder0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOrder0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByDesc("integerValueX").distinct();
@@ -2088,7 +2088,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOrder0004', 0, async function () {
+    it('testOrder0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOrder0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByAsc("integerValueX").distinct();
@@ -2106,7 +2106,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLimit0001', 0, async function () {
+    it('testLimit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testLimit0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(1);
@@ -2124,7 +2124,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLimit0002', 0, async function () {
+    it('testLimit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testLimit0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3);
@@ -2142,7 +2142,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLimit0003', 0, async function () {
+    it('testLimit0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testLimit0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(100);
@@ -2160,7 +2160,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLimit0004', 0, async function () {
+    it('testLimit0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testLimit0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "中").limitAs(1);
@@ -2178,7 +2178,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLimit0005', 0, async function () {
+    it('testLimit0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testLimit0005 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(0);
@@ -2196,7 +2196,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testLimit0006', 0, async function () {
+    it('testLimit0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testLimit0006 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(-1);
@@ -2214,7 +2214,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffset0001', 0, async function () {
+    it('testOffset0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOffset0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(1);
@@ -2232,7 +2232,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffset0002', 0, async function () {
+    it('testOffset0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOffset0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(0);
@@ -2250,7 +2250,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffset0003', 0, async function () {
+    it('testOffset0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOffset0003 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(5);
@@ -2268,7 +2268,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testOffset0004', 0, async function () {
+    it('testOffset0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testOffset0004 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(-1);
@@ -2286,7 +2286,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIn0001', 0, async function () {
+    it('testIn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIn0001 start *************");
       var values = [Number.MIN_VALUE.toString()];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2305,7 +2305,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIn0002', 0, async function () {
+    it('testIn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIn0002 start *************");
       var values = ["1.0"];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2324,7 +2324,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIn0003', 0, async function () {
+    it('testIn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIn0003 start *************");
       var values = [DOUBLE_MAX.toString()];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2343,7 +2343,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIn0004', 0, async function () {
+    it('testIn0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIn0004 start *************");
       var values = [Number.MIN_VALUE.toString(), "1.0", DOUBLE_MAX.toString()];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2362,7 +2362,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotIn0001', 0, async function () {
+    it('testNotIn0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testNotIn0001 start *************");
       var values = [1, -2147483648];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2381,7 +2381,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotIn0002', 0, async function () {
+    it('testNotIn0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testNotIn0002 start *************");
       let values = [1, 2147483647];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2400,7 +2400,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotIn0003', 0, async function () {
+    it('testNotIn0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testNotIn0003 start *************");
       var values = [-2147483648, 2147483647];
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2419,7 +2419,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCreate0001', 0, async function () {
+    it('testCreate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testCreate0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       let result = await rdbStore.query(predicates);
@@ -2436,7 +2436,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testCreate0002', 0, async function () {
+    it('testCreate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testCreate0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("test");
       let result = await rdbStore.query(predicates);
@@ -2453,7 +2453,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGroupBy0001', 0, async function () {
+    it('testGroupBy0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testGroupBy0001 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValue"]);
@@ -2471,7 +2471,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testGroupBy0002', 0, async function () {
+    it('testGroupBy0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testGroupBy0002 start *************");
       let predicates = await new data_Rdb.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValueX"]);
@@ -2489,7 +2489,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIndexedBy0001', 0, async function () {
+    it('testIndexedBy0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIndexedBy0001 start *************");
       try {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2511,7 +2511,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIndexedBy0002', 0, async function () {
+    it('testIndexedBy0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIndexedBy0002 start *************");
       try {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2533,7 +2533,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIndexedBy0003', 0, async function () {
+    it('testIndexedBy0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIndexedBy0003 start *************");
       try {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2557,7 +2557,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testIndexedBy0004', 0, async function () {
+    it('testIndexedBy0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* testIndexedBy0004 start *************");
       try {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
@@ -2584,7 +2584,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0001', 0, async function (done) {
+    it('testNotLike0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0001 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("stringValue", "ABCDEFGHIJKLMN");
@@ -2605,7 +2605,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0002', 0, async function (done) {
+    it('testNotLike0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0002 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("stringValue", "LMNX");
@@ -2626,7 +2626,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0003', 0, async function (done) {
+    it('testNotLike0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0003 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "中");
@@ -2647,7 +2647,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0004', 0, async function (done) {
+    it('testNotLike0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0004 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2672,7 +2672,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0006', 0, async function (done) {
+    it('testNotLike0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0006 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2724,7 +2724,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0007', 0, async function (done) {
+    it('testNotLike0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0007 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2776,7 +2776,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0008', 0, async function (done) {
+    it('testNotLike0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0008 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2837,7 +2837,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0009', 0, async function (done) {
+    it('testNotLike0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0009 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2898,7 +2898,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0010', 0, async function (done) {
+    it('testNotLike0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0010 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2945,7 +2945,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0011', 0, async function (done) {
+    it('testNotLike0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotLike0011 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notLike("characterValue", "#");
@@ -2989,7 +2989,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0012', 0, async function (done) {
+    it('testNotLike0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG, `************* testNotLike0012 start *************`);
       try {
         let predicates = new data_Rdb.RdbPredicates("AllDataType");
@@ -3013,7 +3013,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0013', 0, async function (done) {
+    it('testNotLike0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG, `************* testNotLike0013 start *************`);
       try {
         let predicates = new data_Rdb.RdbPredicates("AllDataType");
@@ -3037,7 +3037,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotLike0014', 0, async function (done) {
+    it('testNotLike0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG, `************* testNotLike0014 start *************`);
       try {
         let predicates = new data_Rdb.RdbPredicates("AllDataType");
@@ -3061,7 +3061,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0001', 0, async function (done) {
+    it('testNotContains0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0001 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("stringValue", "ABC");
@@ -3082,7 +3082,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0002', 0, async function (done) {
+    it('testNotContains0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0002 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("stringValue", "ABCX");
@@ -3103,7 +3103,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0003', 0, async function (done) {
+    it('testNotContains0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0003 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "中");
@@ -3124,7 +3124,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0004', 0, async function (done) {
+    it('testNotContains0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0004 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3149,7 +3149,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0006', 0, async function (done) {
+    it('testNotContains0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0006 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3197,7 +3197,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0007', 0, async function (done) {
+    it('testNotContains0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0007 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3245,7 +3245,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0008', 0, async function (done) {
+    it('testNotContains0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0008 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3306,7 +3306,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0009', 0, async function (done) {
+    it('testNotContains0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0009 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3367,7 +3367,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0010', 0, async function (done) {
+    it('testNotContains0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0010 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3414,7 +3414,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0011', 0, async function (done) {
+    it('testNotContains0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.log(TAG + "************* testNotContains0011 start *************");
       let predicates = new data_Rdb.RdbPredicates("AllDataType");
       predicates.notContains("characterValue", "#");
@@ -3457,7 +3457,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0012', 0, async function (done) {
+    it('testNotContains0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG, `************* testNotContains0012 start *************`);
       try {
         let predicates = new data_Rdb.RdbPredicates("AllDataType");
@@ -3481,7 +3481,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0013', 0, async function (done) {
+    it('testNotContains0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG, `************* testNotContains0013 start *************`);
       try {
         let predicates = new data_Rdb.RdbPredicates("AllDataType");
@@ -3505,7 +3505,7 @@ export default function relationalStorePredicatesTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testNotContains0014', 0, async function (done) {
+    it('testNotContains0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG, `************* testNotContains0014 start *************`);
       try {
         let predicates = new data_Rdb.RdbPredicates("AllDataType");

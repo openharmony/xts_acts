@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterEach, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import commonEventManager from '@ohos.commonEventManager';
 import { Driver, ON } from '@ohos.UiTest';
@@ -54,7 +54,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   0
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0200', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0200', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0200";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -74,7 +74,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0300', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0300', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0300";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -93,7 +93,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0400', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0400', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0400";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -113,7 +113,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0500', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0500', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0500";
             console.log(TAG + " --- start");
             let context:Context = globalThis.abilityStageContext.getApplicationContext();
@@ -133,7 +133,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0600', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_0600', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0600";
             console.log(TAG + " --- start");
             let context:Context = globalThis.abilityStageContext.getApplicationContext();
@@ -152,7 +152,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1200', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1200', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1200";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -173,7 +173,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
           * @tc.type: Function
           * @tc.level   3
           */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1300', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1300', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1300";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -193,7 +193,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
            * @tc.type: Function
            * @tc.level   3
            */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1400', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1400', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1400";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -213,7 +213,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
            * @tc.type: Function
            * @tc.level   3
            */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1500', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1500', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1500";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
@@ -238,13 +238,14 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   3
          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1600', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1600', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1600";
             console.log(TAG + " --- start");
             let context:common.ApplicationContext = globalThis.abilityStageContext.getApplicationContext();
             context.getRunningProcessInformation().then((data:appManager.ProcessInformation[]) => {
                 console.log(TAG + " result = " + JSON.stringify(data));
                 expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
+                expect(data[0].bundleType).assertEqual(0);
             })
             done();
         });
@@ -258,7 +259,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   3
          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1700', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1700', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1700";
             console.log(TAG + " --- start");
             let context:common.ApplicationContext = globalThis.abilityStageContext.getApplicationContext();
@@ -278,7 +279,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   3
          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1800', 0, async (done:Function) => {
+        it('SUB_AA_OpenHarmony_ApplicationContext_1800', Level.LEVEL0, async (done:Function) => {
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1800";
             console.log(TAG + " --- start");
             let context:common.ApplicationContext = globalThis.abilityStageContext.getApplicationContext();
@@ -299,7 +300,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0100';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
@@ -369,7 +370,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0200';
             let startType = 'Callback';
             console.log(TAG + ' --- start');
@@ -439,7 +440,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0300';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
@@ -509,7 +510,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0400';
             let startType = 'Callback';
             console.log(TAG + ' --- start');
@@ -579,7 +580,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0500';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
@@ -649,7 +650,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0600';
             let startType = 'Callback';
             console.log(TAG + ' --- start');
@@ -719,7 +720,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700', 0, async (done:Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700', Level.LEVEL0, async (done:Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0700';
             let startType = 'Promise';
             console.log(TAG + ' --- start');
@@ -846,7 +847,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
          * @tc.type: Function
          * @tc.level   1
          */
-        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0800', 0, async (done: Function) => {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0800', Level.LEVEL0, async (done: Function) => {
             let TAG = 'SUB_Ability_AbilityRuntime_Configration_ApplicationContext_ClearUpApplicationData_0800';
             let startType = 'Callback';
             console.log(TAG + ' --- start');

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -90,11 +90,11 @@ describe("SensorJsTest_sensor_53", function () {
      * @tc.number:SUB_SensorsSystem_NEWBAROMETER_JSTest_0010
      * @tc.name: newBarometer_SensorJsTest001
      * @tc.desc: Functional Use Cases
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newBarometer_SensorJsTest001--------------');
         TAG = 'newBarometer_SensorJsTest001'
         try{

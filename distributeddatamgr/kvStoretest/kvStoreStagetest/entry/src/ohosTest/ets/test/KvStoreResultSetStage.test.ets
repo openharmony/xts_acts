@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import factory from '@ohos.data.distributedKVStore';
 import common from "@ohos.app.ability.common";
 
@@ -134,7 +134,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetCount001', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let count = resultSet.getCount();
         console.info("testKvStoreResultSetGetCount001 getCount " + count);
@@ -154,7 +154,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetCount002', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetCount002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let rs;
         await kvStore.getResultSet('test').then((result) => {
@@ -186,7 +186,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetCount003', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetCount003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let count = resultSet.getCount(123);
         console.info("testKvStoreResultSetGetCount003 getCount " + count);
@@ -205,7 +205,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetCount004', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetCount004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let count = resultSet.getCount(123, 'test_string');
         console.info("testKvStoreResultSetGetCount004 getCount " + count);
@@ -224,7 +224,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetPosition001', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetPosition001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition();
         console.info("testKvStoreResultSetGetPosition001 getPosition " + position);
@@ -244,7 +244,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetPosition002', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetPosition002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition();
         console.info("testKvStoreResultSetGetPosition002 getPosition " + position);
@@ -268,7 +268,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetPosition003', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetPosition003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition(123);
         console.info("testKvStoreResultSetGetPosition003 getPosition " + position);
@@ -287,7 +287,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetPosition004', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetPosition004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let position = resultSet.getPosition(123, 'test_string');
         console.info("testKvStoreResultSetGetPosition004 getPosition " + position);
@@ -306,7 +306,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToFirst001', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToFirst001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         console.info("testKvStoreResultSetMoveToFirst001 moveToFirst " + moved);
@@ -326,7 +326,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToFirst002', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToFirst002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         console.info("testKvStoreResultSetMoveToFirst002 moveToFirst " + moved);
@@ -349,7 +349,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToFirst003', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToFirst003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst(123);
         console.info("testKvStoreResultSetMoveToFirst003 moveToFirst " + moved);
@@ -368,7 +368,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToFirst004', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToFirst004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst(123, 'test_string');
         console.info("testKvStoreResultSetMoveToFirst004 moveToFirst " + moved);
@@ -387,7 +387,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToFirst005', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToFirst005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("testKvStoreResultSetMoveToFirst004 moveToFirst " + moved);
@@ -408,7 +408,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToLast001', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToLast001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("testKvStoreResultSetMoveToLast001 moveToLast " + moved);
@@ -428,7 +428,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToLast002', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToLast002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("testKvStoreResultSetMoveToLast002 moveToLast " + moved);
@@ -448,7 +448,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToLast003', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToLast003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast(123);
         console.info("testKvStoreResultSetMoveToLast003 moveToLast " + moved);
@@ -467,7 +467,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToLast004', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToLast004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast(123, 'test_string');
         console.info("testKvStoreResultSetMoveToLast004 moveToLast " + moved);
@@ -486,7 +486,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToNext001', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToNext001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         console.info("testKvStoreResultSetMoveToNext001 moveToNext " + moved);
@@ -506,7 +506,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToNext002', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToNext002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         console.info("testKvStoreResultSetMoveToNext002 moveToNext " + moved);
@@ -528,7 +528,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToNext003', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToNext003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext(123);
         console.info("testKvStoreResultSetMoveToNext003 moveToNext " + moved);
@@ -547,7 +547,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToNext004', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToNext004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext(123, 'test_string');
         console.info("testKvStoreResultSetMoveToNext004 moveToNext " + moved);
@@ -566,7 +566,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPrevious001', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPrevious001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious();
         console.info("testKvStoreResultSetMoveToPrevious001 moveToPrevious " + moved);
@@ -586,7 +586,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPrevious002', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPrevious002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         expect(moved && (resultSet.getPosition() == 0)).assertTrue();
@@ -611,7 +611,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPrevious003', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPrevious003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious(123);
         console.info("testKvStoreResultSetMoveToPrevious003 moveToPrevious " + moved);
@@ -630,7 +630,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPrevious004', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPrevious004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious(123, 'test_string');
         console.info("testKvStoreResultSetMoveToPrevious004 moveToPrevious " + moved);
@@ -649,7 +649,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPrevious005', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPrevious005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToFirst();
         expect(moved && (resultSet.getPosition() == 0)).assertTrue();
@@ -673,7 +673,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMove001', 0, async function(done) {
+    it('testEtsKvStoreResultSetMove001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.move();
         console.info("testKvStoreResultSetMove001 move " + moved);
@@ -692,7 +692,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMove002', 0, async function(done) {
+    it('testEtsKvStoreResultSetMove002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         resultSet.moveToFirst();
         expect(resultSet.getPosition() == 0).assertTrue();
@@ -715,7 +715,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMove003', 0, async function(done) {
+    it('testEtsKvStoreResultSetMove003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         expect(resultSet.getPosition() == -1).assertTrue();
         let moved = resultSet.move(3);
@@ -739,7 +739,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPosition001', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPosition001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPosition();
         console.info("testKvStoreResultSetMoveToPosition001 moveToPosition " + moved);
@@ -758,7 +758,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPosition003', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPosition003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPosition(5);
         console.info("testKvStoreResultSetMoveToPosition003 moveToPosition " + moved);
@@ -777,7 +777,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetMoveToPosition004', 0, async function(done) {
+    it('testEtsKvStoreResultSetMoveToPosition004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.move(3);
         console.info("testKvStoreResultSetMoveToPosition004 moveToPosition " + moved);
@@ -799,7 +799,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsFirst001', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsFirst001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst();
         console.info("testKvStoreResultSetIsFirst001 isFirst " + flag);
@@ -819,7 +819,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsFirst002', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsFirst002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst();
         console.info("testKvStoreResultSetIsFirst002 isFirst " + flag);
@@ -843,7 +843,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsFirst003', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsFirst003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst(1);
         console.info("testKvStoreResultSetIsFirst003 isFirst " + flag);
@@ -862,7 +862,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsFirst004', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsFirst004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isFirst(1, 'test_string');
         console.info("testKvStoreResultSetIsFirst004 isFirst " + flag);
@@ -881,7 +881,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsLast001', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsLast001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isLast();
         console.info("testKvStoreResultSetIsLast001 isLast " + flag);
@@ -901,7 +901,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsLast002', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsLast002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         resultSet.moveToLast();
         let flag = resultSet.isLast();
@@ -922,7 +922,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsLast003', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsLast003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isLast(1);
         console.info("testKvStoreResultSetIsLast003 isLast " + flag);
@@ -941,7 +941,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsLast004', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsLast004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isLast(1, 'test_string');
         console.info("testKvStoreResultSetIsLast004 isLast " + flag);
@@ -960,7 +960,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsBeforeFirst001', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsBeforeFirst001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isBeforeFirst();
         console.info("testKvStoreResultSetIsBeforeFirst001 isBeforeFirst " + flag);
@@ -980,7 +980,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsBeforeFirst002', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsBeforeFirst002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToPrevious();
         expect(!moved).assertTrue();
@@ -1002,7 +1002,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsBeforeFirst003', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsBeforeFirst003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isBeforeFirst(1);
         console.info("testKvStoreResultSetIsBeforeFirst003 isBeforeFirst " + flag);
@@ -1021,7 +1021,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsBeforeFirst004', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsBeforeFirst004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isBeforeFirst(1, 'test_string');
         console.info("testKvStoreResultSetIsBeforeFirst004 isBeforeFirst " + flag);
@@ -1040,7 +1040,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsAfterLast001', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsAfterLast001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isAfterLast();
         console.info("testKvStoreResultSetIsAfterLast001 isAfterLast " + flag);
@@ -1060,7 +1060,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsAfterLast002', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsAfterLast002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToLast();
         console.info("testKvStoreResultSetIsAfterLast002  moveToLast  moved=" + moved);
@@ -1086,7 +1086,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsAfterLast003', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsAfterLast003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isAfterLast(1);
         console.info("testKvStoreResultSetIsAfterLast003 isAfterLast " + flag);
@@ -1105,7 +1105,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetIsAfterLast004', 0, async function(done) {
+    it('testEtsKvStoreResultSetIsAfterLast004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let flag = resultSet.isAfterLast(1, 'test_string');
         console.info("testKvStoreResultSetIsAfterLast004 isAfterLast " + flag);
@@ -1124,7 +1124,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetEntry001', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetEntry001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         let entry = resultSet.getEntry();
@@ -1146,7 +1146,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetEntry002', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetEntry002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let moved = resultSet.moveToNext();
         let entry = resultSet.getEntry();
@@ -1174,7 +1174,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetEntry003', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetEntry003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let entry = resultSet.getEntry(1);
         console.info("testKvStoreResultSetGetEntry003 getEntry " + entry);
@@ -1193,7 +1193,7 @@ export default function kvStoreResultSetStageTest(){
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testEtsKvStoreResultSetGetEntry004', 0, async function(done) {
+    it('testEtsKvStoreResultSetGetEntry004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
       try {
         let entry = resultSet.getEntry(1, 'test_string');
         console.info("testKvStoreResultSetGetEntry004 getEntry " + entry);

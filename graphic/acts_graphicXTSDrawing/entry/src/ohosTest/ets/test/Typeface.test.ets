@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 
 export default function typefaceTest() {
@@ -48,7 +48,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTypeFaceGetFamilyNameNormal', DEFAULT, () => {
+    it('testTypeFaceGetFamilyNameNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testTypeFaceGetFamilyNameNormal';
       try {
         let font = new drawing.Font();
@@ -69,7 +69,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceGetFamilyNameMultipleCalls', DEFAULT, () => {
+    it('testTypeFaceGetFamilyNameMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceGetFamilyNameMultipleCalls';
 
       let font = new drawing.Font();
@@ -94,7 +94,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTypeFaceMakeFromFileNormal', DEFAULT, () => {
+    it('testTypeFaceMakeFromFileNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testTypeFaceMakeFromFileNormal';
       let font = new drawing.Font();
 
@@ -119,7 +119,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromFileMultipleCalls', 3, () => {
+    it('testTypeFaceMakeFromFileMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromFileMultipleCalls';
       let font = new drawing.Font();
 
@@ -145,7 +145,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromFileAbnormal', 3, () => {
+    it('testTypeFaceMakeFromFileAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromFileAbnormal';
 
       try {
@@ -172,7 +172,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromRawFileAbnormal', 3, () => {
+    it('testTypeFaceMakeFromRawFileAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromRawFileAbnormal';
       try {
         const mytypeface:drawing.Typeface = drawing.Typeface.makeFromRawFile($rawfile('image.png'));
@@ -191,7 +191,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromRawFileMultipleCalls', 3, () => {
+    it('testTypeFaceMakeFromRawFileMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromRawFileMultipleCalls';
       try {
         for (let i = 0; i < 20; i += 1) {
@@ -212,7 +212,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromRawFileNormal', 3, () => {
+    it('testTypeFaceMakeFromRawFileNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromRawFileNormal';
       try {
         let mytypeface:drawing.Typeface = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Condensed.ttf'));
@@ -239,7 +239,7 @@ export default function typefaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromRawFileNull', 3, () => {
+    it('testTypeFaceMakeFromRawFileNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromRawFileNull';
       try {
         drawing.Typeface.makeFromRawFile(null);

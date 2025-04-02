@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import sendablePreferences from '@ohos.data.sendablePreferences';
 import lang from '@arkts.lang';
@@ -68,7 +68,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutNumber0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutNumber0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.put(KEY_NUMBER, 333);
         let data = await mPreferences.get(KEY_NUMBER, 'default');
@@ -89,7 +89,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutString0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutString0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_STRING, value_string);
       await mPreferences.get(KEY_STRING, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_STRING. Data: ${data}`);
@@ -110,7 +110,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.level Level 2
      */
 
-    it('testSendablePreferencesPutBool0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutBool0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_BOOLEAN, value_boolen);
       await mPreferences.get(KEY_BOOLEAN, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_BOOLEAN. Data: ${data}`);
@@ -130,7 +130,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutBigint0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutBigint0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_BIGINT, value_bigint);
       await mPreferences.get(KEY_BIGINT, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_BIGINT. Data: ${data}`);
@@ -150,7 +150,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutLong0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutLong0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_LONG, value_long);
       await mPreferences.get(KEY_LONG, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_LONG. Data: ${data}`);
@@ -170,7 +170,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutArrNumber0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutArrNumber0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let arrNumber: collections.Array<number> = new collections.Array<number>(123, 456, 789)
       await mPreferences.put(KEY_ARRAY_NUMBER, arrNumber);
       await mPreferences.get(KEY_ARRAY_NUMBER, 'default').then((data: lang.ISendable) => {
@@ -194,7 +194,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutStringArray0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutStringArray0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let stringArr: collections.Array<string> = new collections.Array<string>('111', '222', '333');
       await mPreferences.put(KEY_ARRAY_STRING, stringArr);
       console.info(TAG + 'Succeeded in putting value')
@@ -219,7 +219,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesPutArrBoolen0100', 0, async (done: Function) => {
+    it('testSendablePreferencesPutArrBoolen0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let ArrBool: collections.Array<boolean> = new collections.Array<boolean>(true, false, true)
       await mPreferences.put(KEY_ARRAY_BOOL, ArrBool);
       await mPreferences.get(KEY_ARRAY_BOOL, 'default').then((data: lang.ISendable) => {
@@ -243,7 +243,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesGetAll0100', 0, async (done: Function) => {
+    it('testSendablePreferencesGetAll0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_BIGINT, 1452687651565);
       await mPreferences.getAll().then((keyValues: lang.ISendable) => {
         for (let value of Object.keys(keyValues)) {
@@ -265,7 +265,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesHas0100', 0, async (done: Function) => {
+    it('testSendablePreferencesHas0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_BIGINT, 1452687651565);
       await mPreferences.has(KEY_BIGINT).then((val: boolean) => {
@@ -291,7 +291,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesClear0100', 0, async (done: Function) => {
+    it('testSendablePreferencesClear0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put('KEY_NUMBER', 11);
       let pre = await mPreferences.get('KEY_NUMBER', 'defaultvalue')
       console.info(TAG + 'succeed in getting pre' + JSON.stringify(pre))
@@ -312,7 +312,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesGetAllSync0100', 0, async (done: Function) => {
+    it('testSendablePreferencesGetAllSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let arrNumber: collections.Array<number> = new collections.Array<number>(111, 234, 789)
       let stringArr: collections.Array<string> = new collections.Array<string>('111', '222', '333');
       mPreferences.clearSync();
@@ -347,7 +347,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesGetSync0100', 0, async (done: Function) => {
+    it('testSendablePreferencesGetSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.putSync(KEY_NUMBER, 444);
         let value: lang.ISendable = mPreferences.getSync(KEY_NUMBER, 'default');
@@ -368,7 +368,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesHasSync0100', 0, async (done: Function) => {
+    it('testSendablePreferencesHasSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       mPreferences.clearSync();
       mPreferences.putSync(KEY_STRING, "test");
       const ret = mPreferences.hasSync(KEY_STRING);
@@ -384,7 +384,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesDelete0100', 0, async (done: Function) => {
+    it('testSendablePreferencesDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.put(KEY_BIGINT, 1452687651565);
         await mPreferences.delete(KEY_BIGINT).then(() => {
@@ -408,7 +408,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesDelete0200', 0, async (done: Function) => {
+    it('testSendablePreferencesDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await mPreferences.put(KEY_NUMBER, 777)
         await mPreferences.delete(KEY_NUMBER).then(() => {
@@ -432,7 +432,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesDeleteSync0100', 0, async (done: Function) => {
+    it('testSendablePreferencesDeleteSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.putSync(KEY_NUMBER, "abc");
         let data = mPreferences.getSync(KEY_NUMBER, "default");
@@ -457,7 +457,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesGetPreferencesSync0100', 0, async (done: Function) => {
+    it('testSendablePreferencesGetPreferencesSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         const options2: sendablePreferences.Options = {
           name: 'getPreferencesTest'
@@ -486,7 +486,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesOn0100', 0, async (done: Function) => {
+    it('testSendablePreferencesOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let observer = (key: string) => {
         console.info(TAG + 'testPreferencesRegisterObserver001 keyValue' + mPreferences.getSync(KEY_STRING,"aaa"));
@@ -507,7 +507,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesOn0200', 0, async (done: Function) => {
+    it('testSendablePreferencesOn0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let observer = (key: string) => {
         console.info(TAG + 'testPreferencesRegisterObserver0200 keyValue' + mPreferences.getSync(KEY_STRING,"aaa"));
         done();
@@ -527,7 +527,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testSendablePreferencesOn0300', 0, async (done: Function) => {
+    it('testSendablePreferencesOn0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let observer = (data: lang.ISendable) => {
         console.info(TAG + `observer : ${data}`)
         done();
@@ -560,7 +560,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.level Level 2
      */
 
-    it('testSendableFlushSync0100', 0, async (done: Function) => {
+    it('testSendableFlushSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         mPreferences.clearSync();
         mPreferences.putSync(KEY_NUMBER,'TEST');

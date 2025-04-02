@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -79,7 +79,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Type_Dialog', 0, async () => {
+    it('testCreateWindow_Type_Dialog', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateWindow_Type_Dialog';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -109,7 +109,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Same_Name_Wins_Promise', 0, async () => {
+    it('testCreateWindow_Same_Name_Wins_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateWindow_Same_Name_Wins_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -155,7 +155,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_TwoTimes_TypeDialog', 0, async (done: Function) => {
+    it('testCreateWindow_TwoTimes_TypeDialog', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateWindow_TwoTimes_TypeDialog';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
@@ -209,7 +209,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Type_Dialog_Win_Callback', 0, (done: Function) => {
+    it('testCreateWindow_Type_Dialog_Win_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, (done: Function) => {
       let caseName = 'testCreateWindow_Type_Dialog_Win_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -256,7 +256,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Same_Name_Wins_Callback', 0, async (done: Function) => {
+    it('testCreateWindow_Same_Name_Wins_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateWindow_Same_Name_Wins_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -306,7 +306,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowAvoidArea_Type_System', 0, async (done: Function) => {
+    it('testGetWindowAvoidArea_Type_System', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetWindowAvoidArea_Type_System';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -342,7 +342,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowAvoidArea_Type_CutOut', 0, async (done: Function) => {
+    it('testGetWindowAvoidArea_Type_CutOut', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetWindowAvoidArea_Type_CutOut';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -378,7 +378,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowAvoidArea_Type_System_Gesture', 0, async (done: Function) => {
+    it('testGetWindowAvoidArea_Type_System_Gesture', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetWindowAvoidArea_Type_System_Gesture';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -413,7 +413,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowAvoidArea_Type_Keyboard', 0, async (done: Function) => {
+    it('testGetWindowAvoidArea_Type_Keyboard', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetWindowAvoidArea_Type_Keyboard';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -448,7 +448,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowPropertiesTest', 0, async (done: Function) => {
+    it('testGetWindowPropertiesTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetWindowPropertiesTest';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try {
@@ -493,7 +493,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLastWindow_Promise', 0, async () => {
+    it('testGetLastWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testGetLastWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -521,7 +521,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLastWindow_Callback', 0, async (done: Function) => {
+    it('testGetLastWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetLastWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -553,7 +553,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShowWindowTest_Callback_Form', 0, async () => {
+    it('testShowWindowTest_Callback_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testShowWindowTest_Callback_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -582,7 +582,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testShowWindowTest_Promise_Form', 0, async (done: Function) => {
+    it('testShowWindowTest_Promise_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testShowWindowTest_Promise_Form';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -621,7 +621,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_X_Val300_Y_Val300_Promise', 0, async ()=> {
+    it('testMoveWindowTo_X_Val300_Y_Val300_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testMoveWindowTo_X_Val300_Y_Val300_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -663,7 +663,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_X_Val100_Y_Val50_Promise', 0, async ()=> {
+    it('testMoveWindowTo_X_Val100_Y_Val50_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testMoveWindowTo_X_Val100_Y_Val50_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -705,7 +705,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_X_Val20000_Y_Val20000_Promise', 0, async () => {
+    it('testMoveWindowTo_X_Val20000_Y_Val20000_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowTo_X_Val20000_Y_Val20000_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -747,7 +747,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_XYVal_Is_Negative_Num_Promise', 0, async () => {
+    it('testMoveWindowTo_XYVal_Is_Negative_Num_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testMoveWindowTo_XYVal_Is_Negative_Num_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -789,7 +789,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_X_Val300_Y_Va300_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_X_Val300_Y_Va300_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_X_Val300_Y_Va300_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -836,7 +836,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_X_Val100_Y_Va50_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_X_Val100_Y_Va50_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_X_Val100_Y_Va50_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -883,7 +883,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_X_Val20000_Y_Val20000_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_X_Val20000_Y_Val20000_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_X_Val20000_Y_Val20000_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -929,7 +929,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMoveWindowTo_XYVal_Is_Negative_Num_Callback', 0, async (done: Function) => {
+    it('testMoveWindowTo_XYVal_Is_Negative_Num_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testMoveWindowTo_XYVal_Is_Negative_Num_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -975,7 +975,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_X_Val200_Y_Val600_Promise', 0, async  ()=> {
+    it('testResize_X_Val200_Y_Val600_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async  ()=> {
       let caseName = 'testResize_X_Val200_Y_Val600_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1015,7 +1015,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_X_Val20000_Y_Val20000_Promise', 0, async ()=> {
+    it('testResize_X_Val20000_Y_Val20000_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testResize_X_Val20000_Y_Val20000_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1055,7 +1055,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_XY_Value_Is_Zero_Promise', 0, async ()=> {
+    it('testResize_XY_Value_Is_Zero_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testResize_XY_Value_Is_Zero_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1096,7 +1096,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_XY_Value_Is_Negative_Num_Promise', 0, async ()=> {
+    it('testResize_XY_Value_Is_Negative_Num_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testResize_XY_Value_Is_Negative_Num_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1138,7 +1138,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_X_Val100_Y_Val100_Multi_Set_Promise', 0, async  ()=>{
+    it('testResize_X_Val100_Y_Val100_Multi_Set_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async  ()=>{
       let caseName = 'testResize_X_Val100_Y_Val100_Multi_Set_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1175,7 +1175,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_X_Val200_Y_Val200_Callback', 0, async (done: Function) => {
+    it('testResize_X_Val200_Y_Val200_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_X_Val200_Y_Val200_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1222,7 +1222,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testResize_Set_Diff_XY_In_Turn', 0, async (done: Function) => {
+    it('testResize_Set_Diff_XY_In_Turn', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testResize_Set_Diff_XY_In_Turn';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1261,7 +1261,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnable_Empty_Promise', 0, async ()=> {
+    it('testSetWindowSystemBarEnable_Empty_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowSystemBarEnable_Empty_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd: ohosWindow.Window | undefined = undefined;
@@ -1298,7 +1298,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnable_StatusAndNavigation_Promise', 0, async ()=> {
+    it('testSetWindowSystemBarEnable_StatusAndNavigation_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowSystemBarEnable_StatusAndNavigation_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd: ohosWindow.Window | undefined = undefined;
@@ -1335,7 +1335,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnable_Status_Promise', 0, async ()=> {
+    it('testSetWindowSystemBarEnable_Status_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowSystemBarEnable_Status_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd: ohosWindow.Window | undefined = undefined;
@@ -1372,7 +1372,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnable_Navigation_Promise', 0, async ()=> {
+    it('testSetWindowSystemBarEnable_Navigation_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowSystemBarEnable_Navigation_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd: ohosWindow.Window | undefined = undefined;
@@ -1409,7 +1409,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnable_StatusAndNavigation_Callback', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnable_StatusAndNavigation_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowSystemBarEnable_StatusAndNavigation_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1458,7 +1458,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowSystemBarEnable_Empty_Callback', 0, async (done: Function) => {
+    it('testSetWindowSystemBarEnable_Empty_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowSystemBarEnable_Empty_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1507,7 +1507,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Not_Exist_WinType_Promise', 0, async ()=> {
+    it('testCreateWindow_Not_Exist_WinType_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testCreateWindow_Not_Exist_WinType_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1538,7 +1538,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateWindow_Not_Exist_WinType_Callback', 0, async (done: Function) => {
+    it('testCreateWindow_Not_Exist_WinType_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateWindow_Not_Exist_WinType_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1574,7 +1574,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLayoutFullScreen_True_Promise', 0, async ()=> {
+    it('testSetWindowLayoutFullScreen_True_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowLayoutFullScreen_True_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       if(currentDeviceIsPC){
@@ -1619,7 +1619,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLayoutFullScreen_False_Promise', 0, async ()=> {
+    it('testSetWindowLayoutFullScreen_False_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowLayoutFullScreen_False_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       if(currentDeviceIsPC){
@@ -1665,7 +1665,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLayoutFullScreen_True_Callback', 0, async (done: Function) => {
+    it('testSetWindowLayoutFullScreen_True_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowLayoutFullScreen_True_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       if(currentDeviceIsPC){
@@ -1726,7 +1726,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowLayoutFullScreen_False_Callback', 0, async (done: Function) => {
+    it('testSetWindowLayoutFullScreen_False_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowLayoutFullScreen_False_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       if(currentDeviceIsPC){
@@ -1782,7 +1782,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testEnumWindowStageEventTypeReName_Test_001', 0, async  ()=> {
+    it('testEnumWindowStageEventTypeReName_Test_001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async  ()=> {
       console.info('test the enum value of WindowStageEventType begin');
       try {
         expect(1).assertEqual(ohosWindow.WindowStageEventType.SHOWN);

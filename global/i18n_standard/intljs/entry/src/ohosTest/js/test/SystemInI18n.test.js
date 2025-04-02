@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function SystemInI18nTest() {
 describe('SystemInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and true param
     * @tc.desc    check the display country
     */
-    it('i18n_system_test_0100', 0, function () {
+    it('i18n_system_test_0100', Level.LEVEL0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', true);
         console.log('i18n_system_test_0100 ' + value);
         expect(value).assertEqual('China');
@@ -72,7 +72,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and undefined param
     * @tc.desc    check the display country
     */
-    it('i18n_system_test_0200', 0, function () {
+    it('i18n_system_test_0200', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', undefined);
         console.log('i18n_system_test_0200 ' + value);
         expect(value).assertEqual('China');
@@ -83,7 +83,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and null param
     * @tc.desc    check the display country
     */
-    it('i18n_system_test_0300', 0, function () {
+    it('i18n_system_test_0300', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', null);
         console.log('i18n_system_test_0300 ' + value);
         expect(value).assertEqual('China');
@@ -94,7 +94,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh and en-US and true param
     * @tc.desc    check the display country
     */
-    it('i18n_system_test_0400', 0, function () {
+    it('i18n_system_test_0400', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getDisplayCountry('zh', 'en-US', true);
             console.log('i18n_system_test_0400 ' + value);
@@ -112,7 +112,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-CN and en-US and true param
     * @tc.desc    check the display country
     */
-    it('i18n_system_test_0500', 0, function () {
+    it('i18n_system_test_0500', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayCountry('zh-CN', 'en-US', true);
         console.log('i18n_system_test_0500 ' + value);
         expect(value).assertEqual('China');
@@ -123,7 +123,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans and en-US and true param
     * @tc.desc    check the display country
     */
-    it('i18n_system_test_0600', 0, function () {
+    it('i18n_system_test_0600', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getDisplayCountry('zh-Hans', 'en-US', true);
             console.log('i18n_system_test_0600 ' + value);
@@ -141,7 +141,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and false param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_0700', 0, function () {
+    it('i18n_system_test_0700', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', false);
         console.log('i18n_system_test_0700 ' + value);
         expect(value).assertEqual('China');
@@ -152,7 +152,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_0800', 0, function () {
+    it('i18n_system_test_0800', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US');
         console.log('i18n_system_test_0800 ' + value);
         expect(value).assertEqual('China');
@@ -163,7 +163,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_0900', 0, function () {
+    it('i18n_system_test_0900', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getDisplayCountry('zh-Hans-CN');
             console.log('i18n_system_test_0900 ' + value);
@@ -181,7 +181,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1000', 0, function () {
+    it('i18n_system_test_1000', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getDisplayCountry('zh-Hans-CN', 12345);
             console.log('i18n_system_test_1000 ' + value);
@@ -199,7 +199,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and true param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1100', 0, function () {
+    it('i18n_system_test_1100', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('i18n_system_test_1100 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -210,7 +210,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and undefined param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1200', 0, function () {
+    it('i18n_system_test_1200', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', undefined);
         console.log('i18n_system_test_1200 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -221,7 +221,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and null param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1300', 0, function () {
+    it('i18n_system_test_1300', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', null);
         console.log('i18n_system_test_1300 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -232,7 +232,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-GB and true param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1400', 0, function () {
+    it('i18n_system_test_1400', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
         console.log('i18n_system_test_1400 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -243,7 +243,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh and en-US and true param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1500', 0, function () {
+    it('i18n_system_test_1500', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh', 'en-US', true);
         console.log('i18n_system_test_1500 ' + value);
         expect(value).assertEqual('Chinese');
@@ -254,7 +254,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-CN and en-US and true param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1600', 0, function () {
+    it('i18n_system_test_1600', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-CN', 'en-US', true);
         console.log('i18n_system_test_1600 ' + value);
         expect(value).assertEqual('Chinese');
@@ -265,7 +265,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans and en-US and true param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1700', 0, function () {
+    it('i18n_system_test_1700', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans', 'en-US', true);
         console.log('i18n_system_test_1700 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -276,7 +276,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and false param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1800', 0, function () {
+    it('i18n_system_test_1800', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
         console.log('i18n_system_test_1800 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -287,7 +287,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_1900', 0, function () {
+    it('i18n_system_test_1900', Level.LEVEL2, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US');
         console.log('i18n_system_test_1900 ' + value);
         expect(value).assertEqual('Simplified Chinese');
@@ -298,7 +298,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_2000', 0, function () {
+    it('i18n_system_test_2000', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getDisplayLanguage('zh-Hans-CN');
             console.log('i18n_system_test_2000 ' + value);
@@ -316,7 +316,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc    check the language
     */
-    it('i18n_system_test_2100', 0, function () {
+    it('i18n_system_test_2100', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 12345);
             console.log('i18n_system_test_2100 ' + value);
@@ -334,7 +334,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name getSystemLanguages test
     * @tc.desc check the getSystemLanguages
     */
-    it('i18n_system_test_2200', 0, function () {
+    it('i18n_system_test_2200', Level.LEVEL2, function () {
         let value = I18n.System.getSystemLanguages();
         let len = value.length;
         console.log('i18n_system_test_2200 ' + len);
@@ -346,7 +346,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name getSystemCountries with en param
     * @tc.desc check the getSystemCountries
     */
-    it('i18n_system_test_2300', 0, function () {
+    it('i18n_system_test_2300', Level.LEVEL2, function () {
         let value = I18n.System.getSystemCountries('en');
         let len = value.length;
         console.log('i18n_system_test_2300 ' + len);
@@ -358,7 +358,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name getSystemCountries with en param
     * @tc.desc check the getSystemCountries
     */
-    it('i18n_system_test_2400', 0, function () {
+    it('i18n_system_test_2400', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getSystemCountries();
             let len = value.length;
@@ -377,7 +377,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name getSystemCountries with en param
     * @tc.desc check the getSystemCountries
     */
-    it('i18n_system_test_2500', 0, function () {
+    it('i18n_system_test_2500', Level.LEVEL2, function () {
         try{
             let value = I18n.System.getSystemCountries(12345);
             let len = value.length;
@@ -396,7 +396,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name isSuggested with zh param
     * @tc.desc check the isSuggested
     */
-    it('i18n_system_test_2600', 0, function () {
+    it('i18n_system_test_2600', Level.LEVEL0, function () {
         let value = I18n.System.isSuggested('zh');
         console.log('i18n_system_test_2600 ' + value);
         expect(value).assertTrue();
@@ -407,7 +407,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name isSuggested with en param
     * @tc.desc check the isSuggested
     */
-    it('i18n_system_test_2700', 0, function () {
+    it('i18n_system_test_2700', Level.LEVEL2, function () {
         let value = I18n.System.isSuggested('en');
         console.log('i18n_system_test_2700 ' + value);
         expect(value).assertFalse();
@@ -418,7 +418,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name isSuggested with zh-CN param
     * @tc.desc check the isSuggested
     */
-    it('i18n_system_test_2800', 0, function () {
+    it('i18n_system_test_2800', Level.LEVEL2, function () {
         let value = I18n.System.isSuggested('zh', 'CN');
         console.log('i18n_system_test_2800 ' + value);
         expect(value).assertTrue();
@@ -429,7 +429,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name isSuggested with en-US param
     * @tc.desc check the isSuggested
     */
-    it('i18n_system_test_2900', 0, function () {
+    it('i18n_system_test_2900', Level.LEVEL2, function () {
         let value = I18n.System.isSuggested('en' , 'US');
         console.log('i18n_system_test_2900 ' + value);
         expect(value).assertTrue();
@@ -440,7 +440,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name isSuggested with en-US param
     * @tc.desc check the isSuggested
     */
-    it('i18n_system_test_3000', 0, function () {
+    it('i18n_system_test_3000', Level.LEVEL2, function () {
         try{
             let value = I18n.System.isSuggested();
             console.log('i18n_system_test_3000 ' + value);
@@ -458,7 +458,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name isSuggested with en-US param
     * @tc.desc check the isSuggested
     */
-    it('i18n_system_test_3100', 0, function () {
+    it('i18n_system_test_3100', Level.LEVEL2, function () {
         try{
             let value = I18n.System.isSuggested(12345);
             console.log('i18n_system_test_3100 ' + value);
@@ -476,7 +476,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getSystemLanguage
     * @tc.desc    check the getSystemLanguage
     */
-    it('i18n_system_test_3200', 0, function () {
+    it('i18n_system_test_3200', Level.LEVEL2, function () {
         let lang = I18n.System.getSystemLanguage();
         console.log('i18n_system_test_3200 ' + lang);
         expect(lang).assertInstanceOf('String');
@@ -487,7 +487,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getSystemRegion
     * @tc.desc    check the getSystemRegion
     */
-    it('i18n_system_test_3300', 0, function () {
+    it('i18n_system_test_3300', Level.LEVEL0, function () {
         let region = I18n.System.getSystemRegion();
         console.log('i18n_system_test_3300 ' + region);
         expect(region).assertInstanceOf('String');
@@ -498,7 +498,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    getSystemLocale
     * @tc.desc    check the getSystemLocale
     */
-    it('i18n_system_test_3400', 0, function () {
+    it('i18n_system_test_3400', Level.LEVEL0, function () {
         let locale = I18n.System.getSystemLocale();
         console.log('i18n_system_test_3400 ' + locale);
         expect(locale).assertInstanceOf('String');
@@ -509,7 +509,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    is24HourClock
     * @tc.desc    check the is24HourClock
     */
-    it('i18n_system_test_3500', 0, function () {
+    it('i18n_system_test_3500', Level.LEVEL0, function () {
         let value = I18n.System.is24HourClock();
         console.log('i18n_system_test_3500 ' + value);
         expect(value).assertFalse();
@@ -520,7 +520,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    test the getPreferredLanguageList interface with default value
     * @tc.desc    check the value of getPreferredLanguageList method
     */
-    it('i18n_system_test_3600', 0, function () {
+    it('i18n_system_test_3600', Level.LEVEL0, function () {
         console.log('i18n_system_test_3600 ' + 'start');
         let value = I18n.System.getPreferredLanguageList();
         console.log('i18n_system_test_3600 ' + value);
@@ -532,7 +532,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name    test the getFirstPreferredLanguage interface
     * @tc.desc    check the value of getFirstPreferredLanguage method
     */
-    it('i18n_system_test_3700', 0, function () {
+    it('i18n_system_test_3700', Level.LEVEL0, function () {
         console.log('i18n_system_test_3700 ' + 'start');
         let value = I18n.System.getFirstPreferredLanguage();
         console.log('i18n_system_test_3700 ' + value);
@@ -552,7 +552,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name test the getAppPreferredLanguage interface
     * @tc.desc check the value of getAppPreferredLanguage method
     */
-    it('i18n_system_test_3800', 0, function () {
+    it('i18n_system_test_3800', Level.LEVEL0, function () {
         console.log('i18n_system_test_3800 ' + 'start');
         let value = I18n.System.getAppPreferredLanguage();
         console.log('i18n_system_test_3800 ' + value);
@@ -564,7 +564,7 @@ describe('SystemInI18nTest', function () {
     * @tc.name test getUsingLocalDigit method
     * @tc.desc get the getUsingLocalDigit value
     */
-    it('i18n_system_test_3900', 0, function () {
+    it('i18n_system_test_3900', Level.LEVEL0, function () {
         let value = I18n.System.getUsingLocalDigit();
         console.log('i18n_system_test_3900 ' + value);
         expect(value).assertFalse();
@@ -578,7 +578,7 @@ describe('SystemInI18nTest', function () {
     *@tc.type     :Function
     *@tc.level    :Level 0
     */
-    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0400',0,function(done){
+    it('SUB_GLOBAL_I18N_AppPreferredLanguage_0400',Level.LEVEL0,function(done){
         try{
           I18n.System.setAppPreferredLanguage('zh-CN');//设置应用偏好语言为"zh-CN"
           let appPreferredLanguage = I18n.System.getAppPreferredLanguage();

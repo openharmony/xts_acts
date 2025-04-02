@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect ,TestType, Size, Level } from "@ohos/hypium";
 import { add as testAdd } from './testAdd';
 import { subtract as testSubtract } from '../testSubtract';
 import { multiply as testMultiply } from './fileTest';
@@ -32,7 +32,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHap01', 0, () => {
+    it('testStaticLoadHap01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap01";
       try {
         expect(testAdd(3, 2)).assertEqual(5);
@@ -50,7 +50,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHap02', 0, () => {
+    it('testStaticLoadHap02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap02";
       try {
         expect(testSubtract(3, 2)).assertEqual(1);
@@ -69,7 +69,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHap03', 0, () => {
+    it('testStaticLoadHap03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap03";
       try {
         expect(testMultiply(3, 2)).assertEqual(6);
@@ -87,7 +87,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLoadHap04', 0, () => {
+    it('testStaticLoadHap04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap04";
       try {
         expect(testGetCNInfo()).assertEqual("CN");
@@ -105,7 +105,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHap05", 0, () => {
+    it("testStaticLoadHap05", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap05";
       let length: number = 0;
       try {
@@ -127,7 +127,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHap06", 0, () => {
+    it("testStaticLoadHap06", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap06";
       try {
         expect(true).assertTrue();
@@ -145,7 +145,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHap07", 0, () => {
+    it("testStaticLoadHap07", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap07";
       try {
         expect(napiAdd(3, 2)).assertEqual(5);
@@ -163,7 +163,7 @@ export default function staticLoadHap() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("testStaticLoadHap08", 0, () => {
+    it("testStaticLoadHap08", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const caseName: string = "testStaticLoadHap08";
       try {
         expect(testJson.name).assertEqual("testJson");

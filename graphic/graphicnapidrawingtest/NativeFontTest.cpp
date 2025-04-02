@@ -46,7 +46,7 @@ void NativeFontTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetMetrics001, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetMetrics001, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -64,7 +64,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetMetrics001, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_IsAndSetBaselineSnap002, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_IsAndSetBaselineSnap002, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -86,7 +86,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_IsAndSetBaselineSnap002, TestSize.Level1
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_IsAndSetSubpixel003, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_IsAndSetSubpixel003, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -108,7 +108,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_IsAndSetSubpixel003, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_TextToGlyphs004, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_TextToGlyphs004, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     OH_Drawing_FontSetTextSize(font, 100); // 100 means font text size
@@ -141,7 +141,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_TextToGlyphs004, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_SetAndGetScaleX005, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_SetAndGetScaleX005, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -160,7 +160,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_SetAndGetScaleX005, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetEdging006, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetEdging006, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -184,7 +184,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetEdging006, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetForceAutoHinting007, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetForceAutoHinting007, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -205,7 +205,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetForceAutoHinting007, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetHinting008, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetHinting008, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -226,7 +226,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetHinting008, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetEmbeddedBitmaps009, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetEmbeddedBitmaps009, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -245,7 +245,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetAndSetEmbeddedBitmaps009, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetTextSize010, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetTextSize010, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -262,7 +262,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetTextSize010, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_GetTextSkewX011, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_GetTextSkewX011, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -279,7 +279,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_GetTextSkewX011, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_IsLinearText012, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_IsLinearText012, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -298,7 +298,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_IsLinearText012, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeFontTest, NativeFontTest_SetFakeBoldText013, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_SetFakeBoldText013, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -316,7 +316,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_SetFakeBoldText013, TestSize.Level1)
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText014, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText014, Function | MediumTest | Level1)
 {
     OH_Drawing_Font* font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -346,7 +346,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText014, TestSize.Level1)
  * @tc.desc: test for the textbox.
  * @tc.type: FUNC
  */
-HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText015, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText015, Function | MediumTest | Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
@@ -365,7 +365,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText015, TestSize.Level1)
  * @tc.desc: test for the textshadow.
  * @tc.type: FUNC
  */
-HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText016, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText016, Function | MediumTest | Level1)
 {
     OH_Drawing_TextShadow* shadow = OH_Drawing_CreateTextShadow();
     uint32_t color = 0;
@@ -382,7 +382,7 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText016, TestSize.Level1)
  * @tc.desc: test for the fontVariation.
  * @tc.type: FUNC
  */
-HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText017, TestSize.Level1)
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText017, Function | MediumTest | Level1)
 {
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
     EXPECT_EQ(txtStyle == nullptr, false);

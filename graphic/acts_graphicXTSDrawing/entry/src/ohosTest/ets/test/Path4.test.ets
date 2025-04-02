@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
@@ -49,7 +49,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathGetMatrixNormal', DEFAULT, () => {
+    it('testPathGetMatrixNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPathGetMatrixNormal';
 
       try {
@@ -117,7 +117,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathGetMatrixMultipleCalls', 3, () => {
+    it('testPathGetMatrixMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathGetMatrixMultipleCalls';
       const path = new drawing.Path();
 
@@ -143,7 +143,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathGetMatrixToNull', 3, () => {
+    it('testPathGetMatrixToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathGetMatrixToNull';
       const path = new drawing.Path();
       const matrix = new drawing.Matrix();
@@ -231,7 +231,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathGetMatrixAbnormal', 3, () => {
+    it('testPathGetMatrixAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathGetMatrixAbnormal';
       const path = new drawing.Path();
       const matrix = new drawing.Matrix();
@@ -254,7 +254,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathConicToNormal', 3, () => {
+    it('testPathConicToNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathConicToNormal';
       const path = new drawing.Path();
       const maxVal = Number.MAX_VALUE;
@@ -282,7 +282,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathConicToMultipleCalls', 3, () => {
+    it('testPathConicToMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathConicToMultipleCalls';
       const path = new drawing.Path();
 
@@ -306,7 +306,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathConicToToNull', 3, () => {
+    it('testPathConicToToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathConicToToNull';
       const path = new drawing.Path();
 
@@ -411,7 +411,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathConicToAbnormal', 3, () => {
+    it('testPathConicToAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathConicToAbnormal';
       const path = new drawing.Path();
 
@@ -444,7 +444,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathrConicToNormal', DEFAULT, () => {
+    it('testPathrConicToNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPathrConicToNormal';
       const path = new drawing.Path();
       const maxVal = Number.MAX_VALUE;
@@ -472,7 +472,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrConicToMultipleCalls', 3, () => {
+    it('testPathrConicToMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrConicToMultipleCalls';
       const path = new drawing.Path();
 
@@ -496,7 +496,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrConicToToNull', 3, () => {
+    it('testPathrConicToToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrConicToToNull';
       const path = new drawing.Path();
 
@@ -602,7 +602,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrConicToAbnormal', 3, () => {
+    it('testPathrConicToAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrConicToAbnormal';
       const path = new drawing.Path();
 
@@ -634,7 +634,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathrMoveToNormal', DEFAULT, () => {
+    it('testPathrMoveToNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPathrMoveToNormal';
       const path = new drawing.Path();
 
@@ -658,7 +658,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrMoveToNull', 3, () => {
+    it('testPathrMoveToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrMoveToNull';
       const path = new drawing.Path();
 
@@ -710,7 +710,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrMoveToMultipleCalls', 3, () => {
+    it('testPathrMoveToMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrMoveToMultipleCalls';
       const path = new drawing.Path();
 
@@ -734,7 +734,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrLinetoNormal', 3, () => {
+    it('testPathrLinetoNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrLinetoNormal';
       const path = new drawing.Path();
 
@@ -758,7 +758,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrLinetoNull', 3, () => {
+    it('testPathrLinetoNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrLinetoNull';
       const path = new drawing.Path();
 
@@ -808,7 +808,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrLinetoMultipleCalls', 3, () => {
+    it('testPathrLinetoMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrLinetoMultipleCalls';
       const path = new drawing.Path();
 
@@ -832,7 +832,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathrQuadToNormal', DEFAULT, () => {
+    it('testPathrQuadToNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPathrQuadToNormal';
       const path = new drawing.Path();
 
@@ -857,7 +857,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrQuadToNull', 3, () => {
+    it('testPathrQuadToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrQuadToNull';
       const path = new drawing.Path();
 
@@ -944,7 +944,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrQuadToMultipleCalls', 3, () => {
+    it('testPathrQuadToMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrQuadToMultipleCalls';
       const path = new drawing.Path();
 
@@ -968,7 +968,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrCubicToNormal', DEFAULT, () => {
+    it('testPathrCubicToNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrCubicToNormal';
       const path = new drawing.Path();
 
@@ -994,7 +994,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrCubicToNull', 3, () => {
+    it('testPathrCubicToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrCubicToNull';
       const path = new drawing.Path();
 
@@ -1117,7 +1117,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathrCubicToMultipleCalls', 3, () => {
+    it('testPathrCubicToMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathrCubicToMultipleCalls';
       const path = new drawing.Path();
 
@@ -1141,7 +1141,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathOffsetNormal', 3, () => {
+    it('testPathOffsetNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathOffsetNormal';
       const maxVal = Number.MAX_VALUE;
 
@@ -1178,7 +1178,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathOffsetToNull', 3, () => {
+    it('testPathOffsetToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathOffsetToNull';
       const path = new drawing.Path();
       const dst = new drawing.Path();
@@ -1248,7 +1248,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathOffsetMultipleCalls', 3, () => {
+    it('testPathOffsetMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathOffsetMultipleCalls';
 
       try {
@@ -1272,7 +1272,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathAddPolygonNormal', 3, () => {
+    it('testPathAddPolygonNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathAddPolygonNormal';
       const path1 = new drawing.Path();
 
@@ -1330,7 +1330,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathAddPolygonToNull', 3, () => {
+    it('testPathAddPolygonToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathAddPolygonToNull';
       const path1 = new drawing.Path();
 
@@ -1424,7 +1424,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathAddPolygonMultipleCalls', 3, () => {
+    it('testPathAddPolygonMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathAddPolygonMultipleCalls';
       const path1 = new drawing.Path();
 
@@ -1456,7 +1456,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathOpNormal', DEFAULT, () => {
+    it('testPathOpNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testPathOpNormal';
       const path = new drawing.Path();
 
@@ -1480,7 +1480,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathOpToNull', 3, () => {
+    it('testPathOpToNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathOpToNull';
       const path = new drawing.Path();
       try {
@@ -1594,7 +1594,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathOpMultipleCalls', 3, () => {
+    it('testPathOpMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathOpMultipleCalls';
       const path = new drawing.Path();
 
@@ -1620,7 +1620,7 @@ export default function drawingTsPath4Test() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathOpAbnormal', 3, () => {
+    it('testPathOpAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testPathOpAbnormal';
       const path = new drawing.Path();
 

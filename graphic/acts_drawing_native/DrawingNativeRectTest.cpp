@@ -54,7 +54,7 @@ class DrawingNativeRectTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectCreateNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 600);
     // add assert
@@ -71,7 +71,7 @@ HWTEST_F(DrawingNativeRectTest, testRectCreateNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectIntersectNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectIntersectNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 600);
     // add assert
@@ -126,7 +126,7 @@ HWTEST_F(DrawingNativeRectTest, testRectIntersectNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectIntersectNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectIntersectNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 600);
     // add assert
@@ -157,7 +157,7 @@ HWTEST_F(DrawingNativeRectTest, testRectIntersectNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectJoinNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectJoinNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -213,7 +213,7 @@ HWTEST_F(DrawingNativeRectTest, testRectJoinNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectJoinNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectJoinNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -244,7 +244,7 @@ HWTEST_F(DrawingNativeRectTest, testRectJoinNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetLeftNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectSetLeftNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -269,7 +269,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetLeftNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetLeftNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -292,7 +292,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetLeftAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetLeftAbnormal, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -317,7 +317,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetLeftMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetLeftMultipleCalls, Function | SmallTest | Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
     EXPECT_NE(rect, nullptr);
@@ -337,7 +337,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftMultipleCalls, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetTopNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectSetTopNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -362,7 +362,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetTopNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetTopNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -385,7 +385,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetTopAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetTopAbnormal, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -410,7 +410,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetTopMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetTopMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -449,7 +449,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopMultipleCalls, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetRightNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectSetRightNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -474,7 +474,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetRightNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetRightNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -497,7 +497,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetRightAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetRightAbnormal, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -522,7 +522,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetRightMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetRightMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -561,7 +561,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightMultipleCalls, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetBottomNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectSetBottomNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -586,7 +586,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetBottomNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetBottomNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -609,7 +609,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetBottomAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetBottomAbnormal, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -633,7 +633,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomAbnormal, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectSetBottomMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectSetBottomMultipleCalls, Function | SmallTest | Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
     EXPECT_NE(rect, nullptr);
@@ -655,7 +655,7 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomMultipleCalls, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetLeftNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetLeftNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -677,7 +677,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetLeftNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetLeftNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectGetLeftNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -697,7 +697,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetLeftNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetTopNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetTopNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -719,7 +719,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetTopNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetTopNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectGetTopNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -739,7 +739,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetTopNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetRightNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetRightNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -761,7 +761,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetRightNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetRightNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectGetRightNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -782,7 +782,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetRightNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetBottomNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetBottomNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -805,7 +805,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetBottomNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetBottomNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectGetBottomNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -826,7 +826,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetBottomNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetHeightNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetHeightNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -855,7 +855,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetHeightNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetHeightNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectGetHeightNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -876,7 +876,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetHeightNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetWidthNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetWidthNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -905,7 +905,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetWidthNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectGetWidthNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -926,7 +926,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectGetWidthBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectGetWidthBoundary, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     uint32_t width = 4096;
     uint32_t height = 2160;
@@ -957,7 +957,7 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthBoundary, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object src
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -1019,7 +1019,7 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectCopyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectCopyNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object src
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -1050,7 +1050,7 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeRectTest, testRectDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeRectTest, testRectDestroyNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert
@@ -1067,7 +1067,7 @@ HWTEST_F(DrawingNativeRectTest, testRectDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeRectTest, testRectDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeRectTest, testRectDestroyNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     // add assert

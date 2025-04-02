@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import termios from 'libtermiosndk1.so'
 
@@ -32,7 +32,7 @@ export default function termiosNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslTermiosCfgetospeed001', 0, async (done: Function) => {
+    it('testMuslTermiosCfgetospeed001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = termios.cfgetospeed();
       expect(result).assertEqual(0);
       done()

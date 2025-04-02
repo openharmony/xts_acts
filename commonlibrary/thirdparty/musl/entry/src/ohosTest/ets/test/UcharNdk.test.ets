@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import uchar from 'libucharndk.so'
 
@@ -32,7 +32,7 @@ export default function ucharNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUcharC16rtomb001', 0, async (done: Function) => {
+    it('testMuslUcharC16rtomb001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: number = uchar.c16rtomb();
       expect(result).assertEqual(resultTrue);
@@ -47,7 +47,7 @@ export default function ucharNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslUcharC32rtomb001', 0, async (done: Function) => {
+    it('testMuslUcharC32rtomb001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: number = uchar.c32rtomb();
       expect(result).assertEqual(resultTrue);
@@ -61,7 +61,7 @@ export default function ucharNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUcharMbrtoc16001', 0, async (done: Function) => {
+    it('testMuslUcharMbrtoc16001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = uchar.mbrtoc16();
       expect(result).assertEqual(1)
       done()
@@ -75,7 +75,7 @@ export default function ucharNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslUcharMbrtoc32001', 0, async (done: Function) => {
+    it('testMuslUcharMbrtoc32001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = uchar.mbrtoc32();
       expect(result).assertEqual(1)
       done()

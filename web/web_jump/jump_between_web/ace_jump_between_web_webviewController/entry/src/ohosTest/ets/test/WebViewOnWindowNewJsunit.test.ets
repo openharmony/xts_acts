@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -73,7 +73,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.desc test api OnWindowNew by execute window.open function,at the same time,set MutliWindowAccess to true,
     *         allowWindowOpenMethod to true,javaScriptAccess to true
     */
-    it('testOnWindowNew01',0,async (done: Function) =>{
+    it('testOnWindowNew01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnWindowNew02";
       Utils.registerEvent("testOnWindowNew01", 1, 7100, done);
       sendEventByKey('onWindowNew',10, '');
@@ -84,7 +84,7 @@ export default function webViewOnWindowNewJsunit() {
      *tc.desc test api OnWindowNew by execute window.open function,at the same time,set MutliWindowAccess to true,
      *         allowWindowOpenMethod to false,javaScriptAccess to true
      */
-     it('testOnWindowNew02',0,async (done: Function) =>{
+     it('testOnWindowNew02',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnWindowNew03";
       Utils.registerEvent("testOnWindowNew02", 0, 7102, done);
       sendEventByKey('onWindowNew', 10, '');
@@ -95,7 +95,7 @@ export default function webViewOnWindowNewJsunit() {
      *tc.desc test api OnWindowNew by execute window.open function,at the same time,set MutliWindowAccess to true,
      *         allowWindowOpenMethod to false,javaScriptAccess to false
      */
-    it('testOnWindowNew03',0,async (done: Function) =>{
+    it('testOnWindowNew03',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnWindowNew04";
       Utils.registerEvent("testOnWindowNew03", 0, 7104, done);
       sendEventByKey('onWindowNew', 10, '');
@@ -106,7 +106,7 @@ export default function webViewOnWindowNewJsunit() {
      *tc.desc test api OnWindowNew by execute window.open function,at the same time,set MutliWindowAccess to false,
      *         allowWindowOpenMethod to false,javaScriptAccess to true
      */
-    it('testOnWindowNew04',0,async (done: Function) =>{
+    it('testOnWindowNew04',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnWindowNew04";
       Utils.registerEvent("testOnWindowNew04", 0, 7106, done);
       sendEventByKey('onWindowNew', 10, '');

@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import testNapi from 'libentry.so'
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -29,9 +29,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_openUTS46 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_openUTS46_0100',0,() =>{
+    it('testuidna_openUTS46_0100',Level.LEVEL0,() =>{
       expect(testNapi.testuidna_openUTS46()).assertTrue()
     })
 
@@ -42,9 +42,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_close with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_close_0100',0,() =>{
+    it('testuidna_close_0100',Level.LEVEL0,() =>{
       expect(testNapi.testuidna_close()).assertTrue()
     })
 
@@ -55,9 +55,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_labelToASCII with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_labelToASCII_0100',0,() =>{
+    it('testuidna_labelToASCII_0100',Level.LEVEL0,() =>{
       expect(testNapi.testuidna_labelToASCII()).assertTrue()
     })
 
@@ -68,9 +68,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_labelToUnicode with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_labelToUnicode_0100',0,() =>{
+    it('testuidna_labelToUnicode_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_labelToUnicode()).assertTrue()
     })
 
@@ -81,9 +81,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_nameToASCII with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_nameToASCII_0100',0,() =>{
+    it('testuidna_nameToASCII_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_nameToASCII()).assertTrue()
     })
 
@@ -94,9 +94,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_nameToASCII with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_nameToUnicode_0100',0,() =>{
+    it('testuidna_nameToUnicode_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_nameToUnicode()).assertTrue()
     })
 
@@ -107,9 +107,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_labelToASCLL_UTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_labelToASCLL_UTF8_0100',0,() =>{
+    it('testuidna_labelToASCLL_UTF8_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_labelToASCLL_UTF8()).assertTrue()
     })
 
@@ -120,9 +120,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_labelToUnicodeUTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_labelToUnicodeUTF8_0100',0,() =>{
+    it('testuidna_labelToUnicodeUTF8_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_labelToUnicodeUTF8()).assertTrue()
     })
 
@@ -133,9 +133,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_nameToASCII_UTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_nameToASCII_UTF8_0100',0,() =>{
+    it('testuidna_nameToASCII_UTF8_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_nameToASCII_UTF8()).assertTrue()
     })
 
@@ -146,9 +146,9 @@ export default function abilityTest() {
     * @tc.desc      : uidna_nameToUnicodeUTF8 with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('testuidna_nameToUnicodeUTF8_0100',0,() =>{
+    it('testuidna_nameToUnicodeUTF8_0100', Level.LEVEL0,() =>{
       expect(testNapi.testuidna_nameToUnicodeUTF8()).assertTrue()
     })
 

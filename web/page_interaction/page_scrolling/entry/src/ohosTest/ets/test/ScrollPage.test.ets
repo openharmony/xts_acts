@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -51,7 +51,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo001', 0, async (done: Function) => {
+    it('testScrollTo001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo001", "[0,0]", 100042, done);
@@ -66,7 +66,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo002', 0, async (done: Function) => {
+    it('testScrollTo002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo002", true, 100043, done);
@@ -81,7 +81,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo003', 0, async (done: Function) => {
+    it('testScrollTo003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo003", "[0,100]", 100044, done);
@@ -96,7 +96,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo004', 0, async (done: Function) => {
+    it('testScrollTo004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo004", "[100,0]", 100045, done);
@@ -111,7 +111,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo005', 0, async (done: Function) => {
+    it('testScrollTo005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo005", true, 100046, done);
@@ -126,7 +126,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo006', 0, async (done: Function) => {
+    it('testScrollTo006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo006", "[100,100]", 100047, done);
@@ -141,7 +141,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollTo007', 0, async (done: Function) => {
+    it('testScrollTo007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testScrollTo007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollTo007", true, 100048, done);
@@ -156,7 +156,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPageDown001', 0, async (done: Function) => {
+    it('testPageDown001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPageDown001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageDown001", true, 100063, done);
@@ -171,7 +171,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPageDown002', 0, async (done: Function) => {
+    it('testPageDown002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPageDown002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageDown002", true, 100064, done);
@@ -186,7 +186,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPageUp001', 0, async (done: Function) => {
+    it('testPageUp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPageUp001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageUp001", true, 100065, done);
@@ -201,7 +201,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPageUp002', 0, async (done: Function) => {
+    it('testPageUp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPageUp002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageUp002", true, 100066, done);
@@ -215,7 +215,7 @@ export default function ScrollPage() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSlideScroll001', 0, async (done: Function) => {
+    it('testSlideScroll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSlideScroll001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSlideScroll001", true, 100082, done);

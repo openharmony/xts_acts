@@ -17,6 +17,7 @@ import {
     fileIO, prepareFile, FILE_CONTENT, nextFileName,
     describe, it, expect
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIORandomAccessFileWrite() {
 describe('fileIO_randomAccessFile_write', function () {
@@ -30,7 +31,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_000', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_000', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_000');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -56,7 +57,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_001', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_001', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_001');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -82,7 +83,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_002', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_002', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_002');
 
         try {
@@ -109,7 +110,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_003', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_003', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_003');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -135,7 +136,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_004', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_004', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_004');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -167,7 +168,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_005', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_005', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_005');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -193,7 +194,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_006', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_006', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_006');
         let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -217,7 +218,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_007', 0, async function () {
+    it('fileIO_randomaccessfile_write_sync_007', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_007');
         let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -242,7 +243,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_008', 3, async function () {
+    it('fileIO_randomaccessfile_write_sync_008', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_008');
         let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -266,7 +267,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_009', 3, async function () {
+    it('fileIO_randomaccessfile_write_sync_009', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_009');
         let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY);
         let randomaccessfile = fileIO.createRandomAccessFileSync(file);
@@ -292,7 +293,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileio_randomaccessfile_write_sync_010', 3, async function () {
+    it('fileio_randomaccessfile_write_sync_010', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileio_randomaccessfile_write_sync_010');
         let randomaccessfile;
 
@@ -318,7 +319,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_011', 3, async function () {
+    it('fileIO_randomaccessfile_write_sync_011', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_011');
         let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -342,7 +343,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_sync_012', 3, async function () {
+    it('fileIO_randomaccessfile_write_sync_012', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_sync_012');
         let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -367,7 +368,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_000', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_000', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_000');
 
         try {
@@ -394,7 +395,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_001', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_001', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_001');
 
         try {
@@ -423,7 +424,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_002', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_002', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_002');
 
         try {
@@ -449,7 +450,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_003', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_003', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_003');
 
         try {
@@ -475,7 +476,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_004', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_004', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_004');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -508,7 +509,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_005', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_005', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_005');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -535,7 +536,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_006', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_006', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_006');
         let randomaccessfile = await fileIO.createRandomAccessFile(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -564,7 +565,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_007', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_007', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_007');
         let randomaccessfile = await fileIO.createRandomAccessFile(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -591,7 +592,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_008', 3, async function (done) {
+    it('fileIO_randomaccessfile_write_async_008', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_008');
         let randomaccessfile = await fileIO.createRandomAccessFile(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -616,7 +617,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_009', 3, async function (done) {
+    it('fileIO_randomaccessfile_write_async_009', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_009');
         let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY);
         let randomaccessfile = await fileIO.createRandomAccessFile(file);
@@ -643,7 +644,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileio_randomaccessfile_write_async_010', 3, async function (done) {
+    it('fileio_randomaccessfile_write_async_010', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileio_randomaccessfile_write_async_010');
         let randomaccessfile;
 
@@ -670,7 +671,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_012', 3, async function (done) {
+    it('fileIO_randomaccessfile_write_async_012', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_012');
         let randomaccessfile = await fileIO.createRandomAccessFile(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -696,7 +697,7 @@ describe('fileIO_randomAccessFile_write', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_write_async_013', 0, async function (done) {
+    it('fileIO_randomaccessfile_write_async_013', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_randomaccessfile_write_async_013');
 
         try {

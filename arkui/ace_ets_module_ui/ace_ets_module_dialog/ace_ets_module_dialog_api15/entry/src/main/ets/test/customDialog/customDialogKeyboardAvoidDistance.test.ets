@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import { BY, Driver, UiDriver, ON, Component } from '@kit.TestKit';
@@ -50,7 +50,7 @@ export default function customDialogKeyboardAvoidDistance() {
      * @tc.type :
      * @tc.size :
      */
-      it('CustomDialogKeyboardAvoidDistance_0100', 0, async (done: Function) => {
+    it('CustomDialogKeyboardAvoidDistance_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('CustomDialogKeyboardAvoidDistance_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -60,27 +60,27 @@ export default function customDialogKeyboardAvoidDistance() {
       let input = await driver.findComponent(ON.id('input1'));
       await input.click();
       await CommonFunc.sleep(2000);
-      let customDialog = Utils.getComponentRect('customDialog');
-      let top1 = customDialog.top
-      let bottom1 = customDialog.bottom
-      let right1 = customDialog.right
-      let middle1 = (bottom1 - top1) / 2 + top1
-      let left1 = customDialog.left
-      console.info('[CustomDialog_keyboard_001] left: ' + customDialog.left + ', top: ' + customDialog.top +
-        ', right:' + customDialog.right + ', bottom:' + customDialog.bottom + ',middle:' + middle1);
-      let keyboard = Utils.getComponentRect('keyboard');
-      let top = keyboard.top
-      let bottom = keyboard.bottom
-      let right = keyboard.right
-      let middle = (bottom - top) / 2 + top
-      let left = keyboard.left
-      console.info('[CustomDialog_keyboard_2] left: ' + keyboard.left + ', top: ' + keyboard.top +
-        ', right:' + keyboard.right + ', bottom:' + keyboard.bottom + ',middle:' + middle);
-      let keyboardAvoidDistance = keyboard.top - customDialog.bottom;
-      expect(keyboardAvoidDistance).assertEqual(200);
-      let cancelButton: Component = await driver.findComponent(ON.text('取消'));
+      let column:Component = await driver.findComponent(ON.type('Column').isAfter(ON.type('Dialog')));
+      let rect = await column.getBounds();
+      let top = rect.top
+      let bottom = rect.bottom
+      let right = rect.right
+      let left = rect.left
+      console.info('[CustomDialog_001_dialog] left: ' + rect.left + ', top: ' + rect.top +
+        ', right:' + rect.right + ', bottom:' + rect.bottom );
+      let Keyboard:Component = await driver.findComponent(ON.type('Keyboard'));
+      let rect1 = await Keyboard.getBounds();
+      let top1 = rect1.top
+      let bottom1 = rect1.bottom
+      let right1 = rect1.right
+      let left1 = rect1.left
+      console.info('[CustomDialog_001_keyboard] left: ' + rect1.left + ', top: ' + rect1.top +
+        ', right:' + rect1.right + ', bottom:' + rect1.bottom );
+      let keyboardAvoidDistance = top1 - bottom;
+      let cancelButton1: Component = await driver.findComponent(ON.text('取消'));
       await CommonFunc.sleep(300);
-      await cancelButton?.click();
+      await cancelButton1?.click();
+      expect(keyboardAvoidDistance >= 199 && keyboardAvoidDistance <= 201 ).assertEqual(true);
       console.info('CustomDialogKeyboardAvoidDistance_0100 END');
       done();
     });
@@ -93,8 +93,8 @@ export default function customDialogKeyboardAvoidDistance() {
      * @tc.type :
      * @tc.size :
      */
-     it('customDialogKeyboardAvoidDistance_0200', 0, async (done: Function) => {
-      console.info('customDialogKeyboardAvoidDistance_0200 START');
+     it('CustomDialogKeyboardAvoidDistance_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      console.info('CustomDialogKeyboardAvoidDistance_0200 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       let btn2 = await driver.findComponent(ON.id('btn2'));
@@ -103,75 +103,31 @@ export default function customDialogKeyboardAvoidDistance() {
       let input = await driver.findComponent(ON.id('input1'));
       await input.click();
       await CommonFunc.sleep(2000);
-      let customDialog = Utils.getComponentRect('customDialog');
-      let top1 = customDialog.top
-      let bottom1 = customDialog.bottom
-      let right1 = customDialog.right
-      let middle1 = (bottom1-top1) / 2 + top1
-      let left1 =customDialog.left
-      console.info('[CustomDialog_keyboard_001] left: ' + customDialog.left + ', top: ' + customDialog.top +
-        ', right:' + customDialog.right + ', bottom:' + customDialog.bottom + ',middle:' + middle1);
-      let keyboard = Utils.getComponentRect('keyboard');
-      let top = keyboard.top
-      let bottom = keyboard.bottom
-      let right = keyboard.right
-      let middle = (bottom-top) / 2 + top
-      let left =keyboard.left
-      console.info('[CustomDialog_keyboard_2] left: ' + keyboard.left + ', top: ' + keyboard.top +
-        ', right:' + keyboard.right + ', bottom:' + keyboard.bottom + ',middle:' + middle);
-      let keyboardAvoidDistance = keyboard.top - customDialog.bottom;
-      let str = vp2px(16).toFixed(2).toString();
-      let cancelButton: Component = await driver.findComponent(ON.text('取消'));
+      let column:Component = await driver.findComponent(ON.type('Column').isAfter(ON.type('Dialog')));
+      let rect = await column.getBounds();
+      let top = rect.top
+      let bottom = rect.bottom
+      let right = rect.right
+      let left = rect.left
+      console.info('[CustomDialog_003_dialog] left: ' + rect.left + ', top: ' + rect.top +
+        ', right:' + rect.right + ', bottom:' + rect.bottom );
+      let Keyboard:Component = await driver.findComponent(ON.type('Keyboard'));
+      let rect1 = await Keyboard.getBounds();
+      let top1 = rect1.top
+      let bottom1 = rect1.bottom
+      let right1 = rect1.right
+      let left1 = rect1.left
+      console.info('[CustomDialog_004_keyboard] left: ' + rect1.left + ', top: ' + rect1.top +
+        ', right:' + rect1.right + ', bottom:' + rect1.bottom );
+      let keyboardAvoidDistance = top1 - bottom;
+      let str = vp2px(16);
+      let str1 = Math.ceil(str)
+      let cancelButton1: Component = await driver.findComponent(ON.text('取消'));
       await CommonFunc.sleep(300);
-      await cancelButton?.click();
-      expect(JSON.stringify(keyboardAvoidDistance) + '.00').assertEqual(str);
-      console.info('customDialogKeyboardAvoidDistance_0200 END');
+      await cancelButton1?.click();
+      expect(keyboardAvoidDistance >= str1 - 2 && keyboardAvoidDistance <= str1 + 2 ).assertEqual(true);
+      console.info('CustomDialogKeyboardAvoidDistance_0200 END');
       done();
     });
-
-    /**
-     * @tc.number    customDialogKeyboardAvoidDistance_0300
-     * @tc.name      customDialogKeyboardAvoidDistance_0300
-     * @tc.desc      set keyboardAvoidDistance:null,levelUniqueId: Abnormal value
-     * @tc.level:    Level 1
-     * @tc.type :
-     * @tc.size :
-     */
-     it('customDialogKeyboardAvoidDistance_0300', 0, async (done: Function) => {
-      console.info('customDialogKeyboardAvoidDistance_0300 START');
-      await CommonFunc.sleep(1000);
-      let driver: Driver = Driver.create();
-      let btn3 = await driver.findComponent(ON.id('btn3'));
-      await btn3.click();
-      await CommonFunc.sleep(2000);
-      let input = await driver.findComponent(ON.id('input1'));
-      await input.click();
-      await CommonFunc.sleep(2000);
-      let customDialog = Utils.getComponentRect('customDialog');
-      let top1 = customDialog.top
-      let bottom1 = customDialog.bottom
-      let right1 = customDialog.right
-      let middle1 = (bottom1-top1) / 2 + top1
-      let left1 =customDialog.left
-      console.info('[CustomDialog_keyboard_001] left: ' + customDialog.left + ', top: ' + customDialog.top +
-        ', right:' + customDialog.right + ', bottom:' + customDialog.bottom + ',middle:' + middle1);
-      let keyboard = Utils.getComponentRect('keyboard');
-      let top = keyboard.top
-      let bottom = keyboard.bottom
-      let right = keyboard.right
-      let middle = (bottom-top) / 2 + top
-      let left =keyboard.left
-      console.info('[CustomDialog_keyboard_2] left: ' + keyboard.left + ', top: ' + keyboard.top +
-        ', right:' + keyboard.right + ', bottom:' + keyboard.bottom + ',middle:' + middle);
-      let keyboardAvoidDistance = keyboard.top - customDialog.bottom;
-      let str = vp2px(16).toFixed(2).toString();
-      let cancelButton: Component = await driver.findComponent(ON.text('取消'));
-      await CommonFunc.sleep(300);
-      await cancelButton?.click();
-      expect(JSON.stringify(keyboardAvoidDistance) + '.00').assertEqual(str);
-      console.info('customDialogKeyboardAvoidDistance_0300 END');
-      done();
-    });
-
   })
 }

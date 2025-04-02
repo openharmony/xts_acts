@@ -1,4 +1,18 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+/*
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License')
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium'
 import process from '@ohos.process'
 
 export default function processTest() {
@@ -30,7 +44,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUid0001', 0, () => {
+    it('testGetUid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUid0001";
       try {
         let userId = process.uid;
@@ -49,7 +63,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetPid0001', 0, () => {
+    it('testGetPid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetPid0001";
       try {
         let processId = process.pid;
@@ -68,7 +82,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetTid0001', 0, () => {
+    it('testGetTid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetTid0001";
       try {
         // 获取当前线程的线程ID
@@ -89,7 +103,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testisIsolatedProcess0001', 0, () => {
+    it('testisIsolatedProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testisIsolatedProcess0001";
       try {
         const pres = process.isIsolatedProcess();
@@ -108,7 +122,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIs64Bit0001', 0, () => {
+    it('testIs64Bit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIs64Bit0001";
       try {
         const isorno = process.is64Bit();
@@ -127,7 +141,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetStartRealtime0001', 0, () => {
+    it('testGetStartRealtime0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetStartRealtime0001";
       try {
         let flag = false;
@@ -152,7 +166,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetPastCpuTime0001', 0, () => {
+    it('testGetPastCpuTime0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetPastCpuTime0001";
       try {
         let flag = false;
@@ -177,7 +191,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testUptime0001', 0, () => {
+    it('testUptime0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUptime0001";
       const result1 = process.uptime();
       setTimeout(() => {
@@ -200,7 +214,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUidForName0001', 0, () => {
+    it('testGetUidForName0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUidForName0001";
       try {
         const pres = process.getUidForName("root");
@@ -219,7 +233,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUidForName0002', 0, () => {
+    it('testGetUidForName0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUidForName0002";
       try {
         for (let i = 0; i < 3; i++) {
@@ -240,7 +254,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUidForName0003', 0, () => {
+    it('testGetUidForName0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUidForName0003";
       try {
         process.getUidForName(undefined);
@@ -259,7 +273,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProcessManagerKill0001', 0, () => {
+    it('testProcessManagerKill0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProcessManagerKill0001";
       try {
         const pro = new process.ProcessManager();
@@ -280,7 +294,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProcessManagerKill0002', 0, () => {
+    it('testProcessManagerKill0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProcessManagerKill0002";
       try {
         const pro = new process.ProcessManager();
@@ -300,7 +314,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProcessManagerKill0004', 0, () => {
+    it('testProcessManagerKill0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProcessManagerKill0004";
       try {
         const pro = new process.ProcessManager();
@@ -320,7 +334,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetThreadPriority0001', 0, () => {
+    it('testGetThreadPriority0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetThreadPriority0001";
       const pro = new process.ProcessManager();
       const tid = process.tid;
@@ -344,7 +358,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetThreadPriority0003', 0, () => {
+    it('testGetThreadPriority0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetThreadPriority0003";
       try {
         const pro = new process.ProcessManager();
@@ -365,7 +379,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsappuid0001', 0, () => {
+    it('testIsappuid0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsappuid0001";
       try {
         const uid = process.uid;
@@ -387,7 +401,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsappuid0002', 0, () => {
+    it('testIsappuid0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsappuid0002";
       try {
         const uid = process.getUidForName("root");
@@ -408,7 +422,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsappuid0003', 0, () => {
+    it('testIsappuid0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsappuid0003";
       try {
         process.isAppUid(undefined);
@@ -427,7 +441,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSystemConfig0001', 0, () => {
+    it('testGetSystemConfig0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSystemConfig0001";
       const SYSTEM_CONFIG_ARG_MAX = 0;
       const MAX_RETRIES = 5;
@@ -456,7 +470,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSystemConfig0002', 0, () => {
+    it('testGetSystemConfig0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSystemConfig0002";
       const NON_EXISTENT_PARAM = 111111;
       try {
@@ -476,7 +490,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSystemConfig0003', 0, () => {
+    it('testGetSystemConfig0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSystemConfig0003";
       const NON_EXISTENT_PARAM = undefined;
       try {
@@ -496,7 +510,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetEnvironmentVar0001', 0, () => {
+    it('testGetEnvironmentVar0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetEnvironmentVar0001";
       const MAX_RETRIES = 5;
       let isPathVarPresent = false;
@@ -524,7 +538,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetEnvironmentVar0002', 0, () => {
+    it('testGetEnvironmentVar0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetEnvironmentVar0002";
       try {
         const environmentVar = process.getEnvironmentVar("PATH1111")
@@ -544,7 +558,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetEnvironmentVar0003', 0, () => {
+    it('testGetEnvironmentVar0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetEnvironmentVar0003";
       try {
         process.getEnvironmentVar(undefined)
@@ -563,7 +577,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testExit0001', 0, () => {
+    it('testExit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testExit0001";
       try {
         process.exit(undefined)
@@ -581,7 +595,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUidForNameProcess0001', 0, () => {
+    it('testGetUidForNameProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUidForNameProcess0001";
       try {
         let pro = new process.ProcessManager();
@@ -601,7 +615,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUidForNameProcess0002', 0, () => {
+    it('testGetUidForNameProcess0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUidForNameProcess0002";
       try {
         for (let i = 0; i < 3; i++) {
@@ -623,7 +637,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetUidForNameProcess0003', 0, () => {
+    it('testGetUidForNameProcess0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetUidForNameProcess0003";
       try {
         let pro = new process.ProcessManager();
@@ -643,7 +657,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProcessManagerKillProcess0001', 0, () => {
+    it('testProcessManagerKillProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProcessManagerKillProcess0001";
       try {
         const pro = new process.ProcessManager();
@@ -664,7 +678,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProcessManagerKillProcess0002', 0, () => {
+    it('testProcessManagerKillProcess0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProcessManagerKillProcess0002";
       try {
         const pro = new process.ProcessManager();
@@ -684,7 +698,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProcessManagerKillProcess0004', 0, () => {
+    it('testProcessManagerKillProcess0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testProcessManagerKillProcess0004";
       try {
         const pro = new process.ProcessManager();
@@ -704,7 +718,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetThreadPriorityProcess0001', 0, () => {
+    it('testGetThreadPriorityProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetThreadPriorityProcess0001";
       const pro = new process.ProcessManager();
       const tid = process.tid;
@@ -728,7 +742,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetThreadPriorityProcess0003', 0, () => {
+    it('testGetThreadPriorityProcess0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetThreadPriorityProcess0003";
       try {
         const pro = new process.ProcessManager();
@@ -749,7 +763,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsappuidProcess0001', 0, () => {
+    it('testIsappuidProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsappuidProcess0001";
       try {
         const uid = process.uid;
@@ -772,7 +786,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsappuidProcess0002', 0, () => {
+    it('testIsappuidProcess0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsappuidProcess0002";
       try {
         let pro = new process.ProcessManager();
@@ -794,7 +808,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsappuidProcess0003', 0, () => {
+    it('testIsappuidProcess0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsappuidProcess0003";
       try {
         let pro = new process.ProcessManager();
@@ -814,7 +828,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSystemConfigProcess0001', 0, () => {
+    it('testGetSystemConfigProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSystemConfigProcess0001";
       const SYSTEM_CONFIG_ARG_MAX = 0;
       const MAX_RETRIES = 5;
@@ -844,7 +858,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSystemConfigProcess0002', 0, () => {
+    it('testGetSystemConfigProcess0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSystemConfigProcess0002";
       const NON_EXISTENT_PARAM = 111111;
       try {
@@ -865,7 +879,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetSystemConfigProcess0003', 0, () => {
+    it('testGetSystemConfigProcess0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetSystemConfigProcess0003";
       const NON_EXISTENT_PARAM = undefined;
       try {
@@ -886,7 +900,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetEnvironmentVarProcess0001', 0, () => {
+    it('testGetEnvironmentVarProcess0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetEnvironmentVarProcess0001";
       const MAX_RETRIES = 5;
       let isPathVarPresent = false;
@@ -915,7 +929,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetEnvironmentVarProcess0002', 0, () => {
+    it('testGetEnvironmentVarProcess0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetEnvironmentVarProcess0002";
       try {
         let pro = new process.ProcessManager();
@@ -936,7 +950,7 @@ export default function processTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetEnvironmentVarProcess0003', 0, () => {
+    it('testGetEnvironmentVarProcess0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetEnvironmentVarProcess0003";
       try {
         let pro = new process.ProcessManager();

@@ -24,22 +24,13 @@
 #include "drawing_pen.h"
 #include "drawing_text_declaration.h"
 #include "drawing_text_typography.h"
-#ifndef USE_GRAPHIC_TEXT_GINE
-#include "rosen_text/ui/typography.h"
-#include "rosen_text/ui/typography_create.h"
-#else
 #include "rosen_text/typography.h"
 #include "rosen_text/typography_create.h"
-#endif
 
 #include <string>
 #include <fstream>
 
-#ifndef USE_GRAPHIC_TEXT_GINE
-using namespace rosen;
-#else
 using namespace OHOS::Rosen;
-#endif
 using namespace testing;
 using namespace testing::ext;
 
@@ -52,7 +43,7 @@ class OHDrawingTypographyLargeValueTest : public testing::Test {
  * @tc.desc: test for typography
  * @tc.type: FUNC
  */
-HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest016, TestSize.Level1)
+HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest016, Function | MediumTest | Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
@@ -110,7 +101,7 @@ HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest016
  * @tc.desc: test for typography and txtStyle
  * @tc.type: FUNC
  */
-HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest026, TestSize.Level1)
+HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest026, Function | MediumTest | Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
@@ -164,7 +155,7 @@ HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest026
  * @tc.desc: test for getting line info for text typography
  * @tc.type: FUNC
  */
-HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest027, TestSize.Level1)
+HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest027, Function | MediumTest | Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
@@ -212,7 +203,7 @@ HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest027
  * @tc.desc: test for text shadow for textstyle
  * @tc.type: FUNC
  */
-HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest042, TestSize.Level1)
+HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest042, Function | MediumTest | Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
@@ -265,7 +256,7 @@ HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTest042
  * @tc.desc: test for typography
  * @tc.type: FUNC
  */
-HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTestWithIndent, TestSize.Level1)
+HWTEST_F(OHDrawingTypographyLargeValueTest, OHDrawingTypographyLargeValueTestWithIndent, Function | MediumTest | Level1)
 {
     OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();

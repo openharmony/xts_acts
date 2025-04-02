@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import postFrameCallbackTest from "./postFrame/PostFrameCallbackTest.test"
+import swiperOnSelectTest from "./swiper/SwiperOnSelectTest.test"
 import swiperTest from "./swiper/SwiperTest.test"
 import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
@@ -20,14 +21,14 @@ import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
 import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
-import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
-import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
 import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
-import datePickerTest from "./datepicker/DatePickerMode.test"
+import NodeUtilMoveTest from "./move/NodeUtilMoveTest.test"
+import TimePickerTest from "./timePicker/EnableCascadeTest.test"
 
 export default function testsuite() {
   postFrameCallbackTest();
+  swiperOnSelectTest();
   swiperTest();
   textImmutablfFontWeight();
   TextAreaLetterSpacing();
@@ -35,9 +36,8 @@ export default function testsuite() {
   textPickerTest();
   buttonTypeTest();
   DragTest();
-  calendarPickerDateTest();
-  calendarPickerTest();
   textInputWordBreakTest();
   ExpectedFrameRateRangeCallback();
-  datePickerTest();
+  NodeUtilMoveTest();
+  TimePickerTest();
 }

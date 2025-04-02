@@ -77,11 +77,11 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.number:SUB_SensorsSystem_ORIENTATION_JSTest_0010
      * @tc.name: Orientating_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("Orientating_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("Orientating_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Orientating_SensorJsTest001---------------------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION,(error, data) => {
@@ -537,7 +537,7 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("Orientating_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("Orientating_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------Orientating_SensorJsTest014--------------');
         try{
            sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION,(error, data) => {

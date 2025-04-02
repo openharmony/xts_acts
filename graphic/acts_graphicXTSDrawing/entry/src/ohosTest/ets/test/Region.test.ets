@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import image from '@ohos.multimedia.image';
 import { getEnumCount, getRandomNumber } from './utils';
@@ -55,7 +55,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRegionIsPointContainedNormal', DEFAULT, () => {
+    it('testRegionIsPointContainedNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRegionIsPointContainedNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -90,7 +90,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionIsPointContainedNull', DEFAULT, () => {
+    it('testRegionIsPointContainedNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionIsPointContainedNull';
       try {
         let region = new drawing.Region();
@@ -138,7 +138,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionIsPointContainedMultipleCalls', DEFAULT, () => {
+    it('testRegionIsPointContainedMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionIsPointContainedMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -170,7 +170,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRegionIsRegionContainedNormal', DEFAULT, () => {
+    it('testRegionIsRegionContainedNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRegionIsRegionContainedNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -209,7 +209,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionIsRegionContainedNull', DEFAULT, () => {
+    it('testRegionIsRegionContainedNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionIsRegionContainedNull';
       try {
         let region = new drawing.Region();
@@ -237,7 +237,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionIsRegionContainedMultipleCalls', DEFAULT, () => {
+    it('testRegionIsRegionContainedMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionIsRegionContainedMultipleCalls';
       try {
         let region = new drawing.Region();
@@ -263,7 +263,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRegionQuickRejectNormal', DEFAULT, () => {
+    it('testRegionQuickRejectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRegionQuickRejectNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -296,7 +296,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionQuickRejectNull', DEFAULT, () => {
+    it('testRegionQuickRejectNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionQuickRejectNull';
       try {
         let region = new drawing.Region();
@@ -372,7 +372,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionQuickRejectMultipleCalls', DEFAULT, () => {
+    it('testRegionQuickRejectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionQuickRejectMultipleCalls';
       try {
         let region = new drawing.Region();
@@ -398,7 +398,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRegionSetPathNormal', DEFAULT, () => {
+    it('testRegionSetPathNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRegionSetPathNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -423,7 +423,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionSetPathNull', DEFAULT, () => {
+    it('testRegionSetPathNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionSetPathNull';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -474,7 +474,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionSetPathMultipleCalls', DEFAULT, () => {
+    it('testRegionSetPathMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionSetPathMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -504,7 +504,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRegionSetRectNormal', DEFAULT, () => {
+    it('testRegionSetRectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRegionSetRectNormal';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -531,7 +531,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionSetRectNull', DEFAULT, () => {
+    it('testRegionSetRectNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionSetRectNull';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -616,7 +616,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionSetRectMultipleCalls', DEFAULT, () => {
+    it('testRegionSetRectMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionSetRectMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -641,7 +641,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRegionOpNormal', DEFAULT, () => {
+    it('testRegionOpNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testRegionOpNormal';
       const canvas = new drawing.Canvas(pixel);
       try {
@@ -732,7 +732,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionOpNull', DEFAULT, () => {
+    it('testRegionOpNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionOpNull';
       try {
         const canvas = new drawing.Canvas(pixel);
@@ -800,7 +800,7 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRegionOpMultipleCalls', DEFAULT, () => {
+    it('testRegionOpMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionOpMultipleCalls';
       try {
         const canvas = new drawing.Canvas(pixel);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import relationalStore from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
@@ -111,7 +111,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0100', 0, async function (done) {
+    it('testReadOnly0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0100 start *************");
       try {
         let store3 = await relationalStore.getRdbStore(context, STORE_CONFIG3);
@@ -135,7 +135,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0200', 0, async function (done) {
+    it('testReadOnly0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0200 start *************");
       try {
         let store3 = await relationalStore.getRdbStore(context, STORE_CONFIG3);
@@ -167,7 +167,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0300', 0, async function (done) {
+    it('testReadOnly0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0300 start *************");
       try {
         await relationalStore.getRdbStore(context, STORE_CONFIG1);
@@ -189,7 +189,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0400', 0, async function (done) {
+    it('testReadOnly0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0400 start *************");
       let store = undefined;
       try {
@@ -221,7 +221,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0500', 0, async function (done) {
+    it('testReadOnly0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0500 start *************");
       let store = undefined;
       try {
@@ -254,7 +254,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0600', 0, async function (done) {
+    it('testReadOnly0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0600 start *************");
       let store = undefined;
       try {
@@ -292,7 +292,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0700', 0, async function (done) {
+    it('testReadOnly0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0700 start *************");
       let store = undefined;
       try {
@@ -330,7 +330,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0800', 0, async function (done) {
+    it('testReadOnly0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0800 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -356,7 +356,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly0900', 0, async function (done) {
+    it('testReadOnly0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly0900 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -382,7 +382,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1000', 0, async function (done) {
+    it('testReadOnly1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1000 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -408,7 +408,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1100', 0, async function (done) {
+    it('testReadOnly1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1100 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -435,7 +435,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1200', 0, async function (done) {
+    it('testReadOnly1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1200 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -460,7 +460,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1300', 0, async function (done) {
+    it('testReadOnly1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1300 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -485,7 +485,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1400', 0, async function (done) {
+    it('testReadOnly1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1400 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -511,7 +511,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1500', 0, async function (done) {
+    it('testReadOnly1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1500 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -537,7 +537,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1600', 0, async function (done) {
+    it('testReadOnly1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1600 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -562,7 +562,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1700', 0, async function (done) {
+    it('testReadOnly1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1700 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -587,7 +587,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1800', 0, async function (done) {
+    it('testReadOnly1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1800 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -612,7 +612,7 @@ export default function RdbStoreReadOnlyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testReadOnly1900', 0, async function (done) {
+    it('testReadOnly1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* testReadOnly1900 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);

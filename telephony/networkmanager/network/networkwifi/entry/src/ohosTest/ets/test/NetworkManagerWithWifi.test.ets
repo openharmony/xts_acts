@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import {describe, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import network, { NetworkResponse } from '@system.network';
 
 const ExpectTrue: (n: boolean, caseName?: string) => void = (n: boolean, caseName?: string) => {
@@ -35,7 +35,7 @@ export default function networkManagerWithWifiTest() {
    * @tc.type  : Function
    * @tc.level : level 3
    */
-    it('testNetworkMgrNetworkSubscribe0600', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0600';
       console.info(`${caseName} test start`);
       try {
@@ -83,7 +83,7 @@ export default function networkManagerWithWifiTest() {
 * @tc.type  : Function
 * @tc.level : level 3
 */
-    it('testNetworkMgrNetworkUnsubscribe0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkUnsubscribe0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkUnsubscribe0200';
       console.info(`${caseName} test start`);
       try {
@@ -119,7 +119,7 @@ export default function networkManagerWithWifiTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testNetworkMgrNetworkSubscribe0400', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0400';
       console.info(`${caseName} test start`);
       try {
@@ -163,7 +163,7 @@ export default function networkManagerWithWifiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkGetType0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkGetType0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkGetType0200';
       console.info(`${caseName} test start`);
       try {
@@ -198,7 +198,7 @@ export default function networkManagerWithWifiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkUnsubscribe0300', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkUnsubscribe0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkUnsubscribe0300';
       console.info(`${caseName} test start`);
       try {
@@ -234,7 +234,7 @@ export default function networkManagerWithWifiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkSubscribe0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0200';
       console.info(`${caseName} test start`);
       try {
@@ -261,7 +261,62 @@ export default function networkManagerWithWifiTest() {
       }
     });
 
+    /* *
+     * @tc.number: SUB_NetworkMgr_Network_Subscribe_0300
+     * @tc.name  : testNetworkMgrNetworkSubscribe0300
+     * @tc.desc  : Subscribe no Parameter
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrNetworkSubscribe0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrNetworkSubscribe0300';
+      console.info(`${caseName} test start`);
+      try {
+        network.subscribe();
+        done();
+      } catch (err) {
+        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+        ExpectTrue(false, caseName);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_Network_Subscribe_0500
+     * @tc.name  : testNetworkMgrNetworkSubscribe0500
+     * @tc.desc  : Subscribe no Parameter
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrNetworkSubscribe0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrNetworkSubscribe0400';
+      console.info(`${caseName} test start`);
+      try {
+        network.subscribe({
+          success: (data: NetworkResponse) => {
+            console.info(`${caseName} data is `,JSON.stringify(data));
+            ExpectTrue(data.metered)
+            done();
+            console.info(`${caseName} test end`);
+          },
+          fail: (data: Object, code: number) => {
+            console.info(`${caseName} fail data ${JSON.stringify(data)} ${JSON.stringify(code)}`);
+            ExpectTrue(false);
+            done();
+            console.info(`${caseName} test end`);
+          },
+        });
+        done();
+      } catch (err) {
+        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+        ExpectTrue(false, caseName);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    });
+
   });
 }
-
-

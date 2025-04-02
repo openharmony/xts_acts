@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 let rdbStore: data_Rdb.RdbStore;
@@ -73,8 +73,11 @@ export default function relationalStoreEmitTest() {
      * @tc.number SUB_DistributedData_RelationalStore_SDK_GetModifyTimeJsApiTest_0400
      * @tc.name relationalStore emit test
      * @tc.desc relationalStore emit test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('testRdbStoreDistributed0012', 0, async (done: Function) =>{
+    it('testRdbStoreDistributed0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) =>{
 
       try {
         rdbStore.on('storeObserverInsert', false, subscribeInsert);

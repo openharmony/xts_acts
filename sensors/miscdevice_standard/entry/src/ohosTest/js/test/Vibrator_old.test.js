@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,31 +16,31 @@ import vibrator from '@system.vibrator';
 import deviceInfo from '@ohos.deviceInfo'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
-export default function VibratorJsTest_misc_1() { 
-let isAvailable; 
-const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice'); 
+export default function VibratorJsTest_misc_1() {
+let isAvailable;
+const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');
 describe("VibratorJsTest_misc_1", function () {
     beforeAll(async function (done) {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll called')   
-        console.info('VibratorJsTest_misc_1 Device type = ' + deviceInfo.deviceType);    
-        console.info('VibratorJsTest_misc_1 isAvailable = ' + isAvailable);    
+        console.info('beforeAll called')
+        console.info('VibratorJsTest_misc_1 Device type = ' + deviceInfo.deviceType);
+        console.info('VibratorJsTest_misc_1 isAvailable = ' + isAvailable);
         try {
             if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT == false) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_1 isAvailable ' + isAvailable);
-                done() 
+                done()
             }else {
                 isAvailable = true;
                 console.info('VibratorJsTest_misc_1 isAvailable ' + isAvailable);
-                done() 
+                done()
             }
         } catch(error) {
             console.error('VibratorJsTest_misc_1 exception :' + JSON.stringify(error))
-            done() 
-        }        
+            done()
+        }
     })
 
     afterAll(function () {
@@ -74,17 +74,17 @@ describe("VibratorJsTest_misc_1", function () {
     const OPERATION_FAIL_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    let TAG = "" 
-    
+    let TAG = ""
+
     /*
     * @tc.name:SubVibratorJsTest0001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0190
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("SubVibratorJsTest0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("SubVibratorJsTest0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0001---------------------------');
         TAG = "SubVibratorJsTest0001"
         console.info(TAG + ' isAvailable ' + isAvailable);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import BackupExtensionContext from '@ohos.file.BackupExtensionContext';
 import BackupExtensionAbility, { BundleVersion } from '@ohos.application.BackupExtensionAbility';
 import contextConstant from '@ohos.app.ability.contextConstant';
@@ -77,10 +77,10 @@ describe('backupdir_js_test',async () => {
    * @tc.desc Test backupdir() interfaces
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 1
    * @tc.require
    */
-   it("test_Backup_Backupdir_001", 0, () => {
+   it("test_Backup_Backupdir_001", Level.LEVEL1, () => {
       try {
          let backupdir = new MyBackupExtAbility();
          backupdir.onBackup();
@@ -103,7 +103,7 @@ describe('backupdir_js_test',async () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it("test_Backup_OnBackupEx_001", 3, () => {
+   it("test_Backup_OnBackupEx_001", Level.LEVEL3, () => {
       try {
          let BackupExtensionAbility = new MyBackupExtAbility();
          BackupExtensionAbility.onBackupEx();
@@ -124,7 +124,7 @@ describe('backupdir_js_test',async () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it("test_Backup_OnRestoreEx_001", 3, () => {
+   it("test_Backup_OnRestoreEx_001", Level.LEVEL3, () => {
       try {
          let BackupExtensionAbility = new MyBackupExtAbility();
          BackupExtensionAbility.onRestoreEx();
@@ -145,7 +145,7 @@ describe('backupdir_js_test',async () => {
     * @tc.level Level 3
     * @tc.require
     */
-   it("test_Backup_OnProcess_001", 3, () => {
+   it("test_Backup_OnProcess_001", Level.LEVEL3, () => {
       try {
          let BackupExtensionAbility = new MyBackupExtAbility();
          BackupExtensionAbility.onProcess();

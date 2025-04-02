@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 
 export default function userAndSysCertNoPermissionJsTestUnit() {
@@ -44,7 +44,7 @@ export default function userAndSysCertNoPermissionJsTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_UserCertJsApi_NoPermission_Func_0500', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_UserCertJsApi_NoPermission_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.getAllUserTrustedCertificates();
         expect(null).assertFail();
@@ -63,7 +63,7 @@ export default function userAndSysCertNoPermissionJsTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_UserCertJsApi_NoPermission_Func_0600', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_UserCertJsApi_NoPermission_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.getUserTrustedCertificate("aabbcc");
         expect(null).assertFail();
@@ -82,7 +82,7 @@ export default function userAndSysCertNoPermissionJsTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_SysCertJsApi_NoPermission_Func_0200', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_SysCertJsApi_NoPermission_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.getAllSystemAppCertificates();
         expect(null).assertFail();

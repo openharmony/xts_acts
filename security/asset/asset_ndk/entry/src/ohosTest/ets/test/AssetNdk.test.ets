@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 
 import * as aw from './aw/AssetAwNdk';
 import asset from '@ohos.security.asset';
@@ -50,7 +50,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0100', 0, () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       expect(myAssetNdk.asset_add(aw.aliasLong, aw.secLong))
         .assertEqual(0);
       expect(myAssetNdk.asset_queryAll(aw.aliasLong, aw.secLong))
@@ -75,7 +75,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0600', 0, () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       expect(myAssetNdk.asset_add('', ''))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
       expect(myAssetNdk.asset_add(aw.aliasNameList[0], ''))
@@ -99,7 +99,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0200', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(myAssetNdk.asset_queryNum(5))
@@ -121,7 +121,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0700', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(myAssetNdk.asset_queryError(aw.aliasNameList[0], aw.secretList[0]))
@@ -136,7 +136,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0300', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
 
@@ -157,7 +157,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0800', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
 
@@ -180,7 +180,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0400', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
 
@@ -200,7 +200,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0900', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(myAssetNdk.asset_removeError(aw.aliasNameList[0], aw.secretList[0]))
@@ -215,7 +215,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0500', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAllAuth(attr);
       expect(myAssetNdk.asset_preAndPostQueryNormal(aw.aliasNameList[0], aw.aliasNameList[1]))
@@ -231,7 +231,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_1000', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAllAuth(attr);
       expect(myAssetNdk.asset_preAndPostQueryError(aw.aliasNameList[0], aw.secretList[0]))
@@ -246,7 +246,7 @@ export default function AssetNdkTest() {
      * @tc.type  :Func
      * @tc.level  :Level3
      */
-    it('SUB_Security_DataSecurity_Asset_CE_Func_0200', 0, () => {
+    it('SUB_Security_DataSecurity_Asset_CE_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
       expect(myAssetNdk.asset_addCE(aw.aliasLong, aw.secLong))
         .assertEqual(aw.assetQueryTrue);
       expect(myAssetNdk.asset_queryAll(aw.aliasLong, aw.secLong))

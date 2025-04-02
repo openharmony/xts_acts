@@ -12,12 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commoneventmanager from '@ohos.commonEventManager';
 import inputMethod from '@ohos.inputMethod';
 import deviceinfo from '@ohos.deviceInfo';
 import { Driver, ON, MatchPattern, Component, UiWindow, DisplayRotation, Rect } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base'
+import inputmethodengine from '@ohos.inputMethodEngine';
 
 let sleep = (timeout: number): Promise<ESObject> => {
   return new Promise(resolve => {
@@ -115,7 +116,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onHandleExtendAction_0010', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onHandleExtendAction_0010', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -160,7 +161,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offHandleExtendAction_0020', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offHandleExtendAction_0020', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -218,7 +219,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onSendFunctionKey_0030', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onSendFunctionKey_0030', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -261,7 +262,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offSendFunctionKey_0040', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offSendFunctionKey_0040', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -319,7 +320,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 unSubscriberCallback start");
@@ -405,7 +406,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_onGetLeftTextOfCursor_0060', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_onGetLeftTextOfCursor_0060', Level.LEVEL2, async (done: Function) => {
       try {
         inputMethod.getController().on('getLeftTextOfCursor', (length) => {
           return 'test'
@@ -427,7 +428,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 unSubscriberCallback start");
@@ -514,9 +515,9 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level1
     */
-    it('SUB_Misc_InputMethod_onGetRightTextOfCursor_0080', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_onGetRightTextOfCursor_0080', Level.LEVEL1, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 unSubscriberCallback start");
@@ -602,7 +603,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_onGetRightTextOfCursor_0090', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_onGetRightTextOfCursor_0090', Level.LEVEL2, async (done: Function) => {
       try {
         inputMethod.getController().on('getRightTextOfCursor', (length) => {
           return 'test'
@@ -622,9 +623,9 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level1
     */
-    it('SUB_Misc_InputMethod_offGetRightTextOfCursor_0100', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_offGetRightTextOfCursor_0100', Level.LEVEL1, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 unSubscriberCallback start");
@@ -713,7 +714,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 unSubscriberCallback start");
@@ -798,7 +799,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_onGetTextIndexAtCursor_0120', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_onGetTextIndexAtCursor_0120', Level.LEVEL2, async (done: Function) => {
       try {
         inputMethod.getController().on('getTextIndexAtCursor', () => {
           return 10000
@@ -820,7 +821,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130', 0, async (done: Function) => {
+    it('SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 unSubscriberCallback start");
@@ -908,7 +909,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onEditorAttributeChanged_0140', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onEditorAttributeChanged_0140', Level.LEVEL2, async (done: Function) => {
       let inputAttribute: inputMethod.InputAttribute = {
         textInputType: 0, enterKeyType: 3
       }
@@ -1005,7 +1006,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onEditorAttributeChanged_0150', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onEditorAttributeChanged_0150', Level.LEVEL2, async (done: Function) => {
       let inputAttribute: inputMethod.InputAttribute = {
         textInputType: 0, enterKeyType: 0
       }
@@ -1028,7 +1029,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offEditorAttributeChanged_0160', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offEditorAttributeChanged_0160', Level.LEVEL2, async (done: Function) => {
       let inputAttribute: inputMethod.InputAttribute = {
         textInputType: 0, enterKeyType: 3
       }
@@ -1123,7 +1124,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onInsertText_0170', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onInsertText_0170', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1172,7 +1173,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offInsertText_0180', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offInsertText_0180', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1231,7 +1232,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onDeleteLeft_0190', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onDeleteLeft_0190', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1279,7 +1280,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offDeleteLeft_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offDeleteLeft_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1338,7 +1339,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onDeleteRight_0210', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onDeleteRight_0210', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1387,7 +1388,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offDeleteRight_0220', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offDeleteRight_0220', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1447,7 +1448,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onSendKeyboardStatus_0230', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onSendKeyboardStatus_0230', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1485,7 +1486,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offSendKeyboardStatus_0240', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offSendKeyboardStatus_0240', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1526,7 +1527,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_onMoveCursor_0250', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_onMoveCursor_0250', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1575,7 +1576,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_offMoveCursor_0260', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_offMoveCursor_0260', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1635,7 +1636,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_insertText_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1686,7 +1687,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_insertText_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1753,7 +1754,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_insertText_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1784,7 +1785,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1835,7 +1836,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1902,7 +1903,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1933,7 +1934,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1984,7 +1985,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2051,7 +2052,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2082,7 +2083,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2123,7 +2124,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2180,7 +2181,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2211,7 +2212,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2262,7 +2263,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2329,7 +2330,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2360,7 +2361,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2411,7 +2412,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2478,7 +2479,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2509,7 +2510,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2560,7 +2561,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2627,7 +2628,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2658,7 +2659,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_inputMethod_updateAttribute_Async_0600', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0600', Level.LEVEL2, async (done: Function) => {
       let inputAttribute: ESObject = {
         textInputType: 0, enterKeyType: 0
       }
@@ -2694,7 +2695,7 @@ export default function inputMethodDrawnControlJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_inputMethod_IMF_InputMethodSettings_1000', 0, async (done: Function) => {
+    it('SUB_inputMethod_IMF_InputMethodSettings_1000', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2732,6 +2733,619 @@ export default function inputMethodDrawnControlJSUnit() {
         code: 450
       }
       commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+    });
+
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_Direction_0100
+    * @tc.name   Sub_Misc_inputMethodEngine_Direction_0100
+    * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
+    * @tc.level   2
+    */
+    it('Sub_Misc_inputMethodEngine_Direction_0100', Level.LEVEL2, async (done: Function) => {
+      let cursor_up = inputmethodengine.Direction.CURSOR_UP;
+      console.info("====>Sub_Misc_inputMethodEngine_Direction_0100 cursor_up:" + cursor_up);
+      expect(cursor_up).assertEqual(1);
+      let cursor_down = inputmethodengine.Direction.CURSOR_DOWN;
+      console.info("====>Sub_Misc_inputMethodEngine_Direction_0100 cursor_down:" + cursor_down);
+      expect(cursor_down).assertEqual(2);
+      let cursor_left = inputmethodengine.Direction.CURSOR_LEFT;
+      console.info("====>Sub_Misc_inputMethodEngine_Direction_0100 cursor_left:" + cursor_left);
+      expect(cursor_left).assertEqual(3);
+      let cursor_right = inputmethodengine.Direction.CURSOR_RIGHT;
+      console.info("====>Sub_Misc_inputMethodEngine_Direction_0100 cursor_right:" + cursor_right);
+      expect(cursor_right).assertEqual(4);
+      done();
+    });
+
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_panelInfo_0100
+    * @tc.name   Sub_Misc_inputMethodEngine_panelInfo_0100
+    * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
+    * @tc.level   2
+    */
+    it('Sub_Misc_inputMethodEngine_panelInfo_0100', Level.LEVEL2, async (done: Function) => {
+      let FLG_FLOATING = inputmethodengine.PanelFlag.FLG_FLOATING
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLG_FLOATING: ' + FLG_FLOATING);
+      expect(FLG_FLOATING === 1).assertTrue();
+      let FLG_FIXED = inputmethodengine.PanelFlag.FLG_FIXED
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLG_FIXED: ' + FLG_FIXED);
+      expect(FLG_FIXED === 0).assertTrue();
+      let FLAG_CANDIDATE = inputmethodengine.PanelFlag.FLAG_CANDIDATE
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 FLAG_CANDIDATE: ' + FLAG_CANDIDATE);
+      expect(FLAG_CANDIDATE === 2).assertTrue();
+      let SOFT_KEYBOARD = inputmethodengine.PanelType.SOFT_KEYBOARD
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 SOFT_KEYBOARD: ' + SOFT_KEYBOARD);
+      expect(SOFT_KEYBOARD === 0).assertTrue();
+      let STATUS_BAR = inputmethodengine.PanelType.STATUS_BAR
+      console.info('====>Sub_Misc_inputMethodEngine_panelInfo_0100 STATUS_BAR: ' + STATUS_BAR);
+      expect(STATUS_BAR === 1).assertTrue();
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchInputMethod_0010
+     * @tc.name    inputmethod_test_switchInputMethod_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchInputMethod_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        inputMethod.switchInputMethod(undefined).then(data => {
+          console.info("====>inputmethod_test_switchInputMethod_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_switchInputMethod_001 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_switchInputMethod_001 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchInputMethod_0020
+     * @tc.name    inputmethod_test_switchInputMethod_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchInputMethod_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        inputMethod.switchInputMethod(undefined, (err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_switchInputMethod_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_switchInputMethod_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_switchInputMethod_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchCurrentInputMethodSubtype_0010
+     * @tc.name    inputmethod_test_switchCurrentInputMethodSubtype_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchCurrentInputMethodSubtype_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        inputMethod.switchCurrentInputMethodSubtype(undefined).then(data => {
+          console.info("====>inputmethod_test_switchCurrentInputMethodSubtype_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_switchCurrentInputMethodSubtype_0010 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_switchCurrentInputMethodSubtype_0010 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchCurrentInputMethodSubtype_0020
+     * @tc.name    inputmethod_test_switchCurrentInputMethodSubtype_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchCurrentInputMethodSubtype_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        inputMethod.switchCurrentInputMethodSubtype(undefined, (err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_switchCurrentInputMethodSubtype_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_switchCurrentInputMethodSubtype_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_switchCurrentInputMethodSubtype_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchCurrentInputMethodAndSubtype_0010
+     * @tc.name    inputmethod_test_switchCurrentInputMethodAndSubtype_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchCurrentInputMethodAndSubtype_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        inputMethod.switchCurrentInputMethodAndSubtype(undefined,undefined).then(data => {
+          console.info("====>inputmethod_test_switchCurrentInputMethodAndSubtype_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_switchCurrentInputMethodAndSubtype_0010 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_switchCurrentInputMethodAndSubtype_0010 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchCurrentInputMethodAndSubtype_0020
+     * @tc.name    inputmethod_test_switchCurrentInputMethodAndSubtype_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchCurrentInputMethodAndSubtype_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        inputMethod.switchCurrentInputMethodAndSubtype(undefined, undefined,(err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_switchCurrentInputMethodAndSubtype_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_switchCurrentInputMethodAndSubtype_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_switchCurrentInputMethodAndSubtype_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_listInputMethodSubtype_0010
+     * @tc.name    inputmethod_test_listInputMethodSubtype_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_listInputMethodSubtype_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodSetting = inputMethod.getSetting();
+        inputMethodSetting.listInputMethodSubtype(undefined).then(data => {
+          console.info("====>inputmethod_test_listInputMethodSubtype_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_listInputMethodSubtype_0010 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_listInputMethodSubtype_0010 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_listInputMethodSubtype_0020
+     * @tc.name    inputmethod_test_listInputMethodSubtype_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_listInputMethodSubtype_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodSetting = inputMethod.getSetting();
+        inputMethodSetting.listInputMethodSubtype(undefined, (err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_listInputMethodSubtype_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_listInputMethodSubtype_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_listInputMethodSubtype_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_getInputMethods_0010
+     * @tc.name    inputmethod_test_getInputMethods_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_getInputMethods_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodSetting = inputMethod.getSetting();
+        inputMethodSetting.getInputMethods(undefined).then(data => {
+          console.info("====>inputmethod_test_getInputMethods_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_getInputMethods_0010 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_getInputMethods_0010 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_getInputMethods_0020
+     * @tc.name    inputmethod_test_getInputMethods_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_getInputMethods_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodSetting = inputMethod.getSetting();
+        inputMethodSetting.getInputMethods(undefined, (err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_getInputMethods_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_getInputMethods_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_getInputMethods_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_updateAttribute_0010
+     * @tc.name    inputmethod_test_updateAttribute_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_updateAttribute_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.updateAttribute(undefined).then(data => {
+          console.info("====>inputmethod_test_updateAttribute_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_updateAttribute_0010 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_updateAttribute_0010 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_updateAttribute_0020
+     * @tc.name    inputmethod_test_updateAttribute_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_updateAttribute_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.updateAttribute(undefined, (err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_updateAttribute_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_updateAttribute_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_updateAttribute_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_updateCursor_0010
+     * @tc.name    inputmethod_test_updateCursor_0010.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_updateCursor_0010', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.updateCursor(undefined).then(data => {
+          console.info("====>inputmethod_test_updateCursor_0010 success")
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`====>inputmethod_test_updateCursor_0010 err:  ${JSON.stringify(err)}`)
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_updateCursor_0010 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_updateCursor_0020
+     * @tc.name    inputmethod_test_updateCursor_0020.
+     * @tc.desc    401 Function test
+     * @tc.type    Function
+     * @tc.level   2
+    */
+    it('inputmethod_test_updateCursor_0020', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodController = inputMethod.getController();
+        inputMethodController.updateCursor(undefined, (err, data) => {
+          if (err) {
+            console.info("====>inputmethod_test_updateCursor_0020 error:" + err);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+          console.info("====>inputmethod_test_updateCursor_0020 success")
+          expect().assertFail();
+          done();
+        });
+      }catch(err){
+        console.info(`====>inputmethod_test_updateCursor_0020 catch err:  ${JSON.stringify(err)}`)
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_oninsertText_0100
+    * @tc.name    SUB_Misc_InputMethod_oninsertText_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_oninsertText_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('insertText', () => {
+          inputMethodController.off('insertText', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_oninsertText_0100 on('insertText') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_oninsertText_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_ondeleteLeft_0100
+    * @tc.name    SUB_Misc_InputMethod_ondeleteLeft_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_ondeleteLeft_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('deleteLeft', () => {
+          inputMethodController.off('deleteLeft', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_ondeleteLeft_0100 on('deleteLeft') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_ondeleteLeft_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_ondeleteRight_0100
+    * @tc.name    SUB_Misc_InputMethod_ondeleteRight_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_ondeleteRight_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('deleteRight', () => {
+          inputMethodController.off('deleteRight', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_ondeleteRight_0100 on('deleteRight') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_ondeleteRight_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onsendKeyboardStatus_0100
+    * @tc.name    SUB_Misc_InputMethod_onsendKeyboardStatus_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_onsendKeyboardStatus_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('sendKeyboardStatus', () => {
+          inputMethodController.off('sendKeyboardStatus', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_onsendKeyboardStatus_0100 on('sendKeyboardStatus') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_onsendKeyboardStatus_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onsendFunctionKey_0100
+    * @tc.name    SUB_Misc_InputMethod_onsendFunctionKey_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_onsendFunctionKey_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('sendFunctionKey', () => {
+          inputMethodController.off('sendFunctionKey', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_onsendFunctionKey_0100 on('sendFunctionKey') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_onsendFunctionKey_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onmoveCursor_0100
+    * @tc.name    SUB_Misc_InputMethod_onmoveCursor_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_onmoveCursor_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('moveCursor', () => {
+          inputMethodController.off('moveCursor', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_onmoveCursor_0100 on('moveCursor') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_onmoveCursor_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onhandleExtendAction_0100
+    * @tc.name    SUB_Misc_InputMethod_onhandleExtendAction_0100
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_InputMethod_onhandleExtendAction_0100', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        inputMethodController.detach()
+        inputMethodController.on('handleExtendAction', () => {
+          inputMethodController.off('handleExtendAction', () =>{})
+          return
+        })
+        console.info("====>SUB_Misc_InputMethod_onhandleExtendAction_0100 on('handleExtendAction') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_InputMethod_onhandleExtendAction_0100 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  SUB_Misc_inputMethod_showTextInput_Promise_0101
+    * @tc.name    SUB_Misc_inputMethod_showTextInput_Promise_0101
+    * @tc.desc    12800009 Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_Misc_inputMethod_showTextInput_Promise_0101', Level.LEVEL2, async (done: Function) => {
+      try {
+        let inputMethodController = inputMethod.getController()
+        await inputMethodController.detach()
+        await inputMethodController.showTextInput(inputMethod.RequestKeyboardReason.TOUCH)
+        console.info("====>SUB_Misc_inputMethod_showTextInput_Promise_0101 on('handleExtendAction') Success:");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Misc_inputMethod_showTextInput_Promise_0101 err:" + JSON.stringify(err));
+        expect(err.code).assertEqual(12800009);
+        done();
+      }
     });
 
   })

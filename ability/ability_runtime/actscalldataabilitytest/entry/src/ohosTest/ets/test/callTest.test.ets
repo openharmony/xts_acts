@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from "@ohos.base"
 import featureAbility from "@ohos.ability.featureAbility";
 import ability from '@ohos.ability.ability';
@@ -39,7 +39,7 @@ export default function callTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("CallTest_0100", 0, async (done: Function) => {
+    it("CallTest_0100", Level.LEVEL0, async (done: Function) => {
       console.info("------------start CallTest_0100-------------");
       console.info("CallTest_0100 commonEvent.createSubscriber start!!!");
       commonEvent.createSubscriber(subscribeInfo, 

@@ -20,7 +20,9 @@ import { UiDriver, BY } from '@ohos.UiTest';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import media from '@ohos.multimedia.media';
+import { abilityDelegatorRegistry } from '@kit.TestKit';
 
+const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 export default class MediaTestBase {
   TAG = "[AvScreenCaptureLocalTest] ";
@@ -171,9 +173,17 @@ export default class MediaTestBase {
         await avScreenCaptureRecorder?.skipPrivacyMode(windowAllIds).then(() => {
           console.info('avScreenCaptureRecorder skipPrivacyMode success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
-        }).catch((err: BusinessError) => {
+        }).catch(async (err: BusinessError) => {
           console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-          expect().assertFail()
+          let cansys = await this.isSupportSceneboard();
+          console.info('isSupportSceneboard result cansys', JSON.stringify(cansys));
+          if (cansys != 0 && err.code == 5400103) {
+            //rk板或者其他没sceneboard的设备上，都会包5400103的错误码；
+            this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
+          } else {
+            console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
+            expect().assertFail()
+          }
         })
 
         break;
@@ -500,6 +510,15 @@ export default class MediaTestBase {
     }).catch((err: BusinessError) => {
       console.info(`${this.TAG}: renderInstant stop :ERROR : ${err.message}`);
     });
+  }
+  
+  async isSupportSceneboard() {
+    let cmd = "aa dump -a|grep com.ohos.sceneboard"
+    let result = await delegator.executeShellCommand(cmd);
+    console.info('isSupportSceneboard result case', JSON.stringify(result));
+    let exitCode: number = result['exitCode']
+    console.info('isSupportSceneboard exitCode case', JSON.stringify(exitCode));
+    return exitCode;
   }
 }
 

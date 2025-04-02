@@ -15,7 +15,7 @@
 
 import bundleState from '@ohos.bundleState'
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function DeviceUsageStatisticsJsTest() {
     describe("DeviceUsageStatisticsJsTest", function () {
@@ -56,7 +56,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest001
          * @tc.desc:  isIdleState promise.
          */
-        it("DeviceUsageStatisticsJsTest001", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest001", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest001---------------------------');
             let bundleName = 'ohos.acts.resourceschedule.deviceusagestatisticsjsunit.js.function';
             bundleState.isIdleState(bundleName).then((res) => {
@@ -73,7 +73,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest002
          * @tc.desc:  isIdleState callback.
          */
-        it("DeviceUsageStatisticsJsTest002", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest002", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest002---------------------------');
             let bundleName = 'ohos.acts.resourceschedule.deviceusagestatisticsjsunit.js.function';
             bundleState.isIdleState(bundleName, (err, res) => {
@@ -92,7 +92,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest003
          * @tc.desc:  queryAppUsagePriorityGroup promise.
          */
-        it("DeviceUsageStatisticsJsTest003", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest003", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest003---------------------------');
             bundleState.queryAppUsagePriorityGroup().then(res => {
                 console.info(' DeviceUsageStatisticsJsTest003 queryAppUsagePriorityGroup promise success.' + res);
@@ -108,7 +108,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest004
          * @tc.desc:  queryAppUsagePriorityGroup callback.
          */
-        it("DeviceUsageStatisticsJsTest004", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest004", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest004---------------------------');
             bundleState.queryAppUsagePriorityGroup((err, res) => {
                 if (err) {
@@ -126,7 +126,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest005
          * @tc.desc:  queryCurrentBundleActiveStates promise.
          */
-        it("DeviceUsageStatisticsJsTest005", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest005", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest005---------------------------');
             let beginTime = 0;
             let endTime = 20000000000000;
@@ -144,7 +144,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest006
          * @tc.desc:  queryCurrentBundleActiveStates callback.
          */
-        it("DeviceUsageStatisticsJsTest006", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest006", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest006---------------------------');
             let beginTime = 0;
             let endTime = 20000000000000;
@@ -164,7 +164,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest007
          * @tc.desc:  intervalType BY_OPTIMIZED
          */
-        it("DeviceUsageStatisticsJsTest007", 0, function (done) {
+        it("DeviceUsageStatisticsJsTest007", Level.LEVEL0, function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest007---------------------------');
             let value1 = bundleState.IntervalType.BY_OPTIMIZED;
             expect(value1).assertEqual(0)
@@ -176,7 +176,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest008
          * @tc.desc:  intervalType BY_DAILY
          */
-        it("DeviceUsageStatisticsJsTest008", 0, function (done) {
+        it("DeviceUsageStatisticsJsTest008", Level.LEVEL0, function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest008---------------------------');
             let value1 = bundleState.IntervalType.BY_DAILY;
             expect(value1).assertEqual(1)
@@ -188,7 +188,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest009
          * @tc.desc:  intervalType BY_WEEKLY
          */
-        it("DeviceUsageStatisticsJsTest009", 0, function (done) {
+        it("DeviceUsageStatisticsJsTest009", Level.LEVEL0, function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest009---------------------------');
             let value1 = bundleState.IntervalType.BY_WEEKLY;
             expect(value1).assertEqual(2)
@@ -200,7 +200,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0010
          * @tc.desc:  intervalType BY_MONTHLY
          */
-        it("DeviceUsageStatisticsJsTest0010", 0, function (done) {
+        it("DeviceUsageStatisticsJsTest0010", Level.LEVEL0, function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0010---------------------------');
             let value1 = bundleState.IntervalType.BY_MONTHLY;
             expect(value1).assertEqual(3)
@@ -212,7 +212,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0011
          * @tc.desc:  intervalType BY_ANNUALLY
          */
-        it("DeviceUsageStatisticsJsTest0011", 0, function (done) {
+        it("DeviceUsageStatisticsJsTest0011", Level.LEVEL0, function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0011---------------------------');
             let value1 = bundleState.IntervalType.BY_ANNUALLY;
             expect(value1).assertEqual(4)
@@ -224,7 +224,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0012
          * @tc.desc:  bundleState isIdleState promise.
          */
-        it("DeviceUsageStatisticsJsTest0012", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0012", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0012---------------------------');
             bundleState.isIdleState('').then((res) => {
                 console.info(' bundle DeviceUsageStatisticsJsTest0012 promise success, result= ' + res);
@@ -240,7 +240,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0013
          * @tc.desc:  bundleState isIdleState promise.
          */
-        it("DeviceUsageStatisticsJsTest0013", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0013", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0013---------------------------');
             bundleState.isIdleState(12345).then((res) => {
                 console.info(' bundle DeviceUsageStatisticsJsTest0013 promise success, result= ' + res);
@@ -256,7 +256,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0014
          * @tc.desc:  bundleState isIdleState promise.
          */
-        it("DeviceUsageStatisticsJsTest0014", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0014", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0014---------------------------');
             bundleState.isIdleState(true).then((res) => {
                 console.info(' bundle DeviceUsageStatisticsJsTest0014 promise success, result= ' + res);
@@ -272,7 +272,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0015
          * @tc.desc:  bundleState isIdleState promise.
          */
-        it("DeviceUsageStatisticsJsTest0015", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0015", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0015---------------------------');
             bundleState.isIdleState(null).then((res) => {
                 console.info(' bundle DeviceUsageStatisticsJsTest0015 promise success, result= ' + res);
@@ -288,7 +288,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0016
          * @tc.desc:  bundleState isIdleState promise.
          */
-        it("DeviceUsageStatisticsJsTest0016", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0016", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0016---------------------------');
             bundleState.isIdleState(undefined).then((res) => {
                 console.info(' bundle DeviceUsageStatisticsJsTest0016 promise success, result= ' + res);
@@ -304,7 +304,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0017
          * @tc.desc:  bundleState isIdleState callback.
          */
-        it("DeviceUsageStatisticsJsTest0017", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0017", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0017---------------------------');
             bundleState.isIdleState(undefined, (err, res) => {
                 if (err) {
@@ -322,7 +322,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0018
          * @tc.desc:  bundleState isIdleState callback.
          */
-        it("DeviceUsageStatisticsJsTest0018", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0018", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0018---------------------------');
             bundleState.isIdleState(null, (err, res) => {
                 if (err) {
@@ -340,7 +340,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0019
          * @tc.desc:  queryCurrentBundleActiveStates BundleActiveState bundleName.
          */
-        it("DeviceUsageStatisticsJsTest0019", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0019", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0019---------------------------');
             let beginTime = 10;
             let endTime = 20000000000000;
@@ -365,7 +365,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0020
          * @tc.desc:  queryCurrentBundleActiveStates BundleActiveState stateType.
          */
-        it("DeviceUsageStatisticsJsTest0020", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0020", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0020---------------------------');
             let beginTime = 10;
             let endTime = 20000000000000;
@@ -390,7 +390,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0021
          * @tc.desc:  queryCurrentBundleActiveStates BundleActiveState stateOccurredTime.
          */
-        it("DeviceUsageStatisticsJsTest0021", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0021", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0021---------------------------');
             let beginTime = 10;
             let endTime = 20000000000000;
@@ -415,7 +415,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0022
          * @tc.desc:  queryCurrentBundleActiveStates BundleActiveState appUsagePriorityGroup.
          */
-        it("DeviceUsageStatisticsJsTest0022", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0022", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0022---------------------------');
             let beginTime = 10;
             let endTime = 20000000000000;
@@ -440,7 +440,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0023
          * @tc.desc:  queryCurrentBundleActiveStates BundleActiveState indexOfLink.
          */
-        it("DeviceUsageStatisticsJsTest0023", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0023", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0023---------------------------');
             let beginTime = 10;
             let endTime = 20000000000000;
@@ -465,7 +465,7 @@ export default function DeviceUsageStatisticsJsTest() {
          * @tc.name: DeviceUsageStatisticsJsTest0024
          * @tc.desc:  queryCurrentBundleActiveStates BundleActiveState nameOfClass.
          */
-        it("DeviceUsageStatisticsJsTest0024", 0, async function (done) {
+        it("DeviceUsageStatisticsJsTest0024", Level.LEVEL0, async function (done) {
             console.info('----------------------DeviceUsageStatisticsJsTest0024---------------------------');
             let beginTime = 10;
             let endTime = 20000000000000;

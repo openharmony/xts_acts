@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import display from '@ohos.display';
 import events_emitter from '@ohos.events.emitter';
@@ -54,10 +54,10 @@ export default function saveComponentTest() {
      * @tc.desc Test SecurityComponent Default parameters and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Save_0100', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0100] START====');
       let strJson = getInspectorByKey('keySave');
       let obj : ESObject = JSON.parse(strJson);
@@ -100,27 +100,6 @@ export default function saveComponentTest() {
               console.info("====>[Test_Security_Button_Save_0100] 设置权限成功");
               expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
               await Utils.sleep(500);
-              let driver = Driver.create();
-              console.info("====>[Test_Security_Button_Save_0100] driver is:" + JSON.stringify(driver));
-              let flag = false;
-              console.info("====>[Test_Security_Button_Save_0100] flag is:" + flag);
-              for (let i = 0; i < 5; i++) {
-                console.info("====>[Test_Security_Button_Save_0100] loop START====" + i);
-                if (flag) {
-                  break;
-                }
-                let textComponent = await driver.findComponent(ON.type('Button'));
-                console.info("====>[Test_Security_Button_Save_0100] textComponent is:" + JSON.stringify(textComponent));
-                await Utils.sleep(200)
-                if (textComponent != undefined && textComponent != null) {
-                  try{
-                    await textComponent.click();
-                    console.info("====>[Test_Security_Button_Save_0100] textComponentClick finish");
-                  } catch (err) {
-                    console.info("====>[Test_Security_Button_Save_0100] textComponentClick err : " + JSON.stringify(err));
-                  };
-                }
-              }
               console.info("====>[Test_Security_Button_Save_0100] END====");
               done()
             } else {
@@ -174,7 +153,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0200', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0200] START====');
       await Utils.sleep(1000);
       try {
@@ -276,7 +255,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0300', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0300] START====');
       await Utils.sleep(1000);
       try {
@@ -380,7 +359,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0400', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0400] START====');
       await Utils.sleep(1000);
       try {
@@ -484,7 +463,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0500', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0500] START====');
       await Utils.sleep(1000);
       try {
@@ -585,7 +564,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0600', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0600] START====');
       await Utils.sleep(1000);
       try {
@@ -686,7 +665,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0700', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0700] START====');
       await Utils.sleep(1000);
       try {
@@ -787,7 +766,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0800', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0800] START====');
       await Utils.sleep(1000);
       try {
@@ -888,7 +867,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_0900', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_0900] START====');
       await Utils.sleep(1000);
       try {
@@ -989,7 +968,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1000', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1000] START====');
       await Utils.sleep(1000);
       try {
@@ -1090,7 +1069,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1100', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1100] START====');
       await Utils.sleep(1000);
       try {
@@ -1194,7 +1173,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1200', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1200] START====');
       await Utils.sleep(1000);
       try {
@@ -1298,7 +1277,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1300', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1300] START====');
       await Utils.sleep(1000);
       try {
@@ -1402,7 +1381,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1400', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1400] START====');
       await Utils.sleep(1000);
       try {
@@ -1517,7 +1496,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1500', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1500] START====');
       await Utils.sleep(1000);
       try {
@@ -1632,7 +1611,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1600', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1600] START====');
       await Utils.sleep(1000);
       try {
@@ -1697,9 +1676,9 @@ export default function saveComponentTest() {
           if(clickData.data !=undefined){
             console.info("====>[Test_Security_Button_Save_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
             console.info("====>[Test_Security_Button_Save_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-            if (clickData.data.clickResult == SaveButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
+            if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
               console.info("====>[Test_Security_Button_Save_1600] 设置权限成功");
-              expect(clickData.data.clickResult == SaveButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+              expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
               console.info("====>[Test_Security_Button_Save_1600] END====");
               done();
             } else {
@@ -1744,7 +1723,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1700', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1700] START====');
       await Utils.sleep(1000);
       try {
@@ -1847,7 +1826,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1800', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1800] START====');
       await Utils.sleep(1000);
       try {
@@ -1950,7 +1929,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_1900', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_1900] START====');
       await Utils.sleep(1000);
       try {
@@ -2052,7 +2031,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_2000', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2000] START====');
       await Utils.sleep(1000);
       try {
@@ -2153,7 +2132,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_2100', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2100] START====');
       await Utils.sleep(1000);
       try {
@@ -2254,7 +2233,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_2200', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2200] START====');
       await Utils.sleep(1000);
       try {
@@ -2356,7 +2335,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_2300', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2300] START====');
       await Utils.sleep(1000);
       try {
@@ -2469,7 +2448,7 @@ export default function saveComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Save_2400', 0, async (done:Function) => {
+    it('Test_Security_Button_Save_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Save_2400] START====');
       await Utils.sleep(1000);
       try {

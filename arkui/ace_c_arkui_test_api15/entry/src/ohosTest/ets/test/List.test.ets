@@ -32,7 +32,6 @@ import gestureRecognizerTest from './gestureRecognizer/GestureRecognizerTest.tes
 import EventInfoTest from "./eventInfo/EventInfoTest.test"
 import snapShotTest from './snapShot/snapShotTest.test'
 
-
 export default function testsuite() {
 
    

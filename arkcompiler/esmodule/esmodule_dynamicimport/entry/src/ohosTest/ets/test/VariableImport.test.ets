@@ -13,7 +13,7 @@
  * limitations under the License.
  */
  
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { varibleWithinHsp } from 'Sharelibraryhsp/src/main/ets/pages/Index';
 import { varibleWithinHarPath} from 'Staticlibraryhar/src/main/ets/components/mainpage/MainPage';
 import { varibleWithinHap } from '../../../main/ets/pages/Index';
@@ -29,7 +29,7 @@ export default function variableImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testVariableHspName', 0, async () => {
+    it('testVariableHspName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let packageName = 'Sharelibraryhsp'
       let lib: ESObject= await import(packageName)
       expect(lib.add(2,3)).assertEqual(5)
@@ -44,7 +44,7 @@ export default function variableImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testVariableHarName', 0, async () => {
+    it('testVariableHarName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let packageName = 'Staticlibraryhar'
       let lib: ESObject= await import(packageName)
       expect(lib.add(2,3)).assertEqual(5)
@@ -59,7 +59,7 @@ export default function variableImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testVaribleWithinHspPath', 0, async () => {
+    it('testVaribleWithinHspPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await varibleWithinHsp()
       expect(res).assertTrue()
       console.info("-------------varibleWithinHspPath-------------")
@@ -73,7 +73,7 @@ export default function variableImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testVaribleWithinHapPath', 0, async () => {
+    it('testVaribleWithinHapPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await varibleWithinHap()
       expect(res).assertTrue()
       console.info("-------------varibleWithinHapPath-------------")
@@ -87,7 +87,7 @@ export default function variableImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('testVaribleWithinHarPath', 0, async () => {
+    it('testVaribleWithinHarPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let res = await varibleWithinHarPath()
       expect(res).assertTrue()
       console.info("-------------varibleWithinHarPath-------------")

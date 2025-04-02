@@ -52,17 +52,18 @@ export default function offsetRemain() {
     it('offsetRemain_0100', 0, async (done: Function) => {
       console.info('offsetRemain_0100 START');
       let driver = Driver.create();
-      let size = await driver.getDisplaySize();
-      let sizeX = size.x;
-      let sizeY = size.y;
-      console.info("[offsetRemain_0100] size is: " + JSON.stringify(size));
-      console.info("[offsetRemain_0100] size x is: " + JSON.stringify(sizeX));
-      console.info("[ScrollSource_0200] size Y is: " + JSON.stringify(sizeY));
+      let swiperScroll = CommonFunc.getComponentRectOnScreen('list_offsetRemain');
+      let top = swiperScroll.top;
+      let right = swiperScroll.right;
+      let left = swiperScroll.left;
+      let bottom = swiperScroll.bottom;
+      console.info("offsetRemain_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
       await CommonFunc.sleep(1000);
-
-      await driver.swipe(sizeX * 1/2, sizeY * 1/2 , sizeX * 1/2, 0, 600);
-      
+      await driver.swipe(Math.round(left + width/2),Math.round(top + height*0.7),Math.round(left + width/2),Math.round(top + height*0.2));
       await CommonFunc.sleep(2000);
+      
       let strJson = getInspectorByKey('offsetRemain');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[offsetRemain_0100] component obj is: " + JSON.stringify(obj));

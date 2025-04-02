@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import taskpool from '@ohos.taskpool';
 import collections from '@arkts.collections';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -166,7 +166,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0001', 0, async (done: () => void) => {
+    it('testRdbStoreSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbStoreSendable0001 start *************");
       if (!rdbStore) {
         expect().assertFail();
@@ -192,7 +192,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0002', 0, async (done: Function) => {
+    it('testRdbStoreSendable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreSendable0002 start *************");
       if (!rdbStore) {
         expect(null).assertFail();
@@ -267,7 +267,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0003', 0, async (done: () => void) => {
+    it('testRdbStoreSendable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
       console.log(TAG + "************* testRdbStoreSendable0003 start *************");
       try {
         const predicates = new relationalStore.RdbPredicates(TABLE);
@@ -336,7 +336,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0004', 0, async () => {
+    it('testRdbStoreSendable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log(TAG + "************* testRdbStoreSendable0004 start *************");
       try {
         const sendableValuesBucket: sendableRelationalStore.ValuesBucket = sendableRelationalStore.toSendableValuesBucket(valuesBucket1);
@@ -400,7 +400,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0005', 0, async () => {
+    it('testRdbStoreSendable0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log(TAG + "************* testRdbStoreSendable0005 start *************");
       try {
         const predicates = new relationalStore.RdbPredicates(TABLE);
@@ -469,7 +469,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0006', 0, async () => {
+    it('testRdbStoreSendable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log(TAG + "************* testRdbStoreSendable0006 start *************");
       try {
         const sendableAsset: sendableRelationalStore.Asset = sendableRelationalStore.toSendableAsset(asset1);
@@ -491,7 +491,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0007', 0, async () => {
+    it('testRdbStoreSendable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log(TAG + "************* testRdbStoreSendable0007 start *************");
       try {
         const sendableAsset: sendableRelationalStore.Asset = sendableRelationalStore.toSendableAsset(asset1);
@@ -512,7 +512,7 @@ export default function rdbStoreSendableTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testRdbStoreSendable0008', 0, async () => {
+    it('testRdbStoreSendable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.log(TAG + "************* testRdbStoreSendable0008 start *************");
       try {
         const predicates = new relationalStore.RdbPredicates(TABLE);

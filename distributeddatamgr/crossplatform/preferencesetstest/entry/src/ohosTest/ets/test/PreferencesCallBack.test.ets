@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
 import { BusinessError } from '@ohos.base';
@@ -53,7 +53,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences001", 0, async (done: Function) => {
+    it("testPreferencesGetPreferences001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, async (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -78,7 +78,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences002", 0, async (done: Function) => {
+    it("testPreferencesGetPreferences002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         dataPreferences.getPreferences(context, null, (err, preferences) => {
           expect(!err).assertFail();
@@ -99,7 +99,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences003", 0, async (done: Function) => {
+    it("testPreferencesGetPreferences003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }, async (err, preferences) => {
@@ -126,7 +126,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences004", 0, async (done: Function) => {
+    it("testPreferencesGetPreferences004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         dataPreferences.getPreferences(context, {
           name: null
@@ -149,7 +149,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences000", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -174,7 +174,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences001", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -206,7 +206,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences003", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -252,7 +252,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences004", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }, (err, preferences) => {
@@ -281,7 +281,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences005", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }, (err, preferences) => {
@@ -317,7 +317,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences006", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferences006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }, (err, preferences) => {
@@ -366,7 +366,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache0001", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -391,7 +391,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache001", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -426,7 +426,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache003", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -469,7 +469,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache004", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME
       }, (err, preferences) => {
@@ -499,7 +499,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache005", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME
       }, (err, preferences) => {
@@ -535,7 +535,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache006", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -579,7 +579,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetDefaultValue0001", 0, async (done: Function) => {
+    it("testPreferencesGetDefaultValue0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue", (err, ret) => {
         expect("defaultValue").assertEqual(ret);
@@ -595,7 +595,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetFloat0001", 0, async (done: Function) => {
+    it("testPreferencesGetFloat0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0, (err, ret) => {
@@ -612,7 +612,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetInt0001", 0, async (done: Function) => {
+    it("testPreferencesGetInt0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       await mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0, (err, ret) => {
@@ -629,7 +629,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetLong0001", 0, async (done: Function) => {
+    it("testPreferencesGetLong0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0, (err, ret) => {
@@ -647,7 +647,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetString001", 0, async (done: Function) => {
+    it("testPreferencesGetString001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -666,7 +666,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolean0001", 0, async (done: Function) => {
+    it("testPreferencesGetBoolean0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true, (err, ret) => {
@@ -683,7 +683,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringArray001", 0, async (done: Function) => {
+    it("testPreferencesGetStringArray001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -704,7 +704,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetNumArray001", 0, async (done: Function) => {
+    it("testPreferencesGetNumArray001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
@@ -724,7 +724,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolArray0001", 0, async (done: Function) => {
+    it("testPreferencesGetBoolArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -744,7 +744,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAll0001", 0, async (done: Function) => {
+    it("testPreferencesGetAll0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -790,7 +790,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutFloat0001", 0, async (done: Function) => {
+    it("testPreferencesPutFloat0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0, async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -810,7 +810,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutInt0001", 0, async (done: Function) => {
+    it("testPreferencesPutInt0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 4, async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -830,7 +830,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutLong0001", 0, async (done: Function) => {
+    it("testPreferencesPutLong0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4, async (err, ret) => {
@@ -851,7 +851,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutString0001", 0, async (done: Function) => {
+    it("testPreferencesPutString0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "", async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
@@ -871,7 +871,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolean0001", 0, async (done: Function) => {
+    it("testPreferencesPutBoolean0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true, async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -891,7 +891,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringArray0001", 0, async (done: Function) => {
+    it("testPreferencesPutStringArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr, async (err, ret) => {
@@ -912,7 +912,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutNumArray0001", 0, async (done: Function) => {
+    it("testPreferencesPutNumArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr, async (err, ret) => {
@@ -933,7 +933,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolArray0001", 0, async (done: Function) => {
+    it("testPreferencesPutBoolArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr, async (err, ret) => {
@@ -954,7 +954,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0005", 0, async (done: Function) => {
+    it("testPreferencesHasKey0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 1.1);
       await mPreferences.has(KEY_TEST_FLOAT_ELEMENT, (err, ret) => {
         expect(true).assertEqual(ret);
@@ -970,7 +970,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0001", 0, async (done: Function) => {
+    it("testPreferencesHasKey0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
       await mPreferences.has(KEY_TEST_INT_ELEMENT, (err, ret) => {
         expect(true).assertEqual(ret);
@@ -986,7 +986,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0002", 0, async (done: Function) => {
+    it("testPreferencesHasKey0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
       await mPreferences.has(KEY_TEST_LONG_ELEMENT, (err, ret) => {
         expect(true).assertEqual(ret);
@@ -1002,7 +1002,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0003", 0, async (done: Function) => {
+    it("testPreferencesHasKey0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.has(KEY_TEST_STRING_ELEMENT, (err, ret) => {
         expect(true).assertEqual(ret);
@@ -1018,7 +1018,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0004", 0, async (done: Function) => {
+    it("testPreferencesHasKey0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
       await mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT, (err, ret) => {
         expect(true).assertEqual(ret);
@@ -1034,7 +1034,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesClear0001", 0, async (done: Function) => {
+    it("testPreferencesClear0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -1089,7 +1089,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDelete0010", 0, async (done: Function) => {
+    it("testPreferencesDelete0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -1114,7 +1114,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferenceCB001", 0, async (done: Function) => {
+    it("testPreferenceCB001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -1139,7 +1139,7 @@ export default function preferencesCallBackTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesCallback001", 0, (done: Function) => {
+    it("testPreferencesCallback001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log(TAG + "testPreferencesCallback001 begin.");
       mPreferences.clear((err, val) => {
         if (err) {

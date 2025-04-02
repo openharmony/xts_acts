@@ -20,13 +20,19 @@ import updatePopup from './promptActionTest/updatePopup.test'
 import closeMenu from './promptActionTest/closeMenu.test.ets'
 import closePopup from './promptActionTest/closePopup.test'
 import subwindowDialog from './promptActionTest/subwindowDialog.test'
-import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
-import disableDateRangeAndMarkTodayTest from './calendarPickerDialog/disableDateRangeAndMarkToday.test'
-import calendarPickerStartEndTest from './calendarPickerDialog/startEndTest.test';
 import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
 import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
+import blurStyleOptions from './MenuTest/blurStyleOptions.test'
+import effectOptions from './MenuTest/effectOptions.test'
+import openDialogTransitionTest from './promptActionTest/openDialogTransition.test'
+import ActionSheetLifeTest from './dialogLifeTest/ActionSheetLife.test'
+import AlertDialogLifeTest from './dialogLifeTest/AlertDialogLife.test'
+import CustomDialogLifeTest from './dialogLifeTest/CustomDialogLife.test'
+import showInSubWindowBindSheet from './bindSheet/showInSubWindowBindSheet.test'
 export default function testsuite() {
+    blurStyleOptions();
+    effectOptions();
     maxWidth();
     openMenu();
     openPopup();
@@ -35,10 +41,12 @@ export default function testsuite() {
     closeMenu();
     closePopup();
     subwindowDialog();
-    datePickerDialogMode();
-    disableDateRangeAndMarkTodayTest();
-    calendarPickerStartEndTest();
     menuitemOnChangeModifierTest();
     menuFontsizeModifierTest();
     menuBindMenuModifierTest();
+    openDialogTransitionTest();
+    ActionSheetLifeTest();
+    AlertDialogLifeTest();
+    CustomDialogLifeTest();
+	showInSubWindowBindSheet()
 }

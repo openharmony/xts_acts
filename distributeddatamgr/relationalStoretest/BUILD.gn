@@ -22,6 +22,7 @@ group("relationalStoretest") {
       "relationalStoreApi16EtsTest:ActsRelationalStoreApi16EtsTest",
       "relationalStoreEtstest:ActsRelationalStoreEtsTest",
       "relationalStoreJstest/hap:relationalstore_js_test",
+      "relationalStoreNapiTest:ActsRelationalStoreNapiEtsTest",
       "relationalStoreNdkHvigortest:ActsRelationalStoreNdkHvigorTest",
       "relationalStoreNdktest:ActsRelationalStoreNdkTest",
       "relationalStoreSendabletest:relationalstoreSendable_ets_test",

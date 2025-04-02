@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 
 let httpRequest = http.createHttp();
@@ -607,7 +607,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0100', 0, dataSendProgress_01);
+    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dataSendProgress_01);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_on_dataSendProgress_0200
@@ -617,7 +617,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0200', 0, dataSendProgress_02);
+    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dataSendProgress_02);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_on_dataSendProgress_0300
@@ -627,7 +627,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0300', 0, dataSendProgress_03);
+    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dataSendProgress_03);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_off_dataSendProgress_0100
@@ -637,7 +637,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0100', 0, dataSendProgress_0100);
+    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dataSendProgress_0100);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_off_dataSendProgress_0200
@@ -647,7 +647,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0200', 0, dataSendProgress_0200);
+    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dataSendProgress_0200);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_off_dataSendProgress_0300
@@ -657,7 +657,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0300', 0, dataSendProgress_0300);
+    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dataSendProgress_0300);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0100
@@ -667,7 +667,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0100', 0, resumeFrom_0100);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, resumeFrom_0100);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0300
@@ -677,7 +677,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0300', 0, resumeFrom_0300);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, resumeFrom_0300);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0200
@@ -687,7 +687,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0200', 0, resumeFrom_0200);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, resumeFrom_0200);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0400
@@ -697,7 +697,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0400', 0, resumeFrom_0400);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, resumeFrom_0400);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0500
@@ -707,7 +707,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0500', 0, resumeFrom_0500);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, resumeFrom_0500);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0100
@@ -717,7 +717,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_clientCert_0100', 0, clientCert_0100);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, clientCert_0100);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0200
@@ -727,7 +727,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_clientCert_0200', 0, clientCert_0200);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, clientCert_0200);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0300
@@ -737,7 +737,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_clientCert_0300', 0, clientCert_0300);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, clientCert_0300);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0400
@@ -747,7 +747,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_clientCert_0400', 0, clientCert_0400);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, clientCert_0400);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0500
@@ -757,7 +757,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_clientCert_0500', 0, clientCert_0500);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, clientCert_0500);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
@@ -767,7 +767,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100', 0, dnsOverHttps_0100);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsOverHttps_0100);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
@@ -777,7 +777,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200', 0, dnsOverHttps_0200);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsOverHttps_0200);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
@@ -787,7 +787,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300', 0, dnsOverHttps_0300);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsOverHttps_0300);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
@@ -797,7 +797,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400', 0, dnsOverHttps_0400);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsOverHttps_0400);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0100
@@ -807,7 +807,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsServers_0100', 0, dnsServers_0100);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsServers_0100);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0200
@@ -817,7 +817,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsServers_0200', 0, dnsServers_0200);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsServers_0200);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0300
@@ -827,7 +827,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsServers_0300', 0, dnsServers_0300);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsServers_0300);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0400
@@ -837,7 +837,7 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_dnsServers_0400', 0, dnsServers_0400);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, dnsServers_0400);
 
     /**
      * @tc.number test SUB_NetworkManager_HTTP_request_performanceTiming_0100
@@ -847,6 +847,6 @@ export default function NetworkManagerHttpEnhanceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('test SUB_NetworkManager_HTTP_request_performanceTiming_0100', 0, performanceTiming_0100);
+    it('test SUB_NetworkManager_HTTP_request_performanceTiming_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, performanceTiming_0100);
   })
 };

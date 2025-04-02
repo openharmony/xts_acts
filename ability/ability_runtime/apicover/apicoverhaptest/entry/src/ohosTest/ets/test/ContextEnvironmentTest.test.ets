@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
 import { BusinessError } from '@ohos.base';
@@ -56,7 +56,7 @@ export default function ContextEnvironmentTest(applicationContext: common.Applic
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0400', 0, async (done: Function) => {
+    it('SUB_AA_AMS_Context_EnvironmentTest_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0400 ==== ';
       console.info(TAG, `begin`);
       let envCallback: EnvironmentCallback = {
@@ -98,7 +98,7 @@ export default function ContextEnvironmentTest(applicationContext: common.Applic
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0500', 0, async (done: Function) => {
+    it('SUB_AA_AMS_Context_EnvironmentTest_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0500 ==== ';
       console.info(TAG, `begin`);
 
@@ -120,7 +120,7 @@ export default function ContextEnvironmentTest(applicationContext: common.Applic
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_AMS_Context_EnvironmentTest_0600', 0, async (done: Function) => {
+    it('SUB_AA_AMS_Context_EnvironmentTest_0600', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0600 ==== ';
       console.info(TAG, `begin`);
 

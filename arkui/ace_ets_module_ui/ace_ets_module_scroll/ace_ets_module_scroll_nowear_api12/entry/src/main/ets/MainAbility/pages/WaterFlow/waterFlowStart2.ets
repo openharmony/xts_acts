@@ -62,6 +62,7 @@ struct WaterFlowStart2 {
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
+      .id('waterFlowStart2')
       .columnsTemplate('repeat(auto-fill,80)')
       .columnsGap(10)
       .rowsGap(5)

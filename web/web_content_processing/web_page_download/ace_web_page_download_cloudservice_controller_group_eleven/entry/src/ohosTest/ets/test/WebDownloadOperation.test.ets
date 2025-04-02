@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { router } from '@kit.ArkUI';
@@ -79,7 +79,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_cancel_0100", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_cancel_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_cancel_0100', '4', 450, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -106,7 +106,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_cancel_0200", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_cancel_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_cancel_0200', '4', 451, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -129,7 +129,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_cancel_0300", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_cancel_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_cancel_0300', '4', 452, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -154,7 +154,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_cancel_0400", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_cancel_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_cancel_0400', '4', 453, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -179,7 +179,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_pause_0100", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_pause_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_pause_0100', '17100019The download task is not started yet.', 454, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -199,7 +199,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_pause_0200", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_pause_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_pause_0200', '17100019The download task is not started yet.', 455, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -220,7 +220,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_pause_0300", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_pause_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_pause_0300', '17100019The download task is not started yet.', 456, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -242,7 +242,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_pause_0400", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_pause_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_pause_0400', '4', 457, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -268,7 +268,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_pause_0500", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_pause_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_pause_0500', '17100019The download task is not started yet.', 458, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -290,7 +290,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_pause_0600", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_pause_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_pause_0600', '17100019The download task is not started yet.', 459, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -314,7 +314,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_resume_0100", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_resume_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_resume_0100', '17100016The download task is not paused.', 460, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -334,7 +334,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_resume_0200", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_resume_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_resume_0200', '17100016The download task is not paused.', 461, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -356,7 +356,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_resume_0300", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_resume_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_resume_0300', '17100016The download task is not paused.', 462, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -380,7 +380,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_resume_0400", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_resume_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_resume_0400', '17100016The download task is not paused.', 463, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -402,7 +402,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_resume_0500", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_resume_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_resume_0500', '17100016The download task is not paused.', 464, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -425,7 +425,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_onDownloadUpdated_1000", 0, async (done: Function) => {
+    it("SUB_ACE_onDownloadUpdated_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_onDownloadUpdated_1000', 22, 465, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -445,7 +445,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_onDownloadUpdated_1001", 0, async (done: Function) => {
+    it("SUB_ACE_onDownloadUpdated_1001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_onDownloadUpdated_1001', true, 466, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -465,7 +465,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_onDownloadUpdated_1002", 0, async (done: Function) => {
+    it("SUB_ACE_onDownloadUpdated_1002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_onDownloadUpdated_1002', 100, 467, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -485,7 +485,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_onDownloadUpdated_1003", 0, async (done: Function) => {
+    it("SUB_ACE_onDownloadUpdated_1003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_onDownloadUpdated_1003', 2, 468, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -509,7 +509,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_onDownloadUpdated_1004", 0, async (done: Function) => {
+    it("SUB_ACE_onDownloadUpdated_1004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_onDownloadUpdated_1004', 2, 468, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -534,7 +534,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_onDownloadFinish_1000", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_onDownloadFinish_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_onDownloadFinish_1000', '4', 469, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -556,7 +556,7 @@ export default function webDownloadOperation() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_ACE_WEB_onDownloadFinish_1002", 0, async (done: Function) => {
+    it("SUB_ACE_WEB_onDownloadFinish_1002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('SUB_ACE_WEB_onDownloadFinish_1002', '4', 470, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

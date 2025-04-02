@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import locale from 'liblocalendk.so'
 
@@ -32,7 +32,7 @@ export default function localeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslLocaleUselocale002', 0, async (done: Function) => {
+    it('testMuslLocaleUselocale002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let b = 1;
       let uselocaleResult: number = locale.uselocale(b);
       console.info("Test uselocaleResult = " + uselocaleResult);
@@ -48,7 +48,7 @@ export default function localeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslLocaleDupLocale001', 0, async (done: Function) => {
+    it('testMuslLocaleDupLocale001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(locale.duplocale()).assertEqual(0);
       done()
     });
@@ -60,7 +60,7 @@ export default function localeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslLocaleLocaleconv001', 0, async (done: Function) => {
+    it('testMuslLocaleLocaleconv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = locale.localeconv();
       expect(result).assertEqual(0)
       done()
@@ -74,7 +74,7 @@ export default function localeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslLocaleNewlocale001', 0, async (done: Function) => {
+    it('testMuslLocaleNewlocale001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = locale.newlocale();
       expect(result).assertEqual(0)
       done()
@@ -87,7 +87,7 @@ export default function localeNdkTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMuslLocaleFreelocale001', 0, async (done: Function) => {
+    it('testMuslLocaleFreelocale001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = locale.freelocale();
       expect(result).assertEqual(0)
       done()

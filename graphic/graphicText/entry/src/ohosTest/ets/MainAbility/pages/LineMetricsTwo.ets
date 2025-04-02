@@ -38,6 +38,11 @@ struct lineMetrics2 {
       Text(this.topHeightA + '').id('LineMetrics_3')
       Text(this.ascentA + '').id('LineMetrics_5')
       Text(this.descentA + '').id('LineMetrics_6')
+      Text(this.heightA + '').id('LineMetrics_7')
+      Text(this.widthA + '').id('LineMetrics_8')
+      Text(this.leftA + '').id('LineMetrics_9')
+      Text(this.baselineA + '').id('LineMetrics_10')
+      Text(this.lineNumberA + '').id('LineMetrics_11')
       Button('getLineMetrics(1)')
       .id('LineMetrics_4')
       .onClick(() => {
@@ -53,6 +58,16 @@ struct lineMetrics2 {
         this.ascentA = Math.round(lineMetrics.ascent)
         lineMetrics.descent = 6
         this.descentA = Math.round(lineMetrics.descent)
+        lineMetrics.height = 6
+        this.heightA = Math.round(lineMetrics.height)
+        lineMetrics.width = 6
+        this.widthA = Math.round(lineMetrics.width)
+        lineMetrics.left = 6
+        this.leftA = Math.round(lineMetrics.left)
+        lineMetrics.baseline = 6
+        this.baselineA = Math.round(lineMetrics.baseline)
+        lineMetrics.lineNumber = 6
+        this.lineNumberA = Math.round(lineMetrics.lineNumber)
         console.log('aaa_1',JSON.stringify(lineMetrics))
       })
     }

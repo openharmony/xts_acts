@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { logGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.SOCIAL_COMMUNICATION.
      */
-    it('Acts_NotificationRequest_0100', 0, async (done: Function) => {
+    it('Acts_NotificationRequest_0100', Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0100';
 
       notificationManager.requestEnableNotification((err) => {
@@ -120,7 +120,7 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.SERVICE_INFORMATION.
      */
-    it('Acts_NotificationRequest_0200', 0, async (done: Function) => {
+    it('Acts_NotificationRequest_0200', Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0200';
 
       let notificationRequest: notificationManager.NotificationRequest = {
@@ -159,7 +159,7 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.CONTENT_INFORMATION.
      */
-    it('Acts_NotificationRequest_0300', 0, async (done: Function) => {
+    it('Acts_NotificationRequest_0300', Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0300';
 
       const color = new ArrayBuffer(60000);
@@ -222,7 +222,7 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationSlotType property.
      * @tc.desc: Set notificationSlotType attribute parameters notificationManager.SlotType.OTHER_TYPES.
      */
-    it(" Acts_NotificationRequest_0400", 0, async (done: Function) => {
+    it(" Acts_NotificationRequest_0400", Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0400';
 
       let notificationRequest: notificationManager.NotificationRequest = {
@@ -262,7 +262,7 @@ export default function notificationRequestTest() {
      * @tc.name: Test the notificationRequest property.
      * @tc.desc: Construct the notificationRequest.
      */
-    it(" Acts_NotificationRequest_0600", 0, async (done: Function) => {
+    it(" Acts_NotificationRequest_0600", Level.LEVEL2, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationRequest_0600';
 
       const color = new ArrayBuffer(60000);

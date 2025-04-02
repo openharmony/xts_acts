@@ -14,7 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import bundle from '@ohos.bundle.bundleManager'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function ActsContextTest() {
   describe('ActsContextTest', function () {
@@ -22,7 +22,7 @@ export default function ActsContextTest() {
     //  @tc.number: ACTS_GetBundleName_0100
     //  @tc.name: getBundleName : Query return value type
     //  @tc.desc: The class of the test return value is made Promise
-    it('ACTS_GetBundleName_0100', 0, async function (done) {
+    it('ACTS_GetBundleName_0100', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       console.log('ACTS_GetBundleName_0100 context is:' + JSON.stringify(context));
@@ -38,7 +38,7 @@ export default function ActsContextTest() {
     //  @tc.number: ACTS_GetBundleName_0200
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the bundlename of the hap package(by promise)
-    it('ACTS_GetBundleName_0200', 0, async function (done) {
+    it('ACTS_GetBundleName_0200', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       console.log('ACTS_GetBundleName_0200 context is:' + JSON.stringify(context));
@@ -54,7 +54,7 @@ export default function ActsContextTest() {
     //  @tc.number: ACTS_GetBundleName_0300
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the value of return is void (by callback)
-    it('ACTS_GetBundleName_0300', 0, async function (done) {
+    it('ACTS_GetBundleName_0300', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = featureAbility.getContext();
       var info = context.getBundleName(
@@ -71,7 +71,7 @@ export default function ActsContextTest() {
     //  @tc.number: ACTS_GetBundleName_0400
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Get the bundlename of the hap package(by callback)
-    it('ACTS_GetBundleName_0400', 0, async function (done) {
+    it('ACTS_GetBundleName_0400', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       var info = context.getBundleName(
@@ -90,7 +90,7 @@ export default function ActsContextTest() {
     //  @tc.number: ACTS_GetBundleName_0500
     //  @tc.name: getBundleName : Get the bundlename of the hap package
     //  @tc.desc: Wrong parameters are provided, and the test return type is void (by callback)
-    it('ACTS_GetBundleName_0500', 0, async function (done) {
+    it('ACTS_GetBundleName_0500', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       var info = context.getBundleName("error_param",
@@ -112,7 +112,7 @@ export default function ActsContextTest() {
     //  UID has been granted a certain permission
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by callback)
-    it('ACTS_VerifyPermission_0100', 0, async function (done) {
+    it('ACTS_VerifyPermission_0100', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       console.log('ACTS_VerifyPermission_0100 context is:' + JSON.stringify(context));
@@ -140,7 +140,7 @@ export default function ActsContextTest() {
     //  UID has been granted a certain permission
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
-    it('ACTS_VerifyPermission_0200', 0, async function (done) {
+    it('ACTS_VerifyPermission_0200', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       console.log('ACTS_VerifyPermission_0200 context is:' + JSON.stringify(context));
@@ -164,7 +164,7 @@ export default function ActsContextTest() {
     //  UID has been granted a certain permission
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
-    it('ACTS_VerifyPermission_0300', 0, async function (done) {
+    it('ACTS_VerifyPermission_0300', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       var datainfo = await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
@@ -190,7 +190,7 @@ export default function ActsContextTest() {
     //  UID has been granted a certain permission
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
-    it('ACTS_VerifyPermission_0400', 0, async function (done) {
+    it('ACTS_VerifyPermission_0400', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       var datainfo = await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
@@ -213,7 +213,7 @@ export default function ActsContextTest() {
     //  UID has been granted a certain permission
     //  @tc.desc: Query whether the application of the specified PID and UID has been granted
     //  a certain permission (by Promise)
-    it('ACTS_VerifyPermission_0500', 0, async function (done) {
+    it('ACTS_VerifyPermission_0500', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       var datainfo = await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
@@ -232,12 +232,34 @@ export default function ActsContextTest() {
     })
 
 
+     //  @tc.number: ACTS_VerifyPermission_0600
+    //  @tc.name: verifySelfPermission : Query whether the application of the specified PID and
+    //  UID has been granted a certain permission
+    //  @tc.desc: Query whether the application of the specified PID and UID has been granted
+    //  a certain permission (by Promise)
+    it('ACTS_VerifyPermission_0600', Level.LEVEL0, async function (done) {
+      var ret = false;
+      var context = await featureAbility.getContext();
+      console.log('ACTS_VerifyPermission_0600 context is:' + JSON.stringify(context));
+      var datainfo = await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+      var promise = await context.verifyPermission("ohos.permission.INSTALL_BUNDLE");
+      console.log('ACTS_VerifyPermission_0600 promise is:' + JSON.stringify(promise));
+      expect(promise).assertEqual(0);
+      ret = true
+      done();
+      setTimeout(function () {
+        expect(ret).assertEqual(true);
+      }, 1000)
+    })
+
+
+    
     //  @tc.number: ACTS_RequestPermissionForUser_0100
     //  @tc.name: requestPermissionsFromUser : Requests certain permissions from the system.
     //  permission: The list of permissions to be requested.
     //  @tc.desc: Requests certain permissions from the system.
     //  process is the current process. (by callback)
-    it('ACTS_RequestPermissionForUser_0100', 0, async function (done) {
+    it('ACTS_RequestPermissionForUser_0100', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       console.log("ACTS_RequestPermissionForUser_0100 ----------1");
@@ -261,7 +283,7 @@ export default function ActsContextTest() {
     //  permission: The list of permissions to be requested.
     //  @tc.desc: Requests certain permissions from the system.
     //  process is the current process. (by promise)
-    it('ACTS_RequestPermissionForUser_0200', 0, async function (done) {
+    it('ACTS_RequestPermissionForUser_0200', Level.LEVEL0, async function (done) {
       var ret = false;
       var context = await featureAbility.getContext();
       console.log("ACTS_RequestPermissionForUser_0200 ----------1");
@@ -285,7 +307,7 @@ export default function ActsContextTest() {
     * @tc.name: context.getDisplayOrientation : Get an ability display orientation.
     * @tc.desc: Check the return display orientation of the interface (by AsyncCallback)
     */
-    it('ACTS_GetDisplayOrientation_0100', 0, async function (done) {
+    it('ACTS_GetDisplayOrientation_0100', Level.LEVEL0, async function (done) {
       console.log('ACTS_GetDisplayOrientation_0100====<begin');
 
       try {
@@ -306,7 +328,7 @@ export default function ActsContextTest() {
     * @tc.name: context.getDisplayOrientation : Get an ability display orientation.
     * @tc.desc: Check the return display orientation of the interface
     */
-    it('ACTS_GetDisplayOrientation_0200', 0, async function (done) {
+    it('ACTS_GetDisplayOrientation_0200', Level.LEVEL0, async function (done) {
       console.log('ACTS_GetDisplayOrientation_0200====<begin');
       try {
         var displayOrientation = context.getDisplayOrientation();
@@ -323,7 +345,7 @@ export default function ActsContextTest() {
     * @tc.name: context.setDisplayOrientation : Set an ability display orientation.
     * @tc.desc: Check the return display orientation of the interface (by AsyncCallback)
     */
-    it('ACTS_SetDisplayOrientation_0100', 0, async function (done) {
+    it('ACTS_SetDisplayOrientation_0100', Level.LEVEL0, async function (done) {
       console.log('ACTS_SetDisplayOrientation_0100====<begin');
 
       try {
@@ -344,7 +366,7 @@ export default function ActsContextTest() {
     * @tc.name: context.setDisplayOrientation : Set an ability display orientation.
     * @tc.desc: Check the return display orientation of the interface
     */
-    it('ACTS_SetDisplayOrientation_0200', 0, async function (done) {
+    it('ACTS_SetDisplayOrientation_0200', Level.LEVEL0, async function (done) {
       console.log('ACTS_SetDisplayOrientation_0200====<begin');
       try {
         context.setDisplayOrientation(true);
@@ -361,7 +383,7 @@ export default function ActsContextTest() {
     * @tc.name: context.setShowOnLockScreen : Set an ability show on lock screen.
     * @tc.desc: Check the return show on lock screen status of the interface (by AsyncCallback)
     */
-    it('ACTS_SetShowOnLockScreen_0100', 0, async function (done) {
+    it('ACTS_SetShowOnLockScreen_0100', Level.LEVEL0, async function (done) {
       console.log('ACTS_SetShowOnLockScreen_0100====<begin');
 
       try {
@@ -382,7 +404,7 @@ export default function ActsContextTest() {
     * @tc.name: context.setShowOnLockScreen : Set an ability show on lock screen.
     * @tc.desc: Check the return show on lock screen status of the interface
     */
-    it('ACTS_SetShowOnLockScreen_0200', 0, async function (done) {
+    it('ACTS_SetShowOnLockScreen_0200', Level.LEVEL0, async function (done) {
       console.log('ACTS_SetShowOnLockScreen_0200====<begin');
       try {
         context.setShowOnLockScreen(true);

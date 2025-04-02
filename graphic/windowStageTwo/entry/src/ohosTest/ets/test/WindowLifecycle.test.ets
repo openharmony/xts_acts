@@ -17,6 +17,7 @@ import window from '@ohos.window';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
+import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName';
 
 export default function WindowLifecycle() {
   describe('WindowLifecycleTest', async () => {
@@ -763,6 +764,8 @@ export default function WindowLifecycle() {
           console.info(msgStr + 'Succeeded in creating the subwindow1. Data: ' + JSON.stringify(data));
           let id = subWindowClass1.getWindowProperties().id;
           console.info(msgStr + 'Succeeded in getting the window id. : ' + id);
+          let name = subWindowClass1.getWindowProperties().name;
+          console.info(msgStr + 'Succeeded in getting the window name. : ' + name);
           expect(!!subWindowClass1).assertTrue();
           await subWindowClass1.loadContent('testability/pages/First/index2', storage);
           await windowStage.createSubWindow('test_showWindow_subWindow_top_callback2').then(async (data) => {
@@ -1171,10 +1174,13 @@ export default function WindowLifecycle() {
       try {
         windowClass.on('windowEvent', async (data) => {
           console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-          expect(data).assertEqual(3);
-          windowClass.off('windowEvent');
-          await subWindow.destroyWindow();
-          done();
+          if(data==window.WindowEventType.WINDOW_INACTIVE){
+            await subWindow.destroyWindow();
+            windowClass.off('windowEvent');
+            done();
+          }else{
+            await sleep(1000);
+          }
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
@@ -1622,6 +1628,59 @@ export default function WindowLifecycle() {
       } catch (error) {
         console.log(msgStr + 'Failed to testRemoveStartingWindow_Promise. Cause: ' + JSON.stringify(error));
         expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WINDOW_EVENT_TYPE_0100
+     * @tc.name      : test_WindowEventType_enum
+     * @tc.desc      : test_WindowEventType_enum
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("test_WindowEventType_enum", 2, async (done:Function) => {
+      let msgStr = "test_WindowEventType_enum";
+      console.log(msgStr + "begin");
+      try {
+        expect(window.WindowEventType.WINDOW_DESTROYED).assertEqual(7);
+        console.info('Succeeded in test_WindowEventType_enum.');
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to test_WindowEventType_enum. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_LOAD_CONTENT_BY_NAME_0100
+     * @tc.name      : test_loadContentByName
+     * @tc.desc      : test_loadContentByName
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_loadContentByName", 2, async (done:Function) => {
+      let msgStr = "test_loadContentByName";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.loadContentByName(LoadContentByName.entryName).then(async () => {
+          console.info('Succeeded in loadContentByName.');
+          expect(true).assertTrue();
+          await windowStage.loadContent('testability/pages/Index');
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`Failed to test loadContentByName. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          await windowStage.loadContent('testability/pages/Index');
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to test_loadContentByName. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        await windowStage.loadContent('testability/pages/Index');
         done();
       }
     });

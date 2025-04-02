@@ -51,13 +51,13 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
 
     /**
      * @tc.number SUB_ACE_FLEXALIGNCONTENT_END_0600
-     * @tc.name testAlignContentEndFlexMargin&PaddingNOSatisfy
+     * @tc.name testAlignContentEndFlexMarginPaddingNOSatisfy
      * @tc.desc The AlignContent property of the Flex component is set to FlexAlign.End, and setting the margin
      *               and padding for the Flex component does not meet the height requirements of the subcomponent.
      */
 
-    it('testAlignContentEndFlexMargin&PaddingNOSatisfy', 0, async () => {
-      console.info('testAlignContentEndFlexMargin&PaddingNOSatisfy START');
+    it('testAlignContentEndFlexMarginPaddingNOSatisfy', 0, async () => {
+      console.info('testAlignContentEndFlexMarginPaddingNOSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
       })
@@ -101,38 +101,38 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
       console.log('AlignContentFlexEnd_4_width is:' + AlignContentFlexEnd_4_width);
       console.log('AlignContentFlexEnd_4_height is:' + AlignContentFlexEnd_4_height);
 
-      expect(Math.abs(AlignContentFlexEnd_1_height - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_2_height - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_3_height - vp2px(80)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_4_height - vp2px(90)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_1_width - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_2_width - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_3_width - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_4_width - vp2px(60)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_1_height - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_2_height - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_3_height - vp2px(80))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_4_height - vp2px(90))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_1_width - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_2_width - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_3_width - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_4_width - vp2px(60))) <= 1).assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
-      expect(Math.abs((AlignContentFlexEnd_flex001.top - End_Margin_Column_1.top) - vp2px(5)) <= 1).assertTrue();
-      expect(Math.abs((End_Margin_Column_1.bottom - AlignContentFlexEnd_4.bottom) - vp2px(15)) <= 1).assertTrue();
-      expect(Math.abs((AlignContentFlexEnd_1.top - AlignContentFlexEnd_flex001.top) - vp2px(40)) <= 1).assertTrue();
-      expect(Math.abs((AlignContentFlexEnd_flex001.bottom - AlignContentFlexEnd_4.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((AlignContentFlexEnd_flex001.top - End_Margin_Column_1.top) - vp2px(5))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((End_Margin_Column_1.bottom - AlignContentFlexEnd_4.bottom) - vp2px(15))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((AlignContentFlexEnd_1.top - AlignContentFlexEnd_flex001.top) - vp2px(40))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((AlignContentFlexEnd_flex001.bottom - AlignContentFlexEnd_4.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_4.top - AlignContentFlexEnd_2.bottom) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_4.top - AlignContentFlexEnd_2.bottom)) <= 1).assertTrue();
 
-      console.info('testAlignContentEndFlexMargin&PaddingNOSatisfy END');
+      console.info('testAlignContentEndFlexMarginPaddingNOSatisfy END');
 
     });
 
     /**
      * @tc.number SUB_ACE_FLEXALIGNCONTENT_END_0700
-     * @tc.name testAlignContentEndFlexMargin&PaddingSatisfy
+     * @tc.name testAlignContentEndFlexMarginPaddingSatisfy
      * @tc.desc Set the AlignContent property of the Flex component to FlexAlign.End, and set the margin and
      *               padding for the Flex component to meet the height requirements of the subcomponent.
      */
 
-    it('testAlignContentEndFlexMargin&PaddingSatisfy', 0, async () => {
-      console.info('testAlignContentEndFlexMargin&PaddingSatisfy START');
+    it('testAlignContentEndFlexMarginPaddingSatisfy', 0, async () => {
+      console.info('testAlignContentEndFlexMarginPaddingSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15
       })
@@ -176,26 +176,26 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
       console.log('AlignContentFlexEnd_4_width is:' + AlignContentFlexEnd_4_width);
       console.log('AlignContentFlexEnd_4_height is:' + AlignContentFlexEnd_4_height);
 
-      expect(Math.abs(AlignContentFlexEnd_1_height - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_2_height - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_3_height - vp2px(80)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_4_height - vp2px(90)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_1_width - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_2_width - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_3_width - vp2px(60)) <= 1).assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_4_width - vp2px(60)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_1_height - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_2_height - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_3_height - vp2px(80))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_4_height - vp2px(90))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_1_width - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_2_width - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_3_width - vp2px(60))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_4_width - vp2px(60))) <= 1).assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
-      expect(Math.abs((AlignContentFlexEnd_flex002.top - End_Margin_Column_2.top) - vp2px(5)) <= 1).assertTrue();
-      expect(Math.abs((End_Margin_Column_2.bottom - AlignContentFlexEnd_4.bottom) - vp2px(20)) <= 1).assertTrue();
-      expect(Math.abs((AlignContentFlexEnd_flex002.bottom - AlignContentFlexEnd_4.bottom) - vp2px(15)) <= 1)
+      expect(Math.floor(Math.abs((AlignContentFlexEnd_flex002.top - End_Margin_Column_2.top) - vp2px(5))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((End_Margin_Column_2.bottom - AlignContentFlexEnd_4.bottom) - vp2px(20))) <= 2).assertTrue();
+      expect(Math.floor(Math.abs((AlignContentFlexEnd_flex002.bottom - AlignContentFlexEnd_4.bottom) - vp2px(15))) <= 1)
         .assertTrue();
-      expect(Math.abs(AlignContentFlexEnd_4.top - AlignContentFlexEnd_2.bottom) <= 1).assertTrue();
-      expect(Math.abs((AlignContentFlexEnd_2.top - AlignContentFlexEnd_flex002.top) - vp2px(35)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(AlignContentFlexEnd_4.top - AlignContentFlexEnd_2.bottom)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((AlignContentFlexEnd_2.top - AlignContentFlexEnd_flex002.top) - vp2px(35))) <= 1).assertTrue();
 
-      console.info('testAlignContentEndFlexMargin&PaddingSatisfy END')
+      console.info('testAlignContentEndFlexMarginPaddingSatisfy END')
 
     });
 

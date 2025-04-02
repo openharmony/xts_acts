@@ -19,7 +19,7 @@ import base from '@ohos.base';
 import fileUri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs'
 import wantConstant from '@ohos.ability.wantConstant';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import Want from '@ohos.app.ability.Want';
 import ability from '@ohos.ability.ability';
@@ -65,7 +65,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0100", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0100", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0100 is start---------------")
       let TAG1 = "Temp_UriPermissionTest_0100";
       let filePath: string = abilityContext.filesDir + "/test_1.txt";
@@ -181,7 +181,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0200", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0200", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0200 is start---------------")
       let TAG2 = "Temp_UriPermissionTest_0200";
       let filePath: string = abilityContext.filesDir + "/test_2.txt";
@@ -311,7 +311,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0400", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0400", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0400 is start---------------")
       let TAG4 = "Temp_UriPermissionTest_0400";
       let filePath: string = abilityContext.filesDir + "/test_4.txt";
@@ -479,7 +479,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0500", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0500", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0500 is start---------------")
       let TAG5 = "Temp_UriPermissionTest_0500";
       let filePath: string = abilityContext.filesDir + "/test_5.txt";
@@ -605,7 +605,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0600", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0600", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0600 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -769,7 +769,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0700", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0700", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0700 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -905,7 +905,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_0800", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_0800", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_0800 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -1057,7 +1057,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1000", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1000", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1000 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -1189,7 +1189,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1100", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1100", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1100 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -1288,7 +1288,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1200", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1200", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1200 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -1380,7 +1380,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1400", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1400", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1400 is start---------------")
       if (deviceType === '2in1') {
         done();
@@ -1490,7 +1490,7 @@ export default function UriPermissionTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Temp_UriPermissionTest_1500", 0, async (done: Function) => {
+    it("Temp_UriPermissionTest_1500", Level.LEVEL0, async (done: Function) => {
       console.info("---------------Temp_UriPermissionTest_1500 is start---------------")
       if (deviceType === '2in1') {
         done();

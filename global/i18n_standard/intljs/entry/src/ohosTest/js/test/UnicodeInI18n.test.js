@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function UnicodeInI18nTest() {
 describe('UnicodeInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isDigit interface
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_0100', 0, function () {
+    it('i18n_test_character_0100', Level.LEVEL0, function () {
         console.log('i18n_test_character_0100 ' + 'start');
         let value = I18n.Unicode.isDigit('abc');
         console.log('i18n_test_character_0100 ' + value);
@@ -73,7 +73,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isDigit interface with 123 param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_0120', 0, function () {
+    it('i18n_test_character_0120', Level.LEVEL2, function () {
         console.log('i18n_test_character_0120 ' + 'start');
         let value = I18n.Unicode.isDigit('123');
         console.log('i18n_test_character_0120 ' + value);
@@ -85,7 +85,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isDigit interface with 123abc param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_0140', 0, function () {
+    it('i18n_test_character_0140', Level.LEVEL2, function () {
         console.log('i18n_test_character_0140 ' + 'start');
         let value = I18n.Unicode.isDigit('123abc');
         console.log('i18n_test_character_0140 ' + value);
@@ -97,7 +97,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isDigit interface with abc123 param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_0150', 0, function () {
+    it('i18n_test_character_0150', Level.LEVEL2, function () {
         console.log('i18n_test_character_0150 ' + 'start');
         let value = I18n.Unicode.isDigit('abc123');
         console.log('i18n_test_character_0150 ' + value);
@@ -109,7 +109,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isDigit interface with null param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_0160', 0, function () {
+    it('i18n_test_character_0160', Level.LEVEL2, function () {
         console.log('i18n_test_character_0160 ' + 'start');
         let value = I18n.Unicode.isDigit('');
         console.log('i18n_test_character_0160 ' + value);
@@ -121,7 +121,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isSpaceChar interface with abc param
     * @tc.desc    check the isSpaceChar interface
     */
-    it('i18n_test_character_0200', 0, function () {
+    it('i18n_test_character_0200', Level.LEVEL0, function () {
         console.log('i18n_test_character_0200 ' + 'start');
         let value = I18n.Unicode.isSpaceChar('abc');
         console.log('i18n_test_character_0200 ' + value);
@@ -133,7 +133,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isSpaceChar interface with one space param
     * @tc.desc    check the isSpaceChar interface
     */
-    it('i18n_test_character_0220', 0, function () {
+    it('i18n_test_character_0220', Level.LEVEL2, function () {
         console.log('i18n_test_character_0220 ' + 'start');
         let value = I18n.Unicode.isSpaceChar(' ');
         console.log('i18n_test_character_0220 ' + value);
@@ -145,7 +145,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isSpaceChar interface with multi space param
     * @tc.desc    check the isSpaceChar interface
     */
-    it('i18n_test_character_0240', 0, function () {
+    it('i18n_test_character_0240', Level.LEVEL2, function () {
         console.log('i18n_test_character_0240 ' + 'start');
         let value = I18n.Unicode.isSpaceChar('   ');
         console.log('i18n_test_character_0240--' + value + '--');
@@ -157,7 +157,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isWhitespace interface with abc param
     * @tc.desc    check the isWhitespace interface
     */
-    it('i18n_test_character_0300', 0, function () {
+    it('i18n_test_character_0300', Level.LEVEL0, function () {
         console.log('i18n_test_character_0300 ' + 'start');
         let value = I18n.Unicode.isWhitespace('abc');
         console.log('i18n_test_character_0300 ' + value);
@@ -169,7 +169,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isWhitespace interface with \u0009 param
     * @tc.desc    check the isWhitespace interface
     */
-    it('i18n_test_character_0320', 0, function () {
+    it('i18n_test_character_0320', Level.LEVEL2, function () {
         console.log('i18n_test_character_0320 ' + 'start');
         let value = I18n.Unicode.isWhitespace('\u0009');
         console.log('i18n_test_character_0320--' + value + '--');
@@ -181,7 +181,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isRTL interface with abc param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_0400', 0, function () {
+    it('i18n_test_character_0400', Level.LEVEL0, function () {
         console.log('i18n_test_character_0400 ' + 'start');
         let value = I18n.Unicode.isRTL('abc');
         console.log('i18n_test_character_0400 ' + value);
@@ -193,7 +193,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isRTL interface with ١٢٣٤٥٦٧ param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_0420', 0, function () {
+    it('i18n_test_character_0420', Level.LEVEL2, function () {
         console.log('i18n_test_character_0420 ' + 'start');
         let value = I18n.Unicode.isRTL('١٢٣٤٥٦٧');
         console.log('i18n_test_character_0420 ' + value);
@@ -205,7 +205,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isRTL interface with 我是小明 param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_0440', 0, function () {
+    it('i18n_test_character_0440', Level.LEVEL2, function () {
         console.log('i18n_test_character_0440 ' + 'start');
         let value = I18n.Unicode.isRTL('我是小明');
         console.log('i18n_test_character_0440 ' + value);
@@ -217,7 +217,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isRTL interface with نحن param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_0460', 0, function () {
+    it('i18n_test_character_0460', Level.LEVEL2, function () {
         console.log('i18n_test_character_0460 ' + 'start');
         let value = I18n.Unicode.isRTL('نحن');
         console.log('i18n_test_character_0460 ' + value);
@@ -229,7 +229,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isIdeograph interface with abc param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_0500', 0, function () {
+    it('i18n_test_character_0500', Level.LEVEL0, function () {
         console.log('i18n_test_character_0500 ' + 'start');
         let value = I18n.Unicode.isIdeograph('abc');
         console.log('i18n_test_character_0500 ' + value);
@@ -241,7 +241,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isIdeograph interface with '我' param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_0520', 0, function () {
+    it('i18n_test_character_0520', Level.LEVEL2, function () {
         console.log('i18n_test_character_0520 ' + 'start');
         let value = I18n.Unicode.isIdeograph('我');
         console.log('i18n_test_character_0520 ' + value);
@@ -253,7 +253,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isIdeograph interface with '우리' param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_0540', 0, function () {
+    it('i18n_test_character_0540', Level.LEVEL2, function () {
         console.log('i18n_test_character_0540 ' + 'start');
         let value = I18n.Unicode.isIdeograph('우리');
         console.log('i18n_test_character_0540 ' + value);
@@ -265,7 +265,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isIdeograph interface with '私た' param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_0560', 0, function () {
+    it('i18n_test_character_0560', Level.LEVEL2, function () {
         console.log('i18n_test_character_0560 ' + 'start');
         let value = I18n.Unicode.isIdeograph('私たち');
         console.log('i18n_test_character_0560 ' + value);
@@ -277,7 +277,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLetter interface with abc param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_0600', 0, function () {
+    it('i18n_test_character_0600', Level.LEVEL0, function () {
         console.log('i18n_test_character_0600 ' + 'start');
         let value = I18n.Unicode.isLetter('abc');
         console.log('i18n_test_character_0600 ' + value);
@@ -289,7 +289,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLetter interface with 123 param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_0620', 0, function () {
+    it('i18n_test_character_0620', Level.LEVEL2, function () {
         console.log('i18n_test_character_0620 ' + 'start');
         let value = I18n.Unicode.isLetter('123');
         console.log('i18n_test_character_0620 ' + value);
@@ -301,7 +301,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLetter interface with abc123 param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_0640', 0, function () {
+    it('i18n_test_character_0640', Level.LEVEL2, function () {
         console.log('i18n_test_character_0640 ' + 'start');
         let value = I18n.Unicode.isLetter('abc123');
         console.log('i18n_test_character_0640 ' + value);
@@ -313,7 +313,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLetter interface with 123abc param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_0660', 0, function () {
+    it('i18n_test_character_0660', Level.LEVEL2, function () {
         console.log('i18n_test_character_0660 ' + 'start');
         let value = I18n.Unicode.isLetter('123abc');
         console.log('i18n_test_character_0660 ' + value);
@@ -325,7 +325,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLowerCase interface with abc param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_0700', 0, function () {
+    it('i18n_test_character_0700', Level.LEVEL0, function () {
         console.log('i18n_test_character_0700 ' + 'start');
         let value = I18n.Unicode.isLowerCase('abc');
         console.log('i18n_test_character_0700 ' + value);
@@ -337,7 +337,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    ftest isLowerCase interface with ABC param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_0720', 0, function () {
+    it('i18n_test_character_0720', Level.LEVEL2, function () {
         console.log('i18n_test_character_0720 ' + 'start');
         let value = I18n.Unicode.isLowerCase('ABC');
         console.log('i18n_test_character_0720 ' + value);
@@ -349,7 +349,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLowerCase interface with abcDEF param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_0740', 0, function () {
+    it('i18n_test_character_0740', Level.LEVEL2, function () {
         console.log('i18n_test_character_0740 ' + 'start');
         let value = I18n.Unicode.isLowerCase('abcDEF');
         console.log('i18n_test_character_0740 ' + value);
@@ -361,7 +361,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isLowerCase interface with ABCdef param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_0760', 0, function () {
+    it('i18n_test_character_0760', Level.LEVEL2, function () {
         console.log('i18n_test_character_0760 ' + 'start');
         let value = I18n.Unicode.isLowerCase('ABCdef');
         console.log('i18n_test_character_0760 ' + value);
@@ -373,7 +373,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isUpperCase interface with ABC param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_0800', 0, function () {
+    it('i18n_test_character_0800', Level.LEVEL0, function () {
         console.log('i18n_test_character_0800 ' + 'start');
         let value = I18n.Unicode.isUpperCase('ABC');
         console.log('i18n_test_character_0800 ' + value);
@@ -385,7 +385,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isUpperCase interface with abc param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_0820', 0, function () {
+    it('i18n_test_character_0820', Level.LEVEL2, function () {
         console.log('i18n_test_character_0820 ' + 'start');
         let value = I18n.Unicode.isUpperCase('abc');
         console.log('i18n_test_character_0820 ' + value);
@@ -397,7 +397,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isUpperCase interface with ABCdef param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_0840', 0, function () {
+    it('i18n_test_character_0840', Level.LEVEL2, function () {
         console.log('i18n_test_character_0840 ' + 'start');
         let value = I18n.Unicode.isUpperCase('ABCdef');
         console.log('i18n_test_character_0840 ' + value);
@@ -409,7 +409,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test isUpperCase interface with abcDEF param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_0860', 0, function () {
+    it('i18n_test_character_0860', Level.LEVEL2, function () {
         console.log('i18n_test_character_0860 ' + 'start');
         let value = I18n.Unicode.isUpperCase('abcDEF');
         console.log('i18n_test_character_0860 ' + value);
@@ -421,7 +421,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test getType interface with a param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0900', 0, function () {
+    it('i18n_test_character_0900', Level.LEVEL0, function () {
         console.log('i18n_test_character_0900 ' + 'start');
         let value = I18n.Unicode.getType('a');
         console.log('i18n_test_character_0900 ' + value);
@@ -433,7 +433,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    ftest getType interface with ABC param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0920', 0, function () {
+    it('i18n_test_character_0920', Level.LEVEL2, function () {
         console.log('i18n_test_character_0920 ' + 'start');
         let value = I18n.Unicode.getType('ABC');
         console.log('i18n_test_character_0920 ' + value);
@@ -445,7 +445,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test getType interface with ABCdef param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0940', 0, function () {
+    it('i18n_test_character_0940', Level.LEVEL2, function () {
         console.log('i18n_test_character_0940 ' + 'start');
         let value = I18n.Unicode.getType('ABCdef');
         console.log('i18n_test_character_0940 ' + value);
@@ -457,7 +457,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test getType interface with 123 param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0960', 0, function () {
+    it('i18n_test_character_0960', Level.LEVEL2, function () {
         console.log('i18n_test_character_0960 ' + 'start');
         let value = I18n.Unicode.getType('123');
         console.log('i18n_test_character_0960 ' + value);
@@ -469,7 +469,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test getType interface with 123abc param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0970', 0, function () {
+    it('i18n_test_character_0970', Level.LEVEL2, function () {
         console.log('i18n_test_character_0970 ' + 'start');
         let value = I18n.Unicode.getType('123abc');
         console.log('i18n_test_character_0970 ' + value);
@@ -481,7 +481,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test getType interface with ١٢٣٤٥٦٧ param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0980', 0, function () {
+    it('i18n_test_character_0980', Level.LEVEL2, function () {
         console.log('i18n_test_character_0980 ' + 'start');
         let value = I18n.Unicode.getType('١٢٣٤٥٦٧');
         console.log('i18n_test_character_0980 ' + value);
@@ -493,7 +493,7 @@ describe('UnicodeInI18nTest', function () {
     * @tc.name    test getType interface with multi space param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_0990', 0, function () {
+    it('i18n_test_character_0990', Level.LEVEL2, function () {
         console.log('i18n_test_character_0990 ' + 'start');
         let value = I18n.Unicode.getType('   ');
         console.log('i18n_test_character_0990 ' + value);

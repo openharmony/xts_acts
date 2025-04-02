@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import usbManager from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
 export default function UsbApiParamExceJsunitTest() {
@@ -142,7 +142,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testHasRightParamEx001', 0, function () {
+    it('testHasRightParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testHasRightParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -166,7 +166,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testHasRightParamEx002', 0, function () {
+    it('testHasRightParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testHasRightParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -194,7 +194,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRequestRightParamEx001', 0, async function () {
+    it('testRequestRightParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testRequestRightParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -218,7 +218,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRequestRightParamEx002', 0, async function () {
+    it('testRequestRightParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
         console.info(TAG, 'usb testRequestRightParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -246,7 +246,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamEx001', 0, function () {
+    it('testRemoveRightParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testRemoveRightParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -270,7 +270,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamEx002', 0, function () {
+    it('testRemoveRightParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testRemoveRightParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -298,7 +298,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamEx003', 0, function () {
+    it('testRemoveRightParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testRemoveRightParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -326,7 +326,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testRemoveRightParamEx004', 0, function () {
+    it('testRemoveRightParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testRemoveRightParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -354,7 +354,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx001', 0, function () {
+    it('testConnectDeviceParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -381,7 +381,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx002', 0, function () {
+    it('testConnectDeviceParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -407,7 +407,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx003', 0, function () {
+    it('testConnectDeviceParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -433,7 +433,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx004', 0, function () {
+    it('testConnectDeviceParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -458,7 +458,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx005', 0, function () {
+    it('testConnectDeviceParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -483,7 +483,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx006', 0, function () {
+    it('testConnectDeviceParamEx006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -509,7 +509,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx007', 0, function () {
+    it('testConnectDeviceParamEx007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -535,7 +535,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx008', 0, function () {
+    it('testConnectDeviceParamEx008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -561,7 +561,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx009', 0, function () {
+    it('testConnectDeviceParamEx009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -587,7 +587,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx010', 0, function () {
+    it('testConnectDeviceParamEx010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -613,7 +613,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx011', 0, function () {
+    it('testConnectDeviceParamEx011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -639,7 +639,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx012', 0, function () {
+    it('testConnectDeviceParamEx012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -664,7 +664,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx013', 0, function () {
+    it('testConnectDeviceParamEx013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -690,7 +690,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx014', 0, function () {
+    it('testConnectDeviceParamEx014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -716,7 +716,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx015', 0, function () {
+    it('testConnectDeviceParamEx015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -742,7 +742,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx016', 0, function () {
+    it('testConnectDeviceParamEx016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -767,7 +767,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx017', 0, function () {
+    it('testConnectDeviceParamEx017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx017 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -793,7 +793,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx018', 0, function () {
+    it('testConnectDeviceParamEx018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx018 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -819,7 +819,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx019', 0, function () {
+    it('testConnectDeviceParamEx019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx019 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -845,7 +845,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx020', 0, function () {
+    it('testConnectDeviceParamEx020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx020 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -870,7 +870,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx021', 0, function () {
+    it('testConnectDeviceParamEx021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx021 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -896,7 +896,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx022', 0, function () {
+    it('testConnectDeviceParamEx022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx022 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -922,7 +922,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx023', 0, function () {
+    it('testConnectDeviceParamEx023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx023 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -948,7 +948,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx024', 0, function () {
+    it('testConnectDeviceParamEx024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx024 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -974,7 +974,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx025', 0, function () {
+    it('testConnectDeviceParamEx025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx025 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1000,7 +1000,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx026', 0, function () {
+    it('testConnectDeviceParamEx026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx026 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1026,7 +1026,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testConnectDeviceParamEx027', 0, function () {
+    it('testConnectDeviceParamEx027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testConnectDeviceParamEx027 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1052,7 +1052,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamEx001', 0, function () {
+    it('testClosePipeParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1079,7 +1079,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClosePipeParamEx002', 0, function () {
+    it('testClosePipeParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClosePipeParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1107,7 +1107,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamEx001', 0, function () {
+    it('testGetRawDescriptorParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1135,7 +1135,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamEx002', 0, function () {
+    it('testGetRawDescriptorParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1163,7 +1163,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamEx003', 0, function () {
+    it('testGetRawDescriptorParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1190,7 +1190,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamEx004', 0, function () {
+    it('testGetRawDescriptorParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1217,7 +1217,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetRawDescriptorParamEx005', 0, function () {
+    it('testGetRawDescriptorParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetRawDescriptorParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1245,7 +1245,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamEx001', 0, function () {
+    it('testGetFileDescriptorParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1273,7 +1273,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamEx002', 0, function () {
+    it('testGetFileDescriptorParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1301,7 +1301,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamEx003', 0, function () {
+    it('testGetFileDescriptorParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1328,7 +1328,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamEx004', 0, function () {
+    it('testGetFileDescriptorParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1355,7 +1355,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testGetFileDescriptorParamEx005', 0, function () {
+    it('testGetFileDescriptorParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testGetFileDescriptorParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1383,7 +1383,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx001', 0, function () {
+    it('testClaimInterfaceParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1411,7 +1411,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx002', 0, function () {
+    it('testClaimInterfaceParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1439,7 +1439,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx003', 0, function () {
+    it('testClaimInterfaceParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1467,7 +1467,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx004', 0, function () {
+    it('testClaimInterfaceParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1495,7 +1495,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx005', 0, function () {
+    it('testClaimInterfaceParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1523,7 +1523,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx006', 0, function () {
+    it('testClaimInterfaceParamEx006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1551,7 +1551,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx007', 0, function () {
+    it('testClaimInterfaceParamEx007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1580,7 +1580,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx008', 0, function () {
+    it('testClaimInterfaceParamEx008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1608,7 +1608,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx009', 0, function () {
+    it('testClaimInterfaceParamEx009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1636,7 +1636,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx010', 0, function () {
+    it('testClaimInterfaceParamEx010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1664,7 +1664,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx011', 0, function () {
+    it('testClaimInterfaceParamEx011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1692,7 +1692,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx012', 0, function () {
+    it('testClaimInterfaceParamEx012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1720,7 +1720,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx013', 0, function () {
+    it('testClaimInterfaceParamEx013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1748,7 +1748,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx014', 0, function () {
+    it('testClaimInterfaceParamEx014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1776,7 +1776,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testClaimInterfaceParamEx015', 0, function () {
+    it('testClaimInterfaceParamEx015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testClaimInterfaceParamEx015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1804,7 +1804,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx001', 0, function () {
+    it('testSetConfigurationParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1832,7 +1832,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx002', 0, function () {
+    it('testSetConfigurationParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1853,6 +1853,34 @@ describe('UsbApiParamExceJsunitTest', function () {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostManager_JS_ParamExCon_6300
+     * @tc.name     : testSetConfigurationParam801Err002
+     * @tc.desc     : Negative test: configs id add 100
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testSetConfigurationParam801Err002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info(TAG, 'usb testSetConfigurationParam801Err002 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+        getPipe("testSetConfigurationParam801Err002");
+        try {
+            let tmpConfig = devices.configs[0];
+            tmpConfig.id = tmpConfig.id + 100;
+            let ret = usbManager.setConfiguration(gPipe, tmpConfig);
+            console.info(TAG, 'usb [', tmpConfig.id, '] setConfiguration ret : ', ret);
+            expect(ret !== 0).assertTrue();
+        } catch (err) {
+            console.info(TAG, 'testSetConfigurationParam801Err002 catch err code: ', err);
+            expect(err.code).assertEqual(801);
+        }
+        toClosePipe("testSetConfigurationParam801Err0021");
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamEx_6500
      * @tc.name     : testSetConfigurationParamEx003
      * @tc.desc     : Negative test: configs name is ""
@@ -1860,7 +1888,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx003', 0, function () {
+    it('testSetConfigurationParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1888,7 +1916,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx004', 0, function () {
+    it('testSetConfigurationParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1916,7 +1944,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx005', 0, function () {
+    it('testSetConfigurationParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1944,7 +1972,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx006', 0, function () {
+    it('testSetConfigurationParamEx006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -1972,7 +2000,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx007', 0, function () {
+    it('testSetConfigurationParamEx007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2000,7 +2028,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx008', 0, function () {
+    it('testSetConfigurationParamEx008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2028,7 +2056,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx009', 0, function () {
+    it('testSetConfigurationParamEx009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2056,7 +2084,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx010', 0, function () {
+    it('testSetConfigurationParamEx010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2084,7 +2112,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetConfigurationParamEx011', 0, function () {
+    it('testSetConfigurationParamEx011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetConfigurationParamEx011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2112,7 +2140,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx001', 0, function () {
+    it('testSetInterfaceParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2143,7 +2171,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx002', 0, function () {
+    it('testSetInterfaceParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2174,7 +2202,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx003', 0, function () {
+    it('testSetInterfaceParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2205,7 +2233,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx004', 0, function () {
+    it('testSetInterfaceParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2236,7 +2264,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx005', 0, function () {
+    it('testSetInterfaceParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2268,7 +2296,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx006', 0, function () {
+    it('testSetInterfaceParamEx006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2301,7 +2329,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx007', 0, function () {
+    it('testSetInterfaceParamEx007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2334,7 +2362,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx008', 0, function () {
+    it('testSetInterfaceParamEx008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2367,7 +2395,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx009', 0, function () {
+    it('testSetInterfaceParamEx009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2400,7 +2428,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx010', 0, function () {
+    it('testSetInterfaceParamEx010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2433,7 +2461,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx011', 0, function () {
+    it('testSetInterfaceParamEx011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2466,7 +2494,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx012', 0, function () {
+    it('testSetInterfaceParamEx012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2499,7 +2527,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx013', 0, function () {
+    it('testSetInterfaceParamEx013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2532,7 +2560,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx014', 0, function () {
+    it('testSetInterfaceParamEx014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2565,7 +2593,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx015', 0, function () {
+    it('testSetInterfaceParamEx015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx015 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2598,7 +2626,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testSetInterfaceParamEx016', 0, function () {
+    it('testSetInterfaceParamEx016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testSetInterfaceParamEx016 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2631,7 +2659,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx001', 0, function () {
+    it('testReleaseInterfaceParamEx001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2655,6 +2683,37 @@ describe('UsbApiParamExceJsunitTest', function () {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostManager_JS_ParamExRel_0100
+     * @tc.name     : testReleaseInterfaceParam801Err001
+     * @tc.desc     : Negative test: pipe busNum +1000
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testReleaseInterfaceParamEx801Err001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
+        console.info(TAG, 'usb testReleaseInterfaceParamEx801Err001 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+        getPipe("testReleaseInterfaceParamEx801Err001");
+        let tmpInterface = devices.configs[0].interfaces[0];
+        try {
+            let isClaim = usbManager.claimInterface(gPipe, tmpInterface, true);
+            expect(isClaim).assertEqual(0);
+            gPipe.busNum = gPipe.busNum + 1000;
+            let ret = usbManager.releaseInterface(gPipe, tmpInterface);
+            console.info(TAG, 'usb [', gPipe.busNum, '] releaseInterface ret : ', ret);
+            expect(ret !== 0).assertTrue();
+        } catch (err) {
+            console.info(TAG, 'testReleaseInterfaceParamEx801Err001 catch err code: ', err);
+            expect(err.code).assertEqual(801);
+        }
+        toReleaseInterface("testReleaseInterfaceParamEx801Err001", tmpInterface);
+        toClosePipe("testReleaseInterfaceParamEx801Err001");
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostManager_JS_ParamEx_9100
      * @tc.name     : testReleaseInterfaceParamEx002
      * @tc.desc     : Negative test: pipe devAddress +10000
@@ -2662,7 +2721,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx002', 0, function () {
+    it('testReleaseInterfaceParamEx002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx002 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2693,7 +2752,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx003', 0, function () {
+    it('testReleaseInterfaceParamEx003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx003 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2724,7 +2783,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx004', 0, function () {
+    it('testReleaseInterfaceParamEx004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx004 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2755,7 +2814,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx005', 0, function () {
+    it('testReleaseInterfaceParamEx005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx005 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2788,7 +2847,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx006', 0, function () {
+    it('testReleaseInterfaceParamEx006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx006 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2821,7 +2880,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx007', 0, function () {
+    it('testReleaseInterfaceParamEx007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx007 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2851,7 +2910,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx008', 0, function () {
+    it('testReleaseInterfaceParamEx008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx008 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2881,7 +2940,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx009', 0, function () {
+    it('testReleaseInterfaceParamEx009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx009 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2911,7 +2970,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx010', 0, function () {
+    it('testReleaseInterfaceParamEx010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx010 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2941,7 +3000,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx011', 0, function () {
+    it('testReleaseInterfaceParamEx011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx011 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -2971,7 +3030,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx012', 0, function () {
+    it('testReleaseInterfaceParamEx012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx012 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3001,7 +3060,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx013', 0, function () {
+    it('testReleaseInterfaceParamEx013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx013 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
@@ -3031,7 +3090,7 @@ describe('UsbApiParamExceJsunitTest', function () {
      * @tc.type     : Function
      * @tc.level    : Level 3
      */
-    it('testReleaseInterfaceParamEx014', 0, function () {
+    it('testReleaseInterfaceParamEx014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info(TAG, 'usb testReleaseInterfaceParamEx014 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();

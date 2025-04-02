@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 import common from '@ohos.app.ability.common';
 import ohosWindow from '@ohos.window';
@@ -40,7 +40,8 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test enumcolorspace_Test_001
      * @tc.desc test the value of enum color space
      */
-    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_001', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       console.info('test the enum value of ColorSpace Manager begin');
       try {
         expect(0).assertEqual(colorSpaceManager.ColorSpace.UNKNOWN);
@@ -87,7 +88,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_002
      * @tc.desc test the interface of create
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_002', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
         let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998);
@@ -108,7 +109,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_003
      * @tc.desc test the interface of create
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_003', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
         let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.UNKNOWN);
@@ -129,7 +130,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_004
      * @tc.desc test the interface of create
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_004', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
         let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3);
@@ -150,7 +151,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_005
      * @tc.desc test the interface of create
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_005', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
         let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3);
@@ -171,7 +172,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_006
      * @tc.desc test the interface of create
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_006', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
         let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
@@ -192,7 +193,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_007
      * @tc.desc test the interface of create colorSpaceManager.ColorSpace.CUSTOM invalid
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_007', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager begin');
       try {
         let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.CUSTOM);
@@ -213,7 +214,7 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
      * @tc.name Test createcolorspacemanager_Test_008
      * @tc.desc test the interface of create
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_008', 0, async (done: Function) => {
+    it('SUB_GRAPHIC_CREATE_JSAPI_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test createcolorspacemanager08 begin');
       try {
         let primaries: colorSpaceManager.ColorSpacePrimaries = {
@@ -239,6 +240,46 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
       } catch (err) {
         console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
         expect.assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_009
+     * @tc.name Test createcolorspacemanager_Test_009
+     * @tc.desc test the interface of create
+     */
+    it('SUB_GRAPHIC_CREATE_JSAPI_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('test createcolorspacemanager begin');
+      try {
+        expect(26).assertEqual(colorSpaceManager.ColorSpace.H_LOG);
+        let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.H_LOG);
+        expect(colorSpace != null).assertTrue();
+        let colorSpaceName = colorSpace.getColorSpaceName();
+        console.info("the name is " + colorSpaceName);
+        expect(colorSpaceName).assertEqual(colorSpaceManager.ColorSpace.H_LOG);
+        done();
+      } catch (err) {
+        console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
+        expect.assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_010
+     * @tc.name Test createcolorspacemanager_Test_010
+     * @tc.desc test the interface of create
+     */
+    it('SUB_GRAPHIC_CREATE_JSAPI_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('test createcolorspacemanager begin');
+      try {
+        let colorSpace = colorSpaceManager.create(null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
+        expect(401).assertEqual(err.code);
         done();
       }
     })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import screen from '@ohos.screen';
 import display from '@ohos.display';
@@ -33,7 +33,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateFloatWindowPermission_Promise', 0, async () => {
+    it('testCreateFloatWindowPermission_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateFloatWindowPermission_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -64,7 +64,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateFloatWindowPermission_Callback', 0, async (done: Function) => {
+    it('testCreateFloatWindowPermission_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateFloatWindowPermission_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -100,7 +100,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowPrivacyModePermission_Callback', 0, async (done: Function) => {
+    it('testSetWindowPrivacyModePermission_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowPrivacyModePermission_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -147,7 +147,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetWindowPrivacyModePermission_Promise', 0, async () => {
+    it('testSetWindowPrivacyModePermission_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetWindowPrivacyModePermission_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

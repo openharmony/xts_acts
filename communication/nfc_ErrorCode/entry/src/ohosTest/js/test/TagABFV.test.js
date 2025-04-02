@@ -15,7 +15,7 @@
 
 
 import tag from '@ohos.nfc.tag';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -115,9 +115,9 @@ export default function nfcTagABFVErrorTest() {
          * @tc.desc Obtains the DsfId value of the taginfo. The error code is 401
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfctage_js_0100', 0, function ()  {
+        it('SUB_Communication_NFC_nfctage_js_0100', Level.LEVEL1, function ()  {
             let TagInfo ;
             try{
                 TagInfo = tag.getTagInfo("test");
@@ -135,9 +135,9 @@ export default function nfcTagABFVErrorTest() {
          * @tc.desc Obtains the DsfId value of the taginfo. The error code is 401
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfctage_js_0200', 0, function ()  {
+        it('SUB_Communication_NFC_nfctage_js_0200', Level.LEVEL1, function ()  {
             let TagInfo ;
             try{
                 TagInfo = tag.getNfcA("test");
@@ -155,9 +155,9 @@ export default function nfcTagABFVErrorTest() {
          * @tc.desc Obtains the DsfId value of the taginfo. The error code is 401
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfctage_js_0300', 0, function ()  {
+        it('SUB_Communication_NFC_nfctage_js_0300', Level.LEVEL1, function ()  {
             let TagInfo ;
             try{
                 TagInfo = tag.getNfcB("test");
@@ -175,9 +175,9 @@ export default function nfcTagABFVErrorTest() {
          * @tc.desc Obtains the DsfId value of the taginfo. The error code is 401
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfctage_js_0400', 0, function ()  {
+        it('SUB_Communication_NFC_nfctage_js_0400', Level.LEVEL1, function ()  {
             let TagInfo ;
             try{
                 TagInfo = tag.getNfcF("test");
@@ -195,9 +195,9 @@ export default function nfcTagABFVErrorTest() {
          * @tc.desc Obtains the DsfId value of the taginfo. The error code is 401
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfctage_js_0500', 0, function ()  {
+        it('SUB_Communication_NFC_nfctage_js_0500', Level.LEVEL1, function ()  {
             let TagInfo ;
             try{
                 TagInfo = tag.getNfcV("test");
@@ -205,6 +205,64 @@ export default function nfcTagABFVErrorTest() {
                 expect(TagInfo instanceof Object).assertTrue();
             }catch(error){
                 console.info('[NFC_test]TagABFV5 getNfcVtag errorcode:' + error.code)
+                expect(401).assertEqual(error.code);
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_0600
+         * @tc.name Test getBarcodetag
+         * @tc.desc This interface getBarcodetag The error code is 401
+         * @tc.size since 16
+         * @tc.type Function
+         * @tc.level Level 1
+         */
+        it('SUB_Communication_NFC_nfctage_js_0600', Level.LEVEL1, function ()  {
+
+            try {
+                let data = tag.getBarcodeTag("test");
+                console.info("[NFC_test]06 getBarcodeTag data is " + data);
+                expect().assertFail();
+            }catch(error){
+                console.info("[NFC_test]06 getBarcodeTag error is " + error + "/" + error.code)
+                expect(401).assertEqual(error.code);
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_0700
+         * @tc.name Test registerForegroundDispatch
+         * @tc.desc This interface registerForegroundDispatch The error code is 401
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 1
+         */
+        it('SUB_Communication_NFC_nfctage_js_0700', Level.LEVEL1, function ()  {
+            try {
+                tag.registerForegroundDispatch("test");
+                console.info('[NFC_test]07 nfc registerForegroundDispatch pass')
+                expect().assertFail();
+            } catch (error) {
+                console.info('[NFC_test]07 nfc registerForegroundDispatch error' + error + "/" + error.code)
+                expect(401).assertEqual(error.code);
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_0800
+         * @tc.name Test unregisterForegroundDispatch
+         * @tc.desc This interface unregisterForegroundDispatch The error code is 401
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 1
+         */
+        it('SUB_Communication_NFC_nfctage_js_0800', Level.LEVEL1, function ()  {
+            try {
+                tag.unregisterForegroundDispatch("test");
+                console.info('[NFC_test]08 nfc unregisterForegroundDispatch pass')
+                expect().assertFail();
+            } catch (error) {
+                console.info('[NFC_test]08 nfc unregisterForegroundDispatch error' + error + "/" + error.code)
                 expect(401).assertEqual(error.code);
             }
         })

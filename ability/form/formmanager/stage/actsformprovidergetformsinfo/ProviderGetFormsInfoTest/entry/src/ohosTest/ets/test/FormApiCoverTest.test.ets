@@ -20,6 +20,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import Want from '@ohos.app.ability.Want';
 import formBindingData from '@ohos.app.form.formBindingData';
 import formProvider from '@ohos.app.form.formProvider';
+import FormEditExtensionAbility from '@ohos.app.form.FormEditExtensionAbility';
 
 const INTERVAL_TIME = 2500;
 
@@ -93,6 +94,28 @@ export default function FormApiCoverTest() {
         done();
       }, INTERVAL_TIME);
     })
+
+    /*
+     * @tc.number  StartSecondPage_Cover_0100
+     * @tc.name    StartSecondPage_Cover_0100
+     * @tc.desc    Function startSecondPage covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   3
+     */
+    it(`StartSecondPage_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'StartSecondPage_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        let abilityTest:FormEditExtensionAbility = new FormEditExtensionAbility();
+        abilityTest.context.startSecondPage(module1Want);
+        expect().assertFail();
+      } catch (error) {
+        console.log(`${name} exception caught: ${JSON.stringify(error)}`);
+        done();
+      }
+      console.info(`${name} end`);
+    });
 
     /*
      * @tc.number  SetFormNextRefreshTime_Cover_0100

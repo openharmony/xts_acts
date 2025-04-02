@@ -22,6 +22,7 @@ import VibratorJsTest_misc_9 from './VibratorPatternJsunit.test'
 import VibratorJsTest_misc_10 from './VibratorPatternJsunit1.test'
 import VibratorJsTest_misc_11 from './VibratorPatternJsunit2.test'
 import VibratorJsTest_misc_12 from './VibratorPatternJsunit3.test'
+import VibratorTest from './VibratorErrCode1.test.js'
 export default function testsuite() {
     VibratorJsTest_misc_1()
     VibratorJsTest_misc_2()
@@ -33,4 +34,5 @@ export default function testsuite() {
     VibratorJsTest_misc_10()
     VibratorJsTest_misc_11()
     VibratorJsTest_misc_12()
+    VibratorTest()
 }

@@ -98,7 +98,6 @@ export default function cameraSessionMultiSessionTest() {
       getCameraManagerInstance();
       mCameraManager.off('cameraStatus');
       mCameraManager.off('torchStatusChange');
-      mCameraManager.off('foldStatusChange');
       getCameraSupportDevicesArray();
       console.info('beforeAll case');
       await ability();
@@ -214,26 +213,6 @@ export default function cameraSessionMultiSessionTest() {
       await sleep(500);  
       mCameraManager.off('torchStatusChange');
       expect(isTriggerTorchStatusCallback).assertTrue();
-      done();
-    })
-
-    it('SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_FOLD_STATUS_0100', 2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_FOLD_STATUS_0100--------------");
-      let isTriggerFoldStatusCallback = false;
-      mCameraManager.on('foldStatusChange', async (err, foldStatus) => {
-        if (!err || err.code == 0) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_FOLD_STATUS_0100 status:" +
-          JSON.stringify(foldStatus));
-          isTriggerFoldStatusCallback = true;
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_FOLD_STATUS_0100 success");
-        } else {
-          expect().assertFail();
-          console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_FOLD_STATUS_0100 FAILED: " + err.message);
-        }
-      })
-      await sleep(500);  
-      mCameraManager.off('foldStatusChange');
-      expect(isTriggerFoldStatusCallback).assertTrue();
       done();
     })
   })

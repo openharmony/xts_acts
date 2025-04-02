@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -55,7 +55,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessForward001', 0, async (done: Function) => {
+    it('testAccessForward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessForward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessForward001", false, 50520, done);
@@ -70,7 +70,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessForward002', 0, async (done: Function) => {
+    it('testAccessForward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessForward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessForward002", true, 50522, done);
@@ -85,7 +85,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessForward003', 0, async (done: Function) => {
+    it('testAccessForward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessForward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessForward003", false, 200000, done);
@@ -100,7 +100,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessForward004', 0, async (done: Function) => {
+    it('testAccessForward004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessForward004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessForward004", true, 200002, done);
@@ -115,7 +115,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessBackward001', 0, async (done: Function) => {
+    it('testAccessBackward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessBackward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessBackward001", false, 50526, done);
@@ -130,7 +130,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessBackward002', 0, async (done: Function) => {
+    it('testAccessBackward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessBackward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessBackward002", true, 50528, done);
@@ -145,7 +145,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessBackward003', 0, async (done: Function) => {
+    it('testAccessBackward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessBackward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessBackward003", false, 200001, done);
@@ -160,7 +160,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessBackward004', 0, async (done: Function) => {
+    it('testAccessBackward004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessBackward004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessBackward004", true, 200003, done);
@@ -175,7 +175,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep001', 0, async (done: Function) => {
+    it('testAccessStep001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep001", false, 50530, done);
@@ -190,7 +190,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep002', 0, async (done: Function) => {
+    it('testAccessStep002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep002", true, 50532, done);
@@ -205,7 +205,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep003', 0, async (done: Function) => {
+    it('testAccessStep003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep003", false, 50534, done);
@@ -220,7 +220,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep004', 0, async (done: Function) => {
+    it('testAccessStep004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep004", true, 50536, done);
@@ -235,7 +235,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep005', 0, async (done: Function) => {
+    it('testAccessStep005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep005", false, 100096, done);
@@ -250,7 +250,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep006', 0, async (done: Function) => {
+    it('testAccessStep006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep006", true, 100097, done);
@@ -265,7 +265,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep007', 0, async (done: Function) => {
+    it('testAccessStep007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep007", false, 100098, done);
@@ -280,7 +280,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testAccessStep008', 0, async (done: Function) => {
+    it('testAccessStep008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testAccessStep008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAccessStep008", true, 100099, done);
@@ -296,7 +296,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackward001', 0, async (done: Function) => {
+    it('testBackward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackward001", "index", 100071, done);
@@ -311,7 +311,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackward002', 0, async (done: Function) => {
+    it('testBackward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackward002", "index", 200004, done);
@@ -326,7 +326,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackward003', 0, async (done: Function) => {
+    it('testBackward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackward003", "second", 200005, done);
@@ -341,7 +341,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testForward001', 0, async (done: Function) => {
+    it('testForward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testForward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testForward001", "second", 100072, done);
@@ -356,7 +356,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testForward002', 0, async (done: Function) => {
+    it('testForward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testForward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testForward002", "LoadData", 100085, done);
@@ -371,7 +371,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testForward003', 0, async (done: Function) => {
+    it('testForward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testForward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testForward003", "index", 100086, done);

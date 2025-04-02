@@ -243,6 +243,59 @@ export default function createAssetTest () {
       const options: photoAccessHelper.CreateOptions | undefined = undefined;
       await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
-
+    /**
+     * @tc.number    : SUB_PHOTO_ACCESS_SENADABLE_ERROR_CREATE_ASSET_0000
+     * @tc.name      : sendable_error_create_asset_mp4_extension_000
+     * @tc.desc      : createAsset with mp4 extension and IMAGE photoType
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("sendable_error_create_asset_mp4_extension_000", 0, async (done: Function) => {
+      const testNum = "sendable_error_create_asset_mp4_extension_000";
+      try {
+        let photoType: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
+        let extension: string = 'mp4';
+        let options: photoAccessHelper.CreateOptions = {
+          title: 'testVideo'
+        };
+        let uri: string = await sendablePhAccessHelper.createAsset(photoType, extension, options);
+        console.info(`${testNum} :: createAsset uri ${uri}`);
+        console.info(`${testNum} :: createAsset successfully`);
+        expect(false).assertTrue(true);
+        done();
+      } catch (error) {
+        console.error(`${testNum} :: createAsset failed, error: ${error.code}, ${error.message}`);
+        expect(error.code).assertEqual('14000011');
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_PHOTO_ACCESS_SENADABLE_ERROR_CREATE_ASSET_0100
+     * @tc.name      : sendable_error_create_asset_undefined_photoType_001
+     * @tc.desc      : createAsset with undefined photoType
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("sendable_error_create_asset_undefined_photoType_001", 0, async (done: Function) => {
+      const testNum = "sendable_error_create_asset_undefined_photoType_001";
+      try {
+        let photoType: sendablePhotoAccessHelper.PhotoType = undefined as ESObject;
+        let extension: string = 'jpg';
+        let options: photoAccessHelper.CreateOptions = {
+          title: 'testPhoto'
+        };
+        let uri: string = await sendablePhAccessHelper.createAsset(photoType, extension, options);
+        console.info(`${testNum} :: createAsset uri ${uri}`);
+        console.info(`${testNum} :: createAsset successfully`);
+        expect(false).assertTrue(true);
+        done();
+      } catch (error) {
+        console.error(`${testNum} :: createAsset failed, error: ${error.code}, ${error.message}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
+    });
   })
 }

@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -17,6 +17,7 @@ import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
 import business_error from '@ohos.base'
 import Utils from '../../test/Utils';
+import {waitForAssert, waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
@@ -69,9 +70,9 @@ struct WebViewControllerDownloadTest {
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
 
     events_emitter.on({ eventId: 11, priority: events_emitter.EventPriority.LOW }, () => {
-      console.info("AfterEach release the download progress.");
+      console.info('AfterEach release the download progress.');
       if (this.downloadingItem) {
-        console.info("Call downloadingItem.cancel");
+        console.info('Call downloadingItem.cancel');
         this.downloadingItem.cancel()
       }
     })
@@ -83,9 +84,9 @@ struct WebViewControllerDownloadTest {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
         this.downloadingItem = null
@@ -118,11 +119,15 @@ struct WebViewControllerDownloadTest {
       Row() {
         Button('WebViewControllerDownloadTestButton')
           .key('WebViewControllerDownloadTestButton').onClick(async () => {
-          console.info("key==>" + this.str)
+          console.info('key==>' + this.str)
           switch (this.str) {
-            case "testSetDownloadDelegate001": {
+            case 'testSetDownloadDelegate001': {
               try {
-                Utils.emitEvent(this.hasSetDownloadDelegate, 79520)
+                let check = (v1: boolean, v2: boolean): boolean => {
+                  return v1 ? true: false;
+                };
+                await waitForAssert(()=>this.hasSetDownloadDelegate, check, true, 79520, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -132,11 +137,12 @@ struct WebViewControllerDownloadTest {
               await Utils.sleep(1000)
               break;
             }
-            case "testStartDownload001": {
+            case 'testStartDownload001': {
               try {
                 this.controller.startDownload(this.downloadUrl);
                 await Utils.sleep(3000)
                 Utils.emitEvent(true, 79530)
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -146,419 +152,184 @@ struct WebViewControllerDownloadTest {
               await Utils.sleep(1000)
               break;
             }
-            case "testWebDownloadState001": {
+            case 'testWebDownloadState001': {
               try {
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.currentDownloadState, 79540)
+
+                let check = (v1: number, v2: number): boolean => {
+                  return v1 == v2 ? true: false;
+                }
+                await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.IN_PROGRESS,
+                  79540, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testWebDownloadState002": {
+            case 'testWebDownloadState002': {
               try {
-                this.testCompleted = true
                 this.controller.startDownload(this.downloadUrlImg);
+                let check = (v1: number, v2: number): boolean => {
+                  return v1 == v2 ? true:false;
+                }
+                await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.COMPLETED,
+                  79542, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testWebDownloadState003": {
+            case 'testWebDownloadState003': {
               try {
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
+                await waitForExist(()=>this.downloadingItem, this.str)
                 if (this.downloadingItem) {
                   this.downloadingItem.cancel()
                 }
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.currentDownloadState, 79544)
+                let check = (v1: number, v2: number): boolean => {
+                  return v1 == v2 ? true:false;
+                }
+                await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.CANCELED,
+                  79544, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testWebDownloadState004": {
+            case 'testWebDownloadState004': {
               try {
                 this.savePath = 'data/'
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.currentDownloadState, 79546)
+
+                let check = (v1:number, v2:number):boolean => {
+                  return v1 == v2 ? true:false;
+                }
+                await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.INTERRUPTED,
+                  79546, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testWebDownloadState005": {
+            case 'testWebDownloadState005': {
               try {
                 this.start = false
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.currentDownloadState, 79548)
+
+                let check = (v1: number, v2: number): boolean => {
+                  return v1 == v2 ? true: false;
+                }
+                await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.PENDING,
+                  79548, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testWebDownloadState006": {
+            case 'testWebDownloadState006': {
               try {
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(2000)
+
+                await waitForExist(()=>this.downloadingItem, this.str)
                 if (this.downloadingItem) {
                   this.downloadingItem.pause()
                 }
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.currentDownloadState, 79550)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetGuid001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                console.info('testGetGuid001 guids:' + this.guids)
-                if (this.guids.indexOf('') >= 0) {
-                  Utils.emitEvent(-1, 79650)
-                } else {
-                  Utils.emitEvent(this.guids.length, 79650)
+                let check = (v1: number, v2: number): boolean => {
+                  return v1 == v2 ? true: false;
                 }
+                await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.PAUSED,
+                  79550, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testGetGuid002": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                console.info('testGetGuid001 guids:' + this.guids)
-                if (this.guids.indexOf('') >= 0) {
-                  Utils.emitEvent(-1, 79652)
-                } else {
-                  Utils.emitEvent(this.guids.length, 79652)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetCurrentSpeed001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.currentSpeed > 0, 79654)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetPercentComplete001": {
+            case 'testResume001': {
               try {
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(2000)
-                Utils.emitEvent(this.percentComplete >= 0 && this.percentComplete < 100, 79656)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetPercentComplete002": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.percentComplete == 100, 79658)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetTotalBytes001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.totalBytes, 79660)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetMethod001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                console.info('testGetMethod001 methods:' + this.methods)
-                if (this.methods.indexOf('') >= 0) {
-                  Utils.emitEvent(-1, 79662)
-                } else {
-                  Utils.emitEvent(this.methods.length, 79662)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetMimeType001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                console.info('testGetMimeType001 mimeTypes:' + this.mimeTypes)
-                if (this.mimeTypes.indexOf('image/png') < 0 || this.mimeTypes.length > 1) {
-                  Utils.emitEvent(false, 79664)
-                } else {
-                  Utils.emitEvent(true, 79664)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetMimeType002": {
-              try {
-                this.controller.startDownload(this.downloadUrlVideo);
-                await Utils.sleep(3000)
-                console.info('testGetMimeType002 mimeTypes:' + this.mimeTypes)
-                if (this.mimeTypes.indexOf('video/mp4') < 0 || this.mimeTypes.length > 1) {
-                  Utils.emitEvent(false, 79666)
-                } else {
-                  Utils.emitEvent(true, 79666)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetMimeType003": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                console.info('testGetMimeType003 mimeTypes:' + this.mimeTypes)
-                if (this.mimeTypes.indexOf('application/x-msdownload') < 0 || this.mimeTypes.length > 1) {
-                  Utils.emitEvent(false, 79668)
-                } else {
-                  Utils.emitEvent(true, 79668)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetUrl001": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                console.info('testGetUrl001 urls:' + this.urls)
-                if (this.urls.indexOf(this.downloadUrl) < 0 || this.urls.length > 1) {
-                  Utils.emitEvent(false, 79670)
-                } else {
-                  Utils.emitEvent(true, 79670)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetSuggestedFileName001": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                if (this.suggestedFileName.length == 0 || this.downloadUrl.indexOf(this.suggestedFileName) < 0) {
-                  Utils.emitEvent(false, 79672)
-                } else {
-                  Utils.emitEvent(true, 79672)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetReceivedBytes001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.receivedBytes > 0 && this.receivedBytes == this.totalBytes, 79674)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testGetFullPath001": {
-              try {
-                this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.savePath == this.fullPath, 79676)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testSerialize001": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                if (this.downloadingItem) {
-                  this.downloadingItem.cancel()
-                }
-                await Utils.sleep(2000)
-                if (this.failedDownloadSerializedData) {
-                  Utils.emitEvent(this.failedDownloadSerializedData.length > 0, 79678)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testDeserialize001": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                if (this.downloadingItem) {
-                  this.downloadingItem.cancel()
-                }
-                await Utils.sleep(2000)
-                if (this.failedDownloadSerializedData && this.failedDownload) {
-                  let deserialize = webView.WebDownloadItem.deserialize(this.failedDownloadSerializedData)
-                  let same = this.failedDownload.getGuid() == deserialize.getGuid() &&
-                    this.failedDownload.getGuid() == deserialize.getGuid() &&
-                    this.failedDownload.getCurrentSpeed() == deserialize.getCurrentSpeed() &&
-                    this.failedDownload.getPercentComplete() == deserialize.getPercentComplete() &&
-                    this.failedDownload.getTotalBytes() == deserialize.getTotalBytes() &&
-                    this.failedDownload.getState() == deserialize.getState() &&
-                    this.failedDownload.getLastErrorCode() == deserialize.getLastErrorCode() &&
-                    this.failedDownload.getMethod() == deserialize.getMethod() &&
-                    this.failedDownload.getMimeType() == deserialize.getMimeType() &&
-                    this.failedDownload.getUrl() == deserialize.getUrl() &&
-                    this.failedDownload.getSuggestedFileName() == deserialize.getSuggestedFileName() &&
-                    this.failedDownload.getReceivedBytes() == deserialize.getReceivedBytes() &&
-                    this.failedDownload.getFullPath() == deserialize.getFullPath()
-                  Utils.emitEvent(same, 79680)
-                }
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testResume001": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(2000)
+                await waitForExist(()=>this.downloadingItem, this.str)
                 if (this.downloadingItem) {
                   this.downloadingItem.pause()
                 }
-                await Utils.sleep(2000)
+                await waitForExist(()=>this.currentDownloadState, this.str, webView.WebDownloadState.PAUSED)
                 if (this.currentDownloadState == webView.WebDownloadState.PAUSED) {
+                  await waitForExist(()=>this.downloadingItem, this.str)
                   if (this.downloadingItem) {
                     this.downloadingItem.resume()
                   }
-                  await Utils.sleep(1000)
-                  Utils.emitEvent(this.currentDownloadState, 79692)
+                  let check = (v1: number, v2: number): boolean => {
+                    return v1 == v2 ? true: false;
+                  }
+                  await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.IN_PROGRESS,
+                    79692, this.str);
+
                 }
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               this.download.cancel();
-              await Utils.sleep(1000)
+              await Utils.sleep(3000)
               break;
             }
-            case "testOnBeforeDownload001": {
+            case 'testOnBeforeDownload001': {
               try {
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.onBeforeDownloadCalled, 79700)
+
+                let check = (v1: boolean, v2: boolean): boolean => {
+                  return v1 ? true: false;
+                }
+                await waitForAssert(()=>this.onBeforeDownloadCalled, check, true, 79700, this.str);
+
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+              }
+              await Utils.sleep(3000)
+              this.download.cancel();
+              await Utils.sleep(3000)
+              break;
+            }
+            case 'testOnDownloadUpdated001': {
+              try {
+                this.controller.startDownload(this.downloadUrl);
+
+                let check = (v1: boolean, v2: boolean): boolean => {
+                  return v1 ? true: false;
+                }
+                await waitForAssert(()=>this.onDownloadUpdatedCalled, check, true, 79702, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -568,25 +339,15 @@ struct WebViewControllerDownloadTest {
               await Utils.sleep(1000)
               break;
             }
-            case "testOnDownloadUpdated001": {
-              try {
-                this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.onDownloadUpdatedCalled, 79702)
-              } catch (error) {
-                let e: business_error.BusinessError = error as business_error.BusinessError;
-                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
-              }
-              await Utils.sleep(1000)
-              this.download.cancel();
-              await Utils.sleep(1000)
-              break;
-            }
-            case "testOnDownloadFinish001": {
+            case 'testOnDownloadFinish001': {
               try {
                 this.controller.startDownload(this.downloadUrlImg);
-                await Utils.sleep(3000)
-                Utils.emitEvent(this.onDownloadFinishCalled, 79704)
+
+                let check = (v1: boolean, v2: boolean): boolean => {
+                  return v1 ? true: false;
+                }
+                await waitForAssert(()=>this.onDownloadFinishCalled, check, true, 79704, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -596,9 +357,13 @@ struct WebViewControllerDownloadTest {
               await Utils.sleep(1000)
               break;
             }
-            case "testWebDownloadManagerSetDownloadDelegate001": {
+            case 'testWebDownloadManagerSetDownloadDelegate001': {
               try {
-                Utils.emitEvent(this.hasSetDownloadDelegate, 79750)
+                let check = (v1: boolean, v2: boolean): boolean => {
+                  return v1 ? true: false;
+                }
+                await waitForAssert(()=>this.hasSetDownloadDelegate, check, true, 79750, this.str);
+
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -608,20 +373,24 @@ struct WebViewControllerDownloadTest {
               await Utils.sleep(1000)
               break;
             }
-            case "testResumeDownload001": {
+            case 'testResumeDownload001': {
               try {
                 this.controller.startDownload(this.downloadUrl);
-                await Utils.sleep(3000)
+                await waitForExist(()=>this.downloadingItem, this.str)
                 if (this.downloadingItem) {
                   this.downloadingItem.cancel()
                 }
-                await Utils.sleep(2000)
+                await waitForExist(()=>this.currentDownloadState, this.str, webView.WebDownloadState.CANCELED)
                 if (this.currentDownloadState == webView.WebDownloadState.CANCELED) {
+                  await waitForExist(()=>this.downloadingItem, this.str)
                   if (this.downloadingItem) {
                     webView.WebDownloadManager.resumeDownload(this.downloadingItem)
                   }
-                  await Utils.sleep(2000)
-                  Utils.emitEvent(this.currentDownloadState, 79752)
+                  let check = (v1: number, v2: number): boolean => {
+                    return v1 == v2 ? true:false;
+                  }
+                  await waitForAssert(()=>this.currentDownloadState, check, webView.WebDownloadState.IN_PROGRESS,
+                    79752, this.str);
                 }
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
@@ -649,24 +418,11 @@ struct WebViewControllerDownloadTest {
               this.delegate.onBeforeDownload((webDownloadItem: webView.WebDownloadItem) => {
                 this.onBeforeDownloadCalled = true;
                 this.currentDownloadState = webDownloadItem.getState();
-                if (this.guids.indexOf(webDownloadItem.getGuid()) < 0) {
-                  this.guids.push(webDownloadItem.getGuid());
-                }
-                if (this.methods.indexOf(webDownloadItem.getMethod()) < 0) {
-                  this.methods.push(webDownloadItem.getMethod());
-                }
-                if (this.mimeTypes.indexOf(webDownloadItem.getMimeType()) < 0) {
-                  this.mimeTypes.push(webDownloadItem.getMimeType());
-                }
-                if (this.urls.indexOf(webDownloadItem.getUrl()) < 0) {
-                  this.urls.push(webDownloadItem.getUrl());
-                }
-                this.suggestedFileName = webDownloadItem.getSuggestedFileName();
-                console.log("will start a download guid:" + webDownloadItem.getGuid());
-                console.log("will start a download method:" + webDownloadItem.getMethod());
-                console.log("will start a download mime type:" + webDownloadItem.getMimeType());
-                console.log("will start a download url:" + webDownloadItem.getUrl());
-                console.log("will start a download suggest name:" + webDownloadItem.getSuggestedFileName());
+                console.log('will start a download guid:' + webDownloadItem.getGuid());
+                console.log('will start a download method:' + webDownloadItem.getMethod());
+                console.log('will start a download mime type:' + webDownloadItem.getMimeType());
+                console.log('will start a download url:' + webDownloadItem.getUrl());
+                console.log('will start a download suggest name:' + webDownloadItem.getSuggestedFileName());
                 if (this.start) {
                   webDownloadItem.start(this.savePath);
                 }
@@ -674,52 +430,28 @@ struct WebViewControllerDownloadTest {
               this.delegate.onDownloadUpdated((webDownloadItem: webView.WebDownloadItem) => {
                 this.onDownloadUpdatedCalled = true;
                 this.currentDownloadState = webDownloadItem.getState();
-                if (this.guids.indexOf(webDownloadItem.getGuid()) < 0) {
-                  this.guids.push(webDownloadItem.getGuid());
-                }
-                if (this.methods.indexOf(webDownloadItem.getMethod()) < 0) {
-                  this.methods.push(webDownloadItem.getMethod());
-                }
-                if (this.mimeTypes.indexOf(webDownloadItem.getMimeType()) < 0) {
-                  this.mimeTypes.push(webDownloadItem.getMimeType());
-                }
-                if (this.urls.indexOf(webDownloadItem.getUrl()) < 0) {
-                  this.urls.push(webDownloadItem.getUrl());
-                }
                 if (this.currentSpeed <= 0) {
                   this.currentSpeed = webDownloadItem.getCurrentSpeed();
                 }
                 this.percentComplete = webDownloadItem.getPercentComplete();
                 this.totalBytes = webDownloadItem.getTotalBytes();
                 this.receivedBytes = webDownloadItem.getReceivedBytes();
-                console.log("download update download guid: " + webDownloadItem.getGuid());
-                console.log("download update download method:" + webDownloadItem.getMethod());
-                console.log("download update download state: " + webDownloadItem.getState());
-                console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
-                console.log("download update full path: " + webDownloadItem.getFullPath());
-                console.log("download update current speed: " + webDownloadItem.getCurrentSpeed());
-                console.log("download update total bytes: " + webDownloadItem.getTotalBytes());
-                console.log("download update received bytes: " + webDownloadItem.getReceivedBytes());
+                console.log('download update download guid: ' + webDownloadItem.getGuid());
+                console.log('download update download method:' + webDownloadItem.getMethod());
+                console.log('download update download state: ' + webDownloadItem.getState());
+                console.log('download update percent complete: ' + webDownloadItem.getPercentComplete());
+                console.log('download update full path: ' + webDownloadItem.getFullPath());
+                console.log('download update current speed: ' + webDownloadItem.getCurrentSpeed());
+                console.log('download update total bytes: ' + webDownloadItem.getTotalBytes());
+                console.log('download update received bytes: ' + webDownloadItem.getReceivedBytes());
                 this.downloadingItem = webDownloadItem;
               })
               this.delegate.onDownloadFailed((webDownloadItem: webView.WebDownloadItem) => {
                 this.onDownloadFailedCalled = true;
                 this.currentDownloadState = webDownloadItem.getState();
-                if (this.guids.indexOf(webDownloadItem.getGuid()) < 0) {
-                  this.guids.push(webDownloadItem.getGuid());
-                }
-                if (this.methods.indexOf(webDownloadItem.getMethod()) < 0) {
-                  this.methods.push(webDownloadItem.getMethod());
-                }
-                if (this.mimeTypes.indexOf(webDownloadItem.getMimeType()) < 0) {
-                  this.mimeTypes.push(webDownloadItem.getMimeType());
-                }
-                if (this.urls.indexOf(webDownloadItem.getUrl()) < 0) {
-                  this.urls.push(webDownloadItem.getUrl());
-                }
-                console.log("download failed method:" + webDownloadItem.getMethod());
-                console.log("download failed guid: " + webDownloadItem.getGuid());
-                console.log("download failed lastErrorCode: " + webDownloadItem.getLastErrorCode());
+                console.log('download failed method:' + webDownloadItem.getMethod());
+                console.log('download failed guid: ' + webDownloadItem.getGuid());
+                console.log('download failed lastErrorCode: ' + webDownloadItem.getLastErrorCode());
                 webDownloadItem.cancel();
                 this.failedDownload = webDownloadItem;
                 this.failedDownloadSerializedData = webDownloadItem.serialize();
@@ -727,25 +459,10 @@ struct WebViewControllerDownloadTest {
               this.delegate.onDownloadFinish((webDownloadItem: webView.WebDownloadItem) => {
                 this.onDownloadFinishCalled = true;
                 this.currentDownloadState = webDownloadItem.getState();
-                if (this.guids.indexOf(webDownloadItem.getGuid()) < 0) {
-                  this.guids.push(webDownloadItem.getGuid());
-                }
-                if (this.methods.indexOf(webDownloadItem.getMethod()) < 0) {
-                  this.methods.push(webDownloadItem.getMethod());
-                }
-                if (this.mimeTypes.indexOf(webDownloadItem.getMimeType()) < 0) {
-                  this.mimeTypes.push(webDownloadItem.getMimeType());
-                }
-                if (this.urls.indexOf(webDownloadItem.getUrl()) < 0) {
-                  this.urls.push(webDownloadItem.getUrl());
-                }
                 this.fullPath = webDownloadItem.getFullPath();
-                console.log("download finish method:" + webDownloadItem.getMethod());
-                console.log("download finish guid: " + webDownloadItem.getGuid());
-                if (this.testCompleted) {
-                  Utils.emitEvent(this.currentDownloadState, 79542)
-                  this.testCompleted = false
-                }
+                console.log('download finish method:' + webDownloadItem.getMethod());
+                console.log('download finish guid: ' + webDownloadItem.getGuid());
+
               })
               this.controller.setDownloadDelegate(this.delegate);
               webView.WebDownloadManager.setDownloadDelegate(this.delegate);

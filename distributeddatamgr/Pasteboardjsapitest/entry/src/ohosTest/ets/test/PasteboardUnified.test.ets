@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import pasteboard from '@ohos.pasteboard';
 import {BusinessError} from '@ohos.base'
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel'
@@ -41,7 +41,7 @@ export default function PasteboardUnifiedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PasteboardSetUnifiedData_0100', 0, async () => {
+    it('PasteboardSetUnifiedData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       plainText.details = {
@@ -87,7 +87,7 @@ export default function PasteboardUnifiedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('PasteboardSetUnifiedData_0200', 0, async () => {
+    it('PasteboardSetUnifiedData_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       plainText.details = {
@@ -134,7 +134,7 @@ export default function PasteboardUnifiedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("PasteboardSetUnifiedData_0300", 0, async () =>{
+    it("PasteboardSetUnifiedData_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () =>{
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       plainText.details = {
@@ -179,7 +179,7 @@ export default function PasteboardUnifiedTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("PasteboardSetUnifiedData_0400", 0, async () =>{
+    it("PasteboardSetUnifiedData_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () =>{
       let plainTextData = new unifiedDataChannel.UnifiedData();
       let plainText = new unifiedDataChannel.PlainText();
       plainText.details = {

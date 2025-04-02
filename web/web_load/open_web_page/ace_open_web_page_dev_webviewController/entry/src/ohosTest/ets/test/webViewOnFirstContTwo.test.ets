@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewOnFirstContTwo() {
      *tc.name testOnfirstcontentfulpaintvisibilitynone
      *tc.desc onfirstcontentfulpaint with web visibility none
      */
-    it('testOnfirstcontentfulpaintvisibilitynone',0, async (done: Function) =>{
+    it('testOnfirstcontentfulpaintvisibilitynone',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
       emitKey="emitNoneOnfirstcontentfulpaint";
       Utils.registerEvent("testOnfirstcontentfulpaintvisibilitynone","VisibilityNoneTest",324,done);
       sendEventByKey('webViewOnFirstContTwo',10,'');

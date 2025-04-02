@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import display from '@ohos.display';
 import events_emitter from '@ohos.events.emitter';
@@ -69,10 +69,10 @@ export default function pasteComponentTest() {
      * @tc.desc Test SecurityComponent Default parameters and Authorization is successful
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0100', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0100] START');
       let strJson = getInspectorByKey('keyPaste');
       let obj : ESObject = JSON.parse(strJson);
@@ -159,7 +159,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0200', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0200] START====');
       await Utils.sleep(1000);
       try {
@@ -261,7 +261,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0300', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0300] START====');
       await Utils.sleep(1000);
       try {
@@ -365,7 +365,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0400', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0400] START====');
       await Utils.sleep(1000);
       try {
@@ -469,7 +469,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0500', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0500] START====');
       await Utils.sleep(1000);
       try {
@@ -570,7 +570,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0600', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0600] START====');
       await Utils.sleep(1000);
       try {
@@ -671,7 +671,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0700', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0700] START====');
       await Utils.sleep(1000);
       try {
@@ -772,7 +772,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0800', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0800] START====');
       await Utils.sleep(1000);
       try {
@@ -873,7 +873,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_0900', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_0900] START====');
       await Utils.sleep(1000);
       try {
@@ -974,7 +974,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1000', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1000] START====');
       await Utils.sleep(1000);
       try {
@@ -1075,7 +1075,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1100', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1100] START====');
       await Utils.sleep(1000);
       try {
@@ -1179,7 +1179,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1200', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1200] START====');
       await Utils.sleep(1000);
       try {
@@ -1283,7 +1283,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1300', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1300] START====');
       await Utils.sleep(1000);
       try {
@@ -1387,7 +1387,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1400', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1400] START====');
       await Utils.sleep(1000);
       try {
@@ -1503,7 +1503,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1500', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1500] START====');
       await Utils.sleep(1000);
       try {
@@ -1618,7 +1618,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1600', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1600] START====');
       await Utils.sleep(1000);
       try {
@@ -1683,13 +1683,13 @@ export default function pasteComponentTest() {
           if(clickData.data !=undefined){
             console.info("====>[Test_Security_Button_Paste_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
             console.info("====>[Test_Security_Button_Paste_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-            if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-              console.info("====>[Test_Security_Button_Paste_1600] ERR CASE 成功");
-              expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+            if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+              console.info("====>[Test_Security_Button_Paste_1600] 设置权限成功");
+              expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
               console.info("====>[Test_Security_Button_Paste_1600] END====");
               done();
             } else {
-              console.info("====>[Test_Security_Button_Paste_1600] ERR CASE 失败");
+              console.info("====>[Test_Security_Button_Paste_1600] 设置权限失败");
               expect().assertFail()
               console.info("====>[Test_Security_Button_Paste_1600] END====");
               done();
@@ -1730,7 +1730,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1700', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1700] START====');
       await Utils.sleep(1000);
       try {
@@ -1833,7 +1833,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1800', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1800] START====');
       await Utils.sleep(1000);
       try {
@@ -1937,7 +1937,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_1900', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_1900] START====');
       await Utils.sleep(1000);
       try {
@@ -2039,7 +2039,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_2000', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_2000] START====');
       await Utils.sleep(1000);
       try {
@@ -2140,7 +2140,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_2100', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_2100] START====');
       await Utils.sleep(1000);
       try {
@@ -2241,7 +2241,7 @@ export default function pasteComponentTest() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('Test_Security_Button_Paste_2200', 0, async (done:Function) => {
+    it('Test_Security_Button_Paste_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.info('====>[Test_Security_Button_Paste_2200] START====');
       await Utils.sleep(1000);
       try {

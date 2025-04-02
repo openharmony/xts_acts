@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import dlfcnndk from 'libdlfcnndk.so'
 
@@ -32,7 +32,7 @@ export default function dlfcnNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlFcnDlSym001', 0, async (done: Function) => {
+    it('testMuslDlFcnDlSym001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(dlfcnndk.dlsym()).assertEqual(0);
       done()
     });
@@ -44,7 +44,7 @@ export default function dlfcnNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlFcnDlVSym001', 0, async (done: Function) => {
+    it('testMuslDlFcnDlVSym001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(dlfcnndk.dlvsym()).assertEqual(0);
       done()
     });

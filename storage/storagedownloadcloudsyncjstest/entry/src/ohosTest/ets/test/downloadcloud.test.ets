@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll,beforeEach,afterEach,afterAll,it,expect } from '@ohos/hypium';
+import { describe, beforeAll,beforeEach,afterEach,afterAll,it,expect, Level } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import cloudSync from '@ohos.file.cloudSync';
 import fileUri from '@ohos.file.fileuri';
@@ -95,7 +95,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_State_001', 3, async (done: Function) => {
+   it('test_Download_State_001', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_State_001::";
      let RUNNING = 0;
      try {
@@ -125,7 +125,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_State_002', 3, async (done: Function) => {
+   it('test_Download_State_002', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_State_002::";
      let FAILED = 2;
      try {
@@ -155,7 +155,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Uploading_State_003', 3, async (done: Function) => {
+   it('test_Uploading_State_003', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Uploading_State_003::";
      let UPLOADING = 0;
      try {
@@ -184,7 +184,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Uploading_Failed_State_004', 3, async (done: Function) => {
+   it('test_Uploading_Failed_State_004', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Uploading_Failed_State_004::";
      let UPLOAD_FAILED = 1;
      try {
@@ -213,7 +213,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_SyncState_005', 3, async (done: Function) => {
+  it('test_CloudSync_SyncState_005', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_CloudSync_SyncState_005::";
     let DOWNLOAD_FAILED = 3;
     try {
@@ -243,7 +243,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Downloading_State_006', 3, async (done: Function) => {
+   it('test_Downloading_State_006', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Downloading_State_006::";
      let DOWNLOADING = 2;
      try {
@@ -272,7 +272,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_Processed_001', 3, async (done: Function) => {
+   it('test_Download_Processed_001', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Processed_001::";
      let FAILED = 2;
      try {
@@ -302,7 +302,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_Error_001', 3,async (done: Function) => {
+   it('test_Download_Error_001', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_001::";
      let NO_ERROR = 0;
      try {
@@ -332,7 +332,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_Error_002', 3, async (done: Function) => {
+   it('test_Download_Error_002', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_002::";
      let UNKNOWN_ERROR = 1;
      try {
@@ -362,7 +362,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_Error_003', 3, async (done: Function) => {
+   it('test_Download_Error_003', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_003::";
      let NETWORK_UNAVAILABLE = 2;
      try {
@@ -392,7 +392,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_Error_004', 3, async (done: Function) => {
+   it('test_Download_Error_004', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_004::";
      let LOCAL_STORAGE_FULL = 3;
      try {
@@ -422,7 +422,7 @@ describe('cloud_file_download_test', () => {
     * @tc.level Level 3
     * @tc.require
     */
-   it('test_Download_Error_005', 3, async (done: Function) => {
+   it('test_Download_Error_005', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_005::";
      let CONTENT_NOT_FOUND = 4;
      try {
@@ -452,7 +452,7 @@ describe('cloud_file_download_test', () => {
     * @tc.level Level 3
     * @tc.require
     */
-   it('test_Download_Error_006', 3, async (done: Function) => {
+   it('test_Download_Error_006', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_006::";
      let FREQUENT_USER_REQUESTS = 5;
      try {
@@ -482,7 +482,7 @@ describe('cloud_file_download_test', () => {
     * @tc.level Level 3
     * @tc.require
     */
-   it('test_Download_Error_007', 3, async (done: Function) => {
+   it('test_Download_Error_007', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_007::";
      try {
        cloudSyncDownload.on("progress",(pg)=>{
@@ -508,7 +508,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_ErrorType_008', 3, async (done: Function) => {
+  it('test_CloudSync_ErrorType_008', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_CloudSync_ErrorType_008::";
     let WIFI_UNAVAILABLE = 2;
     try {
@@ -538,7 +538,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_ErrorType_009', 3, async (done: Function) => {
+  it('test_CloudSync_ErrorType_009', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_CloudSync_ErrorType_009::";
     let BATTERY_LEVEL_LOW = 3;
     try {
@@ -569,7 +569,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_ErrorType_010', 3, async (done: Function) => {
+  it('test_CloudSync_ErrorType_010', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_CloudSync_ErrorType_010::";
     let BATTERY_LEVEL_WARNING = 4;
     try {
@@ -600,7 +600,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_ErrorType_011', 3, async (done: Function) => {
+  it('test_CloudSync_ErrorType_011', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_CloudSync_ErrorType_011::";
     let CLOUD_STORAGE_FULL = 5;
     try {
@@ -631,7 +631,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_ErrorType_012', 3, async (done: Function) => {
+  it('test_CloudSync_ErrorType_012', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_CloudSync_ErrorType_012::";
     let DEVICE_TEMPERATURE_TOO_HIGH = 7;
     try {
@@ -661,7 +661,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_NotifyType_001', 3, async (done: Function) => {
+  it('test_CloudSync_NotifyType_001', Level.LEVEL3, async (done: Function) => {
     console.info('--------------test_CloudSync_NotifyType_001 begin-------------------')
     try{
       let value1 = cloudSync.NotifyType.NOTIFY_ADDED;
@@ -683,7 +683,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_NotifyType_002', 3, async (done: Function) => {
+  it('test_CloudSync_NotifyType_002', Level.LEVEL3, async (done: Function) => {
     console.info('--------------test_CloudSync_NotifyType_002 begin-------------------')
     try{
       let value1 = cloudSync.NotifyType.NOTIFY_MODIFIED;
@@ -704,7 +704,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_NotifyType_003', 3, async (done: Function) => {
+  it('test_CloudSync_NotifyType_003', Level.LEVEL3, async (done: Function) => {
     console.info('--------------test_CloudSync_NotifyType_003 begin-------------------')
     try{
       let value1 = cloudSync.NotifyType.NOTIFY_DELETED;
@@ -726,7 +726,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_CloudSync_NotifyType_004', 3, async (done: Function) => {
+  it('test_CloudSync_NotifyType_004', Level.LEVEL3, async (done: Function) => {
     console.info('--------------test_CloudSync_NotifyType_004 begin-------------------')
     try{
       let value1 = cloudSync.NotifyType.NOTIFY_RENAMED;
@@ -747,7 +747,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_Getlastsynctime_001', 3, async (done: Function) => {
+  it('test_Getlastsynctime_001', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_Getlastsynctime_001::";
     let fileSync = new cloudSync.FileSync();
     try {
@@ -769,7 +769,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-  it('test_Getlastsynctime_002', 3, async (done: Function) => {
+  it('test_Getlastsynctime_002', Level.LEVEL3, async (done: Function) => {
     let TAG = "test_Getlastsynctime_002::";
     let fileSync = new cloudSync.FileSync();
     try {

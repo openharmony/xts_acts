@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -126,7 +126,7 @@ describe("SensorJsTest_sensor_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0010
      */
-    it('SensorJsTest_068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it('SensorJsTest_068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.createRotationMatrix(gravity[0], geomagnetic[0], (error, data) => {
             if (error) {
                 console.info('SensorJsTest_068 failed');
@@ -1094,7 +1094,7 @@ describe("SensorJsTest_sensor_1", function () {
                 done()
             });
     })
-	
+
     /*
     * @tc.name:SensorJsTest_111
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1108,9 +1108,9 @@ describe("SensorJsTest_sensor_1", function () {
                 expect(false).assertfalse()
                 done()
             }, (error)=>{
-				console.info("SensorJsTest_111 error:" + error)
-				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                console.info("SensorJsTest_111 error:" + error)
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done()
             })
         } catch(error) {
@@ -1135,9 +1135,9 @@ describe("SensorJsTest_sensor_1", function () {
                 expect(false).assertfalse()
                 done()
             }, (error)=>{
-				console.info("SensorJsTest_112 error:" + error);
-				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                console.info("SensorJsTest_112 error:" + error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done()
             })
         } catch(error) {
@@ -1148,7 +1148,7 @@ describe("SensorJsTest_sensor_1", function () {
         }
         console.info("SensorJsTest_112 end")
     })
-	
+
     /*
     * @tc.name:SensorJsTest_113
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1162,9 +1162,9 @@ describe("SensorJsTest_sensor_1", function () {
                 expect(data).assertEqual(0);
                 done()
             }, (error)=>{
-				console.info("SensorJsTest_113  error:" + error);
-				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                console.info("SensorJsTest_113  error:" + error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done()
             })
         } catch(error) {
@@ -1183,21 +1183,21 @@ describe("SensorJsTest_sensor_1", function () {
     */
     it("SensorJsTest_114", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('SensorJsTest_114 start')
-		let inclinationMatrix = [
-			1, 0, 0, 1,
-			0, 1, 0, 0,
-			0, 0, 1, 0,
-			1, 0, 0, 0
-		]		
+        let inclinationMatrix = [
+            1, 0, 0, 1,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            1, 0, 0, 0
+        ]
         try {
             sensor.getGeomagneticDip(inclinationMatrix).then((data)=>{
                 console.info("SensorJsTest_114 data:" + data)
                 expect(data).assertEqual(0);
                 done()
             }, (error)=>{
-				console.info("SensorJsTest_114  error:" + error);
-				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                console.info("SensorJsTest_114  error:" + error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done()
             })
         } catch(error) {
@@ -1219,16 +1219,16 @@ describe("SensorJsTest_sensor_1", function () {
         try {
             sensor.getGeomagneticDip([1, 0, 0, 0, 1, 0, 0, 0, 1], (error, data) => {
                 if (error) {
-					console.info("SensorJsTest_115 error:" + error);
-					expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-					expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
-					done()
+                    console.info("SensorJsTest_115 error:" + error);
+                    expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                    expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                    done()
                 } else {
-					console.info("SensorJsTest_115 data:" + data)
-					expect(data).assertEqual(0);
-					done()
+                    console.info("SensorJsTest_115 data:" + data)
+                    expect(data).assertEqual(0);
+                    done()
                 }
-            })	
+            })
         } catch(error) {
             console.info("SensorJsTest_115 catch error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import webSocket from '@ohos.net.webSocket';
 
 
@@ -44,7 +44,7 @@ export default function WebSocketCreateTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCreateWebSocketCallback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCreateWebSocketCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCreateWebSocketCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -69,7 +69,7 @@ export default function WebSocketCreateTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCreateWebSocketCallback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCreateWebSocketCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCreateWebSocketCallback0200';
       console.info(`${caseName} test start`);
       try {

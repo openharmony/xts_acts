@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
 
@@ -33,7 +33,7 @@ export default function napiArrayBufferTest() {
      * @tc.name napiArrayBufferTest001
      * @tc.desc aceNapiEtsTest
      */
-    it('napiArrayBufferTest001', 0, () => {
+    it('napiArrayBufferTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const buffer = napitest.External();
       expect(!napitest.IsDetachedTest(buffer.buffer)).assertTrue();
     })
@@ -43,7 +43,7 @@ export default function napiArrayBufferTest() {
      * @tc.name napiArrayBufferTest002
      * @tc.desc aceNapiEtsTest
      */
-    it('napiArrayBufferTest002', 0, () => {
+    it('napiArrayBufferTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const buffer = new ArrayBuffer(128);
       expect(!napitest.IsDetachedTest(buffer)).assertTrue();
     })
@@ -53,7 +53,7 @@ export default function napiArrayBufferTest() {
      * @tc.name napiArrayBufferTest003
      * @tc.desc aceNapiEtsTest
      */
-    it('napiArrayBufferTest003', 0, () => {
+    it('napiArrayBufferTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const buffer = napitest.External();
       expect(!napitest.IsDetachedTest(buffer.buffer)).assertTrue();
       napitest.DetachTest(buffer);

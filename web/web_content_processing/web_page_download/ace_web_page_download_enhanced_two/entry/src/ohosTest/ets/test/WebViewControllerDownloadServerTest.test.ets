@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import webView from '@ohos.web.webview';
@@ -60,7 +60,7 @@ export default function webViewControllerDownloadServerTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDownloadServer001', 0, async (done: Function) => {
+    it('testDownloadServer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDownloadServer001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDownloadServer001", webView.WebDownloadErrorCode.SERVER_FAILED, 79000, done);
@@ -75,7 +75,7 @@ export default function webViewControllerDownloadServerTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDownloadServer002', 0, async (done: Function) => {
+    it('testDownloadServer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDownloadServer002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDownloadServer002", webView.WebDownloadErrorCode.SERVER_BAD_CONTENT, 79002, done);
@@ -90,7 +90,7 @@ export default function webViewControllerDownloadServerTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDownloadServer003', 0, async (done: Function) => {
+    it('testDownloadServer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDownloadServer003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDownloadServer003", webView.WebDownloadErrorCode.SERVER_UNAUTHORIZED, 79004, done);
@@ -105,7 +105,7 @@ export default function webViewControllerDownloadServerTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDownloadServer004', 0, async (done: Function) => {
+    it('testDownloadServer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDownloadServer004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDownloadServer004", webView.WebDownloadErrorCode.SERVER_FORBIDDEN, 79006, done);

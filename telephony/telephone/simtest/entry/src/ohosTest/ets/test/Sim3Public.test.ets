@@ -15,7 +15,7 @@
 
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level, TestType, Size } from '@ohos/hypium';
 import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
@@ -69,9 +69,9 @@ export default function Sim3Public() {
      * @tc.desc   : Obtain the number of card slots.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
-    it("testTelephonySimGetMaxSimCount0100", 0, async (done: Function) => {
+    it("testTelephonySimGetMaxSimCount0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonySimGetMaxSimCount0100';
       console.info(`${caseName} test start `);
       let maxSimCount: number = sim.getMaxSimCount();
@@ -86,9 +86,9 @@ export default function Sim3Public() {
      * @tc.desc   : Obtain whether the SIM card in the specified slot is inserted. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it("testTelephonySimHasSimCard0300", 0, async (done: Function) => {
+    it("testTelephonySimHasSimCard0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonySimHasSimCard0300';
       console.info(`${caseName} test start `);
       try {
@@ -126,9 +126,9 @@ export default function Sim3Public() {
      * @tc.desc   : Obtain whether the SIM card in the specified slot is inserted. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it("testTelephonySimHasSimCard0400", 0, async (done: Function) => {
+    it("testTelephonySimHasSimCard0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonySimHasSimCard0400';
       console.info(`${caseName} test start `);
       sim.hasSimCard(-1, (err: BusinessError, data: boolean) => {
@@ -152,9 +152,9 @@ export default function Sim3Public() {
      * @tc.desc   : Obtain whether the SIM card in the specified slot is inserted. Use callback for asynchronous promise.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it("testTelephonySimHasSimCard0800", 0, async (done: Function) => {
+    it("testTelephonySimHasSimCard0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonySimHasSimCard0800';
       console.info(`${caseName} test start `);
       try {
@@ -197,9 +197,9 @@ export default function Sim3Public() {
      * @tc.desc   : Obtain whether the SIM card in the specified slot is inserted. Use callback for asynchronous promise.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it("testTelephonySimHasSimCard0900", 0, async (done: Function) => {
+    it("testTelephonySimHasSimCard0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonySimHasSimCard0900';
       console.info(`${caseName} test start `);
       sim.hasSimCard(-1).then((data: boolean) => {
@@ -228,9 +228,9 @@ export default function Sim3Public() {
      * @tc.desc   : Obtain the SIM card type for the specified slot. Use callback for asynchronous callback.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 1
      */
-    it("testTelephonySimHasSimCardSync0300", 0, async (done: Function) => {
+    it("testTelephonySimHasSimCardSync0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonySimHasSimCardSync0300';
       console.info(`${caseName} test start `);
       let hasSimCard: boolean = sim.hasSimCardSync(-1);

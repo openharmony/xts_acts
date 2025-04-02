@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import motion from "@ohos.multimodalAwareness.motion";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { UiDriver, BY } from '@ohos.UiTest'
 import featureAbility from '@ohos.ability.featureAbility';
 
@@ -87,7 +87,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0100', 0, function () {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0100 enter`);
       try {
         motion.off('operatingHandChanged');
@@ -109,7 +109,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0200', 0, function (done) {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0200 enter`);
       try {
         motion.on('operatingHandChanged', (data) => {});
@@ -133,7 +133,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0300', 0, function () {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0300 enter`);
       try {
         motion.on(10, null);
@@ -155,7 +155,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0400', 0, function () {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0400 enter`);
       try {
         motion.off(10, null);
@@ -177,7 +177,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0500', 0, function (done) {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0500 enter`);
       try {
         motion.on('operatingHandChanged', (data) => {});
@@ -204,7 +204,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0600', 0, function (done) {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0600 enter`);
       try {
         motion.off('operatingHandChanged', (data) => {});
@@ -228,7 +228,7 @@ export default function DeviceStatusMotionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_Motion_0700', 0, function (done) {
+    it('SUB_MSDP_DeviceStatus_API_Motion_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_Motion_0700 enter`);
       console.info('OperatingHandStatus.UNKNOWN_STATUS is: ' + motion.OperatingHandStatus.UNKNOWN_STATUS);
       console.info('OperatingHandStatus.LEFT_HAND_OPERATED is: ' + motion.OperatingHandStatus.LEFT_HAND_OPERATED);

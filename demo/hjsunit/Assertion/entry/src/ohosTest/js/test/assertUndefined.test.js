@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'deccjsunit/index'
+import {describe, it, expect, Level, Size, TestType } from 'deccjsunit/index'
 
 describe('assertUndefined', function () {
-    it('assertUndefinedSuccess', 0, function () {
+    it('assertUndefinedSuccess', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = undefined
         expect(a).assertUndefined()
     })
-    it('assertUndefinedFail', 0, function () {
+    it('assertUndefinedFail', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = 100
         expect(a).assertUndefined()
     })

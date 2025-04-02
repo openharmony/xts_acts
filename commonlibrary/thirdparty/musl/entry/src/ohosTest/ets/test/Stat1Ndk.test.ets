@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import stat from 'libstat1ndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatChmod002', 0, async (done: Function) => {
+    it('testMuslStatChmod002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.chmod();
       expect(result).assertEqual(-1);
       done()
@@ -48,7 +48,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFstatat002', 0, async (done: Function) => {
+    it('testMuslStatFstatat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.fstatat();
       expect(result).assertEqual(-1);
       done()
@@ -62,7 +62,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFstatat64002', 0, async (done: Function) => {
+    it('testMuslStatFstatat64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.fstatat64();
       expect(result).assertEqual(-1);
       done()
@@ -76,7 +76,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatLstat002', 0, async (done: Function) => {
+    it('testMuslStatLstat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stat.lstat();
       expect(data).assertEqual(-1);
       done()
@@ -90,7 +90,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatLstat64002', 0, async (done: Function) => {
+    it('testMuslStatLstat64002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let data: number = stat.lstat64();
       expect(data).assertEqual(-1);
       done()
@@ -104,7 +104,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslStatFutimens002', 0, async (done: Function) => {
+    it('testMuslStatFutimens002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.futimens();
       expect(result).assertEqual(-1);
       done()
@@ -118,7 +118,7 @@ export default function stat1NdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatUmask002', 0, async (done: Function) => {
+    it('testMuslStatUmask002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: number = stat.umask();
       expect(result).assertEqual(-1);
       done();

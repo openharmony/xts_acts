@@ -1127,5 +1127,25 @@ export default function LinkedListTest() {
         expect().assertFail();
       }
     });
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LINKED_LIST_REMOVELASTFOUND_0200
+     * @tc.name      : testLinkedListRemoveLastFound0002
+     * @tc.desc      : Testing LinkedList removeLastFound add->getLastIndexOf->removeLastFound check is deleted success
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testLinkedListRemoveLastFound0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testLinkedListRemoveLastFound0002';
+      try {
+        let linkList: LinkedList<number> = new LinkedList();
+        linkList.removeLastFound(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err}`);
+        expect(err.code).assertEqual(10200017)
+      }
+    });
+
   });
 }

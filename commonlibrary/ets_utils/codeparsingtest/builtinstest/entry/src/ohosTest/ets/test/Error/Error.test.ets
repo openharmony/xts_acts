@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 
 export default function ErrorTest() {
   describe('errorTest', () => {
@@ -43,7 +43,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0001', 0, () => {
+    it('testImportError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0001";
       try {
         throw Error("Whoops!");
@@ -60,7 +60,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0002', 0, () => {
+    it('testImportError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0002";
       try {
         throw Error("Whoops!");
@@ -78,7 +78,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0003', 0, () => {
+    it('testImportError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0003";
       try {
         throw new Error("Whoops!");
@@ -95,7 +95,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0004', 0, () => {
+    it('testImportError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0004";
       try {
         throw new Error("Whoops!");
@@ -112,7 +112,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0005', 0, () => {
+    it('testImportError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0005";
       try {
         throw new Error();
@@ -129,7 +129,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0006', 0, () => {
+    it('testImportError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0006";
       try {
         throw new Error();
@@ -146,7 +146,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0007', 0, () => {
+    it('testImportError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0007";
       try {
         throw new Error('');
@@ -163,7 +163,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0008', 0, () => {
+    it('testImportError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0008";
       try {
         throw new Error('');
@@ -180,7 +180,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0009', 0, () => {
+    it('testImportError0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0009";
       try {
         throw new Error(undefined);
@@ -198,7 +198,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportError0010', 0, () => {
+    it('testImportError0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0010";
       try {
         throw new Error(undefined);
@@ -215,7 +215,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0001', 0, () => {
+    it('testImportRangeError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0001";
       try {
         throw new RangeError('It is a RangeError');
@@ -232,7 +232,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0002', 0, () => {
+    it('testImportRangeError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0002";
       try {
         throw new RangeError('It is a RangeError');
@@ -249,7 +249,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0003', 0, () => {
+    it('testImportRangeError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0003";
       try {
         throw RangeError('It is a RangeError');
@@ -266,7 +266,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0004', 0, () => {
+    it('testImportRangeError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0004";
       try {
         throw RangeError('It is a RangeError');
@@ -283,7 +283,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0005', 0, () => {
+    it('testImportRangeError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0005";
       try {
         throw RangeError('');
@@ -300,7 +300,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0006', 0, () => {
+    it('testImportRangeError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0006";
       try {
         throw RangeError('');
@@ -317,7 +317,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0007', 0, () => {
+    it('testImportRangeError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0007";
       try {
         throw RangeError(undefined);
@@ -334,7 +334,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImportRangeError0008', 0, () => {
+    it('testImportRangeError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportRangeError0008";
       try {
         throw RangeError(undefined);
@@ -351,7 +351,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0001", 0, () => {
+    it("testReferenceError0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('message err');
       } catch (e) {
@@ -366,7 +366,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0002", 0, () => {
+    it("testReferenceError0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('message err');
       } catch (e) {
@@ -381,7 +381,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0003", 0, () => {
+    it("testReferenceError0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('message err');
       } catch (e) {
@@ -396,7 +396,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0004", 0, () => {
+    it("testReferenceError0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('message err');
       } catch (e) {
@@ -411,7 +411,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0005", 0, () => {
+    it("testReferenceError0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('message err');
       } catch (e) {
@@ -426,7 +426,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0006", 0, () => {
+    it("testReferenceError0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('message err');
       } catch (e) {
@@ -441,7 +441,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0007", 0, () => {
+    it("testReferenceError0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new ReferenceError('message err');
       } catch (e) {
@@ -456,7 +456,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0008", 0, () => {
+    it("testReferenceError0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new ReferenceError('message err');
       } catch (e) {
@@ -471,7 +471,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0009", 0, () => {
+    it("testReferenceError0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new ReferenceError('message err');
       } catch (e) {
@@ -486,7 +486,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0010", 0, () => {
+    it("testReferenceError0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new ReferenceError('message err');
       } catch (e) {
@@ -501,7 +501,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0011", 0, () => {
+    it("testReferenceError0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new ReferenceError('message err');
       } catch (e) {
@@ -516,7 +516,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0012", 0, () => {
+    it("testReferenceError0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new ReferenceError('message err');
       } catch (e) {
@@ -531,7 +531,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0013", 0, () => {
+    it("testReferenceError0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new TypeError(undefined);
       } catch (e) {
@@ -546,7 +546,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0014", 0, () => {
+    it("testReferenceError0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw new TypeError(undefined);
       } catch (e) {
@@ -561,7 +561,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0015", 0, () => {
+    it("testReferenceError0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError();
       } catch (e) {
@@ -576,7 +576,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0016", 0, () => {
+    it("testReferenceError0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError();
       } catch (e) {
@@ -591,7 +591,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0017", 0, () => {
+    it("testReferenceError0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('');
       } catch (e) {
@@ -606,7 +606,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testReferenceError0018", 0, () => {
+    it("testReferenceError0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       try {
         throw ReferenceError('');
       } catch (e) {
@@ -621,7 +621,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0001', 0, () => {
+    it('testTypeError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0001"
       try {
         throw new TypeError('"Hello","someFile.js",10');
@@ -640,7 +640,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0002', 0, () => {
+    it('testTypeError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0002"
       try {
         throw new TypeError('"Hello","someFile.js",10');
@@ -659,7 +659,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0003', 0, () => {
+    it('testTypeError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0003"
       try {
         throw new TypeError('"Hello","someFile.js",10');
@@ -678,7 +678,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0004', 0, () => {
+    it('testTypeError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0004"
       try {
         throw new TypeError('"Hello","someFile.js",10');
@@ -697,7 +697,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0005', 0, () => {
+    it('testTypeError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0005"
       try {
         throw new TypeError('"Hello","someFile.js",10');
@@ -716,7 +716,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0006', 0, () => {
+    it('testTypeError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0006"
       try {
         throw new TypeError('"Hello","someFile.js",10');
@@ -735,7 +735,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0007', 0, () => {
+    it('testTypeError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0007"
       try {
         throw new TypeError('message err');
@@ -754,7 +754,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0008', 0, () => {
+    it('testTypeError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0008"
       try {
         throw new TypeError('message err');
@@ -773,7 +773,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0009', 0, () => {
+    it('testTypeError0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0009"
       try {
         throw new TypeError('message err');
@@ -792,7 +792,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0010', 0, () => {
+    it('testTypeError0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0010"
       try {
         throw new TypeError('message err');
@@ -811,7 +811,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0011', 0, () => {
+    it('testTypeError0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0011"
       try {
         throw new TypeError('message err');
@@ -830,7 +830,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0012', 0, () => {
+    it('testTypeError0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0012"
       try {
         throw new TypeError('message err');
@@ -849,7 +849,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0013', 0, () => {
+    it('testTypeError0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0013"
       try {
         throw new TypeError(undefined);
@@ -868,7 +868,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0014', 0, () => {
+    it('testTypeError0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0014"
       try {
         throw new TypeError(undefined);
@@ -887,7 +887,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0015', 0, () => {
+    it('testTypeError0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0015"
       try {
         throw new TypeError('');
@@ -906,7 +906,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0016', 0, () => {
+    it('testTypeError0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0016"
       try {
         throw new TypeError('');
@@ -925,7 +925,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0017', 0, () => {
+    it('testTypeError0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0017"
       try {
         throw new TypeError();
@@ -944,7 +944,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTypeError0018', 0, () => {
+    it('testTypeError0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testTypeError0018"
       try {
         throw new TypeError();
@@ -962,7 +962,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0001', 0, () => {
+    it('testAggregateError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0001"
       try {
         throw AggregateError([new Error("some error")], "Hello");
@@ -979,7 +979,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0002', 0, () => {
+    it('testAggregateError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0002"
       try {
         throw AggregateError([new Error("some error")], "Hello");
@@ -996,7 +996,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0003', 0, () => {
+    it('testAggregateError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0003"
       try {
         throw AggregateError([new Error("some error")], "Hello");
@@ -1013,7 +1013,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0004', 0, () => {
+    it('testAggregateError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0004"
       try {
         throw new AggregateError([new Error("some error")], "Hello");
@@ -1030,7 +1030,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0005', 0, () => {
+    it('testAggregateError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0005"
       try {
         throw new AggregateError([new Error("some error")], "Hello");
@@ -1047,7 +1047,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0006', 0, () => {
+    it('testAggregateError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0006"
       try {
         throw new AggregateError([new Error("some error")], "Hello");
@@ -1064,7 +1064,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0007', 0, () => {
+    it('testAggregateError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0007"
       try {
         throw AggregateError('');
@@ -1081,7 +1081,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0008', 0, () => {
+    it('testAggregateError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0008"
       try {
         throw AggregateError('');
@@ -1098,7 +1098,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0009', 0, () => {
+    it('testAggregateError0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0009"
       try {
         throw AggregateError([new Error("some error")])
@@ -1115,7 +1115,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0010', 0, () => {
+    it('testAggregateError0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0010"
       try {
         throw AggregateError([new Error("some error")])
@@ -1132,7 +1132,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0011', 0, () => {
+    it('testAggregateError0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0011"
       try {
         throw AggregateError('123');
@@ -1149,7 +1149,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0012', 0, () => {
+    it('testAggregateError0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0012"
       try {
         throw AggregateError('123');
@@ -1166,7 +1166,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0013', 0, () => {
+    it('testAggregateError0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0013"
       try {
         throw AggregateError([new Error("some error")], undefined);
@@ -1183,7 +1183,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAggregateError0014', 0, () => {
+    it('testAggregateError0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testAggregateError0014"
       try {
         throw AggregateError([new Error("some error")], undefined);
@@ -1200,7 +1200,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0001', 0, () => {
+    it('testURIError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0001"
       try {
         throw URIError();
@@ -1217,7 +1217,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0002', 0, () => {
+    it('testURIError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0002"
       try {
         throw URIError();
@@ -1234,7 +1234,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0003', 0, () => {
+    it('testURIError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0003"
       try {
         throw new URIError();
@@ -1251,7 +1251,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0004', 0, () => {
+    it('testURIError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0004"
       try {
         throw new URIError();
@@ -1268,7 +1268,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0005', 0, () => {
+    it('testURIError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0005"
       try {
         throw URIError('');
@@ -1285,7 +1285,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0006', 0, () => {
+    it('testURIError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0006"
       try {
         throw URIError('');
@@ -1302,7 +1302,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0007', 0, () => {
+    it('testURIError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0007"
       try {
         throw URIError('abc');
@@ -1319,7 +1319,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0008', 0, () => {
+    it('testURIError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0008"
       try {
         throw URIError('abc');
@@ -1336,7 +1336,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0009', 0, () => {
+    it('testURIError0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0009"
       try {
         throw URIError(undefined);
@@ -1353,7 +1353,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testURIError0010', 0, () => {
+    it('testURIError0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testURIError0010"
       try {
         throw URIError('abc');
@@ -1370,7 +1370,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0001', 0, () => {
+    it('testError.SyntaxError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0001";
       try {
         throw SyntaxError();
@@ -1388,7 +1388,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0002', 0, () => {
+    it('testError.SyntaxError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0002";
       try {
         throw SyntaxError();
@@ -1406,7 +1406,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0003', 0, () => {
+    it('testError.SyntaxError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0003";
       try {
         throw new SyntaxError();
@@ -1424,7 +1424,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0004', 0, () => {
+    it('testError.SyntaxError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0004";
       try {
         throw new SyntaxError();
@@ -1442,7 +1442,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0005', 0, () => {
+    it('testError.SyntaxError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0005";
       try {
         throw new SyntaxError('test');
@@ -1460,7 +1460,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0006', 0, () => {
+    it('testError.SyntaxError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0006";
       try {
         throw new SyntaxError('test');
@@ -1478,7 +1478,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0007', 0, () => {
+    it('testError.SyntaxError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0007";
       try {
         throw new SyntaxError(undefined);
@@ -1496,7 +1496,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0008', 0, () => {
+    it('testError.SyntaxError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0008";
       try {
         throw new SyntaxError(undefined);
@@ -1514,7 +1514,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0009', 0, () => {
+    it('testError.SyntaxError0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0009";
       try {
         throw new SyntaxError('');
@@ -1532,7 +1532,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testError.SyntaxError0010', 0, () => {
+    it('testError.SyntaxError0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testError.SyntaxError0010";
       try {
         throw new SyntaxError('');
@@ -1550,7 +1550,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0001', 0, () => {
+    it('testErrorEvalError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0001";
       try {
         throw new EvalError();
@@ -1568,7 +1568,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0002', 0, () => {
+    it('testErrorEvalError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0002";
       try {
         throw new EvalError();
@@ -1586,7 +1586,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0003', 0, () => {
+    it('testErrorEvalError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0003";
       try {
         throw EvalError();
@@ -1604,7 +1604,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0004', 0, () => {
+    it('testErrorEvalError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0004";
       try {
         throw EvalError();
@@ -1622,7 +1622,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0005', 0, () => {
+    it('testErrorEvalError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0005";
       try {
         throw EvalError(undefined);
@@ -1640,7 +1640,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0006', 0, () => {
+    it('testErrorEvalError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0006";
       try {
         throw EvalError(undefined);
@@ -1658,7 +1658,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0007', 0, () => {
+    it('testErrorEvalError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0007";
       try {
         throw new EvalError('');
@@ -1676,7 +1676,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0008', 0, () => {
+    it('testErrorEvalError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0008";
       try {
         throw new EvalError('');
@@ -1694,7 +1694,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0009', 0, () => {
+    it('testErrorEvalError0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0009";
       try {
         throw new EvalError('test');
@@ -1712,7 +1712,7 @@ export default function ErrorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testErrorEvalError0010', 0, () => {
+    it('testErrorEvalError0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testErrorEvalError0010";
       try {
         throw new EvalError('test');

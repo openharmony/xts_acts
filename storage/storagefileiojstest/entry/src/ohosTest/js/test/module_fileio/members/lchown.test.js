@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioLchown() {
 describe('fileio_lchown', function () {
@@ -30,7 +31,7 @@ describe('fileio_lchown', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_lchown_sync_000', 0, async function () {
+  it('fileio_test_lchown_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_lchown_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -56,7 +57,7 @@ describe('fileio_lchown', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_lchown_async_000', 0, async function (done) {
+  it('fileio_test_lchown_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_lchown_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -83,7 +84,7 @@ describe('fileio_lchown', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_lchown_async_001', 0, async function (done) {
+  it('fileio_test_lchown_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_lchown_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

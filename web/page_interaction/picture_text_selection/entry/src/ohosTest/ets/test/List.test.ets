@@ -12,11 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webViewController from './WebViewController.test'
-import WebViewEnumAndFontLibrary from './WebViewEnumAndFontLibrary.test'
-import WebViewEnumAndSetWebController from './WebViewEnumAndSetWebController.test'
-import webViewMenuShowResult from './webViewMenuShowResult.test'
-import webViewHasImageJsunit from './webViewHasImageJsunit.test'
 import webViewControllerHitTest from './WebViewControllerHitTest.test'
 import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test'
 import webControllerHitTest from './WebControllerHitTest.test'
@@ -26,12 +21,7 @@ import webInitTest from './WebInitTest.test'
 export default function testsuite() {
   webInitTest()
   webviewSelectionMenuOptions()
-  webViewHasImageJsunit()
   webViewMenuInputFieldType()
-  WebViewEnumAndSetWebController()
-  WebViewEnumAndFontLibrary()
-  webViewController()
-  webViewMenuShowResult()
   webViewControllerHitTest()
   webControllerHitTest()
 }

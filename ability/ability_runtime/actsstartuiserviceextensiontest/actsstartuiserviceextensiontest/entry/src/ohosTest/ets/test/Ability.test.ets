@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterEach, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import { wantConstant } from '@kit.AbilityKit';
 import { appManager } from '@kit.AbilityKit';
@@ -60,7 +60,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability === true) {
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0200";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability === true) {
@@ -147,7 +147,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0300";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability === true) {
@@ -185,7 +185,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_WantConstant_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantConstant_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_WantConstant_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] start');
       expect(wantConstant.Params.APP_INSTANCE_KEY).assertEqual("ohos.extra.param.key.appInstance")
@@ -203,7 +203,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100] start');
       try {
@@ -226,7 +226,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100] start');
       try {
@@ -249,9 +249,9 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0100";
-      console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] start');
+      console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0100] start');
       appManager.isAppRunning("com.acts.startuiserviceextensiontest").then((data: boolean) => {
         hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
         try{expect(data).assertTrue();}catch{};
@@ -261,8 +261,57 @@ export default function abilityTest() {
         try{expect().assertFail();}catch{};
         done();
       })
-      console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] end');
-      done();
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0200
+     * @tc.name: Call the interface to return whether the current application is running
+     * @tc.desc: Call the interface to return whether the current application is running
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_AppManager_0200', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_AppManager_0200";
+      console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0200] start');
+      appManager.isAppRunning("com.acts.startuiserviceextensiontest", 1001).then((data: boolean) => {
+        hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
+        try{expect().assertFail();}catch{};
+        done();
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `isAppRunning error, code: ${err.code}, msg:${err.message}`);
+        try{expect(err?.code).assertEqual(16000073);}catch{};
+        done();
+      })
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0300
+     * @tc.name: Call the interface to 401 when bundlename is undefined.
+     * @tc.desc: Call the interface to 401 when bundlename is undefined.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_AppManager_0300', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_AppManager_0300";
+      console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0300] start');
+      try{
+        await appManager.isAppRunning(undefined, 0).then((data: boolean) => {
+          hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
+          try{expect().assertFail();}catch{};
+          done();
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'testTag', tag + `isAppRunning error, code: ${err.code}, msg:${err.message}`);
+          try{expect().assertFail();}catch{};
+          done();
+        })
+      }catch(e){
+        hilog.error(0x0000, 'testTag', tag + `isAppRunning catch error, code: ${e.code}, msg:${e.message}`);
+        expect(e?.code).assertEqual(401);
+        done();
+      }
+      
     })
 
     /*
@@ -273,13 +322,17 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_fontId_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_fontId_0100', Level.LEVEL0, async (done: Function) => {
       console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] start');
       if(testAbilityContext.config?.fontId != undefined){
-        expect(typeof(testAbilityContext.config.fontId)).assertEqual("string")
+        expect(typeof(testAbilityContext.config.fontId)).assertEqual("string");
       }else{
-        expect(testAbilityContext.config.fontId).assertEqual(undefined)
+        expect(testAbilityContext.config.fontId).assertEqual(undefined);
       }
+      console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] ' + JSON.stringify(testAbilityContext.config));
+      expect(typeof testAbilityContext.config.displayId).assertEqual("number");
+      expect(typeof testAbilityContext.config.fontSizeScale).assertEqual("number")
+      expect(typeof testAbilityContext.config.fontWeightScale).assertEqual("number")
       console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] end');
       done();
     })
@@ -292,7 +345,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0200";
       console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0200] start');
       let pid = 0;
@@ -385,7 +438,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0700";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0700] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability && mpEnable) {
@@ -438,7 +491,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0800";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability && mpEnable) {
@@ -491,7 +544,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0900', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0900";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0900] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability && mpEnable) {

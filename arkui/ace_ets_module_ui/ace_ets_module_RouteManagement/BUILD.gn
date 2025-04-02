@@ -19,11 +19,13 @@ group("ActsAceEtsModuleRouteManagementTest") {
     deps = [
       "ace_ets_module_RouteManagement_api11:ActsAceEtsModuleRouteManagementApi11Test",
       "ace_ets_module_RouteManagement_api12:ActsAceEtsModuleRouteManagementApi12Test",
+      "ace_ets_module_RouteManagement_api18:ActsAceEtsModuleRouteManagementApi18Test",
     ]
   } else {
     deps = [
       "ace_ets_module_RouteManagement_api11:ActsAceEtsModuleRouteManagementApi11Test",
       "ace_ets_module_RouteManagement_api12:ActsAceEtsModuleRouteManagementApi12Test",
+      "ace_ets_module_RouteManagement_api18:ActsAceEtsModuleRouteManagementApi18Test",
       "ace_ets_module_RouteManagement_nowear_api12:ActsAceEtsModuleRouteManagementNoWearApi12Test",
     ]
   }

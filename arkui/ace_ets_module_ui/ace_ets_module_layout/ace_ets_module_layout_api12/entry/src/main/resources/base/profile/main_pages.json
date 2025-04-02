@@ -8,6 +8,8 @@
         "MainAbility/pages/Flex/SpaceMain5JustifyContent",
         "MainAbility/pages/RelativeContainer/RelativeContainerApi",
         "MainAbility/pages/RelativeContainerStart/RelativeContainerStartApi",
-        "MainAbility/pages/Flex/FlexSpaceTest"
+        "MainAbility/pages/Flex/FlexSpaceTest",
+        "MainAbility/pages/Column/ColumnReversePage",
+        "MainAbility/pages/Row/RowReversePage"
     ]
 }

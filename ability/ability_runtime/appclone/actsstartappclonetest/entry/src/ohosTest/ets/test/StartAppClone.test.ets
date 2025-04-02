@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -46,7 +46,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0100`;
       console.log(`${tag}, it begin`);
 
@@ -100,7 +100,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0200', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0200`;
       console.log(`${tag}, it begin`);
 
@@ -159,7 +159,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0300`;
       console.log(`${tag}, it begin`);
@@ -198,7 +198,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0400', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0400`;
       console.log(`${tag}, it begin`);
 
@@ -236,7 +236,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0500', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0500`;
       console.log(`${tag}, it begin`);
 
@@ -274,7 +274,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0600', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0600`;
       console.log(`${tag}, it begin`);
 
@@ -328,7 +328,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0700', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0700`;
       console.log(`${tag}, it begin`);
 
@@ -387,7 +387,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0800`;
       console.log(`${tag}, it begin`);
@@ -426,7 +426,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_0900', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_0900`;
       console.log(`${tag}, it begin`);
 
@@ -483,7 +483,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1000`;
       console.log(`${tag}, it begin`);
@@ -522,7 +522,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1100`;
       console.log(`${tag}, it begin`);
 
@@ -579,7 +579,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1200`;
       console.log(`${tag}, it begin`);
@@ -618,7 +618,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1300', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1300`;
       console.log(`${tag}, it begin`);
 
@@ -677,7 +677,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1400`;
       console.log(`${tag}, it begin`);
@@ -716,7 +716,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1500', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1500`;
       console.log(`${tag}, it begin`);
 
@@ -775,7 +775,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1600`;
       console.log(`${tag}, it begin`);
@@ -814,7 +814,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1700', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1700`;
       console.log(`${tag}, it begin`);
 
@@ -873,7 +873,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1800`;
       console.log(`${tag}, it begin`);
@@ -912,7 +912,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_1900', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_1900`;
       console.log(`${tag}, it begin`);
 
@@ -971,7 +971,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_StartAbilityClone_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAbilityClone_2000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let tag = `SUB_Ability_AbilityRuntime_StartAbilityClone_2000`;
       console.log(`${tag}, it begin`);
@@ -1010,7 +1010,7 @@ export default function startAppCloneTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_ProcessInformation_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_ProcessInformation_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_ProcessInformation_0100`;
       console.log(`${tag}, it begin`);
 

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import storage from '@ohos.data.storage'
 
 const PATH = '/data/storage/el2/database/test_storage';
@@ -45,7 +45,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetStorageHelper001', 0, function () {
+        it('testGetStorageHelper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             mPref = storage.getStorageSync(PATH);
             mPref.putSync('test', 2);
             mPref.flushSync();
@@ -61,7 +61,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetStorageHelper002', 0, async function (done) {
+        it('testGetStorageHelper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const promise = storage.getStorage(PATH);
             await promise.then((pref) => {
                 pref.putSync('test', 2);
@@ -82,7 +82,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testGetStorageCallback0020', 0, async function (done) {
+        it('testGetStorageCallback0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             storage.getStorage(PATH,(err,pref)=>{
                 pref.putSync('test', 2);
                 pref.flushSync();
@@ -100,7 +100,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRemoveStorageFromCache001', 0, function () {
+        it('testRemoveStorageFromCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             let perf = storage.getStorageSync('/data/test_storage1');
             perf.putSync('test', 2);
             try {
@@ -120,7 +120,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRemoveStorageFromCache002', 0, async function (done) {
+        it('testRemoveStorageFromCache002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let perf = storage.getStorageSync('/data/test_storage2');
             perf = null;
             const promise = storage.removeStorageFromCache('/data/test_storage2');
@@ -139,7 +139,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testRemoveStorageFromCache004', 0, async function (done) {
+        it('testRemoveStorageFromCache004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let perf = storage.getStorageSync('/data/test_storage2');
             perf = null;
             storage.removeStorageFromCache('/data/test_storage2',(err,pref)=>{
@@ -156,7 +156,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDeleteStorageHelper001', 0, function () {
+        it('testDeleteStorageHelper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             let perf = storage.getStorageSync('/data/test_storage3');
             try {
                 storage.deleteStorageSync('/data/test_storage3');
@@ -178,7 +178,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDeleteStorageHelper002', 0, async function (done) {
+        it('testDeleteStorageHelper002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let perf = storage.getStorageSync('/data/test_storage4');
             perf = null;
             const promise = storage.deleteStorage('/data/test_storage4');
@@ -197,7 +197,7 @@ export default function storageHelperTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('testDeleteStoragCallback0070', 0, async function (done) {
+        it('testDeleteStoragCallback0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let perf = storage.getStorageSync('/data/test_storage4');
             perf = null;
             storage.deleteStorage('/data/test_storage4',(err)=>{

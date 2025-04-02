@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
 import { BusinessError } from '@ohos.base';
@@ -53,7 +53,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise001", 0, async (done: Function) => {
+    it("testPreferencesGetPreferencesPromise001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1).then(async (preferences) => {
         console.info(TAG + "Get preferences success" + preferences);
         await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
@@ -76,7 +76,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise002", 0, async (done: Function) => {
+    it("testPreferencesGetPreferencesPromise002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         dataPreferences.getPreferences(context, null).then(async (preferences) => {
           console.info(TAG + "Get preferences success" + preferences);
@@ -103,7 +103,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise003", 0, async (done: Function) => {
+    it("testPreferencesGetPreferencesPromise003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }).then(async (preferences) => {
@@ -128,7 +128,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferencesPromise004", 0, async (done: Function) => {
+    it("testPreferencesGetPreferencesPromise004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         dataPreferences.getPreferences(context, {
           name: NAME1
@@ -156,7 +156,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferencesPromise001", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferencesPromise001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, {
         name: NAME1
       }).then(async (preferences) => {
@@ -183,7 +183,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferencesPromise002", 0, async (done: Function) => {
+    it("testPreferencesDeletePreferencesPromise002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -217,7 +217,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetDefValuePromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetDefValuePromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       const promise = mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue");
       promise
@@ -238,7 +238,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetFloatPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetFloatPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       const promise = mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -260,7 +260,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetIntPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetIntPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       const promise = mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -282,7 +282,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetLongPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetLongPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       const promise = mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
@@ -304,7 +304,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetStringPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -327,7 +327,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBooleanPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetBooleanPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       let promise = mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true);
@@ -349,7 +349,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringArrayPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetStringArrayPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -374,7 +374,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetNumArrayPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetNumArrayPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
@@ -399,7 +399,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolArrayPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetBoolArrayPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -424,7 +424,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncDefaultValue0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncDefaultValue0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let ret = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultValue");
       expect("defaultValue").assertEqual(ret);
@@ -439,7 +439,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncFloat0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncFloat0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = mPreferences.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -455,7 +455,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncInt0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncInt0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       let ret = mPreferences.getSync(KEY_TEST_INT_ELEMENT, 0);
@@ -472,7 +472,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncLong0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncLong0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       let ret = mPreferences.getSync(KEY_TEST_LONG_ELEMENT, 0);
@@ -488,7 +488,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncString0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncString0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       let ret = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue");
@@ -504,7 +504,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncBoolean0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncBoolean0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       let ret = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, true);
@@ -520,7 +520,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncStringArray0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncStringArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -540,7 +540,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncNumArray0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncNumArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
@@ -559,7 +559,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetSyncBoolArray0001", 0, async (done: Function) => {
+    it("testPreferencesGetSyncBoolArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -578,7 +578,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAllPromise0001", 0, async (done: Function) => {
+    it("testPreferencesGetAllPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -629,7 +629,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAllSync0001", 0, async (done: Function) => {
+    it("testPreferencesGetAllSync0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -672,7 +672,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutFloatPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutFloatPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
       let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -691,7 +691,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutIntPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutIntPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -710,7 +710,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutLongPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutLongPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
       expect(4).assertEqual(per);
@@ -728,7 +728,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutStringPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "");
       let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
       expect("").assertEqual(per);
@@ -746,7 +746,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBooleanPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutBooleanPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
       let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -765,7 +765,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringArrayPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutStringArrayPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["1", "2", "3"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -790,7 +790,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutNumArrayPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutNumArrayPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let numberArr = [11, 22, 33, 44, 55];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
@@ -815,7 +815,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolArrayPromise0001", 0, async (done: Function) => {
+    it("testPreferencesPutBoolArrayPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, true, false];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -840,7 +840,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncFloat0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncFloat0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       mPreferences.putSync(KEY_TEST_FLOAT_ELEMENT, 4.0);
       let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -859,7 +859,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncInt0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncInt0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       mPreferences.putSync(KEY_TEST_INT_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -878,7 +878,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncLong0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncLong0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       mPreferences.putSync(KEY_TEST_LONG_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
       expect(4).assertEqual(per);
@@ -896,7 +896,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncString0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncString0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       mPreferences.putSync(KEY_TEST_STRING_ELEMENT, "");
       let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
       expect("").assertEqual(per);
@@ -914,7 +914,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncBoolean0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncBoolean0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       mPreferences.putSync(KEY_TEST_BOOLEAN_ELEMENT, true);
       let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -933,7 +933,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncStringArray0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncStringArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["1", "2", "3"];
       mPreferences.putSync(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -959,7 +959,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncNumArray0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncNumArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let numberArr = [11, 22, 33, 44, 55];
       mPreferences.putSync(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
@@ -985,7 +985,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutSyncBoolArray0001", 0, async (done: Function) => {
+    it("testPreferencesPutSyncBoolArray0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, true, false];
       mPreferences.putSync(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -1011,7 +1011,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0001", 0, async (done: Function) => {
+    it("testPreferencesHasKeyPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
       const promise = mPreferences.has(KEY_TEST_FLOAT_ELEMENT);
       promise
@@ -1032,7 +1032,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0002", 0, async (done: Function) => {
+    it("testPreferencesHasKeyPromise0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
       const promise = mPreferences.has(KEY_TEST_INT_ELEMENT);
       promise
@@ -1053,7 +1053,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0003", 0, async (done: Function) => {
+    it("testPreferencesHasKeyPromise0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
       const promise = mPreferences.has(KEY_TEST_LONG_ELEMENT);
       promise
@@ -1074,7 +1074,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0004", 0, async (done: Function) => {
+    it("testPreferencesHasKeyPromise0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       const promise = mPreferences.has(KEY_TEST_STRING_ELEMENT);
       promise
@@ -1095,7 +1095,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0005", 0, async (done: Function) => {
+    it("testPreferencesHasKeyPromise0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
       const promise = mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT);
       promise
@@ -1116,7 +1116,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0001", 0, async (done: Function) => {
+    it("testPreferencesHasSync0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
       let ret = mPreferences.hasSync(KEY_TEST_FLOAT_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1131,7 +1131,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0002", 0, async (done: Function) => {
+    it("testPreferencesHasSync0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
       let ret = mPreferences.hasSync(KEY_TEST_INT_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1146,7 +1146,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0003", 0, async (done: Function) => {
+    it("testPreferencesHasSync0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
       let ret = mPreferences.hasSync(KEY_TEST_LONG_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1161,7 +1161,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0004", 0, async (done: Function) => {
+    it("testPreferencesHasSync0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       let ret = mPreferences.hasSync(KEY_TEST_STRING_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1176,7 +1176,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasSync0005", 0, async (done: Function) => {
+    it("testPreferencesHasSync0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
       let ret = mPreferences.hasSync(KEY_TEST_BOOLEAN_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1191,7 +1191,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesClearPromise0001", 0, async (done: Function) => {
+    it("testPreferencesClearPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -1250,7 +1250,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesClearSync0001", 0, async (done: Function) => {
+    it("testPreferencesClearSync0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -1303,7 +1303,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePromise0001", 0, async (done: Function) => {
+    it("testPreferencesDeletePromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -1328,7 +1328,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeleteSync0001", 0, async (done: Function) => {
+    it("testPreferencesDeleteSync0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -1347,7 +1347,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesFlushPromise0001", 0, async (done: Function) => {
+    it("testPreferencesFlushPromise0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
       const promise = mPreferences.flush();

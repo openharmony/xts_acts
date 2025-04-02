@@ -55,7 +55,7 @@ describe("SensorJsTest_sensor_34", function () {
      * @tc.name: subscribeStepCounter_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeStepCounter_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest001---------------------------');
         sensor.subscribeStepCounter({
             success: function (data) {
@@ -66,13 +66,13 @@ describe("SensorJsTest_sensor_34", function () {
                 console.log("subscribeStepCounter_SensorJsTest001 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
             complete: function () {
                 console.log('subscribeStepCounter_SensorJsTest001 is completed');
             }
         });
-		setTimeout(() => {
+        setTimeout(() => {
           sensor.unsubscribeStepCounter();
           done();
         }, 1000);
@@ -94,11 +94,11 @@ describe("SensorJsTest_sensor_34", function () {
                 console.error('subscribeStepCounter_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })
-	
+
    /*
      * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0030
      * @tc.name: subscribeStepCounter_SensorJsTest003
@@ -117,7 +117,7 @@ describe("SensorJsTest_sensor_34", function () {
                 console.error('subscribeStepCounter_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })
@@ -144,13 +144,13 @@ describe("SensorJsTest_sensor_34", function () {
             success: function (data) {
                 console.info("subscribeStepCounter_SensorJsTest004_1 success:" + JSON.stringify(data));
                 expect(typeof (data.steps)).assertEqual("number");
-				done()
+                done()
             },
             fail: function (data, code) {
                 console.error('subscribeStepCounter_SensorJsTest004_1 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
                 expect(code).assertEqual(1001);
-				done()
+                done()
             },
         });
     })

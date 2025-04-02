@@ -14,7 +14,7 @@
  */
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 const BUNDLE_NAME1 = 'com.example.third1';
 const BUNDLE_NAME2 = 'com.example.third7';
@@ -42,7 +42,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0500', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": ""
@@ -60,7 +60,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0520', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {}, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
         expect(res).assertFail()
@@ -76,7 +76,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0540', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           action: "action_a"
@@ -98,7 +98,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0560', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0560', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_b2"
@@ -119,7 +119,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0580', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0580', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_c1"
@@ -140,7 +140,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third appl
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_d2"
@@ -162,7 +162,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0620', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0620', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "action_not_exist"
@@ -181,7 +181,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0640', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0640', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -207,7 +207,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0660', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0660', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -227,7 +227,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0680', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0680', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -249,7 +249,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -271,7 +271,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5020', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5020', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -293,7 +293,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5520', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -315,7 +315,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5540', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -335,7 +335,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5080', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5080', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -355,7 +355,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5040', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5040', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -375,7 +375,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_4940', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_4940', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "entity_reserved",
@@ -400,7 +400,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5660', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5660', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -429,7 +429,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5560', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5560', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -455,7 +455,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -484,7 +484,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5120', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5120', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -516,7 +516,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5580', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5580', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -554,7 +554,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5140', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5140', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -590,7 +590,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5180', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5180', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -624,7 +624,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5160', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5160', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -658,7 +658,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5680', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5680', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -679,7 +679,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5700', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -700,7 +700,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5720', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5720', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "uri_reserved",
@@ -727,7 +727,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "*/*"
@@ -756,7 +756,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5220', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5220', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "prefixType/*"
@@ -781,7 +781,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('sub_Bms_Framework_Query_AbilityInfo_5240', 0, async function (done) {
+    it('sub_Bms_Framework_Query_AbilityInfo_5240', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "prefixType/suffixType"
@@ -806,7 +806,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5740', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5740', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "prefixTypeExt/suffixTypeExt"
@@ -831,7 +831,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5760', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5760', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "type_reserved"
@@ -856,7 +856,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5600', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "type_reserved",
@@ -882,7 +882,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5780', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5780', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "type": "none/none"
@@ -902,7 +902,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5900', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_a",
@@ -923,7 +923,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5920', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5920', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_b",
@@ -944,7 +944,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5800', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/student/name",
@@ -965,7 +965,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5820', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5820', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/student/name",
@@ -986,7 +986,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5840', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5840', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/teacher",
@@ -1007,7 +1007,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5860', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5860', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/query/teacher/hello",
@@ -1028,7 +1028,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5880', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5880', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "uri": "http://www.test.com:8080/update/hello/world/name",
@@ -1049,7 +1049,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5620', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5620', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_c",
@@ -1072,7 +1072,7 @@ export default function ActsBmsQueryAbilityByWant() {
     * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos
     * @tc.desc: queryAbilityByWant for third app
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_5640', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_5640', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
       bundle.queryAbilityByWant(
         {
           "action": "all_action_c",

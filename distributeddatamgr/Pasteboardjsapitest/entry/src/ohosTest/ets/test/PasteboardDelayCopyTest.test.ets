@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import unifiedDataChannel from '@ohos.data.unifiedDataChannel';
 import pasteboard from '@ohos.pasteboard';
 import { BusinessError } from '@ohos.base';
@@ -45,7 +45,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0100', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       const GetDelayPlainText = ((dataType:string) => {
         let plainText = new unifiedDataChannel.PlainText();
@@ -83,7 +83,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       const GetDelayPlainText = ((dataType:string) => {
         let plainText = new unifiedDataChannel.PlainText();
@@ -122,7 +122,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0300', 0, () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       const GetDelayPlainText = ((dataType:string) => {
         let plainText = new unifiedDataChannel.PlainText();
@@ -153,7 +153,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0400', 0, () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       const GetDelayPlainText = ((dataType:string) => {
         let plainText = new unifiedDataChannel.PlainText();
@@ -184,7 +184,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0500', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       const GetDelayPlainTextData = ((dataType:string) => {
         let plainText = new unifiedDataChannel.PlainText();
@@ -237,7 +237,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0600', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let textData = new unifiedDataChannel.UnifiedData();
       const GetDelayTextData = ((dataType:string) => {
         let text = new unifiedDataChannel.Text();
@@ -286,7 +286,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0700', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let htmlData = new unifiedDataChannel.UnifiedData();
       const GetDelayHTMLData = ((dataType:string) => {
         let hText = new unifiedDataChannel.HTML();
@@ -335,7 +335,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0800', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let HyperlinkData = new unifiedDataChannel.UnifiedData();
       const GetDelayHyperlink = ((dataType:string) => {
         let HyperlinkText = new unifiedDataChannel.Hyperlink();
@@ -385,7 +385,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0900', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let ImageData = new unifiedDataChannel.UnifiedData();
       const GetDelayImageData = ((dataType:string) => {
         let imageText = new unifiedDataChannel.Image();
@@ -436,7 +436,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0110', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let FolderData = new unifiedDataChannel.UnifiedData();
       const GetDelayFolderData = ((dataType:string) => {
         let folderText = new unifiedDataChannel.Folder();
@@ -485,7 +485,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0120', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let FileData = new unifiedDataChannel.UnifiedData();
       const GetDelayFileData = ((dataType:string) => {
         let fileText = new unifiedDataChannel.File();
@@ -535,7 +535,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0130', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let AudioData = new unifiedDataChannel.UnifiedData();
       const GetDelayAudioData = ((dataType:string) => {
         let audioText = new unifiedDataChannel.Audio();
@@ -584,7 +584,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0140', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let VideoData = new unifiedDataChannel.UnifiedData();
       const GetDelayVideoData = ((dataType:string) => {
         let videoText = new unifiedDataChannel.Video();
@@ -634,7 +634,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0150', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let appRecordData = new unifiedDataChannel.UnifiedData();
       const GetDelayAppDefinedRecordData = ((dataType:string) => {
         let appRecord = new unifiedDataChannel.ApplicationDefinedRecord();
@@ -682,7 +682,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0160', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let FormData = new unifiedDataChannel.UnifiedData();
       const GetDelayFormData = ((dataType:string) => {
         let form = new unifiedDataChannel.SystemDefinedForm();
@@ -739,7 +739,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0170', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let AppItemData = new unifiedDataChannel.UnifiedData();
       const GetDelayAppItemData = ((dataType:string) => {
         let appItem = new unifiedDataChannel.SystemDefinedAppItem();
@@ -798,7 +798,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0180', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0180', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let PixelMapData = new unifiedDataChannel.UnifiedData();
       const GetDelayPixelMapData = ((dataType:string) => {
         let buffer = new ArrayBuffer(128);
@@ -856,7 +856,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0190', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0190', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let wantData = new unifiedDataChannel.UnifiedData();
       const GetDelayWantData = ((dataType:string) => {
         let object:Want = {
@@ -904,7 +904,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0230', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_DelayCopy_JsApiTest_0230', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
       let plainTextData = new unifiedDataChannel.UnifiedData();
       const GetDelayPlainTextData = ((dataType:string) => {
         let plainText = new unifiedDataChannel.PlainText();
@@ -948,7 +948,7 @@ export default function PasteboardDelayCopyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("SUB_Pasteboard_Local_SDK_FromHtml_0100", 0, async () => {
+    it("SUB_Pasteboard_Local_SDK_FromHtml_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       console.info(TAG + "SUB_Pasteboard_Local_SDK_FromHtml_0100 ---------start")
       let htmlStr = '<p style ="text-align:center">我是你居中对齐</p>'
       try{

@@ -136,7 +136,6 @@
              OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ComponentSnapshot",
                           "C-api test demo create pixelmap result is %{public}d", createPixelMapRet);
              uint32_t byteCnt = 0;
-             //                      OH_PixelmapNative_GetByteCount(pixelMap, &byteCnt);
              OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ComponentSnapshot",
                           "C-api test demo byteCnt is %{public}u", byteCnt);
  

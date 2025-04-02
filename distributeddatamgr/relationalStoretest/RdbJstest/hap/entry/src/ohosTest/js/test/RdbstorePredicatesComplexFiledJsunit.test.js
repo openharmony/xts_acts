@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
@@ -63,8 +63,11 @@ describe('rdbStorePredicatesComplexFiledTest', function () {
      * @tc.name resultSet Update test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0380
      * @tc.desc resultSet Update test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0001', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0001 start *************");
 
         let predicates = await new dataRdb.RdbPredicates("test")
@@ -89,8 +92,11 @@ describe('rdbStorePredicatesComplexFiledTest', function () {
      * @tc.name resultSet Update test
      * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBPredicatesJsAPITest_0390
      * @tc.desc resultSet Update test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
-    it('SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0002', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0002 start *************");
 
         let predicates = await new dataRdb.RdbPredicates("test")

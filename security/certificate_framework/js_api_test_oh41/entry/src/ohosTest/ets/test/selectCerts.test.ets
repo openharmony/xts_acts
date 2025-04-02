@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import * as certFunc from "./utils/collection/certFunc";
 import * as collectionFunc from "./utils/collection/collectionFunc";
@@ -49,7 +49,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let collection: cert.CertCRLCollection = {} as cert.CertCRLCollection;
       try {
         collection = await collectionFunc.createCollection([1], [], PEM);
@@ -75,7 +75,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let collection: cert.CertCRLCollection = {} as cert.CertCRLCollection;
       try {
         collection = await collectionFunc.createCollection([1], [], PEM);
@@ -102,7 +102,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         const certs = await certFunc.checkSelectCerts(PEM, [1, 2], {}, IS_CALLBACK);
         expect(certs != null).assertTrue();
@@ -122,7 +122,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let x509Cert: cert.X509Cert = {} as cert.X509Cert;
       try {
         x509Cert = await certFunc.createPEMCustomizedX509CertPromise(CERT_DATA_PEM[0]);
@@ -154,7 +154,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let x509Cert: cert.X509Cert = {} as cert.X509Cert;
       try {
         x509Cert = await certFunc.createPEMCustomizedX509CertPromise(CERT_DATA_PEM[1]);
@@ -185,7 +185,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: '231129Z'
       };
@@ -215,7 +215,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: '231122034700Z'
       };
@@ -239,7 +239,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: '20231122034700Z'
       };
@@ -263,7 +263,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: CERT_DATA_PEM_PARAMETERS[0].notBeforeDate
       };
@@ -287,7 +287,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: CERT_DATA_PEM_PARAMETERS[0].notAfterDate
       };
@@ -311,7 +311,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: '20241122034700Z'
       };
@@ -335,7 +335,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         validDate: ''
       };
@@ -365,7 +365,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         issuer: CERT_DATA_PEM_PARAMETERS[0].issuer
       };
@@ -390,7 +390,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         issuer: CERT_DATA_PEM_PARAMETERS[2].issuer
       };
@@ -414,7 +414,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         issuer: new Uint8Array([0x30, 0x64, 0x31, 0x10, 0x30, 0x0e, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x07, 0x4a, 0x69,
           0x61, 0x6e, 0x67, 0x73, 0x75, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4e,
@@ -443,7 +443,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         issuer: new Uint8Array([0x30, 0x74, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4e,
           0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x55, 0x53, 0x31, 0x13, 0x30, 0x11, 0x06,
@@ -473,7 +473,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         issuer: new Uint8Array([0x30, 0x64, 0x31])
       };
@@ -503,7 +503,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         issuer: new Uint8Array()
       };
@@ -533,7 +533,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, true, true, true, true, true, true, true]
       };
@@ -557,7 +557,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, false, true, true, false, true, true, true]
       };
@@ -580,7 +580,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [false, false, false, false, false, false, false, false, false]
       };
@@ -604,7 +604,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, true, true, true, true, true, true]
       };
@@ -628,7 +628,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, true, true, true, true, true, true]
       };
@@ -651,7 +651,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, true, true, true, true, true, true, true, true]
       };
@@ -675,7 +675,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, true, true, true, true, true, true, true, false]
       };
@@ -699,7 +699,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: []
       };
@@ -729,7 +729,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         keyUsage: [true, true, true, true, true, true, true, true, true]
       };
@@ -753,7 +753,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         serialNumber: CERT_DATA_PEM_PARAMETERS[1].serialNumber
       };
@@ -777,7 +777,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         serialNumber: BigInt(1234567)
       };
@@ -801,7 +801,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         subject: CERT_DATA_PEM_PARAMETERS[1].subject
       };
@@ -825,7 +825,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         subject: CERT_DATA_PEM_PARAMETERS[3].subject
       };
@@ -849,7 +849,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         subject: new Uint8Array([0x30, 0x6c, 0x31, 0x0e, 0x30, 0x0c, 0x06, 0x03, 0x55, 0x04, 0x08, 0x13, 0x05, 0x74,
           0x65, 0x73, 0x74, 0x31, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4e, 0x31,
@@ -879,7 +879,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         subject: new Uint8Array([0x30, 0x6c, 0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x45, 0x4e,
           0x31, 0x0b, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x06, 0x13, 0x02, 0x43, 0x4e, 0x31, 0x10, 0x30, 0x0e, 0x06,
@@ -909,7 +909,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         subject: new Uint8Array([0x30, 0x6c, 0x31])
       };
@@ -939,7 +939,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         subject: new Uint8Array()
       };
@@ -969,7 +969,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         publicKey: CERT_DATA_PEM_PARAMETERS[1].publicKey
       };
@@ -993,7 +993,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         publicKey: {
           data: new Uint8Array([0x30, 0x82, 0x01])
@@ -1019,7 +1019,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         publicKey: {
           data: new Uint8Array()
@@ -1051,7 +1051,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         publicKeyAlgID: CERT_DATA_PEM_PARAMETERS[1].publicKeyAlgID
       };
@@ -1075,7 +1075,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_4000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_4000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         publicKeyAlgID: '1.2.3.4'
       };
@@ -1099,7 +1099,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_4100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_4100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const param: cert.X509CertMatchParameters = {
         publicKeyAlgID: ''
       };
@@ -1129,7 +1129,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_4200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_4200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let x509Cert: cert.X509Cert = {} as cert.X509Cert;
       try {
         x509Cert = await certFunc.createCustomizedX509CertPromise(PEM, 1);
@@ -1168,7 +1168,7 @@ export default function certFrameworkSelectCertsJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_Select_Certs_Func_4300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_Select_Certs_Func_4300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let x509Cert: cert.X509Cert = {} as cert.X509Cert;
       try {
         x509Cert = await certFunc.createCustomizedX509CertPromise(PEM, 1);

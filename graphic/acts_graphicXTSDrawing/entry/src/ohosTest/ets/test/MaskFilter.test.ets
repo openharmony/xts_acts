@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
 
@@ -47,7 +47,7 @@ export default function maskFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testCreateBlurMaskFilterNormal', DEFAULT, () => {
+    it('testCreateBlurMaskFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       const msg = 'testCreateBlurMaskFilterNormal';
 
       try {
@@ -78,7 +78,7 @@ export default function maskFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateBlurMaskFilterNull', DEFAULT, () => {
+    it('testCreateBlurMaskFilterNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCreateBlurMaskFilterNull';
 
       try {
@@ -122,7 +122,7 @@ export default function maskFilterTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateBlurMaskFilterMultipleCalls', DEFAULT, () => {
+    it('testCreateBlurMaskFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testCreateBlurMaskFilterMultipleCalls';
 
       for (let i = 0; i < 20; i++) {

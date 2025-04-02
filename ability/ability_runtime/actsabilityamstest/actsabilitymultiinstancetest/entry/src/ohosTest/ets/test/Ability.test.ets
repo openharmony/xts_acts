@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { common, StartOptions } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry, Driver, MatchPattern, ON } from '@kit.TestKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -67,7 +67,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -242,7 +242,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -408,7 +408,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -476,7 +476,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -577,7 +577,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -717,7 +717,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -889,7 +889,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;
@@ -995,7 +995,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0400', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0400';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let event = TEST_CASE_NAME;

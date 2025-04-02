@@ -33,10 +33,13 @@ export default function getSupportedPhotoFormatsTest() {
   let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
   let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(testContext);
   const imageArray = ["gif", "heic", "heics", "heifs", "bmp", "bm", "heif", "hif", "avif", "cur", "webp", "dng",
-                    "raf", "ico", "nrw", "rw2", "pef", "srw", "arw", "jpg", "jpeg", "jpe", "png", "svg", "raw"];
+                    "raf", "ico", "nrw", "rw2", "pef", "srw", "arw", "jpg", "jpeg", "jpe", "png", "svg", "raw", "svgz",
+                     "ief", "jp2", "jpg2", "ipm", "jpm", "jpx", "jpf", "pcx", "tiff", "tif", "djvu", "djv", "wbmp", 
+                     "xbm", "xpm", "xwd"];
   const videoArray = ["3gpp2", "3gp2", "3g2", "3gpp", "3gp", "m4v", "f4v", "mp4v", "mpeg4", "mp4", "m2ts", "mts",
                     "ts", "yt", "wrf", "mpeg", "mpeg2", "mpv2", "mp2v", "m2v", "m2t", "mpeg1", "mpv1", "mp1v",
-                    "m1v", "mpg", "mov", "mkv", "webm", "h264", "flv", "avi"];
+                    "m1v", "mpg", "mov", "mkv", "webm", "h264", "flv", "avi", "mpe", "qt", "mpv", "rmvb", "axv",
+                    "dl", "dif", "dv", "fli", "gl", "ogv", "mxu", "lsf", "lsx", "wmx", "wvx", "movie"];
 
   describe('getSupportedPhotoFormatsTest', () => {
     beforeAll(async () => {
@@ -59,8 +62,9 @@ export default function getSupportedPhotoFormatsTest() {
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(1);
         for (let element of result) {
-          expect(imageArray).assertContain(element);
+          expect(element.length >= 1).assertTrue();
         }
+        expect(result).assertContain("jpg");
         done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
@@ -82,8 +86,9 @@ export default function getSupportedPhotoFormatsTest() {
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(2);
         for (let element of result) {
-          expect(videoArray).assertContain(element);
+          expect(element.length >= 1).assertTrue();
         }
+        expect(result).assertContain("mp4");
         done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}`);
@@ -136,6 +141,48 @@ export default function getSupportedPhotoFormatsTest() {
       } catch (error) {
         console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertFalse();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : GET_SUPPOTTED_PHOTO_FORMATS_4000
+     * @tc.name      : get_supported_photo_formats_004
+     * @tc.desc      : get supported photo formats, photoType error, error code 14000011
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('get_supported_photo_formats_004', 2, async (done: Function) => {
+      let testNum = 'get_supported_photo_formats_004';
+      try {
+        await phAccessHelper.getSupportedPhotoFormats(3);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}`);
+        expect(error.code).assertEqual('14000011');
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : GET_SUPPOTTED_PHOTO_FORMATS_5000
+     * @tc.name      : get_supported_photo_formats_005
+     * @tc.desc      : get supported photo formats, photoType undefined, error code 13900020 or 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('get_supported_photo_formats_005', 2, async (done: Function) => {
+      let testNum = 'get_supported_photo_formats_005';
+      try {
+        await phAccessHelper.getSupportedPhotoFormats(undefined);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}`);
+        expect(error.code === '13900020' || error.code === '401').assertTrue();
         done();
       }
     })

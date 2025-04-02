@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import { BusinessError, Callback } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -91,7 +91,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateWindow_DialogWindow_Callback', 0, async (done: Function) => {
+    it('testCreateWindow_DialogWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateWindow_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -129,7 +129,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateWindow_DialogWindow_Promise', 0, async (done: Function) => {
+    it('testCreateWindow_DialogWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateWindow_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -163,7 +163,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreate_DialogWindow_Callback', 0, async (done: Function) => {
+    it('testCreate_DialogWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreate_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -190,7 +190,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreate_DialogWindow_Promise', 0, async (done: Function) => {
+    it('testCreate_DialogWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreate_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -215,7 +215,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinNumIsOne_Promise', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinNumIsOne_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinNumIsOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -247,7 +247,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinNumIsMore_Promise', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinNumIsMore_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinNumIsMore_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -295,7 +295,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinAndHasDialogWin_Promise', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinAndHasDialogWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinAndHasDialogWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -347,7 +347,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinNumIsOne_Callback', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinNumIsOne_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinNumIsOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -384,7 +384,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinNumIsMore_Callback', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinNumIsMore_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinNumIsMore_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -439,7 +439,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinAndHasDialogWin_Callback', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinAndHasDialogWin_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinAndHasDialogWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -499,7 +499,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindow_Callback', 0, async (done: Function) => {
+    it('testCreateSubWindow_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -531,7 +531,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindow_Promise', 0, async () => {
+    it('testCreateSubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateSubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -557,7 +557,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindow_WinNameNull_Promise', 0, async () => {
+    it('testCreateSubWindow_WinNameNull_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateSubWindow_WinNameNull_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -584,7 +584,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindow_WinNameNull_Callback', 0, async (done: Function) => {
+    it('testCreateSubWindow_WinNameNull_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateSubWindow_WinNameNull_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -617,7 +617,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindow_WinNameUndefined_Promise', 0, async () => {
+    it('testCreateSubWindow_WinNameUndefined_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateSubWindow_WinNameUndefined_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -644,7 +644,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindow_WinNameUndefined_Callback', 0, async (done: Function) => {
+    it('testCreateSubWindow_WinNameUndefined_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testCreateSubWindow_WinNameUndefined_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -677,7 +677,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSubWindowModal_DialogWindow', 0, async () => {
+    it('testSetSubWindowModal_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetSubWindowModal_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -708,7 +708,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSubWindowModal_MainWindow', 0, async () => {
+    it('testSetSubWindowModal_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetSubWindowModal_MainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -730,7 +730,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSubWindowModal_SubWindow', 0, async () => {
+    it('testSetSubWindowModal_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetSubWindowModal_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -766,7 +766,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -846,7 +846,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise', 0, async (done: Function) => {
+    it('testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -923,7 +923,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindowWithOptions_Normal', 0, async () => {
+    it('testCreateSubWindowWithOptions_Normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateSubWindowWithOptions_Normal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -955,7 +955,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateSubWindowWithOptions_isModalIsUndefined', 0, async () => {
+    it('testCreateSubWindowWithOptions_isModalIsUndefined', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testCreateSubWindowWithOptions_isModalIsUndefined';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -988,7 +988,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSubWindowModal_SubWindowWithOps', 0, async () => {
+    it('testSetSubWindowModal_SubWindowWithOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
       let caseName = 'testSetSubWindowModal_SubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

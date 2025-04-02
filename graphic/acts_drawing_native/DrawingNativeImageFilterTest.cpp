@@ -55,7 +55,7 @@ class DrawingNativeImageFilterTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, Function | SmallTest | Level0) {
     // 1. Enumerate OH_Drawing_TileMode values in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_TileMode modes[] = {CLAMP, REPEAT, MIRROR, DECAL};
     for (OH_Drawing_TileMode mode : modes) {
@@ -91,7 +91,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNULL, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageFilterCreateBlur with the first parameter being null
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(0, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
     // add assert
@@ -112,7 +112,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNULL, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMultipleCalls, Function | SmallTest | Level3) {
     // 1. OH_Drawing_ImageFilterCreateBlur (pass random values for sigmaX and sigmaY, random enum value for
     // OH_Drawing_TileMode), call 10 times
     for (int i = 0; i < 10; i++) {
@@ -136,7 +136,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMultipleCalls, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurAbnormal, Function | SmallTest | Level3) {
     // 1. Pass negative values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter =
         OH_Drawing_ImageFilterCreateBlur(-1.0f, -1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
@@ -154,7 +154,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurAbnormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, Function | SmallTest | Level3) {
     // 1. Create a blur image filter with maximum values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter =
         OH_Drawing_ImageFilterCreateBlur(FLT_MAX, FLT_MAX, OH_Drawing_TileMode::MIRROR, nullptr);
@@ -172,7 +172,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNormal, Function | SmallTest | Level0) {
     // 1. OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
     // add assert
@@ -207,7 +207,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNorma
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNULL, Function | SmallTest | Level3) {
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
     // add assert
     EXPECT_NE(filter, nullptr);
@@ -227,7 +227,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNULL,
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterMultipleCalls, Function | SmallTest | Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
         // add assert
@@ -249,7 +249,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterMulti
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, Function | SmallTest | Level0) {
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
     // add assert
     EXPECT_NE(filter, nullptr);
@@ -264,7 +264,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, Function | SmallTest | Level3) {
     OH_Drawing_ImageFilterDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);
@@ -278,7 +278,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_ImageFilterCreateFromColorFilter 10 times
     OH_Drawing_ColorFilter *colorFilters[10];
     OH_Drawing_ImageFilter *filters[10];

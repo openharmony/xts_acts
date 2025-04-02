@@ -63,11 +63,13 @@ export default function openCustomDialog() {
       console.info("[openCustomDialog_0100] component obj is: " + JSON.stringify(obj));
       console.info("[openCustomDialog_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Custom dialog Message');
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
       console.info('[openCustomDialog_0100] END');
       done();
     });
-    
-
+  
   })
 }
 

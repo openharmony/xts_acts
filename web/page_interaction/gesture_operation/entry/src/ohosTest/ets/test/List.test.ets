@@ -14,10 +14,12 @@
  */
 import HitTest from './HitTest.test';
 import webZoomAccessTest from './WebZoomAccessTest.test'
+import getLastHitTest from './getLastHitTest.test'
 
 export default function testsuite() {
   HitTest();
   webZoomAccessTest()
+  getLastHitTest()
   
   
 }

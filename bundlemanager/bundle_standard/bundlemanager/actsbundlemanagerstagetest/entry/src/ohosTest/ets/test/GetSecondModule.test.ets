@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@kit.BasicServicesKit';
 import bundle from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function GetSecondModuleTest() {
   describe('getSecondModuleTest', () =>  {
@@ -24,7 +24,7 @@ export default function GetSecondModuleTest() {
      * @tc.name GetSecondModuleTest
      * @tc.desc Test the bundleManager secondary module
      */
-    it('GetSecondModuleTest', 0, async (done: Function) =>  {
+    it('GetSecondModuleTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
       let bundleInfo = await bundle.getBundleInfoForSelf(
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO |

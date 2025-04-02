@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { webview } from '@kit.ArkWeb';
 import { temp } from './Const';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -50,7 +50,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource01', 0, () => {
+    it('testPrefetchResource01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0100 start')
       console.info('Sub_WEB_PrefetchResource_0100 start')
@@ -90,7 +90,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource02', 0, async () => {
+    it('testPrefetchResource02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0200 start')
       console.info('Sub_WEB_PrefetchResource_0200 start')
@@ -130,7 +130,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource03', 0, async () => {
+    it('testPrefetchResource03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0300 start')
       console.info('Sub_WEB_PrefetchResource_0300 start')
@@ -171,7 +171,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource04', 0, () => {
+    it('testPrefetchResource04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0400 start')
       console.info('Sub_WEB_PrefetchResource_0400 start')
@@ -211,7 +211,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource05', 0, () => {
+    it('testPrefetchResource05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0500 start')
       console.info('Sub_WEB_PrefetchResource_0500 start')
@@ -252,7 +252,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource06', 0, () => {
+    it('testPrefetchResource06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0600 start')
       console.info('Sub_WEB_PrefetchResource_0600 start')
@@ -292,7 +292,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource09', 0, () => {
+    it('testPrefetchResource09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0900 start')
       console.info('Sub_WEB_PrefetchResource_0900 start')
@@ -332,7 +332,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource10', 0, () => {
+    it('testPrefetchResource10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1000 start')
       console.info('Sub_WEB_PrefetchResource_1000 start')
@@ -372,7 +372,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource11', 0, () => {
+    it('testPrefetchResource11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1100 start')
       console.info('Sub_WEB_PrefetchResource_1100 start')
@@ -412,7 +412,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource12', 0, async () => {
+    it('testPrefetchResource12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1200 start')
       console.info('Sub_WEB_PrefetchResource_1200 start')
@@ -452,7 +452,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource13', 0, async () => {
+    it('testPrefetchResource13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1300 start')
       console.info('Sub_WEB_PrefetchResource_1300 start')
@@ -492,7 +492,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource14', 0, async () => {
+    it('testPrefetchResource14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1400 start')
       console.info('Sub_WEB_PrefetchResource_1400 start')
@@ -532,7 +532,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource15', 0, () => {
+    it('testPrefetchResource15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1500 start')
       console.info('Sub_WEB_PrefetchResource_1500 start')
@@ -572,7 +572,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource16', 0, () => {
+    it('testPrefetchResource16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1600 start')
       console.info('Sub_WEB_PrefetchResource_1600 start')
@@ -612,7 +612,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource17', 0, () => {
+    it('testPrefetchResource17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1700 start')
       console.info('Sub_WEB_PrefetchResource_1700 start')
@@ -652,7 +652,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testPrefetchResource18', 0, () => {
+    it('testPrefetchResource18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1800 start')
       console.info('Sub_WEB_PrefetchResource_1800 start')

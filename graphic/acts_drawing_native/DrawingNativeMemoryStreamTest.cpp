@@ -56,7 +56,7 @@ class DrawingNativeMemoryStreamTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNormal, Function | SmallTest | Level0) {
     // 1. Call OH_Drawing_MemoryStreamCreate with copyData set to true
     char data[10] = {0};
     OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(data, 10, true);
@@ -82,7 +82,7 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNull, Function | SmallTest | Level3) {
     char data[10] = {0};
     // 1. OH_Drawing_MemoryStreamCreate with the first parameter set to nullptr, check the error code using
     // OH_Drawing_ErrorCodeGet
@@ -105,7 +105,7 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateAbnormal, Function | SmallTest | Level3) {
     // 1. OH_Drawing_MemoryStreamCreate with a negative value as the second parameter
     OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(nullptr, -10, true);
     // add assert  ---待验证
@@ -124,7 +124,7 @@ HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_MemoryStreamCreate 10 times, passing different data segments
     for (int i = 0; i < 10; i++) {
         char data[10] = {i};

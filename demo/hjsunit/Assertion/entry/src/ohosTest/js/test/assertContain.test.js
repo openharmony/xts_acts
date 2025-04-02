@@ -12,25 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'deccjsunit/index'
+import {describe, it, expect, Level, Size, TestType } from 'deccjsunit/index'
 
 describe('assertContain', function () {
-    it('assertContainSuccessOnString', 0, function () {
+    it('assertContainSuccessOnString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = 'abc';
         let b = 'b'
         expect(a).assertContain(b)
     })
-    it('assertContainSuccessOnArray', 0, function () {
+    it('assertContainSuccessOnArray', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = ['a', 'b', 'c'];
         let b = 'b'
         expect(a).assertContain(b)
     })
-    it('assertContainFailOnString', 0, function () {
+    it('assertContainFailOnString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = 'abc';
         let b = 'd'
         expect(a).assertContain(b)
     })
-    it('assertContainFailOnArray', 0, function () {
+    it('assertContainFailOnArray', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = ['a', 'b', 'c'];
         let b = 'd'
         expect(a).assertContain(b)

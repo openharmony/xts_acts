@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterAll, it, expect, Level } from "@ohos/hypium";
 import { ENTINFO1, SELFWANT, SELFHAPNAME, DEFAULT_USER_ID, INVALID_USER_ID, appIdsInit } from "../commom.ets";
 
 import accountManager from '@ohos.enterprise.accountManager';
@@ -49,7 +49,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("disallowOsAccountAddition_test_001", 0, async (done: Function) => {
+    it("disallowOsAccountAddition_test_001", Level.LEVEL2, async (done: Function) => {
       console.info(' --- disallowOsAccountAddition_test_001  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -74,7 +74,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("disallowOsAccountAddition_test_002", 0, async (done: Function) => {
+    it("disallowOsAccountAddition_test_002", Level.LEVEL2, async (done: Function) => {
       console.info(' --- disallowOsAccountAddition_test_002  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -99,7 +99,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("isOsAccountAdditionDisallowed_test_001", 0, async (done: Function) => {
+    it("isOsAccountAdditionDisallowed_test_001", Level.LEVEL2, async (done: Function) => {
       console.info(' --- isOsAccountAdditionDisallowed_test_001  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -124,7 +124,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("isOsAccountAdditionDisallowed_test_002", 0, async (done: Function) => {
+    it("isOsAccountAdditionDisallowed_test_002", Level.LEVEL2, async (done: Function) => {
       console.info(' --- isOsAccountAdditionDisallowed_test_002  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -149,7 +149,7 @@ export default function accountManagerTest() {
      * @tc.type Function
      * @tc.size MediumTest
      */
-    it("addOsAccountAsync_test_001", 0, async (done: Function) => {
+    it("addOsAccountAsync_test_001", Level.LEVEL2, async (done: Function) => {
       console.info(' --- addOsAccountAsync_test_001  -------- START --------');
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
@@ -164,6 +164,72 @@ export default function accountManagerTest() {
       }
       done();
       console.info(' --- addOsAccountAsync_test_001  -------- END --------');
+    })
+
+    /**
+     * @tc.number setDomainAccountPolicy_test_001
+     * @tc.name test setDomainAccountPolicy method
+     * @tc.desc setDomainAccountPolicy with super admin
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("setDomainAccountPolicy_test_001", Level.LEVEL2, async (done: Function) => {
+      console.info(' --- setDomainAccountPolicy_test_001  -------- START --------');
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      let domainAccountInfo: osAccount.DomainAccountInfo = {
+        domain: '',
+        accountName: '',
+        serverConfigId: '',
+      };
+
+      let policy: accountManager.DomainAccountPolicy = {
+        authenticationValidityPeriod: 120,
+        passwordValidityPeriod: 90,
+        passwordExpirationNotification: 60,
+      };
+      try {
+        await accountManager.setDomainAccountPolicy(SELFWANT, domainAccountInfo, policy);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- setDomainAccountPolicy_test_001 error 201 and 801 is expected, actually catch: '
+          + error.code);
+        expect((error.code == 201) || (error.code == 801)).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+      console.info(' --- setDomainAccountPolicy_test_001  -------- END --------');
+    })
+
+    /**
+     * @tc.number getDomainAccountPolicy_test_001
+     * @tc.name test getDomainAccountPolicy method
+     * @tc.desc getDomainAccountPolicy with super admin
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
+    it("getDomainAccountPolicy_test_001", Level.LEVEL2, async (done: Function) => {
+      console.info(' --- getDomainAccountPolicy_test_001  -------- START --------');
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      let domainAccountInfo: osAccount.DomainAccountInfo = {
+        domain: '',
+        accountName: '',
+        serverConfigId: '',
+      };
+      try {
+        await accountManager.getDomainAccountPolicy(SELFWANT, domainAccountInfo);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.info(' --- getDomainAccountPolicy_test_001 error 201 and 801 is expected, actually catch: '
+          + error.code);
+        expect((error.code == 201) || (error.code == 801)).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+      console.info(' --- getDomainAccountPolicy_test_001  -------- END --------');
     })
   })
 }

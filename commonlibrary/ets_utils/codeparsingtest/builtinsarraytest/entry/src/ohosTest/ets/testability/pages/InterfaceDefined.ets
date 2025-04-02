@@ -15,6 +15,13 @@
 
 export interface TestA {
   a: number
+  b?: number
+}
+
+export interface TestDate extends Record<string, string> {
+  year: string;
+  month: string;
+  day: string;
 }
 
 export class MyArray extends Array {

@@ -65,15 +65,15 @@ describe("SensorJsTest_sensor_32", function () {
             fail: function (data, code) {
                 console.log("subscribeOnBodyState_SensorJsTest001 is failed, data: " + data + ", code: " + code);
                 expect(data).assertEqual('subscribe fail');
-				expect(code).assertEqual(1001);
+                expect(code).assertEqual(1001);
                 done();
             },
             complete: function () {
                 console.log('subscribeOnBodyState_SensorJsTest001 is completed');
             }
         });
-		setTimeout(() => {
-			sensor.unsubscribeOnBodyState();
+        setTimeout(() => {
+            sensor.unsubscribeOnBodyState();
           done();
         }, 1000);
     })
@@ -93,7 +93,7 @@ describe("SensorJsTest_sensor_32", function () {
             fail: function (data, code) {
                 console.error('subscribeOnBodyState_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
-				expect(code).assertEqual(1001);
+                expect(code).assertEqual(1001);
                 done();
             },
         });
@@ -114,7 +114,7 @@ describe("SensorJsTest_sensor_32", function () {
             fail: function (data, code) {
                 console.error('subscribeOnBodyState_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
-				expect(code).assertEqual(1001);
+                expect(code).assertEqual(1001);
                 done();
             },
         });
@@ -136,7 +136,7 @@ describe("SensorJsTest_sensor_32", function () {
             fail: function (data, code) {
                 console.error('subscribeOnBodyState_SensorJsTest004 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
-				expect(code).assertEqual(1001);
+                expect(code).assertEqual(1001);
                 done();
             },
         });
@@ -157,7 +157,7 @@ describe("SensorJsTest_sensor_32", function () {
             fail: function (data, code) {
                 console.error('subscribeOnBodyState_SensorJsTest005 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
-				expect(code).assertEqual(1001);
+                expect(code).assertEqual(1001);
             },
         });
         sensor.subscribeOnBodyState({
@@ -168,8 +168,8 @@ describe("SensorJsTest_sensor_32", function () {
             fail: function (data, code) {
                 console.error('subscribeOnBodyState_SensorJsTest005_1 failed. Code: ' + code + '; Data: ' + data);
                 expect(data).assertEqual('subscribe fail');
-				expect(code).assertEqual(1001);
-				done();
+                expect(code).assertEqual(1001);
+                done();
             },
         });
     })

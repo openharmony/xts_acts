@@ -13,11 +13,11 @@
 * limitations under the License.
 */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError, Callback } from '@ohos.base';
 
-const ERR_NOT_DEBUG_APP: string = 'error: not debug app.';
+const ERR_NOT_DEBUG_APP: string = 'error: cannot debug app using release certificate.';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -30,7 +30,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1700', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -h';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -63,7 +63,7 @@ export default function abilityTest() {
          * @tc.type: Function
          * @tc.level: Level 1
          */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_1800', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -help';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -96,7 +96,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2000', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -p';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -129,7 +129,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2200', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug --h';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -162,7 +162,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2300', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug --help';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -196,7 +196,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2500', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -b com.acts.bundleNameA -i';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -219,7 +219,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_2900', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -b 123';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -242,7 +242,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3000', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -b abc';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -265,7 +265,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_aaSupportDebugWithWaiting_3600', Level.LEVEL0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let cmd = 'aa appdebug -b com.example.aaappdebug';
       await abilityDelegator.executeShellCommand(cmd).then((d: AbilityDelegatorRegistry.ShellCmdResult) => {

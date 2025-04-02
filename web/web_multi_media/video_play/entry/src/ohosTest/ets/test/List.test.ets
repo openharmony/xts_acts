@@ -13,22 +13,13 @@
  * limitations under the License.
  */
 
-
-import webMediaOption from './WebMediaOption.test'
-import webMediaPlayGestureAccess from './WebMediaPlayGestureAccess.test'
-import webOnFullScreenExit from './WebOnFullScreenExit.test'
-import webOnFullScreenEnter from './WebOnFullScreenEnter.test'
 import webViewControllerVideoMedia from './WebViewControllerVideoMedia.test'
-import webViewOnFullScreenEnterVideoInfo from './webViewOnFullScreenEnterVideoInfo.test'
-import webViewOnFullScreenEnterAudio from './webViewOnFullScreenEnterAudio.test'
+import rectEvent from './rectEvent.test'
+
 
 export default function testsuite() {
-    webMediaOption()
-    webMediaPlayGestureAccess()
-    webOnFullScreenEnter()
-    webOnFullScreenExit()
     webViewControllerVideoMedia()
-    webViewOnFullScreenEnterAudio()
-    webViewOnFullScreenEnterVideoInfo()
+	rectEvent()
+
 
 }

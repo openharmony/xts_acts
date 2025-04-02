@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import nltypes from 'libnltypesndk.so'
 
@@ -32,7 +32,7 @@ export default function nltypesNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslNltypesCatopen001', 0, async (done: Function) => {
+    it('testMuslNltypesCatopen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let resultTrue = 1;
       let result: number = nltypes.catOpen();
       expect(result).assertEqual(resultTrue);

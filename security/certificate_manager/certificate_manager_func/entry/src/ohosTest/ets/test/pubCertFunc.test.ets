@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 import type common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
@@ -110,7 +110,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_PubCertJsApi_Func_0400', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_PubCertJsApi_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.getPublicCertificate('');
         expect(null).assertFail();
@@ -129,7 +129,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_PubCertJsApi_Func_0500', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_PubCertJsApi_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.getPublicCertificate('aabb');
         expect(null).assertFail();
@@ -148,7 +148,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_PubCertJsApi_Func_0900', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_PubCertJsApi_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.isAuthorizedApp('');
         expect(null).assertFail();
@@ -167,7 +167,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_PubCertJsApi_Func_1000', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_PubCertJsApi_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await certManager.isAuthorizedApp('aabb');
         expect(null).assertFail();
@@ -186,7 +186,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetPriCertJsApi_Func_0010: started ");
       let keystore: Uint8Array = commonParameter.priRsaCredData;
       let keystorePwd: string = '123456';
@@ -230,7 +230,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0030', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_GetPriCertJsApi_Func_0030: started.");
       let keystore: Uint8Array = commonParameter.priRsaCredData;
       let keystorePwd: string = '123456';
@@ -304,7 +304,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('Security_CertManager_OpenCertDialogCertJsApi_Func_0030', 0, async (done: Function) => {
+    it('Security_CertManager_OpenCertDialogCertJsApi_Func_0030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const context : common.Context = GlobalContext.getContext()
       if (canIUse('SystemCapability.Security.CertificateManagerDialog')){
         console.log(`Security_CertManager_OpenCertDialogCertJsApi_Func_0030 device support CertificateManagerDialog`)
@@ -346,7 +346,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0100', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(certManagerDialog.CertificateDialogErrorCode.ERROR_GENERIC).assertEqual(29700001);
       expect(certManagerDialog.CertificateDialogErrorCode.ERROR_OPERATION_CANCELED).assertEqual(29700002);
       expect(certManagerDialog.CertificateDialogErrorCode.ERROR_OPERATION_FAILED).assertEqual(29700003);
@@ -372,7 +372,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: started ");
       if (deviceInfo.deviceType == '2in1') {
         const context :common.Context = GlobalContext.getContext();
@@ -437,7 +437,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040: started ");
       if (deviceInfo.deviceType != '2in1') {
         const context :common.Context = GlobalContext.getContext();
@@ -462,7 +462,7 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenInstallCertificateDialog_0011', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenInstallCertificateDialog_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialog_0011: started ");
       const context :common.Context = GlobalContext.getContext();
       if (deviceInfo.deviceType == '2in1') {

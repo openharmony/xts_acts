@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 // import router from '@system.router';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -47,7 +47,7 @@ export default function scrollBarJsunit() {
       console.info("scrollBar after each called");
     });
 
-    it('testScrollBarKeep001', 0, async  (done: Function) => {
+    it('testScrollBarKeep001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async  (done: Function) => {
       console.info('[testScrollBarKeep001] START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('scroll');
@@ -58,7 +58,7 @@ export default function scrollBarJsunit() {
       done();
     });
 
-    it('testScrollBarKeep002', 0, async  (done: Function) =>{
+    it('testScrollBarKeep002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async  (done: Function) =>{
       console.info('[testScrollBarKeep002] START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('scroll');

@@ -179,7 +179,6 @@
         "MainAbility/pages/component/gridcolPage",
         "MainAbility/pages/gridCol",
         "MainAbility/pages/gridRow",
-	    "MainAbility/pages/AlphabetIndexer/Index",
         "MainAbility/pages/Refresh/Index",
 	    "MainAbility/pages/Refresh/refresh",
         "MainAbility/pages/List/listtest2",

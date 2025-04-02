@@ -74,7 +74,7 @@ class DrawingNativeCanvasPart5Test : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, Function | SmallTest | Level3)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -109,7 +109,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, Function | SmallTest | Level1)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -150,7 +150,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, Function | SmallTest | Level2)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -181,7 +181,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectPathCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, Function | SmallTest | Level3)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -216,7 +216,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, Function | SmallTest | Level1)
 {
     // OH_Drawing_CanvasCreate
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
@@ -256,7 +256,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, Function | SmallTest | Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -282,7 +282,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasQuickRejectRectCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNull, Function | SmallTest | Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -310,7 +310,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNull, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, Function | SmallTest | Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -348,7 +348,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterNormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, Function | SmallTest | Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 100, 300, 300);
@@ -372,7 +372,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawArcWithCenterCalls, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNull, Function | SmallTest | Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -408,7 +408,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNull, TestSi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, Function | SmallTest | Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -444,7 +444,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectNormal, Test
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, Function | SmallTest | Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -474,7 +474,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawNestedRoundRectCalls, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.Level3)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, Function | SmallTest | Level3)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_CanvasClear(canvas, 0xFFFFFFFF);
@@ -535,7 +535,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNull, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSize.Level1)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, Function | SmallTest | Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
@@ -590,7 +590,7 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineNormal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 2
  */
-HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, TestSize.Level2)
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, Function | SmallTest | Level2)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import childProcessManager from '@ohos.app.ability.childProcessManager';
 import { ChildProcessArgs } from '@ohos.app.ability.ChildProcessArgs';
 import XTSArkProcess from '../xts/XTSArkProcess';
@@ -59,7 +59,7 @@ export default function arkProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartArkChildProcess_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartArkChildProcess_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `StartArkChildProcess_0100`;
       console.log(`${tag} it begin`);
       let path = abilityDelegator.getAppContext().filesDir + "/test1.txt";
@@ -136,7 +136,7 @@ export default function arkProcessTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartArkChildProcess_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartArkChildProcess_0200', Level.LEVEL0, async (done: Function) => {
       let tag = `StartArkChildProcess_0200`;
       console.log(`${tag} it begin`);
       if (!mpEnable) {

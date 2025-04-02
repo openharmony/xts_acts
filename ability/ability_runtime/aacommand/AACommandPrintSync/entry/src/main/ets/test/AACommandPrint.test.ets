@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, it } from '@ohos/hypium';
+import { describe, it, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
@@ -26,7 +26,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_01_0100', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_01_0100', Level.LEVEL0, async (done: Function) => {
       done();
       console.log("ACTS_AACommand_printSync_01_0100 start ====> ");
       let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
@@ -46,7 +46,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_01_0200', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_01_0200', Level.LEVEL0, async (done: Function) => {
       done();
       let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaa' +
@@ -74,7 +74,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_01_0300', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_01_0300', Level.LEVEL0, async (done: Function) => {
       done();
       let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         'aaaaaaaaaa' +
@@ -103,7 +103,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
      *           the test command.
      */
-    it('ACTS_AACommand_printSync_01_0400', 0, async (done: Function) => {
+    it('ACTS_AACommand_printSync_01_0400', Level.LEVEL0, async (done: Function) => {
       done();
       abilityDelegator?.printSync(null);
       console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> ");

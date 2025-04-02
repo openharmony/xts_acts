@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
@@ -29,7 +29,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_Dialog_True', 0, async () => {
+    it('testSetDialogBackGestureEnabled_Dialog_True', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_Dialog_True';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -72,7 +72,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_Dialog_False', 0, async () => {
+    it('testSetDialogBackGestureEnabled_Dialog_False', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_Dialog_False';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -116,7 +116,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_Dialog_WindowAbnormal', 0, async () => {
+    it('testSetDialogBackGestureEnabled_Dialog_WindowAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_Dialog_WindowAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -159,7 +159,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_MainWindow', 0, async () => {
+    it('testSetDialogBackGestureEnabled_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_MainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -189,7 +189,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_SubWindow', 0, async () => {
+    it('testSetDialogBackGestureEnabled_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -227,7 +227,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_Null', 0, async () => {
+    it('testSetDialogBackGestureEnabled_Null', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_Null';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -275,7 +275,7 @@ export default function windowDialogTest(context: common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testSetDialogBackGestureEnabled_Undefined', 0, async () => {
+    it('testSetDialogBackGestureEnabled_Undefined', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testSetDialogBackGestureEnabled_Undefined';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');

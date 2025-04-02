@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import baseDdkNdkTest from 'libbaseddkndk.so'
 
 export default function baseDdkNdkJsTest() {
@@ -34,7 +34,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkCreateAshmem001', 0, async (done: Function) => {
+    it('testDdkCreateAshmem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkCreateAshmem001---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkCreateAshmemOne();
@@ -57,7 +57,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkCreateAshmem002', 0, async (done: Function) => {
+    it('testDdkCreateAshmem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkCreateAshmem002---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkCreateAshmemTwo();
@@ -80,7 +80,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkCreateAshmem003', 0, async (done: Function) => {
+    it('testDdkCreateAshmem003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkCreateAshmem003---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkCreateAshmemThree();
@@ -103,7 +103,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkMapAshmem001', 0, async (done: Function) => {
+    it('testDdkMapAshmem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkMapAshmem001---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkMapAshmemOne();
@@ -126,7 +126,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkMapAshmem002', 0, async (done: Function) => {
+    it('testDdkMapAshmem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkMapAshmem002---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkMapAshmemTwo();
@@ -149,7 +149,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkMapAshmem003', 0, async (done: Function) => {
+    it('testDdkMapAshmem003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkMapAshmem003---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkMapAshmemThree();
@@ -172,7 +172,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkMapAshmem004', 0, async (done: Function) => {
+    it('testDdkMapAshmem004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkMapAshmem004---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkMapAshmemFour();
@@ -195,7 +195,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkUnmapAshmem001', 0, async (done: Function) => {
+    it('testDdkUnmapAshmem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkUnmapAshmem001---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkUnmapAshmemOne();
@@ -218,7 +218,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkUnmapAshmem002', 0, async (done: Function) => {
+    it('testDdkUnmapAshmem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkUnmapAshmem002---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkUnmapAshmemTwo();
@@ -241,7 +241,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkDestroyAshmem001', 0, async (done: Function) => {
+    it('testDdkDestroyAshmem001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkDestroyAshmem001---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkDestroyAshmemOne();
@@ -264,7 +264,7 @@ export default function baseDdkNdkJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testDdkDestroyAshmem002', 0, async (done: Function) => {
+    it('testDdkDestroyAshmem002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('----------------------testDdkDestroyAshmem002---------------------------');
       try {
         const ret = baseDdkNdkTest.ddkDestroyAshmemTwo();

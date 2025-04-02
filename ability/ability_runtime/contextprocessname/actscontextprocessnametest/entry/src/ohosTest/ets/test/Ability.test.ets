@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { application, common, Want } from '@kit.AbilityKit';
+import { Driver, ON} from '@ohos.UiTest';
 
 export default function ActsContextProcessNameTest() {
   const PROCESS_NAME = 'com.acts.contextprocessname'
@@ -41,7 +42,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type : Function
      * @tc.size : MediumTest
      */
-    it('SUB_Ability_AbilityRuntime_processName_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0100', Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0100'
       console.log(`[${caseName}]: start`)
       try {
@@ -65,7 +66,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type : Function
      * @tc.size : MediumTest
      */
-    it('SUB_Ability_AbilityRuntime_processName_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0200', Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0200'
       console.log(`[${caseName}] create`)
       try {
@@ -90,7 +91,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type : Function
      * @tc.size : MediumTest
      */
-    it('SUB_Ability_AbilityRuntime_processName_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0300', Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0300'
       try {
         let applicationContext = application.getApplicationContext();
@@ -113,7 +114,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type : Function
      * @tc.size : MediumTest
      */
-    it('SUB_Ability_AbilityRuntime_processName_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_0400', Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_0400'
       console.log(`[${caseName}] create`)
       try {
@@ -137,8 +138,9 @@ export default function ActsContextProcessNameTest() {
      * @tc.type : Function
      * @tc.size : MediumTest
      */
-    it('SUB_Ability_AbilityRuntime_processName_1500', 0, async (done: Function) => {
-      let caseName = 'SUB_Ability_Ability_Runtime_processName_1500'
+    it('SUB_Ability_AbilityRuntime_processName_1500', Level.LEVEL0, async (done: Function) => {
+      let caseName = 'SUB_Ability_AbilityRuntime_processName_1500'
+      let driver = Driver.create()
       console.log(`[${caseName}] create`)
       try {
         let uiAbilityContext = AppStorage.get('uiAbilityContext') as common.UIAbilityContext;
@@ -163,6 +165,9 @@ export default function ActsContextProcessNameTest() {
           })
         })
         await uiAbilityContext.startAbility(want)
+        await driver.delayMs(2000);
+        let button = await driver.findComponent(ON.text('允许'));
+        await button?.click();
       } catch (err) {
         let e = err as BusinessError;
         console.error(`[${caseName}]: ` + e.code + e.message);
@@ -180,7 +185,7 @@ export default function ActsContextProcessNameTest() {
      * @tc.type : Function
      * @tc.size : MediumTest
      */
-    it('SUB_Ability_AbilityRuntime_processName_3200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_processName_3200', Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_Ability_Ability_Runtime_processName_3200'
       console.log(`[${caseName}] create`)
       try {

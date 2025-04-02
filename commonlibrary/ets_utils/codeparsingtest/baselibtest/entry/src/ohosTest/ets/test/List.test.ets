@@ -13,7 +13,8 @@
 * limitations under the License.
 */
 
-import bufferTest from './buffer/Buffer.test';
+import buffer1Test from './buffer/Buffer1.test';
+import buffer2Test from './buffer/Buffer2.test';
 import processTest from './process/Process.test';
 import uriTest from './uri/Uri.test';
 import urlTest from './url/Url.test';
@@ -39,9 +40,11 @@ import stringDecoderTest from './stringDecoder/StringDecoder.test';
 import streamTest from './stream/Stream.test';
 import specialChar from './specialchar/SpecialChar.test';
 import consoleTest from './console/Console.test';
+import LRUCacheTest from './LRUCache/LRUCache.test';
 
 export default function testsuite() {
-  bufferTest();
+  buffer1Test();
+  buffer2Test();
   processTest();
   uriTest();
   urlTest();
@@ -66,5 +69,6 @@ export default function testsuite() {
   stringDecoderTest()
   streamTest()
   specialChar();
-  consoleTest()
+  consoleTest();
+  LRUCacheTest();
 }

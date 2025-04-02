@@ -69,7 +69,7 @@ class DrawingNativeTextBlobTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyNormal, Function | SmallTest | Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(nullptr, canvas);
     // 1. Use OH_Drawing_TextBlobBuilderCreate and OH_Drawing_CanvasDrawTextBlob together
@@ -96,7 +96,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyNormal, Test
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_TextBlobBuilderDestroy with nullptr parameter
     OH_Drawing_TextBlobBuilderDestroy(nullptr);
     // add assert
@@ -111,7 +111,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyNull, TestSi
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyMultipleCalls, Function | SmallTest | Level3) {
     OH_Drawing_TextBlobBuilder *builders[10];
     // 1. Call OH_Drawing_TextBlobBuilderCreate 10 times
     for (int i = 0; i < 10; i++) {
@@ -144,7 +144,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderCreateDestroyMultipleCall
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNormal, Function | SmallTest | Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(nullptr, canvas);
     // 1. Traverse the enumeration values of OH_Drawing_TextEncoding and use OH_Drawing_CanvasDrawTextBlob in
@@ -198,7 +198,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNull, Function | SmallTest | Level3) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -237,7 +237,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNull, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextMultipleCalls, Function | SmallTest | Level3) {
     const char *strs[] = {
         "Hello World", "你好世界", "Hello 世界", "Hello 世界123", "Hello $#@!", "繁體中文",
     };
@@ -274,7 +274,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextMultipleCalls, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextAbnormal, Function | SmallTest | Level3) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -301,7 +301,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextAbnormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNormal, Function | SmallTest | Level0) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -328,7 +328,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNormal, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNull, Function | SmallTest | Level3) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -372,7 +372,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNull, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextMultipleCalls, Function | SmallTest | Level3) {
     const char *strs[] = {
         "Hello World", "你好世界", "Hello 世界", "Hello 世界123", "Hello $#@!", "繁體中文",
     };
@@ -406,7 +406,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextMultipleCalls, 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextAbnormal, Function | SmallTest | Level3) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -433,7 +433,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextAbnormal, TestS
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNormal, Function | SmallTest | Level0) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -473,7 +473,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNormal, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNull, Function | SmallTest | Level3) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -508,7 +508,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringNull, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringMultipleCalls, Function | SmallTest | Level3) {
     const char *strs[] = {
         "Hello World", "你好世界", "Hello 世界", "Hello 世界123", "Hello $#@!", "繁體中文",
     };
@@ -544,7 +544,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringMultipleCalls, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringAbnormal, Function | SmallTest | Level3) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -571,7 +571,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromStringAbnormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNormal, Function | SmallTest | Level0) {
     // 1、创建OH_Drawing_TextBlob、OH_Drawing_Rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -599,7 +599,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNull, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlob and OH_Drawing_Rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -631,7 +631,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsNull, TestSize.Level3) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsMultipleCalls, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlob and OH_Drawing_Rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -665,7 +665,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsMultipleCalls, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsAbnormal, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlob and OH_Drawing_Rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(-1, -1, -1, -1);
     EXPECT_NE(rect, nullptr);
@@ -693,7 +693,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobGetBoundsAbnormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDNormal, Function | SmallTest | Level0) {
     // 1. Create OH_Drawing_TextBlob
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -718,7 +718,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDNormal, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDNull, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlob
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -742,7 +742,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDMultipleCalls, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlob
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -773,7 +773,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobUniqueIDMultipleCalls, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNormal, Function | SmallTest | Level0) {
     // 1. Create OH_Drawing_TextBlobBuilder, OH_Drawing_Font, OH_Drawing_Rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -802,7 +802,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNormal, TestSi
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNull, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlobBuilder, OH_Drawing_Font, OH_Drawing_Rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -845,7 +845,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosNull, TestSize
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosMultipleCalls, Function | SmallTest | Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
@@ -877,7 +877,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderAllocRunPosMultipleCalls,
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeNormal, Function | SmallTest | Level0) {
     // 1. Create OH_Drawing_TextBlobBuilder
     OH_Drawing_TextBlobBuilder *builder = OH_Drawing_TextBlobBuilderCreate();
     // add assert
@@ -904,7 +904,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeNormal, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeNull, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_TextBlobBuilderMake with nullptr as the parameter and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_TextBlobBuilderMake(nullptr);
@@ -920,7 +920,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeNull, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeMultipleCalls, Function | SmallTest | Level3) {
     // 1. Create OH_Drawing_TextBlobBuilder
     OH_Drawing_TextBlobBuilder *builder = OH_Drawing_TextBlobBuilderCreate();
     // add assert
@@ -947,7 +947,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobBuilderMakeMultipleCalls, TestSi
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobDestroyNormal, Function | SmallTest | Level0) {
     const char *str = "123456";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
@@ -971,7 +971,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobDestroyNormal, TestSize.Level0) 
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeTextBlobTest, testTextBlobDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeTextBlobTest, testTextBlobDestroyNull, Function | SmallTest | Level3) {
     // 1. OH_Drawing_TextBlobDestroy with null parameter
     OH_Drawing_TextBlobDestroy(nullptr);
     // add assert

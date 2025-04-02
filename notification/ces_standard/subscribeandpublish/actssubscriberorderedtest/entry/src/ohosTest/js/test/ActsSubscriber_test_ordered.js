@@ -14,7 +14,7 @@
  */
 import commonEvent from '@ohos.commonEvent'
 import commonEventManager from '@ohos.commonEventManager'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function ActsSubscriberTestOrder() {
     describe('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST', function () {
@@ -46,7 +46,7 @@ export default function ActsSubscriberTestOrder() {
      * @tc.name      : verify subscribe and publish : Check subscribe same event and publish common ordered event
      * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_0950', 0, async function (done) {
+    it('Sub_Notification_Ces_Publish_CommonEvent_0950', Level.LEVEL1, async function (done) {
         console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_0950 START`)
 
         let commonEventSubscribeInfo1 = {
@@ -159,7 +159,7 @@ export default function ActsSubscriberTestOrder() {
      *                 and twice publish common ordered event and check unsubscribe event
      * @tc.desc      : Check the subscriber can receive event "publish_event0200" type of the interface (by Promise)
      */
-    it ('Sub_Notification_Ces_Subscriber_Unsubscribe_2100', 0, async function (done) {
+    it ('Sub_Notification_Ces_Subscriber_Unsubscribe_2100', Level.LEVEL1, async function (done) {
         console.info(`${TAG} Sub_Notification_Ces_Subscriber_Unsubscribe_2100 START`)
 
         let commonEventSubscribeInfo1 = {
@@ -265,7 +265,7 @@ export default function ActsSubscriberTestOrder() {
      *                 and some publish common ordered events
      * @tc.desc      : Check the subscriber can receive event "publish_event0301" type of the interface (by Promise)
      */
-    it ('Sub_Notification_Ces_Subscriber_Subscribe_1000', 0, async function (done) {
+    it ('Sub_Notification_Ces_Subscriber_Subscribe_1000', Level.LEVEL1, async function (done) {
         console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_1000 START`)
 
         let commonEventSubscribeInfo1 = {
@@ -374,7 +374,7 @@ export default function ActsSubscriberTestOrder() {
      *                 and publish common ordered events and check abort event
      * @tc.desc      : Check the subscriber can receive event "publish_eventOrder0400" type of the interface by promise
      */
-    it ('Sub_Notification_Ces_Subscriber_Subscribe_1100', 0, async function (done) {
+    it ('Sub_Notification_Ces_Subscriber_Subscribe_1100', Level.LEVEL1, async function (done) {
         console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_1100 START`)
 
         let commonEventSubscribeInfo1 = {
@@ -457,7 +457,7 @@ export default function ActsSubscriberTestOrder() {
      * @tc.name      : verify subscribe and publish : Check subscriber same events
      * @tc.desc      : Check the subscriber can receive event "publish_event0500" type of the interface (by promise)
      */
-    it ('Sub_Notification_Ces_Subscriber_Subscribe_1200', 0, async function (done) {
+    it ('Sub_Notification_Ces_Subscriber_Subscribe_1200', Level.LEVEL1, async function (done) {
         console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_1200 START`)
 
         let commonEventSubscribeInfo1 = {
@@ -545,7 +545,7 @@ export default function ActsSubscriberTestOrder() {
      * @tc.name: createSubscriber(subscribeInfo: CommonEventSubscribeInfo, undefined): Promise<CommonEventSubscriber>
      * @tc.desc: createSubscriber
      */
-    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600', 0, async function (done) {
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600', Level.LEVEL2, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600 START`)
   
         let subscriber
@@ -575,7 +575,7 @@ export default function ActsSubscriberTestOrder() {
      * @tc.name: createSubscriber(subscribeInfo: CommonEventSubscribeInfo, undefined): Promise<CommonEventSubscriber>
      * @tc.desc: createSubscriber
      */
-    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700', 0, async function (done) {
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700', Level.LEVEL2, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700 START`)
   
         let subscriber

@@ -14,7 +14,7 @@
  */
 import wallpaper from '@ohos.wallpaper';
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import fileio from '@ohos.fileio';
 
@@ -53,7 +53,7 @@ export default function wallpaperAuthorityJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('testGetColorsCallbackSystem101', 0, async (done: Function) => {
+        it('testGetColorsCallbackSystem101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetColorsCallbackSystem101 start-----------------');
             await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
             wallpaper.getColors(WALLPAPER_SYSTEM, (err, RgbaColors) => {
@@ -85,7 +85,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetColorsPromiseSystem101', 0, async (done: Function) => {
+        it('testGetColorsPromiseSystem101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetColorsPromiseSystem101 start-----------------');
             await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
             await wallpaper.getColors(WALLPAPER_SYSTEM).then((RgbaColors) => {
@@ -111,7 +111,7 @@ export default function wallpaperAuthorityJSUnit() {
          * @tc.type    : Function
          * @tc.level   0
          */
-        it('testGetColorsCallbackLock102', 0, async (done: Function) => {
+        it('testGetColorsCallbackLock102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetColorsCallbackLock102 start-----------------');
             await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN);
             wallpaper.getColors(WALLPAPER_LOCKSCREEN, (err, RgbaColors) => {
@@ -143,7 +143,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetColorsPromiseLock102', 0, async (done: Function) => {
+        it('testGetColorsPromiseLock102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetColorsPromiseLock102 start-----------------');
             await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN);
             await wallpaper.getColors(WALLPAPER_LOCKSCREEN).then((RgbaColors) => {
@@ -169,7 +169,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackSystem101', 0, async (done: Function) => {
+        it('testResetCallbackSystem101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetCallbackSystem101 start-----------------');
             wallpaper.reset(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -197,7 +197,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetPromiseSystem101', 0, async (done: Function) => {
+        it('testResetPromiseSystem101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetPromiseSystem101 start-----------------');
             await wallpaper.reset(WALLPAPER_SYSTEM).then((data) => {
                 console.info('====>testResetPromiseSystem101 successful data : ' + JSON.stringify(data));
@@ -219,7 +219,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackLock102', 0, async (done: Function) => {
+        it('testResetCallbackLock102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetCallbackLock102 start-----------------');
             wallpaper.reset(WALLPAPER_LOCKSCREEN, (err, data) => {
                 try {
@@ -247,7 +247,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetPromiseLock102', 0, async (done: Function) => {
+        it('testResetPromiseLock102', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testResetPromiseLock102 start-----------------');
             await wallpaper.reset(WALLPAPER_LOCKSCREEN).then((data) => {
                 console.info('====>testResetPromiseLock102 successful data : ' + JSON.stringify(data));
@@ -270,7 +270,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseLock104', 0, async (done: Function) => {
+        it('testSetWallpaperURLPromiseLock104', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseLock104 start------------------' );
             await wallpaper.setWallpaper(imageSourceLockscreen, WALLPAPER_LOCKSCREEN).then((data) => {
                 console.info('====>testSetWallpaperURLPromiseLock104 successful data : ' + data);
@@ -293,7 +293,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLCallbackSystem103', 0, async (done: Function) => {
+        it('testSetWallpaperURLCallbackSystem103', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLCallbackSystem103 start------------------' );
             wallpaper.setWallpaper(imageSourceSystem, WALLPAPER_SYSTEM, (err, data) => {
                 try{
@@ -322,7 +322,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseSystem103', 0, async (done: Function) => {
+        it('testSetWallpaperURLPromiseSystem103', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseSystem103 start------------------' );
             await wallpaper.setWallpaper(imageSourceLockscreen, WALLPAPER_LOCKSCREEN).then((data) => {
                 console.info('====>testSetWallpaperURLPromiseSystem103 successful data : ' + data);
@@ -345,7 +345,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLCallbackLock104', 0, async (done: Function) => {
+        it('testSetWallpaperURLCallbackLock104', Level.LEVEL2, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLCallbackLock104 start------------------' );
             wallpaper.setWallpaper(imageSourceSystem, WALLPAPER_LOCKSCREEN, (err, data) => {
                 try{
@@ -374,7 +374,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testOnCallback101', 0, async (done: Function) => {
+        it('testOnCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testOnCallback101 start-----------------');
             let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             await wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
@@ -411,7 +411,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testOffCallback101', 0, async (done: Function) => {
+        it('testOffCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testOffCallback101 start-----------------');
             let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             let callbackTimes = 0;
@@ -450,7 +450,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFileCallback101', 0, async (done: Function) => {
+        it('testGetFileCallback101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetFileCallback101 start-----------------');
             wallpaper.getFile(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -478,7 +478,7 @@ export default function wallpaperAuthorityJSUnit() {
         * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFilePromise101', 0, async (done: Function) => {
+        it('testGetFilePromise101', Level.LEVEL2, async (done: Function) => {
             console.info('--------------testGetFilePromise101 start-----------------');
             await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN);
             await wallpaper.getFile(WALLPAPER_LOCKSCREEN).then((data) => {

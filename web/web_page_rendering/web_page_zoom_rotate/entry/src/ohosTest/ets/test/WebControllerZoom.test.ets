@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -51,7 +51,7 @@ export default function webControllerZoom() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebControllerZoom001', 0, async (done: Function) => {
+    it('testWebControllerZoom001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebControllerZoom001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebControllerZoom001", true, 7705, done);
@@ -66,7 +66,7 @@ export default function webControllerZoom() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebControllerZoomMax001', 0, async (done: Function) => {
+    it('testWebControllerZoomMax001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebControllerZoomMax001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebControllerZoomMax001", true, 7801, done);
@@ -81,7 +81,7 @@ export default function webControllerZoom() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebControllerZoomMin001', 0, async (done: Function) => {
+    it('testWebControllerZoomMin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebControllerZoomMin001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebControllerZoomMin001", true, 7802, done);

@@ -68,7 +68,7 @@ export default function state2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[state2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[state2_0100] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[state2_0100] END');
       done();
 
@@ -84,7 +84,7 @@ export default function state2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[state2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[state2_0200] title: " + JSON.stringify(obj.$attrs.type));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       console.info('[state2_0200] END');
       done();
 

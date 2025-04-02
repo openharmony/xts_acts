@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import abilityManager from "@ohos.app.ability.abilityManager"
 import { Configuration } from '@ohos.app.ability.Configuration'
 import { BusinessError } from '@ohos.base';
@@ -29,7 +29,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application call updateConfiguration will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0100', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0100';
       let configInit: Configuration = {
         language: 'english'
@@ -47,7 +47,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application call updateConfiguration will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0200', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0200';
       let configInit: Configuration = {
         language: 'english'
@@ -71,7 +71,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application without permission call getAbilityRunningInfos only get self info
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0300', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0300';
       abilityManager.getAbilityRunningInfos((err, data) => {
         console.log(TAG + "  err: " + JSON.stringify(err) + "  data: " + JSON.stringify(data));
@@ -87,7 +87,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application without permission call getAbilityRunningInfos only get self info
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0400', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0400';
       abilityManager.getAbilityRunningInfos()
         .then((data) => {
@@ -98,6 +98,7 @@ export default function abilityManagerTest() {
           expect(data[0].uid).assertLargerOrEqual(0);
           expect(data[0].processName).assertEqual("com.acts.systemapitest");
           expect(data[0].abilityState).assertLargerOrEqual(abilityManager.AbilityState.INITIAL);
+          expect(data[0].startTime).assertLarger(0);
           done();
         })
         .catch((err: BusinessError) => {
@@ -113,7 +114,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application call getExtensionRunningInfos will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0500', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0500';
       let upperLimit: number = 10;
       abilityManager.getExtensionRunningInfos(upperLimit, (err) => {
@@ -129,7 +130,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application call getExtensionRunningInfos will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0600', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0600';
       let upperLimit: number = 10;
       abilityManager.getExtensionRunningInfos(upperLimit)
@@ -151,7 +152,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application call getTopAbility will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0700', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0700';
       try {
         abilityManager.getTopAbility((data) => {
@@ -170,7 +171,7 @@ export default function abilityManagerTest() {
      * @tc.desc: Test the third-party application call getTopAbility will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0800', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0800', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0800';
       try {
         abilityManager.getTopAbility().then().catch();
@@ -187,7 +188,7 @@ export default function abilityManagerTest() {
      * @tc.desc: cover all value of abilityState
      * @tc.level 3
      */
-    it('System_API_Test_Ability_Manager_0900', 0, (done: Function) => {
+    it('System_API_Test_Ability_Manager_0900', Level.LEVEL0, (done: Function) => {
       let tag = `System_API_Test_Ability_Manager_0900`;
       console.log(`${tag}, test begin`);
       try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import semaphore from 'libsemaphorendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -36,7 +36,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemGetvalue001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemGetvalue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 1
       let result:number= semaphore.sem_getvalue(testParam);
       expect(result).assertEqual(0);
@@ -51,7 +51,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemOpen001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemOpen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number= semaphore.sem_open(1);
       expect(result).assertEqual(-1000);
       done()
@@ -65,7 +65,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemInit001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 0
       let result:number= semaphore.sem_init(testParam);
       expect(result).assertEqual(0);
@@ -80,7 +80,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemInit002', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemInit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = -1
       let result:number= semaphore.sem_init(testParam);
       expect(result).assertEqual(-1);
@@ -95,7 +95,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemDestroy001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       let result:number= semaphore.sem_destroy();
       expect(result).assertEqual(0);
@@ -110,7 +110,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemPost001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemPost001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number= semaphore.sem_post();
       expect(result).assertEqual(0);
       done()
@@ -125,7 +125,7 @@ export default function semaphoreNdkTest() {
      * @tc.level      : Level 1
      */
 
-    it('testMuslSemaphoreSemWait001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 1
       let result:number= semaphore.sem_wait(testParam);
       expect(result).assertEqual(0);
@@ -140,7 +140,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemTrywait001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemTrywait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 0
       let result:number= semaphore.sem_trywait(testParam);
       expect(result).assertEqual(-1);
@@ -155,7 +155,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemTrywait002', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemTrywait002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 1
       let result:number= semaphore.sem_trywait(testParam);
       expect(result).assertEqual(0);
@@ -170,7 +170,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemTimedwait001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemTimedwait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 0
       let result:number= semaphore.sem_timedwait(testParam);
       expect(result).assertEqual(-1);
@@ -185,7 +185,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemTimedwait002', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemTimedwait002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let testParam = 1
       let result:number= semaphore.sem_timedwait(testParam);
       expect(result).assertEqual(0);
@@ -199,7 +199,7 @@ export default function semaphoreNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslSemaphoreSemClose001', 0, async (done: Function) => {
+    it('testMuslSemaphoreSemClose001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let a : number = semaphore.sem_close();
       expect(a).assertEqual(0);
       done()

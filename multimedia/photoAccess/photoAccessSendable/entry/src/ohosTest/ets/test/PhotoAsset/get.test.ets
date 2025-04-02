@@ -15,6 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
+import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import { common } from '@kit.AbilityKit';
 import {
@@ -157,6 +158,153 @@ export default function getTest () {
       const key: string = photoKeys.TITLE;
       const value: string = 'getTest';
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_GET_ASSETS_ERROR_0000
+     * @tc.name      : sendable_get_assets_error_000
+     * @tc.desc      : get assets with title set to fetchColumns by mistake
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_get_assets_error_000', 0, async (done: Function) => {
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOption: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['xx'],
+          predicates: predicates
+        };
+        let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getAssets(fetchOption);
+        let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        let title: photoAccessHelper.PhotoKeys = photoAccessHelper.PhotoKeys.TITLE;
+        let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title.toString());
+        console.info('photoAsset Get photoAssetTitle = ', photoAssetTitle);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`sendable_get_assets_error_000 failed, error: ${error}, ${error.code}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_SET_ASSETS_0000
+     * @tc.name      : sendable_set_assets_000
+     * @tc.desc      : Set and get assets title to verify consistency
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_set_assets_000', 0, async (done: Function) => {
+      try {
+        // Set new title
+        let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptionSet: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['title'],
+          predicates: predicatesSet
+        };
+        let fetchResultSet: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getAssets(fetchOptionSet);
+        let photoAssetSet: sendablePhotoAccessHelper.PhotoAsset = await fetchResultSet.getFirstObject();
+        let titleKey: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+        let newTitle: string = 'newTitle';
+        photoAssetSet.set(titleKey, newTitle);
+        console.info('sendable_set_assets_000: suc');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`sendable_set_assets_000 failed, error: ${error}, ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_SENADABLE_SET_ERROR_0000
+     * @tc.name      : sendable_error_set_assets_title_undefined
+     * @tc.desc      : Set undefined title to verify error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_error_set_assets_title_undefined_000', 0, async (done: Function) => {
+      try {
+        // Set new title
+        let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptionSet: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['title'],
+          predicates: predicatesSet
+        };
+        let fetchResultSet: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getAssets(fetchOptionSet);
+        let photoAssetSet: sendablePhotoAccessHelper.PhotoAsset = await fetchResultSet.getFirstObject();
+        let titleKey: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+        photoAssetSet.set(titleKey, undefined as ESObject);
+        console.error('sendable_error_set_assets_title_undefined_000: expected to throw error');
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`sendable_error_set_assets_title_undefined_000: ${error}, ${error.code}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_SENADABLE_ERROR_0100
+     * @tc.name      : sendable_error_set_assets_key_invalid
+     * @tc.desc      : Set invalid key to verify error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_error_set_assets_key_invalid_001', 0, async (done: Function) => {
+      try {
+        // Set new title
+        let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptionSet: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['title'],
+          predicates: predicatesSet
+        };
+        let fetchResultSet: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getAssets(fetchOptionSet);
+        let photoAssetSet: sendablePhotoAccessHelper.PhotoAsset = await fetchResultSet.getFirstObject();
+        let titleKey: string = '!@#$%$%^^&**()_+卡拉胶奥拉夫';
+        let newTitle: string = 'newTitle';
+        photoAssetSet.set(titleKey, newTitle);
+        console.error('sendable_error_set_assets_key_invalid_001: expected to throw error');
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`sendable_error_set_assets_key_invalid_001: ${error}, ${error.code}`);
+        expect(error.code).assertEqual('14000014');
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_SENDABLE_PHOTO_ACCESS_HELPER_SENADABLE_SET_ERROR_0200
+     * @tc.name      : sendable_error_set_assets_key_undefined
+     * @tc.desc      : Set undefined key to verify error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('sendable_error_set_assets_key_undefined_002', 0, async (done: Function) => {
+      try {
+        // Set new title
+        let predicatesSet: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptionSet: photoAccessHelper.FetchOptions = {
+          fetchColumns: ['title'],
+          predicates: predicatesSet
+        };
+        let fetchResultSet: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await sendablePhAccessHelper.getAssets(fetchOptionSet);
+        let photoAssetSet: sendablePhotoAccessHelper.PhotoAsset = await fetchResultSet.getFirstObject();
+        let newTitle: string = 'newTitle';
+        photoAssetSet.set(undefined as ESObject, newTitle);
+        console.error('sendable_error_set_assets_key_undefined_002: expected to throw error');
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`sendable_error_set_assets_key_undefined_002: ${error}, ${error.code}`);
+        expect(String(error.code) === '13900020' || String(error.code) === '401').assertTrue();
+        done();
+      }
     });
   })
 }

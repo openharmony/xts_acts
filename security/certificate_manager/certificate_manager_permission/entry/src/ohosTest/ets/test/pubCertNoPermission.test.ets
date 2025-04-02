@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import certManager from '@ohos.security.certManager';
 import { BusinessError } from '@ohos.base';
 import type common from '@ohos.app.ability.common';
@@ -101,7 +101,7 @@ export default function pubCertJsAPINoPermissionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_PubCertJsApi_NoPermission_Func_0100', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_PubCertJsApi_NoPermission_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyUri: string = 'aabb';
       certManager.getPublicCertificate(keyUri).then((data) => {
         expect(null).assertFail();
@@ -121,7 +121,7 @@ export default function pubCertJsAPINoPermissionTestUnit() {
      * @tc.level Level2
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_PubCertJsApi_NoPermission_Func_0200', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_PubCertJsApi_NoPermission_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let keyUri: string = 'aabb';
       certManager.isAuthorizedApp(keyUri).then((data) => {
         expect(null).assertFail();
@@ -141,7 +141,7 @@ export default function pubCertJsAPINoPermissionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0020', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_GetPriCertJsApi_Func_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CertManager_GetPriCertJsApi_Func_0020: started.");
       let cmResult: certManager.CMResult = {};
       try {
@@ -162,7 +162,7 @@ export default function pubCertJsAPINoPermissionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenCertDialogCertJsApi_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const test : common.Context = GlobalContext.getContext()
       try {
         await certManagerDialog.openCertificateManagerDialog(test, certManagerDialog.CertificateDialogPageType.PAGE_MAIN);
@@ -183,7 +183,7 @@ export default function pubCertJsAPINoPermissionTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010', 0, async (done: Function) => {
+    it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0010: started ");
       if (deviceInfo.deviceType == '2in1') {
         const context :common.Context = GlobalContext.getContext();

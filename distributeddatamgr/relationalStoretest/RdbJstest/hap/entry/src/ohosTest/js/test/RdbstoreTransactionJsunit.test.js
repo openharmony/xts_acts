@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import dataRdb from '@ohos.data.rdb';
 
 const TAG = "[RDB_JSKITS_TEST]"
@@ -54,8 +54,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.name rdb transaction insert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0100
          * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionInsert0001', 0, async function (done) {
+        it('testRdbTransactionInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -89,8 +92,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.name rdb transaction insert test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0200
          * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionInsert0002', 0, async function (done) {
+        it('testRdbTransactionInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbStoreInsert0002 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -141,8 +147,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0300
          * @tc.desc while using transaction to insert values, querying the db,
          *     the result comes out is 0;
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionInsert0003', 0, async function (done) {
+        it('testRdbTransactionInsert0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionInsert0003 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -190,8 +199,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0400
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionRollBack0001', 0, async function (done) {
+        it('testRdbTransactionRollBack0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionRollBack0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -225,8 +237,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0500
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionMulti0001', 0, async function (done) {
+        it('testRdbTransactionMulti0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionMulti0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -272,8 +287,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0600
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionMulti0002', 0, async function (done) {
+        it('testRdbTransactionMulti0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionMulti0002 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -324,8 +342,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0700
          * @tc.desc the classical transaction scenario, when we insert or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionMulti0003', 0, async function (done) {
+        it('testRdbTransactionMulti0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionMulti0003 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {
@@ -379,8 +400,11 @@ export default function rdbstoreTransactionTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBTransactionJsAPITest_0800
          * @tc.desc the classical transaction scenario, when we delete or commit the value,
          *     db returns an exception, we need to catch exception and rollback.
+         * @tc.size   : MediumTest
+         * @tc.type   : Function
+         * @tc.level  : Level 2
          */
-        it('testRdbTransactionDelete0001', 0, async function (done) {
+        it('testRdbTransactionDelete0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.info(TAG + "************* testRdbTransactionDelete0001 start *************");
             var u8 = new Uint8Array([1, 2, 3])
             try {

@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testndk from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import batteryInfo from '@ohos.batteryInfo';
 import collections from '@arkts.collections';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -45,7 +45,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress001', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -70,7 +70,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress002', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -97,7 +97,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress003', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let data = testndk.OH_Pasteboard_GetDataWithProgress003();
       console.info(TAG + "OH_Pasteboard_GetDataWithProgress003 data = " + data );
       expect(data).assertEqual(0);
@@ -113,7 +113,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress004', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/文件";
       fs.mkdirSync(dirPath)
@@ -137,7 +137,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress005', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps1122";
       fs.mkdirSync(dirPath)
@@ -162,7 +162,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress006', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps_day";
       fs.mkdirSync(dirPath)
@@ -186,7 +186,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress007', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps.day";
       fs.mkdirSync(dirPath)
@@ -210,7 +210,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress008', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps*day";
       fs.mkdirSync(dirPath)
@@ -235,7 +235,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress012', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -258,7 +258,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress013', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -282,7 +282,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress014', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -306,7 +306,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress015', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -330,7 +330,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress016', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -354,7 +354,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress017', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -378,7 +378,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress018', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -402,7 +402,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress019', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -426,7 +426,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress020', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -450,7 +450,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress021', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)
@@ -474,7 +474,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress011', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222";
       fs.mkdirSync(dirPath)
@@ -498,7 +498,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress010', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/le.txt';
       let dirPath = BASE_PATH+"/haps22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222";
       fs.mkdirSync(dirPath)
@@ -522,7 +522,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress009', 0, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let fileFullName = BASE_PATH +'/dstFile.txt';
       let dirPath = BASE_PATH+"/haps";
       fs.mkdirSync(dirPath)

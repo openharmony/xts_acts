@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -48,7 +48,7 @@ export default function webViewOnErrorReceive03Jsunit() {
         *tc.name testOnErrorReceive03
         *tc.desc test api onErrorReceive  by load 'https://wrong.host.badssl.com/'
         */
-        it('testOnErrorReceive03',0,async (done: Function) =>{
+        it('testOnErrorReceive03',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
             let errorIfo = 'ERR_CERT_COMMON_NAME_INVALID';
             let errorCode = -200;
             let url = 'https://wrong.host.badssl.com/';

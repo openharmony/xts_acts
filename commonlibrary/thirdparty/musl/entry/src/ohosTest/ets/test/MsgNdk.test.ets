@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import msg from 'libmsgndk.so'
 
@@ -32,7 +32,7 @@ export default function msgNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslMsgMsgget001', 0, async (done: Function) => {
+    it('testMuslMsgMsgget001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = msg.msgget();
       expect(result).assertEqual(1)
       done()
@@ -45,7 +45,7 @@ export default function msgNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslMsgMsgsnd001', 0, async (done: Function) => {
+    it('testMuslMsgMsgsnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = msg.msgsnd();
       expect(result).assertEqual(1)
       done()
@@ -58,7 +58,7 @@ export default function msgNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslMsgMsgrcv001', 0, async (done: Function) => {
+    it('testMuslMsgMsgrcv001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = msg.msgrcv();
       expect(result).assertEqual(1)
       done()
@@ -71,7 +71,7 @@ export default function msgNdkTest() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslMsgMsgctl001', 0, async (done: Function) => {
+    it('testMuslMsgMsgctl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = msg.msgctl();
       expect(result).assertEqual(1)
       done()

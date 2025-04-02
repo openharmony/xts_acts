@@ -110,7 +110,7 @@ export default function button3Jsunit() {
       let strJsonNew = getInspectorByKey('button');
 
       console.info("[testButton05] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
-      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       done();
     });
 
@@ -366,7 +366,7 @@ export default function button3Jsunit() {
       console.info("[testButton13] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
         .type));
-      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       done();
     });
 

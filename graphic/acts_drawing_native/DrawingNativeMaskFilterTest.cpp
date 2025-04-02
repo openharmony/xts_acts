@@ -55,7 +55,7 @@ class DrawingNativeMaskFilterTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNormal, Function | SmallTest | Level0) {
     OH_Drawing_BlurType types[] = {
         NORMAL,
         SOLID,
@@ -96,7 +96,7 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNormal, Tes
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNULL, TestSize.Level3) {
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNULL, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur with the second parameter as zero and check the error code using
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 0, true);
     EXPECT_NE(maskFilter, nullptr);
@@ -112,7 +112,7 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNULL, TestS
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCalls, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur and OH_Drawing_MaskFilterDestroy 10 times in a loop
     for (int i = 0; i < 10; i++) {
         OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
@@ -140,7 +140,7 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCal
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyAbnormal, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur with a negative value for sigma and check the error code using
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, -10, true);
     EXPECT_NE(maskFilter, nullptr);
@@ -155,7 +155,7 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyAbnormal, T
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMaximum, TestSize.Level3) {
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMaximum, Function | SmallTest | Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur with a maximum value for sigma
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, FLT_MAX, true);
     // add assert

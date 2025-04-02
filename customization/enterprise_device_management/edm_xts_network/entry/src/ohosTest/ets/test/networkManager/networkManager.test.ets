@@ -888,7 +888,7 @@ function testAddFirewallRule() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_add_firewall_rule_0105", Level.LEVEL2, async (done: Function) => {
+  it("test_add_firewall_rule_0106", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.addFirewallRule(INVALID_WANT, FIREWALL_RULE5);
@@ -902,11 +902,14 @@ function testAddFirewallRule() {
   });
 
   /**
-   * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_NETWORKMANAGER_JS_017
-   * @tc.name test addFirewallRule method with normal admin and forward reject param
-   * @tc.desc addFirewallRule with normal admin and forward reject param
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_FIREWALL_RULE_JS_0107
+   * @tc.name      : test_add_firewall_rule_0107
+   * @tc.desc      : test networkManager addFirewallRule with invalid param
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
    */
-  it('AddFirewallRejectForwardRuleWithNormalAdminTest', 0, async (done: Function) =>{
+  it("test_add_firewall_rule_0107", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.addFirewallRule(SELFWANT, FIREWALL_RULE6);
@@ -1046,11 +1049,14 @@ function testRemoveFirewallRule() {
   });
 
   /**
-   * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_NETWORKMANAGER_JS_018
-   * @tc.name test removeFirewallRule method with normal admin and forward reject param
-   * @tc.desc removeFirewallRule with normal admin and forward reject param
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_FIREWALL_RULE_JS_0106
+   * @tc.name      : test_remove_firewall_rule_0106
+   * @tc.desc      : test networkManager removeFirewallRule without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
    */
-  it('RemoveFirewallRejectForwardRuleWithNormalAdminTest', 0, async (done: Function) =>{
+  it("test_remove_firewall_rule_0106", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.addFirewallRule(SELFWANT, FIREWALL_RULE6);
@@ -1214,11 +1220,14 @@ function testAddDomainFilterRule() {
   });
 
   /**
-   * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_NETWORKMANAGER_JS_019
-   * @tc.name test addDomainFilterRule method with super admin and forward reject param
-   * @tc.desc addFirewallRule with normal admin and forward reject param
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DOMAIN_FILTER_RULE_JS_0104
+   * @tc.name      : test_add_domain_filter_rule_0104
+   * @tc.desc      : test networkManager addDomainFilterRule with invalid param
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
    */
-  it('AddDomainFilterRejectForwardRuleWithNormalAdminTest', 0, async (done: Function) =>{
+  it("test_add_domain_filter_rule_0104", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.addDomainFilterRule(SELFWANT, DOMAIN_FILTER_RULE4);
@@ -1358,11 +1367,14 @@ function testRemoveDomainFilterRule() {
   });
 
   /**
-   * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_NETWORKMANAGER_JS_020
-   * @tc.name test removeDomainFilterRule method with super admin and forward reject param
-   * @tc.desc removeDomainFilter with normal admin and forward reject param
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DOMAIN_FILTER_RULE_JS_0106
+   * @tc.name      : test_remove_domain_filter_rule_0106
+   * @tc.desc      : test networkManager removeDomainFilterRule with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
    */
-  it('RemoveDomainFilterRejectForwardRuleWithNormalAdminTest', 0, async (done: Function) =>{
+  it("test_remove_domain_filter_rule_0106", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.addDomainFilterRule(SELFWANT, DOMAIN_FILTER_RULE4);

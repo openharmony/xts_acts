@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import bundlendk from 'libbundlendk.so';
 
 const BUNDLE_NAME = 'com.example.bundlenativegetmainelementnametest';
@@ -31,7 +31,7 @@ export default function bundlenativegetmainelementnameTest() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('SUB_BMS_OH_NativeBundle_GetMainElementName_0900', 0, async (done: Function) => {
+    it('SUB_BMS_OH_NativeBundle_GetMainElementName_0900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       expect(bundlendk.getMainElementName().bundleName).assertEqual(BUNDLE_NAME);
       expect(bundlendk.getMainElementName().moduleName).assertEqual(MODULE_NAME);
       expect(bundlendk.getMainElementName().abilityName).assertEqual(ABILITY_NAME);

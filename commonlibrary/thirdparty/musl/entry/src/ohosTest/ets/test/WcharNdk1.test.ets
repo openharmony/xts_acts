@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import wchar1 from 'libwcharndk1.so'
 
@@ -33,7 +33,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 0
      * @
      */
-    it('testMuslWcharBtowc001', 0, async (done: Function) => {
+    it('testMuslWcharBtowc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Btowc_One()).assertEqual(1);
       done();
     });
@@ -47,7 +47,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 0
      * @
      */
-    it('testMuslWcharBtowc002', 0, async (done: Function) => {
+    it('testMuslWcharBtowc002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Btowc_Two()).assertEqual(1);
       done();
     });
@@ -60,7 +60,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbtowc001', 0, async (done: Function) => {
+    it('testMuslWcharMbtowc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbtowc_One()).assertEqual(1);
       done();
     });
@@ -73,7 +73,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbtowc002', 0, async (done: Function) => {
+    it('testMuslWcharMbtowc002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbtowc_Two()).assertEqual(0);
       done();
     });
@@ -87,7 +87,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFputwc001', 0, async (done: Function) => {
+    it('testMuslWcharFputwc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fputwc_One()).assertEqual(1);
       done();
     });
@@ -101,7 +101,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFputws001', 0, async (done: Function) => {
+    it('testMuslWcharFputws001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fputws_One()).assertEqual(1);
       done();
     });
@@ -115,7 +115,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFwide001', 0, async (done: Function) => {
+    it('testMuslWcharFwide001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fwide_One()).assertEqual(1);
       done();
     });
@@ -129,7 +129,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFwide002', 0, async (done: Function) => {
+    it('testMuslWcharFwide002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fwide_Two()).assertEqual(1);
       done();
     });
@@ -143,7 +143,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFwprintf001', 0, async (done: Function) => {
+    it('testMuslWcharFwprintf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fwprintf_One()).assertEqual(1);
       done();
     });
@@ -157,7 +157,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFwprintf002', 0, async (done: Function) => {
+    it('testMuslWcharFwprintf002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fwprintf_Two()).assertEqual(1);
       done();
     });
@@ -171,7 +171,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharWprintf001', 0, async (done: Function) => {
+    it('testMuslWcharWprintf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wprintf_One()).assertEqual(1);
       done();
     });
@@ -185,7 +185,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharWprintf002', 0, async (done: Function) => {
+    it('testMuslWcharWprintf002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wprintf_Two()).assertEqual(1);
       done();
     });
@@ -199,7 +199,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFwscanf001', 0, async (done: Function) => {
+    it('testMuslWcharFwscanf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fwscanf_One()).assertEqual(1);
       done();
     });
@@ -213,7 +213,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharFwscanf002', 0, async (done: Function) => {
+    it('testMuslWcharFwscanf002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Fwscanf_Two()).assertEqual(1);
       done();
     });
@@ -227,7 +227,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharSwprintf001', 0, async (done: Function) => {
+    it('testMuslWcharSwprintf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Swprintf_One()).assertEqual(1);
       done();
     });
@@ -241,7 +241,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharSwprintf002', 0, async (done: Function) => {
+    it('testMuslWcharSwprintf002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Swprintf_Two()).assertEqual(1);
       done();
     });
@@ -255,7 +255,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharSwscanf001', 0, async (done: Function) => {
+    it('testMuslWcharSwscanf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Swscanf_One()).assertEqual(1);
       done();
     });
@@ -269,7 +269,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharSwscanf002', 0, async (done: Function) => {
+    it('testMuslWcharSwscanf002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Swscanf_Two()).assertEqual(1);
       done();
     });
@@ -283,7 +283,7 @@ export default function wcharNdk1Test() {
      * @tc.level      : Level 1
      * @
      */
-    it('testMuslWcharMbrtowc001', 0, async (done: Function) => {
+    it('testMuslWcharMbrtowc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbrtowc_One()).assertEqual(1);
       done();
     });
@@ -296,7 +296,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbsinit001', 0, async (done: Function) => {
+    it('testMuslWcharMbsinit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbsinit_One()).assertEqual(1);
       done();
     });
@@ -309,7 +309,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbstowcs001', 0, async (done: Function) => {
+    it('testMuslWcharMbstowcs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbstowcs_One()).assertEqual(1);
       done();
     });
@@ -322,7 +322,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbsrtowcs001', 0, async (done: Function) => {
+    it('testMuslWcharMbsrtowcs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbsrtowcs_One()).assertEqual(1);
       done();
     });
@@ -335,7 +335,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharMbsnrtowcs001', 0, async (done: Function) => {
+    it('testMuslWcharMbsnrtowcs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Mbsnrtowcs_One()).assertEqual(1);
       done();
     });
@@ -348,7 +348,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharOpenWmemstream001', 0, async (done: Function) => {
+    it('testMuslWcharOpenWmemstream001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.OpenWmemstream_One()).assertEqual(1);
       done();
     });
@@ -361,7 +361,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharTowlower001', 0, async (done: Function) => {
+    it('testMuslWcharTowlower001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Towlower_One()).assertEqual(1);
       done();
     });
@@ -374,7 +374,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharTowupper001', 0, async (done: Function) => {
+    it('testMuslWcharTowupper001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Towupper_One()).assertEqual(1);
       done();
     });
@@ -387,7 +387,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcpcpy001', 0, async (done: Function) => {
+    it('testMuslWcharWcpcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcpcpy_One()).assertEqual(1);
       done();
     });
@@ -400,7 +400,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcpncpy001', 0, async (done: Function) => {
+    it('testMuslWcharWcpncpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcpncpy_One()).assertEqual(1);
       done();
     });
@@ -413,7 +413,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcrtomb001', 0, async (done: Function) => {
+    it('testMuslWcharWcrtomb001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcrtomb_One()).assertEqual(1);
       done();
     });
@@ -426,7 +426,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcscasecmp001', 0, async (done: Function) => {
+    it('testMuslWcharWcscasecmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscasecmp_One()).assertEqual(1);
       done();
     });
@@ -439,7 +439,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcscasecmpL001', 0, async (done: Function) => {
+    it('testMuslWcharWcscasecmpL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscasecmpl_One()).assertEqual(1);
       done();
     });
@@ -452,7 +452,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcscat001', 0, async (done: Function) => {
+    it('testMuslWcharWcscat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscat_One()).assertEqual(1);
       done();
     });
@@ -465,7 +465,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcschr001', 0, async (done: Function) => {
+    it('testMuslWcharWcschr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcschr_One()).assertEqual(1);
       done();
     });
@@ -478,7 +478,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcscmp001', 0, async (done: Function) => {
+    it('testMuslWcharWcscmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscmp_One()).assertEqual(1);
       done();
     });
@@ -491,7 +491,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcscoll001', 0, async (done: Function) => {
+    it('testMuslWcharWcscoll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscoll_One()).assertEqual(1);
       done();
     });
@@ -504,7 +504,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcscollL001', 0, async (done: Function) => {
+    it('testMuslWcharWcscollL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscolll_One()).assertEqual(1);
       done();
     });
@@ -517,7 +517,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcscpy001', 0, async (done: Function) => {
+    it('testMuslWcharWcscpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscpy_One()).assertEqual(1);
       done();
     });
@@ -530,7 +530,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcscspn001', 0, async (done: Function) => {
+    it('testMuslWcharWcscspn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcscspn_One()).assertEqual(1);
       done();
     });
@@ -543,7 +543,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcsdup001', 0, async (done: Function) => {
+    it('testMuslWcharWcsdup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsdup_One()).assertEqual(1);
       done();
     });
@@ -556,7 +556,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsftime001', 0, async (done: Function) => {
+    it('testMuslWcharWcsftime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsftime_One()).assertEqual(1);
       done();
     });
@@ -569,7 +569,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsftimeL001', 0, async (done: Function) => {
+    it('testMuslWcharWcsftimeL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsftimel_One()).assertEqual(1);
       done();
     });
@@ -582,7 +582,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcslen001', 0, async (done: Function) => {
+    it('testMuslWcharWcslen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcslen_One()).assertEqual(1);
       done();
     });
@@ -595,7 +595,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsncasecmp001', 0, async (done: Function) => {
+    it('testMuslWcharWcsncasecmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsncasecmp_One()).assertEqual(1);
       done();
     });
@@ -608,7 +608,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsncasecmpL001', 0, async (done: Function) => {
+    it('testMuslWcharWcsncasecmpL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsncasecmpl_One()).assertEqual(1);
       done();
     });
@@ -621,7 +621,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcsncat001', 0, async (done: Function) => {
+    it('testMuslWcharWcsncat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsncat_One()).assertEqual(1);
       done();
     });
@@ -634,7 +634,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcsncmp001', 0, async (done: Function) => {
+    it('testMuslWcharWcsncmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsncmp_One()).assertEqual(1);
       done();
     });
@@ -647,7 +647,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsncpy001', 0, async (done: Function) => {
+    it('testMuslWcharWcsncpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsncpy_One()).assertEqual(1);
       done();
     });
@@ -660,7 +660,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcsnlen001', 0, async (done: Function) => {
+    it('testMuslWcharWcsnlen001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsnlen_One()).assertEqual(1);
       done();
     });
@@ -673,7 +673,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsnrtombs001', 0, async (done: Function) => {
+    it('testMuslWcharWcsnrtombs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsnrtombs_One()).assertEqual(1);
       done();
     });
@@ -686,7 +686,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcspbrk001', 0, async (done: Function) => {
+    it('testMuslWcharWcspbrk001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcspbrk_One()).assertEqual(1);
       done();
     });
@@ -699,7 +699,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsrchr001', 0, async (done: Function) => {
+    it('testMuslWcharWcsrchr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsrchr_One()).assertEqual(1);
       done();
     });
@@ -712,7 +712,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsrtombs001', 0, async (done: Function) => {
+    it('testMuslWcharWcsrtombs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsrtombs_One()).assertEqual(1);
       done();
     });
@@ -725,7 +725,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsspn001', 0, async (done: Function) => {
+    it('testMuslWcharWcsspn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsspn_One()).assertEqual(1);
       done();
     });
@@ -738,7 +738,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsstr001', 0, async (done: Function) => {
+    it('testMuslWcharWcsstr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsstr_One()).assertEqual(1);
       done();
     });
@@ -751,7 +751,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstod001', 0, async (done: Function) => {
+    it('testMuslWcharWcstod001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstod_One()).assertEqual(1);
       done();
     });
@@ -764,7 +764,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstof001', 0, async (done: Function) => {
+    it('testMuslWcharWcstof001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstof_One()).assertEqual(1);
       done();
     });
@@ -777,7 +777,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcstok001', 0, async (done: Function) => {
+    it('testMuslWcharWcstok001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstok_One()).assertEqual(1);
       done();
     });
@@ -790,7 +790,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstol001', 0, async (done: Function) => {
+    it('testMuslWcharWcstol001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstol_One()).assertEqual(1);
       done();
     });
@@ -803,7 +803,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstold001', 0, async (done: Function) => {
+    it('testMuslWcharWcstold001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstold_One()).assertEqual(1);
       done();
     });
@@ -816,7 +816,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstoll001', 0, async (done: Function) => {
+    it('testMuslWcharWcstoll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstoll_One()).assertEqual(1);
       done();
     });
@@ -829,7 +829,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstombs001', 0, async (done: Function) => {
+    it('testMuslWcharWcstombs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstombs_One()).assertEqual(1);
       done();
     });
@@ -842,7 +842,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstoul001', 0, async (done: Function) => {
+    it('testMuslWcharWcstoul001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstoul_One()).assertEqual(1);
       done();
     });
@@ -855,7 +855,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcstoull001', 0, async (done: Function) => {
+    it('testMuslWcharWcstoull001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcstoull_One()).assertEqual(1);
       done();
     });
@@ -868,7 +868,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWcswcs001', 0, async (done: Function) => {
+    it('testMuslWcharWcswcs001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcswcs_One()).assertEqual(1);
       done();
     });
@@ -881,7 +881,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcswidth001', 0, async (done: Function) => {
+    it('testMuslWcharWcswidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcswidth_One()).assertEqual(1);
       done();
     });
@@ -894,7 +894,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsxfrm001', 0, async (done: Function) => {
+    it('testMuslWcharWcsxfrm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsxfrm_One()).assertEqual(1);
       done();
     });
@@ -907,7 +907,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcsxfrmL001', 0, async (done: Function) => {
+    it('testMuslWcharWcsxfrmL001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcsxfrml_One()).assertEqual(1);
       done();
     });
@@ -920,7 +920,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWctob001', 0, async (done: Function) => {
+    it('testMuslWcharWctob001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wctob_One()).assertEqual(1);
       done();
     });
@@ -933,7 +933,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWctomb001', 0, async (done: Function) => {
+    it('testMuslWcharWctomb001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wctomb_One()).assertEqual(1);
       done();
     });
@@ -946,7 +946,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWcwidth001', 0, async (done: Function) => {
+    it('testMuslWcharWcwidth001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wcwidth_One()).assertEqual(1);
       done();
     });
@@ -959,7 +959,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWmemchr001', 0, async (done: Function) => {
+    it('testMuslWcharWmemchr001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wmemchr_One()).assertEqual(1);
       done();
     });
@@ -972,7 +972,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWmemcmp001', 0, async (done: Function) => {
+    it('testMuslWcharWmemcmp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wmemcmp_One()).assertEqual(1);
       done();
     });
@@ -985,7 +985,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWmemcpy001', 0, async (done: Function) => {
+    it('testMuslWcharWmemcpy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wmemcpy_One()).assertEqual(1);
       done();
     });
@@ -998,7 +998,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWmemmove001', 0, async (done: Function) => {
+    it('testMuslWcharWmemmove001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wmemmove_One()).assertEqual(1);
       done();
     });
@@ -1011,7 +1011,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharWmemset001', 0, async (done: Function) => {
+    it('testMuslWcharWmemset001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wmemset_One()).assertEqual(1);
       done();
     });
@@ -1024,7 +1024,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharWscanf001', 0, async (done: Function) => {
+    it('testMuslWcharWscanf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Wscanf_One()).assertEqual(1);
       done();
     });
@@ -1037,7 +1037,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharVfwprintf001', 0, async (done: Function) => {
+    it('testMuslWcharVfwprintf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Vfwprintf_One()).assertEqual(1);
       done();
     });
@@ -1050,7 +1050,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharVswprintf001', 0, async (done: Function) => {
+    it('testMuslWcharVswprintf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Vswprintf_One()).assertEqual(1);
       done();
     });
@@ -1063,7 +1063,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharVwscanf001', 0, async (done: Function) => {
+    it('testMuslWcharVwscanf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Vwscanf_One()).assertEqual(1);
       done();
     });
@@ -1076,7 +1076,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslWcharVwprintf001', 0, async (done: Function) => {
+    it('testMuslWcharVwprintf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Vwprintf_One()).assertEqual(1);
       done();
     });
@@ -1089,7 +1089,7 @@ export default function wcharNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslWcharGetwchar001', 0, async (done: Function) => {
+    it('testMuslWcharGetwchar001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Getwchar_One()).assertEqual(1);
       done();
     });
@@ -1102,7 +1102,7 @@ export default function wcharNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslWcharPutwc001', 0, async (done: Function) => {
+    it('testMuslWcharPutwc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Putwc_One()).assertEqual(1);
       done();
     });
@@ -1115,7 +1115,7 @@ export default function wcharNdk1Test() {
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
-    it('testMuslWcharPutWChar001', 0, async (done: Function) => {
+    it('testMuslWcharPutWChar001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.PutWChar_One()).assertEqual(1);
       done();
     });
@@ -1128,7 +1128,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharUngetwc001', 0, async (done: Function) => {
+    it('testMuslWcharUngetwc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Ungetwc_One()).assertEqual(1);
       done();
     });
@@ -1141,7 +1141,7 @@ export default function wcharNdk1Test() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslWcharVfwscanf001', 0, async (done: Function) => {
+    it('testMuslWcharVfwscanf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(wchar1.Vfwscanf_One()).assertEqual(1);
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import fnmatchndk from 'libfnmatchndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -34,7 +34,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslUTimeUTime64001', 0, async (done: Function) => {
+    it('testMuslUTimeUTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;
@@ -56,7 +56,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslFnMatchFnMatch001', 0, async (done: Function) => {
+    it('testMuslFnMatchFnMatch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.fnmatch()).assertEqual(0);
       done()
     });
@@ -69,7 +69,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockGettime64001', 0, async (done: Function) => {
+    it('testMuslTimeClockGettime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__clock_gettime64()).assertEqual(0);
       done()
     });
@@ -83,7 +83,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeNanosleepTime64001', 0, async (done: Function) => {
+    it('testMuslTimeNanosleepTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__nanosleep_time64()).assertEqual(0);
       done()
     });
@@ -96,7 +96,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatFstatTime64001', 0, async (done: Function) => {
+    it('testMuslStatFstatTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__fstat_time64()).assertEqual(0);
       done()
     });
@@ -109,7 +109,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatLstatTime64001', 0, async (done: Function) => {
+    it('testMuslStatLstatTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__lstat_time64()).assertEqual(0);
       done()
     });
@@ -122,7 +122,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatStatTime64001', 0, async (done: Function) => {
+    it('testMuslStatStatTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__stat_time64()).assertEqual(0);
       done()
     });
@@ -135,7 +135,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockGetresTime64001', 0, async (done: Function) => {
+    it('testMuslTimeClockGetresTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__clock_getres_time64()).assertEqual(0);
       done()
     });
@@ -148,7 +148,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeClockNanoSleepTime64001', 0, async (done: Function) => {
+    it('testMuslTimeClockNanoSleepTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__clock_nanosleep_time64()).assertEqual(0);
       done()
     });
@@ -161,7 +161,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeCTime64001', 0, async (done: Function) => {
+    it('testMuslTimeCTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__ctime64()).assertEqual(0);
       done()
     });
@@ -174,7 +174,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeCTime64R001', 0, async (done: Function) => {
+    it('testMuslTimeCTime64R001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__ctime64_r()).assertEqual(0);
       done()
     });
@@ -187,7 +187,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeDiffTime64001', 0, async (done: Function) => {
+    it('testMuslTimeDiffTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__difftime64()).assertEqual(0);
       done()
     });
@@ -200,7 +200,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDlfcnDlSymTime64001', 0, async (done: Function) => {
+    it('testMuslDlfcnDlSymTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__dlsym_time64()).assertEqual(0);
       done()
     });
@@ -213,7 +213,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatFutimensTime64001', 0, async (done: Function) => {
+    it('testMuslStatFutimensTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__futimens_time64()).assertEqual(0);
       done()
     });
@@ -226,7 +226,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeFutimesTime64001', 0, async (done: Function) => {
+    it('testMuslTimeFutimesTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__futimes_time64()).assertEqual(0);
       done()
     });
@@ -239,7 +239,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeFutimesatTime64001', 0, async (done: Function) => {
+    it('testMuslTimeFutimesatTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__futimesat_time64()).assertEqual(0);
       done()
     });
@@ -252,7 +252,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeGmtime64001', 0, async (done: Function) => {
+    it('testMuslTimeGmtime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__gmtime64()).assertEqual(0);
       done()
     });
@@ -265,7 +265,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeGmTime64R001', 0, async (done: Function) => {
+    it('testMuslTimeGmTime64R001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__gmtime64_r()).assertEqual(0);
       done()
     });
@@ -278,7 +278,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMusLocaleLocalTime64001', 0, async (done: Function) => {
+    it('testMusLocaleLocalTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__localtime64()).assertEqual(0);
       done()
     });
@@ -291,7 +291,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMusLocaleLocalTime64R001', 0, async (done: Function) => {
+    it('testMusLocaleLocalTime64R001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__localtime64_r()).assertEqual(0);
       done()
     });
@@ -304,7 +304,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeLutimesTime64001', 0, async (done: Function) => {
+    it('testMuslTimeLutimesTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__lutimes_time64()).assertEqual(0);
       done()
     });
@@ -317,7 +317,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeMkTime64001', 0, async (done: Function) => {
+    it('testMuslTimeMkTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__mktime64()).assertEqual(0);
       done()
     });
@@ -330,7 +330,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslThreadsMtxTimedLockTime64001', 0, async (done: Function) => {
+    it('testMuslThreadsMtxTimedLockTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__mtx_timedlock_time64()).assertEqual(0);
       done()
     });
@@ -343,7 +343,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPollPPollTime64001', 0, async (done: Function) => {
+    it('testMuslPollPPollTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__ppoll_time64()).assertEqual(0);
       done()
     });
@@ -356,7 +356,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPthreadPthreadMutexTimedLockTime64001', 0, async (done: Function) => {
+    it('testMuslPthreadPthreadMutexTimedLockTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__pthread_mutex_timedlock_time64()).assertEqual(0);
       done()
     });
@@ -369,7 +369,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPthreadPthreadRwlockTimedrdLockTime64001', 0, async (done: Function) => {
+    it('testMuslPthreadPthreadRwlockTimedrdLockTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__pthread_rwlock_timedrdlock_time64()).assertEqual(0);
       done()
     });
@@ -382,7 +382,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPthreadPthreadRwlockTimedwrlockTime64001', 0, async (done: Function) => {
+    it('testMuslPthreadPthreadRwlockTimedwrlockTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__pthread_rwlock_timedwrlock_time64()).assertEqual(0);
       done()
     });
@@ -395,7 +395,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSocketReCvmMsgTime64001', 0, async (done: Function) => {
+    it('testMuslSocketReCvmMsgTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__recvmmsg_time64()).assertEqual(1);
       done()
     });
@@ -408,7 +408,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslSchedSchedRrGetIntervalTime64001', 0, async (done: Function) => {
+    it('testMuslSchedSchedRrGetIntervalTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__sched_rr_get_interval_time64()).assertEqual(0);
       done()
     });
@@ -421,7 +421,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslDirentSelectTime64001', 0, async (done: Function) => {
+    it('testMuslDirentSelectTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__select_time64()).assertEqual(0);
       done()
     });
@@ -434,7 +434,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslThreadsThrdSleepTime64001', 0, async (done: Function) => {
+    it('testMuslThreadsThrdSleepTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__thrd_sleep_time64()).assertEqual(0);
       done()
     });
@@ -447,7 +447,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTime64001', 0, async (done: Function) => {
+    it('testMuslTimeTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__time64()).assertEqual(0);
       done()
     });
@@ -460,7 +460,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTimeGmTime64001', 0, async (done: Function) => {
+    it('testMuslTimeTimeGmTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__timegm_time64()).assertEqual(0);
       done()
     });
@@ -473,7 +473,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimerfdTimerFdGetTime64001', 0, async (done: Function) => {
+    it('testMuslTimerfdTimerFdGetTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__timerfd_gettime64()).assertEqual(0);
       done()
     });
@@ -486,7 +486,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimerfdTimerFdSetTime64001', 0, async (done: Function) => {
+    it('testMuslTimerfdTimerFdSetTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__timerfd_settime64()).assertEqual(0);
       done()
     });
@@ -499,7 +499,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeTimeSpecGetTime64001', 0, async (done: Function) => {
+    it('testMuslTimeTimeSpecGetTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__timespec_get_time64()).assertEqual(1);
       done()
     });
@@ -512,7 +512,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslTimeUTimesTime64001', 0, async (done: Function) => {
+    it('testMuslTimeUTimesTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       expect(fnmatchndk.__utimes_time64()).assertEqual(0);
       done()
     });
@@ -525,7 +525,7 @@ export default function fnmatchNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslStatUTimeNSatTime64001', 0, async (done: Function) => {
+    it('testMuslStatUTimeNSatTime64001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       let filesDir = context.filesDir;

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it , TestType, Size, Level } from "@ohos/hypium"
 import Utils from './Utils'
 import pthread from 'libpthreadndk.so'
 
@@ -32,7 +32,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAtFork001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAtFork001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAtFork(0);
       console.info("pthread.pThreadAtFork result = " + result);
       expect(result).assertEqual(0);
@@ -46,7 +46,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrDestory(0);
       console.info("pthread.pThreadAttrDestory result = " + result);
       expect(result).assertEqual(0);
@@ -60,7 +60,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetDetachState001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetDetachState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetDetachState(0);
       console.info("pthread.pThreadAttrGetDetachState result = " + result);
       expect(result).assertEqual(0);
@@ -74,7 +74,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetGuardSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetGuardSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetGuardSize(0);
       console.info("pthread.pThreadAttrGetDetachState result = " + result);
       expect(result).assertEqual(0);
@@ -88,7 +88,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetInheritSched001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetInheritSched001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetInheritSched(0);
       console.info("pthread.pThreadAttrGetInheritSched result = " + result);
       expect(result).assertEqual(0);
@@ -102,7 +102,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetSchedParam(0);
       console.info("pthread.pThreadAttrGetSchedParam result = " + result);
       expect(result).assertEqual(0);
@@ -116,7 +116,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetSchedPolicy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetSchedPolicy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetSchedPolicy(0);
       console.info("pthread.pThreadAttrGetSchedPolicy result = " + result);
       expect(result).assertEqual(0);
@@ -130,7 +130,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetScope001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetScope(0);
       console.info("pthread.pThreadAttrGetScope result = " + result);
       expect(result).assertEqual(0);
@@ -144,7 +144,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrGetStack001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetStack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetStack(0);
       console.info("pthread.pThreadAttrGetStack result = " + result);
       expect(result).assertEqual(0);
@@ -158,7 +158,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadAttrGetStackSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrGetStackSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrGetStackSize(0);
       console.info("pthread.pThreadAttrGetStackSize result = " + result);
       expect(result).assertEqual(0);
@@ -172,7 +172,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrInit(0);
       console.info("pthread.PThreadPThreadAttrInit result = " + result);
       expect(result).assertEqual(0);
@@ -186,7 +186,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetDetachState001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetDetachState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetDetachState(0);
       console.info("pthread.pThreadAttrSetDetachState result = " + result);
       expect(result).assertEqual(0);
@@ -200,7 +200,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetGuardSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetGuardSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetGuardSize(0);
       console.info("pthread.pThreadAttrSetGuardSize result = " + result);
       expect(result).assertEqual(0);
@@ -215,7 +215,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetInheritSched001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetInheritSched001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetInheritSched(0);
       console.info("pthread.pThreadAttrSetInheritSched result = " + result);
       expect(result).assertEqual(0);
@@ -229,7 +229,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetSchedParam(0);
       console.info("pthread.pThreadAttrSetSchedParam result = " + result);
       expect(result).assertEqual(0);
@@ -243,7 +243,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetSchedPolicy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetSchedPolicy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetSchedPolicy(0);
       console.info("pthread.pThreadAttrSetSchedPolicy result = " + result);
       expect(result).assertEqual(0);
@@ -257,7 +257,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetScope001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetScope(0);
       console.info("pthread.pThreadAttrSetScope result = " + result);
       expect(result).assertEqual(0);
@@ -271,7 +271,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStack001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStack001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetStack(0);
       console.info("pthread.pThreadAttrSetStack result = " + result);
       expect(result).assertEqual(0);
@@ -285,7 +285,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadAttrSetStackSize001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadAttrSetStackSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadAttrSetStackSize(0);
       console.info("pthread.pThreadAttrSetStackSize result = " + result);
       expect(result).assertEqual(0);
@@ -299,7 +299,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierInit(0);
       console.info("pthread.pThreadBarrierInit result = " + result);
       expect(result).assertEqual(0);
@@ -313,7 +313,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadBarrierDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierDestroy(0);
       console.info("pthread.pThreadBarrierDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -327,7 +327,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadBarrierWait001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierWait(0);
       console.info("pthread.pThreadBarrierWait result = " + result);
       expect(result).assertEqual(0);
@@ -341,7 +341,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierAttrInit(0);
       console.info("pthread.pThreadBarrierAttrInit result = " + result);
       expect(result).assertEqual(0);
@@ -355,7 +355,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadBarrierAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierAttrGetPShared(0);
       console.info("pthread.pThreadBarrierAttrGetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -369,7 +369,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadBarrierAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierAttrDestroy(0);
       console.info("pthread.pThreadBarrierAttrDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -383,7 +383,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadBarrierAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadBarrierAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadBarrierAttrSetPShared(0);
       console.info("pthread.pThreadBarrierAttrSetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -397,7 +397,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondInit(0);
       console.info("pthread.pThreadCondInit result = " + result);
       expect(result).assertEqual(0);
@@ -412,7 +412,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadCondDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondDestroy(0);
       console.info("pthread.pThreadCondDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -426,7 +426,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadCondWait001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondWait(0);
       console.info("pthread.pThreadCondWait result = " + result);
       expect(result).assertEqual(0);
@@ -440,7 +440,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondBroadcast001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondBroadcast001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondBroadcast(0);
       console.info("pthread.pThreadCondBroadcast result = " + result);
       expect(result).assertEqual(0);
@@ -454,7 +454,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondSignal001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondSignal001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondSignal(0);
       console.info("pthread.pThreadCondSignal result = " + result);
       expect(result).assertEqual(0);
@@ -469,7 +469,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondAttrInit(0);
       console.info("pthread.pThreadCondAttrInit result = " + result);
       expect(result).assertEqual(0);
@@ -483,7 +483,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadCondAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondAttrDestroy(0);
       console.info("pthread.pThreadCondAttrDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -497,7 +497,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadCondAttrGetClock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrGetClock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondAttrGetClock(0);
       console.info("pthread.pThreadCondAttrGetClock result = " + result);
       expect(result).assertEqual(0);
@@ -511,7 +511,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadCondAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondAttrGetPShared(0);
       console.info("pthread.pThreadCondAttrGetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -525,7 +525,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrSetClock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrSetClock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondAttrSetClock(0);
       console.info("pthread.pThreadCondAttrSetClock result = " + result);
       expect(result).assertEqual(0);
@@ -539,7 +539,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCondAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCondAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCondAttrSetPShared(0);
       console.info("pthread.pThreadCondAttrSetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -553,7 +553,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadCreate001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadCreate(0);
       console.info("pthread.pThreadCreate result = " + result);
       expect(result).assertEqual(0);
@@ -567,7 +567,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadDetach001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadDetach001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadDetach(0);
       console.info("pthread.pThreadDetach result = " + result);
       expect(result).assertEqual(0);
@@ -581,7 +581,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadEqual001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadEqual001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadEqual(0);
       console.info("pthread.pThreadEqual result = " + result);
       expect(result).assertEqual(1);
@@ -595,7 +595,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadEqual002', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadEqual002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadEqual2(0);
       console.info("pthread.pThreadEqual2 result = " + result);
       expect(result).assertEqual(0);
@@ -609,7 +609,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadExit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadExit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadExit(0);
       console.info("pthread.pThreadExit result = " + result);
       expect(result).assertEqual(0);
@@ -623,7 +623,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadGetAttrNp001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetAttrNp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadGetAttrNp(0);
       console.info("pthread.pThreadGetAttrNp result = " + result);
       expect(result).assertEqual(0);
@@ -637,7 +637,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadGetCpuClockId001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetCpuClockId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadGetCpuClockId(0);
       console.info("pthread.pThreadGetCpuClockId result = " + result);
       expect(result).assertEqual(0);
@@ -651,7 +651,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadGetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadGetSchedParam(0);
       console.info("pthread.pThreadGetSchedParam result = " + result);
       expect(result).assertEqual(0);
@@ -665,7 +665,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadGetSpecific001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadGetSpecific001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadGetSpecific(0);
       console.info("pthread.pThreadGetSpecific result = " + result);
       expect(result).assertEqual(0);
@@ -679,7 +679,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadJoin001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadJoin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadJoin(0);
       console.info("pthread.pThreadJoin result = " + result);
       expect(result).assertEqual(0);
@@ -693,7 +693,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadKeyCreate001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadKeyCreate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadKeyCreate(0);
       console.info("pthread.pThreadKeyCreate result = " + result);
       expect(result).assertEqual(0);
@@ -707,7 +707,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadKeyDelete001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadKeyDelete001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadKeyDelete(0);
       console.info("pthread.pThreadKeyDelete result = " + result);
       expect(result).assertEqual(0);
@@ -721,7 +721,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadKill001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadKill(0);
       console.info("pthread.pThreadKill result = " + result);
       expect(result).assertEqual(0);
@@ -735,7 +735,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexInit(0);
       console.info("pthread.pThreadMutexInit result = " + result);
       expect(result).assertEqual(0);
@@ -749,7 +749,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadMutexDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexDestroy(0);
       console.info("pthread.pThreadMutexDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -763,7 +763,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexLock(0);
       console.info("pthread.pThreadMutexLock result = " + result);
       expect(result).assertEqual(0);
@@ -777,7 +777,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexTimedLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexTimedLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexTimedLock(0);
       console.info("pthread.pThreadMutexTimedLock result = " + result);
       expect(result).assertEqual(0);
@@ -791,7 +791,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadTryLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadTryLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexTryLock(0);
       console.info("pthread.pThreadMutexTryLock result = " + result);
       expect(result).assertEqual(0);
@@ -805,7 +805,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexUnLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexUnLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexUnLock(0);
       console.info("pthread.pThreadMutexUnLock result = " + result);
       expect(result).assertEqual(0);
@@ -819,7 +819,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadMutexAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrDestroy(0);
       console.info("pthread.pThreadMutexAttrDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -833,7 +833,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadMutexAttrGetProtocol001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrGetProtocol001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrGetProtocol(0);
       console.info("pthread.pThreadMutexAttrGetProtocol result = " + result);
       expect(result).assertEqual(0);
@@ -847,7 +847,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadMutexAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrGetPShared(0);
       console.info("pthread.pThreadMutexAttrGetPshared result = " + result);
       expect(result).assertEqual(0);
@@ -861,7 +861,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadMutexAttrGetType001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrGetType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrGetType(0);
       console.info("pthread.pThreadMutexAttrGetType result = " + result);
       expect(result).assertEqual(0);
@@ -875,7 +875,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrInit(0);
       console.info("pthread.pThreadMutexAttrInit result = " + result);
       expect(result).assertEqual(0);
@@ -889,7 +889,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexSetProtocol001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexSetProtocol001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrSetProtocol(0);
       console.info("pthread.pThreadMutexAttrSetProtocol result = " + result);
       expect(result).assertEqual(0);
@@ -903,7 +903,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrSetPShared(0);
       console.info("pthread.pThreadMutexAttrSetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -917,7 +917,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadMutexAttrSetType001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadMutexAttrSetType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadMutexAttrSetType(0);
       console.info("pthread.pThreadMutexAttrSetType result = " + result);
       expect(result).assertEqual(0);
@@ -931,7 +931,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadOnce001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadOnce001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadOnce(0);
       console.info("pthread.pThreadOnce result = " + result);
       expect(result).assertEqual(0);
@@ -945,7 +945,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockInit(0);
       console.info("pthread.pThreadRwLockInit result = " + result);
       expect(result).assertEqual(0);
@@ -959,7 +959,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadRwLockDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockDestroy(0);
       console.info("pthread.pThreadRwLockDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -973,7 +973,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockRdLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockRdLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockRdLock(0);
       console.info("pthread.pThreadRwLockRdLock result = " + result);
       expect(result).assertEqual(0);
@@ -988,7 +988,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTimedRdLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTimedRdLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockTimedRdLock(0);
       console.info("pthread.pThreadRwLockTimedRdLock result = " + result);
       expect(result).assertEqual(0);
@@ -1002,7 +1002,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTimedWrLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTimedWrLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockTimedWrLock(0);
       console.info("pthread.pThreadRwLockTimedWrLock result = " + result);
       expect(result).assertEqual(0);
@@ -1016,7 +1016,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTryRdLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTryRdLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockTryRdLock(0);
       console.info("pthread.pThreadRwLockTryRdLock result = " + result);
       expect(result).assertEqual(0);
@@ -1030,7 +1030,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockTryWrLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockTryWrLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockTryWrLock(0);
       console.info("pthread.pThreadRwLockTryWrLock result = " + result);
       expect(result).assertEqual(0);
@@ -1044,7 +1044,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockUnLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockUnLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockUnLock(0);
       console.info("pthread.pThreadRwLockUnLock result = " + result);
       expect(result).assertEqual(0);
@@ -1058,7 +1058,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockWrLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockWrLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockWrLock(0);
       console.info("pthread.pThreadRwLockWrLock result = " + result);
       expect(result).assertEqual(0);
@@ -1072,7 +1072,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadRwLockAttrDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockAttrDestroy(0);
       console.info("pthread.pThreadRwLockAttrDestroy result = " + result);
       expect(result).assertEqual(0);
@@ -1086,7 +1086,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadRwLockAttrGetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrGetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockAttrGetPShared(0);
       console.info("pthread.pThreadRwLockAttrGetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -1100,7 +1100,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockAttrInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockAttrInit(0);
       console.info("pthread.pThreadRwLockAttrInit result = " + result);
       expect(result).assertEqual(0);
@@ -1114,7 +1114,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadRwLockAttrSetPShared001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadRwLockAttrSetPShared001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadRwLockAttrSetPShared(0);
       console.info("pthread.pThreadRwLockAttrSetPShared result = " + result);
       expect(result).assertEqual(0);
@@ -1128,7 +1128,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslPThreadPThreadSelf001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSelf001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSelf(0);
       console.info("pthread.pThreadSelf result = " + result);
       expect(result).assertEqual(0);
@@ -1142,7 +1142,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSetNameNp001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetNameNp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSetNameNp(0);
       console.info("pthread.pThreadSetNameNp result = " + result);
       expect(result).assertEqual(0);
@@ -1156,7 +1156,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSetSchedParam001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetSchedParam001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSetSchedParam(0);
       console.info("pthread.pThreadSetSchedParam result = " + result);
       expect(result).assertEqual(0);
@@ -1170,7 +1170,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSetSchedPrio001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetSchedPrio001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSetSchedPrio(0);
       console.info("pthread.pThreadSetSchedPrio result = " + result);
       expect(result).assertEqual(0);
@@ -1184,7 +1184,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testMuslPThreadPThreadSetSpecific001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSetSpecific001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSetSpecific(0);
       console.info("pthread.pThreadSetSpecific result = " + result);
       expect(result).assertEqual(0);
@@ -1198,7 +1198,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSigMask001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSigMask001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSigmask();
       expect(result).assertEqual(0);
       done()
@@ -1212,7 +1212,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSpinInit001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinInit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSpinInit();
       expect(result).assertEqual(0);
       done()
@@ -1225,7 +1225,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSpinDestroy001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSpinDestroy();
       expect(result).assertEqual(0);
       done()
@@ -1239,7 +1239,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSpinLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSpinLock();
       expect(result).assertEqual(0);
       done()
@@ -1252,7 +1252,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSpinTryLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinTryLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSpinTrylock();
       expect(result).assertEqual(0);
       done()
@@ -1265,7 +1265,7 @@ export default function muslPThreadNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslPThreadPThreadSpinUnLock001', 0, async (done: Function) => {
+    it('testMuslPThreadPThreadSpinUnLock001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result:number = pthread.pThreadSpinUnlock();
       expect(result).assertEqual(0);
       done()

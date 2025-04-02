@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { ArkTSUtils } from '@kit.ArkTS'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+
 export default function abilityTest() {
   describe('EscapeStringaAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -45,7 +44,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0001', 0, () => {
+    it('testBuilintsStringSplit0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0001";
       try {
         const str = "Hello\b";
@@ -65,7 +64,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0002', 0, () => {
+    it('testBuilintsStringSplit0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0002";
       try {
         const str = "Hello\fWorld";
@@ -86,7 +85,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0003', 0, () => {
+    it('testBuilintsStringSplit0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0003";
       try {
         const str = "Hello\nWorld";
@@ -106,7 +105,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0004', 0, () => {
+    it('testBuilintsStringSplit0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0004";
       try {
         const str = "Hello\rWorld";
@@ -126,7 +125,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0005', 0, () => {
+    it('testBuilintsStringSplit0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0005";
       try {
         const str = "Hello\tWorld";
@@ -146,7 +145,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0006', 0, () => {
+    it('testBuilintsStringSplit0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0006";
       try {
         const str = "Hello\vWorld";
@@ -166,7 +165,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0007', 0, () => {
+    it('testBuilintsStringSplit0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0007";
       try {
         const str = "Hello\x24World";
@@ -186,7 +185,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0008', 0, () => {
+    it('testBuilintsStringSplit0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0008";
       try {
         const str = "abc开";
@@ -206,7 +205,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0009', 0, () => {
+    it('testBuilintsStringSplit0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0009";
       try {
         const str = "Hello😊";
@@ -226,7 +225,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0010', 0, () => {
+    it('testBuilintsStringSplit0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0010";
       try {
         const str = "Hello";
@@ -246,7 +245,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSplit0011', 0, () => {
+    it('testBuilintsStringSplit0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSplit0011";
       try {
         const str = "Hello\b";
@@ -266,7 +265,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0001', 0, () => {
+    it('testBuilintsStringSubstring0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0001";
       try {
         const str = "abc\b";
@@ -286,7 +285,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0002', 0, () => {
+    it('testBuilintsStringSubstring0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0002";
       try {
         const str = "abc\f";
@@ -306,7 +305,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0003', 0, () => {
+    it('testBuilintsStringSubstring0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0003";
       try {
         const str = "abc\n";
@@ -326,7 +325,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0004', 0, () => {
+    it('testBuilintsStringSubstring0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0004";
       try {
         const str = "abc\r";
@@ -346,7 +345,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0005', 0, () => {
+    it('testBuilintsStringSubstring0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0005";
       try {
         const str = "abc\t";
@@ -366,7 +365,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0006', 0, () => {
+    it('testBuilintsStringSubstring0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0006";
       try {
         const str = "abc\v";
@@ -386,7 +385,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0007', 0, () => {
+    it('testBuilintsStringSubstring0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0007";
       try {
         const str = "abc\x24";
@@ -406,7 +405,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0008', 0, () => {
+    it('testBuilintsStringSubstring0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0008";
       try {
         const str = "\开";
@@ -426,7 +425,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0009', 0, () => {
+    it('testBuilintsStringSubstring0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0009";
       try {
         const str = "\😊";
@@ -446,7 +445,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0010', 0, () => {
+    it('testBuilintsStringSubstring0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0010";
       try {
         const str = "\0";
@@ -466,7 +465,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringSubstring0011', 0, () => {
+    it('testBuilintsStringSubstring0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringSubstring0011";
       try {
         const str = "\\b";
@@ -486,7 +485,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0001', 0, () => {
+    it('testStringToLocaleLowerCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0001';
       try {
         let s: string = '\b';
@@ -503,7 +502,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0002', 0, () => {
+    it('testStringToLocaleLowerCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0002';
       try {
         let s: string = '\f';
@@ -520,7 +519,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0003', 0, () => {
+    it('testStringToLocaleLowerCase0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0003';
       try {
         let s: string = '\n';
@@ -537,7 +536,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0004', 0, () => {
+    it('testStringToLocaleLowerCase0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0004';
       try {
         let s: string = '\r';
@@ -554,7 +553,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0005', 0, () => {
+    it('testStringToLocaleLowerCase0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0005';
       try {
         let s: string = '\t';
@@ -571,7 +570,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0006', 0, () => {
+    it('testStringToLocaleLowerCase0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0006';
       try {
         let s: string = '\v';
@@ -588,7 +587,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0007', 0, () => {
+    it('testStringToLocaleLowerCase0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0007';
       try {
         let s: string = '\x24';
@@ -605,7 +604,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0008', 0, () => {
+    it('testStringToLocaleLowerCase0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0008';
       try {
         let s: string = '\开';
@@ -622,7 +621,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0009', 0, () => {
+    it('testStringToLocaleLowerCase0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0009';
       try {
         let s: string = '\😊';
@@ -639,7 +638,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0010', 0, () => {
+    it('testStringToLocaleLowerCase0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0010';
       try {
         let s: string = 'null';
@@ -656,7 +655,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringToLocaleLowerCase0011', 0, () => {
+    it('testStringToLocaleLowerCase0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringToLocaleLowerCase0011';
       try {
         let s: string = '\\b';
@@ -673,7 +672,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0001', 0, () => {
+    it('testStringtoLocaleUpperCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0001';
       try {
         let s: string = '\b';
@@ -690,7 +689,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0002', 0, () => {
+    it('testStringtoLocaleUpperCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0002';
       try {
         let s: string = '\f';
@@ -707,7 +706,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0003', 0, () => {
+    it('testStringtoLocaleUpperCase0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0003';
       try {
         let s: string = '\n';
@@ -724,7 +723,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0004', 0, () => {
+    it('testStringtoLocaleUpperCase0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0004';
       try {
         let s: string = '\r';
@@ -741,7 +740,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0005', 0, () => {
+    it('testStringtoLocaleUpperCase0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0005';
       try {
         let s: string = '\t';
@@ -758,7 +757,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0006', 0, () => {
+    it('testStringtoLocaleUpperCase0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0006';
       try {
         let s: string = '\v';
@@ -775,7 +774,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0007', 0, () => {
+    it('testStringtoLocaleUpperCase0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0007';
       try {
         let s: string = '\x24';
@@ -792,7 +791,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0008', 0, () => {
+    it('testStringtoLocaleUpperCase0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0008';
       try {
         let s: string = '\开';
@@ -809,7 +808,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0009', 0, () => {
+    it('testStringtoLocaleUpperCase0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0009';
       try {
         let s: string = '\😊';
@@ -826,7 +825,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0010', 0, () => {
+    it('testStringtoLocaleUpperCase0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0010';
       try {
         let s: string = 'null';
@@ -843,7 +842,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLocaleUpperCase0011', 0, () => {
+    it('testStringtoLocaleUpperCase0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLocaleUpperCase0011';
       try {
         let s: string = '\\b';
@@ -860,7 +859,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0001', 0, () => {
+    it('testStringtoLowerCase0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0001';
       try {
         let s: string = '\b';
@@ -877,7 +876,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0002', 0, () => {
+    it('testStringtoLowerCase0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0002';
       try {
         let s: string = '\f';
@@ -894,7 +893,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0003', 0, () => {
+    it('testStringtoLowerCase0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0003';
       try {
         let s: string = '\n';
@@ -911,7 +910,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0004', 0, () => {
+    it('testStringtoLowerCase0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0004';
       try {
         let s: string = '\r';
@@ -928,7 +927,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0005', 0, () => {
+    it('testStringtoLowerCase0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0005';
       try {
         let s: string = '\t';
@@ -945,7 +944,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0006', 0, () => {
+    it('testStringtoLowerCase0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0006';
       try {
         let s: string = '\v';
@@ -962,7 +961,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0007', 0, () => {
+    it('testStringtoLowerCase0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0007';
       try {
         let s: string = '\x24';
@@ -979,7 +978,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0008', 0, () => {
+    it('testStringtoLowerCase0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0008';
       try {
         let s: string = '\开';
@@ -996,7 +995,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0009', 0, () => {
+    it('testStringtoLowerCase0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0009';
       try {
         let s: string = '\😊';
@@ -1013,7 +1012,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0010', 0, () => {
+    it('testStringtoLowerCase0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase0010';
       try {
         let s: string = 'null';
@@ -1030,7 +1029,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStringtoLowerCase0011', 0, () => {
+    it('testStringtoLowerCase0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testStringtoLowerCase_00011';
       try {
         let s: string = '\\b';
@@ -1047,7 +1046,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0001", 0, () => {
+    it("testtoUpperCaseEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0001";
       try {
         const escape = "aaa\b";
@@ -1067,7 +1066,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0002", 0, () => {
+    it("testtoUpperCaseEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0002";
       try {
         const escape = "aaa\f";
@@ -1087,7 +1086,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0003", 0, () => {
+    it("testtoUpperCaseEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0003";
       try {
         const escape = "aaa\n";
@@ -1107,7 +1106,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0004", 0, () => {
+    it("testtoUpperCaseEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0004";
       try {
         const escape = "aaa\r";
@@ -1127,7 +1126,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0005", 0, () => {
+    it("testtoUpperCaseEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0005";
       try {
         const escape = "aaa\t";
@@ -1147,7 +1146,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0006", 0, () => {
+    it("testtoUpperCaseEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0006";
       try {
         const escape = "aaa\v";
@@ -1167,7 +1166,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0007", 0, () => {
+    it("testtoUpperCaseEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0007";
       try {
         const escape = "aaa\x24";
@@ -1187,7 +1186,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0008", 0, () => {
+    it("testtoUpperCaseEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0008";
       try {
         const escape = "\开";
@@ -1207,7 +1206,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0009", 0, () => {
+    it("testtoUpperCaseEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0009";
       try {
         const escape = "\😊";
@@ -1227,7 +1226,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0010", 0, () => {
+    it("testtoUpperCaseEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0010";
       try {
         const escape = "\0";
@@ -1247,7 +1246,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoUpperCaseEscape0011", 0, () => {
+    it("testtoUpperCaseEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoUpperCaseEscape0011";
       try {
         const escape = "\b";
@@ -1267,7 +1266,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0001", 0, () => {
+    it("testtoStringEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0001";
       try {
         const escape = "aaa\b";
@@ -1286,7 +1285,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0002", 0, () => {
+    it("testtoStringEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0002";
       try {
         const escape = "aaa\f";
@@ -1305,7 +1304,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0003", 0, () => {
+    it("testtoStringEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0003";
       try {
         const escape = "aaa\n";
@@ -1324,7 +1323,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0004", 0, () => {
+    it("testtoStringEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0004";
       try {
         const escape = "aaa\r";
@@ -1343,7 +1342,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0005", 0, () => {
+    it("testtoStringEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0005";
       try {
         const escape = "aaa\t";
@@ -1362,7 +1361,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0006", 0, () => {
+    it("testtoStringEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0006";
       try {
         const escape = "aaa\v";
@@ -1381,7 +1380,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0007", 0, () => {
+    it("testtoStringEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0007";
       try {
         const escape = "aaa\x24";
@@ -1400,7 +1399,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0008", 0, () => {
+    it("testtoStringEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0008";
       try {
         const escape = "\开";
@@ -1419,7 +1418,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0009", 0, () => {
+    it("testtoStringEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0009";
       try {
         const escape = "\😊";
@@ -1438,7 +1437,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0010", 0, () => {
+    it("testtoStringEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0010";
       try {
         const escape = "\0";
@@ -1457,7 +1456,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testtoStringEscape0011", 0, () => {
+    it("testtoStringEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testtoStringEscape0011";
       try {
         const escape = "\b";
@@ -1476,7 +1475,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0001', 0, () => {
+    it('testBuilintsStringEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0001";
       try {
         let rawInput = '   Hello, World!\b   ';
@@ -1498,7 +1497,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0002', 0, () => {
+    it('testBuilintsStringEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0002";
       try {
         let rawInput = '   Hello, World!\f   ';
@@ -1520,7 +1519,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0003', 0, () => {
+    it('testBuilintsStringEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0003";
       try {
         let rawInput = '   Hello, World!\n   ';
@@ -1541,7 +1540,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0004', 0, () => {
+    it('testBuilintsStringEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0004";
       try {
         let rawInput = '   Hello, World!\r   ';
@@ -1562,7 +1561,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0005', 0, () => {
+    it('testBuilintsStringEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0005";
       try {
         let rawInput = '   Hello, World!\t   ';
@@ -1583,7 +1582,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0006', 0, () => {
+    it('testBuilintsStringEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0006";
       try {
         let rawInput = '   Hello, World!\v   ';
@@ -1604,7 +1603,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0007', 0, () => {
+    it('testBuilintsStringEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0007";
       try {
         let rawInput = '   Hello, World!\x24   ';
@@ -1625,7 +1624,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0008', 0, () => {
+    it('testBuilintsStringEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0008";
       try {
         let rawInput = '   Hello, World!\开   ';
@@ -1646,7 +1645,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0009', 0, () => {
+    it('testBuilintsStringEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0009";
       try {
         let rawInput = '   Hello, World!\😊   ';
@@ -1667,7 +1666,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0010', 0, () => {
+    it('testBuilintsStringEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0010";
       try {
         let rawInput = '   Hello, World!\0   ';
@@ -1688,7 +1687,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscape0011', 0, () => {
+    it('testBuilintsStringEscape0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscape0011";
       try {
         let rawInput = '   Hello, World!\\b   ';
@@ -1710,7 +1709,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0001', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0001";
       try {
         let rawInput = '   Hello, World!\b   ';
@@ -1732,7 +1731,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0002', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0002";
       try {
         let rawInput = '   Hello, World!\f   ';
@@ -1754,7 +1753,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0003', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0003";
       try {
         let rawInput = '   Hello, World!\n   ';
@@ -1775,7 +1774,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0004', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0004";
       try {
         let rawInput = '   Hello, World!\r   ';
@@ -1796,7 +1795,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0005', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0005";
       try {
         let rawInput = '   Hello, World!\t   ';
@@ -1817,7 +1816,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0006', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0006";
       try {
         let rawInput = '   Hello, World!\v   ';
@@ -1838,7 +1837,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0007', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0007";
       try {
         let rawInput = '   Hello, World!\x24   ';
@@ -1859,7 +1858,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0008', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0008";
       try {
         let rawInput = '   Hello, World!\开   ';
@@ -1880,7 +1879,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0009', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0009";
       try {
         let rawInput = '   Hello, World!\😊   ';
@@ -1901,7 +1900,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0010', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0010";
       try {
         let rawInput = '   Hello, World!\0   ';
@@ -1922,7 +1921,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBuilintsStringEscapeTrimEnd0011', 0, () => {
+    it('testBuilintsStringEscapeTrimEnd0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBuilintsStringEscapeTrimEnd0011";
       try {
         let rawInput = '   Hello, World!\\b   ';
@@ -1942,7 +1941,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0001", 0, () => {
+    it("testStringTrimStartEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0001";
       try {
         const escape = encodeURI('\b')
@@ -1962,7 +1961,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0002", 0, () => {
+    it("testStringTrimStartEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0002";
       try {
         const escape = encodeURI('\f')
@@ -1982,7 +1981,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0003", 0, () => {
+    it("testStringTrimStartEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0003";
       try {
         const escape = encodeURI('\n')
@@ -2002,7 +2001,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0004", 0, () => {
+    it("testStringTrimStartEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0004";
       try {
         const escape = encodeURI('\r')
@@ -2022,7 +2021,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0005", 0, () => {
+    it("testStringTrimStartEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0005";
       try {
         const escape = encodeURI('\t')
@@ -2042,7 +2041,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0006", 0, () => {
+    it("testStringTrimStartEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0006";
       try {
         const escape = encodeURI('\v')
@@ -2062,7 +2061,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0007", 0, () => {
+    it("testStringTrimStartEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0007";
       try {
         const escape = encodeURI('\x24')
@@ -2082,7 +2081,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0008", 0, () => {
+    it("testStringTrimStartEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0008";
       try {
         const escape = encodeURI('\开')
@@ -2102,7 +2101,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0009", 0, () => {
+    it("testStringTrimStartEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0009";
       try {
         const escape = encodeURI('\😊')
@@ -2122,7 +2121,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0010", 0, () => {
+    it("testStringTrimStartEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0010";
       try {
         const escape = encodeURI('\0')
@@ -2142,7 +2141,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringTrimStartEscape0011", 0, () => {
+    it("testStringTrimStartEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringTrimStartEscape0011";
       try {
         const escape = encodeURI('\\b')
@@ -2161,7 +2160,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0001", 0, () => {
+    it("testStringValueOfEscape0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0001";
       try {
         const escape = encodeURI('\b')
@@ -2181,7 +2180,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0002", 0, () => {
+    it("testStringValueOfEscape0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0002";
       try {
         const escape = encodeURI('\f')
@@ -2201,7 +2200,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0003", 0, () => {
+    it("testStringValueOfEscape0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0003";
       try {
         const escape = encodeURI('\n')
@@ -2221,7 +2220,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0004", 0, () => {
+    it("testStringValueOfEscape0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0004";
       try {
         const escape = encodeURI('\r')
@@ -2241,7 +2240,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0005", 0, () => {
+    it("testStringValueOfEscape0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0005";
       try {
         const escape = encodeURI('\t')
@@ -2261,7 +2260,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0006", 0, () => {
+    it("testStringValueOfEscape0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0006";
       try {
         const escape = encodeURI('\v')
@@ -2281,7 +2280,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0007", 0, () => {
+    it("testStringValueOfEscape0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0007";
       try {
         const escape = encodeURI('\x24')
@@ -2301,7 +2300,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0008", 0, () => {
+    it("testStringValueOfEscape0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0008";
       try {
         const escape = encodeURI('\开')
@@ -2321,7 +2320,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0009", 0, () => {
+    it("testStringValueOfEscape0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0009";
       try {
         const escape = encodeURI('\😊')
@@ -2341,7 +2340,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0010", 0, () => {
+    it("testStringValueOfEscape0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0010";
       try {
         const escape = encodeURI('\0')
@@ -2361,7 +2360,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it("testStringValueOfEscape0011", 0, () => {
+    it("testStringValueOfEscape0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testStringValueOfEscape0011";
       try {
         const escape = encodeURI('\\b')

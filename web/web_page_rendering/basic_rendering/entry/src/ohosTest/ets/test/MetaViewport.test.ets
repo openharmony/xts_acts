@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -53,7 +53,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0100', 0, async (done: Function) => {
+    it('metaViewport0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0100", true, 3701, done);
@@ -72,7 +72,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0200', 0, async (done: Function) => {
+    it('metaViewport0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0200", true, 3702, done);
@@ -91,7 +91,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0300', 0, async (done: Function) => {
+    it('metaViewport0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0300", true, 3703, done);
@@ -110,7 +110,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0400', 0, async (done: Function) => {
+    it('metaViewport0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0400", true, 3704, done);
@@ -129,7 +129,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0500', 0, async (done: Function) => {
+    it('metaViewport0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0500", true, 3705, done);
@@ -148,7 +148,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0600', 0, async (done: Function) => {
+    it('metaViewport0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0600", true, 3706, done);
@@ -167,7 +167,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0700', 0, async (done: Function) => {
+    it('metaViewport0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0700", true, 3707, done);
@@ -186,7 +186,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0800', 0, async (done: Function) => {
+    it('metaViewport0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0800", true, 3708, done);
@@ -205,7 +205,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport0900', 0, async (done: Function) => {
+    it('metaViewport0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport0900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport0900", true, 3709, done);
@@ -224,7 +224,7 @@ export default function MetaViewport() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('metaViewport1000', 0, async (done: Function) => {
+    it('metaViewport1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("metaViewport1000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("metaViewport1000", true, 3710, done);

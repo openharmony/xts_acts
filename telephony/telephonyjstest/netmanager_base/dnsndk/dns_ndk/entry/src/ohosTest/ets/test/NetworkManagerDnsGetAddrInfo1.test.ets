@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, Level, Size, TestType } from '@ohos/hypium';
 import testNapi from 'libtestDnsNdk.so'
 
 
@@ -45,7 +45,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.type    Function
     * @tc.level   Level 2
     */
-    it("NetworkManager_Dns_GetAddrInfo_0100", 0, async (done: Function) => {
+    it("NetworkManager_Dns_GetAddrInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0100"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_default);
       if (status != 0) {
@@ -67,7 +67,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.type    Function
     * @tc.level   Level 2
     */
-    it("NetworkManager_Dns_GetAddrInfo_0200", 0, async (done: Function) => {
+    it("NetworkManager_Dns_GetAddrInfo_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0200"
       let status = testNapi.getaddrinfo(hostaddr_invalid, serv, netid_default);
       if (status != 401) {
@@ -89,7 +89,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.type    Function
     * @tc.level   Level 2
     */
-    it("NetworkManager_Dns_GetAddrInfo_0300", 0, async (done: Function) => {
+    it("NetworkManager_Dns_GetAddrInfo_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0300"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_invalid);
       if (status != 401) {
@@ -111,7 +111,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.type    Function
     * @tc.level   Level 2
     */
-    it("NetworkManager_Dns_GetAddrInfo_0400", 0, async (done: Function) => {
+    it("NetworkManager_Dns_GetAddrInfo_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0400"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_unreachable);
       if (status != 2100003) {
@@ -133,7 +133,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.type    Function
     * @tc.level   Level 2
     */
-    it("NetworkManager_Dns_RegisterDnsResolver_0100", 0, async (done: Function) => {
+    it("NetworkManager_Dns_RegisterDnsResolver_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "NetworkManager_Dns_RegisterDnsResolver_0100"
       let status = testNapi.registerdnsresolver(function_valid);
       if (status != 0) {
@@ -155,7 +155,7 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.type    Function
     * @tc.level   Level 2
     */
-    it("NetworkManager_Dns_RegisterDnsResolver_0200", 0, async (done: Function) => {
+    it("NetworkManager_Dns_RegisterDnsResolver_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "NetworkManager_Dns_RegisterDnsResolver_0200"
       let status = testNapi.registerdnsresolver(function_null);
       if (status != 401) {

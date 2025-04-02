@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 let context: common.UIAbilityContext;
@@ -51,7 +51,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0100', 0, async function () {
+    it('CustomDirTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest0100 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -75,7 +75,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0200', 0, async function (done) {
+    it('CustomDirTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest0200 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -105,7 +105,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0300', 0, async function (done) {
+    it('CustomDirTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest0300start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -238,7 +238,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0400', 0, async function (done) {
+    it('CustomDirTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest0400 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -267,7 +267,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0500', 0, async function () {
+    it('CustomDirTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest0500 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -292,7 +292,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0600', 0, async function () {
+    it('CustomDirTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest0600start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -425,7 +425,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0700', 0, async function (done) {
+    it('CustomDirTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest0700 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -455,7 +455,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0800', 0, async function () {
+    it('CustomDirTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest0800 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -480,7 +480,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest0900', 0, async function (done) {
+    it('CustomDirTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest0900 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -510,7 +510,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1000', 0, async function () {
+    it('CustomDirTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest1000 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -535,7 +535,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1100', 0, async function (done) {
+    it('CustomDirTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest1100 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -565,7 +565,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1200', 0, async function () {
+    it('CustomDirTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest1200 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -590,7 +590,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1300', 0, async function (done) {
+    it('CustomDirTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest1300 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -625,7 +625,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1400', 0, async function () {
+    it('CustomDirTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest1400 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -655,7 +655,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1500', 0, async function (done) {
+    it('CustomDirTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest1500 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -684,7 +684,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1600', 0, async function () {
+    it('CustomDirTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest1600 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -709,7 +709,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1700', 0, async function (done) {
+    it('CustomDirTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest1700 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -742,7 +742,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1800', 0, async function () {
+    it('CustomDirTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest1800 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -772,7 +772,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest1900', 0, async function () {
+    it('CustomDirTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest1900 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -807,7 +807,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2000', 0, async function () {
+    it('CustomDirTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2000 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -850,7 +850,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2100', 0, async function (done) {
+    it('CustomDirTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest2100 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -879,7 +879,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2200', 0, async function () {
+    it('CustomDirTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2200 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -904,7 +904,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2300', 0, async function (done) {
+    it('CustomDirTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest2300 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -938,7 +938,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2400', 0, async function () {
+    it('CustomDirTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2400 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -967,7 +967,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2500', 0, async function () {
+    it('CustomDirTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2500 *************");
       let backupName = "BackupTest003.db"
       const STORE_CONFIG = {
@@ -1038,7 +1038,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2600', 0, async function () {
+    it('CustomDirTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2600 start *************");
       let backupName = "BackupTest003.db"
       const STORE_CONFIG = {
@@ -1094,7 +1094,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2700', 0, async function () {
+    it('CustomDirTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2700start *************");
       const STORE_CONFIG = {
         name: "rdbStore1.db",
@@ -1181,7 +1181,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2800', 0, async function () {
+    it('CustomDirTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest2800 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db2",
@@ -1268,7 +1268,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest2900', 0, async function (done) {
+    it('CustomDirTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest2900 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -1302,7 +1302,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest3000', 0, async function () {
+    it('CustomDirTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest3000 start *************");
       const STORE_CONFIG = {
         name: "rdbStore.db",
@@ -1332,7 +1332,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest3100', 0, async function (done) {
+    it('CustomDirTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info(TAG + "************* CustomDirTest3100 start *************");
       const STORE_CONFIG1 = {
         name: "rdbStore.db",
@@ -1366,7 +1366,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest3200', 0, async function () {
+    it('CustomDirTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest3200 start *************");
       
       const STORE_CONFIG1 = {
@@ -1399,7 +1399,7 @@ export default function relationalStoreCustomDirTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('CustomDirTest3300', 0, async function () {
+    it('CustomDirTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
       console.info(TAG + "************* CustomDirTest3300 start *************");
       const STORE_CONFIG = {
         name: "abc.db",
