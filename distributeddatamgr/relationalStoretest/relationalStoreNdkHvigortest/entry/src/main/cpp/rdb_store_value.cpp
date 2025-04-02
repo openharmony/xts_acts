@@ -49,34 +49,30 @@ static void InitRdbConfig()
     config_.isEncrypt = false;
     config_.selfSize = sizeof(OH_Rdb_Config);
 }
-
-static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
-
+static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) 
+{
     InitRdbConfig();
     mkdir(config_.dataBaseDir, 0770);
-
     int errCode = 0;
     storeTestRdbStore_ = OH_Rdb_GetOrOpen(&config_, &errCode);
     NAPI_ASSERT(env, errCode == 0, "OH_Rdb_GetOrOpen is fail.");
     NAPI_ASSERT(env, storeTestRdbStore_ != NULL, "OH_Rdb_GetOrOpen config is fail.");
-
     char createTableSql[] = "CREATE TABLE store_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                             "data3 FLOAT, data4 BLOB, data5 TEXT);";
     errCode = OH_Rdb_Execute(storeTestRdbStore_, createTableSql);
     NAPI_ASSERT(env, errCode == 0, "createTable is fail.");
-    
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
 
-static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info) {
+static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info) 
+{
     int errCode = 0;
     char dropTableSql[] = "DROP TABLE IF EXISTS store_test";
     OH_Rdb_Execute(storeTestRdbStore_, dropTableSql);
     OH_Rdb_CloseStore(storeTestRdbStore_);
     errCode = OH_Rdb_DeleteStore(&config_);
-
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
@@ -99,47 +95,37 @@ static napi_value OH_Rdb_BatchInsert_0100(napi_env env, napi_callback_info info)
         row->putInt64(row, "id", 10 + i);
         row->putText(row, "data1", "test_name");
         vbs[i] = row;
-        NAPI_ASSERT(env, RDB_OK == OH_VBuckets_PutRow(rows, row), "OH_Rdb_BatchInsert_0100 is fail.");
+        NAPI_ASSERT(env, OH_VBuckets_PutRow(rows, row) == RDB_OK, "OH_Rdb_BatchInsert_0100 is fail.");
     }
-
     int64_t changes = -1;
     int ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_NONE, &changes);
-    NAPI_ASSERT(env, RDB_E_SQLITE_CONSTRAINT == ret, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, 0 == changes, "OH_Rdb_BatchInsert_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_E_SQLITE_CONSTRAINT, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, changes == 0, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_ROLLBACK, &changes);
-    NAPI_ASSERT(env, RDB_E_SQLITE_CONSTRAINT == ret, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, 0 == changes, "OH_Rdb_BatchInsert_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_E_SQLITE_CONSTRAINT, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, changes == 0, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_ABORT, &changes);
-    NAPI_ASSERT(env, RDB_E_SQLITE_CONSTRAINT == ret, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, 0 == changes, "OH_Rdb_BatchInsert_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_E_SQLITE_CONSTRAINT, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, changes == 0, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_FAIL, &changes);
-    NAPI_ASSERT(env, RDB_E_SQLITE_CONSTRAINT == ret, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, 2 == changes, "OH_Rdb_BatchInsert_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_E_SQLITE_CONSTRAINT, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, changes == 2, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_IGNORE, &changes);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, 2 == changes, "OH_Rdb_BatchInsert_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, changes == 2, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_REPLACE, &changes);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, 5 == changes, "OH_Rdb_BatchInsert_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, changes == 5, "OH_Rdb_BatchInsert_0100 is fail.");
     for (OH_VBucket *vb : vbs) {
         vb->destroy(vb);
     }
     OH_VBuckets_Destroy(rows);
-
     char querySql[] = "SELECT * FROM store_test";
     OH_Cursor *cursor = OH_Rdb_ExecuteQuery(storeTestRdbStore_, querySql);
-
     int rowCount = 0;
     cursor->getRowCount(cursor, &rowCount);
-    NAPI_ASSERT(env, 5 == rowCount, "OH_Rdb_BatchInsert_0100 is fail.");
+    NAPI_ASSERT(env, rowCount == 5, "OH_Rdb_BatchInsert_0100 is fail.");
     cursor->destroy(cursor);
-    
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
@@ -154,40 +140,34 @@ static napi_value OH_Value_PutNull_0100(napi_env env, napi_callback_info info)
     OH_Rdb_SetPersistent(config, false);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
     OH_Rdb_SetSecurityLevel(config, S1);
-
     int errCode = 0;
     OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
     NAPI_ASSERT(env, store != nullptr, "OH_Rdb_CreateOrOpen is fail.");
-    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK == errCode, "OH_Rdb_CreateOrOpen is fail.");
-
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateOrOpen is fail.");
     char createTableSql[] = "CREATE TABLE mem_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                             "data3 FLOAT, data4 BLOB, data5 TEXT);";
     errCode = OH_Rdb_Execute(store, createTableSql);
-    NAPI_ASSERT(env, 0 == errCode, "OH_Rdb_Execute is fail.");
-    
+    NAPI_ASSERT(env, errCode == 0, "OH_Rdb_Execute is fail.");
     OH_Data_Value *value = OH_Value_Create();
     NAPI_ASSERT(env, value != nullptr, "OH_Value_PutNull_0100 is fail.");
     float floatArr[] = {1.0, 2.0, 3.0};
     int ret = OH_Value_PutFloatVector(value, nullptr, 0);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Value_PutNull_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Value_PutNull_0100 is fail.");
     ret = OH_Value_PutFloatVector(value, floatArr, 0);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutNull_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutNull_0100 is fail.");
     size_t length;
     ret = OH_Value_GetFloatVectorCount(value, &length);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutNull_0100 is fail.");
-    NAPI_ASSERT(env, 0 == length, "OH_Value_PutNull_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutNull_0100 is fail.");
+    NAPI_ASSERT(env, length == 0, "OH_Value_PutNull_0100 is fail.");
     double realValue;
     ret = OH_Value_GetReal(value, &realValue);
-    NAPI_ASSERT(env, RDB_E_TYPE_MISMATCH == ret, "OH_Value_PutNull_0100 is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_E_TYPE_MISMATCH, "OH_Value_PutNull_0100 is fail.");
     ret = OH_Value_PutNull(value);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutNull_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutNull_0100 is fail.");
     ret = OH_Value_GetReal(value, &realValue);
-    NAPI_ASSERT(env, RDB_E_DATA_TYPE_NULL == ret, "OH_Value_PutNull_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_DATA_TYPE_NULL, "OH_Value_PutNull_0100 is fail.");
     ret = OH_Value_Destroy(value);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutNull_0100 is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutNull_0100 is fail.");
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
@@ -197,100 +177,92 @@ static napi_value OH_Value_Put_0100(napi_env env, napi_callback_info info)
 {
     OH_Data_Value *value = OH_Value_Create();
     int ret = OH_Value_PutInt(nullptr, 1);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Value_Put_0100 is fail.");
     ret = OH_Value_PutInt(value, 1);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutInt is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutInt is fail.");
     int64_t readData1;
     ret = OH_Value_GetInt(value, &readData1);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetInt is fail.");
-    NAPI_ASSERT(env, 1 == readData1, "OH_Value_GetInt is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetInt is fail.");
+    NAPI_ASSERT(env, readData1 == 1, "OH_Value_GetInt is fail.");
     ret = OH_Value_PutReal(value, 1.1);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutReal is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutReal is fail.");
     double readData2;
     ret = OH_Value_GetReal(value, &readData2);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetReal is fail.");
-    NAPI_ASSERT(env, 1.1 == readData2, "OH_Value_GetReal is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetReal is fail.");
+    NAPI_ASSERT(env, readData2 == 1.1, "OH_Value_GetReal is fail.");
     ret = OH_Value_PutText(value, "1");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutText is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutText is fail.");
     const char *readData3 = nullptr;
     ret = OH_Value_GetText(value, &readData3);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetText is fail.");
-    NAPI_ASSERT(env, 0 == strcmp(readData3, "1"), "OH_Value_GetText is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetText is fail.");
+    NAPI_ASSERT(env, strcmp(readData3, "1") == 0, "OH_Value_GetText is fail.");
     unsigned char arr[] = {1, 2};
     ret = OH_Value_PutBlob(value, arr, sizeof(arr) / sizeof(arr[0]));
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutBlob is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutBlob is fail.");
     const uint8_t *readData4 = nullptr;
     size_t len4;
     ret = OH_Value_GetBlob(value, &readData4, &len4);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetBlob is fail.");
-    NAPI_ASSERT(env, 2 == len4, "OH_Value_GetBlob is fail.");
-    NAPI_ASSERT(env, 1 == readData4[0], "OH_Value_GetBlob is fail.");
-    NAPI_ASSERT(env, 2 == readData4[1], "OH_Value_GetBlob is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetBlob is fail.");
+    NAPI_ASSERT(env, len4 == 2, "OH_Value_GetBlob is fail.");
+    NAPI_ASSERT(env, readData4[0] == 1, "OH_Value_GetBlob is fail.");
+    NAPI_ASSERT(env, readData4[1] == 2, "OH_Value_GetBlob is fail.");
     Data_Asset *asset = OH_Data_Asset_CreateOne();
     ret = OH_Data_Asset_SetName(asset, "name");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Data_Asset_SetName is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Data_Asset_SetName is fail.");
     ret = OH_Value_PutAsset(value, asset);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutAsset is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutAsset is fail.");
     Data_Asset *readData5 = OH_Data_Asset_CreateOne();
     ret = OH_Value_GetAsset(value, readData5);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetAsset is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetAsset is fail.");
     char readDataName[32];
     size_t length5 = 32;
     ret = OH_Data_Asset_GetName(readData5, readDataName, &length5);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetAsset is fail.");
-    NAPI_ASSERT(env, 0 == strcmp(readDataName, "name"), "OH_Value_GetAsset is fail.");
-    NAPI_ASSERT(env, 4 == length5, "OH_Value_GetAsset is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetAsset is fail.");
+    NAPI_ASSERT(env, strcmp(readDataName, "name") == 0, "OH_Value_GetAsset is fail.");
+    NAPI_ASSERT(env, length5 == 4, "OH_Value_GetAsset is fail.");
     OH_Data_Asset_DestroyOne(readData5);
-    
     Data_Asset **assets1 = OH_Data_Asset_CreateMultiple(2);
     ret = OH_Data_Asset_SetName(assets1[0], "name1");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Data_Asset_SetName is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Data_Asset_SetName is fail.");
     ret = OH_Data_Asset_SetName(assets1[1], "name2");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Data_Asset_SetName is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Data_Asset_SetName is fail.");
     ret = OH_Value_PutAssets(value, assets1, 2);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutAssets is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutAssets is fail.");
     size_t readDataCount6;
     ret = OH_Value_GetAssetsCount(value, &readDataCount6);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetAssetsCount is fail.");
-    NAPI_ASSERT(env, 2 == readDataCount6, "OH_Value_GetAssetsCount is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetAssetsCount is fail.");
+    NAPI_ASSERT(env, readDataCount6 == 2, "OH_Value_GetAssetsCount is fail.");
     Data_Asset **readData6 = OH_Data_Asset_CreateMultiple(2);
     NAPI_ASSERT(env, readData6 != nullptr, "OH_Value_GetAssetsCount is fail.");
     size_t out6;
     ret = OH_Value_GetAssets(value, readData6, 2, &out6);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetAssets is fail.");
-    NAPI_ASSERT(env, 2 == out6, "OH_Value_GetAssets is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetAssets is fail.");
+    NAPI_ASSERT(env, out6 == 2, "OH_Value_GetAssets is fail.");
     OH_Data_Asset_DestroyMultiple(readData6, 2);
-    
     uint64_t bigInt[] = {1, 2, 3, 4, 5};
     ret = OH_Value_PutUnlimitedInt(value, 0, bigInt, sizeof(bigInt) / sizeof(bigInt[0]));
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutUnlimitedInt is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutUnlimitedInt is fail.");
     size_t readDataLen7;
     ret = OH_Value_GetUnlimitedIntBand(value, &readDataLen7);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetUnlimitedIntBand is fail.");
-    NAPI_ASSERT(env, 5 == readDataLen7, "OH_Value_GetUnlimitedIntBand is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetUnlimitedIntBand is fail.");
+    NAPI_ASSERT(env, readDataLen7 == 5, "OH_Value_GetUnlimitedIntBand is fail.");
     int readDataSign7;
     uint64_t readData7[5];
     size_t outLen;
     ret = OH_Value_GetUnlimitedInt(value, &readDataSign7, readData7, 5, &outLen);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 5 == outLen, "OH_Value_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 0 == readDataSign7, "OH_Value_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 1 == readData7[0], "OH_Value_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 5 == readData7[4], "OH_Value_GetUnlimitedInt is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, outLen == 5, "OH_Value_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, readDataSign7 == 0, "OH_Value_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, readData7[0] == 1, "OH_Value_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, readData7[4] == 5, "OH_Value_GetUnlimitedInt is fail.");
     OH_ColumnType columnType;
     ret = OH_Value_GetType(value, &columnType);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetType is fail.");
-    NAPI_ASSERT(env, 8 == columnType, "OH_Value_GetType is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetType is fail.");
+    NAPI_ASSERT(env, columnType == 8, "OH_Value_GetType is fail.");
     bool isNull;
     ret = OH_Value_IsNull(value, &isNull);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_IsNull is fail.");
-    NAPI_ASSERT(env, false == isNull, "OH_Value_IsNull is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_IsNull is fail.");
+    NAPI_ASSERT(env, isNull == false, "OH_Value_IsNull is fail.");
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
@@ -302,132 +274,118 @@ static napi_value OH_Values_Put_0100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, values != nullptr, "OH_Values_Put_0100 is fail.");
     OH_Data_Value *value = OH_Value_Create();
     int ret = OH_Value_PutInt(nullptr, 1);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_Put(nullptr, value);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_Put(values, nullptr);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_Put(values, value);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Value_Destroy(value);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_PutInt(values, 2);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_PutReal(values, 1.1);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_PutText(values, "1");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     unsigned char val[] = {1, 2};
     ret = OH_Values_PutBlob(values, val, sizeof(val) / sizeof(val[0]));
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     Data_Asset *asset = OH_Data_Asset_CreateOne();
     ret = OH_Data_Asset_SetName(asset, "name");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_PutAsset(values, asset);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     OH_Data_Asset_DestroyOne(asset);
-    
     Data_Asset **assets = OH_Data_Asset_CreateMultiple(2);
     ret = OH_Data_Asset_SetName(assets[0], "name1");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Data_Asset_SetName(assets[1], "name2");
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_PutAssets(values, assets, 2);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Data_Asset_DestroyMultiple(assets, 2);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     uint64_t bigInt[] = {1, 2, 3, 4, 5};
     ret = OH_Values_PutUnlimitedInt(values, 0, bigInt, sizeof(bigInt) / sizeof(bigInt[0]));
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Put_0100 is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Put_0100 is fail.");
     ret = OH_Values_PutNull(values);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_PutNull is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_PutNull is fail.");
     OH_ColumnType columnType;
     ret = OH_Values_GetType(values, 0, &columnType);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetType is fail.");
-    NAPI_ASSERT(env, 0 == columnType, "OH_Values_GetType is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetType is fail.");
+    NAPI_ASSERT(env, columnType == 0, "OH_Values_GetType is fail.");
     size_t readSize = 0;
     ret = OH_Values_Count(values, &readSize);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_Count is fail.");
-    NAPI_ASSERT(env, 9 == readSize, "OH_Values_Count is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_Count is fail.");
+    NAPI_ASSERT(env, readSize == 9, "OH_Values_Count is fail.");
     OH_Data_Value *readData0 = nullptr;
     ret = OH_Values_Get(values, 0, &readData0);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_Get is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_Get is fail.");
     NAPI_ASSERT(env, readData0 != nullptr, "OH_Values_Get is fail.");
-    
     bool isNull;
     ret = OH_Values_IsNull(values, 1, &isNull);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_IsNull is fail.");
-    NAPI_ASSERT(env, false == isNull, "OH_Values_IsNull is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_IsNull is fail.");
+    NAPI_ASSERT(env, isNull == false, "OH_Values_IsNull is fail.");
     int64_t readData1;
     ret = OH_Values_GetInt(values, 1, &readData1);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetInt is fail.");
-    NAPI_ASSERT(env, 2 == readData1, "OH_Values_GetInt is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetInt is fail.");
+    NAPI_ASSERT(env, readData1 == 2, "OH_Values_GetInt is fail.");
     double readData2;
     ret = OH_Values_GetReal(values, 2, &readData2);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetReal is fail.");
-    NAPI_ASSERT(env, 1.1 == readData2, "OH_Values_GetReal is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetReal is fail.");
+    NAPI_ASSERT(env, readData2 = 1.1, "OH_Values_GetReal is fail.");
     const char *readData3 = nullptr;
-    
     ret = OH_Values_GetText(values, 3, &readData3);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetText is fail.");
-    NAPI_ASSERT(env, 0 == strcmp(readData3, "1"), "OH_Values_GetText is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetText is fail.");
+    NAPI_ASSERT(env, strcmp(readData3, "1") == 0, "OH_Values_GetText is fail.");
     const uint8_t *readData4 = nullptr;
     size_t len4;
     ret = OH_Values_GetBlob(values, 4, &readData4, &len4);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetBlob is fail.");
-    NAPI_ASSERT(env, 2 == len4, "OH_Values_GetBlob is fail.");
-    NAPI_ASSERT(env, 1 == readData4[0], "OH_Values_GetBlob is fail.");
-    NAPI_ASSERT(env, 2 == readData4[1], "OH_Values_GetBlob is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetBlob is fail.");
+    NAPI_ASSERT(env, len4 == 2, "OH_Values_GetBlob is fail.");
+    NAPI_ASSERT(env, readData4[0] == 1, "OH_Values_GetBlob is fail.");
+    NAPI_ASSERT(env, readData4[1] == 2, "OH_Values_GetBlob is fail.");
     Data_Asset *readData5 = OH_Data_Asset_CreateOne();
     NAPI_ASSERT(env, readData5 != nullptr, "OH_Values_GetBlob is fail.");
     OH_ColumnType columnType5;
     ret = OH_Values_GetType(values, 5, &columnType5);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetType is fail.");
-    NAPI_ASSERT(env, TYPE_ASSET == columnType5, "OH_Values_GetType is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetType is fail.");
+    NAPI_ASSERT(env, columnType5 == TYPE_ASSET, "OH_Values_GetType is fail.");
     ret = OH_Values_GetAsset(values, 5, readData5);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetAsset is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetAsset is fail.");
     char readDataName[32];
     size_t length5 = 32;
     ret = OH_Data_Asset_GetName(readData5, readDataName, &length5);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Data_Asset_GetName is fail.");
-    NAPI_ASSERT(env, 0 == strcmp(readDataName, "name"), "OH_Data_Asset_GetName is fail.");
-    NAPI_ASSERT(env, 4 == length5, "OH_Data_Asset_GetName is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Data_Asset_GetName is fail.");
+    NAPI_ASSERT(env, strcmp(readDataName, "name") == 0, "OH_Data_Asset_GetName is fail.");
+    NAPI_ASSERT(env, length5 == 4, "OH_Data_Asset_GetName is fail.");
     OH_Data_Asset_DestroyOne(readData5);
-    
     size_t readDataCount6;
     ret = OH_Values_GetAssetsCount(values, 6, &readDataCount6);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetAssetsCount is fail.");
-    NAPI_ASSERT(env, 2 == readDataCount6, "OH_Values_GetAssetsCount is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetAssetsCount is fail.");
+    NAPI_ASSERT(env, readDataCount6 == 2, "OH_Values_GetAssetsCount is fail.");
     Data_Asset **readData6 = OH_Data_Asset_CreateMultiple(2);
     NAPI_ASSERT(env, readData6 != nullptr, "OH_Values_GetAssetsCount is fail.");
     size_t out6;
     ret = OH_Values_GetAssets(values, 6, readData6, 2, &out6);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetAssets is fail.");
-    NAPI_ASSERT(env, 2 == out6, "OH_Values_GetAssets is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetAssets is fail.");
+    NAPI_ASSERT(env, out6 == 2, "OH_Values_GetAssets is fail.");
     OH_Data_Asset_DestroyMultiple(readData6, 2);
-    
     size_t readDataLen7;
     ret = OH_Values_GetUnlimitedIntBand(values, 7, &readDataLen7);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetUnlimitedIntBand is fail.");
-    NAPI_ASSERT(env, 5 == readDataLen7, "OH_Values_GetUnlimitedIntBand is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetUnlimitedIntBand is fail.");
+    NAPI_ASSERT(env, readDataLen7 == 5, "OH_Values_GetUnlimitedIntBand is fail.");
     int readDataSign7;
     uint64_t readData7[5];
     size_t outLen;
     ret = OH_Values_GetUnlimitedInt(values, 7, &readDataSign7, readData7, 5, &outLen);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 5 == outLen, "OH_Values_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 0 == readDataSign7, "OH_Values_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 1 == readData7[0], "OH_Values_GetUnlimitedInt is fail.");
-    NAPI_ASSERT(env, 5 == readData7[4], "OH_Values_GetUnlimitedInt is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, outLen == 5, "OH_Values_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, readDataSign7 == 0, "OH_Values_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, readData7[0] == 1, "OH_Values_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, readData7[4] == 5, "OH_Values_GetUnlimitedInt is fail.");
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
@@ -439,27 +397,25 @@ static napi_value OH_Value_PutFloatVector_0100(napi_env env, napi_callback_info 
     NAPI_ASSERT(env, value != nullptr, "OH_Value_PutFloatVector_0100 is fail.");
     float floatArr[] = {1.0, 2.0, 3.0};
     int ret = OH_Value_PutFloatVector(value, nullptr, 0);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Values_GetUnlimitedInt is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Values_GetUnlimitedInt is fail.");
     ret = OH_Value_PutFloatVector(value, floatArr, 3);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_PutFloatVector is fail.");
-
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_PutFloatVector is fail.");
     OH_ColumnType type;
     ret = OH_Value_GetType(value, &type);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetType is fail.");
-    NAPI_ASSERT(env, TYPE_FLOAT_VECTOR == type, "OH_Value_GetType is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetType is fail.");
+    NAPI_ASSERT(env, type == TYPE_FLOAT_VECTOR, "OH_Value_GetType is fail.");
     size_t length;
     ret = OH_Value_GetFloatVectorCount(value, &length);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetFloatVectorCount is fail.");
-    NAPI_ASSERT(env, 3 == length, "OH_Value_GetFloatVectorCount is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetFloatVectorCount is fail.");
+    NAPI_ASSERT(env, length == 3, "OH_Value_GetFloatVectorCount is fail.");
     float retArray[10];
     size_t outLen;
     ret = OH_Value_GetFloatVector(value, retArray, 10, &outLen);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetFloatVector is fail.");
-    NAPI_ASSERT(env, 3 == outLen, "OH_Value_GetFloatVector is fail.");
-    NAPI_ASSERT(env, 1.0 == retArray[0], "OH_Value_GetFloatVector is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetFloatVector is fail.");
+    NAPI_ASSERT(env, outLen == 3, "OH_Value_GetFloatVector is fail.");
+    NAPI_ASSERT(env, retArray[0] == 1.0, "OH_Value_GetFloatVector is fail.");
     ret = OH_Value_Destroy(value);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_Destroy is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_Destroy is fail.");
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
@@ -471,23 +427,21 @@ static napi_value OH_Values_PutFloatVector_0100(napi_env env, napi_callback_info
     NAPI_ASSERT(env, values != nullptr, "OH_Values_PutFloatVector_0100 is fail.");
     float floatArr[] = {1.0, 2.0, 3.0};
     int ret = OH_Values_PutFloatVector(values, nullptr, 0);
-    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == ret, "OH_Values_PutFloatVector is fail.");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Values_PutFloatVector is fail.");
     ret = OH_Values_PutFloatVector(values, floatArr, 3);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_PutFloatVector is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_PutFloatVector is fail.");
     size_t length;
     ret = OH_Values_GetFloatVectorCount(values, 0, &length);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Value_GetFloatVectorCount is fail.");
-    NAPI_ASSERT(env, 3 == length, "OH_Value_GetFloatVectorCount is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetFloatVectorCount is fail.");
+    NAPI_ASSERT(env, length == 3, "OH_Value_GetFloatVectorCount is fail.");
     float retArray[10];
     size_t outLen;
     ret = OH_Values_GetFloatVector(values, 0, retArray, 10, &outLen);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_GetFloatVector is fail.");
-    NAPI_ASSERT(env, 3 == outLen, "OH_Values_GetFloatVector is fail.");
-    NAPI_ASSERT(env, 1.0 == retArray[0], "OH_Values_GetFloatVector is fail.");
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetFloatVector is fail.");
+    NAPI_ASSERT(env, outLen == 3, "OH_Values_GetFloatVector is fail.");
+    NAPI_ASSERT(env, retArray[0] == 1.0, "OH_Values_GetFloatVector is fail.");
     ret = OH_Values_Destroy(values);
-    NAPI_ASSERT(env, RDB_OK == ret, "OH_Values_Destroy is fail.");
-    
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_Destroy is fail.");
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
