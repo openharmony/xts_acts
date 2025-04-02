@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#include "ActsOpenGL_Egl_am_325xTest.h" 
+#include "ActsOpenGL_Egl_am_325xTest.h"
 #include <gtest/gtest.h>
 #include <cstdlib>
 #include "common.h"
