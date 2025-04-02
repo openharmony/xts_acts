@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
+import("//foundation/multimedia/video_processing_engine/config.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
@@ -50,11 +51,11 @@ ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
   }
 
   include_dirs = [
-    "$histreamer_root_dir/video_processing_engine/interface/kits/c",
-    "$histreamer_root_dir/video_processing_engine/interface/inner_api",
-    "$histreamer_root_dir/video_processing_engine/framework/dfx/include",
-    "$histreamer_root_dir/video_processing_engine/framework/capi/image_processing/include",
-    "$histreamer_root_dir/video_processing_engine/framework/algorithm/include",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/inner_api",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/dfx/include",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/capi/image_processing/include",
+    "$CAPI_COLORSPACE_CONVERTER_DIR/include",
     "$image_subsystem/interfaces/kits/native/include/image",
   ]
 
@@ -67,8 +68,9 @@ ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
   deps = [
     "$histreamer_root_dir/interface/kits/ndk/core:libnative_media_core",
     "$histreamer_root_dir/src:media_foundation",
-    "$histreamer_root_dir/video_processing_engine/framework:image_processing",
-    "$histreamer_root_dir/video_processing_engine/interface/kits/c/image_processing:libimage_processing_ndk",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:image_processing",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c/image_processing:libimage_processing_ndk",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:videoprocessingengine",
   ]
 
   external_deps = [
@@ -78,6 +80,8 @@ ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
     "hitrace:hitrace_meter",
     "image_framework:pixelmap",
     "media_foundation:native_media_core",
+    "drivers_interface_display:libdisplay_buffer_proxy_1.0",
+    "drivers_interface_display:libdisplay_commontype_proxy_1.0",
   ]
 
   if (has_skia) {
