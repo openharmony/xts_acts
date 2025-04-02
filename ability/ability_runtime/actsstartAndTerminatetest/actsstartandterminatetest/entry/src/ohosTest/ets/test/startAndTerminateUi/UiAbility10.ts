@@ -48,7 +48,7 @@ export default class UiAbility010 extends UIAbility {
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onForeground');
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_DESTROY');
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_TEST_DESTROY');
     });
   }
 

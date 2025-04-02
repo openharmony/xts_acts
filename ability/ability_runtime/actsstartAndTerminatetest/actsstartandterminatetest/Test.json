@@ -11,7 +11,10 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsStartAndTerminateTest.hap"
+                "ActsStartAndTerminateTest.hap",
+                "ActsStartAndTerminateAssist01Test.hap",
+                "ActsStartAndTerminateAssist02Test.hap",
+                "ActsStartAndTerminateAssist03Test.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
