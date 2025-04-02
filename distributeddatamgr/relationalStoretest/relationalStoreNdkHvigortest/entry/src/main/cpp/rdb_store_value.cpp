@@ -114,7 +114,8 @@ static napi_value OH_Rdb_BatchInsert_0100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, changes == 0, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_FAIL, &changes);
     NAPI_ASSERT(env, ret == RDB_E_SQLITE_CONSTRAINT, "OH_Rdb_BatchInsert_0100 is fail.");
-    NAPI_ASSERT(env, changes == 2, "OH_Rdb_BatchInsert_0100 is fail.");
+    int insertCount = 2;
+    NAPI_ASSERT(env, changes == insertCount, "OH_Rdb_BatchInsert_0100 is fail.");
     ret = OH_Rdb_BatchInsert(storeTestRdbStore_, "store_test", rows, RDB_CONFLICT_IGNORE, &changes);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_BatchInsert_0100 is fail.");
     int insertCount2 = 2;
@@ -275,7 +276,8 @@ static napi_value OH_Value_Put_0100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, readDataSign7 == 0, "OH_Value_GetUnlimitedInt is fail.");
     NAPI_ASSERT(env, readData7[0] == 1, "OH_Value_GetUnlimitedInt is fail.");
     int trueFormVal4 = 5;
-    NAPI_ASSERT(env, readData7[4] == trueFormVal4, "OH_Value_GetUnlimitedInt is fail.");
+    int assetIndex = 4;
+    NAPI_ASSERT(env, readData7[assetIndex] == trueFormVal4, "OH_Value_GetUnlimitedInt is fail.");
     OH_ColumnType columnType;
     ret = OH_Value_GetType(value, &columnType);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Value_GetType is fail.");
@@ -409,7 +411,8 @@ static napi_value OH_Values_Put_0100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, readData6 != nullptr, "OH_Values_GetAssetsCount is fail.");
     size_t out6;
     int assetsIndex1 = 6;
-    ret = OH_Values_GetAssets(values, assetsIndex1, readData6, 2, &out6);
+    int assetsInLen = 2;
+    ret = OH_Values_GetAssets(values, assetsIndex1, readData6, assetsInLen, &out6);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetAssets is fail.");
     int assetsLen1 = 2;
     NAPI_ASSERT(env, out6 == assetsLen1, "OH_Values_GetAssets is fail.");
@@ -425,14 +428,16 @@ static napi_value OH_Values_Put_0100(napi_env env, napi_callback_info info)
     uint64_t readData7[5];
     size_t outLen;
     int unlimitedIndex = 7;
-    ret = OH_Values_GetUnlimitedInt(values, unlimitedIndex, &readDataSign7, readData7, 5, &outLen);
+    int inLenNum = 5;
+    ret = OH_Values_GetUnlimitedInt(values, unlimitedIndex, &readDataSign7, readData7, inLenNum, &outLen);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Values_GetUnlimitedInt is fail.");
     int unlimitedLen = 5;
     NAPI_ASSERT(env, outLen == unlimitedLen, "OH_Values_GetUnlimitedInt is fail.");
     NAPI_ASSERT(env, readDataSign7 == 0, "OH_Values_GetUnlimitedInt is fail.");
     NAPI_ASSERT(env, readData7[0] == 1, "OH_Values_GetUnlimitedInt is fail.");
     int index4 = 4;
-    NAPI_ASSERT(env, readData7[index4] == 5, "OH_Values_GetUnlimitedInt is fail.");
+    int unlimitedVal4 = 5;
+    NAPI_ASSERT(env, readData7[index4] == unlimitedVal4, "OH_Values_GetUnlimitedInt is fail.");
     napi_value returncode;
     napi_create_int32(env, ret, &returncode);
     return returncode;
