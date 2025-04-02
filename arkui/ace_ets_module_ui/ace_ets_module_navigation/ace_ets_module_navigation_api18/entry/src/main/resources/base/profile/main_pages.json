@@ -6,6 +6,7 @@
         "MainAbility/pages/Basic",
         "MainAbility/pages/CustomDialogTest",
         "MainAbility/pages/BasicSheet01",
-        "MainAbility/pages/BasicSheet02"
+        "MainAbility/pages/BasicSheet02",
+        "MainAbility/pages/PathStackPage"
     ]
 }
