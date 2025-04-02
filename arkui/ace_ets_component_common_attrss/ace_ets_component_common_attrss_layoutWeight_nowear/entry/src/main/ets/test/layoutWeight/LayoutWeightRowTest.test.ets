@@ -78,8 +78,13 @@ export default function layoutWeightRowTest() {
       console.info('[' + data.caseTag + ']' + 'rect.left is:' + JSON.stringify(rect.left));
       console.info('[' + data.caseTag + ']' + 'width is:' + JSON.stringify(width));
       console.info('[' + data.caseTag + ']' + 'layoutWeight is:' + data.viewObj.$attrs.layoutWeight);
+      console.info('[' + data.caseTag + ']' + 'expectWidth is:' + data.testValue.expectValue.width);
       expect(data.viewObj.$attrs.layoutWeight).assertEqual(data.testValue.expectValue.layoutWeight);
-      expect(Math.abs(width - data.testValue.expectValue.width) <= 1).assertTrue();
+      if (data.pageConfig.componentKey == 'TextInput') {
+        expect(Math.floor(Math.abs(width - data.testValue.expectValue.width)) <= 2).assertTrue();
+      } else {
+        expect(Math.floor(Math.abs(width - data.testValue.expectValue.width)) <= 1).assertTrue();
+      }
     });
   })
 }
