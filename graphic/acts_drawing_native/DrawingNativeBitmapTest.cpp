@@ -69,7 +69,7 @@ class DrawingNativeBitmapTest : public testing::Test {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNormal, Function | SmallTest | Level0) {
     // step 1
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
@@ -85,7 +85,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNull, Function | SmallTest | Level3) {
     OH_Drawing_BitmapDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);
@@ -99,7 +99,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNormal, Function | SmallTest | Level0) {
     // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
     OH_Drawing_ColorFormat formats[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
@@ -160,7 +160,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNormal, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNull, Function | SmallTest | Level3) {
     int width = 100;
     int height = 100;
     int rowBytes = width * 4;
@@ -201,7 +201,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNull, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsMismatch, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsMismatch, Function | SmallTest | Level3) {
     int width = 48;
     int height = 48;
     int rowBytes = width * 4;
@@ -239,7 +239,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsMismatch, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsAbnormal, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsAbnormal, Function | SmallTest | Level3) {
     int width = 48;
     int height = 48;
     int rowBytes = width * 4;
@@ -263,7 +263,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsAbnormal, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, Function | SmallTest | Level3) {
     // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
     OH_Drawing_ColorFormat formats[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
@@ -324,7 +324,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsVeryBig, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsBoundary, Function | SmallTest | Level0) {
     // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
     OH_Drawing_ColorFormat formats[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
@@ -386,7 +386,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsBoundary, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNormal, Function | SmallTest | Level0) {
     const unsigned int width = 500;
     const unsigned int height = 500;
     OH_Drawing_ColorFormat formats[] = {
@@ -430,7 +430,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, Function | SmallTest | Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
 
@@ -471,7 +471,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMultipleCalls, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMultipleCalls, Function | SmallTest | Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
     OH_Drawing_ColorFormat formats[] = {
@@ -533,7 +533,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMultipleCalls, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildBoundary, Function | SmallTest | Level0) {
     // 4K screen resolutionp
     const unsigned int width = 4096;
     const unsigned int height = 2160;
@@ -578,7 +578,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildBoundary, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNormal, Function | SmallTest | Level0) {
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -631,7 +631,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, Function | SmallTest | Level3) {
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -680,7 +680,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -692,7 +692,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXInputDestroyed, TestSize.Level3
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXBoundary, Function | SmallTest | Level0) {
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -747,7 +747,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXBoundary, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNormal, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNormal, Function | SmallTest | Level0) {
     const unsigned int width = 500;
     const unsigned int height = 500;
 
@@ -779,7 +779,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNormal, TestSize.Level0) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNull, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNull, Function | SmallTest | Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
 
@@ -830,7 +830,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNull, TestSize.Level3) {
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsInputDestroyed, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsInputDestroyed, Function | SmallTest | Level3) {
     // Deprecated
 }
 
@@ -842,7 +842,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsInputDestroyed, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, Function | SmallTest | Level3) {
     // step 1
     const unsigned int width = 500;
     const unsigned int height = 500;
@@ -897,7 +897,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsBoundary, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsBoundary, Function | SmallTest | Level0) {
     const unsigned int width = 4096;
     const unsigned int height = 2160;
 
@@ -931,7 +931,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsBoundary, TestSize.Level0)
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMaximum, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMaximum, Function | SmallTest | Level0) {
     // Build a very large bitmap
     const unsigned int width = 20000;
     const unsigned int height = 20000;
