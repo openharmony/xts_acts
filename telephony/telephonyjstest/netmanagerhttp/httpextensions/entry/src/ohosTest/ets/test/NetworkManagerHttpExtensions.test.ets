@@ -15,7 +15,7 @@
 
 import net_http from '@ohos.net.http';
 import type { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 
 export default function NetworkManagerHttpExtensions() {
   describe('NetworkManagerHttpExtensions', () => {
@@ -27,7 +27,7 @@ export default function NetworkManagerHttpExtensions() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_netstack_Http_Extensions_Xts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0100';
       try {
         let httpRequest = net_http.createHttp();
@@ -48,7 +48,7 @@ export default function NetworkManagerHttpExtensions() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_netstack_Http_Extensions_Xts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0200';
       let httpRequest = net_http.createHttp();
       try {
@@ -75,7 +75,7 @@ export default function NetworkManagerHttpExtensions() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0300', 0, async (done:Function) => {
+    it('SUB_Telephony_netstack_Http_Extensions_Xts_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0300';
       try {
         let httpRequest = net_http.createHttp();
