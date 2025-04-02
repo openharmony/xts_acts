@@ -13,17 +13,21 @@
  * limitations under the License.
  */
 
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
+@Entry
+@Component
+struct TextInputMethodTest {
+  PAGE_TAG: string = 'TextInputMethodTest';
 
-export const calendarPickerEnabledTest: (a: string) => void;
-
-
-export const calendarPickerOnChangeTest: (a: string) => void;
-
-export const textAreaOnPasteTest: (a: string) => void;
-
-export const textInputOnCutTest: (a: string) => void;
-
-export const textInputOnPasteTest: (a: string) => void;
-
-export const InputMethodTest001: (a: string) => void;
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.InputMethodTest001(this.PAGE_TAG);
+      })
+    }
+  }
+}
