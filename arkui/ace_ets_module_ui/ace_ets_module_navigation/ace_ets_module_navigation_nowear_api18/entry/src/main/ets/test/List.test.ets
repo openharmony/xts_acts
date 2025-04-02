@@ -15,8 +15,10 @@
 
 import EnableToolBarAdaptation from './EnableToolBarAdaptation.test'
 import OnNewParamPage from './OnNewParamPage.test'
+import PreferredOrientation from './PreferredOrientation.test'
 
 export default function testsuite() {
   EnableToolBarAdaptation();
-  OnNewParamPage()
+  OnNewParamPage();
+  PreferredOrientation();
 }
