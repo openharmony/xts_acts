@@ -11,8 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//foundation/multimedia/video_processing_engine/config.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
+import("//foundation/multimedia/video_processing_engine/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsDetailEnhancerVideoNdkUnitTest"
@@ -69,23 +69,23 @@ ohos_moduletest_suite("ActsDetailEnhancerVideoNdkUnitTest") {
   defines = []
 
   deps = [
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:video_processing",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:videoprocessingengine",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c/video_processing:libvideo_processing_ndk",
     "$histreamer_root_dir/interface/kits/ndk/core:libnative_media_core",
     "$histreamer_root_dir/src:media_foundation",
-    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:video_processing",
-    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c/video_processing:libvideo_processing_ndk",
-    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:videoprocessingengine",
   ]
 
   external_deps = [
     "c_utils:utils",
+    "drivers_interface_display:libdisplay_buffer_proxy_1.0",
+    "drivers_interface_display:libdisplay_commontype_proxy_1.0",
     "graphic_2d:libgraphic_utils",
     "graphic_2d:librender_service_client",
     "graphic_surface:surface",
     "hilog:libhilog",
     "hitrace:hitrace_meter",
     "media_foundation:native_media_core",
-    "drivers_interface_display:libdisplay_buffer_proxy_1.0",
-    "drivers_interface_display:libdisplay_commontype_proxy_1.0",
   ]
 
   if (has_skia) {

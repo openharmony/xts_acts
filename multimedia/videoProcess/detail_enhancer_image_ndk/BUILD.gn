@@ -12,8 +12,8 @@
 # limitations under the License.
 
 import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
-import("//foundation/multimedia/video_processing_engine/config.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
+import("//foundation/multimedia/video_processing_engine/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsDetailEnhancerImageNdkUnitTest"
@@ -66,22 +66,22 @@ ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
   defines = []
 
   deps = [
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:image_processing",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:videoprocessingengine",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c/image_processing:libimage_processing_ndk",
     "$histreamer_root_dir/interface/kits/ndk/core:libnative_media_core",
     "$histreamer_root_dir/src:media_foundation",
-    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:image_processing",
-    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c/image_processing:libimage_processing_ndk",
-    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:videoprocessingengine",
   ]
 
   external_deps = [
+    "drivers_interface_display:libdisplay_buffer_proxy_1.0",
+    "drivers_interface_display:libdisplay_commontype_proxy_1.0",
     "graphic_2d:2d_graphics",
     "graphic_surface:surface",
     "hilog:libhilog",
     "hitrace:hitrace_meter",
     "image_framework:pixelmap",
     "media_foundation:native_media_core",
-    "drivers_interface_display:libdisplay_buffer_proxy_1.0",
-    "drivers_interface_display:libdisplay_commontype_proxy_1.0",
   ]
 
   if (has_skia) {
