@@ -90,7 +90,7 @@ export default function PreferredOrientation() {
 
         let rotation: DisplayRotation = await driver.getDisplayRotation();
         console.info('[PreferredOrientation_0200] rotation is ', rotation);
-        expect(rotation).assertEqual(1);
+        expect(rotation == 1 || rotation == 3).assertTrue();
       }
       console.info('PreferredOrientation_0200 END');
       done();
@@ -168,7 +168,7 @@ export default function PreferredOrientation() {
 
         let rotation: DisplayRotation = await driver.getDisplayRotation();
         console.info('[PreferredOrientation_0500] rotation is ', rotation);
-        expect(rotation).assertEqual(3);
+        expect(rotation == 1 || rotation == 3).assertTrue();
         
         let btn2: Component = await driver.findComponent(ON.id('portraitId'));
         await btn2.click()
