@@ -121,6 +121,121 @@
             ],
           }
         ]
+      },
+      {
+        "name": "UiAbility05",
+        "srcEntry": "./ets/test/startAndTerminateUi/UiAbility05.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+            ],
+            "entities": [
+              "entity.system.home",
+            ],
+          }
+        ]
+      },
+      {
+        "name": "UiAbility06",
+        "srcEntry": "./ets/test/startAndTerminateUi/UiAbility06.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+            ],
+            "entities": [
+              "entity.system.home",
+            ],
+          }
+        ]
+      },
+      {
+        "name": "UiAbility07",
+        "srcEntry": "./ets/test/startAndTerminateUi/UiAbility07.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+            ],
+            "entities": [
+              "entity.system.home",
+            ],
+          }
+        ]
+      },
+      {
+        "name": "UiAbility08",
+        "srcEntry": "./ets/test/startAndTerminateUi/UiAbility08.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+            ],
+            "entities": [
+              "entity.system.home",
+            ],
+          }
+        ]
+      },
+      {
+        "name": "UiAbility09",
+        "srcEntry": "./ets/test/startAndTerminateUi/UiAbility09.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+            ],
+            "entities": [
+              "entity.system.home",
+            ],
+          }
+        ]
+      },
+      {
+        "name": "UiAbility10",
+        "srcEntry": "./ets/test/startAndTerminateUi/UiAbility10.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "exported": true,
+        "startWindowBackground": "$color:start_window_background",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home",
+            ],
+            "entities": [
+              "entity.system.home",
+            ],
+          }
+        ]
       }
     ],
     "requestPermissions": []

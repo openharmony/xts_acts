@@ -16,22 +16,21 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import app, { AppResponse } from '@system.app'
+import { commonEventManager } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info('EntryAbility onCreate');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
     globalThis.abilityAssist = this.context
   }
 
   onDestroy() {
-    console.info('EntryAbility onDestroy');
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    console.info('EntryAbility onWindowStageCreate');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -42,24 +41,40 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy() {
-    console.info('EntryAbility onWindowStageDestroy');
     // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageDestroy');
   }
 
   onForeground() {
-    console.info('EntryAbility onForeground');
     // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
+    try {
+      globalThis.abilityAssist.startAbility(
+        {
+          bundleName: 'com.acts.actsstartandterminateassisttest03',
+          abilityName: 'EntryAbility'
+        }).then(() => {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility com.acts.actsstartandterminateassisttest03');
+      })
+    } catch (err) {
+      hilog.info(0x0000, 'testTag', '%{public}s', `startAbility fail ${err}`);
+    }
     setTimeout(() => {
       // destroy assistHap
       globalThis.abilityAssist.terminateSelf()
-    }, 5000);
+    }, 2500);
   }
 
   onBackground() {
-    console.info('EntryAbility onBackground');
     // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onBackground');
+    let options = {
+      parameters: {
+        result: 'onBackground'
+      }
+    };
+    commonEventManager.publish('ACTS_TEST_ONBACKGROUND', options, function () {
+      console.info('UiAbility05 publish ACTS_TEST_ONBACKGROUND');
+    });
   }
 }

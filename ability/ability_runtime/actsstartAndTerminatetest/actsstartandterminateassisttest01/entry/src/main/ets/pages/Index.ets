@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = 'ActsStartAndTerminateAssistTest'
+  @State message: string = 'assist hap 01'
 
   build() {
     Row() {

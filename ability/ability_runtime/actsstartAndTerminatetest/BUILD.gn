@@ -19,6 +19,7 @@ group("ActsStartAndTerminate") {
     deps = [
       "actsstartandterminateassisttest01:ActsStartAndTerminateAssist01Test",
       "actsstartandterminateassisttest02:ActsStartAndTerminateAssist02Test",
+      "actsstartandterminateassisttest03:ActsStartAndTerminateAssist03Test",
       "actsstartandterminatetest:ActsStartAndTerminateTest"
     ]
   }

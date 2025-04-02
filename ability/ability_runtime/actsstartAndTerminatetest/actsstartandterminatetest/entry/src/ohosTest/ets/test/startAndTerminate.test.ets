@@ -15,15 +15,20 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { application, appManager, common } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let context = getContext(this) as common.UIAbilityContext;
 let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: [
     'ACTS_TEST_START01',
     'ACTS_TEST_START02',
+    'ACTS_TEST_START03',
+    'ACTS_TEST_ONFORGROUND',
     'ACTS_TEST_ONBACKGROUND',
-    'ACTS_TEST_ONDESTROY',
-    'ACTS_TEST_DESTROY']
+    'ACTS_TEST_ONDESTROYED',
+    'ACTS_TEST_DESTROY'
+  ]
 };
 let subscriber: commonEventManager.CommonEventSubscriber;
 
@@ -38,6 +43,8 @@ function publishCB(err: BusinessError) {
 
 export default function startAndTerminateTest() {
   describe('startAndTerminateTest', () => {
+
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
     beforeAll(() => {
       context = globalThis.context
@@ -70,7 +77,7 @@ export default function startAndTerminateTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -79,10 +86,10 @@ export default function startAndTerminateTest() {
                       bundleName: 'com.test.actsstartandterminatetest',
                       abilityName: 'UiAbility01'
                     }).then(() => {
-                    console.log(`${tag} startAbility end====>`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
                 } catch (err) {
-                  console.info(`${tag} open fail : ${err}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} open fail : ${err}`);
                 }
               }, 500);
             }
@@ -94,10 +101,10 @@ export default function startAndTerminateTest() {
                       bundleName: 'com.test.actsstartandterminatetest',
                       abilityName: 'UiAbility02'
                     }).then(() => {
-                    console.log(`${tag} startAbility end====>`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
                 } catch (err) {
-                  console.info(`${tag} open fail : ${err}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} open fail : ${err}`);
                 }
               }, 500);
             }
@@ -116,7 +123,7 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : In the same application but different HAPs, Ability 1 launches Ability 2 and then closes itself (Ability 1).
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -124,18 +131,18 @@ export default function startAndTerminateTest() {
      */
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200`;
-      console.log(`${tag}, it begin`);
+      hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
             setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -144,10 +151,10 @@ export default function startAndTerminateTest() {
                       bundleName: 'com.test.actsstartandterminatetest',
                       abilityName: 'UiAbility03'
                     }).then(() => {
-                    console.log(`${tag} startAbility end====>`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
                 } catch (err) {
-                  console.info(`${tag} open fail : ${err}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} open fail : ${err}`);
                 }
               }, 500);
             }
@@ -159,10 +166,10 @@ export default function startAndTerminateTest() {
                       bundleName: 'com.acts.actsstartandterminateassisttest',
                       abilityName: 'EntryAbility'
                     }).then(() => {
-                    console.log(`${tag} startAbility end====>`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
                 } catch (err) {
-                  console.info(`${tag} open fail : ${err}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} open fail : ${err}`);
                 }
               }, 500);
             }
@@ -181,7 +188,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Within the same application but across different HAPs, Ability 1 initiates the launch of Ability 2
+     * and subsequently terminates it.
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -189,18 +197,18 @@ export default function startAndTerminateTest() {
      */
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300`;
-      console.log(`${tag}, it begin`);
+      hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
             setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            console.log("OpenLink subscribeCallBack success")
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -209,25 +217,25 @@ export default function startAndTerminateTest() {
                       bundleName: 'com.test.actsstartandterminatetest',
                       abilityName: 'UiAbility04'
                     }).then(() => {
-                    console.log(`${tag} startAbility end====>`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
                 } catch (err) {
-                  console.info(`${tag} open fail : ${err}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} open fail : ${err}`);
                 }
               }, 500);
             }
             if (data.event == 'ACTS_TEST_START02') {
               setTimeout(() => {
                 try {
-                  context = globalThis.uiAbilityContext4.startAbility(
+                  globalThis.uiAbilityContext4.startAbility(
                     {
                       bundleName: 'com.acts.actsstartandterminateassisttest',
                       abilityName: 'EntryAbility'
                     }).then(() => {
-                    console.log(`${tag} startAbility end====>`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
                 } catch (err) {
-                  console.info(`${tag} startAbility fail : ${err}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility fail : ${err}`);
                 }
               }, 500);
             }
