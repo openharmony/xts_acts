@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, TestType, Size, Level  } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import connection from '@ohos.net.connection';
 
@@ -68,7 +68,7 @@ export default function NetworkManagerAppProxyTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0100", 0, async (done:Function)=> {
+    it("SUB_Telephony_netstack_App_Proxy_Xts_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0100";
       let result = connection.setAppHttpProxy(httpProxy);
       if (result != undefined) {
@@ -89,7 +89,7 @@ export default function NetworkManagerAppProxyTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0200", 0, async (done:Function)=> {
+    it("SUB_Telephony_netstack_App_Proxy_Xts_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0200";
       let result = connection.setAppHttpProxy(httpProxy2);
       if (result != undefined) {
@@ -110,7 +110,7 @@ export default function NetworkManagerAppProxyTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0300", 0, async (done:Function)=> {
+    it("SUB_Telephony_netstack_App_Proxy_Xts_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0300";
       let result = connection.setAppHttpProxy(httpProxy3);
       if (result != undefined) {
@@ -130,7 +130,7 @@ export default function NetworkManagerAppProxyTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0400", 0, async (done:Function)=> {
+    it("SUB_Telephony_netstack_App_Proxy_Xts_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0400";
       let result = connection.setAppHttpProxy(httpProxy4);
       if (result != undefined) {
@@ -150,7 +150,7 @@ export default function NetworkManagerAppProxyTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0500", 0, async (done:Function)=> {
+    it("SUB_Telephony_netstack_App_Proxy_Xts_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0500";
       connection.setAppHttpProxy(httpProxy);
       connection.getDefaultHttpProxy((err,data)=> {
