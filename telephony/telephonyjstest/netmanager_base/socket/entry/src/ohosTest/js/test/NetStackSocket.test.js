@@ -14,7 +14,7 @@
  */
 
 import netSocket from '@ohos.net.socket';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium'
 export default function Telephony_NETSTACK_SocketTest() {
 
 
@@ -27,7 +27,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0100', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -51,7 +51,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0200', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -75,7 +75,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0300', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -102,7 +102,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0400', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -129,7 +129,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0500', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -149,7 +149,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0600', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -169,7 +169,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0700', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -189,7 +189,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0800', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -209,7 +209,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest0900', 0, function (done) {
+        it('Telephony_NetStack_UDPTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -229,7 +229,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest1000', 0, function (done) {
+        it('Telephony_NetStack_UDPTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -249,7 +249,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetStack_UDPTest1100', 0, function (done) {
+        it('Telephony_NetStack_UDPTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -281,7 +281,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_UDPTest1200', 0, function (done) {
+        it('Telephony_NetStack_UDPTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -321,7 +321,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0100', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -345,7 +345,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0200', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -369,7 +369,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0300', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -391,7 +391,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0400', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -413,7 +413,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0500', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -433,7 +433,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0600', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -453,7 +453,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0700', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -473,7 +473,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0800', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -493,7 +493,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest0900', 0, function (done) {
+        it('Telephony_NetStack_TCPTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -513,7 +513,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest1000', 0, function (done) {
+        it('Telephony_NetStack_TCPTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -533,7 +533,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetStack_TCPTest1100', 0, function (done) {
+        it('Telephony_NetStack_TCPTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -565,7 +565,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test`
          */
 
-        it('Telephony_NetStack_TCPTest1200', 0, function (done) {
+        it('Telephony_NetStack_TCPTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -604,7 +604,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.name TCP getRemoteAddress,callback方式，预计无异常，错误码不为undefined
          * @tc.desc Function test
          */
-        it('Telephony_NetStack_TCPTest1300', 0, function (done) {
+        it('Telephony_NetStack_TCPTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -623,7 +623,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.name TCP getRemoteAddress,promise方式，预计无异常，错误码不为undefined
          * @tc.desc Function test
          */
-        it('Telephony_NetStack_TCPTest1400', 0, function (done) {
+        it('Telephony_NetStack_TCPTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -642,7 +642,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @TC.name   Tcp connect ,callback方式，预计无异常，错误码为undefined
          * @tc.desc   Function test
          */
-        it("Telephony_NetStack_TCPTest_1500", 0, function (done) {
+        it("Telephony_NetStack_TCPTest_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
@@ -668,7 +668,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @TC.name   Tcp connect ,promise方式，预计无异常，错误码为undefined
          * @tc.desc   Function test
         */
-        it("Telephony_NetStack_TCPTest_1600", 0, function (done) {
+        it("Telephony_NetStack_TCPTest_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
                 if (!envReady) {
                         console.info("The environment was not ready");
                         done();
