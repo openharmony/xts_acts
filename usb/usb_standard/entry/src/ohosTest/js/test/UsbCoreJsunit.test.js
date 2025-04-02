@@ -132,6 +132,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   it('testGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
     console.info(TAG, 'usb testGetDevices001 begin');
     if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       done();
       return
     }
@@ -152,6 +153,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   it('testHasRight001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
     console.info(TAG, 'usb testHasRight001 begin');
     if (!isDeviceConnected) {
+      expect(isDeviceConnected).assertFalse();
       done();
       return
     }
@@ -497,6 +499,5 @@ describe('UsbCoreJsFunctionsTest', function () {
       expect(err.code).assertEqual(401);
     }
   })
-
 })
 }
