@@ -11958,11 +11958,158 @@ export default function napiApiTest() {
     it('testNapiDefineSendableClassTest0001', 0, async (done: Function) => {
       console.info('testNapiDefineSendableClassTest0001 START');
       try {
-        let value = napitest.NapiDefineSendableClassTest();
-        console.info('NapiDefineSendableClassTest value is: ' + value);
+        let value = napitest.NapiDefineSendableClassTest1();
+        console.info('NapiDefineSendableClassTest1 value is: ' + value);
         expect(value).assertEqual(true);
       } catch (err) {
-        console.error('NapiDefineSendableClassTest err msg' + err.message);
+        console.error('NapiDefineSendableClassTest1 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0200
+     * @tc.name      : testNapiDefineSendableClassTest0002
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0002', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0002 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest2();
+        console.info('NapiDefineSendableClassTest2 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest2 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0300
+     * @tc.name      : testNapiDefineSendableClassTest0003
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0003', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0003 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest3();
+        console.info('NapiDefineSendableClassTest3 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest3 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0400
+     * @tc.name      : testNapiDefineSendableClassTest0004
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0004', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0004 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest4();
+        console.info('NapiDefineSendableClassTest4 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest4 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0500
+     * @tc.name      : testNapiDefineSendableClassTest0005
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0005', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0005 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest5();
+        console.info('NapiDefineSendableClassTest5 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest5 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0600
+     * @tc.name      : testNapiDefineSendableClassTest0006
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0006', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0006 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest6();
+        console.info('NapiDefineSendableClassTest6 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest6 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0700
+     * @tc.name      : testNapiDefineSendableClassTest0007
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0007', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0007 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest7();
+        console.info('NapiDefineSendableClassTest7 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest7 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIDEFINESENDABLECLASSTEST_0800
+     * @tc.name      : testNapiDefineSendableClassTest0008
+     * @tc.desc      : Testing NapiDefineSendableClassTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiDefineSendableClassTest0008', 0, async (done: Function) => {
+      console.info('testNapiDefineSendableClassTest0008 START');
+      try {
+        let value = napitest.NapiDefineSendableClassTest8();
+        console.info('NapiDefineSendableClassTest8 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiDefineSendableClassTest8 err msg' + err.message);
         expect().assertFail();
       }
       done();
@@ -13008,11 +13155,53 @@ export default function napiApiTest() {
     it('testNapiCreateThreadsafeFunctionTest0001', 0, async (done: Function) => {
       console.info('testNapiCreateThreadsafeFunctionTest0001 START');
       try {
-        let value = napitest.NapiCreateThreadsafeFunctionTest();
-        console.info('NapiCreateThreadsafeFunctionTest value is: ' + value);
+        let value = napitest.NapiCreateThreadsafeFunctionTest1();
+        console.info('NapiCreateThreadsafeFunctionTest1 value is: ' + value);
         expect(value).assertEqual(true);
       } catch (err) {
-        console.error('NapiCreateThreadsafeFunctionTest err msg' + err.message);
+        console.error('NapiCreateThreadsafeFunctionTest1 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATETHREADSAFEFUNCTIONTEST_0200
+     * @tc.name      : testNapiCreateThreadsafeFunctionTest0002
+     * @tc.desc      : Testing NapiCreateThreadsafeFunctionTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateThreadsafeFunctionTest0002', 0, async (done: Function) => {
+      console.info('testNapiCreateThreadsafeFunctionTest0002 START');
+      try {
+        let value = napitest.NapiCreateThreadsafeFunctionTest2();
+        console.info('NapiCreateThreadsafeFunctionTest2 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateThreadsafeFunctionTest2 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPICREATETHREADSAFEFUNCTIONTEST_0300
+     * @tc.name      : testNapiCreateThreadsafeFunctionTest0003
+     * @tc.desc      : Testing NapiCreateThreadsafeFunctionTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testNapiCreateThreadsafeFunctionTest0003', 0, async (done: Function) => {
+      console.info('testNapiCreateThreadsafeFunctionTest0003 START');
+      try {
+        let value = napitest.NapiCreateThreadsafeFunctionTest3();
+        console.info('NapiCreateThreadsafeFunctionTest3 value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiCreateThreadsafeFunctionTest3 err msg' + err.message);
         expect().assertFail();
       }
       done();

@@ -13662,7 +13662,7 @@ static napi_value NapiCreateSendableObjectWithPropertiesTest(napi_env env, napi_
 }
 
 //napi_define_sendable_class
-static napi_value NapiDefineSendableClassTest(napi_env env, napi_callback_info info)
+static napi_value NapiDefineSendableClassTest1(napi_env env, napi_callback_info info)
 {
     napi_status status;
     size_t elementSize = sizeof(int8_t);
@@ -13675,6 +13675,151 @@ static napi_value NapiDefineSendableClassTest(napi_env env, napi_callback_info i
     //undefined
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr},
+        {"staticFunc", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
+             napi_value val; napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val); return val;
+         }, nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr}, {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
+    };
+    //result is undefined
+    status = napi_define_sendable_class(env, "SendableClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            napi_value str;
+            napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
+            napi_property_descriptor props[] = {
+                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {napi_value val;
+                     napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val); return val;
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},
+            }; napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
+            return thisVar;
+        }, data, sizeof(props) / sizeof(props[0]), props, result, &undefined);
+     NAPI_ASSERT(env, status == napi_ok, "result is undefined, napi_define_sendable_class failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest2(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    napi_value result = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr},
+        {"staticFunc", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {napi_value val;
+             napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val); return val;
+         }, nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr},
+        {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
+    };
+    napi_value sendableClass = nullptr;
+
+    //env is null
+    status = napi_define_sendable_class(nullptr, "SendableClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            napi_value str;
+            napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
+            napi_property_descriptor props[] = {{"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
+                     napi_value val;
+                     napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
+                     return val;
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},
+            };
+            napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
+            return thisVar;
+        },
+        data, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_define_sendable_class failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest3(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    napi_value result = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr}, {"staticFunc", nullptr,
+         [](napi_env env, napi_callback_info info) -> napi_value {napi_value val;
+             napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val); return val;},
+         nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr}, {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
+    };
+    napi_value sendableClass = nullptr;
+
+    //utf8name is null
+    status = napi_define_sendable_class(env, nullptr, NAPI_AUTO_LENGTH,
+            [](napi_env env, napi_callback_info info) -> napi_value {napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            napi_value str;
+            napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
+            napi_property_descriptor props[] = {
+                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
+                     napi_value val;
+                     napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
+                     return val;
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},};
+            napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
+            return thisVar;
+        },
+        data, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "utf8name is null, napi_define_sendable_class failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest4(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    napi_value result = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
 
     napi_value str;
     napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
@@ -13694,177 +13839,201 @@ static napi_value NapiDefineSendableClassTest(napi_env env, napi_callback_info i
          static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
     };
     napi_value sendableClass = nullptr;
-    //result is undefined
-    status = napi_define_sendable_class(
-        env, "SendableClass", NAPI_AUTO_LENGTH,
-        [](napi_env env, napi_callback_info info) -> napi_value {
-            napi_value thisVar = nullptr;
-            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
-            napi_value str;
-            napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
-                     napi_value val;
-                     napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
-                     return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
-            };
-            napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
-            return thisVar;
-        },
-        data, sizeof(props) / sizeof(props[0]), props, result, &undefined);
-     NAPI_ASSERT(env, status == napi_ok, "result is undefined, napi_define_sendable_class failed.");
-
-    //env is null
-    status = napi_define_sendable_class(
-        nullptr, "SendableClass", NAPI_AUTO_LENGTH,
-        [](napi_env env, napi_callback_info info) -> napi_value {
-            napi_value thisVar = nullptr;
-            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
-            napi_value str;
-            napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
-                     napi_value val;
-                     napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
-                     return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
-            };
-            napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
-            return thisVar;
-        },
-        data, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_define_sendable_class failed.");
-
-    //utf8name is null
-    status = napi_define_sendable_class(
-        env, nullptr, NAPI_AUTO_LENGTH,
-        [](napi_env env, napi_callback_info info) -> napi_value {
-            napi_value thisVar = nullptr;
-            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
-            napi_value str;
-            napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
-                     napi_value val;
-                     napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
-                     return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
-            };
-            napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
-            return thisVar;
-        },
-        data, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
-    NAPI_ASSERT(env, status == napi_invalid_arg, "utf8name is null, napi_define_sendable_class failed.");
 
     //constructor is null
     status = napi_define_sendable_class(env, "SendableClass", NAPI_AUTO_LENGTH, nullptr,
                    data, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
     NAPI_ASSERT(env, status == napi_invalid_arg, "constructor is null, napi_define_sendable_class failed.");
 
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest5(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    napi_value result = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr}, {"staticFunc", nullptr,
+         [](napi_env env, napi_callback_info info) -> napi_value {
+             napi_value val;
+             napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val);
+             return val;
+         }, nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr}, {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
+    };
+    napi_value sendableClass = nullptr;
     //data is null
-    status = napi_define_sendable_class(
-        env, "SendableClass", NAPI_AUTO_LENGTH,
+    status = napi_define_sendable_class(env, "SendableClass", NAPI_AUTO_LENGTH,
         [](napi_env env, napi_callback_info info) -> napi_value {
             napi_value thisVar = nullptr;
             napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
             napi_value str;
             napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_property_descriptor props[] = {{"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
                      napi_value val;
                      napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
                      return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},
             };
             napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
             return thisVar;
-        },
-        nullptr, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
+        }, nullptr, sizeof(props) / sizeof(props[0]), props, result, &sendableClass);
     NAPI_ASSERT(env, status == napi_ok, "data is null, napi_define_sendable_class failed.");
 
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest6(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    napi_value result = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr},
+        {"staticFunc", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
+             napi_value val;
+             napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val);
+             return val;
+         },
+         nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr}, {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
+    };
+    napi_value sendableClass = nullptr;
     //properties is null
-    status = napi_define_sendable_class(
-        env, "SendableClass", NAPI_AUTO_LENGTH,
-        [](napi_env env, napi_callback_info info) -> napi_value {
-            napi_value thisVar = nullptr;
+    status = napi_define_sendable_class(env, "SendableClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {napi_value thisVar = nullptr;
             napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
             napi_value str;
             napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_property_descriptor props[] = {{"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
                      napi_value val;
                      napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
                      return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
-            };
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},};
             napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
             return thisVar;
-        },
-        data, sizeof(props) / sizeof(props[0]), nullptr, result, &sendableClass);
+        }, data, sizeof(props) / sizeof(props[0]), nullptr, result, &sendableClass);
     NAPI_ASSERT(env, status == napi_invalid_arg, "properties is null, napi_define_sendable_class failed.");
 
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest7(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr},
+        {"staticFunc", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
+             napi_value val;
+             napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val);
+             return val;
+         }, nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr}, {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},
+    };
+    napi_value sendableClass = nullptr;
     //parent is null
-    status = napi_define_sendable_class(
-        env, "SendableClass", NAPI_AUTO_LENGTH,
-        [](napi_env env, napi_callback_info info) -> napi_value {
-            napi_value thisVar = nullptr;
+    status = napi_define_sendable_class(env, "SendableClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {napi_value thisVar = nullptr;
             napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
             napi_value str;
             napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_property_descriptor props[] = {{"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
                      napi_value val;
                      napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
                      return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
-            };
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},};
             napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
             return thisVar;
-        },
-        data, sizeof(props) / sizeof(props[0]), props, nullptr, &sendableClass);
+        }, data, sizeof(props) / sizeof(props[0]), props, nullptr, &sendableClass);
     NAPI_ASSERT(env, status == napi_ok, "parent is null, napi_define_sendable_class failed.");
 
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_define_sendable_class
+static napi_value NapiDefineSendableClassTest8(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t elementSize = sizeof(int8_t);
+    size_t length = 256;
+    napi_value arrayBuffer = nullptr;
+    napi_value result = nullptr;
+    void *data;
+    napi_create_arraybuffer(env, length * elementSize, (void **)&data, &arrayBuffer);
+
+    napi_value str;
+    napi_create_string_utf8(env, "static str", NAPI_AUTO_LENGTH, &str);
+    napi_property_descriptor props[] = {{"staticStr", nullptr, nullptr, nullptr, nullptr, str,
+         static_cast<napi_property_attributes>(napi_static | napi_writable), nullptr},
+        {"staticFunc", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {napi_value val;
+             napi_create_string_utf8(env, "static func", NAPI_AUTO_LENGTH, &val);
+             return val;},
+         nullptr, nullptr, nullptr, napi_static, nullptr},
+        {"str", nullptr, nullptr, nullptr, nullptr, str, static_cast<napi_property_attributes>(1 << 9 | napi_writable),
+         nullptr}, {"func", nullptr, nullptr, nullptr, nullptr, nullptr,
+         static_cast<napi_property_attributes>(1 << 11 | napi_writable), nullptr},};
     //result is null
-    status = napi_define_sendable_class(
-        env, "SendableClass", NAPI_AUTO_LENGTH,
-        [](napi_env env, napi_callback_info info) -> napi_value {
-            napi_value thisVar = nullptr;
+    status = napi_define_sendable_class(env, "SendableClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {napi_value thisVar = nullptr;
             napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
             napi_value str;
             napi_create_string_utf8(env, "instance str", NAPI_AUTO_LENGTH, &str);
-            napi_property_descriptor props[] = {
-                {"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
-                {"func", nullptr,
-                 [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_property_descriptor props[] = {{"str", nullptr, nullptr, nullptr, nullptr, str, napi_default, nullptr},
+                {"func", nullptr, [](napi_env env, napi_callback_info info) -> napi_value {
                      napi_value val;
                      napi_create_string_utf8(env, "instance func", NAPI_AUTO_LENGTH, &val);
                      return val;
-                 },
-                 nullptr, nullptr, nullptr, napi_default, nullptr},
-            };
+                 }, nullptr, nullptr, nullptr, napi_default, nullptr},};
             napi_define_properties(env, thisVar, sizeof(props) / sizeof(props[0]), props);
             return thisVar;
-        },
-        data, sizeof(props) / sizeof(props[0]), props, result, nullptr);
+        }, data, sizeof(props) / sizeof(props[0]), props, result, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_define_sendable_class failed.");
 
     //all is null
@@ -15507,7 +15676,7 @@ static napi_value NapiGetThreadsafeFunctionContextTest(napi_env env, napi_callba
 }
 
 //napi_create_threadsafe_function
-static napi_value NapiCreateThreadsafeFunctionTest(napi_env env, napi_callback_info info)
+static napi_value NapiCreateThreadsafeFunctionTest1(napi_env env, napi_callback_info info)
 {
     napi_status status;
     size_t argc = 1;
@@ -15549,84 +15718,94 @@ static napi_value NapiCreateThreadsafeFunctionTest(napi_env env, napi_callback_i
     NAPI_ASSERT(env, status == napi_invalid_arg,
                 "async_resource_name is undefined, napi_create_threadsafe_function failed.");
 
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_create_threadsafe_function
+static napi_value NapiCreateThreadsafeFunctionTest2(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value result = nullptr;
+
+    napi_finalize thread_finalize_cb;
+    napi_value jsCb = nullptr;
+    CallbackData *callbackData = nullptr;
+    napi_get_cb_info(env, info, &argc, &jsCb, nullptr, reinterpret_cast<void **>(&callbackData));
+    napi_value resourceName = nullptr;
+    napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
+
     //env is null
     status = napi_create_threadsafe_function(nullptr, jsCb, result, resourceName, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, callbackData, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "env is null, napi_create_threadsafe_function failed.");
 
     //func is null
     status = napi_create_threadsafe_function(env, nullptr, result, resourceName, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, callbackData, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "func is null, napi_create_threadsafe_function failed.");
 
     //async_resource is null
     status = napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, callbackData, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "async_resource is null, napi_create_threadsafe_function failed.");
 
     //async_resource_name is null
     status = napi_create_threadsafe_function(env, jsCb, result, nullptr, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, callbackData, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "async_resource is null, napi_create_threadsafe_function failed.");
 
     //thread_finalize_data is null
     status = napi_create_threadsafe_function(env, jsCb, result, resourceName, 0, 1, nullptr,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, callbackData, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "thread_finalize_data is null, napi_create_threadsafe_function failed.");
+
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
+
+//napi_create_threadsafe_function
+static napi_value NapiCreateThreadsafeFunctionTest3(napi_env env, napi_callback_info info)
+{
+    napi_status status;
+    size_t argc = 1;
+    napi_value result = nullptr;
+
+    napi_finalize thread_finalize_cb;
+    napi_value jsCb = nullptr;
+    CallbackData *callbackData = nullptr;
+    napi_get_cb_info(env, info, &argc, &jsCb, nullptr, reinterpret_cast<void **>(&callbackData));
+    napi_value resourceName = nullptr;
+    napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
 
     //thread_finalize_cb is null
     status = napi_create_threadsafe_function(env, jsCb, result, resourceName, 0, 1, callbackData,
-                                             nullptr,
-                                             callbackData,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             nullptr, callbackData, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "thread_finalize_cb is null, napi_create_threadsafe_function failed.");
 
     //context is null
     status = napi_create_threadsafe_function(env, jsCb, result, resourceName, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             nullptr,
-                                             CallJsFunc,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, nullptr, CallJsFunc, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "context is null, napi_create_threadsafe_function failed.");
 
     //call_js_cb is null
     status = napi_create_threadsafe_function(env, jsCb, result, resourceName, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             nullptr,
-                                             &callbackData->tsfn);
+                                             thread_finalize_cb, callbackData, nullptr, &callbackData->tsfn);
     NAPI_ASSERT(env, status == napi_invalid_arg, "call_js_cb is null, napi_create_threadsafe_function failed.");
 
     //result is null
     status = napi_create_threadsafe_function(env, jsCb, result, resourceName, 0, 1, callbackData,
-                                             thread_finalize_cb,
-                                             callbackData,
-                                             CallJsFunc,
-                                             nullptr);
+                                             thread_finalize_cb, callbackData, CallJsFunc, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_create_threadsafe_function failed.");
 
     //all is null
     status = napi_create_threadsafe_function(nullptr, nullptr, nullptr, nullptr, 0, 1, nullptr,
-                                             nullptr,
-                                             nullptr,
-                                             nullptr,
-                                             nullptr);
+                                             nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "result is null, napi_create_threadsafe_function failed.");
 
     napi_value rst;
@@ -17353,7 +17532,14 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiCreateSendableArrayWithLengthTest", NapiCreateSendableArrayWithLengthTest),
         DECLARE_NAPI_FUNCTION("NapiCreateSendableArrayTest", NapiCreateSendableArrayTest),
         DECLARE_NAPI_FUNCTION("NapiCreateSendableObjectWithPropertiesTest", NapiCreateSendableObjectWithPropertiesTest),
-        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest", NapiDefineSendableClassTest),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest1", NapiDefineSendableClassTest1),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest2", NapiDefineSendableClassTest2),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest3", NapiDefineSendableClassTest3),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest4", NapiDefineSendableClassTest4),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest5", NapiDefineSendableClassTest5),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest6", NapiDefineSendableClassTest6),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest7", NapiDefineSendableClassTest7),
+        DECLARE_NAPI_FUNCTION("NapiDefineSendableClassTest8", NapiDefineSendableClassTest8),
         DECLARE_NAPI_FUNCTION("NapiIsSendableTest", NapiIsSendableTest),
         DECLARE_NAPI_FUNCTION("NapiCallThreadsafeFunctionWithPriorityTest", NapiCallThreadsafeFunctionWithPriorityTest),
         DECLARE_NAPI_FUNCTION("NapiDeleteSerializationDataTest", NapiDeleteSerializationDataTest),
@@ -17403,7 +17589,9 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiAcquireThreadsafeFunctionTest", NapiAcquireThreadsafeFunctionTest),
         DECLARE_NAPI_FUNCTION("NapiCallThreadsafeFunctionTest", NapiCallThreadsafeFunctionTest),
         DECLARE_NAPI_FUNCTION("NapiGetThreadsafeFunctionContextTest", NapiGetThreadsafeFunctionContextTest),
-        DECLARE_NAPI_FUNCTION("NapiCreateThreadsafeFunctionTest", NapiCreateThreadsafeFunctionTest),
+        DECLARE_NAPI_FUNCTION("NapiCreateThreadsafeFunctionTest1", NapiCreateThreadsafeFunctionTest1),
+        DECLARE_NAPI_FUNCTION("NapiCreateThreadsafeFunctionTest2", NapiCreateThreadsafeFunctionTest2),
+        DECLARE_NAPI_FUNCTION("NapiCreateThreadsafeFunctionTest3", NapiCreateThreadsafeFunctionTest3),
         DECLARE_NAPI_FUNCTION("NapiGetUvEventLoopTest", NapiGetUvEventLoopTest),
         DECLARE_NAPI_FUNCTION("NapiIsPromiseTest", NapiIsPromiseTest),
         DECLARE_NAPI_FUNCTION("NapiRejectDeferredTest", NapiRejectDeferredTest),
