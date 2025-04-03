@@ -570,7 +570,7 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100
-     * @tc.name   : Carry one key-value pair, where the key is ability.want.params.INTENT and the value is a JSON object;
+     * @tc.name   : Carry one key-value pair, where the key, and the value is a JSON object;
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function

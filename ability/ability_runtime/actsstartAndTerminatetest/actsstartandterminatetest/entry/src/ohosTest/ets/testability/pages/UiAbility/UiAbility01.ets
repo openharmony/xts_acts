@@ -19,10 +19,10 @@ import hilog from '@ohos.hilog';
 struct Uitest01 {
 
   onShow(){
-    console.log("Uitest01 page onShow")
+    console.log('Uitest01 page onShow')
   }
   onActive(){
-    console.log("Uitest01 page onActive")
+    console.log('Uitest01 page onActive')
   }
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility Uitest01 aboutToAppear');

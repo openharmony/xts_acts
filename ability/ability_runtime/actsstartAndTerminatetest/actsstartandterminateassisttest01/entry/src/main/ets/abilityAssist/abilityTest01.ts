@@ -15,19 +15,19 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import app, { AppResponse } from '@system.app'
+import app, { AppResponse } from '@system.app';
 
 export default class AbilityTest01 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onDestroy');
-    globalThis.abilityAssist01 = this.context
+    globalThis.abilityAssist01 = this.context;
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -40,31 +40,31 @@ export default class AbilityTest01 extends UIAbility {
     try {
       globalThis.abilityAssist01.startAbility(
         {
-          bundleName: 'ohos.example.myapplication',
-          abilityName: 'UiAbility008'
+          bundleName: 'com.test.actsstartandterminatetest',
+          abilityName: 'UiAbility08'
         }).then(() => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility com.acts.actsstartandterminateassisttest03');
-      })
+      });
     } catch (err) {
       hilog.info(0x0000, 'testTag', '%{public}s', `startAbility fail ${err}`);
     }
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onForeground');
     setTimeout(() => {
       // destroy assistHap
-      globalThis.abilityAssist01.terminateSelf()
+      globalThis.abilityAssist01.terminateSelf();
     }, 3000);
   }
 
-  onBackground() {
+  onBackground():void {
     console.info('AbilityTest01 onBackground');
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onBackground');
