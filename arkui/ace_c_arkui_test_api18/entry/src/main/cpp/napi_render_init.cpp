@@ -16,6 +16,7 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "datepicker/datepicker_test.h"
+#include "textpicker/text_picker_range_test.h"
 #include "textpicker/textPicker_enableHapticFeedback_test.h"
 #include "datepicker/datePicker_enableHapticFeedback_test.h"
 
@@ -32,6 +33,8 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         { "getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testDatePickerMode", nullptr, DatePickerTest::DatePickerModeTest,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testTextPickerRange", nullptr, TextPickerRangeTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr },
         {"textPickerEnableHapticFeedback", nullptr, TextPickerEnableHapticFeedbackTest::TextPickerEnableHapticFeedback,
             nullptr, nullptr, nullptr, napi_default, nullptr},
