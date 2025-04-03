@@ -17,6 +17,7 @@ import relationalStoreBatchInsertTest from './relationalStoreEtsApi16Test.test';
 import relationalStoreBatchinsertTransactionTest from './relationalStoreTransaction.test';
 import rdbStoreReadOnlyEtsTest from './relationalStoreReadOnly.test';
 import MemoryDbEtsTest from './RelationalStoreMemoryDb.test';
+import rdbResultSetSyncTest from './RelationalStoreResultSetSync.test';
 
 
 export default function testsuite() {
@@ -25,4 +26,5 @@ export default function testsuite() {
   relationalStoreBatchinsertTransactionTest();
   rdbStoreReadOnlyEtsTest();
   MemoryDbEtsTest();
+  rdbResultSetSyncTest();
 }
