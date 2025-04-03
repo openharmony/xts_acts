@@ -108,7 +108,7 @@ struct IndexPage {
     { title: 'HoverSpen', uri: 'pages/ArkUI/HoverSpen' },
     { title: 'stopSwiper', uri: 'pages/ArkUI/stopSwiper' },
     { title: 'AccessibilityRoleTypeTest', uri: 'pages/ArkUI/AccessibilityRoleTypeTest' }
-    
+    { title: 'StylusPen', uri: 'pages/ArkUI/StylusPen' }
     
   ]
   @State ColorObject: Object[] = letColor;
