@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import wifiMg from '@ohos.wifiManager'
 import osaccount from '@ohos.account.osAccount'
@@ -72,7 +72,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0003', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             let wifiP2PConfig = {
                 deviceAddress : "00:00:00:00:00:00",
                 netId : -1,
@@ -160,7 +160,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0004', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiP2PConfig = {
@@ -241,7 +241,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0104', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiP2PConfig = {
@@ -288,7 +288,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0204', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0204', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiP2PConfig = {
@@ -335,7 +335,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0304', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0304', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiP2PConfig = {
@@ -415,7 +415,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0007', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiP2PConfig = {
@@ -462,7 +462,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0107', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             try {
@@ -512,7 +512,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0207', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0207', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             try {
@@ -559,7 +559,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0008', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             try {
@@ -605,7 +605,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0108', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             try {
@@ -651,7 +651,7 @@ export default function actsWifiManagerFunctionTest() {
        * @tc.type Function
        * @tc.level Level 0
        */
-        it('SUB_Communication_WiFi_XTS_P2P_0308', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0308', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             try {
@@ -697,7 +697,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0009', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let DeviceAddressType  = {
                 RANDOM_DEVICE_ADDRESS : 0 ,
                 REAL_DEVICE_ADDRESS : 1 ,
@@ -754,7 +754,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0011', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let removeP2pGroupResult = wifiMg.removeP2pGroup(10000);
             }catch(error){
@@ -795,7 +795,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.level Level 3
         * @tc.size: MediumTest
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0002', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await wifiMg.getP2pLocalDevice()
                 .then(data => {
                     console.info("[wifi_test]getP2pLocalDevice  promise result :" + JSON.stringify(data));
@@ -848,7 +848,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 2
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0010', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_P2P_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             let p2pConnectState = {
                 DISCONNECTED :0,
                 CONNECTED : 1,
@@ -905,7 +905,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0001', 0, async function(done){
+        it('SUB_Communication_WiFi_XTS_P2P_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done){
             try {
                 console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
                 expect(wifiMg.isWifiActive()).assertTrue();
@@ -938,7 +938,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_0101', 0, async function(done){
+        it('SUB_Communication_WiFi_XTS_P2P_0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done){
             try {
                 console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
                 expect(wifiMg.isWifiActive()).assertTrue();
@@ -998,7 +998,7 @@ export default function actsWifiManagerFunctionTest() {
          * @tc.size:MediumTest
          * @tc.level Level 2
          */
-        it('SUB_Communication_WifiManager_XTS_P2p_CreateGroup_0100', 0, async function(done){
+        it('SUB_Communication_WifiManager_XTS_P2p_CreateGroup_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done){
             try {
                 wifiMg.createGroup(null);
                 expect().assertFail();
@@ -1017,7 +1017,7 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.size: MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_P2P_P2pConnectState_0100', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_P2P_P2pConnectState_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             try {
                 let DISCONNECTED = wifiMg.P2pConnectState.DISCONNECTED;
                 console.info('[wifi_test]P2pConnectState DISCONNECTED:' + JSON.stringify(DISCONNECTED));

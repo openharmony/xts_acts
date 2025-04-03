@@ -1527,6 +1527,94 @@ export default function windowNdk() {
           done();
         }
     })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6200
+         * @tc.name      : test_getAllWIndowLayOutInfo_401
+         * @tc.desc      : test_getAllWIndowLayOutInfo_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_getAllWIndowLayOutInfo_401', 0, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo_401";
+      console.log(caseName + '  start');
+      let result = windowNdkTest.getAllWIndowLayOutInfo(-1);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        if(Number(result)==801){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          done();
+        }else{
+          expect(Number(result)).assertEqual(401);
+          done();
+        }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6300
+         * @tc.name      : test_getAllWIndowLayOutInfo_mainWIndow
+         * @tc.desc      : test_getAllWIndowLayOutInfo_mainWIndow
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_getAllWIndowLayOutInfo', 0, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo";
+      console.log(caseName + '  start');
+      let mainWindow = windowStage.getMainWindowSync();
+      let diaplayId = mainWindow.getWindowProperties().displayId;
+      console.log(caseName + '  diaplayId:'+diaplayId);
+      let result = windowNdkTest.getAllWIndowLayOutInfo(diaplayId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        if(Number(result)==801){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          done();
+        }else{
+          expect(result.length).assertLargerOrEqual(1);
+          done();
+        }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6400
+         * @tc.name      : test_getAllWIndowLayOutInfo_subWIndow
+         * @tc.desc      : test_getAllWIndowLayOutInfo_subWIndow
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_getAllWIndowLayOutInfo_subWIndow', 0, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo_subWIndow";
+      console.log(caseName + '  start');
+      let subWindow = await windowStage.createSubWindow('test_getAllWIndowLayOutInfo_subWIndow');
+      await subWindow.setUIContent('testability/pages/subWindow');
+      try{
+        let windowlimitsWidth = subWindow.getWindowLimits().minWidth;
+        let windowlimitsHeight = subWindow.getWindowLimits().minHeight;
+        console.log(caseName + '  windowlimitsWidth:'+windowlimitsWidth+',windowlimitsHeight:'+windowlimitsHeight);
+        subWindow.resizeAsync(windowlimitsWidth,windowlimitsHeight);
+        await subWindow.showWindow();
+        let diaplayId = subWindow.getWindowProperties().displayId;
+        console.log(caseName + '  diaplayId:'+diaplayId);
+        let result = windowNdkTest.getAllWIndowLayOutInfo(diaplayId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        await subWindow.destroyWindow();
+          if(Number(result)==801){
+            console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+            done();
+          }else{
+            expect(result.length).assertLargerOrEqual(2);
+            done();
+          }
+      }catch(err){
+        await subWindow.destroyWindow();
+        if(err.code==801){
+            console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+            done();
+          }else{
+            expect(false).assertTrue();
+            done();
+          }
+      }
+      
+    })
 
   })
 }

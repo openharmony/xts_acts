@@ -17,6 +17,12 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils'
 import router from '@ohos.router';
 
+function tabsDefaultFontSize(sysWidth: Resource) {
+  let resourceFontSize = getContext().resourceManager.getNumber(sysWidth.id)
+  let newFontSize: string = Math.round(px2vp(resourceFontSize)) + '.00vp'
+  return newFontSize;
+}
+
 export default function tabsThird() {
   describe('ActsAceTabsTestThird', () => {
     beforeEach(async (done: Function) => {
@@ -4676,9 +4682,9 @@ export default function tabsThird() {
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100 sizeInfo]: " + sizeInfo);
       if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.bottom_tab_text_size_normal')));
       }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.Caption_L_VP')));
       }
       expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Medium');
       expect(obj.$attrs.tabBar.labelStyle.font.family).assertEqual('HarmonyOS Sans');
@@ -5865,9 +5871,9 @@ export default function tabsThird() {
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500 sizeInfo]: " + sizeInfo);
       if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.bottom_tab_text_size_normal')));
       }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.Caption_L_VP')));
       }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500] end");
       done();
@@ -5947,9 +5953,9 @@ export default function tabsThird() {
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700 sizeInfo]: " + sizeInfo);
       if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.bottom_tab_text_size_normal')));
       }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.Caption_L_VP')));
       }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700] end");
       done();
@@ -5992,9 +5998,9 @@ export default function tabsThird() {
       let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800 sizeInfo]: " + sizeInfo);
       if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.VERTICAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('10.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.bottom_tab_text_size_normal')));
       }else if (obj.$attrs.tabBar.layoutMode == 'LayoutMode.HORIZONTAL') {
-        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(tabsDefaultFontSize($r('sys.float.Caption_L_VP')));
       }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800] end");
       done();

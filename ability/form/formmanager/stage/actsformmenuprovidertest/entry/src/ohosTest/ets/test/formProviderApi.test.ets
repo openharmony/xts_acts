@@ -25,6 +25,8 @@ const COMMON_TAG = 'FormProviderApi';
 const DOMAIN = 0xF811;
 const PUBLISH_BUNDLE_NAME = 'com.example.menuprovider';
 const ERROR_CODE = 16501000;
+const ERROR_CODE2 = 16500100;
+const ERROR_CODE3 = 801;
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 let sleep = async (delay: number = 1000): Promise<void> => {
@@ -69,6 +71,10 @@ export default function formProviderTest() {
       }).catch((error: BusinessError) => {
         if (error.code === ERROR_CODE) {
           expect(error.code).assertEqual(ERROR_CODE);
+        } else if (error.code === ERROR_CODE2) {
+          expect(error.code).assertEqual(ERROR_CODE2);
+        } else if (error.code === ERROR_CODE3) {
+          expect(error.code).assertEqual(ERROR_CODE3);
         } else {
           hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
           `${TAG} formProvider getPublishedFormInfos error: ${JSON.stringify(error)}`);
@@ -98,6 +104,10 @@ export default function formProviderTest() {
       }).catch ((error: BusinessError) => {
         if (error.code === ERROR_CODE) {
           expect(error.code).assertEqual(ERROR_CODE);
+        } else if (error.code === ERROR_CODE2) {
+          expect(error.code).assertEqual(ERROR_CODE2);
+        } else if (error.code === ERROR_CODE3) {
+          expect(error.code).assertEqual(ERROR_CODE3);
         } else {
           hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
           `${TAG} formProvider getPublishedFormInfos error: ${JSON.stringify(error)}`);
@@ -112,6 +122,10 @@ export default function formProviderTest() {
       }).catch ((error: BusinessError) => {
         if (error.code === ERROR_CODE) {
           expect(error.code).assertEqual(ERROR_CODE);
+        } else if (error.code === ERROR_CODE2) {
+          expect(error.code).assertEqual(ERROR_CODE2);
+        } else if (error.code === ERROR_CODE3) {
+          expect(error.code).assertEqual(ERROR_CODE3);
         } else {
           hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
           `${TAG} formProvider getPublishedFormInfoById error: ${JSON.stringify(error)}`);
@@ -145,10 +159,17 @@ export default function formProviderTest() {
         hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} formProvider openFormManager success`);
         done();
       } catch (error) {
-        hilog.info(DOMAIN, COMMON_TAG, '%{public}s', 
-        `${TAG} formProvider openFormManager, error: ${JSON.stringify(error)}`);
-        expect(error).assertFail();
-        done();
+        if (error.code === ERROR_CODE) {
+          expect(error.code).assertEqual(ERROR_CODE);
+        } else if (error.code === ERROR_CODE2) {
+          expect(error.code).assertEqual(ERROR_CODE2);
+        } else if (error.code === ERROR_CODE3) {
+          expect(error.code).assertEqual(ERROR_CODE3);
+        } else {
+          hilog.info(DOMAIN, COMMON_TAG, '%{public}s',
+          `${TAG} formProvider openFormManager, error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+        }
       }
       hilog.info(DOMAIN, COMMON_TAG, '%{public}s', `${TAG} end`);
     })

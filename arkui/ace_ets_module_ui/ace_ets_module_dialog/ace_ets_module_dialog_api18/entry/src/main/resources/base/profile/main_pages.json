@@ -28,6 +28,8 @@
     "MainAbility/pages/UIContext/showDialogBlurStyleOptions1",
     "MainAbility/pages/UIContext/showDialogBackgroundEffect1",
     "MainAbility/pages/UIContext/showDialogBlurStyleOptions2",
-    "MainAbility/pages/UIContext/showDialogBackgroundEffect2"
+    "MainAbility/pages/UIContext/showDialogBackgroundEffect2",
+    "MainAbility/pages/bindMenu/bindMenuHapticFeedbackMode",
+    "MainAbility/pages/bindContextMenu/bindContextMenuHapticFeedback"
   ]
 }

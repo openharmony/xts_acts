@@ -15,7 +15,7 @@
 
 import net_http from '@ohos.net.http';
 import connection from '@ohos.net.connection'
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it , TestType, Size, Level } from '@ohos/hypium'
 
 export default function HttpCacheTest() {
     describe('HttpCacheTest', function () {
@@ -26,7 +26,7 @@ export default function HttpCacheTest() {
         * @tc.desc      usingCache test
         */
 
-        it('Telephony_NetStack_HttpTestBasicGet_0100', 0, async function(done){
+        it('Telephony_NetStack_HttpTestBasicGet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
                 console.log('data: ' + data)
@@ -50,7 +50,7 @@ export default function HttpCacheTest() {
         * @tc.desc      usingCache test
         */
 
-        it('Telephony_NetStack_HttpTestBasicGet_0200', 0, async function(done){
+        it('Telephony_NetStack_HttpTestBasicGet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestBasicGet_0200';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -76,7 +76,7 @@ export default function HttpCacheTest() {
         * @tc.desc      cache flush test
         */
 
-        it('Telephony_NetStack_HttpTestCacheFlush_0100', 0, async function(done){
+        it('Telephony_NetStack_HttpTestCacheFlush_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheFlush_0100';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -105,7 +105,7 @@ export default function HttpCacheTest() {
         * @tc.desc      cache flush test
         */
 
-        it('Telephony_NetStack_HttpTestCacheFlush_0200', 0, async function(done){
+        it('Telephony_NetStack_HttpTestCacheFlush_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheFlush_0200';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -134,7 +134,7 @@ export default function HttpCacheTest() {
         * @tc.desc      cache flush test
         */
 
-        it('Telephony_NetStack_HttpTestCacheDelete_0100', 0, async function(done){
+        it('Telephony_NetStack_HttpTestCacheDelete_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheDelete_0100';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -163,7 +163,7 @@ export default function HttpCacheTest() {
         * @tc.desc      cache flush test
         */
 
-        it('Telephony_NetStack_HttpTestCacheDelete_0200', 0, async function(done){
+        it('Telephony_NetStack_HttpTestCacheDelete_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheDelete_0200';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))

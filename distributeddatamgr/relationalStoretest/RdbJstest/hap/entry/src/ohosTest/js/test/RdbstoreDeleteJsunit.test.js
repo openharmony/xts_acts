@@ -567,5 +567,37 @@ describe('rdbStoreDeleteTest', function () {
             })
             console.info(TAG + "************* dataRdbTest005 end *************");
           })
+    /**
+     * @tc.name isNotNull errcode is 401
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_RDBDeleteJsAPITest_1000
+     * @tc.desc isNotNull errcode is 401
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it('dataRdbTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+      console.info(TAG + "************* dataRdbTest006 start *************");
+      let u8 = new Uint8Array([1, 2, 3]);
+      {
+        const record = {
+          "name": "Jim",
+          "age": 30,
+          'salary': 100.5,
+          'blobType': u8,
+        }
+        await rdbStore.insert("test", record);
+      }
+      let predicates = new dataRdb.RdbPredicates("test");
+      try{
+        predicates.isNotNull(1);
+        expect().assertFail();
+        done();
+      }catch(err) {
+        expect(err.code).assertEqual('401');
+        console.log(TAG+"err.code"+err.code);
+        done();
+      }
+      console.info(TAG + "************* dataRdbTest006 end *************");
+    })
     console.info(TAG + '*************Unit Test End*************');
 })}

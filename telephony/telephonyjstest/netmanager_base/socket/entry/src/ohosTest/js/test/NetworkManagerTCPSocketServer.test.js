@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 import socket from "@ohos.net.socket";
 
 let address = {
@@ -58,7 +58,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test create constructTCPSocketServerInstance object
      * @tc.desc Function test
      */
-    it('NetworkManager_constructTCPSocketServerInstance_0100', 0, async function (done) {
+    it('NetworkManager_constructTCPSocketServerInstance_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let server = socket.constructTCPSocketServerInstance();
       if (server != undefined) {
         expect(server).assertInstanceOf('Object');
@@ -74,7 +74,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test listen() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_listen_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_listen_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_listen_Async_0100';
       let server = socket.constructTCPSocketServerInstance();
       server.listen(address, (err, data) => {
@@ -94,7 +94,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test listen() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_listen_Async_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_listen_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_listen_Async_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -118,7 +118,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test listen() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_listen_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_listen_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_listen_Promise_0100';
       let server = socket.constructTCPSocketServerInstance();
       server.listen(address).then((data) => {
@@ -136,7 +136,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_connect_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_connect_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -160,7 +160,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_connect_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_connect_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_connect_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -183,7 +183,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_connect_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_connect_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -209,7 +209,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_connect_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_connect_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_connect_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -236,7 +236,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_connect_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_connect_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_connect_0300';
       let server = socket.constructTCPSocketServerInstance();
       server.on('connect', data => {
@@ -252,7 +252,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_send_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_send_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_send_Async_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -286,7 +286,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_send_Async_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_send_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_send_Async_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -320,7 +320,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_send_Async_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_send_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_send_Async_0300';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -354,7 +354,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_send_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_send_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_send_Promise_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -386,7 +386,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test send() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_send_Promise_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_send_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_send_Promise_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -418,7 +418,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test close() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_close_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_close_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_close_Async_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -451,7 +451,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test close() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_close_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_close_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_close_Promise_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -483,7 +483,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getRemoteAddress() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getRemoteAddress_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_getRemoteAddress_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_getRemoteAddress_Async_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -516,7 +516,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getRemoteAddress() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getRemoteAddress_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_getRemoteAddress_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_getRemoteAddress_Promise_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -548,7 +548,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getState() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getState_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_getState_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = "NetworkManager_TCPSocketServer_getState_Async_0100";
       let server = socket.constructTCPSocketServerInstance();
       server.getState((err, data) => {
@@ -571,7 +571,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getState() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getState_Async_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_getState_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = "NetworkManager_TCPSocketServer_getState_Async_0200";
       let server = socket.constructTCPSocketServerInstance();
       server.listen(address, (err, data) => {
@@ -602,7 +602,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getState() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getState_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_getState_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = "NetworkManager_TCPSocketServer_getState_Promise_0100";
       let server = socket.constructTCPSocketServerInstance();
       server.getState().then((data) => {
@@ -623,7 +623,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getState() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_getState_Promise_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_getState_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = "NetworkManager_TCPSocketServer_getState_Promise_0200";
       let server = socket.constructTCPSocketServerInstance();
       server.listen(address, (err, data) => {
@@ -652,7 +652,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test setExtraOptions() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_setExtraOptions_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_setExtraOptions_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_setExtraOptions_Async_0100';
       let server = socket.constructTCPSocketServerInstance();
       server.setExtraOptions(TCPExtraOptions, (err, data) => {
@@ -673,7 +673,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test setExtraOptions() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_setExtraOptions_Async_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_setExtraOptions_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_setExtraOptions_Async_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -701,7 +701,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test setExtraOptions() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_setExtraOptions_Async_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_setExtraOptions_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_setExtraOptions_Async_0300';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -729,7 +729,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test setExtraOptions() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_setExtraOptions_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_setExtraOptions_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_setExtraOptions_Promise_0100';
       let server = socket.constructTCPSocketServerInstance();
       server.setExtraOptions(TCPExtraOptions).then((data) => {
@@ -748,7 +748,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_message_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_message_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -783,7 +783,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_message_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_message_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_message_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -817,7 +817,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_message_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_message_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_message_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -854,7 +854,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_message_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_message_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_message_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -892,7 +892,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_message_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_message_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_message_0300';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -920,7 +920,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_close_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_close_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -955,7 +955,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_close_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_close_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_close_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -989,7 +989,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_close_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_close_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_close_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1026,7 +1026,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_close_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_close_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_close_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1064,7 +1064,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_close_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_close_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_close_0300';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1092,7 +1092,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_error_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_error_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1119,7 +1119,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_error_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_error_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_error_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1153,7 +1153,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_error_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_error_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_error_0100';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1182,7 +1182,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_error_0200', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_error_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_error_0200';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1219,7 +1219,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_error_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_error_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_error_0300';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1245,7 +1245,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test on() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_on_error_0300', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_on_error_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_on_error_0300';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1267,7 +1267,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_error_0400', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_error_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_error_0400';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1291,7 +1291,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_error_0500', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_error_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_error_0500';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1316,7 +1316,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test off() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocketServer_off_error_0600', 0, async function (done) {
+    it('NetworkManager_TCPSocketServer_off_error_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocketServer_off_error_0600';
       let server = socket.constructTCPSocketServerInstance();
       try {
@@ -1338,7 +1338,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getSocketFd() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocket_getSocketFd_Async_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocket_getSocketFd_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocket_getSocketFd_Async_0100';
       let tcp = socket.constructTCPSocketInstance();
       tcp.getSocketFd((err, data) => {
@@ -1359,7 +1359,7 @@ export default function NetTCPSocketServerTest() {
      * @tc.name Test getSocketFd() interface
      * @tc.desc Function test
      */
-    it('NetworkManager_TCPSocket_getSocketFd_Promise_0100', 0, async function (done) {
+    it('NetworkManager_TCPSocket_getSocketFd_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
       let caseName = 'NetworkManager_TCPSocket_getSocketFd_Promise_0100';
       let tcp = socket.constructTCPSocketInstance();
       tcp.getSocketFd().then((data) => {

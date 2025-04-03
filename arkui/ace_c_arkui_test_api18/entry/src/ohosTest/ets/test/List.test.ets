@@ -13,11 +13,15 @@
  * limitations under the License.
  */
 
+import customDialogTest from "./customdialog/customDialogTest.test"
 import datePickerTest from "./datepicker/DatePickerMode.test"
+import textPickerRangeTest from "./textpicker/textPickerRangeTest.test"
 import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHapticFeedback.test"
 import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
 
 export default function testsuite() {
+  customDialogTest();
+  textPickerRangeTest();
   datePickerTest();
   textPickerEnableHapticFeedbackTest();
   datePickerEnableHapticFeedbackTest();

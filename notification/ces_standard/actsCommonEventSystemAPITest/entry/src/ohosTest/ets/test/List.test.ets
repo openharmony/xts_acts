@@ -14,7 +14,9 @@
  */
 
 import ActsCommonEventSystemAPITest from './ActsCommonEventSystemAPITest.test'
+import actsEmitterandComEventTest from './actsEmitterandComEventTest.test';
 
 export default function List() {
   ActsCommonEventSystemAPITest()
+  actsEmitterandComEventTest();
 }

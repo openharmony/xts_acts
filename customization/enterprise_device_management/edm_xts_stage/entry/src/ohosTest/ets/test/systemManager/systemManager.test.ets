@@ -28,6 +28,7 @@ export default function systemManagerTest() {
     testGetOtaUpdatePolicy();
     testNotifyUpdatePackages();
     testGetUpdateResult();
+    testGetUpdateAuthData();
   })
 }
 
@@ -694,6 +695,87 @@ function testGetUpdateResult() {
       })
     } catch (error) {
       expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+}
+
+function testGetUpdateAuthData() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0001
+   * @tc.name      : test_get_update_auth_data_0001
+   * @tc.desc      : test systemManager getUpdateAuthData without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_auth_data_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let authData: string = await systemManager.getUpdateAuthData(SELFWANT);
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0002
+   * @tc.name      : test_get_update_auth_data_0002
+   * @tc.desc      : test systemManager getUpdateAuthData without invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_auth_data_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let authData: string = await systemManager.getUpdateAuthData(INVALID_WANT);
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0003
+   * @tc.name      : test_get_update_auth_data_0003
+   * @tc.desc      : test systemManager getUpdateAuthData with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_auth_data_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let authData: string = await systemManager.getUpdateAuthData(SELFWANT);
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0003
+   * @tc.name      : test_get_update_auth_data_0004
+   * @tc.desc      : test systemManager getUpdateAuthData success
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_auth_data_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let authData: string = await systemManager.getUpdateAuthData(SELFWANT);
+      expect(authData).not().assertNull();
+      expect(authData.length).not().assertEqual(0);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
     }
     done();
   });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 
 import wifi from '@ohos.wifi'
 import wifiMg from '@ohos.wifiManager'
@@ -74,7 +74,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0003', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             try {
                 let sacnResult = wifiMg.scan();
                 expect().assertFail();
@@ -93,7 +93,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0038', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             try {
                 let getScanInfo = wifiMg.getScanInfoList();
                 expect().assertFail();
@@ -112,7 +112,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0039', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let wifiDeviceConfig = {
@@ -141,7 +141,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0040', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let wifiDeviceConfig = {
                     "ssid": "TEST_PSK",
@@ -175,7 +175,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0041', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0041', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await wifiMg.removeCandidateConfig(0);
@@ -197,7 +197,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0042', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0042', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 wifiMg.removeCandidateConfig(0,
                     (error,data) => {
@@ -224,7 +224,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0043', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let getCandidateConfigs = wifiMg.getCandidateConfigs();
                 expect().assertFail();
@@ -243,7 +243,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0044', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0044', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let connectToCandidateConfig = wifiMg.connectToCandidateConfig(0);
                 expect().assertFail();
@@ -262,7 +262,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0045', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0045', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let getSignalLevel = wifiMg.getSignalLevel(-65,1);
                 expect().assertFail();
@@ -281,7 +281,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0046', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0046', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await wifiMg.getLinkedInfo();
@@ -303,7 +303,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0047', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0047', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 wifiMg.getLinkedInfo(
                     (error,data) => {
@@ -330,7 +330,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0048', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0048', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let isConnected = wifiMg.isConnected();
                 expect().assertFail();
@@ -349,7 +349,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0049', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0049', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let isFeatureSupport = wifiMg.isFeatureSupported(0);
                 expect().assertFail();
@@ -368,7 +368,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0050', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0050', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let getIpInfo = wifiMg.getIpInfo();
                 expect().assertFail();
@@ -387,7 +387,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0051', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let getCountryCode = wifiMg.getCountryCode();
                 expect().assertFail();
@@ -406,7 +406,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0052', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0052', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await wifiMg.getP2pLinkedInfo();
@@ -429,7 +429,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0053', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0053', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 wifiMg.getP2pLinkedInfo(
                     (error,data) => {
@@ -457,7 +457,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0054', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0054', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await wifiMg.getCurrentP2pGroup();
@@ -479,7 +479,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0055', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0055', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 wifiMg.getCurrentP2pGroup(
                     (error,data) => {
@@ -506,7 +506,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0056', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0056', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await wifiMg.getP2pPeerDevices();
@@ -528,7 +528,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0057', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0057', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 wifiMg.getP2pPeerDevices(
                     (error,data) => {
@@ -555,7 +555,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0058', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0058', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             (async () => {
                 try {
                     let result = await wifiMg.getP2pLocalDevice();
@@ -577,7 +577,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0059', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0059', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 wifiMg.getP2pLocalDevice(
                     (error,data) => {
@@ -604,7 +604,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0060', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let wifiP2PConfig = {
                     deviceAddress : "00:00:00:00:00:00",
@@ -630,7 +630,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0061', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0061', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let removeGroup = wifiMg.removeP2pGroup();
                 expect().assertFail();
@@ -649,7 +649,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0062', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let wifiP2PConfig = {
                     deviceAddress : "00:00:00:00:00:00",
@@ -676,7 +676,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0063', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0063', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let p2pCancelConnect = wifiMg.p2pCancelConnect();
                 console.info("201 fail,has no permission but api is true");
@@ -696,7 +696,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0064', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0064', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let startDiscoverDevices = wifiMg.startDiscoverP2pDevices();
                 console.info("201 fail,has no permission but api is true");
@@ -716,7 +716,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0065', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0065', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let stopDiscoverDevices = wifiMg.stopDiscoverP2pDevices();
                 console.info("201 fail,has no permission but api is true");
@@ -736,7 +736,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0066', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0066', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "wifiStateChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]wifiStateChange callback, result: " + JSON.stringify(result));
@@ -766,7 +766,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0067', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0067', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "wifiConnectionChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]wifiConnectionChange callback, result: " + JSON.stringify(result));
@@ -796,7 +796,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0068', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0068', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "wifiScanStateChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]wifiScanStateChange callback, result: " + JSON.stringify(result));
@@ -826,7 +826,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0069', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0069', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "wifiRssiChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]wifiRssiChange callback, result: " + JSON.stringify(result));
@@ -856,7 +856,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0070', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0070', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "hotspotStateChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]hotspotStateChange callback, result: " + JSON.stringify(result));
@@ -886,7 +886,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0071', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0071', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "p2pStateChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]p2pStateChange callback, result: " + JSON.stringify(result));
@@ -916,7 +916,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0072', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0072', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "p2pConnectionChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]p2pConnectionChange callback, result: " + JSON.stringify(result));
@@ -946,7 +946,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0073', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "p2pDeviceChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]p2pDeviceChange callback, result: " + JSON.stringify(result));
@@ -976,7 +976,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0074', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0074', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "p2pPeerDeviceChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]p2pPeerDeviceChange callback, result: " + JSON.stringify(result));
@@ -1006,7 +1006,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0075', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0075', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "p2pPersistentGroupChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]p2pPersistentGroupChange callback, result: " + JSON.stringify(result));
@@ -1036,7 +1036,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.size:MediumTest
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0076', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let wifiState = "p2pDiscoveryChange";
             let wifiStateChangeCallback = result => {
                 console.info("[wifi_test]p2pDiscoveryChange callback, result: " + JSON.stringify(result));
