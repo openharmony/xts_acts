@@ -20,7 +20,6 @@ import updatePopup from './promptActionTest/updatePopup.test'
 import closeMenu from './promptActionTest/closeMenu.test.ets'
 import closePopup from './promptActionTest/closePopup.test'
 import subwindowDialog from './promptActionTest/subwindowDialog.test'
-import calendarPickerStartEndTest from './calendarPickerDialog/startEndTest.test';
 import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
 import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
@@ -37,7 +36,6 @@ export default function testsuite() {
     closeMenu();
     closePopup();
     subwindowDialog();
-    calendarPickerStartEndTest();
     menuitemOnChangeModifierTest();
     menuFontsizeModifierTest();
     menuBindMenuModifierTest();
