@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ArcSlider from './ArcSlider/ArcSlider.test.ets'
+import ArcSlider001 from './ArcSlider/ArcSlider001.test.ets'
+import ArcSlider002 from './ArcSlider/ArcSlider002.test.ets'
+import ArcSlider003 from './ArcSlider/ArcSlider003.test.ets'
 export default function testsuite() {
-  ArcSlider()
+  ArcSlider001();
+  ArcSlider002();
+  ArcSlider003();
 }

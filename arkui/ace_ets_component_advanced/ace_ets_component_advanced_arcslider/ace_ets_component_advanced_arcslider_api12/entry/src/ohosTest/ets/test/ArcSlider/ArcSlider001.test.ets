@@ -21,7 +21,7 @@ interface optionsObj {
   uri: string
 }
 
-export default function ArcSlider() {
+export default function ArcSlider001() {
     describe('ArcSlider', () => {
         beforeAll(async () => {
             console.info("beforeAll case");
@@ -29,7 +29,7 @@ export default function ArcSlider() {
         beforeEach(async (done: Function) => {
             console.info("search_caret beforeEach start");
             let options: optionsObj = {
-                uri: 'MainAbility/pages/ArcSlider/ArcSlider',
+                uri: 'MainAbility/pages/ArcSlider/ArcSlider1',
             }
             try {
                 router.clear();
@@ -65,18 +65,7 @@ export default function ArcSlider() {
             let singleTextSegmentButtonType = await component.getType();
             console.info('singleTextSegmentButtonType START:' + JSON.stringify(singleTextSegmentButtonType));
             expect(singleTextSegmentButtonType).assertEqual('__Common__');
-            done();
-        });
-        it('arcSliderTest002', 0, async (done: Function) => {
-            console.info('arcSliderTest002 START');
-            let driver = await UiDriver.create();
-            await CommonFunc.sleep(1000);
-            let component = await driver.findComponent(BY.key('arcSliderTest002'));
-            let arcSliderIsEnabled = await component.isEnabled();
-            expect(arcSliderIsEnabled).assertTrue();
-            let singleTextSegmentButtonType = await component.getType();
-            console.info('singleTextSegmentButtonType START:' + JSON.stringify(singleTextSegmentButtonType));
-            expect(singleTextSegmentButtonType).assertEqual('__Common__');
+            console.info('arcSliderTest001 END');
             done();
         });
     })

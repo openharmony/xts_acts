@@ -2,9 +2,9 @@ import { ArcSlider, ArcSliderOptions, ArcSliderPosition, ArcSliderValueOptions, 
 
 @Entry
 @ComponentV2
-struct Index {
+struct ArcSlider2 {
   scroll: Scroller = new Scroller()
-
+  @Local isEnlarged: string = 'false';
   valueOptionsConstructorOptions: ArcSliderValueOptionsConstructorOptions = {
     progress: 50,
     min: 5,
@@ -13,12 +13,12 @@ struct Index {
 
   layoutOptionsConstructorOptions: ArcSliderLayoutOptionsConstructorOptions = {
     reverse: true,
-	  position: ArcSliderPosition.LEFT
+	  position: ArcSliderPosition.RIGHT
   }
 
   styleOptionsConstructorOptions: ArcSliderStyleOptionsConstructorOptions = {
-    trackThickness: 8,
-    activeTrackThickness: 20,
+    trackThickness: 16,
+    activeTrackThickness: 36,
     trackColor: '#999999',
     selectedColor: '#00FF00',
     trackBlur: 20
@@ -33,7 +33,10 @@ struct Index {
     digitalCrownSensitivity:CrownSensitivity.LOW,
     onTouch: (event: TouchEvent) => {
     },
-    onChange: (value: number) => {
+    onChange: (progress: number) => {
+    },
+    onEnlarge: (isEnlarged: boolean) => {
+      this.isEnlarged = JSON.stringify(isEnlarged);
     }
   }
   arcSliderOptions: ArcSliderOptions = new ArcSliderOptions(this.arcSliderOptionsConstructorOptions)
@@ -43,10 +46,11 @@ struct Index {
       Column({ space: 5 }) {
         List({ space: 5, initialIndex: 0 }) {
           ListItem() {
-            ArcSlider().key('arcSliderTest001')
-          }.backgroundColor(Color.Black)
-          ListItem() {
-            ArcSlider({ options: this.arcSliderOptions }).key('arcSliderTest002')
+            Stack() {
+              Text(this.isEnlarged).fontColor(Color.White).fontSize(50)
+                .key('textTest001')
+              ArcSlider({ options: this.arcSliderOptions }).key('arcSliderTest002')
+            }
           }.backgroundColor(Color.Black)
         }
       }
