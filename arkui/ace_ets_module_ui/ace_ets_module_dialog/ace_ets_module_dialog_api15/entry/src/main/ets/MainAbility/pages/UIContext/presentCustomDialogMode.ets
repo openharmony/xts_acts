@@ -115,18 +115,7 @@ struct presentCustomDialogMode {
     width: '100%',
     height: '100%'
   }
-  WillAppear: Callback<void> = () => {
-    console.info('---1237---    dialog onWillAppear')
-  }
-  DidAppear: Callback<void> = () => {
-    console.info('---1237---    dialog onDidAppear')
-  }
-  willDisappear: Callback<void> = () => {
-    console.info('---1237---    dialog onWillDisappear')
-  }
-  DidDisappear: Callback<void> = () => {
-    console.info('---1237---    dialog onDidDisappear')
-  }
+  
   @State uiContext: UIContext = this.getUIContext();
   promptAction = this.uiContext.getPromptAction();
   private dialogWithController: promptAction.DialogController = new promptAction.DialogController()
@@ -228,11 +217,6 @@ struct presentCustomDialogMode {
 
                   showInSubWindow: this.showInSubWindow,
                   isModal: this.isModal,
-
-                  onWillAppear: this.WillAppear,
-                  onDidAppear: this.DidAppear,
-                  onWillDisappear: this.willDisappear,
-                  onDidDisappear: this.DidDisappear,
 
                   maskRect: this.maskRect,
                   alignment: DialogAlignment.Bottom
