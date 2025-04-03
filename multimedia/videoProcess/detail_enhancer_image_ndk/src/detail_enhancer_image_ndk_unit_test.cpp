@@ -19,7 +19,7 @@
 #include "image_processing.h"
 #include "image_processing_types.h"
 #include "image_processing_impl.h"
-#include "image_processing_native.h"
+#include "image_processing_capi_capability.h"
 #include "native_avformat.h"
 #include "pixelmap_native.h"
 #include "surface/native_buffer.h"
@@ -149,7 +149,9 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_04_1, TestSize.Level1)
 {
     OH_ImageProcessing_InitializeEnvironment();
     OH_ImageProcessing* instance = nullptr;
-    ImageProcessing_ErrorCode ret = OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    ImageProcessing_ErrorCode ret = OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
 }
 
@@ -167,7 +169,9 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_05_1, TestSize.Level1)
 {
     OH_ImageProcessing_InitializeEnvironment();
     OH_ImageProcessing* instance = nullptr;
-    ImageProcessing_ErrorCode ret = OH_ImageProcessing::Create(&instance, 11);
+    ImageProcessing_ErrorCode ret = OH_ImageProcessing::Create(&instance, 11,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
 }
 
@@ -186,7 +190,9 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_06_1, TestSize.Level1)
 {
     OH_ImageProcessing_InitializeEnvironment();
     OH_ImageProcessing* instance = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     ImageProcessing_ErrorCode ret = OH_ImageProcessing::Destroy(instance);
     EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
 }
@@ -225,10 +231,12 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_08, TestSize.Level1)
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_08_1, TestSize.Level1)
 {
     OH_ImageProcessing* instance = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL, 10);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->SetParameter(parameter);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
 }
@@ -248,9 +256,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_09, TestSize.Level1)
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_09_1, TestSize.Level1)
 {
     OH_ImageProcessing* instance = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     OH_AVFormat* parameter = nullptr;
-    ImageProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->SetParameter(parameter);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
 }
@@ -282,12 +292,14 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_11, TestSize.Level1)
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_11_1, TestSize.Level1)
 {
     OH_ImageProcessing* instance = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH);
-    instance->GetObj()->SetParameter(parameter);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->GetParameter(parameter);
+    instance->GetImageProcessing()->SetParameter(parameter);
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->GetParameter(parameter);
     EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
 }
@@ -307,9 +319,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_12, TestSize.Level1)
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_12_1, TestSize.Level1)
 {
     OH_ImageProcessing* instance = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     OH_AVFormat* parameter = nullptr;
-    ImageProcessing_ErrorCode ret = instance->GetObj()->GetParameter(parameter);
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->GetParameter(parameter);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
 }
@@ -338,9 +352,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_14, TestSize.Level1)
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_14_1, TestSize.Level1)
 {
     OH_ImageProcessing* instance = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
-    ImageProcessing_ErrorCode ret = instance->GetObj()->GetParameter(parameter);
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->GetParameter(parameter);
     EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
 }
@@ -456,8 +472,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_29, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_ConvertColorSpace(instance2, srcImg, dstImg);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->ConvertColorSpace(srcImg, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->ConvertColorSpace(srcImg, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -476,8 +494,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_30, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_ConvertColorSpace(instance2, srcImg, dstImg);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->ConvertColorSpace(srcImg, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->ConvertColorSpace(srcImg, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -504,8 +524,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_31_1, TestSize.Level1)
     OH_ImageProcessing* instance = nullptr;
     OH_PixelmapNative* srcImg = nullptr;
     OH_PixelmapNative* dstImg = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->ConvertColorSpace(srcImg, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->ConvertColorSpace(srcImg, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -526,8 +548,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_32, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_Compose(instance2, srcImg, gainmap, dstImg);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->Compose(srcImg, gainmap, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->Compose(srcImg, gainmap, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -548,8 +572,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_33, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_Compose(instance2, srcImg, gainmap, dstImg);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->Compose(srcImg, gainmap, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->Compose(srcImg, gainmap, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -578,8 +604,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_34_1, TestSize.Level1)
     OH_PixelmapNative* srcImg = nullptr;
     OH_PixelmapNative* gainmap = nullptr;
     OH_PixelmapNative* dstImg = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->Compose(srcImg, gainmap, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->Compose(srcImg, gainmap, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -600,8 +628,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_35, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_Decompose(instance2, srcImg, dstImg, gainmap);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->Decompose(srcImg, dstImg, gainmap);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->Decompose(srcImg, dstImg, gainmap);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -622,8 +652,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_36, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_Decompose(instance2, srcImg, dstImg, gainmap);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->Decompose(srcImg, dstImg, gainmap);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->Decompose(srcImg, dstImg, gainmap);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -652,8 +684,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_37_1, TestSize.Level1)
     OH_PixelmapNative* srcImg = nullptr;
     OH_PixelmapNative* gainmap = nullptr;
     OH_PixelmapNative* dstImg = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->Decompose(srcImg, dstImg, gainmap);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->Decompose(srcImg, dstImg, gainmap);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -670,8 +704,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_38, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_GenerateMetadata(instance2, srcImg);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->GenerateMetadata(srcImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->GenerateMetadata(srcImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -688,8 +724,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_39, TestSize.Level1)
     OH_ImageProcessing_Create(&instance2, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     OH_ImageProcessing_GenerateMetadata(instance2, srcImg);
     OH_ImageProcessing_Destroy(instance2);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->GenerateMetadata(srcImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->GenerateMetadata(srcImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -714,8 +752,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_40_1, TestSize.Level1)
     OH_ImageProcessing_InitializeEnvironment();
     OH_ImageProcessing* instance = nullptr;
     OH_PixelmapNative* srcImg = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->GenerateMetadata(srcImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->GenerateMetadata(srcImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -750,8 +790,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41_1, TestSize.Level1)
     OH_PixelmapNative* dstImg = nullptr;
     CreateEmptyPixelmap(&srcImg, 720, 960, PIXEL_FORMAT_RGBA_8888);
     CreateEmptyPixelmap(&dstImg, 1440, 1920, PIXEL_FORMAT_RGBA_8888);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->EnhanceDetail(srcImg, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->EnhanceDetail(srcImg, dstImg);
 #ifdef SKIA_ENABLE
     EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
 #else
@@ -790,8 +832,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_42_1, TestSize.Level1)
     OH_PixelmapNative* dstImg = nullptr;
     CreateEmptyPixelmap(&srcImg, 720, 960, PIXEL_FORMAT_BGRA_8888);
     CreateEmptyPixelmap(&dstImg, 1440, 1920, PIXEL_FORMAT_BGRA_8888);
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->EnhanceDetail(srcImg, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->EnhanceDetail(srcImg, dstImg);
 #ifdef SKIA_ENABLE
     EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
 #else
@@ -822,8 +866,10 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_43_1, TestSize.Level1)
     OH_ImageProcessing* instance = nullptr;
     OH_PixelmapNative* srcImg = nullptr;
     OH_PixelmapNative* dstImg = nullptr;
-    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
-    ImageProcessing_ErrorCode ret = instance->GetObj()->EnhanceDetail(srcImg, dstImg);
+    OH_ImageProcessing::Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER,
+        ImageProcessingCapiCapability::Get().GetOpenGLContext(),
+        ImageProcessingCapiCapability::Get().GetClContext());
+    ImageProcessing_ErrorCode ret = instance->GetImageProcessing()->EnhanceDetail(srcImg, dstImg);
     EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing::Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();

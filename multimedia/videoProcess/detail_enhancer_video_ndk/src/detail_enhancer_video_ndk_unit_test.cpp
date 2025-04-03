@@ -22,8 +22,7 @@
 
 #include "video_processing.h"
 #include "video_processing_impl.h"
-#include "video_processing_loader.h"
-#include "video_processing_native.h"
+#include "video_processing_capi_capability.h"
 #include "video_processing_types.h"
 #include "video_processing_callback_impl.h"
 #include "video_processing_callback_native.h"
@@ -178,39 +177,6 @@ uint32_t DetailEnhancerVideoNdkUnitTest::FlushSurf(OHNativeWindowBuffer* ohNativ
     return 0;
 }
 
-// load test
-HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_00, TestSize.Level1)
-{
-    VideoProcessingNdkLoader& ndkLoader = VideoProcessingNdkLoader::Get();
-    ndkLoader.LoadLibrary();
-    ndkLoader.LoadLibrary();
-    ndkLoader.InitializeEnvironment();
-    ndkLoader.DeinitializeEnvironment();
-    VideoProcessing_ErrorCode ret = OH_VideoProcessing_InitializeEnvironment();
-    OH_VideoProcessing* instance = nullptr;
-    ret = OH_VideoProcessing_Create(&instance, CREATE_TYPE);
-    ndkLoader.Create(&instance, CREATE_TYPE);
-    ndkLoader.LoadLibraryLocked();
-    VideoProcessing_Callback* callback = nullptr;
-    OH_VideoProcessingCallback_Create(&callback);
-    ndkLoader.RegisterCallback(instance, callback, nullptr);
-    OHNativeWindow* window = nullptr;
-    ndkLoader.GetSurface(nullptr, nullptr);
-    ndkLoader.SetSurface(instance, window);
-    ndkLoader.GetSurface(instance, &window);
-    OH_AVFormat* parameter = nullptr;
-    ndkLoader.SetParameter(instance, parameter);
-    ndkLoader.GetParameter(instance, parameter);
-    ndkLoader.Start(instance);
-    ndkLoader.Stop(instance);
-    ndkLoader.RenderOutputBuffer(instance, 0);
-    ndkLoader.Create(&callback);
-    ndkLoader.Destroy(callback);
-    ndkLoader.Destroy(instance);
-    ndkLoader.UnloadLibrary();
-    ndkLoader.UnloadLibrary();
-}
-
 // initialize context with nullptr
 HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_01, TestSize.Level1)
 {
@@ -229,7 +195,7 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_01_1, TestSize.Level1)
 {
     VideoProcessing_ErrorCode ret = OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    ret = OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    ret = OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     ret = OH_VideoProcessing::Destroy(instance);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
@@ -250,7 +216,8 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_02, TestSize.Level1)
 HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_02_1, TestSize.Level1)
 {
     OH_VideoProcessing* instance = nullptr;
-    VideoProcessing_ErrorCode ret = OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    VideoProcessing_ErrorCode ret = OH_VideoProcessing::Create(&instance, CREATE_TYPE,
+        VideoProcessingCapiCapability::GetOpenGLContext());
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     ret = OH_VideoProcessing::Destroy(instance);
 }
@@ -261,7 +228,7 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_03_1, TestSize.Level1)
     int badCreateType = 0x1;
     VideoProcessing_ErrorCode ret = OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    ret = OH_VideoProcessing::Create(&instance, badCreateType);
+    ret = OH_VideoProcessing::Create(&instance, badCreateType, VideoProcessingCapiCapability::GetOpenGLContext());
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     ret = OH_VideoProcessing::Destroy(instance);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
@@ -386,9 +353,9 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_14_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = nullptr;
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetParameter(parameter);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -414,11 +381,11 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_15_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH);
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetParameter(parameter);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -444,11 +411,11 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_16_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM);
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetParameter(parameter);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -474,11 +441,11 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_17_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_LOW);
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetParameter(parameter);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -504,11 +471,11 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_18_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_NONE);
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetParameter(parameter);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -519,9 +486,9 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_19_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
-    VideoProcessing_ErrorCode ret = instance->GetObj()->GetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->GetParameter(parameter);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -545,9 +512,9 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_20_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = nullptr;
-    VideoProcessing_ErrorCode ret = instance->GetObj()->GetParameter(parameter);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->GetParameter(parameter);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -575,13 +542,13 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_21_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameterSetted = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameterSetted, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH);
-    instance->GetObj()->SetParameter(parameterSetted);
+    instance->GetVideoProcessing()->SetParameter(parameterSetted);
     OH_AVFormat* parameterGot = OH_AVFormat_Create();
-    VideoProcessing_ErrorCode ret = instance->GetObj()->GetParameter(parameterGot);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->GetParameter(parameterGot);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -611,13 +578,13 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_22_1, TestSize.Level1)
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
     OH_VideoProcessing* instance2 = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
-    OH_VideoProcessing::Create(&instance2, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
+    OH_VideoProcessing::Create(&instance2, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OHNativeWindow* window = nullptr;
     OHNativeWindow* window2 = nullptr;
-    instance->GetObj()->GetSurface(&window);
-    instance->GetObj()->GetSurface(&window2);
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetSurface(window2);
+    instance->GetVideoProcessing()->GetSurface(&window);
+    instance->GetVideoProcessing()->GetSurface(&window2);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetSurface(window2);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing::Destroy(instance2);
@@ -642,9 +609,9 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_23_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OHNativeWindow* window = nullptr;
-    VideoProcessing_ErrorCode ret = instance->GetObj()->SetSurface(window);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->SetSurface(window);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -668,9 +635,9 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_24_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OHNativeWindow* window = nullptr;
-    VideoProcessing_ErrorCode ret = instance->GetObj()->GetSurface(&window);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->GetSurface(&window);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
@@ -694,7 +661,7 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_25_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_ErrorCode ret = VideoProcessing_Callback::Create(&callback);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
@@ -721,7 +688,7 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_26_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_Callback::Create(&callback);
     VideoProcessing_ErrorCode ret = VideoProcessing_Callback::Destroy(callback);
@@ -773,18 +740,18 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_28_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_ErrorCode ret = VideoProcessing_Callback::Create(&callback);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = callback->GetObj()->BindOnError(OnError);
+    ret = callback->GetInnerCallback()->BindOnError(OnError);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = callback->GetObj()->BindOnState(OnState);
+    ret = callback->GetInnerCallback()->BindOnState(OnState);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = callback->GetObj()->BindOnNewOutputBuffer(OnNewOutputBuffer);
+    ret = callback->GetInnerCallback()->BindOnNewOutputBuffer(OnNewOutputBuffer);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     auto userData = VIDEO_PROCESSING_STATE_STOPPED;
-    ret = instance->GetObj()->RegisterCallback(callback, &userData);
+    ret = instance->GetVideoProcessing()->RegisterCallback(callback, &userData);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     VideoProcessing_Callback::Destroy(callback);
     OH_VideoProcessing::Destroy(instance);
@@ -819,18 +786,18 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_29_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_ErrorCode ret = VideoProcessing_Callback::Create(&callback);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = callback->GetObj()->BindOnError(nullptr);
+    ret = callback->GetInnerCallback()->BindOnError(nullptr);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = callback->GetObj()->BindOnState(nullptr);
+    ret = callback->GetInnerCallback()->BindOnState(nullptr);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = callback->GetObj()->BindOnNewOutputBuffer(nullptr);
+    ret = callback->GetInnerCallback()->BindOnNewOutputBuffer(nullptr);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     auto userData = VIDEO_PROCESSING_STATE_STOPPED;
-    ret = instance->GetObj()->RegisterCallback(callback, &userData);
+    ret = instance->GetVideoProcessing()->RegisterCallback(callback, &userData);
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     VideoProcessing_Callback::Destroy(callback);
     OH_VideoProcessing::Destroy(instance);
@@ -862,14 +829,14 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_30_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_Callback::Create(&callback);
-    callback->GetObj()->BindOnError(OnError);
-    callback->GetObj()->BindOnState(OnState);
-    callback->GetObj()->BindOnNewOutputBuffer(OnNewOutputBuffer);
+    callback->GetInnerCallback()->BindOnError(OnError);
+    callback->GetInnerCallback()->BindOnState(OnState);
+    callback->GetInnerCallback()->BindOnNewOutputBuffer(OnNewOutputBuffer);
     auto userData = nullptr;
-    VideoProcessing_ErrorCode ret = instance->GetObj()->RegisterCallback(callback, &userData);
+    VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->RegisterCallback(callback, &userData);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
     ret = VideoProcessing_Callback::Destroy(callback);
     EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
@@ -962,32 +929,32 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_33_1, TestSize.Level1)
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
     OH_VideoProcessing* instance2 = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
-    OH_VideoProcessing::Create(&instance2, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
+    OH_VideoProcessing::Create(&instance2, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_Callback::Create(&callback);
-    callback->GetObj()->BindOnError(OnError);
-    callback->GetObj()->BindOnState(OnState);
-    callback->GetObj()->BindOnNewOutputBuffer(OnNewOutputBuffer);
+    callback->GetInnerCallback()->BindOnError(OnError);
+    callback->GetInnerCallback()->BindOnState(OnState);
+    callback->GetInnerCallback()->BindOnNewOutputBuffer(OnNewOutputBuffer);
     auto userData = VIDEO_PROCESSING_STATE_STOPPED;
-    instance->GetObj()->RegisterCallback(callback, &userData);
+    instance->GetVideoProcessing()->RegisterCallback(callback, &userData);
     OH_AVFormat* parameterSetted = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameterSetted, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH);
-    instance->GetObj()->SetParameter(parameterSetted);
+    instance->GetVideoProcessing()->SetParameter(parameterSetted);
     OHNativeWindow* window = nullptr;
     OHNativeWindow* window2 = nullptr;
-    instance->GetObj()->GetSurface(&window);
-    instance->GetObj()->GetSurface(&window2);
-    instance->GetObj()->SetSurface(window2);
-    VideoProcessing_ErrorCode ret =  instance->GetObj()->Start();
+    instance->GetVideoProcessing()->GetSurface(&window);
+    instance->GetVideoProcessing()->GetSurface(&window2);
+    instance->GetVideoProcessing()->SetSurface(window2);
+    VideoProcessing_ErrorCode ret =  instance->GetVideoProcessing()->Start();
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_NativeWindow_NativeWindowHandleOpt(window, SET_FORMAT, NV12_FMT_INDEX);
     OH_NativeWindow_NativeWindowHandleOpt(window, SET_BUFFER_GEOMETRY, DEFAULT_WIDTH, DEFAULT_HEIGHT);
     int fenceFd = -1;
     OH_NativeWindow_NativeWindowRequestBuffer(window, &ohNativeWindowBuffer, &fenceFd);
     FlushSurf(ohNativeWindowBuffer, window);
-    ret = instance->GetObj()->Stop();
+    ret = instance->GetVideoProcessing()->Stop();
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     VideoProcessing_Callback::Destroy(callback);
     OH_VideoProcessing::Destroy(instance);
@@ -1042,32 +1009,32 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_34_1, TestSize.Level1)
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
     OH_VideoProcessing* instance2 = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
-    OH_VideoProcessing::Create(&instance2, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
+    OH_VideoProcessing::Create(&instance2, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     VideoProcessing_Callback* callback = nullptr;
     VideoProcessing_Callback::Create(&callback);
-    callback->GetObj()->BindOnError(nullptr);
-    callback->GetObj()->BindOnState(nullptr);
-    callback->GetObj()->BindOnNewOutputBuffer(nullptr);
+    callback->GetInnerCallback()->BindOnError(nullptr);
+    callback->GetInnerCallback()->BindOnState(nullptr);
+    callback->GetInnerCallback()->BindOnNewOutputBuffer(nullptr);
     auto userData = VIDEO_PROCESSING_STATE_STOPPED;
-    instance->GetObj()->RegisterCallback(callback, &userData);
+    instance->GetVideoProcessing()->RegisterCallback(callback, &userData);
     OH_AVFormat* parameterSetted = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameterSetted, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH);
-    instance->GetObj()->SetParameter(parameterSetted);
+    instance->GetVideoProcessing()->SetParameter(parameterSetted);
     OHNativeWindow* window = nullptr;
     OHNativeWindow* window2 = nullptr;
-    instance->GetObj()->GetSurface(&window);
-    instance->GetObj()->GetSurface(&window2);
-    instance->GetObj()->SetSurface(window2);
-    VideoProcessing_ErrorCode ret =  instance->GetObj()->Start();
+    instance->GetVideoProcessing()->GetSurface(&window);
+    instance->GetVideoProcessing()->GetSurface(&window2);
+    instance->GetVideoProcessing()->SetSurface(window2);
+    VideoProcessing_ErrorCode ret =  instance->GetVideoProcessing()->Start();
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_NativeWindow_NativeWindowHandleOpt(window, SET_FORMAT, NV12_FMT_INDEX);
     OH_NativeWindow_NativeWindowHandleOpt(window, SET_BUFFER_GEOMETRY, DEFAULT_WIDTH, DEFAULT_HEIGHT);
     int fenceFd = -1;
     OH_NativeWindow_NativeWindowRequestBuffer(window, &ohNativeWindowBuffer, &fenceFd);
     FlushSurf(ohNativeWindowBuffer, window);
-    ret = instance->GetObj()->Stop();
+    ret = instance->GetVideoProcessing()->Stop();
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     VideoProcessing_Callback::Destroy(callback);
     OH_VideoProcessing::Destroy(instance);
@@ -1118,27 +1085,27 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_34_3, TestSize.Level1)
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
     OH_VideoProcessing* instance2 = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
-    OH_VideoProcessing::Create(&instance2, CREATE_TYPE);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
+    OH_VideoProcessing::Create(&instance2, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     auto userData = VIDEO_PROCESSING_STATE_STOPPED;
-    instance->GetObj()->RegisterCallback(nullptr, &userData);
+    instance->GetVideoProcessing()->RegisterCallback(nullptr, &userData);
     OH_AVFormat* parameterSetted = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameterSetted, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL,
         VIDEO_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH);
-    instance->GetObj()->SetParameter(parameterSetted);
+    instance->GetVideoProcessing()->SetParameter(parameterSetted);
     OHNativeWindow* window = nullptr;
     OHNativeWindow* window2 = nullptr;
-    instance->GetObj()->GetSurface(&window);
-    instance->GetObj()->GetSurface(&window2);
-    instance->GetObj()->SetSurface(window2);
-    VideoProcessing_ErrorCode ret =  instance->GetObj()->Start();
+    instance->GetVideoProcessing()->GetSurface(&window);
+    instance->GetVideoProcessing()->GetSurface(&window2);
+    instance->GetVideoProcessing()->SetSurface(window2);
+    VideoProcessing_ErrorCode ret =  instance->GetVideoProcessing()->Start();
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_NativeWindow_NativeWindowHandleOpt(window, SET_FORMAT, NV12_FMT_INDEX);
     OH_NativeWindow_NativeWindowHandleOpt(window, SET_BUFFER_GEOMETRY, DEFAULT_WIDTH, DEFAULT_HEIGHT);
     int fenceFd = -1;
     OH_NativeWindow_NativeWindowRequestBuffer(window, &ohNativeWindowBuffer, &fenceFd);
     FlushSurf(ohNativeWindowBuffer, window);
-    ret = instance->GetObj()->Stop();
+    ret = instance->GetVideoProcessing()->Stop();
     EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing::Destroy(instance2);
@@ -1161,8 +1128,8 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_35_1, TestSize.Level1)
 {
     OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
-    OH_VideoProcessing::Create(&instance, CREATE_TYPE);
-    instance->GetObj()->RenderOutputBuffer(0);
+    OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
+    instance->GetVideoProcessing()->RenderOutputBuffer(0);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
 }
@@ -1256,18 +1223,6 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_40, TestSize.Level1)
     EXPECT_EQ(sample->WaitAndStopSampleImpl(), VIDEO_PROCESSING_SUCCESS);
 }
 
-HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_41, TestSize.Level1)
-{
-    DetailEnhancer enhancer;
-    enhancer.Initialize();
-    enhancer.Initialize();
-    sptr<SurfaceBuffer> input = CreateSurfaceBuffer(OHOS::GRAPHIC_PIXEL_FMT_RGBA_8888, 1024, 1024);
-    sptr<SurfaceBuffer> output = CreateSurfaceBuffer(OHOS::GRAPHIC_PIXEL_FMT_RGBA_8888, 1024, 1024);
-    enhancer.Process(input, output);
-    enhancer.Deinitialize();
-    enhancer.Deinitialize();
-}
-
 #ifdef SKIA_ENABLE
 HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_42, TestSize.Level1)
 {
@@ -1305,68 +1260,6 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_42, TestSize.Level1)
     EXPECT_EQ(ret, ALGO_SUCCESS);
 }
 #endif
-
-// native impl inner test
-HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_43, TestSize.Level1)
-{
-    OH_VideoProcessing* instance = nullptr;
-    VideoProcessing_ErrorCode ret = OH_VideoProcessing_Create(&instance, CREATE_TYPE);
-    VideoProcessingNative videoNative(instance);
-    ret = videoNative.InitializeInner();
-    EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    OHOS::Media::Format parameter;
-    videoNative.SetSurface(nullptr);
-    videoNative.GetSurface(nullptr);
-    OH_VideoProcessing* instanceTmp = nullptr;
-    OH_VideoProcessing::Create(&instanceTmp, CREATE_TYPE);
-    OHNativeWindow* window = nullptr;
-    struct Region region;
-    struct Region::Rect *rect = new Region::Rect();
-    rect->x = 0;
-    rect->y = 0;
-    rect->w = DEFAULT_WIDTH;
-    rect->h = DEFAULT_HEIGHT;
-    region.rects = rect;
-    NativeWindowHandleOpt(window, SET_UI_TIMESTAMP, GetSystemTime());
-    instanceTmp->GetObj()->GetSurface(&window);
-    videoNative.SetSurface(window);
-    videoNative.GetSurface(nullptr);
-    ret = videoNative.SetParameter(parameter);
-    EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    ret = videoNative.GetParameter(parameter);
-    EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    sptr<SurfaceBuffer> input = CreateSurfaceBuffer(OHOS::GRAPHIC_PIXEL_FMT_RGBA_8888, 1024, 1024);
-    sptr<SurfaceBuffer> output = CreateSurfaceBuffer(OHOS::GRAPHIC_PIXEL_FMT_RGBA_8888, 1024, 1024);
-    videoNative.ProcessBuffers();
-    ret = videoNative.Process(input, output);
-    EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
-    videoNative.UpdateRequestCfg(input, bufferConfig1);
-    videoNative.UpdateRequestCfg(input, bufferConfig2);
-    videoNative.UpdateRequestCfg(input, bufferConfig3);
-    videoNative.UpdateRequestCfg(input, bufferConfig4);
-    videoNative.Deinitialize();
-    videoNative.SetProducerSurface(*window, bufferConfig4);
-    videoNative.OnError(VIDEO_PROCESSING_SUCCESS);
-    videoNative.OnNewOutputBuffer(1);
-    videoNative.OnProducerBufferReleased();
-    videoNative.RenderOutputBufferInner(1);
-    videoNative.ProcessBuffers();
-    std::unique_lock<std::mutex> lock;
-    videoNative.WaitCV([this] {return 1;}, lock);
-}
-
-HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_44, TestSize.Level1)
-{
-    VideoProcessingNdkLoader::Get().UnloadLibrary();
-    VideoProcessingNdkLoader::Get().LoadLibrary();
-    VideoProcessingNdkLoader::Get().UnloadLibrary();
-    VideoProcessingNdkLoader::Get().LoadLibrary();
-    VideoProcessingNdkLoader::Get().LoadLibrary();
-    VideoProcessingNdkLoader::Get().UnloadLibrary();
-    VideoProcessingNdkLoader::Get().UnloadLibrary();
-    VideoProcessingNdkLoader::Get().UnloadLibrary();
-}
-
 }
 } // namespace Media
 } // namespace OHOS
