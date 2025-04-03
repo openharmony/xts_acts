@@ -400,6 +400,15 @@
         "label": "$string:TestAbility_label",
         "description": "$string:TestAbility_desc",
         "type": "assetAcceleration"
+    },
+    {
+        "description": "$string:form_description",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "name": "formEdit",
+        "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+        "type": "formEdit",
+        "visible": true
     }
   ],
   "requestPermissions": [
