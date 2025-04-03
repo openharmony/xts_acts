@@ -19,6 +19,7 @@ import { ComponentInfo, RectInfo } from './Interfaces';
 import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs';
+import { componentUtils } from '@kit.ArkUI';
 
 export default class Utils {
   static sleep(time: number) {
