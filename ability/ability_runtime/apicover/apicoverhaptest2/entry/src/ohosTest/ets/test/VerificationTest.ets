@@ -44,8 +44,8 @@ export default function verificationTest() {
     beforeEach(async (done: Function) => {
       TAG = 'beforeEach ==>';
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
-        bundleName: 'com.example.apicoverhaptest',
-        abilityName: 'com.example.apicoverhaptest.MainAbility'
+        bundleName: 'com.example.apisystest',
+        abilityName: 'com.example.apisystest.MainAbility'
       })
         .then((data) => {
           console.info(TAG + "startAbility com.example.apicoverhaptest.MainAbility = " + JSON.stringify(data));
