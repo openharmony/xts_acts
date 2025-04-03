@@ -35,6 +35,8 @@ add_library(nativerender SHARED
     eventInfo/eventInfo.cpp
     snapShot/snap_shot.cpp
     snapShot/container.cpp
+    component/swiper_component.cpp
+    swiper/swiper_change_index_test.cpp
 )
 
 add_library(nativefunc SHARED
