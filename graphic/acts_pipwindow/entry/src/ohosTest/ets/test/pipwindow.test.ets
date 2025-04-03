@@ -2921,24 +2921,25 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            await pipController.startPiP();
+            await sleep(1000);
+            pipController.on('pipWindowSizeChange', callback);
+            pipController.updateContentSize(800, 600);
+            await sleep(1000);
+            let pipWindowInfo = await pipController.getPiPWindowInfo();
+            let pipInfoSize = pipWindowInfo.size
+            console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo height is ${pipInfoSize.scale}`)
+            console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
+            expect(pipSize.width).assertEqual(pipInfoSize.width);
+            expect(pipSize.height).assertEqual(pipInfoSize.height);
+            expect(Math.abs(pipSize.scale - pipInfoSize.scale)).assertLessOrEqual(0.01)
+            pipController.off('pipWindowSizeChange', callback);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          await pipController.startPiP();
-          await sleep(1000);
-          pipController.on('pipWindowSizeChange', callback);
-          pipController.updateContentSize(800, 600);
-          await sleep(1000);
-          let pipWindowInfo = await pipController.getPiPWindowInfo();
-          let pipInfoSize = pipWindowInfo.size
-          console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo height is ${pipInfoSize.scale}`)
-          console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
-          expect(pipSize.width).assertEqual(pipInfoSize.width);
-          expect(pipSize.height).assertEqual(pipInfoSize.height);
-          expect(Math.abs(pipSize.scale - pipInfoSize.scale)).assertLessOrEqual(0.01)
-          pipController.off('pipWindowSizeChange', callback);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -2985,20 +2986,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3045,20 +3047,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3105,20 +3108,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3165,20 +3169,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3225,20 +3230,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`);
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`);
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`);
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`);
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3291,27 +3297,28 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          await pipController.startPiP();
-          pipController.on('controlEvent', callback);
-          let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
-          let BoundsCenter = await button1.getBoundsCenter();
-          let x = BoundsCenter.x;
-          let y = BoundsCenter.y;
-          console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
-          await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
-            await component.click();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            await pipController.startPiP();
+            pipController.on('controlEvent', callback);
+            let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let BoundsCenter = await button1.getBoundsCenter();
+            let x = BoundsCenter.x;
+            let y = BoundsCenter.y;
+            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
+              await component.click();
+              await sleep(1000);
+              await driver.click(x, y + 182);
+            })
             await sleep(1000);
-            await driver.click(x, y + 182);
-          })
-          await sleep(1000);
-          expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
-          expect(controlParam.status).assertEqual(pipWindow.PiPControlStatus.PAUSE);
-          await pipController.stopPiP();
-          await sleep(10000)
-          pipController.off('controlEvent', callback);
-          done();
+            expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
+            expect(controlParam.status).assertEqual(pipWindow.PiPControlStatus.PAUSE);
+            await pipController.stopPiP();
+            await sleep(10000)
+            pipController.off('controlEvent', callback);
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           pipController?.off('controlEvent', callback);
@@ -3367,26 +3374,27 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          await pipController.startPiP();
-          pipController.on('controlEvent', callback);
-          pipController.off('controlEvent');
-          let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
-          let BoundsCenter = await button1.getBoundsCenter();
-          let x = BoundsCenter.x;
-          let y = BoundsCenter.y;
-          console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
-          await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
-            await component.click();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            await pipController.startPiP();
+            pipController.on('controlEvent', callback);
+            pipController.off('controlEvent');
+            let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let BoundsCenter = await button1.getBoundsCenter();
+            let x = BoundsCenter.x;
+            let y = BoundsCenter.y;
+            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
+              await component.click();
+              await sleep(1000);
+              await driver.click(x, y + 182);
+            })
             await sleep(1000);
-            await driver.click(x, y + 182);
-          })
-          await sleep(1000);
-          expect(controlParam).assertEqual(undefined);
-          await pipController.stopPiP();
-          await sleep(1000)
-          done();
+            expect(controlParam).assertEqual(undefined);
+            await pipController.stopPiP();
+            await sleep(1000)
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           pipController?.off('controlEvent');
@@ -3433,16 +3441,17 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            await pipController.updateContentNode(null);
-            console.log(`${message} Succeeded updateContentNode`);
-            done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code == 801 || err.code == 401).assertTrue();
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.updateContentNode(null);
+              console.log(`${message} Succeeded updateContentNode`);
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code == 401).assertTrue();
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
@@ -3487,22 +3496,23 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            await pipController.startPiP();
-            console.log(`${message} Succeeded startPiP`);
-            await sleep(1000);
-            await pipController.updateContentNode(contentNode);
-            console.log(`${message} Succeeded updateContentNode`);
-            expect(true).assertTrue();
-            await pipController.stopPiP();
-            await sleep(1000)
-            done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code).assertEqual(801);
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              console.log(`${message} Succeeded startPiP`);
+              await sleep(1000);
+              await pipController.updateContentNode(contentNode);
+              console.log(`${message} Succeeded updateContentNode`);
+              expect(true).assertTrue();
+              await pipController.stopPiP();
+              await sleep(1000)
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code).assertEqual(801);
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
@@ -3547,22 +3557,23 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            await pipController.startPiP();
-            await sleep(1000);
-            console.log(`${message} Succeeded startPiP`);
-            await pipController.updateContentNode(contentNode);
-            console.log(`${message} Succeeded updateContentNode`);
-            expect(true).assertTrue();
-            await pipController.stopPiP();
-            await sleep(1000)
-            done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code).assertEqual(801);
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.updateContentNode(contentNode);
+              console.log(`${message} Succeeded updateContentNode`);
+              expect(true).assertTrue();
+              await pipController.stopPiP();
+              await sleep(1000)
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code).assertEqual(801);
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
@@ -3605,17 +3616,18 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            pipController.updateContentSize(null, null);
-            console.log(`${message} Succeeded updateContentSize`);
-            expect().assertFail();
-            done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code == 801 || err.code == 401).assertTrue();
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              pipController.updateContentSize(null, null);
+              console.log(`${message} Succeeded updateContentSize`);
+              expect().assertFail();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code == 401).assertTrue();
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
