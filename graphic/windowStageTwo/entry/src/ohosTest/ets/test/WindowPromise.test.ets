@@ -2418,7 +2418,10 @@ export default function windowPromiseTest() {
           await subWindowClass.setUIContent('testability/pages/First/index1');
           await sleep(300);
           await subWindowClass.showWindow();
-          await subWindowClass.resizeAsync(500,500);
+          let minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+          let minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+          console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
+          await subWindowClass.resizeAsync(minWidth,minHeight);
           subWindowClass.on('windowSizeChange', async (data) => {
             console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
             let subWindowRect = data;
@@ -2450,7 +2453,7 @@ export default function windowPromiseTest() {
             console.log(msgStr + '此设备不支持');
             done();
           } else {
-            console.log(msgStr + 'Failed to setWindowMask');
+            console.log(msgStr + 'Failed to getWindowLimits');
             expect(false).assertTrue();
             done();
           }
@@ -2482,6 +2485,10 @@ export default function windowPromiseTest() {
           await subWindowClass.setUIContent('testability/pages/First/index1');
           await sleep(300);
           await subWindowClass.showWindow();
+          let minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+          let minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+          console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
+          await subWindowClass.resizeAsync(minWidth,minHeight);
           let subWindowRect1 = subWindowClass.getWindowProperties().windowRect;
           console.info(msgStr + 'Succeeded in get  subWindowRect1. Data: ' + JSON.stringify(subWindowRect1));
           let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(false);
@@ -2515,7 +2522,7 @@ export default function windowPromiseTest() {
             console.log(msgStr + '此设备不支持');
             done();
           } else {
-            console.log(msgStr + 'Failed to setWindowMask');
+            console.log(msgStr + 'Failed to getWindowLimits');
             expect(false).assertTrue();
             done();
           }
