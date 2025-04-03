@@ -20,6 +20,8 @@ import openCustomDialogLevelOrder from './dialog/openCustomDialogLevelOrder.test
 import openCustomDialogWithConOrder from './dialog/openCustomDialogWithConOrder.test'
 import presentCustomDialogOrder from './dialog/presentCustomDialogOrder.test'
 import alertDialogLevelOrder from './dialog/alertDialogLevelOrder.test'
+import bindMenuHapticFeedbackMode from './bindMenuTest/bindMenuHapticFeedbackMode.test';
+import bindContextMenuHapticFeedbackMode from './bindContextMenuTest/bindContextMenuHapticFeedback.test'
 
 export default function testsuite() {
     buttonType()
@@ -30,4 +32,6 @@ export default function testsuite() {
     openCustomDialogWithConOrder()
     presentCustomDialogOrder()
     alertDialogLevelOrder()
+    bindMenuHapticFeedbackMode()
+    bindContextMenuHapticFeedbackMode()
 }
