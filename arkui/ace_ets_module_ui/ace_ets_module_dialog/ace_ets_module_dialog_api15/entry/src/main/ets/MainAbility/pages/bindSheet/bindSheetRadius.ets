@@ -102,19 +102,7 @@ struct bindSheetRadius {
           radius: this.radius,
           height: '80%',
           backgroundColor: Color.Green,
-          preferType: SheetType.BOTTOM,
-          onWillAppear: () => {
-            console.log('BindSheet onWillAppear.')
-          },
-          onAppear: () => {
-            console.log('BindSheet onAppear.')
-          },
-          onWillDisappear: () => {
-            console.log('BindSheet onWillDisappear.')
-          },
-          onDisappear: () => {
-            console.log('BindSheet onDisappear.')
-          }
+          preferType: SheetType.BOTTOM
         })
     }
     .justifyContent(FlexAlign.Center)
