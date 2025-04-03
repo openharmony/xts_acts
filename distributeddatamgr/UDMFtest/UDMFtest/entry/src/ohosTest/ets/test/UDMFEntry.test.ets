@@ -1810,6 +1810,7 @@ export default function UDMFEntryTest() {
       recordB.addEntry(uniformTypeDescriptor.UniformDataType.CONTENT_FORM, contentFormB);
 
       unifiedData.addRecord(recordA);
+      unifiedData.addRecord(recordB);
       unifiedData.addRecord(recordC);
       unifiedData.properties.tag = "records_to_entries_data_format";
       await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
@@ -2428,5 +2429,298 @@ export default function UDMFEntryTest() {
         expect(e.code).assertEqual("401");
       }
     })  
+ /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UDMFEntryTest_2700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFEntryTest_2700
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let plainTextA: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example1',
+        abstract: 'this is abstract',
+      }
+      let recordA =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextA);
+      unifiedData.addRecord(recordA);
+      let plainTextB: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example2',
+        abstract: 'this is abstract',
+      }
+      let recordB =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextB);
+      unifiedData.addRecord(recordB);
+      let plainTextC: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example2',
+        abstract: 'this is abstract',
+      }
+      let recordC =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextC);
+      unifiedData.addRecord(recordC);
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            unifiedDataChannel.convertRecordsToEntries( ret[i]);
+            let records = ret[i].getRecords();
+            let recordSize = records.length;
+            console.info(`recordSize.size = ${recordSize}`);
+            expect(recordSize != 1).assertEqual(true);
+            expect(recordSize).assertEqual(3);
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              if (unifiedDataRecord.getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+                let plainObj: uniformDataStruct.PlainText =
+                  unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+                if (plainObj != undefined) {
+                  if (plainObj["textContent"] == plainTextA.textContent) {
+                    expect(plainObj["uniformDataType"]).assertEqual(plainTextA.uniformDataType);
+                    expect(plainObj["textContent"]).assertEqual(plainTextA.textContent);
+                    expect(plainObj["abstract"]).assertEqual(plainTextA.abstract);
+                  }
+                  if (plainObj["textContent"] == plainTextB.textContent) {
+                    expect(plainObj["uniformDataType"]).assertEqual(plainTextB.uniformDataType);
+                    expect(plainObj["textContent"]).assertEqual(plainTextB.textContent);
+                    expect(plainObj["abstract"]).assertEqual(plainTextB.abstract);
+                  }
+                  if (plainObj["textContent"] == plainTextC.textContent) {
+                    expect(plainObj["uniformDataType"]).assertEqual(plainTextC.uniformDataType);
+                    expect(plainObj["textContent"]).assertEqual(plainTextC.textContent);
+                    expect(plainObj["abstract"]).assertEqual(plainTextC.abstract);
+                  }
+                }
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+    })
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UDMFEntryTest_2800
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFEntryTest_2800
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let plainTextA: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example1',
+        abstract: 'this is abstract',
+      }
+      let recordA =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextA);
+      unifiedData.addRecord(recordA);
+      let plainTextB: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example2',
+        abstract: 'this is abstract',
+      }
+      let recordB =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextB);
+      unifiedData.addRecord(recordB);
+      let plainTextC: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example2',
+        abstract: 'this is abstract',
+      }
+      let recordC =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextC);
+      unifiedData.addRecord(recordC);
+      unifiedData.properties.tag = "records_to_entries_data_forma";
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            unifiedDataChannel.convertRecordsToEntries( ret[i]);
+            let records = ret[i].getRecords();
+            let recordSize = records.length;
+            console.info(`recordSize.size = ${recordSize}`);
+            expect(recordSize != 1).assertEqual(true);
+            expect(recordSize).assertEqual(3);
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              if (unifiedDataRecord.getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+                let plainObj: uniformDataStruct.PlainText =
+                  unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+                if (plainObj != undefined) {
+                  if (plainObj["textContent"] == plainTextA.textContent) {
+                    expect(plainObj["uniformDataType"]).assertEqual(plainTextA.uniformDataType);
+                    expect(plainObj["textContent"]).assertEqual(plainTextA.textContent);
+                    expect(plainObj["abstract"]).assertEqual(plainTextA.abstract);
+                  }
+                  if (plainObj["textContent"] == plainTextB.textContent) {
+                    expect(plainObj["uniformDataType"]).assertEqual(plainTextB.uniformDataType);
+                    expect(plainObj["textContent"]).assertEqual(plainTextB.textContent);
+                    expect(plainObj["abstract"]).assertEqual(plainTextB.abstract);
+                  }
+                  if (plainObj["textContent"] == plainTextC.textContent) {
+                    expect(plainObj["uniformDataType"]).assertEqual(plainTextC.uniformDataType);
+                    expect(plainObj["textContent"]).assertEqual(plainTextC.textContent);
+                    expect(plainObj["abstract"]).assertEqual(plainTextC.abstract);
+                  }
+                }
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+    })
+
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UDMFEntryTest_2900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFEntryTest_2900
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let plainTextA: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example1',
+        abstract: 'this is abstract',
+      }
+      let recordA =
+        new unifiedDataChannel.UnifiedRecord();
+      recordA.addEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextA);
+      unifiedData.addRecord(recordA);
+      unifiedData.properties.tag = "records_to_entries_data_format";
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            unifiedDataChannel.convertRecordsToEntries( ret[i]);
+            let records = ret[i].getRecords();
+            let recordSize = records.length;
+            console.info(`recordSize.size = ${recordSize}`);
+            expect(recordSize).assertEqual(1);
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              if (unifiedDataRecord.getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+                let plainObj: uniformDataStruct.PlainText =
+                  unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+                if (plainObj != undefined) {
+                  expect(plainObj["uniformDataType"]).assertEqual(plainTextA.uniformDataType);
+                  expect(plainObj["textContent"]).assertEqual(plainTextA.textContent);
+                  expect(plainObj["abstract"]).assertEqual(plainTextA.abstract);
+                }
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+    })
+
+
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UDMFEntryTest_3000
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFEntryTest_3000
+     * @tc.desc      : Verify the properties of the contentForm type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFEntryTest_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      };
+      let unifiedData = new unifiedDataChannel.UnifiedData();
+      let plainTextA: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'This is plainText textContent example1',
+        abstract: 'this is abstract',
+      }
+      let recordA =
+        new unifiedDataChannel.UnifiedRecord();
+      recordA.addEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextA);
+      unifiedData.addRecord(recordA);
+      unifiedData.properties.tag = "records_to_entries_data_format";
+      await unifiedDataChannel.insertData(options, unifiedData).then(async (data) => {
+        let options1: unifiedDataChannel.Options = {
+          intention: unifiedDataChannel.Intention.DATA_HUB,
+          key: data
+        };
+        await unifiedDataChannel.queryData(options1).then(async (ret) => {
+          let size = ret.length;
+          console.info(`data.size = ${size}`);
+          for (let i = 0; i < size; i++) {
+            unifiedDataChannel.convertRecordsToEntries( ret[i]);
+            let records = ret[i].getRecords();
+            let recordSize = records.length;
+            console.info(`recordSize.size = ${recordSize}`);
+            expect(recordSize).assertEqual(1);
+            for (let j = 0; j < size; j++) {
+              let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+              if (unifiedDataRecord.getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+                let plainObj: uniformDataStruct.PlainText =
+                  unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+                if (plainObj != undefined) {
+                  expect(plainObj["uniformDataType"]).assertEqual(plainTextA.uniformDataType);
+                  expect(plainObj["textContent"]).assertEqual(plainTextA.textContent);
+                  expect(plainObj["abstract"]).assertEqual(plainTextA.abstract);
+                }
+              }
+            }
+          }
+        }).catch((err: BusinessError) => {
+          expect().assertFail();
+        });
+        await unifiedDataChannel.deleteData(options1);
+      }).catch((err: BusinessError) => {
+        expect().assertFail();
+      });
+    })
   })
 }
