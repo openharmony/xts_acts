@@ -13,15 +13,25 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("apicover") {
+ohos_app_assist_suite("ActsApiCoverhapMain2") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "apicoverhaptest:ActsApiCoverhapTest",
-      "apicoverhaptest2:ActsFAhapTest",
-      "fasupplement:FaSupplement",
-      "stagesupplement:StageSupplement",
-      "wantconstanttest:WantConstantTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsApiCoverhapMain2"
+  hap_list = [
+    "ActsApiCoverhapMain2-module1-entry-default-unsigned:FormModule",
+    "ActsApiCoverhapMain2-entry-default-unsigned:ActsApiCoverhapMain2",
+  ]
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+}
+
+ohos_js_app_suite("ActsFAhapTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsFAhapTest"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsApiCoverhapMain2" ]
 }
