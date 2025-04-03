@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,8 +35,8 @@
 char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_encrypt_test.db";
 char RDB_STORE_NAME2[] =  "Encrypt.db";
-char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
-char MODULE_NAME[] =  "com.acts.rdb.napitest";
+char BUNDLE_NAME[] =  "com.acts.relationalstorenapiTest";
+char MODULE_NAME[] =  "com.acts.relationalstorenapiTest";
 
 
 OH_Rdb_Store *storeEncryptTestRdbStore_ = NULL;
