@@ -104,8 +104,7 @@ void CreateEmptyPixelmap(OH_PixelmapNative** pixelMap, int32_t width, int32_t he
 
 bool IsSupportImageSR()
 {
-    if ((!access("/system/lib64/ndk/libimage_processing_capi_impl.so", 0)) &&
-        (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0))) {
+    if (!access("/system/lib64/ndk/libimage_processing_capi_impl.so", 0)) {
         return true;
     }
     return false;
