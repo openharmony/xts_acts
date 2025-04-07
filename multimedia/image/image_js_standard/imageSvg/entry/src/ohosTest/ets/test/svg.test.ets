@@ -26,6 +26,9 @@ export default function imageSvg() {
     let filePath: string;
     let fdNumber: number;
     let filesDir: string | undefined;
+    let globalpixelmap: image.PixelMap;
+    let globalimageSource: image.ImageSource
+    let globalpacker: image.ImagePacker;
 
     const getFd = async (fileName: string) => {
       filesDir = AppStorage.get('pathDir')
@@ -43,7 +46,31 @@ export default function imageSvg() {
       console.info("beforeEach case");
     });
     afterEach(async () => {
-      console.info("afterEach case");
+      if (globalpixelmap != undefined) {
+        console.info('globalpixelmap release start');
+        try {
+          await globalpixelmap.release();
+        } catch (error) {
+          console.info('globalpixelmap release fail');
+        }
+      }
+      if (globalimageSource != undefined) {
+        console.info('globalimageSource release start');
+        try {
+          await globalimageSource.release();
+        } catch (error) {
+          console.info('globalimageSource release fail');
+        }
+      }
+      if (globalpacker != undefined) {
+        console.info('globalpacker release start');
+        try {
+          await globalpacker.release();
+        } catch (error) {
+          console.info('globalpacker release fail');
+        }
+      }
+      console.info('afterEach case');
     });
     afterAll(async () => {
       console.info("afterAll case");
@@ -107,9 +134,11 @@ export default function imageSvg() {
             expect(false).assertTrue();
             done();
           } else {
+            globalimageSource = imageSourceApi;
             console.info(`${testNum} create imagesource success`);
             let pixelmap = await imageSourceApi.createPixelMap(decodeOpts);
             if (pixelmap != undefined) {
+              globalpixelmap = pixelmap;
               console.info(`${testNum} create pixelmap success`);
               let imageInfo = await pixelmap.getImageInfo();
               expect(imageInfo.size.width).assertEqual(32);
@@ -139,6 +168,7 @@ export default function imageSvg() {
           expect(false).assertTrue();
           done();
         } else {
+          globalimageSource = imageSourceApi;
           console.info(`${testNum} create imagesource success`);
           imageSourceApi.createPixelMap(decodeOpts, async (err: BusinessError, pixelmap: ESObject) => {
             if (err != undefined) {
@@ -147,6 +177,7 @@ export default function imageSvg() {
               done();
               return;
             }
+            globalpixelmap = pixelmap;
             console.info(`${testNum} createPixelMap success`);
             expect(pixelmap != undefined).assertTrue();
             let imageInfo: ESObject = await pixelmap.getImageInfo();
@@ -169,6 +200,7 @@ export default function imageSvg() {
           expect(false).assertTrue();
           done();
         } else {
+          globalimageSource = imageSourceApi;
           console.info(`${testNum} createPixelMapPromise create imagesource success`);
           imageSourceApi.createPixelMap(decodeOpts, (err: BusinessError, pixelmap: ESObject) => {
             expect(err != undefined).assertTrue();
@@ -189,6 +221,7 @@ export default function imageSvg() {
           expect(false).assertTrue();
           done();
         } else {
+          globalimageSource = imageSourceApi;
           console.info(`${testNum} createPixelMapPromise create imagesource success`);
           try {
             await imageSourceApi.createPixelMap(decodeOpts);

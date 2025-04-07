@@ -167,6 +167,17 @@ export default function imagePicture() {
       } else {
         picture = await imageSourceApi.createPicture();
       }
+      if (imageSourceApi != undefined) {
+        try {
+          imageSourceApi.release().then(() => {
+            console.info('Succeeded in releasing the image source instance.');
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+          })
+        } catch (error) {
+          console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+        }
+      }
       return picture;
     }
 
@@ -211,6 +222,24 @@ export default function imagePicture() {
         pixelMap = await imageSourceApi.createPixelMap();
       }
       let picture: image.Picture = image.createPicture(pixelMap);
+      if (imageSourceApi != undefined) {
+        try {
+          imageSourceApi.release().then(() => {
+            console.info('Succeeded in releasing the image source instance.');
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+          })
+        } catch (error) {
+          console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+        }
+      }
+      if (pixelMap != undefined) {
+        pixelMap.release().then(() => {
+          console.info('Succeeded in releasing pixelmap object.');
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to release pixelmap object. Error is ${error}, code is ${error.code}, message is ${error.message}`);
+        })
+      }
       return picture;
     }
 
@@ -332,6 +361,17 @@ export default function imagePicture() {
         expect(ret).assertTrue();
         done();
       }
+      if (imageSource != undefined) {
+        try {
+          imageSource.release().then(() => {
+            console.info('Succeeded in releasing the image source instance.');
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+          })
+        } catch (error) {
+          console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+        }
+      }
     }
 
     const testGetType = async (
@@ -400,6 +440,24 @@ export default function imagePicture() {
           expect(imageInfo?.pixelFormat == image.PixelMapFormat.RGBA_8888).assertTrue();
           done();
         }
+      }
+      if (imageSourceApi != undefined) {
+        try {
+          imageSourceApi.release().then(() => {
+            console.info('Succeeded in releasing the image source instance.');
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+          })
+        } catch (error) {
+          console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
+        }
+      }
+      if (pixelMap != undefined) {
+        pixelMap.release().then(() => {
+          console.info('Succeeded in releasing pixelmap object.');
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to release pixelmap object. Error is ${error}, code is ${error.code}, message is ${error.message}`);
+        })
       }
     }
 
@@ -8378,6 +8436,10 @@ export default function imagePicture() {
           done();
         }
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      done();
     })
 
     /**
@@ -8411,6 +8473,10 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      done();
     })
 
     /**
@@ -8440,6 +8506,10 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      done();
     })
 
     /**
@@ -8473,6 +8543,10 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      done();
     })
     
     /**
@@ -8535,6 +8609,12 @@ export default function imagePicture() {
         expect(error.code == 62980115).assertTrue();
         done();
       }
+      if (imageSourceApi != undefined) {
+        await imageSourceApi.release();
+      }
+      if (pixelMap != undefined) {
+        await pixelMap.release();
+      }
       done();
     })
 
@@ -8570,7 +8650,13 @@ export default function imagePicture() {
         console.error(tag + ` Failed to apply color space for pixelmap object. error is ${error}`); 
         expect(error).assertEqual(62980115);
         done();
-        })
+      })
+      if (imageSourceApi != undefined) {
+        await imageSourceApi.release();
+      }
+      if (pixelMap != undefined) {
+        await pixelMap.release();
+      }
       done();
     })
 
@@ -8605,6 +8691,12 @@ export default function imagePicture() {
           done();
         }
       })
+      if (imageSourceApi != undefined) {
+        await imageSourceApi.release();
+      }
+      if (pixelMap != undefined) {
+        await pixelMap.release();
+      }
       done();
     })
 
@@ -8640,6 +8732,13 @@ export default function imagePicture() {
           }
         }
       })
+      if (imageSourceApi != undefined) {
+        await imageSourceApi.release();
+      }
+      if (pixelMap != undefined) {
+        await pixelMap.release();
+      }
+      done();
     })
 
     /**
@@ -8671,10 +8770,13 @@ export default function imagePicture() {
         expect(Number(error) == 62980116).assertTrue();
         done();
       })
+      if (imageSourceApi != undefined) {
+        await imageSourceApi.release();
+      }
       done();
     })
 
-    /**
+/**
      * @tc.number    : testImageCreatePixelMapList0100
      * @tc.name      : SUB_MULTIMEDIA_IMAGE_CREATE_PIXEL_MAP_LIST_0200
      * @tc.desc      : 1.createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array<PixelMap>>)
@@ -8734,6 +8836,9 @@ export default function imagePicture() {
         console.error(tag + ` Failed to get ColorSpace. error is ` + error + 'error code is ' + error.code);
         expect(error.code == 62980103).assertTrue();
         done();
+      }
+      if (pixelMap != undefined) {
+        await pixelMap.release();
       }
       done();
     })

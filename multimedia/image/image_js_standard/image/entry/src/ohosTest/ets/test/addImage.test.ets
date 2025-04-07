@@ -66,6 +66,7 @@ export default function addImage() {
                 .createPixelMap(Color, opts)
                 .then((pixelmap) => {
                     expect(pixelmap != undefined).assertTrue();
+                    pixelmap.release();
                     console.info(`${testNum} success`);
                     done();
                 })
@@ -80,6 +81,7 @@ export default function addImage() {
             const Color = new ArrayBuffer(96);
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 expect(pixelmap != undefined).assertTrue();
+                pixelmap.release();
                 console.info(`${testNum} success`);
                 done();
             });
@@ -89,6 +91,7 @@ export default function addImage() {
             const Color = new ArrayBuffer(96);
             let pixelmap = image.createPixelMapSync(Color, opts);
             expect(pixelmap != undefined).assertTrue();
+            pixelmap.release();
             console.info(`${testNum} success`);
             done();
         }
@@ -136,6 +139,7 @@ export default function addImage() {
                     }
                     console.info(`${testNum} 0004` + pixelmap);
                     expect(pixelmap != undefined).assertTrue();
+                    pixelmap.release();
                     done();
                 });
             } else {
@@ -189,6 +193,7 @@ export default function addImage() {
                     }
                     console.info(`${testNum} 0004` + pixelmap);
                     expect(pixelmap != undefined).assertTrue();
+                    pixelmap.release();
                     done();
                 });
             } else {
