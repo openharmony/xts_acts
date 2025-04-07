@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef CAPIDEMO_TIME_PICKE_TEST_H
-#define CAPIDEMO_TIME_PICKE_TEST_H
+#ifndef CAPIDEMO_TIME_PICKER_TEST_H
+#define CAPIDEMO_TIME_PICKER_TEST_H
 #include "../common/common.h"
 
 namespace ArkUICapiTest {
@@ -26,5 +26,5 @@ public:
 };
 } // namespace ArkUICApiDemo
 
-#endif //CAPIDEMO_TIME_PICKE_TEST_H
+#endif //CAPIDEMO_TIME_PICKER_TEST_H
 

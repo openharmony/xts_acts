@@ -23,7 +23,7 @@
 #include "drag/drag_test.h"
 #include "ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.h"
 #include "move/node_util_move_test.h"
-#include "timePicker/time_picke_test.h"
+#include "timePicker/time_picker_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)

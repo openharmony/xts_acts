@@ -75,7 +75,7 @@ export default function enableCascadeTest() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TimePickerApienableCascade_001] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000);
-      expect(obj.$attrs.enableCascade).assertEqual('true');
+      expect(obj.$attrs.enableCascade).assertEqual(true);
       console.info('[TimePickerApienableCascade_001] END');
       done();
     });
@@ -105,7 +105,7 @@ export default function enableCascadeTest() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TimePickerApienableCascade_002] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000);
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       console.info('[TimePickerApienableCascade_002] END');
       done();
     });
@@ -134,7 +134,7 @@ export default function enableCascadeTest() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TimePickerApienableCascade_003] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000);
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       console.info('[TimePickerApienableCascade_003] END');
       done();
     });
@@ -164,7 +164,7 @@ export default function enableCascadeTest() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info('[TimePickerApienableCascade_004] attrs:' + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000);
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       console.info('[TimePickerApienableCascade_004] END');
       done();
     });

@@ -41,7 +41,7 @@ export default function TimePickerTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[EnableCascadeTest001]markToday:" + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000)
-      expect(obj.$attrs.enableCascade).assertEqual('true');
+      expect(obj.$attrs.enableCascade).assertEqual(true);
       await Utils.sleep(1000)
       console.info('EnableCascadeTest001 END');
       done();
@@ -64,7 +64,7 @@ export default function TimePickerTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[EnableCascadeTest002]markToday:" + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000)
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       await Utils.sleep(1000)
       console.info('EnableCascadeTest002 END');
       done();
@@ -87,7 +87,7 @@ export default function TimePickerTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[EnableCascadeTest003]markToday:" + JSON.stringify(obj.$attrs.enableCascade));
       await Utils.sleep(1000)
-      expect(obj.$attrs.enableCascade).assertEqual('false');
+      expect(obj.$attrs.enableCascade).assertEqual(false);
       await Utils.sleep(1000)
       console.info('EnableCascadeTest003 END');
       done();
