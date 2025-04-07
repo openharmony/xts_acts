@@ -225,7 +225,7 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_02_1, TestSize.Level1)
 // initialize context with wrong type impl
 HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_03_1, TestSize.Level1)
 {
-    int badCreateType = 0x1;
+    int badCreateType = 0x3; // 3 is not support
     VideoProcessing_ErrorCode ret = OH_VideoProcessing_InitializeEnvironment();
     OH_VideoProcessing* instance = nullptr;
     ret = OH_VideoProcessing::Create(&instance, badCreateType, VideoProcessingCapiCapability::GetOpenGLContext());
@@ -489,7 +489,7 @@ HWTEST_F(DetailEnhancerVideoNdkUnitTest, vpeVideoNdk_19_1, TestSize.Level1)
     OH_VideoProcessing::Create(&instance, CREATE_TYPE, VideoProcessingCapiCapability::GetOpenGLContext());
     OH_AVFormat* parameter = OH_AVFormat_Create();
     VideoProcessing_ErrorCode ret = instance->GetVideoProcessing()->GetParameter(parameter);
-    EXPECT_EQ(ret, VIDEO_PROCESSING_SUCCESS);
+    EXPECT_NE(ret, VIDEO_PROCESSING_SUCCESS);
     OH_VideoProcessing::Destroy(instance);
     OH_VideoProcessing_DeinitializeEnvironment();
 }

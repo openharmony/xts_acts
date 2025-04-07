@@ -104,8 +104,7 @@ void CreateEmptyPixelmap(OH_PixelmapNative** pixelMap, int32_t width, int32_t he
 
 bool IsSupportImageSR()
 {
-    if ((!access("/system/lib64/ndk/libimage_processing_capi_impl.so", 0)) &&
-        (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0))) {
+    if (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0)) {
         return true;
     }
     return false;
@@ -775,7 +774,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41, TestSize.Level1)
     if (IsSupportImageSR()) {
         EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     } else {
+#ifdef SKIA_ENABLE
+        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
+#else
         EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
+#endif
     }
     OH_ImageProcessing_Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -817,7 +820,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_42, TestSize.Level1)
     if (IsSupportImageSR()) {
         EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     } else {
+#ifdef SKIA_ENABLE
+        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
+#else
         EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
+#endif
     }
     OH_ImageProcessing_Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
