@@ -774,7 +774,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41, TestSize.Level1)
     if (IsSupportImageSR()) {
         EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     } else {
+#ifdef SKIA_ENABLE
+        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
+#else
         EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
+#endif
     }
     OH_ImageProcessing_Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
@@ -816,7 +820,11 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_42, TestSize.Level1)
     if (IsSupportImageSR()) {
         EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     } else {
+#ifdef SKIA_ENABLE
+        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
+#else
         EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
+#endif
     }
     OH_ImageProcessing_Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
