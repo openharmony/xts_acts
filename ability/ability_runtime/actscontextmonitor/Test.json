@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActContextMonitorTest.hap"
+                "ActsContextMonitorTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActContextMonitorTest") {
+ohos_js_app_suite("ActsContextMonitorTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActContextMonitorTest"
+  hap_name = "ActsContextMonitorTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
