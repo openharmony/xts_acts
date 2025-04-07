@@ -12,8 +12,6 @@
     "MainAbility/pages/calendarPickerDialog/startEndTest",
     "MainAbility/pages/Menu/menuFontsizeModifier",
     "MainAbility/pages/Menu/menuitemOnChangeModifier",
-    "MainAbility/pages/Menu/menuBindMenuModifier",
-    "MainAbility/pages/Menu/BlurStyleOptions",
-    "MainAbility/pages/Menu/EffectOptions"
+    "MainAbility/pages/Menu/menuBindMenuModifier"
   ]
 }
