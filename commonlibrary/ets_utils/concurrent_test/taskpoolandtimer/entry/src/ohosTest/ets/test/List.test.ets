@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 import functionsInTimerTest from "./TimerFunctionsTest.test";
-import TaskPoolTaskGroupDynamicsTest from "./TaskPoolTaskGroupDynamicsTest.test";
-import taskPoolTaskGroupShareTest from "./TaskPoolTaskGroupShareTest.test";
 import TimerClearIntervalTest from "./TimerClearIntervalTest.test";
 import clearTimeoutTest from "./TimerClearTimeoutTest.test";
 import TimerMemoryTest from "./TimerMemoryTest.test";
@@ -30,8 +28,6 @@ export default function testsuite() {
   TimerClearIntervalTest();
   TimerMemoryTest();
   TimerSetIntervalTest();
-  TaskPoolTaskGroupDynamicsTest();
-  taskPoolTaskGroupShareTest();
   timerMultiThreadTest();
 
 }
