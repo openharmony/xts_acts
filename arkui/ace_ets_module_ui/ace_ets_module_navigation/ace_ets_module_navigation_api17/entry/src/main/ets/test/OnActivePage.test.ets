@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter'
@@ -53,9 +53,9 @@ export default function OnActivePage() {
      * @tc.number    OnActivePage_0100
      * @tc.name      OnActivePage_0100
      * @tc.desc      Test NavDestinationActiveReason.OVERLAY in onActive and onInactive
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('OnActivePage_0100', 0, async (done: Function) => {
+    it('OnActivePage_0100', Level.LEVEL0, async (done: Function) => {
       console.info('OnActivePage_0100 START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -97,9 +97,9 @@ export default function OnActivePage() {
      * @tc.number    OnActivePage_0200
      * @tc.name      OnActivePage_0200
      * @tc.desc      Test NavDestinationActiveReason.TRANSITION in onActive and onInactive
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('OnActivePage_0200', 0, async (done: Function) => {
+    it('OnActivePage_0200', Level.LEVEL0, async (done: Function) => {
       console.info('OnActivePage_0200 START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -136,9 +136,9 @@ export default function OnActivePage() {
      * @tc.number    OnActivePage_0300
      * @tc.name      OnActivePage_0300
      * @tc.desc      Test NavDestinationActiveReason.DIALOG in onActive and onInactive
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('OnActivePage_0300', 0, async (done: Function) => {
+    it('OnActivePage_0300', Level.LEVEL0, async (done: Function) => {
       console.info('OnActivePage_0300 START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -181,9 +181,9 @@ export default function OnActivePage() {
      * @tc.number    OnActivePage_0400
      * @tc.name      OnActivePage_0400
      * @tc.desc      Test NavDestinationActiveReason.SHEET in onActive and onInactive
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('OnActivePage_0400', 0, async (done: Function) => {
+    it('OnActivePage_0400', Level.LEVEL0, async (done: Function) => {
       console.info('OnActivePage_0400 START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -216,9 +216,9 @@ export default function OnActivePage() {
      * @tc.number    OnActivePage_0500
      * @tc.name      OnActivePage_0500
      * @tc.desc      Test NavDestinationActiveReason.CONTENT_COVER in onActive and onInactive
-     * @tc.level     Level 2
+     * @tc.level     Level 0
      */
-    it('OnActivePage_0500', 0, async (done: Function) => {
+    it('OnActivePage_0500', Level.LEVEL0, async (done: Function) => {
       console.info('OnActivePage_0500 START');
       let driver = Driver.create();
       await driver.delayMs(1000);
