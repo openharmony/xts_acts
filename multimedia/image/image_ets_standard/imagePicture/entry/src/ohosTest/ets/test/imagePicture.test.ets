@@ -8436,10 +8436,6 @@ export default function imagePicture() {
           done();
         }
       })
-      if (srcPixelmap != undefined) {
-        await srcPixelmap.release();
-      }
-      done();
     })
 
     /**
@@ -8473,10 +8469,6 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
-      if (srcPixelmap != undefined) {
-        await srcPixelmap.release();
-      }
-      done();
     })
 
     /**
@@ -8506,10 +8498,6 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
-      if (srcPixelmap != undefined) {
-        await srcPixelmap.release();
-      }
-      done();
     })
 
     /**
@@ -8543,10 +8531,6 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
-      if (srcPixelmap != undefined) {
-        await srcPixelmap.release();
-      }
-      done();
     })
     
     /**
