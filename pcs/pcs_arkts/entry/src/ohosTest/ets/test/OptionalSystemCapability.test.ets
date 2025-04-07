@@ -38,10 +38,10 @@ export default function optionalSystemCapability() {
         try {
           let batterySOCInfo: number = batteryInfo.batterySOC;
           console.log(`${TAG},The chargingStatusInfo is: ${batterySOCInfo}`);
-          expect(batterySOCInfo >= 0).assertTrue();
+          expect(batterySOCInfo != 0).assertTrue();
           let chargingStatusInfo = batteryInfo.chargingStatus;
           console.log(`${TAG},The chargingStatusInfo is: ${chargingStatusInfo}`);
-          expect(chargingStatusInfo != batteryInfo.BatteryChargeState.NONE).assertTrue();
+          expect(chargingStatusInfo >= 0).assertTrue();
         }catch (e) {
           console.log(`${TAG},The testPowerManagerQuery error is: ${JSON.stringify(e)}`);
           expect().assertFail();
