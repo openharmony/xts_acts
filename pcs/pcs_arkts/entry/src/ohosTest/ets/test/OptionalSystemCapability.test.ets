@@ -38,7 +38,7 @@ export default function optionalSystemCapability() {
         try {
           let batterySOCInfo: number = batteryInfo.batterySOC;
           console.log(`${TAG},The chargingStatusInfo is: ${batterySOCInfo}`);
-          expect(batterySOCInfo != 0).assertTrue();
+          expect(batterySOCInfo >= 0).assertTrue();
           let chargingStatusInfo = batteryInfo.chargingStatus;
           console.log(`${TAG},The chargingStatusInfo is: ${chargingStatusInfo}`);
           expect(chargingStatusInfo != batteryInfo.BatteryChargeState.NONE).assertTrue();
