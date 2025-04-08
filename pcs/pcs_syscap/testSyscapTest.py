@@ -20,6 +20,7 @@ import re
 
 # @tc.number: XTS_SYSCAP_0100
 # @tc.name: testSyscapTest
+# @tc.level: Level0
 # @tc.desc: 验证设备被测设备包含该类设备syscap最小集
 class testSyscapTest(TestCase):
 
