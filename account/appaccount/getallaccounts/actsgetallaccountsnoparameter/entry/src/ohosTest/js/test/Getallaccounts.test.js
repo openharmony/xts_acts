@@ -26,7 +26,7 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.desc      : This application has not added an account and has not been authorized by other applications to
         *                 obtain authorization
         */
-        it('ActsGetAllAccountsNoParameter_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsGetAllAccountsNoParameter_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info("====>ActsGetAllAccountsNoParameter_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -47,7 +47,7 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.desc      : This application has not added an account and has not been authorized by other applications to
         *                 obtain authorization
         */
-        it('ActsGetAllAccountsNoParameter_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsGetAllAccountsNoParameter_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
             console.info("====>ActsGetAllAccountsNoParameter_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -72,7 +72,7 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : This application gets authorization after adding a single account
         */
-        it('ActsGetAllAccountsNoParameter_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsGetAllAccountsNoParameter_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsGetAllAccountsNoParameter_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -109,7 +109,7 @@ export default function ActsGetAllAccountsNoParameter() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : This application gets authorization after adding a single account
         */
-    it('ActsGetAllAccountsNoParameter_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsGetAllAccountsNoParameter_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsGetAllAccountsNoParameter_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

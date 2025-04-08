@@ -26,7 +26,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account callback form
         * @tc.desc      : Remove the added account in callback form
         */
-        it('ActsAccountRemoveAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountRemoveAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountRemoveAccount_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -47,7 +47,7 @@ export default function ActsAccountRemoveAccount() {
         * @tc.name      : Remove account promise form
         * @tc.desc      : Remove the added account in promise form
         */
-        it('ActsAccountRemoveAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async function (done){
+        it('ActsAccountRemoveAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async function (done){
             console.info("====>ActsAccountRemoveAccount_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>add account ActsAccountcreateAccount_0200 start====");
