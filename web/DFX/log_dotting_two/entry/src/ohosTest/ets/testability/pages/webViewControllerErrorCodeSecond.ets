@@ -155,7 +155,12 @@ struct Index {
                   return v1 == v2 ? true: false;
                 }
                 this.errorCode = String(e.code)
-                await waitForAssert(()=>this.errorCode, check, '17100001', 202503206, this.str);
+                if(e.code == 801) {
+                  console.log(`testEnableIntelligentTrackingPreventionError001 The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                  Utils.emitEvent('17100001', 202503206)
+                } else {
+                  await waitForAssert(()=>this.errorCode, check, '17100001', 202503206, this.str);
+                }
               }
               break;
             }
@@ -170,7 +175,12 @@ struct Index {
                   return v1 == v2 ? true: false;
                 }
                 this.errorCode = String(e.code)
-                await waitForAssert(()=>this.errorCode, check, '17100001', 202503207, this.str);
+                if(e.code == 801) {
+                  console.log(`testIsIntelligentTrackingPreventionEnabled001 The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                  Utils.emitEvent('17100001', 202503207)
+                } else {
+                  await waitForAssert(()=>this.errorCode, check, '17100001', 202503207, this.str);
+                }
               }
               break;
             }
@@ -185,7 +195,12 @@ struct Index {
                   return v1 == v2 ? true: false;
                 }
                 this.errorCode = String(e.code)
-                await waitForAssert(()=>this.errorCode, check, '401', 202503208, this.str);
+                if(e.code == 801) {
+                  console.log(`testRemoveIntelligentTrackingPreventionBypassingListError001 The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                  Utils.emitEvent('401', 202503208)
+                } else {
+                  await waitForAssert(()=>this.errorCode, check, '401', 202503208, this.str);
+                }
               }
               break;
             }
@@ -220,7 +235,12 @@ struct Index {
                   return v1 == v2 ? true: false;
                 }
                 this.errorCode = String(e.code)
-                await waitForAssert(()=>this.errorCode, check, '17100001', 202503210, this.str);
+                if(e.code == 801) {
+                  console.log(`testEnableAdsBlockError001 The current device type does not support Cause code:${e.code},  Message: ${e.message}`)
+                  Utils.emitEvent('17100001', 202503210)
+                } else {
+                  await waitForAssert(()=>this.errorCode, check, '17100001', 202503210, this.str);
+                }
               }
               break;
             }
