@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -70,7 +70,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0100', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0100 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -112,7 +112,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0200', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0200 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -154,7 +154,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0300', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0300 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -197,7 +197,7 @@ export default function relationalStoreBatchInsertTest() {
      */
 
 
-    it('testRdbStoreBatchInsertWithConflictResolution0400', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0400 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -239,7 +239,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0500', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0500 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -281,7 +281,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0600', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0600 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -323,7 +323,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0700', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0700 start *************");
       try {
         const valueBucket:relationalStore.ValuesBucket = {
@@ -357,7 +357,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0800', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0800 start *************");
       try {
         const valueBucket:relationalStore.ValuesBucket = {
@@ -392,7 +392,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0900', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "********* testRdbStoreBatchInsertWithConflictResolution0900 start **********");
       try {
         const valueBucket:relationalStore.ValuesBucket = {
@@ -427,7 +427,7 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution1000', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "******* testRdbStoreBatchInsertWithConflictResolution1000 start *******");
       let u8 = new Uint8Array([1, 2, 3]);
       try {
@@ -469,7 +469,7 @@ export default function relationalStoreBatchInsertTest() {
 
 
 
-    it('testRdbStoreBatchInsertWithConflictResolution1100', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution1100 start *************");
       let transaction = await (rdbStore as relationalStore.RdbStore).createTransaction({
         transactionType: relationalStore.TransactionType.IMMEDIATE
