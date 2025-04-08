@@ -43,6 +43,7 @@ group("ability_runtime") {
       "actscalltest:actscalltest",
       "actschildprocessmanager:actschildprocessmanagertest",
       "actscleantemptest:cleantempfiles",
+      "actscollaborateresulttest:actscollaborateresulttest",
       "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
