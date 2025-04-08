@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
 //import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -216,7 +216,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedSceneModes0100', 0, () => {
+    it('testOHCameraManagerGetSupportedSceneModes0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
@@ -233,7 +233,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedSceneModes0200', 0, () => {
+    it('testOHCameraManagerGetSupportedSceneModes0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
@@ -249,7 +249,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedSceneModes0300', 0, () => {
+    it('testOHCameraManagerGetSupportedSceneModes0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
@@ -265,7 +265,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedSceneModes0400', 0, () => {
+    it('testOHCameraManagerGetSupportedSceneModes0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       let ret = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
@@ -280,7 +280,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerDeleteSceneModes0100', 0, () => {
+    it('testOHCameraManagerDeleteSceneModes0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -296,7 +296,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerDeleteSceneModes0200', 0, () => {
+    it('testOHCameraManagerDeleteSceneModes0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -313,7 +313,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerDeleteSceneModes0300', 0, () => {
+    it('testOHCameraManagerDeleteSceneModes0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -330,7 +330,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -347,7 +347,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -364,7 +364,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -389,7 +389,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -407,7 +407,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -425,7 +425,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -443,7 +443,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700', 0, () => {
+    it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
@@ -460,7 +460,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupported0100', 0, () => {
+    it('testOHCameraManagerIsTorchSupported0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       getSupportedCameraOutputCapability();
@@ -477,7 +477,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupported0200', 0, () => {
+    it('testOHCameraManagerIsTorchSupported0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -494,7 +494,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupported0300', 0, () => {
+    it('testOHCameraManagerIsTorchSupported0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -510,7 +510,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0100', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -531,7 +531,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0200', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -552,7 +552,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0300', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -574,7 +574,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0400', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -593,7 +593,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0500', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -613,7 +613,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0600', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -633,7 +633,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0700', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -657,7 +657,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0800', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0800', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -681,7 +681,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerIsTorchSupportedByTorchMode0900', 0, () => {
+    it('testOHCameraManagerIsTorchSupportedByTorchMode0900', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -704,7 +704,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0100', 0, () => {
+    it('testOHCameraManagerSetTorchMode0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -727,7 +727,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0200', 0, () => {
+    it('testOHCameraManagerSetTorchMode0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -751,7 +751,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0300', 0, () => {
+    it('testOHCameraManagerSetTorchMode0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -775,7 +775,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0400', 0, () => {
+    it('testOHCameraManagerSetTorchMode0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -795,7 +795,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0500', 0, () => {
+    it('testOHCameraManagerSetTorchMode0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -815,7 +815,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0600', 0, () => {
+    it('testOHCameraManagerSetTorchMode0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -838,7 +838,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerSetTorchMode0700', 0, () => {
+    it('testOHCameraManagerSetTorchMode0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -859,7 +859,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerRegisterTorchStatusCallback0100', 0, () => {
+    it('testOHCameraManagerRegisterTorchStatusCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -876,7 +876,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerRegisterTorchStatusCallback0200', 0, () => {
+    it('testOHCameraManagerRegisterTorchStatusCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -893,7 +893,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerRegisterTorchStatusCallback0300', 0, () => {
+    it('testOHCameraManagerRegisterTorchStatusCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -909,7 +909,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerUnregisterTorchStatusCallback0100', 0, () => {
+    it('testOHCameraManagerUnregisterTorchStatusCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -926,7 +926,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerUnregisterTorchStatusCallback0200', 0, () => {
+    it('testOHCameraManagerUnregisterTorchStatusCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -943,7 +943,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerUnregisterTorchStatusCallback0300', 0, () => {
+    it('testOHCameraManagerUnregisterTorchStatusCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance()
       getSupportedCameraOutputCapability();
@@ -960,7 +960,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerRegisterFoldStatusCallback0100', 0, () => {
+    it('testOHCameraManagerRegisterFoldStatusCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.cameraManagerRegisterFoldStatusChange(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHCameraManagerRegisterFoldStatusCallback0100:"+ret);
@@ -975,7 +975,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerRegisterFoldStatusCallback0200', 0, () => {
+    it('testOHCameraManagerRegisterFoldStatusCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.cameraManagerRegisterFoldStatusChange(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerRegisterFoldStatusCallback0200:"+ret);
@@ -990,7 +990,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerRegisterFoldStatusCallback0300', 0, () => {
+    it('testOHCameraManagerRegisterFoldStatusCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.cameraManagerRegisterFoldStatusChange(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerRegisterFoldStatusCallback0300:"+ret);
@@ -1004,7 +1004,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerUnregisterFoldStatusCallback0100', 0, () => {
+    it('testOHCameraManagerUnregisterFoldStatusCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0100:"+ret);
@@ -1019,7 +1019,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerUnregisterFoldStatusCallback0200', 0, () => {
+    it('testOHCameraManagerUnregisterFoldStatusCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0200:"+ret);
@@ -1034,7 +1034,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerUnregisterFoldStatusCallback0300', 0, () => {
+    it('testOHCameraManagerUnregisterFoldStatusCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0300:"+ret);

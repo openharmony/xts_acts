@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameras from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import { Camera_FlashMode, Camera_ExposureMode ,Camera_FocusMode,Camera_VideoStabilizationMode} from './Constants';
@@ -208,7 +208,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionStart0100', 0, () => {
+    it('testOHCaptureSessionStart0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionStart(0);
       console.log(TAG+"testOHCaptureSessionStart0100:"+ret);
@@ -222,7 +222,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionStart0200', 0, () => {
+    it('testOHCaptureSessionStart0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionStart(1);
       console.log(TAG+"testOHCaptureSessionStart0200:"+ret);
@@ -236,7 +236,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionStop0100', 0, () => {
+    it('testOHCaptureSessionStop0100', Level.LEVEL0, () => {
 
       cameras.oHCaptureSessionStart(0);
       let ret = cameras.oHCaptureSessionStop(0);
@@ -251,7 +251,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionStop0200', 0, () => {
+    it('testOHCaptureSessionStop0200', Level.LEVEL0, () => {
 
       cameras.oHCaptureSessionStart(0);
       let ret = cameras.oHCaptureSessionStop(1);
@@ -266,7 +266,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallback0100', 0, () => {
+    it('testOHCaptureSessionRegisterCallback0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionRegisterCallback(0);
       console.log(TAG+"testOHCaptureSessionRegisterCallback0100:"+ret);
@@ -280,7 +280,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallback0200', 0, () => {
+    it('testOHCaptureSessionRegisterCallback0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionRegisterCallback(1);
       console.log(TAG+"testOHCaptureSessionRegisterCallback0200:"+ret);
@@ -294,7 +294,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallback0300', 0, () => {
+    it('testOHCaptureSessionRegisterCallback0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionRegisterCallback(2);
       console.log(TAG+"testOHCaptureSessionRegisterCallback0300:"+ret);
@@ -308,7 +308,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallback0100', 0, () => {
+    it('testOHCaptureSessionUnregisterCallback0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionUnregisterCallback(0);
       console.log(TAG+"testOHCaptureSessionUnregisterCallback0100:"+ret);
@@ -322,7 +322,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallback0200', 0, () => {
+    it('testOHCaptureSessionUnregisterCallback0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionUnregisterCallback(1);
       console.log(TAG+"testOHCaptureSessionUnregisterCallback0200:"+ret);
@@ -336,7 +336,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallback0300', 0, () => {
+    it('testOHCaptureSessionUnregisterCallback0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionUnregisterCallback(3);
       console.log(TAG+"testOHCaptureSessionUnregisterCallback0300:"+ret);
@@ -350,7 +350,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBias0100', 0, () => {
+    it('testOHCaptureSessionGetExposureBias0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBias(0);
       console.log(TAG+"testOHCaptureSessionGetExposureBias0100:"+ret);
@@ -365,7 +365,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBias0200', 0, () => {
+    it('testOHCaptureSessionGetExposureBias0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBias(1);
       console.log(TAG+"testOHCaptureSessionGetExposureBias0200:"+ret);
@@ -380,7 +380,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBias0300', 0, () => {
+    it('testOHCaptureSessionGetExposureBias0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBias(2);
       console.log(TAG+"testOHCaptureSessionGetExposureBias0300:"+ret);
@@ -394,7 +394,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBiasRange0100', 0, () => {
+    it('testOHCaptureSessionGetExposureBiasRange0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBiasRange(0);
       console.log(TAG+"testOHCaptureSessionGetExposureBiasRange0100:"+ret);
@@ -408,7 +408,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBiasRange0200', 0, () => {
+    it('testOHCaptureSessionGetExposureBiasRange0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBiasRange(1);
       console.log(TAG+"testOHCaptureSessionGetExposureBiasRange0200:"+ret);
@@ -422,7 +422,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBiasRange0300', 0, () => {
+    it('testOHCaptureSessionGetExposureBiasRange0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBiasRange(2);
       console.log(TAG+"testOHCaptureSessionGetExposureBiasRange0300:"+ret);
@@ -436,7 +436,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBiasRange0400', 0, () => {
+    it('testOHCaptureSessionGetExposureBiasRange0400', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBiasRange(3);
       console.log(TAG+"testOHCaptureSessionGetExposureBiasRange0400:"+ret);
@@ -450,7 +450,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureBiasRange0500', 0, () => {
+    it('testOHCaptureSessionGetExposureBiasRange0500', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureBiasRange(4);
       console.log(TAG+"testOHCaptureSessionGetExposureBiasRange0500:"+ret);
@@ -464,7 +464,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureMode0100', 0, () => {
+    it('testOHCaptureSessionGetExposureMode0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureMode(0);
       console.log(TAG+"testOHCaptureSessionGetExposureMode0100:"+ret);
@@ -478,7 +478,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureMode0200', 0, () => {
+    it('testOHCaptureSessionGetExposureMode0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureMode(1);
       console.log(TAG+"testOHCaptureSessionGetExposureMode0200:"+ret);
@@ -492,7 +492,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureMode0300', 0, () => {
+    it('testOHCaptureSessionGetExposureMode0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetExposureMode(2);
       console.log(TAG+"testOHCaptureSessionGetExposureMode0300:"+ret);
@@ -506,7 +506,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsExposureModeSupported0100', 0, () => {
+    it('testOHCaptureSessionIsExposureModeSupported0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 0);
       console.log(TAG+"testOHCaptureSessionIsExposureModeSupported0100:"+ret);
@@ -520,7 +520,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsExposureModeSupported0200', 0, () => {
+    it('testOHCaptureSessionIsExposureModeSupported0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionIsExposureModeSupported0200:"+ret);
@@ -534,7 +534,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsExposureModeSupported0300', 0, () => {
+    it('testOHCaptureSessionIsExposureModeSupported0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionIsExposureModeSupported0300:"+ret);
@@ -548,7 +548,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsExposureModeSupported0400', 0, () => {
+    it('testOHCaptureSessionIsExposureModeSupported0400', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 1);
       console.log(TAG+"testOHCaptureSessionIsExposureModeSupported0400:"+ret);
@@ -562,7 +562,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsExposureModeSupported0500', 0, () => {
+    it('testOHCaptureSessionIsExposureModeSupported0500', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 2);
       console.log(TAG+"testOHCaptureSessionIsExposureModeSupported0500:"+ret);
@@ -576,7 +576,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsExposureModeSupported0600', 0, () => {
+    it('testOHCaptureSessionIsExposureModeSupported0600', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionIsExposureModeSupported(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 3);
       console.log(TAG+"testOHCaptureSessionIsExposureModeSupported0600:"+ret);
@@ -590,7 +590,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetExposureMode0100', 0, () => {
+    it('testOHCaptureSessionSetExposureMode0100', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 0);
       console.log(TAG+"testOHCaptureSessionSetExposureMode0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -603,7 +603,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetExposureMode0200', 0, () => {
+    it('testOHCaptureSessionSetExposureMode0200', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionSetExposureMode0200:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -616,7 +616,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetExposureMode0300', 0, () => {
+    it('testOHCaptureSessionSetExposureMode0300', Level.LEVEL0, () => {
     let isSupported = cameras.oHCaptureSessionIsExposureModeSupportedForCheck(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO, 0)
     console.log(TAG+"oHCaptureSessionIsExposureModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -636,7 +636,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetExposureMode0400', 0, () => {
+    it('testOHCaptureSessionSetExposureMode0400', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 1);
       console.log(TAG+"testOHCaptureSessionSetExposureMode0400:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -649,7 +649,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetExposureMode0500', 0, () => {
+    it('testOHCaptureSessionSetExposureMode0500', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_LOCKED, 2);
       console.log(TAG+"testOHCaptureSessionSetExposureMode0500:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -662,7 +662,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionHasFlash0100', 0, () => {
+    it('testOHCaptureSessionHasFlash0100', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionHasFlash(0);
       console.log(TAG+"testOHCaptureSessionHasFlash0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -675,7 +675,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionHasFlash0200', 0, () => {
+    it('testOHCaptureSessionHasFlash0200', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionHasFlash(1);
       console.log(TAG+"testOHCaptureSessionHasFlash0200:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -688,7 +688,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionHasFlash0300', 0, () => {
+    it('testOHCaptureSessionHasFlash0300', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionHasFlash(2);
       console.log(TAG+"testOHCaptureSessionHasFlash0300:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -701,7 +701,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0100', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0100', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_CLOSE, 0);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -714,7 +714,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0200', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0200', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_OPEN, 0);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0200:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -727,7 +727,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0300', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0300', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0300:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -740,7 +740,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0400', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0400', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0400:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -753,7 +753,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0500', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0500', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 1);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0500:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -766,7 +766,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0600', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0600', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 2);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0600:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -779,7 +779,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFlashModeSupported0700', 0, () => {
+    it('testOHCaptureSessionIsFlashModeSupported0700', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 3);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0700:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -792,7 +792,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFlashMode0100', 0, () => {
+    it('testOHCaptureSessionSetFlashMode0100', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_CLOSE, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -812,7 +812,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFlashMode0200', 0, () => {
+    it('testOHCaptureSessionSetFlashMode0200', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -832,7 +832,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFlashMode0300', 0, () => {
+    it('testOHCaptureSessionSetFlashMode0300', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_AUTO, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -852,7 +852,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFlashMode0400', 0, () => {
+    it('testOHCaptureSessionSetFlashMode0400', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -872,7 +872,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFlashMode0500', 0, () => {
+    it('testOHCaptureSessionSetFlashMode0500', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -892,7 +892,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFlashMode0600', 0, () => {
+    it('testOHCaptureSessionSetFlashMode0600', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -912,7 +912,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFlashMode0100', 0, () => {
+    it('testOHCaptureSessionGetFlashMode0100', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionGetFlashMode(0);
       console.log(TAG+"testOHCaptureSessionGetFlashMode0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -925,7 +925,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFlashMode0200', 0, () => {
+    it('testOHCaptureSessionGetFlashMode0200', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionGetFlashMode(1);
       console.log(TAG+"testOHCaptureSessionGetFlashMode0200:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -938,7 +938,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFlashMode0300', 0, () => {
+    it('testOHCaptureSessionGetFlashMode0300', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionGetFlashMode(2);
       console.log(TAG+"testOHCaptureSessionGetFlashMode0300:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -951,7 +951,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0100', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0100', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_MANUAL, 0);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -964,7 +964,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0200', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0200', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0200:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -977,7 +977,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0300', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0300', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0300:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -990,7 +990,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0400', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0400', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_LOCKED, 0);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0400:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -1003,7 +1003,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0500', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0500', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_MANUAL, 1);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0500:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1016,7 +1016,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0600', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0600', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_MANUAL, 2);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0600:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1029,7 +1029,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsFocusModeSupported0700', 0, () => {
+    it('testOHCaptureSessionIsFocusModeSupported0700', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_MANUAL, 3);
       console.log(TAG+"testOHCaptureSessionIsFocusModeSupported0700:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1042,7 +1042,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocusMode0100', 0, () => {
+    it('testOHCaptureSessionGetFocusMode0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetFocusMode(0);
       console.log(TAG+"testOHCaptureSessionGetFocusMode0100:"+ret);
@@ -1056,7 +1056,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocusMode0200', 0, () => {
+    it('testOHCaptureSessionGetFocusMode0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetFocusMode(1);
       console.log(TAG+"testOHCaptureSessionGetFocusMode0200:"+ret);
@@ -1070,7 +1070,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocusMode0300', 0, () => {
+    it('testOHCaptureSessionGetFocusMode0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetFocusMode(2);
       console.log(TAG+"testOHCaptureSessionGetFocusMode0300:"+ret);
@@ -1084,7 +1084,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocusPoint0100', 0, () => {
+    it('testOHCaptureSessionGetFocusPoint0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetFocusPoint(0);
       console.log(TAG+"testOHCaptureSessionGetFocusPoint0100:"+ret);
@@ -1098,7 +1098,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocusPoint0200', 0, () => {
+    it('testOHCaptureSessionGetFocusPoint0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetFocusPoint(1);
       console.log(TAG+"testOHCaptureSessionGetFocusPoint0200:"+ret);
@@ -1112,7 +1112,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocusPoint0300', 0, () => {
+    it('testOHCaptureSessionGetFocusPoint0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetFocusPoint(2);
       console.log(TAG+"testOHCaptureSessionGetFocusPoint0300:"+ret);
@@ -1126,7 +1126,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFocusPoint0100', 0, () => {
+    it('testOHCaptureSessionSetFocusPoint0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetFocusPoint({x:1,y:1},0);
       console.log(TAG+"testOHCaptureSessionSetFocusPoint0100:"+ret);
@@ -1140,7 +1140,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFocusPoint0200', 0, () => {
+    it('testOHCaptureSessionSetFocusPoint0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetFocusPoint({x:1,y:1},1);
       console.log(TAG+"testOHCaptureSessionSetFocusPoint0200:"+ret);
@@ -1154,7 +1154,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetFocusPoint0300', 0, () => {
+    it('testOHCaptureSessionSetFocusPoint0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetFocusPoint({x:null,y:-1},2);
       console.log(TAG+"testOHCaptureSessionSetFocusPoint0300:"+ret);
@@ -1168,7 +1168,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetMeteringPoint0100', 0, () => {
+    it('testOHCaptureSessionGetMeteringPoint0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetMeteringPoint(0);
       console.log(TAG+"testOHCaptureSessionGetMeteringPoint0100:"+ret);
@@ -1182,7 +1182,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetMeteringPoint0200', 0, () => {
+    it('testOHCaptureSessionGetMeteringPoint0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetMeteringPoint(1);
       console.log(TAG+"testOHCaptureSessionGetMeteringPoint0200:"+ret);
@@ -1196,7 +1196,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetMeteringPoint0300', 0, () => {
+    it('testOHCaptureSessionGetMeteringPoint0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetMeteringPoint(2);
       console.log(TAG+"testOHCaptureSessionGetMeteringPoint0300:"+ret);
@@ -1210,7 +1210,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatio0100', 0, () => {
+    it('testOHCaptureSessionGetZoomRatio0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatio(0);
       console.log(TAG+"testOHCaptureSessionGetZoomRatio0100:"+ret);
@@ -1224,7 +1224,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatio0200', 0, () => {
+    it('testOHCaptureSessionGetZoomRatio0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatio(1);
       console.log(TAG+"testOHCaptureSessionGetZoomRatio0200:"+ret);
@@ -1238,7 +1238,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatio0300', 0, () => {
+    it('testOHCaptureSessionGetZoomRatio0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatio(2);
       console.log(TAG+"testOHCaptureSessionGetZoomRatio0300:"+ret);
@@ -1252,7 +1252,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatioRange0100', 0, () => {
+    it('testOHCaptureSessionGetZoomRatioRange0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatioRange(0);
       console.log(TAG+"testOHCaptureSessionGetZoomRatioRange0100:"+ret);
@@ -1266,7 +1266,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatioRange0200', 0, () => {
+    it('testOHCaptureSessionGetZoomRatioRange0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatioRange(1);
       console.log(TAG+"testOHCaptureSessionGetZoomRatioRange0200:"+ret);
@@ -1280,7 +1280,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatioRange0300', 0, () => {
+    it('testOHCaptureSessionGetZoomRatioRange0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatioRange(2);
       console.log(TAG+"testOHCaptureSessionGetZoomRatioRange0300:"+ret);
@@ -1294,7 +1294,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetZoomRatioRange0400', 0, () => {
+    it('testOHCaptureSessionGetZoomRatioRange0400', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetZoomRatioRange(3);
       console.log(TAG+"testOHCaptureSessionGetZoomRatioRange0400:"+ret);
@@ -1308,7 +1308,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetZoomRatio0100', 0, () => {
+    it('testOHCaptureSessionSetZoomRatio0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetZoomRatio(0,0);
       console.log(TAG+"testOHCaptureSessionSetZoomRatio0100:"+ret);
@@ -1322,7 +1322,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetZoomRatio0200', 0, () => {
+    it('testOHCaptureSessionSetZoomRatio0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetZoomRatio(0,1);
       console.log(TAG+"testOHCaptureSessionSetZoomRatio0200:"+ret);
@@ -1336,7 +1336,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetZoomRatio0300', 0, () => {
+    it('testOHCaptureSessionSetZoomRatio0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetZoomRatio(1000,2);
       console.log(TAG+"testOHCaptureSessionSetZoomRatio0300:"+ret);
@@ -1350,7 +1350,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetMeteringPoint0100', 0, () => {
+    it('testOHCaptureSessionSetMeteringPoint0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetMeteringPoint({x:1,y:1},0);
       console.log(TAG+"testOHCaptureSessionSetMeteringPoint0100:"+ret);
@@ -1364,7 +1364,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetMeteringPoint0200', 0, () => {
+    it('testOHCaptureSessionSetMeteringPoint0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetMeteringPoint({x:1,y:1},1);
       console.log(TAG+"testOHCaptureSessionSetMeteringPoint0200:"+ret);
@@ -1378,7 +1378,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetMeteringPoint0300', 0, () => {
+    it('testOHCaptureSessionSetMeteringPoint0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionSetMeteringPoint({x:1,y:-1001},2);
       console.log(TAG+"testOHCaptureSessionSetMeteringPoint0300:"+ret);
@@ -1392,7 +1392,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0100', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0100', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 0);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -1405,7 +1405,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0200', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0200', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW, 0);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0200:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -1418,7 +1418,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0300', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0300', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_MIDDLE, 0);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0300:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -1431,7 +1431,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0400', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0400', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH, 0);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0400:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -1444,7 +1444,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0500', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0500', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO, 0);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0500:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -1457,7 +1457,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0600', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0600', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 1);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0600:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1470,7 +1470,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0700', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0700', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 2);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0700:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1483,7 +1483,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionIsVideoStabilizationModeSupported0800', 0, () => {
+    it('testOHCaptureSessionIsVideoStabilizationModeSupported0800', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionIsVideoStabilizationModeSupported(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 3);
       console.log(TAG+"testOHCaptureSessionIsVideoStabilizationModeSupported0800:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1496,7 +1496,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetVideoStabilizationMode0100', 0, () => {
+    it('testOHCaptureSessionGetVideoStabilizationMode0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetVideoStabilizationMode(0);
       console.log(TAG+"testOHCaptureSessionGetVideoStabilizationMode0100:"+ret);
@@ -1510,7 +1510,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetVideoStabilizationMode0200', 0, () => {
+    it('testOHCaptureSessionGetVideoStabilizationMode0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetVideoStabilizationMode(1);
       console.log(TAG+"testOHCaptureSessionGetVideoStabilizationMode0200:"+ret);
@@ -1524,7 +1524,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetVideoStabilizationMode0300', 0, () => {
+    it('testOHCaptureSessionGetVideoStabilizationMode0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionGetVideoStabilizationMode(2);
       console.log(TAG+"testOHCaptureSessionGetVideoStabilizationMode0300:"+ret);
@@ -1538,7 +1538,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0100', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0100', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -1558,7 +1558,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0200', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0200', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -1578,7 +1578,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0300', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0300', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_MIDDLE, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -1598,7 +1598,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0400', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0400', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -1618,7 +1618,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0500', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0500', Level.LEVEL0, () => {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
@@ -1638,7 +1638,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0600', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0600', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 1);
       console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0600:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1651,7 +1651,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetVideoStabilizationMode0700', 0, () => {
+    it('testOHCaptureSessionSetVideoStabilizationMode0700', Level.LEVEL0, () => {
       let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 2);
       console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0700:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -1664,7 +1664,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRelease0100', 0, () => {
+    it('testOHCaptureSessionRelease0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionRelease(0);
       console.log(TAG+"testOHCaptureSessionRelease0100:"+ret);
@@ -1678,7 +1678,7 @@ export default function SessionTest22() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRelease0200', 0, () => {
+    it('testOHCaptureSessionRelease0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCaptureSessionRelease(1);
       console.log(TAG+"testOHCaptureSessionRelease0200:"+ret);

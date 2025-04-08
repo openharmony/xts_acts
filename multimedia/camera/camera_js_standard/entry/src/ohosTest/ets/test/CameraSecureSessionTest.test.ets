@@ -365,7 +365,7 @@ export default function cameraSecureSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_OPEN_SECURE_CAMERA_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_OPEN_SECURE_CAMERA_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_OPEN_SECURE_CAMERA_0100--------------");
 
       if (mCameraNum == 0) {
@@ -409,7 +409,7 @@ export default function cameraSecureSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100--------------");
 
       if (mCameraNum == 0) {

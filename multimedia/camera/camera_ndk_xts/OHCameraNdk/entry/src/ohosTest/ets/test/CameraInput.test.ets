@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameras from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -119,7 +119,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputOpen0100', 0, () => {
+    it('testOHCameraInputOpen0100', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputOpen(0);
       console.log(TAG+"testOHCameraInputOpen0100:"+ret);
@@ -133,7 +133,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputOpen0200', 0, () => {
+    it('testOHCameraInputOpen0200', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputOpen(1);
       console.log(TAG+"testOHCameraInputOpen0200:"+ret);
@@ -147,7 +147,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputClose0100', 0, () => {
+    it('testOHCameraInputClose0100', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputClose(0);
       console.log(TAG+"testOHCameraInputClose0100:"+ret);
@@ -161,7 +161,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputClose0200', 0, () => {
+    it('testOHCameraInputClose0200', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputClose(1);
       console.log(TAG+"testOHCameraInputClose0200:"+ret);
@@ -175,7 +175,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputRelease0100', 0, () => {
+    it('testOHCameraInputRelease0100', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputRelease(0);
       console.log(TAG+"testOHCameraInputRelease0100:"+ret);
@@ -189,7 +189,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputRelease0200', 0, () => {
+    it('testOHCameraInputRelease0200', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputRelease(1);
       console.log(TAG+"testOHCameraInputRelease0200:"+ret);
@@ -203,7 +203,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputRegisterCallback0100', 0, () => {
+    it('testOHCameraInputRegisterCallback0100', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputRegisterCallback(0);
       console.log(TAG+"testOHCameraInputRegisterCallback0100:"+ret);
@@ -217,7 +217,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputRegisterCallback0200', 0, () => {
+    it('testOHCameraInputRegisterCallback0200', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputRegisterCallback(1);
       console.log(TAG+"testOHCameraInputRegisterCallback0200:"+ret);
@@ -231,7 +231,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputRegisterCallback0300', 0, () => {
+    it('testOHCameraInputRegisterCallback0300', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputRegisterCallback(2);
       console.log(TAG+"testOHCameraInputRegisterCallback0300:"+ret);
@@ -245,7 +245,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputUnregisterCallback0100', 0, () => {
+    it('testOHCameraInputUnregisterCallback0100', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputUnregisterCallback(0);
       console.log(TAG+"testOHCameraInputUnregisterCallback0100:"+ret);
@@ -259,7 +259,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputUnregisterCallback0200', 0, () => {
+    it('testOHCameraInputUnregisterCallback0200', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputUnregisterCallback(1);
       console.log(TAG+"testOHCameraInputUnregisterCallback0200:"+ret);
@@ -273,7 +273,7 @@ export default function CameraInputTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraInputUnregisterCallback0300', 0, () => {
+    it('testOHCameraInputUnregisterCallback0300', Level.LEVEL0, () => {
       createCameraInput()
       let ret = cameras.oHCameraInputUnregisterCallback(2);
       console.log(TAG+"testOHCameraInputUnregisterCallback0300:"+ret);
