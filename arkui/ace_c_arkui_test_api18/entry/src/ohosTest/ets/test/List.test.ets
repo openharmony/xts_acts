@@ -14,7 +14,9 @@
  */
 
 import datePickerTest from "./datepicker/DatePickerMode.test"
+import buttonTypeTest from './button/ButtonTypeTest.test'
 
 export default function testsuite() {
   datePickerTest();
+  buttonTypeTest();
 }
