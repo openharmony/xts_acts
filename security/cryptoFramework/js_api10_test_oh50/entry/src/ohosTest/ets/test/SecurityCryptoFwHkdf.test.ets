@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as hkdfUtils from './utils/hkdf/hkdfUtils';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = false;
       let salt: string = "0123456789";
@@ -84,7 +84,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -120,7 +120,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -156,7 +156,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = false;
       let salt: string = "0123456789";
@@ -183,7 +183,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = false;
       let salt: string = "0123456789";
@@ -209,7 +209,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -235,7 +235,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -261,7 +261,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -287,7 +287,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -313,7 +313,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -339,7 +339,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "";
@@ -365,7 +365,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -391,7 +391,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -417,7 +417,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -443,7 +443,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -469,7 +469,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "0123456789";
@@ -495,7 +495,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = true;
       let salt: string = "";
@@ -521,7 +521,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let key: string = "hello world";
       let isKeyString: boolean = false;
       let salt: string = "";
@@ -547,7 +547,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let kdfAlgName: string = "HKDF|MD5";
         cryptoFramework.createKdf(kdfAlgName);
@@ -566,7 +566,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let kdfAlgName: string = "SCRYPT|SHA256";
         cryptoFramework.createKdf(kdfAlgName);
@@ -585,7 +585,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let vectors of hkdfUtils.KAT_VECTOR_DATA) {
           let key = vectors.key;
@@ -624,7 +624,7 @@ export default function SecurityCryptoFwHkdfTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_Hkdf_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Hkdf_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         for (let vectors of hkdfUtils.KAT_VECTOR_DATA) {
           let key = vectors.key;

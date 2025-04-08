@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
@@ -34,7 +34,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0100", 0, async (done: Function) => {
+    it("test_get_device_info_0100", Level.LEVEL2, async (done: Function) => {
       try {
         deviceInfo.getDeviceInfo(SELFWANT, LABEL_DEVICE_NAME);
         expect(false).assertTrue();
@@ -52,7 +52,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0200", 0, async (done: Function) => {
+    it("test_get_device_info_0200", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         deviceInfo.getDeviceInfo(SELFWANT, LABEL_DEVICE_NAME);
@@ -73,7 +73,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0300", 0, async (done: Function) => {
+    it("test_get_device_info_0300", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         deviceInfo.getDeviceInfo(SELFWANT, '123');
@@ -94,7 +94,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0400", 0, async (done: Function) => {
+    it("test_get_device_info_0400", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         let result: string = deviceInfo.getDeviceInfo(SELFWANT, LABEL_DEVICE_NAME);
@@ -115,7 +115,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0500", 0, async (done: Function) => {
+    it("test_get_device_info_0500", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         let result: string = deviceInfo.getDeviceInfo(SELFWANT, LABEL_DEVICE_SERIAL);
@@ -136,7 +136,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0600", 0, async (done: Function) => {
+    it("test_get_device_info_0600", Level.LEVEL2, async (done: Function) => {
       if (sysDeviceInfo.deviceType != 'phone') {
         done();
         return;
@@ -161,7 +161,7 @@ export default function deviceInfoTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it("test_get_device_info_0700", 0, async (done: Function) => {
+    it("test_get_device_info_0700", Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         deviceInfo.getDeviceInfo(null, LABEL_DEVICE_NAME);

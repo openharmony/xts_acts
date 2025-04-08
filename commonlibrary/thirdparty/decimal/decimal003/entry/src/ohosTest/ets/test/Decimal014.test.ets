@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 function test_toSignificantDigits_001 (expected: string, n: number) {
@@ -50,7 +50,7 @@ export default function DecimalTest014() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toSignificantDigits_Func_001", 0, () => {
+    it("Decimal_toSignificantDigits_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set({
             precision: 20,
             rounding: 7,
@@ -551,7 +551,7 @@ export default function DecimalTest014() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_toSignificantDigits_Func_002", 0, () => {
+    it("Decimal_toSignificantDigits_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set({
             precision: 20,
             rounding: 7,

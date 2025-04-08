@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base'
 
@@ -26,7 +26,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_result_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_result_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0100';
       console.log("-----------------------HttpResponse result Test is starting-----------------------");
       try {
@@ -58,7 +58,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_result_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_result_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0100';
       console.log("-----------------------HttpResponse result_01 Test is starting-----------------------");
       try {
@@ -84,7 +84,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_result_0300", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_result_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0100';
       console.log("-----------------------HttpResponse result_02 Test is starting-----------------------");
       try {
@@ -120,7 +120,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_responseCode_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_responseCode_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0200';
       console.log("-----------------------HttpResponse responseCode Test is starting-----------------------");
       try {
@@ -152,7 +152,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_responseCode_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_responseCode_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0200';
       console.log("-----------------------HttpResponse responseCode_01 Test is starting-----------------------");
       try {
@@ -178,7 +178,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_responseCode_0300", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_responseCode_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0200';
       console.log("-----------------------HttpResponse responseCode_02 Test is starting-----------------------");
       try {
@@ -214,7 +214,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_header_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_header_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0300';
       console.log("-----------------------HttpResponse header Test is starting-----------------------");
       try {
@@ -246,7 +246,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_header_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_header_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0300';
       console.log("-----------------------HttpResponse header_01 Test is starting-----------------------");
       try {
@@ -272,7 +272,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_header_0300", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_header_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0300';
       console.log("-----------------------HttpResponse header_02 Test is starting-----------------------");
       try {
@@ -307,7 +307,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_cookies_0100", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_cookies_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0400';
       console.log("-----------------------HttpResponse cookies Test is starting-----------------------");
       try {
@@ -339,7 +339,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_cookies_0200", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_cookies_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0400';
       console.log("-----------------------HttpResponse cookies_01 Test is starting-----------------------");
       try {
@@ -365,7 +365,7 @@ export default function httpResponseJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("Telephony_Http_HttpResponse_cookies_0300", 0, async (done:Function) => {
+    it("Telephony_Http_HttpResponse_cookies_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = 'Telephony_Http_HttpResponse_0400';
       console.log("-----------------------HttpResponse cookies_02 Test is starting-----------------------");
       try {

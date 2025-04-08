@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect, beforeEach, afterEach } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect, beforeEach, afterEach, Level, Size, TestType } from '@ohos/hypium';
 import netSocket from '@ohos.net.socket';
 import socket from '@ohos.net.socket';
 import { BusinessError, Callback, ErrorCallback } from '@ohos.base';
@@ -110,7 +110,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionSend0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionSend0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionSend0400';
       console.info(`${caseName} test start `);
       try {
@@ -160,7 +160,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionSend0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionSend0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionSend0500';
       console.info(`${caseName} test start `);
       try {
@@ -241,7 +241,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteAddress0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteAddress0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetRemoteAddress0500';
       console.info(`${caseName} test start `);
       try {
@@ -333,7 +333,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteAddress0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteAddress0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetRemoteAddress0600';
       console.info(`${caseName} test start `);
       try {
@@ -431,7 +431,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0200';
       console.info(`${caseName} test start `);
       try {
@@ -531,7 +531,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0300';
       console.info(`${caseName} test start `);
       try {
@@ -634,7 +634,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0400';
       console.info(`${caseName} test start `);
       try {
@@ -737,7 +737,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetRemoteCertificate0500';
       console.info(`${caseName} test start `);
       try {
@@ -842,7 +842,7 @@ export default function TLSSocketConnectionTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketConnectionGetCipherSuite0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketConnectionGetCipherSuite0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketConnectionGetCipherSuite0600';
       console.info(`${caseName} test start `);
       try {

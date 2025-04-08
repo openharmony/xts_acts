@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_ILLEGAL: string = "abc";
@@ -46,7 +46,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpCreateHttp0100', 0, async (done: Function) => {
+    it('testHttpCreateHttp0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpCreateHttp0100";
       console.info(`${caseName} test Start`);
       try {
@@ -79,7 +79,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequest0200', 0, async (done: Function) => {
+    it('testHttpRequest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequest0200";
       console.info(`${caseName} test Start`);
       try {
@@ -122,7 +122,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequest0300', 0, async (done: Function) => {
+    it('testHttpRequest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequest0300";
       console.info(`${caseName} test Start`);
       try {
@@ -180,7 +180,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequest0400', 0, async (done: Function) => {
+    it('testHttpRequest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequest0400";
       console.info(`${caseName} test Start`);
       try {
@@ -221,7 +221,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequest0500', 0, async (done: Function) => {
+    it('testHttpRequest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequest0500";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -277,7 +277,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type  :  method
      * @tc.level :  level 2
      */
-    it('testHttpRequest0600', 0, async (done: Function) => {
+    it('testHttpRequest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequest0600";
       console.info(`${caseName} test Start`);
       try {
@@ -320,7 +320,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type  :  method
      * @tc.level :  level 2
      */
-    it('testHttpRequest0700', 0, async (done: Function) => {
+    it('testHttpRequest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequest0700";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -362,7 +362,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpDestroy0800', 0, async (done: Function) => {
+    it('testHttpDestroy0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDestroy0800";
       console.info(`${caseName} test Start`);
       try {
@@ -404,7 +404,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpDestroy0900', 0, async (done: Function) => {
+    it('testHttpDestroy0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDestroy0900";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -444,7 +444,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpDestroy1000', 0, async (done: Function) => {
+    it('testHttpDestroy1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDestroy1000";
       console.info(`${caseName} test Start`);
       try {
@@ -490,7 +490,7 @@ export default function HttpRequestAndDestroyTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpDestroy1100', 0, async (done: Function) => {
+    it('testHttpDestroy1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDestroy1100";
       console.info(`${caseName} test Start`);
       try {

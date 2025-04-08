@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import appManager from '@ohos.application.appManager'
 
 export default function ActsAbilityRunningInfosTest() {
@@ -36,7 +36,7 @@ describe('ActsAbilityRunningInfosTest', function () {
     * @tc.desc: Verify applications are started to query getProcessRunningInfos ability information
     *           （by promise）
     */
-    it('ACTS_getProcessRunningInfos_0100', 0, async function (done) {
+    it('ACTS_getProcessRunningInfos_0100', Level.LEVEL0, async function (done) {
         console.log('ACTS_getProcessRunningInfos_0100====<begin');
         var data = await appManager.getProcessRunningInfos()
         console.info('====> ACTS_getProcessRunningInfos_0100 ====>' + JSON.stringify(data))
@@ -50,7 +50,7 @@ describe('ActsAbilityRunningInfosTest', function () {
     * @tc.desc: Verify applications are started to query getProcessRunningInfos ability information
     *           （by callback）
     */
-    it('ACTS_getProcessRunningInfos_0200', 0, async function (done) {
+    it('ACTS_getProcessRunningInfos_0200', Level.LEVEL0, async function (done) {
         console.log('ACTS_getProcessRunningInfos_0200====<begin');
         appManager.getProcessRunningInfos((err, data) => {
             console.info('====> ACTS_getProcessRunningInfos_0200 ====>' + JSON.stringify(data))

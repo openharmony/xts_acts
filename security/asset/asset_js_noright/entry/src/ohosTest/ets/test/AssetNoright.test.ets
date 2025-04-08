@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
 import * as awUserid from './aw/AssetAwUserid';
 import asset from '@ohos.security.asset';
@@ -49,7 +49,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('Security_DataSecurity_Asset_Remove_Func_0200', 0, async () => {
+    it('Security_DataSecurity_Asset_Remove_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(await aw.assetRemove(aw.aliasNameList[0]))
@@ -77,7 +77,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('Security_DataSecurity_Asset_Remove_Func_0900', 0, async () => {
+    it('Security_DataSecurity_Asset_Remove_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       await aw.assetRemove(aw.aliasNameList[0]);
@@ -93,7 +93,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_Remove_Func_1200', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.IS_PERSISTENT, true);
@@ -109,7 +109,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_AsUserId_Func_1000', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_AsUserId_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       expect(await awUserid.assetAddEasy(aw.aliasNameList[1], aw.secretList[0]))
         .assertEqual(asset.ErrorCode.NOT_SYSTEM_APPLICATION);
@@ -136,7 +136,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SUB_Security_DataSecurity_Asset_CE_Func_0100', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_CE_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.REQUIRE_ATTR_ENCRYPTED, true);
       expect(await aw.basicCRUDCE(attr))

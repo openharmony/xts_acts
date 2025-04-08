@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level, } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import { taskpool } from '@kit.ArkTS';
 import {
@@ -187,7 +187,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0000", TestType.RELIABILITY, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
         // Promise
@@ -227,7 +227,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -263,7 +263,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -297,7 +297,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -331,7 +331,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -365,7 +365,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -399,7 +399,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -433,7 +433,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -467,7 +467,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -501,7 +501,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -535,7 +535,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -569,7 +569,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 0;
@@ -603,7 +603,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 0;
         let p: number = 1;
@@ -637,7 +637,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1;
         let p: number = 1;
@@ -671,7 +671,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 7;
         let p: number = 1;
@@ -705,7 +705,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = -2;
         let p: number = 1;
@@ -739,7 +739,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -773,7 +773,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -807,7 +807,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 65536;
         let p: number = 1;
@@ -841,7 +841,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 514;
         let p: number = 1;
@@ -875,7 +875,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 16;
         let p: number = 65536;
@@ -909,7 +909,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 16;
         let p: number = 16384;
@@ -943,7 +943,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 16;
         let p: number = 512;
@@ -977,7 +977,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 16;
         let p: number = 4194304; // 2^22
@@ -1011,7 +1011,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 16;
         let p: number = 67108864; // 2^26
@@ -1045,7 +1045,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 16;
         let p: number = 2097152;
@@ -1079,7 +1079,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -1113,7 +1113,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;
@@ -1147,7 +1147,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let expectSecret: cryptoFramework.DataBlob = {} as cryptoFramework.DataBlob;
       try {
         for (let vector of vectors) {
@@ -1185,7 +1185,7 @@ export default function SecurityCryptoFwScryptKdfTestUnit() {
      * @tc.type Func
      * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Scrypt_Kdf_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let n: number = 1024;
         let p: number = 1;

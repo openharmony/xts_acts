@@ -21,6 +21,9 @@ import {
   afterAll,
   it,
   expect,
+  TestType,
+  Size,
+  Level,
 } from "@ohos/hypium";
 import * as certPromise from "./utils/certificate/publicCertificatePromise";
 import * as certCallback from "./utils/certificate/publicCertificateCallback";
@@ -58,7 +61,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      * @tc.name X509 Cert Enum Type Test
      * @tc.desc X509 Cert Enum Type Test
      */
-    it("Security_CertificateFramework_Enum_Func_0100", 0, function (done) {
+    it("Security_CertificateFramework_Enum_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
       certCommon.certificateEnumTypeTest();
       done();
     });
@@ -70,7 +73,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .createX509CertInstancePromise("der")
@@ -111,7 +114,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certCallback
           .createX509CertInstanceCallback("der")
@@ -152,7 +155,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .createX509CertInstancePromise("der")
@@ -197,7 +200,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certCallback
           .createX509CertInstanceCallback("der")
@@ -242,7 +245,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .createX509CertInstancePromise("der")
@@ -286,7 +289,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let certObject = await certPromise.createX509CertInstancePromise(
@@ -314,7 +317,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let certObject = await certPromise.createX509CertInstancePromise(
@@ -342,7 +345,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertTest_Func_0800",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let certObject = await certPromise.createX509CertInstancePromise(
@@ -373,7 +376,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .createX509CertExtensionNormalPromise("certExtensionNormal01")
@@ -416,7 +419,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certCallback
           .createX509CertExtensionNormalCallback("certExtensionNormal02")
@@ -476,7 +479,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .createX509CertExtensionNormalPromise("certExtensionNormal02")
@@ -538,7 +541,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certCallback
           .createX509CertExtensionNormalCallback("certExtensionNormal02")
@@ -601,7 +604,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certCallback
           .createX509CertExtensionNormalCallback("certExtensionNormal02")
@@ -636,7 +639,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await certPromise
           .createX509CertExtensionNormalPromise("certExtensioninvalid01")
@@ -663,7 +666,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -690,7 +693,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0800",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -717,7 +720,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_0900",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -747,7 +750,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1000",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -781,7 +784,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -816,7 +819,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -851,7 +854,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -880,7 +883,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -915,7 +918,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -942,7 +945,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1600",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =
@@ -969,7 +972,7 @@ export default function CertFrameworkFuncTestJSUnit() {
      */
     it(
       "Security_CertificateFramework_CertExtensionTest_Func_1700",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         try {
           let extensionObj =

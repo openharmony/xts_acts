@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium'
 import wantConstant from '@ohos.ability.wantConstant'
 import ability from '@ohos.ability.ability';
 import base from '@ohos.base';
@@ -89,7 +89,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_0100", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_0100", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_0100-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_0100";
       setTimeout(async () => {
@@ -120,7 +120,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_0400", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_0400", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_0400-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_0400";
       setTimeout(async () => {
@@ -153,7 +153,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_0500", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_0500", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_0500-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_0500";
       setTimeout(async () => {
@@ -183,7 +183,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_0700", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_0700", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_0700-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_0700";
       let cmd7 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationResultStageEntry.hap";
@@ -223,7 +223,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_0800", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_0800", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_0800-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_0800";
       setTimeout(async () => {
@@ -254,7 +254,7 @@ export default function StartAbilityForResult() {
     * @tc.desc: Function test
     * @tc.level   0
     */
-    it("FreeInstall_Stage_StartAbilityForResult_1200", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_1200", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_1200-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_1200";
       setTimeout(async () => {
@@ -284,7 +284,7 @@ export default function StartAbilityForResult() {
     * @tc.desc: Function test
     * @tc.level   0
     */
-    it("FreeInstall_Stage_StartAbilityForResult_1400", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_1400", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_1400-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_1400";
       setTimeout(async () => {
@@ -318,7 +318,7 @@ export default function StartAbilityForResult() {
     * @tc.desc: Function test
     * @tc.level   0
     */
-    it("FreeInstall_Stage_StartAbilityForResult_1600", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_1600", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_1600-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_1600";
       setTimeout(async () => {
@@ -347,7 +347,7 @@ export default function StartAbilityForResult() {
     * @tc.desc: Function test
     * @tc.level   0
     */
-    it("FreeInstall_Stage_StartAbilityForResult_1800", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_1800", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_1800-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_1800";
       setTimeout(async () => {
@@ -379,7 +379,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_2700", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_2700", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_2700-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_2700";
       let cmd9 = "bm install -p data/test/AtomizationResultStageHnm2.hap";
@@ -414,7 +414,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_2800", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_2800", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_2800-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_2800";
       let cmd10 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
@@ -457,7 +457,7 @@ export default function StartAbilityForResult() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_Stage_StartAbilityForResult_2600", 0, async (done:Function) => {
+    it("FreeInstall_Stage_StartAbilityForResult_2600", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_Stage_StartAbilityForResult_2600-------------");
       TAG = "FreeInstall_Stage_StartAbilityForResult_2600";
       let cmd12 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationResultStageEntry.hap";

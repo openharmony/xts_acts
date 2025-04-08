@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import{ appManager, common, StartOptions, Want, wantConstant } from '@kit.AbilityKit';
 import{ BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import{ data } from '@kit.TelephonyKit';
@@ -54,7 +54,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3100', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3100';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} =========`);
@@ -104,7 +104,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3200', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3200';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -150,7 +150,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2600', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2600', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2600';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -197,7 +197,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3000', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3000', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_3000';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -245,7 +245,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2900', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2900', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2900';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} =========`);
@@ -294,7 +294,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2800', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2800', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2800';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME}  =========`);
@@ -340,7 +340,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2300', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2300', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2300';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -388,7 +388,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2400', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2400', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2400';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} =========`);
@@ -436,7 +436,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2700', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2700', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2700';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -475,7 +475,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_1800', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_1800', Level.LEVEL0, async (done:Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_1800';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -526,7 +526,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_1900', 0, async (done:Function) =>  {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_1900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_1900';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}  =========`);
@@ -576,7 +576,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2200', 0, async (done:Function) =>  {
+    it('SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2200', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_EmbeddableUIAbility_2200';
       console.info('enter into test');
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} =========`);

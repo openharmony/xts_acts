@@ -14,7 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetooth.constant';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 export default function btConstantTest() {
 describe('btConstantTest', () =>  {
@@ -40,7 +40,7 @@ describe('btConstantTest', () =>  {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0100', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let STATE_DISCONNECTED = bluetooth.ProfileConnectionState.STATE_DISCONNECTED;
         console.info("[bluetooth_js]STATE_DISCONNECTED : " + JSON.stringify(STATE_DISCONNECTED));
         expect(true).assertEqual(STATE_DISCONNECTED == 0);
@@ -65,7 +65,7 @@ describe('btConstantTest', () =>  {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0200', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let PROFILE_A2DP_SOURCE = bluetooth.ProfileId.PROFILE_A2DP_SOURCE;
         console.info("[bluetooth_js]PROFILE_A2DP_SOURCE : " + JSON.stringify(PROFILE_A2DP_SOURCE));
         expect(true).assertEqual(PROFILE_A2DP_SOURCE == 1);
@@ -90,7 +90,7 @@ describe('btConstantTest', () =>  {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0300', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let MAJOR_MISC = bluetooth.MajorClass.MAJOR_MISC;
         console.info("[bluetooth_js]MAJOR_MISC : " + JSON.stringify(MAJOR_MISC));
         expect(true).assertEqual(MAJOR_MISC == 0x0000);
@@ -135,7 +135,7 @@ describe('btConstantTest', () =>  {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0800', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let COMPUTER_UNCATEGORIZED = bluetooth.MajorMinorClass.COMPUTER_UNCATEGORIZED;
         console.info("[bluetooth_js]COMPUTER_UNCATEGORIZED : " +
         JSON.stringify(COMPUTER_UNCATEGORIZED));
@@ -445,7 +445,7 @@ describe('btConstantTest', () =>  {
      * @tc.size MediumTest
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0500', 0, async (done : Function) => {
+    it('SUB_COMMUNICATION_BLUETOOTH_CONSTANT_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) => {
         let hfpAg = bluetooth.ProfileUuids.PROFILE_UUID_HFP_AG;
         console.info("[bluetooth_js]PROFILE_UUID_HFP_AG : " + JSON.stringify(hfpAg));
         expect('0000111F-0000-1000-8000-00805F9B34FB').assertEqual(hfpAg);

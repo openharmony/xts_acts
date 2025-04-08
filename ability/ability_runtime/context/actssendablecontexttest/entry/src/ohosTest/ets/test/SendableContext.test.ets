@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { abilityDelegatorRegistry, TestRunner } from '@kit.TestKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
@@ -52,7 +52,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0100', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0100', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0100 begin');
       let aStr = AppStorage.get<string>('[sendableAbilityStageContext] AbilityStageContext convert to AbilityStageContext');
@@ -73,7 +73,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0200', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0200', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0200 begin');
       let aStr = AppStorage.get<string>('[NormalContext] AbilityStageContext convert in same thread');
@@ -89,7 +89,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0300', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0300', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0300 begin');
       let aStr = AppStorage.get<string>('[NormalContext] AbilityStageContext after convert and post');
@@ -104,7 +104,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0100', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0100', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0100 begin');
       let aStr = AppStorage.get<string>('[sendableApplicationContext] ApplicationContext convert to ApplicationContext');
@@ -125,7 +125,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0200', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0200', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0200 begin');
       let aStr = AppStorage.get<string>('[NormalContext] ApplicationContext convert in same thread');
@@ -140,7 +140,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0300', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0300', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0300 begin');
       let aStr = AppStorage.get<string>('[NormalContext] ApplicationContext after convert and post');
@@ -155,7 +155,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0100', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0100', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0100 begin');
       let aStr = AppStorage.get<string>('[sendableUIAbilityContext] UIAbilityContext convert to UIAbilityContext');
       expect(aStr == 'succeed').assertTrue();
@@ -175,7 +175,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0200', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0200', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0200 begin');
       let aStr = AppStorage.get<string>('[NormalContext] UIAbilityContext convert in same thread');
@@ -190,7 +190,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0300', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0300', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0300 begin');
       let aStr = AppStorage.get<string>('[NormalContext] UIAbilityContext after convert and post');
@@ -205,7 +205,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0100', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0100', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_SendableContext_Context_0100 begin');
       let aStr = AppStorage.get<string>('[sendableContext] Context convert to Context');
       expect(aStr == 'succeed').assertTrue();
@@ -225,7 +225,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0200', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0200', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_Context_0200 begin');
       let aStr = AppStorage.get<string>('[NormalContext] Context convert in same thread');
@@ -240,7 +240,7 @@ export default function sendableContextTest() {
      * @tc.type: Function
      * @tc.level: 1
      */
-    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0300', 0, async () => {
+    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0300', Level.LEVEL0, async () => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         'SUB_Ability_AbilityRuntime_SendableContext_Context_0300 begin');
       let aStr = AppStorage.get<string>('[NormalContext] Context after convert and post');

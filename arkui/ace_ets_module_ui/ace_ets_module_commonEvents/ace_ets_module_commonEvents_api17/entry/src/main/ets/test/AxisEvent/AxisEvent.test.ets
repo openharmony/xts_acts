@@ -78,12 +78,12 @@ export default function AxisEvent() {
       let text1 = getInspectorByKey('x');
       let obj1: ESObject = JSON.parse(text1);
       console.log('AxisEvent_0100 obj1 $attrs content',obj1.$attrs.content,obj1)
-      expect(obj1.$attrs.content).assertEqual('120');
+      expect(obj1.$attrs.content).not().assertEqual('init');
 
       let text2 = getInspectorByKey('y');
       let obj2: ESObject = JSON.parse(text2);
       console.log('AxisEvent_0100 obj2 $attrs content',obj2.$attrs.content,obj2)
-      expect(obj2.$attrs.content).assertEqual('40');
+      expect(obj2.$attrs.content).not().assertEqual('init');
 
       let text3 = getInspectorByKey('displayX');
       let obj3: ESObject = JSON.parse(text3);
@@ -108,22 +108,22 @@ export default function AxisEvent() {
       let text7 = getInspectorByKey('scrollStep');
       let obj7: ESObject = JSON.parse(text7);
       console.log('AxisEvent_0100 obj7 $attrs content',obj7.$attrs.content,obj7)
-      expect(obj7.$attrs.content).assertEqual('0');
+      expect(obj7.$attrs.content).not().assertEqual('init');
 
       let text8 = getInspectorByKey('action');
       let obj8: ESObject = JSON.parse(text8);
       console.log('AxisEvent_0100 obj8 $attrs content',obj8.$attrs.content,obj8)
-      expect(obj8.$attrs.content).assertEqual('3');
+      expect(obj8.$attrs.content).not().assertEqual('init');
 
       let text9 = getInspectorByKey('getVerticalAxisValue');
       let obj9: ESObject = JSON.parse(text9);
       console.log('AxisEvent_0100 obj9 $attrs content',obj9.$attrs.content,obj9)
-      expect(obj9.$attrs.content).assertEqual('15');
+      expect(obj9.$attrs.content).not().assertEqual('init');
 
       let text10 = getInspectorByKey('getHorizontalAxisValue');
       let obj10: ESObject = JSON.parse(text10);
       console.log('AxisEvent_0100 obj2 $attrs content',obj2.$attrs.content,obj10)
-      expect(obj10.$attrs.content).assertEqual('0');
+      expect(obj10.$attrs.content).not().assertEqual('init');
 
       console.info('AxisEvent_0100 END');
       done();

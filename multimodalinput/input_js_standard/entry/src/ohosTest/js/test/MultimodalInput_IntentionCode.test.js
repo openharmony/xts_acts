@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 export default function MultimodalInput_IntentionCode_test() {
   describe('MultimodalInput_IntentionCode_test', function () {
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_001', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_001 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_UNKNOWN == -1).assertTrue();
@@ -26,7 +26,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_001 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_002', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_002 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_UP == 1).assertTrue();
@@ -34,7 +34,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_002 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_003', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_003 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_DOWN == 2).assertTrue();
@@ -42,7 +42,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_003 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_004', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_004 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_LEFT == 3).assertTrue();
@@ -50,7 +50,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_004 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_005', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_005 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_RIGHT == 4).assertTrue();
@@ -58,7 +58,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_005 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_006', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_006 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_SELECT == 5).assertTrue();
@@ -66,7 +66,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_006 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_007', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_007 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_ESCAPE == 6).assertTrue();
@@ -74,7 +74,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_007 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_008', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_008 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_BACK == 7).assertTrue();
@@ -82,7 +82,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_008 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_009', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_009 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_FORWARD == 8).assertTrue();
@@ -90,7 +90,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_009 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_010', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_010 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_MENU == 9).assertTrue();
@@ -98,7 +98,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_010 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_011', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_011 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_PAGE_UP == 11).assertTrue();
@@ -106,7 +106,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_011 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_012', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_012 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_PAGE_DOWN == 12).assertTrue();
@@ -114,7 +114,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_012 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_013', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_013 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_ZOOM_OUT == 13).assertTrue();
@@ -122,7 +122,7 @@ export default function MultimodalInput_IntentionCode_test() {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_013 exit`);
     })
 
-    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_014', 0, function () {
+    it('Multimodalinput_IntentionCode_SUB_MMI_IntentionCodeTest_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       console.info(`Multimodalinput_IntentionCode_test_SUB_MMI_IntentionCodeTest_014 enter`);
 
       expect(intentionCode.IntentionCode.INTENTION_ZOOM_IN == 14).assertTrue();

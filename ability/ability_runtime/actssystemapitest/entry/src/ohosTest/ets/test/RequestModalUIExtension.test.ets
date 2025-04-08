@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common'
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
@@ -28,7 +28,7 @@ export default function RequestModalUIExtension() {
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
      */
-    it('ACTS_RequestModalUIExtension001', 0, async (done: Function) => {
+    it('ACTS_RequestModalUIExtension001', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension001 == ';
       console.log(TAG + "begin");
       try {
@@ -61,7 +61,7 @@ export default function RequestModalUIExtension() {
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
      */
-    it('ACTS_RequestModalUIExtension002', 0, async (done: Function) => {
+    it('ACTS_RequestModalUIExtension002', Level.LEVEL0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension002 == ';
       console.log(TAG + "begin");
       try {

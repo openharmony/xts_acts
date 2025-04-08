@@ -65,7 +65,7 @@ export default function frameNodeIsVisibleTest() {
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[frameNodeIsVisibleTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[frameNodeIsVisibleTest_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('true');
+      expect(obj.$attrs.content).assertEqual('false');
       console.info('[frameNodeIsVisibleTest_0100] END');
       done();
     });

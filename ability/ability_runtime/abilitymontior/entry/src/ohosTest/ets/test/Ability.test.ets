@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Subscriber from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import abilityDelegatorRegistry2 from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -61,7 +61,7 @@ export default function abilityTest() {
      * @tc.name: Verify that the addAbilityMonitor interface functions normally.
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility to trigger onAbilityCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0100', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0100";
       console.log(TAG + " start");
 
@@ -94,7 +94,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility to
      * trigger onAbilityForeground (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0200', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0200";
       console.log(TAG + " start");
 
@@ -130,7 +130,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility to trigger
      * onAbilityBackground (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0300', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0300";
       console.log(TAG + " start");
 
@@ -192,7 +192,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityDestroy (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0400', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0400";
       console.log(TAG + " start");
 
@@ -225,7 +225,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onWindowStageCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0500', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0500";
       console.log(TAG + " start");
 
@@ -258,7 +258,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onWindowStageDestroy (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0600', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0600";
       console.log(TAG + " start");
 
@@ -292,7 +292,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate with many
      *           a time (Callback).
      */
-    it('ACTS_AddAbilityMonitor_Callback_0700', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Callback_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Callback_0700";
       console.log(TAG + " start");
 
@@ -332,7 +332,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityCreate (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0100', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0100";
       console.log(TAG + " start");
 
@@ -365,7 +365,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityForeground (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0200', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0200";
       console.log(TAG + " start");
 
@@ -398,7 +398,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityBackground (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0300', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0300";
       console.log(TAG + " start");
 
@@ -454,7 +454,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityDestroy (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0400', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0400";
       console.log(TAG + " start");
 
@@ -488,7 +488,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onWindowStageCreate (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0500', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0500";
       console.log(TAG + " start");
 
@@ -521,7 +521,7 @@ export default function abilityTest() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onWindowStageDestroy (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0600', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0600";
       console.log(TAG + " start");
 
@@ -555,7 +555,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate with many
      *           a time (promise).
      */
-    it('ACTS_AddAbilityMonitor_Promise_0700', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitor_Promise_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_AddAbilityMonitor_Promise_0700";
       console.log(TAG + " start");
 
@@ -595,7 +595,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0100', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0100";
       console.log(TAG + " start");
 
@@ -635,7 +635,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityForeground (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0200', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0200";
       console.log(TAG + " start");
 
@@ -675,7 +675,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityBackground (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0300', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0300";
       console.log(TAG + " start");
 
@@ -715,7 +715,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityDestroy (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0400', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0400";
       console.log(TAG + " start");
 
@@ -755,7 +755,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onWindowStageCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0500', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0500";
       console.log(TAG + " start");
 
@@ -795,7 +795,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onWindowStageDestroy (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0600', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0600";
       console.log(TAG + " start");
 
@@ -835,7 +835,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0700', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0700";
       console.log(TAG + " start");
 
@@ -863,7 +863,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_Callback_0800', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Callback_0800', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Callback_0800";
       console.log(TAG + " start");
 
@@ -904,7 +904,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityCreate (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0100', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0100";
       console.log(TAG + " start");
 
@@ -944,7 +944,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityForeground (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0200', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0200";
       console.log(TAG + " start");
 
@@ -984,7 +984,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityBackground (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0300', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0300";
       console.log(TAG + " start");
 
@@ -1024,7 +1024,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityDestroy (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0400', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0400";
       console.log(TAG + " start");
 
@@ -1064,7 +1064,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onWindowStageCreate (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0500', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0500";
       console.log(TAG + " start");
 
@@ -1104,7 +1104,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onWindowStageDestroy (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0600', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0600";
       console.log(TAG + " start");
 
@@ -1144,7 +1144,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityCreate (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0700', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0700', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0700";
       console.log(TAG + " start");
 
@@ -1178,7 +1178,7 @@ export default function abilityTest() {
      * to remove monitor then trigger
      *           onAbilityCreate (promise).
      */
-    it('ACTS_RemoveAbilityMonitor_Promise_0800', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitor_Promise_0800', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_RemoveAbilityMonitor_Promise_0800";
       console.log(TAG + " start");
 
@@ -1217,7 +1217,7 @@ export default function abilityTest() {
      * @tc.desc: Use waitAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityCreate (Callback).
      */
-    it('ACTS_WaitAbilityMonitor_Callback_0100', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Callback_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Callback_0100";
       console.log(TAG + " start");
 
@@ -1252,7 +1252,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate exceed
      *           5s(Callback).
      */
-    it('ACTS_WaitAbilityMonitor_Callback_0200', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Callback_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Callback_0200";
       console.log(TAG + " start");
 
@@ -1290,7 +1290,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate in
      *           1s(Callback).
      */
-    it('ACTS_WaitAbilityMonitor_Callback_0300', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Callback_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Callback_0300";
       console.log(TAG + " start");
 
@@ -1326,7 +1326,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate exceed
      *           1s (Callback).
      */
-    it('ACTS_WaitAbilityMonitor_Callback_0400', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Callback_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Callback_0400";
       console.log(TAG + " start");
 
@@ -1365,7 +1365,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate in
      *           5s (Callback).
      */
-    it('ACTS_WaitAbilityMonitor_Callback_0500', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Callback_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Callback_0500";
       console.log(TAG + " start");
 
@@ -1402,7 +1402,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate in
      *           5s (Callback).
      */
-    it('ACTS_WaitAbilityMonitor_Callback_0600', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Callback_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Callback_0600";
       console.log(TAG + " start");
 
@@ -1438,7 +1438,7 @@ export default function abilityTest() {
      * @tc.desc: Use waitAbilityMonitor to add a monitor then use startAbility
      * to trigger onAbilityCreate (promise).
      */
-    it('ACTS_WaitAbilityMonitor_Promise_0100', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Promise_0100', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Promise_0100";
       console.log(TAG + " start");
 
@@ -1474,7 +1474,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate exceed
      *           5s (promise).
      */
-    it('ACTS_WaitAbilityMonitor_Promise_0200', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Promise_0200', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Promise_0200";
       console.log(TAG + " start");
 
@@ -1513,7 +1513,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate in
      *           1s (promise).
      */
-    it('ACTS_WaitAbilityMonitor_Promise_0300', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Promise_0300', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Promise_0300";
       console.log(TAG + " start");
 
@@ -1548,7 +1548,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate exceed
      *           1s (promise).
      */
-    it('ACTS_WaitAbilityMonitor_Promise_0400', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Promise_0400', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Promise_0400";
       console.log(TAG + " start");
 
@@ -1588,7 +1588,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate in
      *           5s (promise).
      */
-    it('ACTS_WaitAbilityMonitor_Promise_0500', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Promise_0500', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Promise_0500";
       console.log(TAG + " start");
 
@@ -1623,7 +1623,7 @@ export default function abilityTest() {
      * to trigger onAbilityCreate in
      *           5s (promise).
      */
-    it('ACTS_WaitAbilityMonitor_Promise_0600', 0, async (done: Function) => {
+    it('ACTS_WaitAbilityMonitor_Promise_0600', Level.LEVEL0, async (done: Function) => {
       TAG = "ACTS_WaitAbilityMonitor_Promise_0600";
       console.log(TAG + " start");
 

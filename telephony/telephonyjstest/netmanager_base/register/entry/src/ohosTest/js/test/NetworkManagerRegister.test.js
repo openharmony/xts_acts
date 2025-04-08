@@ -14,7 +14,7 @@
  */
 
 import connection from '@ohos.net.connection';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it , TestType, Size, Level } from '@ohos/hypium';
 
 export default function Telephony_NetworkManagerRegisterTest() {
 
@@ -28,7 +28,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * call Register() to activate the default network, and see if the callback information is generated
          @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_0100', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0100';
             let netConn = connection.createNetConnection();
             netConn.register(function (error) {
@@ -72,7 +72,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * call Register() to activate the default network, and see if the callback information is generated
          @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_0200', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0200';
             let netSpecifier = {
                 netCapabilities: {
@@ -121,7 +121,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
           * call Register ()to activate the default network,and see if the callback information is generated
           *@tc.desc Function test
           */
-        it('Telephony_NetworkManager_register_Async_0300', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0300';
             let netSpecifier = {
                 netCapabilities: {
@@ -173,7 +173,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
           * call Register ()to activate the default network,and see if the callback information is generated
           *@tc.desc Function test
           */
-        it('Telephony_NetworkManager_register_Async_0400', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0400';
             let netSpecifier = {
                 netCapabilities: {
@@ -225,7 +225,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
         * call Register() to activate the default network,and see if the callback information is generated
         *@tc.desc Function test
         */
-        it('Telephony_NetworkManager_register_Async_0500', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_rgister_Async_0500';
             let netSpecifier = {
                 netCapabilities: {
@@ -277,7 +277,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
         * call Register() to activate the default network,and see if the callback information is generated
         *@tc.desc Function test
         */
-        it('Telephony_NetworkManager_register_Async_0600', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_rgister_Async_0600';
             let netSpecifier = {
                 netCapabilities: {
@@ -329,7 +329,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
         * call Register() to activate the default network,and see if the callback information is generated
         *@tc.desc Function test
         */
-        it('Telephony_NetworkManager_register_Async_0700', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_rgister_Async_0700';
             let netSpecifier = {
                 netCapabilities: {
@@ -381,7 +381,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
         * call Register() to activate the default network,and see if the callback information is generated
         *@tc.desc Function test
         */
-        it('Telephony_NetworkManager_register_Async_0800', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_rgister_Async_0800';
             let netSpecifier = {
                 netCapabilities: {
@@ -432,7 +432,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
         * call Register() to activate the default network,and see if the callback information is generated
         *@tc.desc Function test
         */
-        it('Telephony_NetworkManager_register_Async_0900', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_rgister_Async_0900';
             let netSpecifier = {
                 netCapabilities: {
@@ -484,7 +484,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
         * call Register() to activate the default network,and see if the callback information is generated
         *@tc.desc Function test
         */
-        it('Telephony_NetworkManager_register_Async_1000', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_rgister_Async_1000';
             let netSpecifier = {
                 netCapabilities: {
@@ -537,7 +537,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1100', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1100';
             let netSpecifier = {
                 netCapabilities: {
@@ -590,7 +590,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1200', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1200';
             let netSpecifier = {
                 netCapabilities: {
@@ -644,7 +644,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1300', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1300';
             let netSpecifier = {
                 netCapabilities: {
@@ -698,7 +698,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1400', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1400';
             let netSpecifier = {
                 netCapabilities: {
@@ -751,7 +751,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1500', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1500';
             let netSpecifier = {
                 netCapabilities: {
@@ -805,7 +805,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1600', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1600';
             let netSpecifier = {
                 netCapabilities: {
@@ -858,7 +858,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1700', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1700';
             let netSpecifier = {
                 netCapabilities: {
@@ -911,7 +911,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1800', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1800';
             let netSpecifier = {
                 netCapabilities: {
@@ -962,7 +962,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_1900', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_1900';
             let netSpecifier = {
                 netCapabilities: {
@@ -997,7 +997,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * @tc.desc Function test
          */
 
-        it('Telephony_NetworkManager_register_Async_2000', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_2000';
             let netSpecifier = {
                 netCapabilities: {
@@ -1049,7 +1049,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_2100', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_2100';
             let netSpecifier = {
                 netCapabilities: {
@@ -1108,7 +1108,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_2200', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_2200';
             let netSpecifier = {
                 netCapabilities: {
@@ -1167,7 +1167,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_2300', 0, async function (done) {
+        it('Telephony_NetworkManager_register_Async_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_2300';
             let netConn = connection.createNetConnection();
             netConn.register(function (error) {
@@ -1212,7 +1212,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_unregister_Async_0100', 0, async function (done) {
+        it('Telephony_NetworkManager_unregister_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_unregister_Async_0100';
             let netSpecifier = {
                 netCapabilities: {
@@ -1265,7 +1265,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_unregister_Async_0200', 0, async function (done) {
+        it('Telephony_NetworkManager_unregister_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_unregister_Async_0200';
             let netConn = connection.createNetConnection();
             netConn.register(function (error) {
@@ -1310,7 +1310,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_unregister_Async_0300', 0, async function (done) {
+        it('Telephony_NetworkManager_unregister_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let caseName = 'Telephony_NetworkManager_unregister_Async_0300';
             let netConn = connection.createNetConnection();
             netConn.register(function (error) {

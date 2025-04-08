@@ -87,7 +87,7 @@ struct ListExampleA {
       })
       .onDidScroll((offset: number) => {
         this.scrollOffset = offset;
-        // 判断是否滚动到顶部以及不回滚次数是否达标
+        // 判断是否滚动到顶部以及回滚次数是否达标
         if (this.scrollCount === 3) {
           this.message4 = 'DidAbnormal';
         }

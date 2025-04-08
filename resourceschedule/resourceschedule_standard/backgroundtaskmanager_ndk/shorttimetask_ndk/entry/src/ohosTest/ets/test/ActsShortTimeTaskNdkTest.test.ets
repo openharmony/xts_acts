@@ -27,7 +27,7 @@ export default function ActsShortTimeTaskNdkTest() {
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Resourceschedule_ShortTimeTask_RequestSuspendDelay_0100', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Resourceschedule_ShortTimeTask_RequestSuspendDelay_0100', Level.LEVEL3, async (done: Function) => {
       try {
         console.info("====>SUB_Resourceschedule_ShortTimeTask_RequestSuspendDelay_0100 start====");
         shortTimeTaskNdk.CancelSuspendDelay();
@@ -49,7 +49,7 @@ export default function ActsShortTimeTaskNdkTest() {
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Resourceschedule_ShortTimeTask_GetRemainingDelayTime_0100', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Resourceschedule_ShortTimeTask_GetRemainingDelayTime_0100', Level.LEVEL3, async (done: Function) => {
       try {
         console.info("====>SUB_Resourceschedule_ShortTimeTask_GetRemainingDelayTime_0100 start====");
         let time: number = shortTimeTaskNdk.GetRemainingDelayTime();
@@ -70,7 +70,7 @@ export default function ActsShortTimeTaskNdkTest() {
      * @tc.size    : MediumTest
      * @tc.type    : Function
      */
-    it('SUB_Resourceschedule_ShortTimeTask_CancelSuspendDelay_0100', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Resourceschedule_ShortTimeTask_CancelSuspendDelay_0100', Level.LEVEL3, async (done: Function) => {
       try {
         console.info("====>SUB_Resourceschedule_ShortTimeTask_CancelSuspendDelay_0100 start====");
         let ret: number = shortTimeTaskNdk.CancelSuspendDelay();

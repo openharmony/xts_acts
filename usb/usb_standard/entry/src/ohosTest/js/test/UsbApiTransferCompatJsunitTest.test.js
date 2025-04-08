@@ -223,6 +223,23 @@ describe('UsbApiTransferCompatJsunitTest', function () {
         expect(ret).assertEqual(0);
     }
 
+    function getTransfersParam(gPipe, flagsValue, endpointValue,
+        typeValue, timeOutValue) {
+        let transferParams = {
+        devPipe: gPipe,
+        flags: flagsValue,
+        endpoint: endpointValue,
+        type: typeValue,
+        timeout: timeOutValue,
+        length: 10,
+        callback: () => {},
+        userData: new Uint8Array(10),
+        buffer: new Uint8Array(10),
+        isoPacketCount: 0,
+        };
+        return transferParams;
+    }
+
     /**
      * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_1000
      * @tc.name     : testBulkTransferCompat001
@@ -1068,5 +1085,35 @@ describe('UsbApiTransferCompatJsunitTest', function () {
         });
     })
 
+    /**
+     * @tc.number   : SUB_USB_Host_JS_usbCancelTransfer_ErrCode_0200
+     * @tc.name     : testUsbCancelTransfer003
+     * @tc.desc     : interrupt transfer cancel failed.
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testUsbCancelTransfer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done) => {
+        console.info(TAG, 'interrupt testUsbCancelTransfer003 enter');
+        if (!isDeviceConnected) {
+            console.info(TAG, 'usb testUsbCancelTransfer003 No device is connected');
+            expect(isDeviceConnected).assertFalse();
+            done()
+            return
+        }
+        let type = usbManager.TRANSFER_TYPE_INTERRUPT;
+        let transferParams = getTransfersParam(null, 2, 129, type, 2000);
+        try {
+            usbManager.usbCancelTransfer(transferParams);
+            expect().assertFail();
+            done()
+        } catch (error) {
+            console.info(TAG, 'interrupt testUsbCancelTransfer003 end');
+            console.error('interrupt cancel failed:', error);
+            expect(error.code).assertEqual(401);
+            usbManager.closePipe(devices);
+            done()
+        }
+    });
 })
 }

@@ -15,7 +15,7 @@
  */
 
 import bluetooth from '@ohos.bluetoothManager';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 let gattServer = null;
@@ -117,7 +117,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 0
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3000', 0, async function (done) {
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -170,7 +170,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 2
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3100', 0, async function (done) {
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -223,7 +223,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 2
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3200', 0, async function (done) {
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -270,7 +270,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 2
                */
-               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3300', 0, async function (done) {
+               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -317,7 +317,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 2
                */
-               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3400', 0, async function (done) {
+               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -364,7 +364,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 3
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3500', 0, async function (done) { 
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) { 
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -400,7 +400,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 3
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3600', 0, async function (done) {
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -446,7 +446,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 3
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3700', 0, async function (done) {
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -489,7 +489,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 3
                */
-          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3800', 0, async function (done) {
+          it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;
@@ -532,7 +532,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 3
                */
-               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3900', 0, async function (done) {
+               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let serviceValueBuffer = new Uint8Array(4);
                     serviceValueBuffer[0] = 4;
                     serviceValueBuffer[1] = 6;
@@ -574,7 +574,7 @@ export default function btManagerAdvertError401Test() {
                * @tc.size MediumTest
                * @tc.level Level 3
                */
-               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_4000', 0, async function (done) {
+               it('SUB_COMMUNICATION_BTMANAGER_GATTADVERT_ERROR_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
                     let manufactureValueBuffer = new Uint8Array(4);
                     manufactureValueBuffer[0] = 1;
                     manufactureValueBuffer[1] = 2;

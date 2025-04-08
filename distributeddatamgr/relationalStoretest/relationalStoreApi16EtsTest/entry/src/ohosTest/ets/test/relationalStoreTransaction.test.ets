@@ -499,7 +499,7 @@ export default function relationalStoreBatchinsertTransactionTest() {
           done();
         } catch (e) {
           console.log(TAG + e + " code: " + e.code);
-          expect(e.code).assertEqual(14800014);
+          expect(e.code).assertEqual(14800021);
           done();
         }
       }
@@ -584,7 +584,7 @@ export default function relationalStoreBatchinsertTransactionTest() {
           done();
         } catch (e) {
           console.log(TAG + e + " code: " + e.code);
-          expect(e.code).assertEqual(14800014);
+          expect(e.code).assertEqual(14800021);
           done();
         }
         console.log(TAG + "testbatchInsertWithConflictResolutionInTransaction1200 success");

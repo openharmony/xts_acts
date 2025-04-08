@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import cipher from '@system.cipher';
 export default function cipher1_test() {
 describe('cipher1_test', function () {
@@ -60,7 +60,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1300', 2, function () {
+   it('SUB_Security_DataPro_cipher_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.aes({
 		action: 'encrypt123',
 		text: plainTextAes,
@@ -89,7 +89,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1400', 2, function () {
+   it('SUB_Security_DataPro_cipher_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: plainTextAes,
@@ -118,7 +118,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1500', 2, function () {
+   it('SUB_Security_DataPro_cipher_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -147,7 +147,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1600', 2, function () {
+   it('SUB_Security_DataPro_cipher_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: plainTextAes,
@@ -197,7 +197,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1700', 2, function () {
+   it('SUB_Security_DataPro_cipher_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.aes({
 		action: 'encrypt',
 		text: plainTextAes,
@@ -226,7 +226,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1800', 2, function () {
+   it('SUB_Security_DataPro_cipher_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
 	  cipher.aes({
 		action: 'decrypt123',
 		text: cipherTextAes,
@@ -255,7 +255,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_1900', 3, function () {
+   it('SUB_Security_DataPro_cipher_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -284,7 +284,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2000', 3, function () {
+   it('SUB_Security_DataPro_cipher_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: '~!@#$%^&*()_+<>?:"~,./183456789012345678901234567890123456789',
@@ -313,7 +313,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2100', 3, function () {
+   it('SUB_Security_DataPro_cipher_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,
@@ -362,7 +362,7 @@ describe('cipher1_test', function () {
    * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
    * @tc.desc       [C-SECURITY-1800]
    */
-   it('SUB_Security_DataPro_cipher_2200', 3, function () {
+   it('SUB_Security_DataPro_cipher_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
 	  cipher.aes({
 		action: 'decrypt',
 		text: cipherTextAes,

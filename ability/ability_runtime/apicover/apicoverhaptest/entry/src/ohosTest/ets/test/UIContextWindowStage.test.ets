@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEventManager from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -49,7 +49,7 @@ export default function UIContextWindowStageTest() {
      * @tc.type    Function
      * @tc.level   3
      */
-    it('ACTS_GetWindowStage_0100', 0,  (done: Function) => {
+    it('ACTS_GetWindowStage_0100', Level.LEVEL0, (done: Function) => {
       TAG = 'ACTS_GetWindowStage_0100';
       console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage']
@@ -89,7 +89,7 @@ export default function UIContextWindowStageTest() {
      * @tc.type    Function
      * @tc.level   3
      */
-    it('ACTS_GetWindowStage_0200', 0,  (done: Function) => {
+    it('ACTS_GetWindowStage_0200', Level.LEVEL0, (done: Function) => {
       TAG = 'ACTS_GetWindowStage_0200';
       console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage']
@@ -141,7 +141,7 @@ export default function UIContextWindowStageTest() {
      * @tc.type    Function
      * @tc.level   3
      */
-    it('ACTS_GetWindowStage_onForeground_0100', 0,  (done: Function) => {
+    it('ACTS_GetWindowStage_onForeground_0100', Level.LEVEL0, (done: Function) => {
       TAG = 'ACTS_GetWindowStage_onForeground_0100';
       console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage', 'ACTS_GetWindowStage_onForeground', 'ACTS_GetWindowStage_onBackground']
@@ -205,7 +205,7 @@ export default function UIContextWindowStageTest() {
      * @tc.type    Function
      * @tc.level   3
      */
-    it('ACTS_GetWindowStage_onNewWant_0100', 0,  (done: Function) => {
+    it('ACTS_GetWindowStage_onNewWant_0100', Level.LEVEL0, (done: Function) => {
       TAG = 'ACTS_GetWindowStage_onNewWant_0100';
       if (deviceType === '2in1') {
         done();
@@ -270,7 +270,7 @@ export default function UIContextWindowStageTest() {
      * @tc.type    Function
      * @tc.level   3
      */
-    it('ACTS_GetWindowStage_onWindowStageRestore_0100', 0,  (done: Function) => {
+    it('ACTS_GetWindowStage_onWindowStageRestore_0100', Level.LEVEL0, (done: Function) => {
       TAG = 'ACTS_GetWindowStage_onWindowStageRestore_0100';
       console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage'];

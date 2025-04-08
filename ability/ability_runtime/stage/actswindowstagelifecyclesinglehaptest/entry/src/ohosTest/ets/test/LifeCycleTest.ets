@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import ability from '@ohos.ability.ability';
@@ -146,7 +146,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0100", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0100 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0100";
 
@@ -204,7 +204,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0200", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0200 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0200";
 
@@ -278,7 +278,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_WindowStageLifeCycleTest_0300", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0300";
       if (deviceType === '2in1') {
@@ -360,7 +360,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0400", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0400 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0400";
 
@@ -448,7 +448,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0500", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0500", Level.LEVEL0, async (done: Function) => {
       await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_0500 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0500";
@@ -532,7 +532,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0600", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0600", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0600 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0600";
       if (deviceType === '2in1') {
@@ -619,7 +619,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0700", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0700", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0700 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0700";
       if (deviceType === '2in1') {
@@ -707,7 +707,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_0800", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0800", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0800 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0800";
       if (deviceType === '2in1') {
@@ -778,7 +778,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_WindowStageLifeCycleTest_0900", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_0900", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0900 start-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0900";
       let mainAbility9onDestroy = 0;
@@ -845,7 +845,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_1000", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_1000", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1000 start-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1000";
       if (deviceType === '2in1') {
@@ -909,7 +909,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_1100", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_1100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1100 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1100";
       let id1 = -1;
@@ -996,7 +996,7 @@ export default function lifecycleTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Singlehap_WindowStageLifeCycleTest_1200", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_1200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_WindowStageLifeCycleTest_1200 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1200";
       let id1 = -1;
@@ -1100,7 +1100,7 @@ export default function lifecycleTest() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("Singlehap_WindowStageLifeCycleTest_1300", 0, async (done: Function) => {
+    it("Singlehap_WindowStageLifeCycleTest_1300", Level.LEVEL0, async (done: Function) => {
       await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_1300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1300";

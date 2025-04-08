@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Subscriber from '@ohos.commonEventManager'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import abilityDelegatorRegistry2 from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -51,7 +51,7 @@ export default function abilityTestSync() {
      * @tc.name: Verify that the addAbilityMonitorSync interface functions normally.
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility to trigger onAbilityCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0100', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitorSync_0100', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -98,7 +98,7 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility to
      * trigger onAbilityForeground (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0200', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitorSync_0200', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -148,7 +148,7 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility to trigger
      * onAbilityBackground (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0300', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitorSync_0300', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -195,7 +195,7 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility
      * to trigger onAbilityDestroy (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0400', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitorSync_0400', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -240,7 +240,7 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility
      * to trigger onWindowStageCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0500', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitorSync_0500', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -287,7 +287,7 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onWindowStageDestroy (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0600', 0, async (done: Function) => {
+    it('ACTS_AddAbilityMonitorSync_0600', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -336,7 +336,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0100', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0100', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0100--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -387,7 +387,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityForeground (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0200', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0200', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0200--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -437,7 +437,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityBackground (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0300', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0300', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0300--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -487,7 +487,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityDestroy (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0400', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0400', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -537,7 +537,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onWindowStageCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0500', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0500', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0500--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -587,7 +587,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onWindowStageDestroy (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0600', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0600', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
@@ -637,7 +637,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0700', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0700', Level.LEVEL0, async (done: Function) => {
 
       let onAbilityCreate = () => {
         console.log('====>ACTS_RemoveAbilityMonitorSync_0700 onAbilityCreate====>');
@@ -665,7 +665,7 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0800', 0, async (done: Function) => {
+    it('ACTS_RemoveAbilityMonitorSync_0800', Level.LEVEL0, async (done: Function) => {
       let CallbackFlag = 0
       console.log('====>ACTS_RemoveAbilityMonitorSync_0800--addAbilityMonitorSync--Subscriber====>');
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {

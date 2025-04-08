@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium'
 import radio from '@ohos.telephony.radio';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -82,7 +82,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetRadioTech0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetRadioTech0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetRadioTech0100';
       console.info(`${caseName} test start`);
       sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
@@ -116,7 +116,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     * @tc.type  : Function
     * @tc.level : Level 3
     */
-    it('testTelephonyRadioGetRadioTech0700', 0, async (done: Function) => {
+    it('testTelephonyRadioGetRadioTech0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetRadioTech0700';
       console.info(`${caseName} test start`);
       sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
@@ -149,7 +149,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetNetworkState0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0100';
       console.info(`${caseName} test start`);
       try {
@@ -202,7 +202,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetNetworkState0200', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0200';
       console.info(`${caseName} test start`);
       try {
@@ -254,7 +254,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetNetworkState0600', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0600';
       console.info(`${caseName} test start`);
       try {
@@ -304,7 +304,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetNetworkState1000', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState1000';
       console.info(`${caseName} test start`);
       try {
@@ -354,7 +354,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetNetworkSelectionModeAsync0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkSelectionModeAsync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkSelectionModeAsync0100';
       console.info(`${caseName} test start`);
       if (isSim0Active) {
@@ -387,7 +387,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetNetworkSelectionModePromise0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkSelectionModePromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkSelectionModePromise0100';
       console.info(`${caseName} test start`);
       if (isSim0Active) {
@@ -417,7 +417,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetISOCountryCodeForNetworkAsync0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetISOCountryCodeForNetworkAsync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkAsync0100';
       console.info(`${caseName} test start`);
       if (isSim0Active) {
@@ -450,7 +450,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetISOCountryCodeForNetworkPromise0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetISOCountryCodeForNetworkPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkPromise0100';
       console.info(`${caseName} test start`);
       if (isSim0Active) {
@@ -480,7 +480,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     * @tc.type  : Function
     * @tc.level : Level 1
     */
-    it('testTelephonyRadioGetISOCountryCodeForNetworkSync0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetISOCountryCodeForNetworkSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkSync0100';
       console.info(`${caseName} test start`);
       if (isSim0Active) {
@@ -512,7 +512,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetPrimarySlotId0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetPrimarySlotId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetPrimarySlotId0100';
       console.info(`${caseName} test start`);
       radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
@@ -547,7 +547,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetPrimarySlotId0400', 0, async (done: Function) => {
+    it('testTelephonyRadioGetPrimarySlotId0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetPrimarySlotId0400';
       console.info(`${caseName} test start`);
       radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
@@ -579,7 +579,7 @@ export default function telephonyRadioPublicNeedCardTest() {
        * @tc.type  : Function
        * @tc.level : Level 1
        */
-    it('testTelephonyRadioGetSignalInformation0100', 0, async (done: Function) => {
+    it('testTelephonyRadioGetSignalInformation0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetSignalInformation0100';
       console.info(`${caseName} test start`);
       sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
@@ -613,7 +613,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetSignalInformation0700', 0, async (done: Function) => {
+    it('testTelephonyRadioGetSignalInformation0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetSignalInformation0700';
       console.info(`${caseName} test start`);
       sim.hasSimCard(SLOT_0, (err: BusinessError, data: boolean) => {
@@ -645,7 +645,7 @@ export default function telephonyRadioPublicNeedCardTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioIsRadioOn0100', 0, async (done: Function) => {
+    it('testTelephonyRadioIsRadioOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioIsRadioOn0100';
       console.info(`${caseName} test start`);
       radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
@@ -680,7 +680,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     * @tc.type  : Function
     * @tc.level : Level 3
     */
-    it('testTelephonyRadioIsRadioOn0900', 0, async (done: Function) => {
+    it('testTelephonyRadioIsRadioOn0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioIsRadioOn0900';
       console.info(`${caseName} test start`);
       let isSimActive = sim.isSimActiveSync(SLOT_0);

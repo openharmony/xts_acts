@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
@@ -56,7 +56,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.level     : Level 3
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -134,7 +134,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.level     : Level 3
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600';
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       try {
@@ -212,7 +212,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800';
       try {
         let count = 0;
@@ -263,7 +263,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300';
       try {
         let cmd = 'aa help';
@@ -292,7 +292,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400';
       try {
         let cmd = 'aa help';
@@ -325,7 +325,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500';
       try {
         let cmd = 'aa help';
@@ -354,7 +354,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600';
       try {
         let cmd = 'aa help';
@@ -387,7 +387,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700';
       try {
         let cmd = 'ppwd -L';
@@ -416,7 +416,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800';
       try {
         let cmd = 'ppwd -L';
@@ -449,7 +449,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900';
       try {
         let cmd = 'aa help';
@@ -477,7 +477,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000';
       try {
         let cmd = 'aa help';
@@ -509,7 +509,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100';
       try {
         let cmd = 'xx - help';
@@ -536,7 +536,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200';
       try {
         let cmd = 'xx - help';
@@ -567,7 +567,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300';
       try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -598,7 +598,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400';
       try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -632,7 +632,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500'
       try {
         let cmd = 'xx start';
@@ -661,7 +661,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600';
       try {
         let cmd = 'null';
@@ -690,7 +690,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700';
       try {
         let cmd = 'null';
@@ -723,7 +723,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17800';
       try {
         let cmd = 'aa help';
@@ -751,7 +751,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700';
       try {
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
@@ -782,7 +782,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800';
       try {
         let cmd = 'aa test -b invalid -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
@@ -822,7 +822,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.type      : Function
      */
 
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -855,7 +855,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -898,7 +898,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -931,7 +931,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600';
       try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -965,7 +965,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700', 1, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700', Level.LEVEL1, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700';
       try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
@@ -992,7 +992,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200';
       try {
         const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200';
@@ -1030,7 +1030,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20300';
       try {
         let flag = true;
@@ -1057,7 +1057,7 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400';
       try {
         let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();

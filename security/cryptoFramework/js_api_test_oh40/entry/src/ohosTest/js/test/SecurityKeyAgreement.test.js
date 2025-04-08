@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCommon from "./utils/common/publicDoSpec";
 import cryptoFramework from "@ohos.security.cryptoFramework";
@@ -33,7 +33,7 @@ export default function SecurityKeyAgreementJsunit() {
      */
     it(
       "Security_CryptoFramework_KeyAgreement_Func_0100",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .keyAgreementProcess("ECC")
@@ -55,7 +55,7 @@ export default function SecurityKeyAgreementJsunit() {
      */
     it(
       "Security_CryptoFramework_KeyAgreement_Func_0200",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .keyAgreementProcess("ECC1024")
@@ -77,7 +77,7 @@ export default function SecurityKeyAgreementJsunit() {
      */
     it(
       "Security_CryptoFramework_KeyAgreement_Func_0300",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         var globalECDHData = cryptoFramework.createKeyAgreement("ECC521");
         console.log(
@@ -97,7 +97,7 @@ export default function SecurityKeyAgreementJsunit() {
      */
     it(
       "Security_CryptoFramework_KeyAgreement_Func_0400",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .keyAgreementBySpecProcess(asyCommon.genEccCommonSpec(), "ECC521")
@@ -122,7 +122,7 @@ export default function SecurityKeyAgreementJsunit() {
      */
     it(
       "Security_CryptoFramework_KeyAgreement_Func_0500",
-      0,
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         await asyPromise
           .keyAgreementBySpecProcess(

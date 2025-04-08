@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE } from '../commom.ets';
 
 import bluetoothManager from '@ohos.enterprise.bluetoothManager';
@@ -30,7 +30,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_get_bluetooth_info_0100', 0, async (done: Function) => {
+    it('test_get_bluetooth_info_0100', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         let result: bluetoothManager.BluetoothInfo = bluetoothManager.getBluetoothInfo(SELFWANT);
@@ -51,7 +51,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_add_allowed_bluetooth_devices_0100', 0, async (done: Function) => {
+    it('test_add_allowed_bluetooth_devices_0100', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         let deviceIds: Array<string>  = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -73,7 +73,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_get_allowed_bluetooth_devices_0100', 0, async (done: Function) => {
+    it('test_get_allowed_bluetooth_devices_0100', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         bluetoothManager.getAllowedBluetoothDevices(SELFWANT);
@@ -93,7 +93,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_remove_allowed_bluetooth_devices_0100', 0, async (done: Function) => {
+    it('test_remove_allowed_bluetooth_devices_0100', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         let deviceIds: Array<string>  = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];

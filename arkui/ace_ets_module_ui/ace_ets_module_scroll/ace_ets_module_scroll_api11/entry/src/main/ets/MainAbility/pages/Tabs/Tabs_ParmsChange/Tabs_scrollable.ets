@@ -81,14 +81,14 @@ struct Tabs_scrollable {
       }
       .key("Tabs_scrollable_01")
       .vertical(false)
-      .barWidth(330)
+      .barWidth('100%')
       .barHeight(56)
       .animationDuration(400)
       .scrollable(true)
       .onChange((index: number) => {
         this.currentIndex = index
       })
-      .width(330)
+      .width('90%')  
       .height('45%')
       .backgroundColor('#F1F3F5')
 
@@ -107,14 +107,14 @@ struct Tabs_scrollable {
       }
       .key("Tabs_scrollable_02")
       .vertical(false)
-      .barWidth(330)
+      .barWidth('100%')
       .barHeight(56)
       .animationDuration(400)
       .scrollable(false)
       .onChange((index: number) => {
         this.currentIndexTwo = index
       })
-      .width(330)
+      .width('90%')
       .height('45%')
       .backgroundColor('#F1F3F5')
     }.width('100%')

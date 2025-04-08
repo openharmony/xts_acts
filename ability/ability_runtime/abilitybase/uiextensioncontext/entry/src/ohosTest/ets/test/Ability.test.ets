@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError, systemParameterEnhance } from '@kit.BasicServicesKit';
@@ -48,7 +48,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0100";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0100] start ');
@@ -100,7 +100,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0200] start ');
@@ -152,7 +152,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0300] start ');
@@ -204,7 +204,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0400', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0400] start ');
@@ -256,7 +256,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0500', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0500] start ');
@@ -308,7 +308,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0600', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0600";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0600] start ');
@@ -360,7 +360,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0700] start ');
@@ -412,7 +412,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0800";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0800] start ');
@@ -464,7 +464,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0900', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0900";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0900] start ');
@@ -516,7 +516,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1000', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1000";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1000] start ');
@@ -568,7 +568,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1100";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1100] start ');
@@ -620,7 +620,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] start ');
@@ -672,7 +672,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1300] start ');
@@ -724,7 +724,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1400', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] start ');
@@ -776,7 +776,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1500', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1500] start ');
@@ -828,7 +828,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1600', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1600";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1600] start ');
@@ -880,7 +880,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1700] start ');
@@ -932,7 +932,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1800";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1800] start ');
@@ -984,7 +984,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1900', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1900";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1900] start ');
@@ -1036,7 +1036,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2000', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2000";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2000] start ');
@@ -1088,7 +1088,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2100";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2100] start ');
@@ -1140,7 +1140,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2200] start ');
@@ -1192,7 +1192,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0600] start ');
@@ -1244,7 +1244,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2400', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2400] start ');
@@ -1296,7 +1296,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2500', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2500] start ');
@@ -1348,7 +1348,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2600', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2600";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2600] start ');
@@ -1400,7 +1400,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1000] start ');
@@ -1452,7 +1452,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2800";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2800] start ');
@@ -1504,7 +1504,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2900', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2900";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2900] start ');
@@ -1556,7 +1556,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3000', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3000";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3000] start ');
@@ -1608,7 +1608,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3100";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3100] start ');
@@ -1660,7 +1660,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3200] start ');
@@ -1713,7 +1713,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3300] start ');
@@ -1765,7 +1765,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3400', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3400] start ');
@@ -1817,7 +1817,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3500', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3500] start ');
@@ -1869,7 +1869,7 @@ export default function ActsUIExtensionContextMethodTest() {
    * @tc.type: Function
    * @tc.level: Level 3
    */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3600', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3600";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3600] start ');
@@ -1921,7 +1921,7 @@ export default function ActsUIExtensionContextMethodTest() {
    * @tc.type: Function
    * @tc.level: Level 3
    */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3700] start ');
@@ -1973,7 +1973,7 @@ export default function ActsUIExtensionContextMethodTest() {
    * @tc.type: Function
    * @tc.level: Level 3
    */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3800";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3800] start ');

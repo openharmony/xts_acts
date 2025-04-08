@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import { Driver, ON } from "@ohos.UiTest"
 import window from '@ohos.window';
@@ -144,6 +144,136 @@ export default function extensionWindowPropertiesTest() {
     })
 
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_OFFRECTCHANGE_JS_API_0100
+     * @tc.name      : testUIExtensionHostOffRectChange01
+     * @tc.desc      : testUIExtensionHostOffRectChange01 Register twice and unregister one
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('testUIExtensionHostOffRectChange01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let caseName = 'testUIExtensionHostOffRectChange01 ';
+      console.log(caseName + 'start run');
+      try {
+        let options: window.SubWindowOptions = {
+          title: 'subWindow',
+          decorEnabled: true
+        }
+        console.log(caseName + 'start run')
+        await windowStage.createSubWindowWithOptions('subWindowOffRectChange1', options).then(async (subWindowClass) => {
+          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          await subWindowClass.resizeAsync(1000, 1200)
+          await subWindowClass.moveWindowToAsync(300, 200)
+          subWindowClass.showWindow()
+
+          console.log(caseName + 'after createSubWindow')
+
+          await sleep(1000)
+          let driver = Driver.create()
+          let btn = await driver.findComponent(ON.id('off_single'))
+
+          if (btn == undefined) {
+            console.log(caseName + 'device not support')
+          } else {
+            // 点击按钮 执行两次on('rectChange')， 并执行一个off('rectchange')
+            await btn.click()
+            await sleep(1000)
+
+            // 触发两次rectChange
+            await subWindowClass.resizeAsync(1200, 800)
+            await subWindowClass.moveWindowToAsync(0, 0)
+
+            let hw = await driver.findComponent(ON.id('testNum'))
+            let testNum = await hw.getText()
+            console.log(caseName + 'testNum : ' + testNum)
+            // 只有一个回调函数被响应
+            expect(testNum == '2').assertTrue()
+            await subWindowClass.destroyWindow()
+          }
+        }).catch((error: BusinessError) => {
+          console.log(caseName + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (error.code == 1300002) {
+            console.log(caseName + 'device not support')
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (exception) {
+        console.log(caseName + 'Failed ' + JSON.stringify(exception))
+        expect().assertFail()
+      }
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_OFFRECTCHANGE_JS_API_0200
+     * @tc.name      : testUIExtensionHostOffRectChange02
+     * @tc.desc      : testUIExtensionHostOffRectChange02 register twice and unregister all of them
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('testUIExtensionHostOffRectChange02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let caseName = 'testUIExtensionHostOffRectChange02 ';
+      console.log(caseName + 'start run');
+      try {
+        let options: window.SubWindowOptions = {
+          title: 'subWindow',
+          decorEnabled: true
+        }
+        console.log(caseName + 'start run')
+        await windowStage.createSubWindowWithOptions('subWindowOffRectChange2', options).then(async (subWindowClass) => {
+          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          await subWindowClass.resizeAsync(1000, 1200)
+          await subWindowClass.moveWindowToAsync(300, 200)
+          subWindowClass.showWindow()
+
+          console.log(caseName + 'after createSubWindow')
+
+          await sleep(1000)
+          let driver = Driver.create()
+          let btn = await driver.findComponent(ON.id('off_all'))
+
+          if (btn == undefined) {
+            console.log(caseName + 'device not support')
+          } else {
+            // 点击按钮 执行两次on('rectChange')， 并执行一个off('rectchange')
+            await btn.click()
+            await sleep(1000)
+
+            // 触发两次rectChange
+            await subWindowClass.resizeAsync(1200, 800)
+            await subWindowClass.moveWindowToAsync(0, 0)
+
+            let hw = await driver.findComponent(ON.id('testNum'))
+            let testNum = await hw.getText()
+            console.log(caseName + 'testNum : ' + testNum)
+            // 没有回调函数被响应
+            expect(testNum == '0').assertTrue()
+            await subWindowClass.destroyWindow()
+          }
+        }).catch((error: BusinessError) => {
+          console.log(caseName + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (error.code == 1300002) {
+            console.log(caseName + 'device not support')
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (exception) {
+        console.log(caseName + 'Failed ' + JSON.stringify(exception))
+        expect().assertFail()
+      }
+      done()
+    })
+
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_RECTCHANGE_JS_API_0200
      * @tc.name      : testUIExtensionHostRectChangeErrorCode401
      * @tc.desc      : testUIExtensionHostRectChangeErrorCode401 when got a callback with null
@@ -151,7 +281,7 @@ export default function extensionWindowPropertiesTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testUIExtensionHostRectChangeErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostRectChangeErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostRectChangeErrorCode401 ';
       console.log(caseName + 'start run');
       try {

@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_ILLEGAL: string = "abc";
@@ -47,7 +47,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestInStream0100', 0, async (done: Function) => {
+    it('testHttpRequestInStream0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0100";
       console.info(`${caseName} test Start`);
       try {
@@ -90,7 +90,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestInStream0200', 0, async (done: Function) => {
+    it('testHttpRequestInStream0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0200";
       console.info(`${caseName} test Start`);
       try {
@@ -133,7 +133,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestInStream0300', 0, async (done: Function) => {
+    it('testHttpRequestInStream0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0300";
       console.info(`${caseName} test Start`);
       try {
@@ -174,7 +174,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestInStream0400', 0, async (done: Function) => {
+    it('testHttpRequestInStream0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0400";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -217,7 +217,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestInStream0500', 0, async (done: Function) => {
+    it('testHttpRequestInStream0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0500";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -259,7 +259,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestInStream0600', 0, async (done: Function) => {
+    it('testHttpRequestInStream0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0600";
       console.info(`${caseName} test Start`);
       try {
@@ -302,7 +302,7 @@ export default function HttpRequestInStreamTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestInStream0700', 0, async (done: Function) => {
+    it('testHttpRequestInStream0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestInStream0700";
       console.info(`${caseName} test Start`);
       try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { common, Context } from '@kit.AbilityKit';
-import { describe, beforeAll, it, expect, beforeEach, afterEach } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, beforeEach, afterEach, Level } from '@ohos/hypium';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { data } from '@kit.TelephonyKit';
@@ -54,7 +54,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4600', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4600';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -121,7 +121,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2700', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2700';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -174,7 +174,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2900', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2900';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -228,7 +228,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2800', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2800';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -282,7 +282,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2600', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2600';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -336,7 +336,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3200', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3200';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -390,7 +390,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3000', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3000';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -444,7 +444,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2300', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2300';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -498,7 +498,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2500', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2500';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -552,7 +552,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2400', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2400';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -606,7 +606,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2200', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_2200';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -660,7 +660,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3800', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3800';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -725,7 +725,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3600', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3600';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -790,7 +790,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3500', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3500';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -856,7 +856,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3900', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3900';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -921,7 +921,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3700', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_3700';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -986,7 +986,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4500', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4500';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1041,7 +1041,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4300', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4300';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1106,7 +1106,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4100', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4100';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1171,7 +1171,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4000', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4000';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1236,7 +1236,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4400', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4400';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1299,7 +1299,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4200', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4200';
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1364,7 +1364,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1100', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_1100'
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1418,7 +1418,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1200', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_1200'
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1472,7 +1472,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1000', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_1000'
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1527,7 +1527,7 @@ export default function AbilityRuntime_Test() {
      * @tc.level Level 3
      */
 
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_1300', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_1300'
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1581,7 +1581,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0800', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_0800'
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
@@ -1635,7 +1635,7 @@ export default function AbilityRuntime_Test() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0900', Level.LEVEL0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_0900'
       if (info != 'false' && info != 'true') {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)

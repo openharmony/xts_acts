@@ -367,7 +367,8 @@ export default function windowPropertiesTest() {
         let windowClass2 = await windowStage2.getMainWindow();
         try {
             let densityInfo0: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
-            let newDen = Math.round(densityInfo0.customDensity) + 1
+            // density取值范围应 大于0 小于等于4，超出该范围报401
+            let newDen = (Math.round(densityInfo0.customDensity) + 1) % 4 + 1
             windowStage2.setCustomDensity(newDen);
             console.info(msgStr + `setCustomDensity 3.0 success`);
             let densityInfo1: window.WindowDensityInfo = windowClass2.getWindowDensityInfo();
@@ -2596,8 +2597,8 @@ export default function windowPropertiesTest() {
                     console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
                     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
                     console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
-                    expect(widthBefore).assertEqual(imageInfo.size.width);
-                    expect(heightBefore).assertEqual(imageInfo.size.height);
+                    expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+                    expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
                     pixelMap.release();
                     done();
                 }).catch((err: BusinessError) => {

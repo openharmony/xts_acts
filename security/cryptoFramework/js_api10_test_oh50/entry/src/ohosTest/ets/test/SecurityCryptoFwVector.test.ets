@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as v from './utils/vectors/vectors';
@@ -56,7 +56,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let digestVectors: v.mdVectorData[] = v.digestVectors;
         for (let vector of digestVectors) {
@@ -87,7 +87,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let hmacVectors: v.macVectorData[] = v.hmacVectors;
         for (let vector of hmacVectors) {
@@ -120,7 +120,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let pbkdf2Vectors: v.pbkdf2VectorData[] = v.pbkdf2Vectors;
         for (let vector of pbkdf2Vectors) {
@@ -155,7 +155,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let hkdfVectors: v.hkdfVectorData[] = v.hkdfVectors;
         for (let vector of hkdfVectors) {
@@ -190,7 +190,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let g_index: number = 0;
       let g_vector_failed_index: number = 0;
       try {
@@ -232,7 +232,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let g_index: number = 0;
       let g_vector_failed_index: number = 0;
       try {
@@ -289,7 +289,7 @@ export default function SecurityCryptoFwVectorTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("SUB_Security_CryptoFramework_VectorTest_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_VectorTest_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let g_index: number = 0;
       let g_vector_failed_index: number = 0;
       try {

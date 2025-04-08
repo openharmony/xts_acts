@@ -232,10 +232,14 @@ export default function windowInputTest(context: common.UIAbilityContext, window
           console.info(msgStr + "first listener trigger");
           console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
           keyboard_info = keyboardInfo;
-          expect(keyboard_info.rect.height != null).assertTrue();
-          expect(keyboard_info.rect.width != null).assertTrue();
-          expect(keyboard_info.rect.top != null).assertTrue();
-          expect(keyboard_info.rect.left != null).assertTrue();
+          expect(keyboard_info.beginRect.height != null).assertTrue();
+          expect(keyboard_info.beginRect.width != null).assertTrue();
+          expect(keyboard_info.beginRect.top != null).assertTrue();
+          expect(keyboard_info.beginRect.left != null).assertTrue();
+          expect(keyboard_info.endRect.height != null).assertTrue();
+          expect(keyboard_info.endRect.width != null).assertTrue();
+          expect(keyboard_info.endRect.top != null).assertTrue();
+          expect(keyboard_info.endRect.left != null).assertTrue();
         });
       } catch (exception) {
         if (exception.code != 801) {
