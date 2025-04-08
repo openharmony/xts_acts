@@ -2809,5 +2809,38 @@ export default function conditionVariableTest() {
       done();
     });
 
+    /**
+     * @tc.number    : ActsLocksTestConditionVariableRecursive001
+     * @tc.name      : ActsLocksTestConditionVariableRecursive001
+     * @tc.desc      : check recursive wait()
+     * @tc.level     : Level 3
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it('ActsLocksTestConditionVariableRecursive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      const CASE: string = 'ActsLocksTestConditionVariableRecursive001';
+      console.info(`${CASE} START`);
+      let cv = ArkTSUtils.locks.ConditionVariable.request(CASE);
+      let count = 0;
+      cv.wait().then(() => {
+        ++count;
+        cv.wait().then(() => {
+          ++count;
+          cv.wait().then(() => {
+            ++count;
+          })
+        });
+      })
+      let id = setInterval(() => {
+        cv.notifyAll();
+      }, 100)
+      while(count < 3) {
+        await sleep(100);
+      }
+      clearInterval(id);
+      expect(count).assertEqual(3);
+      done();
+    });
+
   });
 }
