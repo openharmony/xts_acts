@@ -18,6 +18,7 @@ import relationalStoreBatchinsertTransactionTest from './relationalStoreTransact
 import rdbStoreReadOnlyEtsTest from './relationalStoreReadOnly.test';
 import MemoryDbEtsTest from './RelationalStoreMemoryDb.test';
 import rdbResultSetSyncTest from './RelationalStoreResultSetSync.test';
+import rdbResultSetSJsTest from './resultsetJsunit.test';
 
 
 export default function testsuite() {
@@ -27,4 +28,5 @@ export default function testsuite() {
   rdbStoreReadOnlyEtsTest();
   MemoryDbEtsTest();
   rdbResultSetSyncTest();
+  rdbResultSetSJsTest();
 }

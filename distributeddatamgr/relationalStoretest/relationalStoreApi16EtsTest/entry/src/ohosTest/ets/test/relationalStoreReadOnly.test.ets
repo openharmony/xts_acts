@@ -89,7 +89,7 @@ export default function rdbStoreReadOnlyEtsTest() {
      * @tc.level Level 2
      */
 
-    it('readOnlyEtsTest0100', 0, async (done:Function) => {
+    it('readOnlyEtsTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* readOnlyEtsTest0100 start *************");
       const row: data_relationalStore.ValuesBucket = {
         "name": "zhangsan",
@@ -124,7 +124,7 @@ export default function rdbStoreReadOnlyEtsTest() {
      * @tc.level Level 2
      */
 
-    it('readOnlyEtsTest0200', 0, async (done:Function) => {
+    it('readOnlyEtsTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* readOnlyEtsTest0200 start *************");
       const row: data_relationalStore.ValuesBucket = {
         "name": "zhangsan",
@@ -159,7 +159,7 @@ export default function rdbStoreReadOnlyEtsTest() {
      * @tc.level Level 2
      */
 
-    it('readOnlyEtsTest0300', 0, async (done:Function) => {
+    it('readOnlyEtsTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* readOnlyEtsTest0300 start *************");
       const row: data_relationalStore.ValuesBucket = {
         "name": "zhangsan",
@@ -194,7 +194,7 @@ export default function rdbStoreReadOnlyEtsTest() {
      * @tc.level Level 2
      */
 
-    it('readOnlyEtsTest0400', 0, async (done:Function) => {
+    it('readOnlyEtsTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* readOnlyEtsTest0400 start *************");
       const row: data_relationalStore.ValuesBucket = {
         "name": "zhangsan",
@@ -229,7 +229,7 @@ export default function rdbStoreReadOnlyEtsTest() {
      * @tc.level Level 2
      */
 
-    it('readOnlyEtsTest0500', 0, async (done:Function) => {
+    it('readOnlyEtsTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* readOnlyEtsTest0500 start *************");
       const row: data_relationalStore.ValuesBucket = {
         "name": "zhangsan",
@@ -264,7 +264,7 @@ export default function rdbStoreReadOnlyEtsTest() {
      * @tc.level Level 2
      */
 
-    it('readOnlyEtsTest0600', 0, async (done:Function) => {
+    it('readOnlyEtsTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "************* readOnlyEtsTest0600 start *************");
       const row: data_relationalStore.ValuesBucket = {
         "name": "zhangsan",
