@@ -8425,17 +8425,30 @@ export default function imagePicture() {
       let srcPixelmap = image.createPixelMapSync(color, optsForUnpre);
       let optsForPre: image.InitializationOptions = { editable: false, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
       let dstPixelMap = image.createPixelMapSync(optsForPre);
-      image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
-        if(error) {
-          console.error(tag + ` Failed to Create Premultiplied PixelMap. code is ${error}`);
-          expect(Number(error) == 62980248).assertTrue();
-          done();
-        } else {
-          console.info(tag + ' Succeeded in Creating Premultiplied PixelMap.');
-          expect().assertFail();
-          done();
-        }
-      })
+      try {
+        image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
+          if(error) {
+            console.error(tag + ` Failed to Create Premultiplied PixelMap. code is ${error}`);
+            expect(Number(error) == 62980248).assertTrue();
+            done();
+          } else {
+            console.info(tag + ' Succeeded in Creating Premultiplied PixelMap.');
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (error) {
+        console.info(tag + ' SUB_MULTIMEDIA_CREATE_PREMULTIPLIED_PIXEL_MAP_0100 failed.');
+        expect().assertFail();
+        done();
+      }
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      if (dstPixelMap != undefined) {
+        await dstPixelMap.release();
+      }
+      done();
     })
 
     /**
@@ -8469,6 +8482,13 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      if (dstPixelMap != undefined) {
+        await dstPixelMap.release();
+      }
+      done();
     })
 
     /**
@@ -8498,6 +8518,13 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      if (dstPixelMap != undefined) {
+        await dstPixelMap.release();
+      }
+      done();
     })
 
     /**
@@ -8531,6 +8558,13 @@ export default function imagePicture() {
         expect(Number(error) == 62980248).assertTrue();
         done();
       })
+      if (srcPixelmap != undefined) {
+        await srcPixelmap.release();
+      }
+      if (dstPixelMap != undefined) {
+        await dstPixelMap.release();
+      }
+      done();
     })
     
     /**
