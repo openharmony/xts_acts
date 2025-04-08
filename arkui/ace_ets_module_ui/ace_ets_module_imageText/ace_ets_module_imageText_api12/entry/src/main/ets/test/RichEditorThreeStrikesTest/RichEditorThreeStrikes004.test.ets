@@ -44,7 +44,7 @@ export default function RichEditorThreeStrikes004() {
         console.info("get RichEditorThreeStrikes004 state pages: " + JSON.stringify(pages));
         if (!("RichEditorThreeStrikes004" == pages.name)) {
           console.info("get RichEditorThreeStrikes004 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.replaceUrl(options);
+          let result = await router.push(options);
           await CommonFunc.sleep(3000);
           console.info("push RichEditorThreeStrikes004 success: " + JSON.stringify(result));
         }
@@ -109,9 +109,11 @@ export default function RichEditorThreeStrikes004() {
       await driver.click(getBounds.left + 150, getBounds.top + 30);
       await CommonFunc.sleep(80);
       await driver.click(getBounds.left + 150, getBounds.top + 30);
-      await CommonFunc.sleep(80);
+      await CommonFunc.sleep(1000);
       let copy = await driver.findComponent(ON.text('复制'));
-      await copy?.click();
+      if(copy){
+        await copy.click();
+      }
       await CommonFunc.sleep(1000);
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();
