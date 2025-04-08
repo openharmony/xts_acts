@@ -87,6 +87,14 @@ export default function imageDecodeOptions() {
                     console.info("globalpixelmap release fail");
                 }
             }
+            if (globalimageSource != undefined) {
+                console.info("globalimageSource release start");
+                try {
+                    await globalimageSource.release();
+                } catch (error) {
+                    console.info("globalimageSource release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -142,7 +150,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100 error: " + error);
@@ -199,7 +206,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200 error: " + error);
@@ -256,7 +262,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300 error: " + error);
@@ -311,7 +316,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100 error: " + error);
@@ -366,7 +370,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200 error: " + error);
@@ -423,7 +426,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100 error: " + error);
@@ -480,7 +482,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100 error: " + error);
@@ -540,7 +541,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info(
@@ -597,7 +597,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100 error: " + error);
@@ -652,7 +651,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100 error: " + error);
@@ -722,7 +720,6 @@ export default function imageDecodeOptions() {
                                 });
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200 error: " + error);
@@ -775,7 +772,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100 error: " + error);
@@ -828,7 +824,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200 error: " + error);
@@ -885,7 +880,6 @@ export default function imageDecodeOptions() {
                             done();
                         }
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200 error: " + error);
@@ -929,7 +923,6 @@ export default function imageDecodeOptions() {
                             expect().assertFail();
                             done();
                         });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100 error: " + error);
@@ -966,7 +959,6 @@ export default function imageDecodeOptions() {
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     });
-                    await imageSourceApi.release();
                 }
             } catch (error) {
                 console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100 error: " + error);
@@ -1020,7 +1012,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1069,7 +1060,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1118,7 +1108,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1165,7 +1154,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1212,7 +1200,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1263,7 +1250,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1310,7 +1296,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1364,7 +1349,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1413,7 +1397,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1460,7 +1443,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1520,7 +1502,6 @@ export default function imageDecodeOptions() {
                             });
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1567,7 +1548,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1614,7 +1594,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1661,7 +1640,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1697,7 +1675,6 @@ export default function imageDecodeOptions() {
                         expect().assertFail();
                         done();
                     });
-                await imageSourceApi.release();
             }
         });
 
@@ -1725,7 +1702,6 @@ export default function imageDecodeOptions() {
                     expect(pixelmap !== undefined).assertTrue();
                     done();
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1774,7 +1750,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1823,7 +1798,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1872,7 +1846,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1919,7 +1892,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -1966,7 +1938,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2017,7 +1988,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2064,7 +2034,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2118,7 +2087,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2167,7 +2135,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2214,7 +2181,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2275,7 +2241,6 @@ export default function imageDecodeOptions() {
                             });
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2322,7 +2287,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2369,7 +2333,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2416,7 +2379,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2465,7 +2427,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2514,7 +2475,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2563,7 +2523,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2610,7 +2569,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2658,7 +2616,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2710,7 +2667,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2758,7 +2714,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2813,7 +2768,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2863,7 +2817,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2911,7 +2864,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -2972,7 +2924,6 @@ export default function imageDecodeOptions() {
                             });
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -3020,7 +2971,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -3068,7 +3018,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -3115,7 +3064,6 @@ export default function imageDecodeOptions() {
                         done();
                     }
                 });
-                await imageSourceApi.release();
             }
         });
 
@@ -3162,7 +3110,6 @@ export default function imageDecodeOptions() {
                     done();
                 }
             });
-            await imageSourceApi.release();
         });
 
         /**
@@ -3228,7 +3175,6 @@ export default function imageDecodeOptions() {
                         });
                     }
                 });
-                await imageSourceApi.release();
             }
         });
     });
