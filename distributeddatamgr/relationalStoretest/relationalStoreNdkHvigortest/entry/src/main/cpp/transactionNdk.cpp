@@ -84,13 +84,17 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
     valueBucket->putBlob(valueBucket, "data4", arr, len);
     valueBucket->putText(valueBucket, "data5", "ABCDEFG");
     errCode = OH_Rdb_Insert(g_transStore, table, valueBucket);
-    NAPI_ASSERT(env, errCode == 1, "OH_Rdb_Insert is fail.");
+    const int SUCCESS = 1;
+    NAPI_ASSERT(env, errCode == SUCCESS, "OH_Rdb_Insert is fail.");
 
+    const int ID = 2;
+    const int PHONE_NUMBER = 13800;
+    const double HEIGHT 200.1;
     valueBucket->clear(valueBucket);
-    valueBucket->putInt64(valueBucket, "id", 2);
+    valueBucket->putInt64(valueBucket, "id", ID);
     valueBucket->putText(valueBucket, "data1", "liSi");
-    valueBucket->putInt64(valueBucket, "data2", 13800); 
-    valueBucket->putReal(valueBucket, "data3", 200.1);
+    valueBucket->putInt64(valueBucket, "data2", PHONE_NUMBER); 
+    valueBucket->putReal(valueBucket, "data3", HEIGHT);
     valueBucket->putText(valueBucket, "data5", "ABCDEFGH");
     errCode = OH_Rdb_Insert(g_transStore, table, valueBucket); 
     NAPI_ASSERT(env, errCode == 2, "OH_Rdb_CreateConfig is fail.");
@@ -98,8 +102,10 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
     valueBucket->clear(valueBucket);
     valueBucket->putInt64(valueBucket, "id", 3);
     valueBucket->putText(valueBucket, "data1", "wangWu");
-    valueBucket->putInt64(valueBucket, "data2", 14800);
-    valueBucket->putReal(valueBucket, "data3", 300.1);
+    const int DATA2_VALUE = 14800;
+    valueBucket->putInt64(valueBucket, "data2", DATA2_VALUE);
+    const double HEIGHT_DATA = 300.1;
+    valueBucket->putReal(valueBucket, "data3", HEIGHT_DATA);
     valueBucket->putText(valueBucket, "data5", "ABCDEFGHI");
     errCode = OH_Rdb_Insert(g_transStore, table, valueBucket);
     NAPI_ASSERT(env, errCode == 3, "OH_Rdb_CreateConfig is fail.");
@@ -176,7 +182,8 @@ static void FillDataValues(napi_env env, OH_Data_Values *values) {
     ret = OH_Data_Asset_SetName(assets[1], "name2");
     NAPI_ASSERT_RETURN_VOID(env, ret == RDB_OK, "OH_Rdb_Backup1 is fail.");
    
-    ret = OH_Values_PutAssets(values, assets, 2);
+    const int ASSET_COUNT = 2;
+    ret = OH_Values_PutAssets(values, assets, ASSET_COUNT);
     NAPI_ASSERT_RETURN_VOID(env, ret == RDB_OK, "OH_Rdb_Backup1 is fail.");
     ret = OH_Data_Asset_DestroyMultiple(assets, 2);
     NAPI_ASSERT_RETURN_VOID(env, ret == RDB_OK, "OH_Rdb_Backup1 is fail.");
@@ -209,8 +216,10 @@ static napi_value OH_Rdb_CreateTransaction0100(napi_env env, napi_callback_info 
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     valueBucket->putInt64(valueBucket, "id", 4);
     valueBucket->putText(valueBucket, "data1", "test_name4");
-    valueBucket->putInt64(valueBucket, "data2", 14800);
-    valueBucket->putReal(valueBucket, "data3", 300.1);
+    const int DATA2_VALUE = 14800;
+    valueBucket->putInt64(valueBucket, "data2", DATA2_VALUE);
+    const double DATA3_VALUE = 300.1;
+    valueBucket->putReal(valueBucket, "data3", DATA3_VALUE);
     valueBucket->putText(valueBucket, "data5", "ABCDEFGHI");
     int64_t rowId = -1;
     ret = OH_RdbTrans_Insert(trans, table, valueBucket, &rowId);
@@ -235,8 +244,10 @@ static napi_value OH_RdbTrans_Rollback0100(napi_env env, napi_callback_info info
     NAPI_ASSERT(env, trans != nullptr, "OH_Rdb_CreateConfig is fail.");
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     valueBucket->putText(valueBucket, "data1", "test_name4");
-    valueBucket->putInt64(valueBucket, "data2", 14800);
-    valueBucket->putReal(valueBucket, "data3", 300.1);
+    const int DATA2_VALUE = 14800;
+    valueBucket->putInt64(valueBucket, "data2", DATA2_VALUE);
+    const double DATA3_VALUE = 300.1;
+    valueBucket->putReal(valueBucket, "data3", DATA3_VALUE);
     valueBucket->putText(valueBucket, "data5", "ABCDEFGHI");
     int64_t rowId = -1;
     ret = OH_RdbTrans_Insert(trans, table, valueBucket, &rowId);
@@ -306,16 +317,20 @@ static napi_value OH_VBuckets_Create0100(napi_env env, napi_callback_info info){
 
     row1->putInt64(row1, "id", 4);
     row1->putText(row1, "data1", "test_name4");
-    row1->putInt64(row1, "data2", 14800);
-    row1->putReal(row1, "data3", 300.1);
+    const int DATA2_VALUE = 14800;
+    row1->putInt64(row1, "data2", DATA2_VALUE);
+    const double DATA3_VALUE = 300.1;
+    row1->putReal(row1, "data3", DATA3_VALUE);
     row1->putText(row1, "data5", "ABCDEFGHI");
     OH_VBucket *row2 = OH_Rdb_CreateValuesBucket();
     NAPI_ASSERT(env, row2 != nullptr, "OH_Rdb_CreateValuesBucket is fail.");
 
     row2->putInt64(row2, "id", 5);
     row2->putText(row2, "data1", "test_name5");
-    row2->putInt64(row2, "data2", 15800);
-    row2->putReal(row2, "data3", 500.1);
+    const double DATA4_VALUE = 15800;
+    const double DATA5_VALUE = 500.1;
+    row2->putInt64(row2, "data2", DATA4_VALUE);
+    row2->putReal(row2, "data3", DATA5_VALUE);
     row2->putText(row2, "data5", "ABCDEFGHI");
     OH_Data_VBuckets *rows = OH_VBuckets_Create();
     NAPI_ASSERT(env, rows != nullptr, "OH_VBuckets_Create is fail.");
@@ -330,7 +345,8 @@ static napi_value OH_VBuckets_Create0100(napi_env env, napi_callback_info info){
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
     ret = OH_VBuckets_RowCount(rows, &count);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
-    NAPI_ASSERT(env, count == 2, "OH_Rdb_CreateConfig is fail.");
+    const int EXPECTED_COUNT = 2;
+    NAPI_ASSERT(env, count == EXPECTED_COUNT, "OH_Rdb_CreateConfig is fail.");
 
     int64_t changes = -1;
     ret = OH_RdbTrans_BatchInsert(trans, table, rows, RDB_CONFLICT_NONE, &changes);
@@ -357,18 +373,23 @@ static napi_value OH_VBuckets_Destroy0100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, trans != nullptr, "OH_Rdb_CreateTransaction is fail.");
     OH_VBucket *row1 = OH_Rdb_CreateValuesBucket();
     NAPI_ASSERT(env, row1 != nullptr, "OH_Rdb_CreateValuesBucket is fail.");
-    row1->putInt64(row1, "id", 4);
+    const int USER_ID = 4;
+    row1->putInt64(row1, "id", USER_ID);
     row1->putText(row1, "data1", "test_name4");
-    row1->putInt64(row1, "data2", 14800);
-    row1->putReal(row1, "data3", 300.1);
+    const int DATA1_VALUE = 14800;
+    row1->putInt64(row1, "data2", DATA1_VALUE);
+    const double DATA3_VALUE = 300.1;
+    row1->putReal(row1, "data3", DATA3_VALUE);
     row1->putText(row1, "data5", "ABCDEFGHI");
     OH_VBucket *row2 = OH_Rdb_CreateValuesBucket();
     NAPI_ASSERT(env, row2 != nullptr, "OH_Rdb_CreateConfig is fail.");
 
     row2->putInt64(row2, "id", 5);
     row2->putText(row2, "data1", "test_name5");
-    row2->putInt64(row2, "data2", 15800);
-    row2->putReal(row2, "data3", 500.1);
+    const int DATA2_VALUE = 15800;
+    row2->putInt64(row2, "data2", DATA2_VALUE);
+    const double DATA5_VALUE = 500.1;
+    row2->putReal(row2, "data3", DATA5_VALUE);
     row2->putText(row2, "data5", "ABCDEFGHI");
     OH_Data_VBuckets *rows = OH_VBuckets_Create();
     NAPI_ASSERT(env, rows != nullptr, "OH_VBuckets_Create is fail.");
@@ -394,7 +415,8 @@ static napi_value OH_VBuckets_Destroy0100(napi_env env, napi_callback_info info)
     int64_t changes = -1;
     ret = OH_RdbTrans_BatchInsert(trans, table, rows2, RDB_CONFLICT_REPLACE, &changes); 
     NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_BatchInsert is fail.");
-    NAPI_ASSERT(env, changes == 2, "OH_RdbTrans_BatchInsert is fail.");
+    const int EXPECTED_CHANGES = 2;
+    NAPI_ASSERT(env, changes == EXPECTED_CHANGES, "OH_RdbTrans_BatchInsert is fail.");
     row1->destroy(row1);
     row2->destroy(row2);
     ret = OH_VBuckets_Destroy(rows2);
@@ -416,8 +438,10 @@ static napi_value OH_RdbTrans_Update0100(napi_env env, napi_callback_info info){
 
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     valueBucket->putText(valueBucket, "data1", "liSi");
-    valueBucket->putInt64(valueBucket, "data2", 13800);
-    valueBucket->putReal(valueBucket, "data3", 200.1);
+    const int DATA1_VALUE = 14800;
+    valueBucket->putInt64(valueBucket, "data2", DATA1_VALUE);
+    const double DATA2_VALUE = 500.1;
+    valueBucket->putReal(valueBucket, "data3", DATA2_VALUE);
     valueBucket->putNull(valueBucket, "data5");
     OH_Predicates *predicates = OH_Rdb_CreatePredicates(table);
     OH_VObject *valueObject = OH_Rdb_CreateValueObject();
@@ -521,7 +545,8 @@ static napi_value OH_VBucket_PutFloatVector0100(napi_env env, napi_callback_info
     float floatArr[] = { 1.0, 2.0, 3.0 };
     int ret = OH_VBucket_PutFloatVector(valueBucket, "data1", floatArr, 0);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_VBucket_PutFloatVector is fail.");
-    ret = OH_VBucket_PutFloatVector(valueBucket, "data2", floatArr, 3);
+    const int DATA_SIZE = 3;
+    ret = OH_VBucket_PutFloatVector(valueBucket, "data2", floatArr, DATA_SIZE);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_VBucket_PutFloatVector is fail.");
     valueBucket->destroy(valueBucket); 
     napi_value result;
