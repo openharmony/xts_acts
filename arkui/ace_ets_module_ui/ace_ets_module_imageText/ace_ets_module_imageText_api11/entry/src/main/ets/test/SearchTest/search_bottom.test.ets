@@ -74,7 +74,7 @@ export default function search_bottom() {
         let y1 = search_01.bottom
 
         await driver.click(
-          (search_01.left + (search_01.right - search_01.left)/2),(search_01.top + (search_01.bottom - search_01.top)/2)
+          Math.round(search_01.left + (search_01.right - search_01.left)/2),Math.round(search_01.top + (search_01.bottom - search_01.top)/2)
         );
         await CommonFunc.sleep(1000);
 
