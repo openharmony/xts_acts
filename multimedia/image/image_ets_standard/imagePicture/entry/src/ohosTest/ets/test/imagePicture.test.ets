@@ -7670,6 +7670,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to cropSync pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7710,6 +7711,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to flip pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7749,6 +7751,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to rotate pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7789,6 +7792,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to translate pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7829,6 +7833,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to scale Sync pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7868,6 +7873,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to read to buffer Sync pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7912,6 +7918,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to read pixels Sync pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -7960,6 +7967,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to write pixels Sync pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8002,6 +8010,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to write to buffer Sync pixelmap. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8040,6 +8049,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to get info Sync. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8079,6 +8089,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to get info Sync. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8117,6 +8128,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to create Alpha Pixelmap Sync. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8157,6 +8169,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to scale Sync. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8197,6 +8210,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to scale Sync. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8235,6 +8249,7 @@ export default function imagePicture() {
         } catch (error) {
           console.error(tag + ` Failed to clone Sync. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          await pixelMap.release();
           done();
         }
       } else {
@@ -8274,6 +8289,7 @@ export default function imagePicture() {
         }).catch((error: BusinessError) => {
           console.error(tag + ` Failed to scale. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          pixelMap.release();
           done();
         })
       } else {
@@ -8313,6 +8329,7 @@ export default function imagePicture() {
         }).catch((error: BusinessError) => {
           console.error(tag + ` Failed to scale pixelmap.  error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          pixelMap.release();
           done();
         })
       } else {
@@ -8350,6 +8367,7 @@ export default function imagePicture() {
         }).catch((error: BusinessError) => {
           console.error(tag + ` Failed to clone. Error code is ` + error.code);
           expect(Number(error.code) == 501).assertTrue();
+          pixelMap.release();
           done();
         })
       } else {
@@ -8393,6 +8411,7 @@ export default function imagePicture() {
         }).catch((error: BusinessError) => {
           console.error(tag + ` Failed to set metadata. Error code is ` + error);
           expect(Number(error) == 501).assertTrue();
+          pixelMap.release();
           done();
         })
       } else {
