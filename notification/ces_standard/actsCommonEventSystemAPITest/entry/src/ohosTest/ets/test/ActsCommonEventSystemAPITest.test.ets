@@ -204,7 +204,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-     it('Sub_Notification_Ces_Publish_CommonEvent_7900_279', Level.LEVEL0, async (done: Function) => {
+     it('Sub_Notification_Ces_Publish_CommonEvent_7900_279', Level.LEVEL2, async (done: Function) => {
       //构造notificationManager.publish 1600004错误码
       let basicContent: notificationManager.NotificationBasicContent = {
         title: "test_title",
