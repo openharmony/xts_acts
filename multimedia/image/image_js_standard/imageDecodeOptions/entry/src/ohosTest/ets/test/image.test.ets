@@ -87,14 +87,6 @@ export default function imageDecodeOptions() {
                     console.info("globalpixelmap release fail");
                 }
             }
-            if (globalimageSource != undefined) {
-                console.info("globalimageSource release start");
-                try {
-                    await globalimageSource.release();
-                } catch (error) {
-                    console.info("globalimageSource release fail");
-                }
-            }
             console.info("afterEach case");
         });
 
