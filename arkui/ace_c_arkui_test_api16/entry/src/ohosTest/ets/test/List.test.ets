@@ -18,7 +18,6 @@ import textImmutablfFontWeight from "./text/textImmutablfFontWeight.test"
 import TextAreaLetterSpacing from "./textArea/TextAreaLetterSpacing.test"
 import TextInputLetterSpacing from "./textInput/TextInputLetterSpacing.test"
 import textPickerTest from "./textpicker/TextPickerColumnWidthsTest.test"
-import buttonTypeTest from './button/ButtonTypeTest.test'
 import DragTest from "./drag/DragCaseTest.test"
 import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import textInputWordBreakTest from "./textInput/TextInputWordBreakTest.test"
@@ -31,7 +30,6 @@ export default function testsuite() {
   TextAreaLetterSpacing();
   TextInputLetterSpacing();
   textPickerTest();
-  buttonTypeTest();
   DragTest();
   calendarPickerDateTest();
   textInputWordBreakTest();

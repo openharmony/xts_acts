@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 #include "common/common.h"
-
+#include "button/button_type_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -24,6 +24,8 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+        {"testButtonType006", nullptr, TestButtonType006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType007", nullptr, TestButtonType007, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
