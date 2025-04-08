@@ -37,8 +37,6 @@ interface packOpts {
   bufferSize?: number
 };
 
-let global_pixelMap: image.PixelMap;
-
 export default function imagePacking() {
   describe("imagePacking", () => {
     let testContext: common.UIAbilityContext =
@@ -67,20 +65,16 @@ export default function imagePacking() {
       console.info("beforeEach case");
     });
     afterEach(async () => {
-      if (global_pixelMap != undefined) {
-        console.info("globalImagesource release start");
-        try {
-          await global_pixelMap.release();
-        } catch (error) {
-          console.info("globalImagesource release fail");
-        }
-      }
       console.info("afterEach case");
     });
 
     afterAll(() => {
       console.info("afterAll case");
     });
+    const isSupportHdr = () => {
+      return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+        display.getDefaultDisplaySync().hdrFormats.length != 0
+    }
     let packingPromise = (done: ESObject, testNum: ESObject, pixFormat: ESObject, arg: ESObject) => {
       let opts: Opts;
       const Color = new ArrayBuffer(96);
@@ -105,7 +99,6 @@ export default function imagePacking() {
             console.info(`${testNum} create pixelmap fail`);
             done();
           } else {
-            global_pixelMap = pixelmap;
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
               expect(false).assertTrue();
@@ -162,7 +155,6 @@ export default function imagePacking() {
             console.info(`${testNum} create pixelmap fail`);
             done();
           } else {
-            global_pixelMap = pixelmap;
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
               expect(false).assertTrue();
@@ -216,7 +208,6 @@ export default function imagePacking() {
             expect(false).assertTrue();
             done();
           } else {
-            global_pixelMap = pixelmap;
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
               expect(false).assertTrue();
@@ -257,7 +248,6 @@ export default function imagePacking() {
             expect(false).assertTrue();
             done();
           } else {
-            global_pixelMap = pixelmap;
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
               expect(false).assertTrue();
@@ -295,26 +285,6 @@ export default function imagePacking() {
         return undefined;
       }
     }
-
-	let isSupportImageFormat = async (fileName: string, format: string) => {
-	  let filePath = ""
-	  let isSupportFormat = false;
-	  let globalImagesource: image.ImageSource;
-	  try {
-		  filePath = filesDir + "/" + fileName;
-		  globalImagesource = image.createImageSource(filePath);
-		  if (globalImagesource != undefined) {
-			isSupportFormat = globalImagesource.supportedFormats.includes(format);
-			console.info('isSupportFormat is ' + isSupportFormat);
-			globalImagesource.release();
-		  }
-		  return isSupportFormat;
-	  } catch (error) {
-		  console.info("getRawFileContent case" + error);
-		  return isSupportFormat;
-	  }
-	  return isSupportFormat;
-	}
 
     let createPixelMapList = async (done: ESObject, picName: ESObject) => {
       console.info("createPixelMapList start");
@@ -360,6 +330,8 @@ export default function imagePacking() {
         console.log(`checkPackingForSequenceResult height ${imageInfo.size.height}`);
         console.log(`checkPackingForSequenceResult width ${imageInfo.size.width}`);
         console.log(`checkPackingForSequenceResult mimeType ${imageInfo.mimeType}`);
+        expect(imageInfo.size.width == pictureSize.width).assertTrue();
+        expect(imageInfo.size.height == pictureSize.height).assertTrue();
         expect(imageInfo.mimeType == "image/gif").assertTrue();
         console.log(`checkPackingForSequenceResult loopcount1 ${JSON.stringify(loopcount)}`);
         console.log(`checkPackingForSequenceResult loopcount2 ${JSON.stringify(packingOptions.loopCount)}`);
@@ -408,7 +380,7 @@ export default function imagePacking() {
         done();
         return;
       }
-      globalPacker.packToDataFromPixelmapSequence(pixelMapList, packingOptions).then(async (data: ESObject) => {
+      globalPacker.packToData(pixelMapList, packingOptions).then(async (data: ESObject) => {
         try {
           console.log(`${testNum} testPackingForSequencePromise success`);
           await checkPackingForSequenceResult(data, pictureSize, packingOptions);
@@ -434,7 +406,7 @@ export default function imagePacking() {
         done();
         return;
       }
-      globalPacker.packToDataFromPixelmapSequence(pixelMapList, packingOptions).then(async (data: ESObject) => {
+      globalPacker.packToData(pixelMapList, packingOptions).then(async (data: ESObject) => {
         console.log(`${testNum} testPackingForSequencePromiseError success`);
         expect(false).assertTrue();
         done();
@@ -2054,11 +2026,10 @@ export default function imagePacking() {
         expect(true).assertTrue();
         done();
       } else {
-        let isSupportFormat = await isSupportImageFormat("HDRVividSingleLayer.heic", "image/heic");
-		if (!isSupportFormat) {
-	      console.info("device is not support imageformat heic");
-		  expect(true).assertTrue();
-		  done();
+        if (!isSupportHdr()) {
+          console.info("device is not support hdr");
+          expect(true).assertTrue();
+          done();
         } else {
           let pixelMapList = await createPixelMapList(done, "HDRVividSingleLayer.heic");
           let packingOptions: image.PackingOptionsForSequence = {
