@@ -41,11 +41,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
-     * @tc.name napiSendableTest001
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0001
+     * @tc.name      : napiSendableTest001
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest001 START');
       class Class {
         constructor() {}
@@ -63,11 +66,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0004
-     * @tc.name napiSendableTest004
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0004
+     * @tc.name      : napiSendableTest004
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest004 START');
       let value = napitest.NapiCreateSendableArray();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -76,11 +82,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0005
-     * @tc.name napiSendableTest005
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0005
+     * @tc.name      : napiSendableTest005
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest005 START');
       let value = napitest.NapiCreateSendableArrayWithLength();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -89,11 +98,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0006
-     * @tc.name napiSendableTest006
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0006
+     * @tc.name      : napiSendableTest006
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest006 START');
       let value = napitest.NapiCreateSendableArrayBuffer();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -102,11 +114,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0007
-     * @tc.name napiSendableTest007
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0007
+     * @tc.name      : napiSendableTest007
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest007 START');
       let value = napitest.NapiCreateSendableTypedArray();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
@@ -115,11 +130,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0008
-     * @tc.name napiSendableTest008
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0008
+     * @tc.name      : napiSendableTest008
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest008 START');
       let value = napitest.NapiCreateSendableObject();
       napitest.NapiWrapSendable(value, "data");
@@ -130,11 +148,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0009
-     * @tc.name napiSendableTest009
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0009
+     * @tc.name      : napiSendableTest009
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest009 START');
       let value = napitest.NapiCreateSendableObject();
       napitest.NapiWrapSendableWithSize(value, "data");
@@ -145,11 +166,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0010
-     * @tc.name napiSendableTest010
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0010
+     * @tc.name      : napiSendableTest010
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest010 START');
       let flag = createInt()
       let lock = new utils.locks.AsyncLock;
@@ -169,11 +193,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0011
-     * @tc.name napiSendableTest011
-     * @tc.desc aceNapiEtsTest
+     * @tc.number    : SUB_ACE_BASIC_ETS_NAPI_0011
+     * @tc.name      : napiSendableTest011
+     * @tc.desc      : aceNapiEtsTest
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
-    it('napiSendableTest011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('napiSendableTest011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('napiSendableTest011 START');
       let flag = createInt()
       let lock = new utils.locks.AsyncLock;
