@@ -75,7 +75,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5100
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing AbilityStage scenario
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -126,7 +126,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5200
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing emit with different number of callback arguments
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -200,7 +200,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5300
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing off to unregister a single callback
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -268,7 +268,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5400
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing off to unregister all callbacks under a specific event
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -334,7 +334,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5500
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing on to register an anonymous function
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -402,7 +402,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5600
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing on to register a member function
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -468,7 +468,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5800
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing on, off, and emit for a single event
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -538,7 +538,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5900
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing scenarios with multiple context instances
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -623,7 +623,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_6000
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing on, off, and emit for multiple events
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
@@ -705,7 +705,7 @@ export default function contextMonitoringTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_6200
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
+     * @tc.name   : Testing exception scenario of registering the same callback multiple times
      * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
