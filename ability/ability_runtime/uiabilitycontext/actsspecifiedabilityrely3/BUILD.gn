@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2025 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,16 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("uiabilitycontext") {
+ohos_app_assist_suite("ActsSpecifiedAbilityRely3") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "actssetabilityinstanceinforely:ActsSetAbilityInstanceInfoRely",
-      "actssetabilityinstanceinfotest:ActsSetAbilityInstanceInfoTest",
-      "actsspecifiedabilityrely1:ActsSpecifiedAbilityRely1",
-      "actsspecifiedabilityrely2:ActsSpecifiedAbilityRely2",
-      "actsspecifiedabilityrely3:ActsSpecifiedAbilityRely3",
-      "actsspecifiedabilitytest:ActsSpecifiedAbilityTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsSpecifiedAbilityRely3"
+  part_name = "ability_runtime"
+  subsystem_name = "ability"
 }
