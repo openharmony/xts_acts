@@ -14,7 +14,7 @@
  */
 
 import formHost from '@ohos.application.formHost';
-import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
+import { describe, expect, it } from '@ohos/hypium'
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
 export const notifyVisibleFormsFuzzTest = (describeName:string, filterParameter:number) => {
@@ -33,7 +33,7 @@ export const notifyVisibleFormsFuzzTest = (describeName:string, filterParameter:
        * @tc.number FMS_fuzzTest_visible_0100 ~ FMS_fuzzTest_visible_0800
        * @tc.desc Check whether the notifyVisibleForms interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formIds:string[] = getFuzzData(dataType) as string[];
         console.log(`${callbackName} ${tcNumber} formIds typeof: ${typeof formIds}`);
@@ -61,7 +61,7 @@ export const notifyVisibleFormsFuzzTest = (describeName:string, filterParameter:
        * @tc.number FMS_fuzzTest_visible_0900 ~ FMS_fuzzTest_visible_1600
        * @tc.desc Check whether the notifyVisibleForms interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formIds:string[] = getFuzzData(dataType) as string[];
         console.log(`${promiseName} ${tcNumber} ${describeName} formIds typeof: ${typeof formIds}`);

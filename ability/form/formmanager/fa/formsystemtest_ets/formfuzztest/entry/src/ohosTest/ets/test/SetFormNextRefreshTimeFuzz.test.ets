@@ -14,7 +14,7 @@
  */
 
 import formProvider from '@ohos.application.formProvider';
-import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
+import { describe, expect, it } from '@ohos/hypium'
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
 export const setFormNextRefreshTimeFuzzTest = (describeName:string, filterParameter:number) => {
@@ -37,7 +37,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName:string, filterParame
        * @tc.number FMS_fuzzTest_setnexttime_0100 ~ FMS_fuzzTest_setnexttime_0800
        * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
         const nextTime = 5;
@@ -67,7 +67,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName:string, filterParame
        * @tc.number FMS_fuzzTest_setnexttime_0900 ~ FMS_fuzzTest_setnexttime_1600
        * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
         const nextTime = 5;
@@ -94,7 +94,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName:string, filterParame
       * @tc.number FMS_fuzzTest_setnexttime_1700 ~ FMS_fuzzTest_setnexttime_2400
       * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by AsyncCallback)
       */
-      it(`${callbackName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = `${tcNumber}`;
         const nextTime:number = getFuzzData(dataType) as number;
@@ -134,7 +134,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName:string, filterParame
        * @tc.number FMS_fuzzTest_setnexttime_2500 ~ FMS_fuzzTest_setnexttime_3200
        * @tc.desc Check whether the setFormNextRefreshTime interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = `${tcNumber}`;
         const nextTime:number = getFuzzData(dataType) as number;
