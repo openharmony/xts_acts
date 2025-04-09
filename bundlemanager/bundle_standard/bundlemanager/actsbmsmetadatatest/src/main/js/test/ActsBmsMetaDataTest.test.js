@@ -50,7 +50,7 @@ describe('ActsBmsMetaDataTest', function () {
     * @tc.name: test to get meta data for an application.
     * @tc.desc: get an ability's meta data when update.
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_8500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_8500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 "bundleName": BUNDLE_NAME1,
@@ -81,7 +81,7 @@ describe('ActsBmsMetaDataTest', function () {
     * @tc.name: test to get meta data for an application.
     * @tc.desc: get an ability's meta data which contains two HAP packages.
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_8520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_8520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 "bundleName": BUNDLE_NAME6,
@@ -112,7 +112,7 @@ describe('ActsBmsMetaDataTest', function () {
     * @tc.name: test to get meta data for an application.
     * @tc.desc: get an ability's meta data which has two ability.
     */
-    it('Sub_Bms_Framework_Query_AbilityInfo_0080', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
+    it('Sub_Bms_Framework_Query_AbilityInfo_0080', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME2,

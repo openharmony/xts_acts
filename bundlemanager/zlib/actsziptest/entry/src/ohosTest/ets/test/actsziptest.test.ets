@@ -918,7 +918,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================ACTS_ZipTest_01 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -955,7 +955,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest02', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================ACTS_ZipTest_02 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1202,7 +1202,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest08', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest08 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1244,7 +1244,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest09', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest09', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest09 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1371,7 +1371,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest12', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest12', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest12 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1418,7 +1418,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest13', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest13', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest13 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1489,7 +1489,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest14 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1531,7 +1531,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest15', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest15', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest15 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1568,7 +1568,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest16', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest16', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest16 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -1605,7 +1605,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest17', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest17', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest17 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2174,7 +2174,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest25', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest25', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest25 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2212,7 +2212,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest26', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest26', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest26 start==================");
             let zip = zlib.createZipSync();
             await zip.zlibVersion().then((data) => {
@@ -2234,7 +2234,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest27', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest27', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest27 start==================");
             let zip = zlib.createZipSync();
             await zip.zlibCompileFlags().then((data) => {
@@ -2257,7 +2257,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest28', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest28', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest28 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2287,7 +2287,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest29', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest29', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest29 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2325,7 +2325,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest30', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest30', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest30 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2364,7 +2364,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest31', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+        it('actsZipTest31', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest31 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2393,7 +2393,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest32', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest32', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
             console.info("==================actsZipTest32 start==================");
             let readIn: (inDesc: object) => ArrayBuffer = (inDesc: object): ArrayBuffer => {
                 console.info("inDesc = ", JSON.stringify(inDesc));
@@ -2539,7 +2539,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest33', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest33', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest33 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2581,7 +2581,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest34', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest34', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest34 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2621,7 +2621,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest35', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest35', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest35 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2661,7 +2661,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest36', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest36', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest36 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2701,7 +2701,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest37', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest37', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest37 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2732,7 +2732,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest38', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest38', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest38 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2772,7 +2772,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest39', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest39', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest39 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2812,7 +2812,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest40', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest40', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest40 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -2854,7 +2854,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('actsZipTest41', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest41', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest41 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3160,7 +3160,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest42', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest42', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest42 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3200,7 +3200,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest43', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest43', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest43 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3240,7 +3240,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest44', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest44', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest44 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3280,7 +3280,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest45', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest45', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest45 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3320,7 +3320,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest46', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest46', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest46 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3360,7 +3360,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest47', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest47', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest47 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3400,7 +3400,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest48', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest48', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest48 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3440,7 +3440,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest49', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest49', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest49 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);
@@ -3471,7 +3471,7 @@ export default function ActsZipTest() {
          * @tc.type       : Function
          * @tc.level      : Level 2
          */
-        it('actsZipTest50', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+        it('actsZipTest50', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
             console.info("==================actsZipTest50 start==================");
             let str = 'hello world!';
             let arrayBufferIn = new ArrayBuffer(str.length);

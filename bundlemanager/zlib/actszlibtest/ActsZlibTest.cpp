@@ -118,7 +118,7 @@ struct mem_zone {
  * @tc.name      : Test compress and uncompress test
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestCompress, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestCompress, Function | MediumTest | Level0)
 {
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestCompress Z_SOLO**********\n");
@@ -151,7 +151,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCompress, Function | MediumTest | Level2)
  * @tc.name      : Test gzio
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level0)
 {
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzio Z_SOLO**********\n");
@@ -206,7 +206,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
  * @tc.name      : Test deflate
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestDeflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflate, Function | MediumTest | Level0)
 {
     Byte *compr;
     uLong comprLen = 100 * sizeof(int);
@@ -254,7 +254,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDeflate, Function | MediumTest | Level2)
  * @tc.name      : Test inflate
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level0)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
@@ -296,7 +296,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level2)
  * @tc.name      : Test deflate with large buffers and dynamic change of compression level
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level0)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
@@ -357,7 +357,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
  * @tc.name      : Test inflate with large buffers
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level0)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
@@ -398,7 +398,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level2)
  * @tc.name      : Test deflate with full flush
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestFlush, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestFlush, Function | MediumTest | Level0)
 {
     Byte *compr;
     uLong comprLen = 100 * sizeof(int);
@@ -439,7 +439,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestFlush, Function | MediumTest | Level2)
  * @tc.name      : Test inflateSync
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level0)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
@@ -477,7 +477,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
  * @tc.name      : Test deflate with preset dictionary
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestDictDeflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDictDeflate, Function | MediumTest | Level1)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
@@ -516,7 +516,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDictDeflate, Function | MediumTest | Level2)
  * @tc.name      : Test inflate with a preset dictionary
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestDictInflate, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDictInflate, Function | MediumTest | Level1)
 {
     Byte *compr, *uncompr;
     uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
@@ -569,7 +569,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDictInflate, Function | MediumTest | Level2)
  * @tc.name      : Test compress2 with Z_BEST_COMPRESSION level
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestCompress2, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestCompress2, Function | MediumTest | Level1)
 {
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestCompress2 Z_BEST_COMPRESSION Z_SOLO**********\n");
@@ -604,7 +604,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCompress2, Function | MediumTest | Level2)
  * @tc.name      : Test adler32
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestAdler, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestAdler, Function | MediumTest | Level1)
 {
     uLong err = Z_ERRNO;
     uLong adler1 = 0L;
@@ -635,7 +635,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestAdler, Function | MediumTest | Level2)
  * @tc.name      : Test deflate state
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level1)
 {
     Byte *compr, *uncompr;
     int *bits = nullptr;
@@ -700,7 +700,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level2)
  * @tc.name      : Test deflateBound
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestDeflateBound, Function | MediumTest | Level2)
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflateBound, Function | MediumTest | Level1)
 {
 #ifdef Z_SOLO
     z_stream defstream;

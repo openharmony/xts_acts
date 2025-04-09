@@ -47,7 +47,7 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.name      getApplicationInfosUnPermission
         * @tc.desc      test getAllApplicationInfo 
         */
-        it('getApplicationInfosUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getApplicationInfosUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -65,7 +65,7 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.name      getBundleInfoUnPermission
         * @tc.desc      test getBundleInfo
         */
-        it('getBundleInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getBundleInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -83,7 +83,7 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.name      getApplicationInfoUnPermission
         * @tc.desc      test getApplicationInfo 
         */
-        it('getApplicationInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('getApplicationInfoUnPermission', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -101,7 +101,7 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.name: hasInstalledUnPermissionSelf
          * @tc.desc: test hasInstalled without permission
         */
-        it('hasInstalledUnPermissionSelf', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('hasInstalledUnPermissionSelf', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: SELF_BUNDLENAME,

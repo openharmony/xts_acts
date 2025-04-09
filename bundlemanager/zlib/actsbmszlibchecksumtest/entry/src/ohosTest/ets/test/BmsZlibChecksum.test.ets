@@ -49,7 +49,7 @@ export default function bmsZlibChecksumTest() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0100 start`);
         let checksum: zlib.Checksum = await zlib.createChecksum();

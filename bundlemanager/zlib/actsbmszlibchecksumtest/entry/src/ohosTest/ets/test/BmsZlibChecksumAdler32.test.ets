@@ -58,7 +58,7 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let adler = 0;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0400 start`);
@@ -79,7 +79,7 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let adler = -1;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0500 start`);
@@ -100,7 +100,7 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let adler = 9223372036854775808;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0600 start`);
@@ -121,7 +121,7 @@ export default function bmsZlibChecksumAdler32Test() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("Sub_Bms_Zlib_Checksum_Check_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let adler = undefined;
         hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_0800 start`);

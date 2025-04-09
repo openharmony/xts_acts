@@ -37,7 +37,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('bundle_GetabilityInfo_test_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let mData;
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME1).then((data) => {
@@ -61,7 +61,7 @@ export default function GetabilityInfo() {
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('Sub_Bms_Framework_Query_AbilityInfo_2600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2600', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             let mData;
             let timeOldStamp = await Utils.getNowTime();
             bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME1, (err, data) => {

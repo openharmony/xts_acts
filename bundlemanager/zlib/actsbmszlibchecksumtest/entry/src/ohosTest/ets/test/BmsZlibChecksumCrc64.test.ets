@@ -58,7 +58,7 @@ export default function bmsZlibChecksumCrc64Test() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_4800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it("Sub_Bms_Zlib_Checksum_Check_4800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
         try {
           let crc = 0;
@@ -81,7 +81,7 @@ export default function bmsZlibChecksumCrc64Test() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_4900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it("Sub_Bms_Zlib_Checksum_Check_4900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
         try {
           let crc = -1;

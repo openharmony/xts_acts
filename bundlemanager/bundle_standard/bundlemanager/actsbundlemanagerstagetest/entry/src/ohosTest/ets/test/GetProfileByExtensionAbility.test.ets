@@ -173,7 +173,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: Check the valid metadataName (by callback)
      * @tc.level   0
      */
-    it('getProfileByExtensionAbilityCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getProfileByExtensionAbilityCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME, (err, data) => {
         console.info('[getProfileByExtensionAbilityCallback] getProfileByExtensionAbility callback data is: ' +
         JSON.stringify(data));
@@ -206,7 +206,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: Check the empty metadataName (by callback)
      * @tc.level   0
      */
-    it('getProfileByExtensionAbilityEmptyMetaDataCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getProfileByExtensionAbilityEmptyMetaDataCall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, '', (err, data) => {
         console.info('[getProfileByExtensionAbilityEmptyMetaDataCall] getProfileByExtensionAbility callback data is: ' +
         JSON.stringify(data));
@@ -226,7 +226,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: Check the valid metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByExtensionAbilityPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getProfileByExtensionAbilityPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME).then(data => {
         console.info('[getProfileByExtensionAbilityPromise] getProfileByExtensionAbility callback data is: ' +
         JSON.stringify(data));
@@ -268,7 +268,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: Check the empty metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByExtensionAbilityEmptyMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getProfileByExtensionAbilityEmptyMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, '').then(data => {
         console.info('[getProfileByExtensionAbilityEmptyMetaDataPro] getProfileByExtensionAbility callback data is: ' +
         JSON.stringify(data));
@@ -292,7 +292,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: without metadataName (by promise)
      * @tc.level   0
      */
-    it('getProfileByExtensionAbilityNoMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getProfileByExtensionAbilityNoMetaDataPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME).then(data => {
         console.info('[getProfileByExtensionAbilityNoMetaDataPro] getProfileByExtensionAbility callback data is: ' +
         JSON.stringify(data));
@@ -369,7 +369,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
      */
-    it('testGetProfileByExtensionAbilitySync', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testGetProfileByExtensionAbilitySync', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       try {
         let data = manager.getProfileByExtensionAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME);
         console.info("getProfileByExtensionAbilitySync success" + JSON.stringify(data));
@@ -390,7 +390,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: Check the empty metadataName
      * @tc.level   0
      */
-    it('testGetProfileByExtensionAbilitySyncWithoutMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testGetProfileByExtensionAbilitySyncWithoutMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       try {
         let data = manager.getProfileByExtensionAbilitySync(MODULE_NAME, ABILITY_NAME);
         console.info("testGetProfileByExtensionAbilitySyncWithoutMetaData success" + JSON.stringify(data));
@@ -504,7 +504,7 @@ export default function getProfileByExtensionAbility() {
      * @tc.desc: Check the empty metadataName
      * @tc.level   0
      */
-    it('testGetProfileByExtensionAbilitySyncEmptyMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('testGetProfileByExtensionAbilitySyncEmptyMetaData', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       try {
         let data = manager.getProfileByExtensionAbilitySync(MODULE_NAME, ABILITY_NAME, '');
         console.info("testGetProfileByExtensionAbilitySyncEmptyMetaData success" + JSON.stringify(data));
