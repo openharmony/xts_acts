@@ -36,7 +36,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfPro
      * @tc.desc: Test getBundleInfoForSelf with default flag(by promise).
      */
-    it('getBundleInfoForSelfPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then(data => {
         console.info("getBundleInfoForSelfPro" + JSON.stringify(data));
         expect(bundle.CompatiblePolicy.BACKWARD_COMPATIBILITY).assertEqual(1);
@@ -67,7 +67,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfCal
      * @tc.desc: Test getBundleInfoForSelf with default flag(by callback).
      */
-    it('getBundleInfoForSelfCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err, data) => {
         console.info("getBundleInfoForSelfCal" + JSON.stringify(data));
         expect(data.name).assertEqual(BUNDLE_NAME);
@@ -94,7 +94,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfApplicationPro
      * @tc.desc: Test getBundleInfoForSelf with application flag(by promise).
      */
-    it('getBundleInfoForSelfApplicationPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfApplicationPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then(data => {
         console.info("getBundleInfoForSelfApplicationPro" + JSON.stringify(data.appInfo));
         checkCommonBundleInfo(data);
@@ -149,7 +149,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfApplicationCal
      * @tc.desc: Test getBundleInfoForSelf with application flag(by callback).
      */
-    it('getBundleInfoForSelfApplicationCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfApplicationCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION, (err, data) => {
         console.info("ApplicationCal" + JSON.stringify(data.appInfo));
         checkCommonBundleInfo(data);
@@ -194,7 +194,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfMetadata
      * @tc.desc: Test getBundleInfoForSelf with application and metadata flag(by callback).
      */
-    it('getBundleInfoForSelfMetadata', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfMetadata', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA, (err, data) => {
         console.info("ApplicationInfo" + JSON.stringify(data.appInfo));
@@ -220,7 +220,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfModulePro
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by promise).
      */
-    it('getBundleInfoForSelfModulePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfModulePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE).then(data => {
         console.info("ModulePro" + JSON.stringify(data.hapModulesInfo[0]));
         checkCommonBundleInfo(data);
@@ -256,7 +256,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfModuleCal
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by callback).
      */
-    it('getBundleInfoForSelfModuleCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfModuleCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE, (err, data) => {
         console.info("getBundleInfoForSelfPro" + JSON.stringify(data.hapModulesInfo));
         checkCommonBundleInfo(data);

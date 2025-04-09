@@ -54,7 +54,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoReqPermissionPromise
      * @tc.desc Test getBundleInfo interfaces with one hap.(by promise)
      */
-    it('testGetBundleInfoReqPermissionPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoReqPermissionPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME1,
             demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES | demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION);
         expect(datainfo.name).assertEqual(NAME1);
@@ -108,7 +108,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundeInfoReqPermissionCallback
      * @tc.desc Test getBundleInfo interfaces with one hap.(by callback)
      */
-    it('testGetBundeInfoReqPermissionCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundeInfoReqPermissionCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await demo.getBundleInfo(NAME1,
             demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES | demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION,
             OnReceiveEvent);
@@ -170,7 +170,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoMultiHapPromise
      * @tc.desc Test getBundleInfo interfaces with two haps.(by promise)
      */
-    it('testGetBundleInfoMultiHapPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoMultiHapPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         console.info("testGetBundleInfoMultiHapPromise dataInfo ====" + datainfo);
         expect(datainfo.name).assertEqual(NAME2);
@@ -194,7 +194,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoMultiHapCallback
      * @tc.desc Test getBundleInfo interfaces with two haps.(by callback)
      */
-    it('testGetBundleInfoMultiHapCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoMultiHapCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
         function OnReceiveEvent(err, datainfo) {
             console.info("testGetBundleInfoMultiHapCallback dataInfo ====" + datainfo);
@@ -220,7 +220,7 @@ describe('ActsBundleManagerTest', function () {
       * @tc.name testGetBundleInfoPromise
       * @tc.desc Test getBundleInfo interfaces with one hap. (by promise)
       */
-    it('testGetBundleInfoPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         console.info("testGetBundleInfoPromise dataInfo ====" + datainfo);
         expect(datainfo.name).assertEqual(NAME1);
@@ -262,7 +262,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoCallback
      * @tc.desc Test getBundleInfo interfaces with one hap. (by callback)
      */
-    it('testGetBundleInfoCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES |
             demo.BundleFlag.GET_ABILITY_INFO_WITH_DISABLE, OnReceiveEvent);
         function OnReceiveEvent(err, datainfo) {
@@ -381,7 +381,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoDifferentParamPromise
      * @tc.desc Test getBundleInfo interfaces with one hap and different param. (by promise)
      */
-    it('testGetBundleInfoDifferentParamPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoDifferentParamPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT)
         console.info("testGetBundleInfoDifferentParamPromise dataInfo ====" + datainfo);
         expect(datainfo.name).assertEqual(NAME1);
@@ -407,7 +407,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoDifferentParamCallback
      * @tc.desc Test getBundleInfo interfaces with one hap and different param. (by callback)
      */
-    it('testGetBundleInfoDifferentParamCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoDifferentParamCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
         function OnReceiveEvent(err, datainfo) {
             console.info("testGetBundleInfoDifferentParamCallback dataInfo ====" + datainfo);
@@ -439,7 +439,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoSystemAppCallback
      * @tc.desc Test getBundleInfo interfaces with systemApp.(by callback)
      */
-    it('testGetBundleInfoSystemAppCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoSystemAppCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let bundleOptions = {
             userId: userId
         };
@@ -471,7 +471,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoCurrentUserIdPromise
      * @tc.desc Test getBundleInfo interface with current userId (by promise).
      */
-    it('testGetBundleInfoCurrentUserIdPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoCurrentUserIdPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let bundleOptions = {
             userId: userId
         };
@@ -520,7 +520,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetBundleInfoCurrentUserIdCallback
      * @tc.desc Test getBundleInfo interface with current userId (by callback).
      */
-    it('testGetBundleInfoCurrentUserIdCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetBundleInfoCurrentUserIdCallback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let bundleOptions = {
             userId: userId
         };
@@ -609,7 +609,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetAllApplicationInfoPromise
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
-    it('testGetAllApplicationInfoPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetAllApplicationInfoPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let datainfo = await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId);
         checkgetApplicationInfos(datainfo);
         done();
@@ -665,7 +665,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name testGetAllBundleInfoPromise
      * @tc.desc Test getBundleInfos interfaces with one hap.
      */
-    it('testGetAllBundleInfoPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('testGetAllBundleInfoPromise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let data = await demo.getAllBundleInfo(demo.BundleFlag.GET_BUNDLE_DEFAULT);
         expect(typeof data).assertEqual(OBJECT);
         expect(data.length).assertLarger(0);

@@ -54,7 +54,7 @@ export default function abilityTest() {
      * @tc.name: getBundleInfoForSelfSyncFileContextMenu
      * @tc.desc: Test getBundleInfoForSelfSync with fileContextMenuConfig flag.
      */
-    it('getBundleInfoForSelfSyncFileContextMenu', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('getBundleInfoForSelfSyncFileContextMenu', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
       bundle.BundleFlag.GET_BUNDLE_INFO_WITH_MENU);
       console.info("getBundleInfoForSelfSyncFileContextMenu" + JSON.stringify(data.hapModulesInfo));
@@ -180,7 +180,7 @@ export default function abilityTest() {
      * @tc.name: getBundleNameByUidUnPermissionApi14
      * @tc.desc: Test getBundleNameByUid unPermission for api14.
      */
-    it('getBundleNameByUidUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('getBundleNameByUidUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       try {
         await bundle.getBundleNameByUid(uid).then(data => {
           console.info("getBundleNameByUidUnPermissionApi14 promise success " + JSON.stringify(data));
@@ -214,7 +214,7 @@ export default function abilityTest() {
      * @tc.name: getAppCloneIdentityUnPermissionApi14
      * @tc.desc: Test getAppCloneIdentity unPermission for api14.
      */
-    it('getAppCloneIdentityUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('getAppCloneIdentityUnPermissionApi14', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       try {
         bundle.getAppCloneIdentity(uid).then(data => {
           console.info("getAppCloneIdentityUnPermissionApi14 success " + JSON.stringify(data));
@@ -237,7 +237,7 @@ export default function abilityTest() {
      * @tc.name: GetOverlayModuleInfoModuleNameNotInstall
      * @tc.desc: The query fails when the incoming moduleName is not installed
      */
-    it('GetOverlayModuleInfoModuleNameNotInstall',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  (done: Function) =>{
+    it('GetOverlayModuleInfoModuleNameNotInstall',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async  (done: Function) =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME1).then(data => {
           console.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
@@ -269,7 +269,7 @@ export default function abilityTest() {
      * @tc.name: GetOverlayModuleInfoModuleNameNotOverlay
      * @tc.desc: The query fails when the incoming moduleName is not overlay
      */
-    it('GetOverlayModuleInfoModuleNameNotOverlay',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  (done: Function) =>{
+    it('GetOverlayModuleInfoModuleNameNotOverlay',  TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async  (done: Function) =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME).then(data => {
           console.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
