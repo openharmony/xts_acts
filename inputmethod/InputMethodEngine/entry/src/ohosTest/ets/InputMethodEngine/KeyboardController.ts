@@ -272,9 +272,11 @@ export class KeyboardController {
         case 101:
           console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200 event:' + data.event);
           that.Sub_Misc_inputMethodEngine_InputClient_deleteBackward_0200();
+          break;
         case 102:
           console.debug(TAG + '====>SUB_InputMethod_IME_PrivateDateTransferred_1101 event:' + data.event);
           that.SUB_InputMethod_IME_PrivateDateTransferred_1101();
+          break;
         case 103:
           console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100 event:' + data.event);
           that.Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100();
@@ -1674,7 +1676,7 @@ export class KeyboardController {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           resolve(newAttachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.TOUCH);
           this.InputClient.off('attachOptionsDidChange');
-        })
+        });
       });
     });
   }
@@ -1691,7 +1693,7 @@ export class KeyboardController {
 
       return new Promise((resolve, reject) => {
         let count = 0;
-        let callback1 = (newAttachOptions) => {
+        let callback1 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback1 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           if (newAttachOptions.requestKeyboardReason !== inputMethod.RequestKeyboardReason.TOUCH) {
             console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback1 not called correct reason');
@@ -1706,7 +1708,7 @@ export class KeyboardController {
           count = 1;
           this.InputClient.off('attachOptionsDidChange', callback1);
         };
-        let callback2 = (newAttachOptions) => {
+        let callback2 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback2 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           if (newAttachOptions.requestKeyboardReason !== inputMethod.RequestKeyboardReason.TOUCH) {
             console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback2 not called correct reason');
@@ -1736,11 +1738,11 @@ export class KeyboardController {
       return new Promise((resolve, reject) => {
         let count1 = 0;
         let count2 = 0;
-        let callback1 = (newAttachOptions) => {
+        let callback1 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100 callback1 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           ++count1;
         };
-        let callback2 = (newAttachOptions) => {
+        let callback2 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100 callback2 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           ++count2;
           this.InputClient.off('attachOptionsDidChange', callback2);
@@ -1762,11 +1764,11 @@ export class KeyboardController {
       return new Promise((resolve, reject) => {
         let count1 = 0;
         let count2 = 0;
-        let callback1 = (newAttachOptions) => {
+        let callback1 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200 callback1 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           ++count1;
         };
-        let callback2 = (newAttachOptions) => {
+        let callback2 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200 callback2 newAttachOptions is ' + JSON.stringify(newAttachOptions));
           ++count2;
         };
@@ -1784,7 +1786,7 @@ export class KeyboardController {
     });
   }
 
-  private async testTemplate(testName: string, assertFunction: () => Promise<boolean>) {
+  private async testTemplate(testName: string, assertFunction: () => Promise<boolean>): Promise<void> {
     console.info(`${TAG}====>receive ${testName} data`);
     let commonEventPublishData = {
       data: 'FAILED'

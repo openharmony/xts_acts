@@ -68,7 +68,7 @@ export default function inputMethodEngineJSUnit() {
           events: [testName]
         }
         let subscriber: ESObject;
-        commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        commoneventmanager.createSubscriber(commonEventSubscribeInfo).then(async (data) => {
           try {
             subscriber = data;
             console.info(`====>${testName} subscriber data: ${JSON.stringify(data)}`)
@@ -92,7 +92,7 @@ export default function inputMethodEngineJSUnit() {
         }).catch((err: BusinessError) => {
           console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
         })
-      }
+      };
 
     beforeAll(async (done: Function) => {
       console.info('====>beforeAll inputMethod_enable start!')
@@ -3600,66 +3600,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.level   Level2
     */
     it('SUB_InputMethod_IME_PrivateDateTransferred_1101', Level.LEVEL2, async (done: Function) => {
-
-      let unSubscriberCallback = (err: BusinessError) => {
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 unSubscriberCallback start");
-        if (err) {
-          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 unSubscriberCallback failed:" +
-          JSON.stringify(err));
-        } else {
-          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 unSubscriberCallback finish");
-        }
-      }
-
-      let subscriberCallback = (err: BusinessError, data: ESObject) => {
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 subscriberCallback data:"
-          + JSON.stringify(data));
-        commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
-        let t = setTimeout(() => {
-          try {
-            expect(data.data).assertEqual("SUCCESS");
-            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 end");
-            clearTimeout(t);
-            done();
-          } catch (err) {
-            console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 err:" + JSON.stringify(err));
-            clearTimeout(t);
-            done();
-          }
-        }, 500)
-      }
-
-      let publishCallback = (err: BusinessError) => {
-        console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 publishCallback start");
-        if (err) {
-          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 publishCallback failed:" + JSON.stringify(err));
-        }
-      }
-
-      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
-        events: ["SUB_InputMethod_IME_PrivateDateTransferred_1101"]
-      }
-      let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        try {
-          subscriber = data;
-          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 subscriber data:" + JSON.stringify(data))
-          commoneventmanager.subscribe(subscriber, subscriberCallback);
-          console.info("====>SUB_InputMethod_IME_PrivateDateTransferred_1101 subscriber finish");
-        } catch (err) {
-          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
-        }
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 102
-        }
-        let t = setTimeout(async () => {
-          clearTimeout(t);
-          commoneventmanager.publish('inputMethodEngineTest', commonEventPublishData, publishCallback);
-        }, 500)
-      }).catch((err: BusinessError) => {
-        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
-      })
+      testTemplate('SUB_InputMethod_IME_PrivateDateTransferred_1101', 102, done);
     });
 
     /**
@@ -3813,7 +3754,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.level   Level2
     */
     it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100', 0, async (done: Function) => {
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
           inputAttribute: {
@@ -3835,7 +3776,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.level   Level2
     */
     it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200', 0, async (done: Function) => {
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
           inputAttribute: {
@@ -3857,7 +3798,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.level   Level2
     */
     it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300', 0, async (done: Function) => {
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
           inputAttribute: {
@@ -3879,7 +3820,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.level   Level2
     */
     it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400', 0, async (done: Function) => {
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
           inputAttribute: {
@@ -3907,12 +3848,12 @@ export default function inputMethodEngineJSUnit() {
         }
       }
 
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
       }
 
-      left afterPublish = async () => {
+      let afterPublish = async () => {
         setTimeout(async () => {
           let inputMethodController = inputMethod.getController();
           await inputMethodController.detach();
@@ -3920,7 +3861,7 @@ export default function inputMethodEngineJSUnit() {
         }, 100);
       }
 
-      testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100', 107, done, beforePublish);
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100', 107, done, beforePublish, afterPublish);
     });
     
     /*
@@ -3938,12 +3879,12 @@ export default function inputMethodEngineJSUnit() {
         }
       }
 
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
       }
 
-      left afterPublish = async () => {
+      let afterPublish = async () => {
         setTimeout(async () => {
           let inputMethodController = inputMethod.getController();
           await inputMethodController.detach();
@@ -3951,7 +3892,7 @@ export default function inputMethodEngineJSUnit() {
         }, 100);
       }
 
-      testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200', 108, done, beforePublish);
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200', 108, done, beforePublish, afterPublish);
     });
     
     /*
@@ -3969,12 +3910,12 @@ export default function inputMethodEngineJSUnit() {
         }
       }
 
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
       }
 
-      left afterPublish = async () => {
+      let afterPublish = async () => {
         setTimeout(async () => {
           let inputMethodController = inputMethod.getController();
           await inputMethodController.detach();
@@ -3988,7 +3929,7 @@ export default function inputMethodEngineJSUnit() {
         }, 300);
       }
 
-      testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100', 109, done, beforePublish);
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100', 109, done, beforePublish, afterPublish);
     });
     
     /*
@@ -4006,12 +3947,12 @@ export default function inputMethodEngineJSUnit() {
         }
       }
 
-      left beforePublish = async () => {
+      let beforePublish = async () => {
         await inputMethod.getController().detach();
         inputMethod.getController().attach(true, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
       }
 
-      left afterPublish = async () => {
+      let afterPublish = async () => {
         setTimeout(async () => {
           let inputMethodController = inputMethod.getController();
           await inputMethodController.detach();
@@ -4025,7 +3966,7 @@ export default function inputMethodEngineJSUnit() {
         }, 300);
       }
 
-      testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', 110, done, beforePublish);
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', 110, done, beforePublish, afterPublish);
     });
 
   })
