@@ -15,7 +15,7 @@
 
 import formBindingData from '@ohos.application.formBindingData';
 import formProvider from '@ohos.application.formProvider';
-import { describe, expect, it }, TestType, Size, Level } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
 export const updateFormFuzzTest = (describeName:string, filterParameter:number) => {
