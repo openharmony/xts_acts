@@ -18,6 +18,7 @@ from devicetest.core.test_case import TestCase, Step
 import json
 import re
 
+
 # @tc.number: XTS_SYSCAP_0100
 # @tc.name: testSyscapTest
 # @tc.level: Level0
@@ -33,25 +34,25 @@ class testSyscapTest(TestCase):
 
     def process(self):
         Step("Process")
-        
+
         # 获取设备 SystemCapability
-        SystemCapability_json_data = self.device1.execute_shell_command("cat /system/ets/SystemCapability.json")
+        SystemCapability_json_data = self.device1.execute_shell_command("cat /system/etc/SystemCapability.json")
         data = json.loads(SystemCapability_json_data)
         device_SystemCapability_list = data['syscap']['os']
         self.log.info(f"设备端syscap: {device_SystemCapability_list}")
-        
+
         # 获取设备类型
-        device_type = re.findall('const.build.product=.+', self.device1.execute_shell_command("cat /system/ets/param/ohos.para"))[0].split('=')[-1]
+        device_type = re.findall('const.build.product=.+', self.device1.execute_shell_command("cat /system/etc/param/ohos.para"))[0].split('=')[-1]
         self.log.info(f"设备类型: {device_type}")
-        
+
         # 获取该类设备syscap最小集
         syscap_json_data = self.device1.execute_shell_command(f"cat /data/local/tmp/syscap/{device_type}.json")
         syscap_data = json.loads(syscap_json_data)
-        syscap_list = syscap_data['SysCap']
+        syscap_list = syscap_data['SysCaps']
         self.log.info(f"该类设备syscap最小集: {syscap_list}")
-        
+
         is_subset = set(syscap_list) <= set(device_SystemCapability_list)
-        
+
         assert is_subset
 
     def teardown(self):
