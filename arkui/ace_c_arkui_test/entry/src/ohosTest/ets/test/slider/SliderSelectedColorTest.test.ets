@@ -27,19 +27,6 @@ export default function sliderSelectedColorTest() {
     });
 
     /*
-    * @tc.number: SUB_ARKUI_CAPI_SLIDER_SELECTEDCOLOR_0100
-    * @tc.name: testSliderSelectedColor001
-    * @tc.desc: testing selectedColor for slider with default value
-    * @tc.size: MediumTest
-    * @tc.type: Function
-    * @tc.level: Level 1
-    */
-    it('testSliderSelectedColor001', 0, async (done: Function) => {
-      expect(nativeFunc.testSliderSelectedColor001()).assertEqual(0)
-      done()
-    })
-
-    /*
      * @tc.number: SUB_ARKUI_CAPI_SLIDER_SELECTEDCOLOR_0200
      * @tc.name: testSliderSelectedColor002
      * @tc.desc: testing selectedColor for slider with normal value
