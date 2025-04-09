@@ -246,9 +246,9 @@ describe('UsbApiTransferCompatJsunitTest', function () {
      * @tc.desc     : Negative test: send data, pipe busNum +1000
      * @tc.size     : MediumTest
      * @tc.type     : Function
-     * @tc.level    : Level 3
+     * @tc.level    : Level 0
      */
-    it('testBulkTransferCompat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+    it('testBulkTransferCompat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
         console.info(TAG, 'usb testBulkTransferCompat001 begin');
         if (!isDeviceConnected) {
             expect(isDeviceConnected).assertFalse();
