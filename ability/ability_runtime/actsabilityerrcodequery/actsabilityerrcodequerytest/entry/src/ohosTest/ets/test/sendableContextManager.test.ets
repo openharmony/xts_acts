@@ -172,7 +172,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0800', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
       let link:string = 'https://www.applicationContext02.com'
       let want: Want = {
