@@ -16,6 +16,12 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from "@ohos/hypium"
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { ArkTSUtils, taskpool, worker } from '@kit.ArkTS';
+import { execute1 } from "./execute";
+
+export function asyncSleep(time: number): Promise<Object> {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 
 function errorFunc(observer: errorManager.GlobalError) {
   console.log("result name :" + observer.name);
@@ -77,6 +83,10 @@ export default function ErrormangerTest() {
       // This API supports only one parameter: preset action function.
     })
     afterEach(() => {
+      afterEach(async () => {
+        await asyncSleep(waittime);
+      })
+      let waittime = 500
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
@@ -468,6 +478,111 @@ export default function ErrormangerTest() {
         expect(err.code == 16300004).assertTrue();
         done();
       }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1500
+     * @tc.name testErrorManger_1500
+     * @tc.desc 验证errorManager.on("globalUnhandledRejectionDetected", func),主线程抛出异常
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testErrorManger_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let result = ""
+      let instanceType2 = -1
+      let func = (observer:errorManager.GlobalError) => {
+        result = observer.message
+        console.log("result instaceType")
+        console.log("result name :" + observer.name);
+        console.log("result message :" + observer.message);
+        console.log("result stack :" + observer.stack);
+        console.log("result instanceName :" + observer.instanceName);
+        console.log("result instaceType :" + observer.instanceType);
+        instanceType2 = observer.instanceType
+      }
+      let lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock()
+      let lock = lock_.lockAsync(() => {
+        throw Error("这是一个error");
+      })
+      errorManager.on("globalUnhandledRejectionDetected", func)
+      lock.then(() => {
+      }).catch(() => {
+        throw Error("throw error");
+      })
+      await asyncSleep(500)
+      errorManager.off("globalUnhandledRejectionDetected", func)
+      expect(result).assertEqual("throw error");
+      console.info("====> testErrorManger_1500 result instaceType " + JSON.stringify(instanceType2))
+      expect(instanceType2==0 ).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1600
+     * @tc.name testErrorManger_1600
+     * @tc.desc 验证errorManager.on("globalUnhandledRejectionDetected", func),taskpool抛出异常
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testErrorManger_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let result = ""
+      let instanceType2 = -1
+      let func = (observer:errorManager.GlobalError) => {
+        result = observer.message
+        console.log("result instaceType")
+        console.log("result name :" + observer.name);
+        console.log("result message :" + observer.message);
+        console.log("result stack :" + observer.stack);
+        console.log("result instanceName :" + observer.instanceName);
+        console.log("result instaceType :" + observer.instanceType);
+        instanceType2 = observer.instanceType
+      }
+      errorManager.on("globalErrorOccurred",func)
+      await asyncSleep(500)
+      taskpool.execute(execute1).then(() => {
+      }).catch(() => {
+        errorManager.off("globalErrorOccurred", func)
+        expect(result).assertEqual("throw error");
+        console.info("====> testErrorManger_1600 result instaceType " + JSON.stringify(instanceType2))
+        expect(instanceType2==2).assertTrue();
+        done();
+      });
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFR_Errormanger_Ets_1700
+     * @tc.name testErrorManger_1700
+     * @tc.desc 验证errorManager.on("globalErrorOccurred", func),worker线程抛出异常
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testErrorManger_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let result: Array<string> = []
+      let instanceType2 = -1
+      let func = (observer:errorManager.GlobalError) => {
+        console.log("result instaceType")
+        console.log("result name :" + observer.name);
+        console.log("result message :" + observer.message);
+        console.log("result stack :" + observer.stack);
+        console.log("result instanceName :" + observer.instanceName);
+        console.log("result instaceType :" + observer.instanceType);
+        instanceType2 = observer.instanceType
+        result.push(observer.message)
+      };
+      errorManager.on("globalErrorOccurred", func)
+      let worker1 = new worker.ThreadWorker("./worker/worker1");
+      worker1.onmessage = () => {
+      }
+      worker1.postMessage("sendData");
+      await asyncSleep(1000)
+      expect(result.indexOf("throw error task19") != -1).assertTrue()
+      errorManager.off("globalErrorOccurred", func)
+      console.info("====> testErrorManger_1700 result instaceType " + JSON.stringify(instanceType2))
+      expect(instanceType2==1).assertTrue();
+      done();
     })
 
   })
