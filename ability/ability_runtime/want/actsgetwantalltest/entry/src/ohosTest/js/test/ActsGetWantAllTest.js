@@ -32,7 +32,7 @@ describe('ActsGetWantTest', function () {
         }, 1500);
     });
 
-    it('ACTS_RemoteObject_0100', 0, async function(done) {
+    it('ACTS_RemoteObject_0100', Level.LEVEL0, async function(done) {
         let wantRemoteOjbect = new WantRemoteObject("wantRemoteObject");
 
         featureAbility.startAbilityForResult({
@@ -1379,7 +1379,7 @@ describe('ActsGetWantTest', function () {
      * @tc.name: Check the enumerated value ACTION_IMAGE_CAPTURE of wantConstant.
      * @tc.desc: Check the enumerated value ACTION_IMAGE_CAPTURE of wantConstant.
      */
-     it('SUB_AA_OpenHarmony_wantConstantEnumeration_0100',0, async function (done) {
+     it('SUB_AA_OpenHarmony_wantConstantEnumeration_0100', Level.LEVEL0, async function (done) {
         console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0100 --- start")
         let image = wantConstant.Action.ACTION_IMAGE_CAPTURE
         expect(image).assertEqual("ohos.want.action.imageCapture")
@@ -1387,30 +1387,30 @@ describe('ActsGetWantTest', function () {
         done()
         })
 
-        /**
-         * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0200
-         * @tc.name: Check the enumerated value ACTION_VIDEO_CAPTURE of wantConstant.
-         * @tc.desc: Check the enumerated value ACTION_VIDEO_CAPTURE of wantCconstant.
-         */
-        it('SUB_AA_OpenHarmony_wantConstantEnumeration_0200',0, async function (done) {
-            console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- start")
-            let video = wantConstant.Action.ACTION_VIDEO_CAPTURE
-            expect(video).assertEqual("ohos.want.action.videoCapture")
-            console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- end")
-            done()
-        })
-
-        /**
-         * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0300
-         * @tc.name: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
-         * @tc.desc: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
-         */
-        it('SUB_AA_OpenHarmony_wantConstantEnumeration_0300',0, async function (done) {
-        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- start")
-        let app = wantConstant.Action.ACTION_APP_ACCOUNT_OAUTH
-        expect(app).assertEqual("ohos.account.appAccount.action.oauth")
-        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- end")
+    /**
+     * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0200
+     * @tc.name: Check the enumerated value ACTION_VIDEO_CAPTURE of wantConstant.
+     * @tc.desc: Check the enumerated value ACTION_VIDEO_CAPTURE of wantCconstant.
+     */
+    it('SUB_AA_OpenHarmony_wantConstantEnumeration_0200', Level.LEVEL0, async function (done) {
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- start")
+        let video = wantConstant.Action.ACTION_VIDEO_CAPTURE
+        expect(video).assertEqual("ohos.want.action.videoCapture")
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- end")
         done()
-        })
+    })
+
+    /**
+     * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0300
+     * @tc.name: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
+     * @tc.desc: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
+     */
+    it('SUB_AA_OpenHarmony_wantConstantEnumeration_0300', Level.LEVEL0, async function (done) {
+    console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- start")
+    let app = wantConstant.Action.ACTION_APP_ACCOUNT_OAUTH
+    expect(app).assertEqual("ohos.account.appAccount.action.oauth")
+    console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- end")
+    done()
+    })
 })
 }

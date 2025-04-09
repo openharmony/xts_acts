@@ -123,7 +123,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100
      * @tc.desc: isStartupTaskInitialized parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100', 0,
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_isStartupTaskInitialized_0100', Level.LEVEL0,
       async (done: Function) => {
         try {
           const data = startupManager.isStartupTaskInitialized(undefined)
@@ -139,7 +139,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100
      * @tc.desc: removeStartupTaskResult parameter error, pass undefined
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100', 0,
+    it('SUB_Ability_AbilityRuntime_ErrorCode_startupManager_removeStartupTaskResult_0100', Level.LEVEL0,
       async (done: Function) => {
         try {
           const data = startupManager.removeStartupTaskResult(undefined)
@@ -463,7 +463,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300
      * @tc.desc: startAbilityForResult set flags=-1   Async
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', 0,
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0300', Level.LEVEL0,
       async (done: Function) => {
         let startWant: Want = {
           bundleName: 'com.test.actsabilityerrcodequerytest',
@@ -491,7 +491,7 @@ export default function UIAbilityContex() {
      * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0800
      * @tc.desc: startAbilityForResult set flags=-1   Promise
      */
-    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0800', 0,
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbilityForResult_0800', Level.LEVEL0,
       async (done: Function) => {
         let startWant: Want = {
           bundleName: 'com.test.actsabilityerrcodequerytest',
