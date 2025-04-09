@@ -19,8 +19,8 @@ import json
 import re
 
 
-# @tc.number: XTS_SYSCAP_0100
-# @tc.name: testSyscapTest
+# @tc.number: XTS_SYSCAPMinSet_0100
+# @tc.name: testSyscapMinSetTest
 # @tc.level: Level0
 # @tc.desc: 验证设备被测设备包含该类设备syscap最小集
 class testSyscapMinSetTest(TestCase):
