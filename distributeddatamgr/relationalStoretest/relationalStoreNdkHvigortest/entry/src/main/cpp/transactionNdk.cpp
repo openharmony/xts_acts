@@ -89,7 +89,7 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
 
     const int ID = 2;
     const int PHONE_NUMBER = 13800;
-    const double HEIGHT 200.1;
+    const double HEIGHT = 200.1;
     valueBucket->clear(valueBucket);
     valueBucket->putInt64(valueBucket, "id", ID);
     valueBucket->putText(valueBucket, "data1", "liSi");
