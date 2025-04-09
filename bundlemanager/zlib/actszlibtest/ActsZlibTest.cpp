@@ -635,7 +635,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestAdler, Function | MediumTest | Level1)
  * @tc.name      : Test deflate state
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level1)
+HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     int *bits = nullptr;
