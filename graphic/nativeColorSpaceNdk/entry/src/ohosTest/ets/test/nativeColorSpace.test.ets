@@ -24,9 +24,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Create_Color_Space_From_Name
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHCreateColorSpaceFromName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testOHCreateColorSpaceFromName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHCreateColorSpaceFromName();
       expect(result).assertEqual(0);
@@ -39,9 +39,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Create_From_Primaries_And_Gamma
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHCreateFromPrimariesAndGamma', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('testOHCreateFromPrimariesAndGamma', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHCreateFromPrimariesAndGamma();
       expect(result).assertEqual(0);
@@ -54,9 +54,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Destroy
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHDestroy();
       expect(result).assertEqual(0);
       done();
@@ -68,9 +68,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_GetColorSpaceName
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetColorSpaceName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetColorSpaceName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetColorSpaceName();
       expect(result).assertEqual(0);
       done();
@@ -82,9 +82,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_GetColorSpaceName001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetColorSpaceName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetColorSpaceName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetColorSpaceName001();
       expect(result).assertEqual(0);
       done();
@@ -96,9 +96,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Get_White_Point
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetWhitePoint', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetWhitePoint', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetWhitePoint();
       expect(result).assertEqual(0);
       done();
@@ -110,9 +110,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Get_White_Point001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetWhitePoint001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetWhitePoint001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetWhitePoint001();
       expect(result).assertEqual(0);
       done();
@@ -124,9 +124,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Get_Gamma
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetGamma', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetGamma', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetGamma();
       expect(result).assertEqual(0);
       done();
@@ -138,9 +138,9 @@ export default function nativeColorSpaceTest() {
      * @tc.desc       : test OH_Get_Gamma001
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetGamma001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL10, async (done: Function) => {
+    it('testOHGetGamma001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL00, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetGamma001();
       expect(result).assertEqual(0);
       done();

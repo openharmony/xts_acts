@@ -29,9 +29,9 @@ export default function graphicUiEffectInterfaceTest() {
      * @tc.desc      : Filter instances are created to add multiple filter effects to the component.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testCreateFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+    it('testCreateFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = " =====testCreateFilter==== "
       try {
         let filter : uiEffect.Filter = uiEffect.createFilter()
