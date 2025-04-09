@@ -7,9 +7,9 @@
     ],
     "driver": {
         "type": "DeviceTestSuite",
-        "testsuite": "ActsPCSSyscapTest.py",
+        "testsuite": "ActsPCSSyscapMinSetTest.py",
         "suitecases": [
-            "./testSyscapTest.py"
+            "./testSyscapMinSetTest.py"
         ]
     },
     "kits": [

@@ -23,7 +23,7 @@ import re
 # @tc.name: testSyscapTest
 # @tc.level: Level0
 # @tc.desc: 验证设备被测设备包含该类设备syscap最小集
-class testSyscapTest(TestCase):
+class testSyscapMinSetTest(TestCase):
 
     def __init__(self, controllers):
         self.TAG = self.__class__.__name__

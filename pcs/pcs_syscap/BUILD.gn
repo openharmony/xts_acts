@@ -13,18 +13,18 @@
 
 import("//build/ohos.gni")
 
-group("ActsPCSSyscapTest") {
+group("ActsPCSSyscapMinSetTest") {
   testonly = true
-  deps = [ ":SyscapTestCase" ]
+  deps = [ ":SyscapMinSetTestCase" ]
 }
 
-ohos_copy("SyscapTestCase") {
+ohos_copy("SyscapTestMinSetCase") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [
-    "./ActsPCSSyscapTest.py",
-    "./ActsPCSSyscapTest.json",
-    "./testSyscapTest.py"
+    "./ActsPCSSyscapMinSetTest.py",
+    "./ActsPCSSyscapMinSetTest.json",
+    "./testSyscapMinSetTest.py"
   ]
   deps = [ ":SyscapSource" ]
   outputs =
