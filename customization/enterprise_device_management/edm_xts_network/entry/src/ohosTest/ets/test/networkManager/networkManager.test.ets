@@ -206,7 +206,7 @@ function testGetAllNetworkInterfacesSync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_all_network_interfaces_sync_0103", Level.LEVEL2, async (done: Function) => {
+  it("test_get_all_network_interfaces_sync_0103", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       let result: Array<string> = networkManager.getAllNetworkInterfacesSync(SELFWANT);
@@ -289,7 +289,7 @@ function testGetIpAddressSync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_ip_address_sync_0103", Level.LEVEL2, async (done: Function) => {
+  it("test_get_ip_address_sync_0103", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       let result: string = networkManager.getIpAddressSync(SELFWANT, NETWORK_ETH_LOCAL);
@@ -372,7 +372,7 @@ function testGetMacSync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_mac_sync_0103", Level.LEVEL2, async (done: Function) => {
+  it("test_get_mac_sync_0103", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       let result: string = networkManager.getMacSync(SELFWANT, NETWORK_ETH_LOCAL);
@@ -455,7 +455,7 @@ function testIsNetworkInterfaceDisabledSync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_is_network_interface_disable_sync_0103", Level.LEVEL2, async (done: Function) => {
+  it("test_is_network_interface_disable_sync_0103", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       let result: boolean = networkManager.isNetworkInterfaceDisabledSync(SELFWANT, NETWORK_ETH_LOCAL);
@@ -580,7 +580,7 @@ function testSetNetworkInterfaceDisabledSync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_network_interface_disable_sync_0104", Level.LEVEL2, async (done: Function) => {
+  it("test_set_network_interface_disable_sync_0104", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.setNetworkInterfaceDisabledSync(SELFWANT, NETWORK_ETH_LOCAL, false);
@@ -601,7 +601,7 @@ function testSetNetworkInterfaceDisabledSync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_network_interface_disable_sync_0105", Level.LEVEL2, async (done: Function) => {
+  it("test_set_network_interface_disable_sync_0105", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.setNetworkInterfaceDisabledSync(SELFWANT, NETWORK_ETH_LOCAL, true);
@@ -684,7 +684,7 @@ function testSetGlobalProxySync() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_global_proxy_sync_0103", Level.LEVEL2, async (done: Function) => {
+  it("test_set_global_proxy_sync_0103", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     let originProxy: connection.HttpProxy = networkManager.getGlobalProxySync(SELFWANT);
     try {
@@ -1227,7 +1227,7 @@ function testAddDomainFilterRule() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_add_domain_filter_rule_0104", Level.LEVEL2, async (done: Function) => {
+  it("test_add_domain_filter_rule_0104", Level.LEVEL0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       networkManager.addDomainFilterRule(SELFWANT, DOMAIN_FILTER_RULE4);
