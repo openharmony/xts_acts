@@ -15,7 +15,7 @@
 
 import cameraObj from '@ohos.multimedia.camera';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
@@ -135,7 +135,7 @@ export default function cameraSessionMultiSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100--------------");
       let firstSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
       if (!firstSession) {
@@ -174,7 +174,7 @@ export default function cameraSessionMultiSessionTest() {
       done();
     })
 
-    it('SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_CAMERA_STATUS_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_CAMERA_STATUS_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_CAMERA_STATUS_0100--------------");
       let isTriggerStatusCallback = false;
       mCameraManager.on('cameraStatus', async (err, cameraStatusInfo) => {
@@ -196,7 +196,7 @@ export default function cameraSessionMultiSessionTest() {
       done();
     })
 
-    it('SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_TORCH_STATUS_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_TORCH_STATUS_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_MANAGER_LISTENER_CALLBACK_REGISTER_TORCH_STATUS_0100--------------");
       let isTriggerTorchStatusCallback = false;
       mCameraManager.on('torchStatusChange', async (err, torchStatus) => {

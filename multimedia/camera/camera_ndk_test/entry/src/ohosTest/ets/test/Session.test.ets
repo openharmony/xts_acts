@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import { Camera_PreconfigType, Camera_PreconfigRatio, Camera_MediaType, Camera_SceneMode,
@@ -544,7 +544,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallback0100', 0, () => {
+    it('testOHCaptureSessionRegisterCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -560,7 +560,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallback0200', 0, () => {
+    it('testOHCaptureSessionRegisterCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -576,7 +576,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallback0300', 0, () => {
+    it('testOHCaptureSessionRegisterCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -592,7 +592,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallback0100', 0, () => {
+    it('testOHCaptureSessionUnregisterCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -609,7 +609,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallback0200', 0, () => {
+    it('testOHCaptureSessionUnregisterCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -625,7 +625,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallback0300', 0, () => {
+    it('testOHCaptureSessionUnregisterCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -641,7 +641,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterSmoothZoomInfoCallback0100', 0, () => {
+    it('testOHCaptureSessionRegisterSmoothZoomInfoCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -662,7 +662,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterSmoothZoomInfoCallback0200', 0, () => {
+    it('testOHCaptureSessionRegisterSmoothZoomInfoCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -683,7 +683,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterSmoothZoomInfoCallback0300', 0, () => {
+    it('testOHCaptureSessionRegisterSmoothZoomInfoCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -703,7 +703,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterSmoothZoomInfoCallback0100', 0, () => {
+    it('testOHCaptureSessionUnregisterSmoothZoomInfoCallback0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -726,7 +726,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterSmoothZoomInfoCallback0200', 0, () => {
+    it('testOHCaptureSessionUnregisterSmoothZoomInfoCallback0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -749,7 +749,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterSmoothZoomInfoCallback0300', 0, () => {
+    it('testOHCaptureSessionUnregisterSmoothZoomInfoCallback0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -771,7 +771,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSessionMode0100', 0, () => {
+    it('testOHCaptureSessionSetSessionMode0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -789,7 +789,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSessionMode0200', 0, () => {
+    it('testOHCaptureSessionSetSessionMode0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -807,7 +807,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSessionMode0300', 0, () => {
+    it('testOHCaptureSessionSetSessionMode0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -832,7 +832,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSessionMode0400', 0, () => {
+    it('testOHCaptureSessionSetSessionMode0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -850,7 +850,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSessionMode0500', 0, () => {
+    it('testOHCaptureSessionSetSessionMode0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -868,7 +868,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddInput0100', 0, () => {
+    it('testOHCaptureSessionCanAddInput0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -892,7 +892,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddInput0200', 0, () => {
+    it('testOHCaptureSessionCanAddInput0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -916,7 +916,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddInput0300', 0, () => {
+    it('testOHCaptureSessionCanAddInput0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -940,7 +940,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddInput0400', 0, () => {
+    it('testOHCaptureSessionCanAddInput0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -964,7 +964,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0100', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -989,7 +989,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0200', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1014,7 +1014,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0300', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1040,7 +1040,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0400', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1065,7 +1065,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0500', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1090,7 +1090,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0600', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1115,7 +1115,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0700', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1141,7 +1141,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0800', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0800', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1166,7 +1166,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput0900', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput0900', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1198,7 +1198,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput1000', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput1000', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1231,7 +1231,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPreviewOutput1100', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput1100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1262,7 +1262,7 @@ export default function SessionTest() {
      * @tc.size       : MediumTest
      * @tc.desc       : Test OH_CaptureSession_CanAddPreviewOutput in abnormal condition, the third parameter is null.
      */
-    it('testOHCaptureSessionCanAddPreviewOutput1200', 0, () => {
+    it('testOHCaptureSessionCanAddPreviewOutput1200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1295,7 +1295,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0100', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1320,7 +1320,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0200', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1345,7 +1345,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0300', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1370,7 +1370,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0400', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1395,7 +1395,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0500', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1420,7 +1420,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0600', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1445,7 +1445,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0700', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1470,7 +1470,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0800', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0800', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1495,7 +1495,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddPhotoOutput0900', 0, () => {
+    it('testOHCaptureSessionCanAddPhotoOutput0900', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1527,7 +1527,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddVideoOutput0100', 0, () => {
+    it('testOHCaptureSessionCanAddVideoOutput0100', Level.LEVEL0, () => {
       console.info(TAG + "guocheng1 ");
       getCameraManagerInstance();
       console.info(TAG + "guocheng2 ");
@@ -1565,7 +1565,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddVideoOutput0200', 0, () => {
+    it('testOHCaptureSessionCanAddVideoOutput0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1590,7 +1590,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddVideoOutput0300', 0, () => {
+    it('testOHCaptureSessionCanAddVideoOutput0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1615,7 +1615,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddVideoOutput0400', 0, () => {
+    it('testOHCaptureSessionCanAddVideoOutput0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1639,7 +1639,7 @@ export default function SessionTest() {
      * @tc.desc       : Test OH_CaptureSession_CanAddVideoOutput in abnormal condition, scene mode is normal photo.
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddVideoOutput0500', 0, () => {
+    it('testOHCaptureSessionCanAddVideoOutput0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1665,7 +1665,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanAddVideoOutput0600', 0, () => {
+    it('testOHCaptureSessionCanAddVideoOutput0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -1697,7 +1697,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallbackOn0100', 0, () => {
+    it('testOHCaptureSessionRegisterCallbackOn0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       let ret = cameraObj.oHCaptureSessionRegisterCallbackOn(ALL_CALLBACK_IS_NULL);
@@ -1712,7 +1712,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallbackOn0200', 0, () => {
+    it('testOHCaptureSessionRegisterCallbackOn0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       let ret = cameraObj.oHCaptureSessionRegisterCallbackOn(ONLY_ON_ERROR);
@@ -1727,7 +1727,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRegisterCallbackOn0300', 0, () => {
+    it('testOHCaptureSessionRegisterCallbackOn0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       let ret = cameraObj.oHCaptureSessionRegisterCallbackOn(ONLY_ON_FOCUS_STATE_CHANGE);
@@ -1742,7 +1742,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallbackOff0100', 0, () => {
+    it('testOHCaptureSessionUnregisterCallbackOff0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       let ret = cameraObj.oHCaptureSessionUnregisterCallbackOff(ALL_CALLBACK_IS_NULL);
@@ -1757,7 +1757,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallbackOff0200', 0, () => {
+    it('testOHCaptureSessionUnregisterCallbackOff0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       cameraObj.oHCaptureSessionRegisterCallbackOn(ONLY_ON_ERROR);
@@ -1773,7 +1773,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionUnregisterCallbackOff0300', 0, () => {
+    it('testOHCaptureSessionUnregisterCallbackOff0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       cameraObj.oHCaptureSessionRegisterCallbackOn(ONLY_ON_FOCUS_STATE_CHANGE);
@@ -1789,7 +1789,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0100', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1812,7 +1812,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0200', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1835,7 +1835,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0300', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1858,7 +1858,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0400', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1881,7 +1881,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0500', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1901,7 +1901,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0600', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1920,7 +1920,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfig0700', 0, () => {
+    it('testOHCaptureSessionCanPreconfig0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1939,7 +1939,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0100', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1962,7 +1962,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0200', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -1985,7 +1985,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0300', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2008,7 +2008,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0400', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2031,7 +2031,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0500', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2054,7 +2054,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0600', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2077,7 +2077,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0700', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2100,7 +2100,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0800', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0800', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2123,7 +2123,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio0900', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio0900', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2146,7 +2146,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1000', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1000', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2169,7 +2169,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1100', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2192,7 +2192,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1200', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2216,7 +2216,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1300', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2236,7 +2236,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1400', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2256,7 +2256,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1500', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2276,7 +2276,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionCanPreconfigWithRatio1600', 0, () => {
+    it('testOHCaptureSessionCanPreconfigWithRatio1600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2295,7 +2295,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfig0100', 0, () => {
+    it('testOHCaptureSessionPreconfig0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2317,7 +2317,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfig0200', 0, () => {
+    it('testOHCaptureSessionPreconfig0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2339,7 +2339,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfig0300', 0, () => {
+    it('testOHCaptureSessionPreconfig0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2361,7 +2361,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfig0400', 0, () => {
+    it('testOHCaptureSessionPreconfig0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2383,7 +2383,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfig0500', 0, () => {
+    it('testOHCaptureSessionPreconfig0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2405,7 +2405,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfig0600', 0, () => {
+    it('testOHCaptureSessionPreconfig0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2427,7 +2427,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0100', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2448,7 +2448,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0200', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2469,7 +2469,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0300', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2490,7 +2490,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0400', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2512,7 +2512,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0500', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2533,7 +2533,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0600', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0600', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2554,7 +2554,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0700', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0700', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2575,7 +2575,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0800', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0800', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2597,7 +2597,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio0900', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio0900', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2618,7 +2618,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio1000', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio1000', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2639,7 +2639,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio1100', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio1100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2660,7 +2660,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio1200', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio1200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2682,7 +2682,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio1300', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio1300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2704,7 +2704,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio1400', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio1400', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2727,7 +2727,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionPreconfigWithRatio1500', 0, () => {
+    it('testOHCaptureSessionPreconfigWithRatio1500', Level.LEVEL0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
       createCaptureSession();
@@ -2748,7 +2748,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0100', 0, () => {
+    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0100', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       if (canPreconfig) {
         let ret = cameraObj.oHCameraManagerCreatePreviewOutputUsedInPreconfig(Parameter_Setting.ALL_PARAMETER_OK);
@@ -2765,7 +2765,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0200', 0, () => {
+    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0200', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       if (canPreconfig) {
         let ret = cameraObj.oHCameraManagerCreatePreviewOutputUsedInPreconfig(Parameter_Setting.FIRST_PARAMETER_ERROR);
@@ -2782,7 +2782,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0300', 0, () => {
+    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0300', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       if (canPreconfig) {
         let ret =
@@ -2800,7 +2800,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0400', 0, () => {
+    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0400', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       if (canPreconfig) {
         let ret = cameraObj.oHCameraManagerCreatePreviewOutputUsedInPreconfig(INVALID_SURFACE_ID);
@@ -2817,7 +2817,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0500', 0, () => {
+    it('testOHCameraManagerCreatePreviewOutputUsedInPreconfig0500', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       if (canPreconfig) {
         let ret =
@@ -2834,7 +2834,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0100', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0100', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -2858,7 +2858,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0200', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0200', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -2882,7 +2882,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0300', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0300', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -2906,7 +2906,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0400', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0400', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -2929,7 +2929,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0500', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputUsedInPreconfig0500', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -2952,7 +2952,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0100', 0, () => {
+    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0100', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -2977,7 +2977,7 @@ export default function SessionTest() {
      *                  parameter is null.
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0200', 0, () => {
+    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0200', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3003,7 +3003,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0300', 0, () => {
+    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0300', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3029,7 +3029,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0400', 0, () => {
+    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0400', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3054,7 +3054,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0500', 0, () => {
+    it('testOHCameraManagerCreateVideoOutputUsedInPreconfig0500', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3079,7 +3079,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveProfile0100', 0, () => {
+    it('testOHPreviewOutputGetActiveProfile0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3105,7 +3105,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveProfile0200', 0, () => {
+    it('testOHPreviewOutputGetActiveProfile0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3130,7 +3130,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveProfile0300', 0, () => {
+    it('testOHPreviewOutputGetActiveProfile0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3155,7 +3155,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveProfile0400', 0, () => {
+    it('testOHPreviewOutputGetActiveProfile0400', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -3178,7 +3178,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveProfile0500', 0, () => {
+    it('testOHPreviewOutputGetActiveProfile0500', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -3200,7 +3200,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveProfile0600', 0, () => {
+    it('testOHPreviewOutputGetActiveProfile0600', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -3222,7 +3222,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputDeleteProfile0100', 0, () => {
+    it('testOHPreviewOutputDeleteProfile0100', Level.LEVEL0, () => {
       getPreviewOutputActiveProfile();
       let ret = cameraObj.oHPreviewOutputDeleteProfile(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPreviewOutputDeleteProfile0100:"+ret);
@@ -3236,7 +3236,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputDeleteProfile0200', 0, () => {
+    it('testOHPreviewOutputDeleteProfile0200', Level.LEVEL0, () => {
       getPreviewOutputActiveProfile();
       let ret = cameraObj.oHPreviewOutputDeleteProfile(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPreviewOutputDeleteProfile0200:"+ret);
@@ -3251,7 +3251,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveProfile0100', 0, () => {
+    it('testOHVideoOutputGetActiveProfile0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3279,7 +3279,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveProfile0200', 0, () => {
+    it('testOHVideoOutputGetActiveProfile0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3306,7 +3306,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveProfile0300', 0, () => {
+    it('testOHVideoOutputGetActiveProfile0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3333,7 +3333,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveProfile0400', 0, () => {
+    it('testOHVideoOutputGetActiveProfile0400', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3358,7 +3358,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveProfile0500', 0, () => {
+    it('testOHVideoOutputGetActiveProfile0500', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3382,7 +3382,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveProfile0600', 0, () => {
+    it('testOHVideoOutputGetActiveProfile0600', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
@@ -3406,7 +3406,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputDeleteProfile0100', 0, () => {
+    it('testOHVideoOutputDeleteProfile0100', Level.LEVEL0, () => {
       getVideoOutputGetActiveProfile();
       let ret = cameraObj.oHVideoOutputDeleteProfile(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHVideoOutputDeleteProfile0100:"+ret);
@@ -3420,7 +3420,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputDeleteProfile0200', 0, () => {
+    it('testOHVideoOutputDeleteProfile0200', Level.LEVEL0, () => {
       getVideoOutputGetActiveProfile();
       let ret = cameraObj.oHVideoOutputDeleteProfile(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHVideoOutputDeleteProfile0200:"+ret);
@@ -3435,7 +3435,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputGetActiveProfile0100', 0, () => {
+    it('testOHPhotoOutputGetActiveProfile0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3458,7 +3458,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputGetActiveProfile0200', 0, () => {
+    it('testOHPhotoOutputGetActiveProfile0200', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3480,7 +3480,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputGetActiveProfile0300', 0, () => {
+    it('testOHPhotoOutputGetActiveProfile0300', Level.LEVEL0, () => {
       getCameraManagerInstance();
       createCaptureSession();
       getSupportedCamerasInstance();
@@ -3502,7 +3502,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputGetActiveProfile0400', 0, () => {
+    it('testOHPhotoOutputGetActiveProfile0400', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -3525,7 +3525,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputGetActiveProfile0500', 0, () => {
+    it('testOHPhotoOutputGetActiveProfile0500', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -3547,7 +3547,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputGetActiveProfile0600', 0, () => {
+    it('testOHPhotoOutputGetActiveProfile0600', Level.LEVEL0, () => {
       let canPreconfig = captureSessionPreconfig();
       getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
@@ -3569,7 +3569,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputDeleteProfile0100', 0, () => {
+    it('testOHPhotoOutputDeleteProfile0100', Level.LEVEL0, () => {
       getPhotoOutputActiveProfile();
       let ret = cameraObj.oHPhotoOutputDeleteProfile(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputDeleteProfile0100:"+ret);
@@ -3583,7 +3583,7 @@ export default function SessionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputDeleteProfile0200', 0, () => {
+    it('testOHPhotoOutputDeleteProfile0200', Level.LEVEL0, () => {
       getPhotoOutputActiveProfile();
       let ret = cameraObj.oHPhotoOutputDeleteProfile(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputDeleteProfile0200:"+ret);

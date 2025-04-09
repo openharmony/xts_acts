@@ -14,7 +14,7 @@
  */
 
 import camera from '@ohos.multimedia.camera';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 const TAG = "CameraEnumTest: ";
 
@@ -55,7 +55,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100--------------");
       expect(camera.CameraStatus.CAMERA_STATUS_APPEAR == 0).assertTrue();
       expect(camera.CameraStatus.CAMERA_STATUS_DISAPPEAR == 1).assertTrue();
@@ -74,7 +74,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100--------------");
       expect(camera.CameraPosition.CAMERA_POSITION_UNSPECIFIED == 0).assertTrue();
       expect(camera.CameraPosition.CAMERA_POSITION_BACK == 1).assertTrue();
@@ -92,7 +92,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100--------------");
       expect(camera.SceneMode.NORMAL_PHOTO == 1).assertTrue();
       expect(camera.SceneMode.NORMAL_VIDEO == 2).assertTrue();
@@ -108,7 +108,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100--------------");
       console.info("CameraType: " + JSON.stringify(camera.CameraType));
       expect(camera.CameraType.CAMERA_TYPE_DEFAULT == 0).assertTrue();
@@ -128,7 +128,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100--------------");
       expect(camera.ConnectionType.CAMERA_CONNECTION_BUILT_IN == 0).assertTrue();
       expect(camera.ConnectionType.CAMERA_CONNECTION_USB_PLUGIN == 1).assertTrue();
@@ -146,7 +146,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100--------------");
       expect(camera.CameraFormat.CAMERA_FORMAT_RGBA_8888 == 3).assertTrue();
       expect(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP == 1003).assertTrue();
@@ -167,7 +167,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100--------------");
       expect(camera.FlashMode.FLASH_MODE_CLOSE == 0).assertTrue();
       expect(camera.FlashMode.FLASH_MODE_OPEN == 1).assertTrue();
@@ -186,7 +186,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100--------------");
       expect(camera.ExposureMode.EXPOSURE_MODE_LOCKED == 0).assertTrue();
       expect(camera.ExposureMode.EXPOSURE_MODE_AUTO == 1).assertTrue();
@@ -203,7 +203,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100--------------");
       expect(camera.FocusMode.FOCUS_MODE_MANUAL == 0).assertTrue();
       expect(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO == 1).assertTrue();
@@ -222,7 +222,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100--------------");
       expect(camera.FocusState.FOCUS_STATE_SCAN == 0).assertTrue();
       expect(camera.FocusState.FOCUS_STATE_FOCUSED == 1).assertTrue();
@@ -240,7 +240,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100--------------");
       expect(camera.VideoStabilizationMode.OFF == 0).assertTrue();
       expect(camera.VideoStabilizationMode.LOW == 1).assertTrue();
@@ -260,7 +260,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100--------------");
       expect(camera.ImageRotation.ROTATION_0 == 0).assertTrue();
       expect(camera.ImageRotation.ROTATION_90 == 90).assertTrue();
@@ -279,7 +279,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100--------------");
       expect(camera.QualityLevel.QUALITY_LEVEL_HIGH == 0).assertTrue();
       expect(camera.QualityLevel.QUALITY_LEVEL_MEDIUM == 1).assertTrue();
@@ -297,7 +297,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100--------------");
       expect(camera.MetadataObjectType.FACE_DETECTION == 0).assertTrue();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100 ends here");
@@ -313,7 +313,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100--------------");
       expect(camera.CameraErrorCode.INVALID_ARGUMENT == 7400101).assertTrue();
       console.info(TAG + "--------------INVALID_ARGUMENT--------------");
@@ -347,7 +347,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100', Level.LEVEL0, async (done: Function) => {
       expect(camera.TorchMode.OFF == 0).assertTrue();
       console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.OFF}`);
       expect(camera.TorchMode.ON == 1).assertTrue();
@@ -365,7 +365,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOCODECTYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOCODECTYPE_0100', Level.LEVEL0, async (done: Function) => {
       expect(camera.VideoCodecType.AVC == 0).assertTrue();
       console.info(`${TAG} VideoCodecType.AVC: ${camera.VideoCodecType.AVC}`);
       expect(camera.VideoCodecType.HEVC == 1).assertTrue();
@@ -381,7 +381,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0100', Level.LEVEL0, async (done: Function) => {
       expect(camera.PreconfigType.PRECONFIG_720P == 0).assertTrue();
       console.info(`${TAG} PreconfigType.PRECONFIG_720P:${camera.PreconfigType.PRECONFIG_720P}`);
       expect(camera.PreconfigType.PRECONFIG_1080P == 1).assertTrue();
@@ -401,7 +401,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0101', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0101', Level.LEVEL0, async (done: Function) => {
       expect(camera.PreconfigRatio.PRECONFIG_RATIO_1_1 == 0).assertTrue();
       console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_1_1:${camera.PreconfigRatio.PRECONFIG_RATIO_1_1}`);
       expect(camera.PreconfigRatio.PRECONFIG_RATIO_4_3 == 1).assertTrue();
@@ -419,7 +419,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOLD_STATUS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOLD_STATUS_0100', Level.LEVEL0, async (done: Function) => {
       expect(camera.FoldStatus.NON_FOLDABLE == 0).assertTrue();
       console.info(`${TAG} FoldStatus.NON_FOLDABLE:${camera.FoldStatus.NON_FOLDABLE}`);
       expect(camera.FoldStatus.EXPANDED == 1).assertTrue();
@@ -437,7 +437,7 @@ export default function cameraEnumTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_SMOOTH_ZOOM_MODE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_SMOOTH_ZOOM_MODE_0100', Level.LEVEL0, async (done: Function) => {
       expect(camera.SmoothZoomMode.NORMAL == 0).assertTrue();
       console.info(`${TAG} SmoothZoomMode.NORMAL:${camera.SmoothZoomMode.NORMAL}`);
       done();
