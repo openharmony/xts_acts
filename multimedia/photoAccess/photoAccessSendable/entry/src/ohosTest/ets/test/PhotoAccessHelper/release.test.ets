@@ -14,7 +14,7 @@
  */
 
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { common } from '@kit.AbilityKit';
 import {
   sleep,
@@ -40,7 +40,7 @@ export default function releaseTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('release_promise_000', 0, async (done: Function) => {
+    it('release_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'release_promise_000';
       try {
         let globalContext: common.UIAbilityContext = AppStorage.get('globalContext') as common.UIAbilityContext;

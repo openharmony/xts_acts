@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterAll, Level } from '@ohos/hypium'
 import media from '@ohos.multimedia.media';
 import common from '@ohos.app.ability.common';
 import fs from "@ohos.file.fs"
@@ -407,7 +407,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -424,7 +424,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_high_source_original', 0, async (done: Function) => {
+    it('request_video_delivery_high_source_original', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_high_source_original';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -441,7 +441,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_balance_source_original', 0, async (done: Function) => {
+    it('request_video_delivery_balance_source_original', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_balance_source_original';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -458,7 +458,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_edited', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_edited', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_edited';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -475,7 +475,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_high_source_edited', 0, async (done: Function) => {
+    it('request_video_delivery_high_source_edited', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_high_source_edited';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -492,7 +492,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_balance_source_edited', 0, async (done: Function) => {
+    it('request_video_delivery_balance_source_edited', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_balance_source_edited';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -509,7 +509,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_source_mode_null', 0, async (done: Function) => {
+    it('request_video_source_mode_null', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_source_mode_null';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -526,7 +526,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_source_mode_undefined', 0, async (done: Function) => {
+    it('request_video_source_mode_undefined', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_source_mode_undefined';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -543,7 +543,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_source_mode_100', 0, async (done: Function) => {
+    it('request_video_source_mode_100', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_source_mode_100';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -560,7 +560,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_mode_null', 0, async (done: Function) => {
+    it('request_video_delivery_mode_null', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_mode_null';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: -1,
@@ -577,7 +577,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_mode_undefined', 0, async (done: Function) => {
+    it('request_video_delivery_mode_undefined', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_mode_undefined';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: -1,
@@ -594,7 +594,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_mode_100', 0, async (done: Function) => {
+    it('request_video_delivery_mode_100', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_mode_100';
       let requestOptions : photoAccessHelper.RequestOptions = {
         deliveryMode: -100,
@@ -611,7 +611,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_null', 0, async (done: Function) => {
+    it('request_video_photo_asset_null', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_null';
       let photoAsset: ESObject = null
       await requestVideoPhotoAssetError(testNum, done, photoAsset)
@@ -625,7 +625,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_undefined', 0, async (done: Function) => {
+    it('request_video_photo_asset_undefined', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_undefined';
       let photoAsset: ESObject = null;
       await requestVideoPhotoAssetError(testNum, done, photoAsset)
@@ -639,7 +639,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_test_string', 0, async (done: Function) => {
+    it('request_video_photo_asset_test_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_test_string';
       let photoAsset: ESObject = 'test'
       await requestVideoPhotoAssetError(testNum, done, photoAsset)
@@ -653,7 +653,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_true', 0, async (done: Function) => {
+    it('request_video_photo_asset_true', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_true';
       let photoAsset: ESObject = true
       await requestVideoPhotoAssetError(testNum, done, photoAsset)
@@ -667,7 +667,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_object', 0, async (done: Function) => {
+    it('request_video_photo_asset_object', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_object';
       let photoAsset: ESObject = {a: 10}
       await requestVideoPhotoAssetError(testNum, done, photoAsset)
@@ -681,7 +681,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_null', 0, async (done: Function) => {
+    it('request_video_fileUri_null', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_null';
       let fileUri: ESObject = null
       let errCode = '401'
@@ -696,7 +696,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_undefined', 0, async (done: Function) => {
+    it('request_video_fileUri_undefined', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_undefined';
       let fileUri: ESObject = undefined
       let errCode = '401'
@@ -711,7 +711,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_true', 0, async (done: Function) => {
+    it('request_video_fileUri_true', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_true';
       let fileUri: ESObject = true
       let errCode = '401'
@@ -726,7 +726,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_test_string', 0, async (done: Function) => {
+    it('request_video_fileUri_test_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_test_string';
       let fileUri = ''
       for (let i = 0; i < 380; i++) {
@@ -745,7 +745,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_special_chat', 0, async (done: Function) => {
+    it('request_video_special_chat', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_special_chat';
       let fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
       let errCode = '401'
@@ -760,7 +760,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_extr_long_string', 0, async (done: Function) => {
+    it('request_video_fileUri_extr_long_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_extr_long_string';
       let fileUri = ''
       for (let i = 0; i < 385; i++) {
@@ -778,7 +778,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photoAsset_imageAsset', 0, async (done: Function) => {
+    it('request_video_photoAsset_imageAsset', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photoAsset_imageAsset';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -813,7 +813,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_image', 0, async (done: Function) => {
+    it('request_video_fileUri_image', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_image';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
@@ -848,7 +848,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_imageUri_photoAsset_imageAsset', 0, async (done: Function) => {
+    it('request_video_fileUri_imageUri_photoAsset_imageAsset', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -883,7 +883,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_empty_string', 0, async (done: Function) => {
+    it('request_video_fileUri_empty_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_empty_string';
       let fileUri = ''
       let errCode = '401'
@@ -898,7 +898,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_moving_photo', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_moving_photo', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_moving_photo';
       await createMovingPhoto(done, testNum);
       let requestOptions: photoAccessHelper.RequestOptions = {
@@ -937,7 +937,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -955,7 +955,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -975,7 +975,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_high_source_original_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_high_source_original_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_high_source_original_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -994,7 +994,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_high_source_original_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_high_source_original_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_high_source_original_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -1014,7 +1014,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_balance_source_original_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_balance_source_original_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_balance_source_original_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -1033,7 +1033,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_balance_source_original_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_balance_source_original_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_balance_source_original_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -1053,7 +1053,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_edited_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_edited_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_edited_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -1072,7 +1072,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_edited_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_edited_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_edited_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -1092,7 +1092,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_high_source_edited_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_high_source_edited_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_high_source_edited_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -1111,7 +1111,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_high_source_edited_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_high_source_edited_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_high_source_edited_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -1131,7 +1131,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_balance_source_edited_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_balance_source_edited_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_balance_source_edited_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -1150,7 +1150,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_balance_source_edited_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_balance_source_edited_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_balance_source_edited_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -1169,7 +1169,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible_moving_photo', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_compatible_moving_photo', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_compatible_moving_photo';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -1212,7 +1212,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible_onprogress_moving_photo', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_compatible_onprogress_moving_photo', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_compatible_onprogress_moving_photo';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -1257,7 +1257,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_source_mode_100_compatible', 0, async (done: Function) => {
+    it('request_video_source_mode_100_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_source_mode_100_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -1276,7 +1276,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_source_mode_100_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_source_mode_100_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_source_mode_100_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -1296,7 +1296,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_mode_100_compatible', 0, async (done: Function) => {
+    it('request_video_delivery_mode_100_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_mode_100_compatible';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: -100,
@@ -1315,7 +1315,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_mode_100_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_delivery_mode_100_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_mode_100_compatible_onprogress';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: -100,
@@ -1335,7 +1335,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_null_compatible', 0, async (done: Function) => {
+    it('request_video_photo_asset_null_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_null_compatible';
       let photoAsset: ESObject = null;
       await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset);
@@ -1350,7 +1350,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_null_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_photo_asset_null_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_null_compatible_onprogress';
       let photoAsset: ESObject = null;
       await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset);
@@ -1365,7 +1365,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_undefined_compatible', 0, async (done: Function) => {
+    it('request_video_photo_asset_undefined_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_undefined_compatible';
       let photoAsset: ESObject = undefined;
       await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset);
@@ -1380,7 +1380,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_undefined_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_photo_asset_undefined_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_undefined_compatible_onprogress';
       let photoAsset: ESObject = undefined;
       await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset);
@@ -1395,7 +1395,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_test_string_compatible', 0, async (done: Function) => {
+    it('request_video_photo_asset_test_string_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_test_string_compatible';
       let photoAsset: ESObject = 'test';
       await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset);
@@ -1410,7 +1410,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_test_string_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_photo_asset_test_string_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_test_string_compatible_onprogress';
       let photoAsset: ESObject = 'test';
       await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset);
@@ -1425,7 +1425,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_true_compatible', 0, async (done: Function) => {
+    it('request_video_photo_asset_true_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_true_compatible';
       let photoAsset: ESObject = true;
       await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset);
@@ -1440,7 +1440,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_true_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_photo_asset_true_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_true_compatible_onprogress';
       let photoAsset: ESObject = true;
       await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset);
@@ -1455,7 +1455,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_object_compatible', 0, async (done: Function) => {
+    it('request_video_photo_asset_object_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_object_compatible';
       let photoAsset: ESObject = {
         a: 10
@@ -1472,7 +1472,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photo_asset_object_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_photo_asset_object_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photo_asset_object_compatible_onprogress';
       let photoAsset: ESObject = {
         a: 10
@@ -1489,7 +1489,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_null_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_null_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_null_compatible';
       let fileUri: ESObject = null;
       let errCode = '401';
@@ -1505,7 +1505,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_null_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_null_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_null_compatible_onprogress';
       let fileUri: ESObject = null;
       let errCode = '401';
@@ -1521,7 +1521,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_undefined_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_undefined_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_undefined_compatible';
       let fileUri: ESObject = undefined;
       let errCode = '401';
@@ -1537,7 +1537,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_undefined_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_undefined_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_undefined_compatible_onprogress';
       let fileUri: ESObject = undefined;
       let errCode = '401';
@@ -1553,7 +1553,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_true_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_true_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_true_compatible';
       let fileUri: ESObject = true;
       let errCode = '401';
@@ -1569,7 +1569,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_true_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_true_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_true_compatible_onprogress';
       let fileUri: ESObject = true;
       let errCode = '401';
@@ -1585,7 +1585,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_test_string_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_test_string_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_test_string_compatible';
       let fileUri = '';
       for (let i = 0; i < 380; i++) {
@@ -1605,7 +1605,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_test_string_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_test_string_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_test_string_compatible_onprogress';
       let fileUri = '';
       for (let i = 0; i < 380; i++) {
@@ -1625,7 +1625,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_special_chat_compatible', 0, async (done: Function) => {
+    it('request_video_special_chat_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_special_chat_compatible';
       let fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ ';
       let errCode = '401';
@@ -1641,7 +1641,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_special_chat_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_special_chat_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_special_chat_compatible_onprogress';
       let fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ ';
       let errCode = '401';
@@ -1657,7 +1657,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_extr_long_string_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_extr_long_string_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_extr_long_string_compatible';
       let fileUri = '';
       for (let i = 0; i < 385; i++) {
@@ -1676,7 +1676,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_extr_long_string_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_extr_long_string_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_extr_long_string_compatible_onprogress';
       let fileUri = '';
       for (let i = 0; i < 385; i++) {
@@ -1695,7 +1695,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photoAsset_imageAsset_compatible', 0, async (done: Function) => {
+    it('request_video_photoAsset_imageAsset_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photoAsset_imageAsset_compatible';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -1739,7 +1739,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_photoAsset_imageAsset_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_photoAsset_imageAsset_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_photoAsset_imageAsset_compatible_onprogress';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -1784,7 +1784,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_image_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_image_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_image_compatible';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
@@ -1828,7 +1828,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_image_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_image_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_image_compatible_onprogress';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
@@ -1873,7 +1873,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -1917,7 +1917,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
@@ -1962,7 +1962,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_empty_string_compatible', 0, async (done: Function) => {
+    it('request_video_fileUri_empty_string_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_empty_string_compatible';
       let fileUri = '';
       let errCode = '401';
@@ -1978,7 +1978,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_fileUri_empty_string_compatible_onprogress', 0, async (done: Function) => {
+    it('request_video_fileUri_empty_string_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_fileUri_empty_string_compatible_onprogress';
       let fileUri = '';
       let errCode = '401';
@@ -1994,7 +1994,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible_illegal_compatibleMode', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_compatible_illegal_compatibleMode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_compatible_illegal_compatibleMode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -2013,7 +2013,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible_illegal_mode', 0, async (done: Function) => {
+    it('request_video_delivery_fast_source_original_compatible_illegal_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_delivery_fast_source_original_compatible_illegal_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -2032,7 +2032,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_hdr_video_fileUri_imageUri_photoAsset_compatible_onprogress', 0, async (done: Function) => {
+    it('request_hdr_video_fileUri_imageUri_photoAsset_compatible_onprogress', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_hdr_video_compatible_onprogress';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
@@ -2078,7 +2078,7 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_hdr_video_fileUri_imageUri_photoAsset_compatible', 0, async (done: Function) => {
+    it('request_hdr_video_fileUri_imageUri_photoAsset_compatible', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_hdr_video_compatible';
       try {
         let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");

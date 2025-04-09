@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   fetchOption,
   photoType,
@@ -88,7 +88,7 @@ export default function assetGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAllObjects_callback_000', 0, async (done:Function)=> {
+    it('getAllObjects_callback_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getAllObjects_callback_000';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
       await getAllObjectsCallbackTest(done, testNum, fetchOps);
@@ -103,7 +103,7 @@ export default function assetGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAllObjects_promise_000', 0, async (done:Function)=> {
+    it('getAllObjects_promise_000', Level.LEVEL0, async (done:Function)=> {
 	    const testNum = 'getAllObjects_promise_000';
 	    const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
 	    await getAllObjectsPromiseTest(done, testNum, fetchOps);
@@ -119,7 +119,7 @@ export default function assetGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAllObjects_callback_001', 0, async (done:Function)=> {
+    it('getAllObjects_callback_001', Level.LEVEL0, async (done:Function)=> {
 	    const testNum = 'getAllObjects_callback_001';
 	    const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
 	    await getAllObjectsCallbackTest(done, testNum, fetchOps);
@@ -134,7 +134,7 @@ export default function assetGetAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAllObjects_promise_001', 0, async (done:Function)=> {
+    it('getAllObjects_promise_001', Level.LEVEL0, async (done:Function)=> {
 	    const testNum = 'getAllObjects_promise_001';
 	    const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
 	    await getAllObjectsPromiseTest(done, testNum, fetchOps);

@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption,
@@ -49,7 +49,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('addAssets_callback_001', 0, async (done: Function) => {
+    it('addAssets_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'addAssets_callback_001';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -94,7 +94,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_callback_003', 2, async (done: Function) => {
+    it('addAssets_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_callback_003';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -139,7 +139,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_callback_004', 2, async (done: Function) => {
+    it('addAssets_callback_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_callback_004';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -170,7 +170,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_callback_005', 2, async (done: Function) => {
+    it('addAssets_callback_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_callback_005';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -198,7 +198,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_callback_006', 2, async (done: Function) => {
+    it('addAssets_callback_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_callback_006';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -222,7 +222,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('addAssets_promise_001', 0, async (done: Function) => {
+    it('addAssets_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'addAssets_promise_001';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -249,7 +249,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_promise_003', 2, async (done: Function) => {
+    it('addAssets_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_promise_003';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -283,7 +283,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_promise_004', 2, async (done: Function) => {
+    it('addAssets_promise_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_promise_004';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -304,7 +304,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_promise_005', 2, async (done: Function) => {
+    it('addAssets_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_promise_005';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -326,7 +326,7 @@ export default function addAssetsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('addAssets_promise_006', 2, async (done: Function) => {
+    it('addAssets_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'addAssets_promise_006';
       try {
         const album:ESObject = await helper.createAlbum(testNum);

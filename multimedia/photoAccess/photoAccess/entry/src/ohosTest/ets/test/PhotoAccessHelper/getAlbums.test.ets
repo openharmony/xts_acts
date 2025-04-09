@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   albumKeys,
   albumType,
@@ -48,7 +48,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAlbums_callback_000', 0, async (done: Function) => {
+    it('getAlbums_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAlbums_callback_000';
       try {
         let albumNames = [
@@ -99,7 +99,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_callback_001', 2, async (done: Function) => {
+    it('getAlbums_callback_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_callback_001';
       try {
         // Firstly, create an album
@@ -137,7 +137,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAlbums_callback_002', 0, async (done: Function) => {
+    it('getAlbums_callback_002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAlbums_callback_002';
       try {
         let subTypes: Array<photoAccessHelper.AlbumSubtype> = [
@@ -181,7 +181,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_callback_003', 2, async (done: Function) => {
+    it('getAlbums_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_callback_003';
       try {
         let albumName = testNum;
@@ -204,7 +204,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_callback_004', 2, async (done: Function) => {
+    it('getAlbums_callback_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_callback_004';
       try {
         helper.getAlbums(albumType.USER, 123123, async (err, fetchResult) => {
@@ -228,7 +228,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAlbums_promise_000', 0, async (done: Function) => {
+    it('getAlbums_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAlbums_promise_000';
       try {
         let albumNames = [
@@ -269,7 +269,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_promise_001', 2, async (done: Function) => {
+    it('getAlbums_promise_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_promise_001';
       try {
         // Firstly, create an album
@@ -296,7 +296,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAlbums_promise_002', 0, async (done: Function) => {
+    it('getAlbums_promise_002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAlbums_promise_002';
       try {
         let subTypes: Array<photoAccessHelper.AlbumSubtype> = [
@@ -330,7 +330,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_promise_003', 2, async (done: Function) => {
+    it('getAlbums_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_promise_003';
       try {
         const albumNames = ['b', 'a', 'c'];
@@ -366,7 +366,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_promise_004', 2, async (done: Function) => {
+    it('getAlbums_promise_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_promise_004';
       try {
         const albumNames = ['x', 'y', 'z'];
@@ -402,7 +402,7 @@ export default function getAlbumsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAlbums_promise_005', 2, async (done: Function) => {
+    it('getAlbums_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAlbums_promise_005';
       try {
         const albumNames = ['m'];

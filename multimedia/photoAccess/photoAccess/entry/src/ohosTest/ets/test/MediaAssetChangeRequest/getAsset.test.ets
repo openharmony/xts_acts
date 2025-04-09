@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { getPermission,driveFn ,sleep} from '../common';
 
@@ -38,7 +38,7 @@ export default function getAssetChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_asset_change_request_000', 0, async (done: Function) => {
+    it('get_asset_change_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'get_asset_change_request_000';
       try {
         let asset = await helper.createAsset(testNum + '.jpg');
@@ -65,7 +65,7 @@ export default function getAssetChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_asset_change_request_001', 2, async (done: Function) => {
+    it('get_asset_change_request_001', Level.LEVEL2, async (done: Function) => {
       let testNum = 'get_asset_change_request_001';
       try {
         let photoType = photoAccessHelper.PhotoType.IMAGE;
