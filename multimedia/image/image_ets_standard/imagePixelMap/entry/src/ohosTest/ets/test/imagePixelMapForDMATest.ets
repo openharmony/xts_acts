@@ -134,13 +134,13 @@ export default function imagePixelmap() {
             pixelMap = await imageSource.createPixelMapUsingAllocator();
           }
         }
+        await imageSource?.release();
       } catch (error) {
         logger.log("getPixelmapFromAllocator error is: " + JSON.stringify(error));
       }
       if (pixelMap == undefined) {
         logger.log('Failed to create pixelMap.');
       }
-      await imageSource?.release();
       return pixelMap;
     }
 
