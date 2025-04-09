@@ -20,3 +20,5 @@ export const testTextPickerRange: (a: string) => void;
 export const textPickerEnableHapticFeedback: (a: string) => void;
 
 export const datePickerEnableHapticFeedback: (a: string) => void;
+
+export const swiperIndicatorTest: (a: string) => void;
