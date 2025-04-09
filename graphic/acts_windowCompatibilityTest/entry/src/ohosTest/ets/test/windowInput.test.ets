@@ -52,7 +52,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_DialogWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_DialogWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -89,7 +89,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_SubWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_SubWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -122,7 +122,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_MainWindow', 0, async () => {
+    it('testKeepKeyboardOnFocus_MainWindow', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_MainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -151,7 +151,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testKeepKeyboardOnFocus_SubWindowWithOps', 0, async () => {
+    it('testKeepKeyboardOnFocus_SubWindowWithOps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
       let caseName = 'testKeepKeyboardOnFocus_SubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -190,7 +190,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5680
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5740
      * @tc.name      : testWindow_on_off_keyboardDidShow_normal
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
@@ -232,10 +232,14 @@ export default function windowInputTest(context: common.UIAbilityContext, window
           console.info(msgStr + "first listener trigger");
           console.info(msgStr +  'keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
           keyboard_info = keyboardInfo;
-          expect(keyboard_info.rect.height != null).assertTrue();
-          expect(keyboard_info.rect.width != null).assertTrue();
-          expect(keyboard_info.rect.top != null).assertTrue();
-          expect(keyboard_info.rect.left != null).assertTrue();
+          expect(keyboard_info.beginRect.height != null).assertTrue();
+          expect(keyboard_info.beginRect.width != null).assertTrue();
+          expect(keyboard_info.beginRect.top != null).assertTrue();
+          expect(keyboard_info.beginRect.left != null).assertTrue();
+          expect(keyboard_info.endRect.height != null).assertTrue();
+          expect(keyboard_info.endRect.width != null).assertTrue();
+          expect(keyboard_info.endRect.top != null).assertTrue();
+          expect(keyboard_info.endRect.left != null).assertTrue();
         });
       } catch (exception) {
         if (exception.code != 801) {
@@ -283,7 +287,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5690
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5750
      * @tc.name      : testWindowOffKeyboardDidShow_UnregisteredOff
      * @tc.desc      : Disable listening for the height change of the soft keyboard in the fixed state input method window
      * @tc.size      : MediumTest
@@ -316,7 +320,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5760
      * @tc.name      : testWindowOffKeyboardDidShow_RepeatOff
      * @tc.desc      : test testWindowOffKeyboardDidShow_RepeatOff
      * @tc.size      : MediumTest
@@ -377,7 +381,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5710
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5770
      * @tc.name      : testWindow_on_off_keyboardDidHide_normal
      * @tc.desc      : Enable fixed soft keyboard to display animation completed listening
      * @tc.size      : MediumTest
@@ -463,7 +467,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5720
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5780
      * @tc.name      : testWindowOffKeyboardDidHide_UnregisteredOff
      * @tc.desc      : test testWindowOffKeyboardDidHide_UnregisteredOff
      * @tc.size      : MediumTest
@@ -496,7 +500,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5730
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5790
      * @tc.name      : testWindowOffKeyboardDidHide_RepeatOff
      * @tc.desc      : test testWindowOffKeyboardDidHide_RepeatOff
      * @tc.size      : MediumTest
