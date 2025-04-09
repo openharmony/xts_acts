@@ -82,7 +82,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5100', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5100`;
+      let tag = `ContextMonitoring_5100`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -133,7 +133,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5200', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5200`;
+      let tag = `ContextMonitoring_5200`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -207,7 +207,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5300', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5300`;
+      let tag = `ContextMonitoring_5300`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -275,7 +275,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5400', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5400`;
+      let tag = `ContextMonitoring_5400`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -341,7 +341,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5500', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5500`;
+      let tag = `ContextMonitoring_5500`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -409,7 +409,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5600', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5600`;
+      let tag = `ContextMonitoring_5600`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -475,7 +475,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5800', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5800`;
+      let tag = `ContextMonitoring_5800`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -545,7 +545,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5900', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5900`;
+      let tag = `ContextMonitoring_5900`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -630,7 +630,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_6000', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_6000`;
+      let tag = `ContextMonitoring_6000`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
@@ -712,7 +712,7 @@ export default function contextMonitoringTest() {
      * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_6200', Level.LEVEL0,(done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_6200`;
+      let tag = `ContextMonitoring_6200`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
