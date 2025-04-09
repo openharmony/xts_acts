@@ -21,7 +21,7 @@ group("pcs") {
       "pcs_js:ActsPCSJsTest",
       "pcs_ndk:ActsPCSNdkTest",
       "pcs_py:ActsPCSPyTest",
-      "pcs_syscap:ActsPCSSyscapTest"
+      "pcs_syscap:ActsPCSSyscapMinSetTest"
     ]
   }
 }
