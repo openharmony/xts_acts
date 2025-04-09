@@ -115,8 +115,8 @@ export default function imagePixelmap() {
       allocatorType?: image.AllocatorType
     ) => {
       let pixelMap: image.PixelMap | undefined = undefined;
-      let imageSource = image.createImageSource(buffer);
       try {
+        let imageSource = image.createImageSource(buffer);
         if (type == "sync") {
           if (decodingOptions != undefined && allocatorType == undefined) {
             pixelMap = imageSource.createPixelMapUsingAllocatorSync(decodingOptions);
