@@ -689,7 +689,7 @@ export default function ApiCoverTest() {
       })
       let formWant: Want = {
         deviceId: "",
-        bundleName: "com.example.apisystest",
+        bundleName: "com.example.apicoverhaptest",
         abilityName: "CreateFormAbility",
         parameters: {
           "createForm": true
