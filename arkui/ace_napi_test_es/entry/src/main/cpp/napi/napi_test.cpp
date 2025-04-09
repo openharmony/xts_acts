@@ -4726,6 +4726,27 @@ static napi_value NapiRemoveWrapSendableTest(napi_env env, napi_callback_info in
     return result;
 }
 
+static napi_value CallLockAsyncAfterRunCleanupTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    napi_value global;
+    NAPI_CALL(env, napi_get_global(env, &global));
+    napi_ref cb;
+    NAPI_CALL(env, napi_create_reference(env, args[0], 1, &cb));
+    NAPI_CALL(env, napi_add_finalizer(
+        env, global, reinterpret_cast<void *>(cb),
+        [](napi_env env, void *data, void *) {
+            napi_value val;
+            NAPI_CALL_RETURN_VOID(env, napi_get_reference_value(env, reinterpret_cast<napi_ref>(data), &val));
+            NAPI_CALL_RETURN_VOID(env, napi_call_function(env, nullptr, val, 0, nullptr, nullptr));
+        },
+        nullptr, nullptr));
+    return nullptr;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -4918,6 +4939,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiWrapSendableTest", NapiWrapSendableTest),
         DECLARE_NAPI_FUNCTION("napiUnWrapSendableTest", NapiUnWrapSendableTest),
         DECLARE_NAPI_FUNCTION("napiRemoveWrapSendableTest", NapiRemoveWrapSendableTest),
+        DECLARE_NAPI_FUNCTION("callLockAsyncAfterRunCleanupTest", CallLockAsyncAfterRunCleanupTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

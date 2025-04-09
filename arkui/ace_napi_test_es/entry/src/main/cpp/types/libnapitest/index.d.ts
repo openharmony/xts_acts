@@ -180,3 +180,4 @@ export const napiWrapSendableTest: () => number;
 export const napiWrapSendableWithSizeTest: () => number;
 export const napiUnWrapSendableTest: () => number;
 export const napiRemoveWrapSendableTest: () => number;
+export const callLockAsyncAfterRunCleanupTest: (fn: Function) => void;

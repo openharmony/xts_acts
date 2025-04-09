@@ -25,6 +25,7 @@ import ImageSpanModifierTest from "./ModifierTest/ImageSpanModifier.test";
 import MarqueeModifierTest from "./ModifierTest/MarqueeModifier.test";
 import RichEditorModifierTest from "./ModifierTest/RichEditorModifier.test";
 import RichTextModifierTest from "./ModifierTest/RichTextModifier.test";
+import fontFeatureTest from './TextInputTest/fontFeature.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -39,4 +40,5 @@ export default function testsuite() {
   MarqueeModifierTest();
   RichEditorModifierTest();
   RichTextModifierTest();
+  fontFeatureTest();
 }

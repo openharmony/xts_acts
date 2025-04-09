@@ -79,9 +79,9 @@ export default function initNdkTest() {
      * @tc.desc       : test OH_GetManufacture for non-empty strings without special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetManufacture001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetManufacture001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let manufactureInfo: string = initndk.oHGetManufacture();
 
       let ret = false;
@@ -159,9 +159,9 @@ export default function initNdkTest() {
      * @tc.desc       : test OH_GetMarketName for non-empty strings without special characters.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testOHGetMarketName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHGetMarketName001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = false;
       let marketNameInfo: string = initndk.oHGetMarketName();
 
