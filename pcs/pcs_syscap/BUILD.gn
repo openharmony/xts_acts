@@ -18,7 +18,7 @@ group("ActsPCSSyscapMinSetTest") {
   deps = [ ":SyscapMinSetTestCase" ]
 }
 
-ohos_copy("SyscapTestMinSetCase") {
+ohos_copy("SyscapMinSetTestCase") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [
