@@ -26,7 +26,7 @@ export default function ActsAccountAddAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Add account in callback form without additional information
     */
-    it('ActsAccountAddAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('ActsAccountAddAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountAddAccount_0100 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -47,7 +47,7 @@ export default function ActsAccountAddAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Add account in promise form without additional information
     */
-    it('ActsAccountAddAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('ActsAccountAddAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountAddAccount_0200 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -73,7 +73,7 @@ export default function ActsAccountAddAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Add account in callback form with additional information
     */
-    it('ActsAccountAddAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('ActsAccountAddAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountAddAccount_0300 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -94,7 +94,7 @@ export default function ActsAccountAddAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Add account in promise form with additional information
     */
-    it('ActsAccountAddAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('ActsAccountAddAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountAddAccount_0400 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");

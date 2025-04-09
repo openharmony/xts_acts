@@ -52,11 +52,11 @@ export default function ActsOsAccountTest() {
     * @tc.number  : ActsOsAccountGetForegroundOsAccountLocalId_0100
     * @tc.name    : getForegroundOsAccountLocalId promise
     * @tc.desc    : Gets the local ID of the foreground OS account.
-    * @tc.level   : Level3
+    * @tc.level   : Level0
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetForegroundOsAccountLocalId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('ActsOsAccountGetForegroundOsAccountLocalId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       console.info("====>ActsOsAccountGetForegroundOsAccountLocalId_0100 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -183,11 +183,11 @@ export default function ActsOsAccountTest() {
     * @tc.number  : ActsOsAccountGetOsAccountDomainInfo_0500
     * @tc.name    : getOsAccountDomainInfo promise test
     * @tc.desc    : Gets the domain account information associated with the specified OS account.
-    * @tc.level   : Level3
+    * @tc.level   : Level0
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('ActsOsAccountGetOsAccountDomainInfo_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0500 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -209,11 +209,11 @@ export default function ActsOsAccountTest() {
     * @tc.number  : ActsOsAccountGetOsAccountDomainInfo_0600
     * @tc.name    : getOsAccountDomainInfo promise test
     * @tc.desc    : Gets the domain account information associated with the specified OS account.
-    * @tc.level   : Level3
+    * @tc.level   : Level0
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountDomainInfo_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('ActsOsAccountGetOsAccountDomainInfo_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       console.info("====>ActsOsAccountGetOsAccountDomainInfo_0600 start====");
       let accountManager: osAccount.AccountManager = osAccount.getAccountManager();

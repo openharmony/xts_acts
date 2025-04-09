@@ -51,7 +51,7 @@ export default function ActsAccountOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to change
         *                 the credential
         */
-        it('ActsAccountOnOff_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
+        it('ActsAccountOnOff_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountOnOff_0300 start====");
@@ -120,7 +120,7 @@ export default function ActsAccountOnOff() {
         * @tc.desc      : Received the account information change to the authorized account of the subscription to delete
         *                 authorized account
         */
-        it('ActsAccountOnOff_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async function (done) {
+        it('ActsAccountOnOff_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await testInit();
             await sleep(500)
             console.info("====>ActsAccountOnOff_0400 start====");
