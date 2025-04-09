@@ -661,9 +661,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testCreate_App_Type_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testCreate_App_Type_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCreate_App_Type_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -685,9 +685,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Verify the scenario of creating the system type window
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testCreate_Sys_Type_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testCreate_Sys_Type_Win_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testCreate_Sys_Type_Win_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -982,9 +982,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Verify the scene of obtaining all auxiliary sub windows
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testGetSubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testGetSubWindow_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testGetSubWindow_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1003,9 +1003,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Verify the scene where the application sub window is set as a security layer
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testSetPrivacyMode_SppSubWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testSetPrivacyMode_SppSubWin_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testSetPrivacyMode_SppSubWin_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin ');
@@ -1059,9 +1059,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Sets the display direction property of the window
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testSetPreferredOrientation_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testSetPreferredOrientation_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testSetPreferredOrientation_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1102,9 +1102,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Sets whether Windows are forbidden to move in split screen mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testSetForbidSplitMove_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testSetForbidSplitMove_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testSetForbidSplitMove_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1132,9 +1132,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Scenario of screenshot of verification window
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testSnapshotTest_Promise_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testSnapshotTest_Promise_Form', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       await sleep(900);
       let caseName: string = 'testSnapshotTest_Promise_Form';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -1304,9 +1304,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Test the function of setSpecificSystemBarEnabled
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testSetSpecificSystemBarEnabled_Function_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testSetSpecificSystemBarEnabled_Function_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let msgStr: string = 'testSetSpecificSystemBarEnabled';
       console.log(msgStr + 'begin')
       try {
@@ -1473,9 +1473,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : test the function of SubWindowOptions
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level0
      */
-    it('testSubWindowOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
+    it('testSubWindowOptions', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let msgStr: string = 'testSubWindowOptions';
       console.log(msgStr + ' begin');
       try {
@@ -1519,9 +1519,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : test the function of KeepKeyboardOnFocus
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level0
      */
-    it('testKeepKeyboardOnFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
+    it('testKeepKeyboardOnFocus', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let msgStr = 'testKeepKeyboardOnFocus';
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -1585,9 +1585,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.desc      : Test the function value of createSubWindowWithOptions
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it("testCreateSubWindowWithOptions_Function_Promise", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_Function_Promise", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window | void;

@@ -31,9 +31,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.desc      : create Floating window permission check
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testCreateFloatWindowPermission_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+    it('testCreateFloatWindowPermission_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async () => {
       let caseName = 'testCreateFloatWindowPermission_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -98,9 +98,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.desc      : Sets whether the window is in private mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testSetWindowPrivacyModePermission_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
+    it('testSetWindowPrivacyModePermission_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let caseName = 'testSetWindowPrivacyModePermission_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -145,9 +145,9 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
      * @tc.desc      : Sets whether the window is in private mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testSetWindowPrivacyModePermission_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+    it('testSetWindowPrivacyModePermission_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async () => {
       let caseName = 'testSetWindowPrivacyModePermission_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
