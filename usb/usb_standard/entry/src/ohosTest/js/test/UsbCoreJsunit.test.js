@@ -127,9 +127,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.desc     : 【C-ALL-HARDWARE-0502】必须支持连接标准 USB 外围设备
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 3
+   * @tc.level    : Level 0
    */
-  it('testGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+  it('testGetDevices001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
     console.info(TAG, 'usb testGetDevices001 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -148,9 +148,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.desc     : Positive test: Permission query
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 3
+   * @tc.level    : Level 0
    */
-  it('testHasRight001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+  it('testHasRight001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
     console.info(TAG, 'usb testHasRight001 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
