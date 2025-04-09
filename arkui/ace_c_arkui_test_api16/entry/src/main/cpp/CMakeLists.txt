@@ -25,7 +25,7 @@ add_library(nativerender SHARED
     drag/drag_test.cpp
     ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
     move/node_util_move_test.cpp
-    timePicker/time_picke_test.cpp
+    timePicker/time_picker_test.cpp
 )
 
 add_library(nativefunc SHARED

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "time_picke_test.h"
+#include "time_picker_test.h"
 #include "common/common.h"
 #include "../manager/plugin_manager.h"
 #include <arkui/native_node.h>
