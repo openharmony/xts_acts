@@ -15,7 +15,7 @@
 
 import formBindingData from '@ohos.application.formBindingData';
 import formProvider from '@ohos.application.formProvider';
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it }, TestType, Size, Level } from '@ohos/hypium';
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
 export const updateFormFuzzTest = (describeName:string, filterParameter:number) => {
@@ -34,7 +34,7 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
        * @tc.number FMS_fuzzTest_updateform_0100 ~ FMS_fuzzTest_updateform_0800
        * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+      it(`${callbackName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
         let bindingData:formBindingData.FormBindingData | null = formBindingData.createFormBindingData('');
@@ -64,7 +64,7 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
        * @tc.number FMS_fuzzTest_updateform_0900 ~ FMS_fuzzTest_updateform_1600
        * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+      it(`${promiseName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = getFuzzData(dataType) as string;
         let formBindingData:formBindingData.FormBindingData | null = null;
@@ -91,7 +91,7 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
        * @tc.number FMS_fuzzTest_updateform_1700 ~ FMS_fuzzTest_updateform_2400
        * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done:Function) => {
+      it(`${callbackName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = `${tcNumber}`;
         const formBindingData:formBindingData.FormBindingData = getFuzzData(dataType) as formBindingData.FormBindingData;
@@ -120,7 +120,7 @@ export const updateFormFuzzTest = (describeName:string, filterParameter:number) 
        * @tc.number FMS_fuzzTest_updateform_2500 ~ FMS_fuzzTest_updateform_3200
        * @tc.desc Check whether the updateForm interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done:Function) => {
+      it(`${promiseName}_${tcNumber}`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
         const dataType:string = DATA_TYPE_LIST[i];
         const formId:string = `${tcNumber}`;
         const formBindingData:formBindingData.FormBindingData = getFuzzData(dataType) as formBindingData.FormBindingData;
