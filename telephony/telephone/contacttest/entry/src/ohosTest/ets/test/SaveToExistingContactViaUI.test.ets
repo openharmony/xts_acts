@@ -196,7 +196,7 @@ export default function SaveToExistingContactViaUITest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSaveToExistingContactViaUI0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 async (done: Function) => {
+    it('testTelephonyContactSaveToExistingContactViaUI0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSaveToExistingContactViaUI0100";
       console.info(`${caseName} test start `);
