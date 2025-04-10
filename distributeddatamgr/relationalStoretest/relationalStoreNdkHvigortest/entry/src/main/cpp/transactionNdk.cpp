@@ -59,7 +59,8 @@ static void InitRdbConfig()
         config_.area = RDB_SECURITY_AREA_EL1;
 }
 
-static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
+static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info)
+{
     InitRdbConfig();
     int chmodValue = 0770;
     mkdir(config_.dataBaseDir, chmodValue);
@@ -109,13 +110,15 @@ static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
     int ret = OH_RdbTransOption_SetType(g_options, RDB_TRANS_BUTT);
     NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Rdb_CreateConfig is fail.");
     ret = OH_RdbTransOption_SetType(g_options, RDB_TRANS_DEFERRED);
-    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");  
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info) {
+static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info)
+{
     char dropTableSql[] = "DROP TABLE IF EXISTS test";
     int errCode = OH_Rdb_Execute(g_transStore, dropTableSql);
     NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CreateConfig is fail.");
@@ -124,12 +127,14 @@ static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info
     OH_Rdb_DeleteStore(&config_);
     OH_RdbTrans_DestroyOptions(g_options);
     g_options = nullptr;
+    
     napi_value result = nullptr;
     napi_create_int32(env, errCode, &result);
     return result;
 }
 
-static void FillDataValues(napi_env env, OH_Data_Values *values) {
+static void FillDataValues(napi_env env, OH_Data_Values *values)
+{
     NAPI_ASSERT_RETURN_VOID(env, values != nullptr, "OH_Rdb_Backup1 is fail.");
     OH_Data_Value *value = OH_Value_Create();
     int ret = OH_Value_PutInt(nullptr, 1);
@@ -174,7 +179,8 @@ static void FillDataValues(napi_env env, OH_Data_Values *values) {
     NAPI_ASSERT_RETURN_VOID(env, ret == RDB_OK, "OH_Rdb_Backup1 is fail.");
 }
 
-static napi_value OH_Rdb_Transaction0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Rdb_Transaction0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     NAPI_ASSERT(env, g_transStore != NULL, "OH_Rdb_Execute  g_transStore is fail.");
     NAPI_ASSERT(env, g_options != NULL, "OH_Rdb_Execute  g_options is fail.");
@@ -182,12 +188,14 @@ static napi_value OH_Rdb_Transaction0100(napi_env env, napi_callback_info info) 
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_PreferencesOption_SetBundleName2 ret= %{public}d", ret);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateTransaction is fail.");
     NAPI_ASSERT(env, trans != nullptr, "trans != nullptr is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_Rdb_CreateTransaction0100(napi_env env, napi_callback_info info) {
+static napi_value OH_Rdb_CreateTransaction0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -208,12 +216,14 @@ static napi_value OH_Rdb_CreateTransaction0100(napi_env env, napi_callback_info 
     valueBucket->destroy(valueBucket);
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_Destroy is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_RdbTrans_Rollback0100(napi_env env, napi_callback_info info) {
+static napi_value OH_RdbTrans_Rollback0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -235,12 +245,14 @@ static napi_value OH_RdbTrans_Rollback0100(napi_env env, napi_callback_info info
     valueBucket->destroy(valueBucket);
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_RdbTrans_Query0100(napi_env env, napi_callback_info info) {
+static napi_value OH_RdbTrans_Query0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -271,12 +283,14 @@ static napi_value OH_RdbTrans_Query0100(napi_env env, napi_callback_info info) {
     cursor->destroy(cursor);
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_VBuckets_Create0100(napi_env env, napi_callback_info info) {
+static napi_value OH_VBuckets_Create0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -328,12 +342,14 @@ static napi_value OH_VBuckets_Create0100(napi_env env, napi_callback_info info) 
     NAPI_ASSERT(env, ret == RDB_OK, "OH_VBuckets_Destroy is fail.");
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_Destroy is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_VBuckets_Destroy0100(napi_env env, napi_callback_info info) {
+static napi_value OH_VBuckets_Destroy0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -389,12 +405,14 @@ static napi_value OH_VBuckets_Destroy0100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, ret == RDB_OK, "OH_VBuckets_Destroy is fail.");
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_Destroy is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_RdbTrans_Update0100(napi_env env, napi_callback_info info) {  
+static napi_value OH_RdbTrans_Update0100(napi_env env, napi_callback_info info)
+{  
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -420,12 +438,14 @@ static napi_value OH_RdbTrans_Update0100(napi_env env, napi_callback_info info) 
     valueBucket->destroy(valueBucket);
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_Destroy is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_RdbTrans_Delete0100(napi_env env, napi_callback_info info) {
+static napi_value OH_RdbTrans_Delete0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     const char *table = "test";
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
@@ -443,12 +463,14 @@ static napi_value OH_RdbTrans_Delete0100(napi_env env, napi_callback_info info) 
     valueObject->destroy(valueObject);
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_RdbTrans_QuerySql0100(napi_env env, napi_callback_info info) {
+static napi_value OH_RdbTrans_QuerySql0100(napi_env env, napi_callback_info info)
+{
     OH_Rdb_Transaction *trans = nullptr;
     int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateTransaction is fail.");
@@ -495,12 +517,14 @@ static napi_value OH_RdbTrans_QuerySql0100(napi_env env, napi_callback_info info
     cursorEnd->destroy(cursorEnd);
     ret = OH_RdbTrans_Destroy(trans);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_Destroy trans is fail.");
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_VBucket_PutFloatVector0100(napi_env env, napi_callback_info info) {
+static napi_value OH_VBucket_PutFloatVector0100(napi_env env, napi_callback_info info)
+{
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     NAPI_ASSERT(env, valueBucket != nullptr, "OH_Rdb_CreateConfig is fail.");
     float floatArr[] = { 1.0, 2.0, 3.0 };
@@ -510,12 +534,14 @@ static napi_value OH_VBucket_PutFloatVector0100(napi_env env, napi_callback_info
     ret = OH_VBucket_PutFloatVector(valueBucket, "data2", floatArr, DATA_SIZE);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_VBucket_PutFloatVector is fail.");
     valueBucket->destroy(valueBucket);
+
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
 }
 
-static napi_value OH_VBucket_PutUnlimitedInt0100(napi_env env, napi_callback_info info) {  
+static napi_value OH_VBucket_PutUnlimitedInt0100(napi_env env, napi_callback_info info)
+{  
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     NAPI_ASSERT(env, valueBucket != nullptr, "OH_Rdb_CreateConfig is fail.");
     uint64_t trueForm[] = { 1, 2, 3 };
@@ -524,6 +550,7 @@ static napi_value OH_VBucket_PutUnlimitedInt0100(napi_env env, napi_callback_inf
     ret = OH_VBucket_PutUnlimitedInt(valueBucket, "data2", 1, trueForm, 3);
     NAPI_ASSERT(env, ret == RDB_OK, "OH_VBucket_PutUnlimitedInt is fail.");
     valueBucket->destroy(valueBucket);
+    
     napi_value result;
     napi_create_int32(env, ret, &result);
     return result;
