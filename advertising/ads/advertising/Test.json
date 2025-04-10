@@ -10,6 +10,23 @@
   },
   "kits": [
     {
+      "type": "PushKit",
+      "pre-push": [
+        "mount -o rw,remount /",
+        "cp /system/etc/app/install_list_capability.json /etc/advertising/ads_framework/install_list_capability.json"
+      ],
+      "push": [
+        "./resource/advertising/xts/ad_service_config.json ->/etc/advertising/ads_framework/ad_service_config.json",
+        "./resource/advertising/xts/ad_service_config_ext.json ->/etc/advertising/ads_framework/ad_service_config_ext.json",
+        "./resource/advertising/xts/install_list_capability.json ->/system/etc/app/install_list_capability.json"
+      ],
+	  "post-push" : [
+		"mount -o rw,remount /",
+		"reboot"
+	  ],
+      "uninstall": false
+    },
+	{
       "type": "AppInstallKit",
       "test-file-name": [
         "ActsCloudAdTest.hap",
@@ -18,25 +35,18 @@
       "cleanup-apps": true
     },
     {
-      "type": "PushKit",
-      "pre-push": [
-        "mount -o rw,remount /"
-      ],
-      "push": [
-        "./resource/advertising/xts/ad_service_config.json ->/etc/advertising/ads_framework/ad_service_config.json",
-        "./resource/advertising/xts/ad_service_config_ext.json ->/etc/advertising/ads_framework/ad_service_config_ext.json"
-      ],
-      "uninstall": false
-    },
-    {
       "type": "ShellKit",
       "run-command": [
         "power-shell wakeup",
         "power-shell setmode 602"
       ],
       "teardown-command": [
-        "bm uninstall com.acts.cloud.ad.test",
-        "bm uninstall com.acts.AdsServiceDemo"
+        "rm -rf /system/etc/app/install_list_capability.json",
+	  	  "cp /etc/advertising/ads_framework/install_list_capability.json /system/etc/app/install_list_capability.json",
+        "rm -rf /etc/advertising/ads_framework/install_list_capability.json",
+        "bm uninstall -n com.acts.cloud.ad.test",
+        "bm uninstall -n com.acts.AdsServiceDemo",
+		    "reboot"
       ]
     }
   ]
