@@ -14,6 +14,8 @@
  */
 
 import imageDecodeOptions from './image.test'
+import imagePixelLocation from './imagePixelLocation.test'
+
 export default function testsuite() {
     imageDecodeOptions()
     imagePixelLocation()
