@@ -16,7 +16,8 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
-import { getPermission,driveFn ,sleep, fetchOption } from '../common';
+import dataSharePredicates from '@ohos.data.dataSharePredicates'
+import { getPermission,driveFn ,sleep, fetchOption, photoKeys } from '../common';
 
 export default function getAssetChangeRequestTest() {
   describe('getAssetChangeRequestTest', () => {
@@ -29,8 +30,8 @@ export default function getAssetChangeRequestTest() {
       try {
         let imageType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let videoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
-        let imageUri = testContext.resourceDir + '/01.jpg';
-        let videoUri = testContext.resourceDir + '/01.mp4';
+        let imageUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_mov_1.jpg";
+        let videoUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_mov_1.mp4";
         let options: photoAccessHelper.CreateOptions = {
           title: 'testMediaSuffixAsset'
         }
@@ -66,6 +67,7 @@ export default function getAssetChangeRequestTest() {
       await getPermission();
       await driveFn();
       await sleep(1000);
+      await createAllTypeAssets("getAsset_by_mediaSuffix_test_001");
     });
 
     /**
