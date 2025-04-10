@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect, beforeEach, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeEach, beforeAll, TestType, Size, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
@@ -61,7 +61,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testAddFormMenuItem0100', 0, async (done: Function) => {
+    it('testAddFormMenuItem0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.log("testAddFormMenuItem0100 start");
       emitter.on({
         eventId: ERR_DEVICE_NOT_SUPPORTED 

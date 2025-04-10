@@ -32,7 +32,7 @@ export default function ActsNotificationEmitterTest() {
       * @tc.type   : Interface
       * @tc.level  : Level 3
       */
-    it('testEmitterOneventIdforstring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdforstring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforstring';
       let eventId06 = 'eventId06'
       let onCallback06 = (): void => {
@@ -64,7 +64,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdfortwostring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdfortwostring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdfortwostring';
       let eventId07 = 'eventId07'
       let onCallback07 = (): void => {
@@ -97,7 +97,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdforempty', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdforempty', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforempty';
       let eventId08 = ''
       let onCallback08 = (): void => {
@@ -129,7 +129,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdforwhitespace', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdforwhitespace', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforwhitespace';
       let eventId09 = ' '
       let onCallback09 = (): void => {
@@ -163,7 +163,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdforstringfornumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdforstringfornumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforstringfornumber';
       let eventId10 = 'eventId10'
       let innerEvent10: notificationemitter.InnerEvent = {
@@ -202,7 +202,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnoneEmitterone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnoneEmitterone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnoneEmitterone';
       let eventId11 = 'eventId11'
       let option11: notificationemitter.Options = {
@@ -241,7 +241,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnceeventIdforstring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnceeventIdforstring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnceeventIdforstring';
       let eventId18 = 'eventId18'
       let onCallback18 = (): void => {
@@ -281,7 +281,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnceeventIdfortwostring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnceeventIdfortwostring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnceeventIdfortwostring';
       let eventId19 = 'eventId19'
       let onCallback19 = (): void => {
@@ -322,7 +322,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnceeventIdforempty', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnceeventIdforempty', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnceeventIdforempty';
       let eventId20 = ''
       let onCallback20 = (): void => {
@@ -354,7 +354,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnceeventIdforwhitespace', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnceeventIdforwhitespace', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnceeventIdforwhitespace';
       let eventId21 = ' '
       let onCallback21 = (): void => {
@@ -392,9 +392,9 @@ export default function ActsNotificationEmitterTest() {
      * @tc.desc   : test once interface success
      * @tc.size   : Large-scaleTest
      * @tc.type   : Interface
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
-    it('testEmitterOncetwoEmittwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOncetwoEmittwo', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOncetwoEmittwo';
       let eventId22 = 'eventId22'
       let innerEvent22: notificationemitter.InnerEvent = {
@@ -442,7 +442,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnceoneEmitonenumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnceoneEmitonenumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnceoneEmitonenumber';
       let eventId23 = 'eventId23'
       let innerEvent23: notificationemitter.InnerEvent = {
@@ -492,7 +492,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnoneOffone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnoneOffone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnoneOffone';
       let eventId30 = 'eventId30'
       let onCallback30 = (): void => {
@@ -528,7 +528,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnthreeOfftwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnthreeOfftwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnthreeOfftwo';
       let eventId31 = 'eventId31'
       let onCallback31 = (): void => {
@@ -572,7 +572,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdforemptyOffeventIdforempty', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdforemptyOffeventIdforempty', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforemptyOffeventIdforempty';
       let eventId32 = ''
       let onCallback32 = (): void => {
@@ -606,7 +606,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdforwhitespaceOffeventIdforwhitespace', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdforwhitespaceOffeventIdforwhitespace', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdforwhitespaceOffeventIdforwhitespace';
       let eventId33 = ' '
       let onCallback33 = (): void => {
@@ -641,9 +641,9 @@ export default function ActsNotificationEmitterTest() {
      * @tc.desc   : test off interface success
      * @tc.size   : Large-scaleTest
      * @tc.type   : Interface
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
-    it('testEmitterOntwoOfftwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwoOfftwo', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwoOfftwo';
       let eventId34 = 'eventId34'
       let innerEvent34: notificationemitter.InnerEvent = {
@@ -698,7 +698,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnoneEmitonenodata', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnoneEmitonenodata', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnoneEmitonenodata';
       let eventId38 = 'eventId38'
       let onCallback38 = (): void => {
@@ -730,7 +730,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnOneOffoneEmitone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnOneOffoneEmitone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnOneOffoneEmitone';
       let eventId43 = 'eventId43'
       let onCallback43 = (): void => {
@@ -773,7 +773,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnOnenumberOffoneEmitone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnOnenumberOffoneEmitone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnOnenumberOffoneEmitone';
       let eventId44 = 'eventId44'
       let innerEvent44: notificationemitter.InnerEvent = {
@@ -825,7 +825,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnonenumberEmitone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnonenumberEmitone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnonenumberEmitone';
       let eventId45 = 'eventId45'
       let innerEvent45: notificationemitter.InnerEvent = {
@@ -872,7 +872,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnceonenumberEmitone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnceonenumberEmitone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnceonenumberEmitone';
       let eventId46 = 'eventId46'
       let innerEvent46: notificationemitter.InnerEvent = {
@@ -919,7 +919,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnoneGetListenerCountone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnoneGetListenerCountone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnoneGetListenerCountone';
       let innerEvent50: notificationemitter.InnerEvent = {
         eventId: 50
@@ -953,7 +953,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwonumberGetListenerCountone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwonumberGetListenerCountone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwonumberGetListenerCountone';
       let innerEvent51: notificationemitter.InnerEvent = {
         eventId: 51
@@ -988,7 +988,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntennumberGetListenerCountone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntennumberGetListenerCountone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntennumberGetListenerCountone';
       let innerEvent52: notificationemitter.InnerEvent = {
         eventId: 52
@@ -1085,7 +1085,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntenstringGetListenerCountone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntenstringGetListenerCountone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntenstringGetListenerCountone';
       let eventId53 = 'eventId53'
       let onCallback153 = (): void => {
@@ -1180,7 +1180,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwentyOfftenGetListenerCounttwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwentyOfftenGetListenerCounttwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwentyOfftenGetListenerCounttwo';
       let innerEvent54: notificationemitter.InnerEvent = {
         eventId: 54
@@ -1319,7 +1319,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwentyGetListenerCounttwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwentyGetListenerCounttwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwentyGetListenerCounttwo';
       let innerEvent55: notificationemitter.InnerEvent = {
         eventId: 55
@@ -1438,7 +1438,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnonestringEmitonenumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnonestringEmitonenumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnonestringEmitonenumber';
       let eventId56 = 'eventId56'
       let innerEvent56: notificationemitter.InnerEvent = {
@@ -1483,7 +1483,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnonestringonenumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnonestringonenumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnonestringonenumber';
       let eventId57 = 'eventId57'
       let innerEvent57: notificationemitter.InnerEvent = {
@@ -1522,7 +1522,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwocallback', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwocallback', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwocallback';
       let eventId58 = 'eventId58'
       let onCallback58 = (): void => {
@@ -1561,7 +1561,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOncetwocallbackEmitone', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOncetwocallbackEmitone', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOncetwocallbackEmitone';
       let eventId59 = 'eventId59'
       let onCallback159 = (): void => {
@@ -1605,7 +1605,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwoeventIdnumberstringEmittwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwoeventIdnumberstringEmittwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwoeventIdnumberstringEmittwo';
       let eventId60 = 'eventId60'
       let innerEvent60: notificationemitter.InnerEvent = {
@@ -1656,7 +1656,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwocallbackOfftwocallback', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwocallbackOfftwocallback', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwocallbackOfftwocallback';
       let eventId61 = 'eventId61'
       let onCallback161 = (): void => {
@@ -1705,7 +1705,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdonestringOffeventIdonestring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdonestringOffeventIdonestring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdonestringOffeventIdonestring';
       let eventId65 = 'eventId65'
       let onCallback165 = (): void => {
@@ -1746,7 +1746,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwostringOfftwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwostringOfftwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwostringOfftwo';
       let eventId66 = 'eventId66'
       let onCallback166 = (): void => {
@@ -1803,7 +1803,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdemptyOffeventIdonestring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdemptyOffeventIdonestring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdemptyOffeventIdonestring';
       let eventId67 = ''
       let onCallback167 = (): void => {
@@ -1844,7 +1844,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdwhitespaceOffeventIdonestring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdwhitespaceOffeventIdonestring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdwhitespaceOffeventIdonestring';
       let eventId68 = ' '
       let onCallback168 = (): void => {
@@ -1885,7 +1885,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdonestringonenumberOfftwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdonestringonenumberOfftwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdonestringonenumberOfftwo';
       let eventId69 = 'eventId69'
       let innerEvent69: notificationemitter.InnerEvent = {
@@ -1934,7 +1934,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOnoneEmitternodata', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOnoneEmitternodata', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOnoneEmitternodata';
       let eventId73 = 'eventId73'
       let onCallback173 = (): void => {
@@ -1970,7 +1970,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOntwoEmittertwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwoEmittertwo', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwoEmittertwo';
       let j = 0
       let eventId76 = 'eventId76'
@@ -2019,7 +2019,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testEmitterOneventIdonestringonenumberEmitstring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdonestringonenumberEmitstring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdonestringonenumberEmitstring';
       let eventId78 = 'eventId78'
       let innerEvent78: notificationemitter.InnerEvent = {
@@ -2071,7 +2071,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOneventIdonestringonenumberEmitonestringonenumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdonestringonenumberEmitonestringonenumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdonestringonenumberEmitonestringonenumber';
       let j = 0
       let eventId80 = 'eventId80'
@@ -2127,7 +2127,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOntwocallbackGetListenerCounteventIdnumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwocallbackGetListenerCounteventIdnumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwocallbackGetListenerCounteventIdnumber';
       let innerEvent81: notificationemitter.InnerEvent = {
         eventId: 81
@@ -2168,7 +2168,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOntennumberGetListenerCountnumber', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntennumberGetListenerCountnumber', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntennumberGetListenerCountnumber';
       let innerEvent82: notificationemitter.InnerEvent = {
         eventId: 82
@@ -2265,7 +2265,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOntenGetListenerCountstring', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntenGetListenerCountstring', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntenGetListenerCountstring';
       let eventId83 = 'eventId83'
       let onCallback183 = (): void => {
@@ -2306,7 +2306,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOntennumbertenstringGetListenerCountstrnum', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntennumbertenstringGetListenerCountstrnum', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntennumbertenstringGetListenerCountstrnum';
       let eventId84 = 'eventId84'
       let innerEvent84: notificationemitter.InnerEvent = {
@@ -2363,7 +2363,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOntennumbertenstringOfffivestrfivenumGetListenerCountstrnum', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntennumbertenstringOfffivestrfivenumGetListenerCountstrnum', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntennumbertenstringOfffivestrfivenumGetListenerCountstrnum';
       let eventId85 = 'eventId85'
       let innerEvent85: notificationemitter.InnerEvent = {
@@ -2552,7 +2552,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testEmitterOneventIdstrnumOffstrnum', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOneventIdstrnumOffstrnum', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOneventIdstrnumOffstrnum';
       let eventId86 = 'eventId86'
       let innerEvent86: notificationemitter.InnerEvent = {
@@ -2609,7 +2609,7 @@ export default function ActsNotificationEmitterTest() {
      * @tc.type   : Interface
      * @tc.level  : Level 3
      */
-    it('testDeserializeEmitterCallbackNoPar', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterCallbackNoPar', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterCallbackNoPar';
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       try {
@@ -2636,7 +2636,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testDeserializeEmitterCallback', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterCallback', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterCallback';
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
       const re = new RegExp("\\w+");
@@ -2697,7 +2697,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testDeserializeEmitterTwoCallbackNoPar', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoCallbackNoPar', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoCallbackNoPar';
       let count: number = 0;
       let oncallback1 = () => {
@@ -2734,7 +2734,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testDeserializeEmitterTwoOnCallback', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnCallback', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnCallback';
       let count: number = 0;
       let oncallback1 = (data: emitter.EventData) => {
@@ -2804,9 +2804,9 @@ export default function ActsNotificationEmitterTest() {
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
     * @tc.type   : Interface
-    * @tc.level  : Level 3
+    * @tc.level  : Level 0
     */
-    it('testDeserializeEmitterTwoOnTwoEmitNoEventData', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitNoEventData', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNoEventData';
       let count: number = 0;
       let oncallback1 = () => {
@@ -2846,7 +2846,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testDeserializeEmitterTwoOnTwoEmitStrignAndArray', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitStrignAndArray', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitStrignAndArray';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {
@@ -2897,7 +2897,7 @@ export default function ActsNotificationEmitterTest() {
     * @tc.type   : Interface
     * @tc.level  : Level 3
     */
-    it('testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {
@@ -2948,7 +2948,7 @@ export default function ActsNotificationEmitterTest() {
    * @tc.type   : Interface
    * @tc.level  : Level 3
    */
-    it('testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {
@@ -3000,7 +3000,7 @@ export default function ActsNotificationEmitterTest() {
    * @tc.type   : Interface
    * @tc.level  : Level 3
    */
-    it('testDeserializeEmitterTwoOnTwoEmitDateAndDateView', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitDateAndDateView', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitDateAndDateView';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {
@@ -3054,7 +3054,7 @@ export default function ActsNotificationEmitterTest() {
   * @tc.type   : Interface
   * @tc.level  : Level 3
   */
-    it('testDeserializeEmitterTwoOnTwoEmitMapAndSet', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitMapAndSet', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitMapAndSet';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {
@@ -3109,7 +3109,7 @@ export default function ActsNotificationEmitterTest() {
  * @tc.type   : Interface
  * @tc.level  : Level 3
  */
-    it('testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {
@@ -3163,7 +3163,7 @@ export default function ActsNotificationEmitterTest() {
  * @tc.type   : Interface
  * @tc.level  : Level 3
  */
-    it('testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes';
       let count: number = 0;
       let oncallback1 = (data1: emitter.EventData) => {

@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
@@ -123,7 +123,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0200`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0200 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -173,7 +173,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0300`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0300 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -221,7 +221,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0400`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0400 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -269,7 +269,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0500`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0500`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0500 start`);
 
             let onStateCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -317,7 +317,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0600`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0600`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.info(`FMS_enableFormsUpdate_0600 start`);
 
             let hostFormId: string | number = '';
@@ -403,7 +403,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the enable update interface.
          *           2.Verify the result of the enable update interface.
          */
-        it(`FMS_enableFormsUpdate_0700`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0700`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.info(`FMS_enableFormsUpdate_0700 start`);
 
             let hostFormId: string | undefined;
@@ -487,7 +487,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the visible notification interface.
          *           2.Verify the result of the visible notification interface.
          */
-        it(`FMS_enableFormsUpdate_0900`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_0900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_0900 start`);
 
             let formIds: string[] = [];
@@ -631,7 +631,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the visible notification interface.
          *           2.Verify the result of the visible notification interface.
          */
-        it(`FMS_enableFormsUpdate_1000`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_1000`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_1000 start`);
 
             let formIds: string[] = [];
@@ -781,7 +781,7 @@ export default function test() {
          * @tc.desc: 1.The form user calls the visible notification interface.
          *           2.Verify the result of the visible notification interface.
          */
-        it(`FMS_enableFormsUpdate_1200`, 0, async (done: () => void) => {
+        it(`FMS_enableFormsUpdate_1200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log(`FMS_enableFormsUpdate_1200 start`);
 
             let formIds: string[] = new Array();

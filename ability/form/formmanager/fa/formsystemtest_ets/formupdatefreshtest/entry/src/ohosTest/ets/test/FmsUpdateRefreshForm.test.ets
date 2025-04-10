@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
@@ -109,7 +109,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form provider A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_updateForm_0100`, 0, async (done: ()=> void) => {
+        it(`FMS_updateForm_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_updateForm_0100 start`);
 
             let onRefreshCallBack = (err:BusinessError, data: Data) => {
@@ -156,7 +156,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form provider A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_updateForm_0200`, 0, async (done: ()=> void) => {
+        it(`FMS_updateForm_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_updateForm_0200 start`);
 
             let onRefreshCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -202,7 +202,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form provider B to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_updateForm_0300`, 0, async (done: ()=> void) => {
+        it(`FMS_updateForm_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_updateForm_0300 start`);
 
             let formId: string;
@@ -283,7 +283,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form provider A to invoke the intiative timed refresh interface.
          * 2.Verify the result of the intiative timed refresh interface.
          */
-        it('FMS_updateForm_0400', 0, async (done: ()=> void) => {
+        it('FMS_updateForm_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log('FMS_updateForm_0400 start');
 
             let formId: string | null;
@@ -366,7 +366,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.name: The jsonData of form in the provider is empty.
          * @tc.desc: 1.The form provider A to invoke the intiative timed refresh interface.
          */
-        it(`FMS_updateForm_0500`, 0, async (done: ()=> void) => {
+        it(`FMS_updateForm_0500`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_updateForm_0500 start`);
 
             let onRefreshCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -416,7 +416,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_hostRefresh_0100`, 0, async (done: ()=> void) => {
+        it(`FMS_hostRefresh_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_hostRefresh_0100 start`);
 
             let onRequestCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -463,7 +463,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_hostRefresh_0200`, 0, async (done: ()=> void) => {
+        it(`FMS_hostRefresh_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_hostRefresh_0200 start`);
 
             let onRequestCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -510,7 +510,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form user B to invoke the intiative timed refresh interface.
          * 2.Verify the result of the intiative timed refresh interface.
          */
-        it('FMS_hostRefresh_0300', 0, async (done: ()=> void) => {
+        it('FMS_hostRefresh_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log('FMS_hostRefresh_0300 start');
             let formId: string;
             let onRequestCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -592,7 +592,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_hostRefresh_0400`, 0, async (done: ()=> void) => {
+        it(`FMS_hostRefresh_0400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_hostRefresh_0400 start`);
 
             let formId: string | null;
@@ -676,7 +676,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_hostRefresh_0600`, 0, async (done: ()=> void) => {
+        it(`FMS_hostRefresh_0600`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_hostRefresh_0600 start`);
 
             let onRequestCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -725,7 +725,7 @@ export default function FmsUpdateRefreshTest() {
          * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
          *           2.Verify that pulling up the form provider.
          */
-        it(`FMS_hostRefresh_0700`, 0, async (done: ()=> void) => {
+        it(`FMS_hostRefresh_0700`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             console.log(`FMS_hostRefresh_0700 start`);
 
             let formId: string;
