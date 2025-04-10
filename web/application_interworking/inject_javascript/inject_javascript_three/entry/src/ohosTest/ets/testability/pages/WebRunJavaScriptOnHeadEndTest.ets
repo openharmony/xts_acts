@@ -161,7 +161,7 @@ struct WebRunJavaScriptOnHeadEndTest {
         .domStorageAccess(true)
         .runJavaScriptOnHeadEnd(this.scripts)
         .onControllerAttached(() => {
-          this.scripts.push({ script: this.jsHead, scriptRules: ["*"] });
+          this.scripts.push({ script: this.jsHead, scriptRules: ['*'] });
           console.log('runJavaScriptOnHeadEnd scripts==>' + JSON.stringify(this.scripts));
         })
         .onPageEnd((event) => {

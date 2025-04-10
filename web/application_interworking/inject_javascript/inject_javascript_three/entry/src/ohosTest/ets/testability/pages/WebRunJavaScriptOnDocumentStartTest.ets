@@ -97,7 +97,7 @@ struct WebRunJavaScriptOnDocumentStartTest {
         .domStorageAccess(true)
         .runJavaScriptOnDocumentStart(this.scripts)
         .onControllerAttached(() => {
-          this.scripts.push({ script: this.jsStart, scriptRules: ["*"] });
+          this.scripts.push({ script: this.jsStart, scriptRules: ['*'] });
           console.log('runJavaScriptOnDocumentStart scripts==>' + JSON.stringify(this.scripts));
         })
         .onPageBegin((event) => {
