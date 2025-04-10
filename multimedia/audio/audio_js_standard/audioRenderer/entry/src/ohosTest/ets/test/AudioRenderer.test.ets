@@ -2572,7 +2572,7 @@ export default function audioRendererTest() {
       *@tc.desc      : on_outputDeviceChange INPUT_INVALID_TYPE --401
       *@tc.size      : MediumTest
       *@tc.type      : Function
-      *@tc.level     : Level2
+      *@tc.level     : Level 2
       */
     it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0100", 2, async function (done) {
       let audioStreamInfo = {
@@ -2614,7 +2614,7 @@ export default function audioRendererTest() {
       *@tc.desc      : on_outputDeviceChange INPUT_INVALID_PARAMETER --6800101
       *@tc.size      : MediumTest
       *@tc.type      : Function
-      *@tc.level     : Level2
+      *@tc.level     : Level 2
       */
     it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0200", 2, async function (done) {
       let audioStreamInfo = {
