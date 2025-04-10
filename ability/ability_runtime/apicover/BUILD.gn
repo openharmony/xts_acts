@@ -18,7 +18,7 @@ group("apicover") {
   if (is_standard_system) {
     deps = [
       "apicoverhaptest:ActsApiCoverhapTest",
-      "apicoverhaptest2:ActsFAhapTest",
+      "apifacover:ActsFACoverTest",
       "fasupplement:FaSupplement",
       "stagesupplement:StageSupplement",
       "wantconstanttest:WantConstantTest",

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,TestType,Size,Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import ArrayList from '@ohos.util.ArrayList';
@@ -106,18 +106,18 @@ export default function audioManagerTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    //it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', 0, async (done: Function) => {
-    //  try {
-    //    let data = audioVolumeGroupManager.getSystemVolumeInDbSync();
-    //    console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
-    //    expect(false).assertTrue();
-    //    done();
-    //  } catch (error) {
-    //    console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
-    //    expect(Number(error.code)).assertEqual(401);
-    //    done();
-    //  }
-    //})
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
+      try {
+       let data = audioVolumeGroupManager.getSystemVolumeInDbSync(123,null,audio.DeviceType.SPEAKER);
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
     /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0300
          * @tc.name      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 6800101
@@ -273,7 +273,7 @@ export default function audioManagerTest() {
             })
             .catch((error: BusinessError) => {
               if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE' || index == 'WAKEUP' ||
-                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO') {
+                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO' || index == 'LINE_DIGITAL' || index == 'ACCESSORY_PORT'  ) {
                 console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
               } else {
                 console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);

@@ -14,7 +14,7 @@
  */
 
 import fileio from "@ohos.fileio";
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption,
@@ -147,7 +147,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_close_callback_000', 0, async (done:Function)=> {
+    it('photoAsset_close_callback_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'photoAsset_close_callback_000';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       await closeCallbackTest(done, testNum, fetchOps);
@@ -161,7 +161,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_close_callback_001', 0, async (done:Function)=> {
+    it('photoAsset_close_callback_001', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'photoAsset_close_callback_001';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await closeCallbackTest(done, testNum, fetchOps);
@@ -175,7 +175,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_close_callback_002', 2, async (done:Function)=> {
+    it('photoAsset_close_callback_002', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_close_callback_002';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await closeErrorCallbackTest(done, testNum, fetchOps);
@@ -189,7 +189,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_close_promise_000', 0, async (done:Function)=> {
+    it('photoAsset_close_promise_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'photoAsset_close_promise_000';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       await closePromiseTest(done, testNum, fetchOps);
@@ -203,7 +203,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_close_promise_001', 0, async (done:Function)=> {
+    it('photoAsset_close_promise_001', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'photoAsset_close_promise_001';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await closePromiseTest(done, testNum, fetchOps);
@@ -217,7 +217,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_close_promise_002', 2, async (done:Function)=> {
+    it('photoAsset_close_promise_002', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_close_promise_002';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await closeErrorPromiseTest(done, testNum, fetchOps);

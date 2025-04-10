@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   fetchOption,
   photoKeys,
@@ -56,7 +56,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('registerChange_callback_001', 0, async (done: Function) => {
+    it('registerChange_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'registerChange_callback_001';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'on01.jpg');
@@ -92,7 +92,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('registerChange_callback_007', 0, async (done: Function) => {
+    it('registerChange_callback_007', Level.LEVEL0, async (done: Function) => {
       const testNum = 'registerChange_callback_007';
       try {
         let changeDataUri = '';
@@ -128,7 +128,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-   it('registerChange_callback_008', 0, async (done: Function) => {
+   it('registerChange_callback_008', Level.LEVEL0, async (done: Function) => {
       const testNum = 'registerChange_callback_008';
       try {
         let albumUri = '';
@@ -164,7 +164,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('registerChange_callback_011', 2, async (done: Function) => {
+    it('registerChange_callback_011', Level.LEVEL2, async (done: Function) => {
       const testNum = 'registerChange_callback_011';
       try {
         let albumName = 'testAlbum' + Date.now();
@@ -204,7 +204,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('registerChange_callback_012', 2, async (done: Function) => {
+    it('registerChange_callback_012', Level.LEVEL2, async (done: Function) => {
       const testNum = 'registerChange_callback_012';
       try {
         let albumName = 'testAlbum' + Date.now();
@@ -244,7 +244,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-        it('registerChange_callback_014', 2, async (done: Function) => {
+        it('registerChange_callback_014', Level.LEVEL2, async (done: Function) => {
           const testNum = 'registerChange_callback_014';
           try {
             let albumUri:ESObject = undefined;
@@ -267,7 +267,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('unregisterChange_001', 2, async (done: Function) => {
+    it('unregisterChange_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'unregisterChange_001';
       try {
         let albumUri:ESObject = undefined;

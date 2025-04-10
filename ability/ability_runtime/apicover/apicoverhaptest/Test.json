@@ -16,7 +16,7 @@
                 "FaSupplement.hap",
                 "StageSupplement.hap",
                 "FormModule.hap",
-                "ActsFAhapTest.hap"
+                "ActsFACoverTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

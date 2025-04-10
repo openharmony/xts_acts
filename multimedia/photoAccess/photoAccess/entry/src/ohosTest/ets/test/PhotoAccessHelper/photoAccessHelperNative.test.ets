@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll} from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import mediaLibrary from "libentry.so";
 import {
@@ -50,7 +50,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('TestMediaAssetGetUri0100', 2, (done: Function) => {
+    it('TestMediaAssetGetUri0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetUri0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetUri(1);
@@ -72,7 +72,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('TestMediaAssetGetUri0200', 2, (done: Function) => {
+    it('TestMediaAssetGetUri0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetUri0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetUri(2);
@@ -94,7 +94,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDisplayName0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDisplayName0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDisplayName0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDisplayName(1);
@@ -116,7 +116,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDisplayName0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDisplayName0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDisplayName0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDisplayName(2);
@@ -138,7 +138,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetSize0100', 2, (done: Function) => {
+    it('TestMediaAssetGetSize0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetSize0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetSize(1);
@@ -160,7 +160,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetSize0200', 2, (done: Function) => {
+    it('TestMediaAssetGetSize0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetSize0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetSize(2);
@@ -182,7 +182,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateModifiedMs0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDateModifiedMs0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateModifiedMs0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateModifiedMs(1);
@@ -204,7 +204,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateModifiedMs0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDateModifiedMs0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateModifiedMs0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateModifiedMs(2);
@@ -226,7 +226,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetWidth0100', 2, (done: Function) => {
+    it('TestMediaAssetGetWidth0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetWidth0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetWidth(1);
@@ -248,7 +248,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetWidth0200', 2, (done: Function) => {
+    it('TestMediaAssetGetWidth0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetWidth0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetWidth(2);
@@ -270,7 +270,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetHeight0100', 2, (done: Function) => {
+    it('TestMediaAssetGetHeight0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetHeight0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetHeight(1);
@@ -292,7 +292,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetHeight0200', 2, (done: Function) => {
+    it('TestMediaAssetGetHeight0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetHeight0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetHeight(2);
@@ -314,7 +314,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetOrientation0100', 2, (done: Function) => {
+    it('TestMediaAssetGetOrientation0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetOrientation0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetOrientation(1);
@@ -336,7 +336,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetOrientation0200', 2, (done: Function) => {
+    it('TestMediaAssetGetOrientation0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetOrientation0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetOrientation(2);
@@ -358,7 +358,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetRelease0100', 2, (done: Function) => {
+    it('TestMediaAssetRelease0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetRelease0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetRelease(1);
@@ -380,7 +380,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithBuffer0100', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithBuffer0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithBuffer0100';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithBuffer(1);
@@ -402,7 +402,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithBuffer0200', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithBuffer0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithBuffer0200';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithBuffer(2);
@@ -424,7 +424,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithBuffer0300', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithBuffer0300', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithBuffer0300';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithBuffer(3);
@@ -446,7 +446,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithBuffer0400', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithBuffer0400', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithBuffer0400';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithBuffer(4);
@@ -468,7 +468,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithBuffer0500', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithBuffer0500', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithBuffer0500';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithBuffer(6);
@@ -490,7 +490,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithBuffer0600', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithBuffer0600', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithBuffer0600';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithBuffer(7);
@@ -512,7 +512,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestSaveCameraPhoto0100', 2, (done: Function) => {
+    it('TestChangeRequestSaveCameraPhoto0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestSaveCameraPhoto0100';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestSaveCameraPhoto(1);
@@ -534,7 +534,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestSaveCameraPhoto0200', 2, (done: Function) => {
+    it('TestChangeRequestSaveCameraPhoto0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestSaveCameraPhoto0200';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestSaveCameraPhoto(2);
@@ -556,7 +556,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestDiscardCameraPhoto0100', 2, (done: Function) => {
+    it('TestChangeRequestDiscardCameraPhoto0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestDiscardCameraPhoto0100';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestDiscardCameraPhoto(1);
@@ -578,7 +578,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestRelease0100', 2, (done: Function) => {
+    it('TestChangeRequestRelease0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestRelease0100';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestRelease(1);
@@ -600,7 +600,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestImage0100', 2, (done: Function) => {
+    it('TestManagerRequestImage0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestImage0100';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestImage(2);
@@ -622,7 +622,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestImage0200', 2, (done: Function) => {
+    it('TestManagerRequestImage0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestImage0200';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestImage(1);
@@ -644,7 +644,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestImage0300', 2, (done: Function) => {
+    it('TestManagerRequestImage0300', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestImage0300';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestImage(3);
@@ -666,7 +666,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestImage0400', 2, (done: Function) => {
+    it('TestManagerRequestImage0400', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestImage0400';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestImage(4);
@@ -688,7 +688,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestImage0500', 2, (done: Function) => {
+    it('TestManagerRequestImage0500', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestImage0500';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestImage(5);
@@ -710,7 +710,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAccessHelperApplyChanges0100', 2, (done: Function) => {
+    it('TestMediaAccessHelperApplyChanges0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAccessHelperApplyChanges0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAccessHelperApplyChanges(1);
@@ -732,7 +732,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetMediaType0100', 2, (done: Function) => {
+    it('TestMediaAssetGetMediaType0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetMediaType0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetMediaType(1);
@@ -754,7 +754,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetMediaType0200', 2, (done: Function) => {
+    it('TestMediaAssetGetMediaType0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetMediaType0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetMediaType(2);
@@ -776,7 +776,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetMediaSubType0100', 2, (done: Function) => {
+    it('TestMediaAssetGetMediaSubType0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetMediaSubType0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetMediaSubType(1);
@@ -798,7 +798,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetMediaSubType0200', 2, (done: Function) => {
+    it('TestMediaAssetGetMediaSubType0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetMediaSubType0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetMediaSubType(2);
@@ -820,7 +820,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateAdded0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDateAdded0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateAdded0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateAdded(1);
@@ -842,7 +842,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateAdded0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDateAdded0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateAdded0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateAdded(2);
@@ -864,7 +864,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateModified0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDateModified0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateModified0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateModified(1);
@@ -886,7 +886,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateModified0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDateModified0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateModified0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateModified(2);
@@ -908,7 +908,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateTaken0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDateTaken0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateTaken0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateTaken(1);
@@ -930,7 +930,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateTaken0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDateTaken0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateTaken0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateTaken(2);
@@ -952,7 +952,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateAddedMs0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDateAddedMs0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateAddedMs0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateAddedMs(1);
@@ -974,7 +974,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDateAddedMs0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDateAddedMs0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDateAddedMs0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDateAddedMs(2);
@@ -996,7 +996,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDuration0100', 2, (done: Function) => {
+    it('TestMediaAssetGetDuration0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDuration0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDuration(1);
@@ -1018,7 +1018,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetDuration0200', 2, (done: Function) => {
+    it('TestMediaAssetGetDuration0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetDuration0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetDuration(2);
@@ -1040,7 +1040,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetIsFavorite0100', 2, (done: Function) => {
+    it('TestMediaAssetIsFavorite0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetIsFavorite0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetIsFavorite(1);
@@ -1062,7 +1062,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetIsFavorite0200', 2, (done: Function) => {
+    it('TestMediaAssetIsFavorite0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetIsFavorite0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetIsFavorite(2);
@@ -1084,7 +1084,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetTitle0100', 2, (done: Function) => {
+    it('TestMediaAssetGetTitle0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetTitle0100';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetTitle(1);
@@ -1106,7 +1106,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMediaAssetGetTitle0200', 2, (done: Function) => {
+    it('TestMediaAssetGetTitle0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMediaAssetGetTitle0200';
       try {
         let ret:ESObject = mediaLibrary.testMediaAssetGetTitle(2);
@@ -1128,7 +1128,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithUri0100', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithUri0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithUri0100';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithUri(1);
@@ -1150,7 +1150,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithUri0200', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithUri0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithUri0200';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithUri(2);
@@ -1172,7 +1172,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithUri0300', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithUri0300', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithUri0300';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithUri(3);
@@ -1194,7 +1194,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithUri0400', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithUri0400', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithUri0400';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithUri(6);
@@ -1216,7 +1216,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestAddResourceWithUri0500', 2, (done: Function) => {
+    it('TestChangeRequestAddResourceWithUri0500', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestAddResourceWithUri0500';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestAddResourceWithUri(7);
@@ -1238,7 +1238,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestGetWriteCacheHandler0100', 2, (done: Function) => {
+    it('TestChangeRequestGetWriteCacheHandler0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestGetWriteCacheHandler0100';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestGetWriteCacheHandler(1);
@@ -1260,7 +1260,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestChangeRequestGetWriteCacheHandler0200', 2, (done: Function) => {
+    it('TestChangeRequestGetWriteCacheHandler0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestChangeRequestGetWriteCacheHandler0200';
       try {
         let ret:ESObject = mediaLibrary.testChangeRequestGetWriteCacheHandler(2);
@@ -1282,7 +1282,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestMovingPhoto0100', 2, (done: Function) => {
+    it('TestManagerRequestMovingPhoto0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestMovingPhoto0100';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestMovingPhoto(1);
@@ -1304,7 +1304,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestMovingPhoto0200', 2, (done: Function) => {
+    it('TestManagerRequestMovingPhoto0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestMovingPhoto0200';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestMovingPhoto(2);
@@ -1326,7 +1326,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestMovingPhoto0002', 2, (done: Function) => {
+    it('TestManagerRequestMovingPhoto0002', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestMovingPhoto0002';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestMovingPhoto(3);
@@ -1348,7 +1348,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestMovingPhoto0400', 2, (done: Function) => {
+    it('TestManagerRequestMovingPhoto0400', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestMovingPhoto0400';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestMovingPhoto(4);
@@ -1370,7 +1370,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRequestMovingPhoto0500', 2, (done: Function) => {
+    it('TestManagerRequestMovingPhoto0500', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRequestMovingPhoto0500';
       try {
         let ret:ESObject = mediaLibrary.testManagerRequestMovingPhoto(5);
@@ -1392,7 +1392,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRelease0100', 2, (done: Function) => {
+    it('TestManagerRelease0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRelease0100';
       try {
         let ret:ESObject = mediaLibrary.testManagerRelease(0);
@@ -1414,7 +1414,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestManagerRelease0200', 2, (done: Function) => {
+    it('TestManagerRelease0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestManagerRelease0200';
       try {
         let ret:ESObject = mediaLibrary.testManagerRelease(1);
@@ -1436,7 +1436,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoGetUri0100', 2, (done: Function) => {
+    it('TestMovingPhotoGetUri0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoGetUri0100';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoGetUri(1);
@@ -1458,7 +1458,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoGetUri0200', 2, (done: Function) => {
+    it('TestMovingPhotoGetUri0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoGetUri0200';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoGetUri(2);
@@ -1480,7 +1480,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUris0100', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUris0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUris0100';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUris(1);
@@ -1502,7 +1502,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUris0200', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUris0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUris0200';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUris(2);
@@ -1524,7 +1524,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUris0300', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUris0300', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUris0300';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUris(3);
@@ -1546,7 +1546,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUri0100', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUri0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUri0100';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUri(1);
@@ -1568,7 +1568,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUri0200', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUri0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUri0200';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUri(2);
@@ -1590,7 +1590,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUri0300', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUri0300', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUri0300';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUri(3);
@@ -1612,7 +1612,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUri0400', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUri0400', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUri0400';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUri(6);
@@ -1634,7 +1634,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithUri0500', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithUri0500', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithUri0500';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithUri(7);
@@ -1656,7 +1656,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithBuffer0100', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithBuffer0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithBuffer0100';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithBuffer(1);
@@ -1678,7 +1678,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithBuffer0200', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithBuffer0200', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithBuffer0200';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithBuffer(2);
@@ -1700,7 +1700,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithBuffer0300', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithBuffer0300', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithBuffer0300';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithBuffer(3);
@@ -1722,7 +1722,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithBuffer0400', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithBuffer0400', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithBuffer0400';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithBuffer(4);
@@ -1744,7 +1744,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithBuffer0500', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithBuffer0500', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithBuffer0500';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithBuffer(6);
@@ -1766,7 +1766,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRequestContentWithBuffer0005', 2, (done: Function) => {
+    it('TestMovingPhotoRequestContentWithBuffer0005', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRequestContentWithBuffer0005';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRequestContentWithBuffer(7);
@@ -1788,7 +1788,7 @@ export default function PhotoAccessHelperNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('TestMovingPhotoRelease0100', 2, (done: Function) => {
+    it('TestMovingPhotoRelease0100', Level.LEVEL2, (done: Function) => {
       let testNum = 'TestMovingPhotoRelease0100';
       try {
         let ret:ESObject = mediaLibrary.testMovingPhotoRelease(1);

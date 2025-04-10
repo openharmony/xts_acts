@@ -2930,7 +2930,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
             await sleep(1000);
             let pipWindowInfo = await pipController.getPiPWindowInfo();
             let pipInfoSize = pipWindowInfo.size
-            console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo height is ${pipInfoSize.scale}`)
+            console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo scale is ${pipInfoSize.scale}`)
             console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
             expect(pipSize.width).assertEqual(pipInfoSize.width);
             expect(pipSize.height).assertEqual(pipInfoSize.height);
@@ -3527,6 +3527,68 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     });
 
     /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_0100
+     * @tc.name       : test_updateContentNode1
+     * @tc.desc       : 验证先updateContentNode后startPIP
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode1', 3, async (done: Function) => {
+      const message = 'test_updateContentNode1!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let windowClass = windowStage.getMainWindowSync();
+      let uiContext = windowClass.getUIContext();
+      let contentNode = typeNode.createNode(uiContext, 'XComponent');
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.updateContentNode(contentNode);
+              await sleep(1000);
+              console.log(`${message} Succeeded updateContentNode`);
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              expect(true).assertTrue();
+              await pipController.stopPiP();
+              await sleep(1000)
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code).assertEqual(801);
+              done();
+            }
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
      * @tc.number     : SUB_BASIC_WMS_updateContentNode_0200
      * @tc.name       : test_updateContentNode2
      * @tc.desc       : 验证先startPIP后updateContentNode
@@ -3626,6 +3688,179 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
             } catch (err) {
               console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
               expect(err.code == 801 || err.code == 401).assertTrue();
+              done();
+            }
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_CREATE_LOCALSTORAGE_0100
+     * @tc.name       : test_pip_create_with_localstorage
+     * @tc.desc       : 验证pipwindow.create带localstorage参数
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pip_create_with_localstorage', 3, async (done: Function) => {
+      const message = 'test_pip_create_with_localstorage!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let para: Record<string, number> = {'PropA': 47};
+      let storage: LocalStorage = new LocalStorage(para)
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: storage
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.stopPiP();
+              await sleep(1000)
+              expect(true).assertTrue();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801).assertTrue();
+              done();
+            }
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_CREATE_LOCALSTORAGE_0200
+     * @tc.name       : test_pip_create_null_localstorage
+     * @tc.desc       : 验证pipwindow.create带localstorage参数为null
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pip_create_null_localstorage', 3, async (done: Function) => {
+      const message = 'test_pip_create_null_localstorage!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: null!
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.stopPiP();
+              await sleep(1000)
+              expect(true).assertTrue();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801).assertTrue();
+              done();
+            }
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_CREATE_LOCALSTORAGE_0300
+     * @tc.name       : test_pip_create_undefined_localstorage
+     * @tc.desc       : 验证pipwindow.create带localstorage参数为undefined
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pip_create_undefined_localstorage', 3, async (done: Function) => {
+      const message = 'test_pip_create_undefined_localstorage!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: undefined
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.stopPiP();
+              await sleep(1000)
+              expect(true).assertTrue();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801).assertTrue();
               done();
             }
           }

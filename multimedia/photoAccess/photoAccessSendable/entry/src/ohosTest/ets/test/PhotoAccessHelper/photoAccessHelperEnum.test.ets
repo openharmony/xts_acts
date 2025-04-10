@@ -14,7 +14,7 @@
  */
 
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   sleep,
   driveFn,
@@ -40,7 +40,7 @@ export default function photoAccessHelperEnumTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_Type_enum_001', 0, async (done: Function) => {
+    it('album_Type_enum_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_Type_enum_001';
       try {
         expect( sendablePhotoAccessHelper.AlbumType.SYSTEM).assertEqual(1024);
@@ -59,7 +59,7 @@ export default function photoAccessHelperEnumTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_sub_Type_enum_002', 0, async (done: Function) => {
+    it('album_sub_Type_enum_002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_sub_Type_enum_002';
       try {
         expect( sendablePhotoAccessHelper.AlbumSubtype.USER_GENERIC).assertEqual(1);

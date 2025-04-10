@@ -46,7 +46,7 @@ export default function relationalStoreBatchInsertTest() {
       try {
         rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG)
         console.info(TAG + 'Get RdbStore successfully.');
-        (rdbStore as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
+        await (rdbStore as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
       } catch (err) {
         console.error(TAG + `Get RdbStore failed, code is ${err.code},message is ${err.message}`);
       }
