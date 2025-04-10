@@ -14,7 +14,9 @@
  */
 
 import onVisiable from './onVisiable/onVisiable.test';
+import panGestureOnOffTest from './PanGesture/panGestureOnOff.test';
 
 export default function testsuite() {
-  onVisiable()
+  onVisiable();
+  panGestureOnOffTest();
 }

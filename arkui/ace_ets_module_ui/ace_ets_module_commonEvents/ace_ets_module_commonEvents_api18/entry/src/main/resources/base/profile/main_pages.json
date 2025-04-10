@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/onVisiable/onVisiable"
+        "MainAbility/pages/onVisiable/onVisiable",
+        "MainAbility/pages/PanGesture/panGestureOnOff"
     ]
 }
