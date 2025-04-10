@@ -718,3 +718,1962 @@ export default function sendableClassStaticTest() {
         expect().assertFail();
       }
     })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3200
+     * @tc.name       : testSendableFuncStaticClass0006
+     * @tc.desc       : Test SendableFuncStaticClass null is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0006';
+      try {
+        expect(SendableFuncStaticClass.myNull).assertEqual(null);
+        SendableFuncStaticClass.myNull = 'not null anymore';
+        expect(SendableFuncStaticClass.myNull).assertEqual('not null anymore');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3300
+     * @tc.name       : testSendableFuncStaticClass0007
+     * @tc.desc       : Test SendableFuncStaticClass class is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0007';
+      try {
+        expect(SendableFuncStaticClass.topLevelClassInstance instanceof topLevelSendableClass).assertEqual(true);
+        expect(SendableFuncStaticClass.topLevelClassInstance.num).assertEqual(1);
+        SendableFuncStaticClass.topLevelClassInstance.num = 2;
+        expect(SendableFuncStaticClass.topLevelClassInstance.num).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3400
+     * @tc.name       : testSendableFuncStaticClass0008
+     * @tc.desc       : Test SendableFuncStaticClass function is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0008';
+      try {
+        expect(typeof SendableFuncStaticClass.topLevelFunction === 'function').assertEqual(true);
+        expect(SendableFuncStaticClass.topLevelFunction()).assertEqual('Top level sendable function');
+        SendableFuncStaticClass.topLevelFunction = ModifiedTopLevelSendableFunction;
+        expect(SendableFuncStaticClass.topLevelFunction()).assertEqual('Modified top level sendable function');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3500
+     * @tc.name       : testSendableFuncStaticClass0009
+     * @tc.desc       : Test SendableFuncStaticClass enum is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0009';
+      try {
+        expect(typeof SendableFuncStaticClass.myEnum).assertEqual('number');
+        expect(SendableFuncStaticClass.myEnum).assertEqual(0);
+        SendableFuncStaticClass.myEnum = SendableConstEnum.OPTION_2;
+        expect(SendableFuncStaticClass.myEnum).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3600
+     * @tc.name       : testSendableFuncStaticClass0010
+     * @tc.desc       : Test SendableFuncStaticClass Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0010';
+      try {
+        expect(typeof SendableFuncStaticClass.myArray).assertEqual('object');
+        expect(SendableFuncStaticClass.myArray.toString()).assertEqual('');
+        SendableFuncStaticClass.myArray.push(4, 5);
+        expect(SendableFuncStaticClass.myArray.toString()).assertEqual('4,5');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3700
+     * @tc.name       : testSendableFuncStaticClass0011
+     * @tc.desc       : Test SendableFuncStaticClass Map is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0011';
+      try {
+        expect(typeof SendableFuncStaticClass.myMap).assertEqual('object');
+        expect(SendableFuncStaticClass.myMap.get(1)).assertEqual(undefined);
+        SendableFuncStaticClass.myMap.set(1, 2);
+        expect(SendableFuncStaticClass.myMap.get(1)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3800
+     * @tc.name       : testSendableFuncStaticClass0012
+     * @tc.desc       : Test SendableFuncStaticClass Set is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0012';
+      try {
+        expect(typeof SendableFuncStaticClass.mySet).assertEqual('object');
+        expect(SendableFuncStaticClass.mySet.has(123)).assertEqual(false);
+        SendableFuncStaticClass.mySet.add(123);
+        expect(SendableFuncStaticClass.mySet.has(123)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3900
+     * @tc.name       : testSendableFuncStaticClass0013
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayInt8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0013';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayInt8Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayInt8Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4000
+     * @tc.name       : testSendableFuncStaticClass0014
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayUint8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0014';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayUint8Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayUint8Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4100
+     * @tc.name       : testSendableFuncStaticClass0015
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayInt16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0015';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayInt16Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayInt16Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4200
+     * @tc.name       : testSendableFuncStaticClass0016
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayUint16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0016';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayUint16Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayUint16Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4300
+     * @tc.name       : testSendableFuncStaticClass0017
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayInt32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0017';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayInt32Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayInt32Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4400
+     * @tc.name       : testSendableFuncStaticClass0018
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayUint32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0018';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayUint32Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayUint32Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4500
+     * @tc.name       : testSendableFuncStaticClass0019
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayUint8ClampedArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0019';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayUint8ClampedArray).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayUint8ClampedArray.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4600
+     * @tc.name       : testSendableFuncStaticClass0020
+     * @tc.desc       : Test SendableFuncStaticClass TypedArrayFloat32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0020';
+      try {
+        expect(typeof SendableFuncStaticClass.myTypedArrayFloat32Array).assertEqual('object');
+        expect(SendableFuncStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(false);
+        SendableFuncStaticClass.myTypedArrayFloat32Array.fill(2);
+        expect(SendableFuncStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4700
+     * @tc.name       : testSendableFuncStaticClass0021
+     * @tc.desc       : Test SendableFuncStaticClass ArrayBuffer is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0021';
+      try {
+        expect(typeof SendableFuncStaticClass.myArrayBuffer).assertEqual('object');
+        expect(SendableFuncStaticClass.myArrayBuffer.byteLength).assertEqual(10);
+        expect(SendableFuncStaticClass.myArrayBuffer.slice(0, 4).byteLength).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4800
+     * @tc.name       : testSendableFuncStaticClass0022
+     * @tc.desc       : Test SendableFuncStaticClass ConcatArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0022';
+      try {
+        expect(typeof SendableFuncStaticClass.myConcatArray).assertEqual('object');
+        expect(SendableFuncStaticClass.myConcatArray[1]).assertEqual(2);
+        expect(SendableFuncStaticClass.myConcatArray.join('-')).assertEqual("1-2-4");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_4900
+     * @tc.name       : testSendableFuncStaticClass0023
+     * @tc.desc       : Test SendableFuncStaticClass BitVector is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0023';
+      try {
+        expect(typeof SendableFuncStaticClass.myBitVector).assertEqual('object');
+        expect(SendableFuncStaticClass.myBitVector.pop()).assertEqual(0);
+        SendableFuncStaticClass.myBitVector.push(1);
+        expect(SendableFuncStaticClass.myBitVector.pop()).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5000
+     * @tc.name       : testSendableFuncStaticClass0024
+     * @tc.desc       : Test SendableFuncStaticClass ASON is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0024';
+      try {
+        expect(typeof SendableFuncStaticClass.myASON).assertEqual('object');
+        expect((SendableFuncStaticClass.myASON as object)?.["name"]).assertEqual('John');
+        expect(ArkTSUtils.isSendable(SendableFuncStaticClass.myASON)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5100
+     * @tc.name       : testSendableFuncStaticClass0025
+     * @tc.desc       : Test SendableFuncStaticClass AsyncLock is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0025';
+      try {
+        expect(typeof SendableFuncStaticClass.myAsyncLock).assertEqual('object');
+        expect(ArkTSUtils.locks.AsyncLock.query('queryTestLock').toString()).assertEqual('[object Object]');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5200
+     * @tc.name       : testSendableFuncStaticClass0026
+     * @tc.desc       : Test SendableFuncStaticClass SendableUnionType is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncStaticClass0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncStaticClass0026';
+      try {
+        expect(typeof SendableFuncStaticClass.mySendableUnionArray).assertEqual('number');
+        expect(SendableFuncStaticClass.mySendableUnionArray).assertEqual(1);
+        SendableFuncStaticClass.mySendableUnionArray = 2;
+        expect(SendableFuncStaticClass.mySendableUnionArray).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5300
+     * @tc.name       : testSendableArrowStaticClass0001
+     * @tc.desc       : Test SendableArrowStaticClass string is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0001';
+      try {
+        expect(SendableArrowStaticClass.myString).assertEqual('example string');
+        SendableArrowStaticClass.myString = 'new string';
+        expect(SendableArrowStaticClass.myString).assertEqual('new string');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5400
+     * @tc.name       : testSendableArrowStaticClass0002
+     * @tc.desc       : Test SendableArrowStaticClass number is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0002';
+      try {
+        expect(SendableArrowStaticClass.myNumber).assertEqual(42);
+        SendableArrowStaticClass.myNumber = 100;
+        expect(SendableArrowStaticClass.myNumber).assertEqual(100);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5500
+     * @tc.name       : testSendableArrowStaticClass0003
+     * @tc.desc       : Test SendableArrowStaticClass boolean is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0003';
+      try {
+        expect(SendableArrowStaticClass.myBoolean).assertEqual(true);
+        SendableArrowStaticClass.myBoolean = false;
+        expect(SendableArrowStaticClass.myBoolean).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5600
+     * @tc.name       : testSendableArrowStaticClass0004
+     * @tc.desc       : Test SendableArrowStaticClass BigInt is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0004';
+      try {
+        expect(SendableArrowStaticClass.myBigInt).assertEqual(1234567890123456789012345678901234567890n);
+        SendableArrowStaticClass.myBigInt = 987654321098765432109876543210987654321n;
+        expect(SendableArrowStaticClass.myBigInt).assertEqual(987654321098765432109876543210987654321n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5700
+     * @tc.name       : testSendableArrowStaticClass0005
+     * @tc.desc       : Test SendableArrowStaticClass undefined is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0005';
+      try {
+        expect(SendableArrowStaticClass.myUndefined).assertEqual(undefined);
+        SendableArrowStaticClass.myUndefined = 123;
+        expect(SendableArrowStaticClass.myUndefined).assertEqual(123);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5800
+     * @tc.name       : testSendableArrowStaticClass0006
+     * @tc.desc       : Test SendableArrowStaticClass null is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0006';
+      try {
+        expect(SendableArrowStaticClass.myNull).assertEqual(null);
+        SendableArrowStaticClass.myNull = 'not null anymore';
+        expect(SendableArrowStaticClass.myNull).assertEqual('not null anymore');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_5900
+     * @tc.name       : testSendableArrowStaticClass0007
+     * @tc.desc       : Test SendableArrowStaticClass class is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0007';
+      try {
+        expect(SendableArrowStaticClass.topLevelClassInstance instanceof topLevelSendableClass)
+          .assertEqual(true);
+        expect(SendableArrowStaticClass.topLevelClassInstance.num).assertEqual(1);
+        SendableArrowStaticClass.topLevelClassInstance.num = 2;
+        expect(SendableArrowStaticClass.topLevelClassInstance.num).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6000
+     * @tc.name       : testSendableArrowStaticClass0008
+     * @tc.desc       : Test SendableArrowStaticClass function is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0008';
+      try {
+        expect(typeof SendableArrowStaticClass.topLevelFunction === 'function').assertEqual(true);
+        expect(SendableArrowStaticClass.topLevelFunction()).assertEqual('Top level sendable function');
+        SendableArrowStaticClass.topLevelFunction = ModifiedTopLevelSendableFunction;
+        expect(SendableArrowStaticClass.topLevelFunction()).assertEqual('Modified top level sendable function');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6100
+     * @tc.name       : testSendableArrowStaticClass0009
+     * @tc.desc       : Test SendableArrowStaticClass enum is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0009';
+      try {
+        expect(typeof SendableArrowStaticClass.myEnum).assertEqual('number');
+        expect(SendableArrowStaticClass.myEnum).assertEqual(0);
+        SendableArrowStaticClass.myEnum = SendableConstEnum.OPTION_2;
+        expect(SendableArrowStaticClass.myEnum).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6200
+     * @tc.name       : testSendableArrowStaticClass0010
+     * @tc.desc       : Test SendableArrowStaticClass Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0010';
+      try {
+        expect(typeof SendableArrowStaticClass.myArray).assertEqual('object');
+        expect(SendableArrowStaticClass.myArray.toString()).assertEqual('');
+        SendableArrowStaticClass.myArray.push(4, 5);
+        expect(SendableArrowStaticClass.myArray.toString()).assertEqual('4,5');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6300
+     * @tc.name       : testSendableArrowStaticClass0011
+     * @tc.desc       : Test SendableArrowStaticClass Map is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0011';
+      try {
+        expect(typeof SendableArrowStaticClass.myMap).assertEqual('object');
+        expect(SendableArrowStaticClass.myMap.get(1)).assertEqual(undefined);
+        SendableArrowStaticClass.myMap.set(1, 2);
+        expect(SendableArrowStaticClass.myMap.get(1)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6400
+     * @tc.name       : testSendableArrowStaticClass0012
+     * @tc.desc       : Test SendableArrowStaticClass Set is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0012';
+      try {
+        expect(typeof SendableArrowStaticClass.mySet).assertEqual('object');
+        expect(SendableArrowStaticClass.mySet.has(123)).assertEqual(false);
+        SendableArrowStaticClass.mySet.add(123);
+        expect(SendableArrowStaticClass.mySet.has(123)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6500
+     * @tc.name       : testSendableArrowStaticClass0013
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayInt8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0013';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayInt8Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayInt8Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6600
+     * @tc.name       : testSendableArrowStaticClass0014
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayUint8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0014';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayUint8Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayUint8Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6700
+     * @tc.name       : testSendableArrowStaticClass0015
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayInt16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0015';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayInt16Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayInt16Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6800
+     * @tc.name       : testSendableArrowStaticClass0016
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayUint16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0016';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayUint16Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayUint16Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_6900
+     * @tc.name       : testSendableArrowStaticClass0017
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayInt32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0017';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayInt32Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayInt32Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7000
+     * @tc.name       : testSendableArrowStaticClass0018
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayUint32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0018';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayUint32Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayUint32Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7100
+     * @tc.name       : testSendableArrowStaticClass0019
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayUint8ClampedArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0019';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayUint8ClampedArray).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayUint8ClampedArray.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7200
+     * @tc.name       : testSendableArrowStaticClass0020
+     * @tc.desc       : Test SendableArrowStaticClass TypedArrayFloat32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0020';
+      try {
+        expect(typeof SendableArrowStaticClass.myTypedArrayFloat32Array).assertEqual('object');
+        expect(SendableArrowStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(false);
+        SendableArrowStaticClass.myTypedArrayFloat32Array.fill(2);
+        expect(SendableArrowStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7300
+     * @tc.name       : testSendableArrowStaticClass0021
+     * @tc.desc       : Test SendableArrowStaticClass ArrayBuffer is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0021';
+      try {
+        expect(typeof SendableArrowStaticClass.myArrayBuffer).assertEqual('object');
+        expect(SendableArrowStaticClass.myArrayBuffer.byteLength).assertEqual(10);
+        expect(SendableArrowStaticClass.myArrayBuffer.slice(0, 4).byteLength).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7400
+     * @tc.name       : testSendableArrowStaticClass0022
+     * @tc.desc       : Test SendableArrowStaticClass ConcatArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0022';
+      try {
+        expect(typeof SendableArrowStaticClass.myConcatArray).assertEqual('object');
+        expect(SendableArrowStaticClass.myConcatArray[1]).assertEqual(2);
+        expect(SendableArrowStaticClass.myConcatArray.join('-')).assertEqual("1-2-4");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7500
+     * @tc.name       : testSendableArrowStaticClass0023
+     * @tc.desc       : Test SendableArrowStaticClass BitVector is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0023';
+      try {
+        expect(typeof SendableArrowStaticClass.myBitVector).assertEqual('object');
+        expect(SendableArrowStaticClass.myBitVector.pop()).assertEqual(0);
+        SendableArrowStaticClass.myBitVector.push(1);
+        expect(SendableArrowStaticClass.myBitVector.pop()).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7600
+     * @tc.name       : testSendableArrowStaticClass0024
+     * @tc.desc       : Test SendableArrowStaticClass ASON is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0024';
+      try {
+        expect(typeof SendableArrowStaticClass.myASON).assertEqual('object');
+        expect((SendableArrowStaticClass.myASON as object)?.["name"]).assertEqual('John');
+        expect(ArkTSUtils.isSendable(SendableArrowStaticClass.myASON)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7700
+     * @tc.name       : testSendableArrowStaticClass0025
+     * @tc.desc       : Test SendableArrowStaticClass AsyncLock is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0025';
+      try {
+        expect(typeof SendableArrowStaticClass.myAsyncLock).assertEqual('object');
+        expect(ArkTSUtils.locks.AsyncLock.query('queryTestLock').toString()).assertEqual('[object Object]');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7800
+     * @tc.name       : testSendableArrowStaticClass0026
+     * @tc.desc       : Test SendableArrowStaticClass SendableUnionType is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowStaticClass0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowStaticClass0026';
+      try {
+        expect(typeof SendableArrowStaticClass.mySendableUnionArray).assertEqual('number');
+        expect(SendableArrowStaticClass.mySendableUnionArray).assertEqual(1);
+        SendableArrowStaticClass.mySendableUnionArray = 2;
+        expect(SendableArrowStaticClass.mySendableUnionArray).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_7900
+     * @tc.name       : testSendableArrowOutStaticClass0001
+     * @tc.desc       : Test SendableArrowOutStaticClass string is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0001';
+      try {
+        expect(SendableArrowOutStaticClass.myString).assertEqual('example string');
+        SendableArrowOutStaticClass.myString = 'new string';
+        expect(SendableArrowOutStaticClass.myString).assertEqual('new string');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8000
+     * @tc.name       : testSendableArrowOutStaticClass0002
+     * @tc.desc       : Test SendableArrowOutStaticClass number is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0002';
+      try {
+        expect(SendableArrowOutStaticClass.myNumber).assertEqual(42);
+        SendableArrowOutStaticClass.myNumber = 100;
+        expect(SendableArrowOutStaticClass.myNumber).assertEqual(100);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8100
+     * @tc.name       : testSendableArrowOutStaticClass0003
+     * @tc.desc       : Test SendableArrowOutStaticClass boolean is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0003';
+      try {
+        expect(SendableArrowOutStaticClass.myBoolean).assertEqual(true);
+        SendableArrowOutStaticClass.myBoolean = false;
+        expect(SendableArrowOutStaticClass.myBoolean).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8200
+     * @tc.name       : testSendableArrowOutStaticClass0004
+     * @tc.desc       : Test SendableArrowOutStaticClass BigInt is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0004';
+      try {
+        expect(SendableArrowOutStaticClass.myBigInt).assertEqual(1234567890123456789012345678901234567890n);
+        SendableArrowOutStaticClass.myBigInt = 987654321098765432109876543210987654321n;
+        expect(SendableArrowOutStaticClass.myBigInt).assertEqual(987654321098765432109876543210987654321n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8300
+     * @tc.name       : testSendableArrowOutStaticClass0005
+     * @tc.desc       : Test SendableArrowOutStaticClass undefined is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0005';
+      try {
+        expect(SendableArrowOutStaticClass.myUndefined).assertEqual(undefined);
+        SendableArrowOutStaticClass.myUndefined = 123;
+        expect(SendableArrowOutStaticClass.myUndefined).assertEqual(123);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8400
+     * @tc.name       : testSendableArrowOutStaticClass0006
+     * @tc.desc       : Test SendableArrowOutStaticClass null is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0006';
+      try {
+        expect(SendableArrowOutStaticClass.myNull).assertEqual(null);
+        SendableArrowOutStaticClass.myNull = 'not null anymore';
+        expect(SendableArrowOutStaticClass.myNull).assertEqual('not null anymore');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8500
+     * @tc.name       : testSendableArrowOutStaticClass0007
+     * @tc.desc       : Test SendableArrowOutStaticClass class is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0007';
+      try {
+        expect(SendableArrowOutStaticClass.topLevelClassInstance instanceof topLevelSendableClass)
+          .assertEqual(true);
+        expect(SendableArrowOutStaticClass.topLevelClassInstance.num).assertEqual(1);
+        SendableArrowOutStaticClass.topLevelClassInstance.num = 2;
+        expect(SendableArrowOutStaticClass.topLevelClassInstance.num).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8600
+     * @tc.name       : testSendableArrowOutStaticClass0008
+     * @tc.desc       : Test SendableArrowOutStaticClass function is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0008';
+      try {
+        expect(typeof SendableArrowOutStaticClass.topLevelFunction === 'function').assertEqual(true);
+        expect(SendableArrowOutStaticClass.topLevelFunction()).assertEqual('Top level sendable function');
+        SendableArrowOutStaticClass.topLevelFunction = ModifiedTopLevelSendableFunction;
+        expect(SendableArrowOutStaticClass.topLevelFunction())
+          .assertEqual('Modified top level sendable function');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8700
+     * @tc.name       : testSendableArrowOutStaticClass0009
+     * @tc.desc       : Test SendableArrowOutStaticClass enum is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0009';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myEnum).assertEqual('number');
+        expect(SendableArrowOutStaticClass.myEnum).assertEqual(0);
+        SendableArrowOutStaticClass.myEnum = SendableConstEnum.OPTION_2;
+        expect(SendableArrowOutStaticClass.myEnum).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8800
+     * @tc.name       : testSendableArrowOutStaticClass0010
+     * @tc.desc       : Test SendableArrowOutStaticClass Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0010';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myArray).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myArray.toString()).assertEqual('');
+        SendableArrowOutStaticClass.myArray.push(4, 5);
+        expect(SendableArrowOutStaticClass.myArray.toString()).assertEqual('4,5');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_8900
+     * @tc.name       : testSendableArrowOutStaticClass0011
+     * @tc.desc       : Test SendableArrowOutStaticClass Map is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0011';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myMap).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myMap.get(1)).assertEqual(undefined);
+        SendableArrowOutStaticClass.myMap.set(1, 2);
+        expect(SendableArrowOutStaticClass.myMap.get(1)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9000
+     * @tc.name       : testSendableArrowOutStaticClass0012
+     * @tc.desc       : Test SendableArrowOutStaticClass Set is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0012';
+      try {
+        expect(typeof SendableArrowOutStaticClass.mySet).assertEqual('object');
+        expect(SendableArrowOutStaticClass.mySet.has(123)).assertEqual(false);
+        SendableArrowOutStaticClass.mySet.add(123);
+        expect(SendableArrowOutStaticClass.mySet.has(123)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9100
+     * @tc.name       : testSendableArrowOutStaticClass0013
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayInt8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0013';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayInt8Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayInt8Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9200
+     * @tc.name       : testSendableArrowOutStaticClass0014
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayUint8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0014';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayUint8Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayUint8Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9300
+     * @tc.name       : testSendableArrowOutStaticClass0015
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayInt16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0015';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayInt16Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayInt16Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9400
+     * @tc.name       : testSendableArrowOutStaticClass0016
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayUint16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0016';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayUint16Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayUint16Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9500
+     * @tc.name       : testSendableArrowOutStaticClass0017
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayInt32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0017';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayInt32Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayInt32Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9600
+     * @tc.name       : testSendableArrowOutStaticClass0018
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayUint32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0018';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayUint32Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayUint32Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9700
+     * @tc.name       : testSendableArrowOutStaticClass0019
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayUint8ClampedArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0019';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayUint8ClampedArray).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayUint8ClampedArray.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9800
+     * @tc.name       : testSendableArrowOutStaticClass0020
+     * @tc.desc       : Test SendableArrowOutStaticClass TypedArrayFloat32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0020';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myTypedArrayFloat32Array).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(false);
+        SendableArrowOutStaticClass.myTypedArrayFloat32Array.fill(2);
+        expect(SendableArrowOutStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_9900
+     * @tc.name       : testSendableArrowOutStaticClass0021
+     * @tc.desc       : Test SendableArrowOutStaticClass ArrayBuffer is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0021';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myArrayBuffer).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myArrayBuffer.byteLength).assertEqual(10);
+        expect(SendableArrowOutStaticClass.myArrayBuffer.slice(0, 4).byteLength).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10000
+     * @tc.name       : testSendableArrowOutStaticClass0022
+     * @tc.desc       : Test SendableArrowOutStaticClass ConcatArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0022';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myConcatArray).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myConcatArray[1]).assertEqual(2);
+        expect(SendableArrowOutStaticClass.myConcatArray.join('-')).assertEqual("1-2-4");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10100
+     * @tc.name       : testSendableArrowOutStaticClass0023
+     * @tc.desc       : Test SendableArrowOutStaticClass BitVector is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0023';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myBitVector).assertEqual('object');
+        expect(SendableArrowOutStaticClass.myBitVector.pop()).assertEqual(0);
+        SendableArrowOutStaticClass.myBitVector.push(1);
+        expect(SendableArrowOutStaticClass.myBitVector.pop()).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10200
+     * @tc.name       : testSendableArrowOutStaticClass0024
+     * @tc.desc       : Test SendableArrowOutStaticClass ASON is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0024';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myASON).assertEqual('object');
+        expect((SendableArrowOutStaticClass.myASON as object)?.["name"]).assertEqual('John');
+        expect(ArkTSUtils.isSendable(SendableArrowOutStaticClass.myASON)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10300
+     * @tc.name       : testSendableArrowOutStaticClass0025
+     * @tc.desc       : Test SendableArrowOutStaticClass AsyncLock is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0025';
+      try {
+        expect(typeof SendableArrowOutStaticClass.myAsyncLock).assertEqual('object');
+        expect(ArkTSUtils.locks.AsyncLock.query('queryTestLock').toString()).assertEqual('[object Object]');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10400
+     * @tc.name       : testSendableArrowOutStaticClass0026
+     * @tc.desc       : Test SendableArrowOutStaticClass SendableUnionType is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableArrowOutStaticClass0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableArrowOutStaticClass0026';
+      try {
+        expect(typeof SendableArrowOutStaticClass.mySendableUnionArray).assertEqual('number');
+        expect(SendableArrowOutStaticClass.mySendableUnionArray).assertEqual(1);
+        SendableArrowOutStaticClass.mySendableUnionArray = 2;
+        expect(SendableArrowOutStaticClass.mySendableUnionArray).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10500
+     * @tc.name       : testSendableFuncInStaticClass0001
+     * @tc.desc       : Test SendableFuncInStaticClass string is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0001';
+      try {
+        expect(SendableFuncInStaticClass.myString).assertEqual('example string');
+        SendableFuncInStaticClass.myString = 'new string';
+        expect(SendableFuncInStaticClass.myString).assertEqual('new string');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10600
+     * @tc.name       : testSendableFuncInStaticClass0002
+     * @tc.desc       : Test SendableFuncInStaticClass number is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0002';
+      try {
+        expect(SendableFuncInStaticClass.myNumber).assertEqual(42);
+        SendableFuncInStaticClass.myNumber = 100;
+        expect(SendableFuncInStaticClass.myNumber).assertEqual(100);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10700
+     * @tc.name       : testSendableFuncInStaticClass0003
+     * @tc.desc       : Test SendableFuncInStaticClass boolean is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0003';
+      try {
+        expect(SendableFuncInStaticClass.myBoolean).assertEqual(true);
+        SendableFuncInStaticClass.myBoolean = false;
+        expect(SendableFuncInStaticClass.myBoolean).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10800
+     * @tc.name       : testSendableFuncInStaticClass0004
+     * @tc.desc       : Test SendableFuncInStaticClass BigInt is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0004';
+      try {
+        expect(SendableFuncInStaticClass.myBigInt).assertEqual(1234567890123456789012345678901234567890n);
+        SendableFuncInStaticClass.myBigInt = 987654321098765432109876543210987654321n;
+        expect(SendableFuncInStaticClass.myBigInt).assertEqual(987654321098765432109876543210987654321n);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_10900
+     * @tc.name       : testSendableFuncInStaticClass0005
+     * @tc.desc       : Test SendableFuncInStaticClass undefined is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0005';
+      try {
+        expect(SendableFuncInStaticClass.myUndefined).assertEqual(undefined);
+        SendableFuncInStaticClass.myUndefined = 123;
+        expect(SendableFuncInStaticClass.myUndefined).assertEqual(123);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11000
+     * @tc.name       : testSendableFuncInStaticClass0006
+     * @tc.desc       : Test SendableFuncInStaticClass null is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0006';
+      try {
+        expect(SendableFuncInStaticClass.myNull).assertEqual(null);
+        SendableFuncInStaticClass.myNull = 'not null anymore';
+        expect(SendableFuncInStaticClass.myNull).assertEqual('not null anymore');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11100
+     * @tc.name       : testSendableFuncInStaticClass0007
+     * @tc.desc       : Test SendableFuncInStaticClass class is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0007';
+      try {
+        expect(SendableFuncInStaticClass.topLevelClassInstance instanceof topLevelSendableClass)
+          .assertEqual(true);
+        expect(SendableFuncInStaticClass.topLevelClassInstance.num).assertEqual(1);
+        SendableFuncInStaticClass.topLevelClassInstance.num = 2;
+        expect(SendableFuncInStaticClass.topLevelClassInstance.num).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11200
+     * @tc.name       : testSendableFuncInStaticClass0008
+     * @tc.desc       : Test SendableFuncInStaticClass function is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0008';
+      try {
+        expect(typeof SendableFuncInStaticClass.topLevelFunction === 'function').assertEqual(true);
+        expect(SendableFuncInStaticClass.topLevelFunction()).assertEqual('Top level sendable function');
+        SendableFuncInStaticClass.topLevelFunction = ModifiedTopLevelSendableFunction;
+        expect(SendableFuncInStaticClass.topLevelFunction()).assertEqual('Modified top level sendable function');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11300
+     * @tc.name       : testSendableFuncInStaticClass0009
+     * @tc.desc       : Test SendableFuncInStaticClass enum is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0009';
+      try {
+        expect(typeof SendableFuncInStaticClass.myEnum).assertEqual('number');
+        expect(SendableFuncInStaticClass.myEnum).assertEqual(0);
+        SendableFuncInStaticClass.myEnum = SendableConstEnum.OPTION_2;
+        expect(SendableFuncInStaticClass.myEnum).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11400
+     * @tc.name       : testSendableFuncInStaticClass0010
+     * @tc.desc       : Test SendableFuncInStaticClass Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0010';
+      try {
+        expect(typeof SendableFuncInStaticClass.myArray).assertEqual('object');
+        expect(SendableFuncInStaticClass.myArray.toString()).assertEqual('');
+        SendableFuncInStaticClass.myArray.push(4, 5);
+        expect(SendableFuncInStaticClass.myArray.toString()).assertEqual('4,5');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11500
+     * @tc.name       : testSendableFuncInStaticClass0011
+     * @tc.desc       : Test SendableFuncInStaticClass Map is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0011';
+      try {
+        expect(typeof SendableFuncInStaticClass.myMap).assertEqual('object');
+        expect(SendableFuncInStaticClass.myMap.get(1)).assertEqual(undefined);
+        SendableFuncInStaticClass.myMap.set(1, 2);
+        expect(SendableFuncInStaticClass.myMap.get(1)).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11600
+     * @tc.name       : testSendableFuncInStaticClass0012
+     * @tc.desc       : Test SendableFuncInStaticClass Set is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0012';
+      try {
+        expect(typeof SendableFuncInStaticClass.mySet).assertEqual('object');
+        expect(SendableFuncInStaticClass.mySet.has(123)).assertEqual(false);
+        SendableFuncInStaticClass.mySet.add(123);
+        expect(SendableFuncInStaticClass.mySet.has(123)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11700
+     * @tc.name       : testSendableFuncInStaticClass0013
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayInt8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0013';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayInt8Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayInt8Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayInt8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11800
+     * @tc.name       : testSendableFuncInStaticClass0014
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayUint8Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0014';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayUint8Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayUint8Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayUint8Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_11900
+     * @tc.name       : testSendableFuncInStaticClass0015
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayInt16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0015';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayInt16Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayInt16Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayInt16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12000
+     * @tc.name       : testSendableFuncInStaticClass0016
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayUint16Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0016';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayUint16Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayUint16Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayUint16Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12100
+     * @tc.name       : testSendableFuncInStaticClass0017
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayInt32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0017';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayInt32Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayInt32Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayInt32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12200
+     * @tc.name       : testSendableFuncInStaticClass0018
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayUint32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0018';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayUint32Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayUint32Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayUint32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12300
+     * @tc.name       : testSendableFuncInStaticClass0019
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayUint8ClampedArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0019';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayUint8ClampedArray).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayUint8ClampedArray.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayUint8ClampedArray.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12400
+     * @tc.name       : testSendableFuncInStaticClass0020
+     * @tc.desc       : Test SendableFuncInStaticClass TypedArrayFloat32Array is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0020';
+      try {
+        expect(typeof SendableFuncInStaticClass.myTypedArrayFloat32Array).assertEqual('object');
+        expect(SendableFuncInStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(false);
+        SendableFuncInStaticClass.myTypedArrayFloat32Array.fill(2);
+        expect(SendableFuncInStaticClass.myTypedArrayFloat32Array.includes(2)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12500
+     * @tc.name       : testSendableFuncInStaticClass0021
+     * @tc.desc       : Test SendableFuncInStaticClass ArrayBuffer is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0021';
+      try {
+        expect(typeof SendableFuncInStaticClass.myArrayBuffer).assertEqual('object');
+        expect(SendableFuncInStaticClass.myArrayBuffer.byteLength).assertEqual(10);
+        expect(SendableFuncInStaticClass.myArrayBuffer.slice(0, 4).byteLength).assertEqual(4);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12600
+     * @tc.name       : testSendableFuncInStaticClass0022
+     * @tc.desc       : Test SendableFuncInStaticClass ConcatArray is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0022';
+      try {
+        expect(typeof SendableFuncInStaticClass.myConcatArray).assertEqual('object');
+        expect(SendableFuncInStaticClass.myConcatArray[1]).assertEqual(2);
+        expect(SendableFuncInStaticClass.myConcatArray.join('-')).assertEqual("1-2-4");
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12700
+     * @tc.name       : testSendableFuncInStaticClass0023
+     * @tc.desc       : Test SendableFuncInStaticClass BitVector is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0023';
+      try {
+        expect(typeof SendableFuncInStaticClass.myBitVector).assertEqual('object');
+        expect(SendableFuncInStaticClass.myBitVector.pop()).assertEqual(0);
+        SendableFuncInStaticClass.myBitVector.push(1);
+        expect(SendableFuncInStaticClass.myBitVector.pop()).assertEqual(1);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12800
+     * @tc.name       : testSendableFuncInStaticClass0024
+     * @tc.desc       : Test SendableFuncInStaticClass ASON is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0024';
+      try {
+        expect(typeof SendableFuncInStaticClass.myASON).assertEqual('object');
+        expect((SendableFuncInStaticClass.myASON as object)?.["name"]).assertEqual('John');
+        expect(ArkTSUtils.isSendable(SendableFuncInStaticClass.myASON)).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_12900
+     * @tc.name       : testSendableFuncInStaticClass0025
+     * @tc.desc       : Test SendableFuncInStaticClass AsyncLock is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0025';
+      try {
+        expect(typeof SendableFuncInStaticClass.myAsyncLock).assertEqual('object');
+        expect(ArkTSUtils.locks.AsyncLock.query('queryTestLock').toString()).assertEqual('[object Object]');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_13000
+     * @tc.name       : testSendableFuncInStaticClass0026
+     * @tc.desc       : Test SendableFuncInStaticClass SendableUnionType is assigned directly.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSendableFuncInStaticClass0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testSendableFuncInStaticClass0026';
+      try {
+        expect(typeof SendableFuncInStaticClass.mySendableUnionArray).assertEqual('number');
+        expect(SendableFuncInStaticClass.mySendableUnionArray).assertEqual(1);
+        SendableFuncInStaticClass.mySendableUnionArray = 2;
+        expect(SendableFuncInStaticClass.mySendableUnionArray).assertEqual(2);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
