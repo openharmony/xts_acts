@@ -44,9 +44,9 @@ export default function collectionsMapTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testMapConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testMapConstructor0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testMapConstructor0100';
       console.log(`${caseName} test start `);
       try {
@@ -68,9 +68,9 @@ export default function collectionsMapTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testMapConstructor0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testMapConstructor0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testMapConstructor0200';
       console.log(`${caseName} test start `);
       try {
@@ -92,9 +92,9 @@ export default function collectionsMapTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testMapConstructor0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testMapConstructor0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testMapConstructor0300';
       console.log(`${caseName} test start `);
       try {
@@ -116,9 +116,9 @@ export default function collectionsMapTest() {
     * @tc.desc  : Constructor that is used to create an ArkTS Map object.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testMapConstructor0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testMapConstructor0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testMapConstructor0400';
       console.log(`${caseName} test start `);
       try {
@@ -140,7 +140,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns a Map iterator object that contains the [key, value] pairs of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapEntries0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapEntries0100';
@@ -166,7 +166,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns a Map iterator object that contains the [key, value] pairs of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapEntries0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapEntries0200';
@@ -193,7 +193,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns a Map iterator object that contains the [key, value] pairs of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapEntries0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapEntries0300';
@@ -219,7 +219,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns an Map iterator object that contains the key of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapKeys0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapKeys0100';
@@ -245,7 +245,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns an Map iterator object that contains the key of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapKeys0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapKeys0200';
@@ -272,7 +272,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns an Map iterator object that contains the key of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapKeys0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapKeys0300';
@@ -297,7 +297,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns an Map iterator object that contains the value of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapValues0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapValues0100';
@@ -323,7 +323,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns an Map iterator object that contains the value of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapValues0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapValues0200';
@@ -350,7 +350,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns an Map iterator object that contains the value of each element in this Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapValues0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapValues0300';
@@ -375,7 +375,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapClear0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapClear0100';
@@ -401,7 +401,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapClear0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapClear0200';
@@ -427,7 +427,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Delete all elements in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapClear0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapClear0300';
@@ -453,7 +453,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapDelete0100';
@@ -479,7 +479,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapDelete0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapDelete0200';
@@ -505,7 +505,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Deletes the specified element in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapDelete0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapDelete0300';
@@ -531,7 +531,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : The callback function is executed once for each key / value pair in the Map in the insertion order.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapForEach0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapForEach0100';
@@ -560,7 +560,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : The callback function is executed once for each key / value pair in the Map in the insertion order.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapForEach0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapForEach0200';
@@ -589,7 +589,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapGet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapGet0100';
@@ -615,7 +615,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapGet0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapGet0200';
@@ -641,7 +641,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Returns the specified element in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapGet0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapGet0300';
@@ -668,7 +668,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapHas0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapHas0100';
@@ -694,7 +694,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapHas0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapHas0200';
@@ -720,7 +720,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Determines whether the specified element exists in the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapHas0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapHas0300';
@@ -746,7 +746,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapSet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0100';
@@ -772,7 +772,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapSet0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0200';
@@ -798,7 +798,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapSet0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0300';
@@ -824,7 +824,7 @@ export default function collectionsMapTest() {
     * @tc.desc  : Adds or updates a specified key-value pair to the Map.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 1
     */
     it('testMapSet0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testMapSet0400';

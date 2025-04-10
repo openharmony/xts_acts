@@ -46,9 +46,9 @@ export default function TimerMemoryTest() {
      * @tc.desc test Memory
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('TimerMemoryTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TimerMemoryTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       interface MemoryInfo {
         usedJSHeapSize: number;
       }

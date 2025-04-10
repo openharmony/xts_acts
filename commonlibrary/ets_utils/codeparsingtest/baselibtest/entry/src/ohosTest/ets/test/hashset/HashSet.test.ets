@@ -42,9 +42,9 @@ export default function HasSetTest() {
      * @tc.desc      : Testing HashSet length is 0
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testHashSetLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testHashSetLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testHashSetLength0001';
       try {
         const hashSet = new HashSet<number>();
@@ -61,9 +61,9 @@ export default function HasSetTest() {
      * @tc.desc      : Testing HashSet has data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testHashSetLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testHashSetLength0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testHashSetLength0002';
       try {
         const hashSet = new HashSet<number>();
@@ -81,9 +81,9 @@ export default function HasSetTest() {
      * @tc.desc      : Testing HashSet remove->add->clear
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testHashSetLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testHashSetLength0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testHashSetLength0003';
       try {
         const hashSet = new HashSet<number>();
@@ -103,9 +103,9 @@ export default function HasSetTest() {
      * @tc.desc      : Testing HashSet add duplicate data length result
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testHashSetLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testHashSetLength0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testHashSetLength0004';
       try {
         const hashSet = new HashSet<number>();
@@ -124,9 +124,9 @@ export default function HasSetTest() {
      * @tc.desc      : Testing HashSet constructor add sample data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testHashSetConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testHashSetConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testHashSetConstructor0001';
       try {
         const hashSet = new HashSet<number>();

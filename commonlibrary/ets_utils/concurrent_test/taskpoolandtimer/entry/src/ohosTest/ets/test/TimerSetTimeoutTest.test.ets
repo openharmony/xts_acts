@@ -49,9 +49,9 @@ export default function setTimeoutTest() {
      * @tc.desc test Handler passes string, delay:-1
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('setTimeoutTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('setTimeoutTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       const caseName = 'setTimeoutTest0100';
       console.info(`${caseName} test start`);
       const a: undefined = undefined;

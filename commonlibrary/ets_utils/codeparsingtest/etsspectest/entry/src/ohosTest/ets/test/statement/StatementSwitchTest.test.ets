@@ -70,9 +70,9 @@ export default function builtinsStatementSwitchTest() {
      * @tc.desc test expression with string
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementSwitchTest_2100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
+    it('builtinsStatementSwitchTest_2100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0,
       async (Done: Function) => {
         const thisChar = 'A';
         const getChar: string = getCharacterType(thisChar);

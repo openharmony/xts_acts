@@ -92,7 +92,7 @@ export default function collectionsBitVectorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('CollectionsTestClass001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('CollectionsTestClass001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag:boolean = false;
       try {
         let bitvector:collections.BitVector = new collections.BitVector(0);
@@ -119,7 +119,7 @@ export default function collectionsBitVectorTest() {
      * @tc.desc      : ArkTS Collections bitvector
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let t = new Test();
@@ -140,7 +140,7 @@ export default function collectionsBitVectorTest() {
      * @tc.desc      : ArkTS Collections bitvector
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it('CollectionsTestClass003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
        let bitvector = new collections.BitVector(0);

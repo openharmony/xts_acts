@@ -46,9 +46,9 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayPushTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsArrayPushTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0100';
       console.info(`${caseName} test start`);
       try {
@@ -73,9 +73,9 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayPushTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+    it('builtinsArrayPushTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0200';
       console.info(`${caseName} test start`);
       try {
@@ -100,7 +100,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0300';
@@ -127,7 +127,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0400';
@@ -154,7 +154,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0500';
@@ -181,7 +181,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0600';
@@ -208,7 +208,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0700';
@@ -243,7 +243,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0800';
@@ -270,7 +270,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest0900';
@@ -297,7 +297,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1000';
@@ -325,7 +325,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  特殊字符!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1100';
@@ -353,7 +353,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  'undefined'
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1200';
@@ -381,7 +381,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  'null'
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1300';
@@ -409,7 +409,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  ''
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1400';
@@ -437,7 +437,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  Unicode编码
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1500';
@@ -465,7 +465,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  非法Unicode编码
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1600';
@@ -493,7 +493,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  Math.floor(1.5),0,-0
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1700';
@@ -523,7 +523,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  Number.EPSILON,Number.MIN_VALUE,Number.MAX_VALUE,-Infinity,Infinity
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1800';
@@ -555,7 +555,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  123.456,0xcafebabe,0x0102，0x01020304,0x3
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest1900';
@@ -587,7 +587,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  true/false
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest2000';
@@ -616,7 +616,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  !'s'
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest2100';
@@ -644,7 +644,7 @@ export default function builtinsArrayPushTest() {
      * @tc.desc Testing push  !0
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayPushTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'builtinsArrayPushTest2200';

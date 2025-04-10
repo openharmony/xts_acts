@@ -31,9 +31,9 @@ export default function TimerSetIntervalTest() {
      * @tc.desc test SetInterval
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('TimerSetIntervalTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TimerSetIntervalTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const a: undefined = undefined;
       const TimeID = setInterval('Handler executed', -1);
       await sleep(100);

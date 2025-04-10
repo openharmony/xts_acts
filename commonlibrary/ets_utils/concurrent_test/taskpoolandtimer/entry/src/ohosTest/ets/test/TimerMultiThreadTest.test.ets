@@ -53,9 +53,9 @@ export default function timerMultiThreadTest() {
      * @tc.desc main thread timer
      * @tc.size SMALLTEST
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('timerMultiThreadTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
+    it('timerMultiThreadTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0,
       async (done: Function) => {
         const timer = await createTimer(100, 3);
         timerIds.push(timer.id);
