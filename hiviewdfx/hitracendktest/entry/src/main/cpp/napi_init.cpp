@@ -31,29 +31,33 @@
 #define PARAM_9 9
 static const int32_t TASK_ID = 111;
 static const int32_t TASK_ID_TWO = 112;
+static const int32_t TASK_ID_THREE = 1001;
+static const int32_t TASK_ID_FOUR = 1002;
+static const int32_t TASK_ID_FIVE = 1003;
+
 
 static napi_value OHHiTraceCountTraceEx(napi_env env, napi_callback_info info)
 {
     int64_t count = PARAM_0;
     // 第一个异步跟踪任务开始
-    OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_DEBUG, "myTestAsyncTrace", 1001, "categoryTest", "key=value");
+    OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_DEBUG, "myTestAsyncTrace", TASK_ID_THREE, "categoryTest", "key=value");
     count++;
     OH_HiTrace_CountTraceEx(HITRACE_LEVEL_INFO, "myTestCountTrace", count);
     count++;
     // 业务流程
     OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1001");
     // 第二个异步跟踪任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
-    OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_CRITICAL, "myTestAsyncTrace", 1002, "categoryTest", "key=value");
+    OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_CRITICAL, "myTestAsyncTrace", TASK_ID_FOUR, "categoryTest", "key=value");
     count++;
     OH_HiTrace_CountTraceEx(HITRACE_LEVEL_CRITICAL, "myTestCountTrace", count);
     count++;
     // 业务流程
     OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1002");
     // 结束taskId为1001的异步跟踪任务
-    OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_MAX, "myTestAsyncTrace", 1001);
+    OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_MAX, "myTestAsyncTrace", TASK_ID_THREE);
     count++;
     // 结束taskId为1002的异步跟踪任务
-    OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_MAX, "myTestAsyncTrace", 1002);
+    OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_MAX, "myTestAsyncTrace", TASK_ID_FOUR);
     count++;
     // 开始同步跟踪任务
     OH_HiTrace_StartTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestSyncTrace", "key=value");
@@ -68,12 +72,12 @@ static napi_value OHHiTraceCountTraceEx(napi_env env, napi_callback_info info)
     // 在未开启应用trace捕获时，避免该部分性能损耗
     if (OH_HiTrace_IsTraceEnabled()) {
         char customArgs[128] = "key0=value0";
-        for (int index = 1; index < 10; index++) {
+        for (int index = 1; index < PARAM_10; index++) {
             char buffer[16];
         }
-        OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003, "categoryTest", customArgs);
+        OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsync", TASK_ID_FIVE, "categoryTest", customArgs);
         OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1003");
-        OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003);
+        OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsync", TASK_ID_FIVE);
     } else {
         OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, trace is not enabled");
     }
