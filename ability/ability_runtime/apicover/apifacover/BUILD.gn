@@ -13,15 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("apicover") {
+
+ohos_js_app_suite("ActsFACoverTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "apicoverhaptest:ActsApiCoverhapTest",
-      "apifacover:ActsFACoverTest",
-      "fasupplement:FaSupplement",
-      "stagesupplement:StageSupplement",
-      "wantconstanttest:WantConstantTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsFACoverTest"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }

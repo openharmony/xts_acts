@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.apicoverhaptest",
+        "bundle-name": "com.example.facoverhaptest",
         "module-name": "entry_test",
         "shell-timeout": "300000",
         "testcase-timeout": 20000
@@ -11,12 +11,9 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsApiCoverhapTest.hap",
-                "ActsApiCoverhapMain.hap",
+                "ActsFACoverTest.hap",
                 "FaSupplement.hap",
-                "StageSupplement.hap",
-                "FormModule.hap",
-                "ActsFACoverTest.hap"
+                "StageSupplement.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
