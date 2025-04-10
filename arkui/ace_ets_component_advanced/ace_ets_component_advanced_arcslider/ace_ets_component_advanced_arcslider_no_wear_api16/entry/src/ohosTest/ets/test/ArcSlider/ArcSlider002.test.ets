@@ -22,7 +22,7 @@ interface optionsObj {
   uri: string
 }
 
-export default function ArcSlider003() {
+export default function ArcSlider002() {
     describe('ArcSlider', () => {
         beforeAll(async () => {
             console.info("beforeAll case");
@@ -55,26 +55,18 @@ export default function ArcSlider003() {
         afterAll(async () => {
             console.info("afterAll case");
         });
-        it('arcSliderTest003', 0, async (done: Function) => {
-            console.info('arcSliderTest003 START');
+
+        it('arcSliderTest002', 0, async (done: Function) => {
+            console.info('arcSliderTest002 START');
             let driver = await UiDriver.create();
             await CommonFunc.sleep(1000);
-            let textComponent = await driver.findComponent(BY.key('textTest001'));
-            let actualText = await textComponent.getText();
-            expect(actualText).assertEqual('false');
-            let size = display.getDefaultDisplaySync().width;
-            if(size > 500) {
-                await driver.click(650, 256);
-            } else {
-                await driver.click(416, 123);
-            }
-            let actualText001 = await textComponent.getText();
-            await CommonFunc.sleep(1000);
-            expect(actualText001).assertEqual('true');
-            await CommonFunc.sleep(3000);
-            let actualText002 = await textComponent.getText();
-            expect(actualText002).assertEqual('false');
-            console.info('arcSliderTest003 END');
+            let component = await driver.findComponent(BY.key('arcSliderTest002'));
+            let arcSliderIsEnabled = await component.isEnabled();
+            expect(arcSliderIsEnabled).assertTrue();
+            let singleTextSegmentButtonType = await component.getType();
+            console.info('singleTextSegmentButtonType START:' + JSON.stringify(singleTextSegmentButtonType));
+            expect(singleTextSegmentButtonType).assertEqual('__Common__');
+            console.info('arcSliderTest002 END');
             done();
         });
     })

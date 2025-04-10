@@ -16,12 +16,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@system.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import display from '@ohos.display';
 
 interface optionsObj {
   uri: string
 }
 
-export default function ArcSlider001() {
+export default function ArcSlider003() {
     describe('ArcSlider', () => {
         beforeAll(async () => {
             console.info("beforeAll case");
@@ -29,7 +30,7 @@ export default function ArcSlider001() {
         beforeEach(async (done: Function) => {
             console.info("search_caret beforeEach start");
             let options: optionsObj = {
-                uri: 'MainAbility/pages/ArcSlider/ArcSlider1',
+                uri: 'MainAbility/pages/ArcSlider/ArcSlider2',
             }
             try {
                 router.clear();
@@ -54,18 +55,26 @@ export default function ArcSlider001() {
         afterAll(async () => {
             console.info("afterAll case");
         });
-
-        it('arcSliderTest001', 0, async (done: Function) => {
-            console.info('arcSliderTest001 START');
+        it('arcSliderTest003', 0, async (done: Function) => {
+            console.info('arcSliderTest003 START');
             let driver = await UiDriver.create();
             await CommonFunc.sleep(1000);
-            let component = await driver.findComponent(BY.key('arcSliderTest001'));
-            let arcSliderIsEnabled = await component.isEnabled();
-            expect(arcSliderIsEnabled).assertTrue();
-            let singleTextSegmentButtonType = await component.getType();
-            console.info('singleTextSegmentButtonType START:' + JSON.stringify(singleTextSegmentButtonType));
-            expect(singleTextSegmentButtonType).assertEqual('__Common__');
-            console.info('arcSliderTest001 END');
+            let textComponent = await driver.findComponent(BY.key('textTest001'));
+            let actualText = await textComponent.getText();
+            expect(actualText).assertEqual('false');
+            let size = display.getDefaultDisplaySync().width;
+            if(size > 500) {
+                await driver.click(653, 260);
+            } else {
+                await driver.click(416, 123);
+            }
+            let actualText001 = await textComponent.getText();
+            await CommonFunc.sleep(1000);
+            expect(actualText001).assertEqual('true');
+            await CommonFunc.sleep(3000);
+            let actualText002 = await textComponent.getText();
+            expect(actualText002).assertEqual('false');
+            console.info('arcSliderTest003 END');
             done();
         });
     })
