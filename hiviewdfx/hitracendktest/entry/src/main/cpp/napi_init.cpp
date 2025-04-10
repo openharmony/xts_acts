@@ -15,7 +15,10 @@
 
 #include "napi/native_api.h"
 #include "hitrace/trace.h"
+#include "hilog/log.h"
 
+#undef LOG_TAG
+#define LOG_TAG "traceTest"
 
 #define FAIL (-1)
 #define SUCCESS 0
@@ -25,8 +28,64 @@
 #define PARAM_3 3
 #define PARAM_5 5
 #define PARAM_10 10
+#define PARAM_9 9
 static const int32_t TASK_ID = 111;
 static const int32_t TASK_ID_TWO = 112;
+
+static napi_value OHHiTraceCountTraceEx(napi_env env, napi_callback_info info)
+{
+    int64_t count = PARAM_0;
+    // 第一个异步跟踪任务开始
+    OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_DEBUG, "myTestAsyncTrace", 1001, "categoryTest", "key=value");
+    count++;
+    OH_HiTrace_CountTraceEx(HITRACE_LEVEL_INFO, "myTestCountTrace", count);
+    count++;
+    // 业务流程
+    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1001");
+    // 第二个异步跟踪任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
+    OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_CRITICAL, "myTestAsyncTrace", 1002, "categoryTest", "key=value");
+    count++;
+    OH_HiTrace_CountTraceEx(HITRACE_LEVEL_CRITICAL, "myTestCountTrace", count);
+    count++;
+    // 业务流程
+    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1002");
+    // 结束taskId为1001的异步跟踪任务
+    OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_MAX, "myTestAsyncTrace", 1001);
+    count++;
+    // 结束taskId为1002的异步跟踪任务
+    OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_MAX, "myTestAsyncTrace", 1002);
+    count++;
+    // 开始同步跟踪任务
+    OH_HiTrace_StartTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestSyncTrace", "key=value");
+    count++;
+    // 业务流程
+    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, synchronizing trace");
+    // 结束同步跟踪任务
+    OH_HiTrace_FinishTraceEx(HITRACE_LEVEL_COMMERCIAL);
+    count++;
+
+    // 若通过HiTraceMeter性能打点接口传递的参数的生成过程比较复杂，此时可以通过isTraceEnabled判断当前是否开启应用trace捕获，
+    // 在未开启应用trace捕获时，避免该部分性能损耗
+    if (OH_HiTrace_IsTraceEnabled()) {
+        char customArgs[128] = "key0=value0";
+        for (int index = 1; index < 10; index++) {
+            char buffer[16];
+        }
+        OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003, "categoryTest", customArgs);
+        OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1003");
+        OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003);
+    } else {
+        OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, trace is not enabled");
+    }
+    count++;
+    int returnValue = FAIL;
+    if (count == PARAM_9) {
+        returnValue = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
 
 static napi_value OHHiTraceCountTrace(napi_env env, napi_callback_info info)
 {
@@ -170,6 +229,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHHiTraceStartAsyncTrace", nullptr, OHHiTraceStartAsyncTrace, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"oHHiTraceCountTrace", nullptr, OHHiTraceCountTrace, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHHiTraceCountTraceEx", nullptr, OHHiTraceCountTraceEx, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"begin", nullptr, Begin, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"beginflag", nullptr, Beginflag, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"beginSpan", nullptr, BeginSpan, nullptr, nullptr, nullptr, napi_default, nullptr},
