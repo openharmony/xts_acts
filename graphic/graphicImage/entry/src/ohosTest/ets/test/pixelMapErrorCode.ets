@@ -37,8 +37,8 @@ class MySequence implements rpc.Parcelable {
       expect().assertFail();
     } catch(e) {
       let error = e as BusinessError;
-      console.error(`createPixelMapFromParcel error. code is ${error.code}, message is ${error.message}`);
-      expect(Number(error) == 62980178).assertTrue();
+      console.error(`www data createPixelMapFromParcel error. code is ${error.code}, message is ${error.message}`);
+      expect(Number(error.code) == 629801781).assertTrue();
       return false;
     }
     return true;
@@ -539,18 +539,25 @@ export default function imagePixelMapErrorCodeTest() {
       }
       let pixelMap: image.PixelMap | undefined = undefined;
       image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
+        console.error("www data 11111111");
         pixelMap = srcPixelMap;
-        // 序列化。
-        let parcelable: MySequence = new MySequence(pixelMap);
-        let data: rpc.MessageSequence = rpc.MessageSequence.create();
-        data.writeParcelable(parcelable);
+        try {
+          // 序列化。
+          let parcelable: MySequence = new MySequence(pixelMap);
+          let data: rpc.MessageSequence = rpc.MessageSequence.create();
+          data.writeParcelable(parcelable);
 
-        // 反序列化 rpc获取到data。
-        let ret: MySequence = new MySequence(pixelMap);
-        data.readParcelable(ret);
-
-        // 获取到pixelmap。
-        let unmarshPixelmap = ret.pixel_map;
+          // 反序列化 rpc获取到data。
+          let ret: MySequence = new MySequence(pixelMap);
+          data.readParcelable(ret);
+          
+          // 获取到pixelmap。
+          let unmarshPixelmap = ret.pixel_map;
+          done();
+        }catch(error){
+          expect().assertFail();
+          done();
+        }
       })
     });
   })
