@@ -1,4 +1,4 @@
-import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -110,7 +110,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0100', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0100";
       console.info(`${caseName} test start `);
@@ -155,7 +155,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0200', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0200";
       console.info(`${caseName} test start `);
@@ -200,7 +200,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0300', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0300";
       console.info(`${caseName} test start `);
@@ -245,7 +245,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0400', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0400";
       console.info(`${caseName} test start `);
@@ -290,7 +290,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0500', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0500";
       console.info(`${caseName} test start `);
@@ -335,7 +335,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0600', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0600";
       console.info(`${caseName} test start `);
@@ -380,7 +380,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0700', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0700";
       console.info(`${caseName} test start `);
@@ -431,7 +431,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0800', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0800";
       console.info(`${caseName} test start `);
@@ -480,7 +480,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts0900', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts0900";
       console.info(`${caseName} test start `);
@@ -531,7 +531,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts1000', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts1000";
       console.info(`${caseName} test start `);
@@ -583,7 +583,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts1100', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts1100";
       console.info(`${caseName} test start `);
@@ -635,7 +635,7 @@ export default function SelectContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactSelectContacts1200', Level.LEVEL0, async (done: Function) => {
+    it('testTelephonyContactSelectContacts1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await delay(1500);
       const caseName: string = "testTelephonyContactSelectContacts1200";
       console.info(`${caseName} test start `);
