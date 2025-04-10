@@ -196,9 +196,9 @@ export default function requestSpecialUnitTest() {
      * @tc.desc Called when the current download session fails.
      * @tc.size      MEDIUMTEST
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('Download_Test_0300', Level.LEVEL2, async (done: Function) => {
+    it('Download_Test_0300', Level.LEVEL0, async (done: Function) => {
       console.info("====>---------------------Download_Test_0300 is starting---------------------");
       let downloadFilePath = `${baseContext.tempDir}/Download_Test_0300.txt`
       console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/Download_Test_0300.txt`);
