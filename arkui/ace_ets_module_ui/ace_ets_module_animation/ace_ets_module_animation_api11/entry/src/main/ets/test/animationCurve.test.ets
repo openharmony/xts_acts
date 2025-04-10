@@ -12,23 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium'
 import Curves from '@ohos.curves'
 import router from '@ohos.router';
-
 let abc: ESObject
-
 function interpolate3(fraction: string): ESObject {
   interpolate4(fraction)
   return abc
 }
-
 function interpolate4(fraction: string) {
   abc = fraction
 }
-
 export default function animationCurveTest() {
-
   describe('animationCurveTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
@@ -63,17 +58,14 @@ export default function animationCurveTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-
-    it('ArkUX_ohos.curves_customCurve_1000', 0, async (done: Function) => {
+    it('ArkUX_ohos.curves_customCurve_1000', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_ohos.curves_customCurve_1000 START');
       let fraction: ESObject
-
       setTimeout(() => {
         try {
           fraction = Curves.customCurve((fraction: number) => {
             return fraction
           }).interpolate(0.1).toFixed(4)
-
           let finalRes: boolean
           if (fraction == 0.1000) {
             finalRes = true;
@@ -86,11 +78,9 @@ export default function animationCurveTest() {
         done();
       }, 500)
     });
-    it('ArkUX_ohos.curves_customCurve_1100', 0, async (done: Function) => {
+    it('ArkUX_ohos.curves_customCurve_1100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_ohos.curves_customCurve_1000 START');
-
       let fraction1: ESObject
-
       setTimeout(() => {
         try {
           fraction1 = Curves.customCurve((fraction: number) => {
@@ -109,7 +99,7 @@ export default function animationCurveTest() {
         done();
       }, 500)
     });
-    it('ArkUX_ohos.curves_customCurve_1200', 0, async (done: Function) => {
+    it('ArkUX_ohos.curves_customCurve_1200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_ohos.curves_customCurve_1200 START');
       let fraction2: ESObject
       setTimeout(() => {
@@ -130,7 +120,7 @@ export default function animationCurveTest() {
         done();
       }, 500)
     });
-    it('ArkUX_ohos.curves_customCurve_1300', 0, async (done: Function) => {
+    it('ArkUX_ohos.curves_customCurve_1300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_ohos.curves_customCurve_1300 START');
       let fraction3: ESObject
       let fraction4: ESObject
@@ -155,11 +145,9 @@ export default function animationCurveTest() {
         done();
       }, 500)
     });
-    it('ArkUX_ohos.curves_customCurve_1400', 0, async (done: Function) => {
+    it('ArkUX_ohos.curves_customCurve_1400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_ohos.curves_customCurve_1400 START');
       let fraction5: ESObject
-
-
       setTimeout(() => {
         try {
           fraction5 = Curves.customCurve(interpolate3('fraction')).interpolate(0.1).toFixed(4)
@@ -167,7 +155,6 @@ export default function animationCurveTest() {
           let finalRes5: boolean
           if (fraction5 == 0.1000) {
             finalRes5 = true;
-
           } else {
             finalRes5 = false;
           }
@@ -177,6 +164,5 @@ export default function animationCurveTest() {
         done();
       }, 1000)
     });
-
   })
 }

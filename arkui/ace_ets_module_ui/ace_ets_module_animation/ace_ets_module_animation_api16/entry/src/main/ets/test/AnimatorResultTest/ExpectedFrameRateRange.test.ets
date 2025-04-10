@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
-
 import {
   UiComponent,
   UiDriver,
@@ -31,7 +30,6 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-
 export default function ExpectedFrameRateRange() {
   describe('ExpectedFrameRateRange', () => {
     beforeEach(async (done: Function) => {
@@ -59,7 +57,6 @@ export default function ExpectedFrameRateRange() {
       await CommonFunc.sleep(1000);
       console.info('ExpectedFrameRateRange after each called');
     });
-
     /**
      * @tc.number sExpectedFrameRateRange_001
      * @tc.name testBack
@@ -68,7 +65,7 @@ export default function ExpectedFrameRateRange() {
      * @tc.type
      * @tc.size
      */
-    it('ExpectedFrameRateRange', 0, async (done: Function) => {
+    it('ExpectedFrameRateRange', Level.LEVEL0, async (done: Function) => {
       console.info('[ExpectedFrameRateRange_001] START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 51,
