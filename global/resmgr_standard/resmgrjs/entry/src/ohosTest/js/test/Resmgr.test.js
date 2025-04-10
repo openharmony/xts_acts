@@ -898,7 +898,7 @@ describe('resMgrTest', function () {
     * @tc.name    test getPluralString method in callback mode
     * @tc.desc    get the plural string in callback mode
     */
-    it('getPluralString_test_001', Level.LEVEL0, async function (done) {
+    it('getPluralString_test_001', Level.LEVEL2, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getPluralString(0x2000017, 1, (error, value) => {
                 expect(value !== null).assertTrue();
@@ -914,7 +914,7 @@ describe('resMgrTest', function () {
     * @tc.name    test getPluralString method in promise mode
     * @tc.desc    get the plural string in promise mode
     */
-    it('getPluralString_test_002', Level.LEVEL0, async function (done) {
+    it('getPluralString_test_002', Level.LEVEL2, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getPluralString(0x2000017, 1).then(value => {
                 expect(value !== null).assertTrue();
