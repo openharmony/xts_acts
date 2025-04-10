@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeEach, it, expect, TestType, Size, Level } from '@ohos/hypium';
-import { Driver, ON, } from '@ohos.UiTest';
+import { Driver, ON, Component } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 export default function alertDialogBlurStyleOptionsTest() {
@@ -60,7 +60,8 @@ export default function alertDialogBlurStyleOptionsTest() {
       expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.scale).assertEqual(0);
       expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.colorMode).assertEqual('ThemeColorMode.Light');
       expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#FFFFC0CB');
-      await btn.click();
+      let btn1: Component = await driver.findComponent(ON.text('按钮'));
+      await btn1?.click();
       await Utils.sleep(1000);
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -91,7 +92,8 @@ export default function alertDialogBlurStyleOptionsTest() {
       expect(JSON.parse(date).$attrs.backgroundBlurStyle.options.scale).assertEqual(1.0);
       expect(JSON.parse(date).$attrs.backgroundBlurStyle.options.colorMode).assertEqual('ThemeColorMode.System');
       expect(JSON.parse(date).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#00000000');
-      await btn.click();
+      let btn1: Component = await driver.findComponent(ON.text('按钮'));
+      await btn1?.click();
       await Utils.sleep(1000);
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -122,7 +124,8 @@ export default function alertDialogBlurStyleOptionsTest() {
       expect(JSON.parse(date).$attrs.backgroundBlurStyle.options.scale).assertEqual(1.0);
       expect(JSON.parse(date).$attrs.backgroundBlurStyle.options.colorMode).assertEqual('ThemeColorMode.System');
       expect(JSON.parse(date).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#00000000');
-      await btn.click();
+      let btn1: Component = await driver.findComponent(ON.text('按钮'));
+      await btn1?.click();
       await Utils.sleep(1000);
       console.info('[' + tagName + '] END ===========================');
       done();
