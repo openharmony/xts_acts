@@ -111,18 +111,11 @@ struct WebRunJavaScriptOnDocumentEndTest {
               case 'emitWebRunJavaScriptOnDocumentEnd003': {
                 try {
                   await waitForExist(()=>this.isComplete, this.emitKey, 0);
-                  if (this.isComplete === 0) {
-                    let check = (v1: boolean, v2: boolean): boolean => {
-                      return v1 == v2 ? true: false;
-                    }
-                    let result = this.message.includes('push new js on run end called');
-                    console.log(this.emitKey + 'result===>' + result);
-                    await waitForAssert(()=>result, check, true, 2025040802, this.emitKey);
+                  let check = (v1:Array<string>, v2:boolean): boolean => {
+                    return v1.includes('push new js on run end called')
                   }
+                  await waitForAssert(()=>this.message, check, true, 2025040802, this.emitKey);
                 } catch (error) {
-                  if (error.code == 801) {
-                    Utils.emitEvent(true,2025040802);
-                  }
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
@@ -135,7 +128,7 @@ struct WebRunJavaScriptOnDocumentEndTest {
         .domStorageAccess(true)
         .runJavaScriptOnDocumentEnd(this.scripts)
         .onControllerAttached(() => {
-          this.scripts.push({ script: this.jsEnd, scriptRules: ['*'] });
+          this.scripts.push({ script: this.jsEnd, scriptRules: ["*"] });
           console.log('runJavaScriptOnDocumentEnd scripts==>' + JSON.stringify(this.scripts));
         })
         .onPageEnd((event) => {

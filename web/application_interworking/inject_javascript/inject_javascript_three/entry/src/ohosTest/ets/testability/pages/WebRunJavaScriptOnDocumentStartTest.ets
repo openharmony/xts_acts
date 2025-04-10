@@ -73,18 +73,11 @@ struct WebRunJavaScriptOnDocumentStartTest {
               case 'emitWebRunJavaScriptOnDocumentStart002': {
                 try {
                   await waitForExist(()=>this.isComplete, this.emitKey, 0);
-                  if (this.isComplete === 0) {
-                    let check = (v1: boolean, v2: boolean): boolean => {
-                      return v1 == v2 ? true: false;
-                    }
-                    let result = this.message.includes('push new js on run start called');
-                    console.log(this.emitKey + 'result===>' + result);
-                    await waitForAssert(()=>result, check, true, 2025040801, this.emitKey);
+                  let check = (v1:Array<string>, v2:boolean): boolean => {
+                    return v1.includes('push new js on run start called')
                   }
+                  await waitForAssert(()=>this.message, check, true, 2025040801, this.emitKey);
                 } catch (error) {
-                  if (error.code == 801) {
-                    Utils.emitEvent(true,2025040801);
-                  }
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
@@ -97,7 +90,7 @@ struct WebRunJavaScriptOnDocumentStartTest {
         .domStorageAccess(true)
         .runJavaScriptOnDocumentStart(this.scripts)
         .onControllerAttached(() => {
-          this.scripts.push({ script: this.jsStart, scriptRules: ['*'] });
+          this.scripts.push({ script: this.jsStart, scriptRules: ["*"] });
           console.log('runJavaScriptOnDocumentStart scripts==>' + JSON.stringify(this.scripts));
         })
         .onPageBegin((event) => {
