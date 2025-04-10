@@ -62,7 +62,7 @@ export default function windowLayoutTest() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
       let subWindow = await windowStage.createSubWindow('test_setFollowParentMultiScreenPolicy_401');
-      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.setUIContent('testability/pages/First/index2');
       await subWindow.showWindow();
       try {
         let promise = subWindow.setFollowParentMultiScreenPolicy(null);
@@ -102,7 +102,7 @@ export default function windowLayoutTest() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
       let subWindow = await windowStage.createSubWindow('test_setFollowParentMultiScreenPolicy_1300002');
-      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.setUIContent('testability/pages/First/index2');
       await subWindow.showWindow();
       try {
         await subWindow.destroyWindow();
@@ -223,7 +223,7 @@ export default function windowLayoutTest() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
       let subWindow = await windowStage.createSubWindow('test_subWindow_setFollowParentMultiScreenPolicy_true');
-      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.setUIContent('testability/pages/First/index2');
       await subWindow.showWindow();
       try {
         let promise = subWindow.setFollowParentMultiScreenPolicy(true);
@@ -265,7 +265,7 @@ export default function windowLayoutTest() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
       let subWindow = await windowStage.createSubWindow('test_subWindow_setFollowParentMultiScreenPolicy_false');
-      await subWindow.setUIContent('testability/pages/shiftAppWindow/subWindow');
+      await subWindow.setUIContent('testability/pages/First/index2');
       await subWindow.showWindow();
       try {
         let promise = subWindow.setFollowParentMultiScreenPolicy(false);
