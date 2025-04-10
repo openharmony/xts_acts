@@ -79,9 +79,9 @@ describe('kvManagerCallbackTest', function () {
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 101
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testKVManagerGetKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testKVManagerGetKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testKVManagerGetKVStore101');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, function (err, store) {
@@ -107,9 +107,9 @@ describe('kvManagerCallbackTest', function () {
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 102
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testKVManagerGetKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testKVManagerGetKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testKVManagerGetKVStore102');
         try {
             await kvManager.getKVStore(options, function (err, store) {

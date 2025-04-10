@@ -67,10 +67,10 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.desc RelationalStore normal batch insert with conflict resolution test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0100 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -109,10 +109,10 @@ export default function relationalStoreBatchInsertTest() {
      * @tc.desc RelationalStore normal batch insert with conflict resolution test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolution0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolution0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolution0200 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {

@@ -92,12 +92,12 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.number SUB_DistributedData_Pasteboard_SDK_NdkApiTest_0200
      * @tc.name OH_Pasteboard_GetDataWithProgress017
      * @tc.desc OH_PasteboardObserver_Create test
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetDataWithProgress003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Pasteboard_GetDataWithProgress003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = testndk.OH_Pasteboard_GetDataWithProgress003();
       console.info(TAG + "OH_Pasteboard_GetDataWithProgress003 data = " + data );
       expect(data).assertEqual(0);

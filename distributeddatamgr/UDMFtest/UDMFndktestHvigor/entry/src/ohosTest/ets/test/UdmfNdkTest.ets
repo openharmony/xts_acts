@@ -32,11 +32,11 @@ export default function UdmfNdkTest() {
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0100
      * @tc.name OH_Udmf_CreatePropertiesFromUnifiedData001
      * @tc.desc OH_Udmf_CreatePropertiesFromUnifiedData
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_CreatePropertiesFromUnifiedData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('OH_Udmf_CreatePropertiesFromUnifiedData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info(TAG + 'OH_Udmf_CreatePropertiesFromUnifiedData001');
       let data = testNapi.OH_Udmf_CreatePropertiesFromUnifiedData001();
       console.info(TAG + 'OH_Udmf_CreatePropertiesFromUnifiedData001 data= ' + JSON.stringify(data));
@@ -46,11 +46,11 @@ export default function UdmfNdkTest() {
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0200
      * @tc.name OH_Udmf_SetPropertiesTag001
      * @tc.desc OH_Udmf_SetPropertiesTag
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_SetPropertiesTag001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('OH_Udmf_SetPropertiesTag001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info(TAG + 'OH_Udmf_SetPropertiesTag001');
       let data = testNapi.OH_Udmf_SetPropertiesTag001();
       console.info(TAG + 'OH_Udmf_SetPropertiesTag001 data= ' + JSON.stringify(data));
@@ -61,11 +61,11 @@ export default function UdmfNdkTest() {
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_0300
      * @tc.name OH_Udmf_CreateUnifiedData001
      * @tc.desc OH_Udmf_CreateUnifiedData001
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Udmf_CreateUnifiedData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('OH_Udmf_CreateUnifiedData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info(TAG + 'OH_Udmf_CreateUnifiedData001');
       let data = testNapi.OH_Udmf_CreateUnifiedData001();
       console.info(TAG + 'OH_Udmf_CreateUnifiedData001 data= ' + JSON.stringify(data));

@@ -109,9 +109,9 @@ export default function objectStoreTest() {
          * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_0600
          * @tc.type: Function
          * @tc.size: MediumTest
-         * @tc.level: Level 2
+         * @tc.level: Level 0
          */
-        it('testOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it('testOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info(TAG + "************* testOn001 start *************");
             let objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.setSessionId("session1");
