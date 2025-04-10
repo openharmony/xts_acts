@@ -84,7 +84,7 @@ struct WebJavaScriptOnDocumentEndTest {
         .domStorageAccess(true)
         .javaScriptOnDocumentEnd(this.scripts)
         .onControllerAttached(() => {
-          this.scripts.push({ script: this.jsEnd, scriptRules: ["*"] });
+          this.scripts.push({ script: this.jsEnd, scriptRules: ['*'] });
           console.log('javaScriptOnDocumentEnd scripts==>' + JSON.stringify(this.scripts));
         })
         .onPageEnd((event) => {
