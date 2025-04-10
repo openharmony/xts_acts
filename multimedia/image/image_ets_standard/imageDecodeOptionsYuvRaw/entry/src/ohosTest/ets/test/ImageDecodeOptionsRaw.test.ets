@@ -114,17 +114,7 @@ export default function imageDecodeOptionsRawTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
-        if (imageSourceApi != undefined) {
-          try {
-            imageSourceApi.release().then(() => {
-              console.info('Succeeded in releasing the image source instance.');
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-            })
-          } catch (error) {
-            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-          }
-        }
+      await imageSourceApi.release();
     }
 
     const callBackCreate = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -146,17 +136,7 @@ export default function imageDecodeOptionsRawTest() {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
-      if (imageSourceApi != undefined) {
-        try {
-          imageSourceApi.release().then(() => {
-            console.info('Succeeded in releasing the image source instance.');
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-          })
-        } catch (error) {
-          console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-        }
-      }
+      await imageSourceApi.release();
     }
 
     const getResult_F16 = async (TAG: string, index: number, sampleSize: number, rotate: number, editable:boolean,
@@ -209,17 +189,7 @@ export default function imageDecodeOptionsRawTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
-        if (imageSourceApi != undefined) {
-          try {
-            imageSourceApi.release().then(() => {
-              console.info('Succeeded in releasing the image source instance.');
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-            })
-          } catch (error) {
-            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-          }
-        }
+      await imageSourceApi.release();
     }
 
     const callBackCreate_F16 = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -241,17 +211,7 @@ export default function imageDecodeOptionsRawTest() {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
-      if (imageSourceApi != undefined) {
-        try {
-          imageSourceApi.release().then(() => {
-            console.info('Succeeded in releasing the image source instance.');
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-          })
-        } catch (error) {
-          console.error(`Failed to release the image source instance. Error is ${error},code ${error.code},message is ${error.message}`);
-        }
-      }
+      await imageSourceApi.release();
     }
     
     beforeAll(() => {
