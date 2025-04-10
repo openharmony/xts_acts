@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0100', 0, async (done: Function) => {
+    it('TextInputPageJsunit_0100', Level.LEVEL1, async (done: Function) => {
       // Get the information of the TextInput component
       console.info('[TextInputPageJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -78,7 +78,7 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0200', 0, async (done: Function) => {
+    it('TextInputPageJsunit_0200', Level.LEVEL1, async (done: Function) => {
       // Get default attributes of TextInput component
       console.info('[TextInputPageJsunit_0200] START');
       await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0300', 0, async (done: Function) => {
+    it('TextInputPageJsunit_0300', Level.LEVEL1, async (done: Function) => {
       // Modify the properties of TextInput component 
       console.info('[TextInputPageJsunit_0300] START');
       globalThis.value.message.notify({name:'placeholder',value:'place input your word...'})
@@ -154,7 +154,7 @@ export default function TextInputPageJsunit() {
       done();
     });
 
-    it('TextInputPageJsunit_0400', 0, async (done: Function) => {
+    it('TextInputPageJsunit_0400', Level.LEVEL1, async (done: Function) => {
       // Verify functions of TextInput component
       console.info('[TextInputPageJsunit_0400] START');
 

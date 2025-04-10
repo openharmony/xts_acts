@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common'
 
 export default function textMinFontSizeJsunit() {
@@ -49,7 +49,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0001
      * @tc.desic         acetextMinFontSizeEtsTest0001
      */
-    it('testtextMinFontSize0001', 0, async () => {
+    it('testtextMinFontSize0001', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -66,7 +66,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0002
      * @tc.desic         acetextMinFontSizeEtsTest0002
      */
-    it('testtextMinFontSize0002', 0, async () => {
+    it('testtextMinFontSize0002', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -83,7 +83,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0003
      * @tc.desic         acetextMinFontSizeEtsTest0003
      */
-    it('testtextMinFontSize0003', 0, async () => {
+    it('testtextMinFontSize0003', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0003 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -101,7 +101,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0004
      * @tc.desic         acetextMinFontSizeEtsTest0004
      */
-    it('testtextMinFontSize0004', 0, async () => {
+    it('testtextMinFontSize0004', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0004 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -118,7 +118,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0005
      * @tc.desic         acetextMinFontSizeEtsTest0005
      */
-    it('testtextMinFontSize0005', 0, async () => {
+    it('testtextMinFontSize0005', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0005 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -135,7 +135,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0006
      * @tc.desic         acetextMinFontSizeEtsTest0006
      */
-    it('testtextMinFontSize0006', 0, async () => {
+    it('testtextMinFontSize0006', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0006 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -151,7 +151,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0007
      * @tc.desic         acetextMinFontSizeEtsTest0007
      */
-    it('testtextMinFontSize0007', 0, async () => {
+    it('testtextMinFontSize0007', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0007 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -167,7 +167,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0009
      * @tc.desic         acetextMinFontSizeEtsTest0009
      */
-    it('testtextMinFontSize0009', 0, async () => {
+    it('testtextMinFontSize0009', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize009 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -184,7 +184,7 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0010
      * @tc.desic         acetextMinFontSizeEtsTest0010
      */
-    it('testtextMinFontSize0010', 0, async () => {
+    it('testtextMinFontSize0010', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0010 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -196,7 +196,7 @@ export default function textMinFontSizeJsunit() {
 
     });
 
-    it('testtextMinFontSize0011', 0, async () => {
+    it('testtextMinFontSize0011', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextMinFontSize0011 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
@@ -208,7 +208,7 @@ export default function textMinFontSizeJsunit() {
 
     });
 
-    it('testtextCopyOptionText0001', 0, async () => {
+    it('testtextCopyOptionText0001', Level.LEVEL2, async () => {
       console.info('textMinFontSize testtextCopyOptionText0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('copyOptionText');

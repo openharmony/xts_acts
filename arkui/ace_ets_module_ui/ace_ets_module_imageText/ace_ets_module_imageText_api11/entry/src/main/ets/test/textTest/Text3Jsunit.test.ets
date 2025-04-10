@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -47,7 +47,8 @@ export default function text3Jsunit() {
       console.info("text after each called");
     });
 	let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_font_size').id)    
-	it('testText_0100', 0, async (done: Function) => {
+  
+	it('testText_0100', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0100 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0100 component strJson:" + strJson);
@@ -58,7 +59,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0200', 0, async (done: Function) => {
+    it('testText_0200', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0200 START');
       let strJson = getInspectorByKey('image');
       console.info("testText_0200 component strJson:" + strJson);
@@ -68,7 +69,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0300', 0, async (done: Function) => {
+    it('testText_0300', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0300 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -94,7 +95,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0400', 0, async (done: Function) => {
+    it('testText_0400', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0400 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0400 component strJson:" + strJson);
@@ -105,7 +106,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0500', 0, async (done: Function) => {
+    it('testText_0500', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0500 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -131,7 +132,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0600', 0, async (done: Function) => {
+    it('testText_0600', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0600 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0600 component strJson:" + strJson);
@@ -142,7 +143,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0700', 0, async (done: Function) => {
+    it('testText_0700', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0700 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -167,7 +168,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0800', 0, async (done: Function) => {
+    it('testText_0800', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0800 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0800 component strJson:" + strJson);
@@ -178,7 +179,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_0900', 0, async (done: Function) => {
+    it('testText_0900', Level.LEVEL2, async (done: Function) => {
       console.info('testText_0900 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -204,7 +205,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_1000', 0, async (done: Function) => {
+    it('testText_1000', Level.LEVEL2, async (done: Function) => {
       console.info('testText_1000 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_1000 component strJson:" + strJson);
@@ -219,7 +220,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_1200', 0, async (done: Function) => {
+    it('testText_1200', Level.LEVEL2, async (done: Function) => {
       console.info('testText_1200 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -247,7 +248,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_1300', 0, async (done: Function) => {
+    it('testText_1300', Level.LEVEL2, async (done: Function) => {
       console.info('testText_1300 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -276,7 +277,7 @@ export default function text3Jsunit() {
       done();
     });
 
-    it('testText_1400', 0, async (done: Function) => {
+    it('testText_1400', Level.LEVEL2, async (done: Function) => {
       console.info('testText_1400 START');
       try {
         let eventData: events_emitter.EventData = {

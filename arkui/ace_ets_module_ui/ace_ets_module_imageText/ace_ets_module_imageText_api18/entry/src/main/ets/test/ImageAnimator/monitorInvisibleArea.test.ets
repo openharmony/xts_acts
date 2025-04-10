@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -47,7 +47,7 @@ export default function monitorInvisibleAreaTest() {
      * @tc.name         monitorInvisibleAreaTest_001
      * @tc.desic        monitorInvisibleArea(monitorInvisibleArea: boolean):true
      */
-    it('monitorInvisibleAreaTest_001', 0, async (done: Function) => {
+    it('monitorInvisibleAreaTest_001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('monitorInvisibleAreaTest_001 START');
       await CommonFunc.sleep(5000);
@@ -90,7 +90,7 @@ export default function monitorInvisibleAreaTest() {
      * @tc.name         monitorInvisibleAreaTest_002
      * @tc.desic        monitorInvisibleArea(monitorInvisibleArea: boolean):false
      */
-    it('monitorInvisibleAreaTest_002', 0, async (done: Function) => {
+    it('monitorInvisibleAreaTest_002', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('monitorInvisibleAreaTest_002 START');
       await CommonFunc.sleep(2000);
@@ -138,7 +138,7 @@ export default function monitorInvisibleAreaTest() {
      * @tc.name         monitorInvisibleAreaTest_003
      * @tc.desic        monitorInvisibleArea(monitorInvisibleArea: boolean):undefined
      */
-    it('monitorInvisibleAreaTest_003', 0, async (done: Function) => {
+    it('monitorInvisibleAreaTest_003', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('monitorInvisibleAreaTest_003 START');
       await CommonFunc.sleep(2000);
@@ -185,7 +185,7 @@ export default function monitorInvisibleAreaTest() {
      * @tc.name         monitorInvisibleAreaTest_004
      * @tc.desic        monitorInvisibleArea(monitorInvisibleArea: boolean):null
      */
-    it('monitorInvisibleAreaTest_004', 0, async (done: Function) => {
+    it('monitorInvisibleAreaTest_004', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('monitorInvisibleAreaTest_004 START');
       await CommonFunc.sleep(2000);

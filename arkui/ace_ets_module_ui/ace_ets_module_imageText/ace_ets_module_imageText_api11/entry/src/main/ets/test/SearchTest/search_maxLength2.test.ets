@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,7 +49,7 @@ export default function search_maxLength2() {
       * @tc.desc  : set maxLength to 9
       * @tc.level : Level 3
       */
-    it('SearchMaxLength2_001', 0, async (done:Function)=> {
+    it('SearchMaxLength2_001', Level.LEVEL3, async (done:Function)=> {
 
       console.info('SearchMaxLength2_001 START');
       let driver = Driver.create();
@@ -77,7 +77,7 @@ export default function search_maxLength2() {
       * @tc.desc  : set maxLength   first add and then subtract
       * @tc.level : Level 3
       */
-    it('SearchMaxLength2_002', 0, async (done:Function)=> {
+    it('SearchMaxLength2_002', Level.LEVEL3, async (done:Function)=> {
 
       console.info('SearchMaxLength2_002 START');
       let driver = Driver.create();
@@ -98,8 +98,5 @@ export default function search_maxLength2() {
 
       done();
     });
-
-
-
   })
 }

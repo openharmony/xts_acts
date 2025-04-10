@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../../MainAbility/common/Common'
 
 export default function TextStyle2() {
@@ -53,7 +53,7 @@ export default function TextStyle2() {
      * @tc.type
      * @tc.size
      */
-    it('TextStyle_0001', 0, async (done: Function) => {
+    it('TextStyle_0001', Level.LEVEL1, async (done: Function) => {
 
       console.info('[TextStyle_0001] START');
       await CommonFunc.sleep(2000);
