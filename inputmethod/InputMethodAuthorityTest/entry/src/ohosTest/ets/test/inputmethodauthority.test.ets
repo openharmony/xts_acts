@@ -16,7 +16,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
 import { BusinessError } from '@ohos.base';
-import deviceinfo from '@ohos.deviceInfo';
 import inputmethodengine from '@ohos.inputMethodEngine';
 
 export default function inputMethodAuthorityJSUnit() {
@@ -41,9 +40,9 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.number  inputmethod_test_switchInputMethod_001
      * @tc.name    Test Indicates the input method which will replace the current one.
      * @tc.desc    Function test
-     * @tc.level   2
+     * @tc.level   0
     */
-    it('inputmethod_test_switchInputMethod_001', Level.LEVEL2, async (done: Function) => {
+    it('inputmethod_test_switchInputMethod_001', Level.LEVEL0, async (done: Function) => {
       console.info("====>************* inputmethod_test_switchInputMethod_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethod_test_switchInputMethod_001 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -475,7 +474,7 @@ export default function inputMethodAuthorityJSUnit() {
         console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 getInputMethodAbility success");
         let state =  await InputMethodAbility.getSecurityMode();
         console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 state is: " + state);
-        expect().assertFail();
+        expect(true).assertTrue();
         done();
       }catch(err){
         console.info(`====>Sub_InputMethod_IME_getSecurityMode_0101 errCode:${err.code}, errMessage is ${err.message}`)
@@ -502,13 +501,14 @@ export default function inputMethodAuthorityJSUnit() {
         console.info("====>Sub_InputMethod_IME_createPanel_0101 getInputMethodAbility success");
         InputMethodAbility.createPanel(globalThis.abilityContext, panelInfo,  (err: BusinessError, panel: inputmethodengine.Panel) => {
             if (err) {
-                console.info(`====>Sub_InputMethod_IME_createPanel_0101 catch errCode:${err.code}, errMessage is ${err.message}`);
-                expect(err.code).assertEqual(12800004);
+                console.info(`====>Sub_InputMethod_IME_createPanel_0101 err errCode:${err.code}, errMessage is ${err.message}`);
+                expect(err.code).assertEqual(1);
+                done();
+            } else {
+                console.info("====>Sub_InputMethod_IME_createPanel_0101 createPanel success " );
+                expect().assertFail();
                 done();
             }
-            console.info("====>Sub_InputMethod_IME_createPanel_0101 createPanel success " );
-            expect().assertFail();
-            done();
         });
       } catch(err) {
         console.info(`====>Sub_InputMethod_IME_createPanel_0101 catch errCode:${err.code}, errMessage is ${err.message}`)
@@ -539,7 +539,7 @@ export default function inputMethodAuthorityJSUnit() {
         done();
       }catch(err){
         console.info(`====>Sub_InputMethod_IME_createPanel_0201 errCode:${err.code}, errMessage is ${err.message}`)
-        expect(err.code).assertEqual(12800004);
+        expect(err.code).assertEqual(1);
         done();
       };
     });

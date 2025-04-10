@@ -16,7 +16,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
 import { BusinessError } from '@ohos.base';
-import deviceinfo from '@ohos.deviceInfo';
 
 export default function inputMethodStageJSUnit() {
   describe('inputMethodTest', () => {
