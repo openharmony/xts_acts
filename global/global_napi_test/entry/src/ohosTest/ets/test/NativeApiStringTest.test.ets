@@ -279,9 +279,9 @@ export default function abilityTest() {
     * @tc.desc      : getPluralStringByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 0
+    * @tc.level     : Level 3
     */
-    it('getPluralStringByName_nativeTest_0100', Level.LEVEL0, () => {
+    it('getPluralStringByName_nativeTest_0100', Level.LEVEL3, () => {
       console.log("getPluralStringByName_nativeTest_0100 1");
       let value = nativeTest.getPluralStringByName(resManager.resourceManager);
       console.log("getPluralStringByName_nativeTest_0100" + value);
@@ -294,9 +294,9 @@ export default function abilityTest() {
     * @tc.desc      : getPluralString with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 0
+    * @tc.level     : Level 3
     */
-    it('getPluralString_nativeTest_0100', Level.LEVEL0, () => {
+    it('getPluralString_nativeTest_0100', Level.LEVEL3, () => {
       console.log("getPluralString_nativeTest_0100 1");
       let value = nativeTest.getPluralString(resManager.resourceManager, $r('app.plural.eat_apple').id, 1);
       console.log("getPluralString_nativeTest_0100" + value);
@@ -399,9 +399,9 @@ export default function abilityTest() {
     * @tc.desc      : getLocales with object
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 0
+    * @tc.level     : Level 2
     */
-    it('getLocales_nativeTest_0100', Level.LEVEL0, () => {
+    it('getLocales_nativeTest_0100', Level.LEVEL2, () => {
       console.log("getLocales_nativeTest_0100 1");
       let value = nativeTest.getLocales(resManager.resourceManager);
       console.log("getLocales_nativeTest_0100" + value);
@@ -639,9 +639,9 @@ export default function abilityTest() {
     * @tc.desc      : addResource with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 0
+    * @tc.level     : Level 3
     */
-    it('addResource_nativeTest_0100', Level.LEVEL0, () => {
+    it('addResource_nativeTest_0100', Level.LEVEL3, () => {
       console.log("addResource_nativeTest_0100 1");
       let value = nativeTest.addResource(resManager.resourceManager);
       console.log("addResource_nativeTest_0100" + value);
@@ -654,9 +654,9 @@ export default function abilityTest() {
     * @tc.desc      : removeResource with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 0
+    * @tc.level     : Level 3
     */
-    it('removeResource_nativeTest_0100', Level.LEVEL0, () => {
+    it('removeResource_nativeTest_0100', Level.LEVEL3, () => {
       console.log("removeResource_nativeTest_0100 1");
       let value = nativeTest.removeResource(resManager.resourceManager);
       console.log("removeResource_nativeTest_0100" + value);
