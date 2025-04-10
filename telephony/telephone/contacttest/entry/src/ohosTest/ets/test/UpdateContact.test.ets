@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -199,7 +199,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactUpdateContact0100', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact0100";
       console.info(`${caseName} test start `);
       try {
@@ -281,7 +281,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact0600', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact0600";
       console.info(`${caseName} test start `);
       try {
@@ -355,7 +355,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact0700', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact0700";
       console.info(`${caseName} test start `);
       try {
@@ -439,7 +439,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact0800', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact0800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -500,7 +500,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact0900', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact0900";
       console.info(`${caseName} test start `);
       try {
@@ -568,7 +568,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact1100', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact1100";
       console.info(`${caseName} test start `);
       try {
@@ -625,7 +625,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact1200', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact1200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -696,7 +696,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactUpdateContact1300', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact1300";
       console.info(`${caseName} test start `);
       try {
@@ -778,7 +778,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact1800', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact1800";
       console.info(`${caseName} test start `);
       try {
@@ -854,7 +854,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact1900', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact1900";
       console.info(`${caseName} test start `);
       try {
@@ -940,7 +940,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact2000', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2000";
       console.info(`${caseName} test start `);
       try {
@@ -1010,7 +1010,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact2100', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2100";
       console.info(`${caseName} test start `);
       try {
@@ -1097,7 +1097,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact2200', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2200";
       console.info(`${caseName} test start `);
       try {
@@ -1175,7 +1175,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact2300', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2300";
       console.info(`${caseName} test start `);
       try {
@@ -1253,7 +1253,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact2400', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2400";
       console.info(`${caseName} test start `);
       try {
@@ -1331,7 +1331,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactUpdateContact2500', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2500";
       console.info(`${caseName} test start `);
       try {
@@ -1410,7 +1410,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3000', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3000";
       console.info(`${caseName} test start `);
       try {
@@ -1485,7 +1485,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3100', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3100";
       console.info(`${caseName} test start `);
       try {
@@ -1570,7 +1570,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3200', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3200";
       console.info(`${caseName} test start `);
       try {
@@ -1637,7 +1637,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3300', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3300";
       console.info(`${caseName} test start `);
       try {
@@ -1723,7 +1723,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3400', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3400";
       console.info(`${caseName} test start `);
       try {
@@ -1799,7 +1799,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3500', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3500";
       console.info(`${caseName} test start `);
       try {
@@ -1876,7 +1876,7 @@ export default function UpdateContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact3600', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact3600";
       console.info(`${caseName} test start `);
       try {

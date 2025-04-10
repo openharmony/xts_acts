@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach, afterAll } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, afterAll, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -237,7 +237,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryGroups0100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups0100";
       console.info(`${caseName} test start `);
       let groupsId:number = await addGroups();
@@ -280,7 +280,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups0200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups0200";
       console.info(`${caseName} test start `);
       try {
@@ -323,7 +323,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups0400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups0400";
       console.info(`${caseName} test start `);
       try {
@@ -368,7 +368,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups0500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups0500";
       console.info(`${caseName} test start `);
       try {
@@ -409,7 +409,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups0700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups0700";
       console.info(`${caseName} test start `);
       try {
@@ -454,7 +454,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups1100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups1100";
       console.info(`${caseName} test start `);
       try {
@@ -499,7 +499,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups1200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups1200";
       console.info(`${caseName} test start `);
       try {
@@ -542,7 +542,7 @@ export default function QueryGroupsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups1300', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups1300";
       console.info(`${caseName} test start `);
       try {
