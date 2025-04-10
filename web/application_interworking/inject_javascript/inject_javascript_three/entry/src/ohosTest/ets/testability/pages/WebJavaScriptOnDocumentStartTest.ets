@@ -20,19 +20,18 @@ import {waitForAssert, waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
-struct WebRunJavaScriptOnDocumentStartTest {
+struct WebJavaScriptOnDocumentStartTest {
   controller: webView.WebviewController = new webView.WebviewController();
   @State emitKey: string = '';
-  @State result: string = '';
+  private jsStr: string =
+  "window.document.getElementById('result').innerHTML = 'javaScriptOnDocumentStart'";
   @State scripts: Array<ScriptItem> = [
-    { script: "if (typeof(Storage) !== 'undefined') {" +
-      "   localStorage.setItem('color', 'Red');" +
-      '}', scriptRules: ['*'] }
+     { script: this.jsStr, scriptRules: ['*'] }
   ];
   @State message: Array<string> = [];
   @State isComplete: number = -1;
   private jsStart: string =
-    'console.log("push new js on run start called")';
+    'console.log("push new js on start called")';
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -59,89 +58,54 @@ struct WebRunJavaScriptOnDocumentStartTest {
   build() {
     Column() {
       Row() {
-        Button('WebRunJavaScriptOnDocumentStartTestButton click')
-          .key('WebRunJavaScriptOnDocumentStartTestButton')
+        Button('WebJavaScriptOnDocumentStartTestButton click')
+          .key('WebJavaScriptOnDocumentStartTestButton')
           .onClick(async () => {
             await Utils.sleep(2000);
             console.info('key==>' + this.emitKey)
             switch (this.emitKey) {
-              case 'emitWebRunJavaScriptOnDocumentStart001': {
-                await Utils.sleep(2000);
-                Utils.emitEvent(this.result, 20250221)
-                break;
-              }
-              case 'emitWebRunJavaScriptOnDocumentStart002': {
+              case 'emitWebJavaScriptOnDocumentStart001': {
                 try {
                   await waitForExist(()=>this.isComplete, this.emitKey, 0);
                   if (this.isComplete === 0) {
                     let check = (v1: boolean, v2: boolean): boolean => {
                       return v1 == v2 ? true: false;
                     }
-                    let result = this.message.includes('push new js on run start called');
+                    let result = this.message.includes('push new js on start called');
                     console.log(this.emitKey + 'result===>' + result);
-                    await waitForAssert(()=>result, check, true, 2025040801, this.emitKey);
+                    await waitForAssert(()=>result, check, true, 2025040804, this.emitKey);
                   }
                 } catch (error) {
                   if (error.code == 801) {
-                    Utils.emitEvent(true,2025040801);
+                    Utils.emitEvent(true,2025040804);
                   }
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 }
                 break;
               }
             }
-          })
+         })
       }
-      Web({ src: $rawfile('runJavaScriptOnDocumentStart.html'), controller: this.controller })
+      Web({ src: $rawfile('runJavaScriptOnDocumentEnd.html'), controller: this.controller })
         .javaScriptAccess(true)
         .domStorageAccess(true)
-        .runJavaScriptOnDocumentStart(this.scripts)
+        .javaScriptOnDocumentStart(this.scripts)
         .onControllerAttached(() => {
           this.scripts.push({ script: this.jsStart, scriptRules: ["*"] });
-          console.log('runJavaScriptOnDocumentStart scripts==>' + JSON.stringify(this.scripts));
-        })
-        .onPageBegin((event) => {
-          if (event) {
-           console.log('runJavaScriptOnDocumentStart onPageBegin url:' + event.url);
-           try {
-              this.controller.runJavaScript('getResult()', (error, result) => {
-                if (error) {
-                  console.info('runJavaScriptOnDocumentStart getResult() return error: ' + error)
-                }
-                if (result) {
-                  console.info('runJavaScriptOnDocumentStart getResult() return result: ' + result)
-                }
-              })
-            } catch (error) {
-              console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-            }
-          }
+          console.log('javaScriptOnDocumentStart scripts==>' + JSON.stringify(this.scripts));
         })
         .onPageEnd((event) => {
           if (event) {
-           this.isComplete = 0;
-           console.log('runJavaScriptOnDocumentStart isComplete==>'+this.isComplete);
-           console.log('runJavaScriptOnDocumentStart onPageEnd url:' + event.url);
-           try {
-              this.controller.runJavaScript('getResult()', (error, result) => {
-                if (error) {
-                  console.info('runJavaScriptOnDocumentStart getResult() return error: ' + error)
-                }
-                if (result) {
-                  console.info('runJavaScriptOnDocumentStart getResult() return result: ' + result)
-                  this.result = result;
-                }
-              })
-            } catch (error) {
-              console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-            }
-          }
+            this.isComplete = 0;
+            console.log('javaScriptOnDocumentStart isComplete==>'+this.isComplete);
+            console.log('javaScriptOnDocumentStart onPageEnd url:' + event.url);
+           }
         })
         .onConsole((event) => {
           if (event) {
             let msg = event.message.getMessage();
             this.message.push(msg);
-            console.log('runJavaScriptOnDocumentStart message===>' + this.message);
+            console.log('javaScriptOnDocumentStart message===>' + this.message);
           }
           return false
         })

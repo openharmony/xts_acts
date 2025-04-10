@@ -16,10 +16,14 @@
 import webRunJavaScriptOnDocumentStartTest from './WebRunJavaScriptOnDocumentStartTest.test';
 import webRunJavaScriptOnDocumentEndTest from './WebRunJavaScriptOnDocumentEndTest.test';
 import webRunJavaScriptOnHeadEndTest from './WebRunJavaScriptOnHeadEndTest.test';
+import webJavaScriptOnDocumentStartTest from './WebJavaScriptOnDocumentStartTest.test';
+import webJavaScriptOnDocumentEndTest from './WebJavaScriptOnDocumentEndTest.test';
 
 
 export default function testsuite() {
   webRunJavaScriptOnDocumentStartTest();
   webRunJavaScriptOnDocumentEndTest();
   webRunJavaScriptOnHeadEndTest();
+  webJavaScriptOnDocumentStartTest();
+  webJavaScriptOnDocumentEndTest();
 }

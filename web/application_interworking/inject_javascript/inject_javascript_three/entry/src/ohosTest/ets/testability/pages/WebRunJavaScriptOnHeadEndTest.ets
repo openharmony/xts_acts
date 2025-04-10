@@ -16,6 +16,7 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
+import {waitForAssert, waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
@@ -26,6 +27,10 @@ struct WebRunJavaScriptOnHeadEndTest {
   @State scripts: Array<ScriptItem> = [
      { script: this.jsStr, scriptRules: ['*'] }
   ];
+  @State message: Array<string> = [];
+  @State isComplete: number = -1;
+  private jsHead: string =
+    'console.log("push new js on head called")';
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -129,6 +134,25 @@ struct WebRunJavaScriptOnHeadEndTest {
                    Utils.emitEvent(resultData,2025022105);
                    break;
               }
+              case 'emitWebRunJavaScriptOnHeadEnd004': {
+                try {
+                  await waitForExist(()=>this.isComplete, this.emitKey, 0);
+                  if (this.isComplete === 0) {
+                    let check = (v1: boolean, v2: boolean): boolean => {
+                      return v1 == v2 ? true: false;
+                    }
+                    let result = this.message.includes('push new js on head called');
+                    console.log(this.emitKey + 'result===>' + result);
+                    await waitForAssert(()=>result, check, true, 2025040803, this.emitKey);
+                  }
+                } catch (error) {
+                  if (error.code == 801) {
+                    Utils.emitEvent(true,2025040803);
+                  }
+                  console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+                break;
+              }
             }
          })
       }
@@ -136,10 +160,24 @@ struct WebRunJavaScriptOnHeadEndTest {
         .javaScriptAccess(true)
         .domStorageAccess(true)
         .runJavaScriptOnHeadEnd(this.scripts)
+        .onControllerAttached(() => {
+          this.scripts.push({ script: this.jsHead, scriptRules: ["*"] });
+          console.log('runJavaScriptOnHeadEnd scripts==>' + JSON.stringify(this.scripts));
+        })
         .onPageEnd((event) => {
           if (event) {
+           this.isComplete = 0;
+           console.log('runJavaScriptOnHeadEnd isComplete==>'+this.isComplete);
            console.log('runJavaScriptOnHeadEnd onPageEnd url:' + event.url);
            }
+        })
+        .onConsole((event) => {
+          if (event) {
+            let msg = event.message.getMessage();
+            this.message.push(msg);
+            console.log('runJavaScriptOnHeadEnd message===>' + this.message);
+          }
+          return false
         })
         .width('100%')
         .height('100%')
