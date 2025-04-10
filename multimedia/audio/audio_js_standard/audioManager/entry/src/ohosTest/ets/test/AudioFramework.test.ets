@@ -5863,7 +5863,7 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0500', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0500', 2, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         let deviceFlag: ESObject = '123';
