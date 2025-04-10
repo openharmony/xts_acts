@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 import resourceManager from '@ohos.resourceManager';
@@ -2574,7 +2574,7 @@ export default function audioRendererTest() {
       *@tc.type      : Function
       *@tc.level     : Level 2
       */
-    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0100", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -2616,7 +2616,7 @@ export default function audioRendererTest() {
       *@tc.type      : Function
       *@tc.level     : Level 2
       */
-    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0200", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
