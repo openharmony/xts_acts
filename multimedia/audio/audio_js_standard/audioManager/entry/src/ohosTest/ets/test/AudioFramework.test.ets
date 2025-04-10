@@ -5718,7 +5718,7 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ON_DEVICECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ON_DEVICECHANGE_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let AudioManager = audioManager.getRoutingManager();
       try {
         AudioManager.on('deviceChange', null!, (deviceChanged) => {
