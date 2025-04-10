@@ -42,29 +42,6 @@ async function getFd(fileName:string) {
     .catch((err: BusinessError) => {
       console.info("image case open fd err " + err);
     });
-}
-
-interface Options {
-  sampleSize: number,
-  editable: boolean,
-  desiredSize: Size,
-  rotate: number,
-  desiredPixelFormat: number,
-  desiredRegion: DesiredRegion,
-  index: number,
-}
-
-interface DesiredRegion {
-  size: Size,
-  x: number,
-  y: number
-}
-
-interface Size {
-  width: number,
-  height: number
-}
-
 
 export default function imagePixelLocation() {
     describe("imagePixelLocation", () => {
@@ -115,7 +92,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 256, height: 256 },
@@ -246,7 +223,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 128, height: 128 },
@@ -345,7 +322,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 128, height: 128 },
@@ -444,7 +421,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 128, height: 128 },
@@ -543,7 +520,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 128, height: 128 },
@@ -642,7 +619,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 512, height: 512 },
@@ -741,7 +718,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 512, height: 512 },
@@ -840,7 +817,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 512, height: 512 },
@@ -939,7 +916,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 512, height: 512 },
@@ -1038,7 +1015,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 256, height: 256 },
@@ -1137,7 +1114,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 256, height: 256 },
@@ -1236,7 +1213,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 256, height: 256 },
@@ -1335,7 +1312,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 256, height: 256 },
@@ -1434,7 +1411,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 362, height: 362 },
@@ -1533,7 +1510,7 @@ export default function imagePixelLocation() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let decodingOptions: Options = {
+                    let decodingOptions: image.decodingOptions = {
                         sampleSize: 1,
                         editable: true,
                         desiredSize: { width: 362, height: 362 },
