@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-
 export default function LengthUnitTest() {
   describe('LengthUnitTest', () => {
     beforeEach(async (done: Function) => {
@@ -44,7 +43,6 @@ export default function LengthUnitTest() {
       await CommonFunc.sleep(1000);
       console.info("LengthUnitTest after each called");
     });
-
     /**
      * @tc.number    LengthUnitTest_001
      * @tc.name      testBack
@@ -53,7 +51,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_001', 0, async (done: Function) => {
+    it('LengthUnitTest_001', Level.LEVEL0, async (done: Function) => {
       console.info('[LengthUnitTest_001] START');
       await CommonFunc.sleep(1000);
       let span_px = getInspectorByKey('span_px');
@@ -63,7 +61,6 @@ export default function LengthUnitTest() {
       console.info('[LengthUnitTest_001] END');
       done();
     });
-
     /**
      * @tc.number    LengthUnitTest_002
      * @tc.name      testBack
@@ -72,7 +69,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_002', 0, async (done: Function) => {
+    it('LengthUnitTest_002', Level.LEVEL0, async (done: Function) => {
       console.info('[LengthUnitTest_002] START');
       await CommonFunc.sleep(1000);
       let span_fp = getInspectorByKey('span_fp');
@@ -82,7 +79,6 @@ export default function LengthUnitTest() {
       console.info('[LengthUnitTest_002] END');
       done();
     });
-
     /**
      * @tc.number    LengthUnitTest_003
      * @tc.name      testBack
@@ -91,7 +87,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_003', 0, async (done: Function) => {
+    it('LengthUnitTest_003', Level.LEVEL0, async (done: Function) => {
       console.info('[LengthUnitTest_003] START');
       await CommonFunc.sleep(1000);
       let span_percent = getInspectorByKey('span_percent');
@@ -102,7 +98,6 @@ export default function LengthUnitTest() {
       console.info('[LengthUnitTest_003] END');
       done();
     });
-
     /**
      * @tc.number    LengthUnitTest_004
      * @tc.name      testBack
@@ -111,7 +106,7 @@ export default function LengthUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it('LengthUnitTest_004', 0, async (done: Function) => {
+    it('LengthUnitTest_004', Level.LEVEL0, async (done: Function) => {
       console.info('[LengthUnitTest_004] START');
       await CommonFunc.sleep(1000);
       let span_lpx = getInspectorByKey('span_lpx');

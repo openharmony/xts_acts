@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import Utils from '../Utils';
-
 export default function globalJsunit() {
   describe('globalJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -38,17 +37,15 @@ export default function globalJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await Utils.sleep(1000);
     });
-
     /**
      * @tc.number ACE_global_setTimeout
      * @tc.name setTimeout()
      * @tc.desc Test setTimeout
      */
-    it('ACE_global_setTimeout', 0, async (done: Function) => {
+    it('ACE_global_setTimeout', Level.LEVEL0, async (done: Function) => {
       let caseName: string = "ACE_global_setTimeout"
       console.info(`${caseName} START`);
       setTimeout(() => {
@@ -57,13 +54,12 @@ export default function globalJsunit() {
       console.info(`${caseName} END`);
       done()
     });
-
     /**
      * @tc.number ACE_global_canIUse
      * @tc.name canIUse()
      * @tc.desc Test canIUse
      */
-    it('ACE_global_canIUse', 0, async (done: Function) => {
+    it('ACE_global_canIUse', Level.LEVEL0, async (done: Function) => {
       let caseName: string = "ACE_global_canIUse"
       console.info(`${caseName} START`);
       let syscapName: string = "";
@@ -72,13 +68,12 @@ export default function globalJsunit() {
       console.info(`${caseName} END`);
       done()
     });
-
     /**
      * @tc.number ACE_global_console_log_0100
      * @tc.name console::log
      * @tc.desc Test console log printing
      */
-    it("ACE_global_console_log_0100", 0, async (done: Function) => {
+    it("ACE_global_console_log_0100", Level.LEVEL0, async (done: Function) => {
       let casename: string = "ACE_global_001";
       console.log("-----------------------ACE_global_console_log Test is starting-----------------------");
       try {
@@ -92,13 +87,12 @@ export default function globalJsunit() {
       console.log("-----------------------ACE_global_console_log Test end-----------------------");
       done()
     });
-
     /**
      * @tc.number ACE_global_console_info_0100
      * @tc.name console::info
      * @tc.desc Test console info printing
      */
-    it("ACE_global_console_info_0100", 0, async (done: Function) => {
+    it("ACE_global_console_info_0100", Level.LEVEL0, async (done: Function) => {
       let casename: string = "ACE_global_002";
       console.log("-----------------------ACE_global_console_info Test is starting-----------------------");
       try {
@@ -112,13 +106,12 @@ export default function globalJsunit() {
       console.log("-----------------------ACE_global_console_info Test end-----------------------");
       done()
     });
-
     /**
      * @tc.number ACE_global_console_warn_0100
      * @tc.name console::warn
      * @tc.desc Test console warn printing
      */
-    it("ACE_global_console_warn_0100", 0, async (done: Function) => {
+    it("ACE_global_console_warn_0100", Level.LEVEL0, async (done: Function) => {
       let casename: string = "ACE_global_003";
       console.log("-----------------------ACE_global_console_warn Test is starting-----------------------");
       try {
@@ -132,7 +125,5 @@ export default function globalJsunit() {
       console.log("-----------------------ACE_global_console_warn Test end-----------------------");
       done()
     });
-
-
   })
 }

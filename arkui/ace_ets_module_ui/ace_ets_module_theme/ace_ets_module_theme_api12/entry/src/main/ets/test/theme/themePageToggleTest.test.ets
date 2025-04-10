@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -29,7 +29,6 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import Utils from '../Utils';
-
 export default function themePageToggleTest() {
   describe('themePageToggleTest', () => {
     beforeEach(async (done:Function) =>{
@@ -53,7 +52,6 @@ export default function themePageToggleTest() {
       }
       done();
     });
-
     /**
      * @tc.number themeColorTest
      * @tc.name themeInterfaceIsValidTest_0100
@@ -62,7 +60,7 @@ export default function themePageToggleTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('themeInterfaceIsValidTest_0100', 0, async (done:Function) =>{
+    it('themeInterfaceIsValidTest_0100', Level.LEVEL0, async (done:Function) =>{
       console.info('themeInterfaceIsValidTest_0100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -80,4 +78,3 @@ export default function themePageToggleTest() {
     });
   })
 }
-

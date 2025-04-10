@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-
 export default function UIContextApi1() {
   describe('UIContextApi1', () => {
     beforeEach(async (done: Function) => {
@@ -43,25 +41,20 @@ export default function UIContextApi1() {
     });
     afterEach(async () => {
     });
-
     /**
      * @tc.number UIContextApi1_0100
      * @tc.name testButton
      * @tc.desc
      */
-    it('UIContextApi1_0100', 0, async (done: Function) => {
+    it('UIContextApi1_0100', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextApi1_0100 START');
       await CommonFunc.sleep(1000);
-
       sendEventByKey('UIContextApi1_btn2',10,"")
       await CommonFunc.sleep(1000);
-
       let UIContextApi1_1 = getInspectorByKey('UIContextApi1_btn2');
       expect(JSON.stringify(JSON.parse(UIContextApi1_1).$attrs.backgroundColor)).assertEqual('"#FF0000FF"');
-
       console.info('UIContextApi1_0100 END');
       done();
     });
-
   })
 }

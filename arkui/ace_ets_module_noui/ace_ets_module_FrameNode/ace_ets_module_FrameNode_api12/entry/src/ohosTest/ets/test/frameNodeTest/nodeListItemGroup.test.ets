@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
-
 export default function nodeListItemGroup() {
   describe('nodeListItemGroup', () => {
     beforeEach(async (done: Function) => {
@@ -41,12 +40,10 @@ export default function nodeListItemGroup() {
       }
       done();
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" nodeListItemGroup after each called");
     });
-
     /* *
     * @tc.number: SUB_ACE_TYPENODE_LISTITEMGROUP_0100
     * @tc.name  : nodeListItemGroup_0100
@@ -55,7 +52,7 @@ export default function nodeListItemGroup() {
     * @tc.type :
     * @tc.size :
     */
-    it('nodeListItemGroup_0100', 0, async (done: Function) => {
+    it('nodeListItemGroup_0100', Level.LEVEL0, async (done: Function) => {
       console.info('nodeListItemGroup_0100 START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -69,6 +66,5 @@ export default function nodeListItemGroup() {
       console.info('[nodeListItemGroup_0100] END');
       done();
     });
-
   })
 }
