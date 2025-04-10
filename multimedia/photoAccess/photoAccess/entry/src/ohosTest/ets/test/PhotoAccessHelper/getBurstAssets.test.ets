@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import {
   sleep,
@@ -52,7 +52,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_assets_image_001", 0, async (done: Function) => {
+    it("get_burst_assets_image_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_image_001";
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
@@ -87,7 +87,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_assets_video_001", 0, async (done: Function) => {
+    it("get_burst_assets_video_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_video_001";
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, videoDisplayName);
@@ -122,7 +122,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_image_burst_assets_003", 0, async (done: Function) => {
+    it("get_image_burst_assets_003", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_image_003";
       try {
         let ops = fetchAllOption();
@@ -148,7 +148,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_asset_by_subtype_001", 0, async (done: Function) => {
+    it("get_burst_asset_by_subtype_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_asset_by_subtype_001";
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -176,7 +176,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("get_burst_assets_image_002", 2, async (done: Function) => {
+    it("get_burst_assets_image_002", Level.LEVEL2, async (done: Function) => {
       const testNum = "get_burst_assets_image_002";
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
@@ -201,7 +201,7 @@ export default function getBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("get_burst_assets_image_003", 2, async (done: Function) => {
+    it("get_burst_assets_image_003", Level.LEVEL2, async (done: Function) => {
       const testNum = "get_burst_assets_image_003";
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);

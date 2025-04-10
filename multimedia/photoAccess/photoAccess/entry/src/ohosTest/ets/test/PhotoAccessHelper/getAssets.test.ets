@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption,
@@ -160,7 +160,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_callback_000', 0, async (done: Function) => {
+    it('getAssets_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_callback_000';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getAssetTest.jpg');
       const expectCount = 1;
@@ -174,7 +174,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_callback_001', 0, async (done: Function) => {
+    it('getAssets_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_callback_001';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '666');
       const expectCount = 0;
@@ -188,7 +188,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAssets_callback_003', 2, async (done: Function) => {
+    it('getAssets_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAssets_callback_003';
       await getAssetsAbnormalCallbackTest(done, testNum, undefined);
     });
@@ -201,7 +201,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_000', 0, async (done: Function) => {
+    it('getAssets_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_promise_000';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'getAssetTest.jpg');
       const expectCount = 1;
@@ -215,7 +215,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_001', 0, async (done: Function) => {
+    it('getAssets_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_promise_001';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '666');
       const expectCount = 0;
@@ -229,7 +229,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAssets_promise_003', 2, async (done: Function) => {
+    it('getAssets_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAssets_promise_003';
       await getAssetsAbnormalPromiseTest(done, testNum, undefined);
     });
@@ -243,7 +243,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_callback_004', 0, async (done: Function) => {
+    it('getAssets_callback_004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_callback_004';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;
@@ -258,7 +258,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_004', 0, async (done: Function) => {
+    it('getAssets_promise_004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAssets_promise_004';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;
@@ -273,7 +273,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAssets_callback_005', 2, async (done: Function) => {
+    it('getAssets_callback_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAssets_callback_005';
       await getAssetsAbnormalCallbackWithInvalidTest(done, testNum, "invalid");
     });
@@ -285,7 +285,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAssets_promise_006', 2, async (done: Function) => {
+    it('getAssets_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'getAssets_promise_006';
       await getAssetsAbnormalPromiseWithInvalidTest(done, testNum, "invalid");
     });

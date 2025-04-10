@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper';
 import { common } from '@kit.AbilityKit'
 import {
@@ -82,7 +82,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createImage_promise_000', 0, async (done: Function) => {
+    it('createImage_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createImage_promise_000';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
       const extension = 'jpg';
@@ -100,7 +100,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createImage_promise_001', 0, async (done: Function) => {
+    it('createImage_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createImage_promise_001';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
       const extension = 'jpg';
@@ -115,7 +115,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_003', 2, async (done: Function) => {
+    it('createImage_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_003';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
       const extension = '123';
@@ -133,7 +133,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_005', 2, async (done: Function) => {
+    it('createImage_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_005';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
       const extension = 'jpg';
@@ -151,7 +151,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_006', 2, async (done: Function) => {
+    it('createImage_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_006';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
       const extension = 'jpg';
@@ -167,7 +167,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createVideo_promise_000', 0, async (done: Function) => {
+    it('createVideo_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createVideo_promise_000';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.VIDEO;
       const extension = 'mp4';
@@ -185,7 +185,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createVideo_promise_001', 0, async (done: Function) => {
+    it('createVideo_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createVideo_promise_001';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.VIDEO;
       const extension = 'mp4';
@@ -200,7 +200,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_003', 2, async (done: Function) => {
+    it('createVideo_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_003';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.VIDEO;
       const extension = '123';
@@ -218,7 +218,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_005', 2, async (done: Function) => {
+    it('createVideo_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_005';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.VIDEO;
       const extension = 'mp4';
@@ -236,7 +236,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_006', 2, async (done: Function) => {
+    it('createVideo_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_006';
       const type: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.VIDEO;
       const extension = 'mp4';
@@ -251,7 +251,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("sendable_error_create_asset_mp4_extension_000", 0, async (done: Function) => {
+    it("sendable_error_create_asset_mp4_extension_000", Level.LEVEL0, async (done: Function) => {
       const testNum = "sendable_error_create_asset_mp4_extension_000";
       try {
         let photoType: sendablePhotoAccessHelper.PhotoType = sendablePhotoAccessHelper.PhotoType.IMAGE;
@@ -278,7 +278,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("sendable_error_create_asset_undefined_photoType_001", 0, async (done: Function) => {
+    it("sendable_error_create_asset_undefined_photoType_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "sendable_error_create_asset_undefined_photoType_001";
       try {
         let photoType: sendablePhotoAccessHelper.PhotoType = undefined as ESObject;

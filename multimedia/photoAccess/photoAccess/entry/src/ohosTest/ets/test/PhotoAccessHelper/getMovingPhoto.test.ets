@@ -14,7 +14,7 @@
  */
 
 
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, Level } from "@ohos/hypium";
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { BusinessError } from '@ohos.base';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
@@ -275,7 +275,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_moving_photo_001', 0, async (done: Function) => {
+    it('create_moving_photo_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'create_moving_photo_001';
       await createMovingPhoto(done, testNum);
     });
@@ -287,7 +287,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_0001', 0, async (done: Function) => {
+    it('request_moving_photo_content_0001', Level.LEVEL0, async (done: Function) => {
       const cacelFlag = true;
       const expectFlag = false;
       const case_num = 0;
@@ -305,7 +305,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_0002', 0, async (done: Function) => {
+    it('request_moving_photo_content_0002', Level.LEVEL0, async (done: Function) => {
       const expectFlag = true;
       const testNum = 'request_moving_photo_content_0002';
       const fileList: Array<string> = ["test_picture.jpg"];
@@ -321,7 +321,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_0003', 0, async (done: Function) => {
+    it('request_moving_photo_content_0003', Level.LEVEL0, async (done: Function) => {
       const expectFlag = true;
       const testNum = 'request_moving_photo_content_0003';
       const fileList: Array<string> = ["test_video.mp4"];
@@ -337,7 +337,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_0004', 0, async (done: Function) => {
+    it('request_moving_photo_content_0004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_0004';
       await requestMovingPhotoContent(done, testNum, 3, false);
       done();
@@ -350,7 +350,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_0005', 0, async (done: Function) => {
+    it('request_moving_photo_content_0005', Level.LEVEL0, async (done: Function) => {
       const cacelFlag = false;
       const expectFlag = true;
       const testNum = 'request_moving_photo_content_0005';
@@ -367,7 +367,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_content_0006', 2, async (done: Function) => {
+    it('request_moving_photo_content_0006', Level.LEVEL2, async (done: Function) => {
       const cacelFlag = false;
       const expectFlag = true;
       const testNum = 'request_moving_photo_content_0006';
@@ -382,7 +382,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('load_moving_photo_from_sandbox_001', 0, async (done: Function) => {
+    it('load_moving_photo_from_sandbox_001', Level.LEVEL0, async (done: Function) => {
       imageFileName = "testImage.jpg";
       videoFileName = "testVideo.mp4";
       const testNum = 'load_moving_photo_from_sandbox_001';
@@ -402,7 +402,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('load_moving_photo_from_sandbox_003', 2, async (done: Function) => {
+    it('load_moving_photo_from_sandbox_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'load_moving_photo_from_sandbox_003';
       let imageFileUri: ESObject = ['123123'];
       let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/testVideo.mp4";
@@ -417,7 +417,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('cancel_request_002', 2, async (done: Function) => {
+    it('cancel_request_002', Level.LEVEL2, async (done: Function) => {
       let testNum = 'cancel_request_002';
       try {
           let requestId: ESObject = ['123123'];
@@ -440,7 +440,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_error_0001', 0, async (done: Function) => {
+    it('request_moving_photo_content_error_0001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_error_0001';
       await requestMovingPhotoContent(done, testNum, 4, false);
       await sleep(1000);
@@ -455,7 +455,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_error_0002', 0, async (done: Function) => {
+    it('request_moving_photo_content_error_0002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_error_0002';
       await requestMovingPhotoContent(done, testNum, 5, false);
       await sleep(1000);
@@ -470,7 +470,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_error_0003', 0, async (done: Function) => {
+    it('request_moving_photo_content_error_0003', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_error_0003';
       await requestMovingPhotoContent(done, testNum, 6, false);
       await sleep(1000);
@@ -485,7 +485,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_error_0004', 0, async (done: Function) => {
+    it('request_moving_photo_content_error_0004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_error_0004';
       await requestMovingPhotoContent(done, testNum, 7, false);
       await sleep(1000);
@@ -500,7 +500,7 @@ export default function getMovingPhotoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_error_0005', 0, async (done: Function) => {
+    it('request_moving_photo_content_error_0005', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_error_0005';
       await requestMovingPhotoContent(done, testNum, 8, false);
       await sleep(1000);

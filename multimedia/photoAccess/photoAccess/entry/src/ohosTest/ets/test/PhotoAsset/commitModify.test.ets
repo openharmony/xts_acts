@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption,
@@ -142,7 +142,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_commitModify_callback_000', 0, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_000';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb01.jpg');
       const newTitle = new Date().getTime() + testNum;
@@ -157,7 +157,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_001', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_001', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_001';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb02.jpg');
       let newTitle = '';
@@ -175,7 +175,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_002', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_002', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_002';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb03.jpg');
       let newTitle = '';
@@ -193,7 +193,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_003', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_003', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_003';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb04.jpg');
       const type = 'uri';
@@ -209,7 +209,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_004', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_004', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_004';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb05.jpg');
       const type = 'photoType';
@@ -225,7 +225,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_005', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_005', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_005';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb06.jpg');
       const type = 'displayName';
@@ -245,7 +245,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_006', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_006', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_006';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb07.jpg');
       const type = 'displayName';
@@ -266,7 +266,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('photoAsset_commitModify_callback_007', 0, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_007', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_007';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb01.mp4');
       const newTitle = new Date().getTime() + testNum;
@@ -281,7 +281,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_008', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_008', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_008';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb02.mp4');
       let newTitle = '';
@@ -299,7 +299,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_009', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_009', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_009';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb03.mp4');
       let newTitle = '';
@@ -317,7 +317,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_010', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_010', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_010';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb04.mp4');
       const type = 'uri';
@@ -333,7 +333,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_011', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_011', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_011';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb05.mp4');
       const type = 'photoType';
@@ -349,7 +349,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_012', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_012', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_012';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb046.mp4');
       const type = 'displayName';
@@ -369,7 +369,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_callback_013', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_callback_013', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_callback_013';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb07.mp4');
       const type = 'displayName';
@@ -391,7 +391,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_000', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_000', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_000';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro01.jpg');
       const newTitle = new Date().getTime() + testNum;
@@ -406,7 +406,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_001', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_001', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_001';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro02.jpg');
       let newTitle = '';
@@ -424,7 +424,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_002', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_002', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_002';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro03.jpg');
       let newTitle = '';
@@ -442,7 +442,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_003', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_003', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_003';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro04.jpg');
       const type = 'uri';
@@ -458,7 +458,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_004', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_004', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_004';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro05.jpg');
       const type = 'photoType';
@@ -474,7 +474,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_005', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_005', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_005';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro06.jpg');
       const type = 'displayName';
@@ -494,7 +494,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_006', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_006', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_006';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro07.jpg');
       const type = 'displayName';
@@ -515,7 +515,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_007', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_007', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_007';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro01.mp4');
       const newTitle = new Date().getTime() + testNum;
@@ -530,7 +530,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_008', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_008', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_008';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro02.mp4');
       let newTitle = '';
@@ -548,7 +548,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_009', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_009', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_009';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro03.mp4');
       let newTitle = '';
@@ -566,7 +566,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_010', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_010', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_010';
       const fetchOps:photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro04.mp4');
       const type = 'uri';
@@ -582,7 +582,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_011', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_011', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_011';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro05.mp4');
       const type = 'photoType';
@@ -598,7 +598,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_012', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_012', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_012';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro06.mp4');
       const type = 'displayName';
@@ -618,7 +618,7 @@ export default function commitModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('photoAsset_commitModify_promise_013', 2, async (done:Function)=> {
+    it('photoAsset_commitModify_promise_013', Level.LEVEL2, async (done:Function)=> {
       const testNum = 'photoAsset_commitModify_promise_013';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro07.mp4');
       const type = 'displayName';
