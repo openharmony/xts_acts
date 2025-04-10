@@ -38,7 +38,7 @@ class MySequence implements rpc.Parcelable {
     } catch(e) {
       let error = e as BusinessError;
       console.error(`www data createPixelMapFromParcel error. code is ${error.code}, message is ${error.message}`);
-      expect(Number(error.code) == 629801781).assertTrue();
+      expect(Number(error.code) == 62980178).assertTrue();
       return false;
     }
     return true;
