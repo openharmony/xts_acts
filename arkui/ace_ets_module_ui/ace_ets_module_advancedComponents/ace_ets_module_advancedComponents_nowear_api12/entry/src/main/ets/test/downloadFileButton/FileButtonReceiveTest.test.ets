@@ -1,4 +1,4 @@
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -36,7 +36,7 @@ export default function FileButtonReceiveTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('FileButtonReceiveTest_0100', 0, async (done: Function) => {
+    it('FileButtonReceiveTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[FileButtonReceiveTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
