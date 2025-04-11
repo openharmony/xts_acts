@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -47,7 +47,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0100', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_left');
@@ -57,7 +57,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0100] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0200
@@ -66,7 +65,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0200', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0200 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_top');
@@ -76,7 +75,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0200] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0300
@@ -85,7 +83,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0300', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0300 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_bottom');
@@ -95,7 +93,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0300] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0400
@@ -104,7 +101,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0400', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0400 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderWidth_right');
@@ -114,7 +111,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0400] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0500
@@ -123,7 +119,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0500', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0500 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_left');
@@ -133,7 +129,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0500] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0600
@@ -142,7 +137,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0600', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0600 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_right');
@@ -152,7 +147,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0600] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0700
@@ -161,7 +155,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0700', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0700 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_top');
@@ -171,7 +165,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0700] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0800
@@ -180,7 +173,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0800', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0800 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderColor_bottom');
@@ -190,7 +183,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0800] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_0900
@@ -199,7 +191,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_0900', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_0900 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_left');
@@ -209,7 +201,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_0900] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1000
@@ -218,7 +209,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1000', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1000 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_right');
@@ -228,7 +219,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_1000] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1100
@@ -237,7 +227,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1100', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1100 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_top');
@@ -247,7 +237,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_1100] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1200
@@ -256,7 +245,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1200', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1200', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1200 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderStyle_bottom');
@@ -266,7 +255,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_1200] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1300
@@ -275,7 +263,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1300', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1300', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1300 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_topRight');
@@ -285,7 +273,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_1300] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1400
@@ -294,7 +281,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1400', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1400', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1400 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_topLeft');
@@ -304,7 +291,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_1400] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1500
@@ -313,7 +299,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1500', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1500', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1500 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_bottomLeft');
@@ -323,7 +309,6 @@ export default function RenderNodeAttributeTest() {
       console.info('[RenderNodeAttributeTest_1500] END');
       done();
     });
-
     /**
      * @tc.number    api
      * @tc.name      RenderNodeAttributeTest_1600
@@ -332,7 +317,7 @@ export default function RenderNodeAttributeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RenderNodeAttributeTest_1600', 0, async (done: Function) => {
+    it('RenderNodeAttributeTest_1600', Level.LEVEL0, async (done: Function) => {
       console.info('RenderNodeAttributeTest_1600 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('RenderNodeAttribute_borderRadius_bottomRight');
@@ -344,4 +329,3 @@ export default function RenderNodeAttributeTest() {
     });
   })
 }
-

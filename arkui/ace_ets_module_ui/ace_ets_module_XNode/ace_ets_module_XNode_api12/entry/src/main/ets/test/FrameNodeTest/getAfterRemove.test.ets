@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function getAfterRemove() {
   describe('getAfterRemove', () => {
     beforeEach(async (done: Function) => {
@@ -40,7 +39,6 @@ export default function getAfterRemove() {
       }
       done();
     });
-
     /**
      * @tc.number    getAfterRemove_0100
      * @tc.name      getAfterRemove_0100
@@ -49,7 +47,7 @@ export default function getAfterRemove() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAfterRemove_0100', 0, async (done: Function) => {
+    it('getAfterRemove_0100', Level.LEVEL0, async (done: Function) => {
       console.info('getPosition_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -59,12 +57,10 @@ export default function getAfterRemove() {
       let strJson: string = getInspectorByKey('getPreviousAfterRemoveText');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAfterRemove_0100] component obj is: " + JSON.stringify(obj));
-
       expect(obj.$attrs.content).assertEqual('null');
       console.info('[getAfterRemove_0100] END');
       done();
     });
-
     /**
      * @tc.number    getAfterRemove_0200
      * @tc.name      getAfterRemove_0200
@@ -73,7 +69,7 @@ export default function getAfterRemove() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAfterRemove_0200', 0, async (done: Function) => {
+    it('getAfterRemove_0200', Level.LEVEL0, async (done: Function) => {
       console.info('getAfterRemove_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -83,12 +79,10 @@ export default function getAfterRemove() {
       let strJson: string = getInspectorByKey('getNextAfterRemoveText');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAfterRemove_0200] component obj is: " + JSON.stringify(obj));
-
       expect(obj.$attrs.content).assertEqual('null');
       console.info('[getAfterRemove_0200] END');
       done();
     });
-
     /**
      * @tc.number    getAfterRemove_0300
      * @tc.name      getAfterRemove_0300
@@ -97,7 +91,7 @@ export default function getAfterRemove() {
      * @tc.type :
      * @tc.size :
      */
-    it('getAfterRemove_0300', 0, async (done: Function) => {
+    it('getAfterRemove_0300', Level.LEVEL0, async (done: Function) => {
       console.info('getAfterRemove_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -107,11 +101,9 @@ export default function getAfterRemove() {
       let strJson: string = getInspectorByKey('getParentAfterRemoveText');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[getAfterRemove_0300] component obj is: " + JSON.stringify(obj));
-
       expect(obj.$attrs.content).assertEqual('null');
       console.info('[getAfterRemove_0300] END');
       done();
     });
-
   })
 }
