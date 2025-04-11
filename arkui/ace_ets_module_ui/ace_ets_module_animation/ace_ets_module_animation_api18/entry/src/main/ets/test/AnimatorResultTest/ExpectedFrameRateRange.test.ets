@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
-
 import {
   UiComponent,
   UiDriver,
@@ -31,7 +30,6 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-
 export default function ExpectedFrameRateRange() {
   describe('ExpectedFrameRateRange', () => {
     beforeEach(async (done: Function) => {
@@ -59,12 +57,11 @@ export default function ExpectedFrameRateRange() {
       await CommonFunc.sleep(1000);
       console.info('ExpectedFrameRateRange after each called');
     });
-
     /**
      * @tc.number sExpectedFrameRateRange_001
      * @tc.name testBack
      * @tc.desc test min、 max、expected value
-     * @tc.level Level 0
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
