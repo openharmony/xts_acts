@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,14 @@
  */
 
 {
-  "app": {
-    "bundleName": "com.arkui.ace.animation16",
-    "vendor": "huawei",
-    "versionCode": 1000000,
-    "versionName": "1.0.0",
-    "icon": "$media:icon",
-    "label": "$string:app_name"
-  }
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
+  },
+  "author": "",
+  "name": "com.arkui.ace.animation18",
+  "description": "XTS",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }

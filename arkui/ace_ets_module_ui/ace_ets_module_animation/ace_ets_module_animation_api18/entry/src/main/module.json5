@@ -32,7 +32,7 @@
     ],
     "abilities": [
       {
-        "name": "com.arkui.ace.animation16.EntryAbility",
+        "name": "com.arkui.ace.animation18.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",

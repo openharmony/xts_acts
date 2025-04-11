@@ -46,7 +46,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
             onAbilityCreate: onAbilityCreateCallback,
         };
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a com.arkui.ace.animation16.EntryAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+        var cmd = 'aa start -d 0 -a com.arkui.ace.animation18.EntryAbility' + ' -b ' + abilityDelegatorArguments.bundleName
         var debug = abilityDelegatorArguments.parameters['-D']
         if (debug == 'true')
         {
