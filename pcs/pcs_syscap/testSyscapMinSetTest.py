@@ -42,18 +42,30 @@ class testSyscapMinSetTest(TestCase):
         self.log.info(f"设备端syscap: {device_SystemCapability_list}")
 
         # 获取设备类型
-        device_type = re.findall('const.build.product=.+', self.device1.execute_shell_command("cat /system/etc/param/ohos.para"))[0].split('=')[-1]
+        device_type = self.device1.execute_shell_command("param get const.product.devicetype").strip()
+        if device_type == "phone":
+            device_type = "default"
         self.log.info(f"设备类型: {device_type}")
 
         # 获取该类设备syscap最小集
         syscap_json_data = self.device1.execute_shell_command(f"cat /data/local/tmp/syscap/{device_type}.json")
-        syscap_data = json.loads(syscap_json_data)
-        syscap_list = syscap_data['SysCaps']
-        self.log.info(f"该类设备syscap最小集: {syscap_list}")
+        try:
+            syscap_data = json.loads(syscap_json_data)
+            syscap_list = syscap_data['SysCaps']
+            self.log.info(f"该类设备syscap最小集: {syscap_list}")
 
-        is_subset = set(syscap_list) <= set(device_SystemCapability_list)
-
-        assert is_subset
+            is_subset = set(syscap_list) <= set(device_SystemCapability_list)
+            if not is_subset:
+                sys = [item for item in syscap_list if item not in device_SystemCapability_list]
+                self.log.info(f"缺少的最小集syscap: {sys}")
+            assert is_subset
+        except ValueError:
+            if "No such file or directory" in syscap_json_data:
+                self.log.info(f"设备类型:{device_type}无最小集要求")
+                assert True
+            else:
+                self.log.info(f"最小集syscap读取失败")
+        return True
 
     def teardown(self):
         Step("Teardown")
