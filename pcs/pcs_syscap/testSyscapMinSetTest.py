@@ -65,6 +65,7 @@ class testSyscapMinSetTest(TestCase):
                 assert True
             else:
                 self.log.info(f"最小集syscap读取失败")
+                assert False
         return True
 
     def teardown(self):
