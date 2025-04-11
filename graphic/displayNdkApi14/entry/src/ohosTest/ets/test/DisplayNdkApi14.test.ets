@@ -317,7 +317,7 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_DestroyDisplay_without_create', 0TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
+    it('test_OH_NativeDisplayManager_DestroyDisplay_without_create', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_DestroyDisplay_without_create';
       try{
         let result = testNapi.destroyDisplayWithoutCreate();
