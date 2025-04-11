@@ -27,6 +27,8 @@ import showDialogBackgroundEffectTest from './promptActionTest/showDialogBackgro
 import showDialogBlurStyleOptionsTest from './promptActionTest/showDialogBlurStyleOptions1.test'
 import showDialogCallbackBackgroundEffectTest from './promptActionTest/showDialogBackgroundEffect2.test'
 import showDialogCallbackBlurStyleOptionsTest from './promptActionTest/showDialogBlurStyleOptions2.test'
+import closeToastTest from './promptActionTest/closeToastTest.test'
+import closeDialogTest from './dialog/closeDialogTest.test'
 import showDialogLevelOrder from './dialog/showDialogLevelOrder.test'
 import openCustomDialogLevelOrder from './dialog/openCustomDialogLevelOrder.test'
 import openCustomDialogWithConOrder from './dialog/openCustomDialogWithConOrder.test'
@@ -59,6 +61,8 @@ export default function testsuite() {
     showDialogBlurStyleOptionsTest()
     showDialogCallbackBackgroundEffectTest()
     showDialogCallbackBlurStyleOptionsTest()
+    closeToastTest()
+    closeDialogTest()
     showDialogLevelOrder()
     openCustomDialogLevelOrder()
     openCustomDialogWithConOrder()
