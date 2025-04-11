@@ -38,7 +38,14 @@ async function resetStatus(data: ESObject) {
 }
 
 async function eventResult(data: ESObject, expectationValue: ESObject) {
-  await Utils.sleep(1000);
+  if (
+      data.pageConfig.targetView == "TextInput" ||
+      data.pageConfig.targetView == "TextArea"
+      ) {
+        await Utils.sleep(4000)
+      } else {
+        await Utils.sleep(1000)
+      }
   let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
   console.info('[' + data.caseTag + ']' + 'content is:' + referenceComponent.$attrs.content);
   if ('' == expectationValue) {
@@ -253,14 +260,6 @@ export default function responseRegionTest() {
       let secondOffsetHeight = 0;
       //Calculate offset and hot zone width and height
       if ('SetNumber' == data.testValue.describe) {
-        if (
-        data.pageConfig.targetView == "TextInput" ||
-        data.pageConfig.targetView == "TextArea"
-        ) {
-        await Utils.sleep(4000)
-        } else {
-        await Utils.sleep(1000)
-        }
         offsetX = vp2px(data.testValue.setValue.x);
         offsetY = vp2px(data.testValue.setValue.y);
         offsetWidth = vp2px(data.testValue.setValue.width);
