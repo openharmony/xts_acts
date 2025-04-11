@@ -75,9 +75,9 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_3() {
     *@tc.desc test SdkSchemeHandler didFail code -341
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level Level 1
+    *@tc.level Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative341', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative341', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative341"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative341", 'success', 11341, done);

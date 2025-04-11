@@ -57,9 +57,9 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.desc test isIncognitoMode true
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebViewIncognitoMode01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewIncognitoMode01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode01'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode01', 'success', 8019, done);

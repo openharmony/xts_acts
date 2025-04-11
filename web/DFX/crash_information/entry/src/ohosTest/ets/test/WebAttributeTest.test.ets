@@ -52,9 +52,9 @@ export default function webAttributeTest() {
     * @tc.desc        : test onRenderExited RenderExitReason.ProcessCrashed
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnRenderExited001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnRenderExited001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnRenderExited", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnRenderExited001", RenderExitReason.ProcessCrashed, 60106, done);
