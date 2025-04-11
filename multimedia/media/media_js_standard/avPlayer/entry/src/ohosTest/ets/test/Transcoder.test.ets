@@ -16,7 +16,7 @@
 import MediaTestBase, { FdObject } from './MediaTestBase';
 import * as AVPlayerTestBase from './AVPlayerTestBase';
 import media from '@ohos.multimedia.media';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -329,7 +329,7 @@ export default function AVTransCoderTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_AVTANSCODER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVTANSCODER_0100', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_AVTANSCODER_0100 start');
       outputName = resourceName();
       pauseProgress = 30;
@@ -361,7 +361,7 @@ export default function AVTransCoderTest() {
     * @tc.type      : Function test
     * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_AVTANSCODER_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVTANSCODER_0200', Level.LEVEL0,async (done: Function) => {
       console.info('SUB_MULTIMEDIA_AVTANSCODER_0200 start');
       outputName = resourceName();
       pauseProgress = 30;

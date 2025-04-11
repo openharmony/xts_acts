@@ -15,7 +15,7 @@
 
 import NewMediaTestBase from './MediaTestBase';
 import { playAudioSource } from './AudioPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 const PLAY_TIME = 3000;
 let isToSeek = false;
@@ -54,7 +54,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0100', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('01.mp3', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -73,7 +73,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0200', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('02.mp3', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -92,7 +92,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0300', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('03.mp3', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -111,7 +111,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0400', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('04.mp3', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -130,7 +130,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0100', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('47.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -149,7 +149,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0300', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('49.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -168,7 +168,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0400', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('50.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -187,7 +187,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0500', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('51.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -206,7 +206,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0600', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('54.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -225,7 +225,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0700', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('64.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -244,7 +244,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0800', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('65.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -263,7 +263,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_0900', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('66.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -282,7 +282,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1000', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('67.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -301,7 +301,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1100', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('92.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -320,7 +320,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1200', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('93.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -339,7 +339,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1300', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('94.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -358,7 +358,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1400', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('96.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -377,7 +377,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1500', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('97.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -396,7 +396,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP4_1600', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('98.mp4', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -415,7 +415,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0100', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('55.m4a', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -434,7 +434,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0300', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('57.m4a', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -453,7 +453,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0400', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('58.m4a', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -472,7 +472,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0500', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('59.m4a', done).then((testNumber) => {
         fdNumber = testNumber;
       });
@@ -491,7 +491,7 @@ export default function PlayerLocalTestAudioFormat() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_M4A_0700', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFdRead('62.m4a', done).then((testNumber) => {
         fdNumber = testNumber;
       });

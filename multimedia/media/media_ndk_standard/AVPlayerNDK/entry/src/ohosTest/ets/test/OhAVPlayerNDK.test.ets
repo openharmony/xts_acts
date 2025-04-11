@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import avplayer from 'libavplayerndk.so'
 import fs from '@ohos.file.fs'
@@ -129,7 +129,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerPrepare001', 0, async (done: Function) => {
+    it('testOhAvPlayerPrepare001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerPrepare001 test start `);
       try {
         let player: number = await avplayer.OhAvPlayerPrepare();
@@ -150,7 +150,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetDuration001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetDuration001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetDuration001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -175,7 +175,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerPlay001', 0, async (done: Function) => {
+    it('testOhAvPlayerPlay001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetDuration001 test start `);
       try {
         let re: number = await avplayer.OhAvPlayerPrepare();
@@ -203,7 +203,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerIsPlaying001', 0, async (done: Function) => {
+    it('testOhAvPlayerIsPlaying001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetDuration001 test start `);
       try {
         let re: number = await avplayer.OhAvPlayerPrepare();
@@ -234,7 +234,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerPause001', 0, async (done: Function) => {
+    it('testOhAvPlayerPause001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerPause001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -263,7 +263,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetState001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetState001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetState001 test start `);
       try {
         let state : number = await avplayer.OhAvPlayerGetState();
@@ -284,7 +284,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetPlaybackSpeed001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetPlaybackSpeed001 test start `);
       try {
         let re : number = await avplayer.OhAvPlayerGetPlaybackSpeed();
@@ -305,7 +305,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerIsLooping001', 0, async (done: Function) => {
+    it('testOhAvPlayerIsLooping001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerIsLooping001 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerIsLooping();
@@ -326,7 +326,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetCurrentTrack001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetCurrentTrack001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetCurrentTrack001 test start `);
       try {
         let re : number = await avplayer.OhAvPlayerGetCurrentTrack();
@@ -347,7 +347,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetVideoHeight001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetVideoHeight001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetVideoHeight001 test start `);
       try {
         let re : number = await avplayer.OhAvPlayerGetVideoHeight();
@@ -368,7 +368,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetVideoWidth001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetVideoWidth001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetVideoWidth001 test start `);
       try {
         let re : number = await avplayer.OhAvPlayerGetVideoWidth();
@@ -389,7 +389,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerDeselectTrack001', 0, async (done: Function) => {
+    it('testOhAvPlayerDeselectTrack001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerDeselectTrack001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -414,7 +414,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerDeselectTrack002', 0, async (done: Function) => {
+    it('testOhAvPlayerDeselectTrack002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerDeselectTrack002 test start `);
       try {
         let re : number = await avplayer.OhAvPlayerDeselectTrack();
@@ -435,7 +435,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerReset001', 0, async (done: Function) => {
+    it('testOHAVPlayerReset001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerReset001 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerReset();
@@ -459,7 +459,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSeek001', 0, async (done: Function) => {
+    it('testOHAVPlayerSeek001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSeek001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -484,7 +484,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSeek002', 0, async (done: Function) => {
+    it('testOHAVPlayerSeek002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSeek002 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -509,7 +509,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerGetCurrentTime001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetCurrentTime001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetCurrentTime001 test start `);
       try {
         let result : number = await avplayer.OhAvPlayerPrepare();
@@ -537,7 +537,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectBitRate001', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectBitRate001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectBitRate001 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSelectBitRate(0);
@@ -558,7 +558,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectBitRate002', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectBitRate002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectBitRate002 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -583,7 +583,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectBitRate003', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectBitRate003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectBitRate003 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSelectBitRate(100);
@@ -604,7 +604,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectBitRate004', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectBitRate004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectBitRate004 test start `);
       try {
         let player: number = await avplayer.OhAvPlayerPrepare();
@@ -630,7 +630,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectBitRate005', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectBitRate005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectBitRate005 test start `);
       try {
         let player: number = await avplayer.OhAvPlayerPrepare();
@@ -656,7 +656,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectTrack001', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectTrack001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectTrack001 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSelectTrack(-1);
@@ -677,7 +677,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectTrack002', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectTrack002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectTrack002 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -702,7 +702,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectTrack003', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectTrack003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectTrack003 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -727,7 +727,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectTrack004', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectTrack004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectTrack004 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -752,7 +752,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSelectTrack005', 0, async (done: Function) => {
+    it('testOHAVPlayerSelectTrack005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSelectTrack005 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -777,7 +777,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetLooping001', 0, async (done: Function) => {
+    it('testOHAVPlayerSetLooping001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSetLooping001 test start `);
       try {
         let player: number = await avplayer.OhAvPlayerSetLooping(1);
@@ -798,7 +798,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetLooping002', 0, async (done: Function) => {
+    it('testOHAVPlayerSetLooping002', Level.LEVEL0,async (done: Function) => {
        console.info(`testOHAVPlayerSetLooping002 test start `);
       try {
         let player: number = await avplayer.OhAvPlayerSetLooping(0);
@@ -819,7 +819,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlayerCallback001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlayerCallback001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlayerCallback001 test start `);
       try {
         let player: number = await avplayer.OhAvPlayerSetPlayerCallback();
@@ -840,7 +840,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetPlaybackSpeed001', 0, async (done: Function) => {
+    it('testOHAVPlayerSetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSetPlaybackSpeed001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -865,7 +865,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetPlaybackSpeed002', 0, async (done: Function) => {
+    it('testOHAVPlayerSetPlaybackSpeed002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSetPlaybackSpeed002 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -890,7 +890,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetPlaybackSpeed003', 0, async (done: Function) => {
+    it('testOHAVPlayerSetPlaybackSpeed003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSetPlaybackSpeed003 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -915,7 +915,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetPlaybackSpeed004', 0, async (done: Function) => {
+    it('testOHAVPlayerSetPlaybackSpeed004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSetPlaybackSpeed004 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -940,7 +940,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHAVPlayerSetPlaybackSpeed005', 0, async (done: Function) => {
+    it('testOHAVPlayerSetPlaybackSpeed005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOHAVPlayerSetPlaybackSpeed005 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
@@ -965,7 +965,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVideoSurface001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVideoSurface001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVideoSurface001 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSetVideoSurface();
@@ -986,7 +986,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume001 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSetVolume(10, 0);
@@ -1007,7 +1007,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume002', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume002 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSetVolume(30, 40);
@@ -1028,7 +1028,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume003', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume003 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSetVolume(50, 60);
@@ -1049,7 +1049,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume004', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume004 test start `);
       try {
         let player : number = await avplayer.OhAvPlayerSetVolume(80, 90);
@@ -1070,7 +1070,7 @@ export default function OhAVPlayerNDKTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerStop001', 0, async (done: Function) => {
+    it('testOhAvPlayerStop001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerStop001 test start `);
       try {
         await avplayer.OhAvPlayerPrepare();
