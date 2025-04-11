@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import pipWindow from '@ohos.PiPWindow';
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
@@ -61,9 +61,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationDefaultArgs
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationDefaultArgs', 0, (done: Function) => {
+    it('testPresentationDefaultArgs', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestPresentationDefaultArgs';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -95,9 +95,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationEnterImmersive
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationEnterImmersive', 0, (done: Function) => {
+    it('testPresentationEnterImmersive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestPresentationEnterImmersive';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -129,9 +129,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationExitImmersive
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationExitImmersive', 0, async (done: Function) => {
+    it('testPresentationExitImmersive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationExitImmersive';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -165,9 +165,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInWindowLayoutFullScreenTrue
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInWindowLayoutFullScreenTrue', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInWindowLayoutFullScreenTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInWindowLayoutFullScreenTrue';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -208,9 +208,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInWindowLayoutFullScreenFalse
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInWindowLayoutFullScreenFalse', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInWindowLayoutFullScreenFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInWindowLayoutFullScreenFalse';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -245,9 +245,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInLayoutFullScreenTrue
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInLayoutFullScreenTrue', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInLayoutFullScreenTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInLayoutFullScreenTrue';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -282,9 +282,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInLayoutFullScreenFalse
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInLayoutFullScreenFalse', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInLayoutFullScreenFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInLayoutFullScreenFalse';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -319,9 +319,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInSetImmersiveModeTrue
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInSetImmersiveModeTrue', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInSetImmersiveModeTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInSetImmersiveModeTrue';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -362,9 +362,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInSetImmersiveModeFalse
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInSetImmersiveModeFalse', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInSetImmersiveModeFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInSetImmersiveModeFalse';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -399,9 +399,9 @@ export default function windowMaximizeTest() {
      * @tc.desc      : test the function of testPresentationFollowAppImmersiveInMaximize
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('testPresentationFollowAppImmersiveInMaximize', 0, async (done: Function) => {
+    it('testPresentationFollowAppImmersiveInMaximize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'TestPresentationFollowAppImmersiveInMaximize';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -437,9 +437,9 @@ export default function windowMaximizeTest() {
     * @tc.desc      : testSetTitleAndDockHoverShow_subWindow_1300004
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 3
     */
-    it('testSetTitleAndDockHoverShow_subWindow_1300004', 2, async (done: Function) => {
+    it('testSetTitleAndDockHoverShow_subWindow_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetTitleAndDockHoverShow_subWindow_1300004';
       try {
         let subWindow = windowStage.createSubWindow("testSetTitleAndDockHoverShow_subWindow_1300004");
@@ -494,9 +494,9 @@ export default function windowMaximizeTest() {
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_hide_1
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_1', 2, async (done: Function) => {
+    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetTitleAndDockHoverShow_Title_show_dock_hide_1';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -546,9 +546,9 @@ export default function windowMaximizeTest() {
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_hide_2
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_2', 2, async (done: Function) => {
+    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetTitleAndDockHoverShow_Title_show_dock_hide_2';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -598,9 +598,9 @@ export default function windowMaximizeTest() {
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_hide_3
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_3', 2, async (done: Function) => {
+    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetTitleAndDockHoverShow_Title_show_dock_hide_3';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -650,9 +650,9 @@ export default function windowMaximizeTest() {
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_1
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_1', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_1';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -703,9 +703,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_1', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_2
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_2', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_2';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -736,9 +736,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_2', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_3
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_3', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_3';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -782,9 +782,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_3', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_4
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_4', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_4';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -827,9 +827,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_4', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_5
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_5', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_5';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -873,9 +873,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_5', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_show_1
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_show_dock_show_1';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -925,9 +925,9 @@ it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_show_2
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_show_dock_show_1';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -977,9 +977,9 @@ it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_show_2
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_show_dock_show_2', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_show_dock_show_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_show_dock_show_2';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -1029,9 +1029,9 @@ it('testSetTitleAndDockHoverShow_Title_show_dock_show_2', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_show
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_show', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_show', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_show';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -1082,9 +1082,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_show', 2, async (done: Function
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_show_1
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_show_1', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_show_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_show_1';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -1134,9 +1134,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_show_1', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_show_2
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_dock_show_2', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_dock_show_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_show_2';
   try {
     let windowClass = windowStage.getMainWindowSync();
@@ -1187,9 +1187,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_dock_show_2', 2, async (done: Functi
         * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_status
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 3
     */
-it('testSetTitleAndDockHoverShow_Title_hide_status', 2, async (done: Function) => {
+it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetTitleAndDockHoverShow_Title_hide_status';
   try {
     let windowClass = windowStage.getMainWindowSync();

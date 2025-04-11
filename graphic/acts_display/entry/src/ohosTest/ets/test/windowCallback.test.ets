@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect , TestType, Size, Level} from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
@@ -62,9 +62,9 @@ export default function windowCallbackTest() {
      * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testGetCutoutInfo_Callbcak', 0, async (done: Function) => {
+    it('testGetCutoutInfo_Callbcak', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testGetCutoutInfo_Callbcak';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
@@ -85,9 +85,9 @@ export default function windowCallbackTest() {
      * @tc.desc      : Test the enumeration value of Orientation
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('testOrientation_Enum', 0, async (done: Function) => {
+    it('testOrientation_Enum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testOrientation_Enum';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -111,9 +111,9 @@ export default function windowCallbackTest() {
      * @tc.desc      : Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testGetCutoutInfo_Promise', 0, async (done: Function) => {
+    it('testGetCutoutInfo_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testGetCutoutInfo_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));

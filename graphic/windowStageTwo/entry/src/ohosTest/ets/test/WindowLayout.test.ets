@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level} from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
@@ -57,7 +57,7 @@ export default function windowLayoutTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setFollowParentMultiScreenPolicy_401', 3, async (done: Function) => {
+    it('test_setFollowParentMultiScreenPolicy_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setFollowParentMultiScreenPolicy_401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -97,7 +97,7 @@ export default function windowLayoutTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setFollowParentMultiScreenPolicy_1300002', 3, async (done: Function) => {
+    it('test_setFollowParentMultiScreenPolicy_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setFollowParentMultiScreenPolicy_1300002";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -136,7 +136,7 @@ export default function windowLayoutTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setFollowParentMultiScreenPolicy_mainWindow_1300004', 3, async (done: Function) => {
+    it('test_setFollowParentMultiScreenPolicy_mainWindow_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setFollowParentMultiScreenPolicy_mainWindow_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -174,7 +174,7 @@ export default function windowLayoutTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setFollowParentMultiScreenPolicy_dialogWindow_1300004', 3, async (done: Function) => {
+    it('test_setFollowParentMultiScreenPolicy_dialogWindow_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setFollowParentMultiScreenPolicy_dialogWindow_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -218,7 +218,7 @@ export default function windowLayoutTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_subWindow_setFollowParentMultiScreenPolicy_true', 3, async (done: Function) => {
+    it('test_subWindow_setFollowParentMultiScreenPolicy_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "test_subWindow_setFollowParentMultiScreenPolicy_true";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -260,7 +260,7 @@ export default function windowLayoutTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_subWindow_setFollowParentMultiScreenPolicy_false', 3, async (done: Function) => {
+    it('test_subWindow_setFollowParentMultiScreenPolicy_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "test_subWindow_setFollowParentMultiScreenPolicy_false";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
