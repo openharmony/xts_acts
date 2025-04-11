@@ -14,7 +14,6 @@
  */
 import { BusinessError } from '@kit.BasicServicesKit';
 import { promptAction } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct openCustomDialog1 {
@@ -25,22 +24,10 @@ struct openCustomDialog1 {
       Text('弹窗').fontSize(30)
       Row({ space: 50 }) {
         Button('确认').onClick(() => {
-          try {
-            promptAction.closeCustomDialog(this.customDialogComponentId)
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
-          }
+          promptAction.closeCustomDialog(this.customDialogComponentId)
         })
         Button('取消').onClick(() => {
-          try {
-            promptAction.closeCustomDialog(this.customDialogComponentId)
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
-          }
+          promptAction.closeCustomDialog(this.customDialogComponentId)
         })
       }
     }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)

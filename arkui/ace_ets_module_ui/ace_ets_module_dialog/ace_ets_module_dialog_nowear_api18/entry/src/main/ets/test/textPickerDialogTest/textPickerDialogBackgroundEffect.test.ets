@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeEach, it, expect, TestType, Size, Level } from '@ohos/hypium';
-import { Driver, ON, } from '@ohos.UiTest';
+import { Driver, ON, Component} from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 
@@ -64,7 +64,8 @@ export default function textPickerDialogBackgroundEffectTest() {
       expect(JSON.parse(date).$attrs.backgroundEffect.options.brightness).assertEqual(2);
       expect(JSON.parse(date).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#FF0000FF');
       expect(JSON.parse(date).$attrs.backgroundEffect.options.blurOption).assertEqual('[20.000000,20.000000]');
-      await btn.click();
+      let btn1: Component = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -98,7 +99,8 @@ export default function textPickerDialogBackgroundEffectTest() {
       expect(JSON.parse(date).$attrs.backgroundEffect.options.brightness).assertEqual(1);
       expect(JSON.parse(date).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#00000000');
       expect(JSON.parse(date).$attrs.backgroundEffect.options.blurOption).assertEqual('[0,0]');
-      await btn.click();
+      let btn1: Component = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -132,7 +134,8 @@ export default function textPickerDialogBackgroundEffectTest() {
       expect(JSON.parse(date).$attrs.backgroundEffect.options.brightness).assertEqual(1);
       expect(JSON.parse(date).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#00000000');
       expect(JSON.parse(date).$attrs.backgroundEffect.options.blurOption).assertEqual('[0,0]');
-      await btn.click();
+      let btn1: Component = await driver.findComponent(ON.text('确定'));
+      await btn1?.click();
       await Utils.sleep(1000);
       console.info('[' + tagName + '] END ===========================');
       done();
