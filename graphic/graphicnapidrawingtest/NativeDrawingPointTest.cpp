@@ -42,7 +42,7 @@ void NativeDrawingPointTest::TearDown() {}
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingPointTest, NativeDrawingPointTest_PointGetAndSet001, TestSize.Level1)
+HWTEST_F(NativeDrawingPointTest, NativeDrawingPointTest_PointGetAndSet001, Function | MediumTest | Level1)
 {
     OH_Drawing_Point* centerPt = OH_Drawing_PointCreate(0, 0);
     EXPECT_EQ(OH_Drawing_PointSet(nullptr, 150, 250), OH_DRAWING_ERROR_INVALID_PARAMETER);
