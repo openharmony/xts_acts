@@ -97,6 +97,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_0200 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_0200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -141,6 +142,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_0300 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_0300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -185,6 +187,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_0400 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_0400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -229,6 +232,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_0500 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_0500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -273,6 +277,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_0600 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_0600 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -317,6 +322,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_0700 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_0700 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -361,6 +367,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1000 end`);
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_1000 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -427,6 +434,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
+            await sleepTime(2000);
 
             console.info(`FMS_acquireForm_1100 featureAbility.startAbility start`);
             await featureAbility.startAbility({
@@ -492,6 +500,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_1200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -552,6 +561,7 @@ export default function test() {
                 }
 
                 commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1400 featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -581,6 +591,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_1400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -651,6 +662,7 @@ export default function test() {
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_1500"))
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBackCache);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1500 featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -681,6 +693,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
+            await sleepTime(2000);
 
             console.info(`FMS_acquireForm_1500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
@@ -756,6 +769,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1600_Temp2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp2);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_Temp2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -806,6 +820,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1600_Temp1 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp1);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_Temp1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -856,6 +871,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1600_normal2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal2);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_normal2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -903,6 +919,7 @@ export default function test() {
             let FMS_acquireForm_1600_normal1 = async () => {
                 console.info(`FMS_acquireForm_1600_normal1 start`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal1);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_normal1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -977,7 +994,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1800_Temp2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp2);
-
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_Temp2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1027,6 +1044,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1800_Temp1 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp1);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_Temp1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1076,7 +1094,7 @@ export default function test() {
                 console.info(`FMS_acquireForm_1800_normal2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal2);
-
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_normal2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1126,7 +1144,7 @@ export default function test() {
             let FMS_acquireForm_1800_normal1 = async() => {
                 console.info(`FMS_acquireForm_1800_normal1 start`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal1);
-
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_normal1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1195,6 +1213,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_1900 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1255,6 +1274,7 @@ export default function test() {
                     formId = data.data;
                 }
                 commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_2100 featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1283,6 +1303,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_2100 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1331,6 +1352,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberCast, onCastCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_2200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1381,6 +1403,7 @@ export default function test() {
                 });
             }
             commonEvent.subscribe(subscriberCast, onCastCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_2300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1436,6 +1459,7 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_2400"))
                 commonEvent.subscribe(subscriberCast, onCastCallBack);
+                await sleepTime(2000);
                 console.info(`FMS_acquireForm_2400 featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1466,6 +1490,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_2400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1514,6 +1539,7 @@ export default function test() {
                 });
             }
             commonEvent.subscribe(subscriberCast, onCastCallBack);
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_2500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1603,7 +1629,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             commonEvent.subscribe(subscriberCast, onCastCallBack);
-
+            await sleepTime(2000);
             console.info(`FMS_acquireForm_2600 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
