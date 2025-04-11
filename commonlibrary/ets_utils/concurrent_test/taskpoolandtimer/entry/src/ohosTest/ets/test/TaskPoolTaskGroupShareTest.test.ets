@@ -70,9 +70,9 @@ export default function taskPoolTaskShareTest() {
      * @tc.desc test Loop through 10 taskpool threads, passing index into the task each time, using new promise in the task, promise callback in the new promise, The evaluation function in the shared module is called in the then callback of the await promise (computed using the passed index) and the result of the evaluation function is returned
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('taskPoolTaskShareTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskShareTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
         const task = new taskpool.Task(promiseThen, i);
@@ -95,9 +95,9 @@ export default function taskPoolTaskShareTest() {
      * @tc.desc test Loop through 10 taskpool threads, passing index into the task each time, await calls to the async evaluation function in the shared module in the task (computed using the passed index) Use await new promise and await promise callback in turn in the evaluation function, The calculation is performed in the then callback of await new promise and await promise respectively, and the result of the calculation of the function is computed by return
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('taskPoolTaskShareTest_0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('taskPoolTaskShareTest_0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       const taskPromises: Promise<void>[] = [];
       for (let i = 0; i < TASK_COUNT; i++) {
         const task = new taskpool.Task(awaitCompute, i);

@@ -24,9 +24,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -45,9 +45,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -66,9 +66,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0003";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -87,9 +87,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \u260e
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0004";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -108,9 +108,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0005";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -129,9 +129,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0006";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -150,9 +150,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83c\udf4f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0007";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -171,9 +171,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0008";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -192,9 +192,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0009";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -213,9 +213,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \u2666
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0010";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -234,9 +234,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83d\udc48
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0011";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -255,9 +255,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Append with input emoji \ud83e\udd3c\u200d\u2642\ufe0f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLAppendEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLAppendEmoji0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLAppendEmoji0012";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
@@ -276,9 +276,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Delete9+ with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLDelete9Emoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLDelete9Emoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLDelete9Emoji0001";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\ud83d\ude0a=1&bard=2');
@@ -297,9 +297,9 @@ export default function Url_Emoji_append_get() {
      * @tc.desc       : Testing the Url interface Delete9+ with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUrLDelete9Emoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUrLDelete9Emoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUrLDelete9Emoji0002";
       try {
         let urlObject = url.URL.parseURL('https://developer.exampleUrl/?\ud83d\udc64=1&bard=2');

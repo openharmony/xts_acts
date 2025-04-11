@@ -21,7 +21,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an LinkedList instance. For example: let linkedList = new LinkedList().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let linkedList = new LinkedList();
     } catch (err) {
@@ -35,7 +35,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add("四").
    */
-  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("四");
     let res = linkedList.get(0);
@@ -46,7 +46,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add(8).
    */
-  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add(8);
     let res = linkedList.get(0);
@@ -58,7 +58,7 @@ describe("LinkedListTest", function () {
    * @tc.desc: Add a element to the end of the LinkedList instance. 
    * For example: let a = [1, 2, 3, 4];linkedList.add(a).
    */
-  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = [1, 2, 3, 4];
     linkedList.add(a);
@@ -71,7 +71,7 @@ describe("LinkedListTest", function () {
    * @tc.desc: Add a element to the end of the LinkedList instance. 
    * For example: let a = {name: "lala", age: "13"};linkedList.add(a).
    */
-  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = {name: "lala", age: "13"};
     linkedList.add(a);
@@ -83,7 +83,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd006
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = ".";linkedList.add(a).
    */
-  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = ".";
     linkedList.add(a);
@@ -95,7 +95,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd007
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "*";linkedList.add(a).
    */
-  it("testAdd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = "*";
     linkedList.add(a);
@@ -107,7 +107,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd008
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "/";linkedList.add(a).
    */
-  it("testAdd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = '/"';
     linkedList.add(a);
@@ -119,7 +119,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd009
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "";linkedList.add(a).
    */
-  it("testAdd009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = "";
     linkedList.add(a);
@@ -131,7 +131,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd010
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "a";linkedList.add(a).
    */
-  it("testAdd010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let a = "a";
     linkedList.add(a);
@@ -146,7 +146,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testHas011
    * @tc.desc: Check whether the LinkedList contains a specified element. For example: linkedList.has("a").
    */
-  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -161,7 +161,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testClone012
    * @tc.desc: Clone an LinkedList instance. For example: linkedList.clone().
    */
-  it("testClone012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testClone012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -184,7 +184,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testAddFirst013
    * @tc.desc: Add element to LinkedList instance header. For example: linkedList.addFirst("e").
    */
-  it("testAddFirst013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAddFirst013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -198,7 +198,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemoveFirst014
    * @tc.desc: Delete the header element of a LinkedList instance. For example: linkedList.removeFirst().
    */
-  it("testRemoveFirst014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveFirst014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -221,7 +221,7 @@ describe("LinkedListTest", function () {
    * and return the index found for the first time. If not found, return -1.
    * For example: linkedList.getLastIndexOf("a").
    */
-  it("testGetLastIndexOf015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLastIndexOf015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -239,7 +239,7 @@ describe("LinkedListTest", function () {
    * and return the index found for the first time. If not found, return -1. 
    * For example: linkedList.getLastIndexOf("f").
    */
-  it("testGetLastIndexOf016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLastIndexOf016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -257,7 +257,7 @@ describe("LinkedListTest", function () {
    * and return the index found for the first time. If not found, return -1. 
    * For example: linkedList.getIndexOf("b").
    */
-  it("testGetIndexOf017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOf017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -275,7 +275,7 @@ describe("LinkedListTest", function () {
    * and return the index found for the first time. If not found, return -1. 
    * For example: linkedList.getIndexOf("f").
    */
-  it("testGetIndexOf018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetIndexOf018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -292,7 +292,7 @@ describe("LinkedListTest", function () {
    * @tc.desc: In the linkedList instance, delete the element based on its index. 
    * For example: linkedList.removeByIndex(2).
    */
-  it("testRemoveByIndex019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveByIndex019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -315,7 +315,7 @@ describe("LinkedListTest", function () {
    * @tc.desc: In the linkedList instance, delete the element based on its subscript index. 
    * For example: linkedList.removeByIndex(10).
    */
-  it("testRemoveByIndex020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveByIndex020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -336,7 +336,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemove021
    * @tc.desc: Delete the specified element. For example: linkedList.remove("a").
    */
-  it("testRemove021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -358,7 +358,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemove022
    * @tc.desc: Delete the specified element. For example: linkedList.remove("d").
    */
-  it("testRemove022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -373,7 +373,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemove023
    * @tc.desc: Delete the specified element. For example: linkedList.remove("d").
    */
-  it("testRemove023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     let res = linkedList.remove("d");
     expect(res).assertEqual(false);
@@ -383,7 +383,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemoveFirstFound024
    * @tc.desc: Delete the specified element found for the first time. For example: linkedList.removeFirstFound("b").
    */
-  it("testRemoveFirstFound024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveFirstFound024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -405,7 +405,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemoveLastFound025
    * @tc.desc: Delete the specified element found for the last time. For example: linkedList.removeLastFound("b").
    */
-  it("testRemoveLastFound025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemoveLastFound025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -427,7 +427,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testGetFirst026
    * @tc.desc: Get the header element of the linkedList instance. For example: linkedList.getFirst().
    */
-  it("testGetFirst026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetFirst026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -442,7 +442,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testGetLast027
    * @tc.desc: Get the end element of the linkedList instance. For example: linkedList.getLast().
    */
-  it("testGetLast027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testGetLast027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -457,7 +457,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testInsert028
    * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert(3, "d").
    */
-  it("testInsert028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsert028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");
@@ -479,7 +479,7 @@ describe("LinkedListTest", function () {
    * @tc.name: testInsert029
    * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert(0, "d").
    */
-  it("testInsert029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testInsert029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let linkedList = new LinkedList();
     linkedList.add("a");
     linkedList.add("b");

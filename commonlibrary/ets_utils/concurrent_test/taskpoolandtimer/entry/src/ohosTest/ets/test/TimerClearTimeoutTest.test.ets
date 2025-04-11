@@ -48,9 +48,9 @@ export default function clearTimeoutTest() {
      * @tc.desc test ClearTimeout an ID that has not yet been executed
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('clearTimeoutTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('clearTimeoutTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       const caseName = 'clearTimeoutTest0100';
       console.info(`${caseName} test start`);
       const timerId = setTimeout(() => {

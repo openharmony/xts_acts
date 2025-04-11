@@ -49,9 +49,9 @@ export default function QueueTest() {
      * @tc.desc       : Testing Queue add by number index.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testQueueAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testQueueAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testQueueAdd0001";
       try {
         let queue: Queue<number> = new Queue();
@@ -69,9 +69,9 @@ export default function QueueTest() {
      * @tc.desc       : Testing Queue add by string index.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testQueueAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testQueueAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testQueueAdd0002";
       try {
         let queue: Queue<string> = new Queue();
@@ -89,9 +89,9 @@ export default function QueueTest() {
      * @tc.desc       : Testing Queue add by object index.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testQueueAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testQueueAdd0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testQueueAdd0003";
       try {
         let queue: Queue<object> = new Queue();

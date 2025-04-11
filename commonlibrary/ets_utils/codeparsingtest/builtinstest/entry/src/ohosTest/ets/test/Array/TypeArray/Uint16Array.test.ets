@@ -59,9 +59,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0001";
       try {
         let array = new Uint16Array();
@@ -78,9 +78,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0002";
       try {
         let array = new Uint16Array(0);
@@ -98,9 +98,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0003";
       try {
         let array = new Uint16Array(10);
@@ -118,9 +118,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0004";
       try {
         let array = new Uint16Array(10);
@@ -138,9 +138,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0005";
       try {
         let array = new Uint16Array(10);
@@ -157,9 +157,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with 'q',and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0006";
       try {
         const array = Constants.uint16ConstructTestArray1;
@@ -176,9 +176,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with '56',and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0007";
       try {
         const array = Constants.uint16ConstructTestArray2;
@@ -196,9 +196,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with array[21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0008";
       try {
         let array = new Uint16Array([21, 31]);
@@ -215,9 +215,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with array[21,31],and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0009";
       try {
         let array = new Uint16Array([21, 31]);
@@ -234,9 +234,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with array[21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0010";
       try {
         let array = new Uint16Array([21, 31]);
@@ -253,9 +253,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with array[21,31],and set value of index 10,get value of index 10.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0011";
       try {
         let array = new Uint16Array([21, 31]);
@@ -273,9 +273,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with Uint16Array which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0012";
       try {
         let array = new Uint16Array(new Uint16Array([21, 31]));
@@ -292,9 +292,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with Uint16Array which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0013";
       try {
         let array = new Uint16Array(new Uint16Array([21, 31]));
@@ -311,9 +311,9 @@ export default function Uint16ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint16Array with Uint16Array which construct by array [21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint16ArrayConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint16ArrayConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint16ArrayConstructor0014";
       try {
         let array = new Uint16Array(new Uint16Array([21, 31]));

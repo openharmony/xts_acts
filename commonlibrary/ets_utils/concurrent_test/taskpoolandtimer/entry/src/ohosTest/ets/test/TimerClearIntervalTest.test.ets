@@ -45,9 +45,9 @@ export default function TimerClearIntervalTest() {
      * @tc.desc test ClearInterval
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('TimerClearIntervalTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TimerClearIntervalTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let count: number = 0;
       const timeoutID = setInterval(() => {
         count += 1;
@@ -65,9 +65,9 @@ export default function TimerClearIntervalTest() {
      * @tc.desc test ClearInterval
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('TimerClearIntervalTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('TimerClearIntervalTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let a = 0
       const intervalID = setInterval(() => {
         console.log('Timer is executing...');

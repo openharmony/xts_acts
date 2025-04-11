@@ -89,9 +89,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0001';
       try {
         let writableStream = new TestWritable();
@@ -108,9 +108,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0002';
       try {
         let writableStream = new TestWritable();
@@ -127,9 +127,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0003';
       try {
         let writableStream = new TestWritable();
@@ -146,9 +146,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0004';
       try {
         let writableStream = new TestWritable();
@@ -165,9 +165,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0005';
       try {
         let writableStream = new TestWritable();
@@ -184,9 +184,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0006';
       try {
         let stringA = 'test';
@@ -207,9 +207,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0007';
       try {
         let writableStream = new TestWritable();
@@ -226,9 +226,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0008';
       try {
         let writableStream = new TestWritable();
@@ -245,9 +245,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0009';
       try {
         let writableStream = new TestWritable();
@@ -264,9 +264,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0010';
       try {
         let writableStream = new TestWritable();
@@ -283,9 +283,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0011';
       try {
         let writableStream = new TestWritable();
@@ -302,9 +302,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0012';
       try {
         let writableStream = new TestWritable();
@@ -321,9 +321,9 @@ export default function StreamTest() {
      * @tc.desc       : Test the function of the interface In the Stream_Writable
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStreamWritable0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStreamWritable0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testStreamWritable0013';
       try {
         let writableStream = new TestWritable();

@@ -71,9 +71,9 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolTaskGroupActTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolTaskGroupActTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
@@ -109,7 +109,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupActTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -150,7 +150,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupActTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -187,7 +187,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupActTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -224,7 +224,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     // it('taskPoolTaskGroupActTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -261,7 +261,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupActTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -298,7 +298,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupActTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -335,7 +335,7 @@ export default function taskPoolTaskGroupActTest() {
      * @tc.desc test TaskGroup
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupActTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 

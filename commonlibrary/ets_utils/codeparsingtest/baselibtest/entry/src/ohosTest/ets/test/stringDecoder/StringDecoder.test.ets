@@ -50,9 +50,9 @@ export default function stringDecoderTest() {
      * @tc.desc       : Test ENCODER and DOCODER.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("test_Decode_Test_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("test_Decode_Test_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       newArr.forEach(item => {
         console.log('nztest', item)
         let decoder = new util.StringDecoder(item);
@@ -88,9 +88,9 @@ export default function stringDecoderTest() {
      * @tc.desc       : Test ENCODER and DOCODER.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("test_Decode_Test_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("test_Decode_Test_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let that = new util.TextEncoder('utf-16be')
       let result = that.encodeInto('HelLoWorLd123?')
       let decoder = new util.StringDecoder('utf-16be')
