@@ -718,6 +718,7 @@ export default function sendableClassStaticTest() {
         expect().assertFail();
       }
     })
+
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_3200
      * @tc.name       : testSendableFuncStaticClass0006
@@ -2676,7 +2677,6 @@ export default function sendableClassStaticTest() {
         expect().assertFail();
       }
     })
-
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_SENDABLE_CLASS_STATIC_13100
      * @tc.name       : testSendableNonParameterFuncStaticClass0001

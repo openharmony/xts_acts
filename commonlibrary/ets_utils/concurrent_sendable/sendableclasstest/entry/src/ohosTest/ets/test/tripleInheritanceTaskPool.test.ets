@@ -65,7 +65,7 @@ export function testSendableTripleInheritanceTaskPool0004(): boolean {
 export function testSendableTripleInheritanceTaskPool0005(): boolean {
   const instance = new SendableFiveAttributeInheritClassLevelThree();
   let res1 = instance instanceof SendableFiveAttributeInheritClassLevelThree;
-  const lockName = "testLock";
+  const lockName = 'testLock';
   instance.setMyAsyncLock(lockName);
   let res2 = instance.myAsyncLock.name === lockName;
   return res1 && res2;
@@ -103,7 +103,7 @@ export function testSendableFourAttributeClass0003(): boolean {
 export function testSendableFourAttributeClass0004(): boolean {
   const instance = new SendableFourAttributeClass();
   let res1 = instance instanceof SendableFourAttributeClass;
-  const lockName = "newLock";
+  const lockName = 'newLock';
   instance.setMyAsyncLock(lockName);
   let res2 = instance.getMyAsyncLock().name === lockName;
   return res1 && res2;
@@ -114,9 +114,9 @@ export function testSendableFourAttributeClass0005(): boolean {
   const instance = new SendableFourAttributeClass();
   let res1 = instance instanceof SendableFourAttributeClass;
   const inheritedInstance = new InheritedSendableClass();
-  inheritedInstance.setInheritedProperty("customValue");
+  inheritedInstance.setInheritedProperty('customValue');
   instance.setMyInheritedClass(inheritedInstance);
-  let res2 = instance.getMyInheritedClass().getInheritedProperty() === "customValue";
+  let res2 = instance.getMyInheritedClass().getInheritedProperty() === 'customValue';
   return res1 && res2;
 }
 
@@ -161,7 +161,7 @@ export function testFourthLevelSendableClassOver0004(): boolean {
 export function testFourthLevelSendableClassOver0005(): boolean {
   const instance = new FourthLevelSendableClassOver('piter', 18);
   let res1 = instance instanceof FourthLevelSendableClassOver;
-  const lockName = "fourthLevelLock";
+  const lockName = 'fourthLevelLock';
   instance.setMyAsyncLock(lockName);
   let res2 = instance.myAsyncLock.name === lockName;
   return res1 && res2;
@@ -172,9 +172,9 @@ export function testFourthLevelSendableClassOver0006(): boolean {
   const instance = new FourthLevelSendableClassOver('piter', 18);
   let res1 = instance instanceof FourthLevelSendableClassOver;
   const inheritedInstance = new InheritedSendableClass();
-  inheritedInstance.setInheritedProperty("customValue");
+  inheritedInstance.setInheritedProperty('customValue');
   instance.setMyInheritedClass(inheritedInstance);
-  let res2 = instance.getMyInheritedClass().getInheritedProperty() === "customValue";
+  let res2 = instance.getMyInheritedClass().getInheritedProperty() === 'customValue';
   return res1 && res2;
 }
 

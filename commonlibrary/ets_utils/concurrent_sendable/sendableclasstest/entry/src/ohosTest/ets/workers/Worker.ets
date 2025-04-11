@@ -69,7 +69,7 @@ workerPort.onmessage = (e: MessageEvents) => {
     case 'testTripleInheritanceWorker0005': {
       const instance = new SendableFiveAttributeInheritClassLevelThree();
       let res1 = instance instanceof SendableFiveAttributeInheritClassLevelThree;
-      const lockName = "testLock";
+      const lockName = 'testLock';
       instance.setMyAsyncLock(lockName);
       let res2 = instance.myAsyncLock.name === lockName;
       workerPort.postMessage(res1 && res2);
@@ -103,7 +103,7 @@ workerPort.onmessage = (e: MessageEvents) => {
     case 'testSendableFourAttributeClassWorker0004': {
       const instance = new SendableFourAttributeClass();
       let res1 = instance instanceof SendableFourAttributeClass;
-      const lockName = "newLock";
+      const lockName = 'newLock';
       instance.setMyAsyncLock(lockName);
       let res2 = instance.getMyAsyncLock().name === lockName;
       workerPort.postMessage(res1 && res2);
@@ -113,9 +113,9 @@ workerPort.onmessage = (e: MessageEvents) => {
       const instance = new SendableFourAttributeClass();
       let res1 = instance instanceof SendableFourAttributeClass;
       const inheritedInstance = new InheritedSendableClass();
-      inheritedInstance.setInheritedProperty("customValue");
+      inheritedInstance.setInheritedProperty('customValue');
       instance.setMyInheritedClass(inheritedInstance);
-      let res2 = instance.getMyInheritedClass().getInheritedProperty() === "customValue";
+      let res2 = instance.getMyInheritedClass().getInheritedProperty() === 'customValue';
       workerPort.postMessage(res1 && res2);
       break;
     }
@@ -155,7 +155,7 @@ workerPort.onmessage = (e: MessageEvents) => {
     case 'testFourthLevelSendableClassOverWorker0005': {
       const instance = new FourthLevelSendableClassOver('piter', 18);
       let res1 = instance instanceof FourthLevelSendableClassOver;
-      const lockName = "fourthLevelLock";
+      const lockName = 'fourthLevelLock';
       instance.setMyAsyncLock(lockName);
       let res2 = instance.myAsyncLock.name === lockName;
       workerPort.postMessage(res1 && res2);
@@ -165,9 +165,9 @@ workerPort.onmessage = (e: MessageEvents) => {
       const instance = new FourthLevelSendableClassOver('piter', 18);
       let res1 = instance instanceof FourthLevelSendableClassOver;
       const inheritedInstance = new InheritedSendableClass();
-      inheritedInstance.setInheritedProperty("customValue");
+      inheritedInstance.setInheritedProperty('customValue');
       instance.setMyInheritedClass(inheritedInstance);
-      let res2 = instance.getMyInheritedClass().getInheritedProperty() === "customValue";
+      let res2 = instance.getMyInheritedClass().getInheritedProperty() === 'customValue';
       workerPort.postMessage(res1 && res2);
       break;
     }

@@ -122,7 +122,7 @@ export class SendableFiveAttributeClass implements ISendable {
 
 @Sendable
 export class SendableFiveAttributeInheritClass extends SendableFiveAttributeClass {
-  myString: string = "";
+  myString: string = '';
 
   constructor() {
     super();
@@ -263,7 +263,7 @@ export class SendableFourAttributeClass implements ISendable {
 
 @Sendable
 export class InheritedSendableClass implements ISendable {
-  inheritedProperty: string = "default";
+  inheritedProperty: string = 'default';
 
   setInheritedProperty(value: string) {
     this.inheritedProperty = value;
@@ -276,7 +276,7 @@ export class InheritedSendableClass implements ISendable {
 
 @Sendable
 export class SecondLevelSendableClass extends SendableFourAttributeClass {
-  additionalProperty: string = "default";
+  additionalProperty: string = 'default';
 
   constructor() {
     super();
@@ -401,7 +401,7 @@ export class SendableFourAttributeClassOver implements ISendable {
 
 @Sendable
 export class SecondLevelSendableClassOver extends SendableFourAttributeClassOver {
-  additionalProperty: string = "default";
+  additionalProperty: string = 'default';
 
   constructor(name: string, age: number) {
     super(name, age);
