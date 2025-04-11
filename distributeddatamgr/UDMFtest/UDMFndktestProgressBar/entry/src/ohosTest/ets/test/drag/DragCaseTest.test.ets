@@ -60,9 +60,9 @@ export default function DragTest(){
      * @tc.desc       : testing List lanes
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create();
       let PAGE_TAG:string = 'DragCaseTest1';
       await Utils.pushPage(`drag/${PAGE_TAG}`);

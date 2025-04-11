@@ -80,9 +80,9 @@ export default function kvManagerCallbackStageTest(){
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 101
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEtsKVManagerGetKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEtsKVManagerGetKVStore101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info('testKVManagerGetKVStore101');
       try {
         await kvManager.getKVStore(TEST_STORE_ID).then((store) => {
@@ -104,9 +104,9 @@ export default function kvManagerCallbackStageTest(){
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 102
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEtsKVManagerGetKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEtsKVManagerGetKVStore102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info('testKVManagerGetKVStore102');
       try {
         await kvManager.getKVStore(options, function (err, store) {
