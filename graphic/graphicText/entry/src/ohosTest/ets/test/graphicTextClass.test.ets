@@ -1051,7 +1051,7 @@ export default function graphicTextClass() {
           let run: text.Run = runs[j];
           let bounds:text.TypographicBounds = run.getTypographicBounds();
           try {
-            expect(bounds.ascent > 0).assertTrue();
+            expect(bounds.ascent < 0).assertTrue();;
           } catch (err) {
             console.info(msg + JSON.stringify(err));
             expect().assertFail();
@@ -1836,7 +1836,7 @@ export default function graphicTextClass() {
 
         let bounds = textLine.getTypographicBounds();
         try {
-          expect(bounds.ascent).assertLargerOrEqual(0);
+          expect(bounds.ascent < 0).assertTrue();
         } catch (err) {
           console.info(msg + JSON.stringify(err));
           expect().assertFail();
