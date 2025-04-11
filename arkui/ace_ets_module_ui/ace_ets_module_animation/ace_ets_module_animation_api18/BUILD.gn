@@ -13,20 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsAceEtsModuleAnimationApi16TestMain") {
+ohos_app_assist_suite("ActsAceEtsModuleAnimationApi18TestMain") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleAnimationApi16TestMain"
+  hap_name = "ActsAceEtsModuleAnimationApi18TestMain"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }
 
-ohos_js_app_suite("ActsAceEtsModuleAnimationApi16Test") {
+ohos_js_app_suite("ActsAceEtsModuleAnimationApi18Test") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleAnimationApi16Test"
+  hap_name = "ActsAceEtsModuleAnimationApi18Test"
   part_name = "ace_engine"
   subsystem_name = "arkui"
-  deps = [ ":ActsAceEtsModuleAnimationApi16TestMain" ]
+  deps = [ ":ActsAceEtsModuleAnimationApi18TestMain" ]
 }
