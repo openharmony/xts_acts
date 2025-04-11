@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 type Value = string | number | Decimal;
 function test_isFinite_001 (actual: boolean) {
@@ -41,7 +41,7 @@ export default function DecimalTest009() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_isFinite_Func_001", 0, () => {
+    it("Decimal_isFinite_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
           Decimal.set ({
             precision: 20,
             rounding: 4,

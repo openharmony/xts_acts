@@ -24,9 +24,10 @@
 #include "video_processing_callback_impl.h"
 #include "video_processing_callback_native.h"
 #include "video_processing_impl.h"
+#include "video_processing_capi_capability.h"
 
 using namespace OHOS;
-using namespace OHOS::Media;
+using namespace OHOS::Media::VideoProcessingEngine;
 using namespace std;
 using OHOS::Surface;
 using std::mutex;
@@ -78,7 +79,7 @@ static void OnNewOutputBufferCall(OH_VideoProcessing* videoProcessor, uint32_t i
 static void OnNewOutputBufferCallImpl(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)
 {
     VideoSample* sample = reinterpret_cast<VideoSample*>(userData);
-    VideoProcessing_ErrorCode ret = videoProcessor->GetObj()->RenderOutputBuffer(index);
+    VideoProcessing_ErrorCode ret = videoProcessor->GetVideoProcessing()->RenderOutputBuffer(index);
     if (ret != VIDEO_PROCESSING_SUCCESS) {
         sample->UpdateErrorCount();
     }
@@ -152,7 +153,8 @@ int32_t VideoSample::InitVideoSample(VideoProcessParam param)
 int32_t VideoSample::InitVideoSampleImpl(VideoProcessParam param)
 {
     param_ = param;
-    OH_VideoProcessing::Create(&videoProcessorImpl_, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_VideoProcessing::Create(&videoProcessorImpl_, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER,
+        VideoProcessingCapiCapability::GetOpenGLContext());
     cs_ = Surface::CreateSurfaceAsConsumer();
     sptr<IBufferConsumerListener> listener = new TestConsumerListener(this);
     cs_->RegisterConsumerListener(listener);
@@ -165,17 +167,17 @@ int32_t VideoSample::InitVideoSampleImpl(VideoProcessParam param)
         NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE |
         NATIVEBUFFER_USAGE_MEM_DMA | NATIVEBUFFER_USAGE_HW_RENDER);
     (void)OH_NativeWindow_NativeWindowHandleOpt(outWindow_, SET_FORMAT, param_.outFmt);
-    videoProcessorImpl_->GetObj()->SetSurface(outWindow_);
-    videoProcessorImpl_->GetObj()->GetSurface(&inWindow_);
+    videoProcessorImpl_->GetVideoProcessing()->SetSurface(outWindow_);
+    videoProcessorImpl_->GetVideoProcessing()->GetSurface(&inWindow_);
     SetInputWindowParam();
     VideoProcessing_Callback::Create(&callbackImpl_);
-    callbackImpl_->GetObj()->BindOnError(OnError);
-    callbackImpl_->GetObj()->BindOnState(OnState);
-    callbackImpl_->GetObj()->BindOnNewOutputBuffer(OnNewOutputBufferCallImpl);
-    videoProcessorImpl_->GetObj()->RegisterCallback(callbackImpl_, this);
+    callbackImpl_->GetInnerCallback()->BindOnError(OnError);
+    callbackImpl_->GetInnerCallback()->BindOnState(OnState);
+    callbackImpl_->GetInnerCallback()->BindOnNewOutputBuffer(OnNewOutputBufferCallImpl);
+    videoProcessorImpl_->GetVideoProcessing()->RegisterCallback(callbackImpl_, this);
     OH_AVFormat* parameter = OH_AVFormat_Create();
     OH_AVFormat_SetIntValue(parameter, VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL, qualityLevel_);
-    videoProcessorImpl_->GetObj()->SetParameter(parameter);
+    videoProcessorImpl_->GetVideoProcessing()->SetParameter(parameter);
     return VIDEO_PROCESSING_SUCCESS;
 }
 
@@ -220,7 +222,7 @@ int32_t VideoSample::StartProcess()
 
 int32_t VideoSample::StartProcessImpl()
 {
-    videoProcessorImpl_->GetObj()->Start();
+    videoProcessorImpl_->GetVideoProcessing()->Start();
     inputLoop_ = make_unique<thread>(&VideoSample::InputFunc, this);
     return VIDEO_PROCESSING_SUCCESS;
 }
@@ -239,7 +241,7 @@ int32_t VideoSample::WaitAndStopSample()
 int32_t VideoSample::WaitAndStopSampleImpl()
 {
     inputLoop_->join();
-    int32_t ret = videoProcessorImpl_->GetObj()->Stop();
+    int32_t ret = videoProcessorImpl_->GetVideoProcessing()->Stop();
     unique_lock<mutex> lock(mutex_);
     if (cv_.wait_for(lock, STOP_TIMEOUT) == std::cv_status::timeout) {
         std::cout << "waiting stop state timeout" << std::endl;
@@ -250,10 +252,11 @@ int32_t VideoSample::WaitAndStopSampleImpl()
 int32_t VideoSample::SetSurfaceOnRunningImpl()
 {
     OH_VideoProcessing* videoProcessing2 = nullptr;
-    OH_VideoProcessing::Create(&videoProcessing2, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER);
+    OH_VideoProcessing::Create(&videoProcessing2, VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER,
+        VideoProcessingCapiCapability::GetOpenGLContext());
     OHNativeWindow* window2 = nullptr;
-    videoProcessing2->GetObj()->GetSurface(&window2);
-    int32_t ret = videoProcessorImpl_->GetObj()->SetSurface(window2);
+    videoProcessing2->GetVideoProcessing()->GetSurface(&window2);
+    int32_t ret = videoProcessorImpl_->GetVideoProcessing()->SetSurface(window2);
     return ret;
 }
 

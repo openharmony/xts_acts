@@ -23,6 +23,7 @@ import SearchGetTextTest from './SearchTest/SearchGetText.test';
 import TextAreaGetTextTest from './TextAreaTest/TextAreaGetText.test';
 import TextInputGetTextTest from './TextInputTest/TextInputGetText.test';
 import ParagraphSpacingTest from './StyledStringTest/ParagraphSpacing.test';
+import HapticFeedbackModeTest from './RichEditorTest/HapticFeedbackMode.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -35,4 +36,5 @@ export default function testsuite() {
   TextAreaGetTextTest();
   TextInputGetTextTest();
   ParagraphSpacingTest();
+  HapticFeedbackModeTest();
 }

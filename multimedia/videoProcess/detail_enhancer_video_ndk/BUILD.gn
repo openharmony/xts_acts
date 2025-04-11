@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import("//foundation/multimedia/media_foundation/config.gni")
+import("//foundation/multimedia/video_processing_engine/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsDetailEnhancerVideoNdkUnitTest"
@@ -49,13 +50,12 @@ ohos_moduletest_suite("ActsDetailEnhancerVideoNdkUnitTest") {
   }
 
   include_dirs = [
-    "$histreamer_root_dir/video_processing_engine/interface/kits/c",
-    "$histreamer_root_dir/video_processing_engine/interface/inner_api",
-    "$histreamer_root_dir/video_processing_engine/framework/algorithm/include",
-    "$histreamer_root_dir/video_processing_engine/framework/dfx/include",
-    "$histreamer_root_dir/video_processing_engine/framework/capi/video_processing/include",
-    "$histreamer_root_dir/video_processing_engine/framework/capi/video_processing/detail_enhancer/include",
-    "$histreamer_root_dir/video_processing_engine/framework/algorithm/detail_enhancer/include",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/inner_api",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/dfx/include",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/capi/video_processing/include",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/capi/video_processing/detail_enhancer/include",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/algorithm/detail_enhancer/include",
     "./include",
   ]
 
@@ -69,14 +69,17 @@ ohos_moduletest_suite("ActsDetailEnhancerVideoNdkUnitTest") {
   defines = []
 
   deps = [
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:video_processing",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework:videoprocessingengine",
+    "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/interfaces/kits/c/video_processing:libvideo_processing_ndk",
     "$histreamer_root_dir/interface/kits/ndk/core:libnative_media_core",
     "$histreamer_root_dir/src:media_foundation",
-    "$histreamer_root_dir/video_processing_engine/framework:video_processing",
-    "$histreamer_root_dir/video_processing_engine/interface/kits/c/video_processing:libvideo_processing_ndk",
   ]
 
   external_deps = [
     "c_utils:utils",
+    "drivers_interface_display:libdisplay_buffer_proxy_1.0",
+    "drivers_interface_display:libdisplay_commontype_proxy_1.0",
     "graphic_2d:libgraphic_utils",
     "graphic_2d:librender_service_client",
     "graphic_surface:surface",
@@ -87,7 +90,7 @@ ohos_moduletest_suite("ActsDetailEnhancerVideoNdkUnitTest") {
 
   if (has_skia) {
     defines += [ "SKIA_ENABLE" ]
-    include_dirs += [ "$histreamer_root_dir/video_processing_engine/framework/algorithm/detail_enhancer/skia/include" ]
+    include_dirs += [ "$VIDEO_PROCESSING_ENGINE_ROOT_DIR/framework/algorithm/extensions/skia/include" ]
   }
 
   part_name = "video_processing_engine"

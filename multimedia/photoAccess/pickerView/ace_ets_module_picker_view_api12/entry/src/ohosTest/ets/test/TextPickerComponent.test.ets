@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../MainAbility/common/Common';
 import { EventType } from '../MainAbility/common/Common';
@@ -174,7 +174,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker01', Level.LEVEL0, async (done: Function) => {
+    it('testPicker01', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -220,7 +220,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker02', Level.LEVEL0, async (done: Function) => {
+    it('testPicker02', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -266,7 +266,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker03', Level.LEVEL0, async (done: Function) => {
+    it('testPicker03', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -312,7 +312,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker04', Level.LEVEL0, async (done: Function) => {
+    it('testPicker04', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -358,7 +358,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker05', Level.LEVEL0, async (done: Function) => {
+    it('testPicker05', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -404,7 +404,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker06', Level.LEVEL0, async (done: Function) => {
+    it('testPicker06', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -450,7 +450,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testPicker07', Level.LEVEL0, async (done: Function) => {
+    it('testPicker07', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -496,7 +496,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testPicker08', Level.LEVEL0, async (done: Function) => {
+    it('testPicker08', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -542,7 +542,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testPicker09', Level.LEVEL0, async (done: Function) => {
+    it('testPicker09', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -588,7 +588,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker10', Level.LEVEL0, async (done: Function) => {
+    it('testPicker10', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -634,7 +634,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker11', Level.LEVEL0, async (done: Function) => {
+    it('testPicker11', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -680,7 +680,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker12', Level.LEVEL0, async (done: Function) => {
+    it('testPicker12', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -726,7 +726,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('testPicker13', Level.LEVEL0, async (done: Function) => {
+    it('testPicker13', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -772,7 +772,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker14', Level.LEVEL0, async (done: Function) => {
+    it('testPicker14', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -831,7 +831,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker15', Level.LEVEL0, async (done: Function) => {
+    it('testPicker15', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -889,7 +889,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker16', Level.LEVEL0, async (done: Function) => {
+    it('testPicker16', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -940,7 +940,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker17', Level.LEVEL0, async (done: Function) => {
+    it('testPicker17', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -986,7 +986,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker18', Level.LEVEL0, async (done: Function) => {
+    it('testPicker18', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1036,7 +1036,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker19', Level.LEVEL0, async (done: Function) => {
+    it('testPicker19', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1093,7 +1093,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker20', Level.LEVEL0, async (done: Function) => {
+    it('testPicker20', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1150,7 +1150,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('testPicker21', Level.LEVEL0, async (done: Function) => {
+    it('testPicker21', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1207,7 +1207,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker22', Level.LEVEL0, async (done: Function) => {
+    it('testPicker22', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1242,7 +1242,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker23', Level.LEVEL0, async (done: Function) => {
+    it('testPicker23', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1275,7 +1275,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker24', Level.LEVEL0, async (done: Function) => {
+    it('testPicker24', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1300,7 +1300,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker25', Level.LEVEL0, async (done: Function) => {
+    it('testPicker25', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1338,7 +1338,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker26', Level.LEVEL0, async (done: Function) => {
+    it('testPicker26', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1372,7 +1372,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker27', Level.LEVEL0, async (done: Function) => {
+    it('testPicker27', 0, async (done: Function) => {
         if (!isExecutePicker) {
         done();
         return;
@@ -1423,7 +1423,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker28', Level.LEVEL0, async (done: Function) => {
+    it('testPicker28', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1477,7 +1477,7 @@ export default function TextPicker() {
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPicker29', Level.LEVEL0, async (done: Function) => {
+    it('testPicker29', 0, async (done: Function) => {
       if (!isExecutePicker) {
         done();
         return;
@@ -1531,7 +1531,11 @@ export default function TextPicker() {
     * @tc.type      : Function
     * @tc.level     : Level0
     */
-    it('testPicker30', Level.LEVEL0, async (done: Function) => {
+    it('testPicker30', 0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
         let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {

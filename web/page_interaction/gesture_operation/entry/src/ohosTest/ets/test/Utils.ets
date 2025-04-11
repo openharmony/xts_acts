@@ -19,6 +19,7 @@ import { ComponentInfo, RectInfo } from './Interfaces';
 import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs';
+import { componentUtils } from '@kit.ArkUI';
 
 export default class Utils {
   static sleep(time: number) {
@@ -140,30 +141,47 @@ export default class Utils {
   }
 
   static async fingerZoom(key: string, isOut: boolean) {
-    let rect = Utils.getComponentRect(key);
-    let centerX = Utils.getRectHorizontalCenterX(rect)
-    let centerY = Utils.getRectVerticalCenterY(rect)
-    let fingerUpCenterY = centerY - 100;
-    let fingerDownCenterY = centerY + 100;
+    let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById(key);
+    let screenPosition = modePosition.screenOffset
+    let centerX = Number.parseInt(Number((modePosition.size.width) / 2 + modePosition.screenOffset.x).toFixed(0))
+    let centerY = Number.parseInt(Number((modePosition.size.height) / 2 + modePosition.screenOffset.y).toFixed(0))
+    let heightUnit = Math.ceil((modePosition.size.height) / 12)
     let driver: Driver = Driver.create();
     let pointers: PointerMatrix = PointerMatrix.create(2, 3);
+    let y = 0
+
+    console.log("XXXXXXXX centerX: " + centerX)
+    console.log("XXXXXXXX centerY: " + centerY)
+    y = centerY - (isOut ? heightUnit : heightUnit * 3)
+    console.log("XXXXXXXX pointers1: " + y)
+    y = centerY - heightUnit * 2
+    console.log("XXXXXXXX pointers1: " + y)
+    y = centerY - (isOut ? heightUnit * 3 : heightUnit)
+    console.log("XXXXXXXX pointers1: " + y)
+    y = centerY + (isOut ? heightUnit : heightUnit * 3)
+    console.log("XXXXXXXX pointers2: " + y)
+    y = centerY + heightUnit * 2
+    console.log("XXXXXXXX pointers2: " + y)
+    y = centerY + (isOut ? heightUnit * 3 : heightUnit)
+    console.log("XXXXXXXX pointers2: " + y)
+
     pointers.setPoint(0, 0, {
-      x: centerX, y: fingerUpCenterY - (isOut ? 40 : 120)
+      x: centerX, y: centerY - (isOut ? heightUnit : heightUnit * 3)
     });
     pointers.setPoint(0, 1, {
-      x: centerX, y: fingerUpCenterY - 80
+      x: centerX, y: centerY - heightUnit * 2
     });
     pointers.setPoint(0, 2, {
-      x: centerX, y: fingerUpCenterY - (isOut ? 120 : 40)
+      x: centerX, y: centerY - (isOut ? heightUnit * 3 : heightUnit)
     });
     pointers.setPoint(1, 0, {
-      x: centerX, y: fingerDownCenterY + (isOut ? 40 : 120)
+      x: centerX, y: centerY + (isOut ? heightUnit : heightUnit * 3)
     });
     pointers.setPoint(1, 1, {
-      x: centerX, y: fingerDownCenterY + 80
+      x: centerX, y: centerY + heightUnit * 2
     });
     pointers.setPoint(1, 2, {
-      x: centerX, y: fingerDownCenterY + (isOut ? 120 : 40)
+      x: centerX, y: centerY + (isOut ? heightUnit * 3 : heightUnit)
     });
     await driver.injectMultiPointerAction(pointers);
   }
