@@ -19,9 +19,9 @@
 #include "drawing_mask_filter.h"
 #include "drawing_rect.h"
 #include "drawing_round_rect.h"
-#include "utils/scalar.h"
 #include "gtest/gtest.h"
 #include <random>
+#include "DrawingNativeScalarCommon.h"
 
 using namespace testing;
 using namespace testing::ext;
