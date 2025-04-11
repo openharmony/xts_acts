@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level} from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
@@ -53,9 +53,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_raiseToAppTop_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_raiseToAppTop_mainWindow', 0, async (done: Function) => {
+    it('test_raiseToAppTop_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_raiseToAppTop_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -94,9 +94,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_raiseToAppTop_subWindowDestroy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_raiseToAppTop_subWindowDestroy', 0, async (done: Function) => {
+    it('test_raiseToAppTop_subWindowDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_raiseToAppTop_subWindowDestroy';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -145,9 +145,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_raiseToAppTop_Two_subWindow_normal
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3
      */
-    it('test_raiseToAppTop_Two_subWindow_normal', 0, async (done: Function) => {
+    it('test_raiseToAppTop_Two_subWindow_normal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_raiseToAppTop_Two_subWindow_normal';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -231,9 +231,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_setRaiseByClickEnabled_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setRaiseByClickEnabled_mainWindow', 0, async (done: Function) => {
+    it('test_setRaiseByClickEnabled_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setRaiseByClickEnabled_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -270,9 +270,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_setRaiseByClickEnabled_subWindowDestroy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setRaiseByClickEnabled_subWindowDestroy', 0, async (done: Function) => {
+    it('test_setRaiseByClickEnabled_subWindowDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setRaiseByClickEnabled_subWindowDestroy';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -322,9 +322,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_setRaiseByClickEnabled_Two_subWindow_RaiseByClick
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setRaiseByClickEnabled_Two_subWindow_RaiseByClick', 0, async (done: Function) => {
+    it('test_setRaiseByClickEnabled_Two_subWindow_RaiseByClick', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setRaiseByClickEnabled_Two_subWindow_RaiseByClick';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -414,9 +414,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_setRaiseByClickEnabled_Two_subWindow_NoRaiseByClick
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setRaiseByClickEnabled_Two_subWindow_NoRaiseByClick', 0, async (done: Function) => {
+    it('test_setRaiseByClickEnabled_Two_subWindow_NoRaiseByClick', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setRaiseByClickEnabled_Two_subWindow_NoRaiseByClick';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -507,9 +507,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_setRaiseByClickEnabled_Two_subWindow_RaiseBy_raiseToAppTop
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setRaiseByClickEnabled_Two_subWindow_RaiseBy_raiseToAppTop', 0, async (done: Function) => {
+    it('test_setRaiseByClickEnabled_Two_subWindow_RaiseBy_raiseToAppTop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setRaiseByClickEnabled_Two_subWindow_RaiseBy_raiseToAppTop';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -599,9 +599,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_setRaiseByClickEnabled_Two_subWindow_RaiseBy_raiseToAppTop_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setRaiseByClickEnabled_Two_subWindow_NoRaiseBy_raiseToAppTop', 0, async (done: Function) => {
+    it('test_setRaiseByClickEnabled_Two_subWindow_NoRaiseBy_raiseToAppTop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setRaiseByClickEnabled_Two_subWindow_NoRaiseBy_raiseToAppTop';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -688,9 +688,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level3
      */
-    it('test_shiftAppWindowPointerEvent_null', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_null';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -726,9 +726,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_undifined
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_shiftAppWindowPointerEvent_undifined', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_undifined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_undifined';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -764,9 +764,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_window_destroyed
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_shiftAppWindowPointerEvent_window_destroyed', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_window_destroyed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_window_destroyed';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -818,9 +818,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_Dialog_window
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_shiftAppWindowPointerEvent_Dialog_window', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_Dialog_window', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_Dialog_window';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -883,9 +883,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_Subwindow_1300004
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_shiftAppWindowPointerEvent_Subwindow_1300004', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_Subwindow_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_Subwindow_1300004';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -943,9 +943,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_subWindow_to_mainwindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_shiftAppWindowPointerEvent_subWindow_to_mainwindow', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_subWindow_to_mainwindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_subWindow_to_mainwindow';
       console.log(caseName + 'begin');
       if(deviceType == '2in1' || (deviceType == 'tablet' && isAutoWindow == 'true')){
@@ -1015,9 +1015,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_shiftAppWindowPointerEvent_mainwindow_to_subWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_shiftAppWindowPointerEvent_mainwindow_to_subWindow', 0, async (done: Function) => {
+    it('test_shiftAppWindowPointerEvent_mainwindow_to_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_mainwindow_to_subWindow';
       console.log(caseName + 'begin');
       if(deviceType == '2in1' || (deviceType == 'tablet' && isAutoWindow == 'true')){
@@ -1088,9 +1088,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_SetWindowDelayRaiseOnDrag_401
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_SetWindowDelayRaiseOnDrag_401', 0, async (done: Function) => {
+    it('test_SetWindowDelayRaiseOnDrag_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_SetWindowDelayRaiseOnDrag_401';
       console.log(caseName + 'begin');
       let windowClass = windowStage.getMainWindowSync();
@@ -1115,9 +1115,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_SetWindowDelayRaiseOnDrag_1300002
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_SetWindowDelayRaiseOnDrag_1300002', 0, async (done: Function) => {
+    it('test_SetWindowDelayRaiseOnDrag_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_SetWindowDelayRaiseOnDrag_1300002';
       console.log(caseName + 'begin');
       let windowClass = await windowStage.createSubWindow('test_SetWindowDelayRaiseOnDrag_1300002');
@@ -1145,9 +1145,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_SetWindowDelayRaiseOnDrag_dialog
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_SetWindowDelayRaiseOnDrag_dialog', 0, async (done: Function) => {
+    it('test_SetWindowDelayRaiseOnDrag_dialog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_SetWindowDelayRaiseOnDrag_dialog';
       console.log(caseName + 'begin');
       let config: window.Configuration = {
@@ -1180,9 +1180,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_SetWindowDelayRaiseOnDrag_true
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('test_SetWindowDelayRaiseOnDrag_true', 0, async (done: Function) => {
+    it('test_SetWindowDelayRaiseOnDrag_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_SetWindowDelayRaiseOnDrag_true';
       console.log(caseName + 'begin');
       let windowClass = windowStage.getMainWindowSync();
@@ -1207,9 +1207,9 @@ export default function windowZindexTest() {
      * @tc.desc      : test_SetWindowDelayRaiseOnDrag_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('test_SetWindowDelayRaiseOnDrag_false', 0, async (done: Function) => {
+    it('test_SetWindowDelayRaiseOnDrag_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_SetWindowDelayRaiseOnDrag_false';
       console.log(caseName + 'begin');
       let windowClass = windowStage.getMainWindowSync();
