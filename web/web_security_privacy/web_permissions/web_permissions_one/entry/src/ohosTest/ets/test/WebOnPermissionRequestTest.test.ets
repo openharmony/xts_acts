@@ -60,9 +60,9 @@ export default function webOnPermissionRequest() {
     * @tc.desc        : test permissionRequest deny
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testPermissionRequestDenyGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testPermissionRequestDenyGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestDeny001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testPermissionRequestDeny001", '"deny"', 70320,

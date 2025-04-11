@@ -76,9 +76,9 @@ export default function ActsAceWebviewPressureLevel() {
     *@tc.desc test testWebviewPressureLevelModerate
     *@tc.size MediumTest
     *@tc.type Function
-    *@tc.level 1
+    *@tc.level 0
     */
-    it('testWebviewPressureLevelModerate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebviewPressureLevelModerate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebviewPressureLevelModerate"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebviewPressureLevelModerate", "success", 20001,

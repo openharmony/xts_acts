@@ -62,9 +62,9 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.desc       : test DatabaseAccessTrue
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testDatabaseAccessTrue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testDatabaseAccessTrue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitDatabaseAccessTrue", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDatabaseAccessTrue001", '"openDatabase"', 1301, done);

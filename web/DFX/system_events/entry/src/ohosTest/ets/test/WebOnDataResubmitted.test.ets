@@ -57,9 +57,9 @@ export default function webOnDataResubmitted() {
     * @tc.desc        : test onDataResubmitted callback
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnDataResubmitted001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnDataResubmitted001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnDataResubmitted", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnDataResubmitted001", true, 60425, done);

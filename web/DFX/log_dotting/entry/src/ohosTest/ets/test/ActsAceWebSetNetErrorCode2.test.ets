@@ -76,9 +76,9 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.desc test WebSetNetErrorCode_NET_OK (0)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebSetNetErrorCode_NET_OK', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebSetNetErrorCode_NET_OK', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_NET_OK"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_NET_OK", true, 3000, done);

@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,  TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';

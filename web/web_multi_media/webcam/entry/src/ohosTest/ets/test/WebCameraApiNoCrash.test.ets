@@ -52,9 +52,9 @@ export default function WebCameraApiNoCrash() {
     * @tc.desc       : test WebCameraApiNoCrash
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('WebCameraApiNoCrash0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('WebCameraApiNoCrash0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("WebCameraApiNoCrash0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("WebCameraApiNoCrash0100", true, 1401, done);
