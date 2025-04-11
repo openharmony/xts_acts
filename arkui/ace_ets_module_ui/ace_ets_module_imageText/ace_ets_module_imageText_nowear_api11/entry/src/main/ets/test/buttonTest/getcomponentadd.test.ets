@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Utils from '../Utils'
 import router from '@ohos.router';
 import componentUtils from '@ohos.arkui.componentUtils';
@@ -55,7 +55,7 @@ export default function ActsgetcomponentaddTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('ArkUX_Get_component_add_0010', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0010', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0010 START');
       setTimeout(() => {
         try {
@@ -77,7 +77,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0020', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0020', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0020 START');
       setTimeout(() => {
         try {
@@ -99,7 +99,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0030', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0030', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0030 START');
       setTimeout(() => {
         try {
@@ -121,7 +121,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0040', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0040', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0040 START');
       setTimeout(() => {
         try {
@@ -143,7 +143,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0050', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0050', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0050 START');
       setTimeout(() => {
         try {
@@ -165,7 +165,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0060', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0060', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0060 START');
       setTimeout(() => {
         try {
@@ -187,7 +187,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0070', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0070', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0070 START');
       setTimeout(() => {
         try {
@@ -209,7 +209,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0080', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0080', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0080 START');
       setTimeout(() => {
         try {
@@ -231,7 +231,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0090', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0090', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0090 START');
       setTimeout(() => {
         try {
@@ -253,7 +253,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0100', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0100 START');
       setTimeout(() => {
         try {
@@ -275,7 +275,7 @@ export default function ActsgetcomponentaddTest() {
       }, 500)
     });
 
-    it('ArkUX_Get_component_add_0110', 0, async (done: Function) => {
+    it('ArkUX_Get_component_add_0110', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0110 START');
       setTimeout(() => {
         try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest'
 import CommonFunc from "../../MainAbility/common/Common";
@@ -48,7 +48,7 @@ export default function abilityTest() {
     *tc.name   single select SegmentButton UI test
     *tc.desc   Test single select SegmentButton UI
     */
-    it('Advanced_ui_SegmentButton_0100', 0, async (done: Function) => {
+    it('Advanced_ui_SegmentButton_0100', Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create()
       let singleTextSegmentButton = await driver.findComponent(ON.text('单选文字1'))
       let singleTextSegmentButtonIsEnabled = await singleTextSegmentButton.isEnabled()
@@ -82,7 +82,7 @@ export default function abilityTest() {
     *tc.name   multiple select SegmentButton UI test
     *tc.desc   Test multiple SegmentButton UI
     */
-    it('Advanced_ui_SegmentButton_0200', 0, async (done: Function) => {
+    it('Advanced_ui_SegmentButton_0200', Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create()
       let multipleTextSegmentButton = await driver.findComponent(ON.text('多选文字1'))
       let multipleTextSegmentButtonType = await multipleTextSegmentButton.getType()
@@ -108,7 +108,7 @@ export default function abilityTest() {
     *tc.name   tab SegmentButton UI test
     *tc.desc   Test tab SegmentButton UI
     */
-    it('Advanced_ui_SegmentButton_0300', 0, async (done: Function) => {
+    it('Advanced_ui_SegmentButton_0300', Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create()
       let tabSegmentButton = await driver.findComponent(ON.text('页签1'))
       let tabSegmentButtonType = await tabSegmentButton.getType()

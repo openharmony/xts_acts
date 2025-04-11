@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
@@ -51,7 +51,7 @@ export default function RichEditorApi() {
      * @tc.desc        RichEditorApi addBuilderSpan test
      * @tc.level       Level 2
      */
-    it('RichEditorApi_001', 0, async (done: Function) => {
+    it('RichEditorApi_001', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi_001] START');
       await CommonFunc.sleep(1000);
 
@@ -71,7 +71,7 @@ export default function RichEditorApi() {
      * @tc.desc        RichEditorApi getParagraphs test
      * @tc.level       Level 2
      */
-    it('RichEditorApi_002', 0, async (done: Function) => {
+    it('RichEditorApi_002', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi_002] START');
       await CommonFunc.sleep(1000);
 
@@ -99,7 +99,7 @@ export default function RichEditorApi() {
      * @tc.desc        RichEditorApi updateParagraphStyle test
      * @tc.level       Level 2
      */
-    it('RichEditorApi_003', 0, async (done: Function) => {
+    it('RichEditorApi_003', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi_003] START');
       await CommonFunc.sleep(1000);
 
@@ -133,7 +133,7 @@ export default function RichEditorApi() {
     * @tc.desc        RichEditorApi RichEditorResponseType test
     * @tc.level       Level 2
     */
-    it('RichEditorApi_004', 0, async (done: Function) => {
+    it('RichEditorApi_004', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi_004] START');
       await CommonFunc.sleep(1000);
 
@@ -161,7 +161,7 @@ export default function RichEditorApi() {
     * @tc.desc        RichEditorApi RichEditorResponseType test
     * @tc.level       Level 2
     */
-    it('RichEditorApi_005', 0, async (done: Function) => {
+    it('RichEditorApi_005', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi_005] START');
       await CommonFunc.sleep(1000);
 

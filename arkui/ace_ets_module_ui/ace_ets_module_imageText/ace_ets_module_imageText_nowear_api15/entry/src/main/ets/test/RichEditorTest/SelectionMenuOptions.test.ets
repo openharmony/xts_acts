@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -54,7 +54,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0003', 0, async (done: Function) => {
+    it('SelectionMenuOptions0003', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0003 START');
         await CommonFunc.sleep(1000);
@@ -82,7 +82,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0006', 0, async (done: Function) => {
+    it('SelectionMenuOptions0006', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0006 START');
         await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0009', 0, async (done: Function) => {
+    it('SelectionMenuOptions0009', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0009 START');
         await CommonFunc.sleep(1000);

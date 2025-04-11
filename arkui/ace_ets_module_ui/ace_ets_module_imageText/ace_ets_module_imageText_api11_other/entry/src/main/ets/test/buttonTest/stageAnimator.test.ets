@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { UIContext } from '@ohos.arkui.UIContext';
 import { AnimatorOptions } from '@ohos.animator';
@@ -55,7 +55,7 @@ export default function stageAnimatorTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('testanimatorstage0001', 0, async (done: Function) => {
+    it('testanimatorstage0001', Level.LEVEL1, async (done: Function) => {
       console.info('testanimatorstage0001 START');
       setTimeout(() => {
         try {
@@ -74,7 +74,7 @@ export default function stageAnimatorTest() {
       }, 500)
     });
 
-    it('testanimatorstage0002', 0, async (done: Function) => {
+    it('testanimatorstage0002', Level.LEVEL1, async (done: Function) => {
       let animator: UIContext = globalThis.uiContent;
       console.info('testanimatorstage0002 START');
       try {
@@ -97,7 +97,7 @@ export default function stageAnimatorTest() {
       done();
     });
 
-    it('testanimatorstage0003', 0, async (done: Function) => {
+    it('testanimatorstage0003', Level.LEVEL1, async (done: Function) => {
       let animator: UIContext = globalThis.uiContent;
       console.info('testanimatorstage0003 START');
       try {
@@ -120,7 +120,7 @@ export default function stageAnimatorTest() {
       done();
     });
 
-    it('testanimatorstage0004', 0, async (done: Function) => {
+    it('testanimatorstage0004', Level.LEVEL1, async (done: Function) => {
       let animator: UIContext = globalThis.uiContent;
       console.info('testanimatorstage0004 START');
       try {
@@ -133,7 +133,7 @@ export default function stageAnimatorTest() {
       done();
     });
 
-    it('testanimatorstage0005', 0, async (done: Function) => {
+    it('testanimatorstage0005', Level.LEVEL1, async (done: Function) => {
       let animator: UIContext = globalThis.uiContent;
       console.info('testanimatorstage0005 START');
       try {
@@ -155,7 +155,7 @@ export default function stageAnimatorTest() {
       done();
     });
 
-    it('testanimatorstage0006', 0, async (done: Function) => {
+    it('testanimatorstage0006', Level.LEVEL1, async (done: Function) => {
       let animator: UIContext = globalThis.uiContent;
       console.info('testanimatorstage0006 START');
       try {
@@ -176,7 +176,5 @@ export default function stageAnimatorTest() {
       console.info('testanimatorstage0006 END');
       done();
     });
-
-
   })
 }

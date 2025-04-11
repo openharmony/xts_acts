@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function progressJsunit() {
       console.info("progress after each called");
     });
 
-    it('testProgress_100', 0, async (done: Function) => {
+    it('testProgress_100', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_100 START');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('LPValue');
@@ -74,7 +74,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_200', 0, async (done: Function) => {
+    it('testProgress_200', Level.LEVEL1, async (done: Function) => {
       console.info('[testProgress_200] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LPValue');
@@ -84,7 +84,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_300', 0, async (done: Function) => {
+    it('testProgress_300', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_300 START');
       let strJson1 = getInspectorByKey('EPValue');
       console.info("testProgress_300 component objEP is: " + JSON.parse(strJson1).$attrs.value);
@@ -113,7 +113,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_400', 0, async (done: Function) => {
+    it('testProgress_400', Level.LEVEL1, async (done: Function) => {
       console.info('[testProgress_400] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LPValue');
@@ -123,7 +123,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_500', 0, async (done: Function) => {
+    it('testProgress_500', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_500 START');
       let strJson1 = getInspectorByKey('CPValue');
       console.info("testProgress_500 component objCP is: " + JSON.parse(strJson1).$attrs.value);
@@ -152,7 +152,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_600', 0, async (done: Function) => {
+    it('testProgress_600', Level.LEVEL1, async (done: Function) => {
       console.info('[testProgress_600] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('CPValue');
@@ -162,7 +162,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_700', 0, async (done: Function) => {
+    it('testProgress_700', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_700 START');
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_700 component objLP is: " + JSON.parse(strJson1).$attrs.value);
@@ -191,7 +191,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_800', 0, async (done: Function) => {
+    it('testProgress_800', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_800 START');
       let strJson1 = getInspectorByKey('EPValue');
       console.info("testProgress_800 component objEP is: " + JSON.parse(strJson1).$attrs.value);
@@ -220,7 +220,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_900', 0, async (done: Function) => {
+    it('testProgress_900', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_900 START');
       let strJson1 = getInspectorByKey('CPValue');
       console.info("testProgress_900 component objCP is: " + JSON.parse(strJson1).$attrs.value);
@@ -249,7 +249,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_1000', 0, async (done: Function) => {
+    it('testProgress_1000', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_1000 START');
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_1000 component objLP is: " + JSON.parse(strJson1).$attrs.value);
@@ -279,7 +279,7 @@ export default function progressJsunit() {
       done();
     });
 
-    it('testProgress_1100', 0, async (done: Function) => {
+    it('testProgress_1100', Level.LEVEL1, async (done: Function) => {
       console.info('testProgress_1100 START');
       let strJson1 = getInspectorByKey('LPValue');
       console.info("testProgress_1100 component objLP is: " + JSON.parse(strJson1).$attrs.value);

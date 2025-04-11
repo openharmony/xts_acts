@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function ObjectFitTest() {
      * @tc.type : 
      * @tc.size :
      */
-    it('ObjectFitTest_0010', 0, async (done: Function) => {
+    it('ObjectFitTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0010] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -76,7 +76,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0020', 0, async (done: Function) => {
+    it('ObjectFitTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0020] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -105,7 +105,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0030', 0, async (done: Function) => {
+    it('ObjectFitTest_0030', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0030] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -134,7 +134,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0040', 0, async (done: Function) => {
+    it('ObjectFitTest_0040', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0040] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -163,7 +163,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0050', 0, async (done: Function) => {
+    it('ObjectFitTest_0050', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0050] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -192,7 +192,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0060', 0, async (done: Function) => {
+    it('ObjectFitTest_0060', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0060] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -221,7 +221,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0070', 0, async (done: Function) => {
+    it('ObjectFitTest_0070', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0070] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -250,7 +250,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0080', 0, async (done: Function) => {
+    it('ObjectFitTest_0080', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0080] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -279,7 +279,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0090', 0, async (done: Function) => {
+    it('ObjectFitTest_0090', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0090] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -308,7 +308,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0100', 0, async (done: Function) => {
+    it('ObjectFitTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0100] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -337,7 +337,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0110', 0, async (done: Function) => {
+    it('ObjectFitTest_0110', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0110] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -366,7 +366,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0120', 0, async (done: Function) => {
+    it('ObjectFitTest_0120', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0120] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -395,7 +395,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0130', 0, async (done: Function) => {
+    it('ObjectFitTest_0130', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0130] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -424,7 +424,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0140', 0, async (done: Function) => {
+    it('ObjectFitTest_0140', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0140] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -453,7 +453,7 @@ export default function ObjectFitTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ObjectFitTest_0150', 0, async (done: Function) => {
+    it('ObjectFitTest_0150', Level.LEVEL2, async (done: Function) => {
       console.info('[ObjectFitTest_0150] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
