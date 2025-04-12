@@ -32,10 +32,10 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
      * @tc.name check buildX509CertChain with all correct param
      * @tc.desc Use Promise Type
      * @tc.size SmallTest
-     * @tc.level Level1
+     * @tc.level Level0
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_CertChainExt_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_CertChainExt_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = "SUB_Security_Cert_Framework_CertChainExt_Func_0100";
       let x509Cert1 = await createX509Cert1();
       let x509Cert2 = await createX509Cert2();
