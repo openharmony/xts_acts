@@ -5894,7 +5894,7 @@ export default function audioFramework() {
             expect(false).assertTrue();
             done();
           });
-          AudioRoutingManager.on('deviceChange',
+          AudioRoutingManager.off('deviceChange',
           (deviceChanged: audio.DeviceChangeAction) => {
             console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
             console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
