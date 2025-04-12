@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,24 +13,15 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
+import EmptyTest from './Empty.test';
+import NetStatisticsNoDataTest from './NetStatisticsNoDataTest.test';
 
-export default function EmptyTest() {
-  describe('EmptyTest', () => {
-    /*
-      * @tc.number: testTheDevicesNotSupportSyscap001
-      * @tc.name  : testTheDevicesNotSupportSyscap001
-      * @tc.desc  : The Devices not support this stsCap.
-      * @tc.size  : MediumTest
-      * @tc.type  : Function
-      * @tc.level : Level 3
-      */
-    it('testTheDevicesNotSupportSyscap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let a: number = 1;
-      let b: number = 2;
-      expect(a+b).assertEqual(3);
-      done();
-    });
-  })
+
+export default function testsuite() {
+  if (canIUse("SystemCapability.Telephony.CellularData")){
+    NetStatisticsNoDataTest();
+  }else{
+    EmptyTest()
+  }
 }
 
