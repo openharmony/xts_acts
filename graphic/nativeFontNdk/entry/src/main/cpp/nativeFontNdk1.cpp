@@ -30,6 +30,7 @@
 #define HEIGHT40 40
 #define NUM_50 50
 #define NUM_500 500.0
+#define NUM_10 10
 #define INT_NUM_2 2
 #define INT_NUM_100 100
 #define INT_NUM_200 200
@@ -564,6 +565,47 @@ napi_value OHDrawingCreateLineTypography002(napi_env env, napi_callback_info inf
     return result;
 }
 
+napi_value OHDrawingCreateLineTypography003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+
+    PrepareTypographyCreate("OpenHarmony\n");
+    OH_Drawing_LineTypography *lineTypography1 = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography1 != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+    OH_Drawing_DestroyLineTypography(lineTypography1);
+    TypographyTearDown();
+
+    OH_Drawing_LineTypography *nullLineTypograph = OH_Drawing_CreateLineTypography(nullptr);
+    if (nullLineTypograph == nullptr) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    return result;
+}
+
+napi_value OHDrawingCreateLineTypography004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    PrepareTypographyCreate(nullptr);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography == nullptr) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
 napi_value OHDrawingLineTypographyGetLineBreak001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -588,6 +630,153 @@ napi_value OHDrawingLineTypographyGetLineBreak001(napi_env env, napi_callback_in
     OH_Drawing_DestroyTypographyStyle(typoStyle_);
     OH_Drawing_DestroyTypographyHandler(handler_);
     OH_Drawing_DestroyLineTypography(lineTypography);
+    return result;
+}
+
+napi_value OHDrawingLineTypographyGetLineBreak002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    
+    const char *text = "OpenHarmony\n";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    double maxWidth = DOUBLE_NUM_800;
+    size_t startIndex = 0;
+    auto count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+    if (count == strlen(text)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyGetLineBreak003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    
+    const char *text1 = "hello\n world";
+    const char *text2 = "hello\n";
+    PrepareTypographyCreate(text1);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    double maxWidth = DOUBLE_NUM_800;
+    size_t startIndex = 0;
+    auto count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+    if (count == strlen(text2)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyGetLineBreak004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    
+    const char *text = "OpenHarmoney\n";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    double maxWidth = DOUBLE_NUM_800;
+    size_t startIndex = strlen(text) - 1;
+    auto count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+    if (count == 1) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    maxWidth = 0;
+    startIndex = 0;
+    count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+    if (count == 0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyGetLineBreak005(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    
+    const char *text = "OpenHarmoney\n";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    double maxWidth = DOUBLE_NUM_800;
+    size_t startIndex = strlen(text);
+    auto count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+    if (count == 0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    maxWidth = 0.01;
+    startIndex = 0;
+    count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+    if (count == 1) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
     return result;
 }
 
@@ -616,6 +805,200 @@ napi_value OHDrawingLineTypographyCreateLine001(napi_env env, napi_callback_info
     OH_Drawing_DestroyTypographyHandler(handler_);
     OH_Drawing_DestroyLineTypography(lineTypography);
     OH_Drawing_DestroyTextLine(line);
+    return result;
+}
+
+napi_value OHDrawingLineTypographyCreateLine002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    
+    const char *text = "OpenHarmoney\n";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t startIndex = 0;
+    size_t count = strlen(text);
+    auto line = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+    if ((line != nullptr) && (OH_Drawing_TextLineGetGlyphCount(line) == 12L)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_DestroyTextLine(line);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyCreateLine003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    
+    const char *text = "Hello\n world!";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t startIndex = 0;
+    size_t count = strlen(text);
+    auto line = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+    if ((line != nullptr) && (OH_Drawing_TextLineGetGlyphCount(line) == 5L)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_DestroyTextLine(line);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyCreateLine004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    
+    const char *text = "OpenHarmoney\n";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t startIndex = strlen(text) - 1;
+    size_t count = 1;
+    auto line1 = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+    if ((line1 != nullptr) && (OH_Drawing_TextLineGetGlyphCount(line1) == 0L)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_DestroyTextLine(line1);
+
+    startIndex = 0;
+    count = 0;
+    auto line2 = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+    if ((line2 != nullptr) && (OH_Drawing_TextLineGetGlyphCount(line2) == 12L)) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_DestroyTextLine(line2);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyCreateLine005(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    
+    const char *text = "OpenHarmoney\n";
+    PrepareTypographyCreate(text);
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t startIndex = strlen(text);
+    size_t count = 1;
+    auto line1 = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+    if ((line1 == nullptr) && (OH_Drawing_TextLineGetGlyphCount(line1) == 0L)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_DestroyTextLine(line1);
+
+    startIndex = 0;
+    count = strlen(text) + 1;
+    auto line2 = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+    if ((line2 == nullptr) && (OH_Drawing_TextLineGetGlyphCount(line2) == 0L)) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_DestroyTextLine(line2);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
+    return result;
+}
+
+napi_value OHDrawingLineTypographyCreateLine006(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    
+    std::string text = "Hello \t 中国 测 World \n !@#$%^&*~(){}[] 123 4567890 - = ,. < >、/Drawing testlp 试 ";
+    text += "Drawing \n\n   \u231A \u513B \u00A9\uFE0F aaa clp11⌚😀😁🤣👨‍🔬👩‍👩‍👧‍👦👭مرحبا中国 测 World测试文本";
+    PrepareTypographyCreate(text.c_str());
+    OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler2_);
+    if (lineTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    double maxWidth = DOUBLE_NUM_800;
+    size_t startIndex = 0;
+    int yPosition = 0;
+    do {
+        auto count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
+        if (count == 0) {
+            break;
+        }
+        OH_Drawing_TextLine *line = OH_Drawing_LineTypographyCreateLine(lineTypography, startIndex, count);
+        if (line != nullptr) {
+            napi_create_int32(env, SUCCESS, &result2);
+        } else {
+            napi_create_int32(env, FAIL, &result2);
+        }
+        napi_set_element(env, result, ARR_NUM_1, result2);
+        yPosition += TEXTLINE30;
+        OH_Drawing_DestroyTextLine(line);
+        startIndex += count;
+    } while (true);
+    OH_Drawing_DestroyLineTypography(lineTypography);
+    TypographyTearDown();
     return result;
 }
 
@@ -664,6 +1047,100 @@ napi_value OHDrawingFontGetBounds001(napi_env env, napi_callback_info info)
     return result;
 }
 
+napi_value OHDrawingFontGetBounds002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, NUM_50);
+    const char *str = "helloworld";
+    uint32_t count = OH_Drawing_FontCountText(font, str, strlen(str), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    OH_Drawing_FontTextToGlyphs(font, str, strlen(str), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8,
+        glyphs, count);
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    size_t size = 0;
+    if ((OH_Drawing_RectGetArraySize(outRectarr, &size) == OH_DRAWING_SUCCESS) &&
+        (size == count) && (OH_Drawing_FontGetBounds(font, glyphs, count, outRectarr) == OH_DRAWING_SUCCESS)) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    for (int i = 0; i < count; i++) {
+        OH_Drawing_Rect *iter = nullptr;
+        if ((OH_Drawing_RectGetArrayElement(outRectarr, i, &iter) == OH_DRAWING_SUCCESS) &&
+            (iter != nullptr) && (OH_Drawing_RectGetWidth(iter) > 0) &&
+            (OH_Drawing_RectGetHeight(iter) > 0)) {
+            napi_create_int32(env, SUCCESS, &result2);
+        } else {
+            napi_create_int32(env, FAIL, &result2);
+        }
+        napi_set_element(env, result, ARR_NUM_1, result2);
+    }
+
+    if (OH_Drawing_RectDestroyArray(outRectarr) == OH_DRAWING_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_FontDestroy(font);
+    return result;
+}
+
+napi_value OHDrawingFontGetBounds003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, NUM_50);
+    const char *space = "   ";
+    uint32_t count = OH_Drawing_FontCountText(font, space, strlen(space), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    OH_Drawing_FontTextToGlyphs(font, space, strlen(space), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8,
+        glyphs, count);
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    size_t size = 0;
+    if ((OH_Drawing_RectGetArraySize(outRectarr, &size) == OH_DRAWING_SUCCESS) &&
+        (size == count) && (OH_Drawing_FontGetBounds(font, glyphs, count, outRectarr) == OH_DRAWING_SUCCESS)) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    for (int i = 0; i < count; i++) {
+        OH_Drawing_Rect *iter = nullptr;
+        if ((OH_Drawing_RectGetArrayElement(outRectarr, i, &iter) == OH_DRAWING_SUCCESS) &&
+            (iter != nullptr) && (OH_Drawing_RectGetWidth(iter) == 0) &&
+            (OH_Drawing_RectGetHeight(iter) == 0)) {
+            napi_create_int32(env, SUCCESS, &result2);
+        } else {
+            napi_create_int32(env, FAIL, &result2);
+        }
+        napi_set_element(env, result, ARR_NUM_1, result2);
+    }
+
+    if (OH_Drawing_RectDestroyArray(outRectarr) == OH_DRAWING_SUCCESS) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_FontDestroy(font);
+    return result;
+}
+
 napi_value OHDrawingRectDestroyArray001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -684,49 +1161,56 @@ napi_value OHDrawingRectDestroyArray001(napi_env env, napi_callback_info info)
     return result;
 }
 
-napi_value OHDrawingFontGetPathForGlyph001(napi_env env, napi_callback_info info)
+napi_value OHDrawingRectGetArraySize001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUM_2, &result);
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
 
-    OH_Drawing_Font *font = OH_Drawing_FontCreate();
-    if (font != nullptr) {
+    OH_Drawing_Array *rectArray = OH_Drawing_RectCreateArray(NUM_50);
+    if (rectArray != nullptr) {
         napi_create_int32(env, SUCCESS, &result1);
     } else {
         napi_create_int32(env, FAIL, &result1);
     }
     napi_set_element(env, result, ARR_NUM_0, result1);
 
-    OH_Drawing_FontSetTextSize(font, NUM_50);
-    uint16_t glyphsNotExist = 65535;
-    OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    if ((path != nullptr) &&
-        (OH_Drawing_FontGetPathForGlyph(font, glyphsNotExist, path) == OH_DRAWING_ERROR_INVALID_PARAMETER)) {
+    size_t size = 0;
+    if ((OH_Drawing_RectGetArraySize(nullptr, &size) == OH_DRAWING_ERROR_INVALID_PARAMETER) &&
+        (OH_Drawing_RectGetArraySize(rectArray, nullptr) == OH_DRAWING_ERROR_INVALID_PARAMETER) &&
+        (OH_Drawing_RectDestroyArray(rectArray) == OH_DRAWING_SUCCESS)) {
         napi_create_int32(env, SUCCESS, &result2);
     } else {
         napi_create_int32(env, FAIL, &result2);
     }
     napi_set_element(env, result, ARR_NUM_1, result2);
-    if (path != nullptr) {
-        OH_Drawing_PathDestroy(path);
-    }
-    OH_Drawing_FontDestroy(font);
     return result;
 }
 
-napi_value OHDrawingRectGetArraySize001(napi_env env, napi_callback_info info)
+napi_value OHDrawingRectGetArraySize002(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_Drawing_Array *rectArray = OH_Drawing_RectCreateArray(NUM_50);
-    size_t size = 0;
-    if ((OH_Drawing_RectGetArraySize(nullptr, &size) == OH_DRAWING_ERROR_INVALID_PARAMETER) &&
-        (OH_Drawing_RectGetArraySize(rectArray, nullptr) == OH_DRAWING_ERROR_INVALID_PARAMETER)) {
-        napi_create_int32(env, SUCCESS, &result);
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+
+    OH_Drawing_Array *rectArray = OH_Drawing_RectCreateArray(NUM_10);
+    if (rectArray != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
     } else {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, FAIL, &result1);
     }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    size_t size = 0;
+    if ((OH_Drawing_RectGetArraySize(rectArray, &size) == OH_DRAWING_SUCCESS) && (size == NUM_10) &&
+        (OH_Drawing_RectDestroyArray(rectArray) == OH_DRAWING_SUCCESS)) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
     return result;
 }
 
