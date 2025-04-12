@@ -76,15 +76,15 @@ export default function PowerTest() {
       let TAG = 'Power_IsScreenOn_Callback_Test';
       power.isScreenOn((error, data) => {
         if (error) {
+          console.error(`${TAG} error: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        } else {
           console.info(`${TAG} data: ${data}`);
           console.info(`${TAG} typeof data: ${typeof data}`);
           expect(typeof data).assertEqual('boolean');
           let isActive = power.isActive();
           expect(data).assertEqual(isActive);
-          done();
-        } else {
-          console.error(`${TAG} error: ${JSON.stringify(error)}`);
-          expect().assertFail();
           done();
         }
       })
@@ -358,12 +358,12 @@ export default function PowerTest() {
       try {
         power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (error) => {
           if (error) {
-            console.info('set power mode to MODE_PERFORMANCE');
-            expect().assertFail();
-            done();
-          } else {
             console.error(`${TAG} error: ${JSON.stringify(error)}`);
             expect(error.code).assertEqual(202);
+            done();
+          } else {
+            console.info('set power mode to MODE_PERFORMANCE');
+            expect().assertFail();
             done();
           }
         });
