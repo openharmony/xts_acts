@@ -141,18 +141,7 @@ export default function audioInterrupt() {
           console.info('InterruptAction.actionType  is :' + InterruptAction.actionType);
         }
       });
-      audioManager.off('interrupt', interAudioInterrupt, (InterruptAction) => {
-        console.info('come in MasterHap interrupt');
-        if (InterruptAction.actionType != undefined && InterruptAction.actionType != null) {
-          console.info('An event to gain the audio focus starts.');
-          console.info(`Focus gain event: ${InterruptAction} `);
-          activated = InterruptAction.activated;
-          InterruptHint = InterruptAction.hint;
-          console.info('activated is :' + activated);
-          console.info('InterruptHint is :' + InterruptHint);
-          console.info('InterruptAction.actionType  is :' + InterruptAction.actionType);
-        }
-      });
+      
       await audioRen.start().then(() => {
         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
       }).catch((err: BusinessError) => {
