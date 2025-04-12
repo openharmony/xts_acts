@@ -319,5 +319,37 @@ export default function nativeEffectTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_PixelmapInitializationOptions_Editable001
+     * @tc.name       : testOHPixelmapInitializationOptionsEditable001
+     * @tc.desc       : test OH_PixelmapInitializationOptions_Editable001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHPixelmapInitializationOptionsEditable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeEffectNdk.oHPixelmapInitializationOptionsEditable001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_XTS_OH_OH_PixelmapNative_Destroy001
+     * @tc.name       : testOHPixelmapNativeDestroy001
+     * @tc.desc       : test OH_PixelmapNative_Destroy001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHPixelmapNativeDestroy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeEffectNdk.oHPixelmapNativeDestroy001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
   })
 }
