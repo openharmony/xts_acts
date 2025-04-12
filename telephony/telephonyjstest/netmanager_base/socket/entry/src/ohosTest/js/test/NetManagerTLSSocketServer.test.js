@@ -14,7 +14,7 @@
  */
 
 import netSocket from '@ohos.net.socket';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 
 export default function NetManagerTlsSocketServerTest() {
     describe('NetManagerTLSSocketServerTest', function () {
@@ -24,7 +24,7 @@ export default function NetManagerTlsSocketServerTest() {
          * @tc.name Test on() interface
          * @tc.desc Function test
          */
-        it('NetworkManager_TLSSocketServer_on_connect_0100', 0, async function (done) {
+        it('NetworkManager_TLSSocketServer_on_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let caseName = 'NetworkManager_TLSSocketServer_on_connect_0100';
             let tlsServer = netSocket.constructTLSSocketServerInstance();
             try {
