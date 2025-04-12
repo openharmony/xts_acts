@@ -1,8 +1,7 @@
 import hilog from '@ohos.hilog';
 import socket from "@ohos.net.socket";
 import { BusinessError } from '@ohos.base'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 
 // no permission.
 const NOT_PERMISSION = 201;
