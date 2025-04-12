@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import call from '@ohos.telephony.call';
 import audio from '@ohos.multimedia.audio';
 import { BusinessError } from '@ohos.base';
@@ -252,6 +252,80 @@ export default function audioManagerApi9() {
       }
 
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GET_VOLUME_PERCENTAGE_0100
+     * @tc.name      : getAPPVolumePercentage
+     * @tc.desc      : getAPPVolumePercentage
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let groupManager = audioVolumeManager.getAPPVolumePercentage();
+        if ((typeof groupManager) == 'object') {
+          console.info('audioManagerApi9Test: Promise: getAPPVolumePercentage  :  PASS');
+          expect(true).assertTrue();
+          done();
+        } else {
+          console.info('audioManagerApi9Test: Promise: getAPPVolumePercentage  :  FAIL');
+          expect(false).assertTrue();
+          done();
+        }
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to getAPPVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100
+     * @tc.name      : setAPPVolumePercentage - String_Parameter - 401
+     * @tc.desc      : setAPPVolumePercentage - String_Parameter - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        await audioVolumeManager.setAPPVolumePercentage(strParams);
+        console.info(`audioManagerApi9Test: Promise: setAPPVolumePercentage  :  Success`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to setAPPVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100
+     * @tc.name      : setAPPVolumePercentage - Null_Parameter - 6800101
+     * @tc.desc      : setAPPVolumePercentage - Null_Parameter - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        await audioVolumeManager.setAPPVolumePercentage(volGroupId);
+        console.info(`audioManagerApi9Test: Promise: setAPPVolumePercentage  :  Success`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to setAPPVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        done();
+      }
+
+    })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100
      * @tc.name      : getVolumeGroupManager - callback - number_Parameter
@@ -741,7 +815,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -754,6 +828,54 @@ export default function audioManagerApi9() {
         expect(false).assertTrue();
         done();
       }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0200
+     * @tc.name      : off_ringerModeChange - Invaild_Number_Parameter - 6800101
+     * @tc.desc      : off_ringerModeChange - Invaild_Number_Parameter - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let para: ESObject = '123';
+      let flag: boolean = false;
+      try {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
+        groupManager.off(para,()=>{});
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0300
+     * @tc.name      : off_ringerModeChange - String_Parameter - 401
+     * @tc.desc      : off_ringerModeChange - String_Parameter - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let para: ESObject = 123;
+      let flag: boolean = false;
+      try {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
+        groupManager.off(para);
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
     })
 
     /**
@@ -1860,7 +1982,7 @@ export default function audioManagerApi9() {
       await audioManager.setVolume(audio.AudioVolumeType.MEDIA, maxVolume)
       await sleep(50);
       audioVolumeManager.on('volumeChange', (VolumeEvent) => {
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
+        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume},VolumeEvent.volumeMode:${VolumeEvent.volumeMode}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
         expect(VolumeEvent.volumeType).assertEqual(audio.AudioVolumeType.MEDIA);
         expect(VolumeEvent.volume).assertEqual(minVolume);
         expect(VolumeEvent.updateUi).assertEqual(false);
