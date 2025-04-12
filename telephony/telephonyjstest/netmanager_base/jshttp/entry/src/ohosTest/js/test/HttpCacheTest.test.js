@@ -20,13 +20,16 @@ import { describe, expect, it , TestType, Size, Level } from '@ohos/hypium'
 export default function HttpCacheTest() {
     describe('HttpCacheTest', function () {
 
-        /**
-        * @tc.number    Telephony_NetStack_HttpTestBasicGet_0100
-        * @tc.name      set usingCache to true
-        * @tc.desc      usingCache test
+   
+       /*
+        * @tc.number:SUB_Telephony_NetStack_HttpTestBasicGet_0100
+        * @tc.name: testTelephonyNetStackHttpTestBasicGet0100
+        * @tc.desc: usingCache test
+        * @tc.level: Level 0
+        * @tc.type:Function
+        * @tc.size:MediumTest
         */
-
-        it('Telephony_NetStack_HttpTestBasicGet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
+        it('testTelephonyNetStackHttpTestBasicGet0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done){
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
                 console.log('data: ' + data)
@@ -44,13 +47,15 @@ export default function HttpCacheTest() {
             })
         });
 
-        /**
-        * @tc.number    Telephony_NetStack_HttpTestBasicGet_0200
-        * @tc.name      set usingCache to false
-        * @tc.desc      usingCache test
+       /*
+        * @tc.number:SUB_Telephony_NetStack_HttpTestBasicGet_0200
+        * @tc.name: testTelephonyNetStackHttpTestBasicGet0200
+        * @tc.desc: usingCache test
+        * @tc.level: Level 0
+        * @tc.type:Function
+        * @tc.size:MediumTest
         */
-
-        it('Telephony_NetStack_HttpTestBasicGet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
+        it('testTelephonyNetStackHttpTestBasicGet0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestBasicGet_0200';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -70,13 +75,15 @@ export default function HttpCacheTest() {
             })
         });
 
-        /**
-        * @tc.number    Telephony_NetStack_HttpTestCacheFlush_0100
-        * @tc.name      use callback form test cache.flush
-        * @tc.desc      cache flush test
+       /*
+        * @tc.number:SUB_Telephony_NetStack_HttpTestCacheFlush_0100
+        * @tc.name: testTelephonyNetStackHttpTestCacheFlush_0100
+        * @tc.desc: cache flush test
+        * @tc.level: Level 0
+        * @tc.type:Function
+        * @tc.size:MediumTest
         */
-
-        it('Telephony_NetStack_HttpTestCacheFlush_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
+        it('testTelephonyNetStackHttpTestCacheFlush_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheFlush_0100';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -99,13 +106,15 @@ export default function HttpCacheTest() {
             })
         });
 
-        /**
-        * @tc.number    Telephony_NetStack_HttpTestCacheFlush_0200
-        * @tc.name      use promise form test cache.flush
-        * @tc.desc      cache flush test
+       /*
+        * @tc.number:SUB_Telephony_NetStack_HttpTestCacheFlush_0200
+        * @tc.name: testTelephonyNetStackHttpTestCacheFlush_0200
+        * @tc.desc: cache flush test
+        * @tc.level: Level 0
+        * @tc.type:Function
+        * @tc.size:MediumTest
         */
-
-        it('Telephony_NetStack_HttpTestCacheFlush_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
+        it('testTelephonyNetStackHttpTestCacheFlush_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheFlush_0200';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
@@ -128,13 +137,15 @@ export default function HttpCacheTest() {
             })
         });
 
-        /**
-        * @tc.number    Telephony_NetStack_HttpTestCacheDelete_0100
-        * @tc.name      use callback form test cache.delete
-        * @tc.desc      cache flush test
+       /*
+        * @tc.number:SUB_Telephony_NetStack_HttpTestCacheDelete_0100
+        * @tc.name: testTelephonyNetStackHttpTestCacheDelete0100
+        * @tc.desc: cache flush test
+        * @tc.level: Level 0
+        * @tc.type:Function
+        * @tc.size:MediumTest
         */
-
-        it('Telephony_NetStack_HttpTestCacheDelete_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function(done){
+        it('testTelephonyNetStackHttpTestCacheDelete0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function(done){
             let CaseName = 'Telephony_NetStack_HttpTestCacheDelete_0100';
             connection.hasDefaultNet(function (error, data) {
                 console.log(JSON.stringify(error))
