@@ -45,6 +45,7 @@
 #define DOUBLE_NUM_800 800.0
 #define DOUBLE_NUM_10 10.0
 #define DOUBLE_NUM_15 15.0
+#define DOUBLE_NUM_001 0.01
 
 static OH_Drawing_TypographyStyle *typoStyle_ = nullptr;
 static OH_Drawing_TextStyle *txtStyle_ = nullptr;
@@ -766,7 +767,7 @@ napi_value OHDrawingLineTypographyGetLineBreak005(napi_env env, napi_callback_in
     }
     napi_set_element(env, result, ARR_NUM_1, result2);
 
-    maxWidth = 0.01;
+    maxWidth = DOUBLE_NUM_001;
     startIndex = 0;
     count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
     if (count == 1) {
