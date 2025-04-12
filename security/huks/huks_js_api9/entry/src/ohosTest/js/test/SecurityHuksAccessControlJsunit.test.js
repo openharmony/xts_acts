@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import huks from "@ohos.security.huks";
 import Data from "./utils/data.json";
 import { stringToUint8Array, checkSoftware } from "./utils/param/publicFunc";
@@ -122,7 +122,7 @@ export default function SecurityHuksAccessControlJsunit() {
             useSoftware = await checkSoftware();
             done();
         })
-        it("Security_HUKS_AccessControll_API9_0100", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0100";
             let HuksOptions = {
                 properties: new Array(
@@ -159,7 +159,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0200", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0200";
             let HuksOptions = {
                 properties: new Array(
@@ -208,7 +208,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0300", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0300";
             let HuksOptions = {
                 properties: new Array(
@@ -260,7 +260,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0400", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0400";
             let HuksOptions = {
                 properties: new Array(
@@ -327,7 +327,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0500", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0500";
             let HuksOptions = {
                 properties: new Array(
@@ -359,7 +359,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0600", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0600";
             let HuksOptions = {
                 properties: new Array(
@@ -395,7 +395,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0700", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0700";
             let HuksOptions = {
                 properties: new Array(
@@ -445,7 +445,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0800", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0800";
             let HuksOptions = {
                 properties: new Array(
@@ -497,7 +497,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_0900", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_0900";
             let HuksOptions = {
                 properties: new Array(
@@ -534,7 +534,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_1000", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlias = "Security_HUKS_AccessControll_API9_1000";
             let HuksOptions = {
                 properties: new Array(
@@ -566,7 +566,7 @@ export default function SecurityHuksAccessControlJsunit() {
             done();
         });
 
-        it("Security_HUKS_AccessControll_API9_9000", 0, async function (done) {
+        it("Security_HUKS_AccessControll_API9_9000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             expect(1).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
             expect(2).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT);
             expect(4).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN);

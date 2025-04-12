@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it } from '@ohos/hypium';
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksDerivePBKDF2 } from './utils/param/derive/publicDeriveParam';
 import { stringToUint8Array } from './utils/param/publicFunc';
@@ -37,7 +37,7 @@ let HuksOptions63kb = {
 
 export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
     describe('SecurityHuksDerivePBKDF2PromiseJsunit', function () {
-        it('Security_HUKS_Derive_API9_PBKDF2_101', 0, async function (done) {
+        it('Security_HUKS_Derive_API9_PBKDF2_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size192SHA256Finish63KBDeriveKeyAlias_01_101';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -61,7 +61,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Derive_API9_PBKDF2_102', 0, async function (done) {
+        it('Security_HUKS_Derive_API9_PBKDF2_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size192SHA256Abort63KBDeriveKeyAlias_01_101';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -85,7 +85,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size192SHA256Finish63KBDerive108', 0, async function (done) {
+        it('testDerivePBKDF2Size192SHA256Finish63KBDerive108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size192SHA256Finish63KBDeriveKeyAlias_01_108';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -107,7 +107,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size192SHA256Finish63KBDerive130', 0, async function (done) {
+        it('testDerivePBKDF2Size192SHA256Finish63KBDerive130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size192SHA256Finish63KBDeriveKeyAlias_01_130';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -129,7 +129,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA256Finish63KBDerive101', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA256Finish63KBDerive101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Finish63KBDeriveKeyAlias_01_101';
             HuksOptions63kb.properties.splice(3, 1, HuksDerivePBKDF2.HuksKeyPBKDF2Size256);
             let huksOptionsFinish = {
@@ -154,7 +154,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA256Finish63KBDerive108', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA256Finish63KBDerive108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Finish63KBDeriveKeyAlias_01_108';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -176,7 +176,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA256Finish63KBDerive130', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA256Finish63KBDerive130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Finish63KBDeriveKeyAlias_01_130';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -198,7 +198,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA384Finish63KBDerive101', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA384Finish63KBDerive101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA384Finish63KBDeriveKeyAlias_01_101';
             HuksOptions63kb.properties.splice(2, 1, HuksDerivePBKDF2.HuksTagPBKDF2DigestSHA384);
             let huksOptionsFinish = {
@@ -223,7 +223,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA384Finish63KBDerive108', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA384Finish63KBDerive108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA384Finish63KBDeriveKeyAlias_01_108';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -245,7 +245,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA384Finish63KBDerive130', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA384Finish63KBDerive130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA384Finish63KBDeriveKeyAlias_01_130';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -267,7 +267,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA512Finish63KBDerive101', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA512Finish63KBDerive101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA512Finish63KBDeriveKeyAlias_01_101';
             HuksOptions63kb.properties.splice(2, 1, HuksDerivePBKDF2.HuksTagPBKDF2DigestSHA512);
             let huksOptionsFinish = {
@@ -292,7 +292,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA512Finish63KBDerive108', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA512Finish63KBDerive108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA512Finish63KBDeriveKeyAlias_01_108';
             let huksOptionsFinish = {
                 properties: new Array(
@@ -314,7 +314,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
             done();
         });
 
-        it('testDerivePBKDF2Size256SHA512Finish63KBDerive130', 0, async function (done) {
+        it('testDerivePBKDF2Size256SHA512Finish63KBDerive130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA512Finish63KBDeriveKeyAlias_01_130';
             let huksOptionsFinish = {
                 properties: new Array(

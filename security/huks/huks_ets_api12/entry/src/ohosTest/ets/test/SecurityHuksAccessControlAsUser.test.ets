@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { SetParam, GenParam } from './utils/HuksOptionUtil';
 import { StringToUint8Array } from './utils/CommonUtil'
@@ -44,9 +44,9 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.name Test non_system hap use generateKeyItemAsUser, process fail
      * @tc.size Small
      * @tc.type Func
-     * @tc.level Level1
+     * @tc.level Level0
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2200', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2200";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -73,7 +73,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2300', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2300";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -102,7 +102,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2400', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2400";
       let userid: number = 100;
       let importKeyOption: huks.HuksOptions = {
@@ -134,7 +134,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2500', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2500";
       let userid: number = 100;
       let importKeyOption: huks.HuksOptions = {
@@ -166,7 +166,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2600', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2600";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -195,7 +195,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2700', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2700";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -224,7 +224,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2800', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2800";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -253,7 +253,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2900', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_2900";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -295,7 +295,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_3000', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_3000";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {
@@ -324,7 +324,7 @@ export default function SecurityHUKSAccessControlAsUserTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_HUKS_AccessControl_AsUser_Func_3100', 0, async () => {
+    it('SUB_Security_HUKS_AccessControl_AsUser_Func_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_AsUser_Func_3100";
       let userid: number = 100;
       let genKeyOption: huks.HuksOptions = {

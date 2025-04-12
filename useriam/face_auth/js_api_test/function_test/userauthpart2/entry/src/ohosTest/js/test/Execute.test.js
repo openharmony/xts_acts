@@ -113,9 +113,9 @@ export default function signNormalAccessBiometricExecute() {
       * @tc.name      : execute_getUserAuthInstance_params_onResult_offResult_start_cancel
       * @tc.size      : MediumTest
       * @tc.type      : Function
-      * @tc.level     : Level.LEVEL2
+      * @tc.level     : Level.LEVEL0
     */
-    it('Security_IAM_getUserAuthInstance_Func_0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('Security_IAM_getUserAuthInstance_Func_0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("Security_IAM_getUserAuthInstance_Func_0043 start");
       const authParams = [
         {
