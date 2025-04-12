@@ -159,9 +159,9 @@ export default function PolicyTset() {
     * @tc.desc  : Set a policy that specifies whether the uid application can access the network, using the Promise method as an asynchronous method
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testNetworkAccessPolicyPromise0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0200';
       setNetworkAccessPolicyFn(caseName, done, 2, false, false)
     })
@@ -237,9 +237,9 @@ export default function PolicyTset() {
     * @tc.desc  : Gets access to the network policy for the specified uid, using the Promise method as an asynchronous method.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testUidNetworkAccessPolicyPromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0100';
       await getNetworkAccessPolicyByUidFn(caseName, done, 20001)
     })
@@ -289,9 +289,9 @@ export default function PolicyTset() {
     * @tc.desc  : Gets access to the network policy for the specified uid, using the Promise method as an asynchronous method.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testUidNetworkAccessPolicyPromise0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0500';
       await getNetworkAccessPolicyFn(caseName, done)
     })
