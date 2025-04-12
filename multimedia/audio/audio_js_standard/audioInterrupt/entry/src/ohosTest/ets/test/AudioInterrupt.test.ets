@@ -141,7 +141,6 @@ export default function audioInterrupt() {
           console.info('InterruptAction.actionType  is :' + InterruptAction.actionType);
         }
       });
-      
       await audioRen.start().then(() => {
         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
       }).catch((err: BusinessError) => {
