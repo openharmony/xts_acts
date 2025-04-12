@@ -282,8 +282,8 @@ export default function audioManagerApi9() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100
-     * @tc.name      : setAppVolumePercentage - String_Parameter - 401
-     * @tc.desc      : setAppVolumePercentage - String_Parameter - 401
+     * @tc.name      : setAppVolumePercentage - num_Parameter - 401
+     * @tc.desc      : setAppVolumePercentage - num_Parameter - 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -291,7 +291,7 @@ export default function audioManagerApi9() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
-        await audioVolumeManager.setAppVolumePercentage(strParams);
+        await audioVolumeManager.setAppVolumePercentage(numParams);
         console.info(`audioManagerApi9Test: Promise: setppVolumePercentage  :  Success`);
         expect(false).assertTrue();
         done();
@@ -304,14 +304,14 @@ export default function audioManagerApi9() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0200
      * @tc.name      : setAppVolumePercentage - Null_Parameter - 6800101
      * @tc.desc      : setAppVolumePercentage - Null_Parameter - 6800101
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         await audioVolumeManager.setAppVolumePercentage(volGroupId);
