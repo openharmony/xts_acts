@@ -68,7 +68,7 @@ static struct OH_Huks_Param g_hkdfFinishParams001[] = {
  * @tc.desc: alg-HKDF pur-Derive dig-SHA256 KEY_SIZE-128
  * @tc.type: FUNC
  */
-HWTEST_F(HuksDeriveHKDFTest, Security_HUKS_NAPI_Derive_hkdf_0100, TestSize.Level0)
+HWTEST_F(HuksDeriveHKDFTest, Security_HUKS_NAPI_Derive_hkdf_0100, TestSize.Level1)
 {
     struct OH_Huks_Blob keyAlias = {strlen("HksHKDFDeriveKeyAliasTest001"), (uint8_t *)"HksHKDFDeriveKeyAliasTest001"};
 

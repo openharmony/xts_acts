@@ -45,9 +45,9 @@ export default function ActsDlpNDKTest() {
      * @tc.desc Obtains the permission info of this DLP file.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('getDlpPermissionInfoTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('getDlpPermissionInfoTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.log("=======> getDlpPermissionInfoTest  ==========");
       if (deviceInfo.deviceType != 'wearable') {
         try{

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { SetParam, GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
 import { StringToUint8Array } from './utils/CommonUtil';
@@ -71,7 +71,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0100";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
@@ -95,7 +95,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0200', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0200";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
@@ -117,7 +117,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0300', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0300";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
@@ -139,7 +139,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0400', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0400";
       let preText: string = testNumber + GetDataBySize(64 * 1024 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
@@ -161,7 +161,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0500', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0500";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
@@ -183,7 +183,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0600', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0600";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7);
@@ -205,7 +205,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0700', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0700";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
@@ -228,7 +228,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0800', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0800";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
@@ -252,7 +252,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0900', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0900";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
@@ -274,7 +274,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1000', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1000";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
@@ -296,7 +296,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1100', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1100";
       let preText: string = testNumber + GetDataBySize(64 * 1024 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
@@ -318,7 +318,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1200', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1200";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
@@ -340,7 +340,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1300', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1300";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7);
@@ -362,7 +362,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1400', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1400";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
@@ -385,7 +385,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1500', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1500";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
@@ -408,7 +408,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1600', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1600";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
@@ -431,7 +431,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1700', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1700";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
@@ -454,7 +454,7 @@ export default function SecurityHuksCipherSM4Test() {
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1800', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1800";
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);

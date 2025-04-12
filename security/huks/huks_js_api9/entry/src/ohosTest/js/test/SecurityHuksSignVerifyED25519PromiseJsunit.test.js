@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it } from '@ohos/hypium';
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksSignVerifyED25519 } from './utils/param/signverify/publicSignverifyParam.js';
 import { stringToUint8Array } from './utils/param/publicFunc.js';
@@ -24,7 +24,7 @@ let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
 export default function SecurityHuksSignVerifyED25519PromiseJsunit() {
   describe('SecurityHuksSignVerifyED25519PromiseJsunit', function () {
-    it('Security_HUKS_SignVerify_API9_ED25519_101', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_ED25519_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias101';
       let HuksOptions = {
         properties: new Array(
@@ -50,7 +50,7 @@ export default function SecurityHuksSignVerifyED25519PromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_SignVerify_API9_ED25519_102', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_ED25519_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias102';
       let HuksOptions = {
         properties: new Array(
@@ -65,7 +65,7 @@ export default function SecurityHuksSignVerifyED25519PromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_SignVerify_API9_ED25519_103', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_ED25519_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias103';
       let HuksOptions = {
         properties: new Array(
@@ -90,7 +90,7 @@ export default function SecurityHuksSignVerifyED25519PromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_SignVerify_API9_ED25519_104', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_ED25519_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias104';
       let HuksOptions = {
         properties: new Array(

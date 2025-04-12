@@ -200,7 +200,7 @@ void HksX25519AgreeFreeBlob(struct OH_Huks_Blob *blob1, struct OH_Huks_Blob *blo
  * @tc.desc: alg-x25519, pur-AGREE
  * @tc.type: FUNC
  */
-HWTEST_F(HuksAgreeX25519Test, Security_HUKS_NAPI_Agree_X25519_0100, TestSize.Level0)
+HWTEST_F(HuksAgreeX25519Test, Security_HUKS_NAPI_Agree_X25519_0100, TestSize.Level1)
 {
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     struct OH_Huks_ParamSet *initParamSet01 = nullptr;

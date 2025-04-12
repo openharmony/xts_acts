@@ -118,10 +118,10 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.name test getAllUserTrustedCertificates interface no permission to call
      * @tc.desc abnormal test
      * @tc.size SmallTest
-     * @tc.level Level2
+     * @tc.level Level0
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010 start');
       try {
         let scope: certManager.CertScope = certManager.CertScope.CURRENT_USER;
