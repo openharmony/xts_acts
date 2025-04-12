@@ -5250,29 +5250,29 @@ export default function audioFramework() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0300
-     * @tc.name      : InterruptActionType - INTERRUPT_TYPE_BEGIN
-     * @tc.desc      : InterruptActionType - INTERRUPT_TYPE_BEGIN
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0100
+     * @tc.name      : InterruptType - INTERRUPT_TYPE_BEGIN
+     * @tc.desc      : InterruptType - INTERRUPT_TYPE_BEGIN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      expect(audio.InterruptActionType.INTERRUPT_TYPE_BEGIN).assertEqual(1);
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptType.INTERRUPT_TYPE_BEGIN).assertEqual(1);
       await sleep(50);
       done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0400
-     * @tc.name      : InterruptActionType - INTERRUPT_TYPE_END
-     * @tc.desc      : InterruptActionType - INTERRUPT_TYPE_END
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0200
+     * @tc.name      : InterruptType - INTERRUPT_TYPE_END
+     * @tc.desc      : InterruptType - INTERRUPT_TYPE_END
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      expect(audio.InterruptActionType.INTERRUPT_TYPE_END).assertEqual(2);
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptType.INTERRUPT_TYPE_END).assertEqual(2);
       await sleep(50);
       done();
     })
@@ -5983,7 +5983,7 @@ export default function audioFramework() {
       let flag: boolean = false;
       try {
         let para: ESObject = '123';
-        volumeManager.on(para，()=>{});
+        volumeManager.on(para,()=>{});
         volumeManager.off(para);
       } catch (error) {
         console.info(`on('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
