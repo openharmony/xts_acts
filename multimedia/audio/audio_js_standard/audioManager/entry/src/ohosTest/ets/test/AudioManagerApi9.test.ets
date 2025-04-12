@@ -261,7 +261,7 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let audioVolumeManager:audio.AudioVolumeManager = audioManager.getVolumeManager();
+      let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let groupManager = audioVolumeManager.getAppVolumePercentage();
         if ((typeof groupManager) == 'object') {
