@@ -261,20 +261,20 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 3
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let audioVolumeManager = audioManager.getVolumeManager();
+      let audioVolumeManager:audio.audioVolumeManager = audioManager.getVolumeManager();
       try {
-        let groupManager = audioVolumeManager.getAPPVolumePercentage();
+        let groupManager = audioVolumeManager.getAppVolumePercentage();
         if ((typeof groupManager) == 'object') {
-          console.info('audioManagerApi9Test: Promise: getAPPVolumePercentage  :  PASS');
+          console.info('audioManagerApi9Test: Promise: getAppVolumePercentage  :  PASS');
           expect(true).assertTrue();
           done();
         } else {
-          console.info('audioManagerApi9Test: Promise: getAPPVolumePercentage  :  FAIL');
+          console.info('audioManagerApi9Test: Promise: getAppVolumePercentage  :  FAIL');
           expect(false).assertTrue();
           done();
         }
       } catch (error) {
-        console.error(`audioManagerApi9Test: failed to getAPPVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        console.error(`audioManagerApi9Test: failed to getAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
         expect(false).assertTrue();
         done();
       }
@@ -286,9 +286,9 @@ export default function audioManagerApi9() {
      * @tc.desc      : setAPPVolumePercentage - String_Parameter - 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         await audioVolumeManager.setAPPVolumePercentage(strParams);
@@ -309,9 +309,9 @@ export default function audioManagerApi9() {
      * @tc.desc      : setAPPVolumePercentage - Null_Parameter - 6800101
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         await audioVolumeManager.setAPPVolumePercentage(volGroupId);
