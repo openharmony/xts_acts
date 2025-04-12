@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -43,7 +43,7 @@ export default function HttpCertificatePinTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testHttpCertificatePin0100', 0, async (done: Function) => {
+    it('testHttpCertificatePin0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = 'testHttpCertificatePin0100';
       console.info(`${caseName}---Start`);
       try {
@@ -86,7 +86,7 @@ export default function HttpCertificatePinTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testHttpCertificatePin0200', 0, async (done: Function) => {
+    it('testHttpCertificatePin0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = 'testHttpCertificatePin0200';
       console.info(`${caseName}---Start`);
       try {

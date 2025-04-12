@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect , Level, Size, TestType} from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 
@@ -496,7 +496,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_options_0100', 0, options_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_options_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, options_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_options_0200
@@ -506,7 +506,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_options_0200', 0, options_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_options_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, options_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_GET_0100
@@ -516,7 +516,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_GET_0100', 0, GET_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_GET_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, GET_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_GET_0200
@@ -526,7 +526,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_GET_0200', 0, GET_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_GET_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, GET_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_POST_0100
@@ -536,7 +536,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_POST_0100', 0, POST_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_POST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, POST_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_POST_0200
@@ -546,7 +546,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_POST_0200', 0, POST_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_POST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, POST_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_TRACE_0100
@@ -556,7 +556,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_TRACE_0100', 0, TRACE_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_TRACE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, TRACE_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_TRACE_0200
@@ -566,7 +566,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_TRACE_0200', 0, TRACE_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_TRACE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, TRACE_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_PUT_0100
@@ -576,7 +576,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_PUT_0100', 0, PUT_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_PUT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, PUT_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_PUT_0200
@@ -586,7 +586,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_PUT_0200', 0, PUT_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_PUT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, PUT_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_head_0100
@@ -596,7 +596,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_head_0100', 0, head_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_head_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, head_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_HEAD_0200
@@ -606,7 +606,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_HEAD_0200', 0, HEAD_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_HEAD_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, HEAD_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_DELETE_0100
@@ -616,7 +616,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_DELETE_0100', 0, DELETE_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_DELETE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, DELETE_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_DELETE_0200
@@ -626,7 +626,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_DELETE_0200', 0, DELETE_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_DELETE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, DELETE_0200);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_CONNECT_0100
@@ -636,7 +636,7 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_CONNECT_0100', 0, CONNECT_0100);
+    it('SUB_Telephony_http_HttpRequestMethod_CONNECT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, CONNECT_0100);
 
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_CONNECT_0200
@@ -646,6 +646,6 @@ export default function requestMethodJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_http_HttpRequestMethod_CONNECT_0200', 0, CONNECT_0200);
+    it('SUB_Telephony_http_HttpRequestMethod_CONNECT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, CONNECT_0200);
   })
 };
