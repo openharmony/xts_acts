@@ -75,7 +75,7 @@ export default function PowerTest() {
     it('Power_IsScreenOn_Callback_Test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       let TAG = 'Power_IsScreenOn_Callback_Test';
       power.isScreenOn((error, data) => {
-        if (typeof error === "undefined") {
+        if (error) {
           console.info(`${TAG} data: ${data}`);
           console.info(`${TAG} typeof data: ${typeof data}`);
           expect(typeof data).assertEqual('boolean');
@@ -357,7 +357,7 @@ export default function PowerTest() {
       let TAG = 'System_API_Test_Power_Manager_0600';
       try {
         power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (error) => {
-          if (typeof error === 'undefined') {
+          if (error) {
             console.info('set power mode to MODE_PERFORMANCE');
             expect().assertFail();
             done();
