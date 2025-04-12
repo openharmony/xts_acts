@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -46,7 +46,7 @@ export default function HttpDeleteTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-     it('testNetworkMgrHttpHttpResponseCacheDelete0100', 0, async (done: Function) => {
+     it('testNetworkMgrHttpHttpResponseCacheDelete0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
        const caseName: string = 'testNetworkMgrHttpHttpResponseCacheDelete0100';
        console.info(`${caseName}---Start`);
        try {
@@ -87,7 +87,7 @@ export default function HttpDeleteTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheDelete0200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheDelete0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheDelete0200';
       console.info(`${caseName}---Start`);
       try {
@@ -126,7 +126,7 @@ export default function HttpDeleteTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheDelete0300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheDelete0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheDelete0300';
       console.info(`${caseName}---Start`);
       try {
@@ -195,7 +195,7 @@ export default function HttpDeleteTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpResponseCacheDelete0400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpResponseCacheDelete0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheDelete0400';
       console.info(`${caseName}---Start`);
       try {

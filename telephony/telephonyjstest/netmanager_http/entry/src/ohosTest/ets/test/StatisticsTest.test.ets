@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import statistics from '@ohos.net.statistics';
 import sim from '@ohos.telephony.sim';
 import radio from '@ohos.telephony.radio';
@@ -42,7 +42,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0100';
       let ifaceName = "eth0";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
@@ -65,7 +65,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
@@ -88,7 +88,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0300', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
@@ -112,7 +112,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0400', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0400';
       let ifaceName = null;
       try {
@@ -141,7 +141,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0100';
       let ifaceName = "eth0";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
@@ -162,7 +162,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
@@ -183,7 +183,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0300', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
@@ -204,7 +204,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0400', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0400';
       let ifaceName = null;
       try {
@@ -231,7 +231,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0100';
       let ifaceName = "eth0";
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
@@ -254,7 +254,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
@@ -277,7 +277,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0300', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
@@ -300,7 +300,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0400', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0400';
       let ifaceName = null;
       try {
@@ -329,7 +329,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0100';
       let ifaceName = "eth0";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
@@ -350,7 +350,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
@@ -371,7 +371,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0300', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
@@ -392,7 +392,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0400', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0400';
       let ifaceName = null;
       try {
@@ -419,7 +419,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getAllTxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getAllTxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getAllTxBytes_Async_0100';
       statistics.getAllTxBytes((err, data) => {
         if (err) {
@@ -441,7 +441,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getAllTxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getAllTxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getAllTxBytes_Promise_0100';
       statistics.getAllTxBytes().then((data) => {
         console.log(`${caseName} getAllTxBytes success ${JSON.stringify(data)}`);
@@ -461,7 +461,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getAllRxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getAllRxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getAllRxBytes_Async_0100';
       statistics.getAllRxBytes((err, data) => {
         if (err) {
@@ -483,7 +483,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getAllRxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getAllRxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getAllRxBytes_Promise_0100';
       statistics.getAllRxBytes().then((data) => {
         console.log(`${caseName} getAllRxBytes success ${JSON.stringify(data)}`);
@@ -503,7 +503,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidRxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Async_0100';
       let uid = 20010084;
       statistics.getUidRxBytes(uid, (err, data) => {
@@ -526,7 +526,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidRxBytes_Async_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Async_0200';
       let uid = 20010084;
       statistics.getUidRxBytes(uid, (err, data) => {
@@ -549,7 +549,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0100';
       let uid = 20010084;
       statistics.getUidRxBytes(uid).then((data) => {
@@ -570,7 +570,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0200';
       let uid = 20010084;
       statistics.getUidRxBytes(uid).then((data) => {
@@ -591,7 +591,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidTxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Async_0100';
       let uid = 20010084;
       statistics.getUidTxBytes(uid, (err, data) => {
@@ -614,7 +614,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidTxBytes_Async_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Async_0200';
       let uid = 20010084;
       statistics.getUidTxBytes(uid, (err, data) => {
@@ -637,7 +637,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0100';
       let uid = 20010084;
       statistics.getUidTxBytes(uid).then((data) => {
@@ -658,7 +658,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0200', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0200';
       let uid = 20010084;
       statistics.getUidTxBytes(uid).then((data) => {
@@ -679,7 +679,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getCellularRxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getCellularRxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getCellularRxBytes_Async_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
@@ -718,7 +718,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getCellularRxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getCellularRxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getCellularRxBytes_Promise_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
@@ -755,7 +755,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getCellularTxBytes_Async_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getCellularTxBytes_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getCellularTxBytes_Async_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
@@ -794,7 +794,7 @@ export default function StatisticsTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_Telephony_NetworkManager_getCellularTxBytes_Promise_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_NetworkManager_getCellularTxBytes_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'SUB_Telephony_NetworkManager_getCellularTxBytes_Promise_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
