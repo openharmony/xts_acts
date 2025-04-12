@@ -39,11 +39,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_Listen_NetAddress_Promise_Nop
      * @tc.name: Socket_Listen_NetAddress_Promise_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Listen_NetAddress_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Listen_NetAddress_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Listen_NetAddress_Promise_Nop begin');
       try {
         let listenAddr: socket.NetAddress = {
@@ -72,11 +72,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_Listen_NetAddress_Callback_Nop
      * @tc.name: Socket_Listen_NetAddress_Callback_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Listen_NetAddress_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Listen_NetAddress_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Listen_NetAddress_Callback_Nop begin');
       try {
         let listenAddr: socket.NetAddress = {
@@ -106,11 +106,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_Close_Callback_Nop
      * @tc.name: Socket_Close_Callback_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Close_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Close_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Close_Callback_Nop begin');
       try {
         tcp.close((err: BusinessError) => {
@@ -135,11 +135,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_Bind_NetAddress_Callback_Nop
      * @tc.name: Socket_Bind_NetAddress_Callback_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Bind_NetAddress_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Bind_NetAddress_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Bind_NetAddress_Callback_Nop begin');
       try {
         // let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
@@ -169,11 +169,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_Bind_NetAddress_Promise_Nop
      * @tc.name: Socket_Bind_NetAddress_Promise_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Bind_NetAddress_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Bind_NetAddress_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Bind_NetAddress_Promise_Nop begin');
       try {
         // let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
@@ -206,7 +206,7 @@ export default function socketNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_GetRemoteAddress_NetAddress_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_GetRemoteAddress_NetAddress_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_GetRemoteAddress_NetAddress_Callback_Nop begin');
       try {
         tcp.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
@@ -235,7 +235,7 @@ export default function socketNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_GetRemoteAddress_NetAddress_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_GetRemoteAddress_NetAddress_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_GetRemoteAddress_NetAddress_Promise_Nop begin');
       try {
         await tcp.getRemoteAddress().then(() => {
@@ -262,7 +262,7 @@ export default function socketNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_GetState_SocketStateBase_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_GetState_SocketStateBase_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_GetState_SocketStateBase_Promise_Nop begin');
       try {
         await tcp.getState().then(() => {
@@ -289,7 +289,7 @@ export default function socketNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Close_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Close_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Close_Promise_Nop begin');
       try {
         await tcp.close().then(() => {
@@ -316,7 +316,7 @@ export default function socketNopTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Listen_TLSConnectOptions_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Listen_TLSConnectOptions_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Listen_TLSConnectOptions_Callback_Nop begin');
       try {
         let tlsConnectOptions: socket.TLSConnectOptions = {
@@ -362,7 +362,7 @@ export default function socketNopTest() {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it('SUB_Communication_NetStack_Socket_Listen_TLSConnectOptions_Promise_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Listen_TLSConnectOptions_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Listen_TLSConnectOptions_Promise_Nop begin');
       try {
         let tlsConnectOptions: socket.TLSConnectOptions = {
@@ -405,11 +405,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Callback_Nop
      * @tc.name: Socket_Send_UDPSendOptions_Callback_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Callback_Nop begin');
       try {
         let sendOptions: socket.UDPSendOptions = {
@@ -441,11 +441,11 @@ export default function socketNopTest() {
      * @tc.number:SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Callback_Nop
      * @tc.name: Socket_SetExtraOptions_UDPSendOptions_Callback_Nop
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Callback_Nop', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Callback_Nop begin');
       try {
 
@@ -474,11 +474,11 @@ export default function socketNopTest() {
    * @tc.number:SUB_Communication_NetStack_Socket_Send_TCPSendOptions_Promise_Nop
    * @tc.name: Socket_Send_TCPSendOptions_Promise_Nop
    * @tc.desc:Using the on method without permission
-   * @tc.level:Level 3
+   * @tc.level:Level 0
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_Send_TCPSendOptions_Promise_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_Send_TCPSendOptions_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Send_TCPSendOptions_Promise_Nop begin');
     try {
       let tcpSendOptions: socket.TCPSendOptions = {
@@ -508,7 +508,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_GetState_Callback_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_GetState_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_GetState_Callback_Nop begin');
     try {
       sleep(500)
@@ -540,7 +540,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Promise_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_SetExtraOptions_UDPSendOptions_Promise_Nop begin');
     try {
       let udpextraoptions: socket.UDPExtraOptions = {
@@ -574,7 +574,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Promise_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Send_UDPSendOptions_Promise_Nop begin');
     try {
       let sendOptions: socket.UDPSendOptions = {
@@ -608,7 +608,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_Connect_TCPConnectOptions_Callback_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_Connect_TCPConnectOptions_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Connect_TCPConnectOptions_Callback_Nop begin');
     try {
       let tcpconnectoptions: socket.TCPConnectOptions = {
@@ -644,7 +644,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_SetExtraOptions_TCPConnectOptions_Promise_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_SetExtraOptions_TCPConnectOptions_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_SetExtraOptions_TCPConnectOptions_Promise_Nop begin');
     try {
       let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -683,7 +683,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_Send_TCPConnectOptions_Callback_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_Send_TCPConnectOptions_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Send_TCPConnectOptions_Callback_Nop begin');
     try {
       let tcpSendOptions: socket.TCPSendOptions = {
@@ -715,7 +715,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_SetExtraOptions_TCPConnectOptions_Callback_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_SetExtraOptions_TCPConnectOptions_Callback_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_SetExtraOptions_TCPConnectOptions_Callback_Nop begin');
     try {
       let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -756,7 +756,7 @@ export default function socketNopTest() {
    * @tc.type:Function
    * @tc.size:MediumTest
    */
-  it('SUB_Communication_NetStack_Socket_Connect_TCPSendOptions_Promise_Nop', 0, async (done: Function) => {
+  it('SUB_Communication_NetStack_Socket_Connect_TCPSendOptions_Promise_Nop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_NetStack_Socket_Connect_TCPSendOptions_Promise_Nop begin');
     try {
       let tcpconnectoptions: socket.TCPConnectOptions = {
