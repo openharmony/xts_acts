@@ -60,9 +60,9 @@ export default function webAttributeTest() {
     * @tc.desc        : test onDownloadStart normal
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnDownloadStart001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnDownloadStart001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnDownloadStart", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnDownloadStart001", "https://consumer.huawei.com/" +

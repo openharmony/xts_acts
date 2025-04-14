@@ -57,9 +57,9 @@ export default function ActsAceWebDevCloudServiceWebControllerGroupNineTest() {
     * @tc.desc       : test getResponseDataEx return string type
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testGetResponseDataExReturnString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testGetResponseDataExReturnString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "testGetResponseDataExReturnString"
       Utils.emitEvent("testGetResponseDataExReturnString", 10)
       await Utils.sleep(2000);

@@ -56,9 +56,9 @@ export default function GetPercentComplete() {
      * @tc.desc test getPercentComplete80-90
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testWebView_getPercentComplete1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testWebView_getPercentComplete1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1006 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1006 start')

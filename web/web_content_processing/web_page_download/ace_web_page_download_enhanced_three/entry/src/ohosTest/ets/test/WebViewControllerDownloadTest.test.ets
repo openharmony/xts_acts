@@ -59,9 +59,9 @@ export default function webViewControllerDownloadTest() {
     * @tc.desc        : test WebDownloadItem.getGuid
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testGetGuid001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
+    it('testGetGuid001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testGetGuid001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetGuid001", 1, 79650, done);

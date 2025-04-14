@@ -66,9 +66,12 @@ export default function webOnSslError() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBPATR4_API_0100
-     *tc.name testOnsslerroreventreceiveWebC
-     *tc.desc onsslerroreventreceive after load https://wrong.host.badssl.com
+     * @tc.number     : SUB_ACE_BASIC_ETS_WEBPATR4_API_0100
+     * @tc.name       : testOnsslerroreventreceiveWebC
+     * @tc.desc       : onsslerroreventreceive after load https://wrong.host.badssl.com
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
     it('testOnsslerroreventreceiveWebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnsslerroreventreceiveWebC";
