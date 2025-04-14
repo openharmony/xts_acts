@@ -129,9 +129,9 @@ export default function NetStackNDKTest() {
      * @tc.desc   ：Certificate chain verification interface.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetStackCertVerification_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testOHNetStackCertVerification_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_2, pemPath, derPath);
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -259,9 +259,9 @@ export default function NetStackNDKTest() {
      * @tc.desc   ：Get certificate interface.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetStackGetPinSetForHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testOHNetStackGetPinSetForHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result : number = wsAPI.OHNetStackGetPinSetForHostName(CASE_INDEX_1, "www.example.com".toString());
       expect(result).assertEqual(WEBSOCKET_OK);
     });
@@ -389,9 +389,9 @@ export default function NetStackNDKTest() {
      * @tc.desc   ：Get certificate interface.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetStackGetCertificatesForHostName_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testOHNetStackGetCertificatesForHostName_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result : number = wsAPI.OHNetStackGetCertificatesForHostName(CASE_INDEX_3, "www.example.com".toString());
       expect(result).assertEqual(ERROR_CODE_401);
     });
@@ -441,9 +441,9 @@ export default function NetStackNDKTest() {
      * @tc.desc   ：Get certificate interface.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHNetStackGetCertificatesForHostName_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testOHNetStackGetCertificatesForHostName_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result : Array<string> = wsAPI.OHNetStackGetCertificatesForHostName2("getmulticert.com".toString());
       expect(result.length).assertEqual(3);
     });
@@ -730,9 +730,9 @@ export default function NetStackNDKTest() {
      * @tc.desc   ：The client actively closes the websocket connection.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      */
-    it('testOHWebSocketClientClose_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testOHWebSocketClientClose_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let result : number = wsAPI.OHWebSocketClientClose(CASE_INDEX_5);
       expect(result).assertEqual(ERROR_CODE_1017);
     });
@@ -812,9 +812,9 @@ export default function NetStackNDKTest() {
      * @tc.desc   ：test NetStackIsCleartextPermittedByHostName is true.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testNetStackIsCleartextPermittedByHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetStackIsCleartextPermittedByHostName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const hostname: string = "test.com";
       console.info(`testNetStackIsCleartextPermitted_0200 start`);
       let re: number = wsAPI.OHNetStackIsCleartextPermittedByHostName(hostname);
