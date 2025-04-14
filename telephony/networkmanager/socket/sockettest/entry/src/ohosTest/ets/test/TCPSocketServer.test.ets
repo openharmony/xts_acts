@@ -70,9 +70,9 @@ export default function TCPSocketServerTest() {
     * @tc.desc  : Create a TCP Socket Server object; callback
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 2
+    * @tc.level : level 0
     */
-    it('testNetworkMgrSocketTCPSocketServerConstructTCPSocketServerInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerConstructTCPSocketServerInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerConstructTCPSocketServerInstance0100';
       try {
         console.info(`${caseName} test start`);
@@ -320,9 +320,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,Port number is 65536; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen0900';
       try {
         console.info(`${caseName} test start`);
@@ -358,9 +358,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,bad family; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1000';
       try {
         console.info(`${caseName} test start`);
@@ -396,9 +396,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port, pass in null parameters; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1100';
       try {
         console.info(`${caseName} test start`);
@@ -462,9 +462,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,Only fill in the address for IPV4; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1300';
       try {
         console.info(`${caseName} test start`);
@@ -536,9 +536,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Bind IP address and port,The address and protocol are both IPV6; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerListen1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerListen1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerListen1500';
       try {
         console.info(`${caseName} test start`);
@@ -1077,9 +1077,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Obtain the TCP Socket Server status after connect; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerGetState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerGetState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerGetState0600';
       try {
         console.info(`${caseName} test start`);
@@ -2198,9 +2198,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Set other properties of the TCP Socket Server connection,linger is 65536; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerSetExtraOptions2500';
       try {
         console.info(`${caseName} test start`);
@@ -2420,9 +2420,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Set other properties of the TCP Socket Server connection,keepAlive is true; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerSetExtraOptions3000';
       try {
         console.info(`${caseName} test start`);
@@ -2558,9 +2558,9 @@ export default function TCPSocketServerTest() {
      * @tc.desc  : Set other properties of the TCP Socket Server connection,OOBlnLine is false; promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketServerSetExtraOptions3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketServerSetExtraOptions3300';
       try {
         console.info(`${caseName} test start`);

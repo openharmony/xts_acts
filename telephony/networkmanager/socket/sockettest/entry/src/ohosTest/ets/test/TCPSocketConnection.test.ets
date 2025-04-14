@@ -66,9 +66,9 @@ export default function TCPSocketConnectionTest() {
      * @tc.desc  : Sending data through TCP Socket Connection connection,Sending data as a string;callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketConnectionSend0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnectionSend0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnectionSend0100';
       try {
         console.info(`${caseName} test start`);
@@ -168,9 +168,9 @@ export default function TCPSocketConnectionTest() {
      * @tc.desc  : Sending data through TCP Socket Connection connection,Encoding format is an empty string; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketConnectionSend0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnectionSend0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnectionSend0300';
       try {
         console.info(`${caseName} test start`);
@@ -376,9 +376,9 @@ export default function TCPSocketConnectionTest() {
      * @tc.desc  : Sending data through TCP Socket Connection connection,Encoding format is UTF-16; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketConnectionSend0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnectionSend0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnectionSend0700';
       try {
         console.info(`${caseName} test start`);
@@ -480,9 +480,9 @@ export default function TCPSocketConnectionTest() {
      * @tc.desc  : Sending data through TCP Socket Connection connection,Encoding format is ISO-8859-1; callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testNetworkMgrSocketTCPSocketConnectionSend0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketTCPSocketConnectionSend0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketConnectionSend0900';
       try {
         console.info(`${caseName} test start`);

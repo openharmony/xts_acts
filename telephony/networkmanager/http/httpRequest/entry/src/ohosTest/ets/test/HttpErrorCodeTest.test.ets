@@ -196,14 +196,14 @@ export default function HttpErrorCodeTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_RequestMethod_ErrorCode_0500
-     * @tc.name  :  testHttpRequestMethodErrorCode0500
+     * @tc.name  :  testNetworkMgrHttpRequestMethodErrorCode0500
      * @tc.desc  :  test http requestInStream(url, options, callback) with request error code 2300003
      * @tc.size  :  MEDIUMTEST
      * @tc.type  :  Function
-     * @tc.level :  level 3
+     * @tc.level :  level 0
      */
-    it('testHttpRequestMethodErrorCode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = "testHttpRequestMethodErrorCode0500";
+    it('testNetworkMgrHttpRequestMethodErrorCode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpRequestMethodErrorCode0500";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
