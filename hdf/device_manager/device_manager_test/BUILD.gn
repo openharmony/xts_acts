@@ -18,7 +18,10 @@ import("//test/xts/tools/build/suite.gni")
 module_output_path = "acts/ActsDeviceManagerTest"
 ohos_moduletest_suite("ActsDeviceManagerTest") {
   module_out_path = module_output_path
-  sources = [ "device_manager_test.cpp" ]
+  sources = [
+    "${ext_mgr_path}/services/native/driver_extension_manager/src/driver_ext_mgr_types.cpp",
+    "device_manager_test.cpp",
+  ]
   include_dirs = [
     "${ext_mgr_path}/frameworks/ddk/usb/",
     "${ext_mgr_path}/services/native/driver_extension_manager/include/device_manager",
@@ -29,6 +32,7 @@ ohos_moduletest_suite("ActsDeviceManagerTest") {
     "${ext_mgr_path}/interfaces/innerkits/",
   ]
   deps = [
+    "${ext_mgr_path}/interfaces/innerkits:external_device_manager_stub",
     "${ext_mgr_path}/services/native/driver_extension_manager/src/bus_extension/core:driver_extension_bus_core",
     "${ext_mgr_path}/services/native/driver_extension_manager/src/bus_extension/usb:driver_extension_usb_bus",
     "${ext_mgr_path}/services/native/driver_extension_manager/src/device_manager:driver_extension_device_manager_test",
