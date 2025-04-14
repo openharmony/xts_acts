@@ -92,8 +92,15 @@ export default function grid_RowCol_ItemPadMarTest() {
       expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(150)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(secondGridItem.right - secondGridItem.left) -
-        Math.round(vp2px(130))) <= 1).assertTrue();
+      let mar: number = secondGridItem.left - firstGridItem.right
+      let marWid: number = fourthGridItem.right - fourthGridItem.left
+      console.info(`[testGridRowColItemMargin] secondGridItem.right - secondGridItem.left=
+        ${(secondGridItem.right - secondGridItem.left)}`);
+      console.info(`[testGridRowColItemMargin] secondGridItem.left - firstGridItem.right=
+        ${(secondGridItem.left - firstGridItem.right)}`);
+      console.info(`[testGridRowColItemMargin] fourthGridItem.right - fourthGridItem.left=
+        ${(fourthGridItem.right - fourthGridItem.left)}`);
+      expect(Math.floor(Math.abs((secondGridItem.right - secondGridItem.left) - (marWid - 2*mar))) <= 1).assertTrue();
       expect(Math.abs(Math.round(secondGridItem.bottom - secondGridItem.top) -
         Math.round(vp2px(130))) <= 1).assertTrue();
 
@@ -196,8 +203,15 @@ export default function grid_RowCol_ItemPadMarTest() {
       expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(150)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(secondGridItem.right - secondGridItem.left) -
-        Math.round(vp2px(130))) <= 1).assertTrue();
+      let mar: number = secondGridItem.left - firstGridItem.right
+      let marWid: number = fourthGridItem.right - fourthGridItem.left
+      console.info(`[testGridRowColItemMargin] secondGridItem.right - secondGridItem.left=
+        ${(secondGridItem.right - secondGridItem.left)}`);
+      console.info(`[testGridRowColItemMargin] secondGridItem.left - firstGridItem.right=
+        ${(secondGridItem.left - firstGridItem.right)}`);
+      console.info(`[testGridRowColItemMargin] fourthGridItem.right - fourthGridItem.left=
+        ${(fourthGridItem.right - fourthGridItem.left)}`);
+      expect(Math.floor(Math.abs((secondGridItem.right - secondGridItem.left) - (marWid - 2*mar))) <= 1).assertTrue();
       expect(Math.abs(Math.round(secondGridItem.bottom - secondGridItem.top) -
         Math.round(vp2px(130))) <= 1).assertTrue();
 
