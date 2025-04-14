@@ -2565,6 +2565,88 @@ export default function audioRendererTest() {
       expect(true).assertTrue();
       done();
     })
+
+    /**
+      *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_AUDIO_INTERRUPT_0100
+      *@tc.name      : on_audioInterrupt_invalid_string_parameter --401
+      *@tc.desc      : on_audioInterrupt_invalid_string_parameter --401
+      *@tc.size      : MediumTest
+      *@tc.type      : Function
+      *@tc.level     : Level 2
+      */
+    it("SUB_MULTIMEDIA_AUDIO_ON_AUDIO_INTERRUPT_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      let flag: boolean = false;
+      try{
+          let para: ESObject = '123';
+          audioRenderer.on('audioInterrupt',para);
+          expect(flag).assertTrue();
+      }catch(error){
+          console.error(`ERROR Code: ${error.code},${error.massage}`);
+          expect(Number(error.code) == 401).assertTrue();
+          flag = true;
+      }
+      await audioRenderer.release();
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+      *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_AUDIO_INTERRUPT_0200
+      *@tc.name      : on_audioInterrupt_invalid_string_parameter --6800101
+      *@tc.desc      : on_audioInterrupt_invalid_string_parameter --6800101
+      *@tc.size      : MediumTest
+      *@tc.type      : Function
+      *@tc.level     : Level 2
+      */
+    it("SUB_MULTIMEDIA_AUDIO_ON_AUDIO_INTERRUPT_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      let flag: boolean = false;
+      try{
+          let para: ESObject = "123";
+          audioRenderer.on(para,()=>{});
+          expect(flag).assertTrue();
+      }catch(error){
+          console.error(`ERROR Code: ${error.code},${error.massage}`);
+          expect(Number(error.code) == 6800101).assertTrue();
+          flag = true;
+      }
+      await audioRenderer.release();
+      expect(flag).assertTrue();
+      done();
+    })
     
     /**
       *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGE_0100
