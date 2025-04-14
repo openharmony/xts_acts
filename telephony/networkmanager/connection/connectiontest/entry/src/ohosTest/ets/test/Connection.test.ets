@@ -41,14 +41,14 @@ export default function ConnectionTest() {
 
     /**
      * @tc.number : SUB_Network_Connection_SetAppHttpProxy_0100
-     * @tc.name   : testConnectionSetHttpProxyCallback0100
+     * @tc.name   : testNetworkConnectionSetHttpProxyCallback0100
      * @tc.desc   : Set network application level HTTP proxy configuration information.
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionSetHttpProxyCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'testConnectionSetHttpProxyCallback0100';
+    it('testNetworkConnectionSetHttpProxyCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkConnectionSetHttpProxyCallback0100';
       console.info(`${caseName}---Start`);
       try {
         const httpProxy: connection.HttpProxy = {
@@ -360,14 +360,14 @@ export default function ConnectionTest() {
 
     /**
      * @tc.number     : SUB_Network_Connection_NetCapabilities_0200
-     * @tc.name       : testConnectionNetCapabilities0200
+     * @tc.name       : testNetworkConnectionNetCapabilities0200
      * @tc.desc       : test create a NetConnection object
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testConnectionNetCapabilities0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'testConnectionNetCapabilities0200';
+    it('testNetworkConnectionNetCapabilities0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkConnectionNetCapabilities0200';
       console.info(`${caseName}---Start`);
       try {
         network.getType({
@@ -403,14 +403,14 @@ export default function ConnectionTest() {
 
     /**
      * @tc.number : SUB_Network_Connection_setPacUrl_0100
-     * @tc.name   : testConnectionsetPacUrl0100
+     * @tc.name   : testNetworkConnectionsetPacUrl0100
      * @tc.desc   : Set the system-level proxy auto-config (PAC) script URL to be empty
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectionsetPacUrl0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'testConnectionsetPacUrl0100';
+    it('testNetworkConnectionsetPacUrl0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkConnectionsetPacUrl0100';
       console.info(`${caseName}---Start`);
       try{
         let pacUrl = ""
@@ -427,14 +427,14 @@ export default function ConnectionTest() {
 
     /**
      * @tc.number : SUB_Network_Connection_getPacUrl_0100
-     * @tc.name   : testConnectiongetPacUrl0100
+     * @tc.name   : testNetworkConnectiongetPacUrl0100
      * @tc.desc   :get the system-level proxy auto-config (PAC) script URL
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testConnectiongetPacUrl0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'testConnectiongetPacUrl0100';
+    it('testNetworkConnectiongetPacUrl0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkConnectiongetPacUrl0100';
       console.info(`${caseName}---Start`);
       try{
         let pacUrl :string=  connection.getPacUrl();
