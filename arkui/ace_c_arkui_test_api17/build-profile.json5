@@ -22,7 +22,6 @@
         signingConfig: "default",
         compileSdkVersion: 18,
         compatibleSdkVersion: 17,
-        targetSdkVersion: 17,
       },
     ],
   },
