@@ -162,7 +162,7 @@ export default function DatePickerDialogBGColorTest() {
       if (uniRenderFlag == 'false') {
         expect(backgroundColor).assertEqual('#FFFFFFFF');
       } else {
-        expect(backgroundColor).assertEqual('#00000000');
+        expect(backgroundColor).assertEqual('#00FFFFFF');
       }
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
@@ -187,7 +187,7 @@ export default function DatePickerDialogBGColorTest() {
       if (uniRenderFlag == 'false') {
         expect(backgroundColor).assertEqual('#FFFFFFFF');
       } else {
-        expect(backgroundColor).assertEqual('#00000000');
+        expect(backgroundColor).assertEqual('#00FFFFFF');
       }
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
@@ -212,7 +212,7 @@ export default function DatePickerDialogBGColorTest() {
       if (uniRenderFlag == 'false') {
         expect(backgroundColor).assertEqual('#FFFFFFFF');
       } else {
-        expect(backgroundColor).assertEqual('#00000000');
+        expect(backgroundColor).assertEqual('#00FFFFFF');
       }
       let btn1 = await driver.findComponent(ON.text('确定'));
       await btn1?.click();
