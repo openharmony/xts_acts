@@ -66,9 +66,12 @@ export default function webOnInterceptReqThree() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBPATR2_API_0300
-     *tc.name testOnInterceptRequestThirdWebC
-     *tc.desc onInterceptRequest with setting setresponsecede 404
+     * @tc.number     : SUB_ACE_BASIC_ETS_WEBPATR2_API_0300
+     * @tc.name       : testOnInterceptRequestThirdWebC
+     * @tc.desc       : onInterceptRequest with setting setresponsecede 404
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
     it('testOnInterceptRequestThirdWebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnInterceptRequestThirdWebC";

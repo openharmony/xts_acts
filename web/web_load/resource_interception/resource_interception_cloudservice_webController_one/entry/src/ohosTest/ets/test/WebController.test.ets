@@ -55,9 +55,9 @@ export default function webController() {
     * @tc.desc       : test imageAccess
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testImageAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testImageAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testImageAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testImageAccess001", "null", 33023, done);

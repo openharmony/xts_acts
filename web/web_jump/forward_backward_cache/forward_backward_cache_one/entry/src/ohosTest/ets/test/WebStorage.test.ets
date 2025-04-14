@@ -60,9 +60,9 @@ export default function webStorage() {
     * @tc.desc       : test getOrigins
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testGetOrigins001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testGetOrigins001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testGetOrigins001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOrigins001", "resource://rawfile/", 20340, done);

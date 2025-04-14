@@ -53,9 +53,9 @@ export default function webAttribute() {
     * @tc.desc       : test onWindowNew
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testOnWindowNew001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnWindowNew001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testOnWindowNew001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnWindowNew001", true, 30071, done);
