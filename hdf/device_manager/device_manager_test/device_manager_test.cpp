@@ -192,17 +192,20 @@ public:
     {
         return sptr<TestRemoteObjectStub>::MakeSptr();
     };
-    void OnConnect(uint64_t deviceId, const sptr<IRemoteObject> &drvExtObj, const ErrMsg &errMsg)
+    ErrCode OnConnect(uint64_t deviceId, const sptr<IRemoteObject> &drvExtObj, const ErrMsg &errMsg)
     {
         EDM_LOGD(MODULE_DEV_MGR, "TestDriverExtMgrCallback::OnConnect entry");
+        return EDM_OK;
     };
-    void OnDisconnect(uint64_t deviceId, const ErrMsg &errMsg)
+    ErrCode OnDisconnect(uint64_t deviceId, const ErrMsg &errMsg)
     {
         EDM_LOGD(MODULE_DEV_MGR, "TestDriverExtMgrCallback::OnConnect entry");
+        return EDM_OK;
     };
-    void OnUnBind(uint64_t deviceId, const ErrMsg &errMsg)
+    ErrCode OnUnBind(uint64_t deviceId, const ErrMsg &errMsg)
     {
         EDM_LOGD(MODULE_DEV_MGR, "TestDriverExtMgrCallback::OnConnect entry");
+        return EDM_OK;
     };
 };
 
