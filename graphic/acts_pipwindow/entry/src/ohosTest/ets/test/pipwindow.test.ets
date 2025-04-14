@@ -2340,7 +2340,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       } catch (err2) {
         console.log('data Failed0 to PiPSizeChange_test' + JSON.stringify(err2))
         if(err2.code == 801 || err2.code == 401){
-          expect().assertTrue();
+          expect(true).assertTrue();
           done();
         } else {
           expect().assertFail();
